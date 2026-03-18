@@ -4798,64 +4798,84 @@ function sectionAEBrief(D) {
    SECTION: BATTLE CARD
 ═══════════════════════════════════════════════════ */
 function sectionBattleCard(D) {
-  const ae     = D.ae_fields || {};
-  const vendor = D.company_snapshot?.current_search_vendor || 'Current Vendor';
-  const gaps   = D.gap_pairs || [];
-  const feats  = (D.findings || []).map(f => ({
-    cap: f.category, vendor: '✗', algolia: '✓'
-  }));
+  const ae        = D.ae_fields || {};
+  const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
+  const gaps      = D.gap_pairs || [];
+  const hir       = D.hiring || {};
+  const objections = hir.objection_counters || [];
+  // Use only critical findings for feature comparison
+  const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
+  const allFindings = D.findings || [];
+  // Single strongest hook — first gap pair only
+  const hook = gaps[0] || null;
 
   return `<section id="section-battlecard" class="audit-section">
     <div class="section-eyebrow">Battle Card</div>
     <div class="section-title">Algolia vs. ${escHtml(vendor)}</div>
     <div class="grid-2" style="gap:28px;align-items:start;">
-      <div>
-        ${gaps.length ? `
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Strategy vs. Reality</div>
-        ${gaps.map(g => `
-        <div class="gap-pair">
-          <div class="gap-said">
-            <div class="gap-said-lbl">What They Said</div>
-            <div class="gap-said-text">"${escHtml(g.said_quote)}"</div>
-            <div class="gap-said-attr">— ${escHtml(g.said_attr)} · ${lnk(g.said_source_url, escHtml(g.said_source_label))}</div>
+
+      <!-- LEFT: Quick-reference for live call -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+
+        ${ae.talk_track_opener ? `
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">Opening Line</div>
+          <div class="talk-track-box">
+            <p style="font-size:15px;line-height:1.6;">${escHtml(ae.talk_track_opener)}</p>
+            ${ae.talk_track_cta ? `<div style="font-size:14px;font-weight:600;color:var(--blue);margin-top:8px;">→ ${escHtml(ae.talk_track_cta)}</div>` : ''}
           </div>
-          <div class="gap-bridge">✗ Gap Identified</div>
-          <div class="gap-found">
-            <div class="gap-found-lbl">What The Audit Found</div>
-            <div class="gap-found-text">${escHtml(g.found_title)}</div>
-            <div class="gap-found-ev">${escHtml(g.found_evidence)}</div>
+        </div>` : ''}
+
+        ${hook ? `
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">The Hook</div>
+          <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+            <div style="background:#F0FDF4;padding:12px 14px;border-bottom:1px solid var(--border);">
+              <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">They said</div>
+              <div style="font-size:14px;font-style:italic;color:var(--gray);">"${escHtml(hook.said_quote)}"</div>
+              <div style="font-size:12px;color:var(--mid);margin-top:4px;">— ${escHtml(hook.said_attr)}</div>
+            </div>
+            <div style="background:#FEF2F2;padding:12px 14px;">
+              <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">✗ We found</div>
+              <div style="font-size:14px;font-weight:600;color:var(--gray);">${escHtml(hook.found_title)}</div>
+            </div>
           </div>
-        </div>`).join('')}` : ''}
+        </div>` : ''}
+
+        ${objections.length ? `
+        <div>
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">When They Push Back</div>
+          ${objections.slice(0,3).map(o=>`
+          <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+            <div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
+            <div style="font-size:14px;color:var(--gray);line-height:1.5;">→ ${escHtml(o.counter||'')}</div>
+          </div>`).join('')}
+        </div>` : ''}
       </div>
+
+      <!-- RIGHT: Feature comparison -->
       <div>
-        ${feats.length ? `
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">
           Feature Comparison: ${escHtml(vendor)} vs. Algolia
         </div>
         <table class="feature-table" style="margin-bottom:16px;">
           <thead>
             <tr>
               <th>Capability</th>
-              <th>${escHtml(vendor)}</th>
-              <th>Algolia</th>
+              <th style="color:#DC2626;">${escHtml(vendor)}</th>
+              <th style="color:#003DFF;">Algolia</th>
             </tr>
           </thead>
           <tbody>
-            ${feats.map(f => `<tr>
-              <td>${escHtml(f.cap)}</td>
-              <td><span class="cap-no">✗</span></td>
-              <td><span class="cap-yes">✓</span></td>
+            ${allFindings.map(f => `<tr>
+              <td>${escHtml(f.category)}</td>
+              <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
+              <td style="text-align:center;"><span class="cap-yes">✓</span></td>
             </tr>`).join('')}
           </tbody>
-        </table>` : ''}
-
-        ${ae.talk_track_opener ? `
-        <div class="talk-track-box">
-          <h4>Opening Talk Track</h4>
-          <p>${escHtml(ae.talk_track_opener)}</p>
-          <strong>→ ${escHtml(ae.talk_track_cta)}</strong>
-        </div>` : ''}
+        </table>
       </div>
+
     </div>
   </section>`;
 }
