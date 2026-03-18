@@ -77,11 +77,41 @@
     {
       "name": "Dan Sheridan",
       "title": "CEO, Brooks Running",
+      "tenure": "CEO since April 2024 (at Brooks since 1998)",
+      "linkedin_url": "https://www.linkedin.com/in/dan-sheridan-2a04316/",
       "quote": "At the center of everything we do is the runner.",
       "quote_source": "https://www.brooksrunning.com/en_us/meet-brooks/our-purpose/",
       "quote_source_label": "Brooks Running \u2014 Our Purpose",
       "quote_date": "2025-01",
-      "relevance": "Brand promise of runner-centricity is contradicted by search experience that cannot understand natural language queries like 'best shoes for marathon training' \u2014 the most common runner intent."
+      "source_url": "https://www.retaildive.com/news/brooks-running-promotes-dan-sheridan-ceo/710119/",
+      "source_label": "Retail Dive \u2014 CEO Announcement",
+      "relevance": "Brand promise of runner-centricity is contradicted by search experience that cannot understand natural language queries \u2014 the most common runner intent."
+    },
+    {
+      "name": "Claire Wood",
+      "title": "VP of Footwear Product Strategy",
+      "tenure": "Joined Feb 2026 (from Sorel \u00b7 previously New Balance ~11 yrs)",
+      "linkedin_url": "https://www.linkedin.com/in/claire-wood-913a357/",
+      "quote": null,
+      "quote_source": null,
+      "quote_source_label": null,
+      "quote_date": "2026-02",
+      "source_url": "https://fashionunited.uk/news/people/brooks-running-creates-vice-president-of-footwear-product-strategy-role/2026021186231",
+      "source_label": "FashionUnited \u2014 VP Appointment",
+      "relevance": "New VP hire = 90-day tech stack review window. Previously at New Balance (major digital commerce brand) and Sorel \u2014 will bring modern product-to-digital expectations. Frame Algolia as enabling her elevated product mandate."
+    },
+    {
+      "name": "Dr. Jennifer Sumner",
+      "title": "Director, Run Research Lab",
+      "tenure": "Director since 2017 (at Brooks since 2013)",
+      "linkedin_url": "https://www.linkedin.com/in/jennifer-sumner-894a81164/",
+      "quote": null,
+      "quote_source": null,
+      "quote_source_label": null,
+      "quote_date": "2025-01",
+      "source_url": "https://theorg.com/org/brooks-running/org-chart/jennifer-sumner",
+      "source_label": "The Org \u2014 Jennifer Sumner Profile",
+      "relevance": "Leads 23-person Run Research Lab studying individual motion paths. Her team's biomechanics data is not surfaced in search \u2014 Algolia NLP + personalization directly enables the research-backed product discovery she champions."
     }
   ],
   "intelligence_signals": [
@@ -593,8 +623,17 @@
     "confidence_overall": "LOW for absolute values, MEDIUM for trend direction",
     "berkshire_note": "Berkshire Hathaway ownership (since 2006) provides: (1) financial stability \u2014 no quarterly earnings pressure; (2) long-term investment horizon aligned with Algolia's compounding ROI story; (3) Warren Buffett buy-quality-improve-operations-hold-forever philosophy. Not under pressure to cut opex \u2014 can invest in experience quality. This removes the 'budget freeze' objection.",
     "revenue_source": "https://www.brooksrunning.com/en_us/news/",
-    "revenue_source_label": "Brooks Running Q2 2025 Press Release + Running Insight Magazine estimates [LOW CONFIDENCE \u2014 Private Company]",
-    "source_url": "https://www.brooksrunning.com/en_us/news/"
+    "revenue_source_label": "World Footwear \u2014 Brooks Running 16% FY2025 growth",
+    "source_url": "https://www.brooksrunning.com/en_us/news/",
+    "revenue_source_url": "https://www.worldfootwear.com/news/brooks-running-delivers-16-revenue-growth-in-full-year-2025/11245.html",
+    "digital_share_source": "Industry benchmark: Statista ecommerce share for specialty athletic brands (D2C-first) 40-50%",
+    "digital_share_source_url": "https://www.statista.com/statistics/1247556/share-direct-to-consumer-revenue-athletic-footwear/",
+    "roi_benchmark_source": "https://baymard.com/research/ecommerce-search",
+    "roi_benchmark_label": "Baymard Institute \u2014 eCommerce Search UX Research (basic improvements yield 3-7% lift)",
+    "margin_zone_source": "Triangulated from: Nike 15-17% (public), Under Armour 8-10% (public), mid-tier specialty brands 10-15% (industry est.)",
+    "margin_zone_source_url": "https://finance.yahoo.com/news/brooks-running-delivers-19-global-130000409.html",
+    "algolia_cost_source": "Algolia pricing page (enterprise tier estimate for ~50K products, moderate query volume)",
+    "algolia_cost_source_url": "https://www.algolia.com/pricing/"
   },
   "traffic": {
     "monthly_visits": "~5.2M/mo",
@@ -830,7 +869,9 @@
         "prototypes": 160
       },
       "algolia_angle": "Brooks studies individual habitual motion paths \u2014 not generic averages. Search should do the same. Algolia AI Personalization surfaces results based on each runner's unique browsing and purchase signals, not generic bestsellers."
-    }
+    },
+    "build_vs_buy_source": "https://jobs.lever.co/brooksrunning/8fe6eecc-b4f1-410d-a3c0-b15d3feb68ff",
+    "build_vs_buy_source_label": "Senior Engineer \u2014 Digital Products JD: 'vendor RFP processes', 'third-party integrations', 'evaluating emerging technologies'"
   },
   "strategic_angles": [
     {
