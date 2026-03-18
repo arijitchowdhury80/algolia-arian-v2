@@ -5088,38 +5088,96 @@ function sectionCompetitiveSynthesis(D) {
   const ga = D.golden_angle || {};
   const tiers = cs.competitor_tiers || [];
   const matrix = cs.positioning_matrix || [];
-  const tierCol = (tier) => String(tier||'').includes('AHEAD')?'#DC2626':String(tier||'').includes('GOLDEN')?'#059669':String(tier||'').includes('DISRUPTOR')?'#D97706':'#6B7280';
   const cap = (v) => v===true?'<span class="cap-yes">✓</span>':v===false?'<span class="cap-no">✗</span>':`<span class="cap-part">${escHtml(String(v||'~'))}</span>`;
+
+  // Build BuiltWith source URL map from golden_angle data
+  const builtWithUrls = {};
+  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+
+  // Tier config
+  const tierConfig = {
+    'AHEAD': { label:'↑ Ahead', color:'#DC2626', bg:'#FEF2F2', play:'Defensive — close the gap' },
+    'GOLDEN': { label:'✦ Golden Angle', color:'#059669', bg:'#F0FDF4', play:'Proof — they chose Algolia' },
+    'DISRUPTOR': { label:'⚡ Disruptor', color:'#D97706', bg:'#FFFBEB', play:'Neutralize before they pull away' },
+    'PARITY': { label:'→ Parity', color:'#6B7280', bg:'#F9FAFB', play:'Offensive — leapfrog with AI' },
+  };
+  const getTierCfg = (tier) => {
+    const key = Object.keys(tierConfig).find(k => String(tier||'').toUpperCase().includes(k)) || 'PARITY';
+    return tierConfig[key];
+  };
 
   return `<section id="section-competitive" class="audit-section">
     <div class="section-eyebrow">Business Case · Competitive Intelligence</div>
     <div class="section-title">Competitive Landscape</div>
     <p class="section-desc">${escHtml(cs.scenario||'')} ${cs.scenario_note?'— '+escHtml(cs.scenario_note):''}</p>
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:24px;">${renderGoldenAngleCard(ga)}</div>` : ''}
-    ${tiers.length?`<div style="margin-bottom:28px;">
-      <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Competitor Tiers</div>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        ${tiers.map(t=>`<div class="card" style="border-left:4px solid ${tierCol(t.tier)};padding:16px 20px;">
-          <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;">
-            <div style="flex:1;min-width:200px;">
-              <div style="font-size:14px;font-weight:600;color:${tierCol(t.tier)};text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px;">${escHtml(t.tier)}</div>
-              <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:4px;">${(t.competitors||[]).join(' · ')}</div>
-              <div style="font-size:14px;color:var(--mid);">${escHtml(t.search_stack||'')}</div>
-            </div>
-            <div style="flex:2;min-width:260px;font-size:16px;color:var(--gray);line-height:1.5;">${escHtml(t.strategic_implication||'')}</div>
-          </div>
-        </div>`).join('')}
+    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:28px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+
+    ${tiers.length ? `
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Competitor Intelligence</div>
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="background:var(--gray);color:white;">
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:22%;">Competitor</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:20%;">Search Stack</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:15%;">Our Play</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Strategic Angle</th>
+              <th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:90px;">Verified</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tiers.map((t, i) => {
+              const cfg = getTierCfg(t.tier);
+              const comps = (t.competitors||[]);
+              const bgRow = i % 2 === 0 ? 'white' : '#FAFAFA';
+              return comps.map((comp, ci) => {
+                const isFirst = ci === 0;
+                const verifyUrl = builtWithUrls[comp] || t.source_url || '';
+                return `<tr style="background:${bgRow};border-top:1px solid var(--border);">
+                  ${isFirst ? `<td rowspan="${comps.length}" style="padding:14px 16px;vertical-align:top;border-right:1px solid var(--border);">
+                    <span style="display:inline-block;background:${cfg.bg};color:${cfg.color};
+                      font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+                      padding:2px 8px;border-radius:20px;margin-bottom:6px;">${cfg.label}</span>
+                    <div style="font-size:15px;font-weight:700;color:var(--gray);">${comps.join(', ')}</div>
+                  </td>` : ''}
+                  <td style="padding:14px 16px;vertical-align:top;">
+                    <div style="font-size:13px;color:var(--gray);">${ci === 0 ? escHtml(t.search_stack||'Unknown') : ''}</div>
+                  </td>
+                  <td style="padding:14px 16px;vertical-align:top;">
+                    ${ci === 0 ? `<span style="font-size:11px;font-weight:600;color:${cfg.color};">${cfg.play}</span>` : ''}
+                  </td>
+                  <td style="padding:14px 16px;vertical-align:top;">
+                    ${ci === 0 ? `<div style="font-size:13px;color:var(--gray);line-height:1.5;">${escHtml(t.strategic_implication||'')}</div>` : ''}
+                  </td>
+                  <td style="padding:14px 16px;text-align:center;vertical-align:top;">
+                    ${ci === 0 && verifyUrl ? `<a href="${verifyUrl}" target="_blank"
+                      style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;
+                             color:var(--blue);background:#EEF2FF;border:1px solid #C7D2FE;
+                             border-radius:20px;padding:3px 8px;text-decoration:none;white-space:nowrap;">
+                      BuiltWith ↗
+                    </a>` : (ci === 0 ? `<span style="font-size:11px;color:var(--mid);">—</span>` : '')}
+                  </td>
+                </tr>`;
+              }).join('');
+            }).join('')}
+          </tbody>
+        </table>
       </div>
-    </div>`:''}
+    </div>` : ''}
+
     ${matrix.length?`<div style="margin-bottom:28px;">
-      <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Capability Matrix</div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Capability Matrix</div>
       <div style="overflow-x:auto;">
         <table class="data-table">
-          <thead><tr>
-            <th>Capability</th><th>Nike</th><th>Asics</th><th>On Running</th><th>New Balance</th>
-            <th style="background:#FEF2F2;color:#DC2626;">Brooks Today</th>
-            <th style="background:#EEF2FF;color:#003DFF;">Brooks + Algolia</th>
-          </tr></thead>
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Nike</th><th>Asics</th><th>On Running</th><th>New Balance</th>
+              <th style="background:#7F1D1D;color:white;border-bottom:3px solid #DC2626;">Brooks Today</th>
+              <th style="background:#1E3A8A;color:white;border-bottom:3px solid #003DFF;">Brooks + Algolia</th>
+            </tr>
+          </thead>
           <tbody>${matrix.map(r=>`<tr>
             <td style="font-weight:600;">${escHtml(r.capability||'')}</td>
             <td style="text-align:center;">${cap(r.nike_has)}</td>
@@ -5127,7 +5185,7 @@ function sectionCompetitiveSynthesis(D) {
             <td style="text-align:center;">${cap(r.on_running_has)}</td>
             <td style="text-align:center;">${cap(r.new_balance_has)}</td>
             <td style="text-align:center;background:#FFF5F5;">${cap(r.brooks_today)}</td>
-            <td style="text-align:center;background:#F0F4FF;">${cap(r.brooks_with_algolia)}</td>
+            <td style="text-align:center;background:#EEF2FF;">${cap(r.brooks_with_algolia)}</td>
           </tr>`).join('')}</tbody>
         </table>
       </div>
