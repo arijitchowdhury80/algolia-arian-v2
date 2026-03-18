@@ -4997,29 +4997,49 @@ function sectionRevenueAtRisk(D) {
     { label:'Moderate',     pct:'10%', amt:rs.moderate?.annual_impact||'$9.7M/yr',   desc:rs.moderate?.scenario_desc||'+ Semantic search, dynamic faceting, personalization', play:'Offensive', col:'#D97706' },
     { label:'Optimistic',   pct:'15%', amt:rs.optimistic?.annual_impact||'$14.55M/yr', desc:rs.optimistic?.scenario_desc||'+ Full AI personalization, recommendations, federated content', play:'Leadership', col:'#059669' },
   ];
+  // Build the formula string for transparency
+  const revBase = f.total_digital_revenue || '~$540M';
+  const searchPct = f.search_driven_pct || 18;
+  const searchAddr = f.search_addressable || '~$97M';
+  const algoliaAnnual = f.algolia_annual_cost_est || '~$200K/yr';
+
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
     <div class="section-title">Revenue at Risk</div>
-    <p class="section-desc">Search-addressable revenue: <strong>${escHtml(f.search_addressable||'~$97M')}</strong> (${n(f.search_driven_pct)||18}% of ${escHtml(f.total_digital_revenue||'~$540M')} digital revenue) · Algolia annual cost estimate: <strong>${escHtml(f.algolia_annual_cost_est||'~$200K/yr')}</strong></p>
+
+    <!-- Assumptions box — full transparency on all inputs -->
+    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--gray);line-height:1.7;">
+      <span style="font-weight:700;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
+      <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.digital_share_pct||45}% of total — <em>estimated, private company</em>) ·
+      <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
+      <strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) ·
+      <strong>Lift %:</strong> based on Algolia case studies in comparable verticals — conversion rate improvements, not guaranteed revenue impact
+    </div>
+
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px;">
-      ${scenarios.map(sc=>`
+      ${scenarios.map((sc, i)=>{
+        const src = [rs.conservative, rs.moderate, rs.optimistic][i];
+        return `
       <div class="card" style="border-top:4px solid ${sc.col};padding:24px 20px;">
         <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${sc.col};margin-bottom:8px;">${sc.label} · ${sc.pct} lift</div>
         <div style="font-size:2.4rem;font-weight:600;color:var(--gray);line-height:1.1;margin-bottom:4px;">${sc.amt}</div>
-        <div style="font-size:14px;color:var(--mid);margin-bottom:12px;">per year</div>
-        <div style="font-size:16px;color:var(--gray);line-height:1.5;margin-bottom:12px;">${escHtml(sc.desc)}</div>
-        <span style="font-size:14px;font-weight:600;padding:3px 10px;border-radius:4px;background:${sc.col}18;color:${sc.col};">${sc.play} Play</span>
-      </div>`).join('')}
+        <div style="font-size:12px;color:var(--mid);margin-bottom:12px;font-style:italic;">per year · estimate</div>
+        <div style="font-size:14px;color:var(--gray);line-height:1.5;margin-bottom:10px;">${escHtml(sc.desc)}</div>
+        ${src?.source ? `<div style="font-size:12px;color:var(--mid);margin-bottom:8px;">Based on: ${escHtml(src.source)}</div>` : ''}
+        <span style="font-size:13px;font-weight:600;padding:3px 10px;border-radius:4px;background:${sc.col}18;color:${sc.col};">${sc.play} Play</span>
+      </div>`;
+      }).join('')}
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
       ${[
-        {label:'ROI Multiple', val:f.roi_multiple||'24.3x', col:'var(--green)'},
-        {label:'Payback Period', val:f.payback_period||'15 days', col:'var(--blue)'},
-        {label:'Algolia Cost Est.', val:f.algolia_annual_cost_est||'~$200K/yr', col:'var(--mid)'},
-        {label:'Search-Addressable', val:f.search_addressable||'~$97M', col:'var(--purple)'},
+        {label:'ROI Multiple', val:f.roi_multiple||'24.3x', col:'var(--green)', note:'vs. conservative scenario'},
+        {label:'Payback Period', val:f.payback_period||'15 days', col:'var(--blue)', note:'conservative lift ÷ annual cost'},
+        {label:'Algolia Cost Est.', val:algoliaAnnual, col:'var(--mid)', note:'estimated — not published'},
+        {label:'Search-Addressable', val:searchAddr, col:'var(--purple)', note:`${searchPct}% of digital revenue`},
       ].map(m=>`<div class="card" style="text-align:center;padding:16px;">
         <div style="font-size:1.4rem;font-weight:600;color:${m.col};">${escHtml(m.val)}</div>
-        <div style="font-size:14px;color:var(--mid);margin-top:4px;">${m.label}</div>
+        <div style="font-size:13px;color:var(--mid);margin-top:4px;">${m.label}</div>
+        <div style="font-size:11px;color:var(--mid);margin-top:2px;font-style:italic;">${m.note}</div>
       </div>`).join('')}
     </div>
     ${f.berkshire_note?`<div class="card" style="border-left:4px solid var(--purple);background:linear-gradient(135deg,#F5F3FF,#EDE9FE);padding:20px 24px;">
