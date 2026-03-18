@@ -2476,7 +2476,8 @@ a:hover {
       "said_source_label": "Brooks Running — Our Purpose",
       "said_date": "2026-01",
       "found_title": "Natural language query 'best shoes for marathon training' redirected to generic bestsellers — not runner-first.",
-      "found_evidence": "Query 'best shoes for marathon training' → redirected to /en_us/featured/best-sellers/. Screenshot: screenshots/13-nlp-marathon-training.png"
+      "found_evidence": "Query 'best shoes for marathon training' → redirected to /en_us/featured/best-sellers/. Screenshot: screenshots/13-nlp-marathon-training.png",
+      "finding_id": "F01"
     },
     {
       "said_quote": "19% global revenue growth in Q2 2025 driven by strategic international expansion.",
@@ -2485,7 +2486,8 @@ a:hover {
       "said_source_label": "Q2 2025 Press Release",
       "said_date": "2025-08",
       "found_title": "Search has zero multi-language or geo-merchandising capability — scaling search to match revenue growth is unaddressed.",
-      "found_evidence": "SFCC Demandware native search endpoint confirmed. No geo-specific rules, no multi-language synonyms. Screenshot: screenshots/04-full-results-running-shoes.png"
+      "found_evidence": "SFCC Demandware native search endpoint confirmed. No geo-specific rules, no multi-language synonyms. Screenshot: screenshots/04-full-results-running-shoes.png",
+      "finding_id": ""
     },
     {
       "said_quote": "Our Run Research Lab studies individual biomechanical motion paths — not generic averages.",
@@ -2494,7 +2496,8 @@ a:hover {
       "said_source_label": "Brooks Running — Technology & Research",
       "said_date": "2026-01",
       "found_title": "Zero personalization — search results identical whether runner has browsed Ghost 16 for 5 minutes or just arrived.",
-      "found_evidence": "Browsed Ghost 16 PDP, then searched 'running shoes' — 54 results in identical default sort. Screenshot: screenshots/17-personalization.png"
+      "found_evidence": "Browsed Ghost 16 PDP, then searched 'running shoes' — 54 results in identical default sort. Screenshot: screenshots/17-personalization.png",
+      "finding_id": "F02"
     }
   ],
   "toc": [
@@ -5008,40 +5011,75 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
   const gaps = D.gap_pairs || [];
+  const findings = D.findings || [];
   if (!gaps.length) return '';
+
+  // Build finding_id → display G/S id map
+  const criticals = findings.filter(f => f.severity === 'critical');
+  const moderates = findings.filter(f => f.severity === 'moderate');
+  const positives = findings.filter(f => f.severity === 'positive');
+  let gn = 0, sn = 0;
+  const fidToDisplay = {};
+  const fidToSolution = {};
+  [...criticals, ...moderates, ...positives].forEach(f => {
+    const disp = f.severity === 'positive'
+      ? `S${String(++sn).padStart(2,'0')}`
+      : `G${String(++gn).padStart(2,'0')}`;
+    fidToDisplay[f.id] = disp;
+    fidToSolution[f.id] = f.algolia_solution || '';
+  });
+
+  const jumpToChapter = (fid) =>
+    `event.preventDefault();document.querySelector('[data-tab=\\'audit\\']').click();setTimeout(()=>document.getElementById('chapter-${fid.toLowerCase()}')?.scrollIntoView({behavior:'smooth',block:'start'}),180);`;
+
   return `<section id="section-said-found" class="audit-section">
     <div class="section-eyebrow">Business Case · The Hook</div>
     <div class="section-title">Said vs. Found</div>
-    <p class="section-desc">Leadership's stated priorities — compared to what the audit found. Use this to open the conversation.</p>
-    ${gaps.map(g=>{
-      // Extract screenshot path from found_evidence or dedicated field
-      const screenshotMatch = (g.found_evidence||'').match(/screenshots\/[\w\-\.]+\.png/);
-      const screenshotFile = g.screenshot_file || (screenshotMatch ? screenshotMatch[0] : null);
-      // Clean evidence text — remove raw filename reference
-      const cleanEvidence = (g.found_evidence||'').replace(/\s*Screenshot:\s*screenshots\/[\w\-\.]+\.png\.?/g,'').trim();
-      // Link to the finding detail section if finding_id provided
-      const findingLink = g.finding_id
-        ? `<a class="gap-found-link" href="#finding-${g.finding_id.toLowerCase()}" onclick="event.preventDefault();document.querySelector('[data-tab=\\'audit\\']').click();setTimeout(()=>document.getElementById('finding-${g.finding_id.toLowerCase()}')?.scrollIntoView({behavior:'smooth',block:'start'}),180);">
-             → View full finding with screenshot
-           </a>`
-        : (screenshotFile ? `<a class="gap-found-link" href="#" onclick="event.preventDefault();document.querySelector('[data-tab=\\'audit\\']').click();">→ See full evidence in Search Audit tab</a>` : '');
-      return `
-    <div class="gap-pair" style="margin-bottom:20px;">
-      <div class="gap-said">
-        <div class="gap-said-lbl">What They Said</div>
-        <div class="gap-said-text">"${escHtml(g.said_quote)}"</div>
-        <div class="gap-said-attr">— ${escHtml(g.said_attr)} · ${lnk(g.said_source_url, escHtml(g.said_source_label||'Source'))}</div>
-      </div>
-      <div class="gap-bridge">✗ Search Audit Found a Gap</div>
-      <div class="gap-found">
-        <div class="gap-found-lbl">What The Audit Found</div>
-        <div class="gap-found-text">${escHtml(g.found_title)}</div>
-        ${cleanEvidence ? `<div class="gap-found-ev">${escHtml(cleanEvidence)}</div>` : ''}
-        ${screenshotFile ? `<img src="${escHtml(screenshotFile)}" class="gap-screenshot-thumb" alt="Audit evidence screenshot" loading="lazy">` : ''}
-        ${findingLink}
-      </div>
-    </div>`;
-    }).join('')}
+    <p class="section-desc">Leadership's stated priorities — compared to what our audit found. Use this to open the conversation.</p>
+    <div style="overflow-x:auto;">
+      <table class="data-table" style="table-layout:fixed;width:100%;">
+        <colgroup>
+          <col style="width:30%">
+          <col style="width:35%">
+          <col style="width:35%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="color:var(--green);background:#F0FDF4;">They Said</th>
+            <th style="color:var(--red);background:#FEF2F2;">We Found</th>
+            <th style="color:var(--blue);background:#EEF2FF;">Algolia Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${gaps.map(g => {
+            const fid = g.finding_id || '';
+            const dispId = fidToDisplay[fid] || '';
+            const solution = fidToSolution[fid] || g.algolia_angle || '';
+            const cleanEvidence = (g.found_evidence||'').replace(/\s*Screenshot:\s*screenshots\/[\w\-\.]+\.png\.?/g,'').trim();
+            return `<tr>
+              <td style="vertical-align:top;padding:16px;">
+                <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:8px;">"${escHtml(g.said_quote)}"</div>
+                <div style="font-size:12px;color:var(--mid);">— ${escHtml(g.said_attr)}</div>
+                ${g.said_source_url ? `<a href="${g.said_source_url}" target="_blank" style="font-size:12px;color:var(--blue);font-weight:600;">${escHtml(g.said_source_label||'Source')}</a>` : ''}
+              </td>
+              <td style="vertical-align:top;padding:16px;">
+                <div style="font-size:14px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:6px;">✗ ${escHtml(g.found_title)}</div>
+                ${cleanEvidence ? `<div style="font-size:13px;color:var(--mid);line-height:1.4;">${escHtml(cleanEvidence)}</div>` : ''}
+              </td>
+              <td style="vertical-align:top;padding:16px;">
+                ${solution ? `<div style="font-size:13px;color:var(--gray);line-height:1.5;margin-bottom:10px;">${escHtml(solution.split('.')[0])}.${solution.split('.')[1] ? ' ' + escHtml(solution.split('.')[1]) + '.' : ''}</div>` : ''}
+                ${dispId ? `<a href="#chapter-${fid.toLowerCase()}" onclick="${jumpToChapter(fid)}"
+                  style="display:inline-flex;align-items:center;gap:5px;background:#EEF2FF;
+                         border:1px solid #C7D2FE;border-radius:20px;padding:4px 12px;
+                         font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">
+                  → ${escHtml(dispId)} Full Evidence
+                </a>` : `<span style="font-size:12px;color:var(--mid);">See Search Audit tab</span>`}
+              </td>
+            </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
   </section>`;
 }
 

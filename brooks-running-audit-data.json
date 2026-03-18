@@ -464,7 +464,8 @@
       "said_source_label": "Brooks Running \u2014 Our Purpose",
       "said_date": "2026-01",
       "found_title": "Natural language query 'best shoes for marathon training' redirected to generic bestsellers \u2014 not runner-first.",
-      "found_evidence": "Query 'best shoes for marathon training' \u2192 redirected to /en_us/featured/best-sellers/. Screenshot: screenshots/13-nlp-marathon-training.png"
+      "found_evidence": "Query 'best shoes for marathon training' \u2192 redirected to /en_us/featured/best-sellers/. Screenshot: screenshots/13-nlp-marathon-training.png",
+      "finding_id": "F01"
     },
     {
       "said_quote": "19% global revenue growth in Q2 2025 driven by strategic international expansion.",
@@ -473,7 +474,8 @@
       "said_source_label": "Q2 2025 Press Release",
       "said_date": "2025-08",
       "found_title": "Search has zero multi-language or geo-merchandising capability \u2014 scaling search to match revenue growth is unaddressed.",
-      "found_evidence": "SFCC Demandware native search endpoint confirmed. No geo-specific rules, no multi-language synonyms. Screenshot: screenshots/04-full-results-running-shoes.png"
+      "found_evidence": "SFCC Demandware native search endpoint confirmed. No geo-specific rules, no multi-language synonyms. Screenshot: screenshots/04-full-results-running-shoes.png",
+      "finding_id": ""
     },
     {
       "said_quote": "Our Run Research Lab studies individual biomechanical motion paths \u2014 not generic averages.",
@@ -482,7 +484,8 @@
       "said_source_label": "Brooks Running \u2014 Technology & Research",
       "said_date": "2026-01",
       "found_title": "Zero personalization \u2014 search results identical whether runner has browsed Ghost 16 for 5 minutes or just arrived.",
-      "found_evidence": "Browsed Ghost 16 PDP, then searched 'running shoes' \u2014 54 results in identical default sort. Screenshot: screenshots/17-personalization.png"
+      "found_evidence": "Browsed Ghost 16 PDP, then searched 'running shoes' \u2014 54 results in identical default sort. Screenshot: screenshots/17-personalization.png",
+      "finding_id": "F02"
     }
   ],
   "toc": [
