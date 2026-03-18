@@ -3503,41 +3503,56 @@ function sectionCompanySnapshot(D) {
       <!-- EXEC TEAM — spans full 3 cols if execs exist -->
       ${execs.length ? `
       <div class="card" style="grid-column:span 3;padding:24px 28px;">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:18px;">Executive Team</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+        <!-- Honest label — not "Executive Team", just what we found publicly -->
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;">
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);">Leadership — Publicly Identified</div>
+          <div style="font-size:12px;color:var(--mid);font-style:italic;">Public sources only · ${execs.length} contact${execs.length!==1?'s':''} found</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px;">
           ${execs.map(e=>`
-          <div style="background:var(--light);border-radius:10px;padding:18px 20px;border:1px solid var(--border);">
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-              <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;
-                          font-size:16px;font-weight:600;color:white;flex-shrink:0;">
-                ${(e.name||'?').split(' ').map((w)=>w[0]).slice(0,2).join('')}
-              </div>
-              <div style="flex:1;min-width:0;">
-                <div style="font-size:16px;font-weight:600;color:var(--gray);">${escHtml(e.name||'—')}</div>
-                <div style="font-size:14px;color:var(--mid);">${escHtml(e.title||'—')}</div>
-                ${e.tenure ? `<div style="font-size:13px;color:var(--mid);opacity:0.7;margin-top:2px;">${escHtml(e.tenure)}</div>` : ''}
-              </div>
-              <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;flex-shrink:0;">
-                ${e.linkedin_url ? `<a href="${e.linkedin_url}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;
-                  background:#0A66C2;color:white;padding:4px 10px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
-                  in LinkedIn</a>` : ''}
-                ${e.source_url ? `<a href="${e.source_url}" target="_blank" style="font-size:12px;color:var(--mid);text-decoration:none;"
-                  onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
-                  ${escHtml(e.source_label||'Source')}</a>` : ''}
+          <div style="background:white;border-radius:10px;padding:20px;border:1px solid var(--border);
+                      box-shadow:0 2px 8px rgba(33,36,61,0.06);display:flex;flex-direction:column;gap:12px;">
+
+            <!-- Name / Title / Links row -->
+            <div>
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px;">
+                <div>
+                  <div style="font-size:17px;font-weight:600;color:var(--gray);line-height:1.2;">${escHtml(e.name||'—')}</div>
+                  <div style="font-size:14px;color:var(--mid);margin-top:2px;">${escHtml(e.title||'—')}</div>
+                  ${e.tenure ? `<div style="font-size:13px;color:var(--mid);opacity:0.65;margin-top:3px;">${escHtml(e.tenure)}</div>` : ''}
+                </div>
+                <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;flex-shrink:0;">
+                  ${e.linkedin_url ? `<a href="${e.linkedin_url}" target="_blank"
+                    style="display:inline-flex;align-items:center;gap:4px;background:#0A66C2;color:white;
+                           padding:4px 10px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;">
+                    in LinkedIn</a>` : ''}
+                  ${e.source_url ? `<a href="${e.source_url}" target="_blank"
+                    style="font-size:12px;color:var(--mid);text-decoration:none;"
+                    onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
+                    ${escHtml(e.source_label||'Source')}</a>` : ''}
+                </div>
               </div>
             </div>
+
+            <!-- Quote (if exists) -->
             ${e.quote ? `
-            <blockquote style="font-size:15px;color:var(--gray);font-style:italic;line-height:1.6;
-                               border-left:3px solid var(--blue);padding-left:12px;margin:0 0 10px 0;">
-              "${escHtml(e.quote)}"
-            </blockquote>` : ''}
-            ${e.quote_source ? `
-            <a href="${e.quote_source}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;
-              font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
-              ${escHtml(e.quote_source_label||'View source')} · ${escHtml(e.quote_date||'')}
-            </a>` : ''}
-            ${e.relevance ? `<div style="font-size:13px;color:var(--mid);padding:8px 12px;background:var(--light);border-radius:6px;margin-top:8px;line-height:1.5;">
-              ${escHtml(e.relevance)}</div>` : ''}
+            <div style="border-left:3px solid var(--blue);padding-left:12px;">
+              <div style="font-size:14px;color:var(--gray);font-style:italic;line-height:1.5;">"${escHtml(e.quote)}"</div>
+              ${e.quote_source ? `<a href="${e.quote_source}" target="_blank"
+                style="font-size:12px;color:var(--blue);text-decoration:none;margin-top:4px;display:block;"
+                onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
+                ${escHtml(e.quote_source_label||'Source')} · ${escHtml(e.quote_date||'')}</a>` : ''}
+            </div>` : ''}
+
+            <!-- Algolia Angle — highlighted box -->
+            ${e.relevance ? `
+            <div style="background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.15);
+                        border-radius:8px;padding:12px 14px;">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;
+                          color:var(--blue);margin-bottom:5px;">💡 Algolia Angle</div>
+              <div style="font-size:14px;color:var(--gray);line-height:1.5;">${escHtml(e.relevance)}</div>
+            </div>` : ''}
+
           </div>`).join('')}
         </div>
       </div>` : ''}
