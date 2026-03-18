@@ -1295,6 +1295,125 @@ a:hover .src-tag { opacity: 1; }
    Breakpoints: 768px (tablet/mobile), 480px (phone)
 ═══════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════
+   TOC TILES (Score Heatmap as clickable Table of Contents)
+═══════════════════════════════════════════════════════ */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.toc-tile {
+  border-radius: 10px;
+  padding: 14px 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+.toc-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(35,38,59,0.13);
+}
+.toc-tile.active {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0,61,255,0.12);
+}
+.toc-tile--no-finding {
+  cursor: default;
+  opacity: 0.65;
+}
+.toc-tile--no-finding:hover { transform: none; box-shadow: none; }
+.toc-tile__area {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+.toc-tile__score {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.toc-tile__sev {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+.toc-tile__jump {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.15s;
+  margin-top: auto;
+}
+.toc-tile:hover .toc-tile__jump { opacity: 1; }
+
+/* colour variants */
+.toc-tile--red   { background: #FEF2F2; color: #DC2626; }
+.toc-tile--amber { background: #FFFBEB; color: #D97706; }
+.toc-tile--green { background: #F0FDF4; color: #059669; }
+
+/* ═══════════════════════════════════════════════════
+   CHAPTER CARDS (Finding cards as book chapters)
+═══════════════════════════════════════════════════════ */
+.chapter-wrap {
+  margin-bottom: 48px;
+}
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 12px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 16px;
+}
+.chapter-number {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mid);
+  white-space: nowrap;
+}
+.chapter-area {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray);
+  flex: 1;
+}
+.chapter-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  padding: 28px 28px 24px;
+  box-shadow: 0 2px 8px rgba(35,38,59,0.06), 0 8px 24px rgba(35,38,59,0.05);
+  transition: box-shadow 0.2s;
+}
+.chapter-card:hover {
+  box-shadow: 0 4px 16px rgba(35,38,59,0.10), 0 12px 32px rgba(35,38,59,0.07);
+}
+.chapter-card--critical { border-left-color: var(--red); }
+.chapter-card--moderate { border-left-color: var(--amber); }
+.chapter-card--positive { border-left-color: var(--green); }
+.chapter-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: none; font-size: 13px; font-weight: 600;
+  color: var(--mid); cursor: pointer; padding: 0; margin-bottom: 16px;
+  font-family: inherit; transition: color 0.12s;
+}
+.chapter-back:hover { color: var(--blue); }
+
 /* ── Base mobile safety ──────────────────────────── */
 @media (max-width: 768px) {
   body { overflow-x: hidden; max-width: 100vw; }
@@ -4233,24 +4352,47 @@ function sectionHiring(D) {
 ═══════════════════════════════════════════════════ */
 function sectionScoreHeatmap(D) {
   const sc = D.score || {};
+  // Build category→finding map for TOC click targets
+  const findings = D.findings || [];
+  const catToFinding = {};
+  findings.forEach(f => {
+    if (!catToFinding[f.category]) catToFinding[f.category] = f;
+  });
+
+  // Map score breakdown key → finding (via breakdown_labels → category)
+  const labels = sc.breakdown_labels || {};
+  const sevs   = sc.breakdown_severity || {};
+  const breakdown = sc.breakdown || {};
+
+  const jumpToFinding = (findingId) =>
+    `document.querySelector('[data-tab=\\'audit\\']').click();setTimeout(()=>document.getElementById('chapter-${findingId.toLowerCase()}')?.scrollIntoView({behavior:'smooth',block:'start'}),180);`;
+
+  const tileColor = (v) => v <= 4 ? 'red' : v <= 6 ? 'amber' : 'green';
+
+  const tiles = Object.entries(breakdown).map(([key, val]) => {
+    const label = labels[key] || key.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const sev   = sevs[key] || '';
+    const finding = catToFinding[label];
+    const col = tileColor(val);
+    const hasLink = !!finding;
+
+    return `<div class="toc-tile toc-tile--${col} ${hasLink ? '' : 'toc-tile--no-finding'}"
+      data-toc-key="${key}"
+      ${hasLink ? `onclick="${jumpToFinding(finding.id)}" role="button" tabindex="0"
+        title="Jump to: ${escHtml(label)}"` : `title="No issues found"`}>
+      <div class="toc-tile__area">${escHtml(label)}</div>
+      <div class="toc-tile__score">${val}<span style="font-size:13px;font-weight:400;opacity:0.6;">/10</span></div>
+      <div class="toc-tile__sev">${sev}</div>
+      <div class="toc-tile__jump">${hasLink ? '↓ Jump to chapter' : '✓ No issues'}</div>
+    </div>`;
+  });
+
   return `<section id="score-heatmap" class="audit-section">
-    <div class="section-eyebrow">Search Findings</div>
-    <div class="section-title">Score Heatmap</div>
-    <p class="section-desc">Overall score: <strong>${s(sc.overall)}/10</strong> — ${escHtml(sc.verdict)}</p>
-    <div class="card" style="margin-bottom:24px;">
-      ${Object.entries(sc.breakdown || {}).map(([k, v]) => {
-        const cl = scoreColor(v);
-        const label = k.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-        return `<div class="score-bar-row">
-          <span class="score-bar-row__label">${label}</span>
-          <div class="score-bar-row__track">
-            <div class="score-bar-row__fill fill-${cl}" style="width:${pct(v)}%"></div>
-          </div>
-          <span class="score-bar-row__val val-${cl}">${v}/10</span>
-        </div>`;
-      }).join('')}
-    </div>
-    <div class="grid-3">
+    <div class="section-eyebrow">Search Audit · Table of Contents</div>
+    <div class="section-title">10-Area Score</div>
+    <p class="section-desc">Overall: <strong>${s(sc.overall)}/10</strong> — ${escHtml(sc.verdict)} · Click any area to jump to its chapter below.</p>
+    <div class="toc-grid">${tiles.join('')}</div>
+    <div class="grid-3" style="margin-bottom:8px;">
       ${[
         { label: 'Critical Gaps',  value: n(sc.critical_count),  color: 'var(--red)' },
         { label: 'Moderate Gaps',  value: n(sc.moderate_count),  color: 'var(--amber)' },
@@ -4266,22 +4408,30 @@ function sectionScoreHeatmap(D) {
 /* ═══════════════════════════════════════════════════
    SECTION: INDIVIDUAL FINDING
 ═══════════════════════════════════════════════════ */
-function sectionFinding(f) {
+function sectionFinding(f, chapterNum) {
   const id = `finding-${f.id.toLowerCase()}`;
-  const backNav = `document.querySelector('[data-tab=\\'overview\\']').click();setTimeout(()=>document.getElementById('exec-summary')?.scrollIntoView({behavior:'smooth',block:'start'}),180);`;
-  return `<section id="${id}" class="audit-section">
-    <button onclick="${backNav}" style="display:inline-flex;align-items:center;gap:6px;background:none;border:none;
-      font-size:14px;font-weight:600;color:var(--mid);cursor:pointer;padding:0;margin-bottom:12px;
-      font-family:inherit;transition:color 0.12s;"
-      onmouseenter="this.style.color='var(--blue)'" onmouseleave="this.style.color='var(--mid)'">
-      ← Overview
-    </button>
-    <div class="section-eyebrow">Search Finding · ${escHtml(f.category)}</div>
-    <div class="finding-header">
-      <span class="finding-id">${escHtml(f.id)}</span>
-      <span class="sev-badge sev-${f.severity}">${f.severity}</span>
-      <span class="finding-title">${escHtml(f.title)}</span>
-    </div>
+  const chapterId = `chapter-${f.id.toLowerCase()}`;
+  const backToToc = `document.getElementById('score-heatmap')?.scrollIntoView({behavior:'smooth',block:'start'});`;
+  const sevClass = f.severity === 'critical' ? 'critical' : f.severity === 'moderate' ? 'moderate' : 'positive';
+  const numStr = String(chapterNum).padStart(2, '0');
+
+  return `<section id="${id}" class="audit-section" style="padding:0;background:none;box-shadow:none;border:none;">
+    <div class="chapter-wrap" id="${chapterId}" data-finding-id="${f.id}" data-area-key="">
+      <!-- Chapter header -->
+      <div class="chapter-header">
+        <span class="chapter-number">Chapter ${numStr}</span>
+        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="sev-badge sev-${f.severity}">${f.severity}</span>
+      </div>
+
+      <!-- Chapter card — elevated, depth shadow -->
+      <div class="chapter-card chapter-card--${sevClass}">
+        <button class="chapter-back" onclick="${backToToc}">↑ Back to contents</button>
+
+        <div class="finding-header">
+          <span class="finding-id">${escHtml(f.id)}</span>
+          <span class="finding-title">${escHtml(f.title)}</span>
+        </div>
 
     <!-- SECTION 1: WHAT WE FOUND -->
     <div class="tef-grid">
@@ -4330,7 +4480,9 @@ function sectionFinding(f) {
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}
       </a>` : ''}
-    </div>
+    </div><!-- /solution-box -->
+      </div><!-- /chapter-card -->
+    </div><!-- /chapter-wrap -->
   </section>`;
 }
 
@@ -5159,14 +5311,11 @@ function renderSections(D) {
   ].join('');
 
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
+  // All findings ordered: critical first, then moderate, then positive — numbered as chapters
+  const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
   const auditHTML = [
     sectionScoreHeatmap(D),
-    criticalFindings.length ? `<div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--red);margin:28px 0 16px;">🔴 Critical Findings — ${criticalFindings.length} Areas</div>` : '',
-    ...criticalFindings.map(f => sectionFinding(f)),
-    moderateFindings.length ? `<div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--amber);margin:28px 0 16px;">🟡 Moderate Findings — ${moderateFindings.length} Areas</div>` : '',
-    ...moderateFindings.map(f => sectionFinding(f)),
-    positiveFindings.length ? `<div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--green);margin:28px 0 16px;">🟢 Strengths — ${positiveFindings.length} Areas Working Well</div>` : '',
-    ...positiveFindings.map(f => sectionFinding(f)),
+    ...allFindingsOrdered.map((f, i) => sectionFinding(f, i + 1)),
     sectionAppendixQueries(D),
   ].join('');
 
@@ -5536,6 +5685,7 @@ function init() {
     initDrawer();
     initLightbox();
     initFinTimeline();
+    initChapterObserver();
   });
 
   // Scroll progress bar
@@ -5552,6 +5702,36 @@ function init() {
   document.addEventListener('keydown', e => {
     if (e.key === 'p' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); window.print(); }
   });
+}
+
+/* ─── Chapter IntersectionObserver — highlights active TOC tile as you scroll ─── */
+function initChapterObserver() {
+  const chapters = document.querySelectorAll('.chapter-wrap[data-finding-id]');
+  if (!chapters.length) return;
+
+  // Build findingId → areaKey map from TOC tiles
+  const findingToKey = {};
+  document.querySelectorAll('.toc-tile[data-toc-key]').forEach(tile => {
+    // Each tile's onclick contains the findingId — extract it
+    const onclick = tile.getAttribute('onclick') || '';
+    const m = onclick.match(/chapter-([a-z0-9]+)/i);
+    if (m) findingToKey[m[1].toUpperCase()] = tile.dataset.tocKey;
+  });
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const fid = entry.target.dataset.findingId;
+      const key = findingToKey[fid];
+      document.querySelectorAll('.toc-tile').forEach(t => t.classList.remove('active'));
+      if (key) {
+        const activeTile = document.querySelector(`.toc-tile[data-toc-key="${key}"]`);
+        if (activeTile) activeTile.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -60% 0px' });
+
+  chapters.forEach(ch => obs.observe(ch));
 }
 
 // Boot: run if data already injected, otherwise wait
