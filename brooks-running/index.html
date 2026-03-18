@@ -3496,9 +3496,7 @@ function sectionCompanySnapshot(D) {
           Direct-to-consumer specialty commerce.
           ${hir.build_vs_buy ? `<br><br>
             <span style="font-weight:600;color:var(--gray);">${escHtml(hir.build_vs_buy.split('—')[0].trim())}</span>
-            ${hir.build_vs_buy_source ? `<br><a href="${hir.build_vs_buy_source}" target="_blank" style="font-size:13px;color:var(--blue);">
-              ${escHtml(hir.build_vs_buy_source_label||'Source')}
-            </a>` : ''}` : ''}
+            <br><span style="font-size:12px;color:var(--mid);font-style:italic;">Algolia analysis — based on hiring signals &amp; platform choices</span>` : ''}
         </div>
       </div>
 
