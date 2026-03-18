@@ -1382,7 +1382,22 @@ a {
   color: var(--brand-blue);
   text-decoration: none;
 }
-a:hover { text-decoration: underline; }
+/* ── Global link style — DESIGN DIRECTIVE ────────────────────────────────────
+   All links across the entire system:
+   - Default: colored (blue) text, no underline, no icons, no arrows
+   - Hover: underline only — no color change, no icons
+   - Never use ↗ → or any arrow/icon on links
+   - This applies everywhere: signal cards, exec cards, nav, source badges, etc.
+─────────────────────────────────────────────────────────────────────────────── */
+a {
+  color: var(--brand-blue);
+  text-decoration: none;
+  transition: text-decoration 0.1s;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--brand-blue);
+}
 
 /* ─── Utility aliases for templates ─────────────────────────────────────── */
 /* Templates can use these var() aliases to stay in sync */
@@ -1872,8 +1887,8 @@ a:hover { text-decoration: underline; }
     "roi_moderate": "$10.7M/yr",
     "roi_aggressive": "$16.1M/yr",
     "algolia_annual_cost_est": "~$500K/yr",
-    "roi_multiple": "10.7x (moderate scenario)",
-    "payback_period": "~6 weeks (moderate scenario)",
+    "roi_multiple": "21.4x (moderate scenario)",
+    "payback_period": "~2.4 weeks (moderate scenario)",
     "margin_zone": "Green",
     "margin_note": "Est. 45% gross margin, 8% operating margin (outdoor apparel benchmark — private company, not disclosed)",
     "roi_scenarios": {
@@ -2439,20 +2454,31 @@ a:hover { text-decoration: underline; }
    CONSTANTS
 ═══════════════════════════════════════════════════ */
 const SIGNAL_LABELS = {
-  'exec':          'Exec Statement',
-  'media':         'Media Quote',
-  'funding':       'Funding / M&A',
-  'industry-risk': 'Industry Risk',
-  'industry-opp':  'Industry Opportunity',
-  'competitor':    'Competitor Move',
-  'customer':      'Customer Signal',
-  'partner':       'Partner Signal',
-  'hiring':        'Hiring Signal',
+  'exec':                'Exec Statement',
+  'media':               'Media / Press',
+  'funding':             'Funding / M&A',
+  'industry-risk':       'Industry Risk',
+  'industry-opp':        'Industry Opportunity',
+  'competitor':          'Competitor Move',
+  'customer':            'Customer Signal',
+  'partner':             'Partner Signal',
+  'hiring':              'Hiring Signal',
+  // Apify-sourced signal types (new)
+  'social-li':           'LinkedIn Post',
+  'social-x':            'Twitter / X',
+  'news-leadership':     'Leadership Change',
+  'news-funding':        'Funding Event',
+  'news-tech':           'Tech Investment',
+  'news-launch':         'Product Launch',
+  'news-international':  'International Expansion',
 };
 const SIGNAL_COLORS = {
   'exec': '#003DFF', 'media': '#5468FF', 'funding': '#059669',
   'industry-risk': '#DC2626', 'industry-opp': '#D97706', 'competitor': '#EF4444',
   'customer': '#0891B2', 'partner': '#0D9488', 'hiring': '#7C3AED',
+  'social-li': '#0A66C2', 'social-x': '#000000',
+  'news-leadership': '#DC2626', 'news-funding': '#059669',
+  'news-tech': '#003DFF', 'news-launch': '#D97706', 'news-international': '#7C3AED',
 };
 
 /* ═══════════════════════════════════════════════════
@@ -2893,7 +2919,7 @@ function sectionExecSummary(D) {
       const cmp = D.competitive_synthesis || {};
       const hir = D.hiring || {};
       const rs  = fin.roi_scenarios || {};
-      const goldenNames = (cmp.competitor_tiers||[]).filter(t=>t.tier.includes('GOLDEN')).flatMap(t=>t.competitors||[]);
+      const goldenNames = (cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').includes('GOLDEN')).flatMap(t=>t.competitors||[]);
       const vacantRole  = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
 
       return `
@@ -2939,7 +2965,7 @@ function sectionExecSummary(D) {
                       text-decoration:none;transition:background 0.15s;"
                onmouseenter="this.style.background='rgba(255,255,255,0.25)'"
                onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
-              BuiltWith: ${escHtml(c.name)} ↗
+              BuiltWith: ${escHtml(c.name)}
             </a>`).join('')}
           ${ga.footwear_case_study?.source_url ? `
             <a href="${ga.footwear_case_study.source_url}" target="_blank"
@@ -2949,7 +2975,7 @@ function sectionExecSummary(D) {
                       text-decoration:none;transition:background 0.15s;"
                onmouseenter="this.style.background='rgba(255,255,255,0.25)'"
                onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
-              Shoe Carnival Case Study ↗
+              Shoe Carnival Case Study
             </a>` : ''}
         </div>
       </div>
@@ -2963,7 +2989,7 @@ function sectionExecSummary(D) {
         ${(() => {
           // Pull timing signals from intelligence_signals — hiring + media types = urgency signals
           const allSigs = D.intelligence_signals || [];
-          const urgentSigs = allSigs.filter(s => ['hiring','media','competitor'].includes(s.type)).slice(0,3);
+          const urgentSigs = allSigs.filter(s => ['media','competitor','news-leadership','news-funding'].includes(s.type)).slice(0,3);
           const colMap = { hiring:'#DC2626', media:'#D97706', competitor:'#059669' };
           const shadowMap = { hiring:'glow-shadow-red', media:'glow-shadow-amber', competitor:'glow-shadow-green' };
           return urgentSigs.map(sig => {
@@ -2977,7 +3003,7 @@ function sectionExecSummary(D) {
                   <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;margin-top:5px;"></span>
                   <span style="font-size:16px;font-weight:600;color:var(--gray);">${escHtml(sig.badge_label||sig.type)}</span>
                 </div>
-                ${hasUrl ? `<span style="font-size:13px;color:var(--blue);flex-shrink:0;">Source ↗</span>` : ''}
+                ${hasUrl ? `<span style="font-size:13px;color:var(--blue);flex-shrink:0;">Source</span>` : ''}
               </div>
               <div style="font-size:14px;color:var(--mid);line-height:1.5;margin-bottom:${hasUrl?'10px':'0'};">${escHtml(sig.text||'')}</div>
               ${hasUrl ? `<div style="font-size:12px;color:var(--mid);opacity:0.7;">${escHtml(sig.source_name||'')} · ${escHtml(sig.source_date?.slice(0,7)||'')}</div>` : ''}
@@ -3033,7 +3059,7 @@ function sectionExecSummary(D) {
         ])}
         ${navCard('case','#003DFF','Business Case','The Argument',[
           `Said vs Found · Competitive Matrix · Revenue at Risk`,
-          `${(cmp.competitor_tiers||[]).filter(t=>t.tier.includes('GOLDEN')).flatMap(t=>t.competitors||[]).join(' + ')||'Nike + Asics'} use Algolia`,
+          `${(cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').includes('GOLDEN')).flatMap(t=>t.competitors||[]).join(' + ')||'Nike + Asics'} use Algolia`,
           `4 strategic angles in Brooks' own language`,
         ])}
         ${navCard('play','#7C3AED','Sales Play','Run the Deal',[
@@ -3077,130 +3103,94 @@ function gradientBlobs(colors, speed = 14, opacity = 0.28) {
 }
 
 function sectionCompanySnapshot(D) {
-  const cs  = D.company_snapshot || {};
-  const fin = D.financials       || {};
-
-  // ── 2×2 dark panel quadrant content ──────────────────
-  const q1Label = 'Company Overview';
-  const q1Head  = escHtml(cs.industry || '—');
-  const q1Body  = `<strong>HQ:</strong> ${escHtml(cs.hq || '—')}<br>
-    <strong>Founded:</strong> ${escHtml(cs.founded || '—')}<br>
-    <strong>Employees:</strong> ${escHtml(cs.employees || '—')}`;
-
-  const q2Label = 'Search Technology';
-  const q2Head  = escHtml(cs.current_search_vendor || 'Unknown Vendor');
-  const q2Body  = `<strong>Platform:</strong> ${escHtml(cs.ecommerce_platform || '—')}<br>
-    This is the <strong>displacement opportunity</strong> — native platform search with no NLP, no personalization, and no analytics.`;
-
-  const q3Label = 'Business Model';
-  const q3Head  = cs.ticker ? escHtml(cs.ticker) : 'Private Company';
-  const q3Body  = `Direct-to-consumer specialty athletic footwear and performance running apparel.
-    ${cs.revenue_source ? lnk(cs.revenue_source, 'Revenue source') : ''}`;
-
-  const q4Label = 'Digital Presence';
-  const q4Head  = escHtml(cs.monthly_visits || '—') + ' monthly visits';
-  const q4Body  = `<strong>Revenue (est.):</strong> ${escHtml(cs.revenue || '—')}<br>
-    ${fin.total_digital_revenue ? `<strong>Digital share:</strong> ${escHtml(fin.total_digital_revenue)}` : ''}`;
-
-  // ── Stats strip ───────────────────────────────────────
-  const stats = [
-    { value: cs.revenue        || '—', label: 'Revenue',         cls: '',                              src: cs.revenue_source,    srcType: 'sec' },
-    { value: cs.founded        || '—', label: 'Founded',         cls: '',                              src: null,                 srcType: ''    },
-    { value: cs.employees      || '—', label: 'Employees',       cls: '',                              src: null,                 srcType: ''    },
-    { value: cs.monthly_visits || '—', label: 'Monthly Visits',  cls: '',                              src: cs.visits_source,     srcType: 'sw'  },
-    { value: fin.search_roi_est|| '—', label: 'Est. Search ROI', cls: 'cs-stats-item__value--roi',     src: fin.source_url,       srcType: 'yf'  },
-  ];
-
-  // ── Context row ───────────────────────────────────────
-  const ctx = [
-    { num: '# 01', title: 'Industry Vertical', desc: escHtml(cs.industry || '—') },
-    { num: '# 02', title: escHtml(cs.ecommerce_platform || 'Platform'), desc: 'Powers brooksrunning.com. Native search capabilities are limited — no NLP, no predictive.' },
-    { num: '# 03', title: 'Current Search',   desc: `<span style="color:var(--red);font-weight:600;">${escHtml(cs.current_search_vendor || '—')}</span> — zero typo tolerance, no federated search, no recommendations engine.` },
-    { num: '# 04', title: 'Algolia ROI Est.', desc: `<span style="color:var(--green);font-weight:600;">${escHtml(fin.search_roi_est || '—')}/yr</span> conservative lift on search-addressable revenue of ${escHtml(fin.search_addressable || '—')}.` },
-  ];
-
-  // ── 6 info tiles (3×2) — absorb everything from the removed dark quadrant ──
-  const infoTiles = [
-    {
-      label: 'Company Identity',
-      headline: escHtml(cs.industry || '—'),
-      body: `<strong>HQ:</strong> ${escHtml(cs.hq||'—')} &nbsp;·&nbsp; <strong>Founded:</strong> ${escHtml(cs.founded||'—')}<br>
-             <strong>Employees:</strong> ${escHtml(cs.employees||'—')}<br>
-             <strong>Ownership:</strong> ${cs.ticker ? `Public · ${escHtml(cs.ticker)}` : 'Private Company'}`,
-      accent: 'var(--blue)',
-    },
-    {
-      label: 'Digital Presence',
-      headline: escHtml(cs.monthly_visits||'—') + ' monthly visits',
-      body: `<strong>Revenue (est.):</strong> ${escHtml(cs.revenue||'—')}<br>
-             ${fin.total_digital_revenue ? `<strong>Digital share:</strong> ${escHtml(fin.total_digital_revenue)}<br>` : ''}
-             ${fin.search_addressable ? `<strong>Search-addressable:</strong> ${escHtml(fin.search_addressable)}` : ''}`,
-      accent: '#0891B2',
-      src: cs.visits_source, srcType: 'sw',
-    },
-    {
-      label: 'Business Model',
-      headline: cs.ticker ? 'Public Company' : 'Private · D2C',
-      body: `Direct-to-consumer specialty commerce. ${cs.ecommerce_platform ? `Platform: <strong>${escHtml(cs.ecommerce_platform)}</strong>.` : ''}
-             ${cs.revenue_source ? `<div style="margin-top:6px;">${lnk(cs.revenue_source, 'Revenue source')}</div>` : ''}`,
-      accent: '#7C3AED',
-    },
-    {
-      label: 'E-commerce Platform',
-      headline: escHtml(cs.ecommerce_platform||'—'),
-      body: `Powers ${escHtml(D.meta?.domain||'the website')}.<br>
-             ${D.tech_stack?.tech_stack_summary ? escHtml(D.tech_stack.tech_stack_summary.split('/')[0]) : ''}<br>
-             ${D.tech_stack?.source_url ? lnk(D.tech_stack.source_url, srcTag('bw','BuiltWith')) : ''}`,
-      accent: '#D97706',
-    },
-    {
-      label: 'Current Search',
-      headline: `<span style="color:var(--red);">${escHtml(cs.current_search_vendor||'—')}</span>`,
-      body: `This is the <strong>displacement target</strong> — native platform search with no NLP, no AI personalization, and no recommendation engine. Zero federated search capability.`,
-      accent: 'var(--red)',
-      alert: true,
-    },
-    {
-      label: 'Algolia ROI Estimate',
-      headline: `<span style="color:var(--green);">${escHtml(fin.search_roi_est||'—')}/yr</span>`,
-      body: `Conservative 5% lift on <strong>${escHtml(fin.search_addressable||'—')}</strong> search-addressable revenue.<br>
-             ${fin.roi_multiple ? `<strong>${escHtml(fin.roi_multiple)}</strong> ROI multiple · ` : ''}${fin.payback_period ? `<strong>${escHtml(fin.payback_period)}</strong> payback` : ''}`,
-      accent: 'var(--green)',
-      src: fin.source_url, srcType: 'yf',
-    },
-  ];
+  const cs   = D.company_snapshot || {};
+  const execs = D.executives || [];
+  const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
+  const hir  = D.hiring || {};
 
   return `<section id="company-snapshot" class="audit-section">
     <div class="section-eyebrow">Company Intelligence</div>
     <div class="section-title">Company Snapshot</div>
 
-    <!-- Stats strip — 5 key numbers -->
-    <div class="cs-stats" style="margin-bottom:24px;">
-      ${[
-        { ...stats[0], colors: ['#3B82F6','#93C5FD'] },
-        { ...stats[1], colors: ['#8B5CF6','#C4B5FD'] },
-        { ...stats[2], colors: ['#10B981','#6EE7B7'] },
-        { ...stats[3], colors: ['#0EA5E9','#7DD3FC'] },
-        { ...stats[4], colors: ['#10B981','#34D399'] },
-      ].map(st => `
-        <div class="cs-stats-item">
-          ${gradientBlobs(st.colors, 12, 0.22)}
-          <div class="cs-stats-item__inner">
-            <div class="cs-stats-item__value ${st.cls}">${escHtml(st.value)}</div>
-            <div class="cs-stats-item__label">${st.label}</div>
-            ${st.src ? `<div style="margin-top:5px;">${lnk(st.src, srcTag(st.srcType,'Source'), '')}</div>` : ''}</div>
-        </div>`).join('')}
-    </div>
+    <!-- BENTO GRID — company identity only, no financials/tech/ROI -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:auto;gap:16px;">
 
-    <!-- 6 info tiles 3×2 — clean, no dark quadrant -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-      ${infoTiles.map(t => `
-        <div class="card" style="border-top:3px solid ${t.accent};padding:18px 20px;">
-          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:6px;">${t.label}</div>
-          <div style="font-size:17px;font-weight:600;line-height:1.3;margin-bottom:10px;">${t.headline}</div>
-          <div style="font-size:14px;color:var(--mid);line-height:1.6;">${t.body}</div>
-          ${t.src ? `<div style="margin-top:8px;">${lnk(t.src, srcTag(t.srcType,'Source'), '')}</div>` : ''}
-        </div>`).join('')}
+      <!-- HERO TILE — spans 2 cols, company identity -->
+      <div class="card" style="grid-column:span 2;padding:28px 28px 24px;
+           background:linear-gradient(135deg,#F8F9FF 0%,#EEF2FF 100%);border:1px solid #C7D2FE;">
+        <div style="display:flex;align-items:flex-start;gap:20px;">
+          <!-- Company monogram — always clean, never a broken logo -->
+        <div style="width:56px;height:56px;border-radius:12px;background:var(--blue);
+                    display:flex;align-items:center;justify-content:center;
+                    font-size:20px;font-weight:600;color:white;flex-shrink:0;">
+          ${(D.meta?.company||'?').split(' ').slice(0,2).map((w)=>w[0]).join('').toUpperCase()}
+        </div>
+        <div style="flex:1;">
+            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--blue);margin-bottom:10px;">
+              ${escHtml(cs.industry||'—')}
+            </div>
+            <div style="font-size:28px;font-weight:600;color:var(--gray);line-height:1.15;margin-bottom:16px;">
+              ${escHtml(D.meta?.company||'—')}
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              ${[
+                cs.hq       ? {icon:'📍', label: escHtml(cs.hq)} : null,
+                cs.founded  ? {icon:'📅', label: 'Est. ' + escHtml(cs.founded)} : null,
+                cs.employees? {icon:'👥', label: escHtml(cs.employees) + ' employees'} : null,
+                {icon:'🏢', label: ownership},
+              ].filter(Boolean).map(f=>`<span style="display:inline-flex;align-items:center;gap:5px;background:white;
+                border:1px solid #C7D2FE;border-radius:20px;padding:4px 12px;font-size:14px;font-weight:600;color:var(--gray);">
+                ${f.icon} ${f.label}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MISSION/MODEL TILE — 1 col -->
+      <div class="card" style="padding:24px 20px;background:#F0FDF4;border:1px solid #BBF7D0;">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--green);margin-bottom:8px;">Business Model</div>
+        <div style="font-size:17px;font-weight:600;color:var(--gray);margin-bottom:10px;">
+          ${cs.ticker ? 'Public · ' + escHtml(cs.ticker) : 'Private · D2C'}
+        </div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.6;">
+          Direct-to-consumer specialty commerce.${hir.build_vs_buy ? `<br><br><em>${escHtml(hir.build_vs_buy.split('—')[0].trim())}</em>` : ''}
+        </div>
+      </div>
+
+      <!-- EXEC TEAM — spans full 3 cols if execs exist -->
+      ${execs.length ? `
+      <div class="card" style="grid-column:span 3;padding:24px 28px;">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:18px;">Executive Team</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;">
+          ${execs.map(e=>`
+          <div style="background:var(--light);border-radius:10px;padding:18px 20px;border:1px solid var(--border);">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <div style="width:44px;height:44px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;
+                          font-size:16px;font-weight:600;color:white;flex-shrink:0;">
+                ${(e.name||'?').split(' ').map((w)=>w[0]).slice(0,2).join('')}
+              </div>
+              <div>
+                <div style="font-size:16px;font-weight:600;color:var(--gray);">${escHtml(e.name||'—')}</div>
+                <div style="font-size:14px;color:var(--mid);">${escHtml(e.title||'—')}</div>
+              </div>
+              ${e.linkedin_url ? `<a href="${e.linkedin_url}" target="_blank" style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;
+                background:#0A66C2;color:white;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;">
+                in LinkedIn</a>` : ''}
+            </div>
+            ${e.quote ? `
+            <blockquote style="font-size:15px;color:var(--gray);font-style:italic;line-height:1.6;
+                               border-left:3px solid var(--blue);padding-left:12px;margin:0 0 10px 0;">
+              "${escHtml(e.quote)}"
+            </blockquote>` : ''}
+            ${e.quote_source ? `
+            <a href="${e.quote_source}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;
+              font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
+              → ${escHtml(e.quote_source_label||'View source')} · ${escHtml(e.quote_date||'')}
+            </a>` : ''}
+          </div>`).join('')}
+        </div>
+      </div>` : ''}
+
     </div>
   </section>`;
 }
@@ -3359,7 +3349,7 @@ function sectionFinancials(D) {
     <p class="section-desc">
       3-year revenue trajectory · Data as of ${s(D.meta?.data_vintage?.yahoo_finance)}
       ${f.source_url ? `· ${lnk(f.source_url, 'Source')}` : ''}
-      <a class="inline-src" href="https://www.brooksrunning.com/en_us/news/" target="_blank" rel="noopener">↗ Press Release</a>
+      <a class="inline-src" href="https://www.brooksrunning.com/en_us/news/" target="_blank" rel="noopener"> Press Release</a>
     </p>
     <div class="fin-timeline" id="fin-timeline">
       <div class="fin-timeline__track"><div class="fin-timeline__fill" id="fin-fill"></div></div>
@@ -3513,14 +3503,14 @@ function sectionFinding(f) {
       <div class="impact-stat">${escHtml(f.impact_stat)}</div>
       <div class="impact-label">
         ${escHtml(f.prospect_description || '')}
-        ${f.impact_stat_source ? `<a href="${f.impact_stat_source}" target="_blank" rel="noopener" class="inline-src">↗ Source</a>` : ''}
+        ${f.impact_stat_source ? `<a href="${f.impact_stat_source}" target="_blank" rel="noopener" class="inline-src"> Source</a>` : ''}
       </div>
     </div>
 
     <div class="solution-box">
       <h4>Algolia Solution</h4>
       <p>${escHtml(f.algolia_solution)}
-        ${f.algolia_case_study_url ? `<a href="${f.algolia_case_study_url}" target="_blank" rel="noopener" class="inline-src" style="color:var(--green);background:rgba(5,150,105,0.07);border-color:rgba(5,150,105,0.2);">↗ ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}</a>` : ''}
+        ${f.algolia_case_study_url ? `<a href="${f.algolia_case_study_url}" target="_blank" rel="noopener" class="inline-src" style="color:var(--green);background:rgba(5,150,105,0.07);border-color:rgba(5,150,105,0.2);"> ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}</a>` : ''}
       </p>
     </div>
   </section>`;
@@ -3545,39 +3535,89 @@ function signalCardHtml(sig) {
    SECTION: INTELLIGENCE SIGNALS (all types, filterable)
 ═══════════════════════════════════════════════════ */
 function sectionSignals(D) {
-  const signals = D.intelligence_signals || [];
+  // Exclude 'hiring' type — hiring data lives in its own dedicated section (sectionHiring)
+  // to avoid duplication. Hiring signals here would repeat the buying committee section.
+  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring');
   if (!signals.length) return `<section id="section-signals" class="audit-section">
-    <div class="section-eyebrow">Intelligence</div>
+    <div class="section-eyebrow">Company Intelligence · Signals</div>
     <div class="section-title">Intelligence Signals</div>
-    <p class="section-desc">No signals collected for this audit.</p>
+    <p class="section-desc">No signals collected. Run /algolia-live-signals to populate hiring, social, and news signals.</p>
   </section>`;
 
-  const types = [...new Set(signals.map(s => s.type))];
-  const filterBtns = [
-    `<button class="filter-btn active" data-filter="all" onclick="filterSignals('all')">
-      All <span class="filter-count">${signals.length}</span>
-    </button>`,
-    ...types.map(type => `
-      <button class="filter-btn" data-filter="${type}" onclick="filterSignals('${type}')">
-        ${escHtml(SIGNAL_LABELS[type] || type)}
-        <span class="filter-count">${signals.filter(s => s.type === type).length}</span>
-      </button>`),
-  ];
+  // Tier signals by urgency — ordering matters for visual impact
+  const URGENCY_TIER = {
+    'hiring':'1','news-leadership':'1','news-funding':'1',
+    'exec':'2','competitor':'2','news-tech':'2','social-li':'2','social-x':'2',
+    'media':'3','industry-risk':'3','news-launch':'3','news-international':'3',
+    'industry-opp':'4','customer':'4','partner':'4',
+  };
+  const PLATFORM_ICON = {
+    'social-li': `<svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+    'social-x':  `<svg width="14" height="14" viewBox="0 0 24 24" fill="#000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.735-8.835L1.254 2.25H8.08l4.259 5.626 5.905-5.626zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+  };
+
+  const sorted = [...signals].sort((a,b) => {
+    const ta = URGENCY_TIER[a.type] || '5';
+    const tb = URGENCY_TIER[b.type] || '5';
+    return ta.localeCompare(tb);
+  });
+
+  // Group into tiers for visual hierarchy
+  const tier1 = sorted.filter(s => URGENCY_TIER[s.type] === '1');
+  const tier2 = sorted.filter(s => URGENCY_TIER[s.type] === '2');
+  const tier3plus = sorted.filter(s => !['1','2'].includes(URGENCY_TIER[s.type]||'5'));
+
+  const signalRow = (sig) => {
+    const col = SIGNAL_COLORS[sig.type] || '#6B7280';
+    const label = SIGNAL_LABELS[sig.type] || sig.type;
+    const icon = PLATFORM_ICON[sig.type] || '';
+    const hasUrl = sig.source_url && sig.source_url.startsWith('http');
+    return `<div style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);">
+      <!-- Type badge -->
+      <span style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;
+        background:${col}15;border:1px solid ${col}35;border-radius:6px;
+        padding:3px 8px;font-size:12px;font-weight:600;color:${col};white-space:nowrap;margin-top:2px;">
+        ${icon} ${escHtml(label)}
+      </span>
+      <!-- Content -->
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:15px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:4px;">
+          ${escHtml(sig.badge_label || sig.text?.slice(0,80) || '—')}
+        </div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.5;">
+          ${escHtml(sig.relevance || '')}
+        </div>
+      </div>
+      <!-- Source — always show, always clickable -->
+      <div style="flex-shrink:0;text-align:right;min-width:100px;">
+        ${hasUrl ? `<a href="${sig.source_url}" target="_blank"
+          style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;
+                 color:var(--blue);text-decoration:none;padding:4px 0;"
+          onmouseenter="this.style.textDecoration='underline'"
+          onmouseleave="this.style.textDecoration='none'">
+          ${escHtml(sig.source_name?.slice(0,25)||'Source')}
+        </a>` : `<span style="font-size:12px;color:var(--mid);">${escHtml(sig.source_name||'—')}</span>`}
+        ${sig.source_date ? `<div style="font-size:12px;color:var(--mid);margin-top:2px;">${escHtml(sig.source_date.slice(0,10))}</div>` : ''}
+      </div>
+    </div>`;
+  };
+
+  const renderGroup = (title, items, borderColor) => items.length ? `
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;
+                  color:${borderColor};padding:8px 0 4px;border-bottom:2px solid ${borderColor};
+                  margin-bottom:4px;">${title} (${items.length})</div>
+      ${items.map(signalRow).join('')}
+    </div>` : '';
 
   return `<section id="section-signals" class="audit-section">
-    <div class="section-eyebrow">Intelligence</div>
+    <div class="section-eyebrow">Company Intelligence · Live Signals</div>
     <div class="section-title">Intelligence Signals</div>
-    <p class="section-desc">
-      ${signals.length} signals collected across ${types.length} categories.
-      Click a filter to show signals by type. Each signal includes source and strategic relevance.
-    </p>
-    <div class="signal-filter-bar no-print">
-      <label>Filter:</label>
-      ${filterBtns.join('')}
-    </div>
-    <div class="signals-grid">
-      ${signals.map(sig => signalCardHtml(sig)).join('')}
-    </div>
+    <p class="section-desc">${signals.length} signals · Sourced from LinkedIn Jobs, LinkedIn Posts, Twitter/X, Google News, and manual research. Every signal links to its source.</p>
+
+    ${renderGroup('🔴 Urgent — Act Now', tier1, '#DC2626')}
+    ${renderGroup('🟡 Strong Signals', tier2, '#D97706')}
+    ${renderGroup('🟢 Context & Background', tier3plus, '#6B7280')}
   </section>`;
 }
 
@@ -3987,7 +4027,7 @@ function sectionCompetitiveSynthesis(D) {
   const ga = D.golden_angle || {};
   const tiers = cs.competitor_tiers || [];
   const matrix = cs.positioning_matrix || [];
-  const tierCol = (tier) => tier.includes('AHEAD')?'#DC2626':tier.includes('GOLDEN')?'#059669':tier.includes('DISRUPTOR')?'#D97706':'#6B7280';
+  const tierCol = (tier) => String(tier||'').includes('AHEAD')?'#DC2626':String(tier||'').includes('GOLDEN')?'#059669':String(tier||'').includes('DISRUPTOR')?'#D97706':'#6B7280';
   const cap = (v) => v===true?'<span class="cap-yes">✓</span>':v===false?'<span class="cap-no">✗</span>':`<span class="cap-part">${escHtml(String(v||'~'))}</span>`;
 
   return `<section id="section-competitive" class="audit-section">
@@ -4545,7 +4585,7 @@ function openDrawer(type, data) {
       <div style="font-size:14px;color:var(--mid);margin-bottom:12px;">${escHtml(data.title || '')}</div>
       <blockquote style="font-size:1.05rem;font-style:italic;color:var(--gray);line-height:1.6;padding-left:16px;border-left:3px solid var(--purple);margin-bottom:16px;">"${escHtml(data.quote || '')}"</blockquote>
       <div style="font-size:14px;color:var(--mid);margin-bottom:16px;">
-        ${data.quote_source ? `<a href="${data.quote_source}" target="_blank" style="color:var(--blue);">Source ↗</a>` : ''}
+        ${data.quote_source ? `<a href="${data.quote_source}" target="_blank" style="color:var(--blue);">Source</a>` : ''}
         ${data.quote_date ? ` · ${data.quote_date}` : ''}
       </div>
       <div style="font-size:14px;line-height:1.5;padding:10px 12px;background:var(--light);border-radius:6px;">${escHtml(data.relevance || '')}</div>`;
