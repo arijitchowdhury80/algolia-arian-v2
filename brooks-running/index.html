@@ -1291,6 +1291,331 @@ a:hover .src-tag { opacity: 1; }
 .drawer-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* ═══════════════════════════════════════════════════════
+   MOBILE RESPONSIVE
+   Breakpoints: 768px (tablet/mobile), 480px (phone)
+═══════════════════════════════════════════════════════ */
+
+/* ── Base mobile safety ──────────────────────────── */
+@media (max-width: 768px) {
+  body { overflow-x: hidden; max-width: 100vw; }
+
+  /* ── Topbar ─────────────────────────────────────── */
+  #topbar {
+    padding: 0 12px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    height: auto;
+    min-height: var(--topbar-h);
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .tb-logos img { height: 15px; }
+  .tb-company { font-size: 13px; overflow: hidden; text-overflow: ellipsis; max-width: 120px; white-space: nowrap; }
+  .tb-score { padding: 4px 8px; gap: 6px; }
+  .tb-score-num { font-size: 17px; }
+  .tb-score-denom, .tb-score-label { font-size: 12px; }
+  .tb-verdict { font-size: 12px; padding: 3px 7px; }
+  .tb-btn { padding: 5px 9px; font-size: 12px; gap: 4px; }
+  .tb-vintage { display: none; }
+
+  /* ── Tab rail — horizontal scroll pill ──────────── */
+  #tab-rail {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 4px 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+    gap: 2px;
+    top: var(--topbar-h);
+    height: auto;
+    min-height: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  #tab-rail::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 0 12px;
+    font-size: 13px;
+    height: 36px;
+  }
+  .tab-rail-cmdK {
+    flex-shrink: 0;
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  .tab-rail-cmdK kbd { display: none; }
+
+  /* ── Layout — account for taller topbar ─────────── */
+  #layout {
+    margin-top: calc(var(--topbar-h) + 56px);
+  }
+
+  /* ── Main content padding ────────────────────────── */
+  #content {
+    padding: 20px 16px 60px;
+  }
+  .section-group {
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+  }
+
+  /* ── Grid utilities — collapse to 1 column ──────── */
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Score bar row — label too wide at 180px ─────── */
+  .score-bar-row {
+    grid-template-columns: 1fr 48px;
+    grid-template-rows: auto auto;
+  }
+  .score-bar-row__label { grid-column: 1 / -1; }
+  .score-bar-row__track { grid-column: 1; }
+  .score-bar-row__val   { grid-column: 2; }
+
+  /* ── TEF grid (Query / Expected / Found) — stack ─── */
+  .tef-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Finding screenshot — full width, no overflow ── */
+  .finding-screenshot {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .finding-screenshot img { width: 100%; height: auto; }
+
+  /* ── Gap pairs (Said vs Found) — ensure wrapping ─── */
+  .gap-pair { overflow: hidden; }
+  .gap-bridge { flex-wrap: wrap; }
+
+  /* ── Industry context box label row ─────────────── */
+  .industry-context-box .ic-label-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* ── Company Snapshot panel — 2-col to 1-col ─────── */
+  .cs-panel {
+    grid-template-columns: 1fr;
+  }
+  .cs-quadrant:nth-child(1),
+  .cs-quadrant:nth-child(2),
+  .cs-quadrant:nth-child(3) {
+    border-right: none;
+  }
+  .cs-quadrant { padding: 20px 16px; }
+
+  /* ── Company snapshot stats strip — wrap ─────────── */
+  .cs-stats {
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+  }
+  .cs-stats-item {
+    flex: 1 1 50%;
+    min-width: 50%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Company snapshot context row — 4-col → 2-col ── */
+  .cs-context {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cs-context-item:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Gauge / score speedometer — responsive SVG ──── */
+  .gauge-wrap { width: 100%; }
+  .gauge-svg {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  /* ── Signal cards — already flex-column, just ensure padding ── */
+  .signal-card { padding: 10px 12px 10px 14px; }
+  .signal-filter-bar { gap: 6px; }
+  .filter-btn { padding: 4px 10px; font-size: 13px; }
+
+  /* ── Glow border wrap grid — 3-col to 1-col ─────── */
+  /* These appear inline in JS — need style override via wrapper */
+  .shadow-grid { padding-bottom: 16px; }
+
+  /* ── Quote cards ─────────────────────────────────── */
+  .quote-text { font-size: 1rem; }
+
+  /* ── Section chrome ──────────────────────────────── */
+  .section-title { font-size: 1.4rem; }
+  .audit-section { margin-bottom: 60px; }
+
+  /* ── Financial timeline ──────────────────────────── */
+  .fin-timeline__track { left: 68px; }
+  .tl-node__label { width: 60px; }
+  .tl-card__header { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .tl-roi-callout { flex-direction: column; align-items: flex-start; }
+
+  /* ── Right drawer — full width on mobile ─────────── */
+  #drawer { width: 100%; }
+
+  /* ── CMD+K palette ───────────────────────────────── */
+  #cmdK-box { width: calc(100vw - 32px); }
+  #cmdK-overlay { padding-top: 60px; padding-left: 16px; padding-right: 16px; }
+
+  /* ── Table wrappers — horizontal scroll ─────────── */
+  /* Wrap tables that aren't already in overflow:auto containers */
+  .data-table,
+  .feature-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  /* But keep cell content wrappable */
+  .data-table td,
+  .data-table th,
+  .feature-table td,
+  .feature-table th {
+    white-space: normal;
+    min-width: 100px;
+  }
+
+  /* ── Section tabs (Summary|Deep Dive|Evidence) ───── */
+  .section-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
+  .section-tab  { white-space: nowrap; flex-shrink: 0; }
+
+  /* ── Funnel SVG ──────────────────────────────────── */
+  .funnel-wrap svg { max-width: 100%; }
+
+  /* ── Next step / talk track boxes ───────────────── */
+  .next-step-box,
+  .talk-track-box { padding: 16px; }
+
+  /* ── Bento + inline-grid overrides (JS-rendered)  ── */
+  /* The JS renders many inline grid styles — override at 768px */
+  /* We target known wrapper patterns with data-mobile-grid */
+  /* Section-level: use a global rule to catch all multi-col grids */
+
+  /* Revenue scenarios 3-col (rendered with inline style) */
+  /* Targeted via class .card inside known section */
+  #section-roi > div[style*="grid-template-columns:repeat(3"],
+  #section-roi > div[style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  #section-roi > div[style*="grid-template-columns:repeat(4"],
+  #section-roi > div[style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Company Intel section bento grids */
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"],
+  div[style*="grid-template-columns:repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  div[style*="grid-template-columns:repeat(4,1fr)"],
+  div[style*="grid-template-columns: repeat(4, 1fr)"],
+  div[style*="grid-template-columns:repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  div[style*="grid-template-columns:200px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── AE Brief sidebar layouts ────────────────────── */
+  div[style*="grid-template-columns:repeat(auto-fill,minmax(280px"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Phone-specific (≤480px) ─────────────────────── */
+@media (max-width: 480px) {
+  /* Topbar — hide company name on very small phones */
+  .tb-company { display: none; }
+  .tb-div { display: none; }
+  .tb-logos img { height: 14px; }
+
+  /* Tab buttons — smaller font */
+  .tab-btn { padding: 0 10px; font-size: 12px; }
+
+  /* Content padding */
+  #content { padding: 16px 12px 60px; }
+  .section-group { margin: 0 -12px; padding: 0 12px 4px; }
+
+  /* Section title sizing */
+  .section-title { font-size: 1.25rem; }
+  .section-eyebrow { font-size: 13px; }
+
+  /* Company snapshot context — 1-col on phone */
+  .cs-context { grid-template-columns: 1fr; }
+  .cs-stats-item { flex: 1 1 100%; }
+
+  /* Metric tiles */
+  .metric-tile__value { font-size: 1.15rem; }
+
+  /* Score bar label at tiny widths */
+  .score-bar-row {
+    grid-template-columns: 1fr 40px;
+  }
+
+  /* Timeline label shrink */
+  .fin-timeline__track { left: 52px; }
+  .tl-node__label { width: 44px; }
+  .tl-node__year-badge { font-size: 12px; padding: 2px 5px; }
+
+  /* ROI callout value */
+  .tl-roi-callout__value { font-size: 1.2rem; }
+
+  /* Table font */
+  .data-table td, .data-table th,
+  .feature-table td, .feature-table th { font-size: 13px; padding: 8px 10px; }
+
+  /* Signal filter bar — wrap and shrink */
+  .filter-btn { font-size: 12px; padding: 3px 8px; }
+
+  /* Quote text */
+  .quote-text { font-size: 0.95rem; }
+  .quote-mark { font-size: 2.2rem; }
+
+  /* Gap pairs */
+  .gap-said-text { font-size: 13px; }
+  .gap-found-text { font-size: 13px; }
+
+  /* 2-col grids → 1-col on phone */
+  div[style*="grid-template-columns:1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns:repeat(2,1fr)"],
+  div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  #section-roi > div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Chapter divider pill */
+  .chapter-divider__pill { font-size: 13px; padding: 5px 14px; }
+
+  /* Lightbox padding */
+  #lightbox { padding: 12px; }
+}
+
+/* ═══════════════════════════════════════════════════════
    PRINT CSS
 ═══════════════════════════════════════════════════════ */
 @media print {
