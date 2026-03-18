@@ -70,7 +70,7 @@
     "ticker": null,
     "current_search_vendor": "SFCC Native (Demandware)",
     "ecommerce_platform": "Salesforce Commerce Cloud",
-    "monthly_visits": "~3.5M/mo",
+    "monthly_visits": "~5.2M/mo",
     "visits_source": "https://www.similarweb.com/website/brooksrunning.com/"
   },
   "executives": [
@@ -201,6 +201,15 @@
       "source_url": "https://www.linkedin.com/jobs/view/footwear-merchandiser-i-lifestyle-at-brooks-running-4382325812",
       "source_date": "2026-03-07",
       "relevance": "Merchandising champion signal. This person manages the Lifestyle footwear catalog and will feel Algolia's value most immediately \u2014 search result control, banner injection, product boosting."
+    },
+    {
+      "type": "industry-opp",
+      "badge_label": "Traffic Verified",
+      "text": "SimilarWeb confirms brooksrunning.com receives ~5.25M visits/month (Feb 2026), 51.6% female audience, #8,951 global rank. Direct traffic = 39.5% \u2014 strong brand loyalty signal.",
+      "source_name": "SimilarWeb",
+      "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
+      "source_date": "2026-03-18",
+      "relevance": "5.25M monthly visits with 18% organic search share means ~945K sessions potentially affected by poor search relevance monthly. Paid search at 18.1% of traffic = search quality directly impacts paid media ROI."
     }
   ],
   "competitors": [
@@ -588,12 +597,70 @@
     "source_url": "https://www.brooksrunning.com/en_us/news/"
   },
   "traffic": {
-    "monthly_visits": null,
-    "visit_duration": null,
-    "bounce_rate": null,
-    "pages_per_visit": null,
-    "top_channels": [],
-    "source_url": "https://www.similarweb.com/website/brooksrunning.com/"
+    "monthly_visits": "~5.2M/mo",
+    "monthly_visits_raw": 5248509,
+    "avg_monthly_visits": "~5.6M/mo (3-month avg)",
+    "unique_visitors": "~3.0M/mo unique",
+    "visit_duration": "168s (2.8min)",
+    "bounce_rate": "45.0%",
+    "pages_per_visit": 4.0,
+    "global_rank": 8951,
+    "category_rank": 243,
+    "category": "Fashion & Apparel",
+    "top_channels": [
+      {
+        "source": "Direct",
+        "visits": 2073594,
+        "share": 39.5
+      },
+      {
+        "source": "Organic Search",
+        "visits": 1444689,
+        "share": 27.5
+      },
+      {
+        "source": "Paid Search",
+        "visits": 951891,
+        "share": 18.1
+      },
+      {
+        "source": "Social",
+        "visits": 551233,
+        "share": 10.5
+      },
+      {
+        "source": "Referrals",
+        "visits": 166852,
+        "share": 3.2
+      },
+      {
+        "source": "Display Ads",
+        "visits": 57840,
+        "share": 1.1
+      },
+      {
+        "source": "Mail",
+        "visits": 2411,
+        "share": 0.0
+      }
+    ],
+    "data_vintage": "2025-11 to 2026-02 (SimilarWeb)",
+    "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
+    "source_date": "2026-03-18",
+    "audience": {
+      "age": {
+        "18-24": 9.6,
+        "25-34": 24.0,
+        "35-44": 19.4,
+        "45-54": 21.2,
+        "55-64": 16.3,
+        "65+": 9.5
+      },
+      "gender": {
+        "female": 51.6,
+        "male": 48.4
+      }
+    }
   },
   "tech_stack": {
     "ecommerce_platform": "Salesforce Commerce Cloud (Demandware/SFRA)",
