@@ -4374,7 +4374,7 @@ function sectionScoreHeatmap(D) {
 
   const rowColor = (v) => v <= 4 ? 'red' : v <= 6 ? 'amber' : 'green';
 
-  // Sort entries: critical first, then by score asc
+  // Sort entries: critical first, then moderate, then low
   const sortedEntries = Object.entries(breakdown).sort((a, b) => {
     const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
     const order = { HIGH:0, MEDIUM:1, LOW:2 };
@@ -4383,16 +4383,20 @@ function sectionScoreHeatmap(D) {
   });
 
   // Build rows with dividers between severity groups
+  // Gaps (HIGH/MEDIUM) get G01, G02… Strengths (LOW positive) get S01, S02…
   let lastSev = null;
-  let rowNum = 0;
+  let gCount = 0, sCount = 0;
   const rows = sortedEntries.map(([key, val]) => {
     const label   = labels[key] || key.replace(/_/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
     const sev     = sevs[key] || 'LOW';
     const finding = catToFinding[label];
     const col     = rowColor(val);
     const hasLink = !!finding;
-    rowNum++;
-    const num = String(rowNum).padStart(2,'0');
+    // Positive findings are strengths (S), others are gaps (G)
+    const isPositive = finding?.severity === 'positive' || (!finding && sev === 'LOW' && val >= 7);
+    const num = isPositive
+      ? `S${String(++sCount).padStart(2,'0')}`
+      : `G${String(++gCount).padStart(2,'0')}`;
 
     let divider = '';
     if (sev !== lastSev) {
@@ -4440,18 +4444,19 @@ function sectionScoreHeatmap(D) {
 /* ═══════════════════════════════════════════════════
    SECTION: INDIVIDUAL FINDING
 ═══════════════════════════════════════════════════ */
-function sectionFinding(f, chapterNum) {
+function sectionFinding(f, displayId) {
   const id = `finding-${f.id.toLowerCase()}`;
   const chapterId = `chapter-${f.id.toLowerCase()}`;
   const backToToc = `document.getElementById('score-heatmap')?.scrollIntoView({behavior:'smooth',block:'start'});`;
   const sevClass = f.severity === 'critical' ? 'critical' : f.severity === 'moderate' ? 'moderate' : 'positive';
-  const numStr = String(chapterNum).padStart(2, '0');
+  const isStrength = f.severity === 'positive';
+  const typeLabel = isStrength ? 'Strength' : 'Gap';
 
   return `<section id="${id}" class="audit-section" style="padding:0;background:none;box-shadow:none;border:none;">
     <div class="chapter-wrap" id="${chapterId}" data-finding-id="${f.id}" data-area-key="">
       <!-- Chapter header -->
       <div class="chapter-header">
-        <span class="chapter-number">Chapter ${numStr}</span>
+        <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
         <span class="chapter-area">${escHtml(f.category)}</span>
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
         <span class="sev-badge sev-${f.severity}">${f.severity}</span>
@@ -5344,11 +5349,18 @@ function renderSections(D) {
   ].join('');
 
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
-  // All findings ordered: critical first, then moderate, then positive — numbered as chapters
+  // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
+  let gNum = 0, sNum = 0;
   const auditHTML = [
     sectionScoreHeatmap(D),
-    ...allFindingsOrdered.map((f, i) => sectionFinding(f, i + 1)),
+    ...allFindingsOrdered.map(f => {
+      const isStrength = f.severity === 'positive';
+      const displayId = isStrength
+        ? `S${String(++sNum).padStart(2,'0')}`
+        : `G${String(++gNum).padStart(2,'0')}`;
+      return sectionFinding(f, displayId);
+    }),
     sectionAppendixQueries(D),
   ].join('');
 
