@@ -3293,7 +3293,8 @@ function sectionExecSummary(D) {
       <div class="card" style="background:linear-gradient(135deg,#003DFF,#5468FF);color:white;border:none;padding:20px 24px;margin-bottom:80px;">
         <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;opacity:0.7;margin-bottom:8px;">🏆 The Golden Angle</div>
         <div style="font-size:18px;font-weight:600;line-height:1.5;margin-bottom:14px;">
-          ${goldenNames.length ? goldenNames.join(' + ') : 'Nike + Asics'} — ${goldenNames.length > 1 ? 'both are' : 'a'} direct competitor${goldenNames.length > 1 ? 's' : ''} — confirmed using Algolia via BuiltWith (March 2026).
+          ${(() => { const gaNames = (ga.competitors_using_algolia||[]).map(c=>c.name); return gaNames.length ? gaNames.join(' + ') : (goldenNames.length ? goldenNames.join(' + ') : 'Your competitor'); })()}
+          — ${(ga.competitors_using_algolia||[]).length > 1 ? 'both are' : 'a'} direct competitor${(ga.competitors_using_algolia||[]).length > 1 ? 's' : ''} — confirmed using Algolia via BuiltWith (March 2026).
           Brooks is the outlier. Shoe Carnival (footwear): +4.5% conversion lift first Cyber Week on Algolia.
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.20);">
