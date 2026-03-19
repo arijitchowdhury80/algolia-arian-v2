@@ -3054,6 +3054,13 @@ a:hover {
         "female": 51.6,
         "male": 48.4
       }
+    },
+    "device_share": {
+      "mobile": 74.4,
+      "desktop": 25.6,
+      "source": "SimilarWeb device breakdown (avg Nov 2025-Feb 2026)",
+      "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
+      "insight": "74% mobile — NLP search failures hit most visitors on their phones"
     }
   },
   "tech_stack": {
@@ -4139,8 +4146,8 @@ function initDonutChart(svgId) {
 
   // Add drop-shadow filter to SVG defs
   const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
-  defs.innerHTML = `<filter id="${svgId}-shadow" x="-30%" y="-30%" width="160%" height="160%">
-    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.28)" flood-opacity="1"/>
+  defs.innerHTML = `<filter id="${svgId}-shadow" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="8" flood-color="rgba(0,0,0,0.30)" flood-opacity="1"/>
   </filter>`;
   svg.prepend(defs);
 
@@ -4148,43 +4155,58 @@ function initDonutChart(svgId) {
   const cp   = document.getElementById(svgId + '-cp');
   const cs   = document.getElementById(svgId + '-cs');
   if (!cp || !cs) return;
-  const dp = cp.textContent, ds = cs.textContent;
+  const dp = cp.textContent, ds = cs.textContent, dfill = '#23263B';
 
+  // FIX: Use scale from SVG center (not translate) — no flickering
+  // SVG center is at cx=110,cy=110 — set transform-origin on each segment
   segs.forEach(seg => {
-    const tx = parseFloat(seg.dataset.tx||0), ty = parseFloat(seg.dataset.ty||0);
-    seg.style.transition = 'transform 0.25s cubic-bezier(0.34,1.4,0.64,1), filter 0.2s ease';
+    seg.style.transformOrigin = '110px 110px';
+    seg.style.transition = 'transform 0.3s cubic-bezier(0.34,1.4,0.64,1), filter 0.2s ease';
     seg.style.cursor = 'pointer';
+  });
 
-    seg.addEventListener('mouseenter', () => {
-      // Pop segment outward with drop shadow
-      seg.style.transform = `translate(${tx}px,${ty}px) scale(1.05)`;
-      seg.style.filter = `url(#${svgId}-shadow) brightness(1.08)`;
-      // Update center text
-      cp.textContent = seg.dataset.pct + '%';
-      cs.textContent = seg.dataset.name;
-      cp.style.fill = seg.getAttribute('fill');
-      // Highlight legend row: bold + scale up slightly
-      const legendRow = document.querySelector(`[data-legend="${svgId}-${seg.dataset.idx}"]`);
-      if (legendRow) {
-        legendRow.style.transform = 'translateX(4px)';
-        legendRow.style.transition = 'transform 0.2s ease';
-        legendRow.querySelector('span:last-child').style.fontSize = '14px';
-      }
-    });
+  const activate = (idx) => {
+    const seg = svg.querySelector(`.donut-seg[data-idx="${idx}"]`);
+    if (!seg) return;
+    seg.style.transform = 'scale(1.12)';
+    seg.style.filter = `url(#${svgId}-shadow) brightness(1.06)`;
+    cp.textContent = seg.dataset.pct + '%';
+    cs.textContent = seg.dataset.name;
+    cp.style.fill = seg.getAttribute('fill');
+    // Legend: background highlight, no movement
+    const row = document.querySelector(`[data-legend="${svgId}-${idx}"]`);
+    if (row) {
+      row.style.background = seg.getAttribute('fill') + '14';
+      row.style.borderRadius = '6px';
+      row.style.transition = 'background 0.2s ease';
+    }
+  };
 
-    seg.addEventListener('mouseleave', () => {
-      seg.style.transform = '';
-      seg.style.filter = '';
-      cp.textContent = dp;
-      cs.textContent = ds;
-      cp.style.fill = '#23263B';
-      // Reset legend
-      const legendRow = document.querySelector(`[data-legend="${svgId}-${seg.dataset.idx}"]`);
-      if (legendRow) {
-        legendRow.style.transform = '';
-        legendRow.querySelector('span:last-child').style.fontSize = '';
-      }
-    });
+  const deactivate = (idx) => {
+    const seg = svg.querySelector(`.donut-seg[data-idx="${idx}"]`);
+    if (seg) { seg.style.transform = ''; seg.style.filter = ''; }
+    cp.textContent = dp; cs.textContent = ds; cp.style.fill = dfill;
+    const row = document.querySelector(`[data-legend="${svgId}-${idx}"]`);
+    if (row) row.style.background = '';
+  };
+
+  // Segment hover
+  segs.forEach(seg => {
+    const idx = seg.dataset.idx;
+    seg.addEventListener('mouseenter', () => activate(idx));
+    seg.addEventListener('mouseleave', () => deactivate(idx));
+  });
+
+  // Legend hover → donut (bidirectional)
+  document.querySelectorAll(`[data-legend^="${svgId}-"]`).forEach(row => {
+    const idx = row.dataset.legend.replace(svgId + '-', '');
+    row.style.cursor = 'pointer';
+    row.style.borderRadius = '6px';
+    row.style.transition = 'background 0.2s ease';
+    row.style.padding = '5px 6px';
+    row.style.margin = '0 -6px';
+    row.addEventListener('mouseenter', () => activate(idx));
+    row.addEventListener('mouseleave', () => deactivate(idx));
   });
 }
 
@@ -5075,6 +5097,22 @@ function sectionTraffic(D) {
             <span class="score-bar-row__val" style="color:var(--gray)">${pct}%</span>
           </div>`;
         }).join('')}` : ''}
+
+        ${t.device_share ? `
+        <!-- Device split bar — verified from SimilarWeb -->
+        <div style="${T.eyebrowSm};margin-top:20px;margin-bottom:8px;">Device Split</div>
+        <div style="position:relative;height:32px;border-radius:6px;overflow:hidden;margin-bottom:6px;display:flex;">
+          <div style="width:${t.device_share.mobile}%;background:#003DFF;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}%</span>
+          </div>
+          <div style="width:${t.device_share.desktop}%;background:#6B7280;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}%</span>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;${T.bodySmGray12};margin-bottom:8px;">
+          <span>Mobile</span><span>Desktop</span>
+        </div>
+        ${t.device_share.insight ? `<div style="${T.compact};background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.12);border-radius:6px;padding:8px 10px;font-style:italic;">${escHtml(t.device_share.insight)}</div>` : ''}` : ''}
       </div>
 
     </div>
