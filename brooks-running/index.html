@@ -3717,6 +3717,7 @@ const T = {
   labelCol:     (col) => `font-size:14px;font-weight:600;color:${col}`,
 
   /* ── Dynamic helpers ───────────────────────────────────────────── */
+  overviewTitle: 'font-size:22px;font-weight:600;color:var(--gray);line-height:1.3;margin-bottom:16px',
   scoreVal:     (col) => `font-size:14px;font-weight:600;color:${col}`,
   pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
 };
@@ -3834,6 +3835,7 @@ function renderTopbar(D) {
              style="filter:brightness(0) invert(1);">
       </a>
       <div class="tb-div"></div>
+      ${D.cover?.company_logo_url ? `<div style="background:white;border-radius:6px;padding:3px 8px;height:32px;display:flex;align-items:center;justify-content:center;max-width:96px;flex-shrink:0;"><img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:22px;max-width:80px;object-fit:contain;" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <span class="tb-company">${escHtml(D.meta?.company)}</span>
     </div>
     <div class="tb-spacer"></div>
@@ -4246,9 +4248,9 @@ function sectionExecSummary(D) {
 
       return `
       <!-- ── Revenue at Risk ── -->
-      <div style="margin-top:40px;margin-bottom:8px;">
+      <div style="margin-top:56px;margin-bottom:12px;">
         <div class="section-eyebrow">Revenue at Risk</div>
-        <div style="${T.titleMb};">How much search improvement is worth — three scenarios</div>
+        <div style="${T.overviewTitle};">How much search improvement is worth — three scenarios</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
         ${[
@@ -4268,16 +4270,16 @@ function sectionExecSummary(D) {
       </div>
 
       <!-- ── Competitive Edge ── -->
-      <div style="margin-bottom:8px;">
+      <div style="margin-top:56px;margin-bottom:12px;">
         <div class="section-eyebrow">Competitive Intelligence</div>
-        <div style="${T.titleMb};">Who in your competitive set is already using Algolia</div>
+        <div style="${T.overviewTitle};">Who in your competitive set is already using Algolia</div>
       </div>
       <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
 
       <!-- ── Why Act Now — from intelligence_signals ── -->
-      <div style="margin-bottom:8px;">
+      <div style="margin-top:56px;margin-bottom:12px;">
         <div class="section-eyebrow">Timing Signals</div>
-        <div style="${T.titleMb};">Three reasons this is the right moment to engage</div>
+        <div style="${T.overviewTitle};">Three reasons this is the right moment to engage</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
         ${(() => {
@@ -4336,9 +4338,9 @@ function sectionExecSummary(D) {
       const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
 
       return `
-      <div style="margin-bottom:8px;">
+      <div style="margin-top:56px;margin-bottom:12px;">
         <div class="section-eyebrow">Deep Dives</div>
-        <div style="${T.titleMb};">Navigate to any section for full intelligence and evidence</div>
+        <div style="${T.overviewTitle};">Navigate to any section for full intelligence and evidence</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
