@@ -4901,11 +4901,8 @@ function sectionExecSummary(D) {
 
       const navCard = (tab, accent, eyebrow, headline, bullets) => {
         const nav = `document.querySelector('[data-tab=\\'${tab}\\']').click();window.scrollTo({top:0,behavior:'instant'});`;
-        return `<div data-tab-target="${tab}"
-          style="background:white;border:1px solid var(--border);border-radius:10px;padding:20px 22px;cursor:pointer;
-                 border-top:3px solid ${accent};transition:box-shadow 0.3s ease,transform 0.25s ease;"
-          onmouseenter="this.style.boxShadow='0 0 40px rgba(0,61,255,0.15),0 8px 24px rgba(0,61,255,0.08)';this.style.transform='translateY(-2px)'"
-          onmouseleave="this.style.boxShadow='';this.style.transform=''"
+        return `<div data-tab-target="${tab}" class="card card-3d"
+          style="padding:20px 22px;cursor:pointer;border:none;transition:box-shadow 0.3s ease,transform 0.25s ease;"
           onclick="${nav}">
           <div style="${T.eyebrowMdCol(accent)};margin-bottom:4px;">${eyebrow}</div>
           <div style="${T.title};margin-bottom:10px;">${headline}</div>
@@ -4929,23 +4926,23 @@ function sectionExecSummary(D) {
       <div id="deep-dive-nav" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
           `${escHtml(cs.revenue||'~$1.2B est.')} revenue · ${escHtml(fin.margin_zone||'Yellow')} margin`,
-          `${escHtml(ts.ecommerce_platform||'Salesforce Commerce Cloud')}`,
-          `${hir.total_open_roles||38} open roles · Technical Buyer VACANT`,
+          `${escHtml(cs.ecommerce_platform||ts.primary_platform||ts.ecommerce_platform||'Commerce Platform')}`,
+          `${hir.total_open_roles||38} open roles · ${(hir.buying_committee||[]).find(r=>r.status?.includes('VACAN'))?'Technical Buyer VACANT':'Buying committee mapped'}`,
         ])}
         ${navCard('audit','#D97706','Search Audit','The Evidence',[
-          `4.4/10 — ${n(sc.critical_count)} critical gaps · ${n(sc.moderate_count)} moderate`,
-          `G1: Zero NLP · G2: No Personalization · G3: No Recs`,
-          `${((D.findings||[]).length)} findings with screenshots`,
+          `${s(sc.overall)}/10 — ${n(sc.critical_count)} critical gaps · ${n(sc.moderate_count)} moderate`,
+          (()=>{const top3=(D.findings||[]).filter(f=>f.severity==='critical').slice(0,3).map((f,i)=>`G${i+1}: ${escHtml((f.category||'').split('/')[0].trim())}`).join(' · ');return top3||`${(D.findings||[]).length} findings documented`;})(),
+          `${((D.findings||[]).filter(f=>f.screenshot_file)).length} findings with screenshots`,
         ])}
         ${navCard('case','#003DFF','Business Case','The Argument',[
           `Said vs Found · Competitive Matrix · Revenue at Risk`,
-          `${(cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').includes('GOLDEN')).flatMap(t=>t.competitors||[]).join(' + ')||'Nike + Asics'} use Algolia`,
-          `4 strategic angles in ${escHtml(D.meta?.company||'their')} own language`,
+          `${(cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').toUpperCase().includes('GOLDEN')).flatMap(t=>t.competitors||[]).join(' + ')||(cmp.competitor_tiers||[]).flatMap(t=>t.competitors||[]).slice(0,2).join(' + ')||'Top competitors'} use Algolia`,
+          `${(D.icp_mapping?.priority_to_product||[]).length||5} strategic angles in ${escHtml(D.meta?.company||'their')} own language`,
         ])}
         ${navCard('play','#7C3AED','Sales Play','Run the Deal',[
           `Pre-call brief · Buying committee map`,
-          `Battle card: SFCC vs Algolia feature comparison`,
-          `Discovery Qs · Objection counters · 4-week sequence`,
+          `Battle card: ${escHtml(D.company_snapshot?.ecommerce_platform?.split('(')[0]?.split(',')[0]?.trim()||D.tech_stack?.primary_platform?.split('(')[0]?.trim()||'Platform')} vs Algolia`,
+          `Discovery Qs · Objection counters · ${n((typeof D.abx_sequence==='object'?D.abx_sequence?.total_touches:0)||8)}-touch sequence`,
         ])}
       </div>`;
     })()}
@@ -6386,26 +6383,23 @@ function sectionCompetitiveSynthesis(D) {
           <col style="width:16%">
           <col style="width:20%">
         </colgroup>
-        <thead>
-          <tr>
+        ${(()=>{
+          // Dynamic competitor columns — read from matrix_col_labels or fall back to defaults
+          const colLabels = cs.matrix_col_labels || {nike_has:'Nike',asics_has:'Asics',on_running_has:'On Running',new_balance_has:'New Balance'};
+          const compKeys = ['nike_has','asics_has','on_running_has','new_balance_has'];
+          return `<thead><tr>
             <th style="padding:8px 10px;">Capability</th>
-            <th style="padding:8px 6px;text-align:center;">Nike</th>
-            <th style="padding:8px 6px;text-align:center;">Asics</th>
-            <th style="padding:8px 6px;text-align:center;">On Running</th>
-            <th style="padding:8px 6px;text-align:center;">New Balance</th>
+            ${compKeys.map(k=>`<th style="padding:8px 6px;text-align:center;">${escHtml(colLabels[k]||k)}</th>`).join('')}
             <th style="padding:8px 6px;text-align:center;background:#7F1D1D;color:white;border-bottom:3px solid #DC2626;">${escHtml(D.meta?.company||'Today')}</th>
             <th style="padding:8px 6px;text-align:center;background:#1E3A8A;color:white;border-bottom:3px solid #003DFF;">${escHtml(D.meta?.company||'Company')} + Algolia</th>
-          </tr>
-        </thead>
-        <tbody>${matrix.map(r=>`<tr>
-          <td style="padding:8px 10px;font-weight:600;word-wrap:break-word;">${escHtml(r.capability||'')}</td>
-          <td style="padding:8px 6px;text-align:center;">${cap(r.nike_has)}</td>
-          <td style="padding:8px 6px;text-align:center;">${cap(r.asics_has)}</td>
-          <td style="padding:8px 6px;text-align:center;">${cap(r.on_running_has)}</td>
-          <td style="padding:8px 6px;text-align:center;">${cap(r.new_balance_has)}</td>
-          <td style="padding:8px 6px;text-align:center;background:#FFF5F5;">${cap(r.prospect_today || r.brooks_today)}</td>
-          <td style="padding:8px 6px;text-align:center;background:#EEF2FF;">${cap(r.prospect_with_algolia || r.brooks_with_algolia)}</td>
-        </tr>`).join('')}</tbody>
+          </tr></thead>
+          <tbody>${matrix.map(r=>`<tr>
+            <td style="padding:8px 10px;font-weight:600;word-wrap:break-word;">${escHtml(r.capability||'')}</td>
+            ${compKeys.map(k=>`<td style="padding:8px 6px;text-align:center;">${cap(r[k])}</td>`).join('')}
+            <td style="padding:8px 6px;text-align:center;background:#FFF5F5;">${cap(r.prospect_today || r.brooks_today)}</td>
+            <td style="padding:8px 6px;text-align:center;background:#EEF2FF;">${cap(r.prospect_with_algolia || r.brooks_with_algolia)}</td>
+          </tr>`).join('')}</tbody>`;
+        })()}
       </table>
     </div>`:''}
     ${cs.the_ask?`<div class="card" style="background:var(--gray);border:none;padding:28px;">
@@ -6965,7 +6959,7 @@ function initCmdK(D) {
     ['📊', 'Score Heatmap', 'section-heatmap', 'audit'],
     ['🎯', 'AE Action Brief', 'section-precall', 'play'],
     ['🔑', 'Discovery Questions', 'section-discovery', 'play'],
-    ['🏆', 'Golden Angle (Nike + Asics)', 'section-competitive', 'case'],
+    ['🏆', 'Golden Angle — Competitive Intel', 'section-competitive', 'case'],
   ];
   sectionLinks.forEach(([icon, text, id, tab]) =>
     push(icon, text, 'Section', () => {
