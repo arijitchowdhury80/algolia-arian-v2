@@ -4898,44 +4898,60 @@ function sectionTraffic(D) {
         </div>`).join('')}
     </div>
 
-    <!-- Row 2: Traffic sources (left 55%) + Audience demographics (right 45%) -->
-    <div style="display:grid;grid-template-columns:55fr 45fr;gap:24px;">
-      <!-- Traffic sources -->
-      <div>
-        <div class="section-eyebrow" style="margin-bottom:12px;">Traffic Sources</div>
+    <!-- Row 2: Two matching cards — same height, same padding, aligned headings -->
+    <div style="display:grid;grid-template-columns:55fr 45fr;gap:16px;align-items:start;">
+
+      <!-- LEFT CARD: Traffic Sources -->
+      <div class="glow-card" style="padding:24px;">
+        <div class="section-eyebrow" style="margin-bottom:16px;">Traffic Sources</div>
         ${channels.map(c => {
           const pctVal = parseFloat(c.share) || 0;
           const barW   = Math.round((pctVal / maxShare) * 100);
           return `<div class="score-bar-row">
             <span class="score-bar-row__label">${escHtml(c.source || c.channel)}</span>
-            <div class="score-bar-row__track"><div class="score-bar-row__fill fill-ok" style="width:${barW}%"></div></div>
+            <div class="score-bar-row__track">
+              <div class="score-bar-row__fill" style="width:${barW}%;background:var(--blue);"></div>
+            </div>
             <span class="score-bar-row__val" style="color:var(--gray)">${c.share}%</span>
           </div>`;
         }).join('')}
       </div>
 
-      <!-- Audience demographics -->
-      <div>
-        ${Object.keys(age).length ? `
-        <div class="section-eyebrow" style="margin-bottom:12px;">Audience</div>
+      <!-- RIGHT CARD: Audience Profile -->
+      <div class="glow-card" style="padding:24px;">
+        <div class="section-eyebrow" style="margin-bottom:16px;">Audience Profile</div>
         ${Object.keys(gender).length ? `
-        <div style="display:flex;gap:16px;margin-bottom:16px;">
-          ${Object.entries(gender).map(([g,v])=>`
-          <div style="flex:1;background:var(--light);border-radius:8px;padding:10px 14px;text-align:center;">
-            <div style="${T.eyebrowSm};margin-bottom:4px;">${g}</div>
-            <div style="font-size:18px;font-weight:600;color:var(--blue);">${v}%</div>
-          </div>`).join('')}
+        <!-- Gender split bar -->
+        <div style="${T.eyebrowSm};margin-bottom:8px;">Gender</div>
+        <div style="position:relative;height:32px;border-radius:6px;overflow:hidden;margin-bottom:6px;display:flex;">
+          ${(() => {
+            const f = parseFloat(gender.female || gender.Female || 0);
+            const m = parseFloat(gender.male   || gender.Male   || 0);
+            return `<div style="width:${f}%;background:var(--purple);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">♀ ${f}%</span>
+              </div>
+              <div style="width:${m}%;background:var(--blue);display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">♂ ${m}%</span>
+              </div>`;
+          })()}
+        </div>
+        <div style="display:flex;justify-content:space-between;${T.bodySmGray12};margin-bottom:20px;">
+          <span>Female</span><span>Male</span>
         </div>` : ''}
+        ${Object.keys(age).length ? `
         <div style="${T.eyebrowSm};margin-bottom:8px;">Age Distribution</div>
         ${Object.entries(age).map(([bracket, pct]) => {
           const barW = Math.round((Number(pct) / maxAge) * 100);
           return `<div class="score-bar-row">
             <span class="score-bar-row__label">${bracket}</span>
-            <div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:${barW}%;background:var(--purple);"></div></div>
+            <div class="score-bar-row__track">
+              <div class="score-bar-row__fill" style="width:${barW}%;background:var(--blue);"></div>
+            </div>
             <span class="score-bar-row__val" style="color:var(--gray)">${pct}%</span>
           </div>`;
-        }).join('')}` : '<div style="${T.bodySmMid14}">No audience data available</div>'}
+        }).join('')}` : ''}
       </div>
+
     </div>
   </section>`;
 }
