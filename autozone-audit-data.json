@@ -57,7 +57,7 @@
       "search_intelligence": "MEDIUM"
     },
     "critical_count": 5,
-    "moderate_count": 5
+    "moderate_count": 4
   },
   "company_snapshot": {
     "industry": "Auto Parts Retail \u2014 Automotive Aftermarket",
@@ -354,9 +354,9 @@
       "screenshot_file": null,
       "prospect_description": "AutoZone removed Certona and left no replacement. At 31.3M monthly visits and $18.9B in annual revenue, zero recommendations means every product page visit is a single-item transaction with no cross-sell. Mega Hub stores carry 80,000\u2013110,000 SKUs \u2014 without recommendations, most of that catalog is invisible to active buyers.",
       "algolia_solution": "Algolia Recommend is a direct plug-in replacement for removed Certona. Frequently Bought Together surfaces brake rotors, hardware kits, and fluid when a customer views brake pads. Trending Items surfaces the best-selling products in the vehicle\u2019s fitment range. Implementation: API + React component, 1\u20132 weeks.",
-      "algolia_case_study_url": "https://www.algolia.com/products/ai-recommendations/",
+      "algolia_case_study_url": "https://www.algolia.com/customers/mister-auto/",
       "algolia_case_study_company": "Mister Auto",
-      "algolia_case_study_result": "12% conversion lift using Algolia Recommend for 1.5M-product auto parts catalog \u2014 direct vertical match"
+      "algolia_case_study_result": "12% conversion boost in A/B test (2019) using Algolia for 1.5M-product auto parts catalog \u2014 direct vertical match"
     },
     {
       "id": "F05",
@@ -417,8 +417,8 @@
       "tested_query": "car batteries",
       "expected_behavior": "Dynamic facets adapted to battery category: Cold Cranking Amps (CCA), group size, reserve capacity, battery type, warranty period, vehicle fitment",
       "actual_behavior": "Static filters (brand dropdown, vehicle fitment, category). Facets are predefined and do not adapt to the specific category being browsed. Battery-specific technical filters (CCA, group size) not automatically surfaced.",
-      "impact_stat": "Personalized results improve conversion 15\u201320% (Forrester Research). AutoZone carries 110,000 SKUs in Mega Hub stores \u2014 static facets cannot guide customers through this catalog complexity.",
-      "impact_stat_source": "https://www.forrester.com/",
+      "impact_stat": "AutoZone carries 110,000 SKUs in Mega Hub stores \u2014 static facets cannot guide customers through this catalog complexity. At AutoZone\u2019s scale (31.3M monthly visits), even a 1% improvement in facet-driven product discovery represents millions of better-matched sessions monthly.",
+      "impact_stat_source": "https://www.similarweb.com/website/autozone.com/",
       "screenshot_file": null,
       "prospect_description": "A customer searching \u201ccar batteries\u201d needs Cold Cranking Amps, group size, and warranty filters \u2014 not the same generic brand/category filters used for oil filters. Static facets force customers to manually scroll through hundreds of results rather than filtering to the exact match.",
       "algolia_solution": "Algolia Dynamic Faceting automatically infers the right facets per query context. Battery queries surface CCA, group size, and vehicle fitment. Oil filter queries surface viscosity, certification, and filter type. No engineering required to define \u2014 Algolia learns from catalog structure.",
@@ -575,9 +575,9 @@
     "search_roi_est": "~$18.5M/yr [ESTIMATE \u00b7 conservative]",
     "algolia_annual_cost_est": "~$750K/year [ESTIMATE \u00b7 midpoint of $500K\u2013$1M range]",
     "roi_multiple": "~24.7x [ESTIMATE \u00b7 conservative scenario]",
-    "payback_period": "~6 months [ESTIMATE \u00b7 conservative]",
+    "payback_period": "~15 days (<1 month) [ESTIMATE \u00b7 conservative \u00b7 factcheck-corrected 2026-03-19]",
     "moderate_roi_multiple": "~49.2x [ESTIMATE \u00b7 moderate scenario]",
-    "moderate_payback": "~3 months [ESTIMATE \u00b7 moderate]",
+    "moderate_payback": "~7 days (<1 month) [ESTIMATE \u00b7 moderate \u00b7 factcheck-corrected 2026-03-19]",
     "confidence_revenue": "HIGH \u2014 Yahoo Finance MCP income_stmt (ticker: AZO, FY2025). Reproducible.",
     "confidence_trend": "HIGH \u2014 3-year trend from Yahoo Finance MCP annual income statements",
     "confidence_digital_share": "LOW \u2014 AutoZone does not separately disclose digital revenue. 13% midpoint estimate from industry benchmarks.",
@@ -699,32 +699,32 @@
     "top_channels": [
       {
         "channel": "Organic Search",
-        "share": "42.2%",
+        "share": 42.2,
         "note": "13.21M avg/mo \u2014 dominant channel; branded terms lead"
       },
       {
         "channel": "Direct",
-        "share": "26.9%",
+        "share": 26.9,
         "note": "8.43M avg/mo \u2014 strong brand loyalty and repeat visitors"
       },
       {
         "channel": "Paid Search",
-        "share": "22.9%",
+        "share": 22.9,
         "note": "7.17M avg/mo \u2014 above-benchmark spend (~$43M/yr est.)"
       },
       {
         "channel": "Social",
-        "share": "5.1%",
+        "share": 5.1,
         "note": "1.59M avg/mo \u2014 modest for a major retailer"
       },
       {
         "channel": "Referrals",
-        "share": "2.7%",
+        "share": 2.7,
         "note": "0.85M avg/mo \u2014 includes ChatGPT 316K/mo (#3 referrer)"
       },
       {
         "channel": "Display Ads",
-        "share": "0.2%",
+        "share": 0.2,
         "note": "0.08M avg/mo \u2014 minimal display spend"
       }
     ],

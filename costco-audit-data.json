@@ -15,7 +15,7 @@
       "score": "7.7/10",
       "verdict": "MODERATE",
       "run_count": 2,
-      "latest_run": "2026-03-19 Full tier refresh — 6 SimilarWeb API calls, 1 BuiltWith, 11 WebFetch URLs",
+      "latest_run": "2026-03-19 Full tier refresh \u2014 6 SimilarWeb API calls, 1 BuiltWith, 11 WebFetch URLs",
       "corrections_applied": 8,
       "corrections": [
         "top_channels array corrected: Direct 26.9%\u219261.0%, Paid 22.9%\u21920.2%, Display 10.8%\u21920.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
@@ -675,13 +675,9 @@
     "visit_duration": "3:57 min",
     "visit_duration_seconds": 236.9,
     "device_share": {
-      "mobile": "49.4%",
-      "desktop": "50.6%",
-      "mobile_visits_jan2025": "50.8M",
-      "total_visits_jan2025": "102.8M",
-      "insight": "Mobile web = 50.8M visits out of 102.8M total (Jan 2025, SimilarWeb MCP live). Near 50/50 desktop/mobile split. Mobile app traffic grew +48% YoY per Costco Q1 FY2026 earnings call \u2014 combined mobile (web + app) likely exceeds 60% of sessions.",
-      "source": "SimilarWeb MCP get-websites-traffic-and-engagement (web_source=mobile_web, Jan 2025, live 2026-03-19)",
-      "data_completeness": "COMPLETE \u2014 live mobile/desktop split verified"
+      "mobile": 49.4,
+      "desktop": 50.6,
+      "note": "SimilarWeb Jan 2025 \u2014 mobile_web 50.9M / total 103.0M = 49.4% mobile"
     },
     "top_channels": [
       {
