@@ -2029,7 +2029,7 @@ a:hover {
     "status_line": "Confidential · For Internal Use Only"
   },
   "score": {
-    "overall": 3.8,
+    "overall": 3.5,
     "verdict": "Critical Gaps Found",
     "verdict_class": "critical",
     "description": "5 of 10 areas show HIGH severity gaps. Empty state, federated search, NLP, and search intelligence are absent. Strong intent detection and merchandising stand out as positives.",
@@ -2070,7 +2070,8 @@ a:hover {
       "search_intelligence": "HIGH"
     },
     "critical_count": 5,
-    "moderate_count": 2
+    "moderate_count": 2,
+    "_scoring_note": "Corrected by factcheck: denominator is 13.5 (5×HIGH×2 + 2×MED×1 + 3×LOW×0.5), not 13.0 as stated in 10-scoring-matrix.md. 47.5/13.5 = 3.52 → 3.5/10."
   },
   "company_snapshot": {
     "industry": "Warehouse Club / Mass Retail",
@@ -2141,8 +2142,8 @@ a:hover {
       "name": "Gary Millerchip",
       "title": "Executive Vice President & Chief Financial Officer",
       "quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs.",
-      "quote_source": "https://www.cfodive.com/news/costcos-ai-tech-use-partly-offsets-healthcare-costs-cfo/807837/",
-      "quote_source_label": "Q1 FY2026 Earnings Call (CFO Dive Coverage)",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "quote_date": "2025-12",
       "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden — directly matching Millerchip's productivity-offset thesis."
     }
@@ -2179,8 +2180,8 @@ a:hover {
       "type": "exec",
       "badge_label": "CEO Statement",
       "text": "Vachris: 'Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal.' — Q1 FY2026 Earnings Call, December 2025",
-      "source_name": "Ron Vachris, President & CEO",
-      "source_url": "https://investor.costco.com/events-and-presentations/events/event-details/2025/Q1-2026-Earnings-Call/default.aspx",
+      "source_name": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
+      "source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "source_date": "2025-12-11",
       "relevance": "Stated 'seamless experience' mandate directly conflicts with 5 HIGH-severity search gaps. Empty state shows nothing. NLP queries fail. Federated search absent. Algolia addresses all 5."
     },
@@ -2356,7 +2357,8 @@ a:hover {
       "prospect_description": "Members looking for Costco's famous return policy are ejected from the shopping experience to a separate domain. Costco Travel, Business Center, and support content are invisible to the main search bar — creating channel silos across a $27B+ digitally-enabled sales operation.",
       "algolia_solution": "Algolia Federated Search indexes multiple content types — products, policies, travel, help — in a single search bar with clear category sections. Members never leave the shopping context.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
-      "algolia_case_study_result": "+7% improved conversion from search"
+      "algolia_case_study_result": "+7% improved conversion from search",
+      "screenshot_note": "08-non-product-return-policy-sayt.png shows the SAYT dropdown during the query. The original redirect screenshot (08-non-product-return-policy.png, 6KB) was not persisted."
     },
     {
       "id": "G04",
@@ -2368,11 +2370,12 @@ a:hover {
       "actual_behavior": "Access Denied — Akamai WAF blocks the search endpoint for complex multi-word queries. The site cannot process conversational NLP queries at all.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "../screenshots/13-nlp-gaming-tv-sayt.png",
+      "screenshot_file": "../screenshots/error-state.png",
       "prospect_description": "Complex natural language queries — exactly the type 48% of mobile app users type — are blocked before reaching the search engine. Members who type 'healthy snacks for kids' or 'wireless earbuds with noise cancellation under 200' get Access Denied. WAF configuration and lack of NLP infrastructure are both failure modes.",
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
-      "algolia_case_study_result": "+7% improved conversion from search"
+      "algolia_case_study_result": "+7% improved conversion from search",
+      "screenshot_note": "error-state.png: WAF/Access Denied state. The original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted."
     },
     {
       "id": "G05",
@@ -2432,7 +2435,7 @@ a:hover {
       "actual_behavior": "Homepage loads quickly. SAYT dropdown triggers responsively. Search results render promptly. Rich product SAYT with images, specs, and descriptions for 'laptop' query.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "../screenshots/01-homepage.png",
+      "screenshot_file": "../screenshots/11-federated-sayt.png",
       "prospect_description": "Costco's native search delivers acceptable latency and a rich SAYT experience — product images, descriptions, and tech specs visible in the dropdown. This is a strong baseline to build upon with Algolia's sub-50ms guarantee.",
       "algolia_solution": "Algolia maintains this strength while adding NLP, personalization, and federated search — without regressing on speed."
     },
@@ -2460,7 +2463,7 @@ a:hover {
       "actual_behavior": "\"couch\" = 306 results. \"sofa\" = 306 results — exact match. Category icons identical. Synonym dictionary properly configured.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "../screenshots/10-merchandising-furniture.png",
+      "screenshot_file": "../screenshots/06a-synonym-couch.png",
       "prospect_description": "Costco's synonym configuration is well-maintained — a rare strength. This suggests a merchandising team that actively manages search configuration. Algolia Synonyms would extend this capability to long-tail and colloquial terms at scale.",
       "algolia_solution": "Algolia's Synonyms API allows batch import of Costco's existing synonym dictionary plus AI-suggested expansions for underperforming query patterns."
     }
@@ -2614,7 +2617,8 @@ a:hover {
     "payment": "CyberSource + CardinalCommerce + Visa + Discover [BuiltWith]",
     "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
     "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
-    "privacy": "OneTrust [BuiltWith]"
+    "privacy": "OneTrust [BuiltWith]",
+    "search_builtwith_note": "BuiltWith free-api reports 2 \"Site Search\" and 2 \"Semantic Search\" detections — these are Typeahead.js/Bloodhound categorized broadly, NOT enterprise search platforms. No Algolia, Elasticsearch, Coveo, or Lucidworks detected in 939 live technologies."
   },
   "hiring": {
     "total_open_roles": 428,
@@ -5126,35 +5130,170 @@ function sectionDiscoveryObjections(D) {
 }
 
 function sectionOutreachPlan(D) {
-  const icp = D.icp_mapping || {};
-  const nextSteps = D.next_steps || [];
-  const sequence = icp.outreach_sequence || [];
+  const abx = D.abx_sequence;
+  if (!abx || !(abx.touches||[]).length) return '';
+
+  const contacts = abx.contacts || [];
+  const touches  = abx.touches || [];
+  const variants = abx.ab_variants || [];
+  const assets   = abx.assets_library || [];
+  const triggers = abx.triggers || [];
+
+  const contactMap = {};
+  contacts.forEach(c => { contactMap[c.id] = c; });
+
+  const chColor = {email:'#003DFF', linkedin:'#0A66C2', video:'#7C3AED'};
+  const chLabel = {email:'Email', linkedin:'LinkedIn', video:'Video (Loom)'};
+  const chIcon  = {
+    email: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    linkedin: '<svg width="13" height="13" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h17.65C19.474 0 20 .513 20 1.146v17.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 20 0 19.487 0 18.854V1.146zm6.143 15.496V7.716H3.81v8.926h2.333zm-1.167-10.14c.813 0 1.32-.539 1.32-1.213C6.281 4.59 5.789 4.066 5 4.066c-.797 0-1.32.524-1.32 1.213 0 .674.508 1.213 1.29 1.213h.015zm4.717 10.14V11.36c0-.21.015-.42.077-.57.17-.419.555-.853 1.202-.853.849 0 1.188.647 1.188 1.596v5.11h2.332V11.27c0-2.155-1.15-3.157-2.684-3.157-1.256 0-1.81.698-2.115 1.176v.025h-.015l.015-.025V7.717H7.36c.031.659 0 8.926 0 8.926h2.333z"/></svg>',
+    video: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>'
+  };
+
+  const triggerUrgency = {high:'#DC2626', medium:'#D97706', low:'#059669'};
+
   return `<section id="section-outreach" class="audit-section">
-    <div class="section-eyebrow">Sales Play · The Plan</div>
-    <div class="section-title">4-Week Outreach Sequence &amp; Next Steps</div>
-    <div class="grid-2" style="gap:28px;align-items:start;">
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">4-Week Sequence</div>
-        <div style="position:relative;padding-left:28px;">
-          <div style="position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--border);"></div>
-          ${sequence.map((step,i)=>`<div style="position:relative;margin-bottom:20px;">
-            <div style="position:absolute;left:-22px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:3px solid white;box-shadow:0 0 0 2px var(--blue);"></div>
-            <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Week ${step.week||i+1}</div>
-            <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:4px;">${escHtml(step.action||'')}</div>
-            ${step.subject?`<div style="font-size:14px;color:var(--mid);font-style:italic;margin-bottom:4px;">Subject: "${escHtml(step.subject)}"</div>`:''}
-            <div style="font-size:14px;color:var(--mid);">${escHtml(step.angle||'')}</div>
-          </div>`).join('')}
+    <div class="section-eyebrow">Sales Play · ABX Sequence</div>
+    <div class="section-title">${escHtml(abx.sequence_type||'Outreach Sequence')}</div>
+    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels||[]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
+
+    <!-- Triggers -->
+    ${triggers.length ? `
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+      ${triggers.map(t=>`<div style="display:inline-flex;align-items:center;gap:6px;background:${triggerUrgency[t.urgency]||'#6B7280'}12;border:1px solid ${triggerUrgency[t.urgency]||'#6B7280'}30;border-radius:6px;padding:6px 12px;">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
+        <span style="font-size:12px;color:var(--gray);">${escHtml(t.detail)}</span>
+      </div>`).join('')}
+    </div>` : ''}
+
+    <!-- Contact Cards -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
+      ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
-      </div>
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Next Steps</div>
-        ${nextSteps.map((step,i)=>`<div class="card" style="margin-bottom:12px;border-left:4px solid var(--blue);">
-          <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Step ${step.step_num||i+1}</div>
-          <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:6px;">${escHtml(step.title||'')}</div>
-          <div style="font-size:14px;color:var(--mid);line-height:1.5;">${escHtml(step.description||'')}</div>
+        <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
+        <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">${escHtml(c.title)}</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
+        ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
+      </div>`).join('')}
+    </div>
+
+    <!-- Unified Touch Timeline -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;">
+      ${touches.map((t,i)=>{
+        const contact = contactMap[t.target] || {};
+        const col = chColor[t.channel] || '#6B7280';
+        const isVideo = t.channel === 'video';
+        const isLinkedIn = t.channel === 'linkedin';
+        return `<div style="border-bottom:${i<touches.length-1?'1px solid var(--border)':'none'};padding:16px 20px;background:${i%2===0?'white':'#FAFAFA'};">
+          <!-- Touch header row -->
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:11px;font-weight:700;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:${col};">
+              ${chIcon[t.channel]||''} ${escHtml(chLabel[t.channel]||t.channel)}
+            </span>
+            <span style="font-size:12px;color:var(--mid);">→ <strong>${escHtml(contact.name||t.target==='all'?'All contacts':t.target||'')}</strong>${contact.role ? ` (${escHtml(contact.role)})` : ''}</span>
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--blue);background:#EEF2FF;border-radius:3px;padding:1px 6px;">${escHtml(t.hook_type||'')}</span>
+            <span style="font-size:12px;color:var(--mid);flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
+          </div>
+
+          ${isLinkedIn && t.actions ? `
+          <!-- LinkedIn actions list -->
+          <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
+            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
+              <span style="font-weight:700;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
+              <span>${escHtml(a)}</span>
+            </div>`).join('')}
+          </div>` : ''}
+
+          ${isVideo ? `
+          <!-- Loom video touch -->
+          <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:14px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
+              <span style="font-size:11px;color:var(--mid);">Target: ${escHtml(t.video_duration_target||'60-75 sec')}</span>
+            </div>
+            ${t.email_subject ? `
+            <div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:600;color:var(--mid);">Email subject: </span>
+              <span style="font-size:13px;font-style:italic;color:var(--gray);">"${escHtml(t.email_subject)}"</span>
+            </div>` : ''}
+            ${t.email_body ? `
+            <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
+            ${t.video_script ? `
+            <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
+              <pre style="font-size:12px;color:var(--gray);line-height:1.6;white-space:pre-wrap;margin:0;font-family:inherit;">${escHtml(t.video_script)}</pre>
+            </div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && (t.subject || t.body) ? `
+          <!-- Email touch -->
+          <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            ${t.subject ? `<div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
+              <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
+            </div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
+            ${t.asset_label || t.asset ? `<div style="margin-top:8px;font-size:12px;color:var(--mid);">📎 Attach: <strong>${escHtml(t.asset_label||t.asset||'')}</strong></div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && t.message ? `
+          <!-- LinkedIn message -->
+          <div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            <div style="white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;">${escHtml(t.message)}</div>
+            ${t.asset_url ? `<div style="margin-top:8px;"><a href="${t.asset_url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Case study link</a></div>` : ''}
+          </div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+
+    <!-- A/B Variants -->
+    ${variants.length ? `
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
+      <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
+        ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:12px;font-weight:700;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
+            <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
+          <div style="font-size:13px;color:var(--mid);line-height:1.5;margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;">Benchmark: ${escHtml(v.benchmark_reply_rate||'—')} reply rate</div>
+          ${v.notes ? `<div style="font-size:11px;color:var(--mid);margin-top:4px;">${escHtml(v.notes)}</div>` : ''}
         </div>`).join('')}
       </div>
-    </div>
+    </div>` : ''}
+
+    <!-- Assets Library -->
+    ${assets.length ? `
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:var(--light);">
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
+          </tr></thead>
+          <tbody>
+            ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
+              <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray);">${escHtml(a.name)}</td>
+              <td style="padding:10px 14px;font-size:12px;color:var(--mid);">${escHtml(a.use_at)}</td>
+              <td style="padding:10px 14px;">
+                ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="font-size:12px;color:var(--mid);">${escHtml(a.file)}</span>` : '—')}
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : ''}
   </section>`;
 }
 

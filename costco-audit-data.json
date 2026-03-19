@@ -17,7 +17,7 @@
     "status_line": "Confidential \u00b7 For Internal Use Only"
   },
   "score": {
-    "overall": 3.8,
+    "overall": 3.5,
     "verdict": "Critical Gaps Found",
     "verdict_class": "critical",
     "description": "5 of 10 areas show HIGH severity gaps. Empty state, federated search, NLP, and search intelligence are absent. Strong intent detection and merchandising stand out as positives.",
@@ -58,7 +58,8 @@
       "search_intelligence": "HIGH"
     },
     "critical_count": 5,
-    "moderate_count": 2
+    "moderate_count": 2,
+    "_scoring_note": "Corrected by factcheck: denominator is 13.5 (5\u00d7HIGH\u00d72 + 2\u00d7MED\u00d71 + 3\u00d7LOW\u00d70.5), not 13.0 as stated in 10-scoring-matrix.md. 47.5/13.5 = 3.52 \u2192 3.5/10."
   },
   "company_snapshot": {
     "industry": "Warehouse Club / Mass Retail",
@@ -129,8 +130,8 @@
       "name": "Gary Millerchip",
       "title": "Executive Vice President & Chief Financial Officer",
       "quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs.",
-      "quote_source": "https://www.cfodive.com/news/costcos-ai-tech-use-partly-offsets-healthcare-costs-cfo/807837/",
-      "quote_source_label": "Q1 FY2026 Earnings Call (CFO Dive Coverage)",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "quote_date": "2025-12",
       "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden \u2014 directly matching Millerchip's productivity-offset thesis."
     }
@@ -167,8 +168,8 @@
       "type": "exec",
       "badge_label": "CEO Statement",
       "text": "Vachris: 'Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal.' \u2014 Q1 FY2026 Earnings Call, December 2025",
-      "source_name": "Ron Vachris, President & CEO",
-      "source_url": "https://investor.costco.com/events-and-presentations/events/event-details/2025/Q1-2026-Earnings-Call/default.aspx",
+      "source_name": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
+      "source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "source_date": "2025-12-11",
       "relevance": "Stated 'seamless experience' mandate directly conflicts with 5 HIGH-severity search gaps. Empty state shows nothing. NLP queries fail. Federated search absent. Algolia addresses all 5."
     },
@@ -344,7 +345,8 @@
       "prospect_description": "Members looking for Costco's famous return policy are ejected from the shopping experience to a separate domain. Costco Travel, Business Center, and support content are invisible to the main search bar \u2014 creating channel silos across a $27B+ digitally-enabled sales operation.",
       "algolia_solution": "Algolia Federated Search indexes multiple content types \u2014 products, policies, travel, help \u2014 in a single search bar with clear category sections. Members never leave the shopping context.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
-      "algolia_case_study_result": "+7% improved conversion from search"
+      "algolia_case_study_result": "+7% improved conversion from search",
+      "screenshot_note": "08-non-product-return-policy-sayt.png shows the SAYT dropdown during the query. The original redirect screenshot (08-non-product-return-policy.png, 6KB) was not persisted."
     },
     {
       "id": "G04",
@@ -356,11 +358,12 @@
       "actual_behavior": "Access Denied \u2014 Akamai WAF blocks the search endpoint for complex multi-word queries. The site cannot process conversational NLP queries at all.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "screenshots/13-nlp-gaming-tv-sayt.png",
+      "screenshot_file": "screenshots/error-state.png",
       "prospect_description": "Complex natural language queries \u2014 exactly the type 48% of mobile app users type \u2014 are blocked before reaching the search engine. Members who type 'healthy snacks for kids' or 'wireless earbuds with noise cancellation under 200' get Access Denied. WAF configuration and lack of NLP infrastructure are both failure modes.",
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
-      "algolia_case_study_result": "+7% improved conversion from search"
+      "algolia_case_study_result": "+7% improved conversion from search",
+      "screenshot_note": "error-state.png: WAF/Access Denied state. The original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted."
     },
     {
       "id": "G05",
@@ -420,7 +423,7 @@
       "actual_behavior": "Homepage loads quickly. SAYT dropdown triggers responsively. Search results render promptly. Rich product SAYT with images, specs, and descriptions for 'laptop' query.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "screenshots/01-homepage.png",
+      "screenshot_file": "screenshots/11-federated-sayt.png",
       "prospect_description": "Costco's native search delivers acceptable latency and a rich SAYT experience \u2014 product images, descriptions, and tech specs visible in the dropdown. This is a strong baseline to build upon with Algolia's sub-50ms guarantee.",
       "algolia_solution": "Algolia maintains this strength while adding NLP, personalization, and federated search \u2014 without regressing on speed."
     },
@@ -448,7 +451,7 @@
       "actual_behavior": "\"couch\" = 306 results. \"sofa\" = 306 results \u2014 exact match. Category icons identical. Synonym dictionary properly configured.",
       "impact_stat": "",
       "impact_stat_source": "",
-      "screenshot_file": "screenshots/10-merchandising-furniture.png",
+      "screenshot_file": "screenshots/06a-synonym-couch.png",
       "prospect_description": "Costco's synonym configuration is well-maintained \u2014 a rare strength. This suggests a merchandising team that actively manages search configuration. Algolia Synonyms would extend this capability to long-tail and colloquial terms at scale.",
       "algolia_solution": "Algolia's Synonyms API allows batch import of Costco's existing synonym dictionary plus AI-suggested expansions for underperforming query patterns."
     }
@@ -602,7 +605,8 @@
     "payment": "CyberSource + CardinalCommerce + Visa + Discover [BuiltWith]",
     "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
     "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
-    "privacy": "OneTrust [BuiltWith]"
+    "privacy": "OneTrust [BuiltWith]",
+    "search_builtwith_note": "BuiltWith free-api reports 2 \"Site Search\" and 2 \"Semantic Search\" detections \u2014 these are Typeahead.js/Bloodhound categorized broadly, NOT enterprise search platforms. No Algolia, Elasticsearch, Coveo, or Lucidworks detected in 939 live technologies."
   },
   "hiring": {
     "total_open_roles": 428,
