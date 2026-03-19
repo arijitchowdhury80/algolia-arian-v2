@@ -1926,6 +1926,77 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Bounce Card — shrink + rotate on hover with gradient reveal ────────────
+   Vanilla CSS replication of uniquesonu/bounce-card-features.
+   Usage:
+     <div class="bounce-card bounce-card--red|amber|green">
+       <div class="bounce-card__content">
+         eyebrow, description, source
+       </div>
+       <div class="bounce-card__gradient">
+         big dollar amount + play badge
+       </div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.bounce-card {
+  background: #F8F9FB;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 250ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.bounce-card:hover {
+  transform: scale(0.95) rotate(-1deg);
+}
+.bounce-card__content {
+  padding: 24px 22px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bounce-card__gradient {
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.bounce-card:hover .bounce-card__gradient {
+  transform: translateY(-6px) rotate(2deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+/* Amount text inside gradient */
+.bounce-card__amount {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  text-align: center;
+}
+.bounce-card__amount-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+/* Color variants */
+.bounce-card--red   .bounce-card__gradient {
+  background: linear-gradient(135deg, #DC2626, #F97316);
+}
+.bounce-card--amber .bounce-card__gradient {
+  background: linear-gradient(135deg, #D97706, #F59E0B);
+}
+.bounce-card--green .bounce-card__gradient {
+  background: linear-gradient(135deg, #059669, #10B981);
+}
+
 /* ─── Feature Section with Hover Effects (Aceternity style) ─────────────────
    Grid of feature cards with: gradient overlay, accent bar growth, text shift.
    Usage: <div class="feature-grid"> <div class="feature-card">...</div> </div>
@@ -4453,21 +4524,26 @@ function sectionExecSummary(D) {
         <div class="section-eyebrow">Revenue at Risk</div>
         <div style="${T.overviewTitle};">How much search improvement is worth — three scenarios</div>
       </div>
+      <!-- Bounce cards — CSS in algolia-brand.css -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
         ${[
-          {label:'Conservative · 5% lift', amt:rs.conservative?.annual_impact||fin.search_roi_est||'$4.85M/yr', sub:'Fix basics: relevance, latency, typo tolerance', col:'#DC2626'},
-          {label:'Moderate · 10% lift',     amt:rs.moderate?.annual_impact||'$9.7M/yr',   sub:'Add NLP, personalization, dynamic facets', col:'#D97706'},
-          {label:'Optimistic · 15% lift',   amt:rs.optimistic?.annual_impact||'$14.55M/yr', sub:'Full AI suite: recommendations, federated, content', col:'#059669'},
-        ].map(s=>{
-          const colorKey = s.col==='#DC2626'?'red':s.col==='#D97706'?'amber':'green';
-          return `<div class="glow-border-wrap glow-border-wrap--${colorKey}">
-            <div class="glow-border-inner">
-              <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:${s.col};margin-bottom:8px;">${s.label}</div>
-              <div style="font-size:2.2rem;font-weight:600;color:var(--gray);line-height:1;margin-bottom:6px;">${s.amt}</div>
-              <div style="${T.bodySmMid14};margin-top:4px;line-height:1.4;">${s.sub}</div>
+          {label:'Conservative', lift:'5% lift', amt:rs.conservative?.annual_impact||fin.search_roi_est||'$4.85M/yr', sub:'Fix basics: relevance, latency, typo tolerance', play:'Defensive Play', src:rs.conservative?.source||'', colorKey:'red', col:'#DC2626'},
+          {label:'Moderate',     lift:'10% lift', amt:rs.moderate?.annual_impact||'$9.7M/yr',    sub:'Add NLP, personalization, dynamic facets', play:'Offensive Play', src:rs.moderate?.source||'', colorKey:'amber', col:'#D97706'},
+          {label:'Optimistic',   lift:'15% lift', amt:rs.optimistic?.annual_impact||'$14.55M/yr', sub:'Full AI suite: recommendations, federated, content', play:'Leadership Play', src:rs.optimistic?.source||'', colorKey:'green', col:'#059669'},
+        ].map(s=>`
+          <div class="bounce-card bounce-card--${s.colorKey}">
+            <div class="bounce-card__content">
+              <div style="${T.eyebrowCol(s.col)};margin-bottom:2px;">${escHtml(s.label)}</div>
+              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">${escHtml(s.lift)}</div>
+              <div style="${T.bodySm};margin-top:10px;flex:1;">${escHtml(s.sub)}</div>
+              ${s.src ? `<div style="${T.bodySmGray12};margin-top:8px;opacity:0.7;">Based on: ${escHtml(s.src.slice(0,60))}</div>` : ''}
             </div>
-          </div>`;
-        }).join('')}
+            <div class="bounce-card__gradient">
+              <div class="bounce-card__amount">${escHtml(s.amt)}</div>
+              <div class="bounce-card__amount-sub">per year · estimate</div>
+              <span style="margin-top:6px;background:rgba(255,255,255,0.2);color:white;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;">${escHtml(s.play)}</span>
+            </div>
+          </div>`).join('')}
       </div>
 
       <!-- ── Competitive Edge ── -->
