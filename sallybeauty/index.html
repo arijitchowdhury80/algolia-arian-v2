@@ -4195,6 +4195,43 @@ a:hover {
   --violet: var(--brand-violet);
 }
 
+/* ── Unverified source warning — web search only, not URL-confirmed ──────────
+   Apply to any data point where source_url could not be WebFetched and confirmed.
+   Renders a red warning badge + amber border to flag it for the AE.
+────────────────────────────────────────────────────────────────────────────── */
+.unverified-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--red-tint);
+  border: 1px solid var(--red-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+.unverified-wrapper {
+  border: 1px solid var(--amber-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--amber-tint);
+  position: relative;
+}
+.unverified-wrapper::before {
+  content: '⚠ Web search only — verify before using';
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
 </style>
 </head>
 
@@ -4912,7 +4949,7 @@ a:hover {
     "top_channels": [
       {
         "source": "Direct",
-        "share": 38.0,
+        "share": 38,
         "note": "Brand loyalty driving 38% direct — largest channel"
       },
       {
@@ -4956,10 +4993,10 @@ a:hover {
     },
     "audience": {
       "age": {
-        "18-24": 11.0,
+        "18-24": 11,
         "25-34": 25.9,
         "35-44": 19.3,
-        "45-54": 19.0,
+        "45-54": 19,
         "55-64": 15.2,
         "65+": 9.7
       },
@@ -5008,8 +5045,8 @@ a:hover {
     "gender_split_source": "SimilarWeb MCP — get-websites-demographics, Jan 2025, worldwide",
     "source_url": "https://www.similarweb.com/website/sallybeauty.com",
     "device_share": {
-      "desktop": 57.0,
-      "mobile": 43.0,
+      "desktop": 57,
+      "mobile": 43,
       "insight": "Sales device split: 57% desktop, 43% mobile (Grips Intelligence transaction data). SimilarWeb session split skews 85% mobile web — indicates significant mobile browsing that does not fully convert, highlighting the mobile search optimization opportunity.",
       "source": "Grips Intelligence — sallybeauty.com sales device split, April 2025",
       "source_url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com"
@@ -5964,6 +6001,32 @@ const T = {
    Static — no animation. Semi-transparent tint + border ring signals verified proof.
 
 ────────────────────────────────────────────────────────────────────── */
+
+/* ── Unverified source badge ──────────────────────────────────────────────────
+   Call unverifiedBadge() wherever a data point has verification_status="web_search_only"
+   or where source could not be WebFetched and confirmed at a specific URL.
+   Renders amber warning: "⚠ Web search only — verify before using"
+────────────────────────────────────────────────────────────────────────────── */
+function unverifiedBadge() {
+  return `<span class="unverified-warning">⚠ Web search only — verify before using</span>`;
+}
+
+/* Wraps any content block in the amber warning wrapper */
+function unverifiedWrap(content) {
+  return `<div class="unverified-wrapper">${content}</div>`;
+}
+
+/* Use on source links — shows red if unverified, normal if verified */
+function sourceLink(url, label, isVerified) {
+  if (!url) return '';
+  if (isVerified === false) {
+    return `<span style="display:inline-flex;align-items:center;gap:4px;">
+      <a href="${url}" target="_blank" style="${T.bodySmGray12};color:var(--red);text-decoration:underline;">${escHtml(label||'Source')}</a>
+      ${unverifiedBadge()}
+    </span>`;
+  }
+  return `<a href="${url}" target="_blank" style="${T.labelBlue};">${escHtml(label||'Source')} ↗</a>`;
+}
 
 function proofPill(url, company, result, variant) {
 
@@ -7881,13 +7944,15 @@ function sectionCompanySnapshot(D) {
 
               <a href="${e.source_url}" target="_blank"
 
-                 style="color:var(--blue);font-weight:600;text-decoration:none;"
+                 style="color:${e.verified===false?'var(--red)':'var(--blue)'};font-weight:600;text-decoration:none;"
 
                  onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
 
                 ${escHtml(e.source_label || sourceName(e.source_url))}
 
               </a>
+
+              ${e.verified===false ? unverifiedBadge() : ''}
 
             </div>` : ''}
 
@@ -9033,11 +9098,13 @@ function sectionFinding(f, displayId) {
 
         ${f.impact_stat_source
 
-          ? `<a href="${f.impact_stat_source}" target="_blank" rel="noopener" class="ic-source-link">
+          ? `<a href="${f.impact_stat_source}" target="_blank" rel="noopener"
+               style="color:${f.impact_stat_verified===false?'var(--red)':'inherit'};"
+               class="ic-source-link">
 
                ↗ ${escHtml(sourceName(f.impact_stat_source))}
 
-             </a>`
+             </a>${f.impact_stat_verified===false ? unverifiedBadge() : ''}`
 
           : `<span class="ic-source-missing">⚠ Source needed</span>`}
 
@@ -10279,7 +10346,7 @@ function sectionBusinessCaseHook(D) {
 
                 <div style="${T.bodySmGray12};">— ${escHtml(g.said_attr)}</div>
 
-                ${g.said_source_url ? `<a href="${g.said_source_url}" target="_blank" style="${T.bodySmGray12};color:var(--blue);font-weight:600;">${escHtml(g.said_source_label||'Source')}</a>` : ''}
+                ${g.said_source_url ? `<a href="${g.said_source_url}" target="_blank" style="${T.bodySmGray12};color:${g.verified===false?'var(--red)':'var(--blue)'};font-weight:600;">${escHtml(g.said_source_label||'Source')}</a>${g.verified===false ? unverifiedBadge() : ''}` : ''}
 
               </td>
 
