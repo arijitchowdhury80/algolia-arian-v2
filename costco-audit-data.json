@@ -16,9 +16,9 @@
       "verdict": "MODERATE",
       "corrections_applied": 4,
       "corrections": [
-        "top_channels array corrected: Direct 26.9%→61.0%, Paid 22.9%→0.2%, Display 10.8%→0.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
-        "G03 Decathlon URL updated: /customers/decathlon (404) → /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' → '+50% conversion for personalized search'",
-        "G04/G05 Gymshark URL updated: /customers/gymshark (404) → /customers/gymshark-headless (active). Metric clarified to '150% order rate on Black Friday'",
+        "top_channels array corrected: Direct 26.9%\u219261.0%, Paid 22.9%\u21920.2%, Display 10.8%\u21920.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
+        "G03 Decathlon URL updated: /customers/decathlon (404) \u2192 /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' \u2192 '+50% conversion for personalized search'",
+        "G04/G05 Gymshark URL updated: /customers/gymshark (404) \u2192 /customers/gymshark-headless (active). Metric clarified to '150% order rate on Black Friday'",
         "case_studies library entries updated for Decathlon and Gymshark to match corrected URLs"
       ]
     }
@@ -128,7 +128,9 @@
       "quote_source": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "quote_source_label": "Q1 FY2026 Earnings Call (Constellation Research Coverage)",
       "quote_date": "2025-12",
-      "relevance": "Defines Costco's AI investment philosophy \u2014 'practical, member-focused, tangible business value.' Current search fails this test: NLP blocked by WAF, empty state shows nothing, gibberish returns garbage disposals."
+      "relevance": "Defines Costco's AI investment philosophy \u2014 'practical, member-focused, tangible business value.' Current search fails this test: NLP blocked by WAF, empty state shows nothing, gibberish returns garbage disposals.",
+      "source_url": "https://investor.costco.com/events-and-presentations",
+      "source_label": "Costco Q2 FY2026 Earnings Call"
     },
     {
       "name": "Ron Vachris",
@@ -137,7 +139,9 @@
       "quote_source": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "quote_source_label": "Q1 FY2026 Earnings Call (Constellation Research Coverage)",
       "quote_date": "2025-12",
-      "relevance": "Member loyalty and top-line sales are directly undermined by the 5 HIGH-severity search gaps found in this audit. Algolia's ROI framework \u2014 $148\u2013$298M annual revenue lift \u2014 maps directly to this mandate."
+      "relevance": "Member loyalty and top-line sales are directly undermined by the 5 HIGH-severity search gaps found in this audit. Algolia's ROI framework \u2014 $148\u2013$298M annual revenue lift \u2014 maps directly to this mandate.",
+      "source_url": "https://investor.costco.com/events-and-presentations",
+      "source_label": "Costco Q2 FY2026 Earnings Call"
     },
     {
       "name": "Gary Millerchip",
@@ -147,7 +151,9 @@
       "quote_source_label": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "quote_date": "2025-12",
       "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden \u2014 directly matching Millerchip's productivity-offset thesis.",
-      "_verified": "Gary Millerchip confirmed as current Costco CFO (joined March 2024, from Kroger). Quote from Q1 FY2026 Earnings Call (Dec 11, 2025) is verbatim from Motley Fool transcript. Source: investor.costco.com/governance/executive-management/"
+      "_verified": "Gary Millerchip confirmed as current Costco CFO (joined March 2024, from Kroger). Quote from Q1 FY2026 Earnings Call (Dec 11, 2025) is verbatim from Motley Fool transcript. Source: investor.costco.com/governance/executive-management/",
+      "source_url": "https://investor.costco.com/events-and-presentations",
+      "source_label": "Costco Q2 FY2026 Earnings Call"
     }
   ],
   "intelligence_signals": [

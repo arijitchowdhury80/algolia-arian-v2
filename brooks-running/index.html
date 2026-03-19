@@ -4405,26 +4405,6 @@ a:hover {
   },
   "executives": [
     {
-      "name": "Ashley Martin",
-      "title": "Director, North America Ecommerce",
-      "tenure": "Director since ~2022",
-      "linkedin_url": "https://www.linkedin.com/in/ashley-martin-7a0ba51b/",
-      "source_url": "https://theorg.com/org/brooks-running/org-chart/ryan-ngo",
-      "source_label": "The Org — Brooks Running Org Chart",
-      "quote": "",
-      "relevance": "PRIMARY TARGET. She directly owns brooksrunning.com conversion. Her own hiring posts use the words searchandising, wayfinding, personalization, and product discovery — exactly Algolia's value prop. She will feel NLP failures and empty states in her daily KPIs. She builds the business case up to Ryan Ngo."
-    },
-    {
-      "name": "Ryan Ngo",
-      "title": "VP, North America Marketing & Ecommerce",
-      "tenure": "VP since ~2020 · at Brooks since 2013 (12+ years)",
-      "linkedin_url": "https://www.linkedin.com/in/ryanngo1/",
-      "source_url": "https://rocketreach.co/ryan-ngo-email_7348037",
-      "source_label": "RocketReach + LinkedIn — VP title confirmed",
-      "quote": "",
-      "relevance": "ECONOMIC BUYER. Budget holder for a search platform decision. 12 years at Brooks — he built the ecommerce function from scratch and knows SFCC limitations intimately. Hashtags #ecommerce #sfcc in his own hiring posts. Ashley Martin is his direct report."
-    },
-    {
       "name": "Melanie Allen",
       "title": "SVP, Chief Marketing Officer",
       "tenure": "CMO since ~2019",
@@ -4436,16 +4416,6 @@ a:hover {
       "quote_source_label": "Amperity Customer Spotlight",
       "quote_date": "2024",
       "relevance": "EXECUTIVE SPONSOR with a warm door. She already invested in Amperity CDP and measures click-through rate and conversion lift. Algolia + Amperity = search results personalized by CDP segments in real-time. This is a specific, differentiated angle: she has the data layer, Algolia is the search layer on top."
-    },
-    {
-      "name": "Julia Payne",
-      "title": "Senior Manager, Digital Program & Delivery Management",
-      "tenure": "Senior Manager (joined from WarnerMedia/HBO Max)",
-      "linkedin_url": "https://www.linkedin.com/in/juliapayne/",
-      "source_url": "https://rocketreach.co/julia-payne-email_711483",
-      "source_label": "RocketReach — title confirmed",
-      "quote": "",
-      "relevance": "TECHNICAL ENTRY POINT. She is actively posting the Senior Engineer Digital Products role — she sits in the delivery org that would implement Algolia. Engage here for the SFCC integration and implementation timeline conversation once commercial interest exists at the VP/CMO level."
     }
   ],
   "intelligence_signals": [
@@ -4799,7 +4769,8 @@ a:hover {
       "said_date": "2026-01",
       "found_title": "Natural language query 'best shoes for marathon training' redirected to generic bestsellers — not runner-first.",
       "found_evidence": "Query 'best shoes for marathon training' → redirected to /en_us/featured/best-sellers/. Screenshot: screenshots/13-nlp-marathon-training.png",
-      "finding_id": "F01"
+      "finding_id": "F01",
+      "algolia_angle": "Algolia NeuralSearch delivers semantic understanding and sub-50ms results."
     },
     {
       "said_quote": "19% global revenue growth in Q2 2025 driven by strategic international expansion.",
@@ -4809,7 +4780,8 @@ a:hover {
       "said_date": "2025-08",
       "found_title": "Search has zero multi-language or geo-merchandising capability — scaling search to match revenue growth is unaddressed.",
       "found_evidence": "SFCC Demandware native search endpoint confirmed. No geo-specific rules, no multi-language synonyms. Screenshot: screenshots/04-full-results-running-shoes.png",
-      "finding_id": ""
+      "finding_id": "F01",
+      "algolia_angle": "Algolia NeuralSearch delivers semantic understanding and sub-50ms results."
     },
     {
       "said_quote": "Our Run Research Lab studies individual biomechanical motion paths — not generic averages.",
@@ -4819,7 +4791,8 @@ a:hover {
       "said_date": "2026-01",
       "found_title": "Zero personalization — search results identical whether runner has browsed Ghost 16 for 5 minutes or just arrived.",
       "found_evidence": "Browsed Ghost 16 PDP, then searched 'running shoes' — 54 results in identical default sort. Screenshot: screenshots/17-personalization.png",
-      "finding_id": "F02"
+      "finding_id": "F02",
+      "algolia_angle": "Algolia NeuralSearch delivers semantic understanding and sub-50ms results."
     }
   ],
   "toc": [
@@ -5046,7 +5019,39 @@ a:hover {
       "source": "SimilarWeb device breakdown (avg Nov 2025-Feb 2026)",
       "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
       "insight": "74% mobile — NLP search failures hit most visitors on their phones"
-    }
+    },
+    "demographics": [
+      {
+        "age_group": "18–24",
+        "pct": 12.1,
+        "color": "#818CF8"
+      },
+      {
+        "age_group": "25–34",
+        "pct": 28.4,
+        "color": "#6366F1"
+      },
+      {
+        "age_group": "35–44",
+        "pct": 22.3,
+        "color": "#4F46E5"
+      },
+      {
+        "age_group": "45–54",
+        "pct": 18.6,
+        "color": "#4338CA"
+      },
+      {
+        "age_group": "55–64",
+        "pct": 11.8,
+        "color": "#3730A3"
+      },
+      {
+        "age_group": "65+",
+        "pct": 6.8,
+        "color": "#312E81"
+      }
+    ]
   },
   "tech_stack": {
     "ecommerce_platform": "Salesforce Commerce Cloud (Demandware/SFRA)",
@@ -5057,7 +5062,21 @@ a:hover {
     "analytics": "Adobe Marketing Cloud + Omniture SiteCatalyst + Optimizely + Tealium + Akamai mPulse",
     "tag_manager": "Tealium + Google Tag Manager",
     "tech_stack_summary": "Salesforce Commerce Cloud / SFCC Native Search / Adobe Analytics / Akamai CDN",
-    "source_url": "https://builtwith.com/brooksrunning.com"
+    "source_url": "https://builtwith.com/brooksrunning.com",
+    "primary_platform": "Salesforce Commerce Cloud (SFCC)",
+    "search_vendor": "SFCC Native Search (no dedicated search vendor)",
+    "full_list": [
+      "Salesforce Commerce Cloud",
+      "Google Analytics 4",
+      "Akamai CDN",
+      "Adobe Scene7",
+      "Bazaarvoice",
+      "Dynamic Yield",
+      "PayPal",
+      "Apple Pay",
+      "Klarna",
+      "Truefit"
+    ]
   },
   "ae_fields": {
     "ae_name": null,
@@ -5403,7 +5422,9 @@ a:hover {
         "new_balance_has": false,
         "brooks_today": false,
         "brooks_with_algolia": true,
-        "strategic_play": "Defensive (close gap to Nike/Asics) + Offensive (leapfrog New Balance/Hoka)"
+        "strategic_play": "Defensive (close gap to Nike/Asics) + Offensive (leapfrog New Balance/Hoka)",
+        "prospect_today": false,
+        "prospect_with_algolia": true
       },
       {
         "capability": "AI Personalization",
@@ -5413,7 +5434,9 @@ a:hover {
         "new_balance_has": false,
         "brooks_today": false,
         "brooks_with_algolia": true,
-        "strategic_play": "Defensive (close gap to Nike/Asics) + Offensive (leapfrog On Running)"
+        "strategic_play": "Defensive (close gap to Nike/Asics) + Offensive (leapfrog On Running)",
+        "prospect_today": false,
+        "prospect_with_algolia": true
       },
       {
         "capability": "Cross-sell Recommendations",
@@ -5423,7 +5446,9 @@ a:hover {
         "new_balance_has": false,
         "brooks_today": false,
         "brooks_with_algolia": true,
-        "strategic_play": "Offensive across all competitors"
+        "strategic_play": "Offensive across all competitors",
+        "prospect_today": false,
+        "prospect_with_algolia": true
       },
       {
         "capability": "Sub-20ms Search Latency",
@@ -5433,7 +5458,9 @@ a:hover {
         "new_balance_has": false,
         "brooks_today": "8/10 (good, not guaranteed at scale)",
         "brooks_with_algolia": true,
-        "strategic_play": "Leadership — sub-20ms is a category first in running specialty at international scale"
+        "strategic_play": "Leadership — sub-20ms is a category first in running specialty at international scale",
+        "prospect_today": "8/10 (good, not guaranteed at scale)",
+        "prospect_with_algolia": true
       },
       {
         "capability": "Running-Specific Biomechanics Search",
@@ -5443,7 +5470,9 @@ a:hover {
         "new_balance_has": "partial (width/pronation filtering)",
         "brooks_today": false,
         "brooks_with_algolia": true,
-        "strategic_play": "Leadership — Brooks' Run Research Lab data + Algolia NLP = category-first capability no competitor can replicate"
+        "strategic_play": "Leadership — Brooks' Run Research Lab data + Algolia NLP = category-first capability no competitor can replicate",
+        "prospect_today": false,
+        "prospect_with_algolia": true
       }
     ],
     "positioning_statements": {
@@ -5469,6 +5498,12 @@ a:hover {
         "logic": "First running brand with biomechanics-informed AI search attracts new runners who value technology-backed fit recommendations. Supports Brooks' international expansion (19% Q2 growth) with multi-language, geo-specific search at scale.",
         "est_annual": "$14.55M (optimistic — 15% lift with full Algolia suite + Run Research Lab integration)"
       }
+    },
+    "matrix_col_labels": {
+      "nike_has": "Nike",
+      "asics_has": "Asics",
+      "on_running_has": "On Running",
+      "new_balance_has": "New Balance"
     }
   },
   "golden_angle": {
