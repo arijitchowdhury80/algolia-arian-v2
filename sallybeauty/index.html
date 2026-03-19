@@ -2101,7 +2101,7 @@ a:hover {
       "quote": "I'm overwhelmed by choices. TikTok offers me choices. Everybody in the world offers me choices. Help me make the right choice.",
       "quote_source": "https://www.beautyindependent.com/ceo-denise-paulonis-sally-beauty-new-store-format/",
       "quote_source_label": "Beauty Independent CEO Interview",
-      "quote_date": "2025-11",
+      "quote_date": "2026-01",
       "relevance": "CEO articulating the exact problem Algolia NeuralSearch solves — curation and guided discovery across 18,500+ SKUs"
     },
     {
@@ -2298,7 +2298,7 @@ a:hover {
       "tested_query": "Ion Color Brilliance PDP",
       "screenshot_file": "../screenshots/13-recommendations-pdp.png",
       "observation": "Product detail page shows limited or no 'Frequently Bought Together' or 'Similar Items.' For a retailer selling complementary products (color + developer + gloves + applicator brush), missing FBT recommendations leaves basket revenue on the table. No dedicated recommendation engine detected in BuiltWith.",
-      "impact_stat": "40% of total revenue at high-performing retail sites is driven by search and browse flows",
+      "impact_stat": "On some sites, searchers account for roughly 40% of total revenue",
       "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
       "algolia_solution": "Algolia Recommend — FBT, Similar Items, and Trending models on PDP and post-add-to-cart",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
@@ -3495,7 +3495,7 @@ function sectionExecSummary(D) {
           return urgentSigs.map(sig => {
             const col = colMap[sig.type] || '#6B7280';
             const shadow = shadowMap[sig.type] || '';
-            const hasUrl = sig.source_url && sig.source_url !== 'https://brooksrunning.com';
+            const hasUrl = sig.source_url && sig.source_url.startsWith('http');
             return `<div class="card ${shadow}" style="border-left:4px solid ${col};padding:16px 18px;cursor:${hasUrl?'pointer':'default'};"
               ${hasUrl ? `onclick="window.open('${sig.source_url}','_blank')"` : ''}>
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;">
@@ -3785,43 +3785,25 @@ function sectionFinancials(D) {
 
   // Bar widths relative to max revenue (last entry = 100%)
   const revNums = rev3.map(r => {
-    const m = (r.revenue || '').replace(/[^0-9.]/g, '');
+    if (typeof r.revenue === 'number') return r.revenue;
+    const m = String(r.revenue || '').replace(/[^0-9.]/g, '');
     return parseFloat(m) || 0;
   });
   const maxRev = Math.max(...revNums, 1);
   const barPcts = revNums.map(v => Math.round((v / maxRev) * 100));
 
-  // Per-year rich content
-  const yearMeta = [
-    {
-      digital: '~$428M',
-      searchAdj: '~$77M',
-      signals: [
-        'Berkshire Hathaway backing provides long-term investment horizon',
-        'Running Insight Magazine: Brooks reaches #2 US specialty running market share',
-      ],
-      roi: null,
-    },
-    {
-      digital: '~$473M',
-      searchAdj: '~$85M',
-      signals: [
-        'D2C e-commerce acceleration — brooksrunning.com primary growth channel',
-        'International expansion gains traction across EU & APAC markets',
-      ],
-      roi: null,
-    },
-    {
-      digital: f.total_digital_revenue || '~$540M',
-      searchAdj: f.search_addressable  || '~$97M',
-      signals: [
-        '19% revenue growth Q2 2025 — scaling business needs scalable search',
-        'New VP hire (Feb 2026) — leadership change = tech stack review window',
-        'Constructor.io currently deployed — upgrade path to full AI search open',
-      ],
-      roi: f.search_roi_est || '$4.85M/yr',
-    },
-  ];
+  // Per-year rich content — built from revenue_3y scratchpad data
+  const yearMeta = rev3.map((r, i) => {
+    const isLast = i === rev3.length - 1;
+    const sigText = r.search_signal ? [r.search_signal] : [];
+    return {
+      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLast ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
+      searchAdj: isLast ? (f.search_addressable || '') : '',
+      signals: sigText,
+      roi: isLast ? (f.search_roi_est || f.roi_moderate || null) : null,
+      note: r.note || '',
+    };
+  });
 
   const nodes = rev3.map((r, i) => {
     const meta  = yearMeta[i] || {};
@@ -3854,8 +3836,8 @@ function sectionFinancials(D) {
       <div class="tl-node__content">
         <div class="tl-card">
           <div class="tl-card__header">
-            <div class="tl-card__rev">${escHtml(r.revenue)}</div>
-            ${isLast ? `<span class="tl-card__cagr">+12.4% CAGR</span>` : `<span style="font-size:14px;color:var(--mid);">Est. revenue</span>`}
+            <div class="tl-card__rev">${escHtml(r.revenue_label || String(r.revenue))}</div>
+            ${isLast ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="font-size:14px;color:var(--mid);">${escHtml(r.note||'')}</span>`}
           </div>
           <div class="tl-rev-bar"><div class="tl-rev-bar__fill" style="--bar-pct:${pct}%;"></div></div>
           <div class="tl-metrics-row">
@@ -3881,7 +3863,7 @@ function sectionFinancials(D) {
     <p class="section-desc">
       3-year revenue trajectory · Data as of ${s(D.meta?.data_vintage?.yahoo_finance)}
       ${f.source_url ? `· ${lnk(f.source_url, 'Source')}` : ''}
-      <a class="inline-src" href="https://www.brooksrunning.com/en_us/news/" target="_blank" rel="noopener"> Press Release</a>
+      ${f.revenue_source_url ? `<a class="inline-src" href="${escHtml(f.revenue_source_url)}" target="_blank" rel="noopener">${escHtml(f.revenue_source_label || 'Source')}</a>` : ''}
     </p>
     <div class="fin-timeline" id="fin-timeline">
       <div class="fin-timeline__track"><div class="fin-timeline__fill" id="fin-fill"></div></div>
@@ -3890,8 +3872,8 @@ function sectionFinancials(D) {
     <div style="margin-top:6px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="#9CA3AF" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="#9CA3AF" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue estimates are LOW CONFIDENCE (private company). Trend direction is MEDIUM CONFIDENCE (19% Q2 2025 growth confirmed).
-        ${lnk(f.revenue_source || '#', f.revenue_source_label || 'Source', '')}
+        ${escHtml(f.revenue_confidence || 'Revenue data sourced from public filings. See bibliography for sources.')}.
+        ${lnk(f.revenue_source_url || f.revenue_source || '#', f.revenue_source_label || 'Source', '')}
       </span>
     </div>
   </section>`;
@@ -4610,7 +4592,7 @@ function sectionRevenueAtRisk(D) {
     <!-- Assumptions box — full transparency on all inputs -->
     <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--gray);line-height:1.7;">
       <span style="font-weight:700;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
-      <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.digital_share_pct||45}% of total — <em>estimated, private company</em>) ·
+      <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : '~7%')} of total revenue) ·
       <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
       <strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) ·
       <strong>Lift %:</strong> based on Algolia case studies in comparable verticals — conversion rate improvements, not guaranteed revenue impact
@@ -4824,8 +4806,8 @@ function sectionCompetitiveSynthesis(D) {
             <td style="text-align:center;">${cap(r.asics_has)}</td>
             <td style="text-align:center;">${cap(r.on_running_has)}</td>
             <td style="text-align:center;">${cap(r.new_balance_has)}</td>
-            <td style="text-align:center;background:#FFF5F5;">${cap(r.brooks_today)}</td>
-            <td style="text-align:center;background:#EEF2FF;">${cap(r.brooks_with_algolia)}</td>
+            <td style="text-align:center;background:#FFF5F5;">${cap(r.prospect_today || r.brooks_today)}</td>
+            <td style="text-align:center;background:#EEF2FF;">${cap(r.prospect_with_algolia || r.brooks_with_algolia)}</td>
           </tr>`).join('')}</tbody>
         </table>
       </div>
@@ -4864,12 +4846,24 @@ function sectionWhyNow(D) {
   const hir = D.hiring || {};
   const fin = D.financials || {};
   const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
-  const triggers = [
-    {icon:'⚠️', label:'Technical Buyer VACANT', detail:`${vacantRole?.name||'Senior Engineer — Digital Products'} role is currently open. Engage IT leadership BEFORE new hire establishes vendor preference.`, urgency:'high', url:vacantRole?.job_url},
-    {icon:'👤', label:'New VP Hired Feb 2026', detail:'Claire Wood hired as VP of Footwear Product Strategy. New leadership triggers technology stack reviews within 90 days.', urgency:'high'},
-    {icon:'📈', label:'19% Q2 2025 Revenue Growth', detail:'Rapid international expansion (50+ countries). Scale problems compound — fix search before traffic doubles again.', urgency:'medium'},
-    {icon:'🏦', label:'Berkshire Hathaway Backing', detail:fin.berkshire_note?fin.berkshire_note.slice(0,130)+'…':'Long-term investment horizon. No quarterly earnings pressure. Financial resources available for strategic technology investment.', urgency:'positive'},
-  ];
+  // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
+  const sigTriggers = (D.intelligence_signals||[])
+    .filter(s => ['funding','exec','hiring','competitor','industry-opp'].includes(s.type))
+    .slice(0, 3)
+    .map(s => ({
+      icon: s.type==='funding'?'🏦': s.type==='exec'?'💬': s.type==='hiring'?'👤': s.type==='competitor'?'⚠️':'📈',
+      label: s.badge_label || s.type,
+      detail: (s.text||'').slice(0, 160) + ((s.text||'').length > 160 ? '…' : ''),
+      urgency: s.type==='exec'||s.type==='funding' ? 'high' : s.type==='competitor' ? 'medium' : 'positive',
+      url: s.source_url
+    }));
+  const vacantTrigger = vacantRole
+    ? [{icon:'⚠️', label:'Technical Buyer Identified', detail:`${vacantRole.name||''} (${vacantRole.title||''}) — ${(vacantRole.message||'').slice(0,120)}`, urgency:'high', url:vacantRole.job_url}]
+    : [];
+  const berkshireTrigger = fin.berkshire_note
+    ? [{icon:'🏦', label:'Financial Backing', detail:fin.berkshire_note.slice(0,160)+'…', urgency:'positive'}]
+    : [];
+  const triggers = [...vacantTrigger, ...sigTriggers, ...berkshireTrigger].slice(0, 4);
   const urgCol = {high:'#DC2626',medium:'#D97706',positive:'#059669'};
   return `<section id="section-why-now" class="audit-section">
     <div class="section-eyebrow">Business Case · Timing</div>
@@ -4945,7 +4939,7 @@ function sectionPreCallBrief(D) {
           ${[
             `<strong>Revenue:</strong> ${escHtml(D.company_snapshot?.revenue||'~$1.2B est.')} · ${escHtml(fin.margin_zone||'Yellow')} margin zone · Berkshire-backed (long-term mindset)`,
             `<strong>Platform:</strong> Salesforce Commerce Cloud · <span style="color:var(--red)">${escHtml(D.company_snapshot?.current_search_vendor||'SFCC Native')}</span> search (displacement target)`,
-            `<strong>Traffic:</strong> ${escHtml(D.company_snapshot?.monthly_visits||'~3.5M/mo')} · 19% Q2 2025 global growth · 50+ countries`,
+            `<strong>Traffic:</strong> ${escHtml(D.company_snapshot?.monthly_visits||D.traffic?.monthly_visits||'N/A')}${D.traffic?.bounce_rate ? ` · ${escHtml(D.traffic.bounce_rate)} bounce rate` : ''}`,
             `<strong>Top Gap:</strong> Zero NLP (2/10) — natural language queries like "best shoes for marathon training" return generic bestsellers`,
             `<strong>ROI:</strong> Conservative ${escHtml(fin.search_roi_est||'$4.85M/yr')} · ${escHtml(fin.roi_multiple||'24.3x')} ROI multiple · ${escHtml(fin.payback_period||'15-day')} payback`,
           ].map(b=>`<li style="font-size:16px;color:var(--gray);line-height:1.6;padding:10px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;"><span style="color:var(--blue);font-weight:600;flex-shrink:0;">›</span><span>${b}</span></li>`).join('')}
