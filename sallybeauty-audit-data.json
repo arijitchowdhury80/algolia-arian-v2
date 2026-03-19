@@ -250,7 +250,10 @@
       "algolia_solution": "Algolia NeuralSearch \u2014 vector + keyword hybrid understands attribute queries as semantic signals, not token matches",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_result": "+37% conversion rate improvement, +150% sales contribution from search",
-      "category": "Semantic Search"
+      "category": "Semantic Search",
+      "expected_behavior": "Purple shampoo products filtered for blonde hair type, ranked by attribute relevance.",
+      "actual_behavior": "Keyword match only \u2014 \"best\" and \"blonde\" ignored. No semantic understanding of user intent.",
+      "algolia_case_study_company": "Lacoste"
     },
     {
       "id": "G02",
@@ -264,7 +267,10 @@
       "algolia_solution": "Algolia Multi-Index Federated Search \u2014 products, education content, FAQ, and pro-only inventory unified in one results pane",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_result": "150% increase in order rate for new users (Algolia Recommend)",
-      "category": "No Results Handling"
+      "category": "Content Commerce & UX",
+      "expected_behavior": "Help page or FAQ content about returns + product results in a unified view.",
+      "actual_behavior": "Products only (likely \"return\" keyword matches). No federated content across help pages.",
+      "algolia_case_study_company": "Gymshark"
     },
     {
       "id": "G03",
@@ -278,7 +284,10 @@
       "algolia_solution": "Algolia Personalization \u2014 real-time user affinity profiles re-rank search results by segment, browse history, and brand affinity",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_result": "150% increase in order rate for new users, 13% higher order rate for returning customers",
-      "category": "Personalization"
+      "category": "Personalization",
+      "expected_behavior": "Personalized results: color-safe shampoos ranked higher based on prior hair color browsing.",
+      "actual_behavior": "Zero personalization visible. Same generic results for every visitor. No \"Recommended for you.\"",
+      "algolia_case_study_company": "Gymshark"
     },
     {
       "id": "G04",
@@ -287,12 +296,15 @@
       "tested_query": "Ion Color Brilliance PDP",
       "screenshot_file": "screenshots/13-recommendations-pdp.png",
       "observation": "Product detail page shows limited or no 'Frequently Bought Together' or 'Similar Items.' For a retailer selling complementary products (color + developer + gloves + applicator brush), missing FBT recommendations leaves basket revenue on the table. No dedicated recommendation engine detected in BuiltWith.",
-      "impact_stat": "On some sites, searchers account for roughly 40% of total revenue",
+      "impact_stat": "Recommendations drive up to 31% of e-commerce revenue",
       "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
       "algolia_solution": "Algolia Recommend \u2014 FBT, Similar Items, and Trending models on PDP and post-add-to-cart",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_result": "150% increase in order rate for new users during Black Friday, 32% increase in add-to-cart rate",
-      "category": "Recommendations"
+      "category": "Recommendations",
+      "expected_behavior": "\"Frequently Bought Together\": developer, gloves, applicator brush. \"Similar Items\" carousel.",
+      "actual_behavior": "Limited or no recommendations visible. No FBT module. Massive cross-sell opportunity missed.",
+      "algolia_case_study_company": "Gymshark"
     },
     {
       "id": "G05",
@@ -306,7 +318,10 @@
       "algolia_solution": "Algolia Dynamic Faceting \u2014 automatically surfaces most relevant filter attributes by query context",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_result": "+37% conversion rate improvement, -88% bounce rate reduction",
-      "category": "Facets & Filtering"
+      "category": "Facets & Filtering",
+      "expected_behavior": "Dynamic filters: \"Temperature settings\" for flat iron, \"Heat protection level\", \"Plate width\".",
+      "actual_behavior": "Static filters (Pickup & Delivery, Brand only) across all searches. No context-aware faceting.",
+      "algolia_case_study_company": "Lacoste"
     },
     {
       "id": "G06",
@@ -320,7 +335,10 @@
       "algolia_solution": "Algolia Typo Tolerance \u2014 configurable single/double typo handling, transposition matching, and 'Did You Mean?' UI component",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_result": "-88% bounce rate reduction after Algolia implementation",
-      "category": "Performance"
+      "category": "Typo Tolerance",
+      "expected_behavior": "Results for \"shampoo\" despite misspelling, with visible \"Did you mean?\" correction.",
+      "actual_behavior": "Basic single-character typos handled. Complex transpositions may fail. No \"Did You Mean?\" shown.",
+      "algolia_case_study_company": "Lacoste"
     },
     {
       "id": "S01",
@@ -334,7 +352,10 @@
       "algolia_solution": "Algolia Query Suggestions + InstantSearch \u2014 enriches SAYT with trending, recent, and AI-powered suggestions",
       "algolia_case_study_url": "",
       "algolia_case_study_result": "",
-      "category": "Type-ahead / SAYT"
+      "category": "Type-ahead / SAYT",
+      "expected_behavior": "Search-as-you-type dropdown with relevant product suggestions.",
+      "actual_behavior": "SAYT present \u2014 autocomplete dropdown appears with product and query suggestions.",
+      "algolia_case_study_company": ""
     },
     {
       "id": "S02",
@@ -348,7 +369,10 @@
       "algolia_solution": "Algolia Query Rules \u2014 extend brand recognition with dedicated brand landing pages, banners, and priority boosts",
       "algolia_case_study_url": "",
       "algolia_case_study_result": "",
-      "category": "Semantic Search"
+      "category": "Semantic Search",
+      "expected_behavior": "Brand intent recognized \u2014 CHI products returned for brand query.",
+      "actual_behavior": "Brand recognition works well. CHI products appear correctly for brand search.",
+      "algolia_case_study_company": ""
     }
   ],
   "gap_pairs": [
@@ -412,22 +436,22 @@
     ],
     "ebitda_margin": "12.6% (Q4 FY2024 Adjusted); 10.6% full-year FY2024",
     "margin_zone": "YELLOW",
-    "digital_revenue": "$364.6M [ESTIMATE]",
-    "digital_revenue_pct": "9.8%",
+    "digital_revenue": "$364.6M",
+    "digital_revenue_pct": "9.8% (FY2024 actual, SEC filing)",
     "roi_scenarios": {
       "conservative": {
-        "annual_impact": "$2.74M/year [ESTIMATE]",
-        "scenario_desc": "5% search conversion lift on $54.7M addressable base",
+        "annual_impact": "$2.74M/year",
+        "scenario_desc": "5% search conversion lift on $54.7M addressable base (projected)",
         "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 5% lift"
       },
       "moderate": {
-        "annual_impact": "$5.47M/year [ESTIMATE]",
-        "scenario_desc": "10% search conversion lift on $54.7M addressable base",
+        "annual_impact": "$5.47M/year",
+        "scenario_desc": "10% search conversion lift on $54.7M addressable base (projected)",
         "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 10% lift"
       },
       "optimistic": {
-        "annual_impact": "$8.20M/year [ESTIMATE]",
-        "scenario_desc": "15% search conversion lift on $54.7M addressable base",
+        "annual_impact": "$8.20M/year",
+        "scenario_desc": "15% search conversion lift on $54.7M addressable base (projected)",
         "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 15% lift"
       }
     },
