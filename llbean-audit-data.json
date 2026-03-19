@@ -512,18 +512,38 @@
       "source": "SimilarWeb mobile_web vs total (Jan 2025): 10.98M / 16.63M = 66%",
       "insight": "Mobile-majority audience (66%) demands sub-100ms search \u2014 current native search fails mobile UX"
     },
-    "demographics": {
-      "age_18_24": 5.2,
-      "age_25_34": 16.6,
-      "age_35_44": 16.3,
-      "age_45_54": 19.6,
-      "age_55_64": 24.5,
-      "age_65_plus": 17.8,
-      "male": 34.8,
-      "female": 65.2,
-      "source": "SimilarWeb demographics API (Jan 2025, worldwide)",
-      "insight": "Older-skewing (55+ = 42.3%), female-majority (65.2%) \u2014 gift buyers and heritage loyalists dominate. Secondary 25-34 cohort (16.6%) is the growth opportunity."
-    },
+    "demographics": [
+      {
+        "age_group": "18\u201324",
+        "pct": 5.2,
+        "color": "#818CF8"
+      },
+      {
+        "age_group": "25\u201334",
+        "pct": 16.6,
+        "color": "#6366F1"
+      },
+      {
+        "age_group": "35\u201344",
+        "pct": 16.3,
+        "color": "#4F46E5"
+      },
+      {
+        "age_group": "45\u201354",
+        "pct": 19.6,
+        "color": "#4338CA"
+      },
+      {
+        "age_group": "55\u201364",
+        "pct": 24.5,
+        "color": "#3730A3"
+      },
+      {
+        "age_group": "65+",
+        "pct": 17.8,
+        "color": "#312E81"
+      }
+    ],
     "top_countries": [
       {
         "country": "United States",
@@ -540,7 +560,10 @@
         "share": "~3%",
         "note": "22 stores"
       }
-    ]
+    ],
+    "demographics_note": "Source: SimilarWeb Jan 2025 (worldwide). 55+ = 42.3%, female 65.2%.",
+    "gender_male": 34.8,
+    "gender_female": 65.2
   },
   "tech_stack": {
     "primary_platform": "commercetools (headless MACH) \u2014 migrated May 2024",
