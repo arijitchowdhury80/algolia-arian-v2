@@ -6,8 +6,8 @@
     "audited_by": "Algolia Search Audit",
     "version": "v1",
     "data_vintage": {
-      "similarweb": "2025-10-01",
-      "builtwith": "2026-02-23",
+      "similarweb": "2026-02-28",
+      "builtwith": "2026-03-18",
       "yahoo_finance": "2026-03-18"
     }
   },
@@ -71,8 +71,8 @@
     "founded": "1983",
     "ticker": "COST (NASDAQ)",
     "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected)",
-    "ecommerce_platform": "Salesforce Commerce Cloud",
-    "monthly_visits": "93.27M/mo",
+    "ecommerce_platform": "HCL Commerce (IBM WebSphere Commerce)",
+    "monthly_visits": "83.4M/mo",
     "visits_source": "https://www.similarweb.com/website/costco.com/",
     "market_cap": "~$435B",
     "current_price": "$979.92"
@@ -136,6 +136,33 @@
     }
   ],
   "intelligence_signals": [
+    {
+      "type": "exec",
+      "badge_label": "CEO/CFO Statement",
+      "text": "Costco CEO and CFO discuss AI-powered online sales jump and tariff strategy. Digital growth and AI investment confirmed as top strategic priorities.",
+      "source_name": "Retail Customer Experience",
+      "source_url": "https://news.google.com/read/CBMitgFBVV95cUxOSzNUNzJ0eXd1djl3bjljUEJsZFFubk5PTzZsTDNPZ0ZOOXhsS3M4SnVfRGdaVnlTMktfdHozLUNRdFQxcHI2Y3luQl9KUzJNYkVlalk1ZFViTGZDRTE5ME5ST19jNFRQRldDM3E0NkhtcXZZV2xhVGp2ZFJTZHNQNTRfdWxtT0w2YTVWQ1VNcGF3NDRKZU1yXzVEMVJHcE0wdk9KZlE0UUZEVWpMQjduS2MwaGVsQQ",
+      "source_date": "2026-03-17",
+      "relevance": "CEO and CFO explicitly linking AI investment to online sales growth \u2014 confirms active budget and executive mandate for AI-powered digital improvements. Direct opening for Algolia NeuralSearch pitch."
+    },
+    {
+      "type": "tech-investment",
+      "badge_label": "Platform Upgrade",
+      "text": "Costco upgrades its retail media platform with AI onsite ads capability. Retail Media Network adding AI-powered advertising layer.",
+      "source_name": "Supermarket News / Progressive Grocer",
+      "source_url": "https://news.google.com/read/CBMijwFBVV95cUxPUkhxZjFWUzU3T0tUblN3NWFtT3ZveFJLRkJvU0FST2lONnhXeXcyZHNOalBPVzl2WGNrNjY1OWJ1RXZiUC11VUxuZ3VYNUlGWlBBSmdCUTU4MUg3U2lfQUptYzM1NjduSTFwOVdjQjRFelhHYVJnOGZmVDZhLXcyQnFreWljSlNDX1RLWm9Fbw",
+      "source_date": "2026-03-18",
+      "relevance": "Tech investment cycle actively open \u2014 Costco just upgraded retail media platform with AI onsite ads (March 18, 2026). Pattern of active modernization makes this the ideal window for a search infrastructure conversation."
+    },
+    {
+      "type": "exec",
+      "badge_label": "CFO Statement",
+      "text": "Costco CFO: 'consumers remain steady as value focus, digital growth, global expansion support momentum.' Digital growth explicitly cited as a key financial driver.",
+      "source_name": "Seeking Alpha",
+      "source_url": "https://news.google.com/read/CBMiwgFBVV95cUxQbVI0cDBTSnVvVDhVcUpBeEE2MUhIOWpxU1U0VUdKTmg1c0dHZEpDcjBfTW9tU0Q0MHJoeUYyRnAyNkhTaEc0d1l0VlR0ZzVpZlFoNGpFSzBHSXFzZWlZSjlEeEhlRlMwcEx5YjRMX3RpZFBLS0JwYjBuaEhYR0Y0bl94Wm5GcE5tZ2tZTTdNcHNkQmEyYVIzMDB4aVMtUUFjYlprSXA4UzVxc3BpQllfNi1kSTJ2SnIyQ0kyTlVXS2FCZw",
+      "source_date": "2026-03-13",
+      "relevance": "CFO explicitly citing digital growth as revenue driver in March 2026 earnings context. Positions search improvement as directly aligned with CFO's stated financial priorities."
+    },
     {
       "type": "exec",
       "badge_label": "CEO Statement",
@@ -496,69 +523,71 @@
     "roi_note": "ROI base: $275.2B total revenue \u00d7 7.2% e-commerce share = $19.82B. Search-addressable = $19.82B \u00d7 15% = $2.97B. Figures unchanged from scratchpad (FY2025 revenue is confirmed by Yahoo Finance)."
   },
   "traffic": {
-    "monthly_visits": "93.27M",
-    "bounce_rate": "33.19%",
-    "pages_per_visit": 5.61,
-    "global_rank": 264,
+    "monthly_visits": "83.4M",
+    "bounce_rate": "36.1%",
+    "pages_per_visit": 5.25,
+    "global_rank": 348,
     "us_rank": "N/A",
-    "category_rank_us": "#7 (Ecommerce > Marketplace, US)",
-    "source": "SimilarWeb public data (Oct 2025 report)",
+    "category_rank_us": "#41 globally (E-commerce > Marketplace)",
+    "source": "SimilarWeb MCP (live API, data as of 2026-02-28)",
     "source_url": "https://www.similarweb.com/website/costco.com/",
     "data_completeness": "Traffic overview, sources, geography, and demographics captured via public SimilarWeb data. Full MCP API endpoints not available.",
     "channels": {
-      "direct": "68.36%",
-      "organic_search": "~22%",
-      "referrals": "Top sources: blackfriday.com (7.51%), crazygames.com (3.25%), coupon.com (2.19%)",
-      "paid_search": "Low \u2014 consistent with Costco's minimal advertising strategy",
-      "social": "Low \u2014 Meta dominates (93.4% of social traffic per MikMak)",
-      "email": "Lowest performing channel"
+      "direct": "61.0%",
+      "organic_search": "28.9%",
+      "referrals": "5.5%",
+      "social": "3.8%",
+      "display_ads": "0.5%",
+      "paid_search": "0.3%",
+      "mail": "0.1%",
+      "_source": "SimilarWeb MCP traffic-sources endpoint, Feb 2026"
     },
     "geography": {
-      "us": "94.30%",
-      "canada": "4.26%",
-      "mexico": "0.16%",
-      "india": "0.15%"
+      "us": "93.3%",
+      "canada": "4.6%",
+      "mexico": "0.4%",
+      "_source": "SimilarWeb MCP geography endpoint (ww, Nov 2025-Feb 2026 avg)"
     },
     "demographics": [
       {
         "age_group": "18-24",
-        "pct": 12,
+        "pct": 8.3,
         "color": "#C7D2FE"
       },
       {
         "age_group": "25-34",
-        "pct": 28,
+        "pct": 24.3,
         "color": "#818CF8"
       },
       {
         "age_group": "35-44",
-        "pct": 22,
+        "pct": 20.2,
         "color": "#5468FF"
       },
       {
         "age_group": "45-54",
-        "pct": 18,
+        "pct": 20.4,
         "color": "#003DFF"
       },
       {
         "age_group": "55-64",
-        "pct": 12,
+        "pct": 16.9,
         "color": "#1E40AF"
       },
       {
         "age_group": "65+",
-        "pct": 8,
+        "pct": 9.8,
         "color": "#0369A1"
       }
     ],
-    "demographics_note": "25-34 confirmed as largest segment (SimilarWeb). Other brackets estimated. Female 53.07%, Male 46.93%.",
-    "gender_female": "53.07%",
-    "gender_male": "46.93%",
-    "visit_duration": "4:31 min"
+    "demographics_note": "SimilarWeb MCP demographics endpoint (ww, 2026-02-28). All 6 age brackets confirmed.",
+    "gender_female": "53.9%",
+    "gender_male": "46.1%",
+    "visit_duration": "4:05 min"
   },
   "tech_stack": {
-    "search": "Native / Proprietary (No Third-Party Search Vendor \u2014 Algolia, Coveo, Lucidworks, Elasticsearch not detected)",
-    "ecommerce": "Salesforce Commerce Cloud [MEDIUM confidence \u2014 Enlyft]",
+    "search": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
+    "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT \u2014 BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
     "personalization": "GrowthLoop AI (2026 launch) + Tealium AudienceStream CDP (active)",
     "recommendations": "Unknown \u2014 RichRelevance absent; new personalization capabilities launched Q1 FY2026",
     "cdp": "Tealium iQ + AudienceStream + EventStream (confirmed \u2014 1,300+ integrations)",
@@ -566,9 +595,14 @@
     "retail_media": "Criteo (ad server) + The Trade Desk + Google DV360 + Epsilon + StackAdapt",
     "measurement": "Habu (clean room), MetaRouter + LiveRamp (identity resolution)",
     "erp": "Microsoft Dynamics 365 Finance + SAP S/4HANA Retail (replenishment)",
-    "analytics": "Microsoft Power BI",
-    "source": "BuiltWith, Enlyft, The Drum, Tealium.com, PRNewswire",
-    "source_url": "https://www.thedrum.com/news/costco-just-revealed-its-entire-retail-media-tech-stack-why"
+    "analytics": "Adobe Analytics (Omniture SiteCatalyst) + Segment CDP + Microsoft Application Insights + Dynatrace [BuiltWith]",
+    "source": "BuiltWith live domain lookup (939 technologies detected, 2026-03-18)",
+    "source_url": "https://builtwith.com/costco.com",
+    "cdn": "Akamai (primary WAF + CDN) + Amazon CloudFront + Cloudflare + Azure Edge [BuiltWith]",
+    "payment": "CyberSource + CardinalCommerce + Visa + Discover [BuiltWith]",
+    "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
+    "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
+    "privacy": "OneTrust [BuiltWith]"
   },
   "hiring": {
     "total_open_roles": 428,
@@ -664,7 +698,11 @@
         "objection": "We have Tealium and GrowthLoop for personalization",
         "counter": "Exactly \u2014 and those are valuable investments. Algolia Personalization consumes your Tealium first-party data to re-rank search results by member affinity. You're not replacing GrowthLoop; you're connecting it to the moment members are actively shopping."
       }
-    ]
+    ],
+    "apify_linkedin_note": "LinkedIn Jobs scraper (Apify, 2026-03-18): 5 results returned, all Tier 4 warehouse/operations roles (Stocker, Inventory Auditor). No Tier 1-3 digital/tech ICP roles surfaced on public LinkedIn. Costco posts tech roles primarily via careers.costco.com, not LinkedIn public job board. Buying committee identified via Phase 1 LinkedIn profile research remains valid.",
+    "linkedin_scrape_date": "2026-03-18",
+    "linkedin_icp_roles_found": 0,
+    "linkedin_total_public_roles": 5
   },
   "strategic_angles": [
     {
