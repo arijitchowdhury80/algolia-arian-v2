@@ -4342,14 +4342,20 @@ a:hover {
     },
     "factcheck": {
       "date": "2026-03-19",
-      "score": "7.6/10",
+      "score": "7.7/10",
       "verdict": "MODERATE",
-      "corrections_applied": 4,
+      "run_count": 2,
+      "latest_run": "2026-03-19 Full tier refresh — 6 SimilarWeb API calls, 1 BuiltWith, 11 WebFetch URLs",
+      "corrections_applied": 8,
       "corrections": [
         "top_channels array corrected: Direct 26.9%→61.0%, Paid 22.9%→0.2%, Display 10.8%→0.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
-        "G03 Decathlon URL updated: /customers/decathlon (404) → /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' → '+50% conversion for personalized search'",
-        "G04/G05 Gymshark URL updated: /customers/gymshark (404) → /customers/gymshark-headless (active). Metric clarified to '150% order rate on Black Friday'",
-        "case_studies library entries updated for Decathlon and Gymshark to match corrected URLs"
+        "G03 Decathlon URL updated: /customers/decathlon (404) → /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' → '+50% conversion for personalized search' [CONFIRMED live 2026-03-19]",
+        "G04 Gymshark URL updated: /customers/gymshark (404) → /customers/gymshark-headless (active). Metric corrected: '+150% order rate on Black Friday' NOT found on live page → 'search conversion 6.2%→10%+; revenue from search +400% YoY'",
+        "Walmart monthly traffic: 648.3M (holiday season) → 451.4M (Jan 2025, SimilarWeb MCP live)",
+        "Target monthly traffic: 297M (holiday season) → 183.2M (Jan 2025, SimilarWeb MCP live)",
+        "BJ's bounce rate: 46.73% → 39.86% (SimilarWeb Jan 2025 live re-pull)",
+        "Walmart GenAI description: 'iOS, Android, and web' → 'iOS at launch; Android and web rollout followed' (per Walmart blog Jan 2024)",
+        "$470M CFO quote verbatim verified: 'In Q2, our personalized product recommendation carousels drove over $470,000,000 of ecommerce sales' — confirmed from Q2 FY2026 Motley Fool transcript 2026-03-05"
       ]
     }
   },
@@ -4599,7 +4605,7 @@ a:hover {
     {
       "type": "competitor",
       "badge_label": "Competitor Move",
-      "text": "Walmart launched GenAI Search in January 2024 (CES announcement): natural language queries like 'Help me plan a football watch party' return curated product lists. iOS, Android, and web. Costco members who shop both sites now expect this capability from every retailer.",
+      "text": "Walmart launched GenAI Search in January 2024 (CES announcement): natural language queries like 'Help me plan a football watch party' return curated product lists. Launched on iOS; Android and web rollout followed through 2024. Costco members who shop both sites now expect this capability from every retailer.",
       "source_name": "Walmart Global Tech Blog",
       "source_url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
       "source_date": "2024-01-30",
@@ -4642,7 +4648,8 @@ a:hover {
       "search_vendor": "Unknown / Proprietary [ESTIMATE]",
       "monthly_traffic": "8.6M",
       "traffic_source": "https://www.semrush.com/website/bjs.com/overview/",
-      "bounce_rate": "46.73%",
+      "bounce_rate": "39.86%",
+      "bounce_rate_note": "Corrected by factcheck 2026-03-19. Previous value 46.73% was stale. SimilarWeb MCP Jan 2025 (ww, total) live re-pull: 0.3986 = 39.86%.",
       "uses_algolia": false,
       "notes": "CEO: 'AI is a big part of our future.' Fastest growing warehouse club (+5% YoY). Potential Algolia prospect. CEO Bob Eddy: \"AI is a big part of our future\" (Retail Dive / CIO Dive, 2025).",
       "ai_quote_source": "https://www.retaildive.com/news/bjs-ceo-ai-future/806688/",
@@ -4652,18 +4659,20 @@ a:hover {
       "name": "Walmart",
       "domain": "walmart.com",
       "search_vendor": "Generative AI Search [FACT — launched Jan 2024, CES announcement] + Elasticsearch [FACT — Walmart Global Tech Blog, analytics/fraud]",
-      "monthly_traffic": "648.3M",
+      "monthly_traffic": "451.4M",
+      "monthly_traffic_note": "SimilarWeb MCP Jan 2025 (ww, total) live re-pull 2026-03-19. Previous value 648.3M was from a higher-traffic period (Nov/Dec 2025 holiday season).",
       "traffic_source": "https://www.similarweb.com/website/walmart.com/",
       "bounce_rate": "50.31%",
       "uses_algolia": false,
-      "notes": "Walmart launched GenAI Search in January 2024 — natural language queries (\"Help me plan a football watch party\"), iOS/Android/web. Also uses Elasticsearch for analytics/fraud (Elastic{ON} 2017). Stock +25.3% in 2025 vs Costco -4%. Sets the GenAI search bar that Costco's members will increasingly expect.",
+      "notes": "Walmart launched GenAI Search in January 2024 — natural language queries (\"Help me plan a football watch party\"), iOS at launch with Android/web rollout following. Also uses Elasticsearch for analytics/fraud (Elastic{ON} 2017). Stock +25.3% in 2025 vs Costco -4%. Sets the GenAI search bar that Costco's members will increasingly expect.",
       "search_vendor_source": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html"
     },
     {
       "name": "Target",
       "domain": "target.com",
       "search_vendor": "Apache Solr (custom deep learning) [FACT]",
-      "monthly_traffic": "297M",
+      "monthly_traffic": "183.2M",
+      "monthly_traffic_note": "SimilarWeb MCP Jan 2025 (ww, total) live re-pull 2026-03-19. Previous value 297M was from a higher-traffic period (likely Nov/Dec 2025 holiday season).",
       "traffic_source": "https://www.similarweb.com/website/target.com/",
       "bounce_rate": "41.02%",
       "uses_algolia": false,
@@ -4749,7 +4758,8 @@ a:hover {
       "prospect_description": "Complex natural language queries — exactly the type 48% of mobile app users type — are blocked before reaching the search engine. Members who type 'healthy snacks for kids' or 'wireless earbuds with noise cancellation under 200' get Access Denied. WAF configuration and lack of NLP infrastructure are both failure modes.",
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-headless",
-      "algolia_case_study_result": "+150% order rate increase on Black Friday with Algolia Recommend",
+      "algolia_case_study_result": "Search conversion rate 6.2% → 10%+; revenue from search users up 400%+ YoY with Algolia headless search",
+      "algolia_case_study_result_note": "Corrected by factcheck 2026-03-19. Previous value '+150% order rate on Black Friday' was not found on the live gymshark-headless case study page. Live page metrics: search conversion 6.2%→10%+, revenue from search +400% YoY, £2M/yr from AI merchandising. WebFetch verified 2026-03-19.",
       "screenshot_note": "error-state.png: WAF/error state screenshot (closest available). Original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted. Chrome re-test blocked by active Phase 2 session conflict. To verify: search \"best TV for gaming under 1000\" on costco.com — Access Denied page from Akamai Edgesuite will appear.",
       "algolia_case_study_company": "Gymshark"
     },
