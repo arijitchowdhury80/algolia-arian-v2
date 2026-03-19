@@ -1926,6 +1926,54 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Glowing Effect — mouse-tracking conic-gradient border glow ─────────────
+   Vanilla CSS + JS replication of Aceternity glowing-effect.
+   Usage: add class="glow-card" to any card element.
+   JS: call initGlowEffect(containerEl) after DOM insertion.
+   The glow tracks mouse position and activates when near the card border.
+────────────────────────────────────────────────────────────────────────────── */
+.glow-card {
+  position: relative;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid var(--brand-border);
+  isolation: isolate;
+}
+/* Gradient border layer — sits behind the card */
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--glow-angle, 0deg),
+    transparent 0%,
+    #dd7bbb 8%,
+    #d79f1e 22%,
+    #5a922c 42%,
+    #4c7894 62%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+/* White fill to cover gradient except the border */
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(12px - 1px);
+  background: white;
+  z-index: -1;
+}
+.glow-card.glow-active::before {
+  opacity: 1;
+}
+.glow-card.glow-active {
+  border-color: transparent;
+}
+
 /* ─── Bounce Card — shrink + rotate on hover with gradient reveal ────────────
    Vanilla CSS replication of uniquesonu/bounce-card-features.
    Usage:
@@ -4057,6 +4105,30 @@ function renderGoldenAngleCard(ga) {
 }
 
 /* ═══════════════════════════════════════════════════
+   GLOW EFFECT — mouse-tracking conic-gradient border
+   CSS in algolia-brand.css (.glow-card)
+   Call initGlowEffect(containerEl) on any container with .glow-card children.
+═══════════════════════════════════════════════════ */
+function initGlowEffect(container) {
+  if (!container || container.dataset.glowInit) return;
+  container.dataset.glowInit = '1';
+  const cards = container.querySelectorAll('.glow-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top  + rect.height / 2;
+      const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI) + 90;
+      card.style.setProperty('--glow-angle', angle + 'deg');
+      card.classList.add('glow-active');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('glow-active');
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════
    ANIMATED BACKGROUND — sliding highlight for card grids
    CSS defined in algolia-brand.css (.ab-container, .ab-item, .ab-highlight)
    Call initAnimatedBg(containerEl) after DOM insertion on any .ab-container.
@@ -4800,42 +4872,69 @@ function sectionTraffic(D) {
   const t = D.traffic || {};
   const channels = t.top_channels || [];
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
+  const audience = t.audience || {};
+  const age = audience.age || {};
+  const gender = audience.gender || {};
+  const maxAge = Math.max(...Object.values(age).map(Number), 1);
+
   return `<section id="section-traffic" class="audit-section">
     <div class="section-eyebrow">Company Intelligence · Traffic ${srcTag('sw','SimilarWeb')}</div>
     <div class="section-title">Traffic & Digital Presence</div>
-    <p class="section-desc">Data as of ${s(D.meta?.data_vintage?.similarweb)} · ${lnk(t.source_url, 'View in SimilarWeb')}</p>
-    <div class="grid-2" style="gap:28px;">
+    <p class="section-desc">Data as of ${s(D.meta?.data_vintage?.similarweb || t.data_vintage)} · ${lnk(t.source_url, 'View in SimilarWeb')}</p>
+
+    <!-- Row 1: 6 KPI tiles across full width -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:28px;">
+      ${[
+        { label:'Monthly Visits',  value: t.monthly_visits || D.company_snapshot?.monthly_visits },
+        { label:'Avg. Visit',      value: t.visit_duration },
+        { label:'Bounce Rate',     value: t.bounce_rate },
+        { label:'Pages / Visit',   value: t.pages_per_visit },
+        { label:'Global Rank',     value: t.global_rank ? '#' + n(t.global_rank) : null },
+        { label:'Category Rank',   value: t.category_rank ? '#' + n(t.category_rank) + (t.category ? ' · ' + t.category : '') : null },
+      ].filter(m => m.value).map(m => `
+        <div class="metric-tile">
+          <div class="metric-tile__label">${m.label}</div>
+          <div class="metric-tile__value" style="font-size:14px;">${escHtml(s(m.value))}</div>
+        </div>`).join('')}
+    </div>
+
+    <!-- Row 2: Traffic sources (left 55%) + Audience demographics (right 45%) -->
+    <div style="display:grid;grid-template-columns:55fr 45fr;gap:24px;">
+      <!-- Traffic sources -->
       <div>
-        <div class="grid-4" style="margin-bottom:20px;">
-          ${[
-            { label: 'Monthly Visits',  value: t.monthly_visits  || D.company_snapshot?.monthly_visits },
-            { label: 'Avg. Visit',      value: t.visit_duration },
-            { label: 'Bounce Rate',     value: t.bounce_rate },
-            { label: 'Pages / Visit',   value: t.pages_per_visit },
-          ].map(m => `<div class="metric-tile"><div class="metric-tile__label">${m.label}</div>
-            <div class="metric-tile__value">${escHtml(s(m.value))}</div></div>`).join('')}
-        </div>
-        ${channels.length ? `
-        <div style="${T.eyebrow};margin-bottom:10px;">Traffic Sources</div>
+        <div class="section-eyebrow" style="margin-bottom:12px;">Traffic Sources</div>
         ${channels.map(c => {
           const pctVal = parseFloat(c.share) || 0;
           const barW   = Math.round((pctVal / maxShare) * 100);
           return `<div class="score-bar-row">
             <span class="score-bar-row__label">${escHtml(c.source || c.channel)}</span>
             <div class="score-bar-row__track"><div class="score-bar-row__fill fill-ok" style="width:${barW}%"></div></div>
-            <span class="score-bar-row__val" style="color:var(--gray)">${c.share}</span>
+            <span class="score-bar-row__val" style="color:var(--gray)">${c.share}%</span>
           </div>`;
-        }).join('')}` : ''}
+        }).join('')}
       </div>
+
+      <!-- Audience demographics -->
       <div>
-        ${(t.top_countries || []).length ? `
-        <div style="${T.eyebrow};margin-bottom:10px;">Top Countries</div>
-        <table class="data-table">
-          <thead><tr><th>Country</th><th>Share</th></tr></thead>
-          <tbody>${(t.top_countries || []).map(c => `
-            <tr><td>${escHtml(c.country)}</td><td>${escHtml(c.share)}</td></tr>`).join('')}
-          </tbody>
-        </table>` : ''}
+        ${Object.keys(age).length ? `
+        <div class="section-eyebrow" style="margin-bottom:12px;">Audience</div>
+        ${Object.keys(gender).length ? `
+        <div style="display:flex;gap:16px;margin-bottom:16px;">
+          ${Object.entries(gender).map(([g,v])=>`
+          <div style="flex:1;background:var(--light);border-radius:8px;padding:10px 14px;text-align:center;">
+            <div style="${T.eyebrowSm};margin-bottom:4px;">${g}</div>
+            <div style="font-size:18px;font-weight:600;color:var(--blue);">${v}%</div>
+          </div>`).join('')}
+        </div>` : ''}
+        <div style="${T.eyebrowSm};margin-bottom:8px;">Age Distribution</div>
+        ${Object.entries(age).map(([bracket, pct]) => {
+          const barW = Math.round((Number(pct) / maxAge) * 100);
+          return `<div class="score-bar-row">
+            <span class="score-bar-row__label">${bracket}</span>
+            <div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:${barW}%;background:var(--purple);"></div></div>
+            <span class="score-bar-row__val" style="color:var(--gray)">${pct}%</span>
+          </div>`;
+        }).join('')}` : '<div style="${T.bodySmMid14}">No audience data available</div>'}
       </div>
     </div>
   </section>`;
@@ -4963,11 +5062,12 @@ function sectionTechStack(D) {
     <div class="section-eyebrow">Company Intelligence · Technology ${srcTag('bw','BuiltWith')}</div>
     <div class="section-title">Tech Stack</div>
     <p class="section-desc">Detected technology stack · ${lnk(ts.source_url, 'View full report on BuiltWith')} · Data as of ${s(D.meta?.data_vintage?.builtwith)}</p>
-    <div class="grid-3" style="margin-bottom:28px;">
+    <!-- Glow cards — CSS in algolia-brand.css, JS: initGlowEffect -->
+    <div id="tech-glow-grid" class="grid-3" style="margin-bottom:28px;">
       ${cats.map(c => `
-        <div class="metric-tile ${c.highlight ? 'metric-tile--highlight' : ''}">
-          <div class="metric-tile__label">${c.label}</div>
-          <div class="metric-tile__value">${escHtml(s(c.value))}</div>
+        <div class="glow-card" style="padding:18px 20px;">
+          <div style="${T.eyebrowSm};margin-bottom:8px;">${escHtml(c.label)}</div>
+          <div style="font-size:16px;font-weight:600;color:${c.highlight ? 'var(--red)' : 'var(--gray)'};line-height:1.4;">${escHtml(s(c.value))}</div>
         </div>`).join('')}
     </div>
     ${(ts.full_list || []).length ? `
@@ -6665,6 +6765,12 @@ function init() {
     initChapterObserver();
     // Init animated background on all .ab-container elements
     document.querySelectorAll('.ab-container').forEach(el => initAnimatedBg(el));
+    // Init glow effect on all containers with .glow-card children
+    document.querySelectorAll('[id$="-glow-grid"], .glow-grid').forEach(el => initGlowEffect(el));
+    // Also init on direct parent containers of glow cards
+    const glowCards = document.querySelectorAll('.glow-card');
+    const glowParents = new Set([...glowCards].map(c => c.parentElement));
+    glowParents.forEach(p => initGlowEffect(p));
   });
 
   // Scroll progress bar
