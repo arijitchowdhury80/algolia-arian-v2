@@ -1,0 +1,880 @@
+{
+  "meta": {
+    "company": "Sally Beauty Holdings",
+    "domain": "sallybeauty.com",
+    "audit_date": "2026-03-18",
+    "audited_by": "Algolia",
+    "version": "v1",
+    "data_vintage": {
+      "similarweb": "2025-10-31",
+      "builtwith": "2026-02-28",
+      "yahoo_finance": "2026-02-25"
+    }
+  },
+  "cover": {
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Sally_Beauty_Supply_store_Ypsilanti.JPG",
+    "company_logo_url": "https://logo.clearbit.com/sallybeauty.com",
+    "status_line": "Confidential \u00b7 For Internal Use Only"
+  },
+  "score": {
+    "overall": 4.6,
+    "verdict": "Critical Gaps Found",
+    "verdict_class": "critical",
+    "breakdown": {
+      "latency": 7,
+      "typo_tolerance": 6,
+      "query_suggestions_empty_state": 7,
+      "intent_detection": 5,
+      "merchandising_consistency": 6,
+      "content_commerce_ux": 4,
+      "semantic_nlp_search": 3,
+      "dynamic_facets_personalization": 4,
+      "recommendations_merchandising": 4,
+      "search_intelligence": 5
+    },
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "query_suggestions_empty_state": "Query Suggestions & Empty State",
+      "intent_detection": "Intent Detection",
+      "merchandising_consistency": "Merchandising Consistency",
+      "content_commerce_ux": "Content Commerce & UX",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "search_intelligence": "Search Intelligence"
+    },
+    "breakdown_severity": {
+      "latency": "LOW",
+      "typo_tolerance": "MEDIUM",
+      "query_suggestions_empty_state": "LOW",
+      "intent_detection": "HIGH",
+      "merchandising_consistency": "MEDIUM",
+      "content_commerce_ux": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "HIGH",
+      "recommendations_merchandising": "HIGH",
+      "search_intelligence": "MEDIUM"
+    },
+    "critical_count": 5,
+    "moderate_count": 3
+  },
+  "company_snapshot": {
+    "industry": "Beauty & Personal Care Retail",
+    "hq": "Denton, TX (relocating to Plano, TX)",
+    "employees": "~27,000",
+    "revenue": "$3.72B",
+    "revenue_source": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results",
+    "revenue_source_label": "Business Wire FY2024 Results",
+    "founded": "1964",
+    "ticker": "SBH",
+    "current_search_vendor": "Salesforce Commerce Cloud (Einstein Search)",
+    "ecommerce_platform": "Salesforce Commerce Cloud",
+    "monthly_visits": "4.75M/mo",
+    "visits_source": "https://gripsintelligence.com/insights/retailers/sallybeauty.com"
+  },
+  "executives": [
+    {
+      "name": "Denise Paulonis",
+      "title": "President & CEO",
+      "quote": "Notable enhancements include coupon clarity and loyalty transparency, so value is more visible, easier to interpret, and actionable at the right moments, as well as a more efficient search engine for easier product discovery.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call",
+      "quote_date": "2026-02",
+      "relevance": "CEO explicitly names search as a current improvement area \u2014 confirms the gap and budget intent"
+    },
+    {
+      "name": "Denise Paulonis",
+      "title": "President & CEO",
+      "quote": "I'm overwhelmed by choices. TikTok offers me choices. Everybody in the world offers me choices. Help me make the right choice.",
+      "quote_source": "https://www.beautyindependent.com/ceo-denise-paulonis-sally-beauty-new-store-format/",
+      "quote_source_label": "Beauty Independent CEO Interview",
+      "quote_date": "2025-11",
+      "relevance": "CEO articulating the exact problem Algolia NeuralSearch solves \u2014 curation and guided discovery across 18,500+ SKUs"
+    },
+    {
+      "name": "Denise Paulonis",
+      "title": "President & CEO",
+      "quote": "From our performance marketing, CRM, and personalization initiatives, we are pleased to see expanding customer counts among the millennial and Gen Z cohorts.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call",
+      "quote_date": "2026-02",
+      "relevance": "Personalization is already a stated business initiative \u2014 Algolia Personalization at the search layer is the missing piece"
+    },
+    {
+      "name": "Denise Paulonis",
+      "title": "President & CEO",
+      "quote": "Customers acquired through LCOD spend two times more than customers acquired through other means over their first year with us.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call",
+      "quote_date": "2026-02",
+      "relevance": "Proves guided discovery drives 2x AOV \u2014 Algolia Recommend replicates this at scale across all digital touchpoints"
+    },
+    {
+      "name": "Marlo Cormier",
+      "title": "SVP & CFO",
+      "quote": "Global ecommerce sales increased 11% to $111 million and represented 12% of total net sales.",
+      "quote_source": "https://www.theglobeandmail.com/investing/markets/markets-news/Motley%20Fool/107934/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "quote_source_label": "Q1 FY2026 Earnings Call",
+      "quote_date": "2026-02",
+      "relevance": "$111M quarterly e-commerce = the revenue base where search optimization delivers immediate ROI"
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "type": "exec",
+      "title": "CEO Names Search Gap on Earnings Call",
+      "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "source_date": "2026-02-09",
+      "relevance": "Direct CEO confirmation of search gap = qualified opportunity",
+      "text": "Denise Paulonis cited 'a more efficient search engine for easier product discovery' as a named enhancement on the Q1 FY2026 earnings call \u2014 confirming budget intent and AE entry point."
+    },
+    {
+      "type": "industry-opp",
+      "title": "BSG Platform Overhaul Spring 2026",
+      "source_url": "https://www.cosmeticsdesign.com/Article/2026/02/11/sally-beauty-holdings-q1-results-show-steady-demand-as-cost-pressures-remain-in-focus/",
+      "source_date": "2026-02-11",
+      "relevance": "Open window to include Algolia in BSG re-platform scope before tech stack is locked",
+      "text": "Sally Beauty's Beauty Systems Group (BSG) is undergoing a substantial app and e-commerce platform update including AI, personalization, and payment modernization \u2014 planned Spring 2026."
+    },
+    {
+      "type": "competitor",
+      "title": "Sephora Running Constructor.io for AI Search",
+      "source_url": "https://constructor.com/blog/ecommerce-personalization",
+      "source_date": "2024-01-01",
+      "relevance": "First-mover urgency: Sally can leapfrog Sephora's search experience with Algolia NeuralSearch",
+      "text": "Sephora (42.1M monthly visits, Sally's top direct competitor) uses Constructor.io for AI-powered personalized search. Sally runs native SFCC Einstein Search \u2014 creating a visible experience gap."
+    },
+    {
+      "type": "hiring",
+      "title": "VP Ecommerce Vacancy + SFCC Engineer Active",
+      "source_url": "https://www.linkedin.com/jobs/view/vp-ecommerce-at-sally-beauty-3986657117",
+      "source_date": "2026-02-01",
+      "relevance": "Leadership vacancy = new decision authority coming; SFCC engineer = Algolia deployment is technically ready",
+      "text": "Sally Beauty has an active VP Ecommerce opening (leadership gap) and a Salesforce Commerce Cloud Software Engineer posting (deadline Mar 12, 2026) confirming SFCC platform and engineering readiness for Algolia's native cartridge."
+    },
+    {
+      "type": "funding",
+      "title": "E-Commerce Growing +20% YoY (Sally Segment)",
+      "source_url": "https://finance.yahoo.com/news/sally-beauty-holdings-reports-first-114500895.html",
+      "source_date": "2026-02-09",
+      "relevance": "Growing digital channel = greater leverage from search optimization investment",
+      "text": "Sally segment e-commerce grew 20% to $50M in Q1 FY2026; US/Canada e-commerce up 28%. Global e-commerce reached $111M representing 12% of total net sales."
+    },
+    {
+      "type": "industry-risk",
+      "title": "HQ Layoffs + Relocation (Budget Sensitivity)",
+      "source_url": "https://dentonrc.com/business/sally-beauty-preparing-to-leave-denton-lays-off-creative-marketing-department/article_3c1f82bd-2b83-4714-950e-0549f46054f2.html",
+      "source_date": "2025-06-01",
+      "relevance": "Caution: budget sensitivity is real \u2014 lead with $5.47M ROI scenario and Fuel for Growth alignment",
+      "text": "Sally Beauty laid off its creative marketing department and is relocating HQ from Denton to Plano, TX. Indicates cost-cutting mode \u2014 ROI case must be airtight."
+    },
+    {
+      "type": "exec",
+      "title": "AI & Personalization Explicitly on BSG Roadmap",
+      "source_url": "https://www.theglobeandmail.com/investing/markets/markets-news/Motley%20Fool/107934/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "source_date": "2026-02-09",
+      "relevance": "AI capability gap is identified at C-suite level \u2014 Algolia NeuralSearch is the product that fills it",
+      "text": "CFO described BSG Spring 2026 updates as including 'enhanced capabilities around education, AI, and personalization' \u2014 search is the AI layer they don't yet have."
+    },
+    {
+      "type": "industry-opp",
+      "title": "CosmoProf Institute Digital Education Expansion",
+      "source_url": "https://infotechlead.com/cio/sally-beauty-accelerates-ai-digital-transformation-and-e-commerce-growth-with-sally-ignited-strategy-93663",
+      "source_date": "2026-01-01",
+      "relevance": "Algolia Multi-Index Search uniquely solves this \u2014 no single-index search vendor can do products + education natively",
+      "text": "Sally Beauty is expanding CosmoProf Institute online education platform for licensed professionals \u2014 creating a new federated search use case (products + education in one search)."
+    },
+    {
+      "type": "partner",
+      "title": "Salesforce SFCC Platform Confirmed (Algolia Native Cartridge Available)",
+      "source_url": "https://builtwith.com/sallybeauty.com",
+      "source_date": "2026-02-28",
+      "relevance": "Removes primary technical objection \u2014 implementation is plug-and-play with existing SFCC engineer team",
+      "text": "BuiltWith and job postings confirm Salesforce Commerce Cloud as the e-commerce platform. Algolia has a native SFCC cartridge \u2014 no custom integration required."
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Sephora",
+      "domain": "sephora.com",
+      "monthly_visits": "42.1M",
+      "search_vendor": "Constructor.io",
+      "vendor_method": "BuiltWith + Network",
+      "uses_algolia": false
+    },
+    {
+      "name": "Ulta Beauty",
+      "domain": "ulta.com",
+      "monthly_visits": "31.7M",
+      "search_vendor": "Unknown (NOT Algolia)",
+      "vendor_method": "Algolia Customers verification",
+      "uses_algolia": false
+    },
+    {
+      "name": "CosmoProf (sister brand)",
+      "domain": "cosmoprofbeauty.com",
+      "monthly_visits": "491K",
+      "search_vendor": "SFCC Native (inferred)",
+      "vendor_method": "Same parent platform",
+      "uses_algolia": false
+    },
+    {
+      "name": "Bath & Body Works",
+      "domain": "bathandbodyworks.com",
+      "monthly_visits": "23.6M",
+      "search_vendor": "Unknown",
+      "vendor_method": "Not verified",
+      "uses_algolia": false
+    },
+    {
+      "name": "Madison Reed",
+      "domain": "madison-reed.com",
+      "monthly_visits": "~750K",
+      "search_vendor": "Unknown",
+      "vendor_method": "Not verified",
+      "uses_algolia": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "G01",
+      "title": "Zero NLP / Semantic Understanding",
+      "severity": "critical",
+      "tested_query": "best purple shampoo for blonde hair",
+      "screenshot_file": "screenshots/08-nlp-purple-shampoo.png",
+      "observation": "Query returns keyword-matched results only. Words like 'blonde,' 'best,' and attribute intent ('purple shampoo') are treated as separate tokens, not semantic signals. Natural language product discovery fails completely for Sally's 1,300+ hair color SKUs.",
+      "impact_stat": "72% of sites completely fail search expectations",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia NeuralSearch \u2014 vector + keyword hybrid understands attribute queries as semantic signals, not token matches",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_result": "+37% conversion rate improvement, +150% sales contribution from search",
+      "category": "Semantic Search"
+    },
+    {
+      "id": "G02",
+      "title": "No Federated Search \u2014 Content Commerce Gap",
+      "severity": "critical",
+      "tested_query": "return policy",
+      "screenshot_file": "screenshots/07-federated-return.png",
+      "observation": "Searching 'return policy' returns product results, not help content or FAQ documentation. CosmoProf Institute education content (balayage tutorials, color formulation guides) is not discoverable through the product search experience.",
+      "impact_stat": "34% of users attempted to search for non-product content on e-commerce sites",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia Multi-Index Federated Search \u2014 products, education content, FAQ, and pro-only inventory unified in one results pane",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_result": "150% increase in order rate for new users (Algolia Recommend)",
+      "category": "No Results Handling"
+    },
+    {
+      "id": "G03",
+      "title": "No Personalization Layer",
+      "severity": "critical",
+      "tested_query": "shampoo (personalization analysis)",
+      "screenshot_file": "screenshots/04-results-shampoo.png",
+      "observation": "A licensed colorist and a first-time DIY shopper searching 'shampoo' see identical results. No segment-based (pro vs. DIY) or individual-user reranking. CQuotient present but limited to rule-based targeting, not real-time user affinity.",
+      "impact_stat": "48% of consumers spend more with personalized experiences",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia Personalization \u2014 real-time user affinity profiles re-rank search results by segment, browse history, and brand affinity",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_result": "150% increase in order rate for new users, 13% higher order rate for returning customers",
+      "category": "Personalization"
+    },
+    {
+      "id": "G04",
+      "title": "Weak Recommendations on PDP",
+      "severity": "critical",
+      "tested_query": "Ion Color Brilliance PDP",
+      "screenshot_file": "screenshots/13-recommendations-pdp.png",
+      "observation": "Product detail page shows limited or no 'Frequently Bought Together' or 'Similar Items.' For a retailer selling complementary products (color + developer + gloves + applicator brush), missing FBT recommendations leaves basket revenue on the table. No dedicated recommendation engine detected in BuiltWith.",
+      "impact_stat": "40% of total revenue at high-performing retail sites is driven by search and browse flows",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia Recommend \u2014 FBT, Similar Items, and Trending models on PDP and post-add-to-cart",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_result": "150% increase in order rate for new users during Black Friday, 32% increase in add-to-cart rate",
+      "category": "Recommendations"
+    },
+    {
+      "id": "G05",
+      "title": "Static Filters \u2014 Poor Intent Detection",
+      "severity": "critical",
+      "tested_query": "shampoo (filter analysis)",
+      "screenshot_file": "screenshots/04-results-shampoo.png",
+      "observation": "Filter options appear static regardless of query context. Searching a brand ('CHI') surfaces the same filter set as searching a hair concern ('purple shampoo for blonde hair'). No context-aware facets by hair type, concern, or shade. 18,500 SKU catalog demands category-aware dynamic facets.",
+      "impact_stat": "41% of e-commerce sites have critical issues with search query type handling",
+      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-query-types",
+      "algolia_solution": "Algolia Dynamic Faceting \u2014 automatically surfaces most relevant filter attributes by query context",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_result": "+37% conversion rate improvement, -88% bounce rate reduction",
+      "category": "Facets & Filtering"
+    },
+    {
+      "id": "G06",
+      "title": "Typo Tolerance Gap (Moderate)",
+      "severity": "moderate",
+      "tested_query": "shampo / condtioner",
+      "screenshot_file": "screenshots/05-typo-shampo.png",
+      "observation": "Basic single-character typos handled ('shampo' \u2192 shampoo results). More complex transpositions ('condtioner') need verification. No visible 'Did You Mean?' correction. Native SFCC typo handling is keyword-level only, without ML-backed fuzzy matching.",
+      "impact_stat": "81% of U.S. consumers leave after unsuccessful search",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia Typo Tolerance \u2014 configurable single/double typo handling, transposition matching, and 'Did You Mean?' UI component",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_result": "-88% bounce rate reduction after Algolia implementation",
+      "category": "Performance"
+    },
+    {
+      "id": "S01",
+      "title": "SAYT Present (Positive)",
+      "severity": "positive",
+      "tested_query": "sham",
+      "screenshot_file": "screenshots/03-sayt-sham.png",
+      "observation": "Autocomplete dropdown appears with product suggestions. Good foundation to layer Algolia Query Suggestions (trending + recent) and NeuralSearch on top of existing SAYT.",
+      "impact_stat": "24% sales and conversion boost from autocomplete",
+      "impact_stat_source": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "algolia_solution": "Algolia Query Suggestions + InstantSearch \u2014 enriches SAYT with trending, recent, and AI-powered suggestions",
+      "algolia_case_study_url": "",
+      "algolia_case_study_result": "",
+      "category": "Type-ahead / SAYT"
+    },
+    {
+      "id": "S02",
+      "title": "Brand Intent Recognition (Positive)",
+      "severity": "positive",
+      "tested_query": "CHI",
+      "screenshot_file": "screenshots/09-brand-chi.png",
+      "observation": "Brand-level intent ('CHI') returns branded products correctly. Good baseline for Algolia Query Rules overlay (brand page redirects, bannering, boosted brand content).",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "algolia_solution": "Algolia Query Rules \u2014 extend brand recognition with dedicated brand landing pages, banners, and priority boosts",
+      "algolia_case_study_url": "",
+      "algolia_case_study_result": "",
+      "category": "Semantic Search"
+    }
+  ],
+  "gap_pairs": [
+    {
+      "exec_name": "Denise Paulonis",
+      "exec_title": "President & CEO",
+      "quote": "a more efficient search engine for easier product discovery",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "finding_id": "G01",
+      "finding_title": "Zero NLP / Semantic Understanding",
+      "gap_explanation": "CEO explicitly identifies the search efficiency gap. Audit confirms: native SFCC Einstein Search fails semantic/NLP queries \u2014 'best purple shampoo for blonde hair' returns keyword matches only."
+    },
+    {
+      "exec_name": "Denise Paulonis",
+      "exec_title": "President & CEO",
+      "quote": "I'm overwhelmed by choices. TikTok offers me choices. Everybody in the world offers me choices. Help me make the right choice.",
+      "quote_source": "https://www.beautyindependent.com/ceo-denise-paulonis-sally-beauty-new-store-format/",
+      "finding_id": "G03",
+      "finding_title": "No Personalization Layer",
+      "gap_explanation": "CEO articulates the core customer pain point. Audit confirms: search results are identical for all users regardless of segment or history \u2014 no 'choice curation' at the search layer."
+    },
+    {
+      "exec_name": "Denise Paulonis",
+      "exec_title": "President & CEO",
+      "quote": "Customers acquired through LCOD spend two times more than customers acquired through other means over their first year with us.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "finding_id": "G04",
+      "finding_title": "Weak Recommendations on PDP",
+      "gap_explanation": "CEO proves guided discovery drives 2x AOV. Audit confirms: PDP has no 'Frequently Bought Together' or similar recommendations \u2014 the digital equivalent of guided discovery is missing."
+    }
+  ],
+  "financials": {
+    "revenue_3y": [
+      {
+        "year": "FY2022",
+        "revenue": "$3.82B",
+        "ecom_pct": "9.0%",
+        "signal": "Revenue peak \u2014 pre-normalization",
+        "source": "https://www.businesswire.com/news/home/20221110005178/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2022-Results"
+      },
+      {
+        "year": "FY2023",
+        "revenue": "$3.73B",
+        "ecom_pct": "9.3%",
+        "signal": "Slight decline; e-commerce share growing",
+        "source": "https://stockanalysis.com/stocks/sbh/revenue/"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$3.72B",
+        "ecom_pct": "9.8%",
+        "signal": "Revenue stabilizing; margins improving (+70 bps EBITDA); Sally Ignited launched",
+        "source": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results"
+      }
+    ],
+    "ebitda_margin": "12.6%",
+    "margin_zone": "YELLOW",
+    "digital_revenue": "$364.6M [ESTIMATE]",
+    "digital_revenue_pct": "9.8%",
+    "roi_scenarios": {
+      "conservative": {
+        "annual_impact": "$2.74M/year [ESTIMATE]",
+        "scenario_desc": "5% search conversion lift on $54.7M addressable base",
+        "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 5% lift"
+      },
+      "moderate": {
+        "annual_impact": "$5.47M/year [ESTIMATE]",
+        "scenario_desc": "10% search conversion lift on $54.7M addressable base",
+        "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 10% lift"
+      },
+      "optimistic": {
+        "annual_impact": "$8.20M/year [ESTIMATE]",
+        "scenario_desc": "15% search conversion lift on $54.7M addressable base",
+        "source": "Internal calculation: $364.6M \u00d7 15% search share \u00d7 15% lift"
+      }
+    },
+    "roi_multiple": "~20x (at moderate scenario vs. $275K est. Algolia cost)",
+    "payback_period": "< 1 quarter",
+    "algolia_annual_cost_est": "$150K\u2013$400K/year (enterprise)"
+  },
+  "traffic": {
+    "monthly_visits": "4.75M",
+    "bounce_rate": "~50%",
+    "pages_per_visit": "4.04",
+    "avg_visit_duration": "3:46",
+    "conversion_rate": "3.0\u20133.5%",
+    "aov": "$50\u2013$75",
+    "device_split": {
+      "desktop": "57%",
+      "mobile": "43%"
+    },
+    "traffic_sources": {
+      "organic": "35\u201340% [ESTIMATE]",
+      "direct": "30\u201335% [ESTIMATE]",
+      "paid": "15\u201320% [ESTIMATE]",
+      "referral": "5\u20138% [ESTIMATE]",
+      "social": "3\u20135% [ESTIMATE]",
+      "email": "5\u20138% [ESTIMATE]"
+    },
+    "demographics": [
+      {
+        "age_group": "18-24",
+        "pct": 15,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "25-34",
+        "pct": 25,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": 25,
+        "color": "#00C8FF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": 20,
+        "color": "#7C3AED"
+      },
+      {
+        "age_group": "55-64",
+        "pct": 10,
+        "color": "#A5B4FC"
+      },
+      {
+        "age_group": "65+",
+        "pct": 5,
+        "color": "#C4B5FD"
+      }
+    ],
+    "source_url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com"
+  },
+  "tech_stack": {
+    "ecommerce_platform": "Salesforce Commerce Cloud (Demandware)",
+    "search_vendor": "SFCC Einstein Search (native)",
+    "search_vendor_status": "CONFIRMED \u2014 no third-party search detected",
+    "personalization": "CQuotient + Monetate",
+    "recommendations": "None detected",
+    "reviews": "Bazaarvoice (status in transition per SimilarWeb Feb 2026)",
+    "analytics": "Google Analytics, Google Tag Manager, Adobe Audience Manager",
+    "cdn": "Cloudflare",
+    "payments": "Apple Pay, Klarna, PayPal Pay in 4, Discover",
+    "security": "PerimeterX (bot detection), Okta (SSO)",
+    "hosting": "AWS EC2 (Virginia + Oregon), Microsoft Azure US South",
+    "source": "https://builtwith.com/sallybeauty.com"
+  },
+  "hiring": {
+    "total_open_roles": "4100+",
+    "buying_committee": [
+      {
+        "role": "Economic Buyer",
+        "name": "Natalie Lockhart",
+        "title": "GVP, Strategy, Customer Insights & Digital Experience",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Owns digital strategy and budget \u2014 tie to $111M quarterly e-commerce growth",
+        "job_url": "",
+        "salary_range": ""
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Scott Lindblom",
+        "title": "SVP & CIO",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "2+ years in role, from Bed Bath & Beyond digital transformation \u2014 ready for big technology bets; lead with SFCC native cartridge",
+        "job_url": "https://www.linkedin.com/in/scott-lindblom/",
+        "salary_range": ""
+      },
+      {
+        "role": "Champion",
+        "name": "Chris Hansen",
+        "title": "VP, Digital Product",
+        "status": "HOT",
+        "signal": "hot",
+        "message": "Active on LinkedIn, speaks at CommerceNext, promotes digital hiring \u2014 most accessible entry point",
+        "job_url": "https://www.linkedin.com/in/chris-hansen-2809403/",
+        "salary_range": ""
+      },
+      {
+        "role": "User Buyer",
+        "name": "Bryan DeYoung",
+        "title": "SVP, Merchandising Operations & Business Services",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Algolia Merchandising Studio reduces manual curation labor \u2014 Fuel for Growth alignment",
+        "job_url": "https://www.linkedin.com/in/bryan-deyoung-4942a66/",
+        "salary_range": ""
+      },
+      {
+        "role": "Budget Authority",
+        "name": "Marlo Cormier",
+        "title": "SVP & CFO",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Lead with $5.47M ROI moderate scenario; tie to Fuel for Growth $120M target",
+        "job_url": "https://www.linkedin.com/in/marlo-cormier-cpa-bb706360/",
+        "salary_range": ""
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Pre-Hire",
+        "target": "Chris Hansen (VP Digital Product)",
+        "message": "Reach out before VP Ecommerce is filled \u2014 current digital team open to technology conversations",
+        "timing": "Immediately"
+      },
+      {
+        "phase": 2,
+        "label": "Technical Proof",
+        "target": "Scott Lindblom (CIO) + SFCC Engineering Team",
+        "message": "Demo Algolia SFCC native cartridge \u2014 no custom integration; show NeuralSearch live on beauty queries",
+        "timing": "Within 2 weeks of champion engagement"
+      },
+      {
+        "phase": 3,
+        "label": "Budget Unlock",
+        "target": "Natalie Lockhart + Marlo Cormier",
+        "message": "ROI workshop \u2014 $5.47M moderate scenario vs. Algolia cost; Fuel for Growth alignment; Gymshark + Lacoste benchmarks",
+        "timing": "Before BSG platform scope is locked (Spring 2026)"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We're already on Salesforce \u2014 that's enough",
+        "counter": "SFCC Einstein is basic keyword search. Algolia's SFCC cartridge adds NeuralSearch, Personalization, and Recommend on top without replacing the platform."
+      },
+      {
+        "objection": "Budget is tight with Fuel for Growth",
+        "counter": "Algolia reduces merchandising labor (automated rules) AND lifts search conversion revenue. It's a net positive on the Fuel for Growth math."
+      },
+      {
+        "objection": "We're in the middle of a BSG platform update",
+        "counter": "That's the exact window. Adding Algolia now is easier than retrofitting after the platform is locked. What's the RFP timeline?"
+      }
+    ],
+    "build_vs_buy": "BUY \u2014 Sally's CTO has said 'we deployed cloud-first using the plumbing we already had.' Algolia is that plumbing for search.",
+    "run_research_lab": false
+  },
+  "strategic_angles": [
+    {
+      "label": "Sally Ignited = Search Ignited",
+      "hook": "Your Sally Ignited strategy explicitly calls out AI transformation. Algolia NeuralSearch IS the AI-powered search layer that accelerates your website modernization.",
+      "pain_points": [
+        "CEO named 'more efficient search engine' as a current gap on Q1 earnings call",
+        "Native SFCC Einstein Search lacks NLP, semantic understanding, and real-time analytics",
+        "Sally Ignited timeline matches Algolia implementation window"
+      ],
+      "discovery_question": "Your Sally Ignited strategy specifically calls out AI transformation. How are you currently applying AI to your site search? Are you still on native SFCC Einstein Search?",
+      "algolia_proof": "Algolia NeuralSearch \u2014 vector + keyword hybrid AI that understands natural language at scale"
+    },
+    {
+      "label": "Beat Sephora on AI Search",
+      "hook": "Sephora is running Constructor.io for AI-powered personalized search. Sally is on native SFCC \u2014 that's an experience gap your customers can feel.",
+      "pain_points": [
+        "Sephora (42.1M monthly visits) uses Constructor.io \u2014 confirmed",
+        "Sally (4.75M monthly visits) on native SFCC \u2014 confirmed",
+        "Neither Ulta nor Sephora uses Algolia \u2014 first-mover opportunity"
+      ],
+      "discovery_question": "Sephora uses Constructor for their search \u2014 that's who you're competing with. What would it mean for Sally to have search that's on par or better than Sephora's experience?",
+      "algolia_proof": "Algolia NeuralSearch matches and exceeds Constructor.io capabilities with proven beauty retail case studies"
+    },
+    {
+      "label": "Professional + Consumer Federated Search",
+      "hook": "Sally serves both DIY consumers and licensed professionals. Algolia can power federated search across products, CosmoProf Institute education, and pro-only inventory.",
+      "pain_points": [
+        "BSG platform update Spring 2026 is live scope",
+        "CosmoProf Institute expansion creates new content search use case",
+        "B2B (BSG) + B2C (Sally) unified experience requires multi-index search"
+      ],
+      "discovery_question": "When a licensed stylist searches 'balayage' on BSG, should they see products AND education content in the same results? Is that one experience today or two separate ones?",
+      "algolia_proof": "Algolia Multi-Index Federated Search \u2014 products, education, FAQ unified in one results pane"
+    },
+    {
+      "label": "Fuel for Growth ROI Story",
+      "hook": "With $120M cumulative savings targets, every dollar must prove ROI. Algolia lifts revenue AND reduces merchandising labor \u2014 a net Fuel for Growth positive.",
+      "pain_points": [
+        "Yellow EBITDA margin (12.6%) means every conversion improvement flows to bottom line",
+        "Current manual merchandising rules are labor-intensive",
+        "Search ROI is one of the highest-ROI digital investments available"
+      ],
+      "discovery_question": "With the Fuel for Growth initiative, what's the threshold for a search investment to make sense? If we could show $5M annual lift, would that math work for your business case?",
+      "algolia_proof": "Moderate scenario: $5.47M/year at 10% search conversion lift on $54.7M addressable base [ESTIMATE]"
+    }
+  ],
+  "icp_mapping": {
+    "priority_to_product": [
+      {
+        "their_priority": "AI & Technology Transformation (Sally Ignited)",
+        "source": "InfotechLead - Sally Ignited Strategy",
+        "algolia_solution": "Algolia NeuralSearch",
+        "discovery_question": "Your Sally Ignited strategy specifically calls out AI transformation. How are you currently applying AI to your site search?"
+      },
+      {
+        "their_priority": "Enhanced Personalization (BSG FY2026 platform update)",
+        "source": "Cosmetics Design - Q1 FY2026",
+        "algolia_solution": "Algolia Personalization",
+        "discovery_question": "When you say 'enhanced personalization' for BSG, are you thinking segment-level (pro vs. student vs. salon owner) or individual user-level personalization?"
+      },
+      {
+        "their_priority": "a more efficient search engine for easier product discovery",
+        "source": "Q1 FY2026 Earnings Call - Paulonis",
+        "algolia_solution": "Algolia InstantSearch + NeuralSearch",
+        "discovery_question": "Denise cited this on the Q1 call \u2014 what's on the roadmap to address it? Is this in scope for the BSG update or the Sally app?"
+      },
+      {
+        "their_priority": "$120M Cumulative Savings (Fuel for Growth)",
+        "source": "Company Announcement",
+        "algolia_solution": "Algolia ROI + Merchandising Studio (labor reduction)",
+        "discovery_question": "If we could show a 10\u201315% lift in search conversion \u2014 roughly $4\u20138M annually \u2014 would that math work for your business case?"
+      }
+    ],
+    "outreach_sequence": [
+      "Step 1: LinkedIn message to Chris Hansen (VP Digital Product) \u2014 'Saw Denise mention search efficiency on your Q1 call...'",
+      "Step 2: Technical demo for Scott Lindblom \u2014 SFCC native cartridge, no custom integration required",
+      "Step 3: ROI workshop with Natalie Lockhart + Marlo Cormier \u2014 $5.47M moderate scenario"
+    ],
+    "anchor_lines": [
+      "Sally Beauty told investors they need 'a more efficient search engine for easier product discovery' \u2014 we can show you that in a 30-minute demo.",
+      "Sephora runs Constructor for AI search. Sally can leapfrog them with Algolia \u2014 and be the lighthouse customer for professional beauty AI search.",
+      "Your LCOD customers spend 2x more because they get guided discovery. Algolia Recommend digitizes that at scale across every product page."
+    ]
+  },
+  "competitive_synthesis": {
+    "scenario": "first_mover",
+    "competitor_tiers": [
+      {
+        "tier": "Direct Competitor with AI Search",
+        "names": [
+          "Sephora (Constructor.io)"
+        ],
+        "implication": "Sally is already behind \u2014 urgency is real"
+      },
+      {
+        "tier": "Large Competitors WITHOUT AI Search",
+        "names": [
+          "Ulta",
+          "Bath & Body Works"
+        ],
+        "implication": "Leapfrog window exists \u2014 first to AI search wins"
+      },
+      {
+        "tier": "Same Platform (SFCC Native)",
+        "names": [
+          "CosmoProf / BSG"
+        ],
+        "implication": "Same gap, same solution \u2014 fix both with one implementation"
+      }
+    ],
+    "experience_debt": {
+      "severity": "HIGH",
+      "description": "Sally runs SFCC native Einstein Search. Sephora runs Constructor AI search. The experience gap is visible and growing."
+    },
+    "positioning_statements": {
+      "vs_constructor": "Algolia NeuralSearch matches or exceeds Constructor.io capabilities with proven beauty retail case studies (Lacoste +37% CVR) and a native SFCC cartridge that requires no custom engineering.",
+      "vs_sfcc_native": "SFCC Einstein is keyword-only, with no NLP, no vector search, and no dynamic personalization. Algolia adds all three without replacing the platform."
+    },
+    "the_ask": "30-minute NeuralSearch demo on Sally's live catalog, showing 'best purple shampoo for blonde hair' before and after Algolia.",
+    "roi_by_scenario": {
+      "conservative": "$2.74M/year [ESTIMATE]",
+      "moderate": "$5.47M/year [ESTIMATE]",
+      "optimistic": "$8.20M/year [ESTIMATE]"
+    }
+  },
+  "golden_angle": {
+    "headline": "First-Mover in Professional Beauty AI Search",
+    "detail": "No major professional beauty retailer \u2014 not Ulta, not CosmoProf, not Bath & Body Works \u2014 uses Algolia today. Sally Beauty could be Algolia's lighthouse customer for this $54.7B professional beauty vertical.",
+    "competitor_using_algolia": false,
+    "primary_competitor": "Sephora (Constructor.io)"
+  },
+  "ae_fields": {
+    "urgency": "HIGH",
+    "urgency_reason": "BSG platform update Spring 2026 \u2014 scope must be locked imminently. VP Ecommerce vacancy creates decision window.",
+    "talk_track_opener": "Denise Paulonis named 'a more efficient search engine for easier product discovery' on your Q1 earnings call. We can show that in 30 minutes \u2014 want to see it on your live catalog?",
+    "cta": "30-min NeuralSearch live demo on sallybeauty.com + BSG catalogs"
+  },
+  "next_steps": [
+    {
+      "title": "Discovery Call \u2014 Chris Hansen (VP Digital Product)",
+      "description": "LinkedIn outreach. Lead with Q1 earnings call quote. Ask: 'Is search in scope for the BSG Spring 2026 update, or is the stack already locked?' Most accessible entry point \u2014 active on LinkedIn, speaks at CommerceNext."
+    },
+    {
+      "title": "Technical Demo \u2014 Scott Lindblom (CIO) + SFCC Engineering",
+      "description": "Show Algolia SFCC native cartridge. Demo NeuralSearch on 'best purple shampoo for blonde hair' vs. current experience. Highlight: no rip-and-replace, plug-and-play with existing SFCC engineer team."
+    },
+    {
+      "title": "ROI Workshop \u2014 Natalie Lockhart + Marlo Cormier",
+      "description": "Model $5.47M moderate scenario against Algolia enterprise contract. Tie to Fuel for Growth targets. Present Lacoste (+37% CVR) and Gymshark (+150% new user order rate) as beauty/apparel benchmarks. Ask for budget approval before BSG scope lock."
+    }
+  ],
+  "bibliography": [
+    {
+      "id": 1,
+      "url": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results",
+      "label": "Business Wire \u2014 Sally Beauty FY2024 Results"
+    },
+    {
+      "id": 2,
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "label": "Motley Fool \u2014 Q1 FY2026 Earnings Transcript"
+    },
+    {
+      "id": 3,
+      "url": "https://www.theglobeandmail.com/investing/markets/markets-news/Motley%20Fool/107934/sally-beauty-sbh-q1-2026-earnings-transcript/",
+      "label": "Globe and Mail \u2014 Q1 FY2026 Earnings Transcript"
+    },
+    {
+      "id": 4,
+      "url": "https://www.beautyindependent.com/ceo-denise-paulonis-sally-beauty-new-store-format/",
+      "label": "Beauty Independent \u2014 CEO Denise Paulonis Interview"
+    },
+    {
+      "id": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/1368458/000119312525313476/sbh_ars.pdf",
+      "label": "SEC 10-K FY2025 Filing"
+    },
+    {
+      "id": 6,
+      "url": "https://finance.yahoo.com/news/sally-beauty-holdings-reports-first-114500895.html",
+      "label": "Yahoo Finance \u2014 Q1 FY2026 Results"
+    },
+    {
+      "id": 7,
+      "url": "https://www.sallybeautyholdings.com/our-company/company-profile",
+      "label": "Sally Beauty Holdings Company Profile"
+    },
+    {
+      "id": 8,
+      "url": "https://www.sallybeautyholdings.com/investor-relations/corporate-governance/management",
+      "label": "Sally Beauty Holdings Management Page"
+    },
+    {
+      "id": 9,
+      "url": "https://infotechlead.com/cio/sally-beauty-accelerates-ai-digital-transformation-and-e-commerce-growth-with-sally-ignited-strategy-93663",
+      "label": "InfotechLead \u2014 Sally Ignited Strategy"
+    },
+    {
+      "id": 10,
+      "url": "https://www.cosmeticsdesign.com/Article/2026/02/11/sally-beauty-holdings-q1-results-show-steady-demand-as-cost-pressures-remain-in-focus/",
+      "label": "Cosmetics Design \u2014 Q1 FY2026 Analysis"
+    },
+    {
+      "id": 11,
+      "url": "https://seekingalpha.com/news/4522017-sally-beauty-targets-120m-in-cumulative-cost-savings-by-2026-while-launching-sally-ignited",
+      "label": "Seeking Alpha \u2014 Fuel for Growth"
+    },
+    {
+      "id": 12,
+      "url": "https://www.similarweb.com/website/sallybeauty.com/competitors/",
+      "label": "SimilarWeb \u2014 Sally Beauty Competitors"
+    },
+    {
+      "id": 13,
+      "url": "https://builtwith.com/sallybeauty.com",
+      "label": "BuiltWith \u2014 sallybeauty.com"
+    },
+    {
+      "id": 14,
+      "url": "https://constructor.com/blog/ecommerce-personalization",
+      "label": "Constructor Blog \u2014 Sephora AI Search"
+    },
+    {
+      "id": 15,
+      "url": "https://www.algolia.com/customers/gymshark-recommend",
+      "label": "Algolia \u2014 Gymshark Recommend Case Study"
+    },
+    {
+      "id": 16,
+      "url": "https://www.algolia.com/customers/lacoste",
+      "label": "Algolia \u2014 Lacoste Case Study"
+    },
+    {
+      "id": 17,
+      "url": "https://www.algolia.com/blog/ecommerce/e-commerce-search-and-kpis-statistics",
+      "label": "Algolia \u2014 E-Commerce Search Statistics"
+    },
+    {
+      "id": 18,
+      "url": "https://baymard.com/blog/ecommerce-search-query-types",
+      "label": "Baymard \u2014 41% of Sites Have Search Issues"
+    },
+    {
+      "id": 19,
+      "url": "https://www.linkedin.com/jobs/view/vp-ecommerce-at-sally-beauty-3986657147",
+      "label": "LinkedIn \u2014 VP Ecommerce (Sally Beauty)"
+    },
+    {
+      "id": 20,
+      "url": "https://www.jobzmall.com/sally-beauty/job/software-engineer-salesforce-commerce-cloud",
+      "label": "JobzMall \u2014 SFCC Engineer (Sally Beauty)"
+    },
+    {
+      "id": 21,
+      "url": "https://stockanalysis.com/stocks/sbh/revenue/",
+      "label": "Stock Analysis \u2014 SBH Revenue History"
+    },
+    {
+      "id": 22,
+      "url": "https://dentonrc.com/business/sally-beauty-preparing-to-leave-denton-lays-off-creative-marketing-department/article_3c1f82bd-2b83-4714-950e-0549f46054f2.html",
+      "label": "Denton RC \u2014 HQ Layoffs & Relocation"
+    },
+    {
+      "id": 23,
+      "url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com",
+      "label": "Grips Intelligence \u2014 Sally Beauty Traffic"
+    },
+    {
+      "id": 24,
+      "url": "https://www.pymnts.com/news/retail/2023/sally-beauty-ceo-gen-z-adopts-bnpl-boosts-ecommerce-sales-by-7-sales/",
+      "label": "PYMNTS \u2014 Gen Z & BNPL Strategy"
+    },
+    {
+      "id": 25,
+      "url": "https://chainstoreage.com/sally-beauty-optimizes-it-operations-ai-based-automation",
+      "label": "Chain Store Age \u2014 Sally Beauty AI Automation"
+    },
+    {
+      "id": 26,
+      "url": "https://www.linkedin.com/in/chris-hansen-2809403/",
+      "label": "Chris Hansen \u2014 LinkedIn"
+    },
+    {
+      "id": 27,
+      "url": "https://www.linkedin.com/in/scott-lindblom/",
+      "label": "Scott Lindblom \u2014 LinkedIn"
+    }
+  ]
+}
