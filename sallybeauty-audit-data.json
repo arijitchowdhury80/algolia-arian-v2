@@ -62,7 +62,7 @@
   "company_snapshot": {
     "industry": "Beauty & Personal Care Retail",
     "hq": "Denton, TX (relocating to Plano, TX)",
-    "employees": "~27,000",
+    "employees": "~27,000 (full-time and part-time)",
     "revenue": "$3.72B",
     "revenue_source": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results",
     "revenue_source_label": "Business Wire FY2024 Results",
@@ -140,7 +140,7 @@
     {
       "type": "competitor",
       "title": "Sephora Running Constructor.io for AI Search",
-      "source_url": "https://constructor.com/blog/ecommerce-personalization",
+      "source_url": "https://www.linkedin.com/posts/constructor-io_genai-sephora-retailtech-activity-7160720307534643201-U8it",
       "source_date": "2024-01-01",
       "relevance": "First-mover urgency: Sally can leapfrog Sephora's search experience with Algolia NeuralSearch",
       "text": "Sephora (42.1M monthly visits, Sally's top direct competitor) uses Constructor.io for AI-powered personalized search. Sally runs native SFCC Einstein Search \u2014 creating a visible experience gap."
@@ -201,7 +201,8 @@
       "monthly_visits": "42.1M",
       "search_vendor": "Constructor.io",
       "vendor_method": "BuiltWith + Network",
-      "uses_algolia": false
+      "uses_algolia": false,
+      "vendor_source": "https://www.linkedin.com/posts/constructor-io_genai-sephora-retailtech-activity-7160720307534643201-U8it"
     },
     {
       "name": "Ulta Beauty",
@@ -386,24 +387,30 @@
         "revenue": "$3.82B",
         "ecom_pct": "9.0%",
         "signal": "Revenue peak \u2014 pre-normalization",
-        "source": "https://www.businesswire.com/news/home/20221110005178/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2022-Results"
+        "source": "https://www.businesswire.com/news/home/20221110005178/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2022-Results",
+        "net_income": "$183.6M",
+        "profit_margin": "4.8%"
       },
       {
         "year": "FY2023",
         "revenue": "$3.73B",
         "ecom_pct": "9.3%",
         "signal": "Slight decline; e-commerce share growing",
-        "source": "https://stockanalysis.com/stocks/sbh/revenue/"
+        "source": "https://stockanalysis.com/stocks/sbh/revenue/",
+        "net_income": "$184.6M",
+        "profit_margin": "4.95%"
       },
       {
         "year": "FY2024",
         "revenue": "$3.72B",
         "ecom_pct": "9.8%",
-        "signal": "Revenue stabilizing; margins improving (+70 bps EBITDA); Sally Ignited launched",
-        "source": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results"
+        "signal": "Revenue stabilizing; e-commerce acceleration; Sally Ignited launched; net income declined (GAAP) vs normalized",
+        "source": "https://www.businesswire.com/news/home/20241114390606/en/Sally-Beauty-Holdings-Reports-Fourth-Quarter-and-Full-Year-Fiscal-2024-Results",
+        "net_income": "$153.4M",
+        "profit_margin": "4.1%"
       }
     ],
-    "ebitda_margin": "12.6%",
+    "ebitda_margin": "12.6% (Q4 FY2024 Adjusted); 10.6% full-year FY2024",
     "margin_zone": "YELLOW",
     "digital_revenue": "$364.6M [ESTIMATE]",
     "digital_revenue_pct": "9.8%",
@@ -808,8 +815,8 @@
     },
     {
       "id": 14,
-      "url": "https://constructor.com/blog/ecommerce-personalization",
-      "label": "Constructor Blog \u2014 Sephora AI Search"
+      "url": "https://www.linkedin.com/posts/constructor-io_genai-sephora-retailtech-activity-7160720307534643201-U8it",
+      "label": "Constructor.io \u2014 NRF2024 Sephora Partnership Confirmation (LinkedIn)"
     },
     {
       "id": 15,
