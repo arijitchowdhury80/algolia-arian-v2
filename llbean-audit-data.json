@@ -71,7 +71,7 @@
     "ticker": "Private (family-owned)",
     "current_search_vendor": "Native (No Dedicated Search Vendor \u2014 commercetools OOTB)",
     "ecommerce_platform": "commercetools (headless, migrated May 2024)",
-    "monthly_visits": "26.7M/mo",
+    "monthly_visits": "26.7M/mo (Dec 2024 peak \u2014 holiday season; 4-month avg Oct 2024\u2013Jan 2025: ~20.3M)",
     "visits_source": "SimilarWeb public data (MCP API 403)",
     "demographics": {
       "female": "64.8%",
@@ -79,7 +79,8 @@
       "largest_age_cohort": "55-64 (23.7%)",
       "source": "SimilarWeb MCP \u2014 Oct 2024\u2013Jan 2025",
       "note": "Older, female-skewed audience strengthens personalization + gift discovery pitch"
-    }
+    },
+    "stores": "95+ globally (US: ~67 as of 2025 \u2014 was 60 in 2024 + 8 new stores planned 2026; 22 Japan, 13 Canada)"
   },
   "revenue_3y": [
     {
@@ -107,7 +108,7 @@
       "digital_share": "~35%",
       "search_signal": "commercetools go-live May 2024; 4 new stores; new CEO transition begins Q3",
       "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-      "roi_callout": "Search ROI opportunity: $5.4M\u2013$16.1M/yr at 5\u201315% lift on $107M search-addressable revenue"
+      "roi_callout": "Search ROI opportunity: $8.4M\u2013$25.2M/yr [ESTIMATE] at 5\u201315% lift on ~$168M search-addressable revenue"
     }
   ],
   "executives": [
@@ -131,12 +132,13 @@
     },
     {
       "name": "Randy Dyer",
-      "title": "Enterprise Architect",
+      "title": "Former Enterprise Architect (2020, retired)",
       "quote": "We didn't want customer experience to be limited to a specific channel. We wanted them to experience L.L.Bean as a dynamic, innovative brand, regardless of the channel.",
       "source": "Google Cloud Case Study",
       "source_url": "https://cloud.google.com/customers/l-l-bean",
       "quote_date": "2020-01",
-      "maps_to_product": "Algolia Unified Search API (web + mobile + kiosk + wholesale)"
+      "maps_to_product": "Algolia Unified Search API (web + mobile + kiosk + wholesale)",
+      "note": "Retired. Quote from 2020 Google Cloud case study \u2014 still valid as company philosophy reference."
     },
     {
       "name": "Emily Elting",
@@ -155,15 +157,6 @@
       "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
       "quote_date": "2025-01",
       "maps_to_product": "Algolia AI Merchandising (balance heritage + new products)"
-    },
-    {
-      "name": "Randy Dyer",
-      "title": "Enterprise Architect",
-      "quote": "With Google Cloud, we can run experiments, learn from the results, and deliver new capabilities into production much faster.",
-      "source": "Google Cloud Case Study",
-      "source_url": "https://cloud.google.com/customers/l-l-bean",
-      "quote_date": "2020-01",
-      "maps_to_product": "Algolia A/B Testing + Analytics"
     }
   ],
   "intelligence_signals": [
@@ -215,11 +208,11 @@
     {
       "type": "competitor",
       "badge_label": "Golden Angle",
-      "text": "REI (direct competitor, 45.2M monthly visits) confirmed using Algolia via BuiltWith \u2014 GOLDEN ANGLE",
+      "text": "REI (direct competitor, ~30M/mo avg [SimilarWeb]) confirmed using Algolia via BuiltWith \u2014 GOLDEN ANGLE",
       "source_name": "BuiltWith",
       "source_url": "https://builtwith.com/rei.com",
       "source_date": "2026-03-17",
-      "relevance": "L.L.Bean's #1 outdoor competitor is already benefiting from Algolia. REI's higher traffic (45.2M vs 26.7M) partly attributed to superior search and discovery. Direct peer comparison is most compelling sales tool."
+      "relevance": "L.L.Bean's #1 outdoor competitor is already benefiting from Algolia. REI's higher traffic (~30M/mo avg vs ~20M/mo avg [SimilarWeb]) partly attributed to superior search and discovery. Direct peer comparison is most compelling sales tool."
     },
     {
       "type": "industry-risk",
@@ -239,7 +232,8 @@
       "search_vendor_method": "BuiltWith confirmed",
       "monthly_traffic": "~30M/mo avg [SimilarWeb]",
       "bounce_rate": "38.2%",
-      "notes": "GOLDEN ANGLE \u2014 Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported."
+      "notes": "GOLDEN ANGLE \u2014 Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported.",
+      "uses_algolia": true
     },
     {
       "name": "The North Face",
@@ -248,7 +242,8 @@
       "search_vendor_method": "BuiltWith",
       "monthly_traffic": "~19M/mo avg [SimilarWeb]",
       "bounce_rate": "42.1%",
-      "notes": "VF Corporation subsidiary. Uses Dirxion enterprise search. Not Algolia."
+      "notes": "VF Corporation subsidiary. Uses Dirxion enterprise search. Not Algolia.",
+      "uses_algolia": false
     },
     {
       "name": "Patagonia",
@@ -257,7 +252,8 @@
       "search_vendor_method": "BuiltWith \u2014 no recognized vendor detected",
       "monthly_traffic": "~11.7M/mo avg [SimilarWeb]",
       "bounce_rate": "39.7%",
-      "notes": "Sustainability-focused brand. Custom search implementation. Strong product discovery via sustainability filters."
+      "notes": "Sustainability-focused brand. Custom search implementation. Strong product discovery via sustainability filters.",
+      "uses_algolia": false
     },
     {
       "name": "Columbia Sportswear",
@@ -266,7 +262,8 @@
       "search_vendor_method": "BuiltWith \u2014 inconclusive",
       "monthly_traffic": "~9M/mo avg [SimilarWeb]",
       "bounce_rate": "44.6%",
-      "notes": "Public company (COLM). Higher bounce rate than L.L.Bean suggests weaker search engagement."
+      "notes": "Public company (COLM). Higher bounce rate than L.L.Bean suggests weaker search engagement.",
+      "uses_algolia": false
     },
     {
       "name": "Eddie Bauer",
@@ -275,7 +272,8 @@
       "search_vendor_method": "BuiltWith confirmed",
       "monthly_traffic": "~6.7M/mo avg [SimilarWeb]",
       "bounce_rate": "46.2%",
-      "notes": "Smallest competitor by traffic. Shopify native search. Shares tracking infrastructure with llbean.com (GTM overlap)."
+      "notes": "Smallest competitor by traffic. Shopify native search. Shares tracking infrastructure with llbean.com (GTM overlap).",
+      "uses_algolia": false
     }
   ],
   "findings": [
@@ -545,7 +543,7 @@
       },
       {
         "objection": "We don't have budget this fiscal year",
-        "counter": "Algolia pays for itself in 60-90 days. At $107M search-addressable revenue, a 5% lift = $5.36M annual \u2014 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
+        "counter": "Algolia pays for itself in 60-90 days. At ~$168M search-addressable revenue [ESTIMATE], a 5% lift = $8.4M annual \u2014 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
       },
       {
         "objection": "Search isn't a priority vs. physical store expansion",
@@ -578,7 +576,7 @@
     },
     {
       "label": "REI Is Already Winning With Algolia: The Golden Angle",
-      "hook": "REI \u2014 L.L.Bean's #1 competitor \u2014 confirmed uses Algolia. Their 45.2M monthly visits vs L.L.Bean's 26.7M. Part of that gap: superior search and discovery. Every day without Algolia is a day REI has a competitive advantage.",
+      "hook": "REI \u2014 L.L.Bean's #1 competitor \u2014 confirmed uses Algolia. Their ~30M/mo avg [SimilarWeb] vs L.L.Bean's 26.7M. Part of that gap: superior search and discovery. Every day without Algolia is a day REI has a competitive advantage.",
       "pain_points": [
         "REI offers instant autocomplete with images; L.L.Bean has zero SAYT",
         "REI federated search shows return policy, classes, store locator in one query; L.L.Bean returns only products",
@@ -686,7 +684,7 @@
         "competitors": [
           "REI"
         ],
-        "description": "REI confirmed using Algolia via BuiltWith. Highest traffic of all outdoor competitors at 45.2M monthly visits. Lower bounce rate (38.2%) vs L.L.Bean (41.3%). Golden Angle: direct peer comparison is most compelling sales tool.",
+        "description": "REI confirmed using Algolia via BuiltWith. Highest traffic of all outdoor competitors at ~30M/mo avg [SimilarWeb]. Lower bounce rate (38.2%) vs L.L.Bean (41.3%). Golden Angle: direct peer comparison is most compelling sales tool.",
         "threat_level": "HIGH"
       },
       {
@@ -714,7 +712,7 @@
         "competitors": [
           "Eddie Bauer"
         ],
-        "description": "Eddie Bauer on Shopify native search \u2014 similar gap to L.L.Bean. 46.2% bounce rate (highest of all competitors). Smallest traffic at 9.3M. Algolia would immediately differentiate L.L.Bean from both Eddie Bauer and its own current state.",
+        "description": "Eddie Bauer on Shopify native search (BuiltWith confirmed). 46.2% bounce rate (highest of all competitors). Smallest traffic at ~6.7M/mo avg [SimilarWeb]. Algolia would immediately differentiate L.L.Bean from both Eddie Bauer and its own current state.",
         "threat_level": "LOW"
       }
     ],
@@ -753,7 +751,7 @@
       {
         "dimension": "Traffic Volume",
         "llbean": "26.7M/mo",
-        "rei": "45.2M/mo",
+        "rei": "~30M/mo avg [SimilarWeb]",
         "advantage": "REI"
       }
     ],
@@ -761,7 +759,7 @@
     "roi_by_scenario": {
       "pilot_30_day": "Prove search conversion lift with A/B test on 20% traffic. Expected: 10-15% conversion improvement, zero results reduction from ~8% to ~4%.",
       "phase_1_90_day": "Full NeuralSearch + InstantSearch deployment. Expected: $2.5-3.5M incremental revenue (annualized at conservative rate).",
-      "phase_2_180_day": "Add Personalization + Recommend. Expected: $10.7M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
+      "phase_2_180_day": "Add Personalization + Recommend. Expected: $16.8M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
     }
   },
   "golden_angle": {
@@ -771,7 +769,7 @@
     "confirmation_method": "BuiltWith domain analysis \u2014 Algolia detected in live technology scan",
     "confirmation_date": "2026-03-17",
     "source_url": "https://builtwith.com/rei.com",
-    "talking_point": "Your biggest competitor \u2014 REI \u2014 already uses Algolia. REI's 45.2M monthly visits vs. your 26.7M reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
+    "talking_point": "Your biggest competitor \u2014 REI \u2014 already uses Algolia. REI's ~30M/mo avg [SimilarWeb] vs. your 26.7M reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
     "case_study_note": "REI case study on algolia.com may contain specific lift metrics \u2014 verify before citing in prospect materials",
     "additional_users": [
       {
@@ -807,7 +805,7 @@
     },
     {
       "title": "Prepare: ROI Model + commercetools Integration Brief",
-      "description": "Prepare 1-pager: $107M search-addressable revenue \u00d7 5-15% lift = $5.36M\u2013$16.1M. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
+      "description": "Prepare 1-pager: $107M search-addressable revenue \u00d7 5-15% lift = $8.4M\u2013$25.2M [ESTIMATE]. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
     }
   ],
   "bibliography": [
@@ -945,7 +943,7 @@
     },
     {
       "id": 23,
-      "title": "Algolia Customer \u2014 Gymshark Recommend (+150% mobile order rate)",
+      "title": "Algolia Customer \u2014 Gymshark Recommend (+150% order rate (Black Friday new users))",
       "url": "https://www.algolia.com/customers/gymshark-recommend",
       "type": "casestudy"
     },

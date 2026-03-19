@@ -2083,7 +2083,7 @@ a:hover {
     "ticker": "Private (family-owned)",
     "current_search_vendor": "Native (No Dedicated Search Vendor — commercetools OOTB)",
     "ecommerce_platform": "commercetools (headless, migrated May 2024)",
-    "monthly_visits": "26.7M/mo",
+    "monthly_visits": "26.7M/mo (Dec 2024 peak — holiday season; 4-month avg Oct 2024–Jan 2025: ~20.3M)",
     "visits_source": "SimilarWeb public data (MCP API 403)",
     "demographics": {
       "female": "64.8%",
@@ -2091,7 +2091,8 @@ a:hover {
       "largest_age_cohort": "55-64 (23.7%)",
       "source": "SimilarWeb MCP — Oct 2024–Jan 2025",
       "note": "Older, female-skewed audience strengthens personalization + gift discovery pitch"
-    }
+    },
+    "stores": "95+ globally (US: ~67 as of 2025 — was 60 in 2024 + 8 new stores planned 2026; 22 Japan, 13 Canada)"
   },
   "revenue_3y": [
     {
@@ -2119,7 +2120,7 @@ a:hover {
       "digital_share": "~35%",
       "search_signal": "commercetools go-live May 2024; 4 new stores; new CEO transition begins Q3",
       "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-      "roi_callout": "Search ROI opportunity: $5.4M–$16.1M/yr at 5–15% lift on $107M search-addressable revenue"
+      "roi_callout": "Search ROI opportunity: $8.4M–$25.2M/yr [ESTIMATE] at 5–15% lift on ~$168M search-addressable revenue"
     }
   ],
   "executives": [
@@ -2143,12 +2144,13 @@ a:hover {
     },
     {
       "name": "Randy Dyer",
-      "title": "Enterprise Architect",
+      "title": "Former Enterprise Architect (2020, retired)",
       "quote": "We didn't want customer experience to be limited to a specific channel. We wanted them to experience L.L.Bean as a dynamic, innovative brand, regardless of the channel.",
       "source": "Google Cloud Case Study",
       "source_url": "https://cloud.google.com/customers/l-l-bean",
       "quote_date": "2020-01",
-      "maps_to_product": "Algolia Unified Search API (web + mobile + kiosk + wholesale)"
+      "maps_to_product": "Algolia Unified Search API (web + mobile + kiosk + wholesale)",
+      "note": "Retired. Quote from 2020 Google Cloud case study — still valid as company philosophy reference."
     },
     {
       "name": "Emily Elting",
@@ -2167,15 +2169,6 @@ a:hover {
       "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
       "quote_date": "2025-01",
       "maps_to_product": "Algolia AI Merchandising (balance heritage + new products)"
-    },
-    {
-      "name": "Randy Dyer",
-      "title": "Enterprise Architect",
-      "quote": "With Google Cloud, we can run experiments, learn from the results, and deliver new capabilities into production much faster.",
-      "source": "Google Cloud Case Study",
-      "source_url": "https://cloud.google.com/customers/l-l-bean",
-      "quote_date": "2020-01",
-      "maps_to_product": "Algolia A/B Testing + Analytics"
     }
   ],
   "intelligence_signals": [
@@ -2227,11 +2220,11 @@ a:hover {
     {
       "type": "competitor",
       "badge_label": "Golden Angle",
-      "text": "REI (direct competitor, 45.2M monthly visits) confirmed using Algolia via BuiltWith — GOLDEN ANGLE",
+      "text": "REI (direct competitor, ~30M/mo avg [SimilarWeb]) confirmed using Algolia via BuiltWith — GOLDEN ANGLE",
       "source_name": "BuiltWith",
       "source_url": "https://builtwith.com/rei.com",
       "source_date": "2026-03-17",
-      "relevance": "L.L.Bean's #1 outdoor competitor is already benefiting from Algolia. REI's higher traffic (45.2M vs 26.7M) partly attributed to superior search and discovery. Direct peer comparison is most compelling sales tool."
+      "relevance": "L.L.Bean's #1 outdoor competitor is already benefiting from Algolia. REI's higher traffic (~30M/mo avg vs ~20M/mo avg [SimilarWeb]) partly attributed to superior search and discovery. Direct peer comparison is most compelling sales tool."
     },
     {
       "type": "industry-risk",
@@ -2251,7 +2244,8 @@ a:hover {
       "search_vendor_method": "BuiltWith confirmed",
       "monthly_traffic": "~30M/mo avg [SimilarWeb]",
       "bounce_rate": "38.2%",
-      "notes": "GOLDEN ANGLE — Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported."
+      "notes": "GOLDEN ANGLE — Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported.",
+      "uses_algolia": true
     },
     {
       "name": "The North Face",
@@ -2260,7 +2254,8 @@ a:hover {
       "search_vendor_method": "BuiltWith",
       "monthly_traffic": "~19M/mo avg [SimilarWeb]",
       "bounce_rate": "42.1%",
-      "notes": "VF Corporation subsidiary. Uses Dirxion enterprise search. Not Algolia."
+      "notes": "VF Corporation subsidiary. Uses Dirxion enterprise search. Not Algolia.",
+      "uses_algolia": false
     },
     {
       "name": "Patagonia",
@@ -2269,7 +2264,8 @@ a:hover {
       "search_vendor_method": "BuiltWith — no recognized vendor detected",
       "monthly_traffic": "~11.7M/mo avg [SimilarWeb]",
       "bounce_rate": "39.7%",
-      "notes": "Sustainability-focused brand. Custom search implementation. Strong product discovery via sustainability filters."
+      "notes": "Sustainability-focused brand. Custom search implementation. Strong product discovery via sustainability filters.",
+      "uses_algolia": false
     },
     {
       "name": "Columbia Sportswear",
@@ -2278,7 +2274,8 @@ a:hover {
       "search_vendor_method": "BuiltWith — inconclusive",
       "monthly_traffic": "~9M/mo avg [SimilarWeb]",
       "bounce_rate": "44.6%",
-      "notes": "Public company (COLM). Higher bounce rate than L.L.Bean suggests weaker search engagement."
+      "notes": "Public company (COLM). Higher bounce rate than L.L.Bean suggests weaker search engagement.",
+      "uses_algolia": false
     },
     {
       "name": "Eddie Bauer",
@@ -2287,7 +2284,8 @@ a:hover {
       "search_vendor_method": "BuiltWith confirmed",
       "monthly_traffic": "~6.7M/mo avg [SimilarWeb]",
       "bounce_rate": "46.2%",
-      "notes": "Smallest competitor by traffic. Shopify native search. Shares tracking infrastructure with llbean.com (GTM overlap)."
+      "notes": "Smallest competitor by traffic. Shopify native search. Shares tracking infrastructure with llbean.com (GTM overlap).",
+      "uses_algolia": false
     }
   ],
   "findings": [
@@ -2557,7 +2555,7 @@ a:hover {
       },
       {
         "objection": "We don't have budget this fiscal year",
-        "counter": "Algolia pays for itself in 60-90 days. At $107M search-addressable revenue, a 5% lift = $5.36M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
+        "counter": "Algolia pays for itself in 60-90 days. At ~$168M search-addressable revenue [ESTIMATE], a 5% lift = $8.4M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
       },
       {
         "objection": "Search isn't a priority vs. physical store expansion",
@@ -2590,7 +2588,7 @@ a:hover {
     },
     {
       "label": "REI Is Already Winning With Algolia: The Golden Angle",
-      "hook": "REI — L.L.Bean's #1 competitor — confirmed uses Algolia. Their 45.2M monthly visits vs L.L.Bean's 26.7M. Part of that gap: superior search and discovery. Every day without Algolia is a day REI has a competitive advantage.",
+      "hook": "REI — L.L.Bean's #1 competitor — confirmed uses Algolia. Their ~30M/mo avg [SimilarWeb] vs L.L.Bean's 26.7M. Part of that gap: superior search and discovery. Every day without Algolia is a day REI has a competitive advantage.",
       "pain_points": [
         "REI offers instant autocomplete with images; L.L.Bean has zero SAYT",
         "REI federated search shows return policy, classes, store locator in one query; L.L.Bean returns only products",
@@ -2698,7 +2696,7 @@ a:hover {
         "competitors": [
           "REI"
         ],
-        "description": "REI confirmed using Algolia via BuiltWith. Highest traffic of all outdoor competitors at 45.2M monthly visits. Lower bounce rate (38.2%) vs L.L.Bean (41.3%). Golden Angle: direct peer comparison is most compelling sales tool.",
+        "description": "REI confirmed using Algolia via BuiltWith. Highest traffic of all outdoor competitors at ~30M/mo avg [SimilarWeb]. Lower bounce rate (38.2%) vs L.L.Bean (41.3%). Golden Angle: direct peer comparison is most compelling sales tool.",
         "threat_level": "HIGH"
       },
       {
@@ -2726,7 +2724,7 @@ a:hover {
         "competitors": [
           "Eddie Bauer"
         ],
-        "description": "Eddie Bauer on Shopify native search — similar gap to L.L.Bean. 46.2% bounce rate (highest of all competitors). Smallest traffic at 9.3M. Algolia would immediately differentiate L.L.Bean from both Eddie Bauer and its own current state.",
+        "description": "Eddie Bauer on Shopify native search (BuiltWith confirmed). 46.2% bounce rate (highest of all competitors). Smallest traffic at ~6.7M/mo avg [SimilarWeb]. Algolia would immediately differentiate L.L.Bean from both Eddie Bauer and its own current state.",
         "threat_level": "LOW"
       }
     ],
@@ -2765,7 +2763,7 @@ a:hover {
       {
         "dimension": "Traffic Volume",
         "llbean": "26.7M/mo",
-        "rei": "45.2M/mo",
+        "rei": "~30M/mo avg [SimilarWeb]",
         "advantage": "REI"
       }
     ],
@@ -2773,7 +2771,7 @@ a:hover {
     "roi_by_scenario": {
       "pilot_30_day": "Prove search conversion lift with A/B test on 20% traffic. Expected: 10-15% conversion improvement, zero results reduction from ~8% to ~4%.",
       "phase_1_90_day": "Full NeuralSearch + InstantSearch deployment. Expected: $2.5-3.5M incremental revenue (annualized at conservative rate).",
-      "phase_2_180_day": "Add Personalization + Recommend. Expected: $10.7M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
+      "phase_2_180_day": "Add Personalization + Recommend. Expected: $16.8M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
     }
   },
   "golden_angle": {
@@ -2783,7 +2781,7 @@ a:hover {
     "confirmation_method": "BuiltWith domain analysis — Algolia detected in live technology scan",
     "confirmation_date": "2026-03-17",
     "source_url": "https://builtwith.com/rei.com",
-    "talking_point": "Your biggest competitor — REI — already uses Algolia. REI's 45.2M monthly visits vs. your 26.7M reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
+    "talking_point": "Your biggest competitor — REI — already uses Algolia. REI's ~30M/mo avg [SimilarWeb] vs. your 26.7M reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
     "case_study_note": "REI case study on algolia.com may contain specific lift metrics — verify before citing in prospect materials",
     "additional_users": [
       {
@@ -2819,7 +2817,7 @@ a:hover {
     },
     {
       "title": "Prepare: ROI Model + commercetools Integration Brief",
-      "description": "Prepare 1-pager: $107M search-addressable revenue × 5-15% lift = $5.36M–$16.1M. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
+      "description": "Prepare 1-pager: $107M search-addressable revenue × 5-15% lift = $8.4M–$25.2M [ESTIMATE]. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
     }
   ],
   "bibliography": [
@@ -2957,7 +2955,7 @@ a:hover {
     },
     {
       "id": 23,
-      "title": "Algolia Customer — Gymshark Recommend (+150% mobile order rate)",
+      "title": "Algolia Customer — Gymshark Recommend (+150% order rate (Black Friday new users))",
       "url": "https://www.algolia.com/customers/gymshark-recommend",
       "type": "casestudy"
     },
@@ -3020,6 +3018,52 @@ const lnk = (url, text, cls = '') =>
 const srcTag = (type, label) => `<span class="src-tag src-${type}">${label}</span>`;
 const scoreColor = (score) => score < 4 ? 'critical' : score < 6.5 ? 'moderate' : 'ok';
 const pct = (score) => Math.round((n(score) / 10) * 100);
+
+/* ═══════════════════════════════════════════════════════════════════
+   STYLE TOKENS  — Single source of truth for ALL inline typography.
+   ─────────────────────────────────────────────────────────────────
+   RULE: Every style attribute that contains font-size, font-weight,
+   color, text-transform, or letter-spacing MUST use T.* tokens.
+   DO NOT write these properties freehand — change here, updates everywhere.
+
+   Sora font weights: 300 (light) · 400 (regular) · 600 (semibold) ONLY.
+   Brand sizes: 56 · 36 · 28 · 22 · 18 · 16 (body) · 14 (label) · 12 (eyebrow)
+═══════════════════════════════════════════════════════════════════ */
+const T = {
+  /* ── Labels & Eyebrows ─────────────────────────────────────────── */
+  eyebrow:      'font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid)',
+  eyebrowBlue:  'font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--blue)',
+  eyebrowSm:    'font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid)',
+  eyebrowSmCol: (col) => `font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${col}`,
+  eyebrowCol:   (col) => `font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:${col}`,
+  labelSm:      'font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em',
+
+  /* ── Body & Label text ─────────────────────────────────────────── */
+  body:         'font-size:16px;font-weight:400;color:var(--gray);line-height:1.6',
+  bodyMid:      'font-size:16px;font-weight:400;color:var(--mid);line-height:1.5',
+  bodySm:       'font-size:14px;font-weight:400;color:var(--gray);line-height:1.5',
+  bodySmMid:    'font-size:14px;font-weight:400;color:var(--mid);line-height:1.5',
+  bodySmMid14:  'font-size:14px;color:var(--mid)',
+  bodySmGray12: 'font-size:12px;color:var(--mid)',
+  italic:       'font-size:14px;font-weight:400;color:var(--mid);font-style:italic',
+
+  /* ── Headings (inline) ─────────────────────────────────────────── */
+  h5:           'font-size:18px;font-weight:600;color:var(--gray)',
+  title:        'font-size:16px;font-weight:600;color:var(--gray)',
+  titleMb:      'font-size:16px;font-weight:600;color:var(--gray);margin-bottom:16px',
+
+  /* ── Emphasis labels ───────────────────────────────────────────── */
+  labelBlue:    'font-size:14px;font-weight:600;color:var(--blue)',
+  labelGray:    'font-size:14px;font-weight:600;color:var(--gray)',
+  labelMid:     'font-size:14px;font-weight:600;color:var(--mid)',
+  labelRed:     'font-size:14px;font-weight:600;color:var(--red)',
+  labelGreen:   'font-size:14px;font-weight:600;color:var(--green)',
+  labelCol:     (col) => `font-size:14px;font-weight:600;color:${col}`,
+
+  /* ── Dynamic helpers ───────────────────────────────────────────── */
+  scoreVal:     (col) => `font-size:14px;font-weight:600;color:${col}`,
+  pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
+};
 
 function escHtml(str) {
   return s(str)
@@ -3428,7 +3472,7 @@ function sectionExecSummary(D) {
                       display:flex;align-items:center;justify-content:center;
                       font-size:14px;font-weight:600;color:white;flex-shrink:0;">G${idx+1}</div>
           <div style="flex:1;min-width:0;">
-            <div style="font-size:14px;font-weight:600;color:var(--gray);
+            <div style="${T.labelGray};
                         white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escHtml(shortTitle)}</div>
           </div>
         </div>`;
@@ -3491,7 +3535,7 @@ function sectionExecSummary(D) {
                          onmouseenter="this.querySelector('span.gap-label').style.color='var(--blue)';this.querySelector('span.gap-label').style.textDecoration='underline';"
                          onmouseleave="this.querySelector('span.gap-label').style.color='var(--gray)';this.querySelector('span.gap-label').style.textDecoration='none';">
                       <span style="width:24px;height:24px;border-radius:50%;background:#DC2626;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:white;flex-shrink:0;">G${i+1}</span>
-                      <span class="gap-label" style="font-size:14px;font-weight:600;color:var(--gray);line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
                     </div>`;
                   }).join('')}
                 </div>
@@ -3504,7 +3548,7 @@ function sectionExecSummary(D) {
                          onmouseenter="this.querySelector('span.gap-label').style.color='var(--blue)';this.querySelector('span.gap-label').style.textDecoration='underline';"
                          onmouseleave="this.querySelector('span.gap-label').style.color='var(--gray)';this.querySelector('span.gap-label').style.textDecoration='none';">
                       <span style="width:24px;height:24px;border-radius:50%;background:#D97706;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:white;flex-shrink:0;">M${i+1}</span>
-                      <span class="gap-label" style="font-size:14px;font-weight:600;color:var(--gray);line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
                     </div>`;
                   }).join('')}
                 </div>
@@ -3538,8 +3582,8 @@ function sectionExecSummary(D) {
       return `
       <!-- ── Revenue at Risk ── -->
       <div style="margin-top:40px;margin-bottom:8px;">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--mid);margin-bottom:4px;">Revenue at Risk</div>
-        <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:16px;">How much search improvement is worth — three scenarios</div>
+        <div style="${T.eyebrow};margin-bottom:4px;">Revenue at Risk</div>
+        <div style="${T.titleMb};">How much search improvement is worth — three scenarios</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
         ${[
@@ -3552,7 +3596,7 @@ function sectionExecSummary(D) {
             <div class="glow-border-inner">
               <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:${s.col};margin-bottom:8px;">${s.label}</div>
               <div style="font-size:2.2rem;font-weight:600;color:var(--gray);line-height:1;margin-bottom:6px;">${s.amt}</div>
-              <div style="font-size:14px;color:var(--mid);margin-top:4px;line-height:1.4;">${s.sub}</div>
+              <div style="${T.bodySmMid14};margin-top:4px;line-height:1.4;">${s.sub}</div>
             </div>
           </div>`;
         }).join('')}
@@ -3560,15 +3604,15 @@ function sectionExecSummary(D) {
 
       <!-- ── Competitive Edge ── -->
       <div style="margin-bottom:8px;">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--mid);margin-bottom:4px;">Competitive Intelligence</div>
-        <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:16px;">Who in your competitive set is already using Algolia</div>
+        <div style="${T.eyebrow};margin-bottom:4px;">Competitive Intelligence</div>
+        <div style="${T.titleMb};">Who in your competitive set is already using Algolia</div>
       </div>
       <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
 
       <!-- ── Why Act Now — from intelligence_signals ── -->
       <div style="margin-bottom:8px;">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--mid);margin-bottom:4px;">Timing Signals</div>
-        <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:16px;">Three reasons this is the right moment to engage</div>
+        <div style="${T.eyebrow};margin-bottom:4px;">Timing Signals</div>
+        <div style="${T.titleMb};">Three reasons this is the right moment to engage</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
         ${(() => {
@@ -3586,12 +3630,12 @@ function sectionExecSummary(D) {
               <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;">
                 <div style="display:flex;align-items:center;gap:8px;">
                   <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;margin-top:5px;"></span>
-                  <span style="font-size:16px;font-weight:600;color:var(--gray);">${escHtml(sig.badge_label||sig.type)}</span>
+                  <span style="${T.title};">${escHtml(sig.badge_label||sig.type)}</span>
                 </div>
                 ${hasUrl ? `<span style="font-size:13px;color:var(--blue);flex-shrink:0;">Source</span>` : ''}
               </div>
-              <div style="font-size:14px;color:var(--mid);line-height:1.5;margin-bottom:${hasUrl?'10px':'0'};">${escHtml(sig.text||'')}</div>
-              ${hasUrl ? `<div style="font-size:12px;color:var(--mid);opacity:0.7;">${escHtml(sig.source_name||'')} · ${escHtml(sig.source_date?.slice(0,7)||'')}</div>` : ''}
+              <div style="${T.bodySmMid};margin-bottom:${hasUrl?'10px':'0'};">${escHtml(sig.text||'')}</div>
+              ${hasUrl ? `<div style="${T.bodySmGray12};opacity:0.7;">${escHtml(sig.source_name||'')} · ${escHtml(sig.source_date?.slice(0,7)||'')}</div>` : ''}
             </div>`;
           }).join('');
         })()}
@@ -3613,9 +3657,9 @@ function sectionExecSummary(D) {
           onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(33,36,61,0.13)'"
           onmouseleave="this.style.transform='';this.style.boxShadow=''">
           <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:${accent};margin-bottom:4px;">${eyebrow}</div>
-          <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:10px;">${headline}</div>
+          <div style="${T.title};margin-bottom:10px;">${headline}</div>
           <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;">
-            ${bullets.map(b=>`<li style="font-size:14px;color:var(--mid);display:flex;gap:6px;line-height:1.4;">
+            ${bullets.map(b=>`<li style="${T.bodySmMid14};display:flex;gap:6px;line-height:1.4;">
               <span style="color:${accent};font-weight:600;flex-shrink:0;">›</span><span>${b}</span></li>`).join('')}
           </ul>
           <div style="margin-top:12px;font-size:14px;font-weight:600;color:${accent};display:flex;align-items:center;gap:4px;">
@@ -3628,8 +3672,8 @@ function sectionExecSummary(D) {
 
       return `
       <div style="margin-bottom:8px;">
-        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--mid);margin-bottom:4px;">Deep Dives</div>
-        <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:16px;">Navigate to any section for full intelligence and evidence</div>
+        <div style="${T.eyebrow};margin-bottom:4px;">Deep Dives</div>
+        <div style="${T.titleMb};">Navigate to any section for full intelligence and evidence</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
@@ -3719,7 +3763,7 @@ function sectionCompanySnapshot(D) {
             return `<div style="${fallbackStyle}">${initials}</div>`;
           })()}
         <div style="flex:1;">
-            <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--blue);margin-bottom:10px;">
+            <div style="${T.eyebrowBlue};margin-bottom:10px;">
               ${escHtml(cs.industry||'—')}
             </div>
             <div style="font-size:28px;font-weight:600;color:var(--gray);line-height:1.15;margin-bottom:16px;">
@@ -3745,11 +3789,11 @@ function sectionCompanySnapshot(D) {
         <div style="font-size:17px;font-weight:600;color:var(--gray);margin-bottom:10px;">
           ${cs.ticker ? 'Public · ' + escHtml(cs.ticker) : 'Private · D2C'}
         </div>
-        <div style="font-size:14px;color:var(--mid);line-height:1.6;">
+        <div style="${T.bodySmMid14};line-height:1.6;">
           Direct-to-consumer specialty commerce.
           ${hir.build_vs_buy ? `<br><br>
             <span style="font-weight:600;color:var(--gray);">${escHtml(hir.build_vs_buy.split('—')[0].trim())}</span>
-            <br><span style="font-size:12px;color:var(--mid);font-style:italic;">Algolia analysis — based on hiring signals &amp; platform choices</span>` : ''}
+            <br><span style="${T.bodySmGray12};font-style:italic;">Algolia analysis — based on hiring signals &amp; platform choices</span>` : ''}
         </div>
       </div>
 
@@ -3758,8 +3802,8 @@ function sectionCompanySnapshot(D) {
       <div class="card" style="grid-column:span 3;padding:24px 28px;">
         <!-- Honest label — not "Executive Team", just what we found publicly -->
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px;">
-          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);">Leadership — Publicly Identified</div>
-          <div style="font-size:12px;color:var(--mid);font-style:italic;">Public sources only · ${execs.length} contact${execs.length!==1?'s':''} found</div>
+          <div style="${T.eyebrow};">Leadership — Publicly Identified</div>
+          <div style="${T.bodySmGray12};font-style:italic;">Public sources only · ${execs.length} contact${execs.length!==1?'s':''} found</div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px;">
           ${execs.map(e=>`
@@ -3769,9 +3813,9 @@ function sectionCompanySnapshot(D) {
             <!-- Name / Title row + LinkedIn pinned top-right -->
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
               <div style="flex:1;min-width:0;">
-                <div style="font-size:17px;font-weight:600;color:var(--gray);line-height:1.25;margin-bottom:2px;">${escHtml(e.name||'—')}</div>
-                <div style="font-size:14px;color:var(--mid);margin-bottom:2px;">${escHtml(e.title||'—')}</div>
-                ${e.tenure ? `<div style="font-size:12px;color:var(--mid);opacity:0.7;">${escHtml(e.tenure)}</div>` : ''}
+                <div style="${T.title};line-height:1.25;margin-bottom:2px;">${escHtml(e.name||'—')}</div>
+                <div style="${T.bodySmMid14};margin-bottom:2px;">${escHtml(e.title||'—')}</div>
+                ${e.tenure ? `<div style="${T.bodySmGray12};opacity:0.7;">${escHtml(e.tenure)}</div>` : ''}
               </div>
               ${linkedinBtn(e.linkedin_url)}
             </div>
@@ -3801,7 +3845,7 @@ function sectionCompanySnapshot(D) {
             ${e.relevance ? `
             <div class="algolia-angle-box">
               ${algoliaAngleBadge()}
-              <div style="font-size:14px;color:var(--gray);line-height:1.5;">${escHtml(e.relevance)}</div>
+              <div style="${T.bodySm};">${escHtml(e.relevance)}</div>
             </div>` : ''}
 
           </div>`).join('')}
@@ -3835,7 +3879,7 @@ function sectionTraffic(D) {
             <div class="metric-tile__value">${escHtml(s(m.value))}</div></div>`).join('')}
         </div>
         ${channels.length ? `
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Traffic Sources</div>
+        <div style="${T.eyebrow};margin-bottom:10px;">Traffic Sources</div>
         ${channels.map(c => {
           const pctVal = parseFloat(c.share) || 0;
           const barW   = Math.round((pctVal / maxShare) * 100);
@@ -3848,7 +3892,7 @@ function sectionTraffic(D) {
       </div>
       <div>
         ${(t.top_countries || []).length ? `
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Top Countries</div>
+        <div style="${T.eyebrow};margin-bottom:10px;">Top Countries</div>
         <table class="data-table">
           <thead><tr><th>Country</th><th>Share</th></tr></thead>
           <tbody>${(t.top_countries || []).map(c => `
@@ -3922,7 +3966,7 @@ function sectionFinancials(D) {
         <div class="tl-card">
           <div class="tl-card__header">
             <div class="tl-card__rev">${escHtml(r.revenue_label || String(r.revenue))}</div>
-            ${isLast ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="font-size:14px;color:var(--mid);">${escHtml(r.note||'')}</span>`}
+            ${isLast ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
           </div>
           <div class="tl-rev-bar"><div class="tl-rev-bar__fill" style="--bar-pct:${pct}%;"></div></div>
           <div class="tl-metrics-row">
@@ -4105,7 +4149,7 @@ function sectionScoreHeatmap(D) {
         { label: 'Overall Score',  value: s(sc.overall) + '/10', color: 'var(--blue)' },
       ].map(m => `<div class="card" style="text-align:center;">
         <div style="font-size:2rem;font-weight:600;color:${m.color};">${m.value}</div>
-        <div style="font-size:14px;color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;">${m.label}</div>
+        <div style="${T.bodySmMid14};text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;">${m.label}</div>
       </div>`).join('')}
     </div>
   </section>`;
@@ -4259,10 +4303,10 @@ function sectionSignals(D) {
       </span>
       <!-- Content -->
       <div style="flex:1;min-width:0;">
-        <div style="font-size:15px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:4px;">
+        <div style="${T.title};line-height:1.4;margin-bottom:4px;">
           ${escHtml(sig.badge_label || sig.text?.slice(0,80) || '—')}
         </div>
-        <div style="font-size:14px;color:var(--mid);line-height:1.5;">
+        <div style="${T.bodySmMid};">
           ${escHtml(sig.relevance || '')}
         </div>
       </div>
@@ -4274,8 +4318,8 @@ function sectionSignals(D) {
           onmouseenter="this.style.textDecoration='underline'"
           onmouseleave="this.style.textDecoration='none'">
           ${escHtml(sig.source_name?.slice(0,25)||'Source')}
-        </a>` : `<span style="font-size:12px;color:var(--mid);">${escHtml(sig.source_name||'—')}</span>`}
-        ${sig.source_date ? `<div style="font-size:12px;color:var(--mid);margin-top:2px;">${escHtml(sig.source_date.slice(0,10))}</div>` : ''}
+        </a>` : `<span style="${T.bodySmGray12};">${escHtml(sig.source_name||'—')}</span>`}
+        ${sig.source_date ? `<div style="${T.bodySmGray12};margin-top:2px;">${escHtml(sig.source_date.slice(0,10))}</div>` : ''}
       </div>
     </div>`;
   };
@@ -4341,11 +4385,11 @@ function sectionCompetitive(D) {
       <tbody>
         ${comps.map(c => `<tr>
           <td><strong>${lnk('https://'+c.domain, escHtml(c.name))}</strong><br>
-            <span style="font-size:14px;color:var(--mid);">${escHtml(c.domain)}</span></td>
+            <span style="${T.bodySmMid14};">${escHtml(c.domain)}</span></td>
           <td class="${c.search_vendor?.toLowerCase().includes('algolia') ? '' : 'vendor-highlight'}">${escHtml(c.search_vendor)}</td>
           <td>${escHtml(c.monthly_traffic)}</td>
           <td>${c.traffic_rank ? '#' + c.traffic_rank : '—'}</td>
-          <td style="font-size:14px;color:var(--mid);">${escHtml(c.notes)}</td>
+          <td style="${T.bodySmMid14};">${escHtml(c.notes)}</td>
         </tr>`).join('')}
       </tbody>
     </table>` : '<p>No competitor data available.</p>'}
@@ -4394,7 +4438,7 @@ function sectionOpportunity(D) {
           <div style="font-size:14px;opacity:0.7;margin-top:6px;">Conservative estimate · Based on 5% conversion lift · ${lnk(f.source_url,'<span style="color:rgba(255,255,255,0.6)">Source</span>','')}</div>
         </div>
         <div class="card">
-          <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Benchmark Proof</div>
+          <div style="${T.eyebrow};margin-bottom:10px;">Benchmark Proof</div>
           <p style="font-size:14px;color:var(--gray);line-height:1.6;">
             Retailers using Algolia have seen average conversion improvements of 15-40%.
             Baymard Institute reports that 72% of eCommerce sites fail basic search quality tests.
@@ -4417,22 +4461,22 @@ function sectionAEBrief(D) {
     <p class="section-desc">Prepared for ${escHtml(ae.ae_name)} · ${escHtml(D.meta?.audit_date)}</p>
     <div class="grid-2" style="gap:28px;align-items:start;">
       <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Top 3 Things to Say</div>
+        <div style="${T.eyebrow};margin-bottom:10px;">Top 3 Things to Say</div>
         ${(D.findings || []).slice(0,3).map((f,i) => `
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
-          <div style="font-size:14px;font-weight:600;color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
           <div style="font-size:14px;font-weight:600;margin-bottom:6px;">${escHtml(f.title)}</div>
-          <div style="font-size:14px;color:var(--mid);font-style:italic;padding:6px 10px;background:var(--light);border-radius:4px;">
+          <div style="${T.bodySmMid14};font-style:italic;padding:6px 10px;background:var(--light);border-radius:4px;">
             "We tested '${escHtml(f.tested_query)}' — ${escHtml(f.actual_behavior)}. Algolia would fix this with ${escHtml(f.algolia_solution?.split('.')[0])}."
           </div>
         </div>`).join('')}
 
         ${signals.length ? `
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin:16px 0 10px;">Why Act Now</div>
+        <div style="${T.eyebrow};margin:16px 0 10px;">Why Act Now</div>
         ${signals.map(sig => signalCardHtml(sig)).join('')}` : ''}
       </div>
       <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:10px;">Account Quick Facts</div>
+        <div style="${T.eyebrow};margin-bottom:10px;">Account Quick Facts</div>
         <table class="data-table" style="margin-bottom:16px;">
           <tbody>
             <tr><td style="color:var(--mid);font-size:14px;">Vendor</td><td style="font-weight:600;color:var(--red);">${escHtml(D.company_snapshot?.current_search_vendor)}</td></tr>
@@ -4486,43 +4530,43 @@ function sectionBattleCard(D) {
 
         ${ae.talk_track_opener ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">Opening Line</div>
+          <div style="${T.eyebrow};margin-bottom:8px;">Opening Line</div>
           <div class="talk-track-box">
-            <p style="font-size:15px;line-height:1.6;">${escHtml(ae.talk_track_opener)}</p>
-            ${ae.talk_track_cta ? `<div style="font-size:14px;font-weight:600;color:var(--blue);margin-top:8px;">→ ${escHtml(ae.talk_track_cta)}</div>` : ''}
+            <p style="font-size:16px;line-height:1.6;">${escHtml(ae.talk_track_opener)}</p>
+            ${ae.talk_track_cta ? `<div style="${T.labelBlue};margin-top:8px;">→ ${escHtml(ae.talk_track_cta)}</div>` : ''}
           </div>
         </div>` : ''}
 
         ${hook ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">The Hook</div>
+          <div style="${T.eyebrow};margin-bottom:8px;">The Hook</div>
           <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
             <div style="background:#F0FDF4;padding:12px 14px;border-bottom:1px solid var(--border);">
-              <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">They said</div>
+              <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">They said</div>
               <div style="font-size:14px;font-style:italic;color:var(--gray);">"${escHtml(hook.said_quote)}"</div>
-              <div style="font-size:12px;color:var(--mid);margin-top:4px;">— ${escHtml(hook.said_attr)}</div>
+              <div style="${T.bodySmGray12};margin-top:4px;">— ${escHtml(hook.said_attr)}</div>
             </div>
             <div style="background:#FEF2F2;padding:12px 14px;">
-              <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">✗ We found</div>
-              <div style="font-size:14px;font-weight:600;color:var(--gray);">${escHtml(hook.found_title)}</div>
+              <div style="font-size:11px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">✗ We found</div>
+              <div style="${T.labelGray};">${escHtml(hook.found_title)}</div>
             </div>
           </div>
         </div>` : ''}
 
         ${objections.length ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">When They Push Back</div>
+          <div style="${T.eyebrow};margin-bottom:8px;">When They Push Back</div>
           ${objections.slice(0,3).map(o=>`
           <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
             <div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
-            <div style="font-size:14px;color:var(--gray);line-height:1.5;">→ ${escHtml(o.counter||'')}</div>
+            <div style="${T.bodySm};">→ ${escHtml(o.counter||'')}</div>
           </div>`).join('')}
         </div>` : ''}
       </div>
 
       <!-- RIGHT: Feature comparison -->
       <div>
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">
+        <div style="${T.eyebrow};margin-bottom:10px;">
           Feature Comparison: ${escHtml(vendor)} vs. Algolia
         </div>
         <table class="feature-table" style="margin-bottom:16px;">
@@ -4676,7 +4720,7 @@ function sectionRevenueAtRisk(D) {
 
     <!-- Assumptions box — full transparency on all inputs -->
     <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--gray);line-height:1.7;">
-      <span style="font-weight:700;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
+      <span style="font-weight:600;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
       <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : '~7%')} of total revenue) ·
       <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
       <strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) ·
@@ -4690,9 +4734,9 @@ function sectionRevenueAtRisk(D) {
       <div class="card" style="border-top:4px solid ${sc.col};padding:24px 20px;">
         <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${sc.col};margin-bottom:8px;">${sc.label} · ${sc.pct} lift</div>
         <div style="font-size:2.4rem;font-weight:600;color:var(--gray);line-height:1.1;margin-bottom:4px;">${sc.amt}</div>
-        <div style="font-size:12px;color:var(--mid);margin-bottom:12px;font-style:italic;">per year · estimate</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.5;margin-bottom:10px;">${escHtml(sc.desc)}</div>
-        ${src?.source ? `<div style="font-size:12px;color:var(--mid);margin-bottom:8px;">Based on: ${escHtml(src.source)}</div>` : ''}
+        <div style="${T.bodySmGray12};margin-bottom:12px;font-style:italic;">per year · estimate</div>
+        <div style="${T.bodySm};margin-bottom:10px;">${escHtml(sc.desc)}</div>
+        ${src?.source ? `<div style="${T.bodySmGray12};margin-bottom:8px;">Based on: ${escHtml(src.source)}</div>` : ''}
         <span style="font-size:13px;font-weight:600;padding:3px 10px;border-radius:4px;background:${sc.col}18;color:${sc.col};">${sc.play} Play</span>
       </div>`;
       }).join('')}
@@ -4710,7 +4754,7 @@ function sectionRevenueAtRisk(D) {
       </div>`).join('')}
     </div>
     ${f.berkshire_note?`<div class="card" style="border-left:4px solid var(--purple);background:linear-gradient(135deg,#F5F3FF,#EDE9FE);padding:20px 24px;">
-      <div style="font-size:14px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">${escHtml(fin.berkshire_label||'Investor Context')}</div>
+      <div style="font-size:14px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">${escHtml(f.berkshire_label||'Investor Context')}</div>
       <p style="font-size:16px;color:var(--gray);line-height:1.6;">${escHtml(f.berkshire_note)}</p>
     </div>`:''}
   </section>`;
@@ -4766,11 +4810,11 @@ function sectionBusinessCaseHook(D) {
             return `<tr>
               <td style="vertical-align:top;padding:16px;">
                 <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:8px;">"${escHtml(g.said_quote)}"</div>
-                <div style="font-size:12px;color:var(--mid);">— ${escHtml(g.said_attr)}</div>
+                <div style="${T.bodySmGray12};">— ${escHtml(g.said_attr)}</div>
                 ${g.said_source_url ? `<a href="${g.said_source_url}" target="_blank" style="font-size:12px;color:var(--blue);font-weight:600;">${escHtml(g.said_source_label||'Source')}</a>` : ''}
               </td>
               <td style="vertical-align:top;padding:16px;">
-                <div style="font-size:14px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:6px;">✗ ${escHtml(g.found_title)}</div>
+                <div style="${T.labelGray};line-height:1.4;margin-bottom:6px;">✗ ${escHtml(g.found_title)}</div>
                 ${cleanEvidence ? `<div style="font-size:13px;color:var(--mid);line-height:1.4;">${escHtml(cleanEvidence)}</div>` : ''}
               </td>
               <td style="vertical-align:top;padding:16px;">
@@ -4780,7 +4824,7 @@ function sectionBusinessCaseHook(D) {
                          border:1px solid #C7D2FE;border-radius:20px;padding:4px 12px;
                          font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">
                   → ${escHtml(dispId)} Full Evidence
-                </a>` : `<span style="font-size:12px;color:var(--mid);">See Search Audit tab</span>`}
+                </a>` : `<span style="${T.bodySmGray12};">See Search Audit tab</span>`}
               </td>
             </tr>`;
           }).join('')}
@@ -4821,16 +4865,16 @@ function sectionCompetitiveSynthesis(D) {
 
     ${tiers.length ? `
     <div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Competitor Intelligence</div>
+      <div style="${T.eyebrow};margin-bottom:12px;">Competitor Intelligence</div>
       <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
         <table style="width:100%;border-collapse:collapse;">
           <thead>
             <tr style="background:var(--gray);color:white;">
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:22%;">Competitor</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:20%;">Search Stack</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:15%;">Our Play</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Strategic Angle</th>
-              <th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:90px;">Verified</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:22%;">Competitor</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:20%;">Search Stack</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:15%;">Our Play</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Strategic Angle</th>
+              <th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:90px;">Verified</th>
             </tr>
           </thead>
           <tbody>
@@ -4844,9 +4888,9 @@ function sectionCompetitiveSynthesis(D) {
                 return `<tr style="background:${bgRow};border-top:1px solid var(--border);">
                   ${isFirst ? `<td rowspan="${comps.length}" style="padding:14px 16px;vertical-align:top;border-right:1px solid var(--border);">
                     <span style="display:inline-block;background:${cfg.bg};color:${cfg.color};
-                      font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+                      font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
                       padding:2px 8px;border-radius:20px;margin-bottom:6px;">${cfg.label}</span>
-                    <div style="font-size:15px;font-weight:700;color:var(--gray);">${comps.join(', ')}</div>
+                    <div style="${T.title};">${comps.join(', ')}</div>
                   </td>` : ''}
                   <td style="padding:14px 16px;vertical-align:top;">
                     <div style="font-size:13px;color:var(--gray);">${ci === 0 ? escHtml(t.search_stack||'Unknown') : ''}</div>
@@ -4874,7 +4918,7 @@ function sectionCompetitiveSynthesis(D) {
     </div>` : ''}
 
     ${matrix.length?`<div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Capability Matrix</div>
+      <div style="${T.eyebrow};margin-bottom:12px;">Capability Matrix</div>
       <div style="overflow-x:auto;">
         <table class="data-table">
           <thead>
@@ -4916,12 +4960,12 @@ function sectionCaseStudies(D) {
     <p class="section-desc">Selected for ${escHtml(D.meta?.company||'this company')}${cs.industry ? `'s context: ${escHtml(cs.industry)}` : ''}. Each is directly comparable to this account.</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
       ${cases.map(c=>`<div class="card" style="border-top:3px solid var(--blue);">
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:6px;">${escHtml(c.vertical)}</div>
+        <div style="${T.eyebrow};margin-bottom:6px;">${escHtml(c.vertical)}</div>
         <div style="font-size:18px;font-weight:600;color:var(--gray);margin-bottom:10px;">${escHtml(c.company)}</div>
         <div style="font-size:2rem;font-weight:600;color:var(--green);line-height:1.2;margin-bottom:8px;">${escHtml(c.result)}</div>
-        <div style="font-size:14px;color:var(--mid);margin-bottom:12px;">${escHtml(c.product)}</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.5;padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
-        <a href="${c.url}" target="_blank" style="font-size:14px;font-weight:600;color:var(--blue);">View case study →</a>
+        <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(c.product)}</div>
+        <div style="${T.bodySm};padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
+        <a href="${c.url}" target="_blank" style="${T.labelBlue};">View case study →</a>
       </div>`).join('')}
     </div>
   </section>`;
@@ -4958,11 +5002,11 @@ function sectionWhyNow(D) {
       ${triggers.map(t=>`<div class="card" style="border-left:4px solid ${urgCol[t.urgency]||'#6B7280'};padding:18px 20px;">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
           <span style="font-size:20px;">${t.icon}</span>
-          <span style="font-size:16px;font-weight:600;color:var(--gray);flex:1;">${escHtml(t.label)}</span>
+          <span style="${T.title};flex:1;">${escHtml(t.label)}</span>
           <span style="font-size:12px;font-weight:600;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:${urgCol[t.urgency]||'#6B7280'}18;color:${urgCol[t.urgency]||'#6B7280'};">${t.urgency}</span>
         </div>
         <p style="font-size:16px;color:var(--mid);line-height:1.5;margin:0 0 ${t.url?'10px':'0'};">${escHtml(t.detail)}</p>
-        ${t.url?`<a href="${t.url}" target="_blank" style="font-size:14px;font-weight:600;color:var(--blue);">View role →</a>`:''}
+        ${t.url?`<a href="${t.url}" target="_blank" style="${T.labelBlue};">View role →</a>`:''}
       </div>`).join('')}
     </div>
   </section>`;
@@ -4982,7 +5026,7 @@ function sectionStrategicAngles(D) {
           <div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
               <div style="width:28px;height:28px;border-radius:50%;background:${cols[i%4]};display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:600;flex-shrink:0;">${i+1}</div>
-              <div style="font-size:16px;font-weight:600;color:var(--gray);">${escHtml(a.label)}</div>
+              <div style="${T.title};">${escHtml(a.label)}</div>
             </div>
             <div style="font-size:16px;color:var(--mid);line-height:1.5;font-style:italic;margin-bottom:12px;">"${escHtml(a.hook)}"</div>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
@@ -4992,7 +5036,7 @@ function sectionStrategicAngles(D) {
           <div style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF);border-radius:8px;padding:14px 16px;">
             <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${cols[i%4]};margin-bottom:8px;">Discovery Question</div>
             <div style="font-size:16px;color:var(--gray);line-height:1.5;font-style:italic;">"${escHtml(a.discovery_question||'')}"</div>
-            ${a.algolia_proof?`<div style="font-size:14px;color:var(--mid);margin-top:8px;padding-top:8px;border-top:1px solid #C7D2FE;">Proof: ${escHtml(a.algolia_proof)}</div>`:''}
+            ${a.algolia_proof?`<div style="${T.bodySmMid14};margin-top:8px;padding-top:8px;border-top:1px solid #C7D2FE;">Proof: ${escHtml(a.algolia_proof)}</div>`:''}
           </div>
         </div>
       </div>`).join('')}
@@ -5019,7 +5063,7 @@ function sectionPreCallBrief(D) {
     </div>`:''}
     <div class="grid-2" style="gap:24px;align-items:start;">
       <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:12px;">5-Bullet Cheat Sheet</div>
+        <div style="${T.eyebrow};margin-bottom:12px;">5-Bullet Cheat Sheet</div>
         <div class="card"><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0;">
           ${[
             `<strong>Revenue:</strong> ${escHtml(D.company_snapshot?.revenue||'See financial profile')} · ${escHtml(fin.margin_zone||'Unknown')} margin zone${fin.investor_note ? ` · ${escHtml(fin.investor_note)}` : ''}`,
@@ -5031,7 +5075,7 @@ function sectionPreCallBrief(D) {
         </ul></div>
       </div>
       <div>
-        ${ae.talk_track_opener?`<div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:12px;">Talk Track</div>
+        ${ae.talk_track_opener?`<div style="${T.eyebrow};margin-bottom:12px;">Talk Track</div>
         <div class="talk-track-box" style="margin-bottom:14px;"><h4>Opener</h4><p>${escHtml(ae.talk_track_opener)}</p></div>
         <div class="talk-track-box" style="margin-bottom:14px;"><h4>CTA</h4><p>${escHtml(ae.talk_track_cta||'')}</p></div>`:''}
         <div class="next-step-box">
@@ -5058,21 +5102,21 @@ function sectionBuyingCommittee(D) {
           <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:${c};">${escHtml(r.role)}</div>
           <span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px;background:${c}18;color:${c};">${(r.signal||'warm').toUpperCase()}</span>
         </div>
-        <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:6px;">${escHtml(r.name||'—')}</div>
-        <div style="font-size:14px;color:var(--mid);line-height:1.5;margin-bottom:${r.job_url?'10px':'0'};">${escHtml(r.status||'')}${r.message?' · '+r.message:''}</div>
-        ${r.job_url?`<a href="${r.job_url}" target="_blank" style="font-size:14px;font-weight:600;color:var(--blue);">View job posting →</a>`:''}
-        ${r.salary_range?`<div style="font-size:14px;color:var(--mid);margin-top:4px;">Salary: ${escHtml(r.salary_range)}</div>`:''}
+        <div style="${T.title};margin-bottom:6px;">${escHtml(r.name||'—')}</div>
+        <div style="${T.bodySmMid};margin-bottom:${r.job_url?'10px':'0'};">${escHtml(r.status||'')}${r.message?' · '+r.message:''}</div>
+        ${r.job_url?`<a href="${r.job_url}" target="_blank" style="${T.labelBlue};">View job posting →</a>`:''}
+        ${r.salary_range?`<div style="${T.bodySmMid14};margin-top:4px;">Salary: ${escHtml(r.salary_range)}</div>`:''}
       </div>`}).join('')}
     </div>
-    ${phases.length?`<div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">3-Phase Engagement Strategy</div>
+    ${phases.length?`<div style="${T.eyebrow};margin-bottom:14px;">3-Phase Engagement Strategy</div>
     <div style="display:flex;flex-direction:column;gap:12px;">
       ${phases.map((p,i)=>`<div class="card" style="display:flex;gap:16px;align-items:flex-start;padding:18px 20px;">
         <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-size:16px;font-weight:600;flex-shrink:0;">P${p.phase||i+1}</div>
         <div style="flex:1;">
-          <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:4px;">${escHtml(p.label||'')}</div>
-          <div style="font-size:14px;font-weight:600;color:var(--mid);margin-bottom:4px;">Target: ${escHtml(p.target||'')}</div>
+          <div style="${T.title};margin-bottom:4px;">${escHtml(p.label||'')}</div>
+          <div style="${T.labelMid};margin-bottom:4px;">Target: ${escHtml(p.target||'')}</div>
           <div style="font-size:16px;color:var(--gray);line-height:1.5;">${escHtml(p.message||'')}</div>
-          <div style="font-size:14px;color:var(--mid);margin-top:4px;font-style:italic;">${escHtml(p.timing||'')}</div>
+          <div style="${T.bodySmMid14};margin-top:4px;font-style:italic;">${escHtml(p.timing||'')}</div>
         </div>
       </div>`).join('')}
     </div>`:''}
@@ -5089,17 +5133,17 @@ function sectionDiscoveryObjections(D) {
     <div class="section-title">Discovery Questions &amp; Objection Counters</div>
     <div class="grid-2" style="gap:28px;align-items:start;">
       <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">5 Discovery Questions — In Their Language</div>
+        <div style="${T.eyebrow};margin-bottom:14px;">5 Discovery Questions — In Their Language</div>
         ${ptops.map((p,i)=>`<div class="card" style="margin-bottom:10px;border-left:3px solid var(--blue);padding:14px 16px;">
-          <div style="font-size:14px;font-weight:600;color:var(--mid);margin-bottom:6px;">Q${i+1} · ${escHtml(p.their_priority?.slice(0,50)||'')}</div>
+          <div style="${T.labelMid};margin-bottom:6px;">Q${i+1} · ${escHtml(p.their_priority?.slice(0,50)||'')}</div>
           <div style="font-size:16px;color:var(--gray);font-style:italic;line-height:1.5;">"${escHtml(p.discovery_question||'')}"</div>
           <div style="font-size:14px;color:var(--blue);margin-top:8px;">→ ${escHtml((p.algolia_solution||'').split('—')[0].trim())}</div>
         </div>`).join('')}
       </div>
       <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Objection Counters</div>
+        <div style="${T.eyebrow};margin-bottom:14px;">Objection Counters</div>
         ${objections.map(o=>`<div class="card" style="margin-bottom:10px;padding:14px 16px;">
-          <div style="font-size:14px;font-weight:600;color:var(--red);margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
+          <div style="${T.labelRed};margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
           <div style="font-size:16px;color:var(--gray);line-height:1.5;">${escHtml(o.counter||'')}</div>
         </div>`).join('')}
       </div>
@@ -5139,27 +5183,27 @@ function sectionOutreachPlan(D) {
     ${triggers.length ? `
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
       ${triggers.map(t=>`<div style="display:inline-flex;align-items:center;gap:6px;background:${triggerUrgency[t.urgency]||'#6B7280'}12;border:1px solid ${triggerUrgency[t.urgency]||'#6B7280'}30;border-radius:6px;padding:6px 12px;">
-        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
         <span style="font-size:12px;color:var(--gray);">${escHtml(t.detail)}</span>
       </div>`).join('')}
     </div>` : ''}
 
     <!-- Contact Cards -->
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="${T.eyebrow};margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
       ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
+          <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
         <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
-        <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">${escHtml(c.title)}</div>
+        <div style="${T.bodySmGray12};margin-bottom:8px;">${escHtml(c.title)}</div>
         <div style="font-size:12px;color:var(--gray);line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
         ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
       </div>`).join('')}
     </div>
 
     <!-- Unified Touch Timeline -->
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
+    <div style="${T.eyebrow};margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
     <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;">
       ${touches.map((t,i)=>{
         const contact = contactMap[t.target] || {};
@@ -5169,21 +5213,21 @@ function sectionOutreachPlan(D) {
         return `<div style="border-bottom:${i<touches.length-1?'1px solid var(--border)':'none'};padding:16px 20px;background:${i%2===0?'white':'#FAFAFA'};">
           <!-- Touch header row -->
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
-            <span style="font-size:11px;font-weight:700;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
+            <span style="font-size:11px;font-weight:600;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
             <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:${col};">
               ${chIcon[t.channel]||''} ${escHtml(chLabel[t.channel]||t.channel)}
             </span>
-            <span style="font-size:12px;color:var(--mid);">→ <strong>${escHtml(contact.name||t.target==='all'?'All contacts':t.target||'')}</strong>${contact.role ? ` (${escHtml(contact.role)})` : ''}</span>
+            <span style="${T.bodySmGray12};">→ <strong>${escHtml(contact.name||t.target==='all'?'All contacts':t.target||'')}</strong>${contact.role ? ` (${escHtml(contact.role)})` : ''}</span>
             <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--blue);background:#EEF2FF;border-radius:3px;padding:1px 6px;">${escHtml(t.hook_type||'')}</span>
-            <span style="font-size:12px;color:var(--mid);flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
+            <span style="${T.bodySmGray12};flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
           </div>
 
           ${isLinkedIn && t.actions ? `
           <!-- LinkedIn actions list -->
           <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
             ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
-              <span style="font-weight:700;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
+              <span style="font-weight:600;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
               <span>${escHtml(a)}</span>
             </div>`).join('')}
           </div>` : ''}
@@ -5192,7 +5236,7 @@ function sectionOutreachPlan(D) {
           <!-- Loom video touch -->
           <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:14px;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
+              <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
               <span style="font-size:11px;color:var(--mid);">Target: ${escHtml(t.video_duration_target||'60-75 sec')}</span>
             </div>
             ${t.email_subject ? `
@@ -5204,7 +5248,7 @@ function sectionOutreachPlan(D) {
             <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
             ${t.video_script ? `
             <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
+              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
               <pre style="font-size:12px;color:var(--gray);line-height:1.6;white-space:pre-wrap;margin:0;font-family:inherit;">${escHtml(t.video_script)}</pre>
             </div>` : ''}
           </div>` : ''}
@@ -5213,7 +5257,7 @@ function sectionOutreachPlan(D) {
           <!-- Email touch -->
           <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
             ${t.subject ? `<div style="margin-bottom:8px;">
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
+              <span style="${T.eyebrowSm};">Subject: </span>
               <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
             </div>` : ''}
             ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
@@ -5233,12 +5277,12 @@ function sectionOutreachPlan(D) {
     <!-- A/B Variants -->
     ${variants.length ? `
     <div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
+      <div style="${T.eyebrow};margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
       <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
       <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
         ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-            <span style="font-size:12px;font-weight:700;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
+            <span style="font-size:12px;font-weight:600;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
             <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
           </div>
           <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
@@ -5252,20 +5296,20 @@ function sectionOutreachPlan(D) {
     <!-- Assets Library -->
     ${assets.length ? `
     <div>
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
+      <div style="${T.eyebrow};margin-bottom:10px;">Assets Library</div>
       <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
         <table style="width:100%;border-collapse:collapse;">
           <thead><tr style="background:var(--light);">
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
           </tr></thead>
           <tbody>
             ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
               <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray);">${escHtml(a.name)}</td>
               <td style="padding:10px 14px;font-size:12px;color:var(--mid);">${escHtml(a.use_at)}</td>
               <td style="padding:10px 14px;">
-                ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="font-size:12px;color:var(--mid);">${escHtml(a.file)}</span>` : '—')}
+                ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="${T.bodySmGray12};">${escHtml(a.file)}</span>` : '—')}
               </td>
             </tr>`).join('')}
           </tbody>
@@ -5331,7 +5375,6 @@ function renderSections(D) {
     sectionBattleCard(D),
     sectionDiscoveryObjections(D),
     sectionOutreachPlan(D),
-    sectionAppendixScoring(D),
     sectionSources(D),
   ].join('');
 
@@ -5540,15 +5583,15 @@ function openDrawer(type, data) {
     title.textContent = data.name;
     body.innerHTML = `
       <div style="margin-bottom:16px;">
-        <div style="font-size:14px;color:var(--mid);margin-bottom:4px;">Domain</div>
+        <div style="${T.bodySmMid14};margin-bottom:4px;">Domain</div>
         <div style="font-size:15px;font-weight:600;">${escHtml(data.domain || '—')}</div>
       </div>
       <div style="margin-bottom:16px;">
-        <div style="font-size:14px;color:var(--mid);margin-bottom:4px;">Search Vendor</div>
+        <div style="${T.bodySmMid14};margin-bottom:4px;">Search Vendor</div>
         <div style="font-size:15px;font-weight:600;color:${(data.search_vendor||'').includes('Algolia') ? 'var(--green)' : 'var(--red)'};">${escHtml(data.search_vendor || '—')}</div>
       </div>
       <div style="margin-bottom:16px;">
-        <div style="font-size:14px;color:var(--mid);margin-bottom:6px;">Notes</div>
+        <div style="${T.bodySmMid14};margin-bottom:6px;">Notes</div>
         <div style="font-size:14px;line-height:1.6;">${escHtml(data.notes || '—')}</div>
       </div>`;
   } else if (type === 'exec') {
@@ -5556,9 +5599,9 @@ function openDrawer(type, data) {
     typeEl.style.cssText = 'background:#EEF2FF;color:#3730A3;';
     title.textContent = data.name;
     body.innerHTML = `
-      <div style="font-size:14px;color:var(--mid);margin-bottom:12px;">${escHtml(data.title || '')}</div>
+      <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(data.title || '')}</div>
       <blockquote style="font-size:1.05rem;font-style:italic;color:var(--gray);line-height:1.6;padding-left:16px;border-left:3px solid var(--purple);margin-bottom:16px;">"${escHtml(data.quote || '')}"</blockquote>
-      <div style="font-size:14px;color:var(--mid);margin-bottom:16px;">
+      <div style="${T.bodySmMid14};margin-bottom:16px;">
         ${data.quote_source ? `<a href="${data.quote_source}" target="_blank" style="color:var(--blue);">Source</a>` : ''}
         ${data.quote_date ? ` · ${data.quote_date}` : ''}
       </div>
