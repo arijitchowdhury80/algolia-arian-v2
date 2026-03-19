@@ -3320,7 +3320,261 @@ a:hover {
       "url": "https://www.algolia.com/customers/gymshark-recommend/",
       "why": "High-growth D2C athletic brand. Proves personalization ROI in performance apparel."
     }
-  ]
+  ],
+  "abx_sequence": {
+    "account": "Brooks Running",
+    "domain": "brooksrunning.com",
+    "sequence_type": "1:1 Tier 1 Enterprise ABX",
+    "total_touches": 10,
+    "duration_days": 21,
+    "channels": [
+      "email",
+      "linkedin",
+      "video"
+    ],
+    "research_basis": "Digital Bloom 2025, Belkins LinkedIn Study 2025, UserGems new hire trigger research, Yesware 33M email dataset",
+    "triggers": [
+      {
+        "label": "New VP Hire",
+        "detail": "Claire Wood joined Feb 2026 — 90-day tech review window closing May 2026",
+        "urgency": "high"
+      },
+      {
+        "label": "Open Platform Role",
+        "detail": "Senior Director, Unified Commerce & Product Solutions — vacant. Engage before new hire sets vendor direction.",
+        "urgency": "high"
+      },
+      {
+        "label": "19% Revenue Growth",
+        "detail": "Q2 2025. SFCC native search becomes a bottleneck at scale.",
+        "urgency": "medium"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "ashley",
+        "name": "Ashley Martin",
+        "title": "Director, North America Ecommerce",
+        "tier": 1,
+        "role": "Champion",
+        "linkedin_url": "https://www.linkedin.com/in/ashley-martin-7a0ba51b/",
+        "angle": "Daily operator of brooksrunning.com. Uses searchandising, product discovery, and wayfinding in her own job postings. Feels NLP failures and empty states in her conversion KPIs every day.",
+        "personalization_hook": "Her own job posting language mirrors Algolia value prop"
+      },
+      {
+        "id": "ryan",
+        "name": "Ryan Ngo",
+        "title": "VP, North America Marketing & Ecommerce",
+        "tier": 1,
+        "role": "Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/ryanngo1/",
+        "angle": "12 years at Brooks. Built ecommerce from scratch. Knows SFCC limitations deeply. Budget holder for platform decisions.",
+        "personalization_hook": "Long tenure = deep SFCC knowledge = credibility for technical gap conversation"
+      },
+      {
+        "id": "melanie",
+        "name": "Melanie Allen",
+        "title": "SVP, Chief Marketing Officer",
+        "tier": 2,
+        "role": "Executive Sponsor",
+        "linkedin_url": "https://www.linkedin.com/in/melanie-allen-9a44057/",
+        "angle": "Made the Amperity CDP investment. Quoted: \"The CDP is at the center of our tech stack.\" Measures conversion lift and CTR.",
+        "personalization_hook": "She has the data layer. Algolia is the search layer on top."
+      },
+      {
+        "id": "julia",
+        "name": "Julia Payne",
+        "title": "Senior Manager, Digital Program & Delivery",
+        "tier": 2,
+        "role": "Technical Entry Point",
+        "linkedin_url": "https://www.linkedin.com/in/juliapayne/",
+        "angle": "Posting the Senior Engineer Digital Products role. Sits in the delivery org that would implement Algolia.",
+        "personalization_hook": "Reference the open engineering role — she is building the team that would own this"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 0,
+        "channel": "email",
+        "target": "ashley",
+        "hook_type": "timeline",
+        "subject": "Quick finding on brooksrunning.com search — heading into summer season",
+        "body": "Hi Ashley,\n\nWith summer running season ramping up, I ran brooksrunning.com through 8 search queries a runner would actually type.\n\nOne stood out. When someone types \"best shoes for marathon training\" — your highest-intent NLP query — the site redirects to /en_us/featured/best-sellers/. Generic bestsellers. No Glycerin, no Ghost series, no intent understanding.\n\nYour own job postings use words like searchandising and product discovery. Your search experience doesn't match that standard yet.\n\nI attached the screenshot. Happy to show you what Algolia does with that same query — 15 minutes this week?\n\n[Your name]",
+        "asset": "screenshots/13-nlp-marathon-training.png",
+        "asset_label": "NLP failure screenshot",
+        "goal": "First impression — show real research on their site, specific finding"
+      },
+      {
+        "touch": 2,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "ashley",
+        "hook_type": "nurture",
+        "actions": [
+          "Like her 3 most recent LinkedIn posts",
+          "Comment on her most relevant post with a genuine insight (not a sales pitch)",
+          "Send connection request — no message, just connect",
+          "Follow Brooks Running company page",
+          "Like 1 Brooks Running company post"
+        ],
+        "goal": "Appear in her notifications 5 times before any direct outreach — build name recognition"
+      },
+      {
+        "touch": 3,
+        "day": 2,
+        "channel": "linkedin",
+        "target": "ryan",
+        "hook_type": "connect",
+        "message": "",
+        "goal": "Silent connect request — no message. Give him time to accept before outreach."
+      },
+      {
+        "touch": 4,
+        "day": 3,
+        "channel": "email",
+        "target": "ryan",
+        "hook_type": "numbers",
+        "subject": "Brooks Running search vs. Nike and Asics — 3 data points",
+        "body": "Hi Ryan,\n\nThree quick data points on brooksrunning.com search vs. your direct competitors:\n\n1. Nike and Asics both confirmed using Algolia as of March 2026 (BuiltWith verified)\n2. Brooks Running search scored 4.4/10 in our audit — vs. an estimated 7.5-8.5/10 for Nike and Asics post-Algolia\n3. The gap: zero NLP understanding, no personalization, no cross-sell recommendations on PDPs\n\nYou've built the Brooks ecommerce function for 12 years. You know SFCC native search better than most. This is a conversation worth having before the gap widens further.\n\n15 minutes?\n\n[Your name]",
+        "asset": "BuiltWith verification links for Nike and Asics",
+        "goal": "Numbers hook — credible, specific, respects his expertise and tenure"
+      },
+      {
+        "touch": 5,
+        "day": 5,
+        "channel": "video",
+        "target": "ashley",
+        "hook_type": "demo",
+        "email_subject": "Recorded this for you — 60 seconds",
+        "email_body": "Hi Ashley,\n\nI recorded a 60-second Loom showing the \"marathon training\" query on your site. Worth watching before you decide if this conversation makes sense.\n\n[Loom link]\n\nShort version: your search didn't understand the query. Happy to show what it looks like when it does.\n\n[Your name]",
+        "video_platform": "Loom",
+        "video_duration_target": "60-75 seconds",
+        "video_script": "LOOM SCRIPT — Brooks Running NLP Demo\nDuration target: 60-75 seconds\nRecord at: brooksrunning.com (have search bar visible)\n\n---\n\n[Open on brooksrunning.com homepage, search bar visible]\n\n\"Hey Ashley — quick 60-second screen recording. I wanted to show you exactly what I found when I tested your search.\n\n[Click search bar, type slowly: best shoes for marathon training]\n\nI'm typing in 'best shoes for marathon training' — the kind of query a runner types when they know what they want but uses natural language.\n\n[Search executes, page loads — pause on /best-sellers page]\n\nWatch what happens.\n\n[Pause 2 seconds on the results page]\n\nYour site redirected to the generic bestsellers page. No Glycerin. No Ghost series. No intent parsing. This runner — one of your highest-intent visitors — told you exactly what they needed. Your search didn't understand them.\n\n[Navigate back to homepage]\n\nNike and Asics both solved this with Algolia. I can show you what this same query returns when NLP is working — takes about 15 minutes.\n\n[Look at webcam]\n\nI sent you an email with the screenshot a few days ago. Happy to go deeper if this is hitting close to home. Link below to grab time.\n\nThanks, Ashley.\"\n\n---\n\nRECORDING TIPS:\n- Record in one take — imperfect and authentic beats polished\n- Use Loom's zoom feature to highlight the search bar when typing\n- Keep webcam bubble visible in corner — faces build trust\n- Thumbnail: set to the moment the wrong results appear\n- Send link via LinkedIn DM same day as the follow-up email\n- Subject line for email: \"Recorded this for you — 60 seconds\" ",
+        "goal": "Highest-converting touch — shows real research on their actual site, not a generic pitch"
+      },
+      {
+        "touch": 6,
+        "day": 7,
+        "channel": "email",
+        "target": "melanie",
+        "hook_type": "timeline",
+        "subject": "The search layer for your Amperity investment",
+        "body": "Hi Melanie,\n\nYou said \"The CDP is at the center of our tech stack.\" That's exactly right.\n\nThe gap: brooksrunning.com's search doesn't read those segments yet. When Algolia connects to Amperity, search results personalize in real-time based on each runner's purchase history and behavior — no separate personalization engine needed.\n\nYou already have the data layer. Algolia is the search layer on top.\n\nYou measured a 260% CTR increase on paid search from the Amperity investment. We'd expect a 10-15% search conversion lift from closing the NLP and personalization gaps we found on your site.\n\nAsics uses the same stack. Happy to show you in 15 minutes.\n\n[Your name]",
+        "source_for_260pct": "https://amperity.com/blog/customer-spotlight-melanie-allen-from-brooks-running",
+        "goal": "CMO-level message — CDP investment angle, she speaks conversion lift fluently"
+      },
+      {
+        "touch": 7,
+        "day": 10,
+        "channel": "linkedin",
+        "target": "ashley",
+        "hook_type": "social_proof",
+        "message": "Ashley — sent you a Loom showing the marathon training query on your site a few days ago. Also wanted to share: Shoe Carnival (400+ footwear stores) saw +4.5% conversion lift their first Cyber Week with Algolia. Same product discovery challenges as running specialty. Worth 15 minutes to compare notes?",
+        "asset_url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
+        "goal": "LinkedIn DM — reference previous touches, add peer proof, soft ask"
+      },
+      {
+        "touch": 8,
+        "day": 14,
+        "channel": "email",
+        "target": "ashley",
+        "hook_type": "social_proof",
+        "subject": "Under Armour: 35% higher conversion — same vertical, same SFCC platform",
+        "body": "Hi Ashley,\n\nOne more data point before I stop following up.\n\nUnder Armour — athletic footwear, same Salesforce Commerce Cloud platform as Brooks — consistently sees 35% higher conversion for customers who use search, post-Algolia. Same vertical. Same platform. Not a generic benchmark.\n\nI put together a 5-tab audit of brooksrunning.com with the specific gaps, competitive context, and ROI model. Happy to walk through it — 15 minutes.\n\nOr if Ryan or someone else on your team is the better conversation, happy to go that route.\n\n[Your name]",
+        "asset": "brooks-running-leave-behind.pdf",
+        "asset_url": "https://www.algolia.com/customers/under-armour/",
+        "goal": "Peer proof + soft multi-thread — introduces Ryan as alternative path"
+      },
+      {
+        "touch": 9,
+        "day": 17,
+        "channel": "linkedin",
+        "target": "ryan",
+        "hook_type": "nurture",
+        "actions": [
+          "Like 2-3 of Ryan's recent LinkedIn posts",
+          "Comment on a post about ecommerce or SFCC with a genuine observation",
+          "Share a relevant article about search personalization in athletic footwear (tag no one)",
+          "Like 1-2 Brooks Running company posts",
+          "Send LinkedIn InMail if not yet connected (reference the email from Day 3)"
+        ],
+        "goal": "5 nurturing actions on Ryan — appear in his feed before the breakup email"
+      },
+      {
+        "touch": 10,
+        "day": 21,
+        "channel": "email",
+        "target": "all",
+        "hook_type": "breakup",
+        "subject": "Closing the loop — Brooks Running search audit",
+        "body": "Hi [Ashley / Ryan / Melanie],\n\nI've shared a few findings from our Brooks Running search audit over the past few weeks. I won't keep following up if the timing isn't right.\n\nBut I'd feel remiss not sharing the full picture: Nike and Asics are 2-4 years ahead of Brooks on search intelligence. Both use Algolia. The gap in the audit was 4.4/10 vs. an estimated 7.5-8.5/10 for your top two competitors.\n\nIf that's worth a conversation at some point, I'm here. Happy to share the full audit report regardless — no strings attached.\n\n[Your name]",
+        "asset": "brooks-running-leave-behind.pdf",
+        "goal": "Breakup email — leave door open, offer value regardless of outcome"
+      }
+    ],
+    "ab_variants": [
+      {
+        "variant": "A",
+        "touch": 1,
+        "hook_type": "timeline",
+        "subject": "Quick finding on brooksrunning.com search — heading into summer season",
+        "opening": "With summer running season ramping up, I ran brooksrunning.com through 8 search queries a runner would actually type.",
+        "benchmark_reply_rate": "10.01%",
+        "notes": "Timeline hook — benchmark from Digital Bloom 2025 dataset"
+      },
+      {
+        "variant": "B",
+        "touch": 1,
+        "hook_type": "numbers",
+        "subject": "brooksrunning.com search scored 4.4/10 — here's what we found",
+        "opening": "We benchmarked brooksrunning.com search against Nike (est. 8.5/10) and Asics (est. 7.5/10). Brooks scored 4.4/10. The gap is widening every quarter.",
+        "benchmark_reply_rate": "8.57%",
+        "notes": "Numbers hook — benchmark from Digital Bloom 2025 dataset"
+      },
+      {
+        "variant": "C",
+        "touch": 1,
+        "hook_type": "competitor",
+        "subject": "Nike and Asics both use Algolia — here's what that means for Brooks",
+        "opening": "Two of your six direct running shoe competitors — Nike and Asics — both confirmed using Algolia as of March 2026 (BuiltWith verified). We ran a search audit on brooksrunning.com to understand the gap.",
+        "benchmark_reply_rate": "6.53%",
+        "notes": "Social proof/competitor hook — benchmark from Digital Bloom 2025 dataset"
+      }
+    ],
+    "assets_library": [
+      {
+        "name": "NLP failure screenshot",
+        "file": "screenshots/13-nlp-marathon-training.png",
+        "use_at": "Touch 1 (email attachment), Touch 5 (Loom demo)"
+      },
+      {
+        "name": "Under Armour case study",
+        "url": "https://www.algolia.com/customers/under-armour/",
+        "use_at": "Touch 8"
+      },
+      {
+        "name": "Shoe Carnival case study",
+        "url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
+        "use_at": "Touch 7"
+      },
+      {
+        "name": "Audit leave-behind PDF",
+        "file": "brooks-running-leave-behind.pdf",
+        "use_at": "Touch 8, Touch 10"
+      },
+      {
+        "name": "BuiltWith — Nike verification",
+        "url": "https://builtwith.com/nike.com",
+        "use_at": "Touch 4"
+      },
+      {
+        "name": "BuiltWith — Asics verification",
+        "url": "https://builtwith.com/asics.com",
+        "use_at": "Touch 4"
+      }
+    ]
+  }
 };</script>
 
 <script>
@@ -5455,35 +5709,170 @@ function sectionDiscoveryObjections(D) {
 }
 
 function sectionOutreachPlan(D) {
-  const icp = D.icp_mapping || {};
-  const nextSteps = D.next_steps || [];
-  const sequence = icp.outreach_sequence || [];
+  const abx = D.abx_sequence;
+  if (!abx || !(abx.touches||[]).length) return '';
+
+  const contacts = abx.contacts || [];
+  const touches  = abx.touches || [];
+  const variants = abx.ab_variants || [];
+  const assets   = abx.assets_library || [];
+  const triggers = abx.triggers || [];
+
+  const contactMap = {};
+  contacts.forEach(c => { contactMap[c.id] = c; });
+
+  const chColor = {email:'#003DFF', linkedin:'#0A66C2', video:'#7C3AED'};
+  const chLabel = {email:'Email', linkedin:'LinkedIn', video:'Video (Loom)'};
+  const chIcon  = {
+    email: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    linkedin: '<svg width="13" height="13" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h17.65C19.474 0 20 .513 20 1.146v17.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 20 0 19.487 0 18.854V1.146zm6.143 15.496V7.716H3.81v8.926h2.333zm-1.167-10.14c.813 0 1.32-.539 1.32-1.213C6.281 4.59 5.789 4.066 5 4.066c-.797 0-1.32.524-1.32 1.213 0 .674.508 1.213 1.29 1.213h.015zm4.717 10.14V11.36c0-.21.015-.42.077-.57.17-.419.555-.853 1.202-.853.849 0 1.188.647 1.188 1.596v5.11h2.332V11.27c0-2.155-1.15-3.157-2.684-3.157-1.256 0-1.81.698-2.115 1.176v.025h-.015l.015-.025V7.717H7.36c.031.659 0 8.926 0 8.926h2.333z"/></svg>',
+    video: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>'
+  };
+
+  const triggerUrgency = {high:'#DC2626', medium:'#D97706', low:'#059669'};
+
   return `<section id="section-outreach" class="audit-section">
-    <div class="section-eyebrow">Sales Play · The Plan</div>
-    <div class="section-title">4-Week Outreach Sequence &amp; Next Steps</div>
-    <div class="grid-2" style="gap:28px;align-items:start;">
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">4-Week Sequence</div>
-        <div style="position:relative;padding-left:28px;">
-          <div style="position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--border);"></div>
-          ${sequence.map((step,i)=>`<div style="position:relative;margin-bottom:20px;">
-            <div style="position:absolute;left:-22px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:3px solid white;box-shadow:0 0 0 2px var(--blue);"></div>
-            <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Week ${step.week||i+1}</div>
-            <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:4px;">${escHtml(step.action||'')}</div>
-            ${step.subject?`<div style="font-size:14px;color:var(--mid);font-style:italic;margin-bottom:4px;">Subject: "${escHtml(step.subject)}"</div>`:''}
-            <div style="font-size:14px;color:var(--mid);">${escHtml(step.angle||'')}</div>
-          </div>`).join('')}
+    <div class="section-eyebrow">Sales Play · ABX Sequence</div>
+    <div class="section-title">${escHtml(abx.sequence_type||'Outreach Sequence')}</div>
+    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels||[]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
+
+    <!-- Triggers -->
+    ${triggers.length ? `
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+      ${triggers.map(t=>`<div style="display:inline-flex;align-items:center;gap:6px;background:${triggerUrgency[t.urgency]||'#6B7280'}12;border:1px solid ${triggerUrgency[t.urgency]||'#6B7280'}30;border-radius:6px;padding:6px 12px;">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
+        <span style="font-size:12px;color:var(--gray);">${escHtml(t.detail)}</span>
+      </div>`).join('')}
+    </div>` : ''}
+
+    <!-- Contact Cards -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
+      ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
-      </div>
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Next Steps</div>
-        ${nextSteps.map((step,i)=>`<div class="card" style="margin-bottom:12px;border-left:4px solid var(--blue);">
-          <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Step ${step.step_num||i+1}</div>
-          <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:6px;">${escHtml(step.title||'')}</div>
-          <div style="font-size:14px;color:var(--mid);line-height:1.5;">${escHtml(step.description||'')}</div>
+        <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
+        <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">${escHtml(c.title)}</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
+        ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
+      </div>`).join('')}
+    </div>
+
+    <!-- Unified Touch Timeline -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;">
+      ${touches.map((t,i)=>{
+        const contact = contactMap[t.target] || {};
+        const col = chColor[t.channel] || '#6B7280';
+        const isVideo = t.channel === 'video';
+        const isLinkedIn = t.channel === 'linkedin';
+        return `<div style="border-bottom:${i<touches.length-1?'1px solid var(--border)':'none'};padding:16px 20px;background:${i%2===0?'white':'#FAFAFA'};">
+          <!-- Touch header row -->
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:11px;font-weight:700;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:${col};">
+              ${chIcon[t.channel]||''} ${escHtml(chLabel[t.channel]||t.channel)}
+            </span>
+            <span style="font-size:12px;color:var(--mid);">→ <strong>${escHtml(contact.name||t.target==='all'?'All contacts':t.target||'')}</strong>${contact.role ? ` (${escHtml(contact.role)})` : ''}</span>
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--blue);background:#EEF2FF;border-radius:3px;padding:1px 6px;">${escHtml(t.hook_type||'')}</span>
+            <span style="font-size:12px;color:var(--mid);flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
+          </div>
+
+          ${isLinkedIn && t.actions ? `
+          <!-- LinkedIn actions list -->
+          <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
+            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
+              <span style="font-weight:700;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
+              <span>${escHtml(a)}</span>
+            </div>`).join('')}
+          </div>` : ''}
+
+          ${isVideo ? `
+          <!-- Loom video touch -->
+          <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:14px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
+              <span style="font-size:11px;color:var(--mid);">Target: ${escHtml(t.video_duration_target||'60-75 sec')}</span>
+            </div>
+            ${t.email_subject ? `
+            <div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:600;color:var(--mid);">Email subject: </span>
+              <span style="font-size:13px;font-style:italic;color:var(--gray);">"${escHtml(t.email_subject)}"</span>
+            </div>` : ''}
+            ${t.email_body ? `
+            <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
+            ${t.video_script ? `
+            <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
+              <pre style="font-size:12px;color:var(--gray);line-height:1.6;white-space:pre-wrap;margin:0;font-family:inherit;">${escHtml(t.video_script)}</pre>
+            </div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && (t.subject || t.body) ? `
+          <!-- Email touch -->
+          <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            ${t.subject ? `<div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
+              <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
+            </div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
+            ${t.asset_label || t.asset ? `<div style="margin-top:8px;font-size:12px;color:var(--mid);">📎 Attach: <strong>${escHtml(t.asset_label||t.asset||'')}</strong></div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && t.message ? `
+          <!-- LinkedIn message -->
+          <div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            <div style="white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;">${escHtml(t.message)}</div>
+            ${t.asset_url ? `<div style="margin-top:8px;"><a href="${t.asset_url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Case study link</a></div>` : ''}
+          </div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+
+    <!-- A/B Variants -->
+    ${variants.length ? `
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
+      <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
+        ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:12px;font-weight:700;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
+            <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
+          <div style="font-size:13px;color:var(--mid);line-height:1.5;margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;">Benchmark: ${escHtml(v.benchmark_reply_rate||'—')} reply rate</div>
+          ${v.notes ? `<div style="font-size:11px;color:var(--mid);margin-top:4px;">${escHtml(v.notes)}</div>` : ''}
         </div>`).join('')}
       </div>
-    </div>
+    </div>` : ''}
+
+    <!-- Assets Library -->
+    ${assets.length ? `
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:var(--light);">
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
+          </tr></thead>
+          <tbody>
+            ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
+              <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray);">${escHtml(a.name)}</td>
+              <td style="padding:10px 14px;font-size:12px;color:var(--mid);">${escHtml(a.use_at)}</td>
+              <td style="padding:10px 14px;">
+                ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="font-size:12px;color:var(--mid);">${escHtml(a.file)}</span>` : '—')}
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : ''}
   </section>`;
 }
 

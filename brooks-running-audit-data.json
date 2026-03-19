@@ -1308,5 +1308,259 @@
       "url": "https://www.algolia.com/customers/gymshark-recommend/",
       "why": "High-growth D2C athletic brand. Proves personalization ROI in performance apparel."
     }
-  ]
+  ],
+  "abx_sequence": {
+    "account": "Brooks Running",
+    "domain": "brooksrunning.com",
+    "sequence_type": "1:1 Tier 1 Enterprise ABX",
+    "total_touches": 10,
+    "duration_days": 21,
+    "channels": [
+      "email",
+      "linkedin",
+      "video"
+    ],
+    "research_basis": "Digital Bloom 2025, Belkins LinkedIn Study 2025, UserGems new hire trigger research, Yesware 33M email dataset",
+    "triggers": [
+      {
+        "label": "New VP Hire",
+        "detail": "Claire Wood joined Feb 2026 \u2014 90-day tech review window closing May 2026",
+        "urgency": "high"
+      },
+      {
+        "label": "Open Platform Role",
+        "detail": "Senior Director, Unified Commerce & Product Solutions \u2014 vacant. Engage before new hire sets vendor direction.",
+        "urgency": "high"
+      },
+      {
+        "label": "19% Revenue Growth",
+        "detail": "Q2 2025. SFCC native search becomes a bottleneck at scale.",
+        "urgency": "medium"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "ashley",
+        "name": "Ashley Martin",
+        "title": "Director, North America Ecommerce",
+        "tier": 1,
+        "role": "Champion",
+        "linkedin_url": "https://www.linkedin.com/in/ashley-martin-7a0ba51b/",
+        "angle": "Daily operator of brooksrunning.com. Uses searchandising, product discovery, and wayfinding in her own job postings. Feels NLP failures and empty states in her conversion KPIs every day.",
+        "personalization_hook": "Her own job posting language mirrors Algolia value prop"
+      },
+      {
+        "id": "ryan",
+        "name": "Ryan Ngo",
+        "title": "VP, North America Marketing & Ecommerce",
+        "tier": 1,
+        "role": "Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/ryanngo1/",
+        "angle": "12 years at Brooks. Built ecommerce from scratch. Knows SFCC limitations deeply. Budget holder for platform decisions.",
+        "personalization_hook": "Long tenure = deep SFCC knowledge = credibility for technical gap conversation"
+      },
+      {
+        "id": "melanie",
+        "name": "Melanie Allen",
+        "title": "SVP, Chief Marketing Officer",
+        "tier": 2,
+        "role": "Executive Sponsor",
+        "linkedin_url": "https://www.linkedin.com/in/melanie-allen-9a44057/",
+        "angle": "Made the Amperity CDP investment. Quoted: \"The CDP is at the center of our tech stack.\" Measures conversion lift and CTR.",
+        "personalization_hook": "She has the data layer. Algolia is the search layer on top."
+      },
+      {
+        "id": "julia",
+        "name": "Julia Payne",
+        "title": "Senior Manager, Digital Program & Delivery",
+        "tier": 2,
+        "role": "Technical Entry Point",
+        "linkedin_url": "https://www.linkedin.com/in/juliapayne/",
+        "angle": "Posting the Senior Engineer Digital Products role. Sits in the delivery org that would implement Algolia.",
+        "personalization_hook": "Reference the open engineering role \u2014 she is building the team that would own this"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 0,
+        "channel": "email",
+        "target": "ashley",
+        "hook_type": "timeline",
+        "subject": "Quick finding on brooksrunning.com search \u2014 heading into summer season",
+        "body": "Hi Ashley,\n\nWith summer running season ramping up, I ran brooksrunning.com through 8 search queries a runner would actually type.\n\nOne stood out. When someone types \"best shoes for marathon training\" \u2014 your highest-intent NLP query \u2014 the site redirects to /en_us/featured/best-sellers/. Generic bestsellers. No Glycerin, no Ghost series, no intent understanding.\n\nYour own job postings use words like searchandising and product discovery. Your search experience doesn't match that standard yet.\n\nI attached the screenshot. Happy to show you what Algolia does with that same query \u2014 15 minutes this week?\n\n[Your name]",
+        "asset": "screenshots/13-nlp-marathon-training.png",
+        "asset_label": "NLP failure screenshot",
+        "goal": "First impression \u2014 show real research on their site, specific finding"
+      },
+      {
+        "touch": 2,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "ashley",
+        "hook_type": "nurture",
+        "actions": [
+          "Like her 3 most recent LinkedIn posts",
+          "Comment on her most relevant post with a genuine insight (not a sales pitch)",
+          "Send connection request \u2014 no message, just connect",
+          "Follow Brooks Running company page",
+          "Like 1 Brooks Running company post"
+        ],
+        "goal": "Appear in her notifications 5 times before any direct outreach \u2014 build name recognition"
+      },
+      {
+        "touch": 3,
+        "day": 2,
+        "channel": "linkedin",
+        "target": "ryan",
+        "hook_type": "connect",
+        "message": "",
+        "goal": "Silent connect request \u2014 no message. Give him time to accept before outreach."
+      },
+      {
+        "touch": 4,
+        "day": 3,
+        "channel": "email",
+        "target": "ryan",
+        "hook_type": "numbers",
+        "subject": "Brooks Running search vs. Nike and Asics \u2014 3 data points",
+        "body": "Hi Ryan,\n\nThree quick data points on brooksrunning.com search vs. your direct competitors:\n\n1. Nike and Asics both confirmed using Algolia as of March 2026 (BuiltWith verified)\n2. Brooks Running search scored 4.4/10 in our audit \u2014 vs. an estimated 7.5-8.5/10 for Nike and Asics post-Algolia\n3. The gap: zero NLP understanding, no personalization, no cross-sell recommendations on PDPs\n\nYou've built the Brooks ecommerce function for 12 years. You know SFCC native search better than most. This is a conversation worth having before the gap widens further.\n\n15 minutes?\n\n[Your name]",
+        "asset": "BuiltWith verification links for Nike and Asics",
+        "goal": "Numbers hook \u2014 credible, specific, respects his expertise and tenure"
+      },
+      {
+        "touch": 5,
+        "day": 5,
+        "channel": "video",
+        "target": "ashley",
+        "hook_type": "demo",
+        "email_subject": "Recorded this for you \u2014 60 seconds",
+        "email_body": "Hi Ashley,\n\nI recorded a 60-second Loom showing the \"marathon training\" query on your site. Worth watching before you decide if this conversation makes sense.\n\n[Loom link]\n\nShort version: your search didn't understand the query. Happy to show what it looks like when it does.\n\n[Your name]",
+        "video_platform": "Loom",
+        "video_duration_target": "60-75 seconds",
+        "video_script": "LOOM SCRIPT \u2014 Brooks Running NLP Demo\nDuration target: 60-75 seconds\nRecord at: brooksrunning.com (have search bar visible)\n\n---\n\n[Open on brooksrunning.com homepage, search bar visible]\n\n\"Hey Ashley \u2014 quick 60-second screen recording. I wanted to show you exactly what I found when I tested your search.\n\n[Click search bar, type slowly: best shoes for marathon training]\n\nI'm typing in 'best shoes for marathon training' \u2014 the kind of query a runner types when they know what they want but uses natural language.\n\n[Search executes, page loads \u2014 pause on /best-sellers page]\n\nWatch what happens.\n\n[Pause 2 seconds on the results page]\n\nYour site redirected to the generic bestsellers page. No Glycerin. No Ghost series. No intent parsing. This runner \u2014 one of your highest-intent visitors \u2014 told you exactly what they needed. Your search didn't understand them.\n\n[Navigate back to homepage]\n\nNike and Asics both solved this with Algolia. I can show you what this same query returns when NLP is working \u2014 takes about 15 minutes.\n\n[Look at webcam]\n\nI sent you an email with the screenshot a few days ago. Happy to go deeper if this is hitting close to home. Link below to grab time.\n\nThanks, Ashley.\"\n\n---\n\nRECORDING TIPS:\n- Record in one take \u2014 imperfect and authentic beats polished\n- Use Loom's zoom feature to highlight the search bar when typing\n- Keep webcam bubble visible in corner \u2014 faces build trust\n- Thumbnail: set to the moment the wrong results appear\n- Send link via LinkedIn DM same day as the follow-up email\n- Subject line for email: \"Recorded this for you \u2014 60 seconds\" ",
+        "goal": "Highest-converting touch \u2014 shows real research on their actual site, not a generic pitch"
+      },
+      {
+        "touch": 6,
+        "day": 7,
+        "channel": "email",
+        "target": "melanie",
+        "hook_type": "timeline",
+        "subject": "The search layer for your Amperity investment",
+        "body": "Hi Melanie,\n\nYou said \"The CDP is at the center of our tech stack.\" That's exactly right.\n\nThe gap: brooksrunning.com's search doesn't read those segments yet. When Algolia connects to Amperity, search results personalize in real-time based on each runner's purchase history and behavior \u2014 no separate personalization engine needed.\n\nYou already have the data layer. Algolia is the search layer on top.\n\nYou measured a 260% CTR increase on paid search from the Amperity investment. We'd expect a 10-15% search conversion lift from closing the NLP and personalization gaps we found on your site.\n\nAsics uses the same stack. Happy to show you in 15 minutes.\n\n[Your name]",
+        "source_for_260pct": "https://amperity.com/blog/customer-spotlight-melanie-allen-from-brooks-running",
+        "goal": "CMO-level message \u2014 CDP investment angle, she speaks conversion lift fluently"
+      },
+      {
+        "touch": 7,
+        "day": 10,
+        "channel": "linkedin",
+        "target": "ashley",
+        "hook_type": "social_proof",
+        "message": "Ashley \u2014 sent you a Loom showing the marathon training query on your site a few days ago. Also wanted to share: Shoe Carnival (400+ footwear stores) saw +4.5% conversion lift their first Cyber Week with Algolia. Same product discovery challenges as running specialty. Worth 15 minutes to compare notes?",
+        "asset_url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
+        "goal": "LinkedIn DM \u2014 reference previous touches, add peer proof, soft ask"
+      },
+      {
+        "touch": 8,
+        "day": 14,
+        "channel": "email",
+        "target": "ashley",
+        "hook_type": "social_proof",
+        "subject": "Under Armour: 35% higher conversion \u2014 same vertical, same SFCC platform",
+        "body": "Hi Ashley,\n\nOne more data point before I stop following up.\n\nUnder Armour \u2014 athletic footwear, same Salesforce Commerce Cloud platform as Brooks \u2014 consistently sees 35% higher conversion for customers who use search, post-Algolia. Same vertical. Same platform. Not a generic benchmark.\n\nI put together a 5-tab audit of brooksrunning.com with the specific gaps, competitive context, and ROI model. Happy to walk through it \u2014 15 minutes.\n\nOr if Ryan or someone else on your team is the better conversation, happy to go that route.\n\n[Your name]",
+        "asset": "brooks-running-leave-behind.pdf",
+        "asset_url": "https://www.algolia.com/customers/under-armour/",
+        "goal": "Peer proof + soft multi-thread \u2014 introduces Ryan as alternative path"
+      },
+      {
+        "touch": 9,
+        "day": 17,
+        "channel": "linkedin",
+        "target": "ryan",
+        "hook_type": "nurture",
+        "actions": [
+          "Like 2-3 of Ryan's recent LinkedIn posts",
+          "Comment on a post about ecommerce or SFCC with a genuine observation",
+          "Share a relevant article about search personalization in athletic footwear (tag no one)",
+          "Like 1-2 Brooks Running company posts",
+          "Send LinkedIn InMail if not yet connected (reference the email from Day 3)"
+        ],
+        "goal": "5 nurturing actions on Ryan \u2014 appear in his feed before the breakup email"
+      },
+      {
+        "touch": 10,
+        "day": 21,
+        "channel": "email",
+        "target": "all",
+        "hook_type": "breakup",
+        "subject": "Closing the loop \u2014 Brooks Running search audit",
+        "body": "Hi [Ashley / Ryan / Melanie],\n\nI've shared a few findings from our Brooks Running search audit over the past few weeks. I won't keep following up if the timing isn't right.\n\nBut I'd feel remiss not sharing the full picture: Nike and Asics are 2-4 years ahead of Brooks on search intelligence. Both use Algolia. The gap in the audit was 4.4/10 vs. an estimated 7.5-8.5/10 for your top two competitors.\n\nIf that's worth a conversation at some point, I'm here. Happy to share the full audit report regardless \u2014 no strings attached.\n\n[Your name]",
+        "asset": "brooks-running-leave-behind.pdf",
+        "goal": "Breakup email \u2014 leave door open, offer value regardless of outcome"
+      }
+    ],
+    "ab_variants": [
+      {
+        "variant": "A",
+        "touch": 1,
+        "hook_type": "timeline",
+        "subject": "Quick finding on brooksrunning.com search \u2014 heading into summer season",
+        "opening": "With summer running season ramping up, I ran brooksrunning.com through 8 search queries a runner would actually type.",
+        "benchmark_reply_rate": "10.01%",
+        "notes": "Timeline hook \u2014 benchmark from Digital Bloom 2025 dataset"
+      },
+      {
+        "variant": "B",
+        "touch": 1,
+        "hook_type": "numbers",
+        "subject": "brooksrunning.com search scored 4.4/10 \u2014 here's what we found",
+        "opening": "We benchmarked brooksrunning.com search against Nike (est. 8.5/10) and Asics (est. 7.5/10). Brooks scored 4.4/10. The gap is widening every quarter.",
+        "benchmark_reply_rate": "8.57%",
+        "notes": "Numbers hook \u2014 benchmark from Digital Bloom 2025 dataset"
+      },
+      {
+        "variant": "C",
+        "touch": 1,
+        "hook_type": "competitor",
+        "subject": "Nike and Asics both use Algolia \u2014 here's what that means for Brooks",
+        "opening": "Two of your six direct running shoe competitors \u2014 Nike and Asics \u2014 both confirmed using Algolia as of March 2026 (BuiltWith verified). We ran a search audit on brooksrunning.com to understand the gap.",
+        "benchmark_reply_rate": "6.53%",
+        "notes": "Social proof/competitor hook \u2014 benchmark from Digital Bloom 2025 dataset"
+      }
+    ],
+    "assets_library": [
+      {
+        "name": "NLP failure screenshot",
+        "file": "screenshots/13-nlp-marathon-training.png",
+        "use_at": "Touch 1 (email attachment), Touch 5 (Loom demo)"
+      },
+      {
+        "name": "Under Armour case study",
+        "url": "https://www.algolia.com/customers/under-armour/",
+        "use_at": "Touch 8"
+      },
+      {
+        "name": "Shoe Carnival case study",
+        "url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
+        "use_at": "Touch 7"
+      },
+      {
+        "name": "Audit leave-behind PDF",
+        "file": "brooks-running-leave-behind.pdf",
+        "use_at": "Touch 8, Touch 10"
+      },
+      {
+        "name": "BuiltWith \u2014 Nike verification",
+        "url": "https://builtwith.com/nike.com",
+        "use_at": "Touch 4"
+      },
+      {
+        "name": "BuiltWith \u2014 Asics verification",
+        "url": "https://builtwith.com/asics.com",
+        "use_at": "Touch 4"
+      }
+    ]
+  }
 }
