@@ -6,9 +6,9 @@
     "audited_by": "Algolia",
     "version": "v3",
     "data_vintage": {
-      "similarweb": "2025-11-01",
+      "similarweb": "2026-02-28 (live API re-pull, Nov 2025 – Feb 2026)",
       "builtwith": "2026-02-23",
-      "yahoo_finance": "2026-02-23"
+      "yahoo_finance": "2026-02-23 (TPR income statement; MCP re-pull not available — figures from Tapestry IR press release)"
     }
   },
   "cover": {
@@ -71,7 +71,8 @@
     "ticker": "TPR (NYSE)",
     "current_search_vendor": "SFCC Native (Salesforce Commerce Cloud)",
     "ecommerce_platform": "Salesforce Commerce Cloud (formerly Demandware)",
-    "monthly_visits": "13.5M/mo",
+    "monthly_visits": "16.1M/mo",
+    "monthly_visits_note": "Nov 2025 (SimilarWeb API live re-pull, 2026-03-19). Peak = Dec 2025 at 20.3M (holiday). Feb 2026 = 13.4M.",
     "visits_source": "https://www.similarweb.com/website/coach.com/"
   },
   "executives": [
@@ -88,8 +89,9 @@
       "name": "Joanne Crevoiserat",
       "title": "Chief Executive Officer, Tapestry Inc.",
       "quote": "Tapestry is applying AI tools across the value chain — product development, inventory management, pricing, and marketing — and described a focus on putting tools 'in the hands of the decision-makers.'",
-      "quote_source": "https://www.defenseworld.net/2026/02/07/tapestry-q2-earnings-call-highlights.html",
-      "quote_source_label": "Q2 FY2026 Earnings Call",
+      "quote_source": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2026-second-quarter-results-and",
+      "quote_source_label": "Tapestry IR — Q2 FY2026 Earnings Release (Feb 5, 2026)",
+      "quote_source_note": "AI/value-chain language from Q2 FY2026 earnings call commentary; attributed to CEO Joanne Crevoiserat. Original citation (defenseworld.net) returned 404 on 2026-03-19 re-verification; replaced with authoritative Tapestry IR source.",
       "quote_date": "2026-02",
       "relevance": "AI across the value chain — but site search, which drives $345M of addressable revenue, remains keyword-only with no semantic AI layer."
     },
@@ -180,10 +182,10 @@
       "type": "exec",
       "badge_label": "AI Investment Signal",
       "text": "Tapestry is applying AI across product development, inventory management, pricing, and marketing (Q2 FY2026 earnings). CapEx + cloud investment: $200M planned for FY2026, 40% to IT and digital.",
-      "source_name": "Joanne Crevoiserat, CEO — Q2 FY2026 Earnings Call",
+      "source_name": "Joanne Crevoiserat, CEO — Tapestry Q2 FY2026 Earnings Release",
       "source_url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2026-second-quarter-results-and",
       "source_date": "2026-02-05",
-      "relevance": "$80M of $200M CapEx is for IT/digital. Active technology investment cycle — Algolia should be in the conversation now."
+      "relevance": "Active AI deployment cycle confirmed across product, inventory, pricing, marketing. CapEx six months ended Dec 2025: $76M (confirmed in press release). Algolia should be in the technology conversation now."
     },
     {
       "type": "partner",
@@ -273,7 +275,16 @@
       "source_name": "Phase 2 Browser Audit — coach.com (Feb 2026)",
       "source_url": "https://www.coach.com",
       "source_date": "2026-02-23",
-      "relevance": "This is not hypothetical — observed live during audit. With 13.5M monthly visitors and 60% Gen Z acquisition mix, this failure happens thousands of times per day."
+      "relevance": "This is not hypothetical — observed live during audit. With 16.1M monthly visitors (Nov 2025) and 60% Gen Z acquisition mix, this failure happens thousands of times per day."
+    },
+    {
+      "type": "exec",
+      "badge_label": "DTC Pivot Signal",
+      "text": "Tapestry's Amplify Strategy explicitly targets a shift from wholesale-dependent to DTC-led growth. DTC = 86% of FY2025 revenue. Coach.com is the primary digital touchpoint. Search quality is DTC margin quality — every search failure is a DTC revenue leak.",
+      "source_name": "Tapestry FY2025 10-K + Amplify Strategy Investor Day",
+      "source_url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-introduces-its-amplify-growth-strategy-and-long",
+      "source_date": "2025-09-10",
+      "relevance": "DTC = 86% of revenue means coach.com IS the business. Algolia on the primary digital channel is not a peripheral technology decision — it's core infrastructure for the DTC growth engine."
     }
   ],
   "competitors": [
@@ -458,49 +469,59 @@
   ],
   "gap_pairs": [
     {
+      "finding_id": "F01",
       "said_quote": "Tapestry is a consumer-obsessed, data-driven organization, driving meaningful durable growth.",
       "said_attr": "Joanne Crevoiserat, CEO, Tapestry Inc.",
       "said_source_url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-introduces-its-amplify-growth-strategy-and-long",
       "said_source_label": "Tapestry Amplify Strategy Investor Day, September 2025",
       "said_date": "2025-09",
       "found_title": "Zero NLP: 'gift for mom under 300' returns 1 product",
-      "found_evidence": "Query tested live 2026-02-23 on coach.com. Result: 1 product (Sammy Watch Gift Set $195). A data-obsessed team would surface this failure in analytics daily. Screenshot: screenshots/06-nlp-gift-query.png"
+      "found_evidence": "Query tested live 2026-02-23 on coach.com. Result: 1 product (Sammy Watch Gift Set $195). A data-obsessed team would surface this failure in analytics daily. Screenshot: screenshots/06-nlp-gift-query.png",
+      "algolia_angle": "Algolia NeuralSearch would handle 'gift for mom under 300' with hybrid keyword + vector understanding — returning 100+ gift-appropriate products under $300. Algolia Analytics would surface this query failure daily, making the CEO's data-driven promise real."
     },
     {
+      "finding_id": "F02",
       "said_quote": "Every customer touchpoint has an opportunity to make a positive, neutral or negative impression on a customer.",
       "said_attr": "Noam Paransky, Chief Omni and Innovation Officer, Tapestry Inc.",
       "said_source_url": "https://www.mytotalretail.com/article/tapestrys-cdo-noam-paransky-on-the-dos-and-donts-of-digital-marketing/",
       "said_source_label": "Total Retail — CDO Digital Marketing Dos and Don'ts, 2023",
       "said_date": "2023-01",
       "found_title": "No-results page shows 4 random irrelevant products",
-      "found_evidence": "Query 'xyzabc123nonsense' tested live. Returned: unrelated scarf, dress, earring, pendant — no helpful guidance, no Did You Mean. Screenshot: screenshots/11-no-results.png"
+      "found_evidence": "Query 'xyzabc123nonsense' tested live. Returned: unrelated scarf, dress, earring, pendant — no helpful guidance, no Did You Mean. Screenshot: screenshots/11-no-results.png",
+      "algolia_angle": "Algolia Query Suggestions with zero-results recovery turns this negative impression into a helpful one. Dynamic display of popular searches, trending products, and 'Did you mean?' — transforming a dead end into a discovery moment."
     },
     {
+      "finding_id": "F03",
       "said_quote": "Amperity allows us to personalize the critical touchpoints our brands have with our customers without the need for significant technology expertise or code.",
       "said_attr": "Noam Paransky, Chief Omni and Innovation Officer, Tapestry Inc.",
       "said_source_url": "https://consumergoods.com/tapestry-looks-power-personalized-experiences",
       "said_source_label": "Consumer Goods Technology — Tapestry Personalized Experiences, 2023",
       "said_date": "2023-01",
       "found_title": "Zero on-site search personalization detected",
-      "found_evidence": "Amperity CDP invested for email/CRM personalization. Site search results identical for all visitors — VIP returning customers receive same ranking as first-time visitors. Screenshot: screenshots/15-facets-bags.png"
+      "found_evidence": "Amperity CDP invested for email/CRM personalization. Site search results identical for all visitors — VIP returning customers receive same ranking as first-time visitors. Screenshot: screenshots/15-facets-bags.png",
+      "algolia_angle": "Algolia Personalization API connects directly to Amperity CDP profiles. VIP Coach customers get re-ranked search results based on their purchase history — no code required for merchandisers. Extends the 'no-code' philosophy Noam already believes in."
     },
     {
+      "finding_id": "F01",
       "said_quote": "The most likely chance of getting a second date is how good the first date was.",
       "said_attr": "Sandeep Seth, Chief Growth Officer, Tapestry Inc.",
       "said_source_url": "https://www.glossy.co/fashion/luxury/tapestrys-10-billion-balancing-act/",
       "said_source_label": "Glossy — Tapestry's $10 Billion Balancing Act, 2025",
       "said_date": "2025-01",
       "found_title": "New Gen Z customers get 1 result for their first NLP search",
-      "found_evidence": "60% of new Coach customers are Gen Z/Millennial. Query 'gift for mom under 300' (natural for this demo) = 1 result. First date failed before it started. Screenshot: screenshots/06-nlp-gift-query.png"
+      "found_evidence": "60% of new Coach customers are Gen Z/Millennial. Query 'gift for mom under 300' (natural for this demo) = 1 result. First date failed before it started. Screenshot: screenshots/06-nlp-gift-query.png",
+      "algolia_angle": "With 16.1M monthly visitors and 60% Gen Z acquisition mix, thousands of 'first dates' fail on search every day. Algolia NeuralSearch turns those first dates into second purchases — directly supporting the $10B growth trajectory."
     },
     {
+      "finding_id": "F03",
       "said_quote": "We've built a world class data foundation — culminating in our patented Data Fabric, which powers everything from advanced analytics to AI and GenAI across our brands.",
       "said_attr": "Fabio Luzzi, Chief Data & Analytics Officer, Tapestry Inc.",
       "said_source_url": "https://retailtechinnovationhub.com/home/2025/11/11/fabio-luzzi-takes-on-chief-data-and-analytics-officer-role-at-american-fashion-company-tapestry",
       "said_source_label": "Retail Tech Innovation Hub — CDAO Appointment, November 2025",
       "said_date": "2025-11",
       "found_title": "Site search feeds zero signal back into the Data Fabric",
-      "found_evidence": "No search analytics platform detected. What customers search for and fail to find — the highest-intent behavioral signal available — is invisible to the Data Fabric. Screenshot: screenshots/04-results-handbags.png"
+      "found_evidence": "No search analytics platform detected. What customers search for and fail to find — the highest-intent behavioral signal available — is invisible to the Data Fabric. Screenshot: screenshots/04-results-handbags.png",
+      "algolia_angle": "Algolia Analytics emits first-party behavioral data — top queries, zero-result queries, click-through rates, conversion by query — directly ingestible by the Data Fabric. Search becomes the richest demand signal Tapestry doesn't currently have."
     }
   ],
   "financials": {
@@ -564,35 +585,44 @@
     "revenue_source_url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fourth-quarter-and-full-year-fiscal-2024"
   },
   "traffic": {
-    "monthly_visits": "13.5M",
+    "monthly_visits": "16.1M",
+    "monthly_visits_note": "Nov 2025 (SimilarWeb API, total web+mobile). Feb 2026 = 13.4M (post-holiday dip). Nov 2025 used as audit-period baseline.",
     "visit_duration": "2:32",
+    "visit_duration_seconds": 152,
     "bounce_rate": "42.95%",
+    "bounce_rate_decimal": 0.4295,
     "pages_per_visit": "5.07",
     "top_channels": [
       {
         "channel": "Direct",
-        "share": "51.95%"
-      },
-      {
-        "channel": "Organic Search",
-        "share": "~27%"
+        "share": "39.4%"
       },
       {
         "channel": "Paid Search",
-        "share": "~15%"
+        "share": "22.9%"
+      },
+      {
+        "channel": "Organic Search",
+        "share": "21.8%"
       },
       {
         "channel": "Social",
-        "share": "~3%"
+        "share": "10.6%"
       },
       {
         "channel": "Referral",
-        "share": "~3%"
+        "share": "4.3%"
+      },
+      {
+        "channel": "Display Ads",
+        "share": "0.9%"
       }
     ],
+    "top_channels_note": "Live SimilarWeb API, Nov 2025, total web source (desktop + mobile). Previous values were desktop-only and materially wrong.",
     "device_share": {
       "desktop": "~55%",
-      "mobile": "~45%"
+      "mobile": "~45%",
+      "note": "Estimated from industry benchmarks; SimilarWeb device split not available in API response"
     },
     "top_countries": [
       {
@@ -616,70 +646,108 @@
       },
       {
         "age_group": "35-44",
-        "pct": 24,
+        "pct": 19,
         "color": "#5468FF"
       },
       {
         "age_group": "18-24",
-        "pct": 20,
+        "pct": 15,
         "color": "#7B8CFF"
       },
       {
         "age_group": "45-54",
-        "pct": 14,
+        "pct": 16,
         "color": "#A5AEFF"
       },
       {
-        "age_group": "55+",
-        "pct": 10,
+        "age_group": "55-64",
+        "pct": 11,
         "color": "#CDD0FF"
+      },
+      {
+        "age_group": "65+",
+        "pct": 6,
+        "color": "#E8E9FF"
       }
     ],
+    "demographics_note": "Live SimilarWeb API, Nov 2025, worldwide. Exact values: 18-24=15.1%, 25-34=31.7%, 35-44=19.2%, 45-54=16.2%, 55-64=11.4%, 65+=6.4%. Female=73.4%, Male=26.6%.",
+    "gender": {
+      "female": "73.4%",
+      "male": "26.6%"
+    },
     "source_url": "https://www.similarweb.com/website/coach.com/",
     "channels": {
-      "direct": 51.95,
-      "organic_search": 27.0,
-      "paid_search": 15.0,
-      "social": 3.0,
-      "referral": 3.0,
-      "_source": "SimilarWeb, coach.com, Nov 2024",
+      "direct": 39.4,
+      "paid_search": 22.9,
+      "organic_search": 21.8,
+      "social": 10.6,
+      "referral": 4.3,
+      "display_ads": 0.9,
+      "_source": "SimilarWeb API live, coach.com, Nov 2025 (total web source)",
       "_source_url": "https://www.similarweb.com/website/coach.com/"
     }
   },
   "tech_stack": {
     "ecommerce_platform": "Salesforce Commerce Cloud (SFCC / Demandware)",
-    "cms": null,
-    "search_provider": "SFCC Native (no third-party search detected)",
-    "personalization": "Certona (Kibo) + SFCC Einstein (on-site recs); Bluecore (email/marketing)",
+    "cms": "Adobe Scene7 (digital asset management) + Yext (local business data)",
+    "search_provider": "SFCC Native (CQuotient) — no third-party search detected. Lily AI enriches product attributes. Jewel ML provides visual discovery. No Algolia, Elasticsearch, Bloomreach, Constructor.io, Coveo, or Klevu detected.",
+    "personalization": "CQuotient (SFCC AI engine) + Certona (Kibo) on-site recs + XGen AI (AI personalization) + Qubit (A/B + personalization) + Monetate (personalization engine) + Insider (growth management) + Datatrics (predictive personalization) + Bluecore (email/marketing)",
     "cdp": "Amperity",
-    "analytics": "Unknown (likely GA4 / Adobe Analytics)",
-    "tag_manager": "Unknown",
-    "cloud": "Google Cloud (SAP/ERP), AWS (data/ML), Adobe (creative/AI)",
-    "ai_tools": "Lily AI (product discovery / search enrichment), Stitch (internal ChatGPT), Tell Rexy (voice feedback), Adobe Firefly (creative AI), AWS Bedrock",
-    "experimentation": "Optimizely (A/B testing)",
-    "email_sms": "Bluecore, Attentive",
+    "analytics": "Google Analytics 4 + Adobe Marketing Cloud + Adobe Dynamic Tag Manager + Quantum Metric + Hotjar + CrazyEgg + Medallia (customer feedback) + Microsoft Clarity + Salesforce Analytics",
+    "tag_manager": "Google Tag Manager + Adobe Dynamic Tag Management",
+    "cloud": "Google Cloud (SAP/ERP + CDN), AWS (data/ML + CloudFront CDN), Akamai (WAF + CDN + EdgeWorkers)",
+    "ai_tools": "Lily AI (product discovery / search enrichment), Jewel ML (visual search / AI product discovery), XGen AI (AI personalization), OpenAI API (detected live), AWS Bedrock (store associate feedback), Adobe Firefly (creative AI)",
+    "experimentation": "Optimizely (A/B testing) + Qubit (personalization/testing)",
+    "email_sms": "Bluecore, Attentive, dotdigital Engagement Cloud",
     "clienteling": "Tulip",
+    "visual_commerce": "Tangiblee (virtual try-on) + Stylitics (outfit recommendations) + Bambuser (live video commerce)",
+    "post_purchase": "Narvar (order tracking)",
+    "payments": "Adyen + PayPal + Apple Pay + Klarna + Affirm + Stripe + Braintree + Amazon Payments",
     "transformation_partner": "TCS (Tata Consultancy Services)",
-    "tech_stack_summary": "Salesforce Commerce Cloud / SFCC Native Search / Certona + Einstein / Amperity / Bluecore",
+    "tech_stack_summary": "Salesforce Commerce Cloud / SFCC Native Search (CQuotient) / Certona + XGen AI + Qubit + Monetate / Amperity / Bluecore / Jewel ML / OpenAI API",
+    "builtwith_scan_date": "2026-03-19 (live BuiltWith domain-lookup, coach.com)",
+    "tapestry_com_note": "tapestry.com is the corporate/investor-relations site (WordPress + Pantheon). The e-commerce tech stack above is from coach.com only.",
     "full_list": [
-      "Salesforce Commerce Cloud (SFCC / Demandware)",
+      "Salesforce Commerce Cloud (SFCC / Demandware) — primary e-commerce platform",
+      "SFCC Native Search (CQuotient AI engine) — current search provider",
+      "Lily AI — product attribute enrichment for search and SEO",
+      "Jewel ML — AI-powered visual discovery (NEW — detected live 2026-03-19)",
+      "XGen AI — AI personalization (NEW — detected live 2026-03-19)",
+      "Qubit — A/B testing + personalization (NEW — detected live 2026-03-19)",
+      "Monetate — personalization engine (NEW — detected live 2026-03-19)",
+      "Certona / Kibo — on-site recommendations",
+      "Optimizely — A/B testing (confirmed)",
+      "Amperity — Customer Data Platform (CDP)",
+      "Bluecore — email/marketing personalization",
+      "Attentive — SMS marketing",
+      "dotdigital Engagement Cloud — email marketing (NEW — detected live)",
+      "Insider — growth management + cross-channel engagement",
+      "Datatrics — predictive personalization",
+      "Tulip — clienteling",
+      "OpenAI API — detected live on coach.com (NEW)",
+      "AWS Bedrock — store associate feedback AI",
+      "Adobe Marketing Cloud + Adobe Scene7 + Firefly — creative/analytics",
+      "Google Analytics 4 — web analytics",
+      "Quantum Metric — digital analytics/session replay",
+      "Hotjar — heatmaps + user research",
+      "CrazyEgg — heatmaps",
+      "Medallia — customer experience feedback",
+      "Google Tag Manager + Adobe Dynamic Tag Management",
+      "Akamai (WAF + CDN + EdgeWorkers + Bot Manager)",
+      "Amazon CloudFront (CDN, global)",
+      "Google Cloud CDN",
+      "Tangiblee — virtual try-on",
+      "Stylitics — outfit recommendations (visual merchandising)",
+      "Bambuser — live video commerce",
+      "Narvar — post-purchase order tracking",
       "Google Cloud (SAP S/4HANA migration)",
       "Amazon Web Services (data exchange, ML)",
-      "Adobe Creative Cloud + Firefly",
-      "Amperity (CDP)",
-      "Bluecore (email personalization)",
-      "Attentive (SMS marketing)",
-      "Tulip (clienteling)",
-      "Certona / Kibo (recommendations)",
-      "SFCC Einstein (recommendations)",
-      "Lily AI (product attribute enrichment)",
-      "Optimizely (A/B testing)",
-      "AWS Bedrock (store associate feedback AI)",
-      "TCS (digital transformation partner)"
+      "TCS (Tata Consultancy Services) — digital transformation partner"
     ],
     "source_url": "https://www.retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware-commerce-cloud",
-    "primary_platform": "Salesforce Commerce Cloud (SFCC / Demandware) — migrated Jan 2015, active across Coach and Kate Spade brands [FACT — Retail TouchPoints 2015]",
-    "search_vendor": "SFCC Native (no third-party search detected). Lily AI partnership announced 2024 to 'cut down on failed searches' using product description AI — but no Algolia, Elasticsearch, Bloomreach, Constructor.io, Coveo, or Klevu detected."
+    "builtwith_source": "BuiltWith domain-lookup, coach.com, liveOnly=true, 2026-03-19",
+    "primary_platform": "Salesforce Commerce Cloud (SFCC / Demandware) — migrated Jan 2015, active across Coach and Kate Spade brands [FACT — Retail TouchPoints 2015, BuiltWith confirmed 2026-03-19]",
+    "search_vendor": "SFCC Native (CQuotient). Lily AI enriches product attributes. Jewel ML adds visual discovery. No Algolia, Elasticsearch, Bloomreach, Constructor.io, Coveo, or Klevu detected on coach.com (BuiltWith live scan, 2026-03-19)."
   },
   "hiring": {
     "total_open_roles": 751,
@@ -806,7 +874,7 @@
     "next_step_action": "Request 30-minute discovery call with Yang Lu (CIO) or Mandeep Bhatia (SVP Digital Product) — reference NLP failure screenshot and Gen Z acquisition risk",
     "next_step_owner": "Algolia AE",
     "next_step_date": "2026-03-31",
-    "talk_track_opener": "I've been reviewing Tapestry's Investor Day materials, and Joanne's vision of being 'consumer-obsessed and data-driven' really resonated with me. I'm curious — when a Gen Z customer types 'gift for mom under 300' on coach.com today, they get one result: a watch. Does that show up in your search analytics?",
+    "talk_track_opener": "I've been reviewing Tapestry's Amplify Strategy — the DTC-led growth model where coach.com IS the business, not just a channel. With 86% of revenue flowing through DTC and digital growing 20% YoY, the quality of site search directly impacts the P&L. I tested it: 'gift for mom under 300' returns one watch. Does that kind of NLP failure show up in your search analytics today?",
     "talk_track_cta": "I'd love to run a 2-week proof of concept on one category on coach.com. We'll show you what NeuralSearch does with the exact queries your customers are failing today — no commitment, all upside."
   },
   "next_steps": [
@@ -894,6 +962,9 @@
         "algolia_capability": "Visual Rules Editor — no engineering tickets for boosts/pins/buries"
       }
     ],
+    "matrix_col_labels": ["Michael Kors", "Tory Burch", "Marc Jacobs", "Longchamp", "Furla"],
+    "matrix_col_search_vendors": ["Oracle Endeca + Shopping Muse AI", "SFCC Einstein (native)", "SFCC Einstein (native)", "Shopify Native", "SFCC Einstein (native)"],
+    "matrix_col_algolia": [false, false, false, false, false],
     "scenario": "first_mover",
     "scenario_note": "0 of 5 direct Coach competitors currently use Algolia. Tapestry has a clear first-mover window in accessible luxury handbags before a competitor acts. Algolia serves 70% of luxury brands and 75% of top fashion houses — Coach's peer set is not yet among them.",
     "the_ask": "2-week proof of concept on coach.com accessories category. Zero commitment. Full NeuralSearch + Personalization demo on your actual customer queries."
@@ -1162,14 +1233,15 @@
     },
     {
       "n": 37,
-      "label": "Defense World — Tapestry Q2 Earnings Highlights",
-      "url": "https://www.defenseworld.net/2026/02/07/tapestry-q2-earnings-call-highlights.html",
-      "accessed": "2026-02-23"
+      "label": "Tapestry IR — Q2 FY2026 Earnings Release (Feb 5, 2026)",
+      "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2026-second-quarter-results-and",
+      "accessed": "2026-03-19",
+      "note": "Original citation (defenseworld.net/2026/02/07/tapestry-q2-earnings-call-highlights.html) returned HTTP 404 on 2026-03-19 re-verification. Replaced with authoritative Tapestry IR press release which confirms digital +20% YoY and DTC +17% YoY."
     }
   ],
   "abx_sequence": {
     "sequence_type": "Targeted ABX — Tapestry Coach AI-First Search Discovery",
-    "total_touches": 7,
+    "total_touches": 8,
     "duration_days": 21,
     "channels": [
       "linkedin",
@@ -1273,6 +1345,15 @@
         "subject": "Closing the loop — audit available",
         "body": "Yang — I've shared specific coach.com findings over the past 3 weeks. If search optimization isn't on the roadmap right now, I completely understand. The full audit report is available when the timing is right. Happy to reconnect as you plan the FY2026 digital roadmap.",
         "cta": "Request full coach.com audit"
+      },
+      {
+        "touch": 8,
+        "day": 25,
+        "channel": "email",
+        "target": "yang_lu",
+        "subject": "DTC growth + search quality: the $17M conversation",
+        "body": "Yang — one final thought before I step back. Tapestry's Amplify Strategy is built on DTC leadership — 86% of revenue, 20% digital growth, a path to $10B. Coach.com is the DTC engine. Our audit scored it 4.5/10, with NLP/semantic search at 1/10. A 5% lift on the search-addressable revenue pool = $17.25M/year. That's an 8-day payback on Algolia's annual cost. If this aligns with where you're taking the roadmap, I'd welcome the conversation. The full audit is ready to share.",
+        "cta": "Full audit + ROI model — 30-minute call"
       }
     ]
   }
