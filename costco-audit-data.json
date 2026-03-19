@@ -8,7 +8,7 @@
     "data_vintage": {
       "similarweb": "2025-10-01",
       "builtwith": "2026-02-23",
-      "yahoo_finance": "2026-02-23"
+      "yahoo_finance": "2026-03-18"
     }
   },
   "cover": {
@@ -73,23 +73,25 @@
     "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected)",
     "ecommerce_platform": "Salesforce Commerce Cloud",
     "monthly_visits": "93.27M/mo",
-    "visits_source": "https://www.similarweb.com/website/costco.com/"
+    "visits_source": "https://www.similarweb.com/website/costco.com/",
+    "market_cap": "~$435B",
+    "current_price": "$979.92"
   },
   "revenue_3y": [
     {
       "year": "FY2023",
-      "revenue": 237710000000,
-      "revenue_label": "$237.7B",
-      "note": "[FACT]",
+      "revenue": 242290000000,
+      "revenue_label": "$242.3B",
+      "note": "[FACT \u2014 Yahoo Finance]",
       "digital_share": "~6.3%",
       "search_signal": "E-commerce ~$15B; pre-NLP era search infrastructure",
       "source_url": "https://investor.costco.com/news/news-details/2023/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2023-Operating-Results/"
     },
     {
       "year": "FY2024",
-      "revenue": 249600000000,
-      "revenue_label": "$249.6B",
-      "note": "[FACT]",
+      "revenue": 254453000000,
+      "revenue_label": "$254.5B",
+      "note": "[FACT \u2014 Yahoo Finance]",
       "digital_share": "~7.0%",
       "search_signal": "E-commerce +16.1% YoY; new VP IT eCommerce Joel Crabb from Target hired 2022; search enhancements Q1",
       "source_url": "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Operating-Results/"
@@ -98,7 +100,7 @@
       "year": "FY2025",
       "revenue": 275235000000,
       "revenue_label": "$275.2B",
-      "note": "[FACT]",
+      "note": "[FACT \u2014 Yahoo Finance]",
       "digital_share": "~7.2%",
       "search_signal": "E-commerce +15.6% ($19.6B); personalization launched Q1 FY2026; search redesigned with click-through doubling; SVP E-Commerce retired Jan 2026",
       "source_url": "https://www.macrotrends.net/stocks/charts/COST/costco/revenue"
@@ -450,8 +452,8 @@
   "financials": {
     "revenue": "$275.2B",
     "revenue_year": "FY2025",
-    "revenue_confidence": "FACT \u2014 confirmed via Costco IR and MacroTrends",
-    "revenue_source_url": "https://www.macrotrends.net/stocks/charts/COST/costco/revenue",
+    "revenue_confidence": "FACT \u2014 Yahoo Finance MCP (annual income_stmt, COST, accessed 2026-03-18). Total Revenue includes merchandise sales + membership fees.",
+    "revenue_source_url": "https://finance.yahoo.com/quote/COST/financials/",
     "ecommerce_share": "7.2%",
     "ecommerce_revenue": "$19.82B [ESTIMATE \u2014 formula: $275.235B \u00d7 7.2%]",
     "search_driven_share": "15% of e-commerce (industry standard: 10-20%, per Baymard)",
@@ -481,7 +483,17 @@
         "source": "08-financial-profile.md \u2014 formula: $2.97B \u00d7 15% lift"
       }
     },
-    "berkshire_note": "Berkshire Hathaway holds significant COST equity position \u2014 institutional investor confidence reflects strong fundamentals despite low margin profile."
+    "berkshire_note": "Berkshire Hathaway holds significant COST equity position \u2014 institutional investor confidence reflects strong fundamentals despite low margin profile.",
+    "revenue_source_label": "Yahoo Finance \u2014 COST Annual Income Statement",
+    "ebitda_margin": "4.70%",
+    "net_margin": "2.99%",
+    "operating_margin": "3.74%",
+    "gross_margin": "12.93%",
+    "cash": "$18.24B",
+    "market_cap": "~$435B",
+    "ebit": "$10.97B",
+    "gross_profit": "$35.35B",
+    "roi_note": "ROI base: $275.2B total revenue \u00d7 7.2% e-commerce share = $19.82B. Search-addressable = $19.82B \u00d7 15% = $2.97B. Figures unchanged from scratchpad (FY2025 revenue is confirmed by Yahoo Finance)."
   },
   "traffic": {
     "monthly_visits": "93.27M",
