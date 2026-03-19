@@ -4370,7 +4370,7 @@ function sectionCompanySnapshot(D) {
             <!-- Name / Title row + LinkedIn pinned top-right -->
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
               <div style="flex:1;min-width:0;">
-                <div style="font-size:17px;font-weight:600;color:var(--gray);line-height:1.25;margin-bottom:2px;">${escHtml(e.name||'—')}</div>
+                <div style="font-size:16px;font-weight:600;color:var(--gray);line-height:1.25;margin-bottom:2px;">${escHtml(e.name||'—')}</div>
                 <div style="font-size:14px;color:var(--mid);margin-bottom:2px;">${escHtml(e.title||'—')}</div>
                 ${e.tenure ? `<div style="font-size:12px;color:var(--mid);opacity:0.7;">${escHtml(e.tenure)}</div>` : ''}
               </div>
@@ -4860,7 +4860,7 @@ function sectionSignals(D) {
       </span>
       <!-- Content -->
       <div style="flex:1;min-width:0;">
-        <div style="font-size:15px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:4px;">
+        <div style="font-size:16px;font-weight:600;color:var(--gray);line-height:1.4;margin-bottom:4px;">
           ${escHtml(sig.badge_label || sig.text?.slice(0,80) || '—')}
         </div>
         <div style="font-size:14px;color:var(--mid);line-height:1.5;">
@@ -5087,24 +5087,24 @@ function sectionBattleCard(D) {
 
         ${ae.talk_track_opener ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">Opening Line</div>
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">Opening Line</div>
           <div class="talk-track-box">
-            <p style="font-size:15px;line-height:1.6;">${escHtml(ae.talk_track_opener)}</p>
+            <p style="font-size:16px;line-height:1.6;">${escHtml(ae.talk_track_opener)}</p>
             ${ae.talk_track_cta ? `<div style="font-size:14px;font-weight:600;color:var(--blue);margin-top:8px;">→ ${escHtml(ae.talk_track_cta)}</div>` : ''}
           </div>
         </div>` : ''}
 
         ${hook ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">The Hook</div>
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">The Hook</div>
           <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
             <div style="background:#F0FDF4;padding:12px 14px;border-bottom:1px solid var(--border);">
-              <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">They said</div>
+              <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">They said</div>
               <div style="font-size:14px;font-style:italic;color:var(--gray);">"${escHtml(hook.said_quote)}"</div>
               <div style="font-size:12px;color:var(--mid);margin-top:4px;">— ${escHtml(hook.said_attr)}</div>
             </div>
             <div style="background:#FEF2F2;padding:12px 14px;">
-              <div style="font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">✗ We found</div>
+              <div style="font-size:11px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">✗ We found</div>
               <div style="font-size:14px;font-weight:600;color:var(--gray);">${escHtml(hook.found_title)}</div>
             </div>
           </div>
@@ -5112,7 +5112,7 @@ function sectionBattleCard(D) {
 
         ${objections.length ? `
         <div>
-          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">When They Push Back</div>
+          <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:8px;">When They Push Back</div>
           ${objections.slice(0,3).map(o=>`
           <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
             <div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
@@ -5123,7 +5123,7 @@ function sectionBattleCard(D) {
 
       <!-- RIGHT: Feature comparison -->
       <div>
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">
+        <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">
           Feature Comparison: ${escHtml(vendor)} vs. Algolia
         </div>
         <table class="feature-table" style="margin-bottom:16px;">
@@ -5277,7 +5277,7 @@ function sectionRevenueAtRisk(D) {
 
     <!-- Assumptions box — full transparency on all inputs -->
     <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--gray);line-height:1.7;">
-      <span style="font-weight:700;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
+      <span style="font-weight:600;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
       <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : '~7%')} of total revenue) ·
       <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
       <strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) ·
@@ -5422,16 +5422,16 @@ function sectionCompetitiveSynthesis(D) {
 
     ${tiers.length ? `
     <div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Competitor Intelligence</div>
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Competitor Intelligence</div>
       <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
         <table style="width:100%;border-collapse:collapse;">
           <thead>
             <tr style="background:var(--gray);color:white;">
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:22%;">Competitor</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:20%;">Search Stack</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:15%;">Our Play</th>
-              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">Strategic Angle</th>
-              <th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;width:90px;">Verified</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:22%;">Competitor</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:20%;">Search Stack</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:15%;">Our Play</th>
+              <th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;">Strategic Angle</th>
+              <th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;width:90px;">Verified</th>
             </tr>
           </thead>
           <tbody>
@@ -5445,9 +5445,9 @@ function sectionCompetitiveSynthesis(D) {
                 return `<tr style="background:${bgRow};border-top:1px solid var(--border);">
                   ${isFirst ? `<td rowspan="${comps.length}" style="padding:14px 16px;vertical-align:top;border-right:1px solid var(--border);">
                     <span style="display:inline-block;background:${cfg.bg};color:${cfg.color};
-                      font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+                      font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
                       padding:2px 8px;border-radius:20px;margin-bottom:6px;">${cfg.label}</span>
-                    <div style="font-size:15px;font-weight:700;color:var(--gray);">${comps.join(', ')}</div>
+                    <div style="font-size:16px;font-weight:600;color:var(--gray);">${comps.join(', ')}</div>
                   </td>` : ''}
                   <td style="padding:14px 16px;vertical-align:top;">
                     <div style="font-size:13px;color:var(--gray);">${ci === 0 ? escHtml(t.search_stack||'Unknown') : ''}</div>
@@ -5475,7 +5475,7 @@ function sectionCompetitiveSynthesis(D) {
     </div>` : ''}
 
     ${matrix.length?`<div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Capability Matrix</div>
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:12px;">Capability Matrix</div>
       <div style="overflow-x:auto;">
         <table class="data-table">
           <thead>
@@ -5740,17 +5740,17 @@ function sectionOutreachPlan(D) {
     ${triggers.length ? `
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
       ${triggers.map(t=>`<div style="display:inline-flex;align-items:center;gap:6px;background:${triggerUrgency[t.urgency]||'#6B7280'}12;border:1px solid ${triggerUrgency[t.urgency]||'#6B7280'}30;border-radius:6px;padding:6px 12px;">
-        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
+        <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
         <span style="font-size:12px;color:var(--gray);">${escHtml(t.detail)}</span>
       </div>`).join('')}
     </div>` : ''}
 
     <!-- Contact Cards -->
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
       ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
+          <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
         <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
         <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">${escHtml(c.title)}</div>
@@ -5760,7 +5760,7 @@ function sectionOutreachPlan(D) {
     </div>
 
     <!-- Unified Touch Timeline -->
-    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
+    <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
     <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;">
       ${touches.map((t,i)=>{
         const contact = contactMap[t.target] || {};
@@ -5770,7 +5770,7 @@ function sectionOutreachPlan(D) {
         return `<div style="border-bottom:${i<touches.length-1?'1px solid var(--border)':'none'};padding:16px 20px;background:${i%2===0?'white':'#FAFAFA'};">
           <!-- Touch header row -->
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
-            <span style="font-size:11px;font-weight:700;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
+            <span style="font-size:11px;font-weight:600;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
             <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:${col};">
               ${chIcon[t.channel]||''} ${escHtml(chLabel[t.channel]||t.channel)}
             </span>
@@ -5782,9 +5782,9 @@ function sectionOutreachPlan(D) {
           ${isLinkedIn && t.actions ? `
           <!-- LinkedIn actions list -->
           <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
+            <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
             ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
-              <span style="font-weight:700;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
+              <span style="font-weight:600;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
               <span>${escHtml(a)}</span>
             </div>`).join('')}
           </div>` : ''}
@@ -5793,7 +5793,7 @@ function sectionOutreachPlan(D) {
           <!-- Loom video touch -->
           <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:14px;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
+              <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
               <span style="font-size:11px;color:var(--mid);">Target: ${escHtml(t.video_duration_target||'60-75 sec')}</span>
             </div>
             ${t.email_subject ? `
@@ -5805,7 +5805,7 @@ function sectionOutreachPlan(D) {
             <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
             ${t.video_script ? `
             <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
+              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
               <pre style="font-size:12px;color:var(--gray);line-height:1.6;white-space:pre-wrap;margin:0;font-family:inherit;">${escHtml(t.video_script)}</pre>
             </div>` : ''}
           </div>` : ''}
@@ -5814,7 +5814,7 @@ function sectionOutreachPlan(D) {
           <!-- Email touch -->
           <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
             ${t.subject ? `<div style="margin-bottom:8px;">
-              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
+              <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
               <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
             </div>` : ''}
             ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
@@ -5834,12 +5834,12 @@ function sectionOutreachPlan(D) {
     <!-- A/B Variants -->
     ${variants.length ? `
     <div style="margin-bottom:28px;">
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
       <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
       <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
         ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-            <span style="font-size:12px;font-weight:700;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
+            <span style="font-size:12px;font-weight:600;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
             <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
           </div>
           <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
@@ -5853,13 +5853,13 @@ function sectionOutreachPlan(D) {
     <!-- Assets Library -->
     ${assets.length ? `
     <div>
-      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
       <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
         <table style="width:100%;border-collapse:collapse;">
           <thead><tr style="background:var(--light);">
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
-            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
           </tr></thead>
           <tbody>
             ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
