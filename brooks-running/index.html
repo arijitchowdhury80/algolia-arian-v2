@@ -5062,6 +5062,24 @@ function sectionTraffic(D) {
           <div style="flex:1;">${legendHtml}</div>
         </div>
 
+        <!-- Device Split — fills white space below donut (verified SimilarWeb data) -->
+        ${t.device_share ? `
+        <div style="border-top:1px solid var(--border);padding-top:16px;">
+          <div style="${T.eyebrowSm};margin-bottom:8px;">Device Split</div>
+          <div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">
+            <div style="width:${t.device_share.mobile}%;background:#003DFF;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}%</span>
+            </div>
+            <div style="width:${t.device_share.desktop}%;background:#6B7280;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}%</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;${T.bodySmGray12};margin-bottom:8px;">
+            <span>Mobile</span><span>Desktop</span>
+          </div>
+          ${t.device_share.insight ? `<div style="${T.compact};background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.12);border-radius:6px;padding:8px 10px;font-style:italic;">${escHtml(t.device_share.insight)}</div>` : ''}
+        </div>` : ''}
+
       </div>
 
       <!-- RIGHT CARD: Audience Profile -->
@@ -5098,21 +5116,6 @@ function sectionTraffic(D) {
           </div>`;
         }).join('')}` : ''}
 
-        ${t.device_share ? `
-        <!-- Device split bar — verified from SimilarWeb -->
-        <div style="${T.eyebrowSm};margin-top:20px;margin-bottom:8px;">Device Split</div>
-        <div style="position:relative;height:32px;border-radius:6px;overflow:hidden;margin-bottom:6px;display:flex;">
-          <div style="width:${t.device_share.mobile}%;background:#003DFF;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}%</span>
-          </div>
-          <div style="width:${t.device_share.desktop}%;background:#6B7280;display:flex;align-items:center;justify-content:center;">
-            <span style="font-size:11px;font-weight:600;color:white;white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}%</span>
-          </div>
-        </div>
-        <div style="display:flex;justify-content:space-between;${T.bodySmGray12};margin-bottom:8px;">
-          <span>Mobile</span><span>Desktop</span>
-        </div>
-        ${t.device_share.insight ? `<div style="${T.compact};background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.12);border-radius:6px;padding:8px 10px;font-style:italic;">${escHtml(t.device_share.insight)}</div>` : ''}` : ''}
       </div>
 
     </div>
