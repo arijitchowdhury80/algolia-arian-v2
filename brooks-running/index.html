@@ -3668,6 +3668,35 @@ const T = {
   pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
 };
 
+/* ── proofPill — hero-pill style case study badge ────────────────────
+   Renders a validated proof point as a clickable pill:
+   [Company badge] Result text →
+   Used everywhere a case study is cited: finding cards, golden angle, case studies section.
+   Static — no animation. Semi-transparent tint + border ring signals verified proof.
+────────────────────────────────────────────────────────────────────── */
+function proofPill(url, company, result, color) {
+  if (!url || !company) return '';
+  const col = color || 'var(--green)';
+  // Use hex-compatible tint for background — CSS color-mix not supported in all contexts
+  const bgMap = {'var(--green)':'rgba(5,150,105,0.08)','var(--blue)':'rgba(0,61,255,0.08)','var(--purple)':'rgba(124,58,237,0.08)'};
+  const borderMap = {'var(--green)':'rgba(5,150,105,0.25)','var(--blue)':'rgba(0,61,255,0.20)','var(--purple)':'rgba(124,58,237,0.20)'};
+  const bg = bgMap[col] || 'rgba(5,150,105,0.08)';
+  const border = borderMap[col] || 'rgba(5,150,105,0.25)';
+  return `<a href="${url}" target="_blank" rel="noopener"
+    style="display:inline-flex;align-items:center;gap:0;border-radius:24px;
+           background:${bg};border:1px solid ${border};
+           text-decoration:none;overflow:hidden;max-width:100%;flex-shrink:0;">
+    <span style="background:${col};color:white;padding:5px 10px;
+                 font-size:11px;font-weight:600;white-space:nowrap;line-height:1.4;">
+      ${escHtml(company)}
+    </span>
+    <span style="padding:5px 10px 5px 8px;font-size:12px;font-weight:600;color:${col};
+                 white-space:nowrap;line-height:1.4;">
+      ${escHtml(result)} →
+    </span>
+  </a>`;
+}
+
 function escHtml(str) {
   return s(str)
     .replace(/&/g, '&amp;')
@@ -3746,13 +3775,18 @@ function renderGoldenAngleCard(ga) {
           BuiltWith: ${escHtml(c.name)}
         </a>`).join('')}
       ${ga.footwear_case_study?.source_url ? `
-        <a href="${ga.footwear_case_study.source_url}" target="_blank"
-           style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);
-                  border:1px solid rgba(255,255,255,0.25);border-radius:20px;
-                  padding:4px 12px;font-size:13px;font-weight:600;color:white;text-decoration:none;"
-           onmouseenter="this.style.background='rgba(255,255,255,0.25)'"
-           onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
-          ${escHtml(ga.footwear_case_study.company||'Case Study')}: ${escHtml(ga.footwear_case_study.result||'')}
+        <a href="${ga.footwear_case_study.source_url}" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:0;border-radius:24px;
+                  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.28);
+                  overflow:hidden;text-decoration:none;"
+           onmouseenter="this.style.background='rgba(255,255,255,0.22)'"
+           onmouseleave="this.style.background='rgba(255,255,255,0.12)'">
+          <span style="background:rgba(255,255,255,0.25);color:white;padding:5px 10px;font-size:11px;font-weight:600;white-space:nowrap;">
+            ${escHtml(ga.footwear_case_study.company||'Case Study')}
+          </span>
+          <span style="padding:5px 10px 5px 8px;font-size:12px;font-weight:600;color:white;white-space:nowrap;">
+            ${escHtml(ga.footwear_case_study.result||'')} →
+          </span>
         </a>` : ''}
     </div>
   </div>`;
@@ -4830,11 +4864,7 @@ function sectionFinding(f, displayId) {
     <div class="solution-box">
       <div class="sol-label">How Algolia Fixes This</div>
       <p>${escHtml(f.algolia_solution)}</p>
-      ${f.algolia_case_study_url ? `
-      <a href="${f.algolia_case_study_url}" target="_blank" rel="noopener" class="case-study-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}
-      </a>` : ''}
+      ${proofPill(f.algolia_case_study_url, f.algolia_case_study_company, f.algolia_case_study_result)}
     </div><!-- /solution-box -->
       </div><!-- /chapter-card -->
     </div><!-- /chapter-wrap -->
@@ -5568,7 +5598,7 @@ function sectionCaseStudies(D) {
         <div style="font-size:2rem;font-weight:600;color:var(--green);line-height:1.2;margin-bottom:8px;">${escHtml(c.result)}</div>
         <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(c.product)}</div>
         <div style="${T.bodySm};padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
-        <a href="${c.url}" target="_blank" style="${T.labelBlue};">View case study →</a>
+        ${proofPill(c.url, c.company, c.result, 'var(--blue)')}
       </div>`).join('')}
     </div>
   </section>`;
