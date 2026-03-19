@@ -1926,6 +1926,192 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Bounce Card — shrink + rotate on hover with gradient reveal ────────────
+   Vanilla CSS replication of uniquesonu/bounce-card-features.
+   Usage:
+     <div class="bounce-card bounce-card--red|amber|green">
+       <div class="bounce-card__content">
+         eyebrow, description, source
+       </div>
+       <div class="bounce-card__gradient">
+         big dollar amount + play badge
+       </div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.bounce-card {
+  background: #F8F9FB;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 250ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.bounce-card:hover {
+  transform: scale(0.95) rotate(-1deg);
+}
+.bounce-card__content {
+  padding: 24px 22px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bounce-card__gradient {
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.bounce-card:hover .bounce-card__gradient {
+  transform: translateY(-6px) rotate(2deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+/* Amount text inside gradient */
+.bounce-card__amount {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  text-align: center;
+}
+.bounce-card__amount-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+/* Color variants */
+.bounce-card--red   .bounce-card__gradient {
+  background: linear-gradient(135deg, #DC2626, #F97316);
+}
+.bounce-card--amber .bounce-card__gradient {
+  background: linear-gradient(135deg, #D97706, #F59E0B);
+}
+.bounce-card--green .bounce-card__gradient {
+  background: linear-gradient(135deg, #059669, #10B981);
+}
+
+/* ─── Feature Section with Hover Effects (Aceternity style) ─────────────────
+   Grid of feature cards with: gradient overlay, accent bar growth, text shift.
+   Usage: <div class="feature-grid"> <div class="feature-card">...</div> </div>
+   Card structure:
+     <div class="feature-card">
+       <div class="fc-icon">...</div>
+       <div class="fc-accent-bar"></div>
+       <div class="fc-title">Signal Title</div>
+       <div class="fc-desc">Signal text</div>
+       <div class="fc-source">Source · date</div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.feature-card {
+  position: relative;
+  padding: 28px 24px;
+  border-right: 1px solid var(--brand-border);
+  border-bottom: 1px solid var(--brand-border);
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.2s;
+}
+.feature-card:nth-child(3n) { border-right: none; }
+.feature-card:nth-last-child(-n+3) { border-bottom: none; }
+
+/* Gradient overlay — appears on hover */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,61,255,0.06) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.feature-card:hover::before { opacity: 1; }
+
+/* All content above the gradient */
+.feature-card > * { position: relative; z-index: 1; }
+
+/* Icon area */
+.fc-icon {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Title row — accent bar on left, title beside it (matching Aceternity layout) */
+.fc-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.fc-accent-bar {
+  width: 4px;
+  min-height: 20px;
+  align-self: stretch;
+  border-radius: 2px;
+  background: var(--brand-border);
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-top: 2px;
+}
+.feature-card:hover .fc-accent-bar {
+  background: var(--brand-blue);
+  transform: scaleY(1.1);
+}
+.fc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  transition: transform 0.2s ease;
+  line-height: 1.3;
+  flex: 1;
+}
+.feature-card:hover .fc-title { transform: translateX(4px); }
+
+/* Description */
+.fc-desc {
+  font-size: 14px;
+  color: var(--brand-mid);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Source line */
+.fc-source {
+  font-size: 12px;
+  color: var(--brand-mid);
+  opacity: 0.7;
+}
+.fc-source a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.fc-source a:hover { text-decoration: underline; }
+
+/* Urgency variants — accent bar color on hover */
+.feature-card--high:hover .fc-accent-bar   { background: #DC2626; }
+.feature-card--high::before                { background: linear-gradient(to bottom, rgba(220,38,38,0.05) 0%, transparent 100%); }
+.feature-card--medium:hover .fc-accent-bar { background: #D97706; }
+.feature-card--medium::before              { background: linear-gradient(to bottom, rgba(217,119,6,0.05) 0%, transparent 100%); }
+.feature-card--positive:hover .fc-accent-bar { background: #059669; }
+.feature-card--positive::before            { background: linear-gradient(to bottom, rgba(5,150,105,0.05) 0%, transparent 100%); }
+
 /* ─── Animated Background — sliding hover highlight for card grids ───────────
    Vanilla CSS + JS replication of motion-primitives AnimatedBackground.
    Spring-like cubic-bezier gives the "bounce to settle" motion.
@@ -3316,6 +3502,40 @@ function renderGoldenAngleCard(ga) {
 }
 
 /* ═══════════════════════════════════════════════════
+   ANIMATED BACKGROUND — sliding highlight for card grids
+   CSS defined in algolia-brand.css (.ab-container, .ab-item, .ab-highlight)
+   Call initAnimatedBg(containerEl) after DOM insertion on any .ab-container.
+═══════════════════════════════════════════════════ */
+function initAnimatedBg(container) {
+  if (!container || container.dataset.abInit) return;
+  container.dataset.abInit = '1';
+  const highlight = document.createElement('div');
+  highlight.className = 'ab-highlight';
+  container.style.position = 'relative';
+  container.prepend(highlight);
+  const items = container.querySelectorAll('.ab-item');
+  let activeItem = null;
+  items.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      const cRect = container.getBoundingClientRect();
+      const iRect = item.getBoundingClientRect();
+      highlight.style.left   = (iRect.left   - cRect.left) + 'px';
+      highlight.style.top    = (iRect.top    - cRect.top)  + 'px';
+      highlight.style.width  = iRect.width  + 'px';
+      highlight.style.height = iRect.height + 'px';
+      container.classList.add('ab-active');
+      if (activeItem) activeItem.classList.remove('ab-hovered');
+      activeItem = item;
+      item.classList.add('ab-hovered');
+    });
+  });
+  container.addEventListener('mouseleave', () => {
+    container.classList.remove('ab-active');
+    if (activeItem) { activeItem.classList.remove('ab-hovered'); activeItem = null; }
+  });
+}
+
+/* ═══════════════════════════════════════════════════
    TOPBAR
 ═══════════════════════════════════════════════════ */
 function renderTopbar(D) {
@@ -3730,6 +3950,11 @@ function sectionExecSummary(D) {
       `;
     })()}
 
+    <!-- SCORE BY DIMENSION — right below the score, before revenue/competitive -->
+    <div style="margin-top:40px;">
+      ${sectionAppendixScoring(D)}
+    </div>
+
     <!-- REVENUE BANNER + GOLDEN ANGLE + TIMING -->
     ${(() => {
       const fin = D.financials || {};
@@ -3775,28 +4000,43 @@ function sectionExecSummary(D) {
         <div class="section-eyebrow">Timing Signals</div>
         <div style="${T.overviewTitle};">Three reasons this is the right moment to engage</div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
+      <!-- Aceternity feature-section-with-hover-effects — CSS in algolia-brand.css -->
+      <div class="feature-grid" style="margin-bottom:40px;">
         ${(() => {
-          // Pull timing signals from intelligence_signals — hiring + media types = urgency signals
           const allSigs = D.intelligence_signals || [];
-          const urgentSigs = allSigs.filter(s => ['media','competitor','news-leadership','news-funding'].includes(s.type)).slice(0,3);
-          const colMap = { hiring:'#DC2626', media:'#D97706', competitor:'#059669' };
-          const shadowMap = { hiring:'glow-shadow-red', media:'glow-shadow-amber', competitor:'glow-shadow-green' };
+          const urgentSigs = allSigs
+            .filter(s => !['hiring'].includes(s.type))
+            .slice(0, 6);
+          if (!urgentSigs.length) return '<div class="feature-card"><div class="fc-title">No timing signals found</div></div>';
+          const urgencyClass = (type) =>
+            type==='exec'||type==='funding' ? 'high'
+            : type==='competitor'||type==='industry-risk' ? 'medium'
+            : 'positive';
+          const urgencyIcon = (type) =>
+            type==='exec'?'💬': type==='funding'?'🏦': type==='competitor'?'⚠️':
+            type==='hiring'?'👤': type==='media'?'📰': type==='industry-opp'?'📈':'🔔';
           return urgentSigs.map(sig => {
-            const col = colMap[sig.type] || '#6B7280';
-            const shadow = shadowMap[sig.type] || '';
+            const urg = urgencyClass(sig.type);
             const hasUrl = sig.source_url && sig.source_url.startsWith('http');
-            return `<div class="card ${shadow}" style="border-left:4px solid ${col};padding:16px 18px;cursor:${hasUrl?'pointer':'default'};"
-              ${hasUrl ? `onclick="window.open('${sig.source_url}','_blank')"` : ''}>
-              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <span style="width:8px;height:8px;border-radius:50%;background:${col};flex-shrink:0;margin-top:5px;"></span>
-                  <span style="${T.title};">${escHtml(sig.badge_label||sig.type)}</span>
-                </div>
-                ${hasUrl ? `<span style="font-size:13px;color:var(--blue);flex-shrink:0;">Source</span>` : ''}
+            return `<div class="feature-card feature-card--${urg}">
+              <div class="fc-icon">
+                <span style="font-size:20px;">${urgencyIcon(sig.type)}</span>
+                <span style="${T.eyebrowSmCol(urg==='high'?'#DC2626':urg==='medium'?'#D97706':'#059669')}">
+                  ${escHtml(sig.badge_label||sig.type)}
+                </span>
               </div>
-              <div style="${T.bodySmMid};margin-bottom:${hasUrl?'10px':'0'};">${escHtml(sig.text||'')}</div>
-              ${hasUrl ? `<div style="${T.bodySmGray12};opacity:0.7;">${escHtml(sig.source_name||'')} · ${escHtml(sig.source_date?.slice(0,7)||'')}</div>` : ''}
+              <div class="fc-title-row">
+                <div class="fc-accent-bar"></div>
+                <div class="fc-title">${escHtml(sig.text?.slice(0,80)||'')}</div>
+              </div>
+              <div class="fc-desc">${escHtml((sig.text||'').slice(80,220))}${(sig.text||'').length>220?'…':''}</div>
+              ${sig.relevance ? `<div class="fc-desc" style="font-style:italic;">${escHtml(sig.relevance.slice(0,100))}</div>` : ''}
+              <div class="fc-source">
+                ${hasUrl
+                  ? `<a href="${sig.source_url}" target="_blank">${escHtml(sig.source_name||'Source')}</a>`
+                  : escHtml(sig.source_name||'')}
+                ${sig.source_date ? ` · ${escHtml(sig.source_date.slice(0,7))}` : ''}
+              </div>
             </div>`;
           }).join('');
         })()}
@@ -3813,10 +4053,10 @@ function sectionExecSummary(D) {
 
       const navCard = (tab, accent, eyebrow, headline, bullets) => {
         const nav = `document.querySelector('[data-tab=\\'${tab}\\']').click();window.scrollTo({top:0,behavior:'instant'});`;
-        return `<div class="card" style="cursor:pointer;border-top:3px solid ${accent};padding:18px 20px;transition:box-shadow 0.18s,transform 0.18s;"
-          onclick="${nav}"
-          onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(33,36,61,0.13)'"
-          onmouseleave="this.style.transform='';this.style.boxShadow=''">
+        return `<div class="ab-item" data-tab-target="${tab}"
+          style="background:white;border:1px solid var(--border);border-radius:10px;padding:20px 22px;cursor:pointer;
+                 border-top:3px solid ${accent};"
+          onclick="${nav}">
           <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:${accent};margin-bottom:4px;">${eyebrow}</div>
           <div style="${T.title};margin-bottom:10px;">${headline}</div>
           <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;">
@@ -3836,7 +4076,7 @@ function sectionExecSummary(D) {
         <div class="section-eyebrow">Deep Dives</div>
         <div style="${T.overviewTitle};">Navigate to any section for full intelligence and evidence</div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
+      <div id="deep-dive-nav" class="ab-container" style="grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
           `${escHtml(cs.revenue||'~$1.2B est.')} revenue · ${escHtml(fin.margin_zone||'Yellow')} margin`,
           `${escHtml(ts.ecommerce_platform||'Salesforce Commerce Cloud')}`,
@@ -5487,7 +5727,7 @@ function renderSections(D) {
   const positiveFindings = findings.filter(f => f.severity === 'positive');
 
   /* ── TAB 1: OVERVIEW ─────────────────────────── */
-  const overviewHTML = [sectionExecSummary(D), sectionAppendixScoring(D)].join('');
+  const overviewHTML = sectionExecSummary(D); // Score by Dimension is embedded inside exec summary
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
   const intelHTML = [
@@ -5881,6 +6121,8 @@ function init() {
     initLightbox();
     initFinTimeline();
     initChapterObserver();
+    // Init animated background on all .ab-container elements
+    document.querySelectorAll('.ab-container').forEach(el => initAnimatedBg(el));
   });
 
   // Scroll progress bar
@@ -5929,14 +6171,20 @@ function initChapterObserver() {
   chapters.forEach(ch => obs.observe(ch));
 }
 
-// Boot: run if data already injected, otherwise wait
-if (window.AUDIT_DATA) {
-  document.addEventListener('DOMContentLoaded', init);
+// Boot: inline scripts execute after DOMContentLoaded has already fired.
+// Guard with readyState check so init() always runs.
+function _boot() {
+  if (window.AUDIT_DATA) {
+    init();
+  } else {
+    const el = document.getElementById('no-data');
+    if (el) el.style.display = 'flex';
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _boot);
 } else {
-  // Data will be injected by renderer — show placeholder
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('no-data').style.display = 'flex';
-  });
+  _boot();
 }
 </script>
 </body>

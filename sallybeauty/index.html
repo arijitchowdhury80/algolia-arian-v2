@@ -1926,6 +1926,77 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Bounce Card — shrink + rotate on hover with gradient reveal ────────────
+   Vanilla CSS replication of uniquesonu/bounce-card-features.
+   Usage:
+     <div class="bounce-card bounce-card--red|amber|green">
+       <div class="bounce-card__content">
+         eyebrow, description, source
+       </div>
+       <div class="bounce-card__gradient">
+         big dollar amount + play badge
+       </div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.bounce-card {
+  background: #F8F9FB;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 250ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.bounce-card:hover {
+  transform: scale(0.95) rotate(-1deg);
+}
+.bounce-card__content {
+  padding: 24px 22px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bounce-card__gradient {
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.bounce-card:hover .bounce-card__gradient {
+  transform: translateY(-6px) rotate(2deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+/* Amount text inside gradient */
+.bounce-card__amount {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  text-align: center;
+}
+.bounce-card__amount-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+/* Color variants */
+.bounce-card--red   .bounce-card__gradient {
+  background: linear-gradient(135deg, #DC2626, #F97316);
+}
+.bounce-card--amber .bounce-card__gradient {
+  background: linear-gradient(135deg, #D97706, #F59E0B);
+}
+.bounce-card--green .bounce-card__gradient {
+  background: linear-gradient(135deg, #059669, #10B981);
+}
+
 /* ─── Feature Section with Hover Effects (Aceternity style) ─────────────────
    Grid of feature cards with: gradient overlay, accent bar growth, text shift.
    Usage: <div class="feature-grid"> <div class="feature-card">...</div> </div>
@@ -2240,7 +2311,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Sally_Beauty_Supply_store_Ypsilanti.JPG",
-    "company_logo_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMzYiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMzYiIHJ4PSI0IiBmaWxsPSIjMjEyNDNEIi8+PHRleHQgeD0iODAiIHk9IjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxIj5TQkg8L3RleHQ+PC9zdmc+",
+    "company_logo_url": "data:image/png;base64,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",
     "status_line": "Confidential · For Internal Use Only"
   },
   "score": {
