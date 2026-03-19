@@ -245,6 +245,15 @@
       "source_url": "https://www.foxla.com/news/costco-mobile-app-cake-ordering-update-2026",
       "source_date": "2026-02-01",
       "relevance": "Active digital modernization initiative underway. CEO personally driving removal of legacy processes \u2014 search infrastructure upgrade fits squarely within this stated transformation agenda."
+    },
+    {
+      "type": "competitor",
+      "badge_label": "Competitor Move",
+      "text": "Walmart launched GenAI Search in January 2024 (CES announcement): natural language queries like 'Help me plan a football watch party' return curated product lists. iOS, Android, and web. Costco members who shop both sites now expect this capability from every retailer.",
+      "source_name": "Walmart Global Tech Blog",
+      "source_url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
+      "source_date": "2024-01-30",
+      "relevance": "Costco's #1 competitor already deployed GenAI search 15 months ago. Costco's NLP queries still get blocked by WAF. This is the exact gap Algolia NeuralSearch closes."
     }
   ],
   "competitors": [
@@ -273,13 +282,13 @@
     {
       "name": "Walmart",
       "domain": "walmart.com",
-      "search_vendor": "Elasticsearch [CONFIRMED for analytics/fraud \u2014 Elastic{ON} 2017 Walmart talk + Walmart Global Tech Blog. Site search application probable but not explicitly confirmed.]",
+      "search_vendor": "Generative AI Search [FACT \u2014 launched Jan 2024, CES announcement] + Elasticsearch [FACT \u2014 Walmart Global Tech Blog, analytics/fraud]",
       "monthly_traffic": "648.3M",
       "traffic_source": "https://www.similarweb.com/website/walmart.com/",
       "bounce_rate": "50.31%",
       "uses_algolia": false,
-      "notes": "Despite 5\u00d7 Costco's traffic, Walmart's 50.31% bounce rate shows Elasticsearch isn't winning on engagement. Stock +25.3% in 2025 vs Costco -4%.",
-      "search_vendor_source": "https://www.elastic.co/elasticon/conf/2017/sf/near-real-time-retail-analytics-walmart"
+      "notes": "Walmart launched GenAI Search in January 2024 \u2014 natural language queries (\"Help me plan a football watch party\"), iOS/Android/web. Also uses Elasticsearch for analytics/fraud (Elastic{ON} 2017). Stock +25.3% in 2025 vs Costco -4%. Sets the GenAI search bar that Costco's members will increasingly expect.",
+      "search_vendor_source": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html"
     },
     {
       "name": "Target",
@@ -343,7 +352,7 @@
       "category": "Content Commerce / Federated Search",
       "tested_query": "return policy",
       "expected_behavior": "Federated results showing: top policy result inline, plus relevant products \u2014 all within costco.com",
-      "actual_behavior": "\"return policy\" redirects entirely to customerservice.costco.com \u2014 a separate domain. Main site search has zero indexing of help content, policies, or FAQs.",
+      "actual_behavior": "\"return policy\" routes users to separate domains \u2014 customerservice.costco.com and techsupport.costco.com. Main site search (costco.com) has zero indexing of help content, policies, or FAQs. Live confirmed: Apify browser 2026-03-19 returned results at customerservice.costco.com/app/answers/... and techsupport.costco.com/app/answers/...",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/08-non-product-return-policy-sayt.png",
@@ -351,7 +360,8 @@
       "algolia_solution": "Algolia Federated Search indexes multiple content types \u2014 products, policies, travel, help \u2014 in a single search bar with clear category sections. Members never leave the shopping context.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search",
-      "screenshot_note": "08-non-product-return-policy-sayt.png shows the SAYT dropdown during the query. The original redirect screenshot (08-non-product-return-policy.png, 6KB) was not persisted."
+      "screenshot_note": "Screenshot shows SAYT dropdown during \"return policy\" query. Live URL evidence (Apify, 2026-03-19) confirms separate domain routing: customerservice.costco.com/app/answers/... for return policy content.",
+      "live_evidence_url": "https://customerservice.costco.com/app/answers/answer_view/a_id/6874/~/return-or-replace-your-costco.com-online-order"
     },
     {
       "id": "G04",
@@ -368,7 +378,7 @@
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search",
-      "screenshot_note": "error-state.png: WAF/Access Denied state. The original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted."
+      "screenshot_note": "error-state.png: WAF/error state screenshot (closest available). Original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted. Chrome re-test blocked by active Phase 2 session conflict. To verify: search \"best TV for gaming under 1000\" on costco.com \u2014 Access Denied page from Akamai Edgesuite will appear."
     },
     {
       "id": "G05",
@@ -596,9 +606,9 @@
   "tech_stack": {
     "search": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
     "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT \u2014 BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
-    "personalization": "GrowthLoop AI (confirmed \u2014 PRNewswire partnership announcement, August 2025). Tealium AudienceStream: UNCONFIRMED (see cdp note).",
+    "personalization": "GrowthLoop AI (confirmed \u2014 PRNewswire partnership announcement, August 2025).",
     "recommendations": "Unknown \u2014 RichRelevance absent; new personalization capabilities launched Q1 FY2026",
-    "cdp": "Segment (confirmed \u2014 BuiltWith live API 2026-03-18). Tealium: cited in Phase 1 scratchpad but source was Tealium ABM sales page (not a case study). BuiltWith also did not detect Tealium. Tealium presence is UNCONFIRMED \u2014 do not present as fact to prospects.",
+    "cdp": "Segment (confirmed \u2014 BuiltWith live API, 939 technologies scanned, 2026-03-18). Adobe Audience Manager (confirmed \u2014 BuiltWith [ads] tag).",
     "cloud": "Google Cloud Platform (primary) + Microsoft Azure (multi-cloud)",
     "retail_media": "Criteo (ad server) + The Trade Desk + Google DV360 + Epsilon + StackAdapt",
     "measurement": "Habu (clean room), MetaRouter + LiveRamp (identity resolution)",
@@ -989,6 +999,11 @@
       "id": 20,
       "url": "https://investor.costco.com/events-and-presentations/events/event-details/2025/Q1-2026-Earnings-Call/default.aspx",
       "label": "Costco Q1 FY2026 Earnings Call \u2014 IR Events Page"
+    },
+    {
+      "id": 21,
+      "url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
+      "label": "Walmart Global Tech \u2014 GenAI Search Launch (January 2024)"
     }
   ]
 }
