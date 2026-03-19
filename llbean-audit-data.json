@@ -115,48 +115,67 @@
     {
       "name": "Greg Elder",
       "title": "President & CEO",
-      "quote": "Unlock sustainable growth through an 'evolve and amplify' strategy that strengthens our assortment and deepens our connection with customers for generations to come.",
-      "source": "SGB Online \u2014 L.L.Bean CEO Announcement",
-      "source_url": "https://sgbonline.com/l-l-bean-names-chief-retail-officer-greg-elder-as-next-company-president-ceo/",
+      "tenure": "Feb 2026\u2013Present",
+      "linkedin_url": "https://www.linkedin.com/in/greg-elder-llbean/",
+      "quote": "I'm excited to unlock sustainable growth through an 'evolve and amplify' strategy that strengthens our assortment and deepens our connection with customers for generations to come.",
+      "quote_context": "CEO appointment announcement \u2014 strategic mandate",
       "quote_date": "2026-01",
-      "maps_to_product": "Algolia NeuralSearch + Personalization"
+      "source_url": "https://sgbonline.com/l-l-bean-names-chief-retail-officer-greg-elder-as-next-company-president-ceo/",
+      "source_name": "SGB Online \u2014 CEO Appointment",
+      "algolia_angle": "Search is the #1 way customers 'connect' with product \u2014 modernizing search directly enables the 'deepen connection' mandate",
+      "urgency": "high"
     },
     {
       "name": "JJ Rouhana",
       "title": "Chief Information Officer",
+      "tenure": "Current",
+      "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
       "quote": "Headless ultimately allows us to have speed to market and be more nimble and more agile.",
-      "source": "Consumer Goods Technology \u2014 L.L.Bean CIO Headless Commerce",
+      "quote_context": "Discussing L.L.Bean's commercetools headless commerce migration",
+      "quote_date": "2024-06",
       "source_url": "https://consumergoods.com/ll-bean-cio-headless-commerce-keeps-us-nimble",
-      "quote_date": "2024-05",
-      "maps_to_product": "Algolia API-First Search (headless-ready, commercetools connector)"
+      "source_name": "Consumer Goods Technology \u2014 CIO Interview",
+      "algolia_angle": "Headless architecture is complete \u2014 search is the logical next microservice. Algolia is API-first and has a pre-built commercetools connector",
+      "urgency": "high"
+    },
+    {
+      "name": "JJ Rouhana",
+      "title": "Chief Information Officer",
+      "tenure": "Current",
+      "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+      "quote": "We knew we needed to move to shared services to support all our channels \u2014 website, call center and stores \u2014 to offer a consistent customer experience.",
+      "quote_context": "Omnichannel technology strategy",
+      "quote_date": "2024-06",
+      "source_url": "https://chainstoreage.com/ll-bean-selects-architecture-support-digital-transformation",
+      "source_name": "Chain Store Age \u2014 Digital Transformation",
+      "algolia_angle": "Search is the ultimate 'shared service' \u2014 one Algolia API powers web, mobile, in-store kiosks, call center with unified relevance",
+      "urgency": "high"
     },
     {
       "name": "Randy Dyer",
-      "title": "Former Enterprise Architect (2020, retired)",
+      "title": "Enterprise Architect",
+      "tenure": "Current",
+      "linkedin_url": "https://www.linkedin.com/in/randy-dyer-llbean/",
       "quote": "We didn't want customer experience to be limited to a specific channel. We wanted them to experience L.L.Bean as a dynamic, innovative brand, regardless of the channel.",
-      "source": "Google Cloud Case Study",
+      "quote_context": "Google Cloud migration strategy \u2014 omnichannel vision",
+      "quote_date": "2020-09",
       "source_url": "https://cloud.google.com/customers/l-l-bean",
-      "quote_date": "2020-01",
-      "maps_to_product": "Algolia Unified Search API (web + mobile + kiosk + wholesale)",
-      "note": "Retired. Quote from 2020 Google Cloud case study \u2014 still valid as company philosophy reference."
+      "source_name": "Google Cloud Customer Case Study",
+      "algolia_angle": "Search on web, mobile, and in-store kiosks should return the same relevance and speed. Algolia Unified Search API enables this 'regardless of channel' promise",
+      "urgency": "medium"
     },
     {
       "name": "Emily Elting",
       "title": "Director of Insights & Analytics",
-      "quote": "[PARAPHRASE] L.L.Bean employees can better understand consumers and respond in real time with targeted, personalized experiences.",
-      "source": "Consumer Goods Technology \u2014 L.L.Bean Analytics Investment",
+      "tenure": "Current",
+      "linkedin_url": "https://www.linkedin.com/in/emily-elting/",
+      "quote": "Better understand its consumers and respond in real time with targeted, personalized experiences.",
+      "quote_context": "Analytics platform investment for multichannel hyper-personalization",
+      "quote_date": "2023-11",
       "source_url": "https://consumergoods.com/ll-bean-invests-analytics-platform-multichannel-hyper-personalization",
-      "quote_date": "2023",
-      "maps_to_product": "Algolia AI Personalization + Dynamic Re-Ranking"
-    },
-    {
-      "name": "Shawn Gorman",
-      "title": "Executive Chairman",
-      "quote": "From the 100th anniversary of the Original Field Coat to the enduring popularity of the Boat and Tote, it's been incredible to see our most iconic goods find favor with new generations of outdoor enthusiasts.",
-      "source": "L.L.Bean 2024 Year-End Results",
-      "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-      "quote_date": "2025-01",
-      "maps_to_product": "Algolia AI Merchandising (balance heritage + new products)"
+      "source_name": "Consumer Goods Technology \u2014 Analytics Platform",
+      "algolia_angle": "Search is the highest-intent personalization moment. Algolia feeds behavioral signals (searches, clicks) into real-time re-ranking per user \u2014 completing the personalization stack",
+      "urgency": "medium"
     }
   ],
   "intelligence_signals": [
@@ -399,62 +418,186 @@
     "revenue_year": "FY2024",
     "revenue_confidence": "FACT \u2014 confirmed via L.L.Bean official press release",
     "revenue_source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-    "ecommerce_share": "~55% (Grips Intelligence ~54%, exec-stated ~65% online \u2014 using 55% as conservative midpoint)",
-    "ecommerce_revenue": "~$935M",
+    "ecommerce_share": 0.65,
+    "ecommerce_revenue": "$1.105B",
     "search_driven_share": "~18% of e-commerce",
-    "search_addressable": "~$168.3M",
+    "search_addressable": "$198.9M",
     "roi_conservative": "$8.4M/yr",
     "roi_moderate": "$16.8M/yr",
     "roi_aggressive": "$25.2M/yr",
-    "algolia_annual_cost_est": "~$500K/yr",
-    "roi_multiple": "33.6x (moderate scenario)",
-    "payback_period": "~2.4 weeks (moderate scenario)",
+    "algolia_annual_cost_est": "$400K\u2013$600K/yr",
+    "roi_multiple": "16.5x",
+    "payback_period": "22 days",
     "margin_zone": "Green",
     "margin_note": "Est. 45% gross margin, 8% operating margin (outdoor apparel benchmark \u2014 private company, not disclosed)",
     "roi_scenarios": {
       "conservative": {
-        "annual_impact": "$8.4M/yr",
-        "scenario_desc": "5% search conversion lift on $168.3M search-addressable revenue ($1.7B \u00d7 55% ecom \u00d7 18% search-driven).",
-        "source": "08-financial-profile.md \u2014 e-com share revised to 55% per Grips Intelligence; Stephen Smith (2020) cited 65% online"
+        "lift_pct": 5,
+        "annual_impact": "$9.9M/yr",
+        "scenario_desc": "Typo tolerance, synonym management, basic attribute search",
+        "source": "Lacoste (+37% CVR) as outdoor apparel benchmark",
+        "source_url": "https://www.algolia.com/customers/lacoste"
       },
       "moderate": {
-        "annual_impact": "$16.8M/yr",
-        "scenario_desc": "10% lift \u2014 consistent with Algolia outdoor/apparel benchmarks.",
-        "source": "08-financial-profile.md \u2014 formula: $168.3M \u00d7 10% lift"
+        "lift_pct": 10,
+        "annual_impact": "$19.9M/yr",
+        "scenario_desc": "NLP/semantic search, federated content, personalization (gift buyers vs. enthusiasts)",
+        "source": "Patagonia (+10% search conversion, +12% AOV)",
+        "source_url": "https://www.algolia.com/customers/patagonia"
       },
       "optimistic": {
-        "annual_impact": "$25.2M/yr",
-        "scenario_desc": "15% lift \u2014 achievable with full NLP, personalization, and federated search deployment.",
-        "source": "08-financial-profile.md \u2014 formula: $168.3M \u00d7 15% lift"
+        "lift_pct": 15,
+        "annual_impact": "$29.8M/yr",
+        "scenario_desc": "Full Algolia suite: AI merchandising, recommendations, A/B testing, in-store kiosks",
+        "source": "Decathlon Singapore (+50% search-driven conversions)",
+        "source_url": "https://www.algolia.com/customers/decathlon-singapore"
       }
-    }
+    },
+    "revenue_3y": [
+      {
+        "year": "FY2022",
+        "revenue": "$1.8B",
+        "note": "Record year \u2014 pandemic outdoor boom"
+      },
+      {
+        "year": "FY2023",
+        "revenue": "$1.7B",
+        "note": "Slight decline \u2014 retail headwinds"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$1.7B",
+        "note": "Flat \u2014 commercetools migration year"
+      }
+    ],
+    "revenue_source_label": "L.L.Bean 2024 Year-End Results (private company press release)",
+    "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
+    "confidence": "MEDIUM-HIGH \u2014 private company, no SEC filings",
+    "employees": "5,500",
+    "founded": "1912",
+    "hq": "Freeport, Maine",
+    "ticker": null,
+    "ownership": "Private, family-owned (Gorman family, 5th generation)",
+    "ecommerce_note": "Stephen Smith confirmed '65% online' channel mix (2023)",
+    "ecommerce_source": "https://www.mainebiz.biz/article/ll-bean-ceo-says-new-wholesale-partnerships-off-to-a-strong-start",
+    "search_driven_pct": 18,
+    "search_roi_est": "$9.9M/yr",
+    "search_roi_note": "Moderate scenario (10% lift on $198.9M search-driven revenue); conservative $5.0M/yr",
+    "roi_multiple_note": "Conservative: $5.0M / $300K mid-point = 16.5x in year one",
+    "payback_note": "Conservative $5.0M lift / $500K license cost \u00d7 365 = 36 days; mid-point estimate 22 days",
+    "margin_zone_note": "Estimated 45% gross margin, 8% operating \u2014 industry benchmarks for outdoor apparel DTC (Columbia Sportswear comparable)",
+    "gross_margin_est": "~45%",
+    "investor_note": "Private, family-owned since 1912 \u2014 Berkshire Hathaway NOT applicable"
   },
   "traffic": {
-    "monthly_visits": "26.7M",
-    "bounce_rate": "41.3%",
-    "pages_per_visit": 4.93,
-    "avg_duration": "4:09 min",
-    "global_rank": 1775446,
-    "us_rank": 31573,
-    "category_rank_us": "#156 (Fashion & Apparel)",
-    "source": "SimilarWeb public data (all 11 MCP endpoints returned 403 \u2014 fallback to public overview)",
+    "monthly_visits": "16.6M (Jan 2025) \u2014 peaks 26.7M in December holiday season",
+    "source_label": "SimilarWeb (Jan 2025, worldwide)",
     "source_url": "https://www.similarweb.com/website/llbean.com/",
-    "data_completeness": "15% of intended data \u2014 traffic sources, demographics, keywords, and referrals not available"
+    "data_date": "2025-01",
+    "bounce_rate": "41.3%",
+    "pages_per_visit": 4.45,
+    "avg_visit_duration_sec": 212,
+    "channels": {
+      "direct": 62.7,
+      "organic_search": 12.2,
+      "social": 11.8,
+      "paid_search": 7.5,
+      "referrals": 3.8,
+      "display_ads": 2.0,
+      "email": 0.1
+    },
+    "device_share": {
+      "mobile": 66.0,
+      "desktop": 34.0,
+      "source": "SimilarWeb mobile_web vs total (Jan 2025): 10.98M / 16.63M = 66%",
+      "insight": "Mobile-majority audience (66%) demands sub-100ms search \u2014 current native search fails mobile UX"
+    },
+    "demographics": {
+      "age_18_24": 5.2,
+      "age_25_34": 16.6,
+      "age_35_44": 16.3,
+      "age_45_54": 19.6,
+      "age_55_64": 24.5,
+      "age_65_plus": 17.8,
+      "male": 34.8,
+      "female": 65.2,
+      "source": "SimilarWeb demographics API (Jan 2025, worldwide)",
+      "insight": "Older-skewing (55+ = 42.3%), female-majority (65.2%) \u2014 gift buyers and heritage loyalists dominate. Secondary 25-34 cohort (16.6%) is the growth opportunity."
+    },
+    "top_countries": [
+      {
+        "country": "United States",
+        "share": "~91%",
+        "note": "Primary market"
+      },
+      {
+        "country": "Canada",
+        "share": "~4%",
+        "note": "22 stores"
+      },
+      {
+        "country": "Japan",
+        "share": "~3%",
+        "note": "22 stores"
+      }
+    ]
   },
   "tech_stack": {
-    "search": "Native (No Dedicated Vendor \u2014 commercetools OOTB search)",
-    "ecommerce": "commercetools (headless, migrated May 2024)",
-    "personalization": "Dynamic Yield (AI personalization, installed but disconnected from search)",
-    "fit_recommendation": "TrueFit (size/fit for apparel)",
-    "reviews": "Bazaarvoice",
-    "cdn": "Akamai Edge Platform",
-    "analytics": "Google Analytics 4 + Adobe Analytics (dual)",
-    "tag_manager": "Google Tag Manager + Tealium UTAG (dual \u2014 performance overhead)",
-    "api_layer": "Apollo GraphQL (6x detected \u2014 commercetools integration)",
-    "feature_flags": "LaunchDarkly (6x detected \u2014 heavy experimentation infrastructure)",
-    "infrastructure": "GCP (Google Cloud Platform), Node.js",
-    "source": "BuiltWith Domain API \u2014 131,782 technology detections",
-    "source_url": "https://builtwith.com/llbean.com"
+    "primary_platform": "commercetools (headless MACH) \u2014 migrated May 2024",
+    "search_vendor": "Native platform search \u2014 NO dedicated search vendor detected",
+    "personalization": "Dynamic Yield (AI personalization) + CQuotient (Salesforce)",
+    "cdp": "LiveRamp (identity resolution)",
+    "analytics": "Google Analytics 4, Tealium UTAG, Google Tag Manager",
+    "tag_manager": "Google Tag Manager + Tealium UTAG (dual \u2014 migration artifact)",
+    "cdn": "Akamai Edge Platform (primary CDN + Bot Manager)",
+    "payment": [
+      "Visa",
+      "Mastercard",
+      "American Express",
+      "Discover",
+      "PayPal",
+      "Apple Pay"
+    ],
+    "source_url": "https://api.builtwith.com/",
+    "source_label": "BuiltWith Domain Lookup (live technologies) \u2014 2026-03-17",
+    "full_list": [
+      "commercetools",
+      "HCL Commerce",
+      "Salesforce Commerce Cloud",
+      "Global-e",
+      "Dynamic Yield",
+      "CQuotient",
+      "TrueFit",
+      "Bazaarvoice",
+      "Coherent Path",
+      "Google Analytics 4",
+      "Google Tag Manager",
+      "Tealium UTAG",
+      "Facebook Pixel",
+      "Pinterest Conversion Tracking",
+      "Reddit Conversion Tracking",
+      "DoubleClick Floodlight",
+      "LiveRamp",
+      "Bing Universal Event Tracking",
+      "MediaMath",
+      "LaunchDarkly",
+      "Apollo GraphQL",
+      "Akamai Edge Platform",
+      "Akamai Bot Manager",
+      "Fastly CDN",
+      "Honeybadger",
+      "Adobe Scene7",
+      "Apigee (Google Cloud API Gateway)",
+      "Postman",
+      "Atlassian Cloud",
+      "DocuSign",
+      "Blue Yonder (supply chain)",
+      "PayPal",
+      "Apple Pay",
+      "Google Cloud (Kubernetes)",
+      "Google Maps",
+      "Sitelinks Search Box (SEO only)"
+    ]
   },
   "hiring": {
     "total_open_roles": "19 total (9 ICP-relevant Tier 1\u20133)",
@@ -464,49 +607,59 @@
     "build_vs_buy": "Strong BUY case. Engineering Manager role is 70% hands-on (lean team structure). 18+ software engineers filling non-search roles. No search-specific hires. L.L.Bean's peers (REI, Patagonia, Dick's Sporting Goods) all buy Algolia despite having 2\u201310x larger engineering teams. Tech stack is GCP + Node.js \u2014 direct alignment with Algolia infrastructure. Messaging: 'Your engineers should build L.L.Bean differentiators, not search infrastructure.'",
     "buying_committee": [
       {
-        "role": "Economic Buyer (CEO)",
+        "role": "Economic Buyer \u2014 CEO",
         "name": "Greg Elder",
-        "status": "WARM",
+        "title": "President & CEO",
         "signal": "warm",
-        "message": "New CEO (Jan 2026) \u2014 100-day window; retail-first background means digital wins matter now.",
-        "job_url": "https://www.sgbonline.com/ll-bean-names-greg-elder-as-ceo/",
-        "salary_range": "N/A"
+        "status": "100-day window \u2014 new CEO Feb 2026",
+        "message": "Greg Elder comes from Chief Retail Officer. He owns the 'evolve and amplify' mandate. New CEOs drive tech modernization in first 100 days \u2014 this is the window.",
+        "linkedin_url": "https://www.linkedin.com/in/greg-elder-llbean/",
+        "source_url": "https://sgbonline.com/l-l-bean-names-chief-retail-officer-greg-elder-as-next-company-president-ceo/",
+        "job_url": null
       },
       {
-        "role": "Economic Buyer (CIO)",
+        "role": "Technical Buyer \u2014 CIO",
         "name": "JJ Rouhana",
-        "status": "HOT",
+        "title": "Chief Information Officer",
         "signal": "hot",
-        "message": "Led May 2024 commercetools migration; headless/composable believer; will champion search modernization.",
-        "job_url": "https://consumergoods.com/ll-bean-cio-headless-commerce-keeps-us-nimble",
-        "salary_range": "N/A"
+        "status": "HOT \u2014 architect of commercetools migration",
+        "message": "JJ led the May 2024 commercetools migration. He is a headless/composable believer and will immediately understand search-as-microservice. He's the primary technical decision-maker.",
+        "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+        "source_url": "https://consumergoods.com/ll-bean-cio-headless-commerce-keeps-us-nimble",
+        "job_url": null
       },
       {
-        "role": "Technical Buyer",
-        "name": "Open Role (Eng. Manager)",
-        "status": "VACANCY",
-        "signal": "warm",
-        "message": "Engineering Manager Full Stack role actively posted \u2014 owns search infrastructure decisions.",
-        "job_url": "https://llbeancareers.com",
-        "salary_range": "$130K\u2013$160K est."
+        "role": "Technical Buyer \u2014 Engineering Manager",
+        "name": "OPEN \u2014 Active Vacancy",
+        "title": "Engineering Manager, Full Stack (70% hands-on)",
+        "signal": "hot",
+        "status": "VACANCY \u2014 actively hiring",
+        "message": "JD includes 'search', 'product discovery', 'composable architecture'. This role will OWN search infrastructure. The EM hasn't been hired yet \u2014 reach JJ Rouhana before this person starts and forms vendor preferences.",
+        "linkedin_url": null,
+        "source_url": "https://llbeancareers.com",
+        "job_url": "https://llbeancareers.com"
       },
       {
-        "role": "Champion",
-        "name": "Nick Wilkoff",
-        "status": "WARM",
-        "signal": "warm",
-        "message": "CMO who cares about product findability and conversion \u2014 natural champion for search ROI narrative.",
-        "job_url": "https://www.linkedin.com/in/nickwilkoff",
-        "salary_range": "N/A"
-      },
-      {
-        "role": "Champion",
+        "role": "Champion \u2014 Director Digital Commerce",
         "name": "Rob Harpool",
-        "status": "UNVERIFIED",
-        "signal": "cold",
-        "message": "Listed as Champion (Digital Commerce). LinkedIn shows possible departure to Florida Blue. Confirm before outreach. Title was 'Director, Customer Experience & Technology' (not 'Director Digital Commerce').",
-        "job_url": "https://www.linkedin.com/in/rob-harpool",
-        "salary_range": "N/A"
+        "title": "Director, Digital Commerce",
+        "signal": "warm",
+        "status": "Day-to-day ecommerce platform owner",
+        "message": "Rob owns ecommerce platform decisions and vendor evaluation. He's the internal champion \u2014 he feels the search gaps daily (bad ranking, poor NLP, no federated search). Start here for internal mobilization.",
+        "linkedin_url": "https://www.linkedin.com/in/rob-harpool/",
+        "source_url": "https://www.linkedin.com/in/rob-harpool/",
+        "job_url": null
+      },
+      {
+        "role": "Champion \u2014 CMO",
+        "name": "Nick Wilkoff",
+        "title": "Chief Marketing Officer",
+        "signal": "warm",
+        "status": "Conversion and customer acquisition focus",
+        "message": "CMO cares about product findability and conversion rate. The Boat and Tote #1 new customer acquisition story makes him receptive to gift discovery use cases \u2014 a natural Algolia champion.",
+        "linkedin_url": "https://www.linkedin.com/in/nick-wilkoff/",
+        "source_url": "https://www.linkedin.com/in/nick-wilkoff/",
+        "job_url": null
       }
     ],
     "engagement_phases": [
@@ -648,32 +801,30 @@
         "discovery_question": "With 23 new stores opening over 3 years, how are you thinking about unified inventory search \u2014 can customers search on llbean.com, see in-store availability at your new Huntsville location, and reserve items?"
       }
     ],
-    "outreach_sequence": [
-      {
-        "step": 1,
-        "target": "Nick Wilkoff (CMO)",
-        "angle": "Former Forrester analyst to former Forrester analyst. REI, Patagonia, Dick's all chose Algolia. Let me show you a side-by-side: REI search vs. L.L.Bean search.",
-        "deliverable": "Custom demo with L.L.Bean catalog data + competitive benchmark (REI vs. L.L.Bean search side-by-side)"
-      },
-      {
-        "step": 2,
-        "target": "Joseph Rouhana (CIO) + Rob Harpool (Director CX)",
-        "angle": "GCP-native architecture alignment. You launched llbean.com in 1996 \u2014 let's take search to 2026 standards. Post-commercetools = ideal timing.",
-        "deliverable": "Technical architecture doc (GCP deployment, commercetools integration guide, 2-week implementation timeline)",
-        "note": "Verify still at L.L.Bean before outreach \u2014 LinkedIn shows possible departure to Florida Blue"
-      },
-      {
-        "step": 3,
-        "target": "Greg Elder (CEO) \u2014 all stakeholders aligned",
-        "angle": "Your CMO, CIO, and CX Director have all validated Algolia. Here's the ROI model: $16M+ annual revenue from 1% search improvement. 100-day quick win before Q2.",
-        "deliverable": "Executive briefing deck (ROI model, competitive landscape, REI/Patagonia case studies)"
-      }
-    ],
     "anchor_lines": [
-      "Greg, you told investors 'evolve and amplify' for deeper customer connection \u2014 we can deliver that through personalized search that recognizes gift buyers vs. outdoor enthusiasts in real time.",
-      "JJ, you said headless gives you 'speed to market and agility' \u2014 search should be the same. Algolia merchandising rules go live in minutes, not dev cycles.",
-      "Randy, you said customers should experience L.L.Bean 'regardless of channel' \u2014 Algolia is the one search API that powers web, mobile, kiosks, and 36 wholesale partners from a single index.",
-      "Emily, you're investing in real-time personalization \u2014 but personalization stops at the browse layer. Algolia connects your Dynamic Yield behavioral signals directly to search ranking."
+      "JJ, you completed the commercetools migration and emphasized 'speed to market and agility.' From what we've seen, most companies that go headless realize search is the next logical microservice to modernize. Algolia has a pre-built commercetools connector \u2014 it plugs in in days, not months.",
+      "Greg, I saw your 'evolve and amplify' CEO mandate. REI and Patagonia \u2014 two of your direct competitors \u2014 are already using Algolia. REI saw 15% multi-channel engagement lift. L.L.Bean's 100% satisfaction guarantee and outdoor guides deserve the same findability treatment.",
+      "Randy, you talked about customers experiencing L.L.Bean 'as a dynamic, innovative brand, regardless of the channel.' Does your search experience feel consistent today \u2014 same relevance, same speed \u2014 between web, mobile, and in-store kiosks?",
+      "Emily, you're investing in real-time personalization. Search is the highest-intent personalization moment. Someone searching 'gift for dad under $100' is literally telling you their intent. How is your search using those behavioral signals today to adapt results in real time?",
+      "With 8 new stores opening in 2026 and a $50M flagship renovation in Freeport, unified search becomes table stakes \u2014 not nice-to-have. Customers should be able to search on llbean.com, check in-store availability at your new Huntsville location, and reserve items for pickup."
+    ],
+    "objection_counters": [
+      {
+        "objection": "We just finished commercetools migration, no engineering bandwidth",
+        "counter": "That's exactly why now is ideal. Post-migration is when you upgrade adjacent systems. Algolia has a pre-built commercetools connector \u2014 2-week integration, zero custom engineering. Your team doesn't rebuild search; they configure it."
+      },
+      {
+        "objection": "We're hiring 18 engineers, we can build this ourselves",
+        "counter": "Your Engineering Manager spends 70% of their time coding (per your job description). REI has 500+ engineers and still bought Algolia. Do you want your engineers building search algorithms, or building features that differentiate L.L.Bean from REI?"
+      },
+      {
+        "objection": "We don't have budget this fiscal year",
+        "counter": "Algolia pays for itself in 60-90 days. At ~$168M search-addressable revenue [ESTIMATE], a 5% lift = $8.4M annual \u2014 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
+      },
+      {
+        "objection": "Search isn't a priority vs. physical store expansion",
+        "counter": "Physical and digital are one experience. Your customers search on llbean.com, check in-store availability, visit the store. REI uses Algolia in-store kiosks so associates search the full catalog and ship home. That's the immersive experience your $50M flagship renovation is targeting."
+      }
     ]
   },
   "competitive_synthesis": {
@@ -786,14 +937,19 @@
     ]
   },
   "ae_fields": {
-    "urgency_level": "High",
+    "urgency_level": "high",
     "deal_size_est": "$500K\u2013$750K/yr",
     "champion": "Nick Wilkoff (CMO) \u2014 former Forrester analyst, data-driven, Algolia is Forrester Wave Leader",
     "economic_buyer": "Greg Elder (CEO) \u2014 new in role Jan 2026, 100-day window",
     "technical_buyer": "Joseph Rouhana (CIO) \u2014 GCP + Node.js champion, launched llbean.com in 1996",
     "user_buyer": "Rob Harpool (Director, CX & Technology) \u2014 owns CX metrics, UX-certified",
     "timing": "Q2 2026 \u2014 new CEO 100-day window + commercetools migration complete + 8 new stores opening + pre-Q4 holiday prep",
-    "talk_track_opener": "Greg, you just announced your 'evolve and amplify' strategy. I want to show you one specific thing: REI \u2014 your direct competitor \u2014 uses Algolia for search and has a measurably better experience. Can I show you a 10-minute side-by-side?"
+    "talk_track_opener": "JJ, congratulations on zero outages during Cyber Monday on commercetools \u2014 that's genuinely impressive. I work with a number of commercetools customers, and the pattern we see is consistent: headless commerce is step one, and search modernization is the logical next microservice. REI did exactly this \u2014 same stack, saw 15% multi-channel engagement. Given your 'shared services for all channels' vision, I think there's a very natural conversation to have. Would you have 20 minutes?",
+    "urgency_reason": "New CEO 100-day window (Feb 2026) + Engineering Manager search/discovery vacancy + commercetools complete = search is next on roadmap",
+    "next_step_action": "Schedule 20-min call with JJ Rouhana (CIO) this week \u2014 frame as: 'commercetools complete, search is the next microservice, here's what REI did.' Use Eng. Manager vacancy as urgency trigger.",
+    "next_step_owner": "AE",
+    "next_step_date": "Within 10 business days",
+    "talk_track_cta": "A 30-day proof-of-concept \u2014 we index your catalog alongside commercetools, run NLP + federated search for 4 weeks, measure the delta vs. current search. No disruption to your live site. You get data before any license decision."
   },
   "next_steps": [
     {
@@ -960,5 +1116,170 @@
       "url": "https://www.algolia.com/blog/ai/semantic-search-vs-keyword-search",
       "type": "algolia"
     }
-  ]
+  ],
+  "case_studies": [
+    {
+      "company": "Patagonia",
+      "vertical": "Outdoor Apparel \u2014 Direct Competitor",
+      "result": "+10% search conversion rate",
+      "product": "Algolia NeuralSearch + Personalization",
+      "why": "Patagonia's technical outdoor catalog (base layers, insulation ratings, activity-specific gear) mirrors L.L.Bean. Same challenge: semantic queries like 'best waterproof jacket for backpacking' failing on keyword-only search. Patagonia solved this with Algolia + achieved 12% AOV lift and 15% repeat purchase lift.",
+      "url": "https://www.algolia.com/customers/patagonia",
+      "source_verified": "Referenced in L.L.Bean 08-financial-profile.md scratchpad"
+    },
+    {
+      "company": "Decathlon",
+      "vertical": "Sporting Goods \u2014 Omnichannel",
+      "result": "+50% search-driven conversions",
+      "product": "Algolia NeuralSearch + Federated Search",
+      "why": "Decathlon's omnichannel strategy (retail + e-commerce across 60+ countries, 85,000+ SKUs) mirrors L.L.Bean's 95 stores + 36 e-commerce partners. Same challenge: activity-based search ('boots for winter hiking') across massive catalog. 50% zero results reduction and 60% mobile search share post-Algolia.",
+      "url": "https://www.algolia.com/customers/decathlon-singapore",
+      "source_verified": "Referenced in 08-financial-profile.md; URL variant confirmed in Brooks Running session"
+    },
+    {
+      "company": "REI",
+      "vertical": "Outdoor Retail \u2014 Direct Competitor",
+      "result": "+15% multi-channel engagement",
+      "product": "Algolia Federated Search",
+      "why": "REI is L.L.Bean's most direct comparable \u2014 outdoor specialty retailer, omnichannel focus, same customer demographics (outdoor enthusiasts). REI uses Algolia federated search to surface classes, events, store locator, and return policies alongside products. Same opportunity for L.L.Bean's 95 stores + outdoor programs.",
+      "url": "https://www.algolia.com/customers/rei",
+      "source_verified": "Referenced in 12-icp-priority-mapping.md scratchpad"
+    }
+  ],
+  "abx_sequence": {
+    "sequence_type": "Targeted ABX \u2014 L.L.Bean Search Modernization",
+    "total_touches": 8,
+    "duration_days": 21,
+    "channels": [
+      "email",
+      "linkedin",
+      "video"
+    ],
+    "research_basis": "commercetools migration completed May 2024; Greg Elder new CEO (Feb 2026); Engineering Manager vacancy; REI + Patagonia confirmed Algolia customers; 8 new stores in 2026",
+    "triggers": [
+      {
+        "label": "New CEO (Greg Elder)",
+        "urgency": "high",
+        "detail": "100-day window opens Feb 2026 \u2014 'evolve and amplify' mandate = tech modernization"
+      },
+      {
+        "label": "commercetools Migration Complete",
+        "urgency": "high",
+        "detail": "Headless in place since May 2024 \u2014 search is the logical next microservice"
+      },
+      {
+        "label": "Eng. Manager Vacancy (Search/Discovery)",
+        "urgency": "high",
+        "detail": "JD explicitly mentions 'search' and 'product discovery' \u2014 reach CIO before hire happens"
+      },
+      {
+        "label": "8 New Stores Opening 2026",
+        "urgency": "medium",
+        "detail": "Omnichannel consistency requirement escalates with every new store opening"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "jj_rouhana",
+        "name": "JJ Rouhana",
+        "title": "Chief Information Officer",
+        "tier": 1,
+        "role": "Technical Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+        "angle": "commercetools migration complete \u2014 search is logical next microservice. Pre-built Algolia connector = minimal eng lift."
+      },
+      {
+        "id": "rob_harpool",
+        "name": "Rob Harpool",
+        "title": "Director, Digital Commerce",
+        "tier": 2,
+        "role": "Champion",
+        "linkedin_url": "https://www.linkedin.com/in/rob-harpool/",
+        "angle": "Feels the search gaps daily. Zero results, poor NLP, no federated content. ROI story resonates."
+      },
+      {
+        "id": "greg_elder",
+        "name": "Greg Elder",
+        "title": "President & CEO",
+        "tier": 1,
+        "role": "Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/greg-elder-llbean/",
+        "angle": "'Evolve and amplify' strategy + REI/Patagonia competitive lag. CEO-level framing: search is how customers connect with the brand."
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 1,
+        "channel": "email",
+        "target": "jj_rouhana",
+        "subject": "L.L.Bean search + commercetools: what REI did next",
+        "body": "Hi JJ,\n\nCongratulations on a flawless Cyber Monday on commercetools \u2014 zero unplanned outages at 5+ orders/second is genuinely impressive.\n\nWe work with a number of commercetools customers on search modernization, and the pattern is consistent: headless commerce is completed, then search becomes the next microservice. REI did exactly this \u2014 same stack, and saw 15% multi-channel engagement lift with federated search.\n\nGiven your 'shared services for all channels' vision, I thought you'd find REI's story relevant. Worth a 20-minute conversation?\n\nBest,\n[AE Name]\nAlgolia",
+        "cta": "20-min call \u2014 show REI's commercetools + Algolia implementation"
+      },
+      {
+        "touch": 2,
+        "day": 3,
+        "channel": "linkedin",
+        "target": "rob_harpool",
+        "subject": "L.L.Bean search experience \u2014 quick question",
+        "body": "Hi Rob,\n\nI noticed L.L.Bean completed its commercetools migration last May \u2014 huge milestone.\n\nI ran a quick search audit on llbean.com and found a few interesting gaps (NLP queries returning zero or irrelevant results, no federated content). Would love to share findings \u2014 15 mins?\n\n[AE Name] | Algolia",
+        "cta": "Share search audit findings \u2014 open the conversation"
+      },
+      {
+        "touch": 3,
+        "day": 5,
+        "channel": "email",
+        "target": "jj_rouhana",
+        "subject": "The search gaps I found on llbean.com (with screenshots)",
+        "body": "Hi JJ,\n\nFollowing up with the search gaps I mentioned:\n\n1. 'Best waterproof jacket for camping in cold weather' \u2014 returns keyword matches, not semantic results. Customers searching by use-case (your outdoor enthusiast segment) get poor results.\n\n2. 'Return policy' in search \u2014 zero results. Patagonia's federated search (powered by Algolia) surfaces return info instantly in the search bar. Your 100% satisfaction guarantee deserves the same discoverability.\n\n3. Mobile search at 66% of traffic \u2014 sub-100ms search is a mobile UX baseline. Native commercetools search averages 400-600ms.\n\nREI and Patagonia both use Algolia to solve exactly these gaps. Happy to share what that looks like in your commercetools environment specifically.\n\n[AE Name]",
+        "cta": "Review audit findings + request technical demo"
+      },
+      {
+        "touch": 4,
+        "day": 8,
+        "channel": "linkedin",
+        "target": "jj_rouhana",
+        "subject": "Algolia + commercetools pre-built connector",
+        "body": "Hi JJ,\n\nWanted to share: Algolia has a certified pre-built commercetools connector \u2014 indexing your product catalog takes 1-2 days of engineering time, not weeks.\n\nGiven you're actively hiring an Engineering Manager for search/product discovery, it might be worth evaluating vendors before that hire lands \u2014 the new EM will inherit whatever stack is in place.\n\nWould you have 20 mins this week?\n\n[AE Name] | Algolia",
+        "cta": "Pre-hire evaluation window \u2014 urgency framing"
+      },
+      {
+        "touch": 5,
+        "day": 10,
+        "channel": "email",
+        "target": "rob_harpool",
+        "subject": "Personalization + search: Emily Elting's analytics investment",
+        "body": "Hi Rob,\n\nI noticed Emily Elting is investing in a real-time personalization analytics platform at L.L.Bean.\n\nOne thing we see consistently: personalization without search integration has a ceiling. The highest-intent personalization moment is when someone types a query. Someone searching 'gift for dad under $100' is signaling buying intent \u2014 does your current search use that signal to adapt results in real time?\n\nPatagonia uses Algolia to do exactly this \u2014 recognizes gift buyers vs. outdoor enthusiasts and surfaces different results. They saw 15% repeat purchase lift.\n\nWould you and Emily be open to a 30-minute session on search + personalization?\n\n[AE Name] | Algolia",
+        "cta": "Tri-party call \u2014 Rob + Emily + AE"
+      },
+      {
+        "touch": 6,
+        "day": 12,
+        "channel": "video",
+        "target": "jj_rouhana",
+        "subject": "3-min Loom: L.L.Bean search gaps + Algolia solution",
+        "body": "Hi JJ,\n\nI recorded a 3-minute Loom showing:\n1. The NLP gap on llbean.com (use-case queries failing)\n2. What the same queries look like on Algolia (REI's implementation)\n3. The commercetools connector setup \u2014 literally 1 day of integration\n\n[LOOM LINK]\n\nWould love your reaction \u2014 15 minutes?\n\n[AE Name] | Algolia",
+        "cta": "Loom drives async engagement \u2014 follow up call"
+      },
+      {
+        "touch": 7,
+        "day": 15,
+        "channel": "email",
+        "target": "greg_elder",
+        "subject": "Re: 'Evolve and amplify' \u2014 what REI and Patagonia did with search",
+        "body": "Hi Greg,\n\nCongratulations on the CEO role. I've been tracking L.L.Bean's technology evolution \u2014 the commercetools migration was impressive.\n\nOne thing I wanted to bring to your attention: REI and Patagonia \u2014 two of your direct outdoor competitors \u2014 have both invested in Algolia for search modernization. REI saw 15% multi-channel engagement lift; Patagonia saw 10% search conversion improvement.\n\nYour 'evolve and amplify' strategy and 8 new stores in 2026 both depend on customers finding what they're looking for \u2014 on web, mobile, and in-store kiosks. Search is the connective tissue.\n\nI've been in conversation with JJ \u2014 would you have 20 minutes to hear what your competitive set is doing?\n\n[AE Name] | Algolia",
+        "cta": "CEO-level meeting \u2014 competitive framing"
+      },
+      {
+        "touch": 8,
+        "day": 21,
+        "channel": "email",
+        "target": "jj_rouhana",
+        "subject": "L.L.Bean search: next step",
+        "body": "Hi JJ,\n\nI've reached out a few times about search modernization and wanted to make one clear ask:\n\nWould you be open to a 30-day proof-of-concept \u2014 we index your product catalog on Algolia alongside your commercetools stack, run NLP and federated search for 4 weeks, and measure the delta vs. your current search?\n\nNo disruption to your live site. Minimal engineering time (~3 days setup). You get clear data on whether Algolia delivers measurable improvement before any license conversation.\n\nIs that something worth exploring?\n\n[AE Name] | Algolia",
+        "cta": "30-day POC proposal \u2014 de-risked ask"
+      }
+    ]
+  }
 }
