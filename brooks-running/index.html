@@ -6529,10 +6529,10 @@ function sectionPreCallBrief(D) {
     <div class="section-eyebrow">Sales Play · Preparation</div>
     <div class="section-title">Pre-Call Brief</div>
     ${anchors.length?`<div class="card" style="background:var(--gray);color:white;border:none;margin-bottom:24px;padding:24px;">
-      <div style="${T.eyebrowMd};opacity:0.6;margin-bottom:12px;">Speaking Their Language — Open With These</div>
+      <div style="${T.eyebrowMd};color:rgba(255,255,255,0.6);margin-bottom:12px;">Speaking Their Language — Open With These</div>
       ${anchors.map((line,i)=>`<div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;">
         <span style="${T.labelCol('white')};background:var(--blue);padding:2px 8px;border-radius:3px;flex-shrink:0;">${i+1}</span>
-        <span style="${T.body};line-height:1.5;">${escHtml(line)}</span>
+        <span style="${T.body};color:white;line-height:1.5;">${escHtml(line)}</span>
       </div>`).join('')}
     </div>`:''}
     <div class="grid-2" style="gap:24px;align-items:start;">
