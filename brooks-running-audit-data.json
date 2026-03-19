@@ -640,7 +640,9 @@
     "margin_zone_source": "Triangulated from: Nike 15-17% (public), Under Armour 8-10% (public), mid-tier specialty brands 10-15% (industry est.)",
     "margin_zone_source_url": "https://finance.yahoo.com/news/brooks-running-delivers-19-global-130000409.html",
     "algolia_cost_source": "Algolia pricing page (enterprise tier estimate for ~50K products, moderate query volume)",
-    "algolia_cost_source_url": "https://www.algolia.com/pricing/"
+    "algolia_cost_source_url": "https://www.algolia.com/pricing/",
+    "investor_note": "Berkshire Hathaway subsidiary \u2014 long-term investment mindset",
+    "berkshire_label": "Berkshire Hathaway Context"
   },
   "traffic": {
     "monthly_visits": "~5.2M/mo",
@@ -1279,6 +1281,32 @@
       "label": "Asics \u2014 Contentsquare Case Study",
       "url": "https://contentsquare.com/customers/asics/",
       "accessed": "2026-03-17"
+    }
+  ],
+  "case_studies": [
+    {
+      "company": "Under Armour",
+      "vertical": "Athletic Footwear \u00b7 SFCC",
+      "result": "35% higher conversion rate",
+      "product": "Algolia NeuralSearch + sub-20ms latency",
+      "url": "https://www.algolia.com/customers/under-armour/",
+      "why": "Same vertical (athletic footwear), same Salesforce Commerce Cloud platform. Most directly comparable."
+    },
+    {
+      "company": "Shoe Carnival",
+      "vertical": "Footwear Retail",
+      "result": "+4.5% conversion first Cyber Week",
+      "product": "Algolia + Amplience headless commerce",
+      "url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
+      "why": "Footwear category proof. 400+ locations, same product discovery challenges as running specialty."
+    },
+    {
+      "company": "Gymshark",
+      "vertical": "Performance Apparel D2C",
+      "result": "+150% mobile order rate",
+      "product": "Algolia Recommend + AI Personalization",
+      "url": "https://www.algolia.com/customers/gymshark-recommend/",
+      "why": "High-growth D2C athletic brand. Proves personalization ROI in performance apparel."
     }
   ]
 }
