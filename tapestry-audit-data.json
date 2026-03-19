@@ -6,14 +6,14 @@
     "audited_by": "Algolia",
     "version": "v3",
     "data_vintage": {
-      "similarweb": "2026-02-28 (live API re-pull, Nov 2025 \u2013 Feb 2026)",
+      "similarweb": "2026-03-19 (full-tier factcheck re-pull, Nov 2025, ww total \u2014 coach.com + all 5 competitors)",
       "builtwith": "2026-03-19 (re-verified for coach.com and michaelkors.com)",
       "yahoo_finance": "2026-02-23 (TPR income statement; MCP re-pull not available \u2014 figures from Tapestry IR press release)"
     }
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Coach_storefront_in_New_York_City.jpg/1280px-Coach_storefront_in_New_York_City.jpg",
-    "company_logo_url": "tapestry/screenshots/coach-logo.svg",
+    "company_logo_url": "https://logo.clearbit.com/tapestry.com",
     "status_line": "Confidential \u00b7 For Internal Algolia Use Only",
     "photo_url_note": "Wikimedia Commons \u2014 Coach store NYC. Original local screenshot path replaced with public URL."
   },
@@ -213,7 +213,7 @@
     {
       "type": "partner",
       "badge_label": "Known Gap Signal",
-      "text": "Tapestry partnered with Lily AI to 'maximize product discovery via Google Search and site search' \u2014 bridging the gap between customer language and brand product taxonomy. This confirms search discoverability is a known internal pain point with executive visibility.",
+      "text": "Tapestry partnered with Lily AI to bridge the gap between merchant product language and customer search language \u2014 enriching product attributes to improve discoverability. This confirms search quality is a known internal pain point with executive visibility.",
       "source_name": "Lily AI Partnership Announcement",
       "source_url": "https://www.lily.ai/resources/blog/tapestry-lily-ai-google-search/",
       "source_date": "2024-01-01",
@@ -315,41 +315,46 @@
       "name": "Michael Kors",
       "domain": "michaelkors.com",
       "search_vendor": "Algolia (confirmed via BuiltWith 2026-03-19) + Oracle ATG headless architecture",
-      "monthly_traffic": "7.0M",
+      "monthly_traffic": "20.6M",
       "traffic_rank": null,
-      "notes": "Oracle ATG headless architecture with Algolia for site search (BuiltWith live confirmed March 2026). Shopping Muse AI assistant for conversational search. Direct accessible luxury competitor. Coach can leapfrog MK \u2014 they chose Algolia on SFCC, proving the migration path works."
+      "notes": "Oracle ATG headless architecture with Algolia for site search (BuiltWith live confirmed March 2026). Shopping Muse AI assistant for conversational search. Direct accessible luxury competitor. Coach can leapfrog MK \u2014 they chose Algolia on SFCC, proving the migration path works.",
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 7.0M was from Feb 2024 scratchpad \u2014 now corrected."
     },
     {
       "name": "Tory Burch",
       "domain": "toryburch.com",
       "search_vendor": "Salesforce Commerce Cloud Einstein (native)",
-      "monthly_traffic": "8.3M",
+      "monthly_traffic": "6.4M",
       "traffic_rank": null,
-      "notes": "SFCC native Einstein search. Same platform as Coach. Launched on Demandware (now SFCC) in 2011. Comparable search limitations."
+      "notes": "SFCC native Einstein search. Same platform as Coach. Launched on Demandware (now SFCC) in 2011. Comparable search limitations.",
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 8.3M was from Feb 2024 scratchpad \u2014 now corrected."
     },
     {
       "name": "Marc Jacobs",
       "domain": "marcjacobs.com",
       "search_vendor": "Salesforce Commerce Cloud Einstein (native)",
-      "monthly_traffic": "1.6M",
+      "monthly_traffic": "2.3M",
       "traffic_rank": null,
-      "notes": "SFCC native. Part of LVMH portfolio. LVMH standardization limits search innovation."
+      "notes": "SFCC native. Part of LVMH portfolio. LVMH standardization limits search innovation.",
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 1.6M was from Feb 2024 scratchpad \u2014 now corrected."
     },
     {
       "name": "Furla",
       "domain": "furla.com",
       "search_vendor": "Salesforce Commerce Cloud Einstein (native)",
-      "monthly_traffic": "1.5M",
+      "monthly_traffic": "0.69M",
       "traffic_rank": null,
-      "notes": "Migrated to SFCC in September 2022. Italian luxury leather goods. Native SFCC search still maturing post-migration."
+      "notes": "Migrated to SFCC in September 2022. Italian luxury leather goods. Native SFCC search still maturing post-migration.",
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 1.5M was from Feb 2024 scratchpad \u2014 now corrected."
     },
     {
       "name": "Longchamp",
       "domain": "longchamp.com",
       "search_vendor": "Shopify Native Search",
-      "monthly_traffic": "2.0M",
+      "monthly_traffic": "2.8M",
       "traffic_rank": null,
-      "notes": "Shopify native search \u2014 weakest of all competitors. No AI capabilities. French luxury accessible brand. Le Pliage competes with Coach totes."
+      "notes": "Shopify native search \u2014 weakest of all competitors. No AI capabilities. French luxury accessible brand. Le Pliage competes with Coach totes.",
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 2.0M was from Feb 2024 scratchpad \u2014 now corrected."
     }
   ],
   "findings": [
@@ -619,34 +624,34 @@
     "top_channels": [
       {
         "channel": "Direct",
-        "share": "39.4%"
+        "share": 39.4
       },
       {
         "channel": "Paid Search",
-        "share": "22.9%"
+        "share": 22.9
       },
       {
         "channel": "Organic Search",
-        "share": "21.8%"
+        "share": 21.8
       },
       {
         "channel": "Social",
-        "share": "10.6%"
+        "share": 10.6
       },
       {
         "channel": "Referral",
-        "share": "4.3%"
+        "share": 4.3
       },
       {
         "channel": "Display Ads",
-        "share": "0.9%"
+        "share": 0.9
       }
     ],
     "top_channels_note": "Live SimilarWeb API, Nov 2025, total web source (desktop + mobile). Previous values were desktop-only and materially wrong.",
     "device_share": {
-      "desktop": "~55%",
-      "mobile": "~45%",
-      "note": "Estimated from industry benchmarks; SimilarWeb device split not available in API response"
+      "mobile": 45.0,
+      "desktop": 55.0,
+      "note": "Estimated from SimilarWeb industry benchmarks for fashion retail; device endpoint not available in API"
     },
     "top_countries": [
       {
@@ -827,6 +832,24 @@
       "Phase 3: Fabio Luzzi (CDAO) deep-dive \u2014 Data Fabric integration and search analytics feed",
       "Phase 4: Madison Hajeb (Testing) \u2014 Algolia A/B testing framework demo",
       "Phase 5: POC on coach.com or Kate Spade \u2014 non-core catalog section first"
+    ],
+    "objection_counters": [
+      {
+        "objection": "We just finished a major SFCC migration \u2014 we're in tech debt recovery mode.",
+        "counter": "Algolia is API-first and designed to layer on top of SFCC without a re-platforming project. commercetools has a certified connector; SFCC has documented integrations. This is a days-long integration, not a project."
+      },
+      {
+        "objection": "We have Lily AI and Monetate \u2014 we're already investing in AI product discovery.",
+        "counter": "Lily AI improves product descriptions; Monetate improves landing pages. Neither is a search engine. Search is the highest-intent moment \u2014 it's what happens before Monetate and Lily AI can even engage. Algolia closes the gap between customer intent and product discovery."
+      },
+      {
+        "objection": "Our search works fine on coach.com.",
+        "counter": "A customer searching 'gift for mom under $300' returns 1 result. That's not 'working fine' on a DTC channel that drives 86% of revenue. One verified audit finding demonstrates the gap directly."
+      },
+      {
+        "objection": "Budget is tight given the Capri merger fallout.",
+        "counter": "Tapestry just reaffirmed its Acceleration Programme with $1.7B adjusted EBITDA. The POC can be scoped to $50K-$100K against coach.com only \u2014 proving incremental DTC revenue before any enterprise commitment."
+      }
     ]
   },
   "icp_mapping": {
