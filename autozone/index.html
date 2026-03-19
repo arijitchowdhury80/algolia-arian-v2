@@ -3018,7 +3018,7 @@ a:hover {
     "confidence_digital_share": "LOW — AutoZone does not separately disclose digital revenue. 13% midpoint estimate from industry benchmarks.",
     "confidence_overall": "HIGH for total revenue, LOW for digital/search-addressable sub-estimates",
     "revenue_source": "https://finance.yahoo.com/quote/AZO/financials/",
-    "revenue_source_label": "Yahoo Finance MCP — get_financial_statement (income_stmt, ticker: AZO) [FACT]",
+    "revenue_source_label": "Yahoo Finance MCP — get_financial_statement, income_stmt, ticker AZO, FY2025",
     "source_url": "https://finance.yahoo.com/quote/AZO/financials/",
     "revenue_source_url": "https://finance.yahoo.com/quote/AZO/financials/",
     "digital_share_source": "AutoZone does not separately disclose digital revenue. Estimate based on industry benchmarks for auto parts retail digital penetration.",
@@ -3032,7 +3032,10 @@ a:hover {
     "investor_note": "Public company (NYSE: AZO). Market cap $55.54B. 3 major analyst upgrades in 10 months (Goldman Sachs, BofA, Argus Research). $1.6B capex cycle active. Algolia investment is strategically framed, not budget-justified.",
     "berkshire_note": null,
     "berkshire_label": null,
-    "berkshire_source": null
+    "berkshire_source": null,
+    "revenue": "$18.939B (FY2025, Aug 2025)",
+    "revenue_year": "FY2025",
+    "revenue_confidence": "HIGH"
   },
   "traffic": {
     "monthly_visits": "~31.3M/mo (4-month avg Oct 2025–Jan 2026)",
@@ -3042,38 +3045,15 @@ a:hover {
     "avg_visit_duration": "3:56 (236s)",
     "global_rank": 1536,
     "category_rank": "#1 — Vehicles/Automotive Industry (all 4 months)",
-    "channels": [
-      {
-        "name": "Organic Search",
-        "share_pct": 42.2,
-        "visits": "~13.2M/mo"
-      },
-      {
-        "name": "Direct",
-        "share_pct": 26.9,
-        "visits": "~8.4M/mo"
-      },
-      {
-        "name": "Paid Search",
-        "share_pct": 22.9,
-        "visits": "~7.2M/mo"
-      },
-      {
-        "name": "Social",
-        "share_pct": 5.1,
-        "visits": "~1.6M/mo"
-      },
-      {
-        "name": "Referrals",
-        "share_pct": 2.7,
-        "visits": "~0.85M/mo"
-      },
-      {
-        "name": "Display",
-        "share_pct": 0.2,
-        "visits": "~0.08M/mo"
-      }
-    ],
+    "channels": {
+      "organic_search": 42.2,
+      "direct": 26.9,
+      "paid_search": 22.9,
+      "social": 5.1,
+      "referrals": 2.7,
+      "display": 0.2,
+      "_source": "SimilarWeb MCP traffic-sources, autozone.com, Oct 2025–Jan 2026 4-month avg [FACT]"
+    },
     "traffic_source": "SimilarWeb MCP — get-websites-traffic-sources, autozone.com, Oct 2025–Jan 2026 [FACT]",
     "demographics": [
       {
@@ -3143,7 +3123,13 @@ a:hover {
         "branded": false
       }
     ],
-    "top_keywords_source": "SimilarWeb MCP — get-website-analysis-keywords-agg, Dec 2025–Feb 2026 [FACT]"
+    "top_keywords_source": "SimilarWeb MCP — get-website-analysis-keywords-agg, Dec 2025–Feb 2026 [FACT]",
+    "device_share": {
+      "mobile": null,
+      "desktop": null,
+      "insight": "Device split not retrievable — SimilarWeb popular-pages-agg and leading-folders-agg returned 403 Forbidden. Proxy signal: location pages (91-99.9% mobile), VIN decoder page (48.2% mobile) suggest significant mobile component.",
+      "data_completeness": "UNAVAILABLE — endpoint 403 during audit session"
+    }
   },
   "tech_stack": {
     "search_vendor": "Unknown (Oracle Endeca REMOVED; Algolia detected by BuiltWith, unverified; NOT in SimilarWeb Feb 2026 JS scan)",
@@ -3180,6 +3166,64 @@ a:hover {
     "sources": [
       "https://builtwith.com/autozone.com",
       "https://www.similarweb.com/website/autozone.com/technologies/"
+    ],
+    "primary_platform": "Custom composable architecture — React/Next.js frontend + Contentstack headless CMS. Oracle ATG/Commerce Cloud REMOVED. No standard e-commerce platform in active use.",
+    "full_list": [
+      "React JS (frontend framework — installed 2020)",
+      "Next.js (SSR framework)",
+      "Contentstack (headless CMS — installed Jan 2026, very recent)",
+      "Oracle Commerce (ATG) — REMOVED (first seen 2014, removed)",
+      "Oracle Endeca (search) — REMOVED (first seen 2018, removed)",
+      "Certona (recommendations) — REMOVED (removed, no replacement detected)",
+      "Lytics CDP (installed Jan 2026 — very recent)",
+      "Monetate (personalization/A/B testing — installed 2014, still active)",
+      "Adobe Analytics",
+      "Adobe Audience Manager",
+      "Adobe Marketing Cloud",
+      "Adobe Launch (tag management)",
+      "Google Analytics 4",
+      "Google Tag Manager",
+      "Tealium (tag management)",
+      "Dynatrace (APM)",
+      "Dynatrace RUM",
+      "New Relic (APM)",
+      "Akamai mPulse (RUM)",
+      "Snowplow (data collection)",
+      "Qualtrics (VoC surveys)",
+      "Bazaarvoice (ratings & reviews)",
+      "Akamai Edge / EdgeConnect / DNS (CDN)",
+      "Cloudflare CDN",
+      "Cloudflare Bot Management",
+      "Google Cloud CDN",
+      "Oracle Cloud (infrastructure)",
+      "PerimeterX (bot protection — installed Mar 2024)",
+      "HUMAN Security (fraud protection — installed Mar 2024)",
+      "LexisNexis ThreatMetrix",
+      "JScrambler (client-side security — installed Sep 2025)",
+      "OneTrust (consent management)",
+      "CyberSource (payments)",
+      "PayPal",
+      "Apple Pay",
+      "Amazon SES (transactional email)",
+      "Amazon Route 53 DNS",
+      "Akamai DNS",
+      "DNSSEC",
+      "FedEx (shipping integration)",
+      "USPS (shipping integration)",
+      "The Trade Desk",
+      "DoubleClick / Floodlight",
+      "Facebook Pixel + Custom Audiences",
+      "Google Marketing Platform",
+      "AppNexus (Microsoft Advertising)",
+      "Conversant Media",
+      "Demdex (Adobe audience management)",
+      "Magnite (installed Jan 2026)",
+      "TripleLift (installed Jan 2026)",
+      "InMobi (installed Jan 2026)",
+      "iCIMS (recruiting)",
+      "Google Maps",
+      "Salesforce (My Salesforce login)",
+      "Algolia — TAG DETECTED by BuiltWith (unverified; NOT confirmed in SimilarWeb Feb 2026 JS scan)"
     ]
   },
   "hiring": {
@@ -3211,7 +3255,86 @@ a:hover {
       }
     ],
     "hiring_summary": "12–15 relevant digital/technology roles open. Lead Software Engineer (eCommerce/Search) is the most critical signal — explicit search title + transformation language. Engage now before the hire establishes vendor preference.",
-    "hiring_source": "https://careers.autozone.com/"
+    "hiring_source": "https://careers.autozone.com/",
+    "buying_committee": [
+      {
+        "role": "Champion / Day-to-Day Owner",
+        "name": "Jamey Maki",
+        "title": "VP, eCommerce & Digital Experience",
+        "signal": "hot",
+        "status": "LinkedIn-confirmed; owns autozone.com search and digital UX",
+        "message": "Directly owns the search experience. Open with the 23x headlamp/headlight synonym gap.",
+        "source": "https://www.linkedin.com/in/jameymaki/"
+      },
+      {
+        "role": "Omnichannel Decision Maker",
+        "name": "Bailey Childress",
+        "title": "SVP, Omnichannel & Merchandising Support",
+        "signal": "hot",
+        "status": "Appointed Dec 2024 — actively defining roadmap",
+        "message": "New in role, defining omnichannel strategy. BOPIS inventory-aware search is his mandate.",
+        "source": "https://www.globenewswire.com/news-release/2024/12/19/3000291/3935/en/AutoZone-Announces-Organizational-Changes.html"
+      },
+      {
+        "role": "Economic Buyer (IT Budget)",
+        "name": "K. Michelle Borninkhof",
+        "title": "SVP & CIO",
+        "signal": "warm",
+        "status": "McDonald's/Walmart background; owns IT budget",
+        "message": "Has worked with enterprise search at scale. Leverage Supply Chain 2030 completion as the natural next chapter.",
+        "source": "https://investors.autozone.com/news-releases/news-release-details/autozone-announces-executive-changes"
+      },
+      {
+        "role": "Technical Evaluator",
+        "name": "Manoj Koratty",
+        "title": "CTO",
+        "signal": "warm",
+        "status": "Enterprise architect; owns API platform and integration decisions",
+        "message": "API-first angle: Algolia integrates natively with React/Next.js in days, not months.",
+        "source": "https://theorg.com/org/autozone/org-chart/manoj-koratty"
+      },
+      {
+        "role": "CFO / ROI Validator",
+        "name": "Jamere Jackson",
+        "title": "EVP & CFO",
+        "signal": "cold",
+        "status": "Engage after champion + CIO validation",
+        "message": "ROI frame: $36.9M moderate scenario, ~3-month payback, plus $2M+/year CAC reduction via paid search efficiency.",
+        "source": "https://investors.autozone.com"
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Champion Warming",
+        "target": "Jamey Maki + Bailey Childress",
+        "actions": [
+          "LinkedIn connection with headlamp/headlight gap as the opener",
+          "Share Phase 2 audit finding: Duralast brand returns 2 results",
+          "Forward Algolia B2B auto parts case study (Mister-Auto: +12% conversion)"
+        ]
+      },
+      {
+        "phase": 2,
+        "label": "Technical Evaluation",
+        "target": "Manoj Koratty + Michelle Borninkhof",
+        "actions": [
+          "Architecture demo: React/Next.js/Contentstack native integration",
+          "Show vehicle fitment faceting (YMM) — Algolia Intelligent Auto Parts Solution",
+          "Supply Chain 2030 completion framing: search is the next modernization chapter"
+        ]
+      },
+      {
+        "phase": 3,
+        "label": "Commercial Validation",
+        "target": "Jamere Jackson (CFO)",
+        "actions": [
+          "ROI model: $18.9B FY2025 revenue × 13% e-com × 10% lift = ~$37M annual [ESTIMATE]",
+          "Payback period: ~3 months at $750K/year enterprise pricing [ESTIMATE]",
+          "CAC reduction: 22.9% paid search traffic; 5% conversion improvement = ~$2M/year savings"
+        ]
+      }
+    ]
   },
   "icp_mapping": {
     "icp_fit_score": 9.2,
@@ -3284,6 +3407,13 @@ a:hover {
       "You now have 142 Mega Hubs, each carrying 80,000–110,000 SKUs. How are customers finding parts that are only stocked at certain hub locations? Is BOPIS inventory-aware today?",
       "When a customer searches ‘headlamp’ instead of ‘headlight’, or describes a symptom instead of the part name — what happens? Do you have visibility into zero-results queries and how synonyms are managed today?",
       "With Supply Chain 2030 wrapping up — what’s the next major infrastructure modernization initiative? Is digital catalog search on that roadmap as the next chapter?"
+    ],
+    "anchor_lines": [
+      "AutoZone told investors in March 2026 they are 'investing in technology to improve customer service' — Algolia is the fastest way to make that visible to customers at the exact moment they search for a part.",
+      "AutoZone's own 10-K says they will 'rapidly add parts coverage to the online catalog in FY26' — a bigger catalog with the same search infrastructure makes findability worse, not better.",
+      "AutoZone's commercial segment grew +9.8% SSS in Q2 FY2026 — nearly 7x the DIY rate. That's the segment most dependent on search quality: a mechanic who can't find the right part in 30 seconds orders from O'Reilly.",
+      "AutoZone publicly stated that Supply Chain 2030 is in 'the final stages' — the supply chain is done, the digital-to-customer layer is the natural next frontier.",
+      "ChatGPT is already sending 316,000 visitors a month to AutoZone.com — their #3 referral source. Those visitors arrive with conversational queries: 'battery for 2019 Ram 1500'. Current search is NLP-blind."
     ]
   },
   "ae_fields": {
@@ -3296,7 +3426,10 @@ a:hover {
     "opportunity_stage": "Pre-outreach",
     "next_action": "Connect with Jamey Maki (VP eCommerce) via LinkedIn with the headlamp/headlight finding as the opener",
     "urgency": "HIGH — Lead Software Engineer (eCommerce/Search) role is open. Engage before hire establishes vendor preference.",
-    "notes": "All 7 factcheck corrections applied. Screenshots: 0 (all Phase 2 captures were CAPTCHA pages — reference finding claims via public URL comparison instead). Quote #9 speaker corrected to Philip B. Daniele III. Mobile stat corrected to 63%. Auto Parts Solution date corrected to March 5, 2026."
+    "notes": "All 7 factcheck corrections applied. Screenshots: 0 (all Phase 2 captures were CAPTCHA pages — reference finding claims via public URL comparison instead). Quote #9 speaker corrected to Philip B. Daniele III. Mobile stat corrected to 63%. Auto Parts Solution date corrected to March 5, 2026.",
+    "next_step_action": "LinkedIn outreach to Jamey Maki (VP eCommerce) with specific Phase 2 finding: 23x headlamp/headlight synonym gap, Duralast brand returning 2 results. Frame as a 15-minute observation share, not a sales call.",
+    "talk_track_opener": "Jamey — I was on AutoZone.com searching for a headlamp and got 23 results. Typed 'headlight' and got 538. Same product, 23x variance. At your catalog scale, that's thousands of lost sales per day. I have a 15-minute observation I'd like to share — no pitch, just the data.",
+    "talk_track_cta": "Can we do 15 minutes this week? I'll show you the synonym gap, the Duralast brand issue (2 results for your core private label), and an NLP demo that handles 'battery for 2019 Ram 1500' the way your customers actually search. No deck, just live examples."
   },
   "next_steps": [
     {
@@ -3698,7 +3831,108 @@ a:hover {
         }
       ]
     }
-  ]
+  ],
+  "abx_sequence": {
+    "sequence_type": "Targeted ABX — AutoZone Digital Search Transformation",
+    "total_touches": 7,
+    "duration_days": 21,
+    "channels": [
+      "linkedin"
+    ],
+    "research_basis": "Phase 1 research: 12-icp-priority-mapping.md outreach sequence. Trigger: Lead Software Engineer (eCommerce/Search) role open. Champions: Jamey Maki + Bailey Childress. Economic buyer: Michelle Borninkhof (CIO).",
+    "triggers": [
+      "Lead Software Engineer (eCommerce / Search) role actively open — engage before hire establishes vendor preference",
+      "Bailey Childress (SVP Omnichannel) appointed Dec 2024 — actively defining roadmap",
+      "Supply Chain 2030 completing — next modernization chapter = digital search",
+      "DIFM commercial +9.8% SSS — most search-dependent revenue segment accelerating",
+      "ChatGPT at 316K monthly referrals — AI-acquired traffic landing on NLP-blind search"
+    ],
+    "contacts": [
+      {
+        "id": "maki",
+        "name": "Jamey Maki",
+        "title": "VP, eCommerce & Digital Experience",
+        "channel": "linkedin"
+      },
+      {
+        "id": "childress",
+        "name": "Bailey Childress",
+        "title": "SVP, Omnichannel & Merchandising Support",
+        "channel": "linkedin"
+      },
+      {
+        "id": "borninkhof",
+        "name": "Michelle Borninkhof",
+        "title": "SVP & CIO",
+        "channel": "linkedin"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "maki",
+        "subject": "LinkedIn connection — headlamp/headlight finding",
+        "body": "Jamey — I was on AutoZone.com searching for a headlamp and got 23 results. Searched 'headlight' — 538 results. Same product, 23x gap. I have a quick observation I think would be relevant to your current search roadmap. Open to connecting?",
+        "cta": "LinkedIn connection request"
+      },
+      {
+        "touch": 2,
+        "day": 3,
+        "channel": "linkedin",
+        "target": "maki",
+        "subject": "5 specific search gaps on autozone.com",
+        "body": "Thanks for connecting. Quick findings: (1) 23x synonym variance headlamp vs headlight, (2) Duralast brand = 2 results for your core private label, (3) NLP-blind — 'headlight for 2018 Chevy Silverado' returns irrelevant results, (4) no product recommendations after Certona removal, (5) 'return policy' returns products not help content. Worth 15 minutes to walk through solutions?",
+        "cta": "Book 15-minute audit walkthrough"
+      },
+      {
+        "touch": 3,
+        "day": 6,
+        "channel": "linkedin",
+        "target": "childress",
+        "subject": "BOPIS + omnichannel search gap — inventory-aware search",
+        "body": "Bailey — congratulations on the SVP role. Your DIFM commercial segment is growing at nearly 10x DIY rate. For a mechanic ordering under time pressure, can they search autozone.com filtered by inventory available at their nearest Mega Hub? That BOPIS-aware search is a direct commercial revenue lever. Happy to share how Algolia handles this.",
+        "cta": "15-minute BOPIS search demo"
+      },
+      {
+        "touch": 4,
+        "day": 10,
+        "channel": "linkedin",
+        "target": "borninkhof",
+        "subject": "Supply Chain 2030 completing — search is next",
+        "body": "Michelle — AutoZone publicly stated Supply Chain 2030 is in 'the final stages.' Every major infrastructure modernization has a next chapter. The digital-to-customer layer is it. Algolia is API-first, headless, integrates natively with your React/Next.js/Contentstack stack in 8–12 weeks — not 18 months. Your McDonald's and Walmart background gives you the scale context. Happy to walk through the architecture.",
+        "cta": "Architecture overview call"
+      },
+      {
+        "touch": 5,
+        "day": 14,
+        "channel": "linkedin",
+        "target": "maki",
+        "subject": "AutoZone-specific Phase 2 audit — full findings",
+        "body": "Jamey — I completed a full Phase 2 browser audit on AutoZone.com: 2.6/10 overall search score, critical gaps in synonym handling, NLP, recommendations, and federated search. I'd like to share the full report in 30 minutes — no pitch, just findings and specific Algolia solutions for each gap.",
+        "cta": "Schedule 30-minute audit review"
+      },
+      {
+        "touch": 6,
+        "day": 17,
+        "channel": "linkedin",
+        "target": "childress",
+        "subject": "Commercial search: VIN-to-part conversion opportunity",
+        "body": "Bailey — VIN decoder is AutoZone's #2 organic traffic page (144K monthly clicks). Users arrive vehicle-identified and ready to buy. If AutoZone's search can transition VIN sessions directly into fitment-filtered part results, that's a direct commercial conversion lever at scale. This is Algolia's Intelligent Auto Parts Solution — built for exactly this use case.",
+        "cta": "View Algolia Intelligent Auto Parts demo"
+      },
+      {
+        "touch": 7,
+        "day": 21,
+        "channel": "linkedin",
+        "target": "maki",
+        "subject": "Closing the loop — audit report available",
+        "body": "Jamey — I've shared specific findings on 5 AutoZone search gaps over the past few weeks. If the timing isn't right, I completely understand. If there's a better time to revisit when the eCommerce/Search engineer hire is settled and you're defining the roadmap, I'm here. The full audit report is yours regardless.",
+        "cta": "Request full audit report"
+      }
+    ]
+  }
 };</script>
 
 <script>

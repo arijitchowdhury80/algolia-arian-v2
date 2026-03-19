@@ -555,7 +555,8 @@
     "ebit": "$10.97B",
     "gross_profit": "$35.35B",
     "roi_note": "ROI base: $275.2B total revenue × 7.2% e-commerce share = $19.82B. Search-addressable = $19.82B × 15% = $2.97B. Figures unchanged from scratchpad (FY2025 revenue is confirmed by Yahoo Finance).",
-    "berkshire_source": "https://finance.yahoo.com/quote/COST/holders/"
+    "berkshire_source": "https://finance.yahoo.com/quote/COST/holders/",
+    "search_roi_est": "$148.6M/yr [ESTIMATE · conservative 5% lift on $2.97B search-addressable revenue]"
   },
   "traffic": {
     "monthly_visits": "83.4M",
@@ -618,7 +619,14 @@
     "demographics_note": "SimilarWeb MCP demographics endpoint (ww, 2026-02-28). All 6 age brackets confirmed.",
     "gender_female": "53.9%",
     "gender_male": "46.1%",
-    "visit_duration": "4:05 min"
+    "visit_duration": "4:05 min",
+    "device_share": {
+      "mobile": null,
+      "desktop": null,
+      "insight": "Device split not available from SimilarWeb MCP in this audit session. Mobile app traffic grew +48% YoY per Costco Q1 FY2026 earnings. Industry benchmark for warehouse retail: ~45-55% mobile.",
+      "source": "Costco Q1 FY2026 Earnings Call (December 11, 2025)",
+      "data_completeness": "PARTIAL — explicit device split not captured"
+    }
   },
   "tech_stack": {
     "search": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
@@ -638,7 +646,51 @@
     "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
     "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
     "privacy": "OneTrust [BuiltWith]",
-    "search_builtwith_note": "BuiltWith free-api reports 2 \"Site Search\" and 2 \"Semantic Search\" detections — these are Typeahead.js/Bloodhound categorized broadly, NOT enterprise search platforms. No Algolia, Elasticsearch, Coveo, or Lucidworks detected in 939 live technologies."
+    "search_builtwith_note": "BuiltWith free-api reports 2 \"Site Search\" and 2 \"Semantic Search\" detections — these are Typeahead.js/Bloodhound categorized broadly, NOT enterprise search platforms. No Algolia, Elasticsearch, Coveo, or Lucidworks detected in 939 live technologies.",
+    "primary_platform": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud (Enlyft) was incorrect.",
+    "search_vendor": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
+    "full_list": [
+      "HCL Commerce (IBM WebSphere Commerce)",
+      "Typeahead.js / Bloodhound (site search)",
+      "Google Cloud Platform",
+      "Microsoft Azure",
+      "Tealium iQ (Tag Management)",
+      "Tealium AudienceStream (CDP)",
+      "Tealium EventStream (Real-time events)",
+      "Segment (CDP — BuiltWith live 2026-03-18)",
+      "GrowthLoop (AI Marketing Engine)",
+      "Akamai (CDN + WAF)",
+      "Amazon CloudFront",
+      "Cloudflare",
+      "Azure Edge",
+      "CyberSource (Payments)",
+      "CardinalCommerce",
+      "Visa / Discover",
+      "OneTrust (Privacy)",
+      "Adobe Analytics (Omniture)",
+      "Microsoft Application Insights",
+      "Dynatrace",
+      "Criteo (Retail Media)",
+      "The Trade Desk",
+      "Google DV360",
+      "Epsilon DSP",
+      "StackAdapt",
+      "Yahoo DSP",
+      "MetaRouter (Identity Resolution)",
+      "LiveRamp (Identity Resolution)",
+      "Habu (Clean Room Measurement)",
+      "PRN/Stratacache (Warehouse TV)",
+      "Microsoft Dynamics 365 Finance",
+      "SAP S/4HANA Retail",
+      "Microsoft Power BI",
+      "UKG Workforce Central",
+      "Elavon / Converge (Payment Processing)",
+      "DigiCert EV SSL",
+      "Transcend (Privacy Management)",
+      "Syndigo (Product Content Management)",
+      "DoubleClick",
+      "Adobe Audience Manager"
+    ]
   },
   "hiring": {
     "total_open_roles": 428,
@@ -912,10 +964,11 @@
       }
     ],
     "anchor_lines": [
-      "Costco told investors its digital vision is 'seamless, faster, more personal' — we found 5 specific places where search breaks that promise today.",
-      "Vachris's AI mandate is 'practical, member-focused, tangible business value' — Algolia NeuralSearch is exactly that: pre-trained, no ML team, live in weeks.",
-      "Millerchip said tech productivity offsets labor costs. A 5% search lift is $148M/yr — that's not technology for its own sake, that's the CFO's math.",
-      "Joel Crabb built Target's Solr. He knows what custom search costs. Algolia is what he'd choose if starting from scratch."
+      "Costco told investors its digital vision is 'seamless, faster, more personal' — but 'best tv for gaming under 1000' returns insurance plans. That's not seamless.",
+      "Your CEO said AI is being deployed in a 'very Costco way, practical, member-focused and grounded in tangible business value' — Algolia's ROI framework maps exactly to that standard: $148M conservative annual lift.",
+      "Gary Millerchip told investors that productivity improvements 'fully offset wage investments' — a 5% search improvement on $2.97B search-addressable revenue is $148M annually; that offsets costs too.",
+      "Costco just launched 'personalization capabilities that provide more relevant product recommendations' — but PDP pages show zero product recommendations. Algolia Recommend closes that gap immediately.",
+      "Your 10-K flags competitors with 'greater technology capabilities' as a named risk — Walmart has AI-powered search, Amazon sets member expectations. Algolia closes that gap faster than any in-house build."
     ]
   },
   "ae_fields": {
@@ -926,7 +979,9 @@
     "technical_buyer": "Joel Crabb (VP IT eCommerce) — primary technical decision-maker",
     "user_buyer": "Sonali Gupta (Product Management Leader, Merchandising IT)",
     "timing": "Q2 2026 — active $6.5B CapEx cycle, SVP E-Commerce transition (Jan 2026 retirement), AI investment wave underway, pre-Q4 holiday prep window",
-    "talk_track_opener": "Joel, you built Target's custom Solr implementation — you know exactly what custom search costs in engineering cycles and relevance debt. Costco doesn't have Target's search team. I want to show you 3 specific gaps in Costco's current search that took me 20 minutes to find. Can I get 15 minutes on your calendar?"
+    "talk_track_opener": "Joel, you built Target's custom Solr implementation — you know exactly what custom search costs in engineering cycles and relevance debt. Costco doesn't have Target's search team. I want to show you 3 specific gaps in Costco's current search that took me 20 minutes to find. Can I get 15 minutes on your calendar?",
+    "next_step_action": "Request 30-minute discovery call with Joel Crabb (VP IT eCommerce) using the headlamp/TV-gaming-under-1000 search failure findings as the opener. Bailey Childress SVP E-Commerce (new — post Jan 2026 transition) as economic buyer for follow-up.",
+    "talk_track_cta": "Joel, I found 3 specific search failures on costco.com in 20 minutes — NLP-blind query, zero PDP recommendations, and a federated search gap. I'd like to run a live audit against your current search for 30 minutes. When can we connect?"
   },
   "next_steps": [
     {
@@ -1075,5 +1130,106 @@
       "basket_result": "+25% increase in search-driven revenue",
       "relevance": "Decathlon operates 1,700+ stores across 60 countries with a multi-category catalog (analogous to Costco's warehouse breadth: electronics, apparel, food, pharmacy). Algolia federated search unified product, content, and store inventory — matching Costco's Gap G03 (help content on separate domain, no federated search)."
     }
-  ]
+  ],
+  "abx_sequence": {
+    "sequence_type": "Targeted ABX — Costco Digital Search",
+    "total_touches": 7,
+    "duration_days": 21,
+    "channels": [
+      "email",
+      "linkedin"
+    ],
+    "research_basis": "ICP mapping from 12-icp-priority-mapping.md. Buying committee: Joel Crabb (VP IT eCommerce) as champion, Torsten Lubach (CTO) as economic buyer, Sonali Gupta (Product Management) as user buyer. Trigger: $6.5B CapEx cycle active, SVP E-Commerce transition Jan 2026, AI investment wave.",
+    "triggers": [
+      "Q1 FY2026 earnings call: CEO committed to 'seamless, faster, more personal' digital experience",
+      "SVP E-Commerce retired Jan 2026 — new leadership transition = buying window open",
+      "RichRelevance removed — zero PDP recommendations confirmed in Phase 2",
+      "GrowthLoop AI partnership announced — active AI investment cycle underway"
+    ],
+    "contacts": [
+      {
+        "id": "crabb",
+        "name": "Joel Crabb",
+        "title": "VP IT eCommerce",
+        "channel": "linkedin"
+      },
+      {
+        "id": "lubach",
+        "name": "Torsten Lubach",
+        "title": "Chief Technology Officer",
+        "channel": "linkedin"
+      },
+      {
+        "id": "gupta",
+        "name": "Sonali Gupta",
+        "title": "Product Management Leader, Merchandising IT",
+        "channel": "linkedin"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "crabb",
+        "subject": "LinkedIn connection",
+        "body": "Joel — I was on costco.com searching for a gaming TV under $1,000 and got insurance plans. I have a 3-minute observation that I think would be relevant given the eCommerce transformation work. Would you be open to connecting?",
+        "cta": "Connect on LinkedIn"
+      },
+      {
+        "touch": 2,
+        "day": 3,
+        "channel": "linkedin",
+        "target": "crabb",
+        "subject": "3 search gaps I found in 20 minutes",
+        "body": "Thanks for connecting. As promised: (1) 'best tv for gaming under 1000' returns insurance plans — zero NLP, (2) PDP pages show zero product recommendations since RichRelevance removal, (3) 'return policy' returns products not help content. These are the exact gaps Algolia was built to close. Worth 15 minutes to walk through the solutions?",
+        "cta": "Book 15-minute call"
+      },
+      {
+        "touch": 3,
+        "day": 7,
+        "channel": "linkedin",
+        "target": "gupta",
+        "subject": "Merchandising visibility into failed searches",
+        "body": "Sonali — I noticed Costco recently launched personalization capabilities per the Q1 FY2026 earnings. The next frontier is understanding which member searches fail before they reach the personalization layer. Algolia Analytics shows that in real-time — happy to share a 2-minute demo.",
+        "cta": "View 2-minute demo"
+      },
+      {
+        "touch": 4,
+        "day": 10,
+        "channel": "linkedin",
+        "target": "lubach",
+        "subject": "Technology investment ROI — search tier",
+        "body": "Torsten — Costco's 10-K names competitors with greater technology capabilities as a strategic risk. Walmart has AI-powered search. Amazon sets member expectations. Algolia is how you close that gap in 8–12 weeks, not 18 months. The ROI at your scale is $148M+ annually (conservative). Happy to share the model.",
+        "cta": "Request ROI model"
+      },
+      {
+        "touch": 5,
+        "day": 14,
+        "channel": "linkedin",
+        "target": "crabb",
+        "subject": "Costco-specific search audit results",
+        "body": "Joel — I ran a full Algolia audit on costco.com: 5 of 10 search areas scored HIGH severity. The empty state gap, NLP gap, and federated search gap are the biggest opportunities. I'd like to share the full findings in a 30-minute session — no deck, just the data. Interested?",
+        "cta": "Schedule 30-minute audit review"
+      },
+      {
+        "touch": 6,
+        "day": 17,
+        "channel": "linkedin",
+        "target": "gupta",
+        "subject": "Member intent data you're currently missing",
+        "body": "Sonali — with 93M monthly visits, the searches that fail on costco.com represent demand signals for products your members want but can't find. Algolia captures that in real time. It's the most valuable signal for your merchandising roadmap. Worth a quick look?",
+        "cta": "View search intelligence demo"
+      },
+      {
+        "touch": 7,
+        "day": 21,
+        "channel": "linkedin",
+        "target": "crabb",
+        "subject": "Final outreach — closing the loop",
+        "body": "Joel — I've shared findings on 3 specific gaps in Costco's search. If the timing isn't right, I completely understand. If you'd like to revisit when the eCommerce platform roadmap is set for H2, I'm here. Either way, the audit report is yours to keep.",
+        "cta": "Request full audit report"
+      }
+    ]
+  }
 }

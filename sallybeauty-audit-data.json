@@ -506,7 +506,13 @@
     },
     "roi_multiple": "~20x (at moderate scenario vs. $275K est. Algolia cost)",
     "payback_period": "< 1 quarter",
-    "algolia_annual_cost_est": "$150K–$400K/year (enterprise)"
+    "algolia_annual_cost_est": "$150K–$400K/year (enterprise)",
+    "revenue": "$3.70B (FY2025)",
+    "revenue_year": "FY2025",
+    "revenue_confidence": "HIGH",
+    "revenue_source_url": "https://stockanalysis.com/stocks/sbh/revenue/",
+    "revenue_source_label": "Stock Analysis — SBH Annual Revenue FY2025; corrected per Yahoo Finance MCP re-call",
+    "search_roi_est": "$5.47M/yr [ESTIMATE · moderate 10% lift on $54.7M search-addressable revenue]"
   },
   "traffic": {
     "monthly_visits": "4.75M",
@@ -575,7 +581,14 @@
     "demographics_source": "https://www.placer.ai/chains/sally-beauty-supply",
     "gender_split": "~80–85% female, ~15–20% male",
     "gender_split_source": "https://www.placer.ai/chains/sally-beauty-supply",
-    "source_url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com"
+    "source_url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com",
+    "device_share": {
+      "desktop": 57.0,
+      "mobile": 43.0,
+      "insight": "Sally.com skews desktop-heavy vs mobile (57/43) — meaningful mobile gap given 43% mobile sales volume.",
+      "source": "Grips Intelligence — sallybeauty.com, April 2025",
+      "source_url": "https://gripsintelligence.com/insights/retailers/sallybeauty.com"
+    }
   },
   "tech_stack": {
     "ecommerce_platform": "Salesforce Commerce Cloud (SFCC)",
@@ -628,7 +641,52 @@
       "iGoDigital (recommendations)",
       "Findify (search alternative)"
     ],
-    "builtwith_recommendations_note": "BuiltWith match score 0.033 for Algolia — listed as recommended but not installed"
+    "builtwith_recommendations_note": "BuiltWith match score 0.033 for Algolia — listed as recommended but not installed",
+    "primary_platform": "Salesforce Commerce Cloud (SFCC / Demandware) with IBM Sterling Order Management [FACT — BuiltWith + Chain Store Age + Salesforce Press Release]",
+    "full_list": [
+      "Salesforce Commerce Cloud (SFCC / Demandware) — e-commerce platform",
+      "SFCC Native Einstein Search — current search (no third-party detected)",
+      "IBM Sterling Order Management — OMS",
+      "Salesforce Marketing Cloud — marketing automation",
+      "Blue Yonder — supply chain planning",
+      "CQuotient — cross-channel personalization (Salesforce-native)",
+      "Monetate — A/B testing + personalization targeting",
+      "Boomtrain — AI-powered marketing platform (installed Dec 2023)",
+      "Adobe Audience Manager (installed Jun 2025)",
+      "Google Analytics",
+      "Google Tag Manager",
+      "Google Maps API (store locator)",
+      "Facebook Pixel",
+      "Facebook Custom Audiences",
+      "DoubleClick / Google Marketing Platform",
+      "Bing Universal Advertiser",
+      "Conversant Media / Dotomi",
+      "Klarna (BNPL)",
+      "Klarna Checkout",
+      "Klarna On-Site Messaging",
+      "PayPal JavaScript SDK",
+      "PayPal Pay in 4",
+      "Apple Pay",
+      "Discover",
+      "Cloudflare (CDN)",
+      "Cloudflare CDN",
+      "AWS EC2 (Virginia + Oregon) — cloud hosting",
+      "Microsoft Azure US South — cloud infrastructure",
+      "PerimeterX — bot detection / fraud prevention",
+      "Okta — identity management / SSO",
+      "Proofpoint — email security",
+      "DigiCert SSL",
+      "HSTS",
+      "DNSSEC",
+      "KnowBe4 — security awareness training",
+      "Apache (web server)",
+      "Bazaarvoice (ratings & reviews — status: BuiltWith shows live, SimilarWeb shows removed as of Feb 2026, in transition)",
+      "SMG — customer experience + loyalty software",
+      "Atlassian Cloud (Jira/Confluence)",
+      "Slack",
+      "WebEx",
+      "Algolia — NOT INSTALLED (BuiltWith recommends as gap technology)"
+    ]
   },
   "hiring": {
     "total_open_roles": "4,100+",
@@ -690,7 +748,39 @@
         "source": "https://www.linkedin.com/in/marlo-cormier-cpa-bb706360/"
       }
     },
-    "source_url": "https://www.sallybeauty.com/careers/"
+    "source_url": "https://www.sallybeauty.com/careers/",
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Digital Champion",
+        "target": "Chris Hansen (VP Digital Product)",
+        "actions": [
+          "LinkedIn connection via CommerceNext speaker profile",
+          "Open with Sally Ignited AI transformation angle and SFCC Einstein search gap",
+          "Reference BSG platform overhaul as the timing hook"
+        ]
+      },
+      {
+        "phase": 2,
+        "label": "CTO Technical Evaluation",
+        "target": "Joe Condomina (CTO)",
+        "actions": [
+          "Algolia SFCC cartridge demo — plug-and-play, no rip-and-replace",
+          "NeuralSearch vs SFCC Einstein benchmark on Sally's actual catalog queries",
+          "Address Fuel for Growth cost efficiency framing: Algolia reduces merchandising labor"
+        ]
+      },
+      {
+        "phase": 3,
+        "label": "Executive + CEO Buy-In",
+        "target": "Denise Paulonis (CEO) + Mary Edwards (Chief Transformation Officer)",
+        "actions": [
+          "ROI model: $5.47M/yr at 10% lift vs. Sephora using Constructor.io",
+          "First-mover lighthouse customer framing for professional beauty vertical",
+          "BSG platform timing urgency: include search now vs. retrofitting later"
+        ]
+      }
+    ]
   },
   "case_studies": [
     {
@@ -822,7 +912,10 @@
     "objection_platform_lock": "Algolia has a native SFCC cartridge. It's plug-and-play, not rip-and-replace.",
     "objection_budget": "We understand Fuel for Growth means every dollar must prove ROI. Algolia reduces merchandising labor AND lifts revenue — net positive. $5.47M/year at 10% lift.",
     "ask": "30-minute NeuralSearch demo on Sally's live catalog",
-    "urgency_driver": "Sephora is already on AI search. The longer Sally waits, the wider the experience gap."
+    "urgency_driver": "Sephora is already on AI search. The longer Sally waits, the wider the experience gap.",
+    "next_step_action": "Reach out to Chris Hansen (VP Digital Product) via LinkedIn — lead with Sally Ignited AI priority and the Einstein Search limitation against modern NLP queries. Reference the BSG platform update timing as the urgent window.",
+    "talk_track_opener": "I've been reading about Sally Ignited — it sounds like a comprehensive transformation. I noticed you're calling out AI, personalization, and seamless customer journey as priorities. Search touches all three of those, and right now you're running native SFCC Einstein Search, which doesn't do NLP or semantic understanding.",
+    "talk_track_cta": "Can I show you a 20-minute NeuralSearch demo on Sally's live catalog? I'll run the same queries your customers type — 'natural hair color treatment', 'toner for brassy hair at home' — and show you the difference between what Einstein Search returns today versus what Algolia NeuralSearch returns. No pitch, just the contrast."
   },
   "strategic_angles": [
     {
@@ -1019,5 +1112,104 @@
       "label": "Cosmetics Design — Q1 FY2026 Analysis",
       "url": "https://www.cosmeticsdesign.com/Article/2026/02/11/sally-beauty-holdings-q1-results-show-steady-demand-as-cost-pressures-remain-in-focus/"
     }
-  ]
+  ],
+  "icp_mapping_anchor_lines": [
+    "Sally Beauty told analysts their 'Sally Ignited' strategy calls out AI, personalization, and seamless customer journey — site search is the only touchpoint that touches all three simultaneously.",
+    "Denise Paulonis said she wants customers to feel like Sally Beauty has helped them 'make the right choice' — but native SFCC Einstein Search can't handle 'natural hair color treatment' as a natural language query.",
+    "Sephora uses Constructor.io for AI search. No major professional beauty retailer uses Algolia today — Sally could be our lighthouse customer for this vertical.",
+    "Sally's BSG platform overhaul is in progress Spring 2026 — the window to include search technology before the stack is locked is narrow. Retrofit later costs 3x more.",
+    "At 3.0-3.5% conversion and $62 AOV, even a 10% search improvement on $54.7M addressable revenue = $5.47M/year — that math clears the Fuel for Growth investment bar."
+  ],
+  "abx_sequence": {
+    "sequence_type": "Targeted ABX — Sally Beauty AI Search Transformation",
+    "total_touches": 6,
+    "duration_days": 21,
+    "channels": [
+      "linkedin"
+    ],
+    "research_basis": "ICP mapping from 12-icp-priority-mapping.md. Primary entry: Chris Hansen (VP Digital Product) via CommerceNext profile. Economic buyer: Joe Condomina (CTO). Strategic buyer: Denise Paulonis (CEO) / Mary Edwards (CTO). Trigger: BSG platform overhaul Spring 2026.",
+    "triggers": [
+      "BSG platform overhaul in progress Spring 2026 — narrow window to include search before stack is locked",
+      "Sally Ignited strategy calls out AI as priority — but native SFCC Einstein Search has no NLP or AI",
+      "Sephora using Constructor.io AI search — experience gap widening",
+      "VP Ecommerce vacancy — new decision-maker incoming who will want to make a mark",
+      "Fuel for Growth $120M savings initiative — every investment needs ROI proof"
+    ],
+    "contacts": [
+      {
+        "id": "hansen",
+        "name": "Chris Hansen",
+        "title": "VP, Digital Product",
+        "channel": "linkedin"
+      },
+      {
+        "id": "condomina",
+        "name": "Joe Condomina",
+        "title": "CTO",
+        "channel": "linkedin"
+      },
+      {
+        "id": "paulonis",
+        "name": "Denise Paulonis",
+        "title": "President & CEO",
+        "channel": "linkedin"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "hansen",
+        "subject": "LinkedIn connection — Sally Ignited + search",
+        "body": "Chris — I've been reading about Sally Ignited. You're calling out AI, personalization, and seamless customer journey as priorities. Search touches all three, and right now sallybeauty.com is on native SFCC Einstein Search without NLP. Sephora moved to Constructor.io. Would you be open to connecting?",
+        "cta": "LinkedIn connection request"
+      },
+      {
+        "touch": 2,
+        "day": 3,
+        "channel": "linkedin",
+        "target": "hansen",
+        "subject": "NLP gap: what Sally customers are searching vs. what they get",
+        "body": "Chris — I ran Sally's catalog against NeuralSearch: 'natural hair color treatment' — Einstein returns keyword matches only; NeuralSearch understands the intent and surfaces semantically relevant results. 'Help me make the right choice' is your CEO's stated goal. NLP search is how you get there. Worth 20 minutes?",
+        "cta": "Book 20-minute NeuralSearch demo"
+      },
+      {
+        "touch": 3,
+        "day": 7,
+        "channel": "linkedin",
+        "target": "condomina",
+        "subject": "SFCC Algolia cartridge — plug-and-play, not rip-and-replace",
+        "body": "Joe — Algolia has a native SFCC cartridge. It's not a re-platforming project — it drops in alongside your existing SFCC stack. BSG platform overhaul in Spring 2026 is the perfect timing to include search rather than retrofit it later. Happy to share the architecture.",
+        "cta": "Architecture overview call"
+      },
+      {
+        "touch": 4,
+        "day": 11,
+        "channel": "linkedin",
+        "target": "hansen",
+        "subject": "BSG federated search: products + CosmoProf education in one query",
+        "body": "Chris — when a licensed pro searches 'balayage' on BSG, should they see products AND CosmoProf Institute education content in the same results? Federated search is a single Algolia API call. Right now those are two separate siloed experiences. The BSG overhaul is the right moment to fix this.",
+        "cta": "Federated search demo"
+      },
+      {
+        "touch": 5,
+        "day": 15,
+        "channel": "linkedin",
+        "target": "paulonis",
+        "subject": "Sally Beauty first-mover advantage in AI search",
+        "body": "Denise — no major professional beauty retailer uses Algolia today. Ulta doesn't. Sephora uses Constructor.io. Sally could be our lighthouse customer for this vertical — we'd invest heavily in making it a reference case. At $5.47M/year in estimated search lift (10% scenario), the ROI clears the Fuel for Growth investment bar.",
+        "cta": "CEO-level discovery conversation"
+      },
+      {
+        "touch": 6,
+        "day": 21,
+        "channel": "linkedin",
+        "target": "hansen",
+        "subject": "Closing the loop — audit and demo available",
+        "body": "Chris — I've shared 4 specific observations on Sally's search opportunity over the past 3 weeks. If the BSG platform decisions are already locked, I understand. If search is still in scope for the overhaul, there's a 20-minute demo ready. The full audit report is yours regardless.",
+        "cta": "Request full audit + demo"
+      }
+    ]
+  }
 }

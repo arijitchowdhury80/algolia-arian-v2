@@ -11,13 +11,12 @@
       "yahoo_finance": "2026-02-23"
     }
   },
-
   "cover": {
-    "photo_url": "tapestry/screenshots/cover-coach-store.jpg",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Coach_storefront_in_New_York_City.jpg/1280px-Coach_storefront_in_New_York_City.jpg",
     "company_logo_url": "tapestry/screenshots/coach-logo.svg",
-    "status_line": "Confidential · For Internal Algolia Use Only"
+    "status_line": "Confidential · For Internal Algolia Use Only",
+    "photo_url_note": "Wikimedia Commons — Coach store NYC. Original local screenshot path replaced with public URL."
   },
-
   "score": {
     "overall": 4.5,
     "verdict": "Needs Significant Work",
@@ -61,7 +60,6 @@
     "critical_count": 2,
     "moderate_count": 5
   },
-
   "company_snapshot": {
     "industry": "Accessible Luxury Fashion & Accessories",
     "hq": "New York, NY",
@@ -76,7 +74,6 @@
     "monthly_visits": "13.5M/mo",
     "visits_source": "https://www.similarweb.com/website/coach.com/"
   },
-
   "executives": [
     {
       "name": "Joanne Crevoiserat",
@@ -169,7 +166,6 @@
       "relevance": "Todd says an uninviting environment loses Gen Z. When Gen Z types a natural language search and gets 1 result, the digital environment is the opposite of inviting."
     }
   ],
-
   "intelligence_signals": [
     {
       "type": "exec",
@@ -280,7 +276,6 @@
       "relevance": "This is not hypothetical — observed live during audit. With 13.5M monthly visitors and 60% Gen Z acquisition mix, this failure happens thousands of times per day."
     }
   ],
-
   "competitors": [
     {
       "name": "Michael Kors",
@@ -323,7 +318,6 @@
       "notes": "Shopify native search — weakest of all competitors. No AI capabilities. French luxury accessible brand. Le Pliage competes with Coach totes."
     }
   ],
-
   "findings": [
     {
       "id": "F01",
@@ -462,7 +456,6 @@
       "algolia_case_study_result": "+314% mobile search usage increase after Algolia implementation"
     }
   ],
-
   "gap_pairs": [
     {
       "said_quote": "Tapestry is a consumer-obsessed, data-driven organization, driving meaningful durable growth.",
@@ -510,14 +503,22 @@
       "found_evidence": "No search analytics platform detected. What customers search for and fail to find — the highest-intent behavioral signal available — is invisible to the Data Fabric. Screenshot: screenshots/04-results-handbags.png"
     }
   ],
-
   "financials": {
     "ticker": "TPR",
     "market_cap": "~$27-31B",
     "revenue_3y": [
-      { "year": "FY2023", "revenue": "$6.66B" },
-      { "year": "FY2024", "revenue": "$6.67B" },
-      { "year": "FY2025", "revenue": "$7.01B" }
+      {
+        "year": "FY2023",
+        "revenue": "$6.66B"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$6.67B"
+      },
+      {
+        "year": "FY2025",
+        "revenue": "$7.01B"
+      }
     ],
     "total_digital_revenue": "$2.45B est.",
     "ecommerce_revenue_est": "$2.45B est. (35% of $7.01B)",
@@ -525,7 +526,7 @@
     "search_roi_est": "$17.25M/yr (conservative 5% lift)",
     "conservative_lift_label": "$17.25M/yr (5% lift on $345M addressable)",
     "revenue_source": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2025-fourth-quarter-and-full-year",
-    "revenue_source_label": "Tapestry IR — FY2025 Full Year Results",
+    "revenue_source_label": "Tapestry FY2025 full year results; Yahoo Finance TPR",
     "ecommerce_share": "35%",
     "roi_multiple": "23x–46x (conservative to moderate scenario)",
     "payback_period": "8–9 days",
@@ -556,40 +557,95 @@
         "roi_pct": "2,850%",
         "payback_days": 12
       }
-    }
+    },
+    "revenue": "$7.01B (FY2025)",
+    "revenue_year": "FY2025",
+    "revenue_confidence": "HIGH",
+    "revenue_source_url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fourth-quarter-and-full-year-fiscal-2024"
   },
-
   "traffic": {
     "monthly_visits": "13.5M",
     "visit_duration": "2:32",
     "bounce_rate": "42.95%",
     "pages_per_visit": "5.07",
     "top_channels": [
-      { "channel": "Direct", "share": "51.95%" },
-      { "channel": "Organic Search", "share": "~27%" },
-      { "channel": "Paid Search", "share": "~15%" },
-      { "channel": "Social", "share": "~3%" },
-      { "channel": "Referral", "share": "~3%" }
+      {
+        "channel": "Direct",
+        "share": "51.95%"
+      },
+      {
+        "channel": "Organic Search",
+        "share": "~27%"
+      },
+      {
+        "channel": "Paid Search",
+        "share": "~15%"
+      },
+      {
+        "channel": "Social",
+        "share": "~3%"
+      },
+      {
+        "channel": "Referral",
+        "share": "~3%"
+      }
     ],
     "device_share": {
       "desktop": "~55%",
       "mobile": "~45%"
     },
     "top_countries": [
-      { "country": "United States", "share": "60.77%" },
-      { "country": "Canada", "share": "8.03%" },
-      { "country": "Other International", "share": "~31.2%" }
+      {
+        "country": "United States",
+        "share": "60.77%"
+      },
+      {
+        "country": "Canada",
+        "share": "8.03%"
+      },
+      {
+        "country": "Other International",
+        "share": "~31.2%"
+      }
     ],
     "demographics": [
-      { "age_group": "25-34", "pct": 32, "color": "#003DFF" },
-      { "age_group": "35-44", "pct": 24, "color": "#5468FF" },
-      { "age_group": "18-24", "pct": 20, "color": "#7B8CFF" },
-      { "age_group": "45-54", "pct": 14, "color": "#A5AEFF" },
-      { "age_group": "55+", "pct": 10, "color": "#CDD0FF" }
+      {
+        "age_group": "25-34",
+        "pct": 32,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": 24,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "18-24",
+        "pct": 20,
+        "color": "#7B8CFF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": 14,
+        "color": "#A5AEFF"
+      },
+      {
+        "age_group": "55+",
+        "pct": 10,
+        "color": "#CDD0FF"
+      }
     ],
-    "source_url": "https://www.similarweb.com/website/coach.com/"
+    "source_url": "https://www.similarweb.com/website/coach.com/",
+    "channels": {
+      "direct": 51.95,
+      "organic_search": 27.0,
+      "paid_search": 15.0,
+      "social": 3.0,
+      "referral": 3.0,
+      "_source": "SimilarWeb, coach.com, Nov 2024",
+      "_source_url": "https://www.similarweb.com/website/coach.com/"
+    }
   },
-
   "tech_stack": {
     "ecommerce_platform": "Salesforce Commerce Cloud (SFCC / Demandware)",
     "cms": null,
@@ -621,9 +677,10 @@
       "AWS Bedrock (store associate feedback AI)",
       "TCS (digital transformation partner)"
     ],
-    "source_url": "https://www.retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware-commerce-cloud"
+    "source_url": "https://www.retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware-commerce-cloud",
+    "primary_platform": "Salesforce Commerce Cloud (SFCC / Demandware) — migrated Jan 2015, active across Coach and Kate Spade brands [FACT — Retail TouchPoints 2015]",
+    "search_vendor": "SFCC Native (no third-party search detected). Lily AI partnership announced 2024 to 'cut down on failed searches' using product description AI — but no Algolia, Elasticsearch, Bloomreach, Constructor.io, Coveo, or Klevu detected."
   },
-
   "hiring": {
     "total_open_roles": 751,
     "hiring_source_url": "https://www.ziprecruiter.com/co/tapestry/Jobs",
@@ -680,7 +737,6 @@
       "Phase 5: POC on coach.com or Kate Spade — non-core catalog section first"
     ]
   },
-
   "icp_mapping": {
     "priority_to_product": [
       {
@@ -740,7 +796,6 @@
       "5% lift on $345M search-addressable revenue = $17.25M/year. That's an 8-day payback on Algolia's annual cost."
     ]
   },
-
   "ae_fields": {
     "ae_name": null,
     "ae_email": null,
@@ -754,7 +809,6 @@
     "talk_track_opener": "I've been reviewing Tapestry's Investor Day materials, and Joanne's vision of being 'consumer-obsessed and data-driven' really resonated with me. I'm curious — when a Gen Z customer types 'gift for mom under 300' on coach.com today, they get one result: a watch. Does that show up in your search analytics?",
     "talk_track_cta": "I'd love to run a 2-week proof of concept on one category on coach.com. We'll show you what NeuralSearch does with the exact queries your customers are failing today — no commitment, all upside."
   },
-
   "next_steps": [
     {
       "step_num": 1,
@@ -782,26 +836,33 @@
       "description": "Present the $17.25M–$34.5M annual uplift calculation (5–10% lift on $345M addressable). Reference Scott's own 'magic and logic' framing. 8-day payback at moderate scenario. Align to FY2026 CapEx cycle already underway."
     }
   ],
-
   "competitive_synthesis": {
     "competitor_tiers": [
       {
         "tier": "PARITY",
-        "competitors": ["Tory Burch", "Marc Jacobs", "Furla"],
+        "competitors": [
+          "Tory Burch",
+          "Marc Jacobs",
+          "Furla"
+        ],
         "search_stack": "Salesforce Commerce Cloud Einstein (native) — same platform as Coach",
         "strategic_implication": "SFCC peers — none have upgraded beyond native search. Coach moving to Algolia leapfrogs all three simultaneously.",
         "source_url": "https://www.salesforce.com/it/resources/customer-stories/furla/"
       },
       {
         "tier": "AHEAD",
-        "competitors": ["Michael Kors"],
+        "competitors": [
+          "Michael Kors"
+        ],
         "search_stack": "Oracle Endeca + Shopping Muse AI overlay (Oracle ATG headless)",
         "strategic_implication": "Michael Kors has a conversational AI overlay (Shopping Muse) showing 15-20% conversion improvement. But it's a bolt-on, not AI-native. Algolia's unified architecture outperforms bolt-on approaches at scale.",
         "source_url": "https://digitaldefynd.com/IQ/michael-kors-using-ai-case-study/"
       },
       {
         "tier": "DISRUPTOR",
-        "competitors": ["Longchamp"],
+        "competitors": [
+          "Longchamp"
+        ],
         "search_stack": "Shopify Native Search — weakest in the competitive set",
         "strategic_implication": "Longchamp uses Shopify's basic search — easiest target for search superiority. If Tapestry upgrades to Algolia, the gap vs. Longchamp becomes immediately visible to cross-shopping customers.",
         "source_url": "https://visibleone.com/projects/longchamp/"
@@ -837,14 +898,17 @@
     "scenario_note": "0 of 5 direct Coach competitors currently use Algolia. Tapestry has a clear first-mover window in accessible luxury handbags before a competitor acts. Algolia serves 70% of luxury brands and 75% of top fashion houses — Coach's peer set is not yet among them.",
     "the_ask": "2-week proof of concept on coach.com accessories category. Zero commitment. Full NeuralSearch + Personalization demo on your actual customer queries."
   },
-
   "case_studies": [
     {
       "company": "Lacoste",
       "vertical": "Luxury Fashion & Apparel",
       "url": "https://www.algolia.com/customers/lacoste",
       "headline_metric": "+150% sales contribution from search",
-      "supporting_metrics": ["+37% conversion rate", "+210% search usage (+314% mobile)", "-88% bounce rate on search"],
+      "supporting_metrics": [
+        "+37% conversion rate",
+        "+210% search usage (+314% mobile)",
+        "-88% bounce rate on search"
+      ],
       "relevance_to_tapestry": "Lacoste is the closest luxury fashion analog to Coach — premium accessible brand, handbags and accessories, global e-commerce. Same SFCC ecosystem. Lacoste more than doubled global sales from search after Algolia.",
       "quote": "Algolia is a critical part of the navigation experience on Lacoste platforms globally…it more than doubled our global sales.",
       "quote_source": "https://www.algolia.com/customers/lacoste"
@@ -854,7 +918,11 @@
       "vertical": "Luxury Menswear",
       "url": "https://www.algolia.com/customers/harry-rosen",
       "headline_metric": "+360% conversion rate",
-      "supporting_metrics": ["+68% transactions", "+18% average order value", "2x online sessions using search"],
+      "supporting_metrics": [
+        "+68% transactions",
+        "+18% average order value",
+        "2x online sessions using search"
+      ],
       "relevance_to_tapestry": "Harry Rosen is a luxury fashion retailer with comparable product complexity (multiple categories, colorways, materials) and clienteling needs. The 360% conversion lift and ability to give business users control without developer dependency mirrors Tapestry's 'no-code' philosophy.",
       "quote": "What the business could accomplish became way beyond what they thought was possible in the old world.",
       "quote_source": "https://www.algolia.com/customers/harry-rosen"
@@ -864,52 +932,348 @@
       "vertical": "Fashion & Apparel (DTC)",
       "url": "https://www.algolia.com/customers/gymshark-recommend",
       "headline_metric": "+150% order rate (new customers, Black Friday)",
-      "supporting_metrics": ["+32% add-to-cart (new customers)", "+13% order rate (returning customers)", "+10% add-to-cart (returning customers)"],
+      "supporting_metrics": [
+        "+32% add-to-cart (new customers)",
+        "+13% order rate (returning customers)",
+        "+10% add-to-cart (returning customers)"
+      ],
       "relevance_to_tapestry": "Gymshark is a DTC fashion brand with strong Gen Z/Millennial customer base — identical demographic to Coach's fastest-growing segment. Algolia Recommend drove dramatic conversion improvements on the highest-traffic sales period. Tapestry's seasonal gift-gifting peaks (holiday, Valentine's Day) are the same opportunity.",
       "quote": "We don't have to do very much with Algolia Recommend. With our previous solution, there was so much manual configuration.",
       "quote_source": "https://www.algolia.com/customers/gymshark-recommend"
     }
   ],
-
   "methodology": "Phase 1 pre-audit research conducted 2026-02-23 using SimilarWeb (traffic/demographics), BuiltWith (technology detection via free-api and domain-lookup), Yahoo Finance MCP (financial statements), WebSearch/WebFetch (executive intelligence, SEC 10-K/10-Q filings, earnings transcripts, competitor analysis). Phase 2 browser-based audit conducted 2026-02-23 using real Chrome with remote debugging on port 9222 to bypass Akamai WAF. 15 screenshots captured and verified on disk. Scoring uses weighted average: HIGH severity = 2x weight, MEDIUM = 1x, LOW = 0.5x. Final score: 47.5 / 10.5 = 4.5/10.",
-
   "bibliography": [
-    { "n": 1, "label": "Tapestry IR — FY2025 Full Year Results", "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2025-fourth-quarter-and-full-year", "accessed": "2026-02-23" },
-    { "n": 2, "label": "Tapestry IR — Q2 FY2026 Results", "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2026-second-quarter-results-and", "accessed": "2026-02-23" },
-    { "n": 3, "label": "Tapestry Amplify Strategy Investor Day", "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-introduces-its-amplify-growth-strategy-and-long", "accessed": "2026-02-23" },
-    { "n": 4, "label": "SimilarWeb — coach.com Traffic Analytics", "url": "https://www.similarweb.com/website/coach.com/", "accessed": "2026-02-23" },
-    { "n": 5, "label": "SimilarWeb — coach.com Competitors", "url": "https://www.similarweb.com/website/coach.com/competitors/", "accessed": "2026-02-23" },
-    { "n": 6, "label": "Retail TouchPoints — Coach Demandware Launch", "url": "https://www.retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware-commerce-cloud", "accessed": "2026-02-23" },
-    { "n": 7, "label": "Google Cloud — Tapestry Digital Transformation Partnership", "url": "https://www.prnewswire.com/news-releases/google-cloud-furthers-digital-transformation-of-tapestrys-three-iconic-brands-301195057.html", "accessed": "2026-02-23" },
-    { "n": 8, "label": "AWS — Tapestry Data Exchange", "url": "https://aws.amazon.com/blogs/industries/tapestry-advances-its-analytics-and-transforms-its-data-exchange-on-aws/", "accessed": "2026-02-23" },
-    { "n": 9, "label": "Bluecore — Tapestry Kate Spade Expansion", "url": "https://www.globenewswire.com/news-release/2024/03/07/2842284/0/en/Tapestry-Expands-Partnership-With-Bluecore-to-Include-Kate-Spade-Following-Success-With-Coach-and-Stuart-Weitzman.html", "accessed": "2026-02-23" },
-    { "n": 10, "label": "Fortune — Yang Lu CIO Gameplan", "url": "https://fortune.com/2024/11/20/tapestrys-8-5-billion-merger-capri-scrapped-what-that-means-for-the-cio/", "accessed": "2026-02-23" },
-    { "n": 11, "label": "TCS — Tapestry Omnichannel Case Study", "url": "https://www.tcs.com/what-we-do/industries/retail/case-study/tapestry-omnichannel-unified-commerce-platform", "accessed": "2026-02-23" },
-    { "n": 12, "label": "Retail Tech Insights — Yang Lu Top 10 Retail CIOs 2025", "url": "https://www.retailtechinsights.com/cxo-awards/top-10-retail-cios-2025/yang-lu/", "accessed": "2026-02-23" },
-    { "n": 13, "label": "NRF 2024 — Yang Lu Unified Commerce Panel", "url": "https://nrf.com/blog/meeting-challenges-unified-commerce-michaels-ikea-and-tapestry", "accessed": "2026-02-23" },
-    { "n": 14, "label": "Retail Tech Innovation Hub — Fabio Luzzi CDAO Appointment", "url": "https://retailtechinnovationhub.com/home/2025/11/11/fabio-luzzi-takes-on-chief-data-and-analytics-officer-role-at-american-fashion-company-tapestry", "accessed": "2026-02-23" },
-    { "n": 15, "label": "Consumer Goods Technology — Tapestry Personalized Experiences", "url": "https://consumergoods.com/tapestry-looks-power-personalized-experiences", "accessed": "2026-02-23" },
-    { "n": 16, "label": "Total Retail — Noam Paransky Digital Marketing", "url": "https://www.mytotalretail.com/article/tapestrys-cdo-noam-paransky-on-the-dos-and-donts-of-digital-marketing/", "accessed": "2026-02-23" },
-    { "n": 17, "label": "Glossy — Tapestry's $10 Billion Balancing Act", "url": "https://www.glossy.co/fashion/luxury/tapestrys-10-billion-balancing-act/", "accessed": "2026-02-23" },
-    { "n": 18, "label": "Fortune — Coach CEO Todd Kahn", "url": "https://fortune.com/2025/10/21/coach-ceo-todd-kahn-sales-china-american-design/", "accessed": "2026-02-23" },
-    { "n": 19, "label": "Digital Commerce 360 — Tapestry FY2025 Earnings Recap", "url": "https://www.digitalcommerce360.com/2025/08/18/ecommerce-earnings-recap-what-you-missed-from-tapestry-and-advance-auto-parts/", "accessed": "2026-02-23" },
-    { "n": 20, "label": "Lily AI — Tapestry Partnership Announcement", "url": "https://www.lily.ai/resources/blog/tapestry-lily-ai-google-search/", "accessed": "2026-02-23" },
-    { "n": 21, "label": "Pivotree — Michael Kors Case Study", "url": "https://pivotree.com/our-clients/michael-kors/", "accessed": "2026-02-23" },
-    { "n": 22, "label": "DigitalDefynd — Michael Kors AI Case Study", "url": "https://digitaldefynd.com/IQ/michael-kors-using-ai-case-study/", "accessed": "2026-02-23" },
-    { "n": 23, "label": "Salesforce Italy — Furla Customer Story", "url": "https://www.salesforce.com/it/resources/customer-stories/furla/", "accessed": "2026-02-23" },
-    { "n": 24, "label": "VisibleOne — Longchamp Case Study (Shopify)", "url": "https://visibleone.com/projects/longchamp/", "accessed": "2026-02-23" },
-    { "n": 25, "label": "Algolia — Lacoste Customer Story", "url": "https://www.algolia.com/customers/lacoste", "accessed": "2026-02-23" },
-    { "n": 26, "label": "Algolia — Harry Rosen Customer Story", "url": "https://www.algolia.com/customers/harry-rosen", "accessed": "2026-02-23" },
-    { "n": 27, "label": "Algolia — Gymshark Recommend Customer Story", "url": "https://www.algolia.com/customers/gymshark-recommend", "accessed": "2026-02-23" },
-    { "n": 28, "label": "Algolia — Fashion Industry Page", "url": "https://www.algolia.com/industries/fashion", "accessed": "2026-02-23" },
-    { "n": 29, "label": "FTC — Tapestry Capri Matter", "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/231-0133-tapestry-inccapri-holdings-limited-matter", "accessed": "2026-02-23" },
-    { "n": 30, "label": "Optimizely — Tapestry Testing and Innovation", "url": "https://www.optimizely.com/insights/tapestry/", "accessed": "2026-02-23" },
-    { "n": 31, "label": "Tapestry Careers — VP eCommerce Kate Spade", "url": "https://careers.tapestry.com/katespade/job/New-York-VP,-eCommerce-NY-10001/1218157100/", "accessed": "2026-02-23" },
-    { "n": 32, "label": "NRF 2026 — Yang Lu Speaker Profile", "url": "https://nrfbigshow.nrf.com/speaker/yang-lu", "accessed": "2026-02-23" },
-    { "n": 33, "label": "Crain's NY — Yang Lu CIO Orbie Awards 2025", "url": "https://www.crainsnewyork.com/awards/yang-lu-new-york-cio-orbie-awards-2025", "accessed": "2026-02-23" },
-    { "n": 34, "label": "MacroTrends — Tapestry Revenue History", "url": "https://www.macrotrends.net/stocks/charts/TPR/tapestry/revenue", "accessed": "2026-02-23" },
-    { "n": 35, "label": "China Daily — Tapestry China Expansion", "url": "https://www.chinadaily.com.cn/a/202512/01/WS692ce809a310d6866eb2c2ed.html", "accessed": "2026-02-23" },
-    { "n": 36, "label": "ZipRecruiter — Tapestry Jobs", "url": "https://www.ziprecruiter.com/co/tapestry/Jobs", "accessed": "2026-02-23" },
-    { "n": 37, "label": "Defense World — Tapestry Q2 Earnings Highlights", "url": "https://www.defenseworld.net/2026/02/07/tapestry-q2-earnings-call-highlights.html", "accessed": "2026-02-23" }
-  ]
+    {
+      "n": 1,
+      "label": "Tapestry IR — FY2025 Full Year Results",
+      "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2025-fourth-quarter-and-full-year",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 2,
+      "label": "Tapestry IR — Q2 FY2026 Results",
+      "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-reports-fiscal-2026-second-quarter-results-and",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 3,
+      "label": "Tapestry Amplify Strategy Investor Day",
+      "url": "https://tapestry.gcs-web.com/news-releases/news-release-details/tapestry-inc-introduces-its-amplify-growth-strategy-and-long",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 4,
+      "label": "SimilarWeb — coach.com Traffic Analytics",
+      "url": "https://www.similarweb.com/website/coach.com/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 5,
+      "label": "SimilarWeb — coach.com Competitors",
+      "url": "https://www.similarweb.com/website/coach.com/competitors/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 6,
+      "label": "Retail TouchPoints — Coach Demandware Launch",
+      "url": "https://www.retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware-commerce-cloud",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 7,
+      "label": "Google Cloud — Tapestry Digital Transformation Partnership",
+      "url": "https://www.prnewswire.com/news-releases/google-cloud-furthers-digital-transformation-of-tapestrys-three-iconic-brands-301195057.html",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 8,
+      "label": "AWS — Tapestry Data Exchange",
+      "url": "https://aws.amazon.com/blogs/industries/tapestry-advances-its-analytics-and-transforms-its-data-exchange-on-aws/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 9,
+      "label": "Bluecore — Tapestry Kate Spade Expansion",
+      "url": "https://www.globenewswire.com/news-release/2024/03/07/2842284/0/en/Tapestry-Expands-Partnership-With-Bluecore-to-Include-Kate-Spade-Following-Success-With-Coach-and-Stuart-Weitzman.html",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 10,
+      "label": "Fortune — Yang Lu CIO Gameplan",
+      "url": "https://fortune.com/2024/11/20/tapestrys-8-5-billion-merger-capri-scrapped-what-that-means-for-the-cio/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 11,
+      "label": "TCS — Tapestry Omnichannel Case Study",
+      "url": "https://www.tcs.com/what-we-do/industries/retail/case-study/tapestry-omnichannel-unified-commerce-platform",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 12,
+      "label": "Retail Tech Insights — Yang Lu Top 10 Retail CIOs 2025",
+      "url": "https://www.retailtechinsights.com/cxo-awards/top-10-retail-cios-2025/yang-lu/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 13,
+      "label": "NRF 2024 — Yang Lu Unified Commerce Panel",
+      "url": "https://nrf.com/blog/meeting-challenges-unified-commerce-michaels-ikea-and-tapestry",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 14,
+      "label": "Retail Tech Innovation Hub — Fabio Luzzi CDAO Appointment",
+      "url": "https://retailtechinnovationhub.com/home/2025/11/11/fabio-luzzi-takes-on-chief-data-and-analytics-officer-role-at-american-fashion-company-tapestry",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 15,
+      "label": "Consumer Goods Technology — Tapestry Personalized Experiences",
+      "url": "https://consumergoods.com/tapestry-looks-power-personalized-experiences",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 16,
+      "label": "Total Retail — Noam Paransky Digital Marketing",
+      "url": "https://www.mytotalretail.com/article/tapestrys-cdo-noam-paransky-on-the-dos-and-donts-of-digital-marketing/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 17,
+      "label": "Glossy — Tapestry's $10 Billion Balancing Act",
+      "url": "https://www.glossy.co/fashion/luxury/tapestrys-10-billion-balancing-act/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 18,
+      "label": "Fortune — Coach CEO Todd Kahn",
+      "url": "https://fortune.com/2025/10/21/coach-ceo-todd-kahn-sales-china-american-design/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 19,
+      "label": "Digital Commerce 360 — Tapestry FY2025 Earnings Recap",
+      "url": "https://www.digitalcommerce360.com/2025/08/18/ecommerce-earnings-recap-what-you-missed-from-tapestry-and-advance-auto-parts/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 20,
+      "label": "Lily AI — Tapestry Partnership Announcement",
+      "url": "https://www.lily.ai/resources/blog/tapestry-lily-ai-google-search/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 21,
+      "label": "Pivotree — Michael Kors Case Study",
+      "url": "https://pivotree.com/our-clients/michael-kors/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 22,
+      "label": "DigitalDefynd — Michael Kors AI Case Study",
+      "url": "https://digitaldefynd.com/IQ/michael-kors-using-ai-case-study/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 23,
+      "label": "Salesforce Italy — Furla Customer Story",
+      "url": "https://www.salesforce.com/it/resources/customer-stories/furla/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 24,
+      "label": "VisibleOne — Longchamp Case Study (Shopify)",
+      "url": "https://visibleone.com/projects/longchamp/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 25,
+      "label": "Algolia — Lacoste Customer Story",
+      "url": "https://www.algolia.com/customers/lacoste",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 26,
+      "label": "Algolia — Harry Rosen Customer Story",
+      "url": "https://www.algolia.com/customers/harry-rosen",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 27,
+      "label": "Algolia — Gymshark Recommend Customer Story",
+      "url": "https://www.algolia.com/customers/gymshark-recommend",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 28,
+      "label": "Algolia — Fashion Industry Page",
+      "url": "https://www.algolia.com/industries/fashion",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 29,
+      "label": "FTC — Tapestry Capri Matter",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/231-0133-tapestry-inccapri-holdings-limited-matter",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 30,
+      "label": "Optimizely — Tapestry Testing and Innovation",
+      "url": "https://www.optimizely.com/insights/tapestry/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 31,
+      "label": "Tapestry Careers — VP eCommerce Kate Spade",
+      "url": "https://careers.tapestry.com/katespade/job/New-York-VP,-eCommerce-NY-10001/1218157100/",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 32,
+      "label": "NRF 2026 — Yang Lu Speaker Profile",
+      "url": "https://nrfbigshow.nrf.com/speaker/yang-lu",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 33,
+      "label": "Crain's NY — Yang Lu CIO Orbie Awards 2025",
+      "url": "https://www.crainsnewyork.com/awards/yang-lu-new-york-cio-orbie-awards-2025",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 34,
+      "label": "MacroTrends — Tapestry Revenue History",
+      "url": "https://www.macrotrends.net/stocks/charts/TPR/tapestry/revenue",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 35,
+      "label": "China Daily — Tapestry China Expansion",
+      "url": "https://www.chinadaily.com.cn/a/202512/01/WS692ce809a310d6866eb2c2ed.html",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 36,
+      "label": "ZipRecruiter — Tapestry Jobs",
+      "url": "https://www.ziprecruiter.com/co/tapestry/Jobs",
+      "accessed": "2026-02-23"
+    },
+    {
+      "n": 37,
+      "label": "Defense World — Tapestry Q2 Earnings Highlights",
+      "url": "https://www.defenseworld.net/2026/02/07/tapestry-q2-earnings-call-highlights.html",
+      "accessed": "2026-02-23"
+    }
+  ],
+  "abx_sequence": {
+    "sequence_type": "Targeted ABX — Tapestry Coach AI-First Search Discovery",
+    "total_touches": 7,
+    "duration_days": 21,
+    "channels": [
+      "linkedin",
+      "email"
+    ],
+    "research_basis": "ICP mapping from 12-icp-priority-mapping.md. Primary contacts: Yang Lu (CIO/CDO), Noam Paransky (CDO), Fabio Luzzi (CDAO). Key trigger: Lily AI partnership to 'cut down on failed searches' signals search quality is already on their radar. Coach.com scored 4.5/10 with critical NLP gap (1/10 semantic NLP score).",
+    "triggers": [
+      "Lily AI partnership explicitly to 'cut down on failed searches' — search quality already on radar",
+      "Yang Lu philosophy: 'iteration is the new perfection' — A/B testing angle is natural",
+      "Joanne Crevoiserat: 'consumer-obsessed, data-driven organization' — search analytics gap",
+      "Gen Z: 60% of new customer acquisitions — they expect AI-powered product discovery",
+      "Coach NLP score: 1/10 — 'gift for mom under 300' returns 1 result; 'red crossbody for summer' fails",
+      "Amperity CDP invested but not wired to search personalization — unified customer view not utilized"
+    ],
+    "contacts": [
+      {
+        "id": "yang_lu",
+        "name": "Yang Lu",
+        "title": "Chief Information & Digital Officer",
+        "channel": "linkedin"
+      },
+      {
+        "id": "luzzi",
+        "name": "Fabio Luzzi",
+        "title": "Chief Data & Analytics Officer",
+        "channel": "linkedin"
+      },
+      {
+        "id": "seth",
+        "name": "Sandeep Seth",
+        "title": "Chief Growth Officer",
+        "channel": "linkedin"
+      },
+      {
+        "id": "paransky",
+        "name": "Noam Paransky",
+        "title": "Chief Digital Officer",
+        "channel": "linkedin"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "day": 1,
+        "channel": "linkedin",
+        "target": "yang_lu",
+        "subject": "LinkedIn connection — 'iteration is the new perfection'",
+        "body": "Yang — your NRF 2024 interview on 'iteration is the new perfection' and experimentation velocity resonated. I'm curious: how frequently are you A/B testing search algorithms on coach.com? Weekly? Monthly? Or is that a manual process? I have a specific observation on NLP gap I'd like to share.",
+        "cta": "LinkedIn connection"
+      },
+      {
+        "touch": 2,
+        "day": 3,
+        "channel": "linkedin",
+        "target": "yang_lu",
+        "subject": "'Gift for mom under 300' returns 1 result on coach.com",
+        "body": "Yang — I tested coach.com: 'gift for mom under 300' returns 1 result. 'Red crossbody for summer' fails entirely. Your CEO committed to being consumer-obsessed — Algolia NeuralSearch handles both queries correctly out of the box. Joanne said you partnered with Lily AI to reduce failed searches. Algolia is the query-side solution that completes the picture.",
+        "cta": "15-minute NLP demo on Coach's catalog"
+      },
+      {
+        "touch": 3,
+        "day": 6,
+        "channel": "linkedin",
+        "target": "luzzi",
+        "subject": "Search as a data signal gap in Tapestry's Data Fabric",
+        "body": "Fabio — you mentioned AI 'amplifying creativity with speed.' Your Data Fabric processes 100+ systems. Is search analytics one of those signals? Every failed search on coach.com is a demand signal for inventory, product, and personalization decisions. Algolia Analytics feeds that signal directly into your data infrastructure.",
+        "cta": "View search analytics data model"
+      },
+      {
+        "touch": 4,
+        "day": 9,
+        "channel": "linkedin",
+        "target": "seth",
+        "subject": "'The first date' — what happens when search fails a new visitor?",
+        "body": "Sandeep — your quote: 'the most likely chance of getting a second date is how good the first date was.' I tested coach.com as a new visitor. 'Gift for mom under 300' — 1 result. 'Red crossbody for summer' — fails. For 60% of new customers who are Gen Z, that first search IS the first date. How many second dates is that costing?",
+        "cta": "Book 20-minute first-impression audit"
+      },
+      {
+        "touch": 5,
+        "day": 12,
+        "channel": "linkedin",
+        "target": "paransky",
+        "subject": "Amperity CDP + Algolia = personalized search from day one",
+        "body": "Noam — you invested in Amperity for a 'comprehensive and unified view of customers.' Is that data flowing into search personalization today, or does search still treat a VIP Coach legacy customer the same as a first-time Gen Z visitor? Algolia Personalization pulls from Amperity profiles to re-rank results in real time.",
+        "cta": "Amperity + Algolia integration overview"
+      },
+      {
+        "touch": 6,
+        "day": 16,
+        "channel": "linkedin",
+        "target": "yang_lu",
+        "subject": "Tapestry-specific search audit — 4.5/10, critical NLP gap",
+        "body": "Yang — I completed a full Phase 2 audit on coach.com: 4.5/10 overall, with NLP/Semantic Search at 1/10 (the most critical gap). The Lily AI partnership addresses product descriptions — the query-side NLP gap on what customers type is where Algolia completes the picture. I'd like to share the full audit in 30 minutes.",
+        "cta": "30-minute audit review"
+      },
+      {
+        "touch": 7,
+        "day": 21,
+        "channel": "linkedin",
+        "target": "yang_lu",
+        "subject": "Closing the loop — audit available",
+        "body": "Yang — I've shared specific coach.com findings over the past 3 weeks. If search optimization isn't on the roadmap right now, I completely understand. The full audit report is available when the timing is right. Happy to reconnect as you plan the FY2026 digital roadmap.",
+        "cta": "Request full coach.com audit"
+      }
+    ]
+  }
 }
