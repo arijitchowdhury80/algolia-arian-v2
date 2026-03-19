@@ -1926,6 +1926,59 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Proof Pill — hero-pill style case study badge ─────────────────────────
+   Usage: proofPill(url, company, result) function in index-template.html
+   CSS classes for the two variants (light bg, dark/gradient bg)
+   [Company badge] Result text →
+────────────────────────────────────────────────────────────────────────────── */
+.proof-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.proof-pill__badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+  color: white;
+}
+.proof-pill__label {
+  padding: 5px 10px 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+/* Green variant (default — case study in search findings) */
+.proof-pill--green {
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.25);
+}
+.proof-pill--green .proof-pill__badge { background: var(--green); }
+.proof-pill--green .proof-pill__label { color: var(--green); }
+/* Blue variant (case study section, strategic references) */
+.proof-pill--blue {
+  background: rgba(0,61,255,0.08);
+  border: 1px solid rgba(0,61,255,0.20);
+}
+.proof-pill--blue .proof-pill__badge { background: var(--blue); }
+.proof-pill--blue .proof-pill__label { color: var(--blue); }
+/* White variant (on dark/gradient backgrounds like golden angle card) */
+.proof-pill--white {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.proof-pill--white .proof-pill__badge { background: rgba(255,255,255,0.25); color: white; }
+.proof-pill--white .proof-pill__label { color: white; }
+.proof-pill:hover { opacity: 0.85; }
+
 /* ─── Utility aliases for templates ─────────────────────────────────────── */
 /* Templates can use these var() aliases to stay in sync */
 :root {
@@ -3674,26 +3727,14 @@ const T = {
    Used everywhere a case study is cited: finding cards, golden angle, case studies section.
    Static — no animation. Semi-transparent tint + border ring signals verified proof.
 ────────────────────────────────────────────────────────────────────── */
-function proofPill(url, company, result, color) {
+function proofPill(url, company, result, variant) {
+  // variant: 'green' (default) | 'blue' | 'white' (on dark backgrounds)
+  // CSS defined in algolia-brand.css — .proof-pill, .proof-pill--{variant}
   if (!url || !company) return '';
-  const col = color || 'var(--green)';
-  // Use hex-compatible tint for background — CSS color-mix not supported in all contexts
-  const bgMap = {'var(--green)':'rgba(5,150,105,0.08)','var(--blue)':'rgba(0,61,255,0.08)','var(--purple)':'rgba(124,58,237,0.08)'};
-  const borderMap = {'var(--green)':'rgba(5,150,105,0.25)','var(--blue)':'rgba(0,61,255,0.20)','var(--purple)':'rgba(124,58,237,0.20)'};
-  const bg = bgMap[col] || 'rgba(5,150,105,0.08)';
-  const border = borderMap[col] || 'rgba(5,150,105,0.25)';
-  return `<a href="${url}" target="_blank" rel="noopener"
-    style="display:inline-flex;align-items:center;gap:0;border-radius:24px;
-           background:${bg};border:1px solid ${border};
-           text-decoration:none;overflow:hidden;max-width:100%;flex-shrink:0;">
-    <span style="background:${col};color:white;padding:5px 10px;
-                 font-size:11px;font-weight:600;white-space:nowrap;line-height:1.4;">
-      ${escHtml(company)}
-    </span>
-    <span style="padding:5px 10px 5px 8px;font-size:12px;font-weight:600;color:${col};
-                 white-space:nowrap;line-height:1.4;">
-      ${escHtml(result)} →
-    </span>
+  const v = variant || 'green';
+  return `<a href="${url}" target="_blank" rel="noopener" class="proof-pill proof-pill--${v}">
+    <span class="proof-pill__badge">${escHtml(company)}</span>
+    <span class="proof-pill__label">${escHtml(result)} →</span>
   </a>`;
 }
 
@@ -3774,20 +3815,7 @@ function renderGoldenAngleCard(ga) {
            onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
           BuiltWith: ${escHtml(c.name)}
         </a>`).join('')}
-      ${ga.footwear_case_study?.source_url ? `
-        <a href="${ga.footwear_case_study.source_url}" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:0;border-radius:24px;
-                  background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.28);
-                  overflow:hidden;text-decoration:none;"
-           onmouseenter="this.style.background='rgba(255,255,255,0.22)'"
-           onmouseleave="this.style.background='rgba(255,255,255,0.12)'">
-          <span style="background:rgba(255,255,255,0.25);color:white;padding:5px 10px;font-size:11px;font-weight:600;white-space:nowrap;">
-            ${escHtml(ga.footwear_case_study.company||'Case Study')}
-          </span>
-          <span style="padding:5px 10px 5px 8px;font-size:12px;font-weight:600;color:white;white-space:nowrap;">
-            ${escHtml(ga.footwear_case_study.result||'')} →
-          </span>
-        </a>` : ''}
+      ${ga.footwear_case_study?.source_url ? proofPill(ga.footwear_case_study.source_url, ga.footwear_case_study.company||'Case Study', ga.footwear_case_study.result||'', 'white') : ''}
     </div>
   </div>`;
 }
@@ -4219,7 +4247,7 @@ function sectionExecSummary(D) {
       return `
       <!-- ── Revenue at Risk ── -->
       <div style="margin-top:40px;margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Revenue at Risk</div>
+        <div class="section-eyebrow">Revenue at Risk</div>
         <div style="${T.titleMb};">How much search improvement is worth — three scenarios</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
@@ -4241,14 +4269,14 @@ function sectionExecSummary(D) {
 
       <!-- ── Competitive Edge ── -->
       <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Competitive Intelligence</div>
+        <div class="section-eyebrow">Competitive Intelligence</div>
         <div style="${T.titleMb};">Who in your competitive set is already using Algolia</div>
       </div>
       <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
 
       <!-- ── Why Act Now — from intelligence_signals ── -->
       <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Timing Signals</div>
+        <div class="section-eyebrow">Timing Signals</div>
         <div style="${T.titleMb};">Three reasons this is the right moment to engage</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
@@ -4309,7 +4337,7 @@ function sectionExecSummary(D) {
 
       return `
       <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Deep Dives</div>
+        <div class="section-eyebrow">Deep Dives</div>
         <div style="${T.titleMb};">Navigate to any section for full intelligence and evidence</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
