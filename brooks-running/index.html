@@ -4519,32 +4519,8 @@ function sectionExecSummary(D) {
       const vacantRole  = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
 
       return `
-      <!-- ── Revenue at Risk ── -->
-      <div style="margin-top:56px;margin-bottom:12px;">
-        <div class="section-eyebrow">Revenue at Risk</div>
-        <div style="${T.overviewTitle};">How much search improvement is worth — three scenarios</div>
-      </div>
-      <!-- Bounce cards — CSS in algolia-brand.css -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
-        ${[
-          {label:'Conservative', lift:'5% lift', amt:rs.conservative?.annual_impact||fin.search_roi_est||'$4.85M/yr', sub:'Fix basics: relevance, latency, typo tolerance', play:'Defensive Play', src:rs.conservative?.source||'', colorKey:'red', col:'#DC2626'},
-          {label:'Moderate',     lift:'10% lift', amt:rs.moderate?.annual_impact||'$9.7M/yr',    sub:'Add NLP, personalization, dynamic facets', play:'Offensive Play', src:rs.moderate?.source||'', colorKey:'amber', col:'#D97706'},
-          {label:'Optimistic',   lift:'15% lift', amt:rs.optimistic?.annual_impact||'$14.55M/yr', sub:'Full AI suite: recommendations, federated, content', play:'Leadership Play', src:rs.optimistic?.source||'', colorKey:'green', col:'#059669'},
-        ].map(s=>`
-          <div class="bounce-card bounce-card--${s.colorKey}">
-            <div class="bounce-card__content">
-              <div style="${T.eyebrowCol(s.col)};margin-bottom:2px;">${escHtml(s.label)}</div>
-              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">${escHtml(s.lift)}</div>
-              <div style="${T.bodySm};margin-top:10px;flex:1;">${escHtml(s.sub)}</div>
-              ${s.src ? `<div style="${T.bodySmGray12};margin-top:8px;opacity:0.7;">Based on: ${escHtml(s.src.slice(0,60))}</div>` : ''}
-            </div>
-            <div class="bounce-card__gradient">
-              <div class="bounce-card__amount">${escHtml(s.amt)}</div>
-              <div class="bounce-card__amount-sub">per year · estimate</div>
-              <span style="margin-top:6px;background:rgba(255,255,255,0.2);color:white;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;">${escHtml(s.play)}</span>
-            </div>
-          </div>`).join('')}
-      </div>
+      <!-- ── Revenue at Risk — single source: sectionRevenueAtRisk(D) ── -->
+      <div style="margin-top:56px;">${sectionRevenueAtRisk(D)}</div>
 
       <!-- ── Competitive Edge ── -->
       <div style="margin-top:56px;margin-bottom:12px;">
