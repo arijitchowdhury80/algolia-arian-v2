@@ -143,10 +143,10 @@
     {
       "name": "Emily Elting",
       "title": "Director of Insights & Analytics",
-      "quote": "Better understand its consumers and respond in real time with targeted, personalized experiences.",
+      "quote": "[PARAPHRASE] L.L.Bean employees can better understand consumers and respond in real time with targeted, personalized experiences.",
       "source": "Consumer Goods Technology \u2014 L.L.Bean Analytics Investment",
       "source_url": "https://consumergoods.com/ll-bean-invests-analytics-platform-multichannel-hyper-personalization",
-      "quote_date": "2023-01",
+      "quote_date": "2023",
       "maps_to_product": "Algolia AI Personalization + Dynamic Re-Ranking"
     },
     {
@@ -208,11 +208,11 @@
     {
       "type": "competitor",
       "badge_label": "Golden Angle",
-      "text": "REI (direct competitor, ~30M/mo avg [SimilarWeb]) confirmed using Algolia via BuiltWith \u2014 GOLDEN ANGLE",
+      "text": "REI (L.L.Bean's top outdoor competitor) confirmed using Algolia via BuiltWith scan. Observable UX: instant autocomplete, NLP semantic search, personalized results \u2014 capabilities L.L.Bean lacks.",
       "source_name": "BuiltWith",
       "source_url": "https://builtwith.com/rei.com",
       "source_date": "2026-03-17",
-      "relevance": "L.L.Bean's #1 outdoor competitor is already benefiting from Algolia. REI's higher traffic (~30M/mo avg vs ~20M/mo avg [SimilarWeb]) partly attributed to superior search and discovery. Direct peer comparison is most compelling sales tool."
+      "relevance": "Direct peer using Algolia creates strongest possible competitive pressure. BuiltWith confirmed. Specific outcome metrics not independently verified."
     },
     {
       "type": "industry-risk",
@@ -306,8 +306,8 @@
       "screenshot_file": "screenshots/09-non-product-return-policy.png",
       "prospect_description": "L.L.Bean help content, policies, and store info are invisible to search users \u2014 a critical gap for a brand built on its guarantee",
       "algolia_solution": "Algolia Federated Search (multi-index: products + content + help + store locator) surfaces the right content type for each query",
-      "algolia_case_study_url": "https://www.algolia.com/customers/huckberry",
-      "algolia_case_study_result": "+9.4% revenue from improved product discovery"
+      "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
+      "algolia_case_study_result": "-10% search exits, +7% conversion \u2014 relevance & content findability"
     },
     {
       "id": "F03",
@@ -354,8 +354,8 @@
       "screenshot_file": "screenshots/15-dynamic-facets.png",
       "prospect_description": "L.L.Bean's technical outdoor catalog demands context-aware filtering \u2014 customers searching 'insulated jacket' need Insulation Type filter first, not Gender",
       "algolia_solution": "Algolia Dynamic Faceting automatically reorders filters based on query context \u2014 waterproof query surfaces waterproof filter first",
-      "algolia_case_study_url": "https://www.algolia.com/customers/huckberry",
-      "algolia_case_study_result": "+9.4% revenue from improved product discovery"
+      "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
+      "algolia_case_study_result": "+4.7% basket size, +7% conversion with Dynamic Re-ranking"
     },
     {
       "id": "F06",
@@ -637,7 +637,7 @@
         "source": "Google Cloud Case Study, 2020",
         "source_url": "https://cloud.google.com/customers/l-l-bean",
         "algolia_solution": "Algolia A/B Testing + Analytics (built-in experimentation for search strategies)",
-        "discovery_question": "Randy, you mentioned 'running experiments and delivering capabilities faster.' Can your merchandising team A/B test search relevance changes today \u2014 like boosting Bean Boot in winter queries \u2014 and measure conversion impact in real time?"
+        "discovery_question": "L.L.Bean's architecture team highlighted 'running experiments and delivering capabilities faster.' Can your merchandising team A/B test search relevance changes today \u2014 like boosting Bean Boot in winter queries \u2014 and measure conversion impact in real time?"
       },
       {
         "their_priority": "8 new stores in 2026, 8 more in 2027 \u2014 Southeast and Midwest expansion",
@@ -659,7 +659,8 @@
         "step": 2,
         "target": "Joseph Rouhana (CIO) + Rob Harpool (Director CX)",
         "angle": "GCP-native architecture alignment. You launched llbean.com in 1996 \u2014 let's take search to 2026 standards. Post-commercetools = ideal timing.",
-        "deliverable": "Technical architecture doc (GCP deployment, commercetools integration guide, 2-week implementation timeline)"
+        "deliverable": "Technical architecture doc (GCP deployment, commercetools integration guide, 2-week implementation timeline)",
+        "note": "Verify still at L.L.Bean before outreach \u2014 LinkedIn shows possible departure to Florida Blue"
       },
       {
         "step": 3,
