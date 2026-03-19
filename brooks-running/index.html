@@ -1926,6 +1926,28 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Digital Presence Tile — groups Tech Stack + Traffic as one chapter ─────
+   Matches the exec block pattern: .card with padding, inner sections transparent.
+   .dp-tile suppresses .audit-section margin-bottom so spacing is tile-controlled.
+────────────────────────────────────────────────────────────────────────────── */
+.dp-tile {
+  background: linear-gradient(135deg, rgba(5,150,105,0.06) 0%, rgba(5,150,105,0.02) 100%);
+  border: 1px solid rgba(5,150,105,0.12);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(35,38,59,0.06), 0 8px 24px rgba(35,38,59,0.05);
+  overflow: hidden;
+  margin-bottom: 96px;
+}
+.dp-tile .audit-section {
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.dp-tile .audit-section + .audit-section {
+  border-top: 1px solid rgba(5,150,105,0.12);
+}
+
 /* ─── 3D Shadow Card — floating bevel, no glow border ───────────────────────
    Use on content-heavy cards with internal interactivity (donut charts, bars).
    The glow border competes with internal hover states — 3D shadow instead.
@@ -5297,12 +5319,11 @@ function sectionTechStack(D) {
 function sectionHiring(D) {
   const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring');
 
-  if (!hiring.length) return `<div style="background:linear-gradient(135deg,rgba(217,119,6,0.05) 0%,rgba(217,119,6,0.02) 100%);border-radius:16px;border:1px solid rgba(217,119,6,0.10);">
-    <section id="section-hiring" class="audit-section" style="background:transparent;">
-      <div class="section-eyebrow">Company Intelligence · Hiring</div>
-      <div class="section-title">Hiring Signals</div>
-      <p class="section-desc">No hiring signals collected for this audit.</p>
-    </section></div>`;
+  if (!hiring.length) return `<section id="section-hiring" class="audit-section">
+    <div class="section-eyebrow">Company Intelligence · Hiring</div>
+    <div class="section-title">Hiring Signals</div>
+    <p class="section-desc">No hiring signals collected for this audit.</p>
+  </section>`;
 
   // Option B: dynamic columns based on card count
   const count = Math.min(hiring.length, 9);
@@ -5354,19 +5375,17 @@ function sectionHiring(D) {
     </div>`;
   }).join('');
 
-  return `<div style="background:linear-gradient(135deg,rgba(217,119,6,0.05) 0%,rgba(217,119,6,0.02) 100%);border-radius:16px;border:1px solid rgba(217,119,6,0.10);">
-    <section id="section-hiring" class="audit-section" style="background:transparent;">
-      <div class="section-eyebrow">Company Intelligence · Hiring</div>
-      <div class="section-title">Hiring Signals</div>
-      <p class="section-desc">${hiring.length} open role${hiring.length!==1?'s':''} revealing technology investment priorities.</p>
-      <div class="feature-grid" style="grid-template-columns:repeat(${cols},1fr);">
-        ${cardsHtml}
-      </div>
-      ${hasMore ? `<div style="${T.bodySmMid14};margin-top:16px;text-align:center;">
-        Showing 9 of ${hiring.length} signals — see Company Intel tab for all
-      </div>` : ''}
-    </section>
-  </div>`;
+  return `<section id="section-hiring" class="audit-section">
+    <div class="section-eyebrow">Company Intelligence · Hiring</div>
+    <div class="section-title">Hiring Signals</div>
+    <p class="section-desc">${hiring.length} open role${hiring.length!==1?'s':''} revealing technology investment priorities.</p>
+    <div class="feature-grid" style="grid-template-columns:repeat(${cols},1fr);">
+      ${cardsHtml}
+    </div>
+    ${hasMore ? `<div style="${T.bodySmMid14};margin-top:16px;text-align:center;">
+      Showing 9 of ${hiring.length} — full list in Company Intel
+    </div>` : ''}
+  </section>`;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -6638,11 +6657,10 @@ function renderSections(D) {
   const overviewHTML = sectionExecSummary(D); // Score by Dimension is embedded inside exec summary
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
-  // Digital Presence tile — Tech Stack + Traffic grouped (same chapter: digital infrastructure)
-  const digitalPresenceTile = `<div style="
-    background:linear-gradient(135deg,rgba(5,150,105,0.05) 0%,rgba(5,150,105,0.02) 100%);
-    border-radius:16px;padding:0 0 4px;margin-bottom:32px;
-    border:1px solid rgba(5,150,105,0.10);">
+  // Digital Presence tile — Tech Stack + Traffic as one chapter
+  // CSS in algolia-brand.css: .dp-tile strips .audit-section margin-bottom,
+  // adds green gradient, consistent padding, section divider between them.
+  const digitalPresenceTile = `<div class="dp-tile">
     ${sectionTechStack(D)}
     ${sectionTraffic(D)}
   </div>`;
