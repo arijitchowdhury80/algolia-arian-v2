@@ -4136,31 +4136,54 @@ function initDonutChart(svgId) {
   const svg = document.getElementById(svgId);
   if (!svg || svg.dataset.donutInit) return;
   svg.dataset.donutInit = '1';
+
+  // Add drop-shadow filter to SVG defs
+  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+  defs.innerHTML = `<filter id="${svgId}-shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,0.28)" flood-opacity="1"/>
+  </filter>`;
+  svg.prepend(defs);
+
   const segs = svg.querySelectorAll('.donut-seg');
   const cp   = document.getElementById(svgId + '-cp');
   const cs   = document.getElementById(svgId + '-cs');
   if (!cp || !cs) return;
   const dp = cp.textContent, ds = cs.textContent;
+
   segs.forEach(seg => {
     const tx = parseFloat(seg.dataset.tx||0), ty = parseFloat(seg.dataset.ty||0);
-    seg.style.transition = 'transform 0.2s cubic-bezier(0.34,1.3,0.64,1), filter 0.15s ease';
+    seg.style.transition = 'transform 0.25s cubic-bezier(0.34,1.4,0.64,1), filter 0.2s ease';
     seg.style.cursor = 'pointer';
+
     seg.addEventListener('mouseenter', () => {
-      seg.style.transform = `translate(${tx}px,${ty}px)`;
-      seg.style.filter = 'brightness(1.12)';
+      // Pop segment outward with drop shadow
+      seg.style.transform = `translate(${tx}px,${ty}px) scale(1.05)`;
+      seg.style.filter = `url(#${svgId}-shadow) brightness(1.08)`;
+      // Update center text
       cp.textContent = seg.dataset.pct + '%';
       cs.textContent = seg.dataset.name;
-      // Highlight matching legend row
-      document.querySelectorAll(`[data-legend="${svgId}-${seg.dataset.idx}"]`)
-        .forEach(el => el.style.fontWeight = '600');
+      cp.style.fill = seg.getAttribute('fill');
+      // Highlight legend row: bold + scale up slightly
+      const legendRow = document.querySelector(`[data-legend="${svgId}-${seg.dataset.idx}"]`);
+      if (legendRow) {
+        legendRow.style.transform = 'translateX(4px)';
+        legendRow.style.transition = 'transform 0.2s ease';
+        legendRow.querySelector('span:last-child').style.fontSize = '14px';
+      }
     });
+
     seg.addEventListener('mouseleave', () => {
       seg.style.transform = '';
       seg.style.filter = '';
       cp.textContent = dp;
       cs.textContent = ds;
-      document.querySelectorAll(`[data-legend^="${svgId}-"]`)
-        .forEach(el => el.style.fontWeight = '');
+      cp.style.fill = '#23263B';
+      // Reset legend
+      const legendRow = document.querySelector(`[data-legend="${svgId}-${seg.dataset.idx}"]`);
+      if (legendRow) {
+        legendRow.style.transform = '';
+        legendRow.querySelector('span:last-child').style.fontSize = '';
+      }
     });
   });
 }
@@ -5001,7 +5024,7 @@ function sectionTraffic(D) {
         <!-- Donut + legend row -->
         <div style="display:flex;align-items:center;gap:24px;margin-bottom:24px;">
           <!-- SVG Donut -->
-          <svg id="${svgId}" viewBox="0 0 220 220" width="160" height="160" style="flex-shrink:0;overflow:visible;">
+          <svg id="${svgId}" class="donut-chart" viewBox="0 0 220 220" width="160" height="160" style="flex-shrink:0;overflow:visible;">
             ${segHtml}
             <!-- Center text -->
             <text id="${svgId}-cp" x="110" y="103" text-anchor="middle"
@@ -5017,21 +5040,6 @@ function sectionTraffic(D) {
           <div style="flex:1;">${legendHtml}</div>
         </div>
 
-        <!-- Full channel breakdown -->
-        <div style="border-top:1px solid var(--border);padding-top:16px;">
-          <div style="${T.eyebrowSm};margin-bottom:10px;">All Channels</div>
-          ${channels.map(c => {
-            const pctVal = parseFloat(c.share) || 0;
-            const barW   = Math.round((pctVal / maxShare) * 100);
-            return `<div class="score-bar-row">
-              <span class="score-bar-row__label">${escHtml(c.source || c.channel)}</span>
-              <div class="score-bar-row__track">
-                <div class="score-bar-row__fill" style="width:${barW}%;background:var(--blue);"></div>
-              </div>
-              <span class="score-bar-row__val" style="color:var(--gray)">${c.share}%</span>
-            </div>`;
-          }).join('')}
-        </div>
       </div>
 
       <!-- RIGHT CARD: Audience Profile -->
@@ -6899,7 +6907,7 @@ function init() {
     // Init animated background on all .ab-container elements
     document.querySelectorAll('.ab-container').forEach(el => initAnimatedBg(el));
     // Init interactive donut charts
-    document.querySelectorAll('[id$="-donut"]').forEach(el => initDonutChart(el.id));
+    document.querySelectorAll('.donut-chart').forEach(el => initDonutChart(el.id));
     // Init glow effect on all containers with .glow-card children
     document.querySelectorAll('[id$="-glow-grid"], .glow-grid').forEach(el => initGlowEffect(el));
     // Also init on direct parent containers of glow cards
