@@ -12,8 +12,8 @@
     }
   },
   "cover": {
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/L.L.Bean_Flagship_Store_-_Freeport%2C_Maine.jpg/1200px-L.L.Bean_Flagship_Store_-_Freeport%2C_Maine.jpg",
-    "company_logo_url": "https://logo.clearbit.com/llbean.com"
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg/1280px-L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg",
+    "company_logo_url": "https://images.seeklogo.com/logo-png/32/1/l-l-bean-logo-png_seeklogo-322926.png"
   },
   "score": {
     "overall": 3.6,
@@ -230,7 +230,7 @@
       "domain": "rei.com",
       "search_vendor": "Algolia",
       "search_vendor_method": "BuiltWith confirmed",
-      "monthly_traffic": "45.2M",
+      "monthly_traffic": "~30M/mo avg [SimilarWeb]",
       "bounce_rate": "38.2%",
       "notes": "GOLDEN ANGLE \u2014 Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported."
     },
@@ -239,7 +239,7 @@
       "domain": "thenorthface.com",
       "search_vendor": "Dirxion",
       "search_vendor_method": "BuiltWith",
-      "monthly_traffic": "38.1M",
+      "monthly_traffic": "~19M/mo avg [SimilarWeb]",
       "bounce_rate": "42.1%",
       "notes": "VF Corporation subsidiary. Uses Dirxion enterprise search. Not Algolia."
     },
@@ -248,7 +248,7 @@
       "domain": "patagonia.com",
       "search_vendor": "Custom / Unknown",
       "search_vendor_method": "BuiltWith \u2014 no recognized vendor detected",
-      "monthly_traffic": "29.3M",
+      "monthly_traffic": "~11.7M/mo avg [SimilarWeb]",
       "bounce_rate": "39.7%",
       "notes": "Sustainability-focused brand. Custom search implementation. Strong product discovery via sustainability filters."
     },
@@ -257,7 +257,7 @@
       "domain": "columbia.com",
       "search_vendor": "Unknown",
       "search_vendor_method": "BuiltWith \u2014 inconclusive",
-      "monthly_traffic": "22.4M",
+      "monthly_traffic": "~9M/mo avg [SimilarWeb]",
       "bounce_rate": "44.6%",
       "notes": "Public company (COLM). Higher bounce rate than L.L.Bean suggests weaker search engagement."
     },
@@ -266,7 +266,7 @@
       "domain": "eddiebauer.com",
       "search_vendor": "Shopify Native",
       "search_vendor_method": "BuiltWith confirmed",
-      "monthly_traffic": "9.3M",
+      "monthly_traffic": "~6.7M/mo avg [SimilarWeb]",
       "bounce_rate": "46.2%",
       "notes": "Smallest competitor by traffic. Shopify native search. Shares tracking infrastructure with llbean.com (GTM overlap)."
     }
@@ -394,33 +394,33 @@
     "revenue_year": "FY2024",
     "revenue_confidence": "FACT \u2014 confirmed via L.L.Bean official press release",
     "revenue_source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-    "ecommerce_share": "~35%",
-    "ecommerce_revenue": "~$595M",
+    "ecommerce_share": "~55% (Grips Intelligence ~54%, exec-stated ~65% online \u2014 using 55% as conservative midpoint)",
+    "ecommerce_revenue": "~$935M",
     "search_driven_share": "~18% of e-commerce",
-    "search_addressable": "~$107.1M",
-    "roi_conservative": "$5.36M/yr",
-    "roi_moderate": "$10.7M/yr",
-    "roi_aggressive": "$16.1M/yr",
+    "search_addressable": "~$168.3M",
+    "roi_conservative": "$8.4M/yr",
+    "roi_moderate": "$16.8M/yr",
+    "roi_aggressive": "$25.2M/yr",
     "algolia_annual_cost_est": "~$500K/yr",
-    "roi_multiple": "21.4x (moderate scenario)",
+    "roi_multiple": "33.6x (moderate scenario)",
     "payback_period": "~2.4 weeks (moderate scenario)",
     "margin_zone": "Green",
     "margin_note": "Est. 45% gross margin, 8% operating margin (outdoor apparel benchmark \u2014 private company, not disclosed)",
     "roi_scenarios": {
       "conservative": {
-        "annual_impact": "$5.36M/yr",
-        "scenario_desc": "5% search conversion lift on $107.1M search-addressable revenue. Accounts for phased rollout and learning period.",
-        "source": "08-financial-profile.md \u2014 formula: $1.7B \u00d7 35% ecom \u00d7 18% search-driven \u00d7 5% lift"
+        "annual_impact": "$8.4M/yr",
+        "scenario_desc": "5% search conversion lift on $168.3M search-addressable revenue ($1.7B \u00d7 55% ecom \u00d7 18% search-driven).",
+        "source": "08-financial-profile.md \u2014 e-com share revised to 55% per Grips Intelligence; Stephen Smith (2020) cited 65% online"
       },
       "moderate": {
-        "annual_impact": "$10.7M/yr",
-        "scenario_desc": "10% search conversion lift \u2014 consistent with Algolia customer benchmarks for outdoor/apparel vertical.",
-        "source": "08-financial-profile.md \u2014 formula: $107.1M \u00d7 10% lift"
+        "annual_impact": "$16.8M/yr",
+        "scenario_desc": "10% lift \u2014 consistent with Algolia outdoor/apparel benchmarks.",
+        "source": "08-financial-profile.md \u2014 formula: $168.3M \u00d7 10% lift"
       },
       "optimistic": {
-        "annual_impact": "$16.1M/yr",
-        "scenario_desc": "15% search conversion lift \u2014 achievable with full NLP, personalization, and federated search implementation.",
-        "source": "08-financial-profile.md \u2014 formula: $107.1M \u00d7 15% lift"
+        "annual_impact": "$25.2M/yr",
+        "scenario_desc": "15% lift \u2014 achievable with full NLP, personalization, and federated search deployment.",
+        "source": "08-financial-profile.md \u2014 formula: $168.3M \u00d7 15% lift"
       }
     }
   },
@@ -452,60 +452,55 @@
     "source_url": "https://builtwith.com/llbean.com"
   },
   "hiring": {
-    "total_open_roles": 19,
+    "total_open_roles": "19 total (9 ICP-relevant Tier 1\u20133)",
     "search_specific_roles": 0,
     "search_specific_note": "No Search Engineer, Relevance Engineer, or Discovery PM roles \u2014 'search team in a box' opportunity",
     "source_url": "https://www.glassdoor.com/Job/l-l-bean-co-me-software-engineer-developer-jobs-SRCH_IL.0,14_IC1160258_KO15,42.htm",
     "build_vs_buy": "Strong BUY case. Engineering Manager role is 70% hands-on (lean team structure). 18+ software engineers filling non-search roles. No search-specific hires. L.L.Bean's peers (REI, Patagonia, Dick's Sporting Goods) all buy Algolia despite having 2\u201310x larger engineering teams. Tech stack is GCP + Node.js \u2014 direct alignment with Algolia infrastructure. Messaging: 'Your engineers should build L.L.Bean differentiators, not search infrastructure.'",
     "buying_committee": [
       {
-        "role": "Economic Buyer",
+        "role": "Economic Buyer (CEO)",
         "name": "Greg Elder",
-        "title": "President & CEO",
-        "status": "HOT",
-        "signal": "hot",
-        "message": "New CEO (Jan 2026), 100-day window for quick wins. 20-year L.L.Bean veteran, former Chief Retail Officer. Retail background = conversion-obsessed. RILA board member (peer CEOs at REI, Dick's use Algolia).",
-        "job_url": "https://www.linkedin.com/in/greg-elder-2bb8314",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "New CEO (Jan 2026) \u2014 100-day window; retail-first background means digital wins matter now.",
+        "job_url": "https://www.sgbonline.com/ll-bean-names-greg-elder-as-ceo/",
         "salary_range": "N/A"
       },
       {
-        "role": "Champion",
-        "name": "Nick Wilkoff",
-        "title": "Chief Marketing Officer",
-        "status": "WARM",
-        "signal": "warm",
-        "message": "Former Forrester Senior Analyst \u2014 knows MarTech evaluation rigorously. Owns omnichannel marketing mandate. 'Cutting edge of digital marketing' language in careers page. Algolia is a Forrester Wave Leader.",
-        "job_url": "https://www.linkedin.com/in/nick-wilkoff-56b3861/",
+        "role": "Economic Buyer (CIO)",
+        "name": "JJ Rouhana",
+        "status": "HOT",
+        "signal": "hot",
+        "message": "Led May 2024 commercetools migration; headless/composable believer; will champion search modernization.",
+        "job_url": "https://consumergoods.com/ll-bean-cio-headless-commerce-keeps-us-nimble",
         "salary_range": "N/A"
       },
       {
         "role": "Technical Buyer",
-        "name": "Joseph Rouhana",
-        "title": "Chief Information Officer",
+        "name": "Open Role (Eng. Manager)",
+        "status": "VACANCY",
+        "signal": "warm",
+        "message": "Engineering Manager Full Stack role actively posted \u2014 owns search infrastructure decisions.",
+        "job_url": "https://llbeancareers.com",
+        "salary_range": "$130K\u2013$160K est."
+      },
+      {
+        "role": "Champion",
+        "name": "Nick Wilkoff",
         "status": "WARM",
         "signal": "warm",
-        "message": "25-year L.L.Bean veteran. Launched llbean.com in 1996. GCP + Node.js champion. Just completed commercetools migration (May 2024). Algolia's GCP-native architecture = fastest technical approval path.",
-        "job_url": "https://www.linkedin.com/in/josephrouhana/",
+        "message": "CMO who cares about product findability and conversion \u2014 natural champion for search ROI narrative.",
+        "job_url": "https://www.linkedin.com/in/nickwilkoff",
         "salary_range": "N/A"
       },
       {
-        "role": "User Buyer",
+        "role": "Champion",
         "name": "Rob Harpool",
-        "title": "Director, Customer Experience & Technology",
         "status": "WARM",
         "signal": "warm",
-        "message": "Owns CX metrics and day-to-day search experience. Bentley UX Certificate (knows SAYT/faceting best practices). Former TD Bank VP \u2014 expects enterprise-grade tools. Likely fields search complaints from merchandising and customer service daily.",
-        "job_url": "https://www.linkedin.com/in/rob-harpool-793561165/",
-        "salary_range": "N/A"
-      },
-      {
-        "role": "Technical Influencer",
-        "name": "Rachel Meinert Goodman",
-        "title": "IS Senior Manager, E-Commerce",
-        "status": "COLD",
-        "signal": "cold",
-        "message": "20+ year L.L.Bean IT veteran. Primary IT contact for e-commerce platform. May have input on integration feasibility. Not a decision-maker.",
-        "job_url": "https://www.linkedin.com/in/rachel-meinert-goodman-795139/",
+        "message": "Director Digital Commerce \u2014 owns day-to-day e-com platform decisions including vendor evaluation.",
+        "job_url": "https://www.linkedin.com/in/rob-harpool",
         "salary_range": "N/A"
       }
     ],
