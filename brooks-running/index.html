@@ -5296,17 +5296,77 @@ function sectionTechStack(D) {
 ═══════════════════════════════════════════════════ */
 function sectionHiring(D) {
   const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring');
-  if (!hiring.length) return `<section id="section-hiring" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence</div>
-    <div class="section-title">Hiring Signals</div>
-    <p class="section-desc">No hiring signals collected for this audit.</p>
-  </section>`;
-  return `<section id="section-hiring" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Hiring</div>
-    <div class="section-title">Hiring Signals</div>
-    <p class="section-desc">Open roles and job descriptions that reveal technology investment priorities.</p>
-    <div class="signals-grid">${hiring.map(sig => signalCardHtml(sig)).join('')}</div>
-  </section>`;
+
+  if (!hiring.length) return `<div style="background:linear-gradient(135deg,rgba(217,119,6,0.05) 0%,rgba(217,119,6,0.02) 100%);border-radius:16px;border:1px solid rgba(217,119,6,0.10);">
+    <section id="section-hiring" class="audit-section" style="background:transparent;">
+      <div class="section-eyebrow">Company Intelligence · Hiring</div>
+      <div class="section-title">Hiring Signals</div>
+      <p class="section-desc">No hiring signals collected for this audit.</p>
+    </section></div>`;
+
+  // Option B: dynamic columns based on card count
+  const count = Math.min(hiring.length, 9);
+  const cols = count <= 2 ? 2 : count <= 6 ? 3 : 4;
+  const hasMore = hiring.length > 9;
+
+  const urgencyClass = (type) =>
+    ['exec','funding'].includes(type) ? 'high'
+    : ['competitor','industry-risk'].includes(type) ? 'medium'
+    : 'positive';
+
+  const urgencyIcon = (sig) => {
+    const badge = sig.badge_label || '';
+    if (badge.toLowerCase().includes('tier 1') || badge.toLowerCase().includes('critical')) return '🔴';
+    if (badge.toLowerCase().includes('tier 2') || badge.toLowerCase().includes('technical')) return '🟡';
+    return '🔵';
+  };
+
+  const cardsHtml = hiring.slice(0, 9).map(sig => {
+    const fullText = sig.text || '';
+    // Smart slice — don't cut mid-word
+    const titleEnd = fullText.length > 80
+      ? (fullText.lastIndexOf(' ', 80) || 80)
+      : fullText.length;
+    const titleText = fullText.slice(0, titleEnd);
+    const descText  = fullText.slice(titleEnd).trim();
+    const hasUrl = sig.source_url && sig.source_url.startsWith('http');
+    const urg = urgencyClass(sig.type);
+
+    return `<div class="feature-card feature-card--${urg}">
+      <div class="fc-icon">
+        <span style="font-size:18px;">${urgencyIcon(sig)}</span>
+        <span style="${T.eyebrowSmCol(urg==='high'?'#DC2626':urg==='medium'?'#D97706':'#003DFF')}">
+          ${escHtml(sig.badge_label||'Hiring Signal')}
+        </span>
+      </div>
+      <div class="fc-title-row">
+        <div class="fc-accent-bar"></div>
+        <div class="fc-title">${escHtml(titleText)}${titleText.length < fullText.length ? '…' : ''}</div>
+      </div>
+      <div class="fc-desc">${escHtml(descText || sig.relevance?.slice(0,140) || '')}</div>
+      ${sig.relevance && descText ? `<div class="fc-desc" style="font-style:italic;opacity:0.85;">${escHtml(sig.relevance.slice(0,120))}</div>` : ''}
+      <div class="fc-source">
+        ${hasUrl
+          ? `<a href="${sig.source_url}" target="_blank">${escHtml(sig.source_name||'Source')}</a>`
+          : escHtml(sig.source_name||'')}
+        ${sig.source_date ? ` · ${escHtml(sig.source_date.slice(0,7))}` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  return `<div style="background:linear-gradient(135deg,rgba(217,119,6,0.05) 0%,rgba(217,119,6,0.02) 100%);border-radius:16px;border:1px solid rgba(217,119,6,0.10);">
+    <section id="section-hiring" class="audit-section" style="background:transparent;">
+      <div class="section-eyebrow">Company Intelligence · Hiring</div>
+      <div class="section-title">Hiring Signals</div>
+      <p class="section-desc">${hiring.length} open role${hiring.length!==1?'s':''} revealing technology investment priorities.</p>
+      <div class="feature-grid" style="grid-template-columns:repeat(${cols},1fr);">
+        ${cardsHtml}
+      </div>
+      ${hasMore ? `<div style="${T.bodySmMid14};margin-top:16px;text-align:center;">
+        Showing 9 of ${hiring.length} signals — see Company Intel tab for all
+      </div>` : ''}
+    </section>
+  </div>`;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -6578,11 +6638,19 @@ function renderSections(D) {
   const overviewHTML = sectionExecSummary(D); // Score by Dimension is embedded inside exec summary
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
+  // Digital Presence tile — Tech Stack + Traffic grouped (same chapter: digital infrastructure)
+  const digitalPresenceTile = `<div style="
+    background:linear-gradient(135deg,rgba(5,150,105,0.05) 0%,rgba(5,150,105,0.02) 100%);
+    border-radius:16px;padding:0 0 4px;margin-bottom:32px;
+    border:1px solid rgba(5,150,105,0.10);">
+    ${sectionTechStack(D)}
+    ${sectionTraffic(D)}
+  </div>`;
+
   const intelHTML = [
     sectionCompanySnapshot(D),
     sectionFinancials(D),
-    sectionTechStack(D),
-    sectionTraffic(D),
+    digitalPresenceTile,
     sectionHiring(D),
     sectionSignals(D),
   ].join('');
