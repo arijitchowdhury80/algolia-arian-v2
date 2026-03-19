@@ -3935,6 +3935,8 @@ const T = {
   bodySmMid14:  'font-size:14px;color:var(--mid)',
   bodySmGray12: 'font-size:12px;color:var(--mid)',
   italic:       'font-size:14px;font-weight:400;color:var(--mid);font-style:italic',
+  compact:      'font-size:12px;font-weight:400;color:var(--gray);line-height:1.6',
+  compactMid:   'font-size:12px;font-weight:400;color:var(--mid);line-height:1.5',
 
   /* ── Headings (inline) ─────────────────────────────────────────── */
   h5:           'font-size:18px;font-weight:600;color:var(--gray)',
@@ -4721,7 +4723,7 @@ function sectionCompanySnapshot(D) {
       <!-- MISSION/MODEL TILE — 1 col -->
       <div class="card" style="padding:24px 20px;background:#F0FDF4;border:1px solid #BBF7D0;">
         <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.10em;color:var(--green);margin-bottom:8px;">Business Model</div>
-        <div style="font-size:17px;font-weight:600;color:var(--gray);margin-bottom:10px;">
+        <div style="${T.title};margin-bottom:10px;">
           ${cs.ticker ? 'Public · ' + escHtml(cs.ticker) : 'Private · D2C'}
         </div>
         <div style="${T.bodySmMid14};line-height:1.6;">
@@ -5244,8 +5246,7 @@ function sectionSignals(D) {
       <!-- Source — always show, always clickable -->
       <div style="flex-shrink:0;text-align:right;min-width:100px;">
         ${hasUrl ? `<a href="${sig.source_url}" target="_blank"
-          style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;
-                 color:var(--blue);text-decoration:none;padding:4px 0;"
+          style="display:inline-flex;align-items:center;gap:4px;${T.labelBlue};text-decoration:none;padding:4px 0;"
           onmouseenter="this.style.textDecoration='underline'"
           onmouseleave="this.style.textDecoration='none'">
           ${escHtml(sig.source_name?.slice(0,25)||'Source')}
@@ -5489,7 +5490,7 @@ function sectionBattleCard(D) {
           <div style="${T.eyebrow};margin-bottom:8px;">When They Push Back</div>
           ${objections.slice(0,3).map(o=>`
           <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
-            <div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
+            <div style="${T.labelRed};margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
             <div style="${T.bodySm};">→ ${escHtml(o.counter||'')}</div>
           </div>`).join('')}
         </div>` : ''}
@@ -5650,7 +5651,7 @@ function sectionRevenueAtRisk(D) {
     <div class="section-title">Revenue at Risk</div>
 
     <!-- Assumptions box — full transparency on all inputs -->
-    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--gray);line-height:1.7;">
+    <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:14px 16px;margin-bottom:20px;${T.compact};line-height:1.7;">
       <span style="font-weight:600;color:#D97706;">⚠ Model Assumptions — All estimates unless marked verified</span><br>
       <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : '~7%')} of total revenue) ·
       <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
@@ -5687,7 +5688,7 @@ function sectionRevenueAtRisk(D) {
         {label:'Search-Addressable', val:searchAddr, col:'var(--purple)', note:`${searchPct}% of digital revenue`},
       ].map(m=>`<div class="card" style="text-align:center;padding:16px;">
         <div style="font-size:1.4rem;font-weight:600;color:${m.col};">${escHtml(m.val)}</div>
-        <div style="font-size:13px;color:var(--mid);margin-top:4px;">${m.label}</div>
+        <div style="${T.compactMid};margin-top:4px;">${m.label}</div>
         <div style="font-size:11px;color:var(--mid);margin-top:2px;font-style:italic;">${m.note}</div>
       </div>`).join('')}
     </div>
@@ -5753,10 +5754,10 @@ function sectionBusinessCaseHook(D) {
               </td>
               <td style="vertical-align:top;padding:16px;">
                 <div style="${T.labelGray};line-height:1.4;margin-bottom:6px;">✗ ${escHtml(g.found_title)}</div>
-                ${cleanEvidence ? `<div style="font-size:13px;color:var(--mid);line-height:1.4;">${escHtml(cleanEvidence)}</div>` : ''}
+                ${cleanEvidence ? `<div style="${T.compactMid};line-height:1.4;">${escHtml(cleanEvidence)}</div>` : ''}
               </td>
               <td style="vertical-align:top;padding:16px;">
-                ${solution ? `<div style="font-size:13px;color:var(--gray);line-height:1.5;margin-bottom:10px;">${escHtml(solution.split('.')[0])}.${solution.split('.')[1] ? ' ' + escHtml(solution.split('.')[1]) + '.' : ''}</div>` : ''}
+                ${solution ? `<div style="${T.compact};margin-bottom:10px;">${escHtml(solution.split('.')[0])}.${solution.split('.')[1] ? ' ' + escHtml(solution.split('.')[1]) + '.' : ''}</div>` : ''}
                 ${dispId ? `<a href="#chapter-${fid.toLowerCase()}" onclick="${jumpToChapter(fid)}"
                   style="display:inline-flex;align-items:center;gap:5px;background:#EEF2FF;
                          border:1px solid #C7D2FE;border-radius:20px;padding:4px 12px;
@@ -5831,13 +5832,13 @@ function sectionCompetitiveSynthesis(D) {
                     <div style="${T.title};">${comps.join(', ')}</div>
                   </td>` : ''}
                   <td style="padding:14px 16px;vertical-align:top;">
-                    <div style="font-size:13px;color:var(--gray);">${ci === 0 ? escHtml(t.search_stack||'Unknown') : ''}</div>
+                    <div style="${T.compact};">${ci === 0 ? escHtml(t.search_stack||'Unknown') : ''}</div>
                   </td>
                   <td style="padding:14px 16px;vertical-align:top;">
                     ${ci === 0 ? `<span style="font-size:11px;font-weight:600;color:${cfg.color};">${cfg.play}</span>` : ''}
                   </td>
                   <td style="padding:14px 16px;vertical-align:top;">
-                    ${ci === 0 ? `<div style="font-size:13px;color:var(--gray);line-height:1.5;">${escHtml(t.strategic_implication||'')}</div>` : ''}
+                    ${ci === 0 ? `<div style="${T.compact};">${escHtml(t.strategic_implication||'')}</div>` : ''}
                   </td>
                   <td style="padding:14px 16px;text-align:center;vertical-align:top;">
                     ${ci === 0 && verifyUrl ? `<a href="${verifyUrl}" target="_blank"
@@ -6133,7 +6134,7 @@ function sectionOutreachPlan(D) {
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
           <span style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
-        <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
+        <div style="${T.title};margin-bottom:2px;">${escHtml(c.name)}</div>
         <div style="${T.bodySmGray12};margin-bottom:8px;">${escHtml(c.title)}</div>
         <div style="font-size:12px;color:var(--gray);line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
         ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
@@ -6164,7 +6165,7 @@ function sectionOutreachPlan(D) {
           <!-- LinkedIn actions list -->
           <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
             <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
-            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
+            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;${T.compact};">
               <span style="font-weight:600;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
               <span>${escHtml(a)}</span>
             </div>`).join('')}
@@ -6180,10 +6181,10 @@ function sectionOutreachPlan(D) {
             ${t.email_subject ? `
             <div style="margin-bottom:8px;">
               <span style="font-size:11px;font-weight:600;color:var(--mid);">Email subject: </span>
-              <span style="font-size:13px;font-style:italic;color:var(--gray);">"${escHtml(t.email_subject)}"</span>
+              <span style="${T.compact};font-style:italic;">"${escHtml(t.email_subject)}"</span>
             </div>` : ''}
             ${t.email_body ? `
-            <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
+            <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;${T.compact};line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
             ${t.video_script ? `
             <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
               <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
@@ -6196,16 +6197,16 @@ function sectionOutreachPlan(D) {
           <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
             ${t.subject ? `<div style="margin-bottom:8px;">
               <span style="${T.eyebrowSm};">Subject: </span>
-              <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
+              <span style="${T.labelGray};">${escHtml(t.subject)}</span>
             </div>` : ''}
-            ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.compact};line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
             ${t.asset_label || t.asset ? `<div style="margin-top:8px;font-size:12px;color:var(--mid);">📎 Attach: <strong>${escHtml(t.asset_label||t.asset||'')}</strong></div>` : ''}
           </div>` : ''}
 
           ${!isLinkedIn && !isVideo && t.message ? `
           <!-- LinkedIn message -->
           <div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
-            <div style="white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;">${escHtml(t.message)}</div>
+            <div style="white-space:pre-wrap;${T.compact};line-height:1.6;">${escHtml(t.message)}</div>
             ${t.asset_url ? `<div style="margin-top:8px;"><a href="${t.asset_url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Case study link</a></div>` : ''}
           </div>` : ''}
         </div>`;
@@ -6216,15 +6217,15 @@ function sectionOutreachPlan(D) {
     ${variants.length ? `
     <div style="margin-bottom:28px;">
       <div style="${T.eyebrow};margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
-      <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
+      <p style="${T.compactMid};margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
       <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
         ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
             <span style="font-size:12px;font-weight:600;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
             <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
           </div>
-          <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
-          <div style="font-size:13px;color:var(--mid);line-height:1.5;margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
+          <div style="${T.labelGray};margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
+          <div style="${T.compactMid};margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
           <div style="font-size:11px;color:var(--green);font-weight:600;">Benchmark: ${escHtml(v.benchmark_reply_rate||'—')} reply rate</div>
           ${v.notes ? `<div style="font-size:11px;color:var(--mid);margin-top:4px;">${escHtml(v.notes)}</div>` : ''}
         </div>`).join('')}
@@ -6244,7 +6245,7 @@ function sectionOutreachPlan(D) {
           </tr></thead>
           <tbody>
             ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
-              <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray);">${escHtml(a.name)}</td>
+              <td style="padding:10px 14px;${T.labelGray};">${escHtml(a.name)}</td>
               <td style="padding:10px 14px;font-size:12px;color:var(--mid);">${escHtml(a.use_at)}</td>
               <td style="padding:10px 14px;">
                 ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="${T.bodySmGray12};">${escHtml(a.file)}</span>` : '—')}
