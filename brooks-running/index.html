@@ -5311,7 +5311,7 @@ function sectionRevenueAtRisk(D) {
       </div>`).join('')}
     </div>
     ${f.berkshire_note?`<div class="card" style="border-left:4px solid var(--purple);background:linear-gradient(135deg,#F5F3FF,#EDE9FE);padding:20px 24px;">
-      <div style="font-size:14px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">${escHtml(fin.berkshire_label||'Investor Context')}</div>
+      <div style="font-size:14px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">${escHtml(f.berkshire_label||'Investor Context')}</div>
       <p style="font-size:16px;color:var(--gray);line-height:1.6;">${escHtml(f.berkshire_note)}</p>
     </div>`:''}
   </section>`;
