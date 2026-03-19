@@ -1931,21 +1931,27 @@ a:hover {
    .dp-tile suppresses .audit-section margin-bottom so spacing is tile-controlled.
 ────────────────────────────────────────────────────────────────────────────── */
 .dp-tile {
-  background: linear-gradient(135deg, rgba(5,150,105,0.06) 0%, rgba(5,150,105,0.02) 100%);
-  border: 1px solid rgba(5,150,105,0.12);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(35,38,59,0.06), 0 8px 24px rgba(35,38,59,0.05);
+  /* Identical to .card + leadership tile — white, border, shadow, hover lift */
+  background: var(--brand-white);
+  border: 1px solid var(--brand-border);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(35,38,59,0.10);
   overflow: hidden;
   margin-bottom: 96px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-/* Inner sections: exactly match leadership card padding (24px top/bottom, 28px sides) */
+.dp-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(33,36,61,0.11);
+}
+/* Inner sections: same padding as leadership card (28px all sides) */
 .dp-tile .audit-section {
   margin-bottom: 0 !important;
   background: transparent !important;
-  padding: 28px 28px !important;
+  padding: 28px !important;
 }
 .dp-tile .audit-section + .audit-section {
-  border-top: 1px solid rgba(5,150,105,0.12);
+  border-top: 1px solid var(--brand-border);
 }
 
 /* ─── 3D Shadow Card — floating bevel, no glow border ───────────────────────
