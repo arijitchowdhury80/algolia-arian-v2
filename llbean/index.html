@@ -2074,7 +2074,7 @@ a:hover {
   "company_snapshot": {
     "industry": "Outdoor Apparel & Equipment Retail",
     "hq": "Freeport, Maine",
-    "employees": "5,500",
+    "employees": "5,700+ (5,500 bonus-eligible per FY2024 results)",
     "revenue": "$1.7B",
     "revenue_source": "L.L.Bean 2024 Year-End Press Release",
     "revenue_source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
@@ -2084,7 +2084,14 @@ a:hover {
     "current_search_vendor": "Native (No Dedicated Search Vendor — commercetools OOTB)",
     "ecommerce_platform": "commercetools (headless, migrated May 2024)",
     "monthly_visits": "26.7M/mo",
-    "visits_source": "SimilarWeb public data (MCP API 403)"
+    "visits_source": "SimilarWeb public data (MCP API 403)",
+    "demographics": {
+      "female": "64.8%",
+      "male": "35.2%",
+      "largest_age_cohort": "55-64 (23.7%)",
+      "source": "SimilarWeb MCP — Oct 2024–Jan 2025",
+      "note": "Older, female-skewed audience strengthens personalization + gift discovery pitch"
+    }
   },
   "revenue_3y": [
     {
@@ -2297,8 +2304,8 @@ a:hover {
       "screenshot_file": "../screenshots/03-sayt-hiking.png",
       "prospect_description": "L.L.Bean users cannot get instant product suggestions while typing — forced to complete full queries on mobile keyboards",
       "algolia_solution": "Algolia InstantSearch delivers sub-50ms SAYT with product images, query completions, and category suggestions",
-      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
-      "algolia_case_study_result": "+50% search conversion"
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_result": "+37% conversion rate + 150% sales contribution from search"
     },
     {
       "id": "F02",
@@ -2346,7 +2353,7 @@ a:hover {
       "prospect_description": "L.L.Bean's installed Dynamic Yield personalization platform cannot influence search rankings — personalization stops at the browse layer",
       "algolia_solution": "Algolia AI Personalization with Dynamic Re-Ranking integrates with Dynamic Yield behavioral signals to personalize search in real time",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "algolia_case_study_result": "+150% mobile order rate"
+      "algolia_case_study_result": "+150% order rate (Black Friday new users)"
     },
     {
       "id": "F05",
@@ -2378,7 +2385,7 @@ a:hover {
       "prospect_description": "L.L.Bean's PDP cross-sell is limited to category navigation links — missing the AOV-boosting FBT and 'Complete Your Kit' patterns that outdoor gear buyers expect",
       "algolia_solution": "Algolia Recommend (FBT + Similar Items + Trending) powered by ML models on purchase co-occurrence data",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "algolia_case_study_result": "+150% mobile order rate"
+      "algolia_case_study_result": "+150% order rate (Black Friday new users)"
     }
   ],
   "gap_pairs": [
@@ -2509,9 +2516,9 @@ a:hover {
       {
         "role": "Champion",
         "name": "Rob Harpool",
-        "status": "WARM",
-        "signal": "warm",
-        "message": "Director Digital Commerce — owns day-to-day e-com platform decisions including vendor evaluation.",
+        "status": "UNVERIFIED",
+        "signal": "cold",
+        "message": "Listed as Champion (Digital Commerce). LinkedIn shows possible departure to Florida Blue. Confirm before outreach. Title was 'Director, Customer Experience & Technology' (not 'Director Digital Commerce').",
         "job_url": "https://www.linkedin.com/in/rob-harpool",
         "salary_range": "N/A"
       }
@@ -5101,35 +5108,170 @@ function sectionDiscoveryObjections(D) {
 }
 
 function sectionOutreachPlan(D) {
-  const icp = D.icp_mapping || {};
-  const nextSteps = D.next_steps || [];
-  const sequence = icp.outreach_sequence || [];
+  const abx = D.abx_sequence;
+  if (!abx || !(abx.touches||[]).length) return '';
+
+  const contacts = abx.contacts || [];
+  const touches  = abx.touches || [];
+  const variants = abx.ab_variants || [];
+  const assets   = abx.assets_library || [];
+  const triggers = abx.triggers || [];
+
+  const contactMap = {};
+  contacts.forEach(c => { contactMap[c.id] = c; });
+
+  const chColor = {email:'#003DFF', linkedin:'#0A66C2', video:'#7C3AED'};
+  const chLabel = {email:'Email', linkedin:'LinkedIn', video:'Video (Loom)'};
+  const chIcon  = {
+    email: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    linkedin: '<svg width="13" height="13" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h17.65C19.474 0 20 .513 20 1.146v17.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 20 0 19.487 0 18.854V1.146zm6.143 15.496V7.716H3.81v8.926h2.333zm-1.167-10.14c.813 0 1.32-.539 1.32-1.213C6.281 4.59 5.789 4.066 5 4.066c-.797 0-1.32.524-1.32 1.213 0 .674.508 1.213 1.29 1.213h.015zm4.717 10.14V11.36c0-.21.015-.42.077-.57.17-.419.555-.853 1.202-.853.849 0 1.188.647 1.188 1.596v5.11h2.332V11.27c0-2.155-1.15-3.157-2.684-3.157-1.256 0-1.81.698-2.115 1.176v.025h-.015l.015-.025V7.717H7.36c.031.659 0 8.926 0 8.926h2.333z"/></svg>',
+    video: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>'
+  };
+
+  const triggerUrgency = {high:'#DC2626', medium:'#D97706', low:'#059669'};
+
   return `<section id="section-outreach" class="audit-section">
-    <div class="section-eyebrow">Sales Play · The Plan</div>
-    <div class="section-title">4-Week Outreach Sequence &amp; Next Steps</div>
-    <div class="grid-2" style="gap:28px;align-items:start;">
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">4-Week Sequence</div>
-        <div style="position:relative;padding-left:28px;">
-          <div style="position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:var(--border);"></div>
-          ${sequence.map((step,i)=>`<div style="position:relative;margin-bottom:20px;">
-            <div style="position:absolute;left:-22px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:3px solid white;box-shadow:0 0 0 2px var(--blue);"></div>
-            <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Week ${step.week||i+1}</div>
-            <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:4px;">${escHtml(step.action||'')}</div>
-            ${step.subject?`<div style="font-size:14px;color:var(--mid);font-style:italic;margin-bottom:4px;">Subject: "${escHtml(step.subject)}"</div>`:''}
-            <div style="font-size:14px;color:var(--mid);">${escHtml(step.angle||'')}</div>
-          </div>`).join('')}
+    <div class="section-eyebrow">Sales Play · ABX Sequence</div>
+    <div class="section-title">${escHtml(abx.sequence_type||'Outreach Sequence')}</div>
+    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels||[]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
+
+    <!-- Triggers -->
+    ${triggers.length ? `
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
+      ${triggers.map(t=>`<div style="display:inline-flex;align-items:center;gap:6px;background:${triggerUrgency[t.urgency]||'#6B7280'}12;border:1px solid ${triggerUrgency[t.urgency]||'#6B7280'}30;border-radius:6px;padding:6px 12px;">
+        <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:${triggerUrgency[t.urgency]||'#6B7280'};">⚡ ${escHtml(t.label)}</span>
+        <span style="font-size:12px;color:var(--gray);">${escHtml(t.detail)}</span>
+      </div>`).join('')}
+    </div>` : ''}
+
+    <!-- Contact Cards -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
+      ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;${c.tier===1?'background:#EEF2FF;color:#003DFF;':'background:#F0FDF4;color:#059669;'}">T${c.tier} ${escHtml(c.role)}</span>
         </div>
-      </div>
-      <div>
-        <div style="font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);margin-bottom:14px;">Next Steps</div>
-        ${nextSteps.map((step,i)=>`<div class="card" style="margin-bottom:12px;border-left:4px solid var(--blue);">
-          <div style="font-size:14px;font-weight:600;color:var(--blue);margin-bottom:4px;">Step ${step.step_num||i+1}</div>
-          <div style="font-size:16px;font-weight:600;color:var(--gray);margin-bottom:6px;">${escHtml(step.title||'')}</div>
-          <div style="font-size:14px;color:var(--mid);line-height:1.5;">${escHtml(step.description||'')}</div>
+        <div style="font-size:15px;font-weight:600;color:var(--gray);margin-bottom:2px;">${escHtml(c.name)}</div>
+        <div style="font-size:12px;color:var(--mid);margin-bottom:8px;">${escHtml(c.title)}</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
+        ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
+      </div>`).join('')}
+    </div>
+
+    <!-- Unified Touch Timeline -->
+    <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">The Sequence — Execute Top to Bottom</div>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;">
+      ${touches.map((t,i)=>{
+        const contact = contactMap[t.target] || {};
+        const col = chColor[t.channel] || '#6B7280';
+        const isVideo = t.channel === 'video';
+        const isLinkedIn = t.channel === 'linkedin';
+        return `<div style="border-bottom:${i<touches.length-1?'1px solid var(--border)':'none'};padding:16px 20px;background:${i%2===0?'white':'#FAFAFA'};">
+          <!-- Touch header row -->
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+            <span style="font-size:11px;font-weight:700;background:${col};color:white;border-radius:20px;padding:3px 10px;white-space:nowrap;">T${t.touch} · Day ${t.day}</span>
+            <span style="display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:${col};">
+              ${chIcon[t.channel]||''} ${escHtml(chLabel[t.channel]||t.channel)}
+            </span>
+            <span style="font-size:12px;color:var(--mid);">→ <strong>${escHtml(contact.name||t.target==='all'?'All contacts':t.target||'')}</strong>${contact.role ? ` (${escHtml(contact.role)})` : ''}</span>
+            <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--blue);background:#EEF2FF;border-radius:3px;padding:1px 6px;">${escHtml(t.hook_type||'')}</span>
+            <span style="font-size:12px;color:var(--mid);flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
+          </div>
+
+          ${isLinkedIn && t.actions ? `
+          <!-- LinkedIn actions list -->
+          <div style="background:#EEF2FF;border-radius:6px;padding:12px 14px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#0A66C2;margin-bottom:8px;">5 Nurturing Actions</div>
+            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;font-size:13px;color:var(--gray);">
+              <span style="font-weight:700;color:#0A66C2;flex-shrink:0;">${ai+1}.</span>
+              <span>${escHtml(a)}</span>
+            </div>`).join('')}
+          </div>` : ''}
+
+          ${isVideo ? `
+          <!-- Loom video touch -->
+          <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:6px;padding:14px;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;">📹 ${escHtml(t.video_platform||'Loom')} Script</span>
+              <span style="font-size:11px;color:var(--mid);">Target: ${escHtml(t.video_duration_target||'60-75 sec')}</span>
+            </div>
+            ${t.email_subject ? `
+            <div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:600;color:var(--mid);">Email subject: </span>
+              <span style="font-size:13px;font-style:italic;color:var(--gray);">"${escHtml(t.email_subject)}"</span>
+            </div>` : ''}
+            ${t.email_body ? `
+            <div style="background:white;border:1px solid #DDD6FE;border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
+            ${t.video_script ? `
+            <div style="background:#EDE9FE;border-radius:4px;padding:10px 12px;">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#7C3AED;margin-bottom:6px;">Full Script</div>
+              <pre style="font-size:12px;color:var(--gray);line-height:1.6;white-space:pre-wrap;margin:0;font-family:inherit;">${escHtml(t.video_script)}</pre>
+            </div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && (t.subject || t.body) ? `
+          <!-- Email touch -->
+          <div style="background:#F8F9FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            ${t.subject ? `<div style="margin-bottom:8px;">
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Subject: </span>
+              <span style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(t.subject)}</span>
+            </div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid #C7D2FE;border-radius:4px;padding:10px 12px;white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
+            ${t.asset_label || t.asset ? `<div style="margin-top:8px;font-size:12px;color:var(--mid);">📎 Attach: <strong>${escHtml(t.asset_label||t.asset||'')}</strong></div>` : ''}
+          </div>` : ''}
+
+          ${!isLinkedIn && !isVideo && t.message ? `
+          <!-- LinkedIn message -->
+          <div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:6px;padding:12px 14px;">
+            <div style="white-space:pre-wrap;font-size:13px;color:var(--gray);line-height:1.6;">${escHtml(t.message)}</div>
+            ${t.asset_url ? `<div style="margin-top:8px;"><a href="${t.asset_url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Case study link</a></div>` : ''}
+          </div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>
+
+    <!-- A/B Variants -->
+    ${variants.length ? `
+    <div style="margin-bottom:28px;">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
+      <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
+        ${variants.map(v=>`<div style="border:1px solid var(--border);border-radius:8px;padding:14px;background:white;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span style="font-size:12px;font-weight:700;color:var(--blue);">Variant ${escHtml(v.variant)}</span>
+            <span style="font-size:11px;font-weight:600;background:#EEF2FF;color:var(--blue);border-radius:20px;padding:2px 8px;">${escHtml(v.hook_type)}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray);margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
+          <div style="font-size:13px;color:var(--mid);line-height:1.5;margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;">Benchmark: ${escHtml(v.benchmark_reply_rate||'—')} reply rate</div>
+          ${v.notes ? `<div style="font-size:11px;color:var(--mid);margin-top:4px;">${escHtml(v.notes)}</div>` : ''}
         </div>`).join('')}
       </div>
-    </div>
+    </div>` : ''}
+
+    <!-- Assets Library -->
+    ${assets.length ? `
+    <div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.10em;color:var(--mid);margin-bottom:10px;">Assets Library</div>
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:var(--light);">
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Asset</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Use at</th>
+            <th style="padding:8px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Link</th>
+          </tr></thead>
+          <tbody>
+            ${assets.map((a,i)=>`<tr style="border-top:1px solid var(--border);background:${i%2?'#FAFAFA':'white'};">
+              <td style="padding:10px 14px;font-size:13px;font-weight:600;color:var(--gray);">${escHtml(a.name)}</td>
+              <td style="padding:10px 14px;font-size:12px;color:var(--mid);">${escHtml(a.use_at)}</td>
+              <td style="padding:10px 14px;">
+                ${a.url ? `<a href="${a.url}" target="_blank" style="font-size:12px;font-weight:600;color:var(--blue);">↗ Open</a>` : (a.file ? `<span style="font-size:12px;color:var(--mid);">${escHtml(a.file)}</span>` : '—')}
+              </td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>` : ''}
   </section>`;
 }
 

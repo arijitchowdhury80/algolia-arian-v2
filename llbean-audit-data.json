@@ -62,7 +62,7 @@
   "company_snapshot": {
     "industry": "Outdoor Apparel & Equipment Retail",
     "hq": "Freeport, Maine",
-    "employees": "5,500",
+    "employees": "5,700+ (5,500 bonus-eligible per FY2024 results)",
     "revenue": "$1.7B",
     "revenue_source": "L.L.Bean 2024 Year-End Press Release",
     "revenue_source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
@@ -72,7 +72,14 @@
     "current_search_vendor": "Native (No Dedicated Search Vendor \u2014 commercetools OOTB)",
     "ecommerce_platform": "commercetools (headless, migrated May 2024)",
     "monthly_visits": "26.7M/mo",
-    "visits_source": "SimilarWeb public data (MCP API 403)"
+    "visits_source": "SimilarWeb public data (MCP API 403)",
+    "demographics": {
+      "female": "64.8%",
+      "male": "35.2%",
+      "largest_age_cohort": "55-64 (23.7%)",
+      "source": "SimilarWeb MCP \u2014 Oct 2024\u2013Jan 2025",
+      "note": "Older, female-skewed audience strengthens personalization + gift discovery pitch"
+    }
   },
   "revenue_3y": [
     {
@@ -285,8 +292,8 @@
       "screenshot_file": "screenshots/03-sayt-hiking.png",
       "prospect_description": "L.L.Bean users cannot get instant product suggestions while typing \u2014 forced to complete full queries on mobile keyboards",
       "algolia_solution": "Algolia InstantSearch delivers sub-50ms SAYT with product images, query completions, and category suggestions",
-      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
-      "algolia_case_study_result": "+50% search conversion"
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_result": "+37% conversion rate + 150% sales contribution from search"
     },
     {
       "id": "F02",
@@ -334,7 +341,7 @@
       "prospect_description": "L.L.Bean's installed Dynamic Yield personalization platform cannot influence search rankings \u2014 personalization stops at the browse layer",
       "algolia_solution": "Algolia AI Personalization with Dynamic Re-Ranking integrates with Dynamic Yield behavioral signals to personalize search in real time",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "algolia_case_study_result": "+150% mobile order rate"
+      "algolia_case_study_result": "+150% order rate (Black Friday new users)"
     },
     {
       "id": "F05",
@@ -366,7 +373,7 @@
       "prospect_description": "L.L.Bean's PDP cross-sell is limited to category navigation links \u2014 missing the AOV-boosting FBT and 'Complete Your Kit' patterns that outdoor gear buyers expect",
       "algolia_solution": "Algolia Recommend (FBT + Similar Items + Trending) powered by ML models on purchase co-occurrence data",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "algolia_case_study_result": "+150% mobile order rate"
+      "algolia_case_study_result": "+150% order rate (Black Friday new users)"
     }
   ],
   "gap_pairs": [
@@ -497,9 +504,9 @@
       {
         "role": "Champion",
         "name": "Rob Harpool",
-        "status": "WARM",
-        "signal": "warm",
-        "message": "Director Digital Commerce \u2014 owns day-to-day e-com platform decisions including vendor evaluation.",
+        "status": "UNVERIFIED",
+        "signal": "cold",
+        "message": "Listed as Champion (Digital Commerce). LinkedIn shows possible departure to Florida Blue. Confirm before outreach. Title was 'Director, Customer Experience & Technology' (not 'Director Digital Commerce').",
         "job_url": "https://www.linkedin.com/in/rob-harpool",
         "salary_range": "N/A"
       }
