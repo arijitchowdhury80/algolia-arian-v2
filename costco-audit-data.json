@@ -13,7 +13,7 @@
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale.jpg/1280px-Costco_Wholesale.jpg",
-    "company_logo_url": "https://logo.clearbit.com/costco.com",
+    "company_logo_url": "https://images.seeklogo.com/logo-png/3/1/costco-wholesale-logo-png_seeklogo-35878.png",
     "status_line": "Confidential \u00b7 For Internal Use Only"
   },
   "score": {
@@ -231,11 +231,11 @@
     {
       "type": "partner",
       "badge_label": "Partner Signal",
-      "text": "Costco confirmed Tealium AudienceStream (CDP), GrowthLoop AI segmentation (2026 partnership), and personalization capabilities launched Q1 FY2026. Personalization infrastructure exists \u2014 but is disconnected from search relevance.",
+      "text": "Costco confirmed GrowthLoop AI segmentation (2026 partnership) and launched new personalization capabilities Q1 FY2026 based on shopping history. Segment CDP confirmed active via BuiltWith. Personalization infrastructure exists \u2014 but is disconnected from search relevance.",
       "source_name": "PRNewswire / The Drum",
       "source_url": "https://www.prnewswire.com/news-releases/growthloop-partners-with-costco-to-power-retail-media-operations-with-its-compound-marketing-engine-302535994.html",
       "source_date": "2026-01-01",
-      "relevance": "Tealium + GrowthLoop = rich behavioral data that should flow into search personalization. Algolia Personalization can consume Tealium first-party data to re-rank results by member affinity \u2014 an immediate unlock."
+      "relevance": "GrowthLoop + Segment = confirmed behavioral data that should flow into search personalization. Algolia Personalization connects directly to these data sources to re-rank results by member affinity \u2014 an immediate unlock on existing investment."
     },
     {
       "type": "media",
@@ -407,8 +407,8 @@
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/06a-synonym-couch.png",
-      "prospect_description": "Costco's Tealium CDP and GrowthLoop AI have rich behavioral data \u2014 but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience.",
-      "algolia_solution": "Algolia Personalization re-ranks results by member affinity using Tealium first-party data. Dynamic facets surface category filters most relevant to the specific member's context.",
+      "prospect_description": "Costco's GrowthLoop AI and Segment CDP hold rich behavioral data on 81.4M members \u2014 but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience that Executive members paying $130/year expect.",
+      "algolia_solution": "Algolia Personalization re-ranks results by member affinity using GrowthLoop and Segment first-party behavioral data. Dynamic facets surface category filters most relevant to the specific member's context and purchase history.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+4.7% basket size increase with Algolia Recommend"
     },
@@ -473,25 +473,34 @@
   ],
   "gap_pairs": [
     {
-      "exec_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop. \u2014 Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025. Source: https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "finding_id": "G01",
-      "audit_finding": "Empty state shows nothing: 81.4M members click the search box and receive zero discovery guidance \u2014 no popular queries, no trending items, no personalized history. The opposite of 'easier, faster, and more personal.'",
-      "algolia_product": "Algolia Query Suggestions + Popular Searches",
-      "expected_impact": "Converts empty state into active discovery channel. +7% conversion baseline (Big W benchmark)."
+      "said_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop.",
+      "said_attr": "Ron Vachris, President & CEO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "said_source_label": "Motley Fool Transcript",
+      "found_title": "Empty State Shows Nothing \u2014 Zero Discovery Guidance",
+      "found_evidence": "Clicking the search box shows a completely blank state for 81.4M members. No trending items, no recent history, no personalized suggestions for Executive members.",
+      "algolia_angle": "Algolia Query Suggestions + Popular Searches converts the empty state into a discovery engine from keystroke 0."
     },
     {
-      "exec_quote": "AI is also being interwoven into our business where we believe it can strengthen our model. We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value. \u2014 Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025",
       "finding_id": "G04",
-      "audit_finding": "NLP queries are blocked by WAF. 'Best TV for gaming under 1000' returns Access Denied. There is no AI-powered natural language understanding in the search layer \u2014 exactly the gap Vachris's 'practical AI' mandate is meant to close.",
-      "algolia_product": "Algolia NeuralSearch (no WAF exposure, pre-trained, zero custom ML)",
-      "expected_impact": "Handles conversational queries for 48% mobile app traffic surge. No WAF rule changes required."
+      "said_quote": "AI is also being interwoven into our business where we believe it can strengthen our model. We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value.",
+      "said_attr": "Ron Vachris, President & CEO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
+      "said_source_label": "Constellation Research",
+      "found_title": "NLP / Conversational Queries Blocked by WAF",
+      "found_evidence": "'Best TV for gaming under 1000' returns Access Denied \u2014 Akamai WAF blocks complex natural language queries entirely. No AI-powered NLP layer exists.",
+      "algolia_angle": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Pre-trained, no ML team required \u2014 the 'Costco way'."
     },
     {
-      "exec_quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs. \u2014 Gary Millerchip, EVP & CFO, Q1 FY2026 Earnings Call, December 11, 2025",
       "finding_id": "G03",
-      "audit_finding": "No federated search: 'return policy' exits to customerservice.costco.com. Members who can't find policies self-escalate to support \u2014 creating exactly the member service call volume that offsets Millerchip's productivity improvements.",
-      "algolia_product": "Algolia Federated Search (products + policies + help content in one bar)",
-      "expected_impact": "Reduces support escalations. Members find answers without leaving the shopping experience."
+      "said_quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs.",
+      "said_attr": "Gary Millerchip, EVP & CFO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "said_source_label": "Motley Fool Transcript",
+      "found_title": "No Federated Search \u2014 Help Content on Separate Domain",
+      "found_evidence": "'Return policy' routes users to customerservice.costco.com \u2014 a separate domain. Main site has zero indexing of policies, FAQs, or Costco Travel content.",
+      "algolia_angle": "Algolia Federated Search indexes products, policies, travel, and help content in one bar. Members find answers without leaving the shopping context \u2014 reducing support escalations."
     }
   ],
   "financials": {
@@ -628,7 +637,7 @@
     "search_specific_roles": 0,
     "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026). Strong 'search team in a box' buy-vs-build signal.",
     "source_url": "https://www.linkedin.com/jobs/costco-engineering-jobs",
-    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering \u2014 none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) \u2014 knows the cost of custom search. Tealium CDP + GrowthLoop AI already active \u2014 Algolia integrates immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
+    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering \u2014 none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) \u2014 knows the cost of custom search. GrowthLoop AI + Segment CDP already active \u2014 Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
     "buying_committee": [
       {
         "role": "Economic Buyer",
@@ -716,8 +725,8 @@
         "counter": "Joel Crabb built Target's custom Solr. That team is 500+ engineers and still maintaining it years later. Your 387 engineers are building cloud infrastructure, data analytics, and digital performance \u2014 not search relevance. Algolia delivers a pre-built search team. Your engineers build Costco differentiators."
       },
       {
-        "objection": "We have Tealium and GrowthLoop for personalization",
-        "counter": "Exactly \u2014 and those are valuable investments. Algolia Personalization consumes your Tealium first-party data to re-rank search results by member affinity. You're not replacing GrowthLoop; you're connecting it to the moment members are actively shopping."
+        "objection": "We have GrowthLoop for personalization \u2014 that should handle search too",
+        "counter": "Exactly \u2014 and those are valuable investments. Algolia Personalization connects directly to your GrowthLoop AI and Segment behavioral data to re-rank search results by member affinity. You're not replacing GrowthLoop \u2014 you're extending it into the search layer, where members are actively making purchase decisions."
       }
     ],
     "apify_linkedin_note": "LinkedIn Jobs scraper (Apify, 2026-03-18): 5 results returned, all Tier 4 warehouse/operations roles (Stocker, Inventory Auditor). No Tier 1-3 digital/tech ICP roles surfaced on public LinkedIn. Costco posts tech roles primarily via careers.costco.com, not LinkedIn public job board. Buying committee identified via Phase 1 LinkedIn profile research remains valid.",
@@ -832,7 +841,7 @@
       {
         "their_priority": "Personalization driving measurable sales lift",
         "source": "Q1 FY2026 Earnings Call (personalization capabilities launched)",
-        "algolia_solution": "Algolia Recommend + Personalization (consumes Tealium CDP data)",
+        "algolia_solution": "Algolia Recommend + Personalization (consumes GrowthLoop AI + Segment first-party behavioral data)",
         "discovery_question": "How are you differentiating the digital experience for 39.7M Executive members vs standard members in search?"
       },
       {
@@ -885,8 +894,8 @@
       "description": "Build 5-query demo: 'best TV for gaming under 1000' (NLP gap), click empty search box (blank state), 'return policy' (federated gap), 'samung tv' (silent typo), 'asdfghjk' (false positive). Show side-by-side with Algolia. Target: Joel Crabb."
     },
     {
-      "title": "Technical Brief: Salesforce Commerce Cloud + Algolia Integration",
-      "description": "Prepare 1-page technical spec: Algolia's pre-built Salesforce Commerce Cloud connector. Timeline: 2-4 weeks to first live query. Tealium integration path for personalization data. Target: Joel Crabb + Fathima Saifunnissa (Director, eCom Site Development)."
+      "title": "Technical Brief: HCL Commerce + Algolia Integration",
+      "description": "Prepare 1-page technical spec: Algolia API-first integration with HCL Commerce (IBM WebSphere Commerce) \u2014 confirmed Costco platform via BuiltWith. Algolia provides REST API + JavaScript SDKs that connect to any platform. Timeline: 4-6 weeks to first live query (no pre-built connector confirmed \u2014 custom integration via Algolia's instantsearch.js + REST API). Segment integration path for personalization data. Target: Joel Crabb (VP IT eCommerce) \u2014 built Target + BestBuy platforms from scratch."
     },
     {
       "title": "ROI Model: CFO-Ready Business Case",
@@ -944,11 +953,6 @@
       "id": 9,
       "url": "https://www.algolia.com/customers/bigw",
       "label": "Algolia Case Study \u2014 Big W (+7% conversion, +4.7% basket size)"
-    },
-    {
-      "id": 10,
-      "url": "https://tealium.com/abm-costco-retail-2023/",
-      "label": "Tealium \u2014 Costco CDP Implementation"
     },
     {
       "id": 11,

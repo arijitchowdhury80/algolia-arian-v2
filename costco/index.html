@@ -1926,6 +1926,106 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Animated Background — sliding hover highlight for card grids ───────────
+   Vanilla CSS + JS replication of motion-primitives AnimatedBackground.
+   Spring-like cubic-bezier gives the "bounce to settle" motion.
+
+   Usage in HTML:
+     <div class="ab-container" style="grid-template-columns:repeat(4,1fr)">
+       <div class="ab-item" data-ab-id="tab1">...</div>
+       <div class="ab-item" data-ab-id="tab2">...</div>
+     </div>
+
+   Usage in JS: call initAnimatedBg('.ab-container') after DOM insertion.
+   The function is defined in index-template.html and can be called anywhere.
+────────────────────────────────────────────────────────────────────────────── */
+.ab-container {
+  position: relative;
+  display: grid;
+  gap: 8px;
+}
+.ab-highlight {
+  position: absolute;
+  border-radius: 10px;
+  background: var(--brand-blue);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Spring-like cubic-bezier: accelerate fast, overshoot slightly, settle */
+  transition: left 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+              top 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+              width 0.35s cubic-bezier(0.34, 1.3, 0.64, 1),
+              height 0.35s cubic-bezier(0.34, 1.3, 0.64, 1),
+              opacity 0.2s ease;
+}
+.ab-container.ab-active .ab-highlight {
+  opacity: 1;
+}
+.ab-item {
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+/* When highlighted, content on top gets white text for contrast */
+.ab-item.ab-hovered { color: white; }
+.ab-item.ab-hovered * { color: white !important; }
+.ab-item.ab-hovered svg path, .ab-item.ab-hovered svg polyline { stroke: white !important; }
+
+/* ─── Proof Pill — hero-pill style case study badge ─────────────────────────
+   Usage: proofPill(url, company, result) function in index-template.html
+   CSS classes for the two variants (light bg, dark/gradient bg)
+   [Company badge] Result text →
+────────────────────────────────────────────────────────────────────────────── */
+.proof-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.proof-pill__badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+  color: white;
+}
+.proof-pill__label {
+  padding: 5px 10px 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+/* Green variant (default — case study in search findings) */
+.proof-pill--green {
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.25);
+}
+.proof-pill--green .proof-pill__badge { background: var(--green); }
+.proof-pill--green .proof-pill__label { color: var(--green); }
+/* Blue variant (case study section, strategic references) */
+.proof-pill--blue {
+  background: rgba(0,61,255,0.08);
+  border: 1px solid rgba(0,61,255,0.20);
+}
+.proof-pill--blue .proof-pill__badge { background: var(--blue); }
+.proof-pill--blue .proof-pill__label { color: var(--blue); }
+/* White variant (on dark/gradient backgrounds like golden angle card) */
+.proof-pill--white {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.proof-pill--white .proof-pill__badge { background: rgba(255,255,255,0.25); color: white; }
+.proof-pill--white .proof-pill__label { color: white; }
+.proof-pill:hover { opacity: 0.85; }
+
 /* ─── Utility aliases for templates ─────────────────────────────────────── */
 /* Templates can use these var() aliases to stay in sync */
 :root {
@@ -2025,7 +2125,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale.jpg/1280px-Costco_Wholesale.jpg",
-    "company_logo_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMzYiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMzYiIHJ4PSI0IiBmaWxsPSIjMjEyNDNEIi8+PHRleHQgeD0iODAiIHk9IjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxIj5DVzwvdGV4dD48L3N2Zz4=",
+    "company_logo_url": "data:image/png;base64,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",
     "status_line": "Confidential · For Internal Use Only"
   },
   "score": {
@@ -2243,11 +2343,11 @@ a:hover {
     {
       "type": "partner",
       "badge_label": "Partner Signal",
-      "text": "Costco confirmed Tealium AudienceStream (CDP), GrowthLoop AI segmentation (2026 partnership), and personalization capabilities launched Q1 FY2026. Personalization infrastructure exists — but is disconnected from search relevance.",
+      "text": "Costco confirmed GrowthLoop AI segmentation (2026 partnership) and launched new personalization capabilities Q1 FY2026 based on shopping history. Segment CDP confirmed active via BuiltWith. Personalization infrastructure exists — but is disconnected from search relevance.",
       "source_name": "PRNewswire / The Drum",
       "source_url": "https://www.prnewswire.com/news-releases/growthloop-partners-with-costco-to-power-retail-media-operations-with-its-compound-marketing-engine-302535994.html",
       "source_date": "2026-01-01",
-      "relevance": "Tealium + GrowthLoop = rich behavioral data that should flow into search personalization. Algolia Personalization can consume Tealium first-party data to re-rank results by member affinity — an immediate unlock."
+      "relevance": "GrowthLoop + Segment = confirmed behavioral data that should flow into search personalization. Algolia Personalization connects directly to these data sources to re-rank results by member affinity — an immediate unlock on existing investment."
     },
     {
       "type": "media",
@@ -2419,8 +2519,8 @@ a:hover {
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "../screenshots/06a-synonym-couch.png",
-      "prospect_description": "Costco's Tealium CDP and GrowthLoop AI have rich behavioral data — but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience.",
-      "algolia_solution": "Algolia Personalization re-ranks results by member affinity using Tealium first-party data. Dynamic facets surface category filters most relevant to the specific member's context.",
+      "prospect_description": "Costco's GrowthLoop AI and Segment CDP hold rich behavioral data on 81.4M members — but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience that Executive members paying $130/year expect.",
+      "algolia_solution": "Algolia Personalization re-ranks results by member affinity using GrowthLoop and Segment first-party behavioral data. Dynamic facets surface category filters most relevant to the specific member's context and purchase history.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+4.7% basket size increase with Algolia Recommend"
     },
@@ -2485,25 +2585,34 @@ a:hover {
   ],
   "gap_pairs": [
     {
-      "exec_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop. — Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025. Source: https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "finding_id": "G01",
-      "audit_finding": "Empty state shows nothing: 81.4M members click the search box and receive zero discovery guidance — no popular queries, no trending items, no personalized history. The opposite of 'easier, faster, and more personal.'",
-      "algolia_product": "Algolia Query Suggestions + Popular Searches",
-      "expected_impact": "Converts empty state into active discovery channel. +7% conversion baseline (Big W benchmark)."
+      "said_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop.",
+      "said_attr": "Ron Vachris, President & CEO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "said_source_label": "Motley Fool Transcript",
+      "found_title": "Empty State Shows Nothing — Zero Discovery Guidance",
+      "found_evidence": "Clicking the search box shows a completely blank state for 81.4M members. No trending items, no recent history, no personalized suggestions for Executive members.",
+      "algolia_angle": "Algolia Query Suggestions + Popular Searches converts the empty state into a discovery engine from keystroke 0."
     },
     {
-      "exec_quote": "AI is also being interwoven into our business where we believe it can strengthen our model. We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value. — Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025",
       "finding_id": "G04",
-      "audit_finding": "NLP queries are blocked by WAF. 'Best TV for gaming under 1000' returns Access Denied. There is no AI-powered natural language understanding in the search layer — exactly the gap Vachris's 'practical AI' mandate is meant to close.",
-      "algolia_product": "Algolia NeuralSearch (no WAF exposure, pre-trained, zero custom ML)",
-      "expected_impact": "Handles conversational queries for 48% mobile app traffic surge. No WAF rule changes required."
+      "said_quote": "AI is also being interwoven into our business where we believe it can strengthen our model. We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value.",
+      "said_attr": "Ron Vachris, President & CEO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
+      "said_source_label": "Constellation Research",
+      "found_title": "NLP / Conversational Queries Blocked by WAF",
+      "found_evidence": "'Best TV for gaming under 1000' returns Access Denied — Akamai WAF blocks complex natural language queries entirely. No AI-powered NLP layer exists.",
+      "algolia_angle": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Pre-trained, no ML team required — the 'Costco way'."
     },
     {
-      "exec_quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs. — Gary Millerchip, EVP & CFO, Q1 FY2026 Earnings Call, December 11, 2025",
       "finding_id": "G03",
-      "audit_finding": "No federated search: 'return policy' exits to customerservice.costco.com. Members who can't find policies self-escalate to support — creating exactly the member service call volume that offsets Millerchip's productivity improvements.",
-      "algolia_product": "Algolia Federated Search (products + policies + help content in one bar)",
-      "expected_impact": "Reduces support escalations. Members find answers without leaving the shopping experience."
+      "said_quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs.",
+      "said_attr": "Gary Millerchip, EVP & CFO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "said_source_label": "Motley Fool Transcript",
+      "found_title": "No Federated Search — Help Content on Separate Domain",
+      "found_evidence": "'Return policy' routes users to customerservice.costco.com — a separate domain. Main site has zero indexing of policies, FAQs, or Costco Travel content.",
+      "algolia_angle": "Algolia Federated Search indexes products, policies, travel, and help content in one bar. Members find answers without leaving the shopping context — reducing support escalations."
     }
   ],
   "financials": {
@@ -2640,7 +2749,7 @@ a:hover {
     "search_specific_roles": 0,
     "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026). Strong 'search team in a box' buy-vs-build signal.",
     "source_url": "https://www.linkedin.com/jobs/costco-engineering-jobs",
-    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering — none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) — knows the cost of custom search. Tealium CDP + GrowthLoop AI already active — Algolia integrates immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
+    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering — none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) — knows the cost of custom search. GrowthLoop AI + Segment CDP already active — Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
     "buying_committee": [
       {
         "role": "Economic Buyer",
@@ -2728,8 +2837,8 @@ a:hover {
         "counter": "Joel Crabb built Target's custom Solr. That team is 500+ engineers and still maintaining it years later. Your 387 engineers are building cloud infrastructure, data analytics, and digital performance — not search relevance. Algolia delivers a pre-built search team. Your engineers build Costco differentiators."
       },
       {
-        "objection": "We have Tealium and GrowthLoop for personalization",
-        "counter": "Exactly — and those are valuable investments. Algolia Personalization consumes your Tealium first-party data to re-rank search results by member affinity. You're not replacing GrowthLoop; you're connecting it to the moment members are actively shopping."
+        "objection": "We have GrowthLoop for personalization — that should handle search too",
+        "counter": "Exactly — and those are valuable investments. Algolia Personalization connects directly to your GrowthLoop AI and Segment behavioral data to re-rank search results by member affinity. You're not replacing GrowthLoop — you're extending it into the search layer, where members are actively making purchase decisions."
       }
     ],
     "apify_linkedin_note": "LinkedIn Jobs scraper (Apify, 2026-03-18): 5 results returned, all Tier 4 warehouse/operations roles (Stocker, Inventory Auditor). No Tier 1-3 digital/tech ICP roles surfaced on public LinkedIn. Costco posts tech roles primarily via careers.costco.com, not LinkedIn public job board. Buying committee identified via Phase 1 LinkedIn profile research remains valid.",
@@ -2844,7 +2953,7 @@ a:hover {
       {
         "their_priority": "Personalization driving measurable sales lift",
         "source": "Q1 FY2026 Earnings Call (personalization capabilities launched)",
-        "algolia_solution": "Algolia Recommend + Personalization (consumes Tealium CDP data)",
+        "algolia_solution": "Algolia Recommend + Personalization (consumes GrowthLoop AI + Segment first-party behavioral data)",
         "discovery_question": "How are you differentiating the digital experience for 39.7M Executive members vs standard members in search?"
       },
       {
@@ -2897,8 +3006,8 @@ a:hover {
       "description": "Build 5-query demo: 'best TV for gaming under 1000' (NLP gap), click empty search box (blank state), 'return policy' (federated gap), 'samung tv' (silent typo), 'asdfghjk' (false positive). Show side-by-side with Algolia. Target: Joel Crabb."
     },
     {
-      "title": "Technical Brief: Salesforce Commerce Cloud + Algolia Integration",
-      "description": "Prepare 1-page technical spec: Algolia's pre-built Salesforce Commerce Cloud connector. Timeline: 2-4 weeks to first live query. Tealium integration path for personalization data. Target: Joel Crabb + Fathima Saifunnissa (Director, eCom Site Development)."
+      "title": "Technical Brief: HCL Commerce + Algolia Integration",
+      "description": "Prepare 1-page technical spec: Algolia API-first integration with HCL Commerce (IBM WebSphere Commerce) — confirmed Costco platform via BuiltWith. Algolia provides REST API + JavaScript SDKs that connect to any platform. Timeline: 4-6 weeks to first live query (no pre-built connector confirmed — custom integration via Algolia's instantsearch.js + REST API). Segment integration path for personalization data. Target: Joel Crabb (VP IT eCommerce) — built Target + BestBuy platforms from scratch."
     },
     {
       "title": "ROI Model: CFO-Ready Business Case",
@@ -2956,11 +3065,6 @@ a:hover {
       "id": 9,
       "url": "https://www.algolia.com/customers/bigw",
       "label": "Algolia Case Study — Big W (+7% conversion, +4.7% basket size)"
-    },
-    {
-      "id": 10,
-      "url": "https://tealium.com/abm-costco-retail-2023/",
-      "label": "Tealium — Costco CDP Implementation"
     },
     {
       "id": 11,
@@ -3107,9 +3211,27 @@ const T = {
   labelCol:     (col) => `font-size:14px;font-weight:600;color:${col}`,
 
   /* ── Dynamic helpers ───────────────────────────────────────────── */
+  overviewTitle: 'font-size:22px;font-weight:600;color:var(--gray);line-height:1.3;margin-bottom:16px',
   scoreVal:     (col) => `font-size:14px;font-weight:600;color:${col}`,
   pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
 };
+
+/* ── proofPill — hero-pill style case study badge ────────────────────
+   Renders a validated proof point as a clickable pill:
+   [Company badge] Result text →
+   Used everywhere a case study is cited: finding cards, golden angle, case studies section.
+   Static — no animation. Semi-transparent tint + border ring signals verified proof.
+────────────────────────────────────────────────────────────────────── */
+function proofPill(url, company, result, variant) {
+  // variant: 'green' (default) | 'blue' | 'white' (on dark backgrounds)
+  // CSS defined in algolia-brand.css — .proof-pill, .proof-pill--{variant}
+  if (!url || !company) return '';
+  const v = variant || 'green';
+  return `<a href="${url}" target="_blank" rel="noopener" class="proof-pill proof-pill--${v}">
+    <span class="proof-pill__badge">${escHtml(company)}</span>
+    <span class="proof-pill__label">${escHtml(result)} →</span>
+  </a>`;
+}
 
 function escHtml(str) {
   return s(str)
@@ -3188,15 +3310,7 @@ function renderGoldenAngleCard(ga) {
            onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
           BuiltWith: ${escHtml(c.name)}
         </a>`).join('')}
-      ${ga.footwear_case_study?.source_url ? `
-        <a href="${ga.footwear_case_study.source_url}" target="_blank"
-           style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);
-                  border:1px solid rgba(255,255,255,0.25);border-radius:20px;
-                  padding:4px 12px;font-size:13px;font-weight:600;color:white;text-decoration:none;"
-           onmouseenter="this.style.background='rgba(255,255,255,0.25)'"
-           onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
-          ${escHtml(ga.footwear_case_study.company||'Case Study')}: ${escHtml(ga.footwear_case_study.result||'')}
-        </a>` : ''}
+      ${ga.footwear_case_study?.source_url ? proofPill(ga.footwear_case_study.source_url, ga.footwear_case_study.company||'Case Study', ga.footwear_case_study.result||'', 'white') : ''}
     </div>
   </div>`;
 }
@@ -3215,6 +3329,7 @@ function renderTopbar(D) {
              style="filter:brightness(0) invert(1);">
       </a>
       <div class="tb-div"></div>
+      ${D.cover?.company_logo_url ? `<div style="background:white;border-radius:6px;padding:3px 8px;height:32px;display:flex;align-items:center;justify-content:center;max-width:96px;flex-shrink:0;"><img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:22px;max-width:80px;object-fit:contain;" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <span class="tb-company">${escHtml(D.meta?.company)}</span>
     </div>
     <div class="tb-spacer"></div>
@@ -3627,9 +3742,9 @@ function sectionExecSummary(D) {
 
       return `
       <!-- ── Revenue at Risk ── -->
-      <div style="margin-top:40px;margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Revenue at Risk</div>
-        <div style="${T.titleMb};">How much search improvement is worth — three scenarios</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Revenue at Risk</div>
+        <div style="${T.overviewTitle};">How much search improvement is worth — three scenarios</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
         ${[
@@ -3649,16 +3764,16 @@ function sectionExecSummary(D) {
       </div>
 
       <!-- ── Competitive Edge ── -->
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Competitive Intelligence</div>
-        <div style="${T.titleMb};">Who in your competitive set is already using Algolia</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Competitive Intelligence</div>
+        <div style="${T.overviewTitle};">Who in your competitive set is already using Algolia</div>
       </div>
       <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
 
       <!-- ── Why Act Now — from intelligence_signals ── -->
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Timing Signals</div>
-        <div style="${T.titleMb};">Three reasons this is the right moment to engage</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Timing Signals</div>
+        <div style="${T.overviewTitle};">Three reasons this is the right moment to engage</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
         ${(() => {
@@ -3717,9 +3832,9 @@ function sectionExecSummary(D) {
       const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
 
       return `
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Deep Dives</div>
-        <div style="${T.titleMb};">Navigate to any section for full intelligence and evidence</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Deep Dives</div>
+        <div style="${T.overviewTitle};">Navigate to any section for full intelligence and evidence</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
@@ -4273,11 +4388,7 @@ function sectionFinding(f, displayId) {
     <div class="solution-box">
       <div class="sol-label">How Algolia Fixes This</div>
       <p>${escHtml(f.algolia_solution)}</p>
-      ${f.algolia_case_study_url ? `
-      <a href="${f.algolia_case_study_url}" target="_blank" rel="noopener" class="case-study-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}
-      </a>` : ''}
+      ${proofPill(f.algolia_case_study_url, f.algolia_case_study_company, f.algolia_case_study_result)}
     </div><!-- /solution-box -->
       </div><!-- /chapter-card -->
     </div><!-- /chapter-wrap -->
@@ -4667,8 +4778,8 @@ function sectionSources(D) {
 function sectionAppendixScoring(D) {
   const sc = D.score || {};
   return `<section id="appendix-scoring" class="audit-section">
-    <div class="section-eyebrow">Appendix A</div>
-    <div class="section-title">Full Scoring Detail</div>
+    <div class="section-eyebrow">Overview · Score Breakdown</div>
+    <div class="section-title">Score by Dimension</div>
     <div class="card">
       <table class="data-table">
         <thead><tr><th>Dimension</th><th>Score</th><th>Severity</th></tr></thead>
@@ -5011,7 +5122,7 @@ function sectionCaseStudies(D) {
         <div style="font-size:2rem;font-weight:600;color:var(--green);line-height:1.2;margin-bottom:8px;">${escHtml(c.result)}</div>
         <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(c.product)}</div>
         <div style="${T.bodySm};padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
-        <a href="${c.url}" target="_blank" style="${T.labelBlue};">View case study →</a>
+        ${proofPill(c.url, c.company, c.result, 'var(--blue)')}
       </div>`).join('')}
     </div>
   </section>`;
@@ -5376,7 +5487,7 @@ function renderSections(D) {
   const positiveFindings = findings.filter(f => f.severity === 'positive');
 
   /* ── TAB 1: OVERVIEW ─────────────────────────── */
-  const overviewHTML = sectionExecSummary(D);
+  const overviewHTML = [sectionExecSummary(D), sectionAppendixScoring(D)].join('');
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
   const intelHTML = [

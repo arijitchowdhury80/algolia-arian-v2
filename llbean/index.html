@@ -1926,6 +1926,59 @@ a:hover {
   color: var(--brand-blue);
 }
 
+/* ─── Proof Pill — hero-pill style case study badge ─────────────────────────
+   Usage: proofPill(url, company, result) function in index-template.html
+   CSS classes for the two variants (light bg, dark/gradient bg)
+   [Company badge] Result text →
+────────────────────────────────────────────────────────────────────────────── */
+.proof-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.proof-pill__badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+  color: white;
+}
+.proof-pill__label {
+  padding: 5px 10px 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+/* Green variant (default — case study in search findings) */
+.proof-pill--green {
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.25);
+}
+.proof-pill--green .proof-pill__badge { background: var(--green); }
+.proof-pill--green .proof-pill__label { color: var(--green); }
+/* Blue variant (case study section, strategic references) */
+.proof-pill--blue {
+  background: rgba(0,61,255,0.08);
+  border: 1px solid rgba(0,61,255,0.20);
+}
+.proof-pill--blue .proof-pill__badge { background: var(--blue); }
+.proof-pill--blue .proof-pill__label { color: var(--blue); }
+/* White variant (on dark/gradient backgrounds like golden angle card) */
+.proof-pill--white {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.proof-pill--white .proof-pill__badge { background: rgba(255,255,255,0.25); color: white; }
+.proof-pill--white .proof-pill__label { color: white; }
+.proof-pill:hover { opacity: 0.85; }
+
 /* ─── Utility aliases for templates ─────────────────────────────────────── */
 /* Templates can use these var() aliases to stay in sync */
 :root {
@@ -3061,9 +3114,27 @@ const T = {
   labelCol:     (col) => `font-size:14px;font-weight:600;color:${col}`,
 
   /* ── Dynamic helpers ───────────────────────────────────────────── */
+  overviewTitle: 'font-size:22px;font-weight:600;color:var(--gray);line-height:1.3;margin-bottom:16px',
   scoreVal:     (col) => `font-size:14px;font-weight:600;color:${col}`,
   pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
 };
+
+/* ── proofPill — hero-pill style case study badge ────────────────────
+   Renders a validated proof point as a clickable pill:
+   [Company badge] Result text →
+   Used everywhere a case study is cited: finding cards, golden angle, case studies section.
+   Static — no animation. Semi-transparent tint + border ring signals verified proof.
+────────────────────────────────────────────────────────────────────── */
+function proofPill(url, company, result, variant) {
+  // variant: 'green' (default) | 'blue' | 'white' (on dark backgrounds)
+  // CSS defined in algolia-brand.css — .proof-pill, .proof-pill--{variant}
+  if (!url || !company) return '';
+  const v = variant || 'green';
+  return `<a href="${url}" target="_blank" rel="noopener" class="proof-pill proof-pill--${v}">
+    <span class="proof-pill__badge">${escHtml(company)}</span>
+    <span class="proof-pill__label">${escHtml(result)} →</span>
+  </a>`;
+}
 
 function escHtml(str) {
   return s(str)
@@ -3142,15 +3213,7 @@ function renderGoldenAngleCard(ga) {
            onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
           BuiltWith: ${escHtml(c.name)}
         </a>`).join('')}
-      ${ga.footwear_case_study?.source_url ? `
-        <a href="${ga.footwear_case_study.source_url}" target="_blank"
-           style="display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);
-                  border:1px solid rgba(255,255,255,0.25);border-radius:20px;
-                  padding:4px 12px;font-size:13px;font-weight:600;color:white;text-decoration:none;"
-           onmouseenter="this.style.background='rgba(255,255,255,0.25)'"
-           onmouseleave="this.style.background='rgba(255,255,255,0.15)'">
-          ${escHtml(ga.footwear_case_study.company||'Case Study')}: ${escHtml(ga.footwear_case_study.result||'')}
-        </a>` : ''}
+      ${ga.footwear_case_study?.source_url ? proofPill(ga.footwear_case_study.source_url, ga.footwear_case_study.company||'Case Study', ga.footwear_case_study.result||'', 'white') : ''}
     </div>
   </div>`;
 }
@@ -3169,6 +3232,7 @@ function renderTopbar(D) {
              style="filter:brightness(0) invert(1);">
       </a>
       <div class="tb-div"></div>
+      ${D.cover?.company_logo_url ? `<div style="background:white;border-radius:6px;padding:3px 8px;height:32px;display:flex;align-items:center;justify-content:center;max-width:96px;flex-shrink:0;"><img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:22px;max-width:80px;object-fit:contain;" onerror="this.parentElement.style.display='none'"></div>` : ''}
       <span class="tb-company">${escHtml(D.meta?.company)}</span>
     </div>
     <div class="tb-spacer"></div>
@@ -3581,9 +3645,9 @@ function sectionExecSummary(D) {
 
       return `
       <!-- ── Revenue at Risk ── -->
-      <div style="margin-top:40px;margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Revenue at Risk</div>
-        <div style="${T.titleMb};">How much search improvement is worth — three scenarios</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Revenue at Risk</div>
+        <div style="${T.overviewTitle};">How much search improvement is worth — three scenarios</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:40px;">
         ${[
@@ -3603,16 +3667,16 @@ function sectionExecSummary(D) {
       </div>
 
       <!-- ── Competitive Edge ── -->
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Competitive Intelligence</div>
-        <div style="${T.titleMb};">Who in your competitive set is already using Algolia</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Competitive Intelligence</div>
+        <div style="${T.overviewTitle};">Who in your competitive set is already using Algolia</div>
       </div>
       <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
 
       <!-- ── Why Act Now — from intelligence_signals ── -->
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Timing Signals</div>
-        <div style="${T.titleMb};">Three reasons this is the right moment to engage</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Timing Signals</div>
+        <div style="${T.overviewTitle};">Three reasons this is the right moment to engage</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding-bottom:40px;">
         ${(() => {
@@ -3671,9 +3735,9 @@ function sectionExecSummary(D) {
       const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
 
       return `
-      <div style="margin-bottom:8px;">
-        <div style="${T.eyebrow};margin-bottom:4px;">Deep Dives</div>
-        <div style="${T.titleMb};">Navigate to any section for full intelligence and evidence</div>
+      <div style="margin-top:56px;margin-bottom:12px;">
+        <div class="section-eyebrow">Deep Dives</div>
+        <div style="${T.overviewTitle};">Navigate to any section for full intelligence and evidence</div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
         ${navCard('intel','#0891B2','Company Intel','Who They Are',[
@@ -4227,11 +4291,7 @@ function sectionFinding(f, displayId) {
     <div class="solution-box">
       <div class="sol-label">How Algolia Fixes This</div>
       <p>${escHtml(f.algolia_solution)}</p>
-      ${f.algolia_case_study_url ? `
-      <a href="${f.algolia_case_study_url}" target="_blank" rel="noopener" class="case-study-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        ${escHtml(f.algolia_case_study_company)}: ${escHtml(f.algolia_case_study_result)}
-      </a>` : ''}
+      ${proofPill(f.algolia_case_study_url, f.algolia_case_study_company, f.algolia_case_study_result)}
     </div><!-- /solution-box -->
       </div><!-- /chapter-card -->
     </div><!-- /chapter-wrap -->
@@ -4621,8 +4681,8 @@ function sectionSources(D) {
 function sectionAppendixScoring(D) {
   const sc = D.score || {};
   return `<section id="appendix-scoring" class="audit-section">
-    <div class="section-eyebrow">Appendix A</div>
-    <div class="section-title">Full Scoring Detail</div>
+    <div class="section-eyebrow">Overview · Score Breakdown</div>
+    <div class="section-title">Score by Dimension</div>
     <div class="card">
       <table class="data-table">
         <thead><tr><th>Dimension</th><th>Score</th><th>Severity</th></tr></thead>
@@ -4965,7 +5025,7 @@ function sectionCaseStudies(D) {
         <div style="font-size:2rem;font-weight:600;color:var(--green);line-height:1.2;margin-bottom:8px;">${escHtml(c.result)}</div>
         <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(c.product)}</div>
         <div style="${T.bodySm};padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
-        <a href="${c.url}" target="_blank" style="${T.labelBlue};">View case study →</a>
+        ${proofPill(c.url, c.company, c.result, 'var(--blue)')}
       </div>`).join('')}
     </div>
   </section>`;
@@ -5330,7 +5390,7 @@ function renderSections(D) {
   const positiveFindings = findings.filter(f => f.severity === 'positive');
 
   /* ── TAB 1: OVERVIEW ─────────────────────────── */
-  const overviewHTML = sectionExecSummary(D);
+  const overviewHTML = [sectionExecSummary(D), sectionAppendixScoring(D)].join('');
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
   const intelHTML = [
@@ -5773,13 +5833,19 @@ function initChapterObserver() {
 }
 
 // Boot: run if data already injected, otherwise wait
-if (window.AUDIT_DATA) {
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  // Data will be injected by renderer — show placeholder
-  document.addEventListener('DOMContentLoaded', () => {
+// Guard: if DOMContentLoaded already fired (inline scripts run after DOM is ready),
+// call directly; otherwise register listener.
+function _boot() {
+  if (window.AUDIT_DATA) {
+    init();
+  } else {
     document.getElementById('no-data').style.display = 'flex';
-  });
+  }
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _boot);
+} else {
+  _boot();
 }
 </script>
 </body>
