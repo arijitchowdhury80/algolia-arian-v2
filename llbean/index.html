@@ -4268,7 +4268,7 @@ function renderTopbar(D) {
              style="filter:brightness(0) invert(1);">
       </a>
       <div class="tb-div"></div>
-      ${D.cover?.company_logo_url ? `<div style="background:white;border-radius:6px;padding:3px 8px;height:32px;display:flex;align-items:center;justify-content:center;max-width:96px;flex-shrink:0;"><img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:22px;max-width:80px;object-fit:contain;" onerror="this.parentElement.style.display='none'"></div>` : ''}
+      ${D.cover?.company_logo_url ? `<img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:28px;max-width:100px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">` : ''}
       <span class="tb-company">${escHtml(D.meta?.company)}</span>
     </div>
     <div class="tb-ticker-wrap no-print">

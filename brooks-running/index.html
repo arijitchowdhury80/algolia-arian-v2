@@ -2438,7 +2438,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Seattle-Center_from-the-Space-Needle.jpg/1280px-Seattle-Center_from-the-Space-Needle.jpg",
-    "company_logo_url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgMzYiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iMzYiIHJ4PSI0IiBmaWxsPSIjMjEyNDNEIi8+PHRleHQgeD0iODAiIHk9IjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxIj5Ccm9va3MgUnVubmluZzwvdGV4dD48L3N2Zz4=",
+    "company_logo_url": "https://images.seeklogo.com/logo-png/2/1/brooks-logo-png_seeklogo-22794.png",
     "status_line": "Confidential · For Internal Algolia Use Only"
   },
   "score": {
@@ -4414,7 +4414,7 @@ function renderTopbar(D) {
              style="filter:brightness(0) invert(1);">
       </a>
       <div class="tb-div"></div>
-      ${D.cover?.company_logo_url ? `<div style="background:white;border-radius:6px;padding:3px 8px;height:32px;display:flex;align-items:center;justify-content:center;max-width:96px;flex-shrink:0;"><img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:22px;max-width:80px;object-fit:contain;" onerror="this.parentElement.style.display='none'"></div>` : ''}
+      ${D.cover?.company_logo_url ? `<img src="${escHtml(D.cover.company_logo_url)}" alt="${escHtml(D.meta?.company||'')} logo" style="max-height:28px;max-width:100px;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">` : ''}
       <span class="tb-company">${escHtml(D.meta?.company)}</span>
     </div>
     <div class="tb-ticker-wrap no-print">
