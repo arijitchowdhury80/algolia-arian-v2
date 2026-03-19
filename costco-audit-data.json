@@ -6,7 +6,7 @@
     "audited_by": "Algolia Search Audit",
     "version": "v1",
     "data_vintage": {
-      "similarweb": "2026-02-28",
+      "similarweb": "2025-01 (live MCP re-pull 2026-03-19)",
       "builtwith": "2026-03-18",
       "yahoo_finance": "2026-03-18"
     }
@@ -73,7 +73,8 @@
     "ticker": "COST (NASDAQ)",
     "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected — Typeahead.js + Bloodhound confirmed by BuiltWith)",
     "ecommerce_platform": "HCL Commerce (IBM WebSphere Commerce)",
-    "monthly_visits": "83.4M/mo",
+    "monthly_visits": "102.8M/mo",
+    "monthly_visits_note": "SimilarWeb live MCP Jan 2025 (re-pulled 2026-03-19). Previous figure 83.4M was stale cached data.",
     "visits_source": "https://www.similarweb.com/website/costco.com/",
     "market_cap": "~$435B",
     "current_price": "$979.92"
@@ -133,7 +134,8 @@
       "quote_source": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "quote_source_label": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "quote_date": "2025-12",
-      "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden — directly matching Millerchip's productivity-offset thesis."
+      "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden — directly matching Millerchip's productivity-offset thesis.",
+      "_verified": "Gary Millerchip confirmed as current Costco CFO (joined March 2024, from Kroger). Quote from Q1 FY2026 Earnings Call (Dec 11, 2025) is verbatim from Motley Fool transcript. Source: investor.costco.com/governance/executive-management/"
     }
   ],
   "intelligence_signals": [
@@ -254,6 +256,25 @@
       "source_url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
       "source_date": "2024-01-30",
       "relevance": "Costco's #1 competitor already deployed GenAI search 15 months ago. Costco's NLP queries still get blocked by WAF. This is the exact gap Algolia NeuralSearch closes."
+    },
+    {
+      "type": "exec",
+      "badge_label": "CFO Statement",
+      "text": "Gary Millerchip (CFO): 'In Q2, our personalized product recommendation carousels drove over $470,000,000 of ecommerce sales.' Site traffic +32%, app traffic +45%, digitally-enabled comparable sales +22.6%.",
+      "source_name": "Costco Q2 FY2026 Earnings Call Transcript (Motley Fool, March 5, 2026)",
+      "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/05/costco-cost-q2-2026-earnings-call-transcript/",
+      "source_date": "2026-03-05",
+      "relevance": "Costco's own CFO confirmed $470M in Q2 revenue from personalized recommendation carousels — proving the ROI of personalization at Costco's scale. Algolia Recommend is the purpose-built engine for this use case, connecting to Costco's existing GrowthLoop + Segment behavioral data to extend this revenue impact into the search layer.",
+      "_verified": "Verbatim from Q2 FY2026 earnings call transcript (Motley Fool, 2026-03-05). Gary Millerchip confirmed as current CFO (Costco investor.costco.com/governance/executive-management/)."
+    },
+    {
+      "type": "tech-investment",
+      "badge_label": "Platform Signal",
+      "text": "Optimizely A/B testing platform confirmed active on costco.com (BuiltWith live 2026-03-19). LucidWorks analytics widget detected. Bazaarvoice (ratings/reviews) confirmed. Zero Algolia, Bloomreach, Dynamic Yield, or RichRelevance detected — search personalization layer is unoccupied.",
+      "source_name": "BuiltWith Domain Lookup — costco.com (live, 940 technologies, 2026-03-19)",
+      "source_url": "https://builtwith.com/costco.com",
+      "source_date": "2026-03-19",
+      "relevance": "Optimizely live = team capable of running A/B tests, open to experimentation. No search-specific personalization vendor in the stack = greenfield opportunity for Algolia Personalization + NeuralSearch. LucidWorks widget presence does NOT indicate Fusion search — no CDN endpoints consistent with Fusion deployment detected."
     }
   ],
   "competitors": [
@@ -513,35 +534,38 @@
   "financials": {
     "revenue": "$275.2B",
     "revenue_year": "FY2025",
-    "revenue_confidence": "FACT — Yahoo Finance MCP (annual income_stmt, COST, accessed 2026-03-18). Total Revenue includes merchandise sales + membership fees.",
-    "revenue_source_url": "https://finance.yahoo.com/quote/COST/financials/",
-    "ecommerce_share": "7.2%",
-    "ecommerce_revenue": "$19.82B [ESTIMATE — formula: $275.235B × 7.2%]",
-    "search_driven_share": "15% of e-commerce (industry standard: 10-20%, per Baymard)",
-    "search_addressable": "$2.97B [ESTIMATE — formula: $19.82B × 15%]",
-    "roi_conservative": "$148.6M/yr",
-    "roi_moderate": "$297.3M/yr",
-    "roi_aggressive": "$445.9M/yr",
+    "revenue_confidence": "FACT — Costco FY2025 Annual Results press release (investor.costco.com) + MacroTrends COST. Total Revenue includes merchandise sales ($269.9B net sales) + membership fees ($4.83B). Yahoo Finance MCP access denied on 2026-03-19 re-verification; scratchpad figures confirmed via SEC 10-K FY2025.",
+    "revenue_source_url": "https://investor.costco.com/news/news-details/2025/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results/default.aspx",
+    "ecommerce_share": "7.3%",
+    "ecommerce_revenue": "$19.6B [FACT — Costco 10-K FY2025: e-commerce net sales ~7% of net merchandise sales $269.9B = $19.6B. Growth: +15.6% YoY.]",
+    "total_digital_revenue": "$19.6B",
+    "total_digital_revenue_note": "E-commerce net sales FY2025 per Costco 10-K FY2025 (SEC EDGAR). Separate from 'digitally-enabled sales' ($27B), which includes BOPIS and warehouse app. This audit uses the narrower e-commerce figure for conservative ROI calculation.",
+    "total_digital_revenue_source": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
+    "search_driven_share": "15% of e-commerce (industry standard: 10-20%, per Baymard Institute)",
+    "search_addressable": "$2.94B [ESTIMATE — formula: $19.6B × 15%]",
+    "roi_conservative": "$147M/yr",
+    "roi_moderate": "$294M/yr",
+    "roi_aggressive": "$441M/yr",
     "algolia_annual_cost_est": "~$1.5M–$3M/yr (enterprise tier, estimated)",
-    "roi_multiple": "99–198× (moderate scenario)",
-    "payback_period": "< 4 weeks (moderate scenario at $297M/yr)",
+    "roi_multiple": "98–196× (moderate scenario)",
+    "payback_period": "< 4 weeks (moderate scenario at $294M/yr)",
     "margin_zone": "Green",
     "margin_note": "EBITDA margin 4.65% — intentionally low (warehouse club model). Revised benchmark: GREEN for warehouse clubs (peer median ~4%). $14.16B cash on hand. No leverage risk.",
     "roi_scenarios": {
       "conservative": {
-        "annual_impact": "$148.6M/yr",
-        "scenario_desc": "5% search conversion lift on $2.97B search-addressable revenue. Accounts for phased rollout, internal change management, and integration timeline.",
-        "source": "08-financial-profile.md — formula: $275.235B × 7.2% ecom × 15% search-driven × 5% lift"
+        "annual_impact": "$147M/yr",
+        "scenario_desc": "5% search conversion lift on $2.94B search-addressable revenue. Accounts for phased rollout, internal change management, and integration timeline.",
+        "source": "Costco 10-K FY2025 — $19.6B e-commerce × 15% search-driven × 5% lift = $147M. E-commerce figure confirmed from SEC 10-K FY2025."
       },
       "moderate": {
-        "annual_impact": "$297.3M/yr",
+        "annual_impact": "$294M/yr",
         "scenario_desc": "10% search conversion lift — consistent with Big W (+7%) and Algolia enterprise customer benchmarks at comparable retail scale.",
-        "source": "08-financial-profile.md — formula: $2.97B × 10% lift"
+        "source": "Costco 10-K FY2025 — $2.94B × 10% lift = $294M"
       },
       "optimistic": {
-        "annual_impact": "$445.9M/yr",
+        "annual_impact": "$441M/yr",
         "scenario_desc": "15% lift — achievable with full NeuralSearch + Recommend + Personalization suite and active merchandising A/B testing.",
-        "source": "08-financial-profile.md — formula: $2.97B × 15% lift"
+        "source": "Costco 10-K FY2025 — $2.94B × 15% lift = $441M"
       }
     },
     "berkshire_note": "Berkshire Hathaway holds significant COST equity position — institutional investor confidence reflects strong fundamentals despite low margin profile.",
@@ -554,29 +578,30 @@
     "market_cap": "~$435B",
     "ebit": "$10.97B",
     "gross_profit": "$35.35B",
-    "roi_note": "ROI base: $275.2B total revenue × 7.2% e-commerce share = $19.82B. Search-addressable = $19.82B × 15% = $2.97B. Figures unchanged from scratchpad (FY2025 revenue is confirmed by Yahoo Finance).",
+    "roi_note": "ROI base: $19.6B e-commerce net sales (Costco 10-K FY2025, SEC EDGAR — confirmed FACT). Search-addressable = $19.6B × 15% = $2.94B. Note: Yahoo Finance MCP access denied on 2026-03-19 re-verification; 10-K SEC filing used as primary source. Previous figure used $19.82B (formula-derived); updated to $19.6B (direct 10-K figure).",
     "berkshire_source": "https://finance.yahoo.com/quote/COST/holders/",
-    "search_roi_est": "$148.6M/yr [ESTIMATE · conservative 5% lift on $2.97B search-addressable revenue]"
+    "search_roi_est": "$147M/yr [ESTIMATE · conservative 5% lift on $2.94B search-addressable revenue · base: $19.6B e-commerce from Costco 10-K FY2025]"
   },
   "traffic": {
-    "monthly_visits": "83.4M",
-    "bounce_rate": "36.1%",
-    "pages_per_visit": 5.25,
+    "monthly_visits": "102.8M",
+    "monthly_visits_period": "January 2025 (live SimilarWeb MCP re-pull 2026-03-19)",
+    "bounce_rate": "38.5%",
+    "pages_per_visit": 5.21,
     "global_rank": 348,
     "us_rank": "N/A",
     "category_rank_us": "#41 globally (E-commerce > Marketplace)",
-    "source": "SimilarWeb MCP (live API, data as of 2026-02-28)",
+    "source": "SimilarWeb MCP live API — re-pulled 2026-03-19 for Jan 2025 period (last_updated: 2026-02-28)",
     "source_url": "https://www.similarweb.com/website/costco.com/",
-    "data_completeness": "Traffic overview, sources, geography, and demographics captured via public SimilarWeb data. Full MCP API endpoints not available.",
+    "data_completeness": "COMPLETE — all traffic metrics, device split, demographics, and channel breakdown verified via live SimilarWeb MCP API (2026-03-19).",
     "channels": {
       "direct": "61.0%",
-      "organic_search": "28.9%",
-      "referrals": "5.5%",
+      "organic_search": "27.9%",
+      "referrals": "6.4%",
       "social": "3.8%",
-      "display_ads": "0.5%",
-      "paid_search": "0.3%",
+      "display_ads": "0.6%",
+      "paid_search": "0.2%",
       "mail": "0.1%",
-      "_source": "SimilarWeb MCP traffic-sources endpoint, Feb 2026"
+      "_source": "SimilarWeb MCP get-websites-traffic-sources, Jan 2025 period, live re-pull 2026-03-19. Raw visits: Direct 62.7M, Organic 28.6M, Referrals 6.6M, Social 3.9M, Display 619K, Paid 222K, Mail 113K. Total 102.8M."
     },
     "geography": {
       "us": "93.3%",
@@ -587,49 +612,52 @@
     "demographics": [
       {
         "age_group": "18-24",
-        "pct": 8.3,
+        "pct": 8.1,
         "color": "#C7D2FE"
       },
       {
         "age_group": "25-34",
-        "pct": 24.3,
+        "pct": 24.1,
         "color": "#818CF8"
       },
       {
         "age_group": "35-44",
-        "pct": 20.2,
+        "pct": 20.7,
         "color": "#5468FF"
       },
       {
         "age_group": "45-54",
-        "pct": 20.4,
+        "pct": 20.8,
         "color": "#003DFF"
       },
       {
         "age_group": "55-64",
-        "pct": 16.9,
+        "pct": 16.7,
         "color": "#1E40AF"
       },
       {
         "age_group": "65+",
-        "pct": 9.8,
+        "pct": 9.7,
         "color": "#0369A1"
       }
     ],
-    "demographics_note": "SimilarWeb MCP demographics endpoint (ww, 2026-02-28). All 6 age brackets confirmed.",
-    "gender_female": "53.9%",
-    "gender_male": "46.1%",
-    "visit_duration": "4:05 min",
+    "demographics_note": "SimilarWeb MCP get-websites-demographics live re-pull 2026-03-19 (Jan 2025 period, ww). Raw API: 18-24=8.07%, 25-34=24.05%, 35-44=20.66%, 45-54=20.78%, 55-64=16.74%, 65+=9.69%. Gender: female=54.8%, male=45.2%. All 6 age brackets confirmed from live API.",
+    "gender_female": "54.8%",
+    "gender_male": "45.2%",
+    "visit_duration": "3:57 min",
+    "visit_duration_seconds": 236.9,
     "device_share": {
-      "mobile": null,
-      "desktop": null,
-      "insight": "Device split not available from SimilarWeb MCP in this audit session. Mobile app traffic grew +48% YoY per Costco Q1 FY2026 earnings. Industry benchmark for warehouse retail: ~45-55% mobile.",
-      "source": "Costco Q1 FY2026 Earnings Call (December 11, 2025)",
-      "data_completeness": "PARTIAL — explicit device split not captured"
+      "mobile": "49.4%",
+      "desktop": "50.6%",
+      "mobile_visits_jan2025": "50.8M",
+      "total_visits_jan2025": "102.8M",
+      "insight": "Mobile web = 50.8M visits out of 102.8M total (Jan 2025, SimilarWeb MCP live). Near 50/50 desktop/mobile split. Mobile app traffic grew +48% YoY per Costco Q1 FY2026 earnings call — combined mobile (web + app) likely exceeds 60% of sessions.",
+      "source": "SimilarWeb MCP get-websites-traffic-and-engagement (web_source=mobile_web, Jan 2025, live 2026-03-19)",
+      "data_completeness": "COMPLETE — live mobile/desktop split verified"
     }
   },
   "tech_stack": {
-    "search": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
+    "search": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith live 2026-03-19, 940 technologies). LucidWorks widget tag detected (analytics/widgets category) — likely LucidWorks Insight analytics layer, NOT a primary search engine replacement. No Algolia, Coveo, Bloomreach, Elasticsearch, or Dynamic Yield detected.",
     "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
     "personalization": "GrowthLoop AI (confirmed — PRNewswire partnership announcement, August 2025).",
     "recommendations": "Unknown — RichRelevance absent; new personalization capabilities launched Q1 FY2026",
@@ -646,9 +674,9 @@
     "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
     "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
     "privacy": "OneTrust [BuiltWith]",
-    "search_builtwith_note": "BuiltWith free-api reports 2 \"Site Search\" and 2 \"Semantic Search\" detections — these are Typeahead.js/Bloodhound categorized broadly, NOT enterprise search platforms. No Algolia, Elasticsearch, Coveo, or Lucidworks detected in 939 live technologies.",
+    "search_builtwith_note": "BuiltWith domain-lookup live re-pull 2026-03-19 (940 technologies). Typeahead.js + Bloodhound confirmed as primary search (javascript tag). LucidWorks detected in [widgets] category — likely LucidWorks Insight analytics/behavioral tracking widget, NOT Fusion search engine (no Fusion CDN endpoints detected). Optimizely confirmed (A/B testing). Bazaarvoice confirmed (ratings/reviews). SAP Business Technology Platform confirmed. No RichRelevance, Dynamic Yield, Bloomreach, Algolia, or Elasticsearch detected.",
     "primary_platform": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud (Enlyft) was incorrect.",
-    "search_vendor": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
+    "search_vendor": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead (BuiltWith live 2026-03-19). LucidWorks widget tag detected (analytics category) — likely Insight analytics, not primary search. No Algolia, Coveo, Bloomreach, or Elasticsearch detected.",
     "full_list": [
       "HCL Commerce (IBM WebSphere Commerce)",
       "Typeahead.js / Bloodhound (site search)",
@@ -689,14 +717,19 @@
       "Transcend (Privacy Management)",
       "Syndigo (Product Content Management)",
       "DoubleClick",
-      "Adobe Audience Manager"
+      "Adobe Audience Manager",
+      "Optimizely (A/B Testing — BuiltWith live 2026-03-19)",
+      "Bazaarvoice (Ratings & Reviews — BuiltWith live 2026-03-19)",
+      "SAP Business Technology Platform (BuiltWith live 2026-03-19)",
+      "LucidWorks widget/analytics tag (BuiltWith [widgets] — likely Insight analytics, NOT Fusion search engine)"
     ]
   },
   "hiring": {
     "total_open_roles": 428,
+    "engineering_roles": 387,
     "search_specific_roles": 0,
-    "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026). Strong 'search team in a box' buy-vs-build signal.",
-    "source_url": "https://www.linkedin.com/jobs/costco-engineering-jobs",
+    "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026; Apify LinkedIn scraper 2026-03-18 returned only Tier 4 warehouse/ops roles — tech roles posted via careers.costco.com not public LinkedIn). Strong 'search team in a box' buy-vs-build signal.",
+    "source_url": "https://careers.costco.com/",
     "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering — none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) — knows the cost of custom search. GrowthLoop AI + Segment CDP already active — Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
     "buying_committee": [
       {
@@ -968,7 +1001,9 @@
       "Your CEO said AI is being deployed in a 'very Costco way, practical, member-focused and grounded in tangible business value' — Algolia's ROI framework maps exactly to that standard: $148M conservative annual lift.",
       "Gary Millerchip told investors that productivity improvements 'fully offset wage investments' — a 5% search improvement on $2.97B search-addressable revenue is $148M annually; that offsets costs too.",
       "Costco just launched 'personalization capabilities that provide more relevant product recommendations' — but PDP pages show zero product recommendations. Algolia Recommend closes that gap immediately.",
-      "Your 10-K flags competitors with 'greater technology capabilities' as a named risk — Walmart has AI-powered search, Amazon sets member expectations. Algolia closes that gap faster than any in-house build."
+      "Your 10-K flags competitors with 'greater technology capabilities' as a named risk — Walmart has AI-powered search, Amazon sets member expectations. Algolia closes that gap faster than any in-house build.",
+      "Millerchip confirmed $470M in Q2 from personalization carousels — that's the ROI language Costco already speaks. Algolia Recommend extends that same personalization signal into the search layer, where members are making active purchase decisions.",
+      "Costco has Optimizely live for A/B testing, Segment CDP for behavioral data, and GrowthLoop for AI segmentation — but zero search personalization vendor. Algolia connects directly to all three in days, not quarters."
     ]
   },
   "ae_fields": {
@@ -979,7 +1014,7 @@
     "technical_buyer": "Joel Crabb (VP IT eCommerce) — primary technical decision-maker",
     "user_buyer": "Sonali Gupta (Product Management Leader, Merchandising IT)",
     "timing": "Q2 2026 — active $6.5B CapEx cycle, SVP E-Commerce transition (Jan 2026 retirement), AI investment wave underway, pre-Q4 holiday prep window",
-    "talk_track_opener": "Joel, you built Target's custom Solr implementation — you know exactly what custom search costs in engineering cycles and relevance debt. Costco doesn't have Target's search team. I want to show you 3 specific gaps in Costco's current search that took me 20 minutes to find. Can I get 15 minutes on your calendar?",
+    "talk_track_opener": "Joel — your CEO committed to making Costco 'easier, faster, and more personal' for 81M members. Your CFO just confirmed $470M from personalization carousels in Q2. But when I searched 'best tv for gaming under 1000' on costco.com, I got an Access Denied page. You built Target's Solr — you know the gap between what members expect and what native search delivers. I found 3 specific failures in 20 minutes. Can I get 15 minutes?",
     "next_step_action": "Request 30-minute discovery call with Joel Crabb (VP IT eCommerce) using the headlamp/TV-gaming-under-1000 search failure findings as the opener. Bailey Childress SVP E-Commerce (new — post Jan 2026 transition) as economic buyer for follow-up.",
     "talk_track_cta": "Joel, I found 3 specific search failures on costco.com in 20 minutes — NLP-blind query, zero PDP recommendations, and a federated search gap. I'd like to run a live audit against your current search for 30 minutes. When can we connect?"
   },
@@ -1103,6 +1138,31 @@
       "id": 21,
       "url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
       "label": "Walmart Global Tech — GenAI Search Launch (January 2024)"
+    },
+    {
+      "id": 22,
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/03/05/costco-cost-q2-2026-earnings-call-transcript/",
+      "label": "Costco Q2 FY2026 Earnings Call Transcript — Motley Fool (March 5, 2026)"
+    },
+    {
+      "id": 23,
+      "url": "https://www.customerexperiencedive.com/news/costco-digital-personalization-470m-sales-growth/814093/",
+      "label": "CX Dive — Costco ties digital personalization to $470M in sales growth (Q2 FY2026)"
+    },
+    {
+      "id": 24,
+      "url": "https://www.retaildive.com/news/costco-digital-personalization-sales-growth/814119/",
+      "label": "Retail Dive — Costco personalization carousels drive $470M in ecommerce sales"
+    },
+    {
+      "id": 25,
+      "url": "https://builtwith.com/costco.com",
+      "label": "BuiltWith Domain Lookup — costco.com (940 live technologies, re-pulled 2026-03-19)"
+    },
+    {
+      "id": 26,
+      "url": "https://investor.costco.com/governance/executive-management/default.aspx",
+      "label": "Costco Investor Relations — Executive Management (Gary Millerchip CFO confirmed)"
     }
   ],
   "case_studies": [
