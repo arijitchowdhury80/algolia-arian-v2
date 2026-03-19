@@ -8231,7 +8231,7 @@ function sectionTraffic(D) {
 
           </div>
 
-          ${t.device_share.insight ? `<div style="${T.compact};background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.12);border-radius:6px;padding:8px 10px;font-style:italic;">${escHtml(t.device_share.insight)}</div>` : ''}
+          ${t.device_share.insight ? `<div style="${T.bodySm};background:rgba(0,61,255,0.05);border:1px solid rgba(0,61,255,0.12);border-radius:6px;padding:8px 10px;font-style:italic;">${escHtml(t.device_share.insight)}</div>` : ''}
 
         </div>` : ''}
 
@@ -10115,7 +10115,7 @@ function sectionRevenueAtRisk(D) {
 
     <!-- Assumptions box — full transparency on all inputs -->
 
-    <div style="background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:8px;padding:14px 16px;margin-bottom:20px;${T.compact};line-height:1.7;">
+    <div style="background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:8px;padding:14px 16px;margin-bottom:20px;${T.bodySm};line-height:1.7;">
 
       <span style="font-weight:600;color:var(--amber);">⚠ Model Assumptions — All estimates unless marked verified</span><br>
 
@@ -10315,7 +10315,7 @@ function sectionBusinessCaseHook(D) {
 
                 <div style="${T.labelGray};line-height:1.4;margin-bottom:6px;">✗ ${escHtml(g.found_title)}</div>
 
-                ${cleanEvidence ? `<div style="${T.compactMid};line-height:1.4;">${escHtml(cleanEvidence)}</div>` : ''}
+                ${cleanEvidence ? `<div style="${T.bodySmMid};line-height:1.5;">${escHtml(cleanEvidence)}</div>` : ''}
 
               </td>
 
@@ -10465,7 +10465,7 @@ function sectionCompetitiveSynthesis(D) {
 
                 <td style="padding:14px 16px;vertical-align:top;">
 
-                  <div style="${T.compact};">${escHtml(t.search_stack||'Unknown')}</div>
+                  <div style="${T.bodySm};">${escHtml(t.search_stack||'Unknown')}</div>
 
                 </td>
 
@@ -10477,7 +10477,7 @@ function sectionCompetitiveSynthesis(D) {
 
                 <td style="padding:14px 16px;vertical-align:top;">
 
-                  <div style="${T.compact};">${escHtml(t.strategic_implication||'')}</div>
+                  <div style="${T.bodySm};">${escHtml(t.strategic_implication||'')}</div>
 
                 </td>
 
@@ -11067,7 +11067,7 @@ function sectionOutreachPlan(D) {
 
         <span style="${T.eyebrowSmCol(triggerUrgency[t.urgency]||'var(--mid)')};">⚡ ${escHtml(t.label)}</span>
 
-        <span style="${T.compact};">${escHtml(t.detail)}</span>
+        <span style="${T.bodySm};">${escHtml(t.detail)}</span>
 
       </div>`).join('')}
 
@@ -11091,9 +11091,9 @@ function sectionOutreachPlan(D) {
 
         <div style="${T.title};margin-bottom:2px;">${escHtml(c.name)}</div>
 
-        <div style="${T.bodySmGray12};margin-bottom:8px;">${escHtml(c.title)}</div>
+        <div style="${T.bodySm};margin-bottom:8px;">${escHtml(c.title)</div>
 
-        <div style="${T.compact};line-height:1.4;margin-bottom:8px;">${escHtml(c.angle)}</div>
+        <div style="${T.bodySm};line-height:1.5;margin-bottom:8px;">${escHtml(c.angle)</div>
 
         ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
 
@@ -11137,7 +11137,7 @@ function sectionOutreachPlan(D) {
 
             <span style="${T.eyebrowSm};background:var(--blue-tint);border-radius:3px;padding:1px 6px;color:var(--blue);">${escHtml(t.hook_type||'')}</span>
 
-            <span style="${T.bodySmGray12};flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
+            <span style="${T.bodySm};color:var(--mid);flex:1;text-align:right;font-style:italic;">${escHtml(t.goal||'')}</span>
 
           </div>
 
@@ -11151,7 +11151,7 @@ function sectionOutreachPlan(D) {
 
             <div style="${T.eyebrowSmCol('var(--linkedin)')};margin-bottom:8px;">5 Nurturing Actions</div>
 
-            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;${T.compact};">
+            ${t.actions.map((a,ai)=>`<div style="display:flex;gap:8px;margin-bottom:6px;${T.bodySm};">
 
               <span style="${T.labelCol('var(--linkedin)')};flex-shrink:0;">${ai+1}.</span>
 
@@ -11183,13 +11183,13 @@ function sectionOutreachPlan(D) {
 
               <span style="${T.eyebrowSm};">Email subject: </span>
 
-              <span style="${T.compact};font-style:italic;">"${escHtml(t.email_subject)}"</span>
+              <span style="${T.bodySm};font-style:italic;">"${escHtml(t.email_subject)}"</span>
 
             </div>` : ''}
 
             ${t.email_body ? `
 
-            <div style="background:white;border:1px solid var(--violet-border);border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;${T.compact};line-height:1.6;font-family:inherit;">${escHtml(t.email_body)}</div>` : ''}
+            <div style="background:white;border:1px solid var(--violet-border);border-radius:4px;padding:10px 12px;margin-bottom:10px;white-space:pre-wrap;${T.bodySm};line-height:1.7;font-family:'Sora',sans-serif;">${escHtml(t.email_body)}</div>` : ''}
 
             ${t.video_script ? `
 
@@ -11197,7 +11197,7 @@ function sectionOutreachPlan(D) {
 
               <div style="${T.eyebrowSmCol('var(--violet)')};margin-bottom:6px;">Full Script</div>
 
-              <div style="${T.compact};line-height:1.6;white-space:pre-wrap;font-family:'Sora',sans-serif;">${escHtml(t.video_script)}</div>
+              <div style="${T.bodySm};line-height:1.7;white-space:pre-wrap;font-family:'Sora',sans-serif;">${escHtml(t.video_script)}</div>
 
             </div>` : ''}
 
@@ -11219,7 +11219,7 @@ function sectionOutreachPlan(D) {
 
             </div>` : ''}
 
-            ${t.body ? `<div style="background:white;border:1px solid var(--blue-border);border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.compact};line-height:1.6;font-family:inherit;">${escHtml(t.body)}</div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid var(--blue-border);border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;font-family:'Sora',sans-serif;">${escHtml(t.body)}</div>` : ''}
 
             ${t.asset_label || t.asset ? `<div style="margin-top:8px;${T.bodySmGray12};">📎 Attach: <strong>${escHtml(t.asset_label||t.asset||'')}</strong></div>` : ''}
 
@@ -11233,7 +11233,7 @@ function sectionOutreachPlan(D) {
 
           <div style="background:var(--blue-tint);border:1px solid var(--blue-border);border-radius:6px;padding:12px 14px;">
 
-            <div style="white-space:pre-wrap;${T.compact};line-height:1.6;">${escHtml(t.message)}</div>
+            <div style="white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.message)}</div>
 
             ${t.asset_url ? `<div style="margin-top:8px;"><a href="${t.asset_url}" target="_blank" style="${T.labelBlue};">↗ Case study link</a></div>` : ''}
 
@@ -11255,7 +11255,7 @@ function sectionOutreachPlan(D) {
 
       <div style="${T.eyebrow};margin-bottom:10px;">A/B Test Variants — Touch 1 Opening</div>
 
-      <p style="${T.compactMid};margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
+      <p style="${T.bodySmMid};margin-bottom:14px;">Test across 200+ contacts per variant. Run for minimum 2 weeks. Metric: reply rate. Winner becomes default for this vertical.</p>
 
       <div style="display:grid;grid-template-columns:repeat(${Math.min(variants.length,3)},1fr);gap:14px;">
 
@@ -11271,7 +11271,7 @@ function sectionOutreachPlan(D) {
 
           <div style="${T.labelGray};margin-bottom:6px;">Subject: "${escHtml(v.subject)}"</div>
 
-          <div style="${T.compactMid};margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
+          <div style="${T.bodySmMid};margin-bottom:8px;font-style:italic;">"${escHtml(v.opening)}"</div>
 
           <div style="${T.eyebrowSmCol('var(--green)')};">Benchmark: ${escHtml(v.benchmark_reply_rate||'—')} reply rate</div>
 
@@ -11313,7 +11313,7 @@ function sectionOutreachPlan(D) {
 
               <td style="padding:10px 14px;${T.labelGray};">${escHtml(a.name)}</td>
 
-              <td style="padding:10px 14px;${T.compact};">${escHtml(a.use_at)}</td>
+              <td style="padding:10px 14px;${T.bodySm};">${escHtml(a.use_at)</td>
 
               <td style="padding:10px 14px;">
 
