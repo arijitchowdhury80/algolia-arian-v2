@@ -5224,8 +5224,8 @@ function sectionSources(D) {
 function sectionAppendixScoring(D) {
   const sc = D.score || {};
   return `<section id="appendix-scoring" class="audit-section">
-    <div class="section-eyebrow">Appendix A</div>
-    <div class="section-title">Full Scoring Detail</div>
+    <div class="section-eyebrow">Overview · Score Breakdown</div>
+    <div class="section-title">Score by Dimension</div>
     <div class="card">
       <table class="data-table">
         <thead><tr><th>Dimension</th><th>Score</th><th>Severity</th></tr></thead>
@@ -5933,7 +5933,7 @@ function renderSections(D) {
   const positiveFindings = findings.filter(f => f.severity === 'positive');
 
   /* ── TAB 1: OVERVIEW ─────────────────────────── */
-  const overviewHTML = sectionExecSummary(D);
+  const overviewHTML = [sectionExecSummary(D), sectionAppendixScoring(D)].join('');
 
   /* ── TAB 2: COMPANY INTEL ────────────────────── */
   const intelHTML = [
