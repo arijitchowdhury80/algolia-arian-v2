@@ -2083,7 +2083,7 @@ a:hover {
     "revenue_source_label": "MacroTrends (Costco FY2025 Annual Revenue)",
     "founded": "1983",
     "ticker": "COST (NASDAQ)",
-    "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected)",
+    "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected — Typeahead.js + Bloodhound confirmed by BuiltWith)",
     "ecommerce_platform": "HCL Commerce (IBM WebSphere Commerce)",
     "monthly_visits": "83.4M/mo",
     "visits_source": "https://www.similarweb.com/website/costco.com/",
@@ -2207,10 +2207,11 @@ a:hover {
       "type": "industry-opp",
       "badge_label": "Growth Signal",
       "text": "Costco Q1 FY2026: E-commerce +20.5% YoY. Website traffic +24%. Mobile app traffic +48% YoY. Digitally-enabled sales totaled $27B+ for FY2025.",
-      "source_name": "Costco Q1 FY2026 10-Q",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm",
+      "source_name": "Motley Fool — Q1 FY2026 Earnings Call Transcript",
+      "source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "source_date": "2025-11-23",
-      "relevance": "Rapid digital growth is hitting a search infrastructure that hasn't scaled. A 48% mobile traffic surge demands sub-50ms search — Costco's current system was not tested with NLP queries at scale."
+      "relevance": "Rapid digital growth is hitting a search infrastructure that hasn't scaled. A 48% mobile traffic surge demands sub-50ms search — Costco's current system was not tested with NLP queries at scale.",
+      "_verified": "CONFIRMED via Motley Fool transcript 2026-03-18"
     },
     {
       "type": "competitor",
@@ -2225,8 +2226,8 @@ a:hover {
       "type": "funding",
       "badge_label": "Capital Deployment",
       "text": "$6.5 billion announced for warehouse expansion, depot network, and digital infrastructure. 35 new warehouses planned by end 2026, up from 27 in 2025. Business Centers accelerating (20+ locations targeting SMB).",
-      "source_name": "Men's Journal / The Street",
-      "source_url": "https://www.mensjournal.com/shopping/is-a-new-costco-coming-to-your-area-company-investing-6-5-billion-as-part-of-expansion-plan-with-28-new-warehouses",
+      "source_name": "DBBnwa — Costco 35 New Warehouses FY2026",
+      "source_url": "https://www.dbbnwa.com/articles/costco-to-open-35-new-warehouses-by-august-2026/",
       "source_date": "2025-10-01",
       "relevance": "Active CapEx cycle = open budget. More warehouses = more SKUs = greater need for unified product discovery. Business Center expansion creates immediate federated search use case."
     },
@@ -2277,17 +2278,20 @@ a:hover {
       "traffic_source": "https://www.semrush.com/website/bjs.com/overview/",
       "bounce_rate": "46.73%",
       "uses_algolia": false,
-      "notes": "CEO: 'AI is a big part of our future.' Fastest growing warehouse club (+5% YoY). Potential Algolia prospect."
+      "notes": "CEO: 'AI is a big part of our future.' Fastest growing warehouse club (+5% YoY). Potential Algolia prospect. CEO Bob Eddy: \"AI is a big part of our future\" (Retail Dive / CIO Dive, 2025).",
+      "ai_quote_source": "https://www.retaildive.com/news/bjs-ceo-ai-future/806688/",
+      "ai_quote_speaker": "Bob Eddy, CEO & Chairman, BJ's Wholesale Club"
     },
     {
       "name": "Walmart",
       "domain": "walmart.com",
-      "search_vendor": "Elasticsearch [FACT]",
+      "search_vendor": "Elasticsearch [CONFIRMED for analytics/fraud — Elastic{ON} 2017 Walmart talk + Walmart Global Tech Blog. Site search application probable but not explicitly confirmed.]",
       "monthly_traffic": "648.3M",
       "traffic_source": "https://www.similarweb.com/website/walmart.com/",
       "bounce_rate": "50.31%",
       "uses_algolia": false,
-      "notes": "Despite 5× Costco's traffic, Walmart's 50.31% bounce rate shows Elasticsearch isn't winning on engagement. Stock +25.3% in 2025 vs Costco -4%."
+      "notes": "Despite 5× Costco's traffic, Walmart's 50.31% bounce rate shows Elasticsearch isn't winning on engagement. Stock +25.3% in 2025 vs Costco -4%.",
+      "search_vendor_source": "https://www.elastic.co/elasticon/conf/2017/sf/near-real-time-retail-analytics-walmart"
     },
     {
       "name": "Target",
@@ -2470,7 +2474,7 @@ a:hover {
   ],
   "gap_pairs": [
     {
-      "exec_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop. — Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025",
+      "exec_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop. — Ron Vachris, President & CEO, Q1 FY2026 Earnings Call, December 11, 2025. Source: https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "finding_id": "G01",
       "audit_finding": "Empty state shows nothing: 81.4M members click the search box and receive zero discovery guidance — no popular queries, no trending items, no personalized history. The opposite of 'easier, faster, and more personal.'",
       "algolia_product": "Algolia Query Suggestions + Popular Searches",
@@ -2603,9 +2607,9 @@ a:hover {
   "tech_stack": {
     "search": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith). No Algolia, Elasticsearch, Coveo, or Lucidworks detected.",
     "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
-    "personalization": "GrowthLoop AI (2026 launch) + Tealium AudienceStream CDP (active)",
+    "personalization": "GrowthLoop AI (confirmed — PRNewswire partnership announcement, August 2025). Tealium AudienceStream: UNCONFIRMED (see cdp note).",
     "recommendations": "Unknown — RichRelevance absent; new personalization capabilities launched Q1 FY2026",
-    "cdp": "Tealium iQ + AudienceStream + EventStream (confirmed — 1,300+ integrations)",
+    "cdp": "Segment (confirmed — BuiltWith live API 2026-03-18). Tealium: cited in Phase 1 scratchpad but source was Tealium ABM sales page (not a case study). BuiltWith also did not detect Tealium. Tealium presence is UNCONFIRMED — do not present as fact to prospects.",
     "cloud": "Google Cloud Platform (primary) + Microsoft Azure (multi-cloud)",
     "retail_media": "Criteo (ad server) + The Trade Desk + Google DV360 + Epsilon + StackAdapt",
     "measurement": "Habu (clean room), MetaRouter + LiveRamp (identity resolution)",
@@ -2655,7 +2659,9 @@ a:hover {
         "signal": "hot",
         "message": "Former Target Chief Architect (built custom Solr search) + Best Buy AWS platform builder. Knows first-hand what custom search costs. Now owns Costco's omnichannel technology. Primary technical decision-maker for search infrastructure.",
         "job_url": "https://www.linkedin.com/in/joelcrabb/",
-        "salary_range": "N/A"
+        "salary_range": "N/A",
+        "source_verified": "https://joelcrabb.com/sample-page/",
+        "career_note": "Confirmed: VP Architecture & Chief Architect at Target (2016-2022). Rebuilt BestBuy.com in AWS at Best Buy (2010-2016). Source: joelcrabb.com + Crunchbase"
       },
       {
         "role": "Technical Buyer",
@@ -2917,8 +2923,8 @@ a:hover {
     },
     {
       "id": 5,
-      "url": "https://www.cfodive.com/news/costcos-ai-tech-use-partly-offsets-healthcare-costs-cfo/807837/",
-      "label": "CFO Dive — Millerchip Q1 FY2026 Earnings Coverage"
+      "url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "label": "Costco Q1 FY2026 Earnings Call Transcript — Motley Fool (Dec 11, 2025)"
     },
     {
       "id": 6,
@@ -2994,6 +3000,11 @@ a:hover {
       "id": 20,
       "url": "https://investor.costco.com/events-and-presentations/events/event-details/2025/Q1-2026-Earnings-Call/default.aspx",
       "label": "Costco Q1 FY2026 Earnings Call — IR Events Page"
+    },
+    {
+      "id": 21,
+      "url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
+      "label": "Costco Q1 FY2026 Earnings Call Transcript — Motley Fool (Dec 11, 2025)"
     }
   ]
 };</script>
