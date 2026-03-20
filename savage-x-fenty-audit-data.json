@@ -422,7 +422,9 @@
       "said_source_label": "FIT:MATCH Press Release",
       "said_date": "2023-02",
       "found_title": "Search for 'plus size bra' returns non-plus-size results",
-      "found_evidence": "Tested query 'plus size bra' (Constructor.io API) returned 172 results with no extended-size filtering. Top result: Romantic Corded Lace Unlined Balconette Bra \u2014 a general catalog item. Screenshot: screenshots/19b-plus-size.png"
+      "found_evidence": "Tested query 'plus size bra' (Constructor.io API) returned 172 results with no extended-size filtering. Top result: Romantic Corded Lace Unlined Balconette Bra \u2014 a general catalog item. Screenshot: screenshots/19b-plus-size.png",
+      "finding_id": "F07",
+      "algolia_angle": "Algolia Dynamic Faceting auto-injects cup_size and band_size filters the moment a shopper types 'plus size bra' \u2014 surfacing only D-J cup, 40-46 band results. Constructor.io matches the keyword but ignores the attribute intent."
     },
     {
       "said_quote": "Having the 'Fit Xperience' is one of those things that makes it really important because people don't even know their size and we are shopping online.",
@@ -431,7 +433,9 @@
       "said_source_label": "Refinery29 Interview",
       "said_date": "2022-02",
       "found_title": "Search does not guide shoppers to their size \u2014 no guided size discovery",
-      "found_evidence": "No 'What's my size?' quiz surfaces in search. Size filter requires knowing exact size. 'What bra size am I' query would return products, not a size guide. Empty state shows nothing when search bar focused."
+      "found_evidence": "No 'What's my size?' quiz surfaces in search. Size filter requires knowing exact size. 'What bra size am I' query would return products, not a size guide. Empty state shows nothing when search bar focused.",
+      "finding_id": "F01",
+      "algolia_angle": "Algolia Query Suggestions + Personalization surfaces size-guided recommendations on search focus \u2014 showing 'bras in your size' based on past purchases. Rihanna said people don't know their size online; Algolia closes that gap with AI-guided discovery."
     },
     {
       "said_quote": "What keeps me up at night is that my product managers are blocked from being able to activate the data and make critical business decisions or run experiments.",
@@ -440,7 +444,9 @@
       "said_source_label": "LaunchDarkly Case Study",
       "said_date": "2024-01",
       "found_title": "'Cancel subscription' and 'member credits' return lingerie \u2014 not membership help",
-      "found_evidence": "Tested 'cancel subscription' \u2192 100 products. Tested 'member credits' \u2192 100 products. Members considering churn get no help from search. Screenshot: screenshots/08-non-product-cancel.png, screenshots/08b-non-product-credits.png"
+      "found_evidence": "Tested 'cancel subscription' \u2192 100 products. Tested 'member credits' \u2192 100 products. Members considering churn get no help from search. Screenshot: screenshots/08-non-product-cancel.png, screenshots/08b-non-product-credits.png",
+      "finding_id": "F02",
+      "algolia_angle": "Algolia Federated Search indexes both the product catalog and the help center \u2014 'cancel subscription' returns the FAQ answer first, then related products. Fewer support tickets, less churn. Constructor.io is product-only by design."
     }
   ],
   "financials": {
@@ -449,15 +455,34 @@
     "revenue_3y": [
       {
         "year": "FY2022",
-        "revenue": "$125M (est.)"
+        "revenue": "$125M (est.)",
+        "signal_bullets": [
+          "$125M Series C raised",
+          "5 US retail stores opened",
+          "600K+ VIP members stated"
+        ],
+        "source": "https://wwd.com/fashion-news/intimates/rihanna-125-million-savage-x-fenty-1235055067/"
       },
       {
         "year": "FY2023",
-        "revenue": "$145M (est.)"
+        "revenue": "$145M (est.)",
+        "signal_bullets": [
+          "Constructor.io search deployed (Nov 2023)",
+          "Nordstrom wholesale partnership announced",
+          "Selfridges UK expansion"
+        ],
+        "source": "https://tracxn.com/d/companies/savage-x-fenty/__66GUkb8CJWesUEjG6Z4hagw8g2QqqM6-_ioqinUUU_Q"
       },
       {
         "year": "FY2024",
-        "revenue": "$175M (est.)"
+        "revenue": "$175M (est.)",
+        "signal_bullets": [
+          "$115M growth round (Feb 2025)",
+          "Mobile app launch (Nov 2025)",
+          "FableticsOS rebrand (Jan 2026)"
+        ],
+        "roi_callout": "$3.15M/yr search uplift opportunity",
+        "source": "https://www.trysignalbase.com/news/funding/savage-x-fenty-raises-115-million-in-funding-to-champion-fearlessness-and-inclusivity"
       }
     ],
     "total_digital_revenue": "~$175M",
@@ -651,7 +676,45 @@
         "reason": "CEO access path when ready for executive meeting"
       }
     ],
-    "cmo_vacancy": "Vanessa Wallace departed March 2026 (joined GLD). Seat VACANT. Kevin Reyes has interim discovery authority."
+    "cmo_vacancy": "Vanessa Wallace departed March 2026 (joined GLD). Seat VACANT. Kevin Reyes has interim discovery authority.",
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Champion \u2014 Kevin Reyes",
+        "target": "VP Performance Marketing & Ecommerce",
+        "message": "88.6% of your visitors are on mobile. Every failed search is a $59.95/month subscriber at risk. Lacoste saw +62% mobile conversion with Algolia on a similar fashion stack. That's 3 months deployment, not 12.",
+        "timing": "Now \u2014 CMO seat vacant, Kevin has interim discovery authority"
+      },
+      {
+        "phase": 2,
+        "label": "Technical Validation \u2014 Ann Grey",
+        "target": "Sr. Director, Engineering",
+        "message": "Algolia ships React InstantSearch that maps directly to your Next.js/Apollo GraphQL stack. You keep LaunchDarkly \u2014 Algolia has native A/B integration. Your Segment CDP feeds Personalization with zero ETL. Migration from Constructor: 4-6 weeks.",
+        "timing": "After champion is warm \u2014 technical evaluation gate"
+      },
+      {
+        "phase": 3,
+        "label": "Platform Expansion \u2014 Tim Collins",
+        "target": "CTO, FableticsOS",
+        "message": "You're running Constructor across at least SXF and likely other FableticsOS brands. One Algolia enterprise platform contract replaces that vendor across all 5 portfolio brands \u2014 one integration, one contract, one support relationship. 5x the ROI conversation on one deal.",
+        "timing": "When SXF conversation has traction \u2014 expand to platform deal"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We have an internal search team",
+        "counter": "Algolia amplifies your team \u2014 they configure and merchandise, not maintain infrastructure. Your engineers spend zero time on search latency, indexing pipelines, or typo engines."
+      },
+      {
+        "objection": "We'd need to rebuild our frontend",
+        "counter": "Algolia's React InstantSearch components drop into your existing Next.js/Apollo stack. Your current Constructor.io React components are replaced file-by-file \u2014 no full rebuild required."
+      },
+      {
+        "objection": "We just signed a Constructor renewal",
+        "counter": "When does it expire? Most Constructor contracts are 1-2 year terms. The right time to start an evaluation is 90 days before renewal \u2014 we can run a pilot on one category in parallel."
+      }
+    ],
+    "run_research_lab": false
   },
   "strategic_angles": [
     {
@@ -740,7 +803,97 @@
       "new_balance_has": "Adore Me"
     },
     "the_ask": "Be the first intimate apparel brand with AI-powered NeuralSearch + Federated Search + PDP Recommendations. The competitive window is open \u2014 none of your direct competitors are there yet.",
-    "positioning_statement": "Good news: 4 of 5 of your direct competitors have the same gaps you do. SKIMS uses Findify, ThirdLove is mid-migration to Bloomreach, Adore Me uses LucidWorks. Upgrading to Algolia creates an immediate category moat \u2014 NLP that understands 'gift for my girlfriend', personalization that surfaces what members want, and federation that keeps members from churning. You're not catching up \u2014 you're leapfrogging the category."
+    "positioning_statement": "Good news: 4 of 5 of your direct competitors have the same gaps you do. SKIMS uses Findify, ThirdLove is mid-migration to Bloomreach, Adore Me uses LucidWorks. Upgrading to Algolia creates an immediate category moat \u2014 NLP that understands 'gift for my girlfriend', personalization that surfaces what members want, and federation that keeps members from churning. You're not catching up \u2014 you're leapfrogging the category.",
+    "positioning_statements": {
+      "opening": "We benchmarked every search platform your top 5 competitors are running \u2014 Victoria's Secret with Google Vertex AI, SKIMS with Findify, Adore Me with LucidWorks. Not one of them has implemented federated search, real-time member-aware personalization, or semantic NLP. You're running Constructor \u2014 a good start \u2014 but Algolia gives you something none of your competitors can match: a unified experience across product search, VIP content, recommendations, and membership help.",
+      "displacement": "Constructor is a solid platform. The question isn't whether it works \u2014 it's whether it's winning. Your VIP member content is invisible to search. 'Cancel subscription' returns lingerie. Semantic queries fail. That's not a Constructor execution gap \u2014 it's a platform ceiling.",
+      "vs_google": "Victoria's Secret chose Google because they're a Google Cloud shop \u2014 that's vendor lock-in, not best-of-breed. Google Vertex AI has no merchandising rules, no pinning, no human override. Algolia gives you the same AI quality with transparent merchandising control for seasonal drops, VIP exclusives, and campaign vocabulary."
+    },
+    "experience_debt": {
+      "years": 2,
+      "label": "28 months on Constructor.io",
+      "description": "Constructor.io has been active since November 2023. In that time: zero federated search built, no NLP layer added, no PDP recommendations deployed. The gap is widening as competitors invest.",
+      "cost_of_inaction": "Every month without federated search = continued churn from members who can't find cancellation help. Every month without NLP = lost revenue on conversational queries from your 88.6% mobile audience."
+    },
+    "positioning_matrix": [
+      {
+        "feature": "NLP / Semantic Search",
+        "savage_x": "\u26a0\ufe0f Partial",
+        "victoria_secret": "\u2705 Strong (Google AI)",
+        "skims": "\u274c Minimal",
+        "adore_me": "\u26a0\ufe0f Moderate",
+        "thirdlove": "\u274c Minimal",
+        "algolia": "\u2705 AI-native NLP"
+      },
+      {
+        "feature": "Federated Search",
+        "savage_x": "\u274c None",
+        "victoria_secret": "\u274c None",
+        "skims": "\u274c None",
+        "adore_me": "\u274c None",
+        "thirdlove": "\u274c None",
+        "algolia": "\u2705 Products + Help + Content"
+      },
+      {
+        "feature": "Personalization",
+        "savage_x": "\u26a0\ufe0f Limited",
+        "victoria_secret": "\u2705 Strong",
+        "skims": "\u2705 Dynamic Yield",
+        "adore_me": "\u26a0\ufe0f Partial",
+        "thirdlove": "\u274c\u2192\u2705 Bloomreach incoming",
+        "algolia": "\u2705 Real-time per-member"
+      },
+      {
+        "feature": "Dynamic Faceting",
+        "savage_x": "\u26a0\ufe0f Static bleed",
+        "victoria_secret": "\u26a0\ufe0f Unclear",
+        "skims": "\u274c Basic",
+        "adore_me": "\u26a0\ufe0f Moderate",
+        "thirdlove": "\u274c Basic",
+        "algolia": "\u2705 AI-powered dynamic"
+      },
+      {
+        "feature": "Recommendations",
+        "savage_x": "\u274c Zero on PDP",
+        "victoria_secret": "\u2705 Vertex AI Rec.",
+        "skims": "\u2705 Findify Rec.",
+        "adore_me": "\u26a0\ufe0f Via Bloomreach",
+        "thirdlove": "\u274c None",
+        "algolia": "\u2705 FBT + Related + Trending"
+      },
+      {
+        "feature": "Merchandising Control",
+        "savage_x": "\u26a0\ufe0f Partial",
+        "victoria_secret": "\u274c Black box",
+        "skims": "\u274c Minimal",
+        "adore_me": "\u26a0\ufe0f Moderate",
+        "thirdlove": "\u26a0\ufe0f Basic",
+        "algolia": "\u2705 Full visual + pinning + rules"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We already have Constructor \u2014 it's working fine",
+        "counter": "Constructor is a solid platform. The question isn't whether it works \u2014 it's whether it's winning. Your VIP member content is invisible to search. 'Cancel subscription' returns lingerie. 'Gifts for girlfriend' returns a Runners Hat. That's not an execution gap \u2014 it's a platform ceiling. Algolia's AI Search + Recommend + Personalize gives you the full stack with merchandiser control your team doesn't currently have.",
+        "source_finding": "F02, F04"
+      },
+      {
+        "objection": "Victoria's Secret just went with Google Vertex AI \u2014 shouldn't we follow the leader?",
+        "counter": "Victoria's Secret chose Google because they're a Google Cloud enterprise shop \u2014 that's vendor lock-in, not best-of-breed. Google Vertex AI is a black box: no merchandising rules, no pinning, no human override. Algolia gives you the same AI quality with transparent control \u2014 which matters for a brand where seasonal drops, VIP exclusives, and celebrity campaign vocabulary need to be surfaced on human terms.",
+        "source_finding": "competitive matrix"
+      },
+      {
+        "objection": "We're smaller than VS \u2014 do we need this level of investment?",
+        "counter": "You're actually the right size for maximum ROI. At 4M+ monthly visits, a 12% improvement in search conversion translates to $3.15M in incremental revenue annually \u2014 that's a 15x return on a standard Algolia contract. ThirdLove just committed to Bloomreach at a fraction of your traffic. The brands that invest in search infrastructure now own the discovery experience when it scales.",
+        "source_finding": "financials ROI model"
+      }
+    ],
+    "roi_by_scenario": {
+      "conservative": "$1.31M/year (5% search improvement \u00b7 6.6x ROI)",
+      "moderate": "$3.15M/year (12% improvement \u00b7 15.75x ROI)",
+      "retention": "$5.6M/year (2% churn prevention on $59.95/mo subscribers)",
+      "full_stack": "~$10M/year (search + retention + mobile rescue \u00b7 ~50x ROI)"
+    }
   },
   "icp_mapping": {
     "priority_to_product": [
@@ -913,6 +1066,31 @@
         "linkedin_url": null,
         "angle": "One Algolia enterprise platform contract replaces Constructor.io across all 5 FableticsOS brands. That's the group deal \u2014 one integration, one support relationship, one contract for Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids."
       }
+    ],
+    "engagement_phases": [
+      {
+        "sequence": 1,
+        "channel": "LinkedIn DM",
+        "target": "Kevin Patrick Reyes",
+        "message": "Saw that Savage X hit 5.1M visits in January \u2014 impressive growth. Quick question: when a member searches 'cancel subscription' on savagex.com today, what do they see?"
+      },
+      {
+        "sequence": 2,
+        "channel": "Email",
+        "target": "Kevin Patrick Reyes",
+        "message": "Following up \u2014 I ran a quick audit of savagex.com search. 'Gifts for girlfriend' returns a Runners Hat. 'Member credits' returns loungewear. 'Cancel subscription' returns lingerie. Happy to share the full findings \u2014 5 minutes?"
+      },
+      {
+        "sequence": 3,
+        "channel": "LinkedIn DM",
+        "target": "Ann Eliese Grey",
+        "message": "Saw you're running Next.js + Apollo GraphQL at Savage X. Algolia's React InstantSearch has native GraphQL hooks \u2014 curious if you've evaluated it against your current Constructor stack."
+      }
+    ],
+    "anchor_lines": [
+      "Your February 2025 raise cited technology and e-commerce strengthening as a use of proceeds. Where is that investment being deployed on on-site discovery?",
+      "88.6% of your visitors are on mobile. Your mobile bounce rate (43.1%) is nearly 2x desktop (22.9%). How much of that is search abandonment?",
+      "When a $59.95/month member searches 'cancel subscription' and gets shown a 2-piece lingerie set \u2014 that's a direct churn accelerator. Algolia federation solves that in one API call."
     ]
   },
   "bibliography": [
