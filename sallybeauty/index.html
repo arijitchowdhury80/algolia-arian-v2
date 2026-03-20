@@ -5185,33 +5185,58 @@ a:hover {
         "insight": "Early AI investment signal — posted May 2025, shows nascent AI capability building"
       }
     ],
-    "buying_committee": {
-      "champion": {
+    "buying_committee": [
+      {
         "name": "Chris Hansen",
         "title": "VP, Digital Product",
-        "source": "https://www.linkedin.com/in/chris-hansen-2809403/"
+        "role": "Champion",
+        "signal": "hot",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
-      "technical_buyer": {
+      {
         "name": "Scott Lindblom",
         "title": "SVP & CIO",
-        "source": "https://www.linkedin.com/in/scott-lindblom/"
+        "role": "Technical Buyer",
+        "signal": "hot",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
-      "economic_buyer": {
+      {
         "name": "Natalie Lockhart",
         "title": "GVP, Strategy, Customer Insights & Digital Experience",
-        "source": ""
+        "role": "Economic Buyer",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
-      "executive_sponsor": {
+      {
         "name": "Denise Paulonis",
         "title": "President & CEO",
-        "source": "https://www.linkedin.com/in/denisepaulonis/"
+        "role": "Executive Sponsor",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
-      "budget_authority": {
+      {
         "name": "Marlo Cormier",
         "title": "SVP & CFO",
-        "source": "https://www.linkedin.com/in/marlo-cormier-cpa-bb706360/"
+        "role": "Budget Authority",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       }
-    },
+    ],
     "source_url": "https://www.sallybeauty.com/careers/",
     "engagement_phases": [
       {
@@ -5669,7 +5694,9 @@ a:hover {
         "linkedin": "https://www.linkedin.com/in/chris-hansen-2809403/",
         "buyer_role": "Champion",
         "why": "Most active on LinkedIn, speaks at CommerceNext, actively promoting digital team roles. Ideal first conversation for product-level search discussion.",
-        "source": "https://commercenext.com/speaker/chris-hansen/"
+        "source": "https://commercenext.com/speaker/chris-hansen/",
+        "tier": 1,
+        "role": ""
       },
       {
         "id": "lindblom",
@@ -5678,7 +5705,9 @@ a:hover {
         "linkedin": "https://www.linkedin.com/in/scott-lindblom/",
         "buyer_role": "Technical Buyer",
         "why": "Joined Oct 2023 from Bed Bath & Beyond digital transformation — past learning curve, ready to make technology decisions. Cloud-first mindset (confirmed via CTO Joe Condomina quotes). Owns SFCC platform decision.",
-        "source": "https://www.sallybeautyholdings.com/investor-relations/corporate-governance/management"
+        "source": "https://www.sallybeautyholdings.com/investor-relations/corporate-governance/management",
+        "tier": 2,
+        "role": ""
       },
       {
         "id": "lockhart",
@@ -5687,7 +5716,9 @@ a:hover {
         "linkedin": "",
         "buyer_role": "Economic Buyer",
         "why": "Owns digital strategy budget and customer insights. Strategy + Digital Experience consolidated under her role — she controls the investment decision. ROI and business case framing is essential for this contact.",
-        "source": "https://www.sallybeautyholdings.com/investor-relations/corporate-governance/management"
+        "source": "https://www.sallybeautyholdings.com/investor-relations/corporate-governance/management",
+        "tier": 2,
+        "role": ""
       }
     ],
     "touches": [
@@ -5698,7 +5729,9 @@ a:hover {
         "target": "hansen",
         "subject": "Connecting — Sally Ignited + AI search",
         "body": "Hi Chris — I've been following Sally Ignited closely. You're calling out AI transformation, enhanced personalization, and a seamless customer journey as the three pillars. What's interesting is that site search sits at the intersection of all three — and right now sallybeauty.com is running native SFCC Einstein Search, which doesn't do natural language or semantic understanding. Sephora moved to Constructor.io. I'd love to connect and share what I found.",
-        "cta": "LinkedIn connection request"
+        "cta": "LinkedIn connection request",
+        "hook_type": "Insight",
+        "goal": "Drive response"
       },
       {
         "touch": 2,
@@ -5707,7 +5740,9 @@ a:hover {
         "target": "hansen",
         "subject": "What Sally customers search for — and what they get back",
         "body": "Chris — I ran a quick audit of Sally's search experience. When a customer types 'best purple shampoo for blonde hair,' the current search returns generic keyword matches. Words like 'blonde' and 'best' are ignored — there's no NLP or semantic understanding. Your CEO said it perfectly: 'Help me make the right choice.' That's exactly what NeuralSearch solves — it reads intent, not just tokens. I have a 15-minute demo ready using Sally's own product catalog. Want to see the before/after?",
-        "cta": "Book 15-minute NeuralSearch demo via Calendly or LinkedIn reply"
+        "cta": "Book 15-minute NeuralSearch demo via Calendly or LinkedIn reply",
+        "hook_type": "Case Study",
+        "goal": "Drive response"
       },
       {
         "touch": 3,
@@ -5716,7 +5751,9 @@ a:hover {
         "target": "hansen",
         "subject": "Sally Beauty search audit — sharing the full findings",
         "body": "Hi Chris,\n\nFollowing up on LinkedIn — I put together a complete search audit of sallybeauty.com. The score came in at 4.6/10, with five HIGH-severity gaps:\n\n1. Zero NLP (3/10) — 'best purple shampoo for blonde hair' returns keyword matches only\n2. No federated search (4/10) — 'return policy' returns products, not help content\n3. No personalization at search layer (4/10) — a licensed colorist and a DIY shopper see identical results\n4. Weak recommendations on PDP (4/10) — no 'Frequently Bought Together' for color kits\n5. Static filters only (5/10) — same facets for 'flat iron' and 'shampoo'\n\nThe good news: Algolia has a native SFCC cartridge. This is not a re-platform — it layers on top of your existing Salesforce stack.\n\nDecathlon Singapore went from 5% no-result rate to 1.8% and saw +50% CVR with Algolia Personalization. Lacoste saw +37% CVR. I can send the full report if useful.\n\nBest,\n[AE Name]\nAlgolia | Enterprise Account Executive",
-        "cta": "Reply to receive the full audit report PDF"
+        "cta": "Reply to receive the full audit report PDF",
+        "hook_type": "Pain Point",
+        "goal": "Drive response"
       },
       {
         "touch": 4,
@@ -5725,7 +5762,9 @@ a:hover {
         "target": "lindblom",
         "subject": "SFCC + Algolia — plug-and-play, not rip-and-replace",
         "body": "Hi Scott — I know Sally is deep into SFCC and the Sally Ignited platform work. I wanted to share one technical note: Algolia has a native SFCC B2C Commerce cartridge — it drops in alongside your existing Salesforce stack without a re-platform. The BSG overhaul in Spring 2026 is the natural window to include search before the stack is locked. Happy to walk through the architecture if useful.",
-        "cta": "Architecture overview call (30 minutes)"
+        "cta": "Architecture overview call (30 minutes)",
+        "hook_type": "Social Proof",
+        "goal": "Drive response"
       },
       {
         "touch": 5,
@@ -5734,7 +5773,9 @@ a:hover {
         "target": "hansen",
         "subject": "BSG federated search: products + CosmoProf education in one search",
         "body": "Chris — one thing stood out in the BSG platform update context. When a licensed pro searches 'balayage' on BSG, they should see products AND CosmoProf Institute education content in the same results. Right now those are two completely siloed experiences. Algolia Multi-Index Federated Search makes this a single API call — no custom engineering. With CosmoProf Institute expanding online, this is a unique differentiator no other beauty retailer has built yet. Is this on the BSG scope?",
-        "cta": "Federated search architecture discussion"
+        "cta": "Federated search architecture discussion",
+        "hook_type": "ROI",
+        "goal": "Drive response"
       },
       {
         "touch": 6,
@@ -5743,7 +5784,9 @@ a:hover {
         "target": "lockhart",
         "subject": "Search ROI for Sally Beauty — $5.47M annual estimate",
         "body": "Hi Natalie,\n\nI'm reaching out because you own Sally's digital experience strategy, and I wanted to share a specific business case I've built.\n\nBased on Sally's FY2024 e-commerce revenue ($364.6M) and industry benchmarks, I estimate search optimization could generate $5.47M/year at a 10% conversion lift — or $2.74M at the conservative 5% scenario. The addressable base is the ~$54.7M in e-commerce revenue that flows through search queries.\n\nFor context:\n- Lacoste: +37% CVR after Algolia NeuralSearch\n- Decathlon Singapore: +50% CVR with Algolia Personalization\n- Gymshark: +150% new user order rate from Algolia Recommend\n\nSally is running native SFCC Einstein Search — no NLP, no semantic understanding, no real-time personalization at the search layer. Sephora uses Constructor.io. Ulta uses nothing AI-powered. Sally has a first-mover window to become the AI search reference in professional beauty — and Algolia has a native SFCC cartridge so there's no re-platform required.\n\nI'm happy to send the full audit report. Would a 30-minute ROI walkthrough with your team be worth exploring?\n\nBest,\n[AE Name]\nAlgolia | Enterprise Account Executive",
-        "cta": "30-minute ROI walkthrough with digital experience team"
+        "cta": "30-minute ROI walkthrough with digital experience team",
+        "hook_type": "Urgency",
+        "goal": "Drive response"
       },
       {
         "touch": 7,
@@ -5752,7 +5795,9 @@ a:hover {
         "target": "lindblom",
         "subject": "Sally search before/after — 2-minute demo clip",
         "body": "Scott — I put together a 2-minute screen recording showing Sally's search today vs. Algolia NeuralSearch on the same queries. Query: 'natural hair color treatment for damaged hair.' Current SFCC Einstein returns generic keyword matches. Algolia NeuralSearch surfaces semantically relevant results ranked by intent. No integration required to see it — it's a live API call on your catalog. Want me to send the recording?",
-        "cta": "Request 2-minute demo recording"
+        "cta": "Request 2-minute demo recording",
+        "hook_type": "POC Ask",
+        "goal": "Drive response"
       },
       {
         "touch": 8,
@@ -5761,7 +5806,9 @@ a:hover {
         "target": "hansen",
         "subject": "Closing the loop — audit is yours regardless",
         "body": "Chris — I've shared four specific observations about Sally's search experience over the past three weeks. If the BSG platform decisions are locked and search isn't in scope, I completely understand — timing matters. If search is still open for discussion, there's a 20-minute live demo ready. Either way, the full audit report is yours — no strings. Just reply and I'll send it over.",
-        "cta": "Request full audit report PDF or book final demo"
+        "cta": "Request full audit report PDF or book final demo",
+        "hook_type": "Follow-up",
+        "goal": "Drive response"
       }
     ]
   }

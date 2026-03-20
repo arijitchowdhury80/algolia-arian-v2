@@ -715,6 +715,21 @@
       "display_ads": 0.9,
       "_source": "SimilarWeb API live, coach.com, Nov 2025 (total web source)",
       "_source_url": "https://www.similarweb.com/website/coach.com/"
+    },
+    "audience": {
+      "age": {
+        "25-34": 32,
+        "35-44": 19,
+        "18-24": 15,
+        "45-54": 16,
+        "55-64": 11,
+        "65+": 6
+      },
+      "gender": {
+        "male": 35,
+        "female": 65
+      },
+      "source": "SimilarWeb demographics API"
     }
   },
   "tech_stack": {
@@ -787,52 +802,100 @@
       {
         "name": "Yang Lu",
         "title": "Chief Information & Digital Officer",
-        "role_in_deal": "Economic Buyer",
-        "talk_track": "Enterprise partnership \u2014 AI/ML value prop, Data Fabric integration, omnichannel search architecture",
-        "source_url": "https://www.retailtechinsights.com/cxo-awards/top-10-retail-cios-2025/yang-lu/"
+        "role": "Economic Buyer",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
       {
         "name": "Mandeep Bhatia",
         "title": "SVP Global Digital Product & Omnichannel Innovation",
-        "role_in_deal": "Technical Buyer",
-        "talk_track": "Site experience, conversion optimization, NRF/Shoptalk peer network",
-        "source_url": "https://nrfbigshow.nrf.com/speaker/mandeep-bhatia"
+        "role": "Technical Buyer",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
       {
         "name": "Fabio Luzzi",
         "title": "Chief Data & Analytics Officer",
-        "role_in_deal": "Technical Buyer",
-        "talk_track": "Search analytics feeding Data Fabric, ML model signals, first-party behavioral data",
-        "source_url": "https://www.cdomagazine.tech/leadership-moves/tapestry-elevates-fabio-luzzi-to-chief-data-analytics-officer"
+        "role": "Technical Buyer",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
       {
         "name": "Noam Paransky",
         "title": "Chief Omni and Innovation Officer",
-        "role_in_deal": "Executive Sponsor",
-        "talk_track": "Omni-channel search consistency, no-code merchandising aligning with Amperity investment",
-        "source_url": "https://www.crunchbase.com/person/noam-paransky"
+        "role": "Executive Sponsor",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
       {
         "name": "Madison Hajeb",
         "title": "Sr. Director, Testing & Innovation",
-        "role_in_deal": "User Buyer / Champion",
-        "talk_track": "A/B testing search variants, Optimizely integration, experimentation velocity",
-        "source_url": "https://www.optimizely.com/insights/tapestry/"
+        "role": "User Buyer / Champion",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       },
       {
         "name": "VP, eCommerce Kate Spade (OPEN ROLE)",
         "title": "VP, eCommerce",
-        "role_in_deal": "Champion (incoming)",
-        "talk_track": "New hire window \u2014 engage within 90 days of role being filled",
-        "source_url": "https://careers.tapestry.com/katespade/job/New-York-VP,-eCommerce-NY-10001/1218157100/"
+        "role": "Champion (incoming)",
+        "signal": "warm",
+        "status": "",
+        "message": "",
+        "job_url": "",
+        "linkedin_url": ""
       }
     ],
     "engagement_phases": [
-      "Phase 1: Engage Yang Lu (CIO) via NRF network \u2014 AI innovation angle",
-      "Phase 2: Demo to Mandeep Bhatia (SVP Digital Product) \u2014 conversion and UX metrics",
-      "Phase 3: Fabio Luzzi (CDAO) deep-dive \u2014 Data Fabric integration and search analytics feed",
-      "Phase 4: Madison Hajeb (Testing) \u2014 Algolia A/B testing framework demo",
-      "Phase 5: POC on coach.com or Kate Spade \u2014 non-core catalog section first"
+      {
+        "phase": 1,
+        "label": "Engage Yang Lu (CIO) via NRF network",
+        "target": "AI innovation angle",
+        "message": "Phase 1: Engage Yang Lu (CIO) via NRF network \u2014 AI innovation angle",
+        "timing": "Week 1-3"
+      },
+      {
+        "phase": 2,
+        "label": "Demo to Mandeep Bhatia (SVP Digital Product)",
+        "target": "conversion and UX metrics",
+        "message": "Phase 2: Demo to Mandeep Bhatia (SVP Digital Product) \u2014 conversion and UX metrics",
+        "timing": "Week 3-5"
+      },
+      {
+        "phase": 3,
+        "label": "Fabio Luzzi (CDAO) deep-dive",
+        "target": "Data Fabric integration and search analytics feed",
+        "message": "Phase 3: Fabio Luzzi (CDAO) deep-dive \u2014 Data Fabric integration and search analytics feed",
+        "timing": "Week 5-7"
+      },
+      {
+        "phase": 4,
+        "label": "Madison Hajeb (Testing)",
+        "target": "Algolia A/B testing framework demo",
+        "message": "Phase 4: Madison Hajeb (Testing) \u2014 Algolia A/B testing framework demo",
+        "timing": "Week 7-9"
+      },
+      {
+        "phase": 5,
+        "label": "POC on coach.com or Kate Spade",
+        "target": "non-core catalog section first",
+        "message": "Phase 5: POC on coach.com or Kate Spade \u2014 non-core catalog section first",
+        "timing": "Week 9-11"
+      }
     ],
     "objection_counters": [
       {
@@ -1075,7 +1138,10 @@
       ],
       "relevance_to_tapestry": "Lacoste is the closest luxury fashion analog to Coach \u2014 premium accessible brand, handbags and accessories, global e-commerce. Same SFCC ecosystem. Lacoste more than doubled global sales from search after Algolia.",
       "quote": "Algolia is a critical part of the navigation experience on Lacoste platforms globally\u2026it more than doubled our global sales.",
-      "quote_source": "https://www.algolia.com/customers/lacoste"
+      "quote_source": "https://www.algolia.com/customers/lacoste",
+      "result": "+150% sales contribution from search",
+      "why": "Lacoste is the closest luxury fashion analog to Coach \u2014 premium accessible brand, handbags and accessories, global e-commerce. Same SFCC ecosystem. Lacoste more than doubled global sales from search after Algolia.",
+      "product": "Algolia NeuralSearch + Personalization"
     },
     {
       "company": "Harry Rosen",
@@ -1089,7 +1155,10 @@
       ],
       "relevance_to_tapestry": "Harry Rosen is a luxury fashion retailer with comparable product complexity (multiple categories, colorways, materials) and clienteling needs. The 360% conversion lift and ability to give business users control without developer dependency mirrors Tapestry's 'no-code' philosophy.",
       "quote": "What the business could accomplish became way beyond what they thought was possible in the old world.",
-      "quote_source": "https://www.algolia.com/customers/harry-rosen"
+      "quote_source": "https://www.algolia.com/customers/harry-rosen",
+      "result": "+360% conversion rate",
+      "why": "Harry Rosen is a luxury fashion retailer with comparable product complexity (multiple categories, colorways, materials) and clienteling needs. The 360% conversion lift and ability to give business users control without developer dependency mirrors Tapestry's 'no-code' philosophy.",
+      "product": "Algolia NeuralSearch + Personalization"
     },
     {
       "company": "Gymshark",
@@ -1103,7 +1172,10 @@
       ],
       "relevance_to_tapestry": "Gymshark is a DTC fashion brand with strong Gen Z/Millennial customer base \u2014 identical demographic to Coach's fastest-growing segment. Algolia Recommend drove dramatic conversion improvements on the highest-traffic sales period. Tapestry's seasonal gift-gifting peaks (holiday, Valentine's Day) are the same opportunity.",
       "quote": "We don't have to do very much with Algolia Recommend. With our previous solution, there was so much manual configuration.",
-      "quote_source": "https://www.algolia.com/customers/gymshark-recommend"
+      "quote_source": "https://www.algolia.com/customers/gymshark-recommend",
+      "result": "+150% order rate (new customers, Black Friday)",
+      "why": "Gymshark is a DTC fashion brand with strong Gen Z/Millennial customer base \u2014 identical demographic to Coach's fastest-growing segment. Algolia Recommend drove dramatic conversion improvements on the highest-traffic sales period. Tapestry's seasonal gift-gifting peaks (holiday, Valentine's Day) are the same opportunity.",
+      "product": "Algolia NeuralSearch + Personalization"
     }
   ],
   "methodology": "Phase 1 pre-audit research conducted 2026-02-23 using SimilarWeb (traffic/demographics), BuiltWith (technology detection via free-api and domain-lookup), Yahoo Finance MCP (financial statements), WebSearch/WebFetch (executive intelligence, SEC 10-K/10-Q filings, earnings transcripts, competitor analysis). Phase 2 browser-based audit conducted 2026-02-23 using real Chrome with remote debugging on port 9222 to bypass Akamai WAF. 15 screenshots captured and verified on disk. Scoring uses weighted average: HIGH severity = 2x weight, MEDIUM = 1x, LOW = 0.5x. Final score: 47.5 / 10.5 = 4.5/10.",
@@ -1354,25 +1426,33 @@
         "id": "yang_lu",
         "name": "Yang Lu",
         "title": "Chief Information & Digital Officer",
-        "channel": "linkedin"
+        "channel": "linkedin",
+        "tier": 1,
+        "role": ""
       },
       {
         "id": "luzzi",
         "name": "Fabio Luzzi",
         "title": "Chief Data & Analytics Officer",
-        "channel": "linkedin"
+        "channel": "linkedin",
+        "tier": 2,
+        "role": ""
       },
       {
         "id": "seth",
         "name": "Sandeep Seth",
         "title": "Chief Growth Officer",
-        "channel": "linkedin"
+        "channel": "linkedin",
+        "tier": 2,
+        "role": ""
       },
       {
         "id": "paransky",
         "name": "Noam Paransky",
         "title": "Chief Digital Officer",
-        "channel": "linkedin"
+        "channel": "linkedin",
+        "tier": 2,
+        "role": ""
       }
     ],
     "touches": [
@@ -1383,7 +1463,9 @@
         "target": "yang_lu",
         "subject": "LinkedIn connection \u2014 'iteration is the new perfection'",
         "body": "Yang \u2014 your NRF 2024 interview on 'iteration is the new perfection' and experimentation velocity resonated. I'm curious: how frequently are you A/B testing search algorithms on coach.com? Weekly? Monthly? Or is that a manual process? I have a specific observation on NLP gap I'd like to share.",
-        "cta": "LinkedIn connection"
+        "cta": "LinkedIn connection",
+        "hook_type": "Insight",
+        "goal": "Drive response"
       },
       {
         "touch": 2,
@@ -1392,7 +1474,9 @@
         "target": "yang_lu",
         "subject": "'Gift for mom under 300' returns 1 result on coach.com",
         "body": "Yang \u2014 I tested coach.com: 'gift for mom under 300' returns 1 result. 'Red crossbody for summer' fails entirely. Your CEO committed to being consumer-obsessed \u2014 Algolia NeuralSearch handles both queries correctly out of the box. Joanne said you partnered with Lily AI to reduce failed searches. Algolia is the query-side solution that completes the picture.",
-        "cta": "15-minute NLP demo on Coach's catalog"
+        "cta": "15-minute NLP demo on Coach's catalog",
+        "hook_type": "Case Study",
+        "goal": "Drive response"
       },
       {
         "touch": 3,
@@ -1401,7 +1485,9 @@
         "target": "luzzi",
         "subject": "Search as a data signal gap in Tapestry's Data Fabric",
         "body": "Fabio \u2014 you mentioned AI 'amplifying creativity with speed.' Your Data Fabric processes 100+ systems. Is search analytics one of those signals? Every failed search on coach.com is a demand signal for inventory, product, and personalization decisions. Algolia Analytics feeds that signal directly into your data infrastructure.",
-        "cta": "View search analytics data model"
+        "cta": "View search analytics data model",
+        "hook_type": "Pain Point",
+        "goal": "Drive response"
       },
       {
         "touch": 4,
@@ -1410,7 +1496,9 @@
         "target": "seth",
         "subject": "'The first date' \u2014 what happens when search fails a new visitor?",
         "body": "Sandeep \u2014 your quote: 'the most likely chance of getting a second date is how good the first date was.' I tested coach.com as a new visitor. 'Gift for mom under 300' \u2014 1 result. 'Red crossbody for summer' \u2014 fails. For 60% of new customers who are Gen Z, that first search IS the first date. How many second dates is that costing?",
-        "cta": "Book 20-minute first-impression audit"
+        "cta": "Book 20-minute first-impression audit",
+        "hook_type": "Social Proof",
+        "goal": "Drive response"
       },
       {
         "touch": 5,
@@ -1419,7 +1507,9 @@
         "target": "paransky",
         "subject": "Amperity CDP + Algolia = personalized search from day one",
         "body": "Noam \u2014 you invested in Amperity for a 'comprehensive and unified view of customers.' Is that data flowing into search personalization today, or does search still treat a VIP Coach legacy customer the same as a first-time Gen Z visitor? Algolia Personalization pulls from Amperity profiles to re-rank results in real time.",
-        "cta": "Amperity + Algolia integration overview"
+        "cta": "Amperity + Algolia integration overview",
+        "hook_type": "ROI",
+        "goal": "Drive response"
       },
       {
         "touch": 6,
@@ -1428,7 +1518,9 @@
         "target": "yang_lu",
         "subject": "Tapestry-specific search audit \u2014 4.5/10, critical NLP gap",
         "body": "Yang \u2014 I completed a full Phase 2 audit on coach.com: 4.5/10 overall, with NLP/Semantic Search at 1/10 (the most critical gap). The Lily AI partnership addresses product descriptions \u2014 the query-side NLP gap on what customers type is where Algolia completes the picture. I'd like to share the full audit in 30 minutes.",
-        "cta": "30-minute audit review"
+        "cta": "30-minute audit review",
+        "hook_type": "Urgency",
+        "goal": "Drive response"
       },
       {
         "touch": 7,
@@ -1437,7 +1529,9 @@
         "target": "yang_lu",
         "subject": "Closing the loop \u2014 audit available",
         "body": "Yang \u2014 I've shared specific coach.com findings over the past 3 weeks. If search optimization isn't on the roadmap right now, I completely understand. The full audit report is available when the timing is right. Happy to reconnect as you plan the FY2026 digital roadmap.",
-        "cta": "Request full coach.com audit"
+        "cta": "Request full coach.com audit",
+        "hook_type": "POC Ask",
+        "goal": "Drive response"
       },
       {
         "touch": 8,
@@ -1446,7 +1540,9 @@
         "target": "yang_lu",
         "subject": "DTC growth + search quality: the $17M conversation",
         "body": "Yang \u2014 one final thought before I step back. Tapestry's Amplify Strategy is built on DTC leadership \u2014 86% of revenue, 20% digital growth, a path to $10B. Coach.com is the DTC engine. Our audit scored it 4.5/10, with NLP/semantic search at 1/10. A 5% lift on the search-addressable revenue pool = $17.25M/year. That's an 8-day payback on Algolia's annual cost. If this aligns with where you're taking the roadmap, I'd welcome the conversation. The full audit is ready to share.",
-        "cta": "Full audit + ROI model \u2014 30-minute call"
+        "cta": "Full audit + ROI model \u2014 30-minute call",
+        "hook_type": "Follow-up",
+        "goal": "Drive response"
       }
     ]
   },

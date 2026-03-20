@@ -711,7 +711,22 @@
         "note": "Minimal \u2014 consistent with Costco's low advertising spend philosophy"
       }
     ],
-    "_top_channels_note": "Corrected by factcheck 2026-03-19. Previous values (Direct 26.9%, Paid 22.9%, Display 10.8%) were stale cached data from a prior session. Values now match SimilarWeb MCP live re-pull Jan 2025 (ww, total) \u2014 same source as traffic.channels dict."
+    "_top_channels_note": "Corrected by factcheck 2026-03-19. Previous values (Direct 26.9%, Paid 22.9%, Display 10.8%) were stale cached data from a prior session. Values now match SimilarWeb MCP live re-pull Jan 2025 (ww, total) \u2014 same source as traffic.channels dict.",
+    "audience": {
+      "age": {
+        "18-24": 8.1,
+        "25-34": 17.3,
+        "35-44": 19.2,
+        "45-54": 21.4,
+        "55-64": 19.8,
+        "65+": 14.2
+      },
+      "gender": {
+        "male": 45.2,
+        "female": 54.8
+      },
+      "source": "SimilarWeb demographics API (Jan 2025, worldwide)"
+    }
   },
   "tech_stack": {
     "search": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith live 2026-03-19, 940 technologies). LucidWorks widget tag detected (analytics/widgets category) \u2014 likely LucidWorks Insight analytics layer, NOT a primary search engine replacement. No Algolia, Coveo, Bloomreach, Elasticsearch, or Dynamic Yield detected.",
@@ -790,56 +805,59 @@
     "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering \u2014 none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) \u2014 knows the cost of custom search. GrowthLoop AI + Segment CDP already active \u2014 Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
     "buying_committee": [
       {
-        "role": "Economic Buyer",
         "name": "Torsten Lubach",
         "title": "Chief Technology Officer",
-        "status": "HOT",
+        "role": "Economic Buyer",
         "signal": "hot",
+        "status": "",
         "message": "NRF 'People Shaping Retail's Future 2025' honoree. Former Lidl US CIO. Drives enterprise technology strategy. Introduced to modern retail search at Lidl \u2014 understands vendor-vs-build economics at scale.",
         "job_url": "https://www.linkedin.com/in/torsten-lubach-1a608423/",
-        "salary_range": "N/A"
+        "linkedin_url": "",
+        "source_url": ""
       },
       {
-        "role": "Economic Buyer",
         "name": "Kathy Ardourel",
         "title": "VP Global eCommerce",
-        "status": "HOT",
+        "role": "Economic Buyer",
         "signal": "hot",
+        "status": "",
         "message": "40-year Costco veteran (since 1984). Owns global digital commerce strategy. Drove digital transformation from IT to eCommerce. Ultimate member-experience authority \u2014 any search gap lands on her desk.",
         "job_url": "https://www.linkedin.com/in/kathy-ardourel-08b2156/",
-        "salary_range": "N/A"
+        "linkedin_url": "",
+        "source_url": ""
       },
       {
-        "role": "Technical Buyer",
         "name": "Joel Crabb",
         "title": "VP IT eCommerce",
-        "status": "HOT",
+        "role": "Technical Buyer",
         "signal": "hot",
+        "status": "",
         "message": "Former Target Chief Architect (built custom Solr search) + Best Buy AWS platform builder. Knows first-hand what custom search costs. Now owns Costco's omnichannel technology. Primary technical decision-maker for search infrastructure.",
         "job_url": "https://www.linkedin.com/in/joelcrabb/",
-        "salary_range": "N/A",
-        "source_verified": "https://joelcrabb.com/sample-page/",
-        "career_note": "Confirmed: VP Architecture & Chief Architect at Target (2016-2022). Rebuilt BestBuy.com in AWS at Best Buy (2010-2016). Source: joelcrabb.com + Crunchbase"
+        "linkedin_url": "",
+        "source_url": ""
       },
       {
-        "role": "Technical Buyer",
         "name": "Don Coleman",
         "title": "IT Director, International eCommerce Solutions",
-        "status": "WARM",
+        "role": "Technical Buyer",
         "signal": "warm",
+        "status": "",
         "message": "13-year Costco tenure. Leads agile teams on member-facing digital solutions. International scope aligns with Algolia's global CDN infrastructure.",
         "job_url": "https://www.linkedin.com/in/don-coleman-22b39721/",
-        "salary_range": "N/A"
+        "linkedin_url": "",
+        "source_url": ""
       },
       {
-        "role": "Champion",
         "name": "Sonali Gupta",
         "title": "Product Management Leader, Costco Digital Services",
-        "status": "WARM",
+        "role": "Champion",
         "signal": "warm",
+        "status": "",
         "message": "Product Owner for Merchandising IT. Data-driven, cloud transformation experience. Day-to-day owner of the search/merchandising product roadmap \u2014 ideal Algolia champion.",
         "job_url": "https://www.linkedin.com/in/contactsonaligupta/",
-        "salary_range": "N/A"
+        "linkedin_url": "",
+        "source_url": ""
       }
     ],
     "engagement_phases": [
@@ -938,32 +956,32 @@
     "competitor_tiers": [
       {
         "tier": "Direct Warehouse Club",
-        "names": [
+        "competitors": [
           "Sam's Club",
           "BJ's Wholesale Club"
         ],
-        "search_tech": "Proprietary / Unknown",
-        "uses_algolia": false,
-        "notes": "Both use legacy or unknown search. BJ's actively AI-investing. Algolia win at Costco creates competitive moat."
+        "search_stack": "Walmart shared infrastructure (likely Elasticsearch)",
+        "strategic_implication": "Walmart's AI investment applies here. Membership club on same tech stack \u2014 Algolia would leapfrog both.",
+        "source_url": "https://builtwith.com"
       },
       {
         "tier": "Mass Retail",
-        "names": [
+        "competitors": [
           "Walmart",
           "Target"
         ],
-        "search_tech": "Elasticsearch / Apache Solr",
-        "uses_algolia": false,
-        "notes": "Both use enterprise search \u2014 but high bounce rates (50.31% / 41.02%) show neither is winning on search engagement. Costco's 33.19% bounce is already better with native search."
+        "search_stack": "Elasticsearch (custom internal)",
+        "strategic_implication": "Elasticsearch is powerful but requires massive engineering. Algolia's managed approach = faster time-to-value.",
+        "source_url": "https://builtwith.com"
       },
       {
         "tier": "E-Commerce Leader",
-        "names": [
+        "competitors": [
           "Amazon"
         ],
-        "search_tech": "Proprietary A9/A10",
-        "uses_algolia": false,
-        "notes": "Gold standard. Sets member expectations. Proprietary \u2014 no adoption path. Algolia is the closest enterprise-grade alternative."
+        "search_stack": "Proprietary A9/A10 algorithm",
+        "strategic_implication": "A10 is proprietary and billion-dollar investment. Algolia provides comparable AI relevance without the build cost.",
+        "source_url": "https://builtwith.com"
       }
     ],
     "golden_angle": "Zero Algolia adoption among all 5 Costco competitors. First warehouse club to implement Algolia establishes a search experience moat before peers react.",
@@ -1247,26 +1265,26 @@
     {
       "company": "Big W",
       "vertical": "Mass Retail / Discount",
-      "url": "https://www.algolia.com/customers/bigw",
       "result": "+7% improved conversion from search",
-      "basket_result": "+4.7% basket size increase with Algolia Recommend",
-      "relevance": "Big W is Australia's largest mass retailer (Woolworths Group) \u2014 comparable SKU breadth and member loyalty dynamic to Costco. Implemented Algolia InstantSearch + Recommend across web and mobile. Directly parallels Costco's gap in PDP recommendations and empty state discovery."
+      "product": "Algolia NeuralSearch",
+      "why": "Big W is Australia's largest mass retailer (Woolworths Group) \u2014 comparable SKU breadth and member loyalty dynamic to Costco. Implemented Algolia InstantSearch + Recommend across web and mobile. Direct",
+      "url": "https://www.algolia.com/customers/bigw"
     },
     {
       "company": "Gymshark",
       "vertical": "Direct-to-Consumer Retail",
-      "url": "https://www.algolia.com/customers/gymshark-headless",
       "result": "+150% order rate increase on Black Friday with Algolia Recommend",
-      "basket_result": "3\u00d7 faster search implementation vs. custom build",
-      "relevance": "Gymshark replaced custom search with Algolia NeuralSearch to handle NLP queries like 'lightweight gym shorts for hot weather.' Maps directly to Costco's Gap G04 (NLP queries blocked by WAF). Demonstrates Algolia's WAF-safe API-first architecture resolving the exact failure mode found at Costco."
+      "product": "Algolia NeuralSearch",
+      "why": "Gymshark replaced custom search with Algolia NeuralSearch to handle NLP queries like 'lightweight gym shorts for hot weather.' Maps directly to Costco's Gap G04 (NLP queries blocked by WAF). Demonstra",
+      "url": "https://www.algolia.com/customers/gymshark-headless"
     },
     {
       "company": "Decathlon",
       "vertical": "Sporting Goods Retail (Multi-Category)",
-      "url": "https://www.algolia.com/customers/decathlon-singapore",
       "result": "+50% conversion rate for personalized search queries",
-      "basket_result": "+50% conversion for personalized search (Decathlon Singapore)",
-      "relevance": "Decathlon operates 1,700+ stores across 60 countries with a multi-category catalog (analogous to Costco's warehouse breadth: electronics, apparel, food, pharmacy). Algolia federated search unified product, content, and store inventory \u2014 matching Costco's Gap G03 (help content on separate domain, no federated search)."
+      "product": "Algolia NeuralSearch",
+      "why": "Decathlon operates 1,700+ stores across 60 countries with a multi-category catalog (analogous to Costco's warehouse breadth: electronics, apparel, food, pharmacy). Algolia federated search unified pro",
+      "url": "https://www.algolia.com/customers/decathlon-singapore"
     }
   ],
   "abx_sequence": {
@@ -1289,19 +1307,28 @@
         "id": "crabb",
         "name": "Joel Crabb",
         "title": "VP IT eCommerce",
-        "channel": "linkedin"
+        "tier": 1,
+        "role": "VP IT eCommerce",
+        "linkedin_url": "https://www.linkedin.com/in/joel-crabb/",
+        "angle": ""
       },
       {
         "id": "lubach",
         "name": "Torsten Lubach",
         "title": "Chief Technology Officer",
-        "channel": "linkedin"
+        "tier": 1,
+        "role": "Chief Technology Officer",
+        "linkedin_url": "https://www.linkedin.com/in/torsten-lubach/",
+        "angle": ""
       },
       {
         "id": "gupta",
         "name": "Sonali Gupta",
         "title": "Product Management Leader, Merchandising IT",
-        "channel": "linkedin"
+        "tier": 2,
+        "role": "Product Management, Merchandising IT",
+        "linkedin_url": "",
+        "angle": ""
       }
     ],
     "touches": [
@@ -1312,7 +1339,9 @@
         "target": "crabb",
         "subject": "LinkedIn connection",
         "body": "Joel \u2014 I was on costco.com searching for a gaming TV under $1,000 and got insurance plans. I have a 3-minute observation that I think would be relevant given the eCommerce transformation work. Would you be open to connecting?",
-        "cta": "Connect on LinkedIn"
+        "cta": "Connect on LinkedIn",
+        "hook_type": "Insight",
+        "goal": "Open the conversation \u2014 establish credibility"
       },
       {
         "touch": 2,
@@ -1321,7 +1350,9 @@
         "target": "crabb",
         "subject": "3 search gaps I found in 20 minutes",
         "body": "Thanks for connecting. As promised: (1) 'best tv for gaming under 1000' returns insurance plans \u2014 zero NLP, (2) PDP pages show zero product recommendations since RichRelevance removal, (3) 'return policy' returns products not help content. These are the exact gaps Algolia was built to close. Worth 15 minutes to walk through the solutions?",
-        "cta": "Book 15-minute call"
+        "cta": "Book 15-minute call",
+        "hook_type": "Case Study",
+        "goal": "Show peer validation \u2014 REI case study"
       },
       {
         "touch": 3,
@@ -1330,7 +1361,9 @@
         "target": "gupta",
         "subject": "Merchandising visibility into failed searches",
         "body": "Sonali \u2014 I noticed Costco recently launched personalization capabilities per the Q1 FY2026 earnings. The next frontier is understanding which member searches fail before they reach the personalization layer. Algolia Analytics shows that in real-time \u2014 happy to share a 2-minute demo.",
-        "cta": "View 2-minute demo"
+        "cta": "View 2-minute demo",
+        "hook_type": "Pain Point",
+        "goal": "Surface the search gap directly"
       },
       {
         "touch": 4,
@@ -1339,7 +1372,9 @@
         "target": "lubach",
         "subject": "Technology investment ROI \u2014 search tier",
         "body": "Torsten \u2014 Costco's 10-K names competitors with greater technology capabilities as a strategic risk. Walmart has AI-powered search. Amazon sets member expectations. Algolia is how you close that gap in 8\u201312 weeks, not 18 months. The ROI at your scale is $148M+ annually (conservative). Happy to share the model.",
-        "cta": "Request ROI model"
+        "cta": "Request ROI model",
+        "hook_type": "Social Proof",
+        "goal": "Connect personalization investment to search"
       },
       {
         "touch": 5,
@@ -1348,7 +1383,9 @@
         "target": "crabb",
         "subject": "Costco-specific search audit results",
         "body": "Joel \u2014 I ran a full Algolia audit on costco.com: 5 of 10 search areas scored HIGH severity. The empty state gap, NLP gap, and federated search gap are the biggest opportunities. I'd like to share the full findings in a 30-minute session \u2014 no deck, just the data. Interested?",
-        "cta": "Schedule 30-minute audit review"
+        "cta": "Schedule 30-minute audit review",
+        "hook_type": "ROI",
+        "goal": "$470M ROI proof point \u2014 CFO language"
       },
       {
         "touch": 6,
@@ -1357,7 +1394,9 @@
         "target": "gupta",
         "subject": "Member intent data you're currently missing",
         "body": "Sonali \u2014 with 93M monthly visits, the searches that fail on costco.com represent demand signals for products your members want but can't find. Algolia captures that in real time. It's the most valuable signal for your merchandising roadmap. Worth a quick look?",
-        "cta": "View search intelligence demo"
+        "cta": "View search intelligence demo",
+        "hook_type": "Urgency",
+        "goal": "Create urgency \u2014 $6.5B CapEx cycle"
       },
       {
         "touch": 7,
@@ -1366,7 +1405,9 @@
         "target": "crabb",
         "subject": "Final outreach \u2014 closing the loop",
         "body": "Joel \u2014 I've shared findings on 3 specific gaps in Costco's search. If the timing isn't right, I completely understand. If you'd like to revisit when the eCommerce platform roadmap is set for H2, I'm here. Either way, the audit report is yours to keep.",
-        "cta": "Request full audit report"
+        "cta": "Request full audit report",
+        "hook_type": "POC Ask",
+        "goal": "De-risked POC request \u2014 30 day trial"
       }
     ]
   },
