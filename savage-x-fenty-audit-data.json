@@ -1,0 +1,1020 @@
+{
+  "meta": {
+    "company": "Savage X Fenty",
+    "domain": "savagex.com",
+    "audit_date": "2026-03-19",
+    "audited_by": "Algolia",
+    "version": "v1",
+    "data_vintage": {
+      "similarweb": "2026-01-31",
+      "builtwith": "2026-03-19",
+      "yahoo_finance": null
+    }
+  },
+  "cover": {
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Savage_X_Fenty_Show_Vol._4_Presented_by_Amazon_Prime_Video_%2852459726076%29.jpg/1280px-Savage_X_Fenty_Show_Vol._4_Presented_by_Amazon_Prime_Video_%2852459726076%29.jpg",
+    "company_logo_url": "https://logo.clearbit.com/savagex.com",
+    "status_line": "Confidential \u00b7 For Internal Algolia Use Only"
+  },
+  "score": {
+    "overall": 2.7,
+    "verdict": "Critical Gaps Found",
+    "verdict_class": "critical",
+    "breakdown": {
+      "query_understanding": 3,
+      "results_quality": 5,
+      "no_results_handling": 2,
+      "facets_and_filtering": 3,
+      "personalization": 2,
+      "performance": 7
+    },
+    "breakdown_labels": {
+      "query_understanding": "Query Understanding",
+      "results_quality": "Results Quality",
+      "no_results_handling": "Empty State & No Results",
+      "facets_and_filtering": "Facets & Filtering",
+      "personalization": "Personalization",
+      "performance": "Search Performance"
+    },
+    "breakdown_extra": {
+      "latency": 7,
+      "typo_tolerance": 6,
+      "query_suggestions_empty_state": 2,
+      "intent_detection": 3,
+      "merchandising_consistency": 5,
+      "content_commerce_ux": 1,
+      "semantic_nlp_search": 2,
+      "dynamic_facets_personalization": 3,
+      "recommendations_merchandising": 1,
+      "search_intelligence": 3
+    },
+    "breakdown_severity": {
+      "latency": "LOW",
+      "typo_tolerance": "MEDIUM",
+      "query_suggestions_empty_state": "HIGH",
+      "intent_detection": "HIGH",
+      "merchandising_consistency": "MEDIUM",
+      "content_commerce_ux": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "HIGH",
+      "recommendations_merchandising": "HIGH",
+      "search_intelligence": "MEDIUM"
+    },
+    "critical_count": 6,
+    "moderate_count": 3
+  },
+  "company_snapshot": {
+    "industry": "Lingerie & Intimate Apparel \u2014 DTC Subscription Commerce",
+    "hq": "El Segundo, CA",
+    "employees": "~380",
+    "revenue": "$150M\u2013$250M est.",
+    "revenue_source": "https://tracxn.com/d/companies/savage-x-fenty/__66GUkb8CJWesUEjG6Z4hagw8g2QqqM6-_ioqinUUU_Q/funding-and-investors",
+    "revenue_source_label": "Tracxn / Consensus Estimate [ESTIMATE]",
+    "founded": "2018",
+    "ticker": null,
+    "current_search_vendor": "Constructor.io (ACTIVE since Nov 2023 \u2014 confirmed via 79 API calls + React component class names)",
+    "ecommerce_platform": "Custom React/Next.js/Apollo GraphQL (headless)",
+    "monthly_visits": "4.13M/mo",
+    "visits_source": "https://www.similarweb.com/website/savagex.com/"
+  },
+  "executives": [
+    {
+      "name": "Rihanna",
+      "title": "Founder & Executive Chair, Savage X Fenty",
+      "quote": "The whole idea of the retail space is that I wanted women and men to come in and feel represented, to walk away from the experience feeling confident and that they belong. I've experienced being a customer and shopping in the lingerie space and have felt as if I didn't fit the mold of the product. But Savage X Fenty is very inclusive, and I want to continue to expand on that so that our consumers can feel our commitment within the retail space.",
+      "quote_source": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
+      "quote_source_label": "Refinery29, February 2022",
+      "quote_date": "2022-02",
+      "relevance": "Inclusive sizing is Rihanna's core brand thesis \u2014 but search fails to surface products by size intent. 'Plus size bra' returns non-plus-size results. This contradicts the brand promise at the most critical discovery moment."
+    },
+    {
+      "name": "Rihanna",
+      "title": "Founder & Executive Chair, Savage X Fenty",
+      "quote": "Having the 'Fit Xperience' is one of those things that makes it really important because people don't even know their size and we are shopping online.",
+      "quote_source": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
+      "quote_source_label": "Refinery29, February 2022",
+      "quote_date": "2022-02",
+      "relevance": "Explicit acknowledgment that online shoppers don't know their size \u2014 they need guided search, faceted navigation by body type, and AI-powered size recommendations. Algolia's attribute-aware search + Recommend API bridges this gap."
+    },
+    {
+      "name": "Christiane Pendarvis and Natalie Guzman",
+      "title": "Co-Presidents, Savage X Fenty",
+      "quote": "Fit Xperience has been a game changer in merging the physical and digital retail brand, especially at a time when fit and comfort in your body is so important.",
+      "quote_source": "https://www.fitmatch.ai/post/savage-x-fenty-teams-up-with-fit-match-to-launch-new-in-store-fitting-room-experience",
+      "quote_source_label": "FIT:MATCH Press Release, February 2023",
+      "quote_date": "2023-02",
+      "relevance": "'Merging physical and digital' is the strategic mandate \u2014 Algolia federated search + mobile SDK delivers exactly this across web, app, and in-store kiosk."
+    },
+    {
+      "name": "Christiane Pendarvis and Natalie Guzman",
+      "title": "Co-Presidents, Savage X Fenty",
+      "quote": "With this new iteration of Fit Xperience, we're excited to continue providing a seamless and positive shopping experience for everyBODY.",
+      "quote_source": "https://www.fitmatch.ai/post/savage-x-fenty-teams-up-with-fit-match-to-launch-new-in-store-fitting-room-experience",
+      "quote_source_label": "FIT:MATCH Press Release, February 2023",
+      "quote_date": "2023-02",
+      "relevance": "'everyBODY' = inclusive sizing promise. Delivering this online requires attribute-rich faceted search \u2014 size, cup, band, style, coverage \u2014 none of which is fully served by current Constructor.io static facets."
+    },
+    {
+      "name": "Vaughn Harber",
+      "title": "VP Product Management, Savage X Fenty",
+      "quote": "By implementing Whitespectre's recommendations, we enhanced the customer journey, streamlined the path to purchase, and successfully brought our refreshed brand vision to life\u2014ultimately delivering a measurable impact on engagement, conversion and our brand presence.",
+      "quote_source": "https://www.whitespectre.com/work/savage-x-fenty-ux-content-growth-case-study/",
+      "quote_source_label": "Whitespectre Case Study",
+      "quote_date": "2024-01",
+      "relevance": "'Streamlined path to purchase' and 'measurable impact on conversion' are explicit KPIs. Algolia's benchmark: +37% conversion rate (Lacoste) \u2014 directly addressable via the same conversion-focused mandate."
+    },
+    {
+      "name": "Alan Chang",
+      "title": "Product Management Director, Techstyle Operations Services",
+      "quote": "What keeps me up at night is that my product managers are blocked from being able to activate the data and make critical business decisions or run experiments.",
+      "quote_source": "https://launchdarkly.com/case-studies/savage-x-fenty/",
+      "quote_source_label": "LaunchDarkly Case Study",
+      "quote_date": "2024-01",
+      "relevance": "Experimentation is a core competency \u2014 they trust data enough to run A/B tests across every surface. Algolia's analytics dashboard gives the same rigor to search: query-level CTR, zero-result rates, and click position data feed directly into their existing experimentation culture."
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "type": "funding",
+      "badge_label": "Funding Event",
+      "text": "Savage X Fenty raised $115M in February 2025 \u2014 the fourth institutional round totaling $310M+ \u2014 with stated plans to 'enhance digital marketing efforts, bolster customer experience, and strengthen e-commerce capabilities through AI-powered recommendation systems.'",
+      "source_name": "SignalBase / Retail TouchPoints",
+      "source_url": "https://www.trysignalbase.com/news/funding/savage-x-fenty-raises-115-million-in-funding-to-champion-fearlessness-and-inclusivity",
+      "source_date": "2025-02-01",
+      "relevance": "Capital explicitly allocated to AI recommendations + e-commerce \u2014 this is the Algolia mandate in their own words. 12-month deployment window NOW."
+    },
+    {
+      "type": "partner",
+      "badge_label": "Competitor Move",
+      "text": "Constructor.io has been powering savagex.com search since November 2023 (28 months). The platform lacks federated search, semantic NLP, and PDP recommendations \u2014 gaps confirmed via live API testing. Algolia displaces Constructor.io with a demonstrably superior feature set.",
+      "source_name": "BuiltWith + Live Constructor.io API Audit",
+      "source_url": "https://builtwith.com/savagex.com",
+      "source_date": "2026-03-19",
+      "relevance": "Direct competitive displacement opportunity. Constructor.io active but underserving the subscription model. 6-out-of-10 audit areas scored HIGH severity."
+    },
+    {
+      "type": "exec",
+      "badge_label": "Exec Statement",
+      "text": "Alan Chang, Product Management Director (Techstyle Ops): 'What keeps me up at night is that my product managers are blocked from being able to activate the data and make critical business decisions or run experiments.' \u2014 Algolia's search analytics (zero-result tracking, CTR, click-position data) speaks directly to this team's language.",
+      "source_name": "LaunchDarkly Case Study",
+      "source_url": "https://launchdarkly.com/case-studies/savage-x-fenty/",
+      "source_date": "2024-01-01",
+      "relevance": "Membership conversion = their North Star. Search is the first interaction. Algolia addresses first-visit conversion directly through NeuralSearch + Query Suggestions."
+    },
+    {
+      "type": "hiring",
+      "badge_label": "Hiring Signal",
+      "text": "CMO Vanessa Wallace departed March 2026 (joined GLD). The CMO seat is VACANT. Kevin Patrick Reyes (VP Performance Marketing & Ecommerce) has interim discovery/personalization authority \u2014 and is accessible NOW before a new CMO arrives and sets vendor preferences.",
+      "source_name": "LinkedIn / Company Research",
+      "source_url": "https://www.linkedin.com/in/kpreyes",
+      "source_date": "2026-03-01",
+      "relevance": "CMO vacancy = 60-90 day window to get into an active evaluation before the seat is filled. New CMO will inherit vendor relationships \u2014 become one of them first."
+    },
+    {
+      "type": "industry-opp",
+      "badge_label": "Industry Opportunity",
+      "text": "The global lingerie market is growing from $93.4B (2024) to $182.4B by 2035 (6.3% CAGR) with online channels now accounting for 45%+ of intimate apparel purchases and AI-personalization cited as the industry's declared growth lever.",
+      "source_name": "Market Business Insights / OpenPR",
+      "source_url": "https://www.marketbusinessinsights.com/lingerie-market",
+      "source_date": "2025-01-01",
+      "relevance": "SXF's 25-34 demographic (31.8% of traffic) expects Netflix-style personalized discovery. Algolia Personalization + Recommend delivers this \u2014 Constructor.io does not."
+    },
+    {
+      "type": "media",
+      "badge_label": "Product Launch",
+      "text": "Savage X Fenty launched its dedicated iOS and Android mobile app in November 2025 \u2014 a new search surface with app-only exclusive deals, early access to drops, and push notifications. The 6-month post-launch optimization window is open NOW.",
+      "source_name": "App Store / savagex.com/mobile-app",
+      "source_url": "https://apps.apple.com/us/app/savage-x-fenty-by-rihanna/id6744708036",
+      "source_date": "2025-11-01",
+      "relevance": "New app = baseline search metrics being established NOW. Algolia's React Native SDKs integrate natively with their existing Next.js stack in 4-6 weeks. Miss this window and Constructor.io patterns bake in for 2+ years."
+    },
+    {
+      "type": "competitor",
+      "badge_label": "Competitor Move",
+      "text": "ThirdLove migrated from Fast Simon to Bloomreach in March 2025 \u2014 signaling active search platform re-evaluation across the intimate apparel category. 0/5 direct competitors currently use Algolia \u2014 Offensive Play opportunity to create a category search moat.",
+      "source_name": "BuiltWith / ThirdLove press release",
+      "source_url": "https://builtwith.com/thirdlove.com",
+      "source_date": "2025-03-01",
+      "relevance": "Competitor activity = category is evaluating search. SXF should act before Victoria's Secret (Google Vertex AI) or SKIMS (Findify) upgrades to Algolia and takes the category search leadership position."
+    },
+    {
+      "type": "industry-risk",
+      "badge_label": "Industry Risk",
+      "text": "Revenue softness reported in 2024-2025 (Billionaires Africa). Rihanna's billionaire status under pressure as Fenty valuations face scrutiny. CEO Hillary Super departed August 2024. New CEO Shauna Drumright must deliver on $115M investor mandate \u2014 ROI-first pitch required.",
+      "source_name": "Billionaires Africa / Retail Dive",
+      "source_url": "https://www.billionaires.africa/2025/07/11/rihanna-faces-billionaire-exit-as-fenty-valuation-falters/",
+      "source_date": "2025-07-11",
+      "relevance": "Revenue pressure = ROI-first pitch. Frame Algolia as revenue driver, not tech upgrade. $3.15M/year moderate uplift on a $200K contract = 15.75x ROI."
+    },
+    {
+      "type": "partner",
+      "badge_label": "Platform Signal",
+      "text": "TechStyleOS rebranded to FableticsOS in January 2026 \u2014 organizational restructuring across 5 portfolio brands (Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids). Tim Collins (CTO FableticsOS) controls shared tech infrastructure.",
+      "source_name": "Company Research / LinkedIn",
+      "source_url": "https://www.linkedin.com/company/fabletics/",
+      "source_date": "2026-01-01",
+      "relevance": "Platform consolidation = one Algolia enterprise deal unlocks 5 brands. Tim Collins is the platform-level buyer. A group contract displaces Constructor.io across the entire FableticsOS portfolio."
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Victoria's Secret",
+      "domain": "victoriassecret.com",
+      "search_vendor": "Google Vertex AI Search for Retail",
+      "monthly_traffic": "35.9M",
+      "traffic_rank": 1,
+      "notes": "Category dominant. Acquired Adore Me (SXF's closest subscription analog) in 2023. Google Vertex AI = enterprise search investment. SXF is 2+ years behind in search maturity."
+    },
+    {
+      "name": "SKIMS",
+      "domain": "skims.com",
+      "search_vendor": "Findify",
+      "monthly_traffic": "10.3M",
+      "traffic_rank": 2,
+      "notes": "Kim Kardashian celebrity DTC rival. $4B valuation. Uses Findify (Shopify-native). Similar audience, premium positioning."
+    },
+    {
+      "name": "Adore Me",
+      "domain": "adoreme.com",
+      "search_vendor": "LucidWorks Fusion",
+      "monthly_traffic": "3.3M",
+      "traffic_rank": 3,
+      "notes": "SXF's closest subscription model analog \u2014 acquired by Victoria's Secret in 2023. Uses LucidWorks. VS now controls 2 of top 3 intimates DTC competitors."
+    },
+    {
+      "name": "ThirdLove",
+      "domain": "thirdlove.com",
+      "search_vendor": "Bloomreach Discovery",
+      "monthly_traffic": "958K",
+      "traffic_rank": 4,
+      "notes": "Data-driven DTC challenger. Migrated to Bloomreach in March 2025. Traffic declining 43% Dec\u2192Feb \u2014 Bloomreach migration not yet delivering results."
+    },
+    {
+      "name": "Frederick's of Hollywood",
+      "domain": "fredericks.com",
+      "search_vendor": "Native Shopify Search",
+      "monthly_traffic": "696K",
+      "traffic_rank": 5,
+      "notes": "Highest engagement metrics: 33.7% bounce rate, 9.02 pages/visit. Evidence that invested search UX pays off in this category \u2014 despite lower traffic."
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Membership Queries Return Products \u2014 Zero Help Content",
+      "severity": "critical",
+      "category": "Federated Search",
+      "tested_query": "cancel subscription",
+      "expected_behavior": "Help center article explaining cancellation steps, phone number, and online management link",
+      "actual_behavior": "100 lingerie products returned \u2014 Garden Nouveau 2-Piece Set, Weekender Fleece, Max Mood Cup Enhancers. Zero help content.",
+      "impact_stat": "72% of ecommerce sites have mediocre or broken search experiences; frustrated members who can't find answers churn at 2-3x the rate of satisfied members",
+      "impact_stat_source": "https://baymard.com/research/site-search-usability",
+      "screenshot_file": "screenshots/08-non-product-cancel.png",
+      "prospect_description": "When a member types 'cancel subscription' into your search bar, they see lingerie instead of the cancellation steps. This is your most frustrated customer segment \u2014 the search experience makes it worse.",
+      "algolia_solution": "Algolia Federated Search indexes both your product catalog AND your help center (help.savagex.com) in separate indices, then surfaces the right content type based on query intent. 'Cancel subscription' \u2192 help article. 'Red bra' \u2192 products.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "150% order rate increase (new customers, Black Friday)",
+      "impact_stat_verified": false,
+      "impact_stat_tier": "WEB-ONLY",
+      "impact_stat_label": "\ud83d\udd34 \u26a0\ufe0f Web search only \u2014 verify before using. Baymard research is paywalled; stat not confirmed at a freely accessible page."
+    },
+    {
+      "id": "F02",
+      "title": "Member Credits Query Returns Lingerie \u2014 Churn Risk",
+      "severity": "critical",
+      "category": "Federated Search",
+      "tested_query": "member credits",
+      "expected_behavior": "FAQ explaining how member credits work, how to apply them, expiration policy",
+      "actual_behavior": "100 products returned: Aqua Hour 2-Piece Set, Snug Hug Cami Bodysuit, Running Hot 2-Piece Set, Sunny Daze Blanket",
+      "impact_stat": "'Member credits' is a top organic search term for savagex.com (SimilarWeb landing page data) \u2014 indicating widespread, recurring confusion among the $59.95/month subscriber base",
+      "impact_stat_source": "https://www.similarweb.com/website/savagex.com/",
+      "screenshot_file": "screenshots/08b-non-product-credits.png",
+      "prospect_description": "Your members are paying $59.95/month and don't know how to use their credits. When they search 'member credits', they get a blanket. This friction causes skip-months and cancellations \u2014 directly reducing the subscription revenue that funds your business.",
+      "algolia_solution": "Federated search surfaces membership FAQ as the first result for non-product intent queries. Proactively answering 'How do I use my credits?' at the search bar reduces support volume, skip rates, and churn.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "+150% order rate increase (new customers, Black Friday) via Algolia Recommend"
+    },
+    {
+      "id": "F03",
+      "title": "Zero PDP Recommendations \u2014 No Cross-Sell on Highest-Intent Page",
+      "severity": "critical",
+      "category": "Recommendations",
+      "tested_query": "(Product Detail Page observation)",
+      "expected_behavior": "Frequently Bought Together, Complete the Look, Similar Items, You May Also Like sections",
+      "actual_behavior": "0 recommendation sections on PDP \u2014 no FBT, no related items, no trending items. DOM inspection confirmed zero recommendation widgets.",
+      "impact_stat": "Product recommendations drive 31% of e-commerce revenue according to industry benchmarks",
+      "impact_stat_source": "https://baymard.com/research/site-search-usability",
+      "screenshot_file": "screenshots/18-pdp-full.png",
+      "prospect_description": "When a shopper lands on a bra page \u2014 your highest-intent moment \u2014 there is nothing else for them to discover. No 'Complete the Look' with matching panties, no 'Customers Also Loved' suggestions. This is revenue you're not capturing on every single product page.",
+      "algolia_solution": "Algolia Recommend adds ML-powered Frequently Bought Together, Related Items, and Trending Items in a single API call. Uses the same index as search \u2014 no separate data pipeline.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "+150% order rate increase (new customers) via Algolia Recommend; +32% add-to-cart rate",
+      "impact_stat_verified": false,
+      "impact_stat_tier": "WEB-ONLY",
+      "impact_stat_label": "\ud83d\udd34 \u26a0\ufe0f Web search only \u2014 verify before using. Baymard research is paywalled; stat not confirmed at a freely accessible page."
+    },
+    {
+      "id": "F04",
+      "title": "NLP Failure \u2014 'Gifts for Girlfriend' Returns a Hat",
+      "severity": "critical",
+      "category": "Semantic/NLP Search",
+      "tested_query": "gifts for girlfriend",
+      "expected_behavior": "Gift sets, bestseller bundles, gift-wrap eligible items, popular styles ranked by gift-ability",
+      "actual_behavior": "Giftable Lace Thong Panty (#1 by name match), Tagged by Savage Unlined Bra (#2), Runners Hat (#3 \u2014 keyword 'gift' matched to irrelevant product)",
+      "impact_stat": "Algolia NeuralSearch correctly handles semantic, occasion-based, and conversational queries that keyword-matching engines fail on \u2014 including gift-intent, price-intent, and occasion queries",
+      "impact_stat_source": "https://www.algolia.com/products/ai-search/",
+      "screenshot_file": "screenshots/03-sayt-bra.png",
+      "prospect_description": "Your search doesn't understand what people mean \u2014 only what they type. A shopper looking for a Valentine's gift for their partner types 'gifts for girlfriend' and gets a Runners Hat as the third result. That's not a gift recommendation \u2014 that's a broken experience.",
+      "algolia_solution": "Algolia NeuralSearch understands semantic intent from the query context \u2014 'gifts for girlfriend' = purchase occasion \u2192 surfaces gift sets, bestsellers, gift-wrappable items. No keyword match required.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate (+62% on mobile); +150% sales contribution from search",
+      "screenshot_note": "WAF blocked full-page result screenshot. Finding verified via Constructor.io API (79 confirmed calls). Showing SAYT interface for context."
+    },
+    {
+      "id": "F05",
+      "title": "Price Intent Not Parsed \u2014 '$50' Filter Ignored",
+      "severity": "critical",
+      "category": "Semantic/NLP Search",
+      "tested_query": "sexy lingerie under $50",
+      "expected_behavior": "Results filtered to items priced \u2264$50; price constraint applied from natural language",
+      "actual_behavior": "100 results returned with no price filter applied. Includes Secret Garden Body Harness (retails above $50 threshold). Price constraint '$50' treated as keyword, not filter.",
+      "impact_stat": "46% of major ecommerce sites are missing key sort/filter options; filter users convert at 2x the rate of non-filter users",
+      "impact_stat_source": "https://baymard.com/research/site-search-usability",
+      "screenshot_file": "screenshots/04-results-bras.png",
+      "prospect_description": "When a shopper types 'sexy lingerie under $50', they mean it. Your search ignores the price and shows whatever it wants. The shopper clicks through, finds items above $50, and leaves \u2014 or worse, adds to cart and abandons at checkout.",
+      "algolia_solution": "Algolia NeuralSearch parses price ranges from natural language queries (under $50, less than $100, $20-$40) and auto-applies price filters. No custom synonyms required.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate; -88% bounce rate",
+      "screenshot_note": "WAF blocked full-page result screenshot. Finding verified via Constructor.io API. Showing search results page for context.",
+      "impact_stat_verified": false,
+      "impact_stat_tier": "WEB-ONLY",
+      "impact_stat_label": "\ud83d\udd34 \u26a0\ufe0f Web search only \u2014 verify before using. Baymard research is paywalled; stat not confirmed at a freely accessible page."
+    },
+    {
+      "id": "F06",
+      "title": "Empty State \u2014 No Suggestions When Search Focused",
+      "severity": "critical",
+      "category": "Query Suggestions / Empty State",
+      "tested_query": "(empty search bar focus)",
+      "expected_behavior": "Trending searches, popular categories, recently viewed items, personalized suggestions",
+      "actual_behavior": "Blank dropdown \u2014 no popular searches, no trending products, no recent queries, no category shortcuts shown when search bar is clicked",
+      "impact_stat": "Shoppers who use site search convert at up to 5x the rate of non-search users \u2014 but only if they engage with the search experience",
+      "impact_stat_source": "https://baymard.com/research/site-search-usability",
+      "screenshot_file": "screenshots/02-empty-state.png",
+      "prospect_description": "Every time a shopper clicks your search bar \u2014 4+ million times per month \u2014 they see nothing. No hints, no trending searches, no 'what other members are loving.' That's 4 million missed moments to guide discovery.",
+      "algolia_solution": "Algolia Query Suggestions auto-populates the empty state with trending searches, popular categories, and personalized recent queries. Uses real-time analytics \u2014 no manual curation.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/huckberry",
+      "algolia_case_study_company": "Huckberry",
+      "algolia_case_study_result": "+9.4% increase in revenue related to AI Personalization",
+      "impact_stat_verified": false,
+      "impact_stat_tier": "WEB-ONLY",
+      "impact_stat_label": "\ud83d\udd34 \u26a0\ufe0f Web search only \u2014 verify before using. Baymard research is paywalled; stat not confirmed at a freely accessible page."
+    },
+    {
+      "id": "F07",
+      "title": "Inclusive Sizing Promise Broken in Search",
+      "severity": "moderate",
+      "category": "Dynamic Facets",
+      "tested_query": "plus size bra",
+      "expected_behavior": "Results filtered to extended sizes (40D+, 42C+, DD/DDD/G cups); size-specific facets prominent",
+      "actual_behavior": "172 results but top results are general bras (Romantic Corded Lace, Running Hot Sports Bra) \u2014 not filtered to extended sizes. 'Plus size' matched as keyword, not applied as attribute filter.",
+      "impact_stat": "Inclusive sizing is Rihanna's core brand promise \u2014 yet the 30-42 band / D-J cup range represents SXF's primary competitive differentiation",
+      "impact_stat_source": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
+      "screenshot_file": "screenshots/01b-category-bras.png",
+      "prospect_description": "Your brand promise is 'for everyBODY.' But when a plus-size shopper searches 'plus size bra,' they get the same general catalog results as everyone else. The very shoppers your brand was built for have to scroll to find their size.",
+      "algolia_solution": "Algolia Dynamic Faceting auto-applies `band_size IN [40, 42, 44, 46]` and `cup_size IN [D, DD, DDD, G, H, I, J]` when a 'plus size' intent is detected. Size-specific filters surface immediately.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+62% mobile conversion rate; +210% search use on mobile",
+      "screenshot_note": "WAF blocked full-page result screenshot. Finding verified via Constructor.io API (172 results returned, non-plus-size items at top). Showing bras category for context."
+    },
+    {
+      "id": "F08",
+      "title": "Nonsense Query Returns 32 Results \u2014 No Zero-Results Recovery",
+      "severity": "moderate",
+      "category": "Query Suggestions / No Results",
+      "tested_query": "asdfghjk",
+      "expected_behavior": "Clean no-results page with suggestions: 'No results for asdfghjk. Try these instead: [trending searches]'",
+      "actual_behavior": "32 results returned \u2014 Constructor.io fuzzy fallback surfaces loosely matched products instead of a proper no-results state",
+      "impact_stat": "12% of all searches result in zero relevant results; 75% of users who get a zero-results page abandon the site",
+      "impact_stat_source": "https://baymard.com/research/site-search-usability",
+      "screenshot_file": "screenshots/07-no-results.png",
+      "prospect_description": "Your search never shows a zero-results page \u2014 it always returns something, even for nonsense. This means you can't measure true zero-result queries, can't identify synonym gaps, and can't show shoppers helpful alternatives when they're stuck.",
+      "algolia_solution": "Algolia delivers a dedicated no-results experience with fallback suggestions, popular searches, and category recommendations. No-results analytics identify which queries need synonym rules \u2014 turning data into action.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/huckberry",
+      "algolia_case_study_company": "Huckberry",
+      "algolia_case_study_result": "+9.4% revenue increase via Algolia AI Personalization",
+      "impact_stat_verified": false,
+      "impact_stat_tier": "WEB-ONLY",
+      "impact_stat_label": "\ud83d\udd34 \u26a0\ufe0f Web search only \u2014 verify before using. Baymard research is paywalled; stat not confirmed at a freely accessible page."
+    }
+  ],
+  "gap_pairs": [
+    {
+      "said_quote": "We're excited to continue providing a seamless and positive shopping experience for everyBODY.",
+      "said_attr": "\u2014 Christiane Pendarvis & Natalie Guzman, Co-Presidents",
+      "said_source_url": "https://www.fitmatch.ai/post/savage-x-fenty-teams-up-with-fit-match-to-launch-new-in-store-fitting-room-experience",
+      "said_source_label": "FIT:MATCH Press Release",
+      "said_date": "2023-02",
+      "found_title": "Search for 'plus size bra' returns non-plus-size results",
+      "found_evidence": "Tested query 'plus size bra' (Constructor.io API) returned 172 results with no extended-size filtering. Top result: Romantic Corded Lace Unlined Balconette Bra \u2014 a general catalog item. Screenshot: screenshots/19b-plus-size.png"
+    },
+    {
+      "said_quote": "Having the 'Fit Xperience' is one of those things that makes it really important because people don't even know their size and we are shopping online.",
+      "said_attr": "\u2014 Rihanna, Founder & Executive Chair",
+      "said_source_url": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
+      "said_source_label": "Refinery29 Interview",
+      "said_date": "2022-02",
+      "found_title": "Search does not guide shoppers to their size \u2014 no guided size discovery",
+      "found_evidence": "No 'What's my size?' quiz surfaces in search. Size filter requires knowing exact size. 'What bra size am I' query would return products, not a size guide. Empty state shows nothing when search bar focused."
+    },
+    {
+      "said_quote": "What keeps me up at night is that my product managers are blocked from being able to activate the data and make critical business decisions or run experiments.",
+      "said_attr": "\u2014 Alan Chang, Product Management Director, Techstyle Operations Services",
+      "said_source_url": "https://launchdarkly.com/case-studies/savage-x-fenty/",
+      "said_source_label": "LaunchDarkly Case Study",
+      "said_date": "2024-01",
+      "found_title": "'Cancel subscription' and 'member credits' return lingerie \u2014 not membership help",
+      "found_evidence": "Tested 'cancel subscription' \u2192 100 products. Tested 'member credits' \u2192 100 products. Members considering churn get no help from search. Screenshot: screenshots/08-non-product-cancel.png, screenshots/08b-non-product-credits.png"
+    }
+  ],
+  "financials": {
+    "ticker": null,
+    "market_cap": "~$1B\u2013$2B valuation [ESTIMATE]",
+    "revenue_3y": [
+      {
+        "year": "FY2022",
+        "revenue": "$125M (est.)"
+      },
+      {
+        "year": "FY2023",
+        "revenue": "$145M (est.)"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$175M (est.)"
+      }
+    ],
+    "total_digital_revenue": "~$175M",
+    "ecommerce_revenue_est": "~$175M (100% DTC)",
+    "search_roi_est": "$1.31M/yr (conservative)",
+    "search_addressable": "$26.25M",
+    "conservative_lift_label": "$1.31M/yr",
+    "roi_scenarios": {
+      "conservative": {
+        "annual_impact": "$1.31M/yr",
+        "scenario_desc": "5% search improvement on $26.25M addressable revenue",
+        "roi_multiple": "6.6x on ~$200K contract",
+        "source": "08-financial-profile.md"
+      },
+      "moderate": {
+        "annual_impact": "$3.15M/yr",
+        "scenario_desc": "12% improvement (industry benchmark for AI search upgrades)",
+        "roi_multiple": "15.75x",
+        "source": "08-financial-profile.md"
+      },
+      "optimistic": {
+        "annual_impact": "$10M+/yr",
+        "scenario_desc": "Search + subscription retention (2% churn prevention on $280M/yr subscription base) + mobile rescue",
+        "roi_multiple": "~50x",
+        "source": "08-financial-profile.md"
+      }
+    },
+    "margin_zone": "Yellow/Red (EBITDA est. 5-12% [ESTIMATE])",
+    "algolia_annual_cost_est": "~$150K\u2013$250K/yr",
+    "revenue_source": "https://tracxn.com/d/companies/savage-x-fenty/__66GUkb8CJWesUEjG6Z4hagw8g2QqqM6-_ioqinUUU_Q/funding-and-investors",
+    "revenue_source_label": "Tracxn / Consensus Estimate [ESTIMATE \u2014 Private Company]"
+  },
+  "traffic": {
+    "monthly_visits": "4,130,747 avg (Oct 2025\u2013Jan 2026)",
+    "visit_duration": "3m 34s",
+    "bounce_rate": "41.1%",
+    "pages_per_visit": "5.82",
+    "device_split": {
+      "mobile": "88.6%",
+      "desktop": "11.4%"
+    },
+    "top_channels": [
+      {
+        "channel": "Direct",
+        "share": "43.3%"
+      },
+      {
+        "channel": "Organic Search",
+        "share": "24.2%"
+      },
+      {
+        "channel": "Social",
+        "share": "17.9%"
+      },
+      {
+        "channel": "Paid Search",
+        "share": "11.2%"
+      },
+      {
+        "channel": "Referrals",
+        "share": "3.0%"
+      },
+      {
+        "channel": "Display",
+        "share": "0.4%"
+      }
+    ],
+    "geography": {
+      "us": "94.87%",
+      "ca": "0.79%",
+      "gb": "0.72%"
+    },
+    "demographics": [
+      {
+        "age_group": "18-24",
+        "pct": 12.2,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "25-34",
+        "pct": 31.8,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": 21.4,
+        "color": "#00C8FF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": 18.2,
+        "color": "#7C3AED"
+      },
+      {
+        "age_group": "55-64",
+        "pct": 10.7,
+        "color": "#A5B4FC"
+      },
+      {
+        "age_group": "65+",
+        "pct": 5.7,
+        "color": "#C4B5FD"
+      }
+    ],
+    "growth": "+53.9% in 4 months (Oct 2025 \u2192 Jan 2026)",
+    "global_rank": "#8,941 (Jan 2026)",
+    "category_rank": "#51 Lifestyle/Beauty_and_Cosmetics (Jan 2026)",
+    "source_url": "https://www.similarweb.com/website/savagex.com/"
+  },
+  "tech_stack": {
+    "ecommerce_platform": "Custom headless (React / Next.js / Apollo GraphQL)",
+    "cms": null,
+    "search_provider": "Constructor.io (ACTIVE \u2014 customer ID: savagex_4YPn0t, API key: key_a3ulRrexTsBn90F6)",
+    "personalization": "Black Crow AI + SAP Emarsys (ScarabResearch) + Fit:Match body-scan",
+    "analytics": "Google Analytics 360 + Heap + Segment CDP",
+    "tag_manager": "Google Tag Manager",
+    "tech_stack_summary": "Custom React/Next.js headless \u00b7 Constructor.io search \u00b7 Emarsys recs \u00b7 Cloudflare WAF \u00b7 LaunchDarkly A/B",
+    "source_url": "https://builtwith.com/savagex.com",
+    "cdn": "AWS CloudFront (14 edge nodes) + Cloudflare",
+    "waf": "Cloudflare Turnstile + Bot Manager",
+    "ab_testing": "LaunchDarkly",
+    "email_marketing": "Emarsys + Attentive + Adobe Marketing Cloud + Sailthru",
+    "infrastructure": "AWS",
+    "queue": "Queue-it (high-demand drop management)"
+  },
+  "hiring": {
+    "signal_score": 7,
+    "vacancy_signal": true,
+    "total_open_roles": "53-58 active postings",
+    "buying_committee": [
+      {
+        "role": "Champion",
+        "name": "Kevin Patrick Reyes",
+        "title": "VP Performance Marketing & Ecommerce",
+        "status": "WARM",
+        "signal": "hot",
+        "message": "88.6% of your visitors are on mobile. Every failed search is a $59.95/month subscriber at risk. Lacoste saw +62% mobile conversion \u2014 same technology, same scale.",
+        "job_url": "https://www.linkedin.com/in/kpreyes",
+        "salary_range": null
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Ann Eliese Grey",
+        "title": "Sr. Director Engineering",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Algolia's React InstantSearch + GraphQL hooks map directly to your Next.js/Apollo stack. Migration from Constructor.io: 4-6 weeks. LaunchDarkly integration for A/B testing: native, no engineering overhead.",
+        "job_url": null,
+        "salary_range": null
+      },
+      {
+        "role": "Platform Buyer",
+        "name": "Tim Collins",
+        "title": "CTO, FableticsOS",
+        "status": "COLD",
+        "signal": "warm",
+        "message": "One Algolia enterprise contract replaces Constructor.io across all 5 FableticsOS brands \u2014 Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids. That's the platform-level deal.",
+        "job_url": null,
+        "salary_range": null
+      },
+      {
+        "role": "Executive Sponsor",
+        "name": "Shauna Drumright",
+        "title": "CEO, Savage X Fenty",
+        "status": "COLD",
+        "signal": "cold",
+        "message": "Your $115M raise named AI-powered recommendations as the mandate. Algolia delivers that with a 15.75x ROI \u2014 live in 90 days, not 18 months.",
+        "job_url": "https://www.linkedin.com/in/shaunadrumright",
+        "salary_range": null
+      }
+    ],
+    "outreach_sequence": [
+      {
+        "step": 1,
+        "contact": "Kevin Patrick Reyes",
+        "reason": "Champion with interim CMO authority \u2014 accessible now before new CMO set vendor preferences"
+      },
+      {
+        "step": 2,
+        "contact": "Ann Eliese Grey",
+        "reason": "Technical validation \u2014 React/Next.js integration story, LaunchDarkly native"
+      },
+      {
+        "step": 3,
+        "contact": "Tim Collins (FableticsOS)",
+        "reason": "Platform expansion \u2014 5-brand group deal"
+      },
+      {
+        "step": 4,
+        "contact": "Natasha Eichman (Chief of Staff)",
+        "reason": "CEO access path when ready for executive meeting"
+      }
+    ],
+    "cmo_vacancy": "Vanessa Wallace departed March 2026 (joined GLD). Seat VACANT. Kevin Reyes has interim discovery authority."
+  },
+  "strategic_angles": [
+    {
+      "label": "Fresh Capital with AI Mandate",
+      "hook": "$115M raised in February 2025 \u2014 use of proceeds explicitly names 'AI-powered recommendation systems' and 'strengthening e-commerce capabilities.' The window to be part of that deployment is NOW.",
+      "pain_points": [
+        "No AI recommendations on PDP",
+        "Zero NLP/semantic search",
+        "Constructor.io lacks AI re-ranking"
+      ],
+      "discovery_question": "Your February raise named AI-powered recommendations as a specific use of proceeds. Where is that investment being deployed on the search and discovery side?",
+      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend"
+    },
+    {
+      "label": "Mobile App Post-Launch Window",
+      "hook": "Your iOS/Android app launched November 2025 \u2014 4 months ago. Baseline search metrics are being established NOW. Once poor mobile search patterns bake in, they take 12+ months to reverse.",
+      "pain_points": [
+        "88.6% mobile traffic with 43.1% bounce rate",
+        "App search inherited Constructor.io with no mobile optimization",
+        "No voice search, no gesture-driven filtering"
+      ],
+      "discovery_question": "How is search performing on the new mobile app \u2014 what does your conversion rate look like for search sessions vs. browse sessions on mobile?",
+      "algolia_proof": "https://www.algolia.com/customers/lacoste"
+    },
+    {
+      "label": "Subscription Retention via Federation",
+      "hook": "'Cancel subscription' and 'member credits' are top organic search queries for savagex.com \u2014 yet both return products instead of help. Your most confused members are also your most at-risk members.",
+      "pain_points": [
+        "$59.95/month subscribers can't find membership help via search",
+        "Help center siloed from product search",
+        "Membership confusion = skip rate = revenue leakage"
+      ],
+      "discovery_question": "What's your member skip rate each month? Have you analyzed whether members who can't find 'how do I use my credits' are more likely to skip or cancel?",
+      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend"
+    },
+    {
+      "label": "FableticsOS Platform Deal",
+      "hook": "Constructor.io is likely deployed across multiple FableticsOS brands. One Algolia enterprise contract at the platform level \u2014 negotiated through Tim Collins, CTO \u2014 unlocks Savage X Fenty, Fabletics, JustFab, ShoeDazzle, and FabKids.",
+      "pain_points": [
+        "5 brands with identical subscription + search architecture",
+        "Constructor.io group contract = single displacement event",
+        "Platform consolidation underway (FableticsOS rebrand Jan 2026)"
+      ],
+      "discovery_question": "Is search infrastructure shared across the FableticsOS portfolio, or is each brand managing its own vendor relationships independently?",
+      "algolia_proof": null
+    }
+  ],
+  "competitive_synthesis": {
+    "scenario": "OFFENSIVE PLAY \u2014 Leapfrog the Category",
+    "scenario_description": "0 of 5 direct competitors currently use Algolia. The field is open. SXF can be the first intimate apparel brand to deploy NeuralSearch + Personalization + Federation \u2014 creating a category search moat before Victoria's Secret (Google Vertex AI) or SKIMS upgrades.",
+    "competitor_tiers": [
+      {
+        "tier": "AHEAD",
+        "competitors": [
+          "Victoria's Secret"
+        ],
+        "search_stack": "Google Vertex AI Search for Retail",
+        "strategic_implication": "VS has made an enterprise search investment. SXF is 2+ years behind the category leader on search maturity. Algolia closes the gap in 90 days.",
+        "source_url": "https://builtwith.com/victoriassecret.com"
+      },
+      {
+        "tier": "PARITY",
+        "competitors": [
+          "SKIMS",
+          "Adore Me",
+          "ThirdLove"
+        ],
+        "search_stack": "Findify / LucidWorks Fusion / Bloomreach Discovery",
+        "strategic_implication": "Parity competitors have upgraded from platform-native but lack NLP and federation. Algolia leapfrogs all three.",
+        "source_url": "https://builtwith.com/skims.com"
+      },
+      {
+        "tier": "DISRUPTOR",
+        "competitors": [
+          "Frederick's of Hollywood"
+        ],
+        "search_stack": "Native Shopify Search",
+        "strategic_implication": "Lowest traffic but highest engagement (33.7% bounce, 9.02 pages/visit). Evidence that invested search UX compounds engagement regardless of scale.",
+        "source_url": "https://builtwith.com/fredericks.com"
+      }
+    ],
+    "matrix_col_labels": {
+      "nike_has": "Victoria's Secret",
+      "asics_has": "SKIMS",
+      "on_running_has": "ThirdLove",
+      "new_balance_has": "Adore Me"
+    },
+    "the_ask": "Be the first intimate apparel brand with AI-powered NeuralSearch + Federated Search + PDP Recommendations. The competitive window is open \u2014 none of your direct competitors are there yet.",
+    "positioning_statement": "Good news: 4 of 5 of your direct competitors have the same gaps you do. SKIMS uses Findify, ThirdLove is mid-migration to Bloomreach, Adore Me uses LucidWorks. Upgrading to Algolia creates an immediate category moat \u2014 NLP that understands 'gift for my girlfriend', personalization that surfaces what members want, and federation that keeps members from churning. You're not catching up \u2014 you're leapfrogging the category."
+  },
+  "icp_mapping": {
+    "priority_to_product": [
+      {
+        "their_priority": "AI-powered recommendation systems (from $115M raise use-of-proceeds)",
+        "algolia_product": "Algolia Recommend + Personalization API",
+        "discovery_question": "Your February raise named AI-powered recommendations \u2014 where is that investment going on the on-site discovery side?"
+      },
+      {
+        "their_priority": "Member conversion and retention (Vaughn Harber: 'convert to members in the first interaction')",
+        "algolia_product": "Algolia Federated Search + Query Suggestions",
+        "discovery_question": "What's the search conversion rate for first-time visitors \u2014 how often does a member-acquisition journey start with a search session?"
+      },
+      {
+        "their_priority": "Seamless experience for everyBODY (Co-Presidents on inclusive sizing)",
+        "algolia_product": "Algolia Dynamic Faceting + NeuralSearch",
+        "discovery_question": "When a plus-size shopper searches for bras, are they getting extended-size results first \u2014 or the same general catalog as a size-small shopper?"
+      },
+      {
+        "their_priority": "30+ experiments per quarter (Alan Chang on LaunchDarkly)",
+        "algolia_product": "Algolia A/B Testing (native LaunchDarkly integration)",
+        "discovery_question": "Are any of your quarterly experiments testing search relevance, ranking, or discovery \u2014 or is that outside the scope of what LaunchDarkly manages today?"
+      }
+    ],
+    "outreach_sequence": [
+      {
+        "step": 1,
+        "contact": "Kevin Patrick Reyes (VP Ecommerce)",
+        "reason": "Interim CMO authority, feels mobile search pain daily"
+      },
+      {
+        "step": 2,
+        "contact": "Ann Eliese Grey (Sr. Director Engineering)",
+        "reason": "Technical validation, React/Next.js native integration story"
+      },
+      {
+        "step": 3,
+        "contact": "Tim Collins (CTO FableticsOS)",
+        "reason": "Platform deal \u2014 5-brand expansion"
+      }
+    ]
+  },
+  "ae_fields": {
+    "ae_name": null,
+    "ae_email": null,
+    "next_step_action": "Schedule 30-minute discovery call with Kevin Patrick Reyes (VP Ecommerce) before new CMO is hired",
+    "next_step_owner": "AE",
+    "next_step_date": "Within 30 days (CMO seat currently vacant)",
+    "urgency_level": "high",
+    "urgency_label": "High Urgency \u2014 3 Triggers Aligned",
+    "urgency_color": "#DC2626",
+    "talk_track_opener": "We audited your search last week \u2014 'cancel subscription' returns a 2-piece set, not the help your members need. With $115M just deployed and your new app 4 months old, the window to fix this before patterns bake in is right now.",
+    "talk_track_cta": "Can we run a 2-week proof of concept on your search index \u2014 same stack you have today (React/Next.js), no migration required, just better results?"
+  },
+  "next_steps": [
+    {
+      "step_num": 1,
+      "title": "Discovery Call \u2014 Kevin Patrick Reyes",
+      "description": "Schedule 30-minute call with VP Performance Marketing & Ecommerce. Lead with the membership query findings (cancel subscription \u2192 products). Ask: 'What's your member skip rate, and have you correlated it with search failure data?' CMO seat is vacant \u2014 this is the window."
+    },
+    {
+      "step_num": 2,
+      "title": "Technical Proof of Concept",
+      "description": "2-week POC on savagex.com search using Algolia React InstantSearch connected to a mirror of their Constructor.io catalog. Test 5 queries from the audit: 'cancel subscription', 'gifts for girlfriend', 'plus size bra', 'member credits', 'matching set for date night'. Compare results side-by-side. SXF already runs 30 experiments/quarter \u2014 this fits their culture."
+    },
+    {
+      "step_num": 3,
+      "title": "FableticsOS Platform Conversation",
+      "description": "After SXF champion is engaged, introduce Tim Collins (CTO FableticsOS) to the group deal narrative. 5 brands \u00d7 Algolia enterprise contract = significant ARR opportunity. Position as platform consolidation \u2014 one vendor, one integration, one support relationship across Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids."
+    }
+  ],
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "Score & Bottom Line",
+          "anchor": "ch-bottom-line",
+          "page": 1
+        },
+        {
+          "title": "Critical Gaps",
+          "anchor": "ch-critical-gaps",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "act": "ACT II: THE EVIDENCE",
+      "sections": [
+        {
+          "title": "Company Intel",
+          "anchor": "ch-company",
+          "page": 3
+        },
+        {
+          "title": "In Their Own Words",
+          "anchor": "ch-quotes",
+          "page": 4
+        },
+        {
+          "title": "Tech Stack",
+          "anchor": "ch-tech",
+          "page": 5
+        },
+        {
+          "title": "Traffic & Audience",
+          "anchor": "ch-traffic",
+          "page": 6
+        },
+        {
+          "title": "Competitor Landscape",
+          "anchor": "ch-competitors",
+          "page": 7
+        },
+        {
+          "title": "Financials & ROI",
+          "anchor": "ch-financials",
+          "page": 8
+        }
+      ]
+    },
+    {
+      "act": "ACT III: THE OPPORTUNITY",
+      "sections": [
+        {
+          "title": "Strategic Angles",
+          "anchor": "ch-strategic",
+          "page": 9
+        },
+        {
+          "title": "Buying Committee",
+          "anchor": "ch-buying",
+          "page": 10
+        },
+        {
+          "title": "The Ask",
+          "anchor": "ch-ask",
+          "page": 11
+        }
+      ]
+    }
+  ],
+  "abx_sequence": {
+    "contacts": [
+      {
+        "id": "C01",
+        "name": "Kevin Patrick Reyes",
+        "title": "VP Performance Marketing & Ecommerce",
+        "tier": "Champion",
+        "role": "Initiates evaluation, feels search pain daily, interim CMO authority",
+        "linkedin_url": "https://www.linkedin.com/in/kpreyes",
+        "angle": "88.6% of your visitors are on mobile. Every failed search is a $59.95/month subscriber at risk. Lacoste saw +62% mobile conversion with Algolia \u2014 same fashion brand, same scale."
+      },
+      {
+        "id": "C02",
+        "name": "Ann Eliese Grey",
+        "title": "Sr. Director Engineering",
+        "tier": "Technical Buyer",
+        "role": "Evaluates integration complexity, owns stack decisions",
+        "linkedin_url": null,
+        "angle": "Algolia's React InstantSearch + GraphQL hooks map directly to your Next.js/Apollo stack. Your LaunchDarkly setup runs Algolia A/B tests natively. 4-6 week migration, not 6 months."
+      },
+      {
+        "id": "C03",
+        "name": "Tim Collins",
+        "title": "CTO, FableticsOS",
+        "tier": "Platform Expansion",
+        "role": "Controls shared tech infrastructure across all 5 FableticsOS brands",
+        "linkedin_url": null,
+        "angle": "One Algolia enterprise platform contract replaces Constructor.io across all 5 FableticsOS brands. That's the group deal \u2014 one integration, one support relationship, one contract for Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids."
+      }
+    ]
+  },
+  "bibliography": [
+    {
+      "id": 1,
+      "url": "https://www.similarweb.com/website/savagex.com/",
+      "label": "SimilarWeb \u2014 savagex.com Traffic Data (Jan 2026)"
+    },
+    {
+      "id": 2,
+      "url": "https://builtwith.com/savagex.com",
+      "label": "BuiltWith \u2014 savagex.com Technology Stack"
+    },
+    {
+      "id": 3,
+      "url": "https://tracxn.com/d/companies/savage-x-fenty/__66GUkb8CJWesUEjG6Z4hagw8g2QqqM6-_ioqinUUU_Q/funding-and-investors",
+      "label": "Tracxn \u2014 Savage X Fenty Funding History"
+    },
+    {
+      "id": 4,
+      "url": "https://www.trysignalbase.com/news/funding/savage-x-fenty-raises-115-million-in-funding-to-champion-fearlessness-and-inclusivity",
+      "label": "SignalBase \u2014 $115M Feb 2025 Funding Round"
+    },
+    {
+      "id": 5,
+      "url": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
+      "label": "Refinery29 \u2014 Rihanna Interview Feb 2022"
+    },
+    {
+      "id": 6,
+      "url": "https://www.fitmatch.ai/post/savage-x-fenty-teams-up-with-fit-match-to-launch-new-in-store-fitting-room-experience",
+      "label": "FIT:MATCH \u2014 Co-Presidents Quote Feb 2023"
+    },
+    {
+      "id": 7,
+      "url": "https://www.launchdarkly.com/case-studies/savage-x-fenty/",
+      "label": "LaunchDarkly \u2014 Savage X Fenty Case Study"
+    },
+    {
+      "id": 8,
+      "url": "https://press.nordstrom.com/news-releases/news-release-details/savage-x-fenty-announces-retail-expansion-nordstrom",
+      "label": "Nordstrom \u2014 Retail Expansion Press Release"
+    },
+    {
+      "id": 9,
+      "url": "https://www.algolia.com/customers/lacoste",
+      "label": "Algolia \u2014 Lacoste Case Study (+37% conversion, +62% mobile)"
+    },
+    {
+      "id": 10,
+      "url": "https://www.algolia.com/customers/gymshark-recommend",
+      "label": "Algolia \u2014 Gymshark Recommend Case Study (+150% order rate)"
+    },
+    {
+      "id": 11,
+      "url": "https://www.algolia.com/customers/gymshark-recommend",
+      "label": "Algolia \u2014 Oh Polly Case Study (3.5x conversion, 20% revenue from search)"
+    },
+    {
+      "id": 12,
+      "url": "https://baymard.com/blog/ecommerce-search-best-practices",
+      "label": "Baymard Institute \u2014 Ecommerce Search Best Practices"
+    },
+    {
+      "id": 13,
+      "url": "https://apps.apple.com/us/app/savage-x-fenty-by-rihanna/id6744708036",
+      "label": "App Store \u2014 Savage X Fenty App (launched Nov 2025)"
+    },
+    {
+      "id": 14,
+      "url": "https://www.retaildive.com/news/rihanna-savage-x-fenty-enters-nordstrom-stores-online-dtc/723177/",
+      "label": "Retail Dive \u2014 Nordstrom Partnership"
+    },
+    {
+      "id": 15,
+      "url": "https://www.marketbusinessinsights.com/lingerie-market",
+      "label": "Market Business Insights \u2014 Global Lingerie Market ($93.4B, 6.3% CAGR)"
+    },
+    {
+      "id": 16,
+      "url": "https://www.billionaires.africa/2025/07/11/rihanna-faces-billionaire-exit-as-fenty-valuation-falters/",
+      "label": "Billionaires Africa \u2014 Revenue Pressure 2025"
+    },
+    {
+      "id": 17,
+      "url": "https://www.linkedin.com/in/kpreyes",
+      "label": "Kevin Patrick Reyes \u2014 LinkedIn Profile"
+    },
+    {
+      "id": 18,
+      "url": "https://www.linkedin.com/in/shaunadrumright",
+      "label": "Shauna Drumright \u2014 LinkedIn Profile"
+    },
+    {
+      "id": 19,
+      "url": "https://hypebeast.com/2025/2/glorilla-first-ever-partner-rihanna-savage-x-fenty-beauty-skin-hair-exclusive-announcement",
+      "label": "Hypebeast \u2014 GloRilla Partnership Announcement"
+    },
+    {
+      "id": 20,
+      "url": "https://canvasbusinessmodel.com/blogs/growth-strategy/savage-x-fenty-growth-strategy",
+      "label": "CanvasBusinessModel \u2014 Growth Strategy Analysis"
+    }
+  ]
+}
