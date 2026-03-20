@@ -1428,6 +1428,26 @@
         "subject": "The full L.L.Bean audit",
         "body": "Rob \u2014\n\nEverything in one place: llbean.com scored 3.6/10. Six gaps, two genuine strengths. The strengths: typo tolerance works, basic product search returns relevant results. The gaps: no SAYT, no NLP, no post-browse personalization, no PDP recommendations, return policy queries return products, static filters regardless of query context.\n\nROI model built on L.L.Bean's $1.105B e-commerce revenue. Conservative scenario: $9.9M/year.\n\nREI is already on Algolia. The commercetools connector means this is weeks to implement, not months.\n\n30 minutes with you and JJ. Or the doc first \u2014 whichever is easier."
       }
+    ],
+    "assets_library": [
+      {
+        "name": "AE Pre-Call Report",
+        "file": "llbean-ae-report.html",
+        "url": "../llbean-ae-report.html",
+        "use_at": "Before discovery call"
+      },
+      {
+        "name": "Battle Card",
+        "file": "llbean-battle-card.html",
+        "url": "../llbean-battle-card.html",
+        "use_at": "Competitive objections"
+      },
+      {
+        "name": "Leave-Behind",
+        "file": "llbean-leave-behind.html",
+        "url": "../llbean-leave-behind.html",
+        "use_at": "Post-meeting, Touch 8"
+      }
     ]
   }
 }

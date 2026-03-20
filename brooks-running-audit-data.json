@@ -1553,34 +1553,22 @@
     ],
     "assets_library": [
       {
-        "name": "NLP failure screenshot",
-        "file": "screenshots/13-nlp-marathon-training.png",
-        "use_at": "Touch 1 (email attachment), Touch 5 (Loom demo)"
+        "name": "AE Pre-Call Report",
+        "file": "brooks-running-ae-report.html",
+        "url": "../brooks-running-ae-report.html",
+        "use_at": "Before discovery call"
       },
       {
-        "name": "Under Armour case study",
-        "url": "https://www.algolia.com/customers/under-armour/",
-        "use_at": "Touch 8"
+        "name": "Battle Card",
+        "file": "brooks-running-battle-card.html",
+        "url": "../brooks-running-battle-card.html",
+        "use_at": "Competitive objections"
       },
       {
-        "name": "Shoe Carnival case study",
-        "url": "https://www.digitalcommerce360.com/2025/07/29/shoe-carnival-algolia-ai-search/",
-        "use_at": "Touch 7"
-      },
-      {
-        "name": "Audit leave-behind PDF",
-        "file": "brooks-running-leave-behind.pdf",
-        "use_at": "Touch 8, Touch 10"
-      },
-      {
-        "name": "BuiltWith \u2014 Nike verification",
-        "url": "https://builtwith.com/nike.com",
-        "use_at": "Touch 4"
-      },
-      {
-        "name": "BuiltWith \u2014 Asics verification",
-        "url": "https://builtwith.com/asics.com",
-        "use_at": "Touch 4"
+        "name": "Leave-Behind",
+        "file": "brooks-running-leave-behind.html",
+        "url": "../brooks-running-leave-behind.html",
+        "use_at": "Post-meeting, Touch 8"
       }
     ]
   }
