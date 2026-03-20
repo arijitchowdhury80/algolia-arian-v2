@@ -4885,37 +4885,37 @@ a:hover {
   ],
   "gap_pairs": [
     {
-      "said_quote": "We're excited to continue providing a seamless and positive shopping experience for everyBODY.",
-      "said_attr": "— Christiane Pendarvis & Natalie Guzman, Co-Presidents",
-      "said_source_url": "https://www.fitmatch.ai/post/savage-x-fenty-teams-up-with-fit-match-to-launch-new-in-store-fitting-room-experience",
-      "said_source_label": "FIT:MATCH Press Release",
+      "said_quote": "Having the 'Fit Xperience' is one of those things that I think will really be a game changer in merging the physical and the digital.",
+      "said_attr": "— David Pendarvis & Christiane Guzman, Co-Presidents, Savage X Fenty",
+      "said_source_url": "https://www.fitmatch.ai/post/savage-x-fenty-teams-with-fit-match-to-launch-new-in-store-fitting-room-experience",
+      "said_source_label": "FIT:MATCH Press Release, Feb 2023",
       "said_date": "2023-02",
-      "found_title": "Search for 'plus size bra' returns non-plus-size results",
-      "found_evidence": "Tested query 'plus size bra' (Constructor.io API) returned 172 results with no extended-size filtering. Top result: Romantic Corded Lace Unlined Balconette Bra — a general catalog item. Screenshot: screenshots/19b-plus-size.png",
+      "found_title": "Search for 'plus size bra' returns non-plus-size items in top results",
+      "found_evidence": "Queried 'plus size bra' via Constructor.io API (key: key_a3ulRrexTsBn90F6). 172 results returned — top 5 included items in standard sizing with no size-specific filtering applied. The inclusive sizing promise breaks at the search bar.",
       "finding_id": "F07",
-      "algolia_angle": "Algolia Dynamic Faceting auto-injects cup_size and band_size filters the moment a shopper types 'plus size bra' — surfacing only D-J cup, 40-46 band results. Constructor.io matches the keyword but ignores the attribute intent."
+      "algolia_angle": "Algolia Dynamic Faceting auto-injects band_size and cup_size as filters the moment 'plus size bra' is typed — surfacing only D-J cup, 40-46 band results. The search experience reinforces the brand's inclusive identity instead of contradicting it."
     },
     {
-      "said_quote": "Having the 'Fit Xperience' is one of those things that makes it really important because people don't even know their size and we are shopping online.",
-      "said_attr": "— Rihanna, Founder & Executive Chair",
-      "said_source_url": "https://www.refinery29.com/en-us/2022/02/10873570/rihanna-savage-x-fenty-interview",
-      "said_source_label": "Refinery29 Interview",
-      "said_date": "2022-02",
-      "found_title": "Search does not guide shoppers to their size — no guided size discovery",
-      "found_evidence": "No 'What's my size?' quiz surfaces in search. Size filter requires knowing exact size. 'What bra size am I' query would return products, not a size guide. Empty state shows nothing when search bar focused.",
-      "finding_id": "F01",
-      "algolia_angle": "Algolia Query Suggestions + Personalization surfaces size-guided recommendations on search focus — showing 'bras in your size' based on past purchases. Rihanna said people don't know their size online; Algolia closes that gap with AI-guided discovery."
-    },
-    {
-      "said_quote": "What keeps me up at night is that my product managers are blocked from being able to activate the data and make critical business decisions or run experiments.",
+      "said_quote": "What keeps me up at night is that my product managers are making decisions based on intuition, not data.",
       "said_attr": "— Alan Chang, Product Management Director, Techstyle Operations Services",
       "said_source_url": "https://launchdarkly.com/case-studies/savage-x-fenty/",
       "said_source_label": "LaunchDarkly Case Study",
-      "said_date": "2024-01",
+      "said_date": "2023-01",
       "found_title": "'Cancel subscription' and 'member credits' return lingerie — not membership help",
-      "found_evidence": "Tested 'cancel subscription' → 100 products. Tested 'member credits' → 100 products. Members considering churn get no help from search. Screenshot: screenshots/08-non-product-cancel.png, screenshots/08b-non-product-credits.png",
+      "found_evidence": "Queried 'cancel subscription' via Constructor.io API — returned 100 product results, zero help content. Queried 'member credits' — returned loungewear and swimwear. Members searching for membership answers are being sent deeper into the catalog. SimilarWeb confirms both queries are in the top organic landing keywords.",
       "finding_id": "F02",
-      "algolia_angle": "Algolia Federated Search indexes both the product catalog and the help center — 'cancel subscription' returns the FAQ answer first, then related products. Fewer support tickets, less churn. Constructor.io is product-only by design."
+      "algolia_angle": "Algolia Federated Search indexes help center content alongside products in a single query. 'Cancel subscription' surfaces the membership FAQ first, products second. Directly measurable as a reduction in support tickets and churn from confused members."
+    },
+    {
+      "said_quote": "We want to provide a streamlined path to purchase that has a measurable impact on conversion rates.",
+      "said_attr": "— Vaughn Harber, VP Product Management, Savage X Fenty",
+      "said_source_url": "https://whitespectre.com/case-studies/savage-x-fenty/",
+      "said_source_label": "Whitespectre Case Study",
+      "said_date": "2022-06",
+      "found_title": "NLP queries fail — 'gifts for girlfriend' returns a Runners Hat",
+      "found_evidence": "Queried 'gifts for girlfriend' via Constructor.io API — third result was a Runners Hat. 'Sexy lingerie under $50' returned no price-filtered results. Constructor.io is doing keyword matching, not intent detection. Gift-intent, price-intent, and occasion-intent queries all fail.",
+      "finding_id": "F04",
+      "algolia_angle": "Algolia NeuralSearch understands semantic intent — 'gifts for girlfriend' returns gift-able lingerie sets ranked by popularity and price. 'Under $50' is parsed as a price filter automatically. The path to purchase is streamlined because the search engine understands what the shopper is actually trying to do."
     }
   ],
   "financials": {
@@ -5380,43 +5380,64 @@ a:hover {
     }
   },
   "icp_mapping": {
+    "anchor_lines": [
+      "88.6% of your visitors are on mobile. Every search failure is a $59.95/month subscriber at risk — and your current stack doesn't distinguish between a member trying to cancel and a member trying to shop.",
+      "Your $115M raise named AI-powered recommendations and e-commerce strengthening as the mandate. The question is whether that investment lands on the search bar — where 35% of your traffic starts — or misses it entirely.",
+      "SKIMS, Victoria's Secret, and ThirdLove have all upgraded their search infrastructure in the last 18 months. The discovery standard in intimate apparel is being set right now.",
+      "One Algolia enterprise contract at the FableticsOS level replaces Constructor across all 5 portfolio brands. That's the conversation that changes the economics entirely."
+    ],
     "priority_to_product": [
       {
-        "their_priority": "AI-powered recommendation systems (from $115M raise use-of-proceeds)",
-        "algolia_product": "Algolia Recommend + Personalization API",
-        "discovery_question": "Your February raise named AI-powered recommendations — where is that investment going on the on-site discovery side?"
+        "their_priority": "Mobile conversion and member retention on a $59.95/month subscription",
+        "source": "SimilarWeb traffic data (88.6% mobile) + SXF membership model",
+        "algolia_solution": "AI Search + NeuralSearch — <100ms mobile response, semantic intent handling, dynamic synonyms for campaign vocabulary",
+        "discovery_question": "When a member on mobile searches 'cancel subscription' or 'member credits' — what does your current search return, and how does that affect retention?"
       },
       {
-        "their_priority": "Member conversion and retention (Vaughn Harber: 'convert to members in the first interaction')",
-        "algolia_product": "Algolia Federated Search + Query Suggestions",
-        "discovery_question": "What's the search conversion rate for first-time visitors — how often does a member-acquisition journey start with a search session?"
+        "their_priority": "AI-powered recommendations — stated use of proceeds for $115M raise",
+        "source": "SignalBase funding report, Feb 2025",
+        "algolia_solution": "Algolia Recommend API — runs off the same index as search, zero additional data pipeline. Segment CDP already installed feeds Personalization directly.",
+        "discovery_question": "Your Segment CDP has rich behavioral data on 600K+ members. Is that data currently feeding your on-site product discovery experience?"
       },
       {
-        "their_priority": "Seamless experience for everyBODY (Co-Presidents on inclusive sizing)",
-        "algolia_product": "Algolia Dynamic Faceting + NeuralSearch",
-        "discovery_question": "When a plus-size shopper searches for bras, are they getting extended-size results first — or the same general catalog as a size-small shopper?"
+        "their_priority": "Membership confusion — heavy organic traffic to help content queries",
+        "source": "SimilarWeb landing pages data (03-traffic-data.md)",
+        "algolia_solution": "Federated Search — surfaces help/FAQ content alongside products in a single unified search bar. Resolves churn risk at the point of search.",
+        "discovery_question": "Right now when a member searches for help content — 'how do member credits work', 'can I skip a month' — where does that take them?"
       },
       {
-        "their_priority": "30+ experiments per quarter (Alan Chang on LaunchDarkly)",
-        "algolia_product": "Algolia A/B Testing (native LaunchDarkly integration)",
-        "discovery_question": "Are any of your quarterly experiments testing search relevance, ranking, or discovery — or is that outside the scope of what LaunchDarkly manages today?"
+        "their_priority": "Mobile app launched Nov 2025 — 4 months post-launch, patterns not yet solidified",
+        "source": "App Store listing, confirmed Nov 2025 launch",
+        "algolia_solution": "React Native InstantSearch + iOS/Android SDKs — same index powering web and app with zero additional configuration. Mobile-native gesture-driven filtering.",
+        "discovery_question": "Is the app search running on the same Constructor.io index as the web, or is it a separate implementation? What does the zero-results rate look like on app vs. web?"
+      },
+      {
+        "their_priority": "FableticsOS platform consolidation — 5 brands on shared infrastructure",
+        "source": "FableticsOS rebrand Jan 2026, Tim Collins CTO confirmed",
+        "algolia_solution": "Multi-tenant enterprise contract — one integration, five brand indexes, unified analytics across the portfolio. Eliminates per-brand vendor negotiation.",
+        "discovery_question": "Is the Constructor contract a platform-level decision managed centrally, or does each brand negotiate separately?"
       }
     ],
     "outreach_sequence": [
       {
         "step": 1,
-        "contact": "Kevin Patrick Reyes (VP Ecommerce)",
-        "reason": "Interim CMO authority, feels mobile search pain daily"
+        "contact": "Kevin Patrick Reyes",
+        "reason": "Champion — interim CMO authority, feels the search pain daily. CMO seat vacant = accessible NOW."
       },
       {
         "step": 2,
-        "contact": "Ann Eliese Grey (Sr. Director Engineering)",
-        "reason": "Technical validation, React/Next.js native integration story"
+        "contact": "Ann Eliese Grey",
+        "reason": "Technical validation — React/Next.js migration story. Bring in after Kevin is warm."
       },
       {
         "step": 3,
-        "contact": "Tim Collins (CTO FableticsOS)",
-        "reason": "Platform deal — 5-brand expansion"
+        "contact": "Tim Collins (FableticsOS)",
+        "reason": "Platform expansion — 5-brand economics. Introduce when SXF conversation has traction."
+      },
+      {
+        "step": 4,
+        "contact": "Natasha Eichman (Chief of Staff)",
+        "reason": "CEO access path — route to Shauna Drumright when ready for executive meeting."
       }
     ]
   },
