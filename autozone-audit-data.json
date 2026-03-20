@@ -936,22 +936,22 @@
         "phase": 1,
         "label": "Champion Warming",
         "target": "Jamey Maki + Bailey Childress",
-        "message": "",
-        "timing": ""
+        "message": "Engage Jamey Maki + Bailey Childress with Champion Warming approach. Focus on search gap evidence from audit findings.",
+        "timing": "Weeks 1-2"
       },
       {
         "phase": 2,
         "label": "Technical Evaluation",
         "target": "Manoj Koratty + Michelle Borninkhof",
-        "message": "",
-        "timing": ""
+        "message": "Engage Manoj Koratty + Michelle Borninkhof with Technical Evaluation approach. Focus on search gap evidence from audit findings.",
+        "timing": "Weeks 1-2"
       },
       {
         "phase": 3,
         "label": "Commercial Validation",
         "target": "Jamere Jackson (CFO)",
-        "message": "",
-        "timing": ""
+        "message": "Engage Jamere Jackson (CFO) with Commercial Validation approach. Focus on search gap evidence from audit findings.",
+        "timing": "Weeks 1-2"
       }
     ]
   },
@@ -1101,57 +1101,31 @@
       {
         "tier": "Tier 1: Legacy on Oracle (Displacement Opportunity)",
         "competitors": [
-          {
-            "name": "O\u2019Reilly Auto Parts",
-            "search_vendor": "Oracle Commerce (ATG)",
-            "search_score_estimate": 4.0,
-            "bounce_rate": 40.5,
-            "weakness": "Oracle ATG: rigid, no NLP/ML, requires heavy Java engineering. No behavioral personalization.",
-            "source": "https://builtwith.com/oreillyauto.com"
-          },
-          {
-            "name": "CarParts.com",
-            "search_vendor": "Oracle Endeca (discontinued)",
-            "search_score_estimate": 2.5,
-            "bounce_rate": 52.4,
-            "weakness": "Running a discontinued platform. Highest bounce rate in the competitive set (52.4%). Dead-end technology.",
-            "source": "https://builtwith.com/carparts.com"
-          }
-        ]
+          "O\u2019Reilly Auto Parts",
+          "CarParts.com"
+        ],
+        "search_stack": "Oracle Endeca (discontinued) / Oracle Commerce (ATG)",
+        "strategic_implication": "Oracle ATG: rigid, no NLP/ML, requires heavy Java engineering. No behavioral personalization. | Running a discontinued platform. Highest bounce rate in the competitive set (52.4%). Dead-end technology",
+        "source_url": "https://builtwith.com/oreillyauto.com"
       },
       {
         "tier": "Tier 2: Legacy on Non-Oracle (Mid-Term Risk)",
         "competitors": [
-          {
-            "name": "Advance Auto Parts",
-            "search_vendor": "LucidWorks Fusion (Apache Solr)",
-            "search_score_estimate": 3.5,
-            "bounce_rate": 47.6,
-            "weakness": "LucidWorks/Solr: dedicated search engineering for every schema change. New CTO Jan 2025 signals imminent re-platform. If Advance modernizes first, their 47.6% bounce rate closes fast.",
-            "source": "https://builtwith.com/advanceautoparts.com"
-          },
-          {
-            "name": "NAPA Auto Parts",
-            "search_vendor": "SAP Commerce Cloud (Hybris)",
-            "search_score_estimate": 4.5,
-            "bounce_rate": 38.4,
-            "weakness": "SAP Hybris on-premise EOL reportedly July 2026. Will evaluate search during forced migration. Best UX in set today \u2014 if they modernize to AI search, gap narrows.",
-            "source": "https://builtwith.com/napaonline.com"
-          }
-        ]
+          "Advance Auto Parts",
+          "NAPA Auto Parts"
+        ],
+        "search_stack": "LucidWorks Fusion (Apache Solr) / SAP Commerce Cloud (Hybris)",
+        "strategic_implication": "LucidWorks/Solr: dedicated search engineering for every schema change. New CTO Jan 2025 signals imminent re-platform. If Advance modernizes first, their 47.6% bounce rate closes fast. | SAP Hybris on-",
+        "source_url": "https://builtwith.com/advanceautoparts.com"
       },
       {
         "tier": "Tier 3: Custom Catalog (Traffic Risk)",
         "competitors": [
-          {
-            "name": "RockAuto",
-            "search_vendor": "Custom proprietary catalog tree",
-            "search_score_estimate": 3.0,
-            "bounce_rate": 38.1,
-            "weakness": "19.8M monthly visits with zero keyword/NLP search. Drill-down navigation works for experts, fails casual shoppers. No personalization, no recommendations, no semantic understanding.",
-            "source": "https://builtwith.com/rockauto.com"
-          }
-        ]
+          "RockAuto"
+        ],
+        "search_stack": "Custom proprietary catalog tree",
+        "strategic_implication": "19.8M monthly visits with zero keyword/NLP search. Drill-down navigation works for experts, fails casual shoppers. No personalization, no recommendations, no semantic understanding.",
+        "source_url": "https://builtwith.com/rockauto.com"
       }
     ],
     "positioning_matrix": [
@@ -1518,7 +1492,7 @@
         "tier": 1,
         "role": "",
         "linkedin_url": "",
-        "angle": ""
+        "angle": "VP, eCommerce & Digital Experience \u2014 key decision maker for search and product discovery investment."
       },
       {
         "id": "childress",
@@ -1527,7 +1501,7 @@
         "tier": 2,
         "role": "",
         "linkedin_url": "",
-        "angle": ""
+        "angle": "SVP, Omnichannel & Merchandising Support \u2014 key decision maker for search and product discovery investment."
       },
       {
         "id": "borninkhof",
@@ -1536,7 +1510,7 @@
         "tier": 2,
         "role": "",
         "linkedin_url": "",
-        "angle": ""
+        "angle": "SVP & CIO \u2014 key decision maker for search and product discovery investment."
       },
       {
         "id": "koratty",
@@ -1545,7 +1519,7 @@
         "tier": 2,
         "role": "",
         "linkedin_url": "",
-        "angle": ""
+        "angle": "CTO \u2014 key decision maker for search and product discovery investment."
       }
     ],
     "touches": [
