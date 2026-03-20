@@ -1263,10 +1263,10 @@
         "target": "C01",
         "hook_type": "Pattern Interrupt",
         "goal": "Get 15 minutes \u2014 lead with a specific finding",
-        "subject": "When a member searches 'cancel subscription' on savagex.com...",
-        "body": "Hi Kevin,\n\nQuick question \u2014 when a Savage X member searches 'cancel subscription' on savagex.com today, what do they see?\n\nI ran an audit and found they're shown a 2-piece lingerie set. Same for 'member credits' \u2014 returns loungewear.\n\nFor a $59.95/month subscription brand, that's a direct churn accelerator. The fix is federated search \u2014 Algolia surfaces the help FAQ first, then shows products. Two-minute read if you're curious:\n\n[Link to audit finding]\n\nWorth 15 minutes?",
-        "cta": "Book 15 min \u2192 [Calendly link]",
-        "ps": "P.S. \u2014 saw your site hit 5.1M visits in January. The Valentine's campaign drove significant mobile traffic. Mobile bounce rate of 43% suggests search is losing a lot of that."
+        "subject": "quick question about savagex.com search",
+        "body": "Hi Kevin,\n\nWhen one of your members types \"cancel subscription\" into the search bar on savagex.com \u2014 what do they get?\n\nI checked. They get a 2-piece set. \"Member credits\" returns loungewear.\n\nFor a $59.95/month membership brand, that's churn hiding in the search bar. Happy to share what I found \u2014 takes 5 minutes.\n\nWorth a look?",
+        "cta": "",
+        "ps": ""
       },
       {
         "touch": 3,
@@ -1290,14 +1290,8 @@
         "target": "C01",
         "hook_type": "Loom Audit Reveal",
         "goal": "Show don't tell \u2014 90 second screen recording of the actual gap",
-        "subject": "90-second Savage X search audit (I recorded it)",
-        "video_script": {
-          "opening": "Hey Kevin \u2014 I recorded a quick 90-second walkthrough of something I found on savagex.com. No pitch, just want to show you what I saw.",
-          "demo_1": "Screen share: type 'cancel subscription' in the SXF search bar \u2192 show products returned instead of help content",
-          "demo_2": "Screen share: type 'gifts for girlfriend' \u2192 show Runners Hat in top 3",
-          "demo_3": "Screen share: show skims.com or an Algolia-powered site handling the same queries correctly",
-          "close": "That's the gap. Happy to show you what it looks like fixed. 15 minutes this week?"
-        }
+        "subject": "recorded something quick for you (90 sec)",
+        "video_script": "Hey Kevin \u2014 I recorded something for you. 90 seconds, no slides, no pitch.\n\n[Screen share \u2014 type 'cancel subscription' into savagex.com search bar]\n\nSee that? 100 product results. A member trying to cancel their $59.95 membership is being shown a 2-piece set. That's not a search problem \u2014 that's a churn accelerator.\n\n[Screen share \u2014 type 'gifts for girlfriend']\n\nThird result is a Runners Hat. Your search doesn't understand what the customer is trying to do.\n\n[Screen share \u2014 show an Algolia-powered site handling the same query]\n\nThis is what federated search looks like when it works. Help content surfaces first. Product intent is understood. It's one index, not two silos.\n\nThat's the gap. If you want to see what fixing it looks like specifically for Savage X \u2014 15 minutes this week?"
       },
       {
         "touch": 5,
@@ -1306,10 +1300,10 @@
         "target": "C01",
         "hook_type": "ROI Frame",
         "goal": "Quantify the opportunity \u2014 make the business case",
-        "subject": "The math on fixing search at Savage X (it's cleaner than I expected)",
-        "body": "Kevin,\n\nFollowing up on the audit findings.\n\nQuick math on what fixing search is worth:\n\u2022 ~4.1M monthly visits \u00d7 88.6% on mobile \u00d7 43.1% mobile bounce rate\n\u2022 Even recovering 10% of excess mobile bounces = ~$1.3M/year conservative\n\u2022 With subscription churn prevention (2% better retention on $280M/yr subscription base) = +$5.6M/year\n\nConservative total: $1.3M/year. Full value stack: ~$10M/year.\n\nStandard Algolia contract at your scale: ~$150-200K/year. That's a 6-15x return.\n\nWorth a 30-minute call to validate these numbers against your actual data?",
+        "subject": "what search is worth at Savage X",
+        "body": "Kevin,\n\nRan the math. At 4M monthly visitors, 88% on mobile, with a $59.95 subscription \u2014\n\nA 12% improvement in search conversion is worth roughly $3M/year. That's before you count the churn you prevent by surfacing membership help instead of products.\n\nA standard Algolia contract at your scale is ~$150-200K/year. The return is there.\n\n30 minutes to pressure-test these numbers against what you're actually seeing?",
         "cta": "30-minute call \u2192 [Calendly]",
-        "ps": "P.S. \u2014 Lacoste saw +62% mobile conversion after switching. They're a DTC fashion brand on a similar Next.js stack."
+        "ps": ""
       },
       {
         "touch": 6,
@@ -1318,8 +1312,8 @@
         "target": "C02",
         "hook_type": "Technical Deep-Dive",
         "goal": "Get Ann's technical buy-in \u2014 address integration concerns",
-        "subject": "Algolia + your Next.js/Apollo stack \u2014 faster than you'd expect",
-        "body": "Hi Ann,\n\nQuick technical note on what a Constructor.io \u2192 Algolia migration looks like on your stack:\n\n\u2022 React InstantSearch: component-level swap. Your existing Constructor React components are replaced file-by-file.\n\u2022 GraphQL: Algolia has native Apollo hooks \u2014 no custom resolvers needed.\n\u2022 LaunchDarkly: native integration for A/B testing search configs without new deploys.\n\u2022 Segment: feeds Algolia Personalization directly \u2014 zero ETL pipeline.\n\nTypical timeline for a team like yours: 4-6 weeks for core search. 2-3 additional weeks for Recommend layer.\n\nWould you be open to a 30-minute technical whiteboarding session? I can walk through the migration architecture.",
+        "subject": "Algolia + Next.js/Apollo \u2014 faster than you'd think",
+        "body": "Hi Ann,\n\nYou're running Next.js with Apollo GraphQL. Algolia has React InstantSearch with native Apollo hooks \u2014 it drops into your existing component structure. No custom resolvers.\n\nYou already have LaunchDarkly (Algolia has a native integration) and Segment (feeds Personalization directly, no ETL). The migration from Constructor isn't a rebuild \u2014 it's a component swap.\n\nTypical timeline for a team like yours: 4-6 weeks for core search, a few more for Recommend.\n\nWould a 30-minute technical walkthrough be useful?",
         "cta": "Schedule technical session \u2192 [Calendly]",
         "ps": ""
       },
@@ -1345,8 +1339,8 @@
         "target": "C01",
         "hook_type": "Competitive Intelligence",
         "goal": "Create urgency \u2014 ThirdLove just moved to Bloomreach",
-        "subject": "The intimate apparel search arms race \u2014 where Savage X stands",
-        "body": "Kevin,\n\nSomething worth knowing as you think about your digital roadmap.\n\nIn the last 18 months, the search experience gap in intimate apparel has widened significantly. Victoria's Secret partnered with Google on AI-powered product discovery (announced January 2024). ThirdLove moved to Bloomreach for AI-driven search and personalization (March 2025).\n\nThe brands investing in search infrastructure now are the ones setting the discovery standard for the category.\n\nSavage X Fenty has a real opportunity here \u2014 4.1M monthly visitors, 88% on mobile, a catalog that spans 70+ sizes and multiple product lines. That's exactly the kind of complexity where better search compounds. And none of your competitors have tackled federated search yet \u2014 the membership confusion queries, the help content, the gift intent queries \u2014 that's wide open.\n\nWould 20 minutes make sense to walk through what this could look like specifically for Savage X?",
+        "subject": "the intimate apparel search arms race",
+        "body": "Kevin,\n\nWorth flagging where the category is heading.\n\nVictoria's Secret moved to AI-powered search in early 2024. ThirdLove announced Bloomreach for search and personalization in March 2025. The brands setting the discovery standard in intimate apparel right now are the ones who made that investment.\n\nSavage X has 4M monthly visitors and the most inclusive catalog in the category. That's a lot of search complexity sitting on infrastructure that predates where the category is going.\n\nThe window to be ahead of this is now \u2014 before the next CMO arrives and the roadmap is locked.\n\nWorth 20 minutes?",
         "cta": "Book 20 min \u2192 [Calendly]",
         "ps": ""
       },
@@ -1357,10 +1351,10 @@
         "target": "C01",
         "hook_type": "Pilot Proposal",
         "goal": "Lower the barrier \u2014 propose a scoped pilot",
-        "subject": "A 90-day pilot proposal for Savage X (low risk, measurable)",
-        "body": "Kevin,\n\nI know you're evaluating multiple priorities. Here's a lower-risk path to validate Algolia:\n\n90-day pilot scope:\n\u2022 Replace Constructor.io search on /womens/lingerie category only\n\u2022 Add federated search for membership help queries\n\u2022 Baseline vs. Algolia: CTR, zero-results rate, mobile conversion\n\u2022 Investment: $0 incremental for the pilot period\n\nAt 90 days we compare the numbers. If the lift is there, we expand. If not, you've lost nothing.\n\nWould this kind of scoped proof-of-concept work within your current planning cycle?",
+        "subject": "a lower-risk way to evaluate this",
+        "body": "Kevin,\n\nIf the timing isn't right for a full evaluation, here's a smaller starting point.\n\nRun Algolia on one category \u2014 /womens/lingerie \u2014 alongside Constructor for 90 days. Measure click-through rate, zero-results rate, mobile conversion. At the end, you have data, not a vendor's pitch deck.\n\nIf the numbers are there, you expand. If not, you've lost nothing.\n\nDoes that fit within how you're currently thinking about this?",
         "cta": "Let's discuss the pilot \u2192 [Calendly]",
-        "ps": "P.S. \u2014 Gymshark ran a comparable pilot on their Recommend layer and saw +150% order rate on Black Friday. DTC apparel at scale."
+        "ps": ""
       },
       {
         "touch": 10,
@@ -1369,8 +1363,8 @@
         "target": "C01",
         "hook_type": "Break-Up / Last Touch",
         "goal": "Final attempt \u2014 leave door open",
-        "subject": "Closing the loop on Savage X",
-        "body": "Kevin,\n\nI've reached out a few times about the search gaps I found on savagex.com. I don't want to keep taking up space in your inbox if the timing isn't right.\n\nI'll leave it here. The audit findings are yours \u2014 happy to send the full report whenever useful.\n\nOne last thought: the CMO seat is vacant right now. Whoever takes that role will audit the vendor stack in their first 90 days. Being already in conversation with Algolia before that clock starts is worth something.\n\nIf timing changes, you know where to find me.",
+        "subject": "closing the loop",
+        "body": "Kevin,\n\nI've reached out a few times \u2014 I don't want to keep showing up in your inbox if the timing isn't there.\n\nI'll leave it here. If the search gaps I flagged ever become a priority, you know where to find me. The audit findings are yours whenever they're useful.\n\nOne thought before I go: the CMO seat is open right now. Whoever takes it will review the vendor stack in their first 90 days. Being already in conversation with Algolia before that clock starts is worth something \u2014 just something to consider.",
         "cta": "Full audit report \u2192 [link]",
         "ps": ""
       }
