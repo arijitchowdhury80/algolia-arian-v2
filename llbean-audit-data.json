@@ -1397,7 +1397,10 @@
         "hook_type": "Loom",
         "goal": "Show the SAYT gap and NLP failure side by side with REI",
         "subject": "60 seconds \u2014 llbean.com vs. REI on the same query",
-        "body": "Rob \u2014\n\nRecorded \"waterproof jacket for winter hiking\" on llbean.com and on REI.com.\n\n[Loom link]\n\nREI is confirmed on Algolia. The difference in how the same query is understood \u2014 and what filters appear \u2014 is in that 60 seconds."
+        "body": "Rob \u2014\n\nRecorded \"waterproof jacket for winter hiking\" on llbean.com and on REI.com.\n\n[Loom link]\n\nREI is confirmed on Algolia. The difference in how the same query is understood \u2014 and what filters appear \u2014 is in that 60 seconds.",
+        "video_script": "[Open llbean.com, search bar visible]\n\n\"Hey Rob \u2014 60 seconds. Same query. Two sites.\"\n\n[Start typing: waterproof jacket for winter hiking \u2014 type slowly, show no autocomplete]\n\n\"I'm typing 'waterproof jacket for winter hiking' on llbean.com. Notice: no autocomplete. No search-as-you-type. I have to type the full query and press Enter.\"\n\n[Hit enter \u2014 pause on results]\n\n\"Keyword match. 'Waterproof' and 'hiking' matched. 'For winter' ignored. Same static filters regardless of what I typed.\"\n\n[Open new tab, go to rei.com]\n\n[Type same query on REI \u2014 show SAYT appearing]\n\n\"Same query on REI \u2014 which is confirmed on Algolia.\"\n\n[Pause on REI results \u2014 show pre-filtered facets]\n\n\"REI's search understood the full intent. Waterproof filter pre-applied. Winter weight pre-filtered. Results relevant to someone planning a winter hike, not just someone who typed the word 'jacket.'\"\n\n\"JJ moved L.L.Bean to headless via commercetools. The search layer is the next piece. Algolia has a certified commercetools connector. REI already proved the path. 15 minutes?",
+        "script_duration": "60-75 seconds",
+        "record_at": "llbean.com \u2014 search bar visible, then rei.com same query"
       },
       {
         "touch": 6,
