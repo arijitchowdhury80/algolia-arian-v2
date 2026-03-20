@@ -381,7 +381,7 @@
   ],
   "findings": [
     {
-      "id": "F01",
+      "id": "G01",
       "severity": "critical",
       "category": "Federated Search / Content Discovery",
       "tested_query": "cancel subscription",
@@ -397,7 +397,7 @@
       "impact_stat_verified": false
     },
     {
-      "id": "F02",
+      "id": "G02",
       "severity": "critical",
       "category": "Federated Search / Content Discovery",
       "tested_query": "member credits",
@@ -413,7 +413,7 @@
       "impact_stat_verified": false
     },
     {
-      "id": "F03",
+      "id": "G03",
       "severity": "critical",
       "category": "Recommendations & Merchandising",
       "tested_query": "(Product Detail Page \u2014 requires member login)",
@@ -428,7 +428,7 @@
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
-      "id": "F04",
+      "id": "G04",
       "severity": "critical",
       "category": "Semantic / NLP Search",
       "tested_query": "lace bralette under $50",
@@ -441,7 +441,7 @@
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste"
     },
     {
-      "id": "F05",
+      "id": "G05",
       "severity": "critical",
       "category": "Semantic / NLP Search",
       "tested_query": "gifts for girlfriend",
@@ -454,7 +454,7 @@
       "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen"
     },
     {
-      "id": "F06",
+      "id": "G06",
       "severity": "critical",
       "category": "Query Suggestions / Empty State",
       "tested_query": "(empty search bar focus)",
@@ -467,7 +467,7 @@
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
-      "id": "G01",
+      "id": "S01",
       "severity": "positive",
       "category": "Typo Tolerance",
       "tested_query": "lingeire",
@@ -477,7 +477,7 @@
       "algolia_solution": "Algolia also provides typo tolerance \u2014 confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent."
     },
     {
-      "id": "G02",
+      "id": "S02",
       "severity": "positive",
       "category": "Search-As-You-Type",
       "tested_query": "bra",
@@ -507,7 +507,7 @@
       "said_date": "2023-01",
       "found_title": "'Cancel subscription' and 'member credits' return lingerie \u2014 not membership help",
       "found_evidence": "Queried 'cancel subscription' via Constructor.io API \u2014 returned 100 product results, zero help content. Queried 'member credits' \u2014 returned loungewear and swimwear. Members searching for membership answers are being sent deeper into the catalog. SimilarWeb confirms both queries are in the top organic landing keywords.",
-      "finding_id": "F02",
+      "finding_id": "G02",
       "algolia_angle": "Algolia Federated Search indexes help center content alongside products in a single query. 'Cancel subscription' surfaces the membership FAQ first, products second. Directly measurable as a reduction in support tickets and churn from confused members."
     },
     {
@@ -518,7 +518,7 @@
       "said_date": "2022-06",
       "found_title": "NLP queries fail \u2014 'gifts for girlfriend' returns a Runners Hat",
       "found_evidence": "Queried 'gifts for girlfriend' via Constructor.io API \u2014 third result was a Runners Hat. 'Sexy lingerie under $50' returned no price-filtered results. Constructor.io is doing keyword matching, not intent detection. Gift-intent, price-intent, and occasion-intent queries all fail.",
-      "finding_id": "F04",
+      "finding_id": "G04",
       "algolia_angle": "Algolia NeuralSearch understands semantic intent \u2014 'gifts for girlfriend' returns gift-able lingerie sets ranked by popularity and price. 'Under $50' is parsed as a price filter automatically. The path to purchase is streamlined because the search engine understands what the shopper is actually trying to do."
     }
   ],
