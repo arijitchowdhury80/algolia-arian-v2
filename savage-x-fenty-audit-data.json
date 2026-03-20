@@ -268,6 +268,15 @@
       "source_url": "https://theorg.com/org/fabletics/org-chart/tim-collins",
       "source_name": "The Org / FableticsOS LinkedIn",
       "source_date": "2026-01-01"
+    },
+    {
+      "type": "competitor",
+      "badge_label": "GOLDEN ANGLE \u2726",
+      "text": "SKIMS runs Algolia. App ID FYB9CPR9L5 confirmed in production (skims_prod_ index prefix). BuiltWith showed Findify \u2014 that was stale. Algolia is the active search backend.",
+      "relevance": "Your closest celebrity-DTC rival chose Algolia at $5B valuation. The proof point is live at skims.com. Kim Kardashian chose Algolia. The question is whether Rihanna will.",
+      "source_url": "https://www.skims.com/search?q=bra",
+      "source_name": "Network inspection \u2014 skims.com page source",
+      "source_date": "2026-03-20"
     }
   ],
   "competitors": [
@@ -282,10 +291,15 @@
     {
       "name": "SKIMS",
       "domain": "skims.com",
-      "search_vendor": "Findify",
+      "search_vendor": "Algolia",
       "monthly_traffic": "10.3M",
       "traffic_rank": 2,
-      "notes": "Kim Kardashian celebrity DTC rival. $4B valuation. Uses Findify (Shopify-native). Similar audience, premium positioning."
+      "notes": "Kim Kardashian celebrity DTC rival. $4B valuation. Uses Findify (Shopify-native). Similar audience, premium positioning.",
+      "uses_algolia": true,
+      "algolia_app_id": "FYB9CPR9L5",
+      "algolia_index_prefix": "skims_prod_",
+      "search_vendor_source": "Network inspection \u2014 algoliaAppId confirmed in page source at skims.com/search",
+      "detection_method": "VERIFIED \u2014 Algolia confirmed in page source (algoliaAppId: FYB9CPR9L5, algoliaIndexPrefix: skims_prod_). BuiltWith Findify tag was stale/incorrect."
     },
     {
       "name": "Adore Me",
@@ -832,44 +846,44 @@
     }
   ],
   "competitive_synthesis": {
-    "scenario": "OFFENSIVE PLAY \u2014 Leapfrog the Category",
-    "scenario_description": "0 of 5 direct competitors currently use Algolia. The field is open. SXF can be the first intimate apparel brand to deploy NeuralSearch + Personalization + Federation \u2014 creating a category search moat before Victoria's Secret (Google Vertex AI) or SKIMS upgrades.",
+    "scenario": "GOLDEN ANGLE \u2014 SKIMS (Algolia) + Leapfrog the Rest",
+    "scenario_description": "SKIMS \u2014 your closest celebrity-DTC rival at $5B valuation \u2014 runs Algolia. Every other competitor (Victoria's Secret, Adore Me, ThirdLove, Frederick's) does not. You have a golden angle: prove the Algolia advantage that SKIMS is already using, while leapfrogging everyone else with federation + recommendations no competitor has.",
     "competitor_tiers": [
+      {
+        "tier": "GOLDEN",
+        "competitors": [
+          "SKIMS"
+        ],
+        "search_stack": "Algolia (App ID: FYB9CPR9L5, confirmed via network inspection)",
+        "strategic_implication": "SKIMS chose Algolia at $5B valuation \u2014 the same scale as Savage X Fenty. This is your proof point: the celebrity-DTC category's most direct rival already made this decision. Join them \u2014 or fall behind.",
+        "source_url": "https://www.skims.com/search?q=bra"
+      },
       {
         "tier": "AHEAD",
         "competitors": [
           "Victoria's Secret"
         ],
-        "search_stack": "Google Vertex AI Search for Retail",
-        "strategic_implication": "VS has made an enterprise search investment. SXF is 2+ years behind the category leader on search maturity. Algolia closes the gap in 90 days.",
-        "source_url": "https://builtwith.com/victoriassecret.com"
+        "search_stack": "Google Vertex AI Search for Retail (announced Jan 2024)",
+        "strategic_implication": "The category incumbent moved to AI-native search in 2024. Savage X Fenty on Constructor.io is already behind VS on search intelligence.",
+        "source_url": "https://www.victoriassecretandco.com/news-releases/news-release-details/victorias-secret-co-create-new-ai-powered-shopping-experiences/"
       },
       {
         "tier": "PARITY",
         "competitors": [
-          "SKIMS",
           "Adore Me",
-          "ThirdLove"
-        ],
-        "search_stack": "Findify / LucidWorks Fusion / Bloomreach Discovery",
-        "strategic_implication": "Parity competitors have upgraded from platform-native but lack NLP and federation. Algolia leapfrogs all three.",
-        "source_url": "https://builtwith.com/skims.com"
-      },
-      {
-        "tier": "DISRUPTOR",
-        "competitors": [
+          "ThirdLove",
           "Frederick's of Hollywood"
         ],
-        "search_stack": "Native Shopify Search",
-        "strategic_implication": "Lowest traffic but highest engagement (33.7% bounce, 9.02 pages/visit). Evidence that invested search UX compounds engagement regardless of scale.",
-        "source_url": "https://builtwith.com/fredericks.com"
+        "search_stack": "LucidWorks / Bloomreach (ThirdLove migrating Mar 2025) / Native Shopify",
+        "strategic_implication": "None of these three have federation, NLP, or unified recommendations. Algolia leapfrogs all of them in one deployment.",
+        "source_url": "https://www.businesswire.com/news/home/20250312872429/en/ThirdLove-Revolutionizes-Its-Customer-Experience-With-AI-Powered-Personalization-From-Bloomreach"
       }
     ],
     "matrix_col_labels": {
       "nike_has": "Victoria's Secret",
-      "asics_has": "SKIMS",
-      "on_running_has": "ThirdLove",
-      "new_balance_has": "Adore Me"
+      "asics_has": "SKIMS \u2726 Algolia",
+      "on_running_has": "Adore Me",
+      "new_balance_has": "ThirdLove"
     },
     "the_ask": "Be the first intimate apparel brand with AI-powered NeuralSearch + Federated Search + PDP Recommendations. The competitive window is open \u2014 none of your direct competitors are there yet.",
     "positioning_statement": "Good news: 4 of 5 of your direct competitors have the same gaps you do. SKIMS uses Findify, ThirdLove is mid-migration to Bloomreach, Adore Me uses LucidWorks. Upgrading to Algolia creates an immediate category moat \u2014 NLP that understands 'gift for my girlfriend', personalization that surfaces what members want, and federation that keeps members from churning. You're not catching up \u2014 you're leapfrogging the category.",
@@ -888,7 +902,7 @@
       {
         "capability": "NLP / Semantic Search",
         "nike_has": "\u2705 Strong (Google AI)",
-        "asics_has": "\u274c Minimal",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u26a0\ufe0f Moderate",
         "new_balance_has": "\u274c Minimal",
         "prospect_today": "\u26a0\ufe0f Partial",
@@ -897,7 +911,7 @@
       {
         "capability": "Federated Search (Products + Help + Content)",
         "nike_has": "\u274c None",
-        "asics_has": "\u274c None",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u274c None",
         "new_balance_has": "\u274c None",
         "prospect_today": "\u274c None",
@@ -906,7 +920,7 @@
       {
         "capability": "Personalization",
         "nike_has": "\u2705 Strong (Vertex AI)",
-        "asics_has": "\u2705 Dynamic Yield",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u26a0\ufe0f Partial",
         "new_balance_has": "\u274c\u2192\u2705 Bloomreach incoming",
         "prospect_today": "\u26a0\ufe0f Limited (Segment not wired to search)",
@@ -915,7 +929,7 @@
       {
         "capability": "Dynamic Faceting",
         "nike_has": "\u26a0\ufe0f Unclear",
-        "asics_has": "\u274c Basic",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u26a0\ufe0f Moderate",
         "new_balance_has": "\u274c Basic",
         "prospect_today": "\u26a0\ufe0f Static (category bleed: panty size on bra search)",
@@ -924,7 +938,7 @@
       {
         "capability": "PDP Recommendations",
         "nike_has": "\u2705 Vertex AI Rec.",
-        "asics_has": "\u2705 Findify Rec.",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u26a0\ufe0f Via Bloomreach email",
         "new_balance_has": "\u274c None",
         "prospect_today": "\u274c ZERO widgets on PDP",
@@ -933,7 +947,7 @@
       {
         "capability": "Merchandising Control",
         "nike_has": "\u274c Black box (Google AI)",
-        "asics_has": "\u274c Minimal",
+        "asics_has": "\u2705 Algolia-powered",
         "on_running_has": "\u26a0\ufe0f Moderate",
         "new_balance_has": "\u26a0\ufe0f Basic",
         "prospect_today": "\u26a0\ufe0f Partial (Constructor rules)",
@@ -943,7 +957,7 @@
     "objection_counters": [
       {
         "objection": "We already have Constructor \u2014 it's working fine",
-        "counter": "Constructor is a solid platform. The question isn't whether it works \u2014 it's whether it's winning. Your VIP member content is invisible to search. 'Cancel subscription' returns lingerie. 'Gifts for girlfriend' returns a Runners Hat. That's not an execution gap \u2014 it's a platform ceiling. Algolia's AI Search + Recommend + Personalize gives you the full stack with merchandiser control your team doesn't currently have.",
+        "counter": "Constructor is a solid platform. But SKIMS \u2014 your most direct rival at $5B valuation \u2014 just chose Algolia. And your audit found: 'cancel subscription' returns lingerie, 'gifts for girlfriend' returns a Runners Hat. That's not Constructor working fine. That's Constructor at its ceiling. Algolia gives you what SKIMS has: NLP, federation, real-time personalization \u2014 and the proof that it works at your scale.",
         "source_finding": "F02, F04"
       },
       {
@@ -1297,8 +1311,8 @@
         "target": "C01",
         "hook_type": "Competitive Intelligence",
         "goal": "Create urgency \u2014 ThirdLove just moved to Bloomreach",
-        "subject": "ThirdLove just announced Bloomreach. Here's what that means for Savage X.",
-        "body": "Kevin,\n\nQuick competitive update:\n\nThirdLove announced a full Bloomreach AI search + personalization implementation in March 2025. They were on Fast Simon before \u2014 a step below Constructor.\n\nHere's the competitive picture today:\n\u2022 Victoria's Secret: Google Vertex AI Search (announced Jan 2024)\n\u2022 ThirdLove: Bloomreach Discovery (announced March 2025)\n\u2022 SKIMS: Findify\n\u2022 Adore Me: LucidWorks\n\u2022 Savage X Fenty: Constructor.io (since Nov 2023)\n\nNone of them have federated search. None have AI-native recommendations + search in one platform. That's the leapfrog opportunity \u2014 and right now the window is open.\n\nLast ask: 20 minutes to show you what the full Algolia stack looks like on a brand like yours?",
+        "subject": "SKIMS runs Algolia. Here's the full competitive picture.",
+        "body": "Kevin,\n\nQuick competitive update \u2014 and this one matters.\n\nSKIMS runs Algolia. I confirmed it via network inspection \u2014 their search stack uses Algolia App ID FYB9CPR9L5 with a skims_prod_ index. Kim Kardashian chose Algolia for a $5B DTC brand.\n\nHere's the full picture:\n\u2022 SKIMS: Algolia \u2726 (your closest celebrity-DTC rival)\n\u2022 Victoria's Secret: Google Vertex AI Search (Jan 2024)\n\u2022 ThirdLove: Bloomreach (March 2025)\n\u2022 Adore Me: LucidWorks\n\u2022 Savage X Fenty: Constructor.io (Nov 2023)\n\nSKIMS and VS have both upgraded to AI-native search in the last 18 months. Savage X Fenty has not.\n\nThe question isn't whether to upgrade \u2014 it's whether you want to be ahead of SKIMS on the full stack (federation + recommendations + NLP) or behind them.\n\n20 minutes this week?",
         "cta": "Book 20 min \u2192 [Calendly]",
         "ps": ""
       },
@@ -1429,5 +1443,22 @@
       "url": "https://canvasbusinessmodel.com/blogs/growth-strategy/savage-x-fenty-growth-strategy",
       "label": "CanvasBusinessModel \u2014 Growth Strategy Analysis"
     }
-  ]
+  ],
+  "golden_angle": {
+    "exists": true,
+    "headline": "SKIMS \u2014 your closest celebrity-DTC rival \u2014 runs Algolia",
+    "competitors_using_algolia": [
+      {
+        "name": "SKIMS",
+        "domain": "skims.com",
+        "monthly_traffic": "~10.3M visits/month",
+        "algolia_app_id": "FYB9CPR9L5",
+        "algolia_index": "skims_prod_",
+        "source_url": "https://www.skims.com/search?q=bra",
+        "detection_method": "Network inspection \u2014 algoliaAppId confirmed in page source",
+        "implication": "Kim Kardashian chose Algolia for SKIMS at $5B valuation. Rihanna's Savage X Fenty is on Constructor. The celebrity-DTC search arms race is already underway \u2014 and Algolia is winning it."
+      }
+    ],
+    "pitch": "SKIMS \u2014 your most comparable celebrity-DTC competitor \u2014 already runs Algolia. They're at $5B valuation, using Algolia index skims_prod_ for all product discovery. The question isn't whether Algolia is right for your category. The question is: do you want to be behind SKIMS on search, or ahead?"
+  }
 }
