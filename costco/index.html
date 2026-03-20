@@ -205,6 +205,25 @@ img { max-width: 100%; display: block; }
 
 .tb-vintage { font-size: 14px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
 
+/* Downloads dropdown */
+.tb-downloads { position: relative; flex-shrink: 0; }
+.tb-downloads-menu {
+  display: none; position: absolute; top: calc(100% + 8px); right: 0;
+  background: var(--gray); border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; min-width: 210px; overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35); z-index: 200;
+}
+.tb-downloads-menu.open { display: block; }
+.tb-downloads-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 16px; color: white; text-decoration: none;
+  font-size: 13px; font-weight: 500; transition: background 0.12s;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.tb-downloads-item:last-child { border-bottom: none; }
+.tb-downloads-item:hover { background: rgba(255,255,255,0.10); text-decoration: none; }
+.tb-downloads-item svg { flex-shrink: 0; opacity: 0.7; }
+
 /* Ticker — Nasdaq/Times Square style: scrolls right→left once, waits ~2 min, repeats */
 
 .tb-ticker-wrap {
@@ -6722,6 +6741,19 @@ function renderTopbar(D) {
 
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
+    ${(()=>{
+      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      if(!assets.length) return '';
+      const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+      const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+      const icoDl=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+      const rows=assets.map(a=>{
+        const ico=a.name.toLowerCase().includes('battle')?icoStar:a.name.toLowerCase().includes('leave')?icoDl:icoDoc;
+        return `<a href="${escHtml(a.url||'#')}" target="_blank" class="tb-downloads-item">${ico}<span>${escHtml(a.name)}</span></a>`;
+      }).join('');
+      return `<div class="tb-downloads no-print"><button class="tb-btn" onclick="var m=document.getElementById('tb-dl-menu');m.classList.toggle('open');event.stopPropagation();">${icoDl} Downloads ▾</button><div class="tb-downloads-menu" id="tb-dl-menu">${rows}</div></div>`;
+    })()}
+
     <button class="tb-btn no-print" onclick="window.print()">
 
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -6739,6 +6771,12 @@ function renderTopbar(D) {
   `;
 
 }
+
+/* Close downloads menu when clicking outside */
+document.addEventListener('click', function(e){
+  var menu = document.getElementById('tb-dl-menu');
+  if(menu && !e.target.closest('.tb-downloads')) menu.classList.remove('open');
+});
 
 
 
