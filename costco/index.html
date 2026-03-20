@@ -5732,79 +5732,79 @@ a:hover {
       {
         "touch": 1,
         "day": 1,
-        "channel": "linkedin",
+        "channel": "email",
         "target": "crabb",
-        "subject": "LinkedIn connection",
-        "body": "Joel — I was on costco.com searching for a gaming TV under $1,000 and got insurance plans. I have a 3-minute observation that I think would be relevant given the eCommerce transformation work. Would you be open to connecting?",
-        "cta": "Connect on LinkedIn",
         "hook_type": "Insight",
-        "goal": "Open the conversation — establish credibility"
+        "goal": "Open with the WAF-blocked query — hardest specific failure",
+        "subject": "costco.com search blocked its own customer",
+        "body": "Joel —\n\nSearched \"best TV for gaming under $1,000\" on costco.com. The search endpoint returned Access Denied. Akamai WAF blocked the query entirely — the member hit a dead end.\n\nThat's not a relevance problem. That's the search stack failing the moment a member types what they actually want to buy.\n\nI ran 8 queries across the site. That one's the hardest to explain to a member paying $65 a year.\n\n15 minutes?"
       },
       {
         "touch": 2,
         "day": 3,
         "channel": "linkedin",
         "target": "crabb",
-        "subject": "3 search gaps I found in 20 minutes",
-        "body": "Thanks for connecting. As promised: (1) 'best tv for gaming under 1000' returns insurance plans — zero NLP, (2) PDP pages show zero product recommendations since RichRelevance removal, (3) 'return policy' returns products not help content. These are the exact gaps Algolia was built to close. Worth 15 minutes to walk through the solutions?",
-        "cta": "Book 15-minute call",
-        "hook_type": "Case Study",
-        "goal": "Show peer validation — REI case study"
+        "hook_type": "Pain Point",
+        "goal": "Hit the empty state problem — highest traffic moment",
+        "message": "Joel — sent you an email about the gaming TV query. Quick addition: your empty search state is completely blank. No trending products, no popular searches, nothing. On a site doing $20B+ in e-commerce, that's the highest-traffic touchpoint on costco.com showing members nothing. Happy to show the comparison."
       },
       {
         "touch": 3,
-        "day": 7,
+        "day": 5,
         "channel": "linkedin",
-        "target": "gupta",
-        "subject": "Merchandising visibility into failed searches",
-        "body": "Sonali — I noticed Costco recently launched personalization capabilities per the Q1 FY2026 earnings. The next frontier is understanding which member searches fail before they reach the personalization layer. Algolia Analytics shows that in real-time — happy to share a 2-minute demo.",
-        "cta": "View 2-minute demo",
-        "hook_type": "Pain Point",
-        "goal": "Surface the search gap directly"
+        "target": "lubach",
+        "hook_type": "Executive Angle",
+        "goal": "Connect the $470M personalization signal to the search gap",
+        "message": "Torsten — Gary Millerchip cited $470M driven by personalization carousels on the Q2 call. Meanwhile, costco.com search WAFs out on \"best TV for gaming under $1,000\" with Access Denied. The carousels are working. The search isn't talking to them. That's the gap Algolia closes."
       },
       {
         "touch": 4,
-        "day": 10,
-        "channel": "linkedin",
+        "day": 7,
+        "channel": "email",
         "target": "lubach",
-        "subject": "Technology investment ROI — search tier",
-        "body": "Torsten — Costco's 10-K names competitors with greater technology capabilities as a strategic risk. Walmart has AI-powered search. Amazon sets member expectations. Algolia is how you close that gap in 8–12 weeks, not 18 months. The ROI at your scale is $148M+ annually (conservative). Happy to share the model.",
-        "cta": "Request ROI model",
-        "hook_type": "Social Proof",
-        "goal": "Connect personalization investment to search"
+        "hook_type": "ROI",
+        "goal": "Connect $470M signal to the personalization-search gap",
+        "subject": "The personalization story has a gap",
+        "body": "Torsten —\n\nGary Millerchip called out $470M in sales from personalized recommendation carousels on the Q2 call. That's real and it's working.\n\nHere's what's not working: costco.com search doesn't read any of those member signals. A member who bought a 75\" Samsung last year searches \"soundbar\" and gets the same results as someone who's never bought electronics. The carousels know them. The search doesn't.\n\nRon said \"AI is about strengthening fundamentals.\" Search is the fundamental that connects member intent to product.\n\nWorth 20 minutes?"
       },
       {
         "touch": 5,
-        "day": 14,
-        "channel": "linkedin",
+        "day": 10,
+        "channel": "video",
         "target": "crabb",
-        "subject": "Costco-specific search audit results",
-        "body": "Joel — I ran a full Algolia audit on costco.com: 5 of 10 search areas scored HIGH severity. The empty state gap, NLP gap, and federated search gap are the biggest opportunities. I'd like to share the full findings in a 30-minute session — no deck, just the data. Interested?",
-        "cta": "Schedule 30-minute audit review",
-        "hook_type": "ROI",
-        "goal": "$470M ROI proof point — CFO language"
+        "hook_type": "Loom",
+        "goal": "Show the WAF block and blank state side by side",
+        "subject": "90 seconds — two searches on costco.com",
+        "body": "Joel —\n\nRecorded two queries: \"best TV for gaming under $1,000\" and the empty search state, both on costco.com.\n\n[Loom link]\n\nThe first returns Access Denied. The second returns a blank page. For a warehouse club built on \"find the best thing at the best price,\" those are the two moments members trust the search to deliver.\n\n90 seconds. Shows it better than I can describe it."
       },
       {
         "touch": 6,
-        "day": 17,
-        "channel": "linkedin",
+        "day": 13,
+        "channel": "email",
         "target": "gupta",
-        "subject": "Member intent data you're currently missing",
-        "body": "Sonali — with 93M monthly visits, the searches that fail on costco.com represent demand signals for products your members want but can't find. Algolia captures that in real time. It's the most valuable signal for your merchandising roadmap. Worth a quick look?",
-        "cta": "View search intelligence demo",
-        "hook_type": "Urgency",
-        "goal": "Create urgency — $6.5B CapEx cycle"
+        "hook_type": "Merchandising",
+        "goal": "Hit the merchandising layer — Sonali's specific remit",
+        "subject": "The merchandising layer your search doesn't have",
+        "body": "Sonali —\n\nCostco search returns products — but merchandising signals don't come through. \"samung tv\" (typo) returns 11 Samsung TVs correctly, but no \"Did you mean Samsung?\" — the member doesn't know the system helped them. \"Best TV for gaming under $1,000\" triggers the WAF entirely.\n\nThe pattern: basic search works. Intent-based search fails. And when it fails, it fails silently.\n\nAlgolia's merchandising rules layer sits between the search and the results — query categorization, synonym injection, intent detection. All configurable without engineering.\n\nWorth a look?"
       },
       {
         "touch": 7,
-        "day": 21,
+        "day": 16,
         "channel": "linkedin",
         "target": "crabb",
-        "subject": "Final outreach — closing the loop",
-        "body": "Joel — I've shared findings on 3 specific gaps in Costco's search. If the timing isn't right, I completely understand. If you'd like to revisit when the eCommerce platform roadmap is set for H2, I'm here. Either way, the audit report is yours to keep.",
-        "cta": "Request full audit report",
+        "hook_type": "Competitor",
+        "goal": "Golden angle — BJ's is already on Algolia",
+        "message": "Joel — BJ's Wholesale, your closest membership warehouse competitor, is confirmed on Algolia via BuiltWith. They're smaller, fewer members. But their members get relevant results for complex queries. Yours get Access Denied. I have the full audit — score, findings, ROI model. Just say the word."
+      },
+      {
+        "touch": 8,
+        "day": 21,
+        "channel": "email",
+        "target": "crabb",
         "hook_type": "POC Ask",
-        "goal": "De-risked POC request — 30 day trial"
+        "goal": "Send the full audit and make a direct ask",
+        "subject": "Everything in one place",
+        "body": "Joel —\n\nThe full Costco search audit is ready. 3.5/10 overall score. Four critical gaps — WAF blocking complex queries, blank empty state, zero personalization, non-product queries routing to wrong domains. Three genuine strengths — synonym coverage is strong, category routing works, mobile experience is clean.\n\nROI model is built on your traffic. Conservative scenario: $147M/year in search-influenced conversion lift.\n\n30 minutes with you and Torsten. Or just send the doc along if that's more useful."
       }
     ]
   },

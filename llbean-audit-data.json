@@ -1356,72 +1356,77 @@
         "day": 1,
         "channel": "email",
         "target": "rob_harpool",
-        "subject": "L.L.Bean search + commercetools: a quick audit finding",
-        "body": "Hi Rob,\n\nI ran a quick search audit on llbean.com and found something I thought you'd want to see.\n\nWhen a customer types 'best waterproof jacket for camping in cold weather,' your search returns keyword matches \u2014 not semantic results. REI's Algolia-powered search understands the intent and surfaces insulated + waterproof jackets with dynamic facets instantly.\n\nGiven your commercetools migration is complete, search is the obvious next microservice to upgrade. Algolia has a pre-built commercetools connector \u2014 1-2 days to index, not months.\n\nWould you have 20 minutes to see the specific gaps I found? Happy to share the full audit.\n\nBest,\n[AE Name] | Algolia",
-        "cta": "Share full audit findings \u2014 open the pain conversation"
+        "hook_type": "Insight",
+        "goal": "Lead with SAYT failure \u2014 JJ's headless migration is live, search isn't keeping up",
+        "subject": "The headless gap on llbean.com",
+        "body": "Rob \u2014\n\nJJ Rouhana moved L.L.Bean to headless via commercetools. Fast, nimble, speed to market. That migration is done.\n\nHere's what didn't come with it: search still requires a full page reload. No autocomplete. No search-as-you-type. A customer typing \"hiking\" has to type the full word and press Enter before they see anything.\n\nThat's a 2005 search experience on a 2024 headless architecture.\n\nI audited 8 queries across the site. That one's the most visible gap.\n\n15 minutes?"
       },
       {
         "touch": 2,
         "day": 3,
         "channel": "linkedin",
         "target": "rob_harpool",
-        "subject": "Connected on commercetools + Algolia",
-        "body": "Hi Rob \u2014 sent you an email about a search audit I ran on llbean.com. REI (your most direct Algolia-powered competitor) is using the same commercetools + Algolia stack you're positioned to adopt. Worth 20 mins? [AE Name] | Algolia",
-        "cta": "LinkedIn reinforcement \u2014 drive email open"
+        "hook_type": "Pain Point",
+        "goal": "NLP failure \u2014 the customer described what they want, search returned irrelevant results",
+        "message": "Rob \u2014 sent you an email about the SAYT gap. One more: searched \"waterproof jacket for winter hiking\" \u2014 the site treated it as four separate keywords with no semantic understanding. The customer described their exact need. The site returned keyword matches. REI uses Algolia and surfaces the right jacket with the right filters pre-populated for that query. Your closest competitor is already on Algolia."
       },
       {
         "touch": 3,
         "day": 5,
-        "channel": "email",
-        "target": "rob_harpool",
-        "subject": "3 search gaps on llbean.com (with screenshots)",
-        "body": "Hi Rob,\n\nHere are the 3 specific gaps I found:\n\n1. NO SAYT: 'waterproof jacket' requires a full page reload \u2014 2-3s on mobile (66% of your traffic). REI returns results in <50ms.\n\n2. ZERO NLP: 'gift for dad who hikes under $100' \u2014 no gift discovery, no price filtering, no intent detection. Gift buyers (your Boat and Tote new customer segment) get the same results as trail runners.\n\n3. NO FEDERATED: 'return policy' or 'outdoor schools near me' \u2014 zero results. REI surfaces these instantly in search.\n\nAll three fixable with Algolia + your existing commercetools stack. Is this worth a conversation?\n\n[AE Name]",
-        "cta": "Evidence-based email \u2014 drives urgency"
+        "channel": "linkedin",
+        "target": "jj_rouhana",
+        "hook_type": "Technical",
+        "goal": "CIO angle \u2014 headless is done, search is the next layer",
+        "message": "JJ \u2014 you said headless allows L.L.Bean to be \"more nimble and more agile.\" That architecture is live. The search layer on top isn't. llbean.com search still does a full page reload on every query, no SAYT, no personalization post-browse. Algolia's InstantSearch is headless-native \u2014 it's the search layer your commercetools frontend was built to connect to."
       },
       {
         "touch": 4,
-        "day": 8,
+        "day": 7,
         "channel": "email",
-        "target": "emily_elting",
-        "subject": "L.L.Bean personalization + search: the missing link",
-        "body": "Hi Emily,\n\nI know you're investing in a real-time personalization platform at L.L.Bean.\n\nOne pattern we see consistently: personalization investment plateaus without search integration. The highest-intent personalization moment is when someone types a query. Someone searching 'jacket under $200 for a gift' is literally signaling their intent in real time.\n\nPatagonia uses Algolia to re-rank results per user using behavioral signals \u2014 they saw +15% repeat purchases.\n\nWould you and Rob Harpool be open to a 30-minute session on how search connects to your personalization stack?\n\n[AE Name] | Algolia",
-        "cta": "Tri-party call \u2014 Rob + Emily + AE"
+        "target": "jj_rouhana",
+        "hook_type": "Strategic",
+        "goal": "Connect headless migration to Algolia as the logical next step",
+        "subject": "Headless + search \u2014 the missing piece",
+        "body": "JJ \u2014\n\nYou moved L.L.Bean to headless via commercetools. That's the right foundation \u2014 shared services across website, call center, and store channels.\n\nHere's the gap: search didn't come along. llbean.com still does a full page reload on every query. No search-as-you-type. No session-aware personalization. No NLP for outdoor-specific intent like \"waterproof jacket for winter hiking.\"\n\nAlgolia has a certified commercetools connector \u2014 it's not a separate project, it's the next step in the migration you already started.\n\nREI is confirmed on Algolia. They're your most direct competitor and they're already there.\n\nWorth 20 minutes?"
       },
       {
         "touch": 5,
         "day": 10,
-        "channel": "linkedin",
-        "target": "emily_elting",
-        "subject": "Analytics + search: Algolia connection",
-        "body": "Hi Emily \u2014 I emailed about search + personalization integration. Patagonia's analytics team used the same approach (Algolia behavioral signals \u2192 real-time re-ranking) and saw measurable repeat purchase lift. Worth 30 mins? [AE Name]",
-        "cta": "LinkedIn follow-up to email touch 4"
+        "channel": "video",
+        "target": "rob_harpool",
+        "hook_type": "Loom",
+        "goal": "Show the SAYT gap and NLP failure side by side with REI",
+        "subject": "60 seconds \u2014 llbean.com vs. REI on the same query",
+        "body": "Rob \u2014\n\nRecorded \"waterproof jacket for winter hiking\" on llbean.com and on REI.com.\n\n[Loom link]\n\nREI is confirmed on Algolia. The difference in how the same query is understood \u2014 and what filters appear \u2014 is in that 60 seconds."
       },
       {
         "touch": 6,
-        "day": 12,
-        "channel": "video",
-        "target": "rob_harpool",
-        "subject": "3-min Loom: what REI's search looks like vs. llbean.com",
-        "body": "Hi Rob,\n\nRecorded a 3-minute comparison: same query ('best jacket for cold weather camping') on llbean.com vs REI's Algolia-powered search.\n\n[LOOM LINK]\n\nThe difference is stark \u2014 and fixable with your existing commercetools infrastructure.\n\nWould love your reaction. 15 minutes?\n\n[AE Name] | Algolia",
-        "cta": "Async video \u2014 high engagement, drives call request"
+        "day": 13,
+        "channel": "email",
+        "target": "emily_elting",
+        "hook_type": "Analytics",
+        "goal": "Emily owns insights \u2014 personalization data going unused",
+        "subject": "The session data your search doesn't use",
+        "body": "Emily \u2014\n\nL.L.Bean has strong customer data \u2014 65% online channel mix, direct purchase history, 112 years of knowing the outdoor customer.\n\nHere's what it's not powering: search. A returning customer who bought Trail Model X Hiking Shoes searches \"jacket\" and sees the same generic results as someone visiting for the first time. The session data exists. The search doesn't read it.\n\nAlgolia's analytics layer shows exactly where customers abandon search, what queries return zero results, and which filters drive conversion. It's the layer that connects your customer data to what they see in search.\n\nWorth 20 minutes with Rob's team?"
       },
       {
         "touch": 7,
-        "day": 15,
-        "channel": "email",
-        "target": "jj_rouhana",
-        "subject": "commercetools \u2192 search modernization: what REI did next",
-        "body": "Hi JJ,\n\nCongratulations on zero outages during Cyber Monday on commercetools \u2014 that's genuinely impressive.\n\nI've been talking with Rob Harpool about search modernization. Given your 'shared services for all channels' vision, I think there's a relevant conversation here: search as the next microservice after commercetools.\n\nREI did exactly this \u2014 commercetools + Algolia stack, saw 15% multi-channel engagement lift. Algolia has a certified pre-built commercetools connector.\n\nWould you have 20 minutes to hear what their implementation looked like?\n\n[AE Name] | Algolia",
-        "cta": "CIO engagement \u2014 after Rob and Emily are already in conversation"
+        "day": 16,
+        "channel": "linkedin",
+        "target": "rob_harpool",
+        "hook_type": "Case Study",
+        "goal": "Patagonia case study \u2014 outdoor specialty with same challenges",
+        "message": "Rob \u2014 Patagonia saw meaningful search-driven conversion lift after implementing Algolia on their outdoor specialty e-commerce. Same vertical, same challenge \u2014 customers who search by activity and conditions, not product spec. Full audit ready whenever you want it."
       },
       {
         "touch": 8,
         "day": 21,
         "channel": "email",
         "target": "rob_harpool",
-        "subject": "L.L.Bean search: 30-day POC proposal",
-        "body": "Hi Rob,\n\nI've reached out a few times about search modernization. One clear ask:\n\nWould you be open to a 30-day proof-of-concept \u2014 we index your catalog alongside commercetools, run NLP and SAYT for 4 weeks, and measure zero-results rate reduction and search-to-purchase delta vs. your current setup?\n\nNo disruption to your live site. ~2 days of engineering time. You get data before any license conversation.\n\nWorth exploring?\n\n[AE Name] | Algolia",
-        "cta": "POC proposal \u2014 de-risked close"
+        "hook_type": "POC Ask",
+        "goal": "Full audit + direct ask",
+        "subject": "The full L.L.Bean audit",
+        "body": "Rob \u2014\n\nEverything in one place: llbean.com scored 3.6/10. Six gaps, two genuine strengths. The strengths: typo tolerance works, basic product search returns relevant results. The gaps: no SAYT, no NLP, no post-browse personalization, no PDP recommendations, return policy queries return products, static filters regardless of query context.\n\nROI model built on L.L.Bean's $1.105B e-commerce revenue. Conservative scenario: $9.9M/year.\n\nREI is already on Algolia. The commercetools connector means this is weeks to implement, not months.\n\n30 minutes with you and JJ. Or the doc first \u2014 whichever is easier."
       }
     ]
   }

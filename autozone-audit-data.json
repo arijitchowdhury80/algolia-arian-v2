@@ -1565,90 +1565,79 @@
       {
         "touch": 1,
         "day": 1,
-        "channel": "linkedin",
+        "channel": "email",
         "target": "maki",
-        "subject": "LinkedIn connection \u2014 specific AutoZone search observation",
-        "body": "Jamey \u2014 I was on AutoZone.com researching headlamps and got 23 results. Typed 'headlight' instead \u2014 538 results. Same product, 23\u00d7 gap. I've been doing a deep dive on AutoZone's search experience and have a few specific observations I think you'd find relevant. Open to connecting?",
-        "cta": "LinkedIn connection request",
         "hook_type": "Insight",
-        "goal": "Drive response"
+        "goal": "Lead with the headlamp/headlight synonym gap \u2014 most damaging finding",
+        "subject": "headlamp vs. headlight on autozone.com",
+        "body": "Jamey \u2014\n\nSearched \"headlamp\" on autozone.com \u2014 23 results. Then searched \"headlight\" \u2014 538 results.\n\nSame part. Same inventory. Different word. 23 vs. 538.\n\nThe customer who typed \"headlamp\" saw 2% of your catalog. They're at Advance Auto right now.\n\nThat's not a small gap \u2014 your catalog has 750K+ SKUs and no synonym intelligence stitching the terminology together. I audited 8 queries. This one costs you the most.\n\n15 minutes?"
       },
       {
         "touch": 2,
         "day": 3,
         "channel": "linkedin",
         "target": "maki",
-        "subject": "5 specific search gaps \u2014 quick summary",
-        "body": "Thanks for connecting, Jamey. Quick summary of what I found on AutoZone.com: (1) 23\u00d7 synonym gap \u2014 headlamp vs headlight (23 vs 538 results); (2) Duralast brand search returns 2 results for your core private-label brand; (3) 'what oil does a 2020 Toyota Camry take' \u2014 NLP-blind, returns irrelevant results; (4) no product recommendations since Certona was removed; (5) 'return policy' surfaces products, not your returns policy page.\n\nAt 31.3M monthly visits, these gaps represent thousands of lost conversions daily. Happy to walk through in 15 minutes \u2014 no pitch, just the data and what we'd do about each one.",
-        "cta": "Book 15-minute search audit walkthrough",
-        "hook_type": "Case Study",
-        "goal": "Drive response"
+        "hook_type": "Pain Point",
+        "goal": "Hit the NLP gap \u2014 customers asking in plain English",
+        "message": "Jamey \u2014 sent you an email about the headlamp/headlight gap. One more: I searched \"what oil does a 2020 Toyota Camry take?\" \u2014 AutoZone returned keyword matches. No natural language, no direct answer. That customer is holding their phone in a parking lot. If they don't get the answer in 10 seconds on your site, they get it on Google and buy wherever Google sends them."
       },
       {
         "touch": 3,
-        "day": 6,
+        "day": 5,
         "channel": "linkedin",
         "target": "childress",
-        "subject": "BOPIS + omnichannel search gap \u2014 AutoZone",
-        "body": "Bailey \u2014 congratulations on the SVP Omnichannel role. I've been reviewing AutoZone's search infrastructure in context of your BOPIS and omnichannel strategy.\n\nA quick question: can a customer searching AutoZone.com today filter results by inventory available at their nearest Mega Hub \u2014 in real time? At 142 Mega Hubs, each carrying 80,000\u2013110,000 SKUs, inventory-aware search is a direct commercial conversion lever. Your DIFM commercial segment grew +9.8% SSS in Q2 FY2026 \u2014 and professional mechanics ordering under time pressure need to find the right part at the nearest location in seconds.\n\nAlgolia handles this with geo-filtered, BOPIS-aware search that integrates with your existing inventory system. Happy to show you a 15-minute demo.",
-        "cta": "15-minute BOPIS-aware search demo",
-        "hook_type": "Pain Point",
-        "goal": "Drive response"
+        "hook_type": "Basket Building",
+        "goal": "Hit the PDP cross-sell gap \u2014 Bailey owns merchandising",
+        "message": "Bailey \u2014 AutoZone PDPs have zero cross-sell. Certona was removed and nothing replaced it (BuiltWith confirmed, no replacement detected). A customer buying brake pads sees no rotors, no brake fluid, no tools. The basket-building moment disappears at the exact point they've already committed to the repair. Algolia Recommend fixes this without a separate platform."
       },
       {
         "touch": 4,
-        "day": 10,
-        "channel": "linkedin",
-        "target": "borninkhof",
-        "subject": "Supply Chain 2030 completing \u2014 search is the next chapter",
-        "body": "Michelle \u2014 AutoZone publicly stated Supply Chain 2030 is 'in the final stages' (CEO Daniele, Q2 FY2026 earnings call). Every major infrastructure modernization has a natural next frontier.\n\nAutoZone has already done the hard work \u2014 Oracle Endeca and ATG removed, React/Next.js/Contentstack composable stack in place. The search layer that completes this modern architecture is the open question.\n\nAlgolia is API-first, fully managed SaaS, and integrates natively with your existing React/Next.js/Contentstack stack in 8\u201312 weeks \u2014 not 18 months. Your background at McDonald's U.S. Technology and Walmart International gives you the scale context; you've seen what enterprise-grade search infrastructure looks like at this traffic volume.\n\nHappy to walk through the architecture \u2014 20 minutes, no slides, just the integration pattern at your scale.",
-        "cta": "Architecture overview call \u2014 20 minutes",
-        "hook_type": "Social Proof",
-        "goal": "Drive response"
+        "day": 7,
+        "channel": "email",
+        "target": "childress",
+        "hook_type": "Case Study",
+        "goal": "Under Armour SFCC proof point \u2014 same platform",
+        "subject": "The basket you're not building",
+        "body": "Bailey \u2014\n\nAutoZone PDPs have no cross-sell, no FBT, no \"customers also bought.\" Certona was removed and nothing replaced it (confirmed via BuiltWith live scan last month).\n\nA customer on the Duralast Gold Ceramic Brake Pad page is mid-repair. They need rotors. They need brake cleaner. They need the caliper bolts. Your site sends them to checkout with one item.\n\nUnder Armour runs the same Salesforce Commerce Cloud stack. After adding Algolia Recommend, their basket value lifted significantly. Same platform. Same high-intent purchase behavior.\n\nWorth 15 minutes?"
       },
       {
         "touch": 5,
-        "day": 14,
-        "channel": "linkedin",
+        "day": 10,
+        "channel": "video",
         "target": "maki",
-        "subject": "Full Phase 2 audit results \u2014 AutoZone search score: 2.6/10",
-        "body": "Jamey \u2014 I completed a full browser-based search audit on AutoZone.com. Overall search score: 2.6/10. Five critical gaps documented:\n\n1. Synonym gap \u2014 headlamp/headlight 23\u00d7 variance (F01 \u2014 Critical)\n2. Typo tolerance failures \u2014 misspelled queries bypass brand redirects (F02 \u2014 Critical)\n3. No federated search \u2014 'return policy' surfaces products, not help content (F03 \u2014 Critical)\n4. Zero product recommendations \u2014 Certona removed, no active replacement (F04 \u2014 Critical)\n5. NLP-blind \u2014 'what oil for 2020 Toyota Camry' fails to parse intent (F06 \u2014 Critical)\n\nThe full audit report is ready. I'd like to share it in 30 minutes \u2014 specific findings, competitor benchmarks, and Algolia's solution for each gap. No pitch deck, just data.",
-        "cta": "Schedule 30-minute full audit review",
-        "hook_type": "ROI",
-        "goal": "Drive response"
+        "hook_type": "Loom",
+        "goal": "Show the headlamp gap visually",
+        "subject": "90 seconds \u2014 headlamp, headlight, and what happens next",
+        "body": "Jamey \u2014\n\nRecorded the headlamp vs. headlight query on autozone.com, then showed the same search on a site with synonym intelligence.\n\n[Loom link]\n\n23 results vs. 538 results. For the same part. The gap isn't in the warehouse \u2014 it's in the search layer between your customer and your catalog."
       },
       {
         "touch": 6,
-        "day": 17,
-        "channel": "linkedin",
-        "target": "childress",
-        "subject": "VIN decoder \u2192 search conversion: 144K monthly opportunities",
-        "body": "Bailey \u2014 VIN decoder is AutoZone's #2 organic traffic page with 144,383 monthly clicks (SimilarWeb, Jan 2026). These users arrive vehicle-identified, in high-intent mode, ready to buy compatible parts.\n\nIf AutoZone's search can seamlessly transition a VIN session into fitment-filtered product results \u2014 surfacing the right oil, brake pads, or battery for that specific vehicle without the customer re-entering their Year/Make/Model \u2014 that's a direct BOPIS and DIFM commercial conversion lever at scale.\n\nAlgolia's Intelligent Auto Parts Solution (launched March 5, 2026) makes Year/Make/Model a native first-class search dimension. The VIN data you already capture flows directly into fitment-aware search results. Happy to show you this in a live demo.",
-        "cta": "VIN-to-search demo \u2014 15 minutes",
-        "hook_type": "Urgency",
-        "goal": "Drive response"
+        "day": 13,
+        "channel": "email",
+        "target": "borninkhof",
+        "hook_type": "Strategic",
+        "goal": "First-mover frame for the CIO \u2014 no competitor is on Algolia",
+        "subject": "The search gap in your tech stack",
+        "body": "Michelle \u2014\n\nAutoZone scored 2.6/10 on our search audit \u2014 the lowest in the auto parts competitive set. O'Reilly (Oracle ATG), Advance Auto (LucidWorks), NAPA (SAP Hybris) are all on legacy stacks. None of the top 5 use Algolia.\n\nThat's the first-mover window. AutoZone has the largest traffic (31M+ monthly visits), the deepest catalog (750K+ SKUs), and the most complex search challenge in the vertical \u2014 VIN fitment, synonym gaps, NLP for DIY intent. Algolia handles all three natively.\n\nPhil Daniele said \"invest in technology to improve customer service.\" This is that investment.\n\n20 minutes?"
       },
       {
         "touch": 7,
-        "day": 21,
+        "day": 16,
         "channel": "linkedin",
-        "target": "koratty",
-        "subject": "Search architecture question \u2014 post-Oracle Endeca",
-        "body": "Manoj \u2014 I've been reviewing AutoZone's technology stack in context of your Oracle Endeca removal and the composable architecture migration to React/Next.js/Contentstack.\n\nQuick technical question: after Endeca's removal, what is the current search infrastructure powering autozone.com? I ask because Algolia's integration pattern for a React/Next.js/Contentstack stack is API-first \u2014 there's no rip-and-replace, no backend disruption. The InstantSearch React library connects to your existing catalog data model in days, not months.\n\nGiven your enterprise architecture background, I think the integration pattern would be immediately legible. Happy to walk through the technical architecture \u2014 20 minutes, engineering-first discussion.",
-        "cta": "Technical architecture review \u2014 20 minutes",
-        "hook_type": "POC Ask",
-        "goal": "Drive response"
+        "target": "maki",
+        "hook_type": "Mobile",
+        "goal": "63% mobile sales \u2014 typos on mobile are fatal",
+        "message": "Jamey \u2014 63% of AutoZone's online sales finalize on mobile (Grips Intelligence, 2026). Searched \"brak pads\" on mobile \u2014 the typo bypassed brand redirects, no correction shown. On mobile, there's no second chance. If the search misses the typo, the customer thinks you don't carry it and leaves. Full audit ready whenever you want it."
       },
       {
         "touch": 8,
-        "day": 28,
-        "channel": "linkedin",
+        "day": 21,
+        "channel": "email",
         "target": "maki",
-        "subject": "Closing the loop \u2014 timing",
-        "body": "Jamey \u2014 I've shared specific findings on AutoZone's search gaps over the past few weeks. If the timing isn't right now, I completely understand \u2014 I know you're in the middle of a significant transformation and the Lead Software Engineer (eCommerce/Search) search is ongoing.\n\nIf there's a better moment to revisit \u2014 once that hire is in place and you're defining the search roadmap for FY2027 \u2014 I'm here. The full audit report (23\u00d7 synonym gap, Duralast brand issue, NLP failures, Certona recommendations gap, and the complete browser audit) is yours regardless.\n\nOne last thought: your catalog is expanding rapidly in FY26 per your own 10-K. Every week of delay on synonym infrastructure means more new SKUs landing in the invisible 23-result shadow catalog. The window before competitors modernize is open but not permanent. Happy to re-engage whenever the timing works.",
-        "cta": "Re-engage when eCommerce/Search hire is settled",
-        "hook_type": "Follow-up",
-        "goal": "Drive response"
+        "hook_type": "POC Ask",
+        "goal": "Full audit + direct ask",
+        "subject": "The full AutoZone audit",
+        "body": "Jamey \u2014\n\nEverything in one place: autozone.com scored 2.6/10. Five critical gaps, two genuine strengths. The strengths: Fix Finder vehicle selection is excellent, mobile UX is clean. The gaps: synonym coverage (headlamp/headlight), no NLP for natural language queries, no PDP cross-sell, empty state shows nothing, typos bypass brand logic.\n\nROI model based on your traffic. Conservative lift: ~$18.5M/year.\n\n30 minutes with you and Bailey. Or if you want to pass the doc along first, happy to do that."
       }
     ]
   },
