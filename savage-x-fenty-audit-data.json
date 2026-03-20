@@ -1162,8 +1162,14 @@
         "title": "VP, Performance Marketing & Ecommerce",
         "tier": 1,
         "role": "Champion",
-        "angle": "88.6% of your visitors are on mobile. Every failed search \u2014 'member credits' returning loungewear, 'gifts for girlfriend' returning a Runners Hat \u2014 is a $59.95/month subscriber at risk. Algolia fixed this for Lacoste (+62% mobile conversion) in 3 months on a similar fashion stack.",
-        "linkedin_url": "https://www.linkedin.com/in/kpreyes"
+        "angle": "Owns conversion, mobile UX, and ecommerce KPIs. Interim authority on discovery spend while CMO seat is vacant. Every failed search on mobile is a $59.95/month member at risk \u2014 he feels this daily.",
+        "linkedin_url": "https://www.linkedin.com/in/kpreyes",
+        "audit_findings": [
+          "F02",
+          "F03",
+          "F04",
+          "F05"
+        ]
       },
       {
         "id": "C02",
@@ -1171,8 +1177,14 @@
         "title": "Sr. Director, Engineering",
         "tier": 2,
         "role": "Technical Buyer",
-        "angle": "Algolia's React InstantSearch maps directly to your Next.js/Apollo GraphQL stack. Your Segment CDP feeds Personalization with zero ETL. LaunchDarkly integration is native. Migration from Constructor.io: 4-6 weeks for your team \u2014 no dedicated search engineer required.",
-        "linkedin_url": "https://theorg.com/org/savage-x-fenty/org-chart/ann-eliese-grey"
+        "angle": "Former CTO/founder. Evaluates every vendor at principal-engineer depth. Will own the integration. Her stack: Next.js, Apollo GraphQL, LaunchDarkly, AWS. Migration story is her unlock.",
+        "linkedin_url": "https://theorg.com/org/savage-x-fenty/org-chart/ann-eliese-grey",
+        "audit_findings": [
+          "F04",
+          "F06",
+          "F07",
+          "F08"
+        ]
       },
       {
         "id": "C03",
@@ -1180,8 +1192,12 @@
         "title": "CTO, FableticsOS (parent platform)",
         "tier": 2,
         "role": "Platform Economic Buyer",
-        "angle": "One Algolia enterprise contract replaces Constructor.io across all 5 FableticsOS brands \u2014 Savage X Fenty, Fabletics, JustFab, ShoeDazzle, FabKids. One integration, one contract. That's the platform-level deal worth having.",
-        "linkedin_url": "https://www.linkedin.com/in/tim-collins-cto/"
+        "angle": "Controls the shared tech stack for all 5 FableticsOS brands. If Constructor is a platform-level decision, displacing it is a 5-brand conversation. One contract, five indexes.",
+        "linkedin_url": "https://www.linkedin.com/in/tim-collins-cto/",
+        "audit_findings": [
+          "F02",
+          "F03"
+        ]
       }
     ],
     "engagement_phases": [
@@ -1212,7 +1228,7 @@
     "triggers": [
       {
         "label": "CMO Seat VACANT",
-        "detail": "Kevin Reyes has interim authority \u2014 approach NOW",
+        "detail": "Kevin has interim authority \u2014 window open now",
         "urgency": "high"
       },
       {
@@ -1221,39 +1237,41 @@
         "urgency": "high"
       },
       {
-        "label": "Mobile App 4 Months Old",
+        "label": "Mobile App 4mo Post-Launch",
         "detail": "Search patterns not yet locked in",
         "urgency": "high"
       },
       {
         "label": "FableticsOS Restructuring",
-        "detail": "Platform tech decisions being made now",
+        "detail": "Platform-level decisions being made now",
         "urgency": "medium"
       }
     ],
-    "sequence_type": "Constructor Displacement \u2014 Lingerie DTC",
-    "total_touches": 10,
-    "duration_days": 28,
+    "sequence_type": "Multi-Thread Constructor Displacement \u2014 3 Contacts, 3 Tracks",
+    "total_touches": 13,
+    "duration_days": 30,
     "channels": [
       "linkedin",
       "email",
       "video"
     ],
-    "research_basis": "SimilarWeb traffic data, BuiltWith tech stack, Phase 2 browser audit, buying committee research",
+    "research_basis": "Phase 2 browser audit findings F01-F08, buying committee research, SimilarWeb traffic data",
     "touches": [
       {
         "touch": 1,
         "day": 1,
         "channel": "linkedin",
         "target": "C01",
-        "hook_type": "Insight",
-        "goal": "Open the conversation \u2014 no ask yet",
+        "hook_type": "Insight Connect",
+        "goal": "Get in Kevin's orbit \u2014 no ask yet",
+        "thread": "Champion",
+        "finding_ref": "F02",
         "actions": [
-          "Like Kevin's most recent post or comment",
-          "Connect with note: 'Love what Savage X is doing on the digital experience side \u2014 saw some interesting things on savagex.com I'd love to share'",
+          "Connect: 'Saw Savage X hit 5.1M visits in January \u2014 impressive growth. Noticed something on your search experience I thought you'd find useful. Happy to share.'",
+          "Like or comment on his most recent LinkedIn post",
           "Follow Savage X Fenty company page",
-          "Engage with any recent SXF brand posts",
-          "View profile (triggers visibility notification)"
+          "View profile (triggers visibility)",
+          "Engage with any recent SXF brand content"
         ]
       },
       {
@@ -1262,10 +1280,11 @@
         "channel": "email",
         "target": "C01",
         "hook_type": "Pattern Interrupt",
-        "goal": "Get 15 minutes \u2014 lead with a specific finding",
+        "goal": "Open with a specific audit finding \u2014 no pitch, just a sharp question",
+        "thread": "Champion",
+        "finding_ref": "F02",
         "subject": "quick question about savagex.com search",
-        "body": "Hi Kevin,\n\nWhen one of your members types \"cancel subscription\" into the search bar on savagex.com \u2014 what do they get?\n\nI checked. They get a 2-piece set. \"Member credits\" returns loungewear.\n\nFor a $59.95/month membership brand, that's churn hiding in the search bar. Happy to share what I found \u2014 takes 5 minutes.\n\nWorth a look?",
-        "cta": "",
+        "body": "Hi Kevin,\n\nWhen one of your members types \"cancel subscription\" into the search bar \u2014 what do they see?\n\nI checked. They get a 2-piece lingerie set. \"Member credits\" returns loungewear.\n\nFor a $59.95/month membership brand, that's a churn accelerator hiding in the search bar. Happy to share what I found \u2014 takes 5 minutes.\n\nWorth a look?",
         "ps": ""
       },
       {
@@ -1274,13 +1293,15 @@
         "channel": "linkedin",
         "target": "C02",
         "hook_type": "Technical Peer",
-        "goal": "Open technical conversation with Ann \u2014 React/Next.js angle",
+        "goal": "Open Ann's thread \u2014 technical credibility first, no sales language",
+        "thread": "Technical",
+        "finding_ref": "F06",
         "actions": [
-          "Connect with Ann: 'Saw you're running Next.js + Apollo GraphQL at Savage X \u2014 wanted to share something relevant about Algolia's React InstantSearch GraphQL hooks'",
-          "Comment on any engineering-related posts she's made",
-          "Share a relevant Algolia React InstantSearch technical article",
+          "Connect: 'Saw you're running Next.js + Apollo GraphQL at Savage X. Did some work on search architecture for your stack \u2014 thought you might find it relevant.'",
+          "Comment on any engineering-related posts",
+          "Share a relevant Algolia React InstantSearch technical resource",
           "Follow her profile",
-          "Engage with The Org or engineering content she's associated with"
+          "No pitch \u2014 just technical peer opening"
         ]
       },
       {
@@ -1289,9 +1310,11 @@
         "channel": "video",
         "target": "C01",
         "hook_type": "Loom Audit Reveal",
-        "goal": "Show don't tell \u2014 90 second screen recording of the actual gap",
-        "subject": "recorded something quick for you (90 sec)",
-        "video_script": "Hey Kevin \u2014 I recorded something for you. 90 seconds, no slides, no pitch.\n\n[Screen share \u2014 type 'cancel subscription' into savagex.com search bar]\n\nSee that? 100 product results. A member trying to cancel their $59.95 membership is being shown a 2-piece set. That's not a search problem \u2014 that's a churn accelerator.\n\n[Screen share \u2014 type 'gifts for girlfriend']\n\nThird result is a Runners Hat. Your search doesn't understand what the customer is trying to do.\n\n[Screen share \u2014 show an Algolia-powered site handling the same query]\n\nThis is what federated search looks like when it works. Help content surfaces first. Product intent is understood. It's one index, not two silos.\n\nThat's the gap. If you want to see what fixing it looks like specifically for Savage X \u2014 15 minutes this week?"
+        "goal": "Show the gap \u2014 90 seconds, screen recording, no slides",
+        "thread": "Champion",
+        "finding_ref": "F02",
+        "subject": "recorded something quick (90 sec, no slides)",
+        "video_script": "Hey Kevin \u2014 90 seconds. I recorded something specific to Savage X. No pitch deck.\n\n[Screen share \u2014 type 'cancel subscription' into savagex.com search]\n\nSee that? A hundred product results. A member trying to understand their membership gets shown a 2-piece set. That's the person most at risk of churning \u2014 and your search is showing them more things to buy instead of helping them.\n\n[Screen share \u2014 type 'gifts for girlfriend']\n\nThird result is a Runners Hat. Your search is doing keyword matching \u2014 it doesn't understand what the person is actually trying to do.\n\n[Screen share \u2014 show federated search handling the same query correctly]\n\nThis is what it looks like when the help FAQ surfaces first, and product intent is understood separately. It's not complicated \u2014 it's a different architecture.\n\nIf you want to see what fixing this looks like for Savage X specifically, I'd love 15 minutes."
       },
       {
         "touch": 5,
@@ -1299,10 +1322,11 @@
         "channel": "email",
         "target": "C01",
         "hook_type": "ROI Frame",
-        "goal": "Quantify the opportunity \u2014 make the business case",
+        "goal": "Quantify \u2014 lead with the conclusion, not the formula",
+        "thread": "Champion",
+        "finding_ref": "F03",
         "subject": "what search is worth at Savage X",
-        "body": "Kevin,\n\nRan the math. At 4M monthly visitors, 88% on mobile, with a $59.95 subscription \u2014\n\nA 12% improvement in search conversion is worth roughly $3M/year. That's before you count the churn you prevent by surfacing membership help instead of products.\n\nA standard Algolia contract at your scale is ~$150-200K/year. The return is there.\n\n30 minutes to pressure-test these numbers against what you're actually seeing?",
-        "cta": "30-minute call \u2192 [Calendly]",
+        "body": "Kevin,\n\nBased on your traffic and subscription model, the search gap is worth roughly $3M/year at a 12% improvement. That's before the churn you prevent when members can actually find membership help instead of products.\n\nThe comparison: a standard Algolia contract at your scale is ~$150-200K/year.\n\nThe math works cleanly. Happy to pressure-test it against your actual numbers on a 30-minute call.",
         "ps": ""
       },
       {
@@ -1311,10 +1335,11 @@
         "channel": "email",
         "target": "C02",
         "hook_type": "Technical Deep-Dive",
-        "goal": "Get Ann's technical buy-in \u2014 address integration concerns",
-        "subject": "Algolia + Next.js/Apollo \u2014 faster than you'd think",
-        "body": "Hi Ann,\n\nYou're running Next.js with Apollo GraphQL. Algolia has React InstantSearch with native Apollo hooks \u2014 it drops into your existing component structure. No custom resolvers.\n\nYou already have LaunchDarkly (Algolia has a native integration) and Segment (feeds Personalization directly, no ETL). The migration from Constructor isn't a rebuild \u2014 it's a component swap.\n\nTypical timeline for a team like yours: 4-6 weeks for core search, a few more for Recommend.\n\nWould a 30-minute technical walkthrough be useful?",
-        "cta": "Schedule technical session \u2192 [Calendly]",
+        "goal": "Give Ann the integration story \u2014 address the migration concern before she asks",
+        "thread": "Technical",
+        "finding_ref": "F06",
+        "subject": "Algolia + your stack \u2014 what the migration actually looks like",
+        "body": "Hi Ann,\n\nBased on what I can see of your stack \u2014 Next.js, Apollo GraphQL, LaunchDarkly, Segment \u2014 here's what a Constructor \u2192 Algolia migration actually involves:\n\nReact InstantSearch components map directly to your existing component structure. GraphQL: native Apollo hooks, no custom resolvers. LaunchDarkly: native integration, A/B test search configs without new infrastructure. Segment: feeds Algolia Personalization directly, no ETL.\n\nIt's a component-level swap, not a rebuild. Timeline for a team like yours: 4-6 weeks for core search.\n\nWorth 30 minutes to walk through the architecture?",
         "ps": ""
       },
       {
@@ -1323,49 +1348,97 @@
         "channel": "linkedin",
         "target": "C03",
         "hook_type": "Platform Angle",
-        "goal": "Open Tim Collins conversation \u2014 FableticsOS 5-brand deal",
+        "goal": "Open Tim's thread \u2014 5-brand platform framing, not SXF-specific",
+        "thread": "Platform",
+        "finding_ref": "F02",
         "actions": [
-          "Connect with Tim: 'Noticed FableticsOS is running Constructor.io across the portfolio \u2014 wanted to share a platform-level conversation worth having with your team at Savage X'",
-          "Reference the FableticsOS rebrand as context (Jan 2026)",
-          "Comment on any Fabletics/FableticsOS technology posts",
-          "Engage with relevant content from The Org or LinkedIn",
-          "Share Algolia enterprise/platform case study"
+          "Connect: 'Working with the Savage X Fenty team on a search conversation. Realized the more interesting discussion might be at the FableticsOS platform level \u2014 would be useful to connect.'",
+          "Reference the FableticsOS rebrand as context",
+          "Comment on any relevant FableticsOS or Fabletics technology posts",
+          "Share an enterprise/multi-brand Algolia case study",
+          "No urgency \u2014 let the platform angle speak for itself"
         ]
       },
       {
         "touch": 8,
-        "day": 19,
+        "day": 18,
         "channel": "email",
         "target": "C01",
         "hook_type": "Competitive Intelligence",
-        "goal": "Create urgency \u2014 ThirdLove just moved to Bloomreach",
+        "goal": "Create urgency \u2014 category is moving, window is now",
+        "thread": "Champion",
+        "finding_ref": "F04",
         "subject": "the intimate apparel search arms race",
-        "body": "Kevin,\n\nWorth flagging where the category is heading.\n\nVictoria's Secret moved to AI-powered search in early 2024. ThirdLove announced Bloomreach for search and personalization in March 2025. The brands setting the discovery standard in intimate apparel right now are the ones who made that investment.\n\nSavage X has 4M monthly visitors and the most inclusive catalog in the category. That's a lot of search complexity sitting on infrastructure that predates where the category is going.\n\nThe window to be ahead of this is now \u2014 before the next CMO arrives and the roadmap is locked.\n\nWorth 20 minutes?",
-        "cta": "Book 20 min \u2192 [Calendly]",
+        "body": "Kevin,\n\nWorth flagging where the category is heading.\n\nVictoria's Secret moved to AI-powered search in early 2024. ThirdLove announced Bloomreach for search and personalization in March 2025. The brands setting the discovery standard right now are the ones who made that investment.\n\nSavage X has 4M monthly visitors and the most inclusive catalog in the category. That's a lot of search complexity sitting on infrastructure that predates where the category is going.\n\nThe window to be ahead of this \u2014 before the next CMO arrives and the roadmap gets set \u2014 is now.\n\n20 minutes this week?",
         "ps": ""
       },
       {
         "touch": 9,
-        "day": 22,
+        "day": 20,
         "channel": "email",
-        "target": "C01",
-        "hook_type": "Pilot Proposal",
-        "goal": "Lower the barrier \u2014 propose a scoped pilot",
-        "subject": "a lower-risk way to evaluate this",
-        "body": "Kevin,\n\nIf the timing isn't right for a full evaluation, here's a smaller starting point.\n\nRun Algolia on one category \u2014 /womens/lingerie \u2014 alongside Constructor for 90 days. Measure click-through rate, zero-results rate, mobile conversion. At the end, you have data, not a vendor's pitch deck.\n\nIf the numbers are there, you expand. If not, you've lost nothing.\n\nDoes that fit within how you're currently thinking about this?",
-        "cta": "Let's discuss the pilot \u2192 [Calendly]",
+        "target": "C02",
+        "hook_type": "Zero-Results Finding",
+        "goal": "Give Ann a specific technical finding from the audit \u2014 PDP has zero recommendations",
+        "thread": "Technical",
+        "finding_ref": "F08",
+        "subject": "zero recommendation widgets on the Savage X PDP",
+        "body": "Ann,\n\nOne thing I flagged in the audit: the Savage X product detail page has zero cross-sell or recommendation widgets. No Frequently Bought Together, no Similar Items, no Complete the Look.\n\nEmarsys is installed for email recommendations \u2014 but on-site PDP, nothing.\n\nAlgolia Recommend adds FBT, Related Items, and Trending using the same index as search \u2014 one additional API call, no new data pipeline. Given you're already running LaunchDarkly, you could A/B test the impact on a single category in days.\n\nWorth a conversation on this specifically?",
         "ps": ""
       },
       {
         "touch": 10,
-        "day": 28,
+        "day": 22,
+        "channel": "email",
+        "target": "C03",
+        "hook_type": "Platform Economics",
+        "goal": "Make the 5-brand case to Tim \u2014 economics change at platform level",
+        "thread": "Platform",
+        "finding_ref": "F02",
+        "subject": "a different way to think about this at the FableticsOS level",
+        "body": "Tim,\n\nThe Savage X search conversation may be more interesting at the platform level.\n\nFableticsOS runs multiple subscription DTC brands on shared infrastructure. If Constructor is a platform-level decision, the Algolia conversation is also platform-level \u2014 one contract, five brand indexes, unified analytics across the portfolio.\n\nThe per-brand economics look very different at that scope. And the brands that already share infrastructure are the easiest migration path Algolia has.\n\nWorth 20 minutes to explore the platform framing?",
+        "ps": ""
+      },
+      {
+        "touch": 11,
+        "day": 24,
         "channel": "email",
         "target": "C01",
-        "hook_type": "Break-Up / Last Touch",
-        "goal": "Final attempt \u2014 leave door open",
+        "hook_type": "Pilot Proposal",
+        "goal": "Lower the barrier to yes",
+        "thread": "Champion",
+        "finding_ref": "F02",
+        "subject": "a lower-risk way to evaluate this",
+        "body": "Kevin,\n\nIf the timing isn't right for a full evaluation, here's a smaller starting point.\n\nRun Algolia on one category \u2014 /womens/lingerie \u2014 alongside Constructor for 90 days. Measure click-through rate, zero-results rate, mobile conversion. At the end you have data, not a vendor's pitch deck.\n\nIf the numbers are there, you expand. If not, you've lost nothing.\n\nDoes that fit within how you're thinking about this?",
+        "ps": ""
+      },
+      {
+        "touch": 12,
+        "day": 27,
+        "channel": "linkedin",
+        "target": "C02",
+        "hook_type": "Technical Follow-Up",
+        "goal": "Keep Ann warm \u2014 share something specifically useful",
+        "thread": "Technical",
+        "finding_ref": "F06",
+        "actions": [
+          "Send a short note: 'Shared the migration architecture with a couple of teams on similar stacks recently \u2014 happy to send it your way if useful for internal eval'",
+          "Share an Algolia React InstantSearch GitHub repo or technical resource",
+          "No urgency \u2014 just keep the technical door open",
+          "Reference the zero-PDP-recommendations finding if she's been quiet",
+          "Bridge to Kevin: 'I've been speaking with Kevin on the business side \u2014 would be useful to connect the technical conversation'"
+        ]
+      },
+      {
+        "touch": 13,
+        "day": 30,
+        "channel": "email",
+        "target": "C01",
+        "hook_type": "Break-Up",
+        "goal": "Close the loop \u2014 genuine, no pressure",
+        "thread": "Champion",
+        "finding_ref": null,
         "subject": "closing the loop",
-        "body": "Kevin,\n\nI've reached out a few times \u2014 I don't want to keep showing up in your inbox if the timing isn't there.\n\nI'll leave it here. If the search gaps I flagged ever become a priority, you know where to find me. The audit findings are yours whenever they're useful.\n\nOne thought before I go: the CMO seat is open right now. Whoever takes it will review the vendor stack in their first 90 days. Being already in conversation with Algolia before that clock starts is worth something \u2014 just something to consider.",
-        "cta": "Full audit report \u2192 [link]",
+        "body": "Kevin,\n\nI've reached out a few times \u2014 I don't want to keep showing up in your inbox if the timing isn't right.\n\nI'll leave it here. The audit findings are yours whenever they're useful.\n\nOne thought before I go: the CMO seat is open right now. Whoever takes it will review the vendor stack in their first 90 days. Being already in conversation with Algolia before that clock starts matters \u2014 just something to consider.",
         "ps": ""
       }
     ]
