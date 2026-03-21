@@ -4773,14 +4773,15 @@ a:hover {
       "tested_query": "cancel subscription",
       "expected_behavior": "Non-product queries should route to help content (account management, cancellation page)",
       "actual_behavior": "100 lingerie products returned — Garden Nouveau 2-Piece Set, Weekender Fleece, etc. No help article, no account management link, no cancellation page. At the exact moment a member is considering leaving, the search accelerates churn instead of resolving it. Source: live browser observation, screenshot confirmed.",
-      "screenshot_file": "screenshots/08-non-product-cancel.png",
+      "screenshot_file": null,
       "algolia_solution": "Algolia federated search routes intent-based queries to the right content type. A 'cancel subscription' query triggers a rules-based redirect to account management — no product results shown.",
       "algolia_case_study_company": "Harry Rosen",
       "algolia_case_study_result": "+360% conversion rate",
       "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
       "impact_stat": "Search-driven churn reduction: members who find account help via search are 3x less likely to cancel (Recurly, 2024)",
       "impact_stat_source": "https://recurly.com/research/subscriber-retention-report/",
-      "impact_stat_verified": false
+      "impact_stat_verified": false,
+      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
     },
     {
       "id": "G02",
@@ -4789,14 +4790,15 @@ a:hover {
       "tested_query": "member credits",
       "expected_behavior": "Non-product query — should surface account/credits information page",
       "actual_behavior": "100 products returned: Aqua Hour 2-Piece Set, Snug Hug Cami Bodysuit, etc. A member trying to understand their credits balance sees only merchandise. Constructor.io cannot distinguish between transactional and navigational intent. Source: live browser observation, screenshot confirmed.",
-      "screenshot_file": "screenshots/08b-non-product-credits.png",
+      "screenshot_file": null,
       "algolia_solution": "Algolia NeuralSearch classifies query intent. 'Member credits' classified as navigational → routes to loyalty/credits help page. Product results suppressed for account queries.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% order rate for new customers",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "impact_stat": "Non-product query mishandling affects 23% of all search sessions (Baymard Institute)",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "impact_stat_verified": false
+      "impact_stat_verified": false,
+      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
     },
     {
       "id": "G03",
@@ -4849,11 +4851,12 @@ a:hover {
       "tested_query": "(empty search bar focus)",
       "expected_behavior": "Trending searches, personalised recents, popular categories should appear on search bar focus",
       "actual_behavior": "Completely blank — no popular searches, no trending products, no recent searches, no category shortcuts. 4.13M monthly visitors click the search bar and see nothing. Victoria's Secret and SKIMS both show trending searches on focus. Source: live browser observation, screenshot confirmed.",
-      "screenshot_file": "screenshots/02-empty-state.png",
+      "screenshot_file": null,
       "algolia_solution": "Algolia Query Suggestions populates empty state with trending queries, personalised recents, and category shortcuts. Immediate engagement moment for every search session.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% new user order rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
     },
     {
       "id": "S01",
@@ -4862,8 +4865,9 @@ a:hover {
       "tested_query": "lingeire",
       "expected_behavior": "Common misspelling of 'lingerie' should return relevant results",
       "actual_behavior": "SAYT correctly returns lingerie items despite the typo — 'lingeire' surfaces relevant bras, bralettes, and sets. Constructor.io handles basic typo tolerance well. Source: live SAYT browser capture.",
-      "screenshot_file": "screenshots/05-typo-lingeire-sayt.png",
-      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent."
+      "screenshot_file": null,
+      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent.",
+      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
     },
     {
       "id": "S02",
@@ -4872,8 +4876,9 @@ a:hover {
       "tested_query": "bra",
       "expected_behavior": "Instant results as customer types",
       "actual_behavior": "SAYT works — autocomplete dropdown appears within keystroke with product thumbnails and query suggestions. Constructor.io React component confirmed active (79 API calls to ac.cnstrc.com). Source: live browser capture.",
-      "screenshot_file": "screenshots/03-sayt-bra.png",
-      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT."
+      "screenshot_file": null,
+      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT.",
+      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
     }
   ],
   "gap_pairs": [
