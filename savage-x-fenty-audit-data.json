@@ -419,13 +419,14 @@
       "tested_query": "(Product Detail Page \u2014 requires member login)",
       "expected_behavior": "PDP should show FBT, Similar Items, Complete the Look recommendations",
       "actual_behavior": "UNTESTABLE WITHOUT MEMBERSHIP \u2014 Savage X Fenty gates all product detail pages behind login. Observation from SAYT data and Constructor.io network analysis: 79 API calls to ac.cnstrc.com confirmed Constructor.io is the search layer; no Algolia Recommend calls detected in network traffic, indicating zero on-site recommendation engine is active. PDP recommendations cannot be visually confirmed without member credentials.",
-      "screenshot_file": "screenshots/03-sayt-bra.png",
+      "screenshot_file": null,
       "untestable": true,
       "untestable_reason": "Full product pages require Savage X Fenty membership login",
       "algolia_solution": "Algolia Recommend runs off the same index as search \u2014 one additional API call per PDP. FBT, Similar Items, Recently Viewed all configurable without a new data pipeline.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% order rate, +32% add-to-cart",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
     },
     {
       "id": "G04",
@@ -434,11 +435,12 @@
       "tested_query": "lace bralette under $50",
       "expected_behavior": "Natural language price constraint \u2014 results filtered to items under $50 with price facet pre-populated",
       "actual_behavior": "97 results returned with no price filtering applied. SAYT autocomplete shows 'Soft N' Savage Lace Bralette', 'Playdate Lace Bralette' \u2014 Constructor.io matches 'lace' and 'bralette' as keywords, the '$50' price ceiling is completely ignored. Verified via Constructor.io API direct call (key_a3ulRrexTsBn90F6, 2026-03-20). Full results page requires member login \u2014 SAYT screenshot used as evidence.",
-      "screenshot_file": "screenshots/05-typo-lingeire-sayt.png",
+      "screenshot_file": null,
       "algolia_solution": "Algolia NeuralSearch parses price constraints from natural language. 'under $50' triggers automatic filter application \u2014 results limited to matching price range without manual facet selection.",
       "algolia_case_study_company": "Lacoste",
       "algolia_case_study_result": "+37% conversion rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste"
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
     },
     {
       "id": "G05",
@@ -447,11 +449,12 @@
       "tested_query": "gifts for girlfriend",
       "expected_behavior": "Occasion-based semantic search \u2014 results should prioritise gift sets, bundles, giftable items",
       "actual_behavior": "Keyword match on 'gifts' \u2014 returns Giftable Lace Thong Panty (#1), Tagged by Savage Unlined Bra (#2). No understanding of gifting occasion, no gift sets prioritised, no price-range inference. SAYT state captured via live browser. Full results require member login.",
-      "screenshot_file": "screenshots/04-results-bras-sayt.png",
+      "screenshot_file": null,
       "algolia_solution": "Algolia NeuralSearch understands occasion-based intent. 'Gifts for girlfriend' surfaces gift sets, popular gifted items, and price-range filters appropriate for gifting. Personalisation ranks by recipient profile data.",
       "algolia_case_study_company": "Harry Rosen",
       "algolia_case_study_result": "+360% conversion rate \u2014 gift occasion queries driven by AI intent parsing",
-      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen"
+      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
+      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
     },
     {
       "id": "G06",
