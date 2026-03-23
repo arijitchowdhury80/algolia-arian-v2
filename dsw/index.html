@@ -4728,7 +4728,9 @@ a:hover {
       "said_source_label": "DBI FY2024 Earnings Release",
       "said_date": "2025-03",
       "found_title": "Site search is a custom proprietary backend — no federated content, no personalized ranking, no NeuralSearch",
-      "found_evidence": "'gift for her under 100' returns Under Armour backpacks. Help content invisible in SAYT. Zero enterprise search vendor detected via network inspection."
+      "found_evidence": "'gift for her under 100' returns Under Armour backpacks. Help content invisible in SAYT. Zero enterprise search vendor detected via network inspection.",
+      "finding_id": "F01",
+      "algolia_angle": "Algolia NeuralSearch resolves conversational queries — 'gift for her under 100', 'comfortable shoes for standing all day' — with semantic understanding of gender, price, and occasion intent. Shoe Carnival saw 3.5x conversion with this exact capability."
     },
     {
       "said_quote": "customer-first and product obsessed through a data-driven approach",
@@ -4737,7 +4739,9 @@ a:hover {
       "said_source_label": "DBI FY2024 Earnings Release",
       "said_date": "2025-03",
       "found_title": "No search analytics visible in UI — no trending signals, no query performance data, no click analytics",
-      "found_evidence": "Only 'Top Rated' and 'New Arrival' badges observed. No trending products, no search query analytics, no A/B test signals in search UI. [screenshot 04]"
+      "found_evidence": "Only 'Top Rated' and 'New Arrival' badges observed. No trending products, no search query analytics, no A/B test signals in search UI. [screenshot 04]",
+      "finding_id": "F02",
+      "algolia_angle": "Algolia Federated Search surfaces products, brand pages, loyalty program info, and help content in a single unified search experience — no silos, no hardcoded redirect rules required."
     },
     {
       "said_quote": "Our top customers shop both channels, digital and physical, and they engage with our app very regularly",
@@ -4746,7 +4750,9 @@ a:hover {
       "said_source_label": "Marketing Dive, 2025",
       "said_date": "2025-01",
       "found_title": "Store locator, loyalty program, and brand editorial completely invisible in search",
-      "found_evidence": "SAYT shows products + query completions only. Help content, store locator, and loyalty program info not surfaced. [screenshot 03]"
+      "found_evidence": "SAYT shows products + query completions only. Help content, store locator, and loyalty program info not surfaced. [screenshot 03]",
+      "finding_id": "F03",
+      "algolia_angle": "Algolia typo tolerance is transparent and auto-correcting — 'sneackers' silently returns sneakers results with 'Showing results for: sneakers' inline. Zero friction, zero lost sessions on mobile."
     }
   ],
   "toc": [
@@ -4908,7 +4914,38 @@ a:hover {
         "share": "<5%"
       }
     ],
-    "source_url": "https://www.similarweb.com/website/dsw.com/"
+    "source_url": "https://www.similarweb.com/website/dsw.com/",
+    "device_share": {
+      "mobile": "60%",
+      "desktop": "40%"
+    },
+    "demographics": [
+      {
+        "age_group": "25–34",
+        "pct": 31,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "35–44",
+        "pct": 26,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "18–24",
+        "pct": 18,
+        "color": "#8C9BFF"
+      },
+      {
+        "age_group": "45–54",
+        "pct": 14,
+        "color": "#B8C2FF"
+      },
+      {
+        "age_group": "55+",
+        "pct": 11,
+        "color": "#E0E4FF"
+      }
+    ]
   },
   "tech_stack": {
     "ecommerce_platform": "Unknown (enterprise/custom)",
@@ -4918,7 +4955,58 @@ a:hover {
     "analytics": "Adobe Analytics / Google Tag Manager (estimated)",
     "tag_manager": "Tealium",
     "tech_stack_summary": "Custom Search / Cloudflare CDN / Bazaarvoice Reviews / Braze CRM / Tealium / Optimizely",
-    "source_url": "https://builtwith.com/dsw.com"
+    "source_url": "https://builtwith.com/dsw.com",
+    "primary_platform": "Custom / Proprietary (enterprise-grade)",
+    "full_list": [
+      {
+        "name": "Tealium",
+        "category": "Tag Management"
+      },
+      {
+        "name": "Braze",
+        "category": "CRM / Push Notifications"
+      },
+      {
+        "name": "Optimizely",
+        "category": "A/B Testing"
+      },
+      {
+        "name": "DataDome",
+        "category": "Bot Protection"
+      },
+      {
+        "name": "Medallia",
+        "category": "Customer Feedback"
+      },
+      {
+        "name": "Bazaarvoice",
+        "category": "Reviews"
+      },
+      {
+        "name": "Signifyd",
+        "category": "Fraud Prevention"
+      },
+      {
+        "name": "OneTrust",
+        "category": "Consent Management"
+      },
+      {
+        "name": "Attentive",
+        "category": "SMS Marketing"
+      },
+      {
+        "name": "Umbraco",
+        "category": "CMS (estimated)"
+      },
+      {
+        "name": "Cloudflare",
+        "category": "CDN"
+      },
+      {
+        "name": "Movable Ink",
+        "category": "Email Personalization"
+      }
+    ]
   },
   "hiring": {
     "total_open_roles": 419,
@@ -5134,27 +5222,53 @@ a:hover {
     },
     "positioning_matrix": [
       {
-        "dimension": "NLP / Semantic Search",
-        "dsw": "0/10",
-        "shoe_carnival": "Algolia NeuralSearch",
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "0/10 — keyword-only (\"gift for her under 100\" returns backpacks)",
+        "prospect_with_algolia": "NeuralSearch: understands gender, price, occasion, and gifting intent",
+        "nike_has": "Amazon AI search (proprietary — unavailable to competitors)",
+        "asics_has": "Macy’s: custom search + partial NLP via Monetate",
+        "on_running_has": "Famous Footwear: basic keyword (status unknown)",
+        "new_balance_has": "Steve Madden: keyword only (status unknown)",
         "algolia_delta": "Critical gap"
       },
       {
-        "dimension": "Personalization",
-        "dsw": "None (Braze CRM only)",
-        "shoe_carnival": "Algolia AI Personalization",
+        "capability": "Personalization",
+        "prospect_today": "Braze CRM + Recently Viewed UI; search ranking NOT personalized",
+        "prospect_with_algolia": "AI Personalization: re-ranks 6,519 sneaker results by user size, brand history, spend tier",
+        "nike_has": "Amazon ML personalization at scale (proprietary)",
+        "asics_has": "Macy’s: Monetate + Adobe Target personalization",
+        "on_running_has": "Famous Footwear: personalization status undetected",
+        "new_balance_has": "Steve Madden: personalization status undetected",
         "algolia_delta": "Critical gap"
       },
       {
-        "dimension": "Recommendations",
-        "dsw": "Brand-siloed only",
-        "shoe_carnival": "Algolia Recommend (cross-catalog)",
+        "capability": "Recommendations",
+        "prospect_today": "Brand-siloed PDP carousels (Birkenstock → Birkenstock variants only; no cross-catalog)",
+        "prospect_with_algolia": "Algolia Recommend: collaborative filtering across full catalog + “Complete the Look”",
+        "nike_has": "Amazon Recommendations (purchased-together across all categories)",
+        "asics_has": "Macy’s: enterprise recommendations (Monetate)",
+        "on_running_has": "Famous Footwear: recommendations status undetected",
+        "new_balance_has": "Steve Madden: recommendations status undetected",
         "algolia_delta": "Critical gap"
       },
       {
-        "dimension": "Rules Engine",
-        "dsw": "Template-based only",
-        "shoe_carnival": "Algolia Visual Editor",
+        "capability": "Federated Search",
+        "prospect_today": "NONE — SAYT shows products + completions only; loyalty, content, brands invisible",
+        "prospect_with_algolia": "Algolia Federated Search: surfaces products, brand pages, loyalty info, content in one dropdown",
+        "nike_has": "Amazon: federated across all categories, help, and account",
+        "asics_has": "Macy’s: partial — some content surfaced in search",
+        "on_running_has": "Famous Footwear: federated status unknown",
+        "new_balance_has": "Steve Madden: no federated search detected",
+        "algolia_delta": "High gap"
+      },
+      {
+        "capability": "Rules Engine / Merchandising",
+        "prospect_today": "Template-based only; no keyword-triggered banners or pinned products on SRP",
+        "prospect_with_algolia": "Algolia Rules Engine + Visual Merchandising Studio: pin, boost, inject banners by keyword",
+        "nike_has": "Amazon Sponsored Products (ad-driven pinning)",
+        "asics_has": "Macy’s: full rules engine via Adobe Target",
+        "on_running_has": "Famous Footwear: merchandising status unknown",
+        "new_balance_has": "Steve Madden: no dynamic rules detected",
         "algolia_delta": "Moderate gap"
       }
     ],
@@ -5175,6 +5289,12 @@ a:hover {
         "revenue": "$13.8M/yr",
         "roi": "34x"
       }
+    },
+    "matrix_col_labels": {
+      "nike_has": "Zappos",
+      "asics_has": "Macy's",
+      "on_running_has": "Famous Footwear",
+      "new_balance_has": "Steve Madden"
     }
   },
   "golden_angle": {
@@ -5184,7 +5304,16 @@ a:hover {
     "detection_method": "Algolia customers page (verified)",
     "case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
     "result": "Up to 3.5x increase in conversions from search",
-    "relevance": "Shoe Carnival is DSW's direct off-price footwear competitor — same business model (B&M + ecommerce, multi-brand, value-oriented). Algolia has already proven value in this exact vertical. DSW is the leapfrog opportunity."
+    "relevance": "Shoe Carnival is DSW's direct off-price footwear competitor — same business model (B&M + ecommerce, multi-brand, value-oriented). Algolia has already proven value in this exact vertical. DSW is the leapfrog opportunity.",
+    "talk_track": "Shoe Carnival — your direct off-price footwear competitor, same store + ecommerce model — deployed Algolia and documented 3.5x search conversions. They're now winning category search on digital. DSW has more stores, more traffic, and a larger catalog. The gap shouldn't exist. Algolia gives DSW the same capability, without Amazon infrastructure dependency.",
+    "competitors_using_algolia": [
+      {
+        "name": "Shoe Carnival",
+        "domain": "shoecarnival.com",
+        "case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
+        "result": "Up to 3.5x increase in conversions from search"
+      }
+    ]
   },
   "ae_fields": {
     "ae_name": null,
@@ -5367,7 +5496,61 @@ a:hover {
       "url": "https://www.ainvest.com/news/dsw-strategic-rebranding-personalization-driven-growth-blueprint-retail-resilience-2509/",
       "accessed": "2026-03-21"
     }
-  ]
+  ],
+  "abx_sequence": {
+    "touches": [
+      {
+        "week": "Week 1–2",
+        "channel": "LinkedIn",
+        "contact": "Barry Esposito (SVP eCommerce)",
+        "message": "Saw Shoe Carnival is getting 3.5x search conversion with Algolia. With $921M in digital revenue and a VIP relaunch coming, curious how DSW is thinking about search personalization."
+      },
+      {
+        "week": "Week 3–4",
+        "channel": "LinkedIn + Email",
+        "contact": "VP/Director Digital Product (Laura Davis org)",
+        "message": "Customer-first through data-driven approach — Howe's mandate creates internal pressure on ecommerce. Engage VP/Director of Digital Product."
+      },
+      {
+        "week": "Month 2",
+        "channel": "Executive ROI Brief",
+        "contact": "Sheamus Toal (CFO — 90-day review mode)",
+        "message": "$6.9M–$13.8M annual uplift on existing digital traffic. Q4 FY2025 positive comp — momentum to invest in."
+      },
+      {
+        "week": "Month 3",
+        "channel": "Technical Evaluation",
+        "contact": "ML Engineer (open role hire)",
+        "message": "Algolia complements their AI ambitions — position as search infrastructure their ML team builds personalization on top of."
+      }
+    ],
+    "contacts": [
+      {
+        "name": "Barry Esposito",
+        "title": "SVP eCommerce & Customer Operations",
+        "tier": "PRIMARY",
+        "approach": "Direct outreach — owns dsw.com search experience"
+      },
+      {
+        "name": "Laura T. (Denk) Davis",
+        "title": "EVP, President North America Retail",
+        "tier": "SECONDARY",
+        "approach": "VP-level engagement on customer experience mandate"
+      },
+      {
+        "name": "Sheamus Toal",
+        "title": "EVP, CFO (since Feb 16, 2026)",
+        "tier": "EXEC SPONSOR",
+        "approach": "ROI-focused — $6.9M–$13.8M annual uplift. New in role — 90-day review window."
+      },
+      {
+        "name": "Andrea O'Donnell",
+        "title": "EVP, COO + President Brands (since Feb 8, 2026)",
+        "tier": "SECONDARY",
+        "approach": "Personalization + brand portfolio search"
+      }
+    ]
+  }
 };</script>
 
 
