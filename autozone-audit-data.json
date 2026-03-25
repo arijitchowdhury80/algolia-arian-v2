@@ -1673,7 +1673,9 @@
       "evidence": "FY2025 10-K: 133 Mega Hub stores. Q2 FY2026: 142 Mega Hubs. Target: 300+. Inventory grew $6.16B \u2192 $7.03B (+14% YoY) in FY2025.",
       "source_url": "https://about.autozone.com/static-files/e11134f1-68b3-46fd-94fd-0a0c8aad745e",
       "source_label": "AutoZone 10-K FY2025 + Q2 FY2026 Earnings Call",
-      "algolia_fit": "Algolia Intelligent Auto Parts Solution indexes all 110K SKUs per location with YMM fitment as a native dimension. Real-time indexing means new parts are searchable instantly. Synonym engine handles all auto parts terminology pairs (headlamp/headlight, alternator/generator, brake shoe/brake pad)."
+      "algolia_fit": "Algolia Intelligent Auto Parts Solution indexes all 110K SKUs per location with YMM fitment as a native dimension. Real-time indexing means new parts are searchable instantly. Synonym engine handles all auto parts terminology pairs (headlamp/headlight, alternator/generator, brake shoe/brake pad).",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 1"
     },
     {
       "angle": "DIFM Commercial Acceleration = B2B Search Is the Growth Lever",
@@ -1681,7 +1683,9 @@
       "evidence": "Q2 FY2026 DIFM SSS +9.8% [ESTIMATE \u2014 Yahoo Finance Q2 summary]. CFO Jamere Jackson: 'Our commercial acceleration initiatives continue to deliver strong results as we grow share by winning new business and increasing our share of wallet with existing customers.'",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/03/autozone-azo-q2-2026-earnings-call-transcript/",
       "source_label": "AutoZone Q2 FY2026 Earnings Call \u2014 Motley Fool Transcript (VERBATIM)",
-      "algolia_fit": "Algolia B2B Search: account-aware pricing in SAYT, part number exact match, commercial-grade VIN lookup, instant reorder workflows. AutoZonePro portal search purpose-built for professional mechanics under time pressure."
+      "algolia_fit": "Algolia B2B Search: account-aware pricing in SAYT, part number exact match, commercial-grade VIN lookup, instant reorder workflows. AutoZonePro portal search purpose-built for professional mechanics under time pressure.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 2"
     },
     {
       "angle": "Supply Chain 2030 Completing = Search Is the Next Chapter",
@@ -1689,7 +1693,9 @@
       "evidence": "CEO Philip Daniele Q2 FY2026: 'We are in the final stages of our Supply Chain 2030 project, which began in 2019.'",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/03/autozone-azo-q2-2026-earnings-call-transcript/",
       "source_label": "AutoZone Q2 FY2026 Earnings Call \u2014 Motley Fool Transcript (VERBATIM)",
-      "algolia_fit": "The supply chain is modernized. Distribution centers are optimized. The remaining gap in the customer journey is digital search \u2014 the layer that connects inventory to buyer. Algolia is the SaaS equivalent of the supply chain modernization: managed, scalable, API-first."
+      "algolia_fit": "The supply chain is modernized. Distribution centers are optimized. The remaining gap in the customer journey is digital search \u2014 the layer that connects inventory to buyer. Algolia is the SaaS equivalent of the supply chain modernization: managed, scalable, API-first.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 3"
     },
     {
       "angle": "AI Discovery Already Won \u2014 On-Site Search Must Close the Loop",
@@ -1697,7 +1703,9 @@
       "evidence": "SimilarWeb MCP referrals-agg: ChatGPT = 316,302 avg monthly visits (Oct 2025\u2013Jan 2026), #3 referral source. -20.8% MoM trend = volatility, not structural decline.",
       "source_url": "https://www.similarweb.com/website/autozone.com/",
       "source_label": "SimilarWeb MCP \u2014 get-websites-referrals-agg, autozone.com, Oct 2025\u2013Jan 2026 [FACT]",
-      "algolia_fit": "Algolia NeuralSearch converts conversational queries into structured product filters. 'Battery for 2019 Ram 1500' \u2192 vehicle=2019 Ram 1500, category=battery, filters: group size + CCA. The AI acquisition pipeline already flows into AutoZone.com. NeuralSearch converts it."
+      "algolia_fit": "Algolia NeuralSearch converts conversational queries into structured product filters. 'Battery for 2019 Ram 1500' \u2192 vehicle=2019 Ram 1500, category=battery, filters: group size + CCA. The AI acquisition pipeline already flows into AutoZone.com. NeuralSearch converts it.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 4"
     },
     {
       "angle": "Oracle Architecture Purge Complete \u2014 Stack Is Algolia-Ready",
@@ -1705,7 +1713,9 @@
       "evidence": "SimilarWeb Feb 2026 technology scan: Oracle Endeca status=removed; Oracle Commerce Cloud status=removed. BuiltWith live scan 2026-03-19: Next.js, React, Contentstack all confirmed active. Algolia NOT detected = open slot.",
       "source_url": "https://www.similarweb.com/website/autozone.com/technologies/",
       "source_label": "SimilarWeb MCP \u2014 technologies-agg (Feb 2026) + BuiltWith liveOnly=true (Mar 2026) [FACT]",
-      "algolia_fit": "Algolia InstantSearch React integrates natively with React/Next.js in days. Contentstack headless CMS connects to Algolia for content federation. No rip-and-replace \u2014 pure API overlay on the existing composable stack. Time-to-demo: days. Time-to-production: 8\u201312 weeks."
+      "algolia_fit": "Algolia InstantSearch React integrates natively with React/Next.js in days. Contentstack headless CMS connects to Algolia for content federation. No rip-and-replace \u2014 pure API overlay on the existing composable stack. Time-to-demo: days. Time-to-production: 8\u201312 weeks.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 5"
     }
   ],
   "golden_angle": {

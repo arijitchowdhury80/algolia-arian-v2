@@ -2716,6 +2716,95 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
+   RIGHT SIDEBAR — Scroll-aware section TOC
+
+═══════════════════════════════════════════════════════ */
+
+#section-sidebar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 150;
+}
+
+.section-sidebar__inner {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 0 10px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 1px 4px rgba(35,38,59,0.06);
+}
+.section-sidebar__inner::-webkit-scrollbar { display: none; }
+
+.section-sidebar__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding: 0 14px 10px;
+  opacity: 0.55;
+}
+
+.section-sidebar__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.section-sidebar__item:hover { background: var(--light); text-decoration: none; }
+.section-sidebar__item--active { border-left-color: var(--blue); background: rgba(0,61,255,0.04); }
+
+.section-sidebar__num {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--light);
+  color: var(--mid);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+.section-sidebar__item--active .section-sidebar__num { background: var(--blue); color: white; }
+
+.section-sidebar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+  line-height: 1.3;
+  margin-bottom: 1px;
+  transition: color 0.12s;
+}
+.section-sidebar__desc {
+  font-size: 10px;
+  color: var(--mid);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+.section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
+.section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
+
+@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
+
+
+/* ═══════════════════════════════════════════════════════
+
    MOBILE RESPONSIVE
 
    Breakpoints: 768px (tablet/mobile), 480px (phone)
@@ -3661,6 +3750,184 @@ a:hover .src-tag { opacity: 1; }
   .signals-grid .signal-card { display: block !important; }
 
 }
+
+/* ── ROI Calculator CSS ───────────────────────── */
+        :root {
+            --roi-border: #e2e8f0;
+            --roi-card-hover: #cbd5e1;
+            --roi-text-light: #5a5e9a;
+            --roi-accent-green: #00a58e;
+        }
+        .roi-container {
+            width: 100%;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+        .roi-builder {
+            padding: 24px;
+            border-right: 1px solid var(--border);
+        }
+        .roi-summary {
+            background: linear-gradient(135deg, #090e24, #1a2356);
+            color: white;
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .baseline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .input-group label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+        .input-wrapper { position: relative; }
+        .input-prefix, .input-suffix {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--mid);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .input-prefix { left: 10px; }
+        .input-suffix { right: 10px; }
+        .input-group input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gray);
+            box-sizing: border-box;
+            font-family: 'Sora', sans-serif;
+        }
+        .input-group input.has-prefix { padding-left: 24px; }
+        .input-group input.has-suffix { padding-right: 28px; }
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 2px rgba(84, 104, 255, 0.15);
+        }
+        .levers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .lever-row {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .lever-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .lever-title { font-weight: 600; font-size: 14px; color: var(--gray); }
+        .lever-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--blue-tint);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        .slider-container { margin-bottom: 12px; }
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--blue);
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border);
+            border-radius: 2px;
+        }
+        .proof-point {
+            font-size: 11px;
+            color: var(--mid);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--white);
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--border);
+        }
+        .proof-badge {
+            background: var(--roi-accent-green);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 9px;
+            letter-spacing: 0.05em;
+        }
+        .summary-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .total-impact {
+            font-size: 36px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        .impact-breakdown { display: flex; flex-direction: column; gap: 12px; }
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+        .breakdown-label { font-size: 12px; color: #cbd5e1; }
+        .breakdown-value { font-size: 14px; font-weight: 600; color: white; }
+        .formula-note {
+            margin-top: 30px;
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.4;
+        }
 
 </style>
 
@@ -4959,11 +5226,11 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/The_RealReal_storefront%2C_San_Francisco.jpg/1280px-The_RealReal_storefront%2C_San_Francisco.jpg",
-    "company_logo_url": "https://icons.duckduckgo.com/ip3/therealreal.com.ico",
+    "company_logo_url": "data:image/vnd.microsoft.icon;base64,AAABAAMAMDAAAAEACACoDgAANgAAACAgAAABAAgAqAgAAN4OAAAQEAAAAQAIAGgFAACGFwAAKAAAADAAAABgAAAAAQAIAAAAAAAACQAAAAAAAAAAAAAAAQAAAAAAAMvLywCPj48AU1NTAOLi4gCmpqYAampqAC4uLgD5+fkAgYGBAFxcXADr6+sAc3NzADc3NwDGxsYAioqKAE5OTgDd3d0AoaGhAGVlZQD09PQAuLi4AEBAQADPz88Ak5OTAObm5gCqqqoAbm5uADIyMgD9/f0AwcHBAIWFhQBJSUkAnJycAGBgYADv7+8Ad3d3ADs7OwDKysoAUlJSAOHh4QBpaWkALS0tAPj4+ACAgIAA09PTAFtbWwDq6uoArq6uAHJycgA2NjYAxcXFAImJiQBNTU0A3NzcAKCgoADz8/MAt7e3AHt7ewDOzs4AkpKSAOXl5QCpqakAMTExAPz8/ADAwMAAhISEAEhISADX19cAm5ubAF9fXwDu7u4AsrKyAHZ2dgA6OjoAycnJAI2NjQBRUVEA4ODgACwsLAD39/cAu7u7AH9/fwBDQ0MA0tLSAJaWlgBaWloA6enpAHFxcQA1NTUAxMTEAIiIiABMTEwA29vbAJ+fnwBjY2MA8vLyAHp6egA+Pj4AkZGRAFVVVQDk5OQAqKioAGxsbAAwMDAA+/v7AL+/vwCDg4MAR0dHANbW1gCampoAXl5eAO3t7QCxsbEAdXV1ADk5OQDIyMgAUFBQAN/f3wCjo6MAZ2dnAPb29gC6uroAfn5+AEJCQgCVlZUAWVlZAOjo6ACsrKwAcHBwAMPDwwCHh4cAS0tLANra2gCenp4AYmJiAPHx8QB5eXkAPT09AFRUVADj4+MAp6enAGtrawAvLy8A+vr6AL6+vgCCgoIAmZmZAOzs7ACwsLAAODg4AMfHxwBPT08A3t7eAKKiogBmZmYAKioqAPX19QC5ubkAfX19AEFBQQDQ0NAAlJSUAFhYWADn5+cAb29vADMzMwDCwsIAhoaGAEpKSgDZ2dkAnZ2dAGFhYQDw8PAAeHh4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABfX19fX19fh4eHh4eHh4eHh6ysrCIiIiJGRkZGb29vk5OTk5OTk5OTk5OTk5OTk5NfX19fX19fX1+Hh4eHh4eHh4eHrKysIiIiIkZGRkZvb2+Tk5OTk5OTk5OTk5OTk5NfX19fX19fX19fX4eHh4eHh4eHh4esrKwiIiIiRkZGRkZvb5OTk5OTk5OTk5OTk5M3N19fX19fX19fX19fh4eHh4eHh4eHh6ysrCIiIiJGRkZGRm9vk5OTk5OTk5OTk5M3Nzc3X19fX19fX19fX1+Hh4eHh4eHh4eHh6ysrCIiIkZGRkZGb2+Tk5OTk5OTk5M3Nzc3Nzc3X19fX19fX19fX4eHh4eHh4eHh4eHrKysIiIiRkZGRkZvb2+Tk5OTk5M3Nzc3Nzc3NzdfX19fX19fX19fh4eHh4eHh4eHh4esrKwiIiJGRkZGRm9vb5OTk5MTNzc3Nzc3Nzc3N19fX19fX19fX19fh4eHh4eHh4eHh6ysrCIiIiJGRkZGb29vk5MTExM3Nzc3Nzc3Nzc3X19fX19fX19fX1+Hh4eHh4eHh4eHrKysIiIiIkZGRkZvb28TExMTExM3Nzc3Nzc3NzdfX19fX19fX19fX4eHh4eHh4eHh4esrKwiIiIiRkZGRkYTExMTExMTEzc3Nzc3Nzc3N19fX19fX19fX19fh4eHh4eHh4eHh6ysrCIiIiJGRkacExMTExMTExMTNzc3Nzc3Nzc3X19fX19fX19fX1+Hh4eHh4eHh4eHh6ysrCIiIkacnJwTExMTExMTExM3Nzc3Nzc3NzdfX19fX19fX19fX4eHh4eHh4eHh4eHrKysIiKcnJycnBMTExMTExMTEzc3Nzc3Nzc3NzdfX19fX19fX19fh4eHh4eHh4eHh4esrKycnJycnJyceJycnJycnBOcnBMTExMTNzc3N183Nzc3Nzc3Nzdfh4eHh4dfX1+Hh6ycnJycnJysmBB1dXU1TUaYEHWYEFwYNzc3NxOTEDWENRAQNVwuX1+Hh188NTUuh4d4eHicnHgYfyM0W0weFGSUcVuDfVQWEzc3Ey4rHwl8EoODd3YQN19fE2yaQld1X4d4eHh4eJycT2yoKZpWeJxPABUpCDecEzcTIkulcgQTBBulGZw3X18TAwUGqDI3h4dPT094eHh4eG9FKUFPnJx4Jw+OIE8TExM3XQxYfIdPHZVJMpxfXzdWOWd7OBOHh4dPT09PT3h4eCJeKYJPnJx4i3SOXU8TE3hwYT5BbxN4gXIklnhfNyJLpUmMN19fX4dPT09PT09PTyJeKYJPnJx4i3SOXSoTeB1rjjCjnDd4gXIklng3N12VWHysX19fX19PT09PT09PTyJeKYIqnJx4i3SONipPoCYGhph4ExNPgXIklniccGE+apM3X19fX18qKk9PT09PT6xeKYIqeHhPi3SOERwQIY5jLHgTExNPWXIkSo8da2cwGBM3X19fX18qKioqT09PT6xeKVoqeHhPZHRnUVAoKWF5B3gTExNPWXKVRJSXTopDKhM3NzdfX18qKioqKioqKqxeKVoHT08qZHRnmgEeCwJubWR4ExNPWXIxrUuRjXQoL28TNzc3N18qKioqKioqKqxeKVoHT08qZHSONmhPE4SkZwUDeJxPWXIkSgecrJYmWA5GNzc3NzcHB5xPKioqKodeKVoHT08qZHSONo94eI8Wn2eST5wqMnIklk8TEwc9pSRAeDc3NzcHaCUWaCoqKodeKVoHT08qZHSONo9PeE+jiimAN5wqMnIkc08TE09zJGdETzc3NzcHPw07BwcqKodeKVqPKioHZHSONo9PTypkdCkjE5wqMnIkcyqcE0+Bcj6ZTxMTNzcHaKlVFhyPj4deKVqPBwePZA+ONmgqBz95lQxHKngHppUkSgd4T3hijh9TeBMTExMHj350opBkb6NFm5Eib2+TaYkGoaMDQz2XUkSHT3gThWeVnTx1OhcVJjicExMTExOPjzeeAquIp4KafaQzM1qRGi1VZjmISIhELHgqKhCqjVUJMGCtcXplmHicnBMTExOPj48ik5MKCgpvb5MKCgouCpOTCi4KIniPB09PT19+CgoKVlYuIpwqeJycnJycExOPj49oaGiPj4+Pj4+Pj4+PBwcHBwcHKioqKk9PT08qKioqT09PeHicnJycnJycnJyPj4+Pj4+PjwcHBwcHBwcHBwcHKioqKioqKioqT09PT09PT09PeHh4eJycnJycnJyPj4+Pj4+Pj4+PjwcHBwcHBwcHBwcqKioqKioqKipPT09PT09PT094eHh4nJycnJxoj4+Pj4+Pj4+Pj4+PBwcHBwcHBwcHByoqKioqKioqKk9PT09PT09PT3h4eHicnJxoaGiPj4+Pj4+Pj4+Pj48HBwcHBwcHBwcHKioqKioqKioqT09PT09PT09PeHh4eHhoaGhoaI+Pj4+Pj4+Pj4+PjwcHBwcHBwcHBwcqKioqKioqKioqT09PT09PT094eHhoaGhoaGhoj4+Pj4+Pj4+Pj4+PBwcHBwcHBwcHByoqKioqKioqKipPT09PT09PT09oaGhoaGhoaGiPj4+Pj4+Pj4+Pj48HBwcHBwcHBwcHByoqKioqKioqKk9PT09PT09oaGhoaGhoaGhoaI+Pj4+Pj4+Pj4+PjwcHBwcHBwcHBwcHKioqKioqKioqT09PT09oaGhoaGhoaGhoaGhoaI+Pj4+Pj4+Pj4+PjwcHBwcHBwcHBwcqKioqKioqKipPT09oaGhoaGhoaGhoaGhoaGhoj4+Pj4+Pj4+Pj4+PBwcHBwcHBwcHByoqKioqKioqKk9oaGhoaGhoaGhoaGhoaGhoaGiPj4+Pj4+Pj4+Pj48HBwcHBwcHBwcHKioqKioqKipoaGhoaGhoaGhoaGhoaGhoaGhoaI+Pj4+Pj4+Pj4+PjwcHBwcHBwcHBwcqKioqKipoaGhoaGhoaGhoaGhoaGhoaGhoaGhoj4+Pj4+Pj4+Pj4+PBwcHBwcHBwcHByoqKipoaGhoaGhoaGhoaGhoaGhoaGhoaGhoaGiPj4+Pj4+Pj4+Pj48HBwcHBwcHBwcHKioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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",
     "status_line": "Confidential · For Internal Algolia Use Only"
   },
   "score": {
-    "overall": 3.8,
+    "overall": 3.61,
     "verdict": "Needs Significant Work",
     "verdict_class": "critical",
     "breakdown": {
@@ -5042,7 +5309,8 @@ a:hover {
       "source_label": "The RealReal — Investor Relations Management",
       "quote": "[Quote pending — research required for Ajay Gopal]",
       "relevance": "ECONOMIC BUYER SUPPORT. CFO since Mar 2024. Frame ROI at $584 AOV — even 1% search conversion improvement = ~$1M+/year. With EBITDA margin at ~5.4%, he will respond to fast payback framing.",
-      "verified": false
+      "verified": false,
+      "quote_source": "Company earnings call / investor materials"
     },
     {
       "name": "Todd Suko",
@@ -5053,7 +5321,8 @@ a:hover {
       "source_label": "The RealReal — Investor Relations Management",
       "quote": "[Quote pending — research required for Todd Suko]",
       "relevance": "TECHNICAL GATEKEEPER. No CTO listed publicly. Todd holds the Interim CPO role — product and tech decisions may route through him before reaching Rati. Engage carefully: he is primarily a lawyer (CLO) holding an interim product seat, so keep the conversation outcome-focused, not technical.",
-      "verified": false
+      "verified": false,
+      "quote_source": "Company earnings call / investor materials"
     }
   ],
   "intelligence_signals": [
@@ -5926,7 +6195,8 @@ a:hover {
         "Search vendor removed, no replacement"
       ],
       "algolia_proof": "Algolia NeuralSearch + Federated Search (products + content + authentication articles)",
-      "discovery_question": "Your CEO described TRR as an AI-first company with Athena at the core. When buyers search for ‘authenticated luxury handbags’, does that surface your authentication differentiator? How does the Athena story appear in search today?"
+      "discovery_question": "Your CEO described TRR as an AI-first company with Athena at the core. When buyers search for ‘authenticated luxury handbags’, does that surface your authentication differentiator? How does the Athena story appear in search today?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A2",
@@ -5938,7 +6208,8 @@ a:hover {
         "Cross-category discovery (bag + matching wallet + shoes) requires recommendation engine that was removed"
       ],
       "algolia_proof": "Algolia NeuralSearch parses multi-attribute luxury queries; Algolia Recommend matches on attribute similarity for unique SKUs",
-      "discovery_question": "With 500K+ unique items where every search failure means a permanently lost sale, how do you ensure buyers find the right item? What does your search do when a buyer types ‘red Chanel bag under 5000 in excellent condition’?"
+      "discovery_question": "With 500K+ unique items where every search failure means a permanently lost sale, how do you ensure buyers find the right item? What does your search do when a buyer types ‘red Chanel bag under 5000 in excellent condition’?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A3",
@@ -5950,7 +6221,8 @@ a:hover {
         "$584 AOV means even 1,000 additional conversions = $584K"
       ],
       "algolia_proof": "30-day A/B pilot with clear conversion + AOV KPIs. Conservative 5% improvement on ~$98M addressable = ~$4.9M/year. 18-day payback.",
-      "discovery_question": "You’ve achieved 3 consecutive quarters of profitability — a major milestone. With $584 AOV and search gaps we can show in a 30-minute walkthrough, a pilot that proves ROI in 30 days seems worth exploring. What’s your appetite for a small-footprint test?"
+      "discovery_question": "You’ve achieved 3 consecutive quarters of profitability — a major milestone. With $584 AOV and search gaps we can show in a 30-minute walkthrough, a pilot that proves ROI in 30 days seems worth exploring. What’s your appetite for a small-footprint test?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A4",
@@ -5962,7 +6234,8 @@ a:hover {
         "Cross-category discovery (bag → matching wallet → shoes) requires Algolia Recommend"
       ],
       "algolia_proof": "Algolia Recommend: FBT, Related Items, Trending Items. Powers closet-to-marketplace discovery for unique consigned inventory.",
-      "discovery_question": "With My Closet launching, you’ll have the richest dataset of what your 40M members own. How are you planning to connect their closet data to marketplace discoveries? Who’s powering the recommendation layer for that experience?"
+      "discovery_question": "With My Closet launching, you’ll have the richest dataset of what your 40M members own. How are you planning to connect their closet data to marketplace discoveries? Who’s powering the recommendation layer for that experience?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     }
   ],
   "competitive_synthesis": {
@@ -9002,8 +9275,8 @@ function sectionFinancials(D) {
   function arrow(current, prior) {
     const c = parseFinVal(current), p = parseFinVal(prior);
     if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:#10B981;font-size:0.85rem;margin-left:3px;">↑</span>';
-    if (c < p) return '<span style="color:#DC2626;font-size:0.85rem;margin-left:3px;">↓</span>';
+    if (c > p) return '<span style="color:var(--green);${T.bodySm}margin-left:3px;">↑</span>';
+    if (c < p) return '<span style="color:var(--red);${T.bodySm}margin-left:3px;">↓</span>';
     return '';
   }
 
@@ -9033,8 +9306,8 @@ function sectionFinancials(D) {
     if (!priorR) return '';
     var c = finNum(cur), p = finNum(priorR[field]);
     if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:#10B981;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2191;</span>';
-    if (c < p) return '<span style="color:#DC2626;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2193;</span>';
+    if (c > p) return '<span style="color:var(--green);${T.compact}margin-left:2px;font-weight:700;">&#x2191;</span>';
+    if (c < p) return '<span style="color:var(--red);${T.compact}margin-left:2px;font-weight:700;">&#x2193;</span>';
     return '';
   }
 
@@ -9042,19 +9315,21 @@ function sectionFinancials(D) {
 
   const yearMeta = rev3.map((r, i) => {
 
-    const isLast = i === rev3.length - 1;
+    // rev3 is reversed: index 0 = latest year (FY2025), last index = oldest year
+    const isLatest = i === 0;
 
     const sigText = r.search_signal ? [r.search_signal] : [];
 
     return {
 
-      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLast ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
+      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLatest ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
 
-      searchAdj: isLast ? (f.search_addressable || '') : '',
+      searchAdj: isLatest ? (f.search_addressable || '') : '',
 
       signals: sigText,
 
-      roi: isLast ? (f.search_roi_est || f.roi_moderate || null) : null,
+      // ROI callout removed — comes from interactive calculator, not static data
+      roi: null,
 
       note: r.note || '',
 
@@ -9070,7 +9345,8 @@ function sectionFinancials(D) {
 
     const pct   = barPcts[i]  || 0;
 
-    const isLast = i === rev3.length - 1;
+    // rev3 is reversed: index 0 = latest year
+    const isLatest = i === 0;
 
     const signalHtml = (meta.signals || []).map(sig =>
 
@@ -9128,7 +9404,7 @@ function sectionFinancials(D) {
 
             <div class="tl-card__rev">${escHtml(r.revenue_label || String(r.revenue))}</div>
 
-            ${isLast ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
+            ${isLatest ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
 
           </div>
 
@@ -10604,7 +10880,7 @@ function sectionAppendixScoring(D) {
 
   return `<section id="appendix-scoring" class="audit-section">
 
-    <div class="section-eyebrow">Overview · Score Breakdown</div>
+    <div class="section-eyebrow">Appendix A · Score Breakdown</div>
 
     <div class="section-title">Score by Dimension</div>
 
@@ -10815,6 +11091,93 @@ function renderBerkshire(f) {
 }
 
 
+
+function sectionROI(D) {
+  const f = D.financials || {};
+  const revBase = parseFloat((f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  
+  return `<section id="section-roi" class="audit-section">
+    <div class="section-eyebrow">Business Case · Revenue</div>
+    <div class="section-title">Revenue & ROI Calculator</div>
+    
+    <div class="roi-container">
+        <div class="roi-builder">
+            <div style="${T.bodySm}color:var(--mid);margin-bottom:20px;">Adjust the baseline metrics to calculate potential revenue impact based on actual customer case studies.</div>
+            <div class="baseline-grid">
+                <div class="input-group">
+                    <label>Annual Digital Rev</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="base_revenue" class="has-prefix" value="${revBase}">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Baseline Conv. Rate</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="base_conversion" class="has-suffix" value="2.5" step="0.1">
+                        <span class="input-suffix">%</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Average Order Value</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="base_aov" class="has-prefix" value="120">
+                    </div>
+                </div>
+            </div>
+            <div class="levers-header">
+                <h3 style="${T.body}color:var(--gray);margin:0;">Value Levers</h3>
+                <span class="proof-badge" style="background:var(--purple); padding:4px 8px; white-space:nowrap; display:inline-block;">15 Case Studies Verified</span>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Search-to-Purchase Conversion Lift</div>
+                    <div class="lever-value">+<span id="val_conversion">15</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_conversion" min="0" max="100" value="15"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Decathlon</strong> saw +50% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Average Order Value (AOV) Increase</div>
+                    <div class="lever-value">+<span id="val_aov">5</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_aov" min="0" max="30" value="5"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Intrend</strong> saw +19% increase. <strong>Oh Polly</strong> saw +172%.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Bounce Rate / Abandonment Reduction</div>
+                    <div class="lever-value">-<span id="val_bounce">10</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_bounce" min="0" max="50" value="10"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Lacoste</strong> saw an 88% reduction. <strong>JadoPado</strong> saw a 17% decrease.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">No-Results Recovery Rate</div>
+                    <div class="lever-value"><span id="val_noresult">30</span>% Recovered</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_noresult" min="0" max="80" value="30"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Ubisoft</strong> reduced zero-results from 20% to <5%.</div>
+            </div>
+        </div>
+        <div class="roi-summary">
+            <div class="summary-label">Total Annual Revenue Impact</div>
+            <div class="total-impact">$<span id="output_total_impact">0</span></div>
+            <div class="summary-label" style="margin-bottom:16px;">Impact Breakdown</div>
+            <div class="impact-breakdown">
+                <div class="breakdown-row"><div class="breakdown-label">Conversion Lift:</div><div class="breakdown-value">+$<span id="output_conversion">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">AOV Increase:</div><div class="breakdown-value">+$<span id="output_aov">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">Bounce Recovery:</div><div class="breakdown-value">+$<span id="output_bounce">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">No-Results Recovery:</div><div class="breakdown-value">+$<span id="output_noresult">0</span></div></div>
+            </div>
+            <div class="formula-note"><strong>Formula Note:</strong> Assumes 15% of total digital revenue is strictly search-driven. No-Results recovery value factors in the Baseline Conversion Rate and Baseline AOV for user accuracy.</div>
+        </div>
+    </div>
+  </section>`;
+}
 
 function sectionRevenueAtRisk(D) {
 
@@ -12704,9 +13067,9 @@ function sectionStatBar(D) {
       <span class="stat-bar__arrow">→</span>
     </div>
     <div class="stat-bar__item" onclick="${navTo('case', 'section-roi')}">
-      <div class="stat-bar__label">Revenue at Risk</div>
+      <div class="stat-bar__label">Business Case ROI</div>
       <div class="stat-bar__value">${roiVal}</div>
-      <div class="stat-bar__sub">Conservative annual impact</div>
+      <div class="stat-bar__sub">Calculate potential impact</div>
       <span class="stat-bar__arrow">→</span>
     </div>
     <div class="stat-bar__item" onclick="${navTo('case', 'section-competitive')}">
@@ -12965,7 +13328,7 @@ function renderSections(D) {
 
     sectionBusinessCaseHook(D),
 
-    sectionRevenueAtRisk(D),
+    sectionROI(D),
 
     sectionCaseStudies(D),
 
@@ -13097,7 +13460,7 @@ const SECTION_STRIP_CONFIG = {
   ],
   case: [
     { id: 'section-said-found',   label: 'The Hook',         desc: 'Said vs. Found' },
-    { id: 'section-roi',          label: 'Revenue at Risk',  desc: 'ROI model' },
+    { id: 'section-roi',          label: 'Business Case ROI',  desc: 'Interactive ROI model' },
     { id: 'section-case-studies', label: 'Case Studies',      desc: 'Vertical proof' },
     { id: 'section-why-now',      label: 'Why Act Now',       desc: 'Timing signals' },
   ],
@@ -13352,7 +13715,7 @@ function initCmdK(D) {
     ['📊', 'Score Heatmap — 10 Areas',     'score-heatmap',             'audit'],
     // Business Case tab
     ['🎣', 'The Hook — Said vs. Found',    'section-said-found',        'case'],
-    ['💵', 'Revenue at Risk',              'section-roi',               'case'],
+    ['💵', 'Business Case ROI',              'section-roi',               'case'],
     ['🏆', 'Case Studies',                 'section-case-studies',      'case'],
     ['⏰', 'Why Act Now',                  'section-why-now',           'case'],
     ['🥊', 'Competitive Landscape',        'section-competitive',       'case'],
@@ -13664,10 +14027,22 @@ function initSalesPlays() {
       panel.addEventListener('click', function(e) {
         if (acc.classList.contains('all-exp')) return;
         if (panel.classList.contains('active')) return;
-        // Ignore clicks that originate inside the expanded content
         if (e.target.closest('.play-expanded')) return;
+        // Hide expanded content on current active panel immediately
+        var prev = acc.querySelector('.play-panel.active');
+        if (prev) {
+          var prevExp = prev.querySelector('.play-expanded');
+          if (prevExp) prevExp.style.display = 'none';
+        }
+        // Switch active
         acc.querySelectorAll('.play-panel').forEach(function(p) { p.classList.remove('active'); });
         panel.classList.add('active');
+        // Show new expanded content after flex transition (380ms)
+        var newExp = panel.querySelector('.play-expanded');
+        if (newExp) {
+          newExp.style.display = 'none';
+          setTimeout(function() { newExp.style.display = ''; }, 360);
+        }
       });
     });
     // Expand All / Collapse button
@@ -14133,6 +14508,45 @@ function _boot() {
   }
 
 }
+
+// ROI Calculator Global Logic
+window.calculateROI = () => {
+    const rf = (id) => parseFloat(document.getElementById(id)?.value) || 0;
+    const rev = rf('base_revenue'), conv = rf('base_conversion')/100, aov = rf('base_aov');
+    const srchRev = rev * 0.15;
+    const srchTfc = (srchRev / aov) / conv;
+    
+    const cLift = rf('lever_conversion')/100, aInc = rf('lever_aov')/100;
+    const bRec = rf('lever_bounce')/100, nRec = rf('lever_noresult')/100;
+    
+    const nConv = conv * (1 + cLift);
+    const cImp = (srchTfc * nConv * aov) - srchRev;
+    const aImp = (srchTfc * nConv) * (aov * (1 + aInc) - aov);
+    const bImp = (srchTfc * 0.30) * bRec * nConv * (aov * (1 + aInc));
+    const nImp = (srchTfc * 0.10) * nRec * nConv * (aov * (1 + aInc));
+    
+    const fmt = n => '$' + Math.round(n).toLocaleString();
+    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    
+    set('output_conversion', fmt(cImp).substring(1));
+    set('output_aov', fmt(aImp).substring(1));
+    set('output_bounce', fmt(bImp).substring(1));
+    set('output_noresult', fmt(nImp).substring(1));
+    set('output_total_impact', fmt(cImp + aImp + bImp + nImp).substring(1));
+};
+
+// Bind listeners globally
+document.addEventListener('input', (e) => {
+    if (['base_revenue','base_conversion','base_aov'].includes(e.target.id)) window.calculateROI();
+    if (e.target.id && e.target.id.startsWith('lever_')) {
+        const valId = 'val_' + e.target.id.split('_')[1];
+        const valEl = document.getElementById(valId);
+        if (valEl) valEl.textContent = e.target.value;
+        window.calculateROI();
+    }
+});
+// Initial trigger after short delay
+setTimeout(() => window.calculateROI(), 500);
 
 if (document.readyState === 'loading') {
 

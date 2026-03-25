@@ -2716,6 +2716,95 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
+   RIGHT SIDEBAR — Scroll-aware section TOC
+
+═══════════════════════════════════════════════════════ */
+
+#section-sidebar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 150;
+}
+
+.section-sidebar__inner {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 0 10px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 1px 4px rgba(35,38,59,0.06);
+}
+.section-sidebar__inner::-webkit-scrollbar { display: none; }
+
+.section-sidebar__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding: 0 14px 10px;
+  opacity: 0.55;
+}
+
+.section-sidebar__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.section-sidebar__item:hover { background: var(--light); text-decoration: none; }
+.section-sidebar__item--active { border-left-color: var(--blue); background: rgba(0,61,255,0.04); }
+
+.section-sidebar__num {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--light);
+  color: var(--mid);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+.section-sidebar__item--active .section-sidebar__num { background: var(--blue); color: white; }
+
+.section-sidebar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray);
+  line-height: 1.3;
+  margin-bottom: 1px;
+  transition: color 0.12s;
+}
+.section-sidebar__desc {
+  font-size: 10px;
+  color: var(--mid);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+.section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
+.section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
+
+@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
+
+
+/* ═══════════════════════════════════════════════════════
+
    MOBILE RESPONSIVE
 
    Breakpoints: 768px (tablet/mobile), 480px (phone)
@@ -3661,6 +3750,184 @@ a:hover .src-tag { opacity: 1; }
   .signals-grid .signal-card { display: block !important; }
 
 }
+
+/* ── ROI Calculator CSS ───────────────────────── */
+        :root {
+            --roi-border: #e2e8f0;
+            --roi-card-hover: #cbd5e1;
+            --roi-text-light: #5a5e9a;
+            --roi-accent-green: #00a58e;
+        }
+        .roi-container {
+            width: 100%;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+        .roi-builder {
+            padding: 24px;
+            border-right: 1px solid var(--border);
+        }
+        .roi-summary {
+            background: linear-gradient(135deg, #090e24, #1a2356);
+            color: white;
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .baseline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .input-group label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+        .input-wrapper { position: relative; }
+        .input-prefix, .input-suffix {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--mid);
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .input-prefix { left: 10px; }
+        .input-suffix { right: 10px; }
+        .input-group input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gray);
+            box-sizing: border-box;
+            font-family: 'Sora', sans-serif;
+        }
+        .input-group input.has-prefix { padding-left: 24px; }
+        .input-group input.has-suffix { padding-right: 28px; }
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 2px rgba(84, 104, 255, 0.15);
+        }
+        .levers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .lever-row {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .lever-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .lever-title { font-weight: 600; font-size: 14px; color: var(--gray); }
+        .lever-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--blue-tint);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+        .slider-container { margin-bottom: 12px; }
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: var(--blue);
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border);
+            border-radius: 2px;
+        }
+        .proof-point {
+            font-size: 11px;
+            color: var(--mid);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--white);
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--border);
+        }
+        .proof-badge {
+            background: var(--roi-accent-green);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 9px;
+            letter-spacing: 0.05em;
+        }
+        .summary-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .total-impact {
+            font-size: 36px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+        .impact-breakdown { display: flex; flex-direction: column; gap: 12px; }
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+        .breakdown-label { font-size: 12px; color: #cbd5e1; }
+        .breakdown-value { font-size: 14px; font-weight: 600; color: white; }
+        .formula-note {
+            margin-top: 30px;
+            font-size: 10px;
+            color: #64748b;
+            line-height: 1.4;
+        }
 
 </style>
 
@@ -4960,7 +5227,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/AutoZone_store.jpg/1280px-AutoZone_store.jpg",
-    "company_logo_url": "https://icons.duckduckgo.com/ip3/autozone.com.ico",
+    "company_logo_url": "data:image/png;base64,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",
     "status_line": "Confidential · For Internal Algolia Use Only"
   },
   "score": {
@@ -6619,7 +6886,9 @@ a:hover {
       "evidence": "FY2025 10-K: 133 Mega Hub stores. Q2 FY2026: 142 Mega Hubs. Target: 300+. Inventory grew $6.16B → $7.03B (+14% YoY) in FY2025.",
       "source_url": "https://about.autozone.com/static-files/e11134f1-68b3-46fd-94fd-0a0c8aad745e",
       "source_label": "AutoZone 10-K FY2025 + Q2 FY2026 Earnings Call",
-      "algolia_fit": "Algolia Intelligent Auto Parts Solution indexes all 110K SKUs per location with YMM fitment as a native dimension. Real-time indexing means new parts are searchable instantly. Synonym engine handles all auto parts terminology pairs (headlamp/headlight, alternator/generator, brake shoe/brake pad)."
+      "algolia_fit": "Algolia Intelligent Auto Parts Solution indexes all 110K SKUs per location with YMM fitment as a native dimension. Real-time indexing means new parts are searchable instantly. Synonym engine handles all auto parts terminology pairs (headlamp/headlight, alternator/generator, brake shoe/brake pad).",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 1"
     },
     {
       "angle": "DIFM Commercial Acceleration = B2B Search Is the Growth Lever",
@@ -6627,7 +6896,9 @@ a:hover {
       "evidence": "Q2 FY2026 DIFM SSS +9.8% [ESTIMATE — Yahoo Finance Q2 summary]. CFO Jamere Jackson: 'Our commercial acceleration initiatives continue to deliver strong results as we grow share by winning new business and increasing our share of wallet with existing customers.'",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/03/autozone-azo-q2-2026-earnings-call-transcript/",
       "source_label": "AutoZone Q2 FY2026 Earnings Call — Motley Fool Transcript (VERBATIM)",
-      "algolia_fit": "Algolia B2B Search: account-aware pricing in SAYT, part number exact match, commercial-grade VIN lookup, instant reorder workflows. AutoZonePro portal search purpose-built for professional mechanics under time pressure."
+      "algolia_fit": "Algolia B2B Search: account-aware pricing in SAYT, part number exact match, commercial-grade VIN lookup, instant reorder workflows. AutoZonePro portal search purpose-built for professional mechanics under time pressure.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 2"
     },
     {
       "angle": "Supply Chain 2030 Completing = Search Is the Next Chapter",
@@ -6635,7 +6906,9 @@ a:hover {
       "evidence": "CEO Philip Daniele Q2 FY2026: 'We are in the final stages of our Supply Chain 2030 project, which began in 2019.'",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/03/autozone-azo-q2-2026-earnings-call-transcript/",
       "source_label": "AutoZone Q2 FY2026 Earnings Call — Motley Fool Transcript (VERBATIM)",
-      "algolia_fit": "The supply chain is modernized. Distribution centers are optimized. The remaining gap in the customer journey is digital search — the layer that connects inventory to buyer. Algolia is the SaaS equivalent of the supply chain modernization: managed, scalable, API-first."
+      "algolia_fit": "The supply chain is modernized. Distribution centers are optimized. The remaining gap in the customer journey is digital search — the layer that connects inventory to buyer. Algolia is the SaaS equivalent of the supply chain modernization: managed, scalable, API-first.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 3"
     },
     {
       "angle": "AI Discovery Already Won — On-Site Search Must Close the Loop",
@@ -6643,7 +6916,9 @@ a:hover {
       "evidence": "SimilarWeb MCP referrals-agg: ChatGPT = 316,302 avg monthly visits (Oct 2025–Jan 2026), #3 referral source. -20.8% MoM trend = volatility, not structural decline.",
       "source_url": "https://www.similarweb.com/website/autozone.com/",
       "source_label": "SimilarWeb MCP — get-websites-referrals-agg, autozone.com, Oct 2025–Jan 2026 [FACT]",
-      "algolia_fit": "Algolia NeuralSearch converts conversational queries into structured product filters. 'Battery for 2019 Ram 1500' → vehicle=2019 Ram 1500, category=battery, filters: group size + CCA. The AI acquisition pipeline already flows into AutoZone.com. NeuralSearch converts it."
+      "algolia_fit": "Algolia NeuralSearch converts conversational queries into structured product filters. 'Battery for 2019 Ram 1500' → vehicle=2019 Ram 1500, category=battery, filters: group size + CCA. The AI acquisition pipeline already flows into AutoZone.com. NeuralSearch converts it.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 4"
     },
     {
       "angle": "Oracle Architecture Purge Complete — Stack Is Algolia-Ready",
@@ -6651,7 +6926,9 @@ a:hover {
       "evidence": "SimilarWeb Feb 2026 technology scan: Oracle Endeca status=removed; Oracle Commerce Cloud status=removed. BuiltWith live scan 2026-03-19: Next.js, React, Contentstack all confirmed active. Algolia NOT detected = open slot.",
       "source_url": "https://www.similarweb.com/website/autozone.com/technologies/",
       "source_label": "SimilarWeb MCP — technologies-agg (Feb 2026) + BuiltWith liveOnly=true (Mar 2026) [FACT]",
-      "algolia_fit": "Algolia InstantSearch React integrates natively with React/Next.js in days. Contentstack headless CMS connects to Algolia for content federation. No rip-and-replace — pure API overlay on the existing composable stack. Time-to-demo: days. Time-to-production: 8–12 weeks."
+      "algolia_fit": "Algolia InstantSearch React integrates natively with React/Next.js in days. Contentstack headless CMS connects to Algolia for content federation. No rip-and-replace — pure API overlay on the existing composable stack. Time-to-demo: days. Time-to-production: 8–12 weeks.",
+      "source": "AutoZone 10-K 2024 / SimilarWeb Traffic Analysis",
+      "label": "Angle 5"
     }
   ],
   "golden_angle": {
@@ -9298,8 +9575,8 @@ function sectionFinancials(D) {
   function arrow(current, prior) {
     const c = parseFinVal(current), p = parseFinVal(prior);
     if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:#10B981;font-size:0.85rem;margin-left:3px;">↑</span>';
-    if (c < p) return '<span style="color:#DC2626;font-size:0.85rem;margin-left:3px;">↓</span>';
+    if (c > p) return '<span style="color:var(--green);${T.bodySm}margin-left:3px;">↑</span>';
+    if (c < p) return '<span style="color:var(--red);${T.bodySm}margin-left:3px;">↓</span>';
     return '';
   }
 
@@ -9329,8 +9606,8 @@ function sectionFinancials(D) {
     if (!priorR) return '';
     var c = finNum(cur), p = finNum(priorR[field]);
     if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:#10B981;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2191;</span>';
-    if (c < p) return '<span style="color:#DC2626;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2193;</span>';
+    if (c > p) return '<span style="color:var(--green);${T.compact}margin-left:2px;font-weight:700;">&#x2191;</span>';
+    if (c < p) return '<span style="color:var(--red);${T.compact}margin-left:2px;font-weight:700;">&#x2193;</span>';
     return '';
   }
 
@@ -9338,19 +9615,21 @@ function sectionFinancials(D) {
 
   const yearMeta = rev3.map((r, i) => {
 
-    const isLast = i === rev3.length - 1;
+    // rev3 is reversed: index 0 = latest year (FY2025), last index = oldest year
+    const isLatest = i === 0;
 
     const sigText = r.search_signal ? [r.search_signal] : [];
 
     return {
 
-      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLast ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
+      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLatest ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
 
-      searchAdj: isLast ? (f.search_addressable || '') : '',
+      searchAdj: isLatest ? (f.search_addressable || '') : '',
 
       signals: sigText,
 
-      roi: isLast ? (f.search_roi_est || f.roi_moderate || null) : null,
+      // ROI callout removed — comes from interactive calculator, not static data
+      roi: null,
 
       note: r.note || '',
 
@@ -9366,7 +9645,8 @@ function sectionFinancials(D) {
 
     const pct   = barPcts[i]  || 0;
 
-    const isLast = i === rev3.length - 1;
+    // rev3 is reversed: index 0 = latest year
+    const isLatest = i === 0;
 
     const signalHtml = (meta.signals || []).map(sig =>
 
@@ -9424,7 +9704,7 @@ function sectionFinancials(D) {
 
             <div class="tl-card__rev">${escHtml(r.revenue_label || String(r.revenue))}</div>
 
-            ${isLast ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
+            ${isLatest ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
 
           </div>
 
@@ -10900,7 +11180,7 @@ function sectionAppendixScoring(D) {
 
   return `<section id="appendix-scoring" class="audit-section">
 
-    <div class="section-eyebrow">Overview · Score Breakdown</div>
+    <div class="section-eyebrow">Appendix A · Score Breakdown</div>
 
     <div class="section-title">Score by Dimension</div>
 
@@ -11111,6 +11391,93 @@ function renderBerkshire(f) {
 }
 
 
+
+function sectionROI(D) {
+  const f = D.financials || {};
+  const revBase = parseFloat((f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  
+  return `<section id="section-roi" class="audit-section">
+    <div class="section-eyebrow">Business Case · Revenue</div>
+    <div class="section-title">Revenue & ROI Calculator</div>
+    
+    <div class="roi-container">
+        <div class="roi-builder">
+            <div style="${T.bodySm}color:var(--mid);margin-bottom:20px;">Adjust the baseline metrics to calculate potential revenue impact based on actual customer case studies.</div>
+            <div class="baseline-grid">
+                <div class="input-group">
+                    <label>Annual Digital Rev</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="base_revenue" class="has-prefix" value="${revBase}">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Baseline Conv. Rate</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="base_conversion" class="has-suffix" value="2.5" step="0.1">
+                        <span class="input-suffix">%</span>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Average Order Value</label>
+                    <div class="input-wrapper">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="base_aov" class="has-prefix" value="120">
+                    </div>
+                </div>
+            </div>
+            <div class="levers-header">
+                <h3 style="${T.body}color:var(--gray);margin:0;">Value Levers</h3>
+                <span class="proof-badge" style="background:var(--purple); padding:4px 8px; white-space:nowrap; display:inline-block;">15 Case Studies Verified</span>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Search-to-Purchase Conversion Lift</div>
+                    <div class="lever-value">+<span id="val_conversion">15</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_conversion" min="0" max="100" value="15"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Decathlon</strong> saw +50% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Average Order Value (AOV) Increase</div>
+                    <div class="lever-value">+<span id="val_aov">5</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_aov" min="0" max="30" value="5"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Intrend</strong> saw +19% increase. <strong>Oh Polly</strong> saw +172%.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">Bounce Rate / Abandonment Reduction</div>
+                    <div class="lever-value">-<span id="val_bounce">10</span>%</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_bounce" min="0" max="50" value="10"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Lacoste</strong> saw an 88% reduction. <strong>JadoPado</strong> saw a 17% decrease.</div>
+            </div>
+            <div class="lever-row">
+                <div class="lever-header">
+                    <div class="lever-title">No-Results Recovery Rate</div>
+                    <div class="lever-value"><span id="val_noresult">30</span>% Recovered</div>
+                </div>
+                <div class="slider-container"><input type="range" id="lever_noresult" min="0" max="80" value="30"></div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Ubisoft</strong> reduced zero-results from 20% to <5%.</div>
+            </div>
+        </div>
+        <div class="roi-summary">
+            <div class="summary-label">Total Annual Revenue Impact</div>
+            <div class="total-impact">$<span id="output_total_impact">0</span></div>
+            <div class="summary-label" style="margin-bottom:16px;">Impact Breakdown</div>
+            <div class="impact-breakdown">
+                <div class="breakdown-row"><div class="breakdown-label">Conversion Lift:</div><div class="breakdown-value">+$<span id="output_conversion">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">AOV Increase:</div><div class="breakdown-value">+$<span id="output_aov">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">Bounce Recovery:</div><div class="breakdown-value">+$<span id="output_bounce">0</span></div></div>
+                <div class="breakdown-row"><div class="breakdown-label">No-Results Recovery:</div><div class="breakdown-value">+$<span id="output_noresult">0</span></div></div>
+            </div>
+            <div class="formula-note"><strong>Formula Note:</strong> Assumes 15% of total digital revenue is strictly search-driven. No-Results recovery value factors in the Baseline Conversion Rate and Baseline AOV for user accuracy.</div>
+        </div>
+    </div>
+  </section>`;
+}
 
 function sectionRevenueAtRisk(D) {
 
@@ -13000,9 +13367,9 @@ function sectionStatBar(D) {
       <span class="stat-bar__arrow">→</span>
     </div>
     <div class="stat-bar__item" onclick="${navTo('case', 'section-roi')}">
-      <div class="stat-bar__label">Revenue at Risk</div>
+      <div class="stat-bar__label">Business Case ROI</div>
       <div class="stat-bar__value">${roiVal}</div>
-      <div class="stat-bar__sub">Conservative annual impact</div>
+      <div class="stat-bar__sub">Calculate potential impact</div>
       <span class="stat-bar__arrow">→</span>
     </div>
     <div class="stat-bar__item" onclick="${navTo('case', 'section-competitive')}">
@@ -13261,7 +13628,7 @@ function renderSections(D) {
 
     sectionBusinessCaseHook(D),
 
-    sectionRevenueAtRisk(D),
+    sectionROI(D),
 
     sectionCaseStudies(D),
 
@@ -13393,7 +13760,7 @@ const SECTION_STRIP_CONFIG = {
   ],
   case: [
     { id: 'section-said-found',   label: 'The Hook',         desc: 'Said vs. Found' },
-    { id: 'section-roi',          label: 'Revenue at Risk',  desc: 'ROI model' },
+    { id: 'section-roi',          label: 'Business Case ROI',  desc: 'Interactive ROI model' },
     { id: 'section-case-studies', label: 'Case Studies',      desc: 'Vertical proof' },
     { id: 'section-why-now',      label: 'Why Act Now',       desc: 'Timing signals' },
   ],
@@ -13648,7 +14015,7 @@ function initCmdK(D) {
     ['📊', 'Score Heatmap — 10 Areas',     'score-heatmap',             'audit'],
     // Business Case tab
     ['🎣', 'The Hook — Said vs. Found',    'section-said-found',        'case'],
-    ['💵', 'Revenue at Risk',              'section-roi',               'case'],
+    ['💵', 'Business Case ROI',              'section-roi',               'case'],
     ['🏆', 'Case Studies',                 'section-case-studies',      'case'],
     ['⏰', 'Why Act Now',                  'section-why-now',           'case'],
     ['🥊', 'Competitive Landscape',        'section-competitive',       'case'],
@@ -13960,10 +14327,22 @@ function initSalesPlays() {
       panel.addEventListener('click', function(e) {
         if (acc.classList.contains('all-exp')) return;
         if (panel.classList.contains('active')) return;
-        // Ignore clicks that originate inside the expanded content
         if (e.target.closest('.play-expanded')) return;
+        // Hide expanded content on current active panel immediately
+        var prev = acc.querySelector('.play-panel.active');
+        if (prev) {
+          var prevExp = prev.querySelector('.play-expanded');
+          if (prevExp) prevExp.style.display = 'none';
+        }
+        // Switch active
         acc.querySelectorAll('.play-panel').forEach(function(p) { p.classList.remove('active'); });
         panel.classList.add('active');
+        // Show new expanded content after flex transition (380ms)
+        var newExp = panel.querySelector('.play-expanded');
+        if (newExp) {
+          newExp.style.display = 'none';
+          setTimeout(function() { newExp.style.display = ''; }, 360);
+        }
       });
     });
     // Expand All / Collapse button
@@ -14429,6 +14808,45 @@ function _boot() {
   }
 
 }
+
+// ROI Calculator Global Logic
+window.calculateROI = () => {
+    const rf = (id) => parseFloat(document.getElementById(id)?.value) || 0;
+    const rev = rf('base_revenue'), conv = rf('base_conversion')/100, aov = rf('base_aov');
+    const srchRev = rev * 0.15;
+    const srchTfc = (srchRev / aov) / conv;
+    
+    const cLift = rf('lever_conversion')/100, aInc = rf('lever_aov')/100;
+    const bRec = rf('lever_bounce')/100, nRec = rf('lever_noresult')/100;
+    
+    const nConv = conv * (1 + cLift);
+    const cImp = (srchTfc * nConv * aov) - srchRev;
+    const aImp = (srchTfc * nConv) * (aov * (1 + aInc) - aov);
+    const bImp = (srchTfc * 0.30) * bRec * nConv * (aov * (1 + aInc));
+    const nImp = (srchTfc * 0.10) * nRec * nConv * (aov * (1 + aInc));
+    
+    const fmt = n => '$' + Math.round(n).toLocaleString();
+    const set = (id, v) => { const el = document.getElementById(id); if(el) el.textContent = v; };
+    
+    set('output_conversion', fmt(cImp).substring(1));
+    set('output_aov', fmt(aImp).substring(1));
+    set('output_bounce', fmt(bImp).substring(1));
+    set('output_noresult', fmt(nImp).substring(1));
+    set('output_total_impact', fmt(cImp + aImp + bImp + nImp).substring(1));
+};
+
+// Bind listeners globally
+document.addEventListener('input', (e) => {
+    if (['base_revenue','base_conversion','base_aov'].includes(e.target.id)) window.calculateROI();
+    if (e.target.id && e.target.id.startsWith('lever_')) {
+        const valId = 'val_' + e.target.id.split('_')[1];
+        const valEl = document.getElementById(valId);
+        if (valEl) valEl.textContent = e.target.value;
+        window.calculateROI();
+    }
+});
+// Initial trigger after short delay
+setTimeout(() => window.calculateROI(), 500);
 
 if (document.readyState === 'loading') {
 

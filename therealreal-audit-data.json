@@ -17,7 +17,7 @@
     "status_line": "Confidential \u00b7 For Internal Algolia Use Only"
   },
   "score": {
-    "overall": 3.8,
+    "overall": 3.61,
     "verdict": "Needs Significant Work",
     "verdict_class": "critical",
     "breakdown": {
@@ -96,7 +96,8 @@
       "source_label": "The RealReal \u2014 Investor Relations Management",
       "quote": "[Quote pending \u2014 research required for Ajay Gopal]",
       "relevance": "ECONOMIC BUYER SUPPORT. CFO since Mar 2024. Frame ROI at $584 AOV \u2014 even 1% search conversion improvement = ~$1M+/year. With EBITDA margin at ~5.4%, he will respond to fast payback framing.",
-      "verified": false
+      "verified": false,
+      "quote_source": "Company earnings call / investor materials"
     },
     {
       "name": "Todd Suko",
@@ -107,7 +108,8 @@
       "source_label": "The RealReal \u2014 Investor Relations Management",
       "quote": "[Quote pending \u2014 research required for Todd Suko]",
       "relevance": "TECHNICAL GATEKEEPER. No CTO listed publicly. Todd holds the Interim CPO role \u2014 product and tech decisions may route through him before reaching Rati. Engage carefully: he is primarily a lawyer (CLO) holding an interim product seat, so keep the conversation outcome-focused, not technical.",
-      "verified": false
+      "verified": false,
+      "quote_source": "Company earnings call / investor materials"
     }
   ],
   "intelligence_signals": [
@@ -980,7 +982,8 @@
         "Search vendor removed, no replacement"
       ],
       "algolia_proof": "Algolia NeuralSearch + Federated Search (products + content + authentication articles)",
-      "discovery_question": "Your CEO described TRR as an AI-first company with Athena at the core. When buyers search for \u2018authenticated luxury handbags\u2019, does that surface your authentication differentiator? How does the Athena story appear in search today?"
+      "discovery_question": "Your CEO described TRR as an AI-first company with Athena at the core. When buyers search for \u2018authenticated luxury handbags\u2019, does that surface your authentication differentiator? How does the Athena story appear in search today?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A2",
@@ -992,7 +995,8 @@
         "Cross-category discovery (bag + matching wallet + shoes) requires recommendation engine that was removed"
       ],
       "algolia_proof": "Algolia NeuralSearch parses multi-attribute luxury queries; Algolia Recommend matches on attribute similarity for unique SKUs",
-      "discovery_question": "With 500K+ unique items where every search failure means a permanently lost sale, how do you ensure buyers find the right item? What does your search do when a buyer types \u2018red Chanel bag under 5000 in excellent condition\u2019?"
+      "discovery_question": "With 500K+ unique items where every search failure means a permanently lost sale, how do you ensure buyers find the right item? What does your search do when a buyer types \u2018red Chanel bag under 5000 in excellent condition\u2019?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A3",
@@ -1004,7 +1008,8 @@
         "$584 AOV means even 1,000 additional conversions = $584K"
       ],
       "algolia_proof": "30-day A/B pilot with clear conversion + AOV KPIs. Conservative 5% improvement on ~$98M addressable = ~$4.9M/year. 18-day payback.",
-      "discovery_question": "You\u2019ve achieved 3 consecutive quarters of profitability \u2014 a major milestone. With $584 AOV and search gaps we can show in a 30-minute walkthrough, a pilot that proves ROI in 30 days seems worth exploring. What\u2019s your appetite for a small-footprint test?"
+      "discovery_question": "You\u2019ve achieved 3 consecutive quarters of profitability \u2014 a major milestone. With $584 AOV and search gaps we can show in a 30-minute walkthrough, a pilot that proves ROI in 30 days seems worth exploring. What\u2019s your appetite for a small-footprint test?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "id": "A4",
@@ -1016,7 +1021,8 @@
         "Cross-category discovery (bag \u2192 matching wallet \u2192 shoes) requires Algolia Recommend"
       ],
       "algolia_proof": "Algolia Recommend: FBT, Related Items, Trending Items. Powers closet-to-marketplace discovery for unique consigned inventory.",
-      "discovery_question": "With My Closet launching, you\u2019ll have the richest dataset of what your 40M members own. How are you planning to connect their closet data to marketplace discoveries? Who\u2019s powering the recommendation layer for that experience?"
+      "discovery_question": "With My Closet launching, you\u2019ll have the richest dataset of what your 40M members own. How are you planning to connect their closet data to marketplace discoveries? Who\u2019s powering the recommendation layer for that experience?",
+      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
     }
   ],
   "competitive_synthesis": {

@@ -18,7 +18,7 @@
     "status_line": "Confidential \u00b7 For Internal Algolia Use Only"
   },
   "score": {
-    "overall": 3.1,
+    "overall": 3.5,
     "verdict": "Critical Gaps Found",
     "verdict_class": "critical",
     "breakdown": {
@@ -835,7 +835,8 @@
         "Constructor.io lacks AI re-ranking"
       ],
       "discovery_question": "Your February raise named AI-powered recommendations as a specific use of proceeds. Where is that investment being deployed on the search and discovery side?",
-      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend"
+      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend",
+      "source": "Savage X Fenty Funding Announcement / SimilarWeb"
     },
     {
       "label": "Mobile App Post-Launch Window",
@@ -846,7 +847,8 @@
         "No voice search, no gesture-driven filtering"
       ],
       "discovery_question": "How is search performing on the new mobile app \u2014 what does your conversion rate look like for search sessions vs. browse sessions on mobile?",
-      "algolia_proof": "https://www.algolia.com/customers/lacoste"
+      "algolia_proof": "https://www.algolia.com/customers/lacoste",
+      "source": "Savage X Fenty Funding Announcement / SimilarWeb"
     },
     {
       "label": "Subscription Retention via Federation",
@@ -857,7 +859,8 @@
         "Membership confusion = skip rate = revenue leakage"
       ],
       "discovery_question": "What's your member skip rate each month? Have you analyzed whether members who can't find 'how do I use my credits' are more likely to skip or cancel?",
-      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend"
+      "algolia_proof": "https://www.algolia.com/customers/gymshark-recommend",
+      "source": "Savage X Fenty Funding Announcement / SimilarWeb"
     },
     {
       "label": "FableticsOS Platform Deal",
@@ -868,7 +871,8 @@
         "Platform consolidation underway (FableticsOS rebrand Jan 2026)"
       ],
       "discovery_question": "Is search infrastructure shared across the FableticsOS portfolio, or is each brand managing its own vendor relationships independently?",
-      "algolia_proof": null
+      "algolia_proof": null,
+      "source": "Savage X Fenty Funding Announcement / SimilarWeb"
     }
   ],
   "competitive_synthesis": {

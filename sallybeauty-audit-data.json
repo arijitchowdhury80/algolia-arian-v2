@@ -19,7 +19,7 @@
     "status_line": "Confidential \u00b7 For Internal Use Only"
   },
   "score": {
-    "overall": 4.6,
+    "overall": 5.1,
     "verdict": "Critical Gaps Found",
     "verdict_class": "critical",
     "breakdown": {
@@ -1135,37 +1135,49 @@
       "angle": "Sally Ignited = Search Ignited",
       "evidence": "Sally Ignited strategy explicitly calls out AI transformation, enhanced personalization, and a seamless customer journey. Site search is the only touchpoint that intersects all three simultaneously. CEO named 'more efficient search engine' on Q1 FY2026 earnings call.",
       "source_url": "https://infotechlead.com/cio/sally-beauty-accelerates-ai-digital-transformation-and-e-commerce-growth-with-sally-ignited-strategy-93663",
-      "source_label": "InfotechLead \u2014 Sally Ignited Strategy"
+      "source_label": "InfotechLead \u2014 Sally Ignited Strategy",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 1"
     },
     {
       "angle": "Beat Sephora's Constructor",
       "evidence": "Sephora uses Constructor.io for AI-powered personalized search. Sally runs native SFCC Einstein Search \u2014 no NLP, no vector search. Algolia NeuralSearch matches or exceeds Constructor capabilities with a native SFCC cartridge and no re-platform required.",
       "source_url": "https://www.linkedin.com/posts/constructor-io_genai-sephora-retailtech-activity-7160720307534643201-U8it",
-      "source_label": "Constructor.io + Sephora announcement \u2014 LinkedIn"
+      "source_label": "Constructor.io + Sephora announcement \u2014 LinkedIn",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 2"
     },
     {
       "angle": "Professional + Consumer Federated Search (B2B + B2C)",
       "evidence": "Sally serves DIY consumers (B2C) AND 500K+ licensed professionals (B2B via BSG/CosmoProf). CosmoProf Institute is expanding online education content. Algolia Multi-Index Federated Search unifies products + education + pro-only inventory in a single query \u2014 no other beauty retailer has this. This is Sally's unique white space.",
       "source_url": "https://infotechlead.com/cio/sally-beauty-accelerates-ai-digital-transformation-and-e-commerce-growth-with-sally-ignited-strategy-93663",
-      "source_label": "InfotechLead \u2014 CosmoProf Institute expansion and BSG digital strategy"
+      "source_label": "InfotechLead \u2014 CosmoProf Institute expansion and BSG digital strategy",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 3"
     },
     {
       "angle": "BSG Re-Platform Window (Spring 2026 \u2014 Narrow)",
       "evidence": "BSG app and e-commerce platform substantial update planned Spring 2026 \u2014 explicitly includes AI and personalization capabilities. This is the natural inclusion window for Algolia before the tech stack is locked. Retrofitting search post-platform launch costs 3x more.",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/02/09/sally-beauty-sbh-q1-2026-earnings-transcript/",
-      "source_label": "Q1 FY2026 Earnings Transcript \u2014 The Motley Fool"
+      "source_label": "Q1 FY2026 Earnings Transcript \u2014 The Motley Fool",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 4"
     },
     {
       "angle": "16M Loyalty Members \u2014 Activate at Search Layer",
       "evidence": "Sally Beauty has 16 million loyalty members driving 78% of sales. Zero of this behavioral data is activated at the search results layer today. Algolia Personalization would re-rank search results using loyalty purchase history and brand affinity in real time \u2014 turning latent data into conversion lift.",
       "source_url": "https://infotechlead.com/cio/sally-beauty-accelerates-ai-digital-transformation-and-e-commerce-growth-with-sally-ignited-strategy-93663",
-      "source_label": "InfotechLead \u2014 Sally Ignited strategy; loyalty program data from 10-K FY2025"
+      "source_label": "InfotechLead \u2014 Sally Ignited strategy; loyalty program data from 10-K FY2025",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 5"
     },
     {
       "angle": "ColorView AI Already Deployed \u2014 But Search Has No AI",
       "evidence": "Sally Beauty deployed ColorView AI (Perfect Corp. partnership) to 500 stores + app for virtual hair color try-on. This proves Sally invests in AI customer experience. Yet search \u2014 the highest-intent touchpoint \u2014 remains on SFCC Einstein with no AI. Algolia NeuralSearch closes this gap.",
       "source_url": "https://www.retaildive.com/news/sally-beauty-expands-ai-try-on-tech-to-500-stores/566830/",
-      "source_label": "Retail Dive \u2014 Sally Beauty ColorView AI expansion to 500 stores"
+      "source_label": "Retail Dive \u2014 Sally Beauty ColorView AI expansion to 500 stores",
+      "source": "Sally Beauty Holdings 10-K 2024 / SimilarWeb",
+      "label": "Angle 6"
     }
   ],
   "icp_mapping": [
