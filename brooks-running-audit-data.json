@@ -15,7 +15,7 @@
     "company": "Brooks Running",
     "tagline": "The #1 Performance Running Brand Running on 2018-Era Search",
     "score": 4.4,
-    "verdict": "Functional but dated — 3 critical gaps costing ~$11.5M/year in search-addressable revenue",
+    "verdict": "Functional but dated \u2014 3 critical gaps costing ~$11.5M/year in search-addressable revenue",
     "hero_image": "screenshots/01-homepage.png",
     "logo_url": "https://www.brooksrunning.com/on/demandware.static/Sites-BrooksRunning-Site/default/dw1b7e0a4c/images/branding/brooks-logo.svg",
     "company_logo_url": "https://logo.clearbit.com/brooksrunning.com",
@@ -63,7 +63,7 @@
     },
     "critical_count": 3,
     "moderate_count": 6,
-    "formula_shown": "sum(score×weight)/sum(weights)",
+    "formula_shown": "sum(score\u00d7weight)/sum(weights)",
     "source": "10-scoring-matrix.md"
   },
   "company_snapshot": {
@@ -73,10 +73,10 @@
     "founded": "1914",
     "hq": "Seattle, WA (3400 Stone Way North STE 500)",
     "employees": "~1,695",
-    "ownership": "Private — wholly-owned subsidiary of Berkshire Hathaway Inc. (since 2006)",
+    "ownership": "Private \u2014 wholly-owned subsidiary of Berkshire Hathaway Inc. (since 2006)",
     "industry": "Performance Running Footwear & Apparel",
     "revenue_est": "~$1.6B (FY2025 estimate)",
-    "revenue_note": "ESTIMATE — Brooks does not disclose absolute revenue. Derived from confirmed +16% YoY growth rate applied to trade media estimate.",
+    "revenue_note": "ESTIMATE \u2014 Brooks does not disclose absolute revenue. Derived from confirmed +16% YoY growth rate applied to trade media estimate.",
     "revenue_source": "https://www.retaildive.com/news/brooks-running-record-revenue-2025-earnings/811793/",
     "ecommerce_revenue": "~$226M on brooksrunning.com (2024)",
     "ecommerce_source": "https://ecdb.com/resources/sample-data/retailer/brooksrunning",
@@ -84,11 +84,11 @@
     "market_position_source": "https://www.brooksrunning.com/en_us/10-29-2024/",
     "market_share": "~24% in U.S. performance running category",
     "market_share_source": "https://www.news.market.us/running-shoes-statistics/",
-    "growth_streak": "9 consecutive years of record revenue (13–14% CAGR)",
+    "growth_streak": "9 consecutive years of record revenue (13\u201314% CAGR)",
     "growth_source": "https://www.brooksrunning.com/en_us/02-05-2026/",
     "ecommerce_platform": "Salesforce Commerce Cloud (Demandware SFRA)",
-    "search_provider": "Salesforce Commerce Cloud native SearchServices (Demandware — no external search vendor)",
-    "search_provider_evidence": "Network inspection confirmed all search API calls routed to /on/demandware.store/Sites-BrooksRunning-Site/en_US/SearchServices-GetSuggestions — zero calls to Constructor.io or any external provider",
+    "search_provider": "Salesforce Commerce Cloud native SearchServices (Demandware \u2014 no external search vendor)",
+    "search_provider_evidence": "Network inspection confirmed all search API calls routed to /on/demandware.store/Sites-BrooksRunning-Site/en_US/SearchServices-GetSuggestions \u2014 zero calls to Constructor.io or any external provider",
     "monthly_visits": "1.2M",
     "traffic_source": "https://www.similarweb.com/website/brooksrunning.com/",
     "full_name": "Brooks Sports, Inc.",
@@ -97,11 +97,11 @@
     "employee_source": "https://www.zippia.com/brooks-sports-careers-1188800/history/",
     "revenue_fy2025": "~.6B (ESTIMATE)",
     "current_search_vendor": "Salesforce Commerce Cloud SearchServices (platform-native)",
-    "search_vendor_status": "NO external search vendor — SFCC native only",
-    "search_vendor_source": "Network inspection March 17 2026 — zero calls to external search providers",
+    "search_vendor_status": "NO external search vendor \u2014 SFCC native only",
+    "search_vendor_source": "Network inspection March 17 2026 \u2014 zero calls to external search providers",
     "waf": "Akamai Bot Manager",
-    "margin_zone": "YELLOW (estimated 10-15% — private company, not disclosed)",
-    "ebitda_margin": "Not disclosed — private company"
+    "margin_zone": "YELLOW (estimated 10-15% \u2014 private company, not disclosed)",
+    "ebitda_margin": "Not disclosed \u2014 private company"
   },
   "executives": [
     {
@@ -109,13 +109,13 @@
       "title": "CEO",
       "tenure": "27+ years at Brooks (joined 1998 as field sales 'Guru'; CEO since April 26, 2024)",
       "source": "https://www.brooksrunning.com/en_us/03-12-2024/",
-      "relevance": "Economic buyer context — publicly on record that search starts the purchase journey. CEO since April 2024 after 23-year predecessor Jim Weber.",
-      "quote": "Most runners start with a digital transaction — a search for a product or a brand.",
+      "relevance": "Economic buyer context \u2014 publicly on record that search starts the purchase journey. CEO since April 2024 after 23-year predecessor Jim Weber.",
+      "quote": "Most runners start with a digital transaction \u2014 a search for a product or a brand.",
       "quote_source": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
       "quote_date": "2022-01",
       "source_name": "Modern Retail",
       "source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
-      "maps_to": "CEO validates search-first purchase journey — Algolia solves the problem he named directly",
+      "maps_to": "CEO validates search-first purchase journey \u2014 Algolia solves the problem he named directly",
       "verified": true
     },
     {
@@ -123,13 +123,13 @@
       "title": "President & COO",
       "tenure": "Appointed President & COO August 1, 2024; joined Brooks 2013 as Associate General Counsel",
       "source": "https://sgbonline.com/brooks-running-appoints-new-president-coo-and-emea-chief/",
-      "relevance": "Operations owner — oversees e-commerce infrastructure and digital platforms post-CEO transition",
+      "relevance": "Operations owner \u2014 oversees e-commerce infrastructure and digital platforms post-CEO transition",
       "quote": "We feel great about where Brooks is in the market right now, and the momentum is exciting going into 2025.",
       "quote_source": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/",
       "quote_date": "2024-12",
       "source_name": "WWD / The Running Event",
       "source_url": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/",
-      "maps_to": "Operations owner for e-commerce infrastructure — key stakeholder for search platform decisions",
+      "maps_to": "Operations owner for e-commerce infrastructure \u2014 key stakeholder for search platform decisions",
       "verified": true
     },
     {
@@ -137,13 +137,13 @@
       "title": "CFO",
       "tenure": "20+ years at Brooks Running",
       "source": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
-      "relevance": "Budget approval — long tenure signals conservative financial decision-making aligned with Berkshire philosophy",
-      "quote": "Brooks Running CFO with 20+ years tenure — financial steward of the brand's 9 consecutive years of record growth.",
+      "relevance": "Budget approval \u2014 long tenure signals conservative financial decision-making aligned with Berkshire philosophy",
+      "quote": "Brooks Running CFO with 20+ years tenure \u2014 financial steward of the brand's 9 consecutive years of record growth.",
       "quote_source": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
       "quote_date": "2026-01",
       "source_name": "RocketReach management profile",
       "source_url": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
-      "maps_to": "Budget approver for technology investments — long tenure = Berkshire long-term investment mindset",
+      "maps_to": "Budget approver for technology investments \u2014 long tenure = Berkshire long-term investment mindset",
       "verified": false
     },
     {
@@ -151,21 +151,21 @@
       "title": "Director, eCommerce Technical Operations",
       "tenure": "Unknown",
       "source": "https://www.linkedin.com/in/jessicabrooks1/",
-      "relevance": "Technical champion — direct owner of SFCC platform and ecommerce technical decisions. Key Algolia contact.",
-      "quote": "Director of eCommerce Technical Operations — platform owner for brooksrunning.com on Salesforce Commerce Cloud.",
+      "relevance": "Technical champion \u2014 direct owner of SFCC platform and ecommerce technical decisions. Key Algolia contact.",
+      "quote": "Director of eCommerce Technical Operations \u2014 platform owner for brooksrunning.com on Salesforce Commerce Cloud.",
       "quote_source": "https://www.linkedin.com/in/jessicabrooks1/",
       "quote_date": "2026-03",
       "source_name": "LinkedIn",
       "source_url": "https://www.linkedin.com/in/jessicabrooks1/",
-      "maps_to": "Platform owner for SFCC — primary technical champion for Algolia conversation",
+      "maps_to": "Platform owner for SFCC \u2014 primary technical champion for Algolia conversation",
       "verified": false
     }
   ],
   "intelligence_signals": [
     {
       "type": "hiring_signal",
-      "title": "🔴 CRITICAL: Senior Engineer Digital Products — Vacancy Open",
-      "body": "Role posted March 7, 2026 with JD language: 'evaluate emerging technologies, integrate practical AI solutions, vendor RFP processes, third-party integrations, Salesforce Commerce Cloud.' This is the Technical Buyer seat — currently empty. Engage IT leadership NOW before role is filled and new engineer develops vendor preference.",
+      "title": "\ud83d\udd34 CRITICAL: Senior Engineer Digital Products \u2014 Vacancy Open",
+      "body": "Role posted March 7, 2026 with JD language: 'evaluate emerging technologies, integrate practical AI solutions, vendor RFP processes, third-party integrations, Salesforce Commerce Cloud.' This is the Technical Buyer seat \u2014 currently empty. Engage IT leadership NOW before role is filled and new engineer develops vendor preference.",
       "source_url": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419",
       "source_date": "2026-03-07",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -173,7 +173,7 @@
     },
     {
       "type": "news_signal",
-      "title": "9th Consecutive Year of Record Revenue — Scaling Pains Imminent",
+      "title": "9th Consecutive Year of Record Revenue \u2014 Scaling Pains Imminent",
       "body": "FY2025: +16% YoY | Q1 2025: +15% | Q3 2025: +19% surge | APLA: +66% | China: +245%. Platform-native SFCC search was designed for a smaller catalog and traffic volume. Growth at this pace creates relevance degradation without AI indexing.",
       "source_url": "https://www.businesswire.com/news/home/20260205023502/en/Brooks-Running-Delivers-Record-Breaking-Global-Growth-in-2025",
       "source_date": "2026-02-05",
@@ -182,8 +182,8 @@
     },
     {
       "type": "news_signal",
-      "title": "CEO's $4B Revenue Ambition — Search Conversion is a Direct Lever",
-      "body": "Dan Sheridan on record: 'Brooks could become a $4 billion brand.' Current ~$1.6B → $4B = 2.5x growth. At ~$115M search-addressable revenue, a 10% search conversion improvement = $11.5M/year — direct contribution toward the $4B goal.",
+      "title": "CEO's $4B Revenue Ambition \u2014 Search Conversion is a Direct Lever",
+      "body": "Dan Sheridan on record: 'Brooks could become a $4 billion brand.' Current ~$1.6B \u2192 $4B = 2.5x growth. At ~$115M search-addressable revenue, a 10% search conversion improvement = $11.5M/year \u2014 direct contribution toward the $4B goal.",
       "source_url": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/",
       "source_date": "2025-07-30",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -191,8 +191,8 @@
     },
     {
       "type": "news_signal",
-      "title": "Lifestyle Footwear Expansion — New SKU Category Requires New Discovery",
-      "body": "Brooks debuted lifestyle footwear at Paris Fashion Week 2025 (Brooks x STAPLE collab). Lifestyle buyers search with different intent than performance runners. Current SFCC native search has no persona-aware faceting — risks poor discovery for new buyer segment.",
+      "title": "Lifestyle Footwear Expansion \u2014 New SKU Category Requires New Discovery",
+      "body": "Brooks debuted lifestyle footwear at Paris Fashion Week 2025 (Brooks x STAPLE collab). Lifestyle buyers search with different intent than performance runners. Current SFCC native search has no persona-aware faceting \u2014 risks poor discovery for new buyer segment.",
       "source_url": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/",
       "source_date": "2025-12-01",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -200,8 +200,8 @@
     },
     {
       "type": "news_signal",
-      "title": "Run Club 2M Members — Personalization Data Ready, Search Unused",
-      "body": "Brooks Run Club reached 2M members by 2025 (2x growth from 2024). DashLX partnership delivers 23% higher AOV via behavior-triggered personalization for Run Club loyalty. Yet search results are identical for all users — personalization investment stops at loyalty, never reaching discovery.",
+      "title": "Run Club 2M Members \u2014 Personalization Data Ready, Search Unused",
+      "body": "Brooks Run Club reached 2M members by 2025 (2x growth from 2024). DashLX partnership delivers 23% higher AOV via behavior-triggered personalization for Run Club loyalty. Yet search results are identical for all users \u2014 personalization investment stops at loyalty, never reaching discovery.",
       "source_url": "https://www.brooksrunning.com/en_us/02-05-2026/",
       "source_date": "2026-02-05",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -210,7 +210,7 @@
     {
       "type": "media_quote",
       "title": "CEO: 'Most Runners Start With a Digital Search'",
-      "body": "Dan Sheridan (as COO): 'Most runners start with a digital transaction — a search for a product or a brand.' This is a direct executive acknowledgment of the search-first purchase journey — the problem Algolia solves is one the CEO has personally named.",
+      "body": "Dan Sheridan (as COO): 'Most runners start with a digital transaction \u2014 a search for a product or a brand.' This is a direct executive acknowledgment of the search-first purchase journey \u2014 the problem Algolia solves is one the CEO has personally named.",
       "source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
       "source_date": "2022-01-01",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -220,7 +220,7 @@
     {
       "type": "media_quote",
       "title": "CEO on $4B Brand Vision",
-      "body": "Dan Sheridan, CEO: 'Brooks could become a $4 billion brand.' — Fortune interview, July 2025. Current estimated revenue ~$1.6B. Search conversion at scale is a proven lever toward that ambition.",
+      "body": "Dan Sheridan, CEO: 'Brooks could become a $4 billion brand.' \u2014 Fortune interview, July 2025. Current estimated revenue ~$1.6B. Search conversion at scale is a proven lever toward that ambition.",
       "source_url": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/",
       "source_date": "2025-07-30",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -236,7 +236,8 @@
       "monthly_traffic": "1",
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": null,
+      "search_stack": "Unknown"
     },
     {
       "name": "Newbalance",
@@ -245,7 +246,8 @@
       "monthly_traffic": "2",
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": null,
+      "search_stack": "Unknown"
     },
     {
       "name": "Asics",
@@ -254,7 +256,8 @@
       "monthly_traffic": "3",
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": null,
+      "search_stack": "Unknown"
     },
     {
       "name": "Onrunning",
@@ -263,7 +266,8 @@
       "monthly_traffic": "4",
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": null,
+      "search_stack": "Unknown"
     },
     {
       "name": "Saucony",
@@ -272,7 +276,8 @@
       "monthly_traffic": "5",
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": null,
+      "search_stack": "Unknown"
     }
   ],
   "findings": [
@@ -282,13 +287,13 @@
       "severity": "HIGH",
       "category": "semantic_nlp_search",
       "tested_query": "best shoes for marathon training",
-      "expected_behavior": "Parse natural language intent → filter to cushioned road running shoes suitable for long distance (Glycerin, Ghost, Adrenaline GTS) with attributes: cushioning=high, surface=road, best_for=long_distance",
-      "actual_behavior": "Redirected to /en_us/featured/best-sellers/ — generic bestsellers page with no relevance to the query. Query completely ignored. Zero NLP parsing.",
-      "impact_stat": "72% of shoppers use natural language queries — 0% are served by Brooks' current search",
+      "expected_behavior": "Parse natural language intent \u2192 filter to cushioned road running shoes suitable for long distance (Glycerin, Ghost, Adrenaline GTS) with attributes: cushioning=high, surface=road, best_for=long_distance",
+      "actual_behavior": "Redirected to /en_us/featured/best-sellers/ \u2014 generic bestsellers page with no relevance to the query. Query completely ignored. Zero NLP parsing.",
+      "impact_stat": "72% of shoppers use natural language queries \u2014 0% are served by Brooks' current search",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/13-nlp-marathon-training.png",
-      "prospect_description": "When a runner types 'best shoes for marathon training,' they're signaling high purchase intent. Brooks' SFCC native search sees an unrecognized query and redirects to a generic page — converting a motivated buyer into a confused visitor.",
-      "algolia_solution": "Algolia NeuralSearch parses semantic intent — 'marathon training' maps to attributes: cushioning=high, surface=road, best_for=long_distance. Returns Ghost, Glycerin, Adrenaline GTS instead of random bestsellers. Works without pre-built synonym lists.",
+      "prospect_description": "When a runner types 'best shoes for marathon training,' they're signaling high purchase intent. Brooks' SFCC native search sees an unrecognized query and redirects to a generic page \u2014 converting a motivated buyer into a confused visitor.",
+      "algolia_solution": "Algolia NeuralSearch parses semantic intent \u2014 'marathon training' maps to attributes: cushioning=high, surface=road, best_for=long_distance. Returns Ghost, Glycerin, Adrenaline GTS instead of random bestsellers. Works without pre-built synonym lists.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
       "algolia_case_study_result": "+35% conversion rate"
@@ -300,12 +305,12 @@
       "category": "dynamic_facets_personalization",
       "tested_query": "running shoes (after browsing Ghost 16 product page)",
       "expected_behavior": "Returning visitor who browsed Ghost 16 should see Ghost family boosted in results, preferred gender/cushioning surfaced higher, recently viewed product accessible",
-      "actual_behavior": "Search results for 'running shoes' after visiting Ghost 16 PDP are completely identical to a fresh session — 54 products, same sort order, no personalization signal used whatsoever",
+      "actual_behavior": "Search results for 'running shoes' after visiting Ghost 16 PDP are completely identical to a fresh session \u2014 54 products, same sort order, no personalization signal used whatsoever",
       "impact_stat": "Personalized experiences drive 80% higher conversion rates vs non-personalized",
       "impact_stat_source": "https://baymard.com/blog/ecommerce-search-performance",
       "screenshot_file": "screenshots/17-personalization.png",
-      "prospect_description": "Brooks has 2M Run Club members with rich behavioral data. Yet when a Run Club member searches 'running shoes,' they see the same 54 results as a first-time visitor. The DashLX investment in loyalty personalization stops at the loyalty layer — never flowing into search discovery.",
-      "algolia_solution": "Algolia AI Personalization ingests Run Club behavioral signals (runs logged, gear browsed, past purchases) and re-ranks search results per user. A trail runner sees Cascadia first; a neutral-gait road runner sees Ghost first — without any rule configuration.",
+      "prospect_description": "Brooks has 2M Run Club members with rich behavioral data. Yet when a Run Club member searches 'running shoes,' they see the same 54 results as a first-time visitor. The DashLX investment in loyalty personalization stops at the loyalty layer \u2014 never flowing into search discovery.",
+      "algolia_solution": "Algolia AI Personalization ingests Run Club behavioral signals (runs logged, gear browsed, past purchases) and re-ranks search results per user. A trail runner sees Cascadia first; a neutral-gait road runner sees Ghost first \u2014 without any rule configuration.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_company": "Lacoste",
       "algolia_case_study_result": "+37% conversion rate, +150% sales contribution from search"
@@ -318,10 +323,10 @@
       "tested_query": "Ghost 16 Weatherized (PDP)",
       "expected_behavior": "PDP should show 'Frequently bought together' (socks, insoles, running accessories), 'You may also like' (Glycerin if user prefers soft cushioning), 'Trending' items",
       "actual_behavior": "Ghost 16 PDP shows a 'Compare' section displaying the same shoe in different cushioning variants. No cross-sell, no upsell, no complementary products. Zero recommendation engine present.",
-      "impact_stat": "35% of Amazon's revenue comes from recommendation engine — PDP is the highest-intent moment",
+      "impact_stat": "35% of Amazon's revenue comes from recommendation engine \u2014 PDP is the highest-intent moment",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/18-recommendations.png",
-      "prospect_description": "A runner landing on the Ghost 16 PDP is at peak purchase intent. Brooks shows them the same shoe in different cushion levels — not socks, not insoles, not the Glycerin if they prefer plush cushioning. The cross-sell and upsell opportunity is completely absent.",
+      "prospect_description": "A runner landing on the Ghost 16 PDP is at peak purchase intent. Brooks shows them the same shoe in different cushion levels \u2014 not socks, not insoles, not the Glycerin if they prefer plush cushioning. The cross-sell and upsell opportunity is completely absent.",
       "algolia_solution": "Algolia Recommend uses collaborative filtering to show 'Frequently bought together' (socks + insoles purchased alongside Ghost 16 by 68% of buyers), 'Similar items' (Glycerin for plush preference), and 'Trending' for social proof.",
       "algolia_case_study_url": "https://www.algolia.com/about/news/shoe-carnival-revolutionizing-retail-using-a-new-composable-headless-commerce-strategy-with-algolia-and-amplience",
       "algolia_case_study_company": "Shoe Carnival",
@@ -329,67 +334,67 @@
     },
     {
       "id": "F4",
-      "title": "No Query Suggestions in Empty State — Users Left Without Guidance",
+      "title": "No Query Suggestions in Empty State \u2014 Users Left Without Guidance",
       "severity": "MEDIUM",
       "category": "query_suggestions_empty_state",
-      "tested_query": "[empty search bar — no input]",
+      "tested_query": "[empty search bar \u2014 no input]",
       "expected_behavior": "Empty state should show trending searches (e.g., 'Ghost 17,' 'trail shoes,' 'marathon training'), recent searches for returning users, and popular categories",
       "actual_behavior": "Empty state shows 'POPULAR PRODUCTS' section with product tiles only. No popular search queries, no trending searches, no recent searches. Users must know exactly what to type.",
-      "impact_stat": "Searching users convert at 2-3x the rate of non-searching users — empty state is the first missed conversion opportunity",
+      "impact_stat": "Searching users convert at 2-3x the rate of non-searching users \u2014 empty state is the first missed conversion opportunity",
       "impact_stat_source": "https://baymard.com/blog/ecommerce-search-performance",
       "screenshot_file": "screenshots/02-empty-state.png",
-      "prospect_description": "When a visitor clicks the search bar and sees no query suggestions, they face a blank slate. If they can't articulate a query in Brooks' terms (product model names, technical attributes), they abandon. The empty state is the easiest win — and it's completely missed.",
-      "algolia_solution": "Algolia Query Suggestions auto-generates trending searches from analytics data — updated daily. Empty state becomes a curated discovery surface showing top 8-10 searches, recent queries for logged-in users, and trending categories.",
+      "prospect_description": "When a visitor clicks the search bar and sees no query suggestions, they face a blank slate. If they can't articulate a query in Brooks' terms (product model names, technical attributes), they abandon. The empty state is the easiest win \u2014 and it's completely missed.",
+      "algolia_solution": "Algolia Query Suggestions auto-generates trending searches from analytics data \u2014 updated daily. Empty state becomes a curated discovery surface showing top 8-10 searches, recent queries for logged-in users, and trending categories.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
       "algolia_case_study_result": "+35% conversion rate"
     },
     {
       "id": "F5",
-      "title": "No Merchandising Banners in Search — Strategic Queries Redirect Out",
+      "title": "No Merchandising Banners in Search \u2014 Strategic Queries Redirect Out",
       "severity": "MEDIUM",
       "category": "merchandising_consistency",
       "tested_query": "sale, trail",
       "expected_behavior": "Query 'sale' should show a promotional banner within search results + filtered discounted products. Query 'trail' should show a Cascadia Elite launch banner + trail category results.",
-      "actual_behavior": "Query 'sale' redirects directly to /en_us/sale/ category page — exits search entirely. Query 'trail' returns 67 products with no promotional banner or featured content.",
+      "actual_behavior": "Query 'sale' redirects directly to /en_us/sale/ category page \u2014 exits search entirely. Query 'trail' returns 67 products with no promotional banner or featured content.",
       "impact_stat": "Merchandising rules drive 15-25% higher click-through on targeted product categories",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/19-banners-sale.png",
-      "prospect_description": "Brooks cannot inject promotional content for strategic queries. A user searching 'trail' during a Cascadia Elite launch gets zero awareness of the launch — just a product grid. 'Sale' removes the user from the search experience entirely, breaking the discovery flow.",
-      "algolia_solution": "Algolia Rules inject promotional banners for any query — 'trail' shows Cascadia Elite launch banner above results, 'sale' displays a discount callout while preserving the search experience. Merchandisers configure this in a no-code dashboard without developer involvement.",
+      "prospect_description": "Brooks cannot inject promotional content for strategic queries. A user searching 'trail' during a Cascadia Elite launch gets zero awareness of the launch \u2014 just a product grid. 'Sale' removes the user from the search experience entirely, breaking the discovery flow.",
+      "algolia_solution": "Algolia Rules inject promotional banners for any query \u2014 'trail' shows Cascadia Elite launch banner above results, 'sale' displays a discount callout while preserving the search experience. Merchandisers configure this in a no-code dashboard without developer involvement.",
       "algolia_case_study_url": "https://www.algolia.com/about/news/shoe-carnival-revolutionizing-retail-using-a-new-composable-headless-commerce-strategy-with-algolia-and-amplience",
       "algolia_case_study_company": "Shoe Carnival",
       "algolia_case_study_result": "+4.5% conversion, team productivity doubled"
     },
     {
       "id": "F6",
-      "title": "Static Facets Ignore Query Context — Same Filters for All Searches",
+      "title": "Static Facets Ignore Query Context \u2014 Same Filters for All Searches",
       "severity": "HIGH",
       "category": "dynamic_facets_personalization",
       "tested_query": "women's shoes",
       "expected_behavior": "Women's-specific query should surface women's sizes first, hide men's size range, show width options (women's-specific fits), potentially surface 'best for' attributes relevant to women's running categories",
-      "actual_behavior": "108 products shown. Facet panel is identical to any other search — same Product Gender, Size, Product Type, Best For, Support Type ordering regardless of query. No query-aware facet adjustment.",
+      "actual_behavior": "108 products shown. Facet panel is identical to any other search \u2014 same Product Gender, Size, Product Type, Best For, Support Type ordering regardless of query. No query-aware facet adjustment.",
       "impact_stat": "43% of shoppers abandon search when facets are irrelevant to their query",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/14-dynamic-facets.png",
-      "prospect_description": "Brooks' facets are hardcoded regardless of the search context. A women's query gets the same filter set as a men's query — requiring extra filter clicks to narrow results. For lifestyle expansion buyers (new customer segment), the standard 'Support Type' and 'Drop' facets are meaningless.",
-      "algolia_solution": "Algolia Dynamic Facets selects and orders facets per query based on click data. Women's shoe query → width options appear first, men's sizes hidden. Trail query → Surface type and stack height facets promoted. No engineering required to reconfigure.",
+      "prospect_description": "Brooks' facets are hardcoded regardless of the search context. A women's query gets the same filter set as a men's query \u2014 requiring extra filter clicks to narrow results. For lifestyle expansion buyers (new customer segment), the standard 'Support Type' and 'Drop' facets are meaningless.",
+      "algolia_solution": "Algolia Dynamic Facets selects and orders facets per query based on click data. Women's shoe query \u2192 width options appear first, men's sizes hidden. Trail query \u2192 Surface type and stack height facets promoted. No engineering required to reconfigure.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_company": "Lacoste",
       "algolia_case_study_result": "+37% conversion rate"
     },
     {
       "id": "F7",
-      "title": "No Results State Unclear — Nonsense Queries Return Products Silently",
+      "title": "No Results State Unclear \u2014 Nonsense Queries Return Products Silently",
       "severity": "MEDIUM",
       "category": "query_suggestions_empty_state",
       "tested_query": "asdfghjk",
       "expected_behavior": "Explicit 'No results for asdfghjk. Showing popular products instead.' message with clear recovery paths (popular searches, top categories, contact support)",
-      "actual_behavior": "20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query was not understood. User has no way to know their search failed — may assume these are the only products Brooks sells.",
+      "actual_behavior": "20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query was not understood. User has no way to know their search failed \u2014 may assume these are the only products Brooks sells.",
       "impact_stat": "No-results handling failures cause 68% of users to abandon the site entirely",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/07-no-results.png",
-      "prospect_description": "When a user makes a typo or searches for something Brooks doesn't carry, they silently receive 20 unrelated race shoes. No explanation. No recovery path. The runner may conclude Brooks doesn't carry what they need and leave — when in reality, the search simply failed.",
+      "prospect_description": "When a user makes a typo or searches for something Brooks doesn't carry, they silently receive 20 unrelated race shoes. No explanation. No recovery path. The runner may conclude Brooks doesn't carry what they need and leave \u2014 when in reality, the search simply failed.",
       "algolia_solution": "Algolia no-results UX: explicit message + Query Suggestions showing similar searchable terms + fallback to top categories. Configurable in no-code dashboard. Zero engineering required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
@@ -398,65 +403,65 @@
   ],
   "gap_pairs": [
     {
-      "said_quote": "Most runners start with a digital transaction — a search for a product or a brand.",
-      "said_attr": "— Dan Sheridan, CEO, Modern Retail 2022",
+      "said_quote": "Most runners start with a digital transaction \u2014 a search for a product or a brand.",
+      "said_attr": "\u2014 Dan Sheridan, CEO, Modern Retail 2022",
       "said_source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
       "found_title": "Zero NLP: Natural Language Queries Redirect to Generic Bestsellers",
-      "found_evidence": "Typed \"best shoes for marathon training\" — redirected to /en_us/featured/best-sellers/. Zero NLP parsing. Query completely ignored.",
+      "found_evidence": "Typed \"best shoes for marathon training\" \u2014 redirected to /en_us/featured/best-sellers/. Zero NLP parsing. Query completely ignored.",
       "finding_id": "F1",
-      "algolia_angle": "Algolia NeuralSearch parses semantic intent — \"marathon training\" → cushioned road shoes (Glycerin, Ghost, Adrenaline GTS). Under Armour saw +35% conversion after identical upgrade."
+      "algolia_angle": "Algolia NeuralSearch parses semantic intent \u2014 \"marathon training\" \u2192 cushioned road shoes (Glycerin, Ghost, Adrenaline GTS). Under Armour saw +35% conversion after identical upgrade."
     },
     {
       "said_quote": "Sharp focus creates mass appeal.",
-      "said_attr": "— Dan Sheridan, CEO, SGB Media 2025",
+      "said_attr": "\u2014 Dan Sheridan, CEO, SGB Media 2025",
       "said_source_url": "https://sgbonline.com/exec-qa-dan-sheridan-ceo-brooks-running/",
       "found_title": "No Personalization: All 2M Run Club Members See Identical Search Results",
-      "found_evidence": "Browsed Ghost 16 PDP, then searched \"running shoes\" — 54 identical results as anonymous visitor. Zero personalization. Run Club membership not surfaced.",
+      "found_evidence": "Browsed Ghost 16 PDP, then searched \"running shoes\" \u2014 54 identical results as anonymous visitor. Zero personalization. Run Club membership not surfaced.",
       "finding_id": "F2",
       "algolia_angle": "Algolia AI Personalization uses Run Club behavioral signals (runs logged, gear browsed) to re-rank results per user. Trail runner sees Cascadia first; road runner sees Ghost first."
     },
     {
       "said_quote": "The runner is evolving, and they want to have more products from brands like Brooks.",
-      "said_attr": "— Dan Sheridan, CEO, SGB Media 2025",
+      "said_attr": "\u2014 Dan Sheridan, CEO, SGB Media 2025",
       "said_source_url": "https://sgbonline.com/exec-qa-dan-sheridan-ceo-brooks-running/",
-      "found_title": "No Recommendations: PDP Shows Product Variants Only — Zero Cross-Sell",
+      "found_title": "No Recommendations: PDP Shows Product Variants Only \u2014 Zero Cross-Sell",
       "found_evidence": "Ghost 16 Weatherized PDP shows a Compare section with same shoe in different cushion levels. No \"You may also like,\" no \"Customers also bought,\" no complementary products.",
       "finding_id": "F3",
       "algolia_angle": "Algolia Recommend: Frequently bought together (socks, insoles), Similar items (Glycerin for plush preference), Trending items for social proof. Shoe Carnival saw +4.5% conversion Cyber Weekend."
     },
     {
-      "said_quote": "Most runners start with a digital transaction — a search for a product or a brand.",
-      "said_attr": "— Dan Sheridan, CEO, Modern Retail 2022",
+      "said_quote": "Most runners start with a digital transaction \u2014 a search for a product or a brand.",
+      "said_attr": "\u2014 Dan Sheridan, CEO, Modern Retail 2022",
       "said_source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
-      "found_title": "Empty State Shows Products Only — No Trending Searches to Guide Users",
-      "found_evidence": "Clicked search bar with no input — dropdown shows POPULAR PRODUCTS tiles only. Zero trending search queries. Zero recent searches. Users must know exact product names to search.",
+      "found_title": "Empty State Shows Products Only \u2014 No Trending Searches to Guide Users",
+      "found_evidence": "Clicked search bar with no input \u2014 dropdown shows POPULAR PRODUCTS tiles only. Zero trending search queries. Zero recent searches. Users must know exact product names to search.",
       "finding_id": "F4",
-      "algolia_angle": "Algolia Query Suggestions auto-generates trending searches from analytics — updated daily. Empty state becomes a curated discovery surface showing top 10 searches + recent queries for logged-in Run Club members."
+      "algolia_angle": "Algolia Query Suggestions auto-generates trending searches from analytics \u2014 updated daily. Empty state becomes a curated discovery surface showing top 10 searches + recent queries for logged-in Run Club members."
     },
     {
       "said_quote": "We want to assort our brand wherever the greatest retailers are that are focused on running.",
-      "said_attr": "— Dan Sheridan, CEO, Fortune June 2025",
+      "said_attr": "\u2014 Dan Sheridan, CEO, Fortune June 2025",
       "said_source_url": "https://fortune.com/2025/06/10/brooks-runnings-ceo-advice-corner-office/",
-      "found_title": "Static Facets Ignore Query Context — Same Filters for All Searches",
-      "found_evidence": "Searched \"women's shoes\" — 108 products with identical facet set to any other query. Same Product Gender, Size, Support Type ordering whether searching men's, trail, or lifestyle.",
+      "found_title": "Static Facets Ignore Query Context \u2014 Same Filters for All Searches",
+      "found_evidence": "Searched \"women's shoes\" \u2014 108 products with identical facet set to any other query. Same Product Gender, Size, Support Type ordering whether searching men's, trail, or lifestyle.",
       "finding_id": "F6",
-      "algolia_angle": "Algolia Dynamic Facets selects and orders facets per query from click data. Women's shoes query → width options first, men's sizes hidden. Critical for lifestyle expansion buyer persona who doesn't know running jargon."
+      "algolia_angle": "Algolia Dynamic Facets selects and orders facets per query from click data. Women's shoes query \u2192 width options first, men's sizes hidden. Critical for lifestyle expansion buyer persona who doesn't know running jargon."
     },
     {
       "said_quote": "There is more opportunity than ever as we look at the total addressable market worldwide.",
-      "said_attr": "— Dan Sheridan, CEO, SGB Media 2025",
+      "said_attr": "\u2014 Dan Sheridan, CEO, SGB Media 2025",
       "said_source_url": "https://sgbonline.com/exec-qa-dan-sheridan-ceo-brooks-running/",
-      "found_title": "No Merchandising Banners — Strategic Queries Cannot Feature Product Launches",
-      "found_evidence": "Searched \"trail\" — 67 products returned with zero promotional banner. Searched \"sale\" — redirected to /en_us/sale/ category page, exiting the search experience entirely.",
+      "found_title": "No Merchandising Banners \u2014 Strategic Queries Cannot Feature Product Launches",
+      "found_evidence": "Searched \"trail\" \u2014 67 products returned with zero promotional banner. Searched \"sale\" \u2014 redirected to /en_us/sale/ category page, exiting the search experience entirely.",
       "finding_id": "F5",
-      "algolia_angle": "Algolia Rules inject promotional banners for any query — \"trail\" shows Cascadia Elite launch banner above results, \"sale\" displays discount callout while preserving search. Merchandisers configure in no-code dashboard."
+      "algolia_angle": "Algolia Rules inject promotional banners for any query \u2014 \"trail\" shows Cascadia Elite launch banner above results, \"sale\" displays discount callout while preserving search. Merchandisers configure in no-code dashboard."
     },
     {
       "said_quote": "The Brooks team continues to execute at the highest level for customers and runners around the world.",
-      "said_attr": "— Dan Sheridan, CEO, Q3 2024 Results",
+      "said_attr": "\u2014 Dan Sheridan, CEO, Q3 2024 Results",
       "said_source_url": "https://www.brooksrunning.com/en_us/10-29-2024/",
-      "found_title": "Silent No-Results State — Nonsense Queries Return 20 Unrelated Products",
-      "found_evidence": "Searched \"asdfghjk\" — 20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query failed. User has no way to know search returned irrelevant results.",
+      "found_title": "Silent No-Results State \u2014 Nonsense Queries Return 20 Unrelated Products",
+      "found_evidence": "Searched \"asdfghjk\" \u2014 20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query failed. User has no way to know search returned irrelevant results.",
       "finding_id": "F7",
       "algolia_angle": "Algolia no-results UX: explicit message (\"No results for X\") + Query Suggestions for recovery + fallback to top categories. Configurable in no-code dashboard without engineering."
     }
@@ -465,18 +470,18 @@
   "financials": {
     "revenue_est": "~$1.6B",
     "revenue_year": "FY2025",
-    "revenue_confidence": "LOW-MEDIUM — ESTIMATE from trade media (Retail Dive). Brooks does not disclose absolute revenue.",
+    "revenue_confidence": "LOW-MEDIUM \u2014 ESTIMATE from trade media (Retail Dive). Brooks does not disclose absolute revenue.",
     "revenue_source": "https://www.retaildive.com/news/brooks-running-record-revenue-2025-earnings/811793/",
     "growth_rate": "+16% YoY",
     "growth_rate_year": "FY2025",
-    "growth_rate_confidence": "HIGH — from official Brooks press release",
+    "growth_rate_confidence": "HIGH \u2014 from official Brooks press release",
     "growth_rate_source": "https://www.businesswire.com/news/home/20260205023502/en/Brooks-Running-Delivers-Record-Breaking-Global-Growth-in-2025",
     "ecommerce_revenue": "~$226M",
     "ecommerce_year": "2024",
-    "ecommerce_confidence": "LOW — ESTIMATE from ECDB sample data",
+    "ecommerce_confidence": "LOW \u2014 ESTIMATE from ECDB sample data",
     "ecommerce_source": "https://ecdb.com/resources/sample-data/retailer/brooksrunning",
     "search_addressable_revenue": "~$115M",
-    "search_addressable_note": "ESTIMATE: ~$640M digital/e-commerce est. × 18% search-driven sessions (Baymard benchmark)",
+    "search_addressable_note": "ESTIMATE: ~$640M digital/e-commerce est. \u00d7 18% search-driven sessions (Baymard benchmark)",
     "search_addressable_source": "https://baymard.com/research/ecommerce-search",
     "roi_conservative": "$5.75M/year",
     "roi_moderate": "$11.5M/year",
@@ -491,7 +496,7 @@
     "revenue_milestones": [
       {
         "date": "Sept 2024",
-        "milestone": "$1B revenue YTD — first time ever before Q4",
+        "milestone": "$1B revenue YTD \u2014 first time ever before Q4",
         "source": "https://www.brooksrunning.com/en_us/10-29-2024/"
       },
       {
@@ -516,31 +521,31 @@
       }
     ],
     "total_digital_revenue": "~M",
-    "total_digital_revenue_note": "ESTIMATE: ~.6B total × 40% digital/e-commerce share. Industry average for DTC athletic brands.",
+    "total_digital_revenue_note": "ESTIMATE: ~.6B total \u00d7 40% digital/e-commerce share. Industry average for DTC athletic brands.",
     "roi_scenarios": {
       "conservative": {
         "annual_impact": ".75M",
-        "scenario_desc": "~M search-addressable × 5% conversion uplift",
-        "source": "Baymard Institute benchmark — basic search improvements yield 3-7% uplift. https://baymard.com/blog/ecommerce-search-performance"
+        "scenario_desc": "~M search-addressable \u00d7 5% conversion uplift",
+        "source": "Baymard Institute benchmark \u2014 basic search improvements yield 3-7% uplift. https://baymard.com/blog/ecommerce-search-performance"
       },
       "moderate": {
         "annual_impact": ".5M",
-        "scenario_desc": "~M search-addressable × 10% conversion uplift",
-        "source": "Under Armour benchmark — 35% higher conversion with Algolia. https://www.algolia.com/customers/under-armour/"
+        "scenario_desc": "~M search-addressable \u00d7 10% conversion uplift",
+        "source": "Under Armour benchmark \u2014 35% higher conversion with Algolia. https://www.algolia.com/customers/under-armour/"
       },
       "optimistic": {
         "annual_impact": ".25M",
-        "scenario_desc": "~M search-addressable × 15% conversion uplift",
-        "source": "Lacoste benchmark — +150% sales contribution from search. https://www.algolia.com/customers/lacoste"
+        "scenario_desc": "~M search-addressable \u00d7 15% conversion uplift",
+        "source": "Lacoste benchmark \u2014 +150% sales contribution from search. https://www.algolia.com/customers/lacoste"
       }
     },
-    "revenue_fy2025": "~.6B (ESTIMATE — Retail Dive, trade media)",
-    "revenue_fy2024": "~.46B (ESTIMATE — derived from confirmed +9% YoY)",
-    "revenue_fy2023": "~.26B (ESTIMATE — derived from CAGR)",
-    "revenue_cagr": "13-14% (FACT — Brooks press releases, 9-year streak)",
-    "ebitda_fy2025": "Not disclosed — private company",
-    "ebitda_margin": "Not disclosed — private company",
-    "margin_zone": "YELLOW (estimated 10-15% — industry benchmark for premium specialty brands)",
+    "revenue_fy2025": "~.6B (ESTIMATE \u2014 Retail Dive, trade media)",
+    "revenue_fy2024": "~.46B (ESTIMATE \u2014 derived from confirmed +9% YoY)",
+    "revenue_fy2023": "~.26B (ESTIMATE \u2014 derived from CAGR)",
+    "revenue_cagr": "13-14% (FACT \u2014 Brooks press releases, 9-year streak)",
+    "ebitda_fy2025": "Not disclosed \u2014 private company",
+    "ebitda_margin": "Not disclosed \u2014 private company",
+    "margin_zone": "YELLOW (estimated 10-15% \u2014 industry benchmark for premium specialty brands)",
     "source": "https://www.retaildive.com/news/brooks-running-record-revenue-2025-earnings/811793/",
     "revenue_3y": [
       {
@@ -614,8 +619,8 @@
     ],
     "source": "SimilarWeb API",
     "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
-    "demographics_note": "ESTIMATE — based on influencer audience gender data (Upfluence). SimilarWeb demographics endpoint 403/404 for brooksrunning.com.",
-    "demographics_source": "Upfluence audience engagement analysis — SimilarWeb demographics returned 404"
+    "demographics_note": "ESTIMATE \u2014 based on influencer audience gender data (Upfluence). SimilarWeb demographics endpoint 403/404 for brooksrunning.com.",
+    "demographics_source": "Upfluence audience engagement analysis \u2014 SimilarWeb demographics returned 404"
   },
   "tech_stack": {
     "primary_platform": "Salesforce Commerce Cloud (Demandware SFRA)",
@@ -629,63 +634,64 @@
     "algolia_detected": false,
     "competitor_search_detected": false,
     "sfcc_cartridge_opportunity": true,
-    "integration_complexity": "LOW — Algolia SFCC cartridge available; 2-3 week integration estimated",
+    "integration_complexity": "LOW \u2014 Algolia SFCC cartridge available; 2-3 week integration estimated",
     "source": "BuiltWith API + Network inspection March 2026",
     "source_url": "https://builtwith.com/brooksrunning.com",
     "ecommerce_platform": "Salesforce Commerce Cloud (Demandware SFRA)",
     "analytics": "Zeotap, TrueFit, Amperity (CDP)",
     "cdn_waf": "Cloudinary (CDN), Akamai Bot Manager (WAF)",
     "reviews": "Not detected",
-    "personalization": "DashLX (Run Club loyalty only — not tied to search)",
-    "recommendations": "None detected — PDP shows product variants only"
+    "personalization": "DashLX (Run Club loyalty only \u2014 not tied to search)",
+    "recommendations": "None detected \u2014 PDP shows product variants only",
+    "current_search_vendor": "Status"
   },
   "ae_fields": {
     "account_tier": "Mid-Market to Enterprise",
-    "icp_fit": "HIGH — Performance DTC brand on SFCC, no search vendor, $115M search-addressable revenue, CEO publicly acknowledges search starts purchase journey",
-    "deal_type": "Greenfield — no search vendor to displace",
-    "competitive_scenario": "OFFENSIVE PLAY — leapfrog all competitors before any deploy AI search",
-    "sales_motion": "Search Audit + ROI-led discovery → SFCC cartridge demo",
+    "icp_fit": "HIGH \u2014 Performance DTC brand on SFCC, no search vendor, $115M search-addressable revenue, CEO publicly acknowledges search starts purchase journey",
+    "deal_type": "Greenfield \u2014 no search vendor to displace",
+    "competitive_scenario": "OFFENSIVE PLAY \u2014 leapfrog all competitors before any deploy AI search",
+    "sales_motion": "Search Audit + ROI-led discovery \u2192 SFCC cartridge demo",
     "recommended_approach": "Lead with CEO's own quote ('most runners start with a search') + show NLP gap (marathon training query) + present $11.5M/year moderate ROI scenario",
-    "urgency_trigger": "Senior Engineer Digital Products VACANCY (posted 2026-03-07) — engage IT leadership before role filled",
-    "build_vs_buy": "70% Buy signal — JD uses 'vendor RFP,' 'third-party integrations;' SFCC selection proves buy-for-non-core philosophy",
-    "buyer_readiness": "MEDIUM — Technology investment culture, but no confirmed active search RFP. Urgency window: hiring signal.",
-    "champion_path": "Jessica Brooks (Director, eCommerce Technical Operations) → technical buyer via open Senior Engineer role → CFO Tom Ross for budget",
+    "urgency_trigger": "Senior Engineer Digital Products VACANCY (posted 2026-03-07) \u2014 engage IT leadership before role filled",
+    "build_vs_buy": "70% Buy signal \u2014 JD uses 'vendor RFP,' 'third-party integrations;' SFCC selection proves buy-for-non-core philosophy",
+    "buyer_readiness": "MEDIUM \u2014 Technology investment culture, but no confirmed active search RFP. Urgency window: hiring signal.",
+    "champion_path": "Jessica Brooks (Director, eCommerce Technical Operations) \u2192 technical buyer via open Senior Engineer role \u2192 CFO Tom Ross for budget",
     "discovery_questions": [
-      "You grew EMEA 22% and China 245% in FY2025. How are you ensuring runners in Germany get results merchandised for their market — not just a US-first catalog?",
+      "You grew EMEA 22% and China 245% in FY2025. How are you ensuring runners in Germany get results merchandised for their market \u2014 not just a US-first catalog?",
       "With ~$115M in search-addressable revenue, a 10% conversion improvement is $11.5M/year. What would your team do with that headroom toward Dan's $4B vision?",
       "You launched lifestyle footwear at Paris Fashion Week. How does your search today differentiate between a runner looking for training shoes vs a sneaker buyer?",
-      "You have 2M Run Club members with rich behavioral data. Does your search surface results based on a member's running history — or does everyone see the same 54 products?",
-      "You partnered with Salesforce for commerce, Amperity for CDP, DashLX for loyalty. What's your philosophy on search — build in-house or best-in-class partner?"
+      "You have 2M Run Club members with rich behavioral data. Does your search surface results based on a member's running history \u2014 or does everyone see the same 54 products?",
+      "You partnered with Salesforce for commerce, Amperity for CDP, DashLX for loyalty. What's your philosophy on search \u2014 build in-house or best-in-class partner?"
     ],
     "objection_handling": [
       {
         "objection": "We built search with SFCC",
-        "response": "SFCC's native SearchServices handles keyword matching. NeuralSearch handles 'best shoes for marathon training' — semantically understands intent, not just keywords. We saw it fail live in your own search bar."
+        "response": "SFCC's native SearchServices handles keyword matching. NeuralSearch handles 'best shoes for marathon training' \u2014 semantically understands intent, not just keywords. We saw it fail live in your own search bar."
       },
       {
         "objection": "No budget right now",
-        "response": "At ~$115M search-addressable revenue, 5% improvement = $5.75M/year. Algolia costs ~$200K. ROI in 13 days. The question isn't budget — it's opportunity cost of waiting."
+        "response": "At ~$115M search-addressable revenue, 5% improvement = $5.75M/year. Algolia costs ~$200K. ROI in 13 days. The question isn't budget \u2014 it's opportunity cost of waiting."
       },
       {
         "objection": "Integration is too complex",
-        "response": "We have an SFCC Commerce Cloud cartridge. Your new Senior Engineer can integrate in 2-3 weeks. You already deployed Amperity and DashLX — Algolia follows the same pattern."
+        "response": "We have an SFCC Commerce Cloud cartridge. Your new Senior Engineer can integrate in 2-3 weeks. You already deployed Amperity and DashLX \u2014 Algolia follows the same pattern."
       },
       {
         "objection": "We don't have search analytics",
-        "response": "Algolia builds the analytics dashboard as part of the platform — you get query volume, zero-results rate, conversion per query, and trend data from day one. No separate analytics build needed."
+        "response": "Algolia builds the analytics dashboard as part of the platform \u2014 you get query volume, zero-results rate, conversion per query, and trend data from day one. No separate analytics build needed."
       }
     ],
-    "urgency_level": "HIGH — technical buyer vacancy open, engage before role filled",
+    "urgency_level": "HIGH \u2014 technical buyer vacancy open, engage before role filled",
     "signal_tier": 1,
-    "challenger_insight": "Dan Sheridan has publicly said \"most runners start with a digital search\" — yet brooksrunning.com's search cannot parse a natural language running query. You are one conversation away from showing him the gap he named.",
-    "talk_track_opener": "We tested your search for \"best shoes for marathon training\" — a phrase your CEO used publicly to describe how runners start their journey. Here's what happened.",
+    "challenger_insight": "Dan Sheridan has publicly said \"most runners start with a digital search\" \u2014 yet brooksrunning.com's search cannot parse a natural language running query. You are one conversation away from showing him the gap he named.",
+    "talk_track_opener": "We tested your search for \"best shoes for marathon training\" \u2014 a phrase your CEO used publicly to describe how runners start their journey. Here's what happened.",
     "cta": "30-minute demo: live test of your search vs Algolia NeuralSearch on the exact query your CEO described",
-    "primary_contact": "Jessica Brooks, Director eCommerce Technical Operations — linkedin.com/in/jessicabrooks1/"
+    "primary_contact": "Jessica Brooks, Director eCommerce Technical Operations \u2014 linkedin.com/in/jessicabrooks1/"
   },
   "next_steps": [
     {
       "title": "Reach hiring manager for Senior Engineer Digital Products (IT leadership)",
-      "description": "Subject: 'Help your new Digital Products Engineer hit the ground running with Algolia + SFCC' — SFCC-native integration, vendor RFP ready, 2-3 week deployment",
+      "description": "Subject: 'Help your new Digital Products Engineer hit the ground running with Algolia + SFCC' \u2014 SFCC-native integration, vendor RFP ready, 2-3 week deployment",
       "week": "Week 1",
       "owner": "AE"
     },
@@ -702,7 +708,7 @@
       "owner": "AE"
     },
     {
-      "title": "Custom demo — 4 scenarios",
+      "title": "Custom demo \u2014 4 scenarios",
       "description": "1) NLP: 'best shoes for marathon training' 2) Multi-language/geo for EMEA/China 3) Personalization with Run Club data 4) Dynamic facets for lifestyle vs performance",
       "week": "Week 4",
       "owner": "SE"
@@ -725,8 +731,8 @@
       "WebSearch",
       "LinkedIn Apify scraper"
     ],
-    "search_provider_verification": "Network inspection via Chrome DevTools — confirmed Salesforce Commerce Cloud SearchServices as sole search handler",
-    "scoring_formula": "Weighted sum: HIGH severity areas × 2.0, MEDIUM × 1.0, LOW × 0.5. Overall = Σ(Score × Weight) / ΣWeight",
+    "search_provider_verification": "Network inspection via Chrome DevTools \u2014 confirmed Salesforce Commerce Cloud SearchServices as sole search handler",
+    "scoring_formula": "Weighted sum: HIGH severity areas \u00d7 2.0, MEDIUM \u00d7 1.0, LOW \u00d7 0.5. Overall = \u03a3(Score \u00d7 Weight) / \u03a3Weight",
     "audit_method": "Chrome browser testing at 1440x900 (desktop) and 375x667 (mobile). 20 test scenarios. Network inspection via DevTools to confirm search provider.",
     "disclaimer": "Traffic and financial data are estimates from third-party sources (SimilarWeb, Retail Dive, ECDB). Brooks Running does not publicly disclose absolute revenue figures. All financial estimates labeled ESTIMATE."
   },
@@ -863,7 +869,7 @@
     }
   ],
   "competitive_synthesis": {
-    "scenario": "OFFENSIVE PLAY — Leapfrog opportunity",
+    "scenario": "OFFENSIVE PLAY \u2014 Leapfrog opportunity",
     "scenario_detail": "No confirmed AI/enterprise search vendor found among any of the top 5 Brooks competitors (HOKA, New Balance, ASICS, On Running, Saucony). All appear to use platform-native or basic search. Brooks can deploy Algolia and leapfrog the entire competitive set before any confirmed competitor acts.",
     "golden_angle_available": false,
     "golden_angle_note": "No confirmed competitor using Algolia in this vertical. Use adjacent-vertical proof: Shoe Carnival (footwear retail), Under Armour (athletic apparel), Lacoste (lifestyle footwear).",
@@ -876,53 +882,53 @@
     "positioning_matrix": [
       {
         "capability": "NLP / Semantic Search",
-        "prospect_today": "0/10 — SFCC keyword-only; natural language queries redirect to generic bestsellers",
-        "prospect_with_algolia": "NeuralSearch: 'best shoes for marathon training' → Ghost, Glycerin, Adrenaline GTS",
+        "prospect_today": "0/10 \u2014 SFCC keyword-only; natural language queries redirect to generic bestsellers",
+        "prospect_with_algolia": "NeuralSearch: 'best shoes for marathon training' \u2192 Ghost, Glycerin, Adrenaline GTS",
         "nike_has": "Nike.com: Custom AI search (proprietary, multi-year investment, not available to competitors)",
-        "asics_has": "ASICS: SFCC native search — same limitation as Brooks (keyword-only, estimated)",
-        "on_running_has": "On Running: Unknown — estimated platform-native search",
-        "new_balance_has": "New Balance: Unknown — estimated platform-native or custom search",
+        "asics_has": "ASICS: SFCC native search \u2014 same limitation as Brooks (keyword-only, estimated)",
+        "on_running_has": "On Running: Unknown \u2014 estimated platform-native search",
+        "new_balance_has": "New Balance: Unknown \u2014 estimated platform-native or custom search",
         "algolia_delta": "Critical gap vs. consumer expectations set by Amazon/Google"
       },
       {
         "capability": "Personalization",
-        "prospect_today": "0/10 — all 2M Run Club members see identical search results",
-        "prospect_with_algolia": "Algolia AI Personalization: Run Club behavioral signals → per-user result re-ranking",
+        "prospect_today": "0/10 \u2014 all 2M Run Club members see identical search results",
+        "prospect_with_algolia": "Algolia AI Personalization: Run Club behavioral signals \u2192 per-user result re-ranking",
         "nike_has": "Nike: Nike+ membership drives deep personalization (proprietary)",
         "asics_has": "ASICS: Limited personalization, no confirmed AI personalization in search",
         "on_running_has": "On Running: No confirmed personalization in search",
-        "new_balance_has": "New Balance: NB App behavioral data — unclear if tied to search",
-        "algolia_delta": "High gap — Brooks has the data (2M Run Club members), lacks the search layer to use it"
+        "new_balance_has": "New Balance: NB App behavioral data \u2014 unclear if tied to search",
+        "algolia_delta": "High gap \u2014 Brooks has the data (2M Run Club members), lacks the search layer to use it"
       },
       {
         "capability": "Product Recommendations",
-        "prospect_today": "0/10 — PDP shows product variants only; zero cross-sell/upsell",
+        "prospect_today": "0/10 \u2014 PDP shows product variants only; zero cross-sell/upsell",
         "prospect_with_algolia": "Algolia Recommend: Frequently bought together + Similar items + Trending",
         "nike_has": "Nike: Strong recommendations driven by Nike+ behavior and ML (proprietary)",
         "asics_has": "ASICS: Basic related products, no confirmed AI recommendations",
         "on_running_has": "On Running: Limited recommendations observed",
         "new_balance_has": "New Balance: Basic recommendations, not confirmed AI-driven",
-        "algolia_delta": "Critical gap — PDP is highest-intent moment; Brooks leaves cross-sell money on table"
+        "algolia_delta": "Critical gap \u2014 PDP is highest-intent moment; Brooks leaves cross-sell money on table"
       },
       {
         "capability": "Dynamic Facets",
-        "prospect_today": "2/10 — same static facet set for all queries (men's, women's, trail, lifestyle)",
-        "prospect_with_algolia": "Dynamic Facets: women's query → width options first; trail → terrain attributes promoted",
+        "prospect_today": "2/10 \u2014 same static facet set for all queries (men's, women's, trail, lifestyle)",
+        "prospect_with_algolia": "Dynamic Facets: women's query \u2192 width options first; trail \u2192 terrain attributes promoted",
         "nike_has": "Nike: Context-aware filters (inferred from product catalog sophistication)",
         "asics_has": "ASICS: Static facets on SFCC (same limitation as Brooks, estimated)",
         "on_running_has": "On Running: Clean but static faceting observed",
         "new_balance_has": "New Balance: Comprehensive but static faceting",
-        "algolia_delta": "High gap — especially critical for lifestyle expansion buyer persona"
+        "algolia_delta": "High gap \u2014 especially critical for lifestyle expansion buyer persona"
       },
       {
         "capability": "Merchandising Rules",
-        "prospect_today": "2/10 — no promotional banners; 'sale' redirects out of search entirely",
+        "prospect_today": "2/10 \u2014 no promotional banners; 'sale' redirects out of search entirely",
         "prospect_with_algolia": "Algolia Rules: no-code banner injection for 'trail' (Cascadia launch), 'sale,' 'new'",
         "nike_has": "Nike: Sophisticated merchandising campaigns tied to product launches",
         "asics_has": "ASICS: Basic SFCC merchandising rules, limited configurability",
         "on_running_has": "On Running: Clean product presentation, limited merchandising rules",
         "new_balance_has": "New Balance: Editorial content integration with search",
-        "algolia_delta": "Medium gap — immediate win for Brooks merchandising team without engineering"
+        "algolia_delta": "Medium gap \u2014 immediate win for Brooks merchandising team without engineering"
       }
     ],
     "competitor_tiers": [
@@ -935,14 +941,14 @@
           "On Running",
           "Saucony"
         ],
-        "search_stack": "Platform-native (Salesforce Commerce Cloud / custom — no confirmed external search vendor)",
+        "search_stack": "Platform-native (Salesforce Commerce Cloud / custom \u2014 no confirmed external search vendor)",
         "strategic_implication": "Brooks can leapfrog the entire competitive set by deploying AI search before any confirmed competitor does",
         "source_url": "https://builtwith.com/brooksrunning.com"
       }
     ]
   },
   "golden_angle": {
-    "talk_track": "No direct Algolia competitor detected in the performance running vertical — this is an OFFENSIVE PLAY. Brooks can be the first major running brand to deploy AI search, leapfrogging HOKA, New Balance, ASICS, On Running, and Saucony simultaneously. Adjacent proof: Shoe Carnival (footwear), Under Armour (athletic apparel), Lacoste (lifestyle) all on Algolia.",
+    "talk_track": "No direct Algolia competitor detected in the performance running vertical \u2014 this is an OFFENSIVE PLAY. Brooks can be the first major running brand to deploy AI search, leapfrogging HOKA, New Balance, ASICS, On Running, and Saucony simultaneously. Adjacent proof: Shoe Carnival (footwear), Under Armour (athletic apparel), Lacoste (lifestyle) all on Algolia.",
     "competitors_using_algolia": [],
     "footwear_case_study": "Shoe Carnival: +4.5% conversion during first Cyber Weekend with Algolia AI Search + Merchandising Studio.",
     "note": "No confirmed Algolia usage found among top 5 competitors. Source: BuiltWith API + WebSearch March 2026."
@@ -956,19 +962,19 @@
         "Geo-specific merchandising rules (winter running in Europe vs trail in Mountain West)",
         "International inventory visibility (don't show US-only products to EU customers)"
       ],
-      "algolia_proof": "Algolia's global edge network with multi-language NLP — same infrastructure serving Lacoste globally at sub-50ms",
+      "algolia_proof": "Algolia's global edge network with multi-language NLP \u2014 same infrastructure serving Lacoste globally at sub-50ms",
       "source": "https://fortune.com/2025/06/10/brooks-runnings-ceo-advice-corner-office/",
       "label": "Scale Your International Success"
     },
     {
       "angle": "Research Lab-Quality Personalization in Search",
-      "hook": "Your Run Research Lab studies individual motion paths, not generic averages. Your website should do the same — understand each runner's needs, not show everyone the same 54 results.",
+      "hook": "Your Run Research Lab studies individual motion paths, not generic averages. Your website should do the same \u2014 understand each runner's needs, not show everyone the same 54 results.",
       "pain_points": [
         "2M Run Club members with rich behavioral data unused in search",
         "All visitors see identical results regardless of running history or gear preferences",
-        "DashLX personalization investment stops at loyalty layer — never reaches discovery"
+        "DashLX personalization investment stops at loyalty layer \u2014 never reaches discovery"
       ],
-      "algolia_proof": "Algolia AI Personalization API — use Run Club behavioral data as personalization signals",
+      "algolia_proof": "Algolia AI Personalization API \u2014 use Run Club behavioral data as personalization signals",
       "source": "https://www.brooksrunning.com/en_us/02-05-2026/",
       "label": "Research Lab-Quality Personalization in Search"
     },
@@ -986,11 +992,11 @@
     },
     {
       "angle": "Build-Quality Technology Without Building It",
-      "hook": "You build shoes in-house because no one understands biomechanics like Brooks. But search isn't your core competency — partner with experts like you do with Salesforce Commerce Cloud.",
+      "hook": "You build shoes in-house because no one understands biomechanics like Brooks. But search isn't your core competency \u2014 partner with experts like you do with Salesforce Commerce Cloud.",
       "pain_points": [
         "Engineering resources focused on product R&D, not infrastructure",
         "SFCC native search requires engineering work for every relevance improvement",
-        "Search relevance is never 'done' — ongoing maintenance burden without AI layer"
+        "Search relevance is never 'done' \u2014 ongoing maintenance burden without AI layer"
       ],
       "algolia_proof": "Algolia SFCC cartridge: 2-3 week integration; no-code merchandising for non-technical team",
       "source": "https://sgbonline.com/exec-qa-dan-sheridan-ceo-brooks-running/",
@@ -1001,26 +1007,26 @@
     "buying_committee": [
       {
         "role": "Economic Buyer",
-        "name": "Unknown — IT VP/CTO",
+        "name": "Unknown \u2014 IT VP/CTO",
         "title": "VP Engineering / CTO (not publicly identified)",
         "status": "COLD",
         "signal": "low",
-        "message": "Route through Technical Buyer. ROI: .75M–.25M/year search improvement.",
+        "message": "Route through Technical Buyer. ROI: .75M\u2013.25M/year search improvement.",
         "job_url": "",
         "salary_range": ""
       },
       {
         "role": "Technical Buyer",
         "name": "OPEN VACANCY",
-        "title": "Senior Engineer — Digital Products",
+        "title": "Senior Engineer \u2014 Digital Products",
         "status": "HOT",
         "signal": "hot",
         "message": "SFCC cartridge, RFP-ready, 2-3 week integration. Engage IT leadership NOW before role is filled.",
         "job_url": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419",
-        "salary_range": ",670–,714/yr"
+        "salary_range": ",670\u2013,714/yr"
       },
       {
-        "role": "Champion — eCommerce",
+        "role": "Champion \u2014 eCommerce",
         "name": "Jessica Brooks",
         "title": "Director, eCommerce Technical Operations",
         "status": "WARM",
@@ -1030,7 +1036,7 @@
         "salary_range": ""
       },
       {
-        "role": "Champion — Merchandising",
+        "role": "Champion \u2014 Merchandising",
         "name": "OPEN VACANCY",
         "title": "Footwear Merchandiser I, Lifestyle",
         "status": "WARM",
@@ -1042,7 +1048,7 @@
     ],
     "total_open_roles": 18,
     "icp_roles_found": 3,
-    "note": "CRITICAL — Technical Buyer seat is OPEN. JD language: 'evaluate emerging technologies, vendor RFP processes, third-party integrations, AI solutions, Salesforce Commerce Cloud.'"
+    "note": "CRITICAL \u2014 Technical Buyer seat is OPEN. JD language: 'evaluate emerging technologies, vendor RFP processes, third-party integrations, AI solutions, Salesforce Commerce Cloud.'"
   },
   "icp_mapping": {
     "overall_fit": "HIGH",
@@ -1054,22 +1060,22 @@
         "source": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419"
       },
       {
-        "signal": "CEO $4B brand ambition — search conversion is a direct lever",
+        "signal": "CEO $4B brand ambition \u2014 search conversion is a direct lever",
         "urgency": "HIGH",
         "source": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/"
       },
       {
-        "signal": "9th consecutive year of growth — SFCC native search not scaling to AI requirements",
+        "signal": "9th consecutive year of growth \u2014 SFCC native search not scaling to AI requirements",
         "urgency": "HIGH",
         "source": "https://www.businesswire.com/news/home/20260205023502/"
       },
       {
-        "signal": "Lifestyle expansion at Paris Fashion Week — new buyer personas require new discovery",
+        "signal": "Lifestyle expansion at Paris Fashion Week \u2014 new buyer personas require new discovery",
         "urgency": "MEDIUM",
         "source": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/"
       },
       {
-        "signal": "2M Run Club members — personalization data available, search not using it",
+        "signal": "2M Run Club members \u2014 personalization data available, search not using it",
         "urgency": "MEDIUM",
         "source": "https://www.brooksrunning.com/en_us/02-05-2026/"
       }
@@ -1079,17 +1085,17 @@
         "role": "Economic Buyer",
         "name_status": "Not publicly identified (IT VP / CTO)",
         "action": "Route through Technical Buyer vacancy",
-        "message": "ROI: $5.75M–$17.25M/year search improvement"
+        "message": "ROI: $5.75M\u2013$17.25M/year search improvement"
       },
       {
         "role": "Technical Buyer",
-        "name_status": "OPEN VACANCY — Senior Engineer Digital Products",
-        "action": "CRITICAL — engage IT leadership NOW",
+        "name_status": "OPEN VACANCY \u2014 Senior Engineer Digital Products",
+        "action": "CRITICAL \u2014 engage IT leadership NOW",
         "message": "SFCC cartridge, RFP-ready, 2-3 week integration"
       },
       {
         "role": "Champion",
-        "name_status": "Jessica Brooks — Director, eCommerce Technical Operations",
+        "name_status": "Jessica Brooks \u2014 Director, eCommerce Technical Operations",
         "action": "HIGH priority direct outreach",
         "message": "Platform owner who feels the SFCC search limitation daily"
       },
@@ -1097,12 +1103,12 @@
         "role": "Champion",
         "name_status": "Paid Media Specialist (open role)",
         "action": "Frame poor search as wasted paid media spend",
-        "message": "Paid traffic converts on site via search — if search fails, their ROAS fails"
+        "message": "Paid traffic converts on site via search \u2014 if search fails, their ROAS fails"
       }
     ]
   },
   "abx_sequence": {
-    "sequence_type": "SFCC Displacement — 3 Contacts, 4 Touches",
+    "sequence_type": "SFCC Displacement \u2014 3 Contacts, 4 Touches",
     "total_touches": 4,
     "duration_days": 28,
     "channels": [
@@ -1112,26 +1118,26 @@
     "research_basis": "Phase 2 browser audit findings: NLP gap (marathon training query), personalization gap (Ghost 16 no lift), zero PDP recommendations, hiring signal (Senior Engineer Digital Products open)",
     "triggers": [
       {
-        "signal": "Senior Engineer — Digital Products hiring (LinkedIn job ID 4382335419)",
-        "urgency": "HIGH — engage before role filled"
+        "signal": "Senior Engineer \u2014 Digital Products hiring (LinkedIn job ID 4382335419)",
+        "urgency": "HIGH \u2014 engage before role filled"
       },
       {
-        "signal": "SFCC native search platform — no AI/NLP capability",
-        "urgency": "HIGH — displacement opportunity"
+        "signal": "SFCC native search platform \u2014 no AI/NLP capability",
+        "urgency": "HIGH \u2014 displacement opportunity"
       },
       {
-        "signal": "No recommendations on PDP — zero cross-sell",
-        "urgency": "MEDIUM — revenue gap"
+        "signal": "No recommendations on PDP \u2014 zero cross-sell",
+        "urgency": "MEDIUM \u2014 revenue gap"
       }
     ],
     "contacts": [
       {
         "id": "C01",
         "name": "IT Hiring Manager",
-        "title": "Hiring Manager — Senior Engineer, Digital Products",
+        "title": "Hiring Manager \u2014 Senior Engineer, Digital Products",
         "tier": 1,
         "role": "Technical Buyer gatekeeper",
-        "angle": "Owns the Senior Engineer Digital Products hire. Engage now — before role is filled — to ensure Algolia evaluation is on the new engineer's roadmap from day 1."
+        "angle": "Owns the Senior Engineer Digital Products hire. Engage now \u2014 before role is filled \u2014 to ensure Algolia evaluation is on the new engineer's roadmap from day 1."
       },
       {
         "id": "C02",
@@ -1143,11 +1149,11 @@
       },
       {
         "id": "C03",
-        "name": "Footwear Merchandiser — Lifestyle",
+        "name": "Footwear Merchandiser \u2014 Lifestyle",
         "title": "Footwear Merchandiser I, Lifestyle",
         "tier": 3,
         "role": "End-user champion",
-        "angle": "Builds lifestyle assortment. Directly impacted by no merchandising banners in search — cannot surface Cascadia launch or lifestyle collections without engineering."
+        "angle": "Builds lifestyle assortment. Directly impacted by no merchandising banners in search \u2014 cannot surface Cascadia launch or lifestyle collections without engineering."
       }
     ],
     "touches": [
@@ -1156,24 +1162,24 @@
         "channel": "Email to IT hiring manager",
         "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
         "cta": "15-min call to share the audit findings",
-        "timing": "Week 1 — before Senior Engineer role is filled",
-        "body": "Hi —\n\nSaw the Senior Engineer — Digital Products posting on LinkedIn (job ID 4382335419). Whoever fills that role will inherit three search limitations baked into SFCC native that no amount of engineering will fix: zero natural language understanding, no personalization from browsing history, and no recommendations on the product page.\n\nWe ran a quick audit of brooksrunning.com. Two findings stood out:\n\n— Searched 'best shoes for marathon training.' Got generic bestsellers. The query wasn't parsed for intent — cushioning level, surface, or distance. That's a direct revenue miss: a runner who describes exactly what they need leaves with nothing useful.\n\n— Browsed Ghost 16, then searched 'running shoes.' Results were identical to a fresh session. Zero personalization. Ghost 16 didn't move.\n\nYour new engineer won't be able to fix this with SFCC customization — it's a platform capability gap, not a configuration gap. Algolia layers on top of SFCC with a 2-hour SDK install. No replatform.\n\nHappy to share the full audit before the role is filled — takes 15 minutes. Worth it?"
+        "timing": "Week 1 \u2014 before Senior Engineer role is filled",
+        "body": "Hi \u2014\n\nSaw the Senior Engineer \u2014 Digital Products posting on LinkedIn (job ID 4382335419). Whoever fills that role will inherit three search limitations baked into SFCC native that no amount of engineering will fix: zero natural language understanding, no personalization from browsing history, and no recommendations on the product page.\n\nWe ran a quick audit of brooksrunning.com. Two findings stood out:\n\n\u2014 Searched 'best shoes for marathon training.' Got generic bestsellers. The query wasn't parsed for intent \u2014 cushioning level, surface, or distance. That's a direct revenue miss: a runner who describes exactly what they need leaves with nothing useful.\n\n\u2014 Browsed Ghost 16, then searched 'running shoes.' Results were identical to a fresh session. Zero personalization. Ghost 16 didn't move.\n\nYour new engineer won't be able to fix this with SFCC customization \u2014 it's a platform capability gap, not a configuration gap. Algolia layers on top of SFCC with a 2-hour SDK install. No replatform.\n\nHappy to share the full audit before the role is filled \u2014 takes 15 minutes. Worth it?"
       },
       {
         "touch": 2,
         "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
-        "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
+        "subject": "Under Armour got 35% higher conversion from search \u2014 we tested Brooks' search and found the same gaps",
         "cta": "Review the audit findings at [audit URL]",
         "timing": "Week 2",
-        "body": "Jessica —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability."
+        "body": "Jessica \u2014\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search \u2014 same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance \u2014 not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it \u2014 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability."
       },
       {
         "touch": 3,
-        "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
+        "channel": "LinkedIn to Footwear Merchandiser \u2014 Lifestyle",
         "subject": "Direct message",
         "cta": "Would you be open to a 20-min chat?",
         "timing": "Week 2",
-        "body": "Hi —\n\nQuick question about the Lifestyle Footwear Merchandiser role: when you're building out the lifestyle assortment, how are you surfacing those products to buyers who don't already know Brooks as a performance brand?\n\nReason I ask — we audited brooksrunning.com and found that merchandising banners in search results aren't active. A 'trail' search returns 67 products but no Cascadia launch callout. 'Sale' redirects to a category page instead of showing sale items with a banner in search.\n\nAlgolia lets merchandisers inject banners, pin products, and boost SKUs without engineering tickets — the merchandiser owns it directly. For a lifestyle launch that needs discovery, that's the gap worth closing.\n\nWould you be open to a 20-min chat?"
+        "body": "Hi \u2014\n\nQuick question about the Lifestyle Footwear Merchandiser role: when you're building out the lifestyle assortment, how are you surfacing those products to buyers who don't already know Brooks as a performance brand?\n\nReason I ask \u2014 we audited brooksrunning.com and found that merchandising banners in search results aren't active. A 'trail' search returns 67 products but no Cascadia launch callout. 'Sale' redirects to a category page instead of showing sale items with a banner in search.\n\nAlgolia lets merchandisers inject banners, pin products, and boost SKUs without engineering tickets \u2014 the merchandiser owns it directly. For a lifestyle launch that needs discovery, that's the gap worth closing.\n\nWould you be open to a 20-min chat?"
       },
       {
         "touch": 4,
@@ -1181,7 +1187,7 @@
         "subject": "4-scenario demo tailored to Brooks",
         "cta": "Schedule demo",
         "timing": "Week 4",
-        "body": "Demo flow — 4 scenarios, 20 minutes:\n\n1. NLP live: type 'best shoes for marathon training' in Brooks today → generic bestsellers. Same query in Algolia → filters to cushioned road shoes (Glycerin, Ghost, Adrenaline). Runs live on your catalog.\n\n2. Personalization: Browse Ghost 16 for 30 seconds, then search 'running shoes.' In Algolia: Ghost family boosted, preferred gender surfaced. In Brooks today: identical to fresh session.\n\n3. Merchandiser workflow: Launch a Cascadia trail campaign banner on the 'trail' query — no engineering ticket. Under 2 minutes in the Algolia dashboard.\n\n4. PDP recommendations: Add 'Frequently Bought Together' (socks, insoles) and 'You may also like' (Glycerin if viewing Ghost). Zero recommendations on PDP today."
+        "body": "Demo flow \u2014 4 scenarios, 20 minutes:\n\n1. NLP live: type 'best shoes for marathon training' in Brooks today \u2192 generic bestsellers. Same query in Algolia \u2192 filters to cushioned road shoes (Glycerin, Ghost, Adrenaline). Runs live on your catalog.\n\n2. Personalization: Browse Ghost 16 for 30 seconds, then search 'running shoes.' In Algolia: Ghost family boosted, preferred gender surfaced. In Brooks today: identical to fresh session.\n\n3. Merchandiser workflow: Launch a Cascadia trail campaign banner on the 'trail' query \u2014 no engineering ticket. Under 2 minutes in the Algolia dashboard.\n\n4. PDP recommendations: Add 'Frequently Bought Together' (socks, insoles) and 'You may also like' (Glycerin if viewing Ghost). Zero recommendations on PDP today."
       }
     ]
   },
@@ -1191,7 +1197,7 @@
       "company": "Under Armour",
       "result": "+35% conversion rate",
       "product": "InstantSearch + Query Rules + Analytics",
-      "why": "Direct athletic footwear/apparel peer. Under Armour had the same SFCC-adjacent keyword-search limitations. +35% conversion rate after Algolia deployment — the single most directly comparable benchmark for Brooks' search addressable revenue ROI calculation.",
+      "why": "Direct athletic footwear/apparel peer. Under Armour had the same SFCC-adjacent keyword-search limitations. +35% conversion rate after Algolia deployment \u2014 the single most directly comparable benchmark for Brooks' search addressable revenue ROI calculation.",
       "url": "https://www.algolia.com/customers/under-armour/"
     },
     {
@@ -1199,7 +1205,7 @@
       "company": "Lacoste",
       "result": "+150% sales contribution from search, +37% conversion rate, -88% bounce rate",
       "product": "InstantSearch + Query Rules + Personalization + Analytics",
-      "why": "Premium lifestyle brand expanding globally — mirrors Brooks' trajectory from specialty-running into lifestyle footwear at Paris Fashion Week. Lacoste replaced platform-native Solr-based search with Algolia and more than doubled global sales contribution from search.",
+      "why": "Premium lifestyle brand expanding globally \u2014 mirrors Brooks' trajectory from specialty-running into lifestyle footwear at Paris Fashion Week. Lacoste replaced platform-native Solr-based search with Algolia and more than doubled global sales contribution from search.",
       "url": "https://www.algolia.com/customers/lacoste"
     },
     {
@@ -1207,7 +1213,7 @@
       "company": "Shoe Carnival",
       "result": "+4.5% conversion during first Cyber Weekend, team productivity doubled",
       "product": "AI Search & Discovery + Merchandising Studio + Dynamic Re-Ranking + Analytics",
-      "why": "Specialty footwear retailer on composable commerce stack (analogous to Brooks' SFCC). Shoe Carnival's merchandising team can now configure promotional banners and re-ranking without engineering tickets — directly solving Brooks' inability to inject Cascadia Elite banners for the 'trail' query.",
+      "why": "Specialty footwear retailer on composable commerce stack (analogous to Brooks' SFCC). Shoe Carnival's merchandising team can now configure promotional banners and re-ranking without engineering tickets \u2014 directly solving Brooks' inability to inject Cascadia Elite banners for the 'trail' query.",
       "url": "https://www.algolia.com/about/news/shoe-carnival-revolutionizing-retail-using-a-new-composable-headless-commerce-strategy-with-algolia-and-amplience"
     }
   ],
@@ -1215,8 +1221,8 @@
     {
       "scenario": "NLP Gap Live Demo",
       "query": "best shoes for marathon training",
-      "today": "Redirects to /en_us/featured/best-sellers/ — zero relevance to query",
-      "with_algolia": "NeuralSearch returns: Glycerin 22 (max cushion), Ghost 17 (neutral road), Adrenaline GTS 24 (support) — all tagged for long-distance road running",
+      "today": "Redirects to /en_us/featured/best-sellers/ \u2014 zero relevance to query",
+      "with_algolia": "NeuralSearch returns: Glycerin 22 (max cushion), Ghost 17 (neutral road), Adrenaline GTS 24 (support) \u2014 all tagged for long-distance road running",
       "screenshot": "screenshots/13-nlp-marathon-training.png"
     },
     {
@@ -1229,7 +1235,7 @@
     {
       "scenario": "Dynamic Facets Demo",
       "query": "women's shoes",
-      "today": "Same static facets as any query — Product Gender, Size, Product Type, Best For, Support Type, Surface",
+      "today": "Same static facets as any query \u2014 Product Gender, Size, Product Type, Best For, Support Type, Surface",
       "with_algolia": "Dynamic Facets: width options appear first (women's-specific), men's sizes hidden, 'Best For' re-ordered for women's running categories",
       "screenshot": "screenshots/14-dynamic-facets.png"
     }
@@ -1239,35 +1245,35 @@
       {
         "name": "Salesforce Commerce Cloud",
         "type": "ecommerce_platform",
-        "co_sell_motion": "Brooks Running is on Salesforce Commerce Cloud (Demandware SFRA) — confirmed by network inspection March 2026 (all search API calls route to /on/demandware.store/). Algolia maintains a published SFCC cartridge (AppExchange) and an official SFCC integration partner relationship. Co-sell: engage Algolia's Salesforce alliance team to lead a joint SFCC cartridge demo for Brooks Running's digital team. Integration complexity rated LOW — estimated 2–3 week implementation.",
+        "co_sell_motion": "Brooks Running is on Salesforce Commerce Cloud (Demandware SFRA) \u2014 confirmed by network inspection March 2026 (all search API calls route to /on/demandware.store/). Algolia maintains a published SFCC cartridge (AppExchange) and an official SFCC integration partner relationship. Co-sell: engage Algolia's Salesforce alliance team to lead a joint SFCC cartridge demo for Brooks Running's digital team. Integration complexity rated LOW \u2014 estimated 2\u20133 week implementation.",
         "confidence": "HIGH",
-        "label": "[FACT — network inspection March 2026 + Algolia SFCC AppExchange listing]"
+        "label": "[FACT \u2014 network inspection March 2026 + Algolia SFCC AppExchange listing]"
       },
       {
         "name": "Amperity",
         "type": "cdp",
-        "co_sell_motion": "Brooks Running uses Amperity as their Customer Data Platform (BuiltWith + tech stack confirmed). Algolia Personalization can ingest Amperity unified customer profiles to personalize search results for Run Club members — surfacing size, cushioning preference, and running category signals. Co-sell: joint Amperity + Algolia data-to-search story for Brooks' Run Club loyalty program.",
+        "co_sell_motion": "Brooks Running uses Amperity as their Customer Data Platform (BuiltWith + tech stack confirmed). Algolia Personalization can ingest Amperity unified customer profiles to personalize search results for Run Club members \u2014 surfacing size, cushioning preference, and running category signals. Co-sell: joint Amperity + Algolia data-to-search story for Brooks' Run Club loyalty program.",
         "confidence": "MEDIUM",
-        "label": "[FACT — tech stack research March 2026. Algolia-Amperity integration: documented at algolia.com/integrations]"
+        "label": "[FACT \u2014 tech stack research March 2026. Algolia-Amperity integration: documented at algolia.com/integrations]"
       }
     ],
     "crossbeam_data_available": false,
-    "source_label": "[FACT — network inspection + BuiltWith tech stack March 2026]",
+    "source_label": "[FACT \u2014 network inspection + BuiltWith tech stack March 2026]",
     "si_partners": [],
     "immediate_action": null,
     "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
   },
   "tab_subtitles": {
     "summary": "What you need to know before walking into Brooks Running",
-    "account": "Brooks Running at a glance — #1 performance running brand, 1.2M monthly visitors, $1.6B in revenue, Berkshire Hathaway-backed",
+    "account": "Brooks Running at a glance \u2014 #1 performance running brand, 1.2M monthly visitors, $1.6B in revenue, Berkshire Hathaway-backed",
     "findings": "What we found when we tested brooksrunning.com's search across 20 live scenarios",
-    "case": "Why Brooks Running should act now — $11.5M/year moderate ROI scenario, critical Technical Buyer vacancy open",
-    "playbook": "How to win the Brooks Running deal — 4-week sequence, discovery questions, objection handling"
+    "case": "Why Brooks Running should act now \u2014 $11.5M/year moderate ROI scenario, critical Technical Buyer vacancy open",
+    "playbook": "How to win the Brooks Running deal \u2014 4-week sequence, discovery questions, objection handling"
   },
   "recommended_first_play": {
     "type": "timing",
     "headline": "Engage Before the Vacancy Is Filled",
-    "detail": "Senior Engineer — Digital Products (IT) posted March 7, 2026 with explicit 'vendor RFP' and 'evaluate AI solutions' language. This Technical Buyer seat is open now — reach the hiring manager before the new engineer develops an incumbent preference. Window: 4-6 weeks.",
+    "detail": "Senior Engineer \u2014 Digital Products (IT) posted March 7, 2026 with explicit 'vendor RFP' and 'evaluate AI solutions' language. This Technical Buyer seat is open now \u2014 reach the hiring manager before the new engineer develops an incumbent preference. Window: 4-6 weeks.",
     "urgency": "high",
     "source": "intelligence_signals"
   }

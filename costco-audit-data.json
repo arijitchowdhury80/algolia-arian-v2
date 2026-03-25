@@ -15,25 +15,25 @@
       "score": "7.7/10",
       "verdict": "MODERATE",
       "run_count": 2,
-      "latest_run": "2026-03-19 Full tier refresh — 6 SimilarWeb API calls, 1 BuiltWith, 11 WebFetch URLs",
+      "latest_run": "2026-03-19 Full tier refresh \u2014 6 SimilarWeb API calls, 1 BuiltWith, 11 WebFetch URLs",
       "corrections_applied": 8,
       "corrections": [
-        "top_channels array corrected: Direct 26.9%→61.0%, Paid 22.9%→0.2%, Display 10.8%→0.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
-        "G03 Decathlon URL updated: /customers/decathlon (404) → /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' → '+50% conversion for personalized search' [CONFIRMED live 2026-03-19]",
-        "G04 Gymshark URL updated: /customers/gymshark (404) → /customers/gymshark-headless (active). Metric corrected: '+150% order rate on Black Friday' NOT found on live page → 'search conversion 6.2%→10%+; revenue from search +400% YoY'",
-        "Walmart monthly traffic: 648.3M (holiday season) → 451.4M (Jan 2025, SimilarWeb MCP live)",
-        "Target monthly traffic: 297M (holiday season) → 183.2M (Jan 2025, SimilarWeb MCP live)",
-        "BJ's bounce rate: 46.73% → 39.86% (SimilarWeb Jan 2025 live re-pull)",
-        "Walmart GenAI description: 'iOS, Android, and web' → 'iOS at launch; Android and web rollout followed' (per Walmart blog Jan 2024)",
-        "$470M CFO quote verbatim verified: 'In Q2, our personalized product recommendation carousels drove over $470,000,000 of ecommerce sales' — confirmed from Q2 FY2026 Motley Fool transcript 2026-03-05"
+        "top_channels array corrected: Direct 26.9%\u219261.0%, Paid 22.9%\u21920.2%, Display 10.8%\u21920.6% (stale cached data replaced with SimilarWeb Jan 2025 MCP values)",
+        "G03 Decathlon URL updated: /customers/decathlon (404) \u2192 /customers/decathlon-singapore (200 OK). Metric updated: '+25% revenue' \u2192 '+50% conversion for personalized search' [CONFIRMED live 2026-03-19]",
+        "G04 Gymshark URL updated: /customers/gymshark (404) \u2192 /customers/gymshark-headless (active). Metric corrected: '+150% order rate on Black Friday' NOT found on live page \u2192 'search conversion 6.2%\u219210%+; revenue from search +400% YoY'",
+        "Walmart monthly traffic: 648.3M (holiday season) \u2192 451.4M (Jan 2025, SimilarWeb MCP live)",
+        "Target monthly traffic: 297M (holiday season) \u2192 183.2M (Jan 2025, SimilarWeb MCP live)",
+        "BJ's bounce rate: 46.73% \u2192 39.86% (SimilarWeb Jan 2025 live re-pull)",
+        "Walmart GenAI description: 'iOS, Android, and web' \u2192 'iOS at launch; Android and web rollout followed' (per Walmart blog Jan 2024)",
+        "$470M CFO quote verbatim verified: 'In Q2, our personalized product recommendation carousels drove over $470,000,000 of ecommerce sales' \u2014 confirmed from Q2 FY2026 Motley Fool transcript 2026-03-05"
       ]
     },
-    "social_signal_note": "Costco (@Costco) does not post brand content on Twitter/X — account inactive on brand posts. LinkedIn posts actor returned 0 (authentication wall for major brands). Signals sourced from Google News."
+    "social_signal_note": "Costco (@Costco) does not post brand content on Twitter/X \u2014 account inactive on brand posts. LinkedIn posts actor returned 0 (authentication wall for major brands). Signals sourced from Google News."
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale.jpg/1280px-Costco_Wholesale.jpg",
     "company_logo_url": "https://images.seeklogo.com/logo-png/3/1/costco-wholesale-logo-png_seeklogo-35878.png",
-    "status_line": "Confidential · For Internal Use Only"
+    "status_line": "Confidential \u00b7 For Internal Use Only"
   },
   "score": {
     "overall": 3.5,
@@ -78,7 +78,7 @@
     },
     "critical_count": 5,
     "moderate_count": 2,
-    "_scoring_note": "Corrected by factcheck: denominator is 13.5 (5×HIGH×2 + 2×MED×1 + 3×LOW×0.5), not 13.0 as stated in 10-scoring-matrix.md. 47.5/13.5 = 3.52 → 3.5/10."
+    "_scoring_note": "Corrected by factcheck: denominator is 13.5 (5\u00d7HIGH\u00d72 + 2\u00d7MED\u00d71 + 3\u00d7LOW\u00d70.5), not 13.0 as stated in 10-scoring-matrix.md. 47.5/13.5 = 3.52 \u2192 3.5/10."
   },
   "company_snapshot": {
     "industry": "Warehouse Club / Mass Retail",
@@ -90,7 +90,7 @@
     "revenue_source_label": "MacroTrends (Costco FY2025 Annual Revenue)",
     "founded": "1983",
     "ticker": "COST (NASDAQ)",
-    "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected — Typeahead.js + Bloodhound confirmed by BuiltWith)",
+    "current_search_vendor": "Native / Proprietary (No Third-Party Search Vendor Detected \u2014 Typeahead.js + Bloodhound confirmed by BuiltWith)",
     "ecommerce_platform": "HCL Commerce (IBM WebSphere Commerce)",
     "monthly_visits": "102.8M/mo",
     "monthly_visits_note": "SimilarWeb live MCP Jan 2025 (re-pulled 2026-03-19). Previous figure 83.4M was stale cached data.",
@@ -106,7 +106,7 @@
       "quote_source": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "quote_source_label": "Q1 FY2026 Earnings Call (Constellation Research Coverage)",
       "quote_date": "2025-12",
-      "relevance": "Defines Costco's AI investment philosophy — 'practical, member-focused, tangible business value.' Current search fails this test: NLP blocked by WAF, empty state shows nothing, gibberish returns garbage disposals.",
+      "relevance": "Defines Costco's AI investment philosophy \u2014 'practical, member-focused, tangible business value.' Current search fails this test: NLP blocked by WAF, empty state shows nothing, gibberish returns garbage disposals.",
       "source_url": "https://investor.costco.com/events-and-presentations",
       "source_label": "Costco Q2 FY2026 Earnings Call"
     },
@@ -117,7 +117,7 @@
       "quote_source": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "quote_source_label": "Q1 FY2026 Earnings Call (Constellation Research Coverage)",
       "quote_date": "2025-12",
-      "relevance": "Member loyalty and top-line sales are directly undermined by the 5 HIGH-severity search gaps found in this audit. Algolia's ROI framework — $148–$298M annual revenue lift — maps directly to this mandate.",
+      "relevance": "Member loyalty and top-line sales are directly undermined by the 5 HIGH-severity search gaps found in this audit. Algolia's ROI framework \u2014 $148\u2013$298M annual revenue lift \u2014 maps directly to this mandate.",
       "source_url": "https://investor.costco.com/events-and-presentations",
       "source_label": "Costco Q2 FY2026 Earnings Call"
     },
@@ -128,7 +128,7 @@
       "quote_source": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "quote_source_label": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "quote_date": "2025-12",
-      "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden — directly matching Millerchip's productivity-offset thesis.",
+      "relevance": "CFO frames technology as an offset to operational costs. Algolia's Managed Service eliminates internal search engineering burden \u2014 directly matching Millerchip's productivity-offset thesis.",
       "_verified": "Gary Millerchip confirmed as current Costco CFO (joined March 2024, from Kroger). Quote from Q1 FY2026 Earnings Call (Dec 11, 2025) is verbatim from Motley Fool transcript. Source: investor.costco.com/governance/executive-management/",
       "source_url": "https://investor.costco.com/events-and-presentations",
       "source_label": "Costco Q2 FY2026 Earnings Call"
@@ -142,7 +142,7 @@
       "source_name": "Retail Customer Experience",
       "source_url": "https://news.google.com/read/CBMitgFBVV95cUxOSzNUNzJ0eXd1djl3bjljUEJsZFFubk5PTzZsTDNPZ0ZOOXhsS3M4SnVfRGdaVnlTMktfdHozLUNRdFQxcHI2Y3luQl9KUzJNYkVlalk1ZFViTGZDRTE5ME5ST19jNFRQRldDM3E0NkhtcXZZV2xhVGp2ZFJTZHNQNTRfdWxtT0w2YTVWQ1VNcGF3NDRKZU1yXzVEMVJHcE0wdk9KZlE0UUZEVWpMQjduS2MwaGVsQQ",
       "source_date": "2026-03-17",
-      "relevance": "CEO and CFO explicitly linking AI investment to online sales growth — confirms active budget and executive mandate for AI-powered digital improvements. Direct opening for Algolia NeuralSearch pitch."
+      "relevance": "CEO and CFO explicitly linking AI investment to online sales growth \u2014 confirms active budget and executive mandate for AI-powered digital improvements. Direct opening for Algolia NeuralSearch pitch."
     },
     {
       "type": "tech-investment",
@@ -151,7 +151,7 @@
       "source_name": "Supermarket News / Progressive Grocer",
       "source_url": "https://news.google.com/read/CBMijwFBVV95cUxPUkhxZjFWUzU3T0tUblN3NWFtT3ZveFJLRkJvU0FST2lONnhXeXcyZHNOalBPVzl2WGNrNjY1OWJ1RXZiUC11VUxuZ3VYNUlGWlBBSmdCUTU4MUg3U2lfQUptYzM1NjduSTFwOVdjQjRFelhHYVJnOGZmVDZhLXcyQnFreWljSlNDX1RLWm9Fbw",
       "source_date": "2026-03-18",
-      "relevance": "Tech investment cycle actively open — Costco just upgraded retail media platform with AI onsite ads (March 18, 2026). Pattern of active modernization makes this the ideal window for a search infrastructure conversation."
+      "relevance": "Tech investment cycle actively open \u2014 Costco just upgraded retail media platform with AI onsite ads (March 18, 2026). Pattern of active modernization makes this the ideal window for a search infrastructure conversation."
     },
     {
       "type": "exec",
@@ -165,7 +165,7 @@
     {
       "type": "exec",
       "badge_label": "CEO Statement",
-      "text": "Vachris: 'Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal.' — Q1 FY2026 Earnings Call, December 2025",
+      "text": "Vachris: 'Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal.' \u2014 Q1 FY2026 Earnings Call, December 2025",
       "source_name": "Q1 FY2026 Earnings Call Transcript (Motley Fool)",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "source_date": "2025-12-11",
@@ -174,45 +174,45 @@
     {
       "type": "exec",
       "badge_label": "CEO Statement",
-      "text": "Vachris on AI: 'We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value.' — Q1 FY2026 Earnings Call",
+      "text": "Vachris on AI: 'We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value.' \u2014 Q1 FY2026 Earnings Call",
       "source_name": "Ron Vachris, President & CEO",
       "source_url": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "source_date": "2025-12-11",
-      "relevance": "Algolia NeuralSearch is pre-trained, no custom ML required — perfectly 'Costco way': practical, immediate ROI, no research lab needed."
+      "relevance": "Algolia NeuralSearch is pre-trained, no custom ML required \u2014 perfectly 'Costco way': practical, immediate ROI, no research lab needed."
     },
     {
       "type": "hiring",
       "badge_label": "Hiring Signal",
-      "text": "387+ engineering roles active (LinkedIn, Feb 2026). ZERO dedicated Search Engineer, Relevance Engineer, or Discovery PM roles listed. Active hiring for Principal Engineer – Data Analytics & Data Science ($210K+).",
+      "text": "387+ engineering roles active (LinkedIn, Feb 2026). ZERO dedicated Search Engineer, Relevance Engineer, or Discovery PM roles listed. Active hiring for Principal Engineer \u2013 Data Analytics & Data Science ($210K+).",
       "source_name": "LinkedIn Costco Engineering Jobs",
       "source_url": "https://www.linkedin.com/jobs/costco-engineering-jobs",
       "source_date": "2026-02-23",
-      "relevance": "Absence of search-specific hires is a strong buy-vs-build signal. 387 engineers focused on non-search priorities — Algolia delivers a 'search team in a box' without headcount."
+      "relevance": "Absence of search-specific hires is a strong buy-vs-build signal. 387 engineers focused on non-search priorities \u2014 Algolia delivers a 'search team in a box' without headcount."
     },
     {
       "type": "industry-opp",
       "badge_label": "Growth Signal",
       "text": "Costco Q1 FY2026: E-commerce +20.5% YoY. Website traffic +24%. Mobile app traffic +48% YoY. Digitally-enabled sales totaled $27B+ for FY2025.",
-      "source_name": "Motley Fool — Q1 FY2026 Earnings Call Transcript",
+      "source_name": "Motley Fool \u2014 Q1 FY2026 Earnings Call Transcript",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "source_date": "2025-11-23",
-      "relevance": "Rapid digital growth is hitting a search infrastructure that hasn't scaled. A 48% mobile traffic surge demands sub-50ms search — Costco's current system was not tested with NLP queries at scale.",
+      "relevance": "Rapid digital growth is hitting a search infrastructure that hasn't scaled. A 48% mobile traffic surge demands sub-50ms search \u2014 Costco's current system was not tested with NLP queries at scale.",
       "_verified": "CONFIRMED via Motley Fool transcript 2026-03-18"
     },
     {
       "type": "competitor",
       "badge_label": "Competitor Move",
-      "text": "Walmart (50.31% bounce rate, Elasticsearch) holds 5× Costco's web traffic at 648M monthly visits. Walmart stock +25.3% in 2025 vs Costco -4%. Analysts cite Walmart's 'alternative profit flywheel' and tech investment as key differentiators.",
+      "text": "Walmart (50.31% bounce rate, Elasticsearch) holds 5\u00d7 Costco's web traffic at 648M monthly visits. Walmart stock +25.3% in 2025 vs Costco -4%. Analysts cite Walmart's 'alternative profit flywheel' and tech investment as key differentiators.",
       "source_name": "Kavout Market Analysis",
       "source_url": "https://www.kavout.com/market-lens/the-tale-of-two-retail-giants-why-walmart-dominated-2025-while-costco-stumbled",
       "source_date": "2026-01-01",
-      "relevance": "Walmart's tech advantage is quantifiable in stock performance. Costco's 10-K explicitly flags 'greater technology capabilities' in competitors as a risk factor — this audit proves the search gap is real."
+      "relevance": "Walmart's tech advantage is quantifiable in stock performance. Costco's 10-K explicitly flags 'greater technology capabilities' in competitors as a risk factor \u2014 this audit proves the search gap is real."
     },
     {
       "type": "funding",
       "badge_label": "Capital Deployment",
       "text": "$6.5 billion announced for warehouse expansion, depot network, and digital infrastructure. 35 new warehouses planned by end 2026, up from 27 in 2025. Business Centers accelerating (20+ locations targeting SMB).",
-      "source_name": "DBBnwa — Costco 35 New Warehouses FY2026",
+      "source_name": "DBBnwa \u2014 Costco 35 New Warehouses FY2026",
       "source_url": "https://www.dbbnwa.com/articles/costco-to-open-35-new-warehouses-by-august-2026/",
       "source_date": "2025-10-01",
       "relevance": "Active CapEx cycle = open budget. More warehouses = more SKUs = greater need for unified product discovery. Business Center expansion creates immediate federated search use case."
@@ -229,11 +229,11 @@
     {
       "type": "partner",
       "badge_label": "Partner Signal",
-      "text": "Costco confirmed GrowthLoop AI segmentation (2026 partnership) and launched new personalization capabilities Q1 FY2026 based on shopping history. Segment CDP confirmed active via BuiltWith. Personalization infrastructure exists — but is disconnected from search relevance.",
+      "text": "Costco confirmed GrowthLoop AI segmentation (2026 partnership) and launched new personalization capabilities Q1 FY2026 based on shopping history. Segment CDP confirmed active via BuiltWith. Personalization infrastructure exists \u2014 but is disconnected from search relevance.",
       "source_name": "PRNewswire / The Drum",
       "source_url": "https://www.prnewswire.com/news-releases/growthloop-partners-with-costco-to-power-retail-media-operations-with-its-compound-marketing-engine-302535994.html",
       "source_date": "2026-01-01",
-      "relevance": "GrowthLoop + Segment = confirmed behavioral data that should flow into search personalization. Algolia Personalization connects directly to these data sources to re-rank results by member affinity — an immediate unlock on existing investment."
+      "relevance": "GrowthLoop + Segment = confirmed behavioral data that should flow into search personalization. Algolia Personalization connects directly to these data sources to re-rank results by member affinity \u2014 an immediate unlock on existing investment."
     },
     {
       "type": "media",
@@ -242,7 +242,7 @@
       "source_name": "FOX LA",
       "source_url": "https://www.foxla.com/news/costco-mobile-app-cake-ordering-update-2026",
       "source_date": "2026-02-01",
-      "relevance": "Active digital modernization initiative underway. CEO personally driving removal of legacy processes — search infrastructure upgrade fits squarely within this stated transformation agenda."
+      "relevance": "Active digital modernization initiative underway. CEO personally driving removal of legacy processes \u2014 search infrastructure upgrade fits squarely within this stated transformation agenda."
     },
     {
       "type": "competitor",
@@ -260,31 +260,31 @@
       "source_name": "Costco Q2 FY2026 Earnings Call Transcript (Motley Fool, March 5, 2026)",
       "source_url": "https://www.fool.com/earnings/call-transcripts/2026/03/05/costco-cost-q2-2026-earnings-call-transcript/",
       "source_date": "2026-03-05",
-      "relevance": "Costco's own CFO confirmed $470M in Q2 revenue from personalized recommendation carousels — proving the ROI of personalization at Costco's scale. Algolia Recommend is the purpose-built engine for this use case, connecting to Costco's existing GrowthLoop + Segment behavioral data to extend this revenue impact into the search layer.",
+      "relevance": "Costco's own CFO confirmed $470M in Q2 revenue from personalized recommendation carousels \u2014 proving the ROI of personalization at Costco's scale. Algolia Recommend is the purpose-built engine for this use case, connecting to Costco's existing GrowthLoop + Segment behavioral data to extend this revenue impact into the search layer.",
       "_verified": "Verbatim from Q2 FY2026 earnings call transcript (Motley Fool, 2026-03-05). Gary Millerchip confirmed as current CFO (Costco investor.costco.com/governance/executive-management/)."
     },
     {
       "type": "tech-investment",
       "badge_label": "Platform Signal",
-      "text": "Optimizely A/B testing platform confirmed active on costco.com (BuiltWith live 2026-03-19). LucidWorks analytics widget detected. Bazaarvoice (ratings/reviews) confirmed. Zero Algolia, Bloomreach, Dynamic Yield, or RichRelevance detected — search personalization layer is unoccupied.",
-      "source_name": "BuiltWith Domain Lookup — costco.com (live, 940 technologies, 2026-03-19)",
+      "text": "Optimizely A/B testing platform confirmed active on costco.com (BuiltWith live 2026-03-19). LucidWorks analytics widget detected. Bazaarvoice (ratings/reviews) confirmed. Zero Algolia, Bloomreach, Dynamic Yield, or RichRelevance detected \u2014 search personalization layer is unoccupied.",
+      "source_name": "BuiltWith Domain Lookup \u2014 costco.com (live, 940 technologies, 2026-03-19)",
       "source_url": "https://builtwith.com/costco.com",
       "source_date": "2026-03-19",
-      "relevance": "Optimizely live = team capable of running A/B tests, open to experimentation. No search-specific personalization vendor in the stack = greenfield opportunity for Algolia Personalization + NeuralSearch. LucidWorks widget presence does NOT indicate Fusion search — no CDN endpoints consistent with Fusion deployment detected."
+      "relevance": "Optimizely live = team capable of running A/B tests, open to experimentation. No search-specific personalization vendor in the stack = greenfield opportunity for Algolia Personalization + NeuralSearch. LucidWorks widget presence does NOT indicate Fusion search \u2014 no CDN endpoints consistent with Fusion deployment detected."
     },
     {
       "type": "news-tech",
       "badge_label": "AdTech AI Investment",
-      "text": "Costco adds adtech firm Moloco to scale its Retail Media Network — deploying AI-powered onsite advertising capabilities. Named partnership signals active MarTech investment cycle and appetite for AI-powered product discovery infrastructure.",
+      "text": "Costco adds adtech firm Moloco to scale its Retail Media Network \u2014 deploying AI-powered onsite advertising capabilities. Named partnership signals active MarTech investment cycle and appetite for AI-powered product discovery infrastructure.",
       "source_name": "ADWEEK",
       "source_url": "https://www.adweek.com/media-buying/costco-adds-adtech-firm-moloco-to-scale-retail-media-network/",
       "source_date": "2026-03-18",
-      "relevance": "Costco actively deploying AI-powered ad targeting via named third-party partner — same investment mindset applies to AI-powered search. The Moloco deal proves Costco will pay for proven AI platforms. Algolia NeuralSearch is the search equivalent."
+      "relevance": "Costco actively deploying AI-powered ad targeting via named third-party partner \u2014 same investment mindset applies to AI-powered search. The Moloco deal proves Costco will pay for proven AI platforms. Algolia NeuralSearch is the search equivalent."
     },
     {
       "type": "news-leadership",
       "badge_label": "International Expansion Plan",
-      "text": "Costco CEO shares bold expansion plan to reach new markets — multiple new warehouse openings planned internationally. International member growth accelerating.",
+      "text": "Costco CEO shares bold expansion plan to reach new markets \u2014 multiple new warehouse openings planned internationally. International member growth accelerating.",
       "source_name": "The Street",
       "source_url": "https://www.thestreet.com/retail/costco-shares-bold-expansion-plan-to-reach-new-markets",
       "source_date": "2026-03-13",
@@ -297,7 +297,7 @@
       "source_url": "https://www.linkedin.com/jobs/view/director-martech-adtech-platforms-at-costco-it-4380587479",
       "source_name": "LinkedIn Jobs (live scrape 2026-03-20)",
       "source_date": "2026-03-03",
-      "relevance": "Tier 1 Economic Buyer signal. This director owns the platform that search must integrate with. JD mentions 'personalized experience for millions of members' and 'omni-channel measurement' — direct Algolia angle.",
+      "relevance": "Tier 1 Economic Buyer signal. This director owns the platform that search must integrate with. JD mentions 'personalized experience for millions of members' and 'omni-channel measurement' \u2014 direct Algolia angle.",
       "relevance_score": 9,
       "verified": true
     }
@@ -309,9 +309,10 @@
       "search_vendor": "Proprietary / Walmart-shared infrastructure [ESTIMATE]",
       "monthly_traffic": "43.3M",
       "traffic_source": "https://www.semrush.com/website/samsclub.com/overview/",
-      "bounce_rate": "~35–45% [ESTIMATE]",
+      "bounce_rate": "~35\u201345% [ESTIMATE]",
       "uses_algolia": false,
-      "notes": "98% audience similarity to Costco. Walmart subsidiary — enterprise tech lock-in."
+      "notes": "98% audience similarity to Costco. Walmart subsidiary \u2014 enterprise tech lock-in.",
+      "search_stack": "Proprietary / Walmart-shared infrastructure [ESTIMATE]"
     },
     {
       "name": "BJ's Wholesale Club",
@@ -324,20 +325,22 @@
       "uses_algolia": false,
       "notes": "CEO: 'AI is a big part of our future.' Fastest growing warehouse club (+5% YoY). Potential Algolia prospect. CEO Bob Eddy: \"AI is a big part of our future\" (Retail Dive / CIO Dive, 2025).",
       "ai_quote_source": "https://www.retaildive.com/news/bjs-ceo-ai-future/806688/",
-      "ai_quote_speaker": "Bob Eddy, CEO & Chairman, BJ's Wholesale Club"
+      "ai_quote_speaker": "Bob Eddy, CEO & Chairman, BJ's Wholesale Club",
+      "search_stack": "Unknown / Proprietary [ESTIMATE]"
     },
     {
       "name": "Walmart",
       "domain": "walmart.com",
-      "search_vendor": "Generative AI Search [FACT — launched Jan 2024, CES announcement] + Elasticsearch [FACT — Walmart Global Tech Blog, analytics/fraud]",
+      "search_vendor": "Generative AI Search [FACT \u2014 launched Jan 2024, CES announcement] + Elasticsearch [FACT \u2014 Walmart Global Tech Blog, analytics/fraud]",
       "monthly_traffic": "451.4M",
       "monthly_traffic_note": "SimilarWeb MCP Jan 2025 (ww, total) live re-pull 2026-03-19. Previous value 648.3M was from a higher-traffic period (Nov/Dec 2025 holiday season).",
       "traffic_source": "https://www.similarweb.com/website/walmart.com/",
       "bounce_rate": "50.31%",
       "uses_algolia": false,
-      "notes": "Walmart launched GenAI Search in January 2024 — natural language queries (\"Help me plan a football watch party\"), iOS at launch with Android/web rollout following. Also uses Elasticsearch for analytics/fraud (Elastic{ON} 2017). Stock +25.3% in 2025 vs Costco -4%. Sets the GenAI search bar that Costco's members will increasingly expect.",
+      "notes": "Walmart launched GenAI Search in January 2024 \u2014 natural language queries (\"Help me plan a football watch party\"), iOS at launch with Android/web rollout following. Also uses Elasticsearch for analytics/fraud (Elastic{ON} 2017). Stock +25.3% in 2025 vs Costco -4%. Sets the GenAI search bar that Costco's members will increasingly expect.",
       "search_vendor_source": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
-      "monthly_traffic_source": "SimilarWeb, Jan 2025, worldwide"
+      "monthly_traffic_source": "SimilarWeb, Jan 2025, worldwide",
+      "search_stack": "Generative AI Search [FACT \u2014 launched Jan 2024, CES announcement] + Elasticsearch [FACT \u2014 Walmart Global Tech Blog, analytics/fraud]"
     },
     {
       "name": "Target",
@@ -348,8 +351,9 @@
       "traffic_source": "https://www.similarweb.com/website/target.com/",
       "bounce_rate": "41.02%",
       "uses_algolia": false,
-      "notes": "Best bounce rate among competitors. Custom Solr with deep learning — significant engineering investment required.",
-      "monthly_traffic_source": "SimilarWeb, Jan 2025, worldwide"
+      "notes": "Best bounce rate among competitors. Custom Solr with deep learning \u2014 significant engineering investment required.",
+      "monthly_traffic_source": "SimilarWeb, Jan 2025, worldwide",
+      "search_stack": "Apache Solr (custom deep learning) [FACT]"
     },
     {
       "name": "Amazon",
@@ -360,57 +364,58 @@
       "bounce_rate": "~46% [ESTIMATE]",
       "uses_algolia": false,
       "notes": "Gold standard for e-commerce search. Sets member expectations for all online shopping. ~40% US e-commerce market share.",
-      "market_share_source": "https://www.emarketer.com/content/amazon-will-surpass-40-of-us-ecommerce-sales-this-year"
+      "market_share_source": "https://www.emarketer.com/content/amazon-will-surpass-40-of-us-ecommerce-sales-this-year",
+      "search_stack": "Proprietary A9/A10 Algorithm [FACT]"
     }
   ],
   "findings": [
     {
       "id": "G01",
-      "title": "Empty State Shows Nothing — Zero Discovery Guidance",
+      "title": "Empty State Shows Nothing \u2014 Zero Discovery Guidance",
       "severity": "critical",
       "category": "Query Suggestions & Empty State",
-      "tested_query": "(search box click — no input)",
+      "tested_query": "(search box click \u2014 no input)",
       "expected_behavior": "Popular/trending searches, recent member history, and category shortcuts appear within 100ms of clicking the search box",
-      "actual_behavior": "Clicking the search box shows a completely blank state — no popular queries, no trending items, no recent searches, no personalized suggestions. Just empty placeholder text.",
+      "actual_behavior": "Clicking the search box shows a completely blank state \u2014 no popular queries, no trending items, no recent searches, no personalized suggestions. Just empty placeholder text.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/02-empty-state.png",
       "prospect_description": "81.4M members click the search bar and receive zero discovery guidance. No trending items, no 'what are members buying today', no personalized history for the 39.7M Executive members who expect a premium experience.",
-      "algolia_solution": "Algolia Query Suggestions + Popular Searches delivers trending items and personalized recent queries in the empty state — turning a blank box into a discovery engine from keystroke 0.",
+      "algolia_solution": "Algolia Query Suggestions + Popular Searches delivers trending items and personalized recent queries in the empty state \u2014 turning a blank box into a discovery engine from keystroke 0.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search",
       "algolia_case_study_company": "Big W"
     },
     {
       "id": "G02",
-      "title": "False Positives on Gibberish — Search Returns Wrong Products",
+      "title": "False Positives on Gibberish \u2014 Search Returns Wrong Products",
       "severity": "critical",
       "category": "Search Intelligence",
       "tested_query": "asdfghjk",
       "expected_behavior": "Zero results with helpful suggestions: 'Did you mean X?' or 'Popular in Electronics' to guide the member",
-      "actual_behavior": "\"asdfghjk\" returns 3 results — garbage disposals (InSinkErator, Hamilton Beach). Random keystroke sequences match partial character sequences in product descriptions.",
+      "actual_behavior": "\"asdfghjk\" returns 3 results \u2014 garbage disposals (InSinkErator, Hamilton Beach). Random keystroke sequences match partial character sequences in product descriptions.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/07-no-results.png",
       "prospect_description": "Costco's search has no minimum relevance threshold. Nonsense queries surface unrelated products, destroying member trust. When a member misspells a complex query, they may see garbage results instead of a helpful empty state.",
-      "algolia_solution": "Algolia's relevance engine uses minimum match thresholds and confidence scoring — gibberish returns a true empty state with contextual suggestions. No false positives.",
+      "algolia_solution": "Algolia's relevance engine uses minimum match thresholds and confidence scoring \u2014 gibberish returns a true empty state with contextual suggestions. No false positives.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search",
       "algolia_case_study_company": "Big W"
     },
     {
       "id": "G03",
-      "title": "No Federated Search — Help Content on Separate Domain",
+      "title": "No Federated Search \u2014 Help Content on Separate Domain",
       "severity": "critical",
       "category": "Content Commerce / Federated Search",
       "tested_query": "return policy",
-      "expected_behavior": "Federated results showing: top policy result inline, plus relevant products — all within costco.com",
-      "actual_behavior": "\"return policy\" routes users to separate domains — customerservice.costco.com and techsupport.costco.com. Main site search (costco.com) has zero indexing of help content, policies, or FAQs. Live confirmed: Apify browser 2026-03-19 returned results at customerservice.costco.com/app/answers/... and techsupport.costco.com/app/answers/...",
+      "expected_behavior": "Federated results showing: top policy result inline, plus relevant products \u2014 all within costco.com",
+      "actual_behavior": "\"return policy\" routes users to separate domains \u2014 customerservice.costco.com and techsupport.costco.com. Main site search (costco.com) has zero indexing of help content, policies, or FAQs. Live confirmed: Apify browser 2026-03-19 returned results at customerservice.costco.com/app/answers/... and techsupport.costco.com/app/answers/...",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/08-non-product-return-policy-sayt.png",
-      "prospect_description": "Members looking for Costco's famous return policy are ejected from the shopping experience to a separate domain. Costco Travel, Business Center, and support content are invisible to the main search bar — creating channel silos across a $27B+ digitally-enabled sales operation.",
-      "algolia_solution": "Algolia Federated Search indexes multiple content types — products, policies, travel, help — in a single search bar with clear category sections. Members never leave the shopping context.",
+      "prospect_description": "Members looking for Costco's famous return policy are ejected from the shopping experience to a separate domain. Costco Travel, Business Center, and support content are invisible to the main search bar \u2014 creating channel silos across a $27B+ digitally-enabled sales operation.",
+      "algolia_solution": "Algolia Federated Search indexes multiple content types \u2014 products, policies, travel, help \u2014 in a single search bar with clear category sections. Members never leave the shopping context.",
       "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
       "algolia_case_study_result": "+50% conversion rate for personalized search queries",
       "algolia_case_study_company": "Decathlon"
@@ -421,29 +426,29 @@
       "severity": "critical",
       "category": "Semantic / NLP Search",
       "tested_query": "best TV for gaming under 1000",
-      "expected_behavior": "Search understands multi-attribute intent: category (TV) + use case (gaming) + price constraint ($1,000 max) — returns relevant TVs filtered by price",
-      "actual_behavior": "Access Denied — Akamai WAF blocks the search endpoint for complex multi-word queries. The site cannot process conversational NLP queries at all.",
+      "expected_behavior": "Search understands multi-attribute intent: category (TV) + use case (gaming) + price constraint ($1,000 max) \u2014 returns relevant TVs filtered by price",
+      "actual_behavior": "Access Denied \u2014 Akamai WAF blocks the search endpoint for complex multi-word queries. The site cannot process conversational NLP queries at all.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/error-state.png",
-      "prospect_description": "Complex natural language queries — exactly the type 48% of mobile app users type — are blocked before reaching the search engine. Members who type 'healthy snacks for kids' or 'wireless earbuds with noise cancellation under 200' get Access Denied. WAF configuration and lack of NLP infrastructure are both failure modes.",
+      "prospect_description": "Complex natural language queries \u2014 exactly the type 48% of mobile app users type \u2014 are blocked before reaching the search engine. Members who type 'healthy snacks for kids' or 'wireless earbuds with noise cancellation under 200' get Access Denied. WAF configuration and lack of NLP infrastructure are both failure modes.",
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-headless",
-      "algolia_case_study_result": "Search conversion rate 6.2% → 10%+; revenue from search users up 400%+ YoY with Algolia headless search",
+      "algolia_case_study_result": "Search conversion rate 6.2% \u2192 10%+; revenue from search users up 400%+ YoY with Algolia headless search",
       "algolia_case_study_company": "Gymshark"
     },
     {
       "id": "G05",
-      "title": "Typo Tolerance Works But Silent — No 'Did You Mean'",
+      "title": "Typo Tolerance Works But Silent \u2014 No 'Did You Mean'",
       "severity": "critical",
       "category": "Typo Tolerance",
       "tested_query": "samung tv",
       "expected_behavior": "11 Samsung TV results shown PLUS visible correction: 'Showing results for Samsung TV' or 'Did you mean Samsung TV?'",
-      "actual_behavior": "11 Samsung TV results shown correctly — but NO correction prompt visible. Member doesn't know their typo was corrected. Zero visual feedback about fuzzy matching.",
+      "actual_behavior": "11 Samsung TV results shown correctly \u2014 but NO correction prompt visible. Member doesn't know their typo was corrected. Zero visual feedback about fuzzy matching.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/05-typo-samung.png",
-      "prospect_description": "Costco's typo engine works but communicates nothing. A member who types 'kirkand' (common Kirkland misspelling) gets results but has no idea why — and may assume the results are for a different query entirely. Trust in search is eroded silently.",
+      "prospect_description": "Costco's typo engine works but communicates nothing. A member who types 'kirkand' (common Kirkland misspelling) gets results but has no idea why \u2014 and may assume the results are for a different query entirely. Trust in search is eroded silently.",
       "algolia_solution": "Algolia displays 'Showing results for Kirkland Signature' with a correction notice, building member confidence and reinforcing search accuracy as a feature.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search",
@@ -451,16 +456,16 @@
     },
     {
       "id": "G06",
-      "title": "No Personalized Facets — Static Filters for 81M Members",
+      "title": "No Personalized Facets \u2014 Static Filters for 81M Members",
       "severity": "moderate",
       "category": "Dynamic Facets & Personalization",
       "tested_query": "couch",
       "expected_behavior": "Facets prioritized by member purchase history (e.g., Executive members see premium brands first; members who bought outdoor furniture see outdoor options boosted)",
-      "actual_behavior": "Static category icons (Sectional Sofas, Sofas & Couches, Living Room Sets) — identical for all 81.4M members regardless of shopping history. ZIP code awareness exists but doesn't personalize search ranking.",
+      "actual_behavior": "Static category icons (Sectional Sofas, Sofas & Couches, Living Room Sets) \u2014 identical for all 81.4M members regardless of shopping history. ZIP code awareness exists but doesn't personalize search ranking.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/06a-synonym-couch.png",
-      "prospect_description": "Costco's GrowthLoop AI and Segment CDP hold rich behavioral data on 81.4M members — but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience that Executive members paying $130/year expect.",
+      "prospect_description": "Costco's GrowthLoop AI and Segment CDP hold rich behavioral data on 81.4M members \u2014 but search results are the same for a first-time member and a 15-year Executive member who buys electronics every quarter. $5.3B in membership revenue is at risk if search doesn't reflect the premium tier experience that Executive members paying $130/year expect.",
       "algolia_solution": "Algolia Personalization re-ranks results by member affinity using GrowthLoop and Segment first-party behavioral data. Dynamic facets surface category filters most relevant to the specific member's context and purchase history.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+4.7% basket size increase with Algolia Recommend",
@@ -468,24 +473,24 @@
     },
     {
       "id": "G07",
-      "title": "PDP Recommendations Absent — RichRelevance Gap Unfilled",
+      "title": "PDP Recommendations Absent \u2014 RichRelevance Gap Unfilled",
       "severity": "moderate",
       "category": "Recommendations & Merchandising",
-      "tested_query": "(product detail page navigation — failed)",
+      "tested_query": "(product detail page navigation \u2014 failed)",
       "expected_behavior": "Product detail pages show Frequently Bought Together, Similar Items, and Trending in Category recommendations",
       "actual_behavior": "PDP navigation failed during audit (product link selector issue). Category pages show merchandising banners but no cross-sell recommendations visible in search results.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/17-recommendations-pdp.png",
       "prospect_description": "RichRelevance (now Algonomy) appears absent from Costco's tech stack. The Q1 FY2026 earnings call mentions 'new personalization capabilities' but PDP-level product recommendations were not observable. With $19.8B in e-commerce, even a modest recommendation lift represents hundreds of millions in addressable revenue.",
-      "algolia_solution": "Algolia Recommend provides Frequently Bought Together, Similar Items, and Trending within Category models — trained on Costco's transaction data, no ML expertise required.",
+      "algolia_solution": "Algolia Recommend provides Frequently Bought Together, Similar Items, and Trending within Category models \u2014 trained on Costco's transaction data, no ML expertise required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/bigw",
       "algolia_case_study_result": "+7% improved conversion from search, +4.7% basket size",
       "algolia_case_study_company": "Big W"
     },
     {
       "id": "S01",
-      "title": "Fast Search Response — Strong Baseline Latency",
+      "title": "Fast Search Response \u2014 Strong Baseline Latency",
       "severity": "positive",
       "category": "Search Speed & SAYT",
       "tested_query": "laptop",
@@ -494,8 +499,8 @@
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/11-federated-sayt.png",
-      "prospect_description": "Costco's native search delivers acceptable latency and a rich SAYT experience — product images, descriptions, and tech specs visible in the dropdown. This is a strong baseline to build upon with Algolia's sub-50ms guarantee.",
-      "algolia_solution": "Algolia maintains this strength while adding NLP, personalization, and federated search — without regressing on speed."
+      "prospect_description": "Costco's native search delivers acceptable latency and a rich SAYT experience \u2014 product images, descriptions, and tech specs visible in the dropdown. This is a strong baseline to build upon with Algolia's sub-50ms guarantee.",
+      "algolia_solution": "Algolia maintains this strength while adding NLP, personalization, and federated search \u2014 without regressing on speed."
     },
     {
       "id": "S02",
@@ -504,25 +509,25 @@
       "category": "Intent Detection",
       "tested_query": "TV",
       "expected_behavior": "Broad category terms redirect to relevant category pages",
-      "actual_behavior": "\"TV\" → /televisions.html with size icons (32\"–98\"). \"furniture\" → /furniture.html with Affirm financing banner. \"Kirkland\" → 300 private label results across all categories.",
+      "actual_behavior": "\"TV\" \u2192 /televisions.html with size icons (32\"\u201398\"). \"furniture\" \u2192 /furniture.html with Affirm financing banner. \"Kirkland\" \u2192 300 private label results across all categories.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/04-results-tv.png",
-      "prospect_description": "Costco's category redirect logic is well-configured. Brand intent (Kirkland), category intent (TV, furniture), and size facets all work correctly. This strong foundation makes Algolia integration lower-risk — existing intent rules can be migrated.",
+      "prospect_description": "Costco's category redirect logic is well-configured. Brand intent (Kirkland), category intent (TV, furniture), and size facets all work correctly. This strong foundation makes Algolia integration lower-risk \u2014 existing intent rules can be migrated.",
       "algolia_solution": "Algolia Query Rules preserves and extends this intent logic while adding NLP understanding for complex multi-attribute queries."
     },
     {
       "id": "S03",
-      "title": "Strong Synonym Handling — Couch Equals Sofa",
+      "title": "Strong Synonym Handling \u2014 Couch Equals Sofa",
       "severity": "positive",
       "category": "Merchandising Consistency",
       "tested_query": "couch",
       "expected_behavior": "Synonym queries return identical result counts",
-      "actual_behavior": "\"couch\" = 306 results. \"sofa\" = 306 results — exact match. Category icons identical. Synonym dictionary properly configured.",
+      "actual_behavior": "\"couch\" = 306 results. \"sofa\" = 306 results \u2014 exact match. Category icons identical. Synonym dictionary properly configured.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/06a-synonym-couch.png",
-      "prospect_description": "Costco's synonym configuration is well-maintained — a rare strength. This suggests a merchandising team that actively manages search configuration. Algolia Synonyms would extend this capability to long-tail and colloquial terms at scale.",
+      "prospect_description": "Costco's synonym configuration is well-maintained \u2014 a rare strength. This suggests a merchandising team that actively manages search configuration. Algolia Synonyms would extend this capability to long-tail and colloquial terms at scale.",
       "algolia_solution": "Algolia's Synonyms API allows batch import of Costco's existing synonym dictionary plus AI-suggested expansions for underperforming query patterns."
     }
   ],
@@ -530,73 +535,73 @@
     {
       "finding_id": "G01",
       "said_quote": "Our digital vision at Costco is to deliver a seamless experience that builds trust and loyalty with our members both in warehouse and online, and to make shopping at Costco easier, faster, and more personal, no matter where or how our members choose to shop.",
-      "said_attr": "Ron Vachris, President & CEO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_attr": "Ron Vachris, President & CEO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
       "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "said_source_label": "Motley Fool Transcript",
-      "found_title": "Empty State Shows Nothing — Zero Discovery Guidance",
+      "found_title": "Empty State Shows Nothing \u2014 Zero Discovery Guidance",
       "found_evidence": "Clicking the search box shows a completely blank state for 81.4M members. No trending items, no recent history, no personalized suggestions for Executive members.",
       "algolia_angle": "Algolia Query Suggestions + Popular Searches converts the empty state into a discovery engine from keystroke 0."
     },
     {
       "finding_id": "G04",
       "said_quote": "AI is also being interwoven into our business where we believe it can strengthen our model. We're approaching it in a very Costco way, practical, member-focused and grounded in tangible business value.",
-      "said_attr": "Ron Vachris, President & CEO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_attr": "Ron Vachris, President & CEO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
       "said_source_url": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
       "said_source_label": "Constellation Research",
       "found_title": "NLP / Conversational Queries Blocked by WAF",
-      "found_evidence": "'Best TV for gaming under 1000' returns Access Denied — Akamai WAF blocks complex natural language queries entirely. No AI-powered NLP layer exists.",
-      "algolia_angle": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Pre-trained, no ML team required — the 'Costco way'."
+      "found_evidence": "'Best TV for gaming under 1000' returns Access Denied \u2014 Akamai WAF blocks complex natural language queries entirely. No AI-powered NLP layer exists.",
+      "algolia_angle": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Pre-trained, no ML team required \u2014 the 'Costco way'."
     },
     {
       "finding_id": "G03",
       "said_quote": "These productivity improvements fully offset wage investments and the impact of extended operating hours and would have created positive leverage in the quarter had we not experienced higher health care costs.",
-      "said_attr": "Gary Millerchip, EVP & CFO — Q1 FY2026 Earnings Call, December 11, 2025",
+      "said_attr": "Gary Millerchip, EVP & CFO \u2014 Q1 FY2026 Earnings Call, December 11, 2025",
       "said_source_url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
       "said_source_label": "Motley Fool Transcript",
-      "found_title": "No Federated Search — Help Content on Separate Domain",
-      "found_evidence": "'Return policy' routes users to customerservice.costco.com — a separate domain. Main site has zero indexing of policies, FAQs, or Costco Travel content.",
-      "algolia_angle": "Algolia Federated Search indexes products, policies, travel, and help content in one bar. Members find answers without leaving the shopping context — reducing support escalations."
+      "found_title": "No Federated Search \u2014 Help Content on Separate Domain",
+      "found_evidence": "'Return policy' routes users to customerservice.costco.com \u2014 a separate domain. Main site has zero indexing of policies, FAQs, or Costco Travel content.",
+      "algolia_angle": "Algolia Federated Search indexes products, policies, travel, and help content in one bar. Members find answers without leaving the shopping context \u2014 reducing support escalations."
     }
   ],
   "financials": {
     "revenue": "$275.2B",
     "revenue_year": "FY2025",
-    "revenue_confidence": "FACT — Costco FY2025 Annual Results press release (investor.costco.com) + MacroTrends COST. Total Revenue includes merchandise sales ($269.9B net sales) + membership fees ($4.83B). Yahoo Finance MCP access denied on 2026-03-19 re-verification; scratchpad figures confirmed via SEC 10-K FY2025.",
+    "revenue_confidence": "FACT \u2014 Costco FY2025 Annual Results press release (investor.costco.com) + MacroTrends COST. Total Revenue includes merchandise sales ($269.9B net sales) + membership fees ($4.83B). Yahoo Finance MCP access denied on 2026-03-19 re-verification; scratchpad figures confirmed via SEC 10-K FY2025.",
     "revenue_source_url": "https://investor.costco.com/news/news-details/2025/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2025-Operating-Results/default.aspx",
     "ecommerce_share": "7.3%",
-    "ecommerce_revenue": "$19.6B [FACT — Costco 10-K FY2025: e-commerce net sales ~7% of net merchandise sales $269.9B = $19.6B. Growth: +15.6% YoY.]",
+    "ecommerce_revenue": "$19.6B [FACT \u2014 Costco 10-K FY2025: e-commerce net sales ~7% of net merchandise sales $269.9B = $19.6B. Growth: +15.6% YoY.]",
     "total_digital_revenue": "$19.6B",
     "total_digital_revenue_note": "E-commerce net sales FY2025 per Costco 10-K FY2025 (SEC EDGAR). Separate from 'digitally-enabled sales' ($27B), which includes BOPIS and warehouse app. This audit uses the narrower e-commerce figure for conservative ROI calculation.",
     "total_digital_revenue_source": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
     "search_driven_share": "15% of e-commerce (industry standard: 10-20%, per Baymard Institute)",
-    "search_addressable": "$2.94B [ESTIMATE — formula: $19.6B × 15%]",
+    "search_addressable": "$2.94B [ESTIMATE \u2014 formula: $19.6B \u00d7 15%]",
     "roi_conservative": "$147M/yr",
     "roi_moderate": "$294M/yr",
     "roi_aggressive": "$441M/yr",
-    "algolia_annual_cost_est": "~$1.5M–$3M/yr (enterprise tier, estimated)",
-    "roi_multiple": "98–196× (moderate scenario)",
+    "algolia_annual_cost_est": "~$1.5M\u2013$3M/yr (enterprise tier, estimated)",
+    "roi_multiple": "98\u2013196\u00d7 (moderate scenario)",
     "payback_period": "< 4 weeks (moderate scenario at $294M/yr)",
     "margin_zone": "Green",
-    "margin_note": "EBITDA margin 4.65% — intentionally low (warehouse club model). Revised benchmark: GREEN for warehouse clubs (peer median ~4%). $14.16B cash on hand. No leverage risk.",
+    "margin_note": "EBITDA margin 4.65% \u2014 intentionally low (warehouse club model). Revised benchmark: GREEN for warehouse clubs (peer median ~4%). $14.16B cash on hand. No leverage risk.",
     "roi_scenarios": {
       "conservative": {
         "annual_impact": "$147M/yr",
         "scenario_desc": "5% search conversion lift on $2.94B search-addressable revenue. Accounts for phased rollout, internal change management, and integration timeline.",
-        "source": "Costco 10-K FY2025 — $19.6B e-commerce × 15% search-driven × 5% lift = $147M. E-commerce figure confirmed from SEC 10-K FY2025."
+        "source": "Costco 10-K FY2025 \u2014 $19.6B e-commerce \u00d7 15% search-driven \u00d7 5% lift = $147M. E-commerce figure confirmed from SEC 10-K FY2025."
       },
       "moderate": {
         "annual_impact": "$294M/yr",
-        "scenario_desc": "10% search conversion lift — consistent with Big W (+7%) and Algolia enterprise customer benchmarks at comparable retail scale.",
-        "source": "Costco 10-K FY2025 — $2.94B × 10% lift = $294M"
+        "scenario_desc": "10% search conversion lift \u2014 consistent with Big W (+7%) and Algolia enterprise customer benchmarks at comparable retail scale.",
+        "source": "Costco 10-K FY2025 \u2014 $2.94B \u00d7 10% lift = $294M"
       },
       "optimistic": {
         "annual_impact": "$441M/yr",
-        "scenario_desc": "15% lift — achievable with full NeuralSearch + Recommend + Personalization suite and active merchandising A/B testing.",
-        "source": "Costco 10-K FY2025 — $2.94B × 15% lift = $441M"
+        "scenario_desc": "15% lift \u2014 achievable with full NeuralSearch + Recommend + Personalization suite and active merchandising A/B testing.",
+        "source": "Costco 10-K FY2025 \u2014 $2.94B \u00d7 15% lift = $441M"
       }
     },
-    "berkshire_note": "Berkshire Hathaway holds significant COST equity position — institutional investor confidence reflects strong fundamentals despite low margin profile.",
-    "revenue_source_label": "Yahoo Finance — COST Annual Income Statement",
+    "berkshire_note": "Berkshire Hathaway holds significant COST equity position \u2014 institutional investor confidence reflects strong fundamentals despite low margin profile.",
+    "revenue_source_label": "Yahoo Finance \u2014 COST Annual Income Statement",
     "ebitda_margin": "4.70%",
     "net_margin": "2.99%",
     "operating_margin": "3.74%",
@@ -605,9 +610,9 @@
     "market_cap": "~$435B",
     "ebit": "$10.97B",
     "gross_profit": "$35.35B",
-    "roi_note": "ROI base: $19.6B e-commerce net sales (Costco 10-K FY2025, SEC EDGAR — confirmed FACT). Search-addressable = $19.6B × 15% = $2.94B. Note: Yahoo Finance MCP access denied on 2026-03-19 re-verification; 10-K SEC filing used as primary source. Previous figure used $19.82B (formula-derived); updated to $19.6B (direct 10-K figure).",
+    "roi_note": "ROI base: $19.6B e-commerce net sales (Costco 10-K FY2025, SEC EDGAR \u2014 confirmed FACT). Search-addressable = $19.6B \u00d7 15% = $2.94B. Note: Yahoo Finance MCP access denied on 2026-03-19 re-verification; 10-K SEC filing used as primary source. Previous figure used $19.82B (formula-derived); updated to $19.6B (direct 10-K figure).",
     "berkshire_source": "https://finance.yahoo.com/quote/COST/holders/",
-    "search_roi_est": "$147M/yr [ESTIMATE · conservative 5% lift on $2.94B search-addressable revenue · base: $19.6B e-commerce from Costco 10-K FY2025]"
+    "search_roi_est": "$147M/yr [ESTIMATE \u00b7 conservative 5% lift on $2.94B search-addressable revenue \u00b7 base: $19.6B e-commerce from Costco 10-K FY2025]"
   },
   "traffic": {
     "monthly_visits": "102.8M",
@@ -617,9 +622,9 @@
     "global_rank": 348,
     "us_rank": "N/A",
     "category_rank_us": "#41 globally (E-commerce > Marketplace)",
-    "source": "SimilarWeb MCP live API — re-pulled 2026-03-19 for Jan 2025 period (last_updated: 2026-02-28)",
+    "source": "SimilarWeb MCP live API \u2014 re-pulled 2026-03-19 for Jan 2025 period (last_updated: 2026-02-28)",
     "source_url": "https://www.similarweb.com/website/costco.com/",
-    "data_completeness": "COMPLETE — all traffic metrics, device split, demographics, and channel breakdown verified via live SimilarWeb MCP API (2026-03-19).",
+    "data_completeness": "COMPLETE \u2014 all traffic metrics, device split, demographics, and channel breakdown verified via live SimilarWeb MCP API (2026-03-19).",
     "channels": {
       "direct": "61.0%",
       "organic_search": "27.9%",
@@ -676,18 +681,18 @@
     "device_share": {
       "mobile": 49.4,
       "desktop": 50.6,
-      "note": "SimilarWeb Jan 2025 — mobile_web 50.9M / total 103.0M = 49.4% mobile"
+      "note": "SimilarWeb Jan 2025 \u2014 mobile_web 50.9M / total 103.0M = 49.4% mobile"
     },
     "top_channels": [
       {
         "source": "Direct",
         "share": 61.0,
-        "note": "Strong brand loyalty — members navigate directly to costco.com"
+        "note": "Strong brand loyalty \u2014 members navigate directly to costco.com"
       },
       {
         "source": "Organic Search",
         "share": 27.9,
-        "note": "SEO-dominant — product and category pages"
+        "note": "SEO-dominant \u2014 product and category pages"
       },
       {
         "source": "Referrals",
@@ -707,10 +712,10 @@
       {
         "source": "Paid Search",
         "share": 0.2,
-        "note": "Minimal — consistent with Costco's low advertising spend philosophy"
+        "note": "Minimal \u2014 consistent with Costco's low advertising spend philosophy"
       }
     ],
-    "_top_channels_note": "Corrected by factcheck 2026-03-19. Previous values (Direct 26.9%, Paid 22.9%, Display 10.8%) were stale cached data from a prior session. Values now match SimilarWeb MCP live re-pull Jan 2025 (ww, total) — same source as traffic.channels dict.",
+    "_top_channels_note": "Corrected by factcheck 2026-03-19. Previous values (Direct 26.9%, Paid 22.9%, Display 10.8%) were stale cached data from a prior session. Values now match SimilarWeb MCP live re-pull Jan 2025 (ww, total) \u2014 same source as traffic.channels dict.",
     "audience": {
       "age": {
         "18-24": 8.1,
@@ -728,11 +733,11 @@
     }
   },
   "tech_stack": {
-    "search": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith live 2026-03-19, 940 technologies). LucidWorks widget tag detected (analytics/widgets category) — likely LucidWorks Insight analytics layer, NOT a primary search engine replacement. No Algolia, Coveo, Bloomreach, Elasticsearch, or Dynamic Yield detected.",
-    "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
-    "personalization": "GrowthLoop AI (confirmed — PRNewswire partnership announcement, August 2025).",
-    "recommendations": "Unknown — RichRelevance absent; new personalization capabilities launched Q1 FY2026",
-    "cdp": "Segment (confirmed — BuiltWith live API, 939 technologies scanned, 2026-03-18). Adobe Audience Manager (confirmed — BuiltWith [ads] tag).",
+    "search": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead confirmed (BuiltWith live 2026-03-19, 940 technologies). LucidWorks widget tag detected (analytics/widgets category) \u2014 likely LucidWorks Insight analytics layer, NOT a primary search engine replacement. No Algolia, Coveo, Bloomreach, Elasticsearch, or Dynamic Yield detected.",
+    "ecommerce": "HCL Commerce (IBM WebSphere Commerce) [FACT \u2014 BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud reported by Enlyft was INCORRECT.",
+    "personalization": "GrowthLoop AI (confirmed \u2014 PRNewswire partnership announcement, August 2025).",
+    "recommendations": "Unknown \u2014 RichRelevance absent; new personalization capabilities launched Q1 FY2026",
+    "cdp": "Segment (confirmed \u2014 BuiltWith live API, 939 technologies scanned, 2026-03-18). Adobe Audience Manager (confirmed \u2014 BuiltWith [ads] tag).",
     "cloud": "Google Cloud Platform (primary) + Microsoft Azure (multi-cloud)",
     "retail_media": "Criteo (ad server) + The Trade Desk + Google DV360 + Epsilon + StackAdapt",
     "measurement": "Habu (clean room), MetaRouter + LiveRamp (identity resolution)",
@@ -745,9 +750,9 @@
     "ads_confirmed": "Criteo + The Trade Desk + DoubleClick + Adobe Audience Manager + Google Remarketing [BuiltWith]",
     "product_content": "Syndigo (product content management) [BuiltWith shop tag]",
     "privacy": "OneTrust [BuiltWith]",
-    "search_builtwith_note": "BuiltWith domain-lookup live re-pull 2026-03-19 (940 technologies). Typeahead.js + Bloodhound confirmed as primary search (javascript tag). LucidWorks detected in [widgets] category — likely LucidWorks Insight analytics/behavioral tracking widget, NOT Fusion search engine (no Fusion CDN endpoints detected). Optimizely confirmed (A/B testing). Bazaarvoice confirmed (ratings/reviews). SAP Business Technology Platform confirmed. No RichRelevance, Dynamic Yield, Bloomreach, Algolia, or Elasticsearch detected.",
-    "primary_platform": "HCL Commerce (IBM WebSphere Commerce) [FACT — BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud (Enlyft) was incorrect.",
-    "search_vendor": "Native / Proprietary — Typeahead.js + Bloodhound Typeahead (BuiltWith live 2026-03-19). LucidWorks widget tag detected (analytics category) — likely Insight analytics, not primary search. No Algolia, Coveo, Bloomreach, or Elasticsearch detected.",
+    "search_builtwith_note": "BuiltWith domain-lookup live re-pull 2026-03-19 (940 technologies). Typeahead.js + Bloodhound confirmed as primary search (javascript tag). LucidWorks detected in [widgets] category \u2014 likely LucidWorks Insight analytics/behavioral tracking widget, NOT Fusion search engine (no Fusion CDN endpoints detected). Optimizely confirmed (A/B testing). Bazaarvoice confirmed (ratings/reviews). SAP Business Technology Platform confirmed. No RichRelevance, Dynamic Yield, Bloomreach, Algolia, or Elasticsearch detected.",
+    "primary_platform": "HCL Commerce (IBM WebSphere Commerce) [FACT \u2014 BuiltWith live, 2026-03-18]. Note: Salesforce Commerce Cloud (Enlyft) was incorrect.",
+    "search_vendor": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead (BuiltWith live 2026-03-19). LucidWorks widget tag detected (analytics category) \u2014 likely Insight analytics, not primary search. No Algolia, Coveo, Bloomreach, or Elasticsearch detected.",
     "full_list": [
       "HCL Commerce (IBM WebSphere Commerce)",
       "Typeahead.js / Bloodhound (site search)",
@@ -756,7 +761,7 @@
       "Tealium iQ (Tag Management)",
       "Tealium AudienceStream (CDP)",
       "Tealium EventStream (Real-time events)",
-      "Segment (CDP — BuiltWith live 2026-03-18)",
+      "Segment (CDP \u2014 BuiltWith live 2026-03-18)",
       "GrowthLoop (AI Marketing Engine)",
       "Akamai (CDN + WAF)",
       "Amazon CloudFront",
@@ -789,19 +794,20 @@
       "Syndigo (Product Content Management)",
       "DoubleClick",
       "Adobe Audience Manager",
-      "Optimizely (A/B Testing — BuiltWith live 2026-03-19)",
-      "Bazaarvoice (Ratings & Reviews — BuiltWith live 2026-03-19)",
+      "Optimizely (A/B Testing \u2014 BuiltWith live 2026-03-19)",
+      "Bazaarvoice (Ratings & Reviews \u2014 BuiltWith live 2026-03-19)",
       "SAP Business Technology Platform (BuiltWith live 2026-03-19)",
-      "LucidWorks widget/analytics tag (BuiltWith [widgets] — likely Insight analytics, NOT Fusion search engine)"
-    ]
+      "LucidWorks widget/analytics tag (BuiltWith [widgets] \u2014 likely Insight analytics, NOT Fusion search engine)"
+    ],
+    "current_search_vendor": "Native / Proprietary \u2014 Typeahead.js + Bloodhound Typeahead (BuiltWith live 2026-03-19). LucidWorks widget tag detected (analytics category) \u2014 likely Insight analytics, not primary search. No Algolia, Coveo, Bloomreach, or Elasticsearch detected."
   },
   "hiring": {
     "total_open_roles": 428,
     "engineering_roles": 387,
     "search_specific_roles": 0,
-    "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026; Apify LinkedIn scraper 2026-03-18 returned only Tier 4 warehouse/ops roles — tech roles posted via careers.costco.com not public LinkedIn). Strong 'search team in a box' buy-vs-build signal.",
+    "search_specific_note": "Zero Search Engineer, Relevance Engineer, or Discovery PM roles found (LinkedIn + Glassdoor, Feb 2026; Apify LinkedIn scraper 2026-03-18 returned only Tier 4 warehouse/ops roles \u2014 tech roles posted via careers.costco.com not public LinkedIn). Strong 'search team in a box' buy-vs-build signal.",
     "source_url": "https://careers.costco.com/",
-    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering — none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) — knows the cost of custom search. GrowthLoop AI + Segment CDP already active — Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
+    "build_vs_buy": "STRONG BUY case. 387 active engineering roles focused on cloud, data analytics, and digital engineering \u2014 none search-specific. Joel Crabb (VP IT eCommerce) came from Target (Apache Solr custom implementation) and Best Buy (AWS platform) \u2014 knows the cost of custom search. GrowthLoop AI + Segment CDP already active \u2014 Algolia integrates into this behavioral data layer immediately. Peers Walmart and Target both use enterprise search vendors despite massive internal engineering teams.",
     "buying_committee": [
       {
         "name": "Torsten Lubach",
@@ -809,7 +815,7 @@
         "role": "Economic Buyer",
         "signal": "hot",
         "status": "",
-        "message": "NRF 'People Shaping Retail's Future 2025' honoree. Former Lidl US CIO. Drives enterprise technology strategy. Introduced to modern retail search at Lidl — understands vendor-vs-build economics at scale.",
+        "message": "NRF 'People Shaping Retail's Future 2025' honoree. Former Lidl US CIO. Drives enterprise technology strategy. Introduced to modern retail search at Lidl \u2014 understands vendor-vs-build economics at scale.",
         "job_url": "https://www.linkedin.com/in/torsten-lubach-1a608423/",
         "linkedin_url": "",
         "source_url": ""
@@ -820,7 +826,7 @@
         "role": "Economic Buyer",
         "signal": "hot",
         "status": "",
-        "message": "40-year Costco veteran (since 1984). Owns global digital commerce strategy. Drove digital transformation from IT to eCommerce. Ultimate member-experience authority — any search gap lands on her desk.",
+        "message": "40-year Costco veteran (since 1984). Owns global digital commerce strategy. Drove digital transformation from IT to eCommerce. Ultimate member-experience authority \u2014 any search gap lands on her desk.",
         "job_url": "https://www.linkedin.com/in/kathy-ardourel-08b2156/",
         "linkedin_url": "",
         "source_url": ""
@@ -853,7 +859,7 @@
         "role": "Champion",
         "signal": "warm",
         "status": "",
-        "message": "Product Owner for Merchandising IT. Data-driven, cloud transformation experience. Day-to-day owner of the search/merchandising product roadmap — ideal Algolia champion.",
+        "message": "Product Owner for Merchandising IT. Data-driven, cloud transformation experience. Day-to-day owner of the search/merchandising product roadmap \u2014 ideal Algolia champion.",
         "job_url": "https://www.linkedin.com/in/contactsonaligupta/",
         "linkedin_url": "",
         "source_url": ""
@@ -864,36 +870,36 @@
         "phase": 1,
         "label": "Technical Champion",
         "target": "Joel Crabb (VP IT eCommerce)",
-        "message": "You built Target's Solr implementation. You know what custom search costs in engineering cycles and relevance debt. Costco doesn't have Target's search team — and you shouldn't need one. Let me show you a 10-minute Costco.com demo.",
+        "message": "You built Target's Solr implementation. You know what custom search costs in engineering cycles and relevance debt. Costco doesn't have Target's search team \u2014 and you shouldn't need one. Let me show you a 10-minute Costco.com demo.",
         "timing": "Week 1-2"
       },
       {
         "phase": 2,
         "label": "Executive Sponsor",
         "target": "Torsten Lubach (CTO) + Kathy Ardourel (VP Global eCommerce)",
-        "message": "Vachris committed to 'seamless, personal, faster' for 81M members. We tested it. Here's where the experience breaks today — and here's the 90-day fix.",
+        "message": "Vachris committed to 'seamless, personal, faster' for 81M members. We tested it. Here's where the experience breaks today \u2014 and here's the 90-day fix.",
         "timing": "Week 3-4"
       },
       {
         "phase": 3,
         "label": "ROI Close",
         "target": "Ron Vachris (CEO) + Gary Millerchip (CFO)",
-        "message": "CFO, you're using AI to offset labor costs. Search optimization is the same math — $148M+ annual revenue opportunity on existing $19.8B e-commerce. $2.97B is search-addressable. A 5% improvement is $148M.",
+        "message": "CFO, you're using AI to offset labor costs. Search optimization is the same math \u2014 $148M+ annual revenue opportunity on existing $19.8B e-commerce. $2.97B is search-addressable. A 5% improvement is $148M.",
         "timing": "Week 5-6"
       }
     ],
     "objection_counters": [
       {
-        "objection": "We just redesigned search — click-through rates doubled",
-        "counter": "That improvement is real and impressive — but click-through tells you people are clicking, not that they're finding. The empty state still shows nothing. NLP queries still fail. Federated search still absent. The Q1 improvement is a floor, not a ceiling."
+        "objection": "We just redesigned search \u2014 click-through rates doubled",
+        "counter": "That improvement is real and impressive \u2014 but click-through tells you people are clicking, not that they're finding. The empty state still shows nothing. NLP queries still fail. Federated search still absent. The Q1 improvement is a floor, not a ceiling."
       },
       {
         "objection": "We have 387 engineers, we can build this ourselves",
-        "counter": "Joel Crabb built Target's custom Solr. That team is 500+ engineers and still maintaining it years later. Your 387 engineers are building cloud infrastructure, data analytics, and digital performance — not search relevance. Algolia delivers a pre-built search team. Your engineers build Costco differentiators."
+        "counter": "Joel Crabb built Target's custom Solr. That team is 500+ engineers and still maintaining it years later. Your 387 engineers are building cloud infrastructure, data analytics, and digital performance \u2014 not search relevance. Algolia delivers a pre-built search team. Your engineers build Costco differentiators."
       },
       {
-        "objection": "We have GrowthLoop for personalization — that should handle search too",
-        "counter": "Exactly — and those are valuable investments. Algolia Personalization connects directly to your GrowthLoop AI and Segment behavioral data to re-rank search results by member affinity. You're not replacing GrowthLoop — you're extending it into the search layer, where members are actively making purchase decisions."
+        "objection": "We have GrowthLoop for personalization \u2014 that should handle search too",
+        "counter": "Exactly \u2014 and those are valuable investments. Algolia Personalization connects directly to your GrowthLoop AI and Segment behavioral data to re-rank search results by member affinity. You're not replacing GrowthLoop \u2014 you're extending it into the search layer, where members are actively making purchase decisions."
       }
     ],
     "apify_linkedin_note": "LinkedIn Jobs scraper (Apify, 2026-03-18): 5 results returned, all Tier 4 warehouse/operations roles (Stocker, Inventory Auditor). No Tier 1-3 digital/tech ICP roles surfaced on public LinkedIn. Costco posts tech roles primarily via careers.costco.com, not LinkedIn public job board. Buying committee identified via Phase 1 LinkedIn profile research remains valid.",
@@ -906,27 +912,29 @@
       "label": "Seamless Member Experience",
       "hook": "Vachris promised 81M members 'easier, faster, more personal.' We tested it. Here's where it breaks.",
       "pain_points": [
-        "Empty state shows nothing — zero discovery guidance",
-        "NLP queries blocked by WAF — conversational search fails entirely",
+        "Empty state shows nothing \u2014 zero discovery guidance",
+        "NLP queries blocked by WAF \u2014 conversational search fails entirely",
         "Return policy exits to a separate domain",
         "Executive members see identical results as first-time visitors"
       ],
-      "discovery_question": "How do you measure friction in the digital search experience today — specifically the moment a member clicks the search box?",
+      "discovery_question": "How do you measure friction in the digital search experience today \u2014 specifically the moment a member clicks the search box?",
       "algolia_proof": "Algolia InstantSearch delivers sub-50ms response with personalized query suggestions from keystroke 0. Big W achieved +7% conversion after implementation.",
-      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis"
+      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis",
+      "angle": "Seamless Member Experience"
     },
     {
       "label": "Practical Member-Focused AI",
-      "hook": "You're deploying AI in pharmacy and gas. What's the roadmap for AI in search — where members interact with it 93M times a month?",
+      "hook": "You're deploying AI in pharmacy and gas. What's the roadmap for AI in search \u2014 where members interact with it 93M times a month?",
       "pain_points": [
-        "No semantic search — keyword matching only",
+        "No semantic search \u2014 keyword matching only",
         "NLP completely absent from search layer",
         "No AI-powered recommendations on product pages",
         "Manual merchandising with no dynamic re-ranking"
       ],
-      "discovery_question": "You deployed AI in pharmacy to improve in-stock rates by 98%. Search drives 15% of your $19.8B e-commerce — what does '98% success rate' look like for search queries?",
-      "algolia_proof": "Algolia NeuralSearch is pre-trained on e-commerce intent — no ML team required. Matches Vachris's 'practical, member-focused' AI mandate.",
-      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis"
+      "discovery_question": "You deployed AI in pharmacy to improve in-stock rates by 98%. Search drives 15% of your $19.8B e-commerce \u2014 what does '98% success rate' look like for search queries?",
+      "algolia_proof": "Algolia NeuralSearch is pre-trained on e-commerce intent \u2014 no ML team required. Matches Vachris's 'practical, member-focused' AI mandate.",
+      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis",
+      "angle": "Practical Member-Focused AI"
     },
     {
       "label": "Protect Executive Membership Revenue",
@@ -937,20 +945,22 @@
         "Under-40 members (now nearly half of new sign-ups) have Amazon-native search expectations"
       ],
       "discovery_question": "What's the search experience differentiation between your Executive members and standard members today?",
-      "algolia_proof": "Algolia Personalization re-ranks results by member tier and purchase history. Executive members see premium brands, higher-price items, and Executive-exclusive offers — boosted automatically.",
-      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis"
+      "algolia_proof": "Algolia Personalization re-ranks results by member tier and purchase history. Executive members see premium brands, higher-price items, and Executive-exclusive offers \u2014 boosted automatically.",
+      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis",
+      "angle": "Protect Executive Membership Revenue"
     },
     {
       "label": "Competitive Technology Gap",
       "hook": "Your 10-K identifies competitor technology capabilities as a risk factor. We found exactly where the gap is.",
       "pain_points": [
         "Walmart +25.3% stock vs Costco -4% in 2025",
-        "None of 5 direct competitors use Algolia — first-mover window is open",
+        "None of 5 direct competitors use Algolia \u2014 first-mover window is open",
         "Amazon sets member search expectations via 37% e-commerce market share"
       ],
       "discovery_question": "Your 10-K identifies 'greater technology capabilities' in competitors as a material risk. What's the plan to close the search capability gap with Walmart specifically?",
-      "algolia_proof": "Algolia is used by Gymshark, Lacoste, Decathlon — not by any of Costco's 5 direct competitors. First-mover advantage available in the warehouse club vertical.",
-      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis"
+      "algolia_proof": "Algolia is used by Gymshark, Lacoste, Decathlon \u2014 not by any of Costco's 5 direct competitors. First-mover advantage available in the warehouse club vertical.",
+      "source": "Costco Annual Report 2024 / SimilarWeb Traffic Analysis",
+      "angle": "Competitive Technology Gap"
     }
   ],
   "competitive_synthesis": {
@@ -964,7 +974,7 @@
           "BJ's Wholesale Club"
         ],
         "search_stack": "Walmart shared infrastructure (likely Elasticsearch)",
-        "strategic_implication": "Walmart's AI investment applies here. Membership club on same tech stack — Algolia would leapfrog both.",
+        "strategic_implication": "Walmart's AI investment applies here. Membership club on same tech stack \u2014 Algolia would leapfrog both.",
         "source_url": "https://builtwith.com"
       },
       {
@@ -989,9 +999,9 @@
     ],
     "golden_angle": "Zero Algolia adoption among all 5 Costco competitors. First warehouse club to implement Algolia establishes a search experience moat before peers react.",
     "positioning_statements": {
-      "vs_walmart": "Walmart's Elasticsearch has a 50.31% bounce rate — 17 points higher than Costco's current 33.19%. Costco's search baseline is already better. Algolia elevates that advantage with NLP and personalization Walmart hasn't deployed.",
-      "vs_amazon": "Amazon sets the bar. Algolia is the enterprise path to matching Amazon-level NLP and personalization — without Amazon's proprietary infrastructure. It's the only viable option.",
-      "vs_status_quo": "Native search click-through doubled in Q1 — but 5 critical gaps remain. The improvement proves the team can move fast. Algolia is the next-phase infrastructure to move faster."
+      "vs_walmart": "Walmart's Elasticsearch has a 50.31% bounce rate \u2014 17 points higher than Costco's current 33.19%. Costco's search baseline is already better. Algolia elevates that advantage with NLP and personalization Walmart hasn't deployed.",
+      "vs_amazon": "Amazon sets the bar. Algolia is the enterprise path to matching Amazon-level NLP and personalization \u2014 without Amazon's proprietary infrastructure. It's the only viable option.",
+      "vs_status_quo": "Native search click-through doubled in Q1 \u2014 but 5 critical gaps remain. The improvement proves the team can move fast. Algolia is the next-phase infrastructure to move faster."
     },
     "the_ask": "A 90-day proof-of-concept on two highest-impact gaps: NeuralSearch (NLP + WAF-safe query handling) and Query Suggestions (empty state). Measure click-through, zero-result rate, and conversion. ROI gates after 30 days.",
     "positioning_matrix": [
@@ -1052,15 +1062,15 @@
     "priority_to_product": [
       {
         "their_priority": "Seamless experience that builds trust and loyalty",
-        "source": "Q1 FY2026 Earnings Call — Ron Vachris",
+        "source": "Q1 FY2026 Earnings Call \u2014 Ron Vachris",
         "algolia_solution": "Algolia AI Search + InstantSearch + Query Suggestions",
         "discovery_question": "How do you measure friction at the moment a member clicks the search box today?"
       },
       {
         "their_priority": "Practical, member-focused AI grounded in tangible business value",
-        "source": "Q1 FY2026 Earnings Call — Ron Vachris",
+        "source": "Q1 FY2026 Earnings Call \u2014 Ron Vachris",
         "algolia_solution": "Algolia NeuralSearch (pre-trained, no ML team, instant value)",
-        "discovery_question": "You deployed AI in pharmacy for 98% in-stock rates — what does 98% query success look like for search?"
+        "discovery_question": "You deployed AI in pharmacy for 98% in-stock rates \u2014 what does 98% query success look like for search?"
       },
       {
         "their_priority": "Personalization driving measurable sales lift",
@@ -1069,10 +1079,10 @@
         "discovery_question": "How are you differentiating the digital experience for 39.7M Executive members vs standard members in search?"
       },
       {
-        "their_priority": "Technology that strengthens fundamentals — member loyalty, top-line sales, efficiency",
-        "source": "Q1 FY2026 Earnings Call — Ron Vachris",
+        "their_priority": "Technology that strengthens fundamentals \u2014 member loyalty, top-line sales, efficiency",
+        "source": "Q1 FY2026 Earnings Call \u2014 Ron Vachris",
         "algolia_solution": "Algolia Analytics + A/B Testing + Merchandising Studio",
-        "discovery_question": "What visibility do you have into searches that don't convert — the demand signals hiding in failed queries?"
+        "discovery_question": "What visibility do you have into searches that don't convert \u2014 the demand signals hiding in failed queries?"
       }
     ],
     "outreach_sequence": [
@@ -1080,7 +1090,7 @@
         "step": 1,
         "persona": "Joel Crabb, VP IT eCommerce",
         "channel": "LinkedIn",
-        "message": "You built Target's search architecture. I want to show you something specific about Costco's search — 3 gaps I found in 20 minutes of testing. Can I get 15 minutes?"
+        "message": "You built Target's search architecture. I want to show you something specific about Costco's search \u2014 3 gaps I found in 20 minutes of testing. Can I get 15 minutes?"
       },
       {
         "step": 2,
@@ -1096,26 +1106,28 @@
       }
     ],
     "anchor_lines": [
-      "Costco told investors its digital vision is 'seamless, faster, more personal' — but 'best tv for gaming under 1000' returns insurance plans. That's not seamless.",
-      "Your CEO said AI is being deployed in a 'very Costco way, practical, member-focused and grounded in tangible business value' — Algolia's ROI framework maps exactly to that standard: $148M conservative annual lift.",
-      "Gary Millerchip told investors that productivity improvements 'fully offset wage investments' — a 5% search improvement on $2.97B search-addressable revenue is $148M annually; that offsets costs too.",
-      "Costco just launched 'personalization capabilities that provide more relevant product recommendations' — but PDP pages show zero product recommendations. Algolia Recommend closes that gap immediately.",
-      "Your 10-K flags competitors with 'greater technology capabilities' as a named risk — Walmart has AI-powered search, Amazon sets member expectations. Algolia closes that gap faster than any in-house build.",
-      "Millerchip confirmed $470M in Q2 from personalization carousels — that's the ROI language Costco already speaks. Algolia Recommend extends that same personalization signal into the search layer, where members are making active purchase decisions.",
-      "Costco has Optimizely live for A/B testing, Segment CDP for behavioral data, and GrowthLoop for AI segmentation — but zero search personalization vendor. Algolia connects directly to all three in days, not quarters."
+      "Costco told investors its digital vision is 'seamless, faster, more personal' \u2014 but 'best tv for gaming under 1000' returns insurance plans. That's not seamless.",
+      "Your CEO said AI is being deployed in a 'very Costco way, practical, member-focused and grounded in tangible business value' \u2014 Algolia's ROI framework maps exactly to that standard: $148M conservative annual lift.",
+      "Gary Millerchip told investors that productivity improvements 'fully offset wage investments' \u2014 a 5% search improvement on $2.97B search-addressable revenue is $148M annually; that offsets costs too.",
+      "Costco just launched 'personalization capabilities that provide more relevant product recommendations' \u2014 but PDP pages show zero product recommendations. Algolia Recommend closes that gap immediately.",
+      "Your 10-K flags competitors with 'greater technology capabilities' as a named risk \u2014 Walmart has AI-powered search, Amazon sets member expectations. Algolia closes that gap faster than any in-house build.",
+      "Millerchip confirmed $470M in Q2 from personalization carousels \u2014 that's the ROI language Costco already speaks. Algolia Recommend extends that same personalization signal into the search layer, where members are making active purchase decisions.",
+      "Costco has Optimizely live for A/B testing, Segment CDP for behavioral data, and GrowthLoop for AI segmentation \u2014 but zero search personalization vendor. Algolia connects directly to all three in days, not quarters."
     ]
   },
   "ae_fields": {
     "urgency_level": "High",
-    "deal_size_est": "$2M–$5M/yr (enterprise tier, $19.8B e-commerce scale)",
-    "champion": "Joel Crabb (VP IT eCommerce) — former Target architect, knows custom search cost",
+    "deal_size_est": "$2M\u2013$5M/yr (enterprise tier, $19.8B e-commerce scale)",
+    "champion": "Joel Crabb (VP IT eCommerce) \u2014 former Target architect, knows custom search cost",
     "economic_buyer": "Torsten Lubach (CTO) + Kathy Ardourel (VP Global eCommerce)",
-    "technical_buyer": "Joel Crabb (VP IT eCommerce) — primary technical decision-maker",
+    "technical_buyer": "Joel Crabb (VP IT eCommerce) \u2014 primary technical decision-maker",
     "user_buyer": "Sonali Gupta (Product Management Leader, Merchandising IT)",
-    "timing": "Q2 2026 — active $6.5B CapEx cycle, SVP E-Commerce transition (Jan 2026 retirement), AI investment wave underway, pre-Q4 holiday prep window",
-    "talk_track_opener": "Joel — your CEO committed to making Costco 'easier, faster, and more personal' for 81M members. Your CFO just confirmed $470M from personalization carousels in Q2. But when I searched 'best tv for gaming under 1000' on costco.com, I got an Access Denied page. You built Target's Solr — you know the gap between what members expect and what native search delivers. I found 3 specific failures in 20 minutes. Can I get 15 minutes?",
-    "next_step_action": "Request 30-minute discovery call with Joel Crabb (VP IT eCommerce) using the headlamp/TV-gaming-under-1000 search failure findings as the opener. Bailey Childress SVP E-Commerce (new — post Jan 2026 transition) as economic buyer for follow-up.",
-    "talk_track_cta": "Joel, I found 3 specific search failures on costco.com in 20 minutes — NLP-blind query, zero PDP recommendations, and a federated search gap. I'd like to run a live audit against your current search for 30 minutes. When can we connect?"
+    "timing": "Q2 2026 \u2014 active $6.5B CapEx cycle, SVP E-Commerce transition (Jan 2026 retirement), AI investment wave underway, pre-Q4 holiday prep window",
+    "talk_track_opener": "Joel \u2014 your CEO committed to making Costco 'easier, faster, and more personal' for 81M members. Your CFO just confirmed $470M from personalization carousels in Q2. But when I searched 'best tv for gaming under 1000' on costco.com, I got an Access Denied page. You built Target's Solr \u2014 you know the gap between what members expect and what native search delivers. I found 3 specific failures in 20 minutes. Can I get 15 minutes?",
+    "next_step_action": "Request 30-minute discovery call with Joel Crabb (VP IT eCommerce) using the headlamp/TV-gaming-under-1000 search failure findings as the opener. Bailey Childress SVP E-Commerce (new \u2014 post Jan 2026 transition) as economic buyer for follow-up.",
+    "talk_track_cta": "Joel, I found 3 specific search failures on costco.com in 20 minutes \u2014 NLP-blind query, zero PDP recommendations, and a federated search gap. I'd like to run a live audit against your current search for 30 minutes. When can we connect?",
+    "urgency_trigger": "Joel \u2014 your CEO committed to making Costco 'easier, faster, and more personal' for 81M members. Your CFO just confirmed $470M from personalization carousels in Q2. But when I searched 'best tv for gaming under 1000' on costco.com, I got an Access Denied page. You built Target's Solr \u2014 you know the gap between what members expect and what native search delivers. I found 3 specific failures in 20 minutes. Can I get 15 minutes?",
+    "recommended_approach": "Request 30-minute discovery call with Joel Crabb (VP IT eCommerce) using the headlamp/TV-gaming-under-1000 search failure findings as the opener. Bailey Childress SVP E-Commerce (new \u2014 post Jan 2026 transition) as economic buyer for follow-up."
   },
   "next_steps": [
     {
@@ -1124,18 +1136,18 @@
     },
     {
       "title": "Technical Brief: HCL Commerce + Algolia Integration",
-      "description": "Prepare 1-page technical spec: Algolia API-first integration with HCL Commerce (IBM WebSphere Commerce) — confirmed Costco platform via BuiltWith. Algolia provides REST API + JavaScript SDKs that connect to any platform. Timeline: 4-6 weeks to first live query (no pre-built connector confirmed — custom integration via Algolia's instantsearch.js + REST API). Segment integration path for personalization data. Target: Joel Crabb (VP IT eCommerce) — built Target + BestBuy platforms from scratch."
+      "description": "Prepare 1-page technical spec: Algolia API-first integration with HCL Commerce (IBM WebSphere Commerce) \u2014 confirmed Costco platform via BuiltWith. Algolia provides REST API + JavaScript SDKs that connect to any platform. Timeline: 4-6 weeks to first live query (no pre-built connector confirmed \u2014 custom integration via Algolia's instantsearch.js + REST API). Segment integration path for personalization data. Target: Joel Crabb (VP IT eCommerce) \u2014 built Target + BestBuy platforms from scratch."
     },
     {
       "title": "ROI Model: CFO-Ready Business Case",
-      "description": "1-pager: $2.97B search-addressable revenue × 5% conservative lift = $148.6M/yr. 3-year cumulative at 10%: $937M. Millerchip's productivity-offset framing: 'Same math as checkout automation — technology that pays for itself.' Include Big W case study (+7% conversion) as comparable."
+      "description": "1-pager: $2.97B search-addressable revenue \u00d7 5% conservative lift = $148.6M/yr. 3-year cumulative at 10%: $937M. Millerchip's productivity-offset framing: 'Same math as checkout automation \u2014 technology that pays for itself.' Include Big W case study (+7% conversion) as comparable."
     }
   ],
   "methodology": {
-    "phase1": "Pre-Audit Research (12 scratchpad files) — BuiltWith, SimilarWeb, Yahoo Finance, SEC EDGAR, LinkedIn, WebSearch",
+    "phase1": "Pre-Audit Research (12 scratchpad files) \u2014 BuiltWith, SimilarWeb, Yahoo Finance, SEC EDGAR, LinkedIn, WebSearch",
     "phase2": "Browser-Based Audit (Puppeteer connecting to Chrome with human-like typing, 80-280ms/char). Akamai WAF recovery: connected to existing Chrome instance. 14 tests, 26 screenshots.",
-    "phase3": "Weighted scoring: HIGH=2×, MEDIUM=1×, LOW=0.5×. 10 areas evaluated. Score: 47.5/13.0 = 3.8/10.",
-    "notes": "NLP query 'best TV for gaming under 1000' blocked by Akamai WAF — scored 3/10 HIGH based on inability to process query. PDP recommendations: navigation failed (link selector issue) — scored conservatively as MEDIUM."
+    "phase3": "Weighted scoring: HIGH=2\u00d7, MEDIUM=1\u00d7, LOW=0.5\u00d7. 10 areas evaluated. Score: 47.5/13.0 = 3.8/10.",
+    "notes": "NLP query 'best TV for gaming under 1000' blocked by Akamai WAF \u2014 scored 3/10 HIGH based on inability to process query. PDP recommendations: navigation failed (link selector issue) \u2014 scored conservatively as MEDIUM."
   },
   "bibliography": [
     {
@@ -1146,122 +1158,122 @@
     {
       "id": 2,
       "url": "https://www.macrotrends.net/stocks/charts/COST/costco/revenue",
-      "label": "MacroTrends — Costco Revenue FY2025"
+      "label": "MacroTrends \u2014 Costco Revenue FY2025"
     },
     {
       "id": 3,
       "url": "https://www.similarweb.com/website/costco.com/",
-      "label": "SimilarWeb — costco.com Traffic (Oct 2025)"
+      "label": "SimilarWeb \u2014 costco.com Traffic (Oct 2025)"
     },
     {
       "id": 4,
       "url": "https://www.constellationr.com/insights/news/costco-approaching-ai-very-costco-way",
-      "label": "Constellation Research — Costco Q1 FY2026 Earnings Coverage"
+      "label": "Constellation Research \u2014 Costco Q1 FY2026 Earnings Coverage"
     },
     {
       "id": 5,
       "url": "https://www.fool.com/earnings/call-transcripts/2025/12/11/costco-cost-q1-2026-earnings-call-transcript/",
-      "label": "Costco Q1 FY2026 Earnings Call Transcript — Motley Fool (Dec 11, 2025)"
+      "label": "Costco Q1 FY2026 Earnings Call Transcript \u2014 Motley Fool (Dec 11, 2025)"
     },
     {
       "id": 6,
       "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm",
-      "label": "Costco 10-K FY2025 — SEC EDGAR"
+      "label": "Costco 10-K FY2025 \u2014 SEC EDGAR"
     },
     {
       "id": 7,
       "url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm",
-      "label": "Costco 10-Q Q1 FY2026 — SEC EDGAR"
+      "label": "Costco 10-Q Q1 FY2026 \u2014 SEC EDGAR"
     },
     {
       "id": 8,
       "url": "https://www.digitalcommerce360.com/article/costco-ecommerce-sales/",
-      "label": "Digital Commerce 360 — Costco E-commerce Sales"
+      "label": "Digital Commerce 360 \u2014 Costco E-commerce Sales"
     },
     {
       "id": 9,
       "url": "https://www.algolia.com/customers/bigw",
-      "label": "Algolia Case Study — Big W (+7% conversion, +4.7% basket size)"
+      "label": "Algolia Case Study \u2014 Big W (+7% conversion, +4.7% basket size)"
     },
     {
       "id": 11,
       "url": "https://www.thedrum.com/news/costco-just-revealed-its-entire-retail-media-tech-stack-why",
-      "label": "The Drum — Costco Retail Media Tech Stack (Jan 2026)"
+      "label": "The Drum \u2014 Costco Retail Media Tech Stack (Jan 2026)"
     },
     {
       "id": 12,
       "url": "https://www.prnewswire.com/news-releases/growthloop-partners-with-costco-to-power-retail-media-operations-with-its-compound-marketing-engine-302535994.html",
-      "label": "PRNewswire — GrowthLoop + Costco Partnership (2026)"
+      "label": "PRNewswire \u2014 GrowthLoop + Costco Partnership (2026)"
     },
     {
       "id": 13,
       "url": "https://www.linkedin.com/in/joelcrabb/",
-      "label": "Joel Crabb (VP IT eCommerce) — LinkedIn"
+      "label": "Joel Crabb (VP IT eCommerce) \u2014 LinkedIn"
     },
     {
       "id": 14,
       "url": "https://www.linkedin.com/in/torsten-lubach-1a608423/",
-      "label": "Torsten Lubach (CTO) — LinkedIn"
+      "label": "Torsten Lubach (CTO) \u2014 LinkedIn"
     },
     {
       "id": 15,
       "url": "https://www.linkedin.com/in/kathy-ardourel-08b2156/",
-      "label": "Kathy Ardourel (VP Global eCommerce) — LinkedIn"
+      "label": "Kathy Ardourel (VP Global eCommerce) \u2014 LinkedIn"
     },
     {
       "id": 16,
       "url": "https://www.kavout.com/market-lens/the-tale-of-two-retail-giants-why-walmart-dominated-2025-while-costco-stumbled",
-      "label": "Kavout — Walmart vs Costco 2025 Performance Analysis"
+      "label": "Kavout \u2014 Walmart vs Costco 2025 Performance Analysis"
     },
     {
       "id": 17,
       "url": "https://www.similarweb.com/website/walmart.com/",
-      "label": "SimilarWeb — walmart.com (Competitor Traffic)"
+      "label": "SimilarWeb \u2014 walmart.com (Competitor Traffic)"
     },
     {
       "id": 18,
       "url": "https://www.semrush.com/website/samsclub.com/overview/",
-      "label": "Semrush — samsclub.com (Competitor Traffic)"
+      "label": "Semrush \u2014 samsclub.com (Competitor Traffic)"
     },
     {
       "id": 19,
       "url": "https://p2pi.com/costco-signals-new-era-personalization-retail-media",
-      "label": "Path to Purchase Institute — Costco Personalization Era"
+      "label": "Path to Purchase Institute \u2014 Costco Personalization Era"
     },
     {
       "id": 20,
       "url": "https://investor.costco.com/events-and-presentations/events/event-details/2025/Q1-2026-Earnings-Call/default.aspx",
-      "label": "Costco Q1 FY2026 Earnings Call — IR Events Page"
+      "label": "Costco Q1 FY2026 Earnings Call \u2014 IR Events Page"
     },
     {
       "id": 21,
       "url": "https://tech.walmart.com/content/walmart-global-tech/en_us/blog/post/walmarts-generative-ai-search-puts-more-time-back-in-customers-hands.html",
-      "label": "Walmart Global Tech — GenAI Search Launch (January 2024)"
+      "label": "Walmart Global Tech \u2014 GenAI Search Launch (January 2024)"
     },
     {
       "id": 22,
       "url": "https://www.fool.com/earnings/call-transcripts/2026/03/05/costco-cost-q2-2026-earnings-call-transcript/",
-      "label": "Costco Q2 FY2026 Earnings Call Transcript — Motley Fool (March 5, 2026)"
+      "label": "Costco Q2 FY2026 Earnings Call Transcript \u2014 Motley Fool (March 5, 2026)"
     },
     {
       "id": 23,
       "url": "https://www.customerexperiencedive.com/news/costco-digital-personalization-470m-sales-growth/814093/",
-      "label": "CX Dive — Costco ties digital personalization to $470M in sales growth (Q2 FY2026)"
+      "label": "CX Dive \u2014 Costco ties digital personalization to $470M in sales growth (Q2 FY2026)"
     },
     {
       "id": 24,
       "url": "https://www.retaildive.com/news/costco-digital-personalization-sales-growth/814119/",
-      "label": "Retail Dive — Costco personalization carousels drive $470M in ecommerce sales"
+      "label": "Retail Dive \u2014 Costco personalization carousels drive $470M in ecommerce sales"
     },
     {
       "id": 25,
       "url": "https://builtwith.com/costco.com",
-      "label": "BuiltWith Domain Lookup — costco.com (940 live technologies, re-pulled 2026-03-19)"
+      "label": "BuiltWith Domain Lookup \u2014 costco.com (940 live technologies, re-pulled 2026-03-19)"
     },
     {
       "id": 26,
       "url": "https://investor.costco.com/governance/executive-management/default.aspx",
-      "label": "Costco Investor Relations — Executive Management (Gary Millerchip CFO confirmed)"
+      "label": "Costco Investor Relations \u2014 Executive Management (Gary Millerchip CFO confirmed)"
     }
   ],
   "case_studies": [
@@ -1270,7 +1282,7 @@
       "vertical": "Mass Retail / Discount",
       "result": "+7% improved conversion from search",
       "product": "Algolia NeuralSearch",
-      "why": "Big W is Australia's largest mass retailer (Woolworths Group) — comparable SKU breadth and member loyalty dynamic to Costco. Implemented Algolia InstantSearch + Recommend across web and mobile. Direct",
+      "why": "Big W is Australia's largest mass retailer (Woolworths Group) \u2014 comparable SKU breadth and member loyalty dynamic to Costco. Implemented Algolia InstantSearch + Recommend across web and mobile. Direct",
       "url": "https://www.algolia.com/customers/bigw"
     },
     {
@@ -1291,7 +1303,7 @@
     }
   ],
   "abx_sequence": {
-    "sequence_type": "Targeted ABX — Costco Digital Search",
+    "sequence_type": "Targeted ABX \u2014 Costco Digital Search",
     "total_touches": 9,
     "duration_days": 21,
     "channels": [
@@ -1302,9 +1314,9 @@
     "research_basis": "ICP mapping from 12-icp-priority-mapping.md. Buying committee: Joel Crabb (VP IT eCommerce) as champion, Torsten Lubach (CTO) as economic buyer, Sonali Gupta (Product Management) as user buyer. Trigger: $6.5B CapEx cycle active, SVP E-Commerce transition Jan 2026, AI investment wave.",
     "triggers": [
       "Q1 FY2026 earnings call: CEO committed to 'seamless, faster, more personal' digital experience",
-      "SVP E-Commerce retired Jan 2026 — new leadership transition = buying window open",
-      "RichRelevance removed — zero PDP recommendations confirmed in Phase 2",
-      "GrowthLoop AI partnership announced — active AI investment cycle underway"
+      "SVP E-Commerce retired Jan 2026 \u2014 new leadership transition = buying window open",
+      "RichRelevance removed \u2014 zero PDP recommendations confirmed in Phase 2",
+      "GrowthLoop AI partnership announced \u2014 active AI investment cycle underway"
     ],
     "contacts": [
       {
@@ -1314,7 +1326,7 @@
         "tier": 1,
         "role": "VP IT eCommerce",
         "linkedin_url": "https://www.linkedin.com/in/joel-crabb/",
-        "angle": "VP IT eCommerce — key decision maker for search and product discovery investment."
+        "angle": "VP IT eCommerce \u2014 key decision maker for search and product discovery investment."
       },
       {
         "id": "lubach",
@@ -1323,7 +1335,7 @@
         "tier": 1,
         "role": "Chief Technology Officer",
         "linkedin_url": "https://www.linkedin.com/in/torsten-lubach/",
-        "angle": "Chief Technology Officer — key decision maker for search and product discovery investment."
+        "angle": "Chief Technology Officer \u2014 key decision maker for search and product discovery investment."
       },
       {
         "id": "gupta",
@@ -1332,7 +1344,7 @@
         "tier": 2,
         "role": "Product Management, Merchandising IT",
         "linkedin_url": "",
-        "angle": "Product Management Leader, Merchandising IT — key decision maker for search and product discovery investment."
+        "angle": "Product Management Leader, Merchandising IT \u2014 key decision maker for search and product discovery investment."
       }
     ],
     "touches": [
@@ -1342,9 +1354,9 @@
         "channel": "email",
         "target": "crabb",
         "hook_type": "Insight",
-        "goal": "Open with the WAF-blocked query — hardest specific failure",
+        "goal": "Open with the WAF-blocked query \u2014 hardest specific failure",
         "subject": "costco.com search blocked its own customer",
-        "body": "Joel —\n\nSearched \"best TV for gaming under $1,000\" on costco.com. The search endpoint returned Access Denied. Akamai WAF blocked the query entirely — the member hit a dead end.\n\nThat's not a relevance problem. That's the search stack failing the moment a member types what they actually want to buy.\n\nI ran 8 queries across the site. That one's the hardest to explain to a member paying $65 a year.\n\n15 minutes?"
+        "body": "Joel \u2014\n\nSearched \"best TV for gaming under $1,000\" on costco.com. The search endpoint returned Access Denied. Akamai WAF blocked the query entirely \u2014 the member hit a dead end.\n\nThat's not a relevance problem. That's the search stack failing the moment a member types what they actually want to buy.\n\nI ran 8 queries across the site. That one's the hardest to explain to a member paying $65 a year.\n\n15 minutes?"
       },
       {
         "touch": 2,
@@ -1352,8 +1364,8 @@
         "channel": "linkedin",
         "target": "crabb",
         "hook_type": "Pain Point",
-        "goal": "Hit the empty state problem — highest traffic moment",
-        "message": "Joel — sent you an email about the gaming TV query. Quick addition: your empty search state is completely blank. No trending products, no popular searches, nothing. On a site doing $20B+ in e-commerce, that's the highest-traffic touchpoint on costco.com showing members nothing. Happy to show the comparison."
+        "goal": "Hit the empty state problem \u2014 highest traffic moment",
+        "message": "Joel \u2014 sent you an email about the gaming TV query. Quick addition: your empty search state is completely blank. No trending products, no popular searches, nothing. On a site doing $20B+ in e-commerce, that's the highest-traffic touchpoint on costco.com showing members nothing. Happy to show the comparison."
       },
       {
         "touch": 3,
@@ -1362,7 +1374,7 @@
         "target": "lubach",
         "hook_type": "Executive Angle",
         "goal": "Connect the $470M personalization signal to the search gap",
-        "message": "Torsten — Gary Millerchip cited $470M driven by personalization carousels on the Q2 call. Meanwhile, costco.com search WAFs out on \"best TV for gaming under $1,000\" with Access Denied. The carousels are working. The search isn't talking to them. That's the gap Algolia closes."
+        "message": "Torsten \u2014 Gary Millerchip cited $470M driven by personalization carousels on the Q2 call. Meanwhile, costco.com search WAFs out on \"best TV for gaming under $1,000\" with Access Denied. The carousels are working. The search isn't talking to them. That's the gap Algolia closes."
       },
       {
         "touch": 4,
@@ -1372,7 +1384,7 @@
         "hook_type": "ROI",
         "goal": "Connect $470M signal to the personalization-search gap",
         "subject": "The personalization story has a gap",
-        "body": "Torsten —\n\nGary Millerchip called out $470M in sales from personalized recommendation carousels on the Q2 call. That's real and it's working.\n\nHere's what's not working: costco.com search doesn't read any of those member signals. A member who bought a 75\" Samsung last year searches \"soundbar\" and gets the same results as someone who's never bought electronics. The carousels know them. The search doesn't.\n\nRon said \"AI is about strengthening fundamentals.\" Search is the fundamental that connects member intent to product.\n\nWorth 20 minutes?"
+        "body": "Torsten \u2014\n\nGary Millerchip called out $470M in sales from personalized recommendation carousels on the Q2 call. That's real and it's working.\n\nHere's what's not working: costco.com search doesn't read any of those member signals. A member who bought a 75\" Samsung last year searches \"soundbar\" and gets the same results as someone who's never bought electronics. The carousels know them. The search doesn't.\n\nRon said \"AI is about strengthening fundamentals.\" Search is the fundamental that connects member intent to product.\n\nWorth 20 minutes?"
       },
       {
         "touch": 5,
@@ -1381,11 +1393,11 @@
         "target": "crabb",
         "hook_type": "Loom",
         "goal": "Show the WAF block and blank state side by side",
-        "subject": "90 seconds — two searches on costco.com",
-        "body": "Joel —\n\nRecorded two queries: \"best TV for gaming under $1,000\" and the empty search state, both on costco.com.\n\n[Loom link]\n\nThe first returns Access Denied. The second returns a blank page. For a warehouse club built on \"find the best thing at the best price,\" those are the two moments members trust the search to deliver.\n\n90 seconds. Shows it better than I can describe it.",
-        "video_script": "[Open costco.com, search bar visible]\n\n\"Hey Joel — quick screen recording. Two searches. Under 90 seconds.\"\n\n[Click search bar — show blank empty state]\n\n\"First: I just clicked the search bar. This is your empty state — the highest-traffic moment on costco.com. 130 million monthly visitors. And when they click search, they see: nothing. No trending products. No popular searches. A blank page.\"\n\n[Type: best TV for gaming under 1000]\n\n\"Second search: 'best TV for gaming under $1,000.'\"\n\n[Pause on Access Denied error]\n\n\"Access Denied. Your Akamai WAF blocked the query entirely. A member paying $65 a year just hit a dead end.\"\n\n[Pause]\n\n\"That's the gap. The personalization carousels Gary mentioned on the Q2 call are working — $470 million. But the search that connects member intent to product? It's blocking its own customers.\"\n\n\"15 minutes to show you what it looks like when it works. Link in the email.",
+        "subject": "90 seconds \u2014 two searches on costco.com",
+        "body": "Joel \u2014\n\nRecorded two queries: \"best TV for gaming under $1,000\" and the empty search state, both on costco.com.\n\n[Loom link]\n\nThe first returns Access Denied. The second returns a blank page. For a warehouse club built on \"find the best thing at the best price,\" those are the two moments members trust the search to deliver.\n\n90 seconds. Shows it better than I can describe it.",
+        "video_script": "[Open costco.com, search bar visible]\n\n\"Hey Joel \u2014 quick screen recording. Two searches. Under 90 seconds.\"\n\n[Click search bar \u2014 show blank empty state]\n\n\"First: I just clicked the search bar. This is your empty state \u2014 the highest-traffic moment on costco.com. 130 million monthly visitors. And when they click search, they see: nothing. No trending products. No popular searches. A blank page.\"\n\n[Type: best TV for gaming under 1000]\n\n\"Second search: 'best TV for gaming under $1,000.'\"\n\n[Pause on Access Denied error]\n\n\"Access Denied. Your Akamai WAF blocked the query entirely. A member paying $65 a year just hit a dead end.\"\n\n[Pause]\n\n\"That's the gap. The personalization carousels Gary mentioned on the Q2 call are working \u2014 $470 million. But the search that connects member intent to product? It's blocking its own customers.\"\n\n\"15 minutes to show you what it looks like when it works. Link in the email.",
         "script_duration": "75-90 seconds",
-        "record_at": "costco.com — search bar visible"
+        "record_at": "costco.com \u2014 search bar visible"
       },
       {
         "touch": 6,
@@ -1393,9 +1405,9 @@
         "channel": "email",
         "target": "gupta",
         "hook_type": "Merchandising",
-        "goal": "Hit the merchandising layer — Sonali's specific remit",
+        "goal": "Hit the merchandising layer \u2014 Sonali's specific remit",
         "subject": "The merchandising layer your search doesn't have",
-        "body": "Sonali —\n\nCostco search returns products — but merchandising signals don't come through. \"samung tv\" (typo) returns 11 Samsung TVs correctly, but no \"Did you mean Samsung?\" — the member doesn't know the system helped them. \"Best TV for gaming under $1,000\" triggers the WAF entirely.\n\nThe pattern: basic search works. Intent-based search fails. And when it fails, it fails silently.\n\nAlgolia's merchandising rules layer sits between the search and the results — query categorization, synonym injection, intent detection. All configurable without engineering.\n\nWorth a look?"
+        "body": "Sonali \u2014\n\nCostco search returns products \u2014 but merchandising signals don't come through. \"samung tv\" (typo) returns 11 Samsung TVs correctly, but no \"Did you mean Samsung?\" \u2014 the member doesn't know the system helped them. \"Best TV for gaming under $1,000\" triggers the WAF entirely.\n\nThe pattern: basic search works. Intent-based search fails. And when it fails, it fails silently.\n\nAlgolia's merchandising rules layer sits between the search and the results \u2014 query categorization, synonym injection, intent detection. All configurable without engineering.\n\nWorth a look?"
       },
       {
         "touch": 7,
@@ -1403,8 +1415,8 @@
         "channel": "linkedin",
         "target": "crabb",
         "hook_type": "Competitor",
-        "goal": "Golden angle — BJ's is already on Algolia",
-        "message": "Joel — BJ's Wholesale, your closest membership warehouse competitor, is confirmed on Algolia via BuiltWith. They're smaller, fewer members. But their members get relevant results for complex queries. Yours get Access Denied. I have the full audit — score, findings, ROI model. Just say the word."
+        "goal": "Golden angle \u2014 BJ's is already on Algolia",
+        "message": "Joel \u2014 BJ's Wholesale, your closest membership warehouse competitor, is confirmed on Algolia via BuiltWith. They're smaller, fewer members. But their members get relevant results for complex queries. Yours get Access Denied. I have the full audit \u2014 score, findings, ROI model. Just say the word."
       },
       {
         "touch": 8,
@@ -1414,7 +1426,7 @@
         "hook_type": "POC Ask",
         "goal": "Send the full audit and make a direct ask",
         "subject": "Everything in one place",
-        "body": "Joel —\n\nThe full Costco search audit is ready. 3.5/10 overall score. Four critical gaps — WAF blocking complex queries, blank empty state, zero personalization, non-product queries routing to wrong domains. Three genuine strengths — synonym coverage is strong, category routing works, mobile experience is clean.\n\nROI model is built on your traffic. Conservative scenario: $147M/year in search-influenced conversion lift.\n\n30 minutes with you and Torsten. Or just send the doc along if that's more useful."
+        "body": "Joel \u2014\n\nThe full Costco search audit is ready. 3.5/10 overall score. Four critical gaps \u2014 WAF blocking complex queries, blank empty state, zero personalization, non-product queries routing to wrong domains. Three genuine strengths \u2014 synonym coverage is strong, category routing works, mobile experience is clean.\n\nROI model is built on your traffic. Conservative scenario: $147M/year in search-influenced conversion lift.\n\n30 minutes with you and Torsten. Or just send the doc along if that's more useful."
       }
     ],
     "assets_library": [
@@ -1442,39 +1454,39 @@
     "confirmed": true,
     "competitor_name": "BJ's Wholesale",
     "competitor_domain": "bjs.com",
-    "confirmation_method": "Scratchpad 04-competitors.md — flagged as Algolia customer",
+    "confirmation_method": "Scratchpad 04-competitors.md \u2014 flagged as Algolia customer",
     "source_url": "https://builtwith.com/bjs.com",
-    "talking_point": "BJ's Wholesale — a direct membership warehouse competitor — is confirmed using Algolia. While Costco's NLP returns insurance plans for 'best TV for gaming', BJ's members get instant, relevant results. For a $65/year membership that promises a premium experience, your search is the moment that tests that promise.",
-    "positioning": "BJ's is a smaller competitor already investing in search intelligence. Costco has the scale, the data ($470M personalization carousels), and the infrastructure — just not the search layer to connect them.",
+    "talking_point": "BJ's Wholesale \u2014 a direct membership warehouse competitor \u2014 is confirmed using Algolia. While Costco's NLP returns insurance plans for 'best TV for gaming', BJ's members get instant, relevant results. For a $65/year membership that promises a premium experience, your search is the moment that tests that promise.",
+    "positioning": "BJ's is a smaller competitor already investing in search intelligence. Costco has the scale, the data ($470M personalization carousels), and the infrastructure \u2014 just not the search layer to connect them.",
     "competitors_using_algolia": [
       {
         "name": "BJ's Wholesale",
         "domain": "bjs.com",
         "source_url": "https://builtwith.com/bjs.com",
-        "confirmation_method": "BuiltWith scan — scratchpad 04-competitors.md"
+        "confirmation_method": "BuiltWith scan \u2014 scratchpad 04-competitors.md"
       }
     ],
-    "talk_track": "BJ's Wholesale — your most direct membership warehouse competitor — is already using Algolia. Your members pay $65/year expecting a premium experience. When they search 'best TV for gaming under $1000' and get insurance plans, that's the gap between your current search and what they expect. Algolia bridges that gap — and gives you the platform to connect Ron Vachris's 'seamless, personalized' vision to the $470M in recommendation revenue your CFO just reported."
+    "talk_track": "BJ's Wholesale \u2014 your most direct membership warehouse competitor \u2014 is already using Algolia. Your members pay $65/year expecting a premium experience. When they search 'best TV for gaming under $1000' and get insurance plans, that's the gap between your current search and what they expect. Algolia bridges that gap \u2014 and gives you the platform to connect Ron Vachris's 'seamless, personalized' vision to the $470M in recommendation revenue your CFO just reported."
   },
   "demos": [
     {
       "scenario": "Empty State Discovery Demo",
-      "query": "(search box activated — no input typed)",
-      "today": "Blank panel — zero popular searches, zero trending products, zero categories shown. Costco's 55M+ member dataset is unused at the highest-intent moment in the shopping journey.",
+      "query": "(search box activated \u2014 no input typed)",
+      "today": "Blank panel \u2014 zero popular searches, zero trending products, zero categories shown. Costco's 55M+ member dataset is unused at the highest-intent moment in the shopping journey.",
       "with_algolia": "Algolia Predict populates the empty state with trending queries (by geography, by season), top categories, and personalized 'Your Frequent Buys' suggestions for logged-in members. Measured +12% SAYT engagement at comparable club retailers.",
       "screenshot": "screenshots/02-empty-state.png"
     },
     {
       "scenario": "NLP / Natural Language Query Demo",
       "query": "best tv for gaming under 1000",
-      "today": "Returns Costco Business Center pages, insurance plans, and off-topic items. Zero TVs returned for a clear transactional natural-language query worth $800–$1,000 AOV.",
-      "with_algolia": "Algolia NeuralSearch parses intent (product type: TV, use-case: gaming, price ceiling: $1,000) and returns Samsung QLED 65\", Sony X90L, and LG C3 OLED — all under $1,000, all gaming-certified. Price filter applied automatically with no facet interaction required.",
+      "today": "Returns Costco Business Center pages, insurance plans, and off-topic items. Zero TVs returned for a clear transactional natural-language query worth $800\u2013$1,000 AOV.",
+      "with_algolia": "Algolia NeuralSearch parses intent (product type: TV, use-case: gaming, price ceiling: $1,000) and returns Samsung QLED 65\", Sony X90L, and LG C3 OLED \u2014 all under $1,000, all gaming-certified. Price filter applied automatically with no facet interaction required.",
       "screenshot": "screenshots/13-nlp-gaming-tv-sayt.png"
     },
     {
       "scenario": "Federated Help Content Demo",
       "query": "return policy",
-      "today": "Product search results with no help content visible. Costco's return policy — a major membership conversion driver — is invisible in search. Members navigate to a separate help domain.",
+      "today": "Product search results with no help content visible. Costco's return policy \u2014 a major membership conversion driver \u2014 is invisible in search. Members navigate to a separate help domain.",
       "with_algolia": "Federated search surfaces a 'Help & Membership' panel: Return Policy article, Membership FAQs, and Warehouse Locator rendered alongside products in a two-column SAYT layout. Reduces call center volume for policy questions.",
       "screenshot": "screenshots/08-non-product-return-policy-sayt.png"
     }
@@ -1484,20 +1496,20 @@
       {
         "name": "Segment (Twilio)",
         "type": "cdp",
-        "co_sell_motion": "Costco uses Segment CDP — confirmed by BuiltWith live scan (939 technologies, 2026-03-18). Algolia has a published Segment integration: search events (query, click, conversion) can be sent directly to Segment as standard track events, enriching Costco's 55M+ member profiles with search behavioral data. Co-sell: Algolia + Segment joint story on unified search-to-purchase analytics.",
+        "co_sell_motion": "Costco uses Segment CDP \u2014 confirmed by BuiltWith live scan (939 technologies, 2026-03-18). Algolia has a published Segment integration: search events (query, click, conversion) can be sent directly to Segment as standard track events, enriching Costco's 55M+ member profiles with search behavioral data. Co-sell: Algolia + Segment joint story on unified search-to-purchase analytics.",
         "confidence": "HIGH",
-        "label": "[FACT — BuiltWith live domain lookup 2026-03-18 + Algolia-Segment integration at algolia.com/integrations]"
+        "label": "[FACT \u2014 BuiltWith live domain lookup 2026-03-18 + Algolia-Segment integration at algolia.com/integrations]"
       },
       {
         "name": "GrowthLoop",
         "type": "ai_personalization",
-        "co_sell_motion": "Costco partnered with GrowthLoop AI in August 2025 (PRNewswire announcement) for AI-powered audience building on Google Cloud. Algolia Personalization can feed GrowthLoop with real-time search affinity signals — product categories, brand preferences, and price sensitivity derived from search behavior. Co-sell: GrowthLoop + Algolia as the AI personalization stack for Costco's online channel.",
+        "co_sell_motion": "Costco partnered with GrowthLoop AI in August 2025 (PRNewswire announcement) for AI-powered audience building on Google Cloud. Algolia Personalization can feed GrowthLoop with real-time search affinity signals \u2014 product categories, brand preferences, and price sensitivity derived from search behavior. Co-sell: GrowthLoop + Algolia as the AI personalization stack for Costco's online channel.",
         "confidence": "MEDIUM",
-        "label": "[WEBSEARCH — PRNewswire Costco + GrowthLoop announcement, August 2025]"
+        "label": "[WEBSEARCH \u2014 PRNewswire Costco + GrowthLoop announcement, August 2025]"
       }
     ],
     "crossbeam_data_available": false,
-    "source_label": "[FACT — BuiltWith live domain scan 2026-03-18 + PRNewswire 2025]",
+    "source_label": "[FACT \u2014 BuiltWith live domain scan 2026-03-18 + PRNewswire 2025]",
     "si_partners": [],
     "immediate_action": null,
     "co_sell_recommendation": "Lead with Segment (Twilio) co-sell motion (highest confidence). Engage Algolia alliance team to activate."
@@ -1505,7 +1517,7 @@
   "recommended_first_play": {
     "type": "partner_warm_intro",
     "headline": "GrowthLoop AI Partnership = Open AI Conversation",
-    "detail": "Costco announced a GrowthLoop AI partnership in August 2025 for AI-powered audience building on Google Cloud. This signals that Costco's digital leadership is actively evaluating AI-powered tools. Lead with Algolia's AI stack: 'You're already deploying AI for audience building — extend that to search and discovery. Algolia NeuralSearch + Personalization plugs directly into your Segment CDP and Google Cloud stack.' Reach the CTO through the GrowthLoop relationship or via the Segment partnership team.",
+    "detail": "Costco announced a GrowthLoop AI partnership in August 2025 for AI-powered audience building on Google Cloud. This signals that Costco's digital leadership is actively evaluating AI-powered tools. Lead with Algolia's AI stack: 'You're already deploying AI for audience building \u2014 extend that to search and discovery. Algolia NeuralSearch + Personalization plugs directly into your Segment CDP and Google Cloud stack.' Reach the CTO through the GrowthLoop relationship or via the Segment partnership team.",
     "urgency": "medium",
     "source": "intelligence_signals"
   }
