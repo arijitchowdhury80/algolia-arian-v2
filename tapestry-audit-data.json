@@ -1694,5 +1694,39 @@
     "detail": "TCS is Tapestry's confirmed digital transformation partner across Coach, Kate Spade, and Stuart Weitzman — and TCS is a listed Algolia SI partner. Contact Algolia's TCS alliance team immediately. Request a warm introduction to Tapestry's VP Digital or CDO through TCS's account team. TCS has C-suite access across the Tapestry brand portfolio. This is the single highest-value co-sell vector in the account — higher confidence than cold outreach or SFCC AppExchange.",
     "urgency": "high",
     "source": "partner_intel"
-  }
+  },
+  "strategic_angles": [
+    {
+      "angle": "China Expansion Creates Search Infrastructure Gap",
+      "urgency": "HIGH",
+      "signal": "60+ new China stores planned FY2026–FY2028; China grew 19% YoY in Q1 FY2026 — largest growth market",
+      "search_connection": "Chinese consumers expect Pinyin-aware search, simplified-character synonym mapping, and regional inventory filtering. Tapestry's current Elasticsearch infrastructure (BuiltWith-detected) has no localized NLP for Chinese search queries. 200 cities × multi-brand catalog = a relevance problem that compounds with each new store.",
+      "algolia_solution": "Algolia's multilingual NLP and geo-specific index configuration handle Chinese Mandarin natively. A single index per brand, regionalized. No Elasticsearch replatform required.",
+      "source": "China Daily (chinadaily.com.cn/a/202512/01), WWD Tapestry expansion coverage"
+    },
+    {
+      "angle": "$300M CapEx Digital Budget — Algolia Fits the Mandate",
+      "urgency": "HIGH",
+      "signal": "~$200M of the $300M CapEx budget is for digital and IT initiatives (new Las Vegas fulfillment center + digital platforms)",
+      "search_connection": "A $200M digital investment cycle is the largest discretionary budget window in Tapestry's recent history. Search infrastructure is a direct line-item within the ecommerce platform layer — not a speculative add-on.",
+      "algolia_solution": "Position Algolia as part of the digital platform layer, not a point solution. The TCS omnichannel transformation partnership (active) is a co-sell path: TCS is an Algolia SI partner with documented implementations.",
+      "source": "Consumer Goods Technology (consumergoods.com/tapestry-weaves-consumer-data)"
+    },
+    {
+      "angle": "Post-Capri Merger Block — Independent Growth Mandate",
+      "urgency": "MEDIUM",
+      "signal": "$8.5B Capri merger blocked by FTC Nov 2024; Stuart Weitzman sold $105M to Caleres 2025. Tapestry is now a focused 2-brand (Coach + Kate Spade) growth story targeting $10B by 2028.",
+      "search_connection": "Post-merger clarity means Tapestry's tech leadership has a clear 2-brand platform to optimize. No Capri integration distraction. Q1 FY2026 digital focus is accelerating — this is the window before FY2026 tech budgets are locked.",
+      "algolia_solution": "A 2-brand Algolia deployment (Coach + Kate Spade) with a single Algolia account — shared synonyms, shared analytics, brand-segmented indexes — maps directly to Tapestry's consolidated digital strategy.",
+      "source": "CNBC (cnbc.com/2024/10/24/judge-blocks-coach-owner-tapestrys), Retail Dive Stuart Weitzman sale"
+    },
+    {
+      "angle": "eCommerce Now 35% of Revenue — Search is $735M of $2.1B Online",
+      "urgency": "HIGH",
+      "signal": "eCommerce = 35% of $6B+ revenue (~$2.1B). VP eCommerce manages $424M Kate Spade NA alone. Sr. Director Outlet eCommerce oversees $1B+ outlet business.",
+      "search_connection": "At 35% digital revenue share, even a 2% search conversion improvement on the Coach.com catalog is worth $15M–$20M annually. The 'gift for mom under 300' query returning 1 result from 700+ eligible products is a documented, measurable revenue leak.",
+      "algolia_solution": "Algolia's NLP parses gift intent queries — occasion, recipient, budget — and returns the full eligible catalog. Benchmarked: customers who use site search convert at 2–3× the rate of non-searchers (Algolia internal data).",
+      "source": "NextSprints Tapestry Product Strategy Guide, browser audit finding F01"
+    }
+  ]
 }

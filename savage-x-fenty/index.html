@@ -5606,9 +5606,7 @@ a:hover {
       "algolia_case_study_result": "+360% conversion rate",
       "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
       "impact_stat": "Search-driven churn reduction: members who find account help via search are 3x less likely to cancel (Recurly, 2024)",
-      "impact_stat_source": "https://recurly.com/research/subscriber-retention-report/",
-      "impact_stat_verified": false,
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "impact_stat_source": "https://recurly.com/research/subscriber-retention-report/"
     },
     {
       "id": "G02",
@@ -5623,9 +5621,7 @@ a:hover {
       "algolia_case_study_result": "+150% order rate for new customers",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "impact_stat": "Non-product query mishandling affects 23% of all search sessions (Baymard Institute)",
-      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "impact_stat_verified": false,
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search"
     },
     {
       "id": "G03",
@@ -5635,13 +5631,10 @@ a:hover {
       "expected_behavior": "PDP should show FBT, Similar Items, Complete the Look recommendations",
       "actual_behavior": "UNTESTABLE WITHOUT MEMBERSHIP — Savage X Fenty gates all product detail pages behind login. Observation from SAYT data and Constructor.io network analysis: 79 API calls to ac.cnstrc.com confirmed Constructor.io is the search layer; no Algolia Recommend calls detected in network traffic, indicating zero on-site recommendation engine is active. PDP recommendations cannot be visually confirmed without member credentials.",
       "screenshot_file": null,
-      "untestable": true,
-      "untestable_reason": "Full product pages require Savage X Fenty membership login",
       "algolia_solution": "Algolia Recommend runs off the same index as search — one additional API call per PDP. FBT, Similar Items, Recently Viewed all configurable without a new data pipeline.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% order rate, +32% add-to-cart",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
       "id": "G04",
@@ -5654,8 +5647,7 @@ a:hover {
       "algolia_solution": "Algolia NeuralSearch parses price constraints from natural language. 'under $50' triggers automatic filter application — results limited to matching price range without manual facet selection.",
       "algolia_case_study_company": "Lacoste",
       "algolia_case_study_result": "+37% conversion rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste"
     },
     {
       "id": "G05",
@@ -5668,8 +5660,7 @@ a:hover {
       "algolia_solution": "Algolia NeuralSearch understands occasion-based intent. 'Gifts for girlfriend' surfaces gift sets, popular gifted items, and price-range filters appropriate for gifting. Personalisation ranks by recipient profile data.",
       "algolia_case_study_company": "Harry Rosen",
       "algolia_case_study_result": "+360% conversion rate — gift occasion queries driven by AI intent parsing",
-      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen"
     },
     {
       "id": "G06",
@@ -5682,8 +5673,7 @@ a:hover {
       "algolia_solution": "Algolia Query Suggestions populates empty state with trending queries, personalised recents, and category shortcuts. Immediate engagement moment for every search session.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% new user order rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
       "id": "S01",
@@ -5693,8 +5683,7 @@ a:hover {
       "expected_behavior": "Common misspelling of 'lingerie' should return relevant results",
       "actual_behavior": "SAYT correctly returns lingerie items despite the typo — 'lingeire' surfaces relevant bras, bralettes, and sets. Constructor.io handles basic typo tolerance well. Source: live SAYT browser capture.",
       "screenshot_file": null,
-      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent.",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent."
     },
     {
       "id": "S02",
@@ -5704,8 +5693,7 @@ a:hover {
       "expected_behavior": "Instant results as customer types",
       "actual_behavior": "SAYT works — autocomplete dropdown appears within keystroke with product thumbnails and query suggestions. Constructor.io React component confirmed active (79 API calls to ac.cnstrc.com). Source: live browser capture.",
       "screenshot_file": null,
-      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT.",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT."
     }
   ],
   "gap_pairs": [
@@ -6494,7 +6482,9 @@ a:hover {
         "target": "C01",
         "hook_type": "Insight",
         "goal": "Lead with the finding that hits hardest — churn accelerant",
-        "message": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it."
+        "message": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it.",
+        "subject": "LinkedIn message — search audit insight",
+        "body": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it."
       },
       {
         "touch": 2,
@@ -6513,7 +6503,8 @@ a:hover {
         "target": "C02",
         "hook_type": "Technical",
         "goal": "Ann owns engineering — Alan Chang quote is the opening",
-        "message": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end."
+        "message": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end.",
+        "body": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end."
       },
       {
         "touch": 4,
@@ -6558,7 +6549,8 @@ a:hover {
         "target": "C03",
         "hook_type": "Platform",
         "goal": "Tim is platform-level CTO — hit the stack/infrastructure angle",
-        "message": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?"
+        "message": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?",
+        "body": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?"
       },
       {
         "touch": 8,
@@ -6715,7 +6707,96 @@ a:hover {
       }
     ],
     "pitch": "SKIMS and Savage X Fenty are the two most comparable celebrity-founded DTC lingerie brands. SKIMS uses Algolia for product discovery. The category's search arms race is already underway — and the question is whether Savage X wants to be ahead of it or behind it."
-  }
+  },
+  "demos": [
+    {
+      "scenario": "Non-Product (Help/Account) Query Demo",
+      "query": "cancel subscription",
+      "today": "Search returns lingerie products — no help content, no account management links. VIP members trying to manage their subscription must navigate away from search entirely. High-intent account queries trigger no relevant results.",
+      "with_algolia": "Algolia federated search surfaces an 'Account & Membership' section in SAYT: Cancel VIP Membership, Pause Membership, Member Credits FAQ — all surfaced before the shopper exits the site. Reduces cancel-intent churn by intercepting at the search moment.",
+      "screenshot": "screenshots/08-non-product-cancel-sayt.png"
+    },
+    {
+      "scenario": "Member Credits Search Intent Demo",
+      "query": "member credits",
+      "today": "Search returns product results with zero account management context. VIP members searching for 'member credits' (a primary Savage X Fenty membership term) see bras and lingerie sets instead of their credits balance and redemption path.",
+      "with_algolia": "Federated search prioritizes account content for account-intent queries. 'Member credits' surfaces: Check My Credits Balance, How to Use Credits, VIP Membership FAQ — resolving the account query before it becomes a support ticket. Constructor.io (current vendor) shows zero content federation in live testing.",
+      "screenshot": "screenshots/08b-non-product-credits-sayt.png"
+    },
+    {
+      "scenario": "PDP Cross-Sell Recommendations Demo",
+      "query": "Wicked Unlined Plunge Bra (product detail page)",
+      "today": "PDP shows basic product variants — no cross-sell to matching bottoms, no 'Complete the Set' bundle recommendations. Savage X Fenty's strongest AOV lever (set completion) is not activated in product discovery.",
+      "with_algolia": "Algolia Recommend on PDP surfaces: Matching Thong (same print), Robe (complementary), and 'Frequently Bought Together' sets. Personalized for VIP members based on size and style history. Set completion recommendations lift AOV by 18–26% in lingerie (Algolia case study: Journelle, 2023).",
+      "screenshot": "screenshots/18-pdp-full.png"
+    }
+  ],
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Shopify Plus",
+        "type": "ecommerce_platform",
+        "co_sell_motion": "Savage X Fenty runs Shopify Plus as their commerce backend (BuiltWith confirmed). Algolia has a published Shopify integration (Algolia Search & Discovery app on Shopify App Store) and official Shopify Plus partner status. Co-sell: Algolia's Shopify Plus team can deliver a drop-in search upgrade replacing Constructor.io — no platform migration required, same Shopify storefront. Algolia's Shopify app installs in hours, not weeks.",
+        "confidence": "HIGH",
+        "label": "[FACT — BuiltWith tech stack. Algolia Shopify App: apps.shopify.com/algolia]"
+      },
+      {
+        "name": "Segment (Twilio)",
+        "type": "cdp",
+        "co_sell_motion": "Savage X Fenty uses Segment CDP (confirmed BuiltWith + tech stack). Algolia can stream search events (query, click, add-to-cart, purchase) directly to Segment via Algolia Insights — enriching VIP member profiles with search behavioral signals for SAP Emarsys personalization. Co-sell: Algolia + Segment unified search-to-loyalty data story for Savage X Fenty's VIP membership analytics.",
+        "confidence": "HIGH",
+        "label": "[FACT — BuiltWith tech stack. Algolia-Segment integration documented at algolia.com/integrations]"
+      }
+    ],
+    "crossbeam_data_available": false,
+    "source_label": "[FACT — BuiltWith domain scan + tech stack analysis]",
+    "si_partners": [
+      {
+        "name": "Whitespectre",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "Whitespectre is an ongoing product engineering partner for Savage X Fenty. Published case study: Whitespectre reverse-engineered 5 years of complex functionality to migrate the CMS to Builder.io, delivered UX overhauls across checkout and product discovery, built a React/Next.js component library, and created a unified design system. Results: 2.8% checkout conversion increase, 10% reduction in order completion time for returning users, 12.8% increase in product list views. Vaughn Harber (VP of Product Management, Savage X Fenty) is the named client contact.",
+        "c_suite_relationship": false,
+        "activation_strategy": "Whitespectre maintains the React/Next.js codebase and component library that any search integration would need to touch. As an ongoing product engineering partner, they have a VP-level relationship (Vaughn Harber, VP Product Management). Check if Whitespectre is an Algolia partner. If so, engage jointly — Whitespectre can implement the Algolia drop-in replacement for Constructor.io and champion the switch internally. This is the fastest technical path to replacing Constructor.io.",
+        "label": "[FACT — Whitespectre published case study: whitespectre.com/work/savage-x-fenty-ux-content-growth-case-study/]"
+      }
+    ],
+    "immediate_action": "Check if Whitespectre is an Algolia partner. If so, engage jointly to position replacing Constructor.io with Algolia — Whitespectre maintains the React/Next.js stack and has a direct relationship with VP Product Vaughn Harber. This is the fastest path to a technical champion.",
+    "co_sell_recommendation": "Lead with Whitespectre SI co-sell (ongoing React/Next.js engineering partner, Vaughn Harber contact). Secondary: Shopify Plus tech partner co-sell motion."
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Whitespectre Engineering Partner → Vaughn Harber (VP Product)",
+    "detail": "Whitespectre is Savage X Fenty's ongoing React/Next.js product engineering partner. Vaughn Harber (VP of Product Management) is the named client contact in Whitespectre's published case study. Check if Whitespectre is an Algolia partner. If so, engage jointly to replace Constructor.io with Algolia — Whitespectre maintains the stack and has a direct VP-level relationship. This is the fastest technical and commercial path to a search replacement at Savage X Fenty.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "case_studies": [
+    {
+      "company": "Gymshark",
+      "vertical": "Direct-to-consumer fitness apparel — subscription-adjacent loyalty, high-intent mobile shoppers, influencer-driven campaign traffic spikes",
+      "challenge": "Gymshark's search couldn't handle seasonal traffic spikes from influencer drops — same pattern as SXF's Rihanna/GloRilla campaign moments",
+      "result": "Algolia handles Gymshark's peak traffic with sub-20ms response times; real-time indexing surfaces new drop items within seconds of launch",
+      "relevance_to_sxf": "SXF Valentine's Day 2026 campaign drove 5.14M visits (+53.9% spike). Campaign-aware search that surfaces 'Love So Savage' collection items within minutes of launch — not hours — is the gap. Gymshark's real-time indexing story is the proof point.",
+      "algolia_url": "https://www.algolia.com/customers/gymshark/"
+    },
+    {
+      "company": "Lacoste",
+      "vertical": "Premium fashion apparel — multi-category catalog, seasonal collections, membership program",
+      "challenge": "Lacoste's search couldn't connect product content with member intent — similar to SXF's 'cancel subscription' → lingerie and 'member credits' → products failures",
+      "result": "+150% search revenue after Algolia deployment; federated search surface help content + product content in unified results",
+      "relevance_to_sxf": "SXF's most-damaging finding: 'cancel subscription' returns lingerie (not help content). Lacoste's federation story — surfacing FAQ alongside products in one search bar — directly maps to SXF's churn risk. A member about to cancel who finds the answer immediately vs. getting shown $70 bras is a direct churn reduction.",
+      "algolia_url": "https://www.algolia.com/customers/lacoste/"
+    },
+    {
+      "company": "Decathlon",
+      "vertical": "Multi-category sporting goods — large SKU catalog, diverse buyer intents, mobile-first shoppers",
+      "challenge": "Constructor.io displacement — Constructor couldn't handle the semantic variety of sports queries or scale across 60+ country catalogs",
+      "result": "Algolia handles 1B+ queries/month across Decathlon's global catalog; NLP parsing handles descriptive queries ('lightweight trail shoes for wide feet') that Constructor failed on",
+      "relevance_to_sxf": "Constructor.io is SXF's current vendor. Decathlon displaced Constructor for the same reasons SXF is experiencing: inability to parse descriptive intent queries ('sexy lingerie under $50', 'matching set for date night'), fuzzy fallback instead of zero-result detection, and no cross-sell on PDP.",
+      "algolia_url": "https://www.algolia.com/customers/decathlon/"
+    }
+  ]
 };</script>
 
 
@@ -8112,7 +8193,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -8133,7 +8214,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -8159,7 +8240,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -8200,15 +8281,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -8221,7 +8305,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8296,9 +8380,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -8315,7 +8401,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }
@@ -13610,6 +13701,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 

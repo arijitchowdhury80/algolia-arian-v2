@@ -1269,7 +1269,9 @@
         "target": "C01",
         "hook_type": "Insight",
         "goal": "Lead with the finding that hits hardest — churn accelerant",
-        "message": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it."
+        "message": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it.",
+        "subject": "LinkedIn message — search audit insight",
+        "body": "Kevin — searched 'cancel subscription' on savagex.com. Got 100 lingerie products. A member who's about to cancel is now being served product pages instead of help content.\n\nThat's not a search problem. That's a churn accelerant.\n\nI have a few more like this if you're open to it."
       },
       {
         "touch": 2,
@@ -1288,7 +1290,8 @@
         "target": "C02",
         "hook_type": "Technical",
         "goal": "Ann owns engineering — Alan Chang quote is the opening",
-        "message": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end."
+        "message": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end.",
+        "body": "Ann — your Director Alan Chang said it directly: 'What keeps me up at night is that my product managers are blocked from being able to activate the data.'\n\nAlgolia's merchandising interface removes that block. PMs push rules without an engineering ticket. No index rebuild, no deploy cycle. Wondering if that gap resonates on your end."
       },
       {
         "touch": 4,
@@ -1333,7 +1336,8 @@
         "target": "C03",
         "hook_type": "Platform",
         "goal": "Tim is platform-level CTO — hit the stack/infrastructure angle",
-        "message": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?"
+        "message": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?",
+        "body": "Tim — SKIMS is on Algolia. Victoria's Secret moved to Google AI search in January 2024. ThirdLove went to Bloomreach in March 2025.\n\nSavage X is still on Constructor since 2023. Three closest competitors have upgraded their search infrastructure in 18 months.\n\nFrom a platform perspective at FableticsOS: wondering if you've thought about what a shared search layer across the portfolio would look like. Worth a conversation?"
       },
       {
         "touch": 8,
@@ -1553,5 +1557,31 @@
     "detail": "Whitespectre is Savage X Fenty's ongoing React/Next.js product engineering partner. Vaughn Harber (VP of Product Management) is the named client contact in Whitespectre's published case study. Check if Whitespectre is an Algolia partner. If so, engage jointly to replace Constructor.io with Algolia — Whitespectre maintains the stack and has a direct VP-level relationship. This is the fastest technical and commercial path to a search replacement at Savage X Fenty.",
     "urgency": "high",
     "source": "partner_intel"
-  }
+  },
+  "case_studies": [
+    {
+      "company": "Gymshark",
+      "vertical": "Direct-to-consumer fitness apparel — subscription-adjacent loyalty, high-intent mobile shoppers, influencer-driven campaign traffic spikes",
+      "challenge": "Gymshark's search couldn't handle seasonal traffic spikes from influencer drops — same pattern as SXF's Rihanna/GloRilla campaign moments",
+      "result": "Algolia handles Gymshark's peak traffic with sub-20ms response times; real-time indexing surfaces new drop items within seconds of launch",
+      "relevance_to_sxf": "SXF Valentine's Day 2026 campaign drove 5.14M visits (+53.9% spike). Campaign-aware search that surfaces 'Love So Savage' collection items within minutes of launch — not hours — is the gap. Gymshark's real-time indexing story is the proof point.",
+      "algolia_url": "https://www.algolia.com/customers/gymshark/"
+    },
+    {
+      "company": "Lacoste",
+      "vertical": "Premium fashion apparel — multi-category catalog, seasonal collections, membership program",
+      "challenge": "Lacoste's search couldn't connect product content with member intent — similar to SXF's 'cancel subscription' → lingerie and 'member credits' → products failures",
+      "result": "+150% search revenue after Algolia deployment; federated search surface help content + product content in unified results",
+      "relevance_to_sxf": "SXF's most-damaging finding: 'cancel subscription' returns lingerie (not help content). Lacoste's federation story — surfacing FAQ alongside products in one search bar — directly maps to SXF's churn risk. A member about to cancel who finds the answer immediately vs. getting shown $70 bras is a direct churn reduction.",
+      "algolia_url": "https://www.algolia.com/customers/lacoste/"
+    },
+    {
+      "company": "Decathlon",
+      "vertical": "Multi-category sporting goods — large SKU catalog, diverse buyer intents, mobile-first shoppers",
+      "challenge": "Constructor.io displacement — Constructor couldn't handle the semantic variety of sports queries or scale across 60+ country catalogs",
+      "result": "Algolia handles 1B+ queries/month across Decathlon's global catalog; NLP parsing handles descriptive queries ('lightweight trail shoes for wide feet') that Constructor failed on",
+      "relevance_to_sxf": "Constructor.io is SXF's current vendor. Decathlon displaced Constructor for the same reasons SXF is experiencing: inability to parse descriptive intent queries ('sexy lingerie under $50', 'matching set for date night'), fuzzy fallback instead of zero-result detection, and no cross-sell on PDP.",
+      "algolia_url": "https://www.algolia.com/customers/decathlon/"
+    }
+  ]
 }

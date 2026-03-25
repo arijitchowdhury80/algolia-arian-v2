@@ -6314,40 +6314,90 @@ a:hover {
       }
     ]
   },
-  "abx_sequence": [
-    {
-      "touch": 1,
-      "channel": "Email to IT hiring manager",
-      "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
-      "body_preview": "You're hiring a Senior Engineer to evaluate AI solutions and manage vendor RFPs (saw the LinkedIn posting). We've done the research for you — here's what we found when we tested Brooks' search against the 4 gaps a runner hits every session.",
-      "cta": "15-min call to share the audit findings",
-      "timing": "Week 1 — before Senior Engineer role is filled"
-    },
-    {
-      "touch": 2,
-      "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
-      "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
-      "body_preview": "Two case studies from your vertical — Shoe Carnival (footwear) and Under Armour (athletic) both had the same SFCC native search limitations Brooks has today. Here's what happened after Algolia.",
-      "cta": "Review the audit findings at [audit URL]",
-      "timing": "Week 2"
-    },
-    {
-      "touch": 3,
-      "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
-      "subject": "Direct message",
-      "body_preview": "You're building out the lifestyle footwear merchandising playbook — the hardest part is surfacing the right products to buyers who don't know Brooks as a performance brand. Algolia's merchandising rules let you configure this without engineering tickets.",
-      "cta": "Would you be open to a 20-min chat?",
-      "timing": "Week 2"
-    },
-    {
-      "touch": 4,
-      "channel": "Personalized demo",
-      "subject": "4-scenario demo tailored to Brooks",
-      "body_preview": "1) Live NLP demo: type 'best shoes for marathon training' in Brooks today vs Algolia. 2) Multi-language: German runner searching 'Laufschuhe.' 3) Personalization: Run Club member session. 4) Merchandiser workflow: Cascadia launch banner in 2 minutes.",
-      "cta": "Schedule demo",
-      "timing": "Week 4"
-    }
-  ],
+  "abx_sequence": {
+    "sequence_type": "SFCC Displacement — 3 Contacts, 4 Touches",
+    "total_touches": 4,
+    "duration_days": 28,
+    "channels": [
+      "Email",
+      "LinkedIn"
+    ],
+    "research_basis": "Phase 2 browser audit findings: NLP gap (marathon training query), personalization gap (Ghost 16 no lift), zero PDP recommendations, hiring signal (Senior Engineer Digital Products open)",
+    "triggers": [
+      {
+        "signal": "Senior Engineer — Digital Products hiring (LinkedIn job ID 4382335419)",
+        "urgency": "HIGH — engage before role filled"
+      },
+      {
+        "signal": "SFCC native search platform — no AI/NLP capability",
+        "urgency": "HIGH — displacement opportunity"
+      },
+      {
+        "signal": "No recommendations on PDP — zero cross-sell",
+        "urgency": "MEDIUM — revenue gap"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "C01",
+        "name": "IT Hiring Manager",
+        "title": "Hiring Manager — Senior Engineer, Digital Products",
+        "tier": 1,
+        "role": "Technical Buyer gatekeeper",
+        "angle": "Owns the Senior Engineer Digital Products hire. Engage now — before role is filled — to ensure Algolia evaluation is on the new engineer's roadmap from day 1."
+      },
+      {
+        "id": "C02",
+        "name": "Jessica Brooks",
+        "title": "eCommerce Technical Operations",
+        "tier": 2,
+        "role": "Champion",
+        "angle": "Owns day-to-day ecommerce experience. Feels the NLP and personalization gaps in conversion metrics."
+      },
+      {
+        "id": "C03",
+        "name": "Footwear Merchandiser — Lifestyle",
+        "title": "Footwear Merchandiser I, Lifestyle",
+        "tier": 3,
+        "role": "End-user champion",
+        "angle": "Builds lifestyle assortment. Directly impacted by no merchandising banners in search — cannot surface Cascadia launch or lifestyle collections without engineering."
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "channel": "Email to IT hiring manager",
+        "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
+        "cta": "15-min call to share the audit findings",
+        "timing": "Week 1 — before Senior Engineer role is filled",
+        "body": "Hi —\n\nSaw the Senior Engineer — Digital Products posting on LinkedIn (job ID 4382335419). Whoever fills that role will inherit three search limitations baked into SFCC native that no amount of engineering will fix: zero natural language understanding, no personalization from browsing history, and no recommendations on the product page.\n\nWe ran a quick audit of brooksrunning.com. Two findings stood out:\n\n— Searched 'best shoes for marathon training.' Got generic bestsellers. The query wasn't parsed for intent — cushioning level, surface, or distance. That's a direct revenue miss: a runner who describes exactly what they need leaves with nothing useful.\n\n— Browsed Ghost 16, then searched 'running shoes.' Results were identical to a fresh session. Zero personalization. Ghost 16 didn't move.\n\nYour new engineer won't be able to fix this with SFCC customization — it's a platform capability gap, not a configuration gap. Algolia layers on top of SFCC with a 2-hour SDK install. No replatform.\n\nHappy to share the full audit before the role is filled — takes 15 minutes. Worth it?"
+      },
+      {
+        "touch": 2,
+        "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
+        "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
+        "cta": "Review the audit findings at [audit URL]",
+        "timing": "Week 2",
+        "body": "Jessica —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability."
+      },
+      {
+        "touch": 3,
+        "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
+        "subject": "Direct message",
+        "cta": "Would you be open to a 20-min chat?",
+        "timing": "Week 2",
+        "body": "Hi —\n\nQuick question about the Lifestyle Footwear Merchandiser role: when you're building out the lifestyle assortment, how are you surfacing those products to buyers who don't already know Brooks as a performance brand?\n\nReason I ask — we audited brooksrunning.com and found that merchandising banners in search results aren't active. A 'trail' search returns 67 products but no Cascadia launch callout. 'Sale' redirects to a category page instead of showing sale items with a banner in search.\n\nAlgolia lets merchandisers inject banners, pin products, and boost SKUs without engineering tickets — the merchandiser owns it directly. For a lifestyle launch that needs discovery, that's the gap worth closing.\n\nWould you be open to a 20-min chat?"
+      },
+      {
+        "touch": 4,
+        "channel": "Personalized demo",
+        "subject": "4-scenario demo tailored to Brooks",
+        "cta": "Schedule demo",
+        "timing": "Week 4",
+        "body": "Demo flow — 4 scenarios, 20 minutes:\n\n1. NLP live: type 'best shoes for marathon training' in Brooks today → generic bestsellers. Same query in Algolia → filters to cushioned road shoes (Glycerin, Ghost, Adrenaline). Runs live on your catalog.\n\n2. Personalization: Browse Ghost 16 for 30 seconds, then search 'running shoes.' In Algolia: Ghost family boosted, preferred gender surfaced. In Brooks today: identical to fresh session.\n\n3. Merchandiser workflow: Launch a Cascadia trail campaign banner on the 'trail' query — no engineering ticket. Under 2 minutes in the Algolia dashboard.\n\n4. PDP recommendations: Add 'Frequently Bought Together' (socks, insoles) and 'You may also like' (Glycerin if viewing Ghost). Zero recommendations on PDP today."
+      }
+    ]
+  },
   "case_studies": [
     {
       "vertical": "Athletic Footwear & Apparel",
@@ -6397,7 +6447,29 @@ a:hover {
       "screenshot": "screenshots/14-dynamic-facets.png"
     }
   ],
-  "partner_intel": null,
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Salesforce Commerce Cloud",
+        "type": "ecommerce_platform",
+        "co_sell_motion": "Brooks Running is on Salesforce Commerce Cloud (Demandware SFRA) — confirmed by network inspection March 2026 (all search API calls route to /on/demandware.store/). Algolia maintains a published SFCC cartridge (AppExchange) and an official SFCC integration partner relationship. Co-sell: engage Algolia's Salesforce alliance team to lead a joint SFCC cartridge demo for Brooks Running's digital team. Integration complexity rated LOW — estimated 2–3 week implementation.",
+        "confidence": "HIGH",
+        "label": "[FACT — network inspection March 2026 + Algolia SFCC AppExchange listing]"
+      },
+      {
+        "name": "Amperity",
+        "type": "cdp",
+        "co_sell_motion": "Brooks Running uses Amperity as their Customer Data Platform (BuiltWith + tech stack confirmed). Algolia Personalization can ingest Amperity unified customer profiles to personalize search results for Run Club members — surfacing size, cushioning preference, and running category signals. Co-sell: joint Amperity + Algolia data-to-search story for Brooks' Run Club loyalty program.",
+        "confidence": "MEDIUM",
+        "label": "[FACT — tech stack research March 2026. Algolia-Amperity integration: documented at algolia.com/integrations]"
+      }
+    ],
+    "crossbeam_data_available": false,
+    "source_label": "[FACT — network inspection + BuiltWith tech stack March 2026]",
+    "si_partners": [],
+    "immediate_action": null,
+    "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+  },
   "tab_subtitles": {
     "summary": "What you need to know before walking into Brooks Running",
     "account": "Brooks Running at a glance — #1 performance running brand, 1.2M monthly visitors, $1.6B in revenue, Berkshire Hathaway-backed",
@@ -6411,8 +6483,7 @@ a:hover {
     "detail": "Senior Engineer — Digital Products (IT) posted March 7, 2026 with explicit 'vendor RFP' and 'evaluate AI solutions' language. This Technical Buyer seat is open now — reach the hiring manager before the new engineer develops an incumbent preference. Window: 4-6 weeks.",
     "urgency": "high",
     "source": "intelligence_signals"
-  },
-  "industry_context": null
+  }
 };</script>
 
 
@@ -7809,7 +7880,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -7830,7 +7901,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -7856,7 +7927,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -7897,15 +7968,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -7918,7 +7992,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -7993,9 +8067,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -8012,7 +8088,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }
@@ -13307,6 +13388,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 

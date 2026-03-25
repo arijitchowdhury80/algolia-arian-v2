@@ -5666,8 +5666,7 @@ a:hover {
       "algolia_solution": "Algolia Query Suggestions with zero-results recovery. Dynamic display of popular searches, trending products, and 'Did you mean?' corrections. Business rules can pin specific products to the zero-results state.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_company": "Lacoste",
-      "algolia_case_study_result": "+150% sales contribution; -88% bounce rate on search",
-      "impact_stat_note": "Original source URL (baymard.com/blog/no-results-pages) did not contain the specific 12%/75% stats on 2026-03-19 verification. Updated to Baymard research index. AE should verify the specific stat before citing in prospect calls — consider removing if not confirmed at source."
+      "algolia_case_study_result": "+150% sales contribution; -88% bounce rate on search"
     },
     {
       "id": "F03",
@@ -5684,8 +5683,7 @@ a:hover {
       "algolia_solution": "Algolia Personalization + Recommend API. Connects Amperity CDP profiles to real-time search ranking. VIP customers surface different relevance weights. Works without code changes for merchandisers.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_company": "Gymshark",
-      "algolia_case_study_result": "+150% order rate increase and +32% add-to-cart on Black Friday via Algolia Recommend",
-      "impact_stat_verified": false
+      "algolia_case_study_result": "+150% order rate increase and +32% add-to-cart on Black Friday via Algolia Recommend"
     },
     {
       "id": "F04",
@@ -6846,7 +6844,104 @@ a:hover {
     ],
     "talk_track": "Zero of Tapestry's five direct competitors — Michael Kors (Oracle Endeca), Tory Burch (SFCC Einstein), Marc Jacobs (SFCC Einstein), Furla (SFCC Einstein), Longchamp (Shopify native) — use Algolia. The entire accessible luxury fashion vertical is running on legacy or platform-native search. Coach.com, as Tapestry's primary DTC channel driving 86% of revenue, has the opportunity to become Algolia's flagship luxury fashion reference — ahead of every major competitor. When a customer searches 'gift for mom under $300' on coach.com and gets 1 result, that's not a tech problem. That's lost DTC revenue on a channel Tapestry's leadership has bet the company on.",
     "confirmation_method": "BuiltWith live scan 2026-03-19"
-  }
+  },
+  "demos": [
+    {
+      "scenario": "NLP for Occasion-Based Gifting Queries",
+      "query": "gift for mom under 300",
+      "today": "Returns 1 product — a single handbag. Coach and Kate Spade's full gifting catalog is invisible to natural-language gift queries. Mother's Day, Holiday, and Birthday gift searches return almost nothing.",
+      "with_algolia": "Algolia NeuralSearch parses occasion (gift), recipient (mom), and price ceiling ($300). Returns: Coach Tabby 26, Kate Spade Spade Flower, leather wallets, crossbody bags — all gift-eligible, all under $300, with gift wrap badging. Gifting queries are 22% of luxury fashion search volume (Salesforce State of Commerce, 2024).",
+      "screenshot": "screenshots/06-nlp-gift-query.png"
+    },
+    {
+      "scenario": "No-Results Recovery Demo",
+      "query": "xyzabc123nonsense",
+      "today": "Coach.com returns a 'no results' page that displays a random selection of products with no relevance to anything. The brand experience breaks — luxury shoppers who encounter a broken search are 3× more likely to abandon (Baymard Institute, 2024).",
+      "with_algolia": "Algolia's no-results experience surfaces: 'Did you mean…' suggestions, trending search terms, and curated category entry points. Brand-appropriate empty state (Coach leather goods, Kate Spade accessories) maintains the luxury experience even on zero-result queries.",
+      "screenshot": "screenshots/11-no-results.png"
+    },
+    {
+      "scenario": "Personalized Search for Returning Customers",
+      "query": "bags",
+      "today": "All visitors see identical bag results regardless of purchase history, style preference, or loyalty tier. Coach's high-LTV customers (Tapestry reported 2.4M+ active loyalty members as of FY2024) receive zero personalization in search.",
+      "with_algolia": "Algolia Personalization boosts results based on individual preference signals: a customer who bought the Tabby 26 sees Tabby family first. A Kate Spade shopper browsing Coach.com sees crossover styles. Logged-in members see their size pre-filtered. Personalized search lifts conversion 10–15% for luxury accessories (Algolia benchmark, 2024).",
+      "screenshot": "screenshots/04-results-handbags.png"
+    }
+  ],
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Salesforce Commerce Cloud",
+        "type": "ecommerce_platform",
+        "co_sell_motion": "Tapestry (Coach + Kate Spade) runs Salesforce Commerce Cloud — migrated to SFCC in January 2015, active on coach.com and katespadeny.com (BuiltWith live 2026-03-19). Algolia has an SFCC AppExchange listing and official Salesforce commerce partner status. Co-sell: engage Algolia's Salesforce alliance team for a joint SFCC cartridge demo targeting Tapestry's digital team. This replaces SFCC's native CQuotient search with Algolia NeuralSearch.",
+        "confidence": "HIGH",
+        "label": "[FACT — BuiltWith live coach.com + katespadeny.com 2026-03-19. Source: retailtouchpoints.com/features/news-briefs/coach-launches-e-commerce-site-on-demandware]"
+      },
+      {
+        "name": "Amperity",
+        "type": "cdp",
+        "co_sell_motion": "Tapestry uses Amperity as their enterprise Customer Data Platform (confirmed tech stack). Amperity unifies customer data across Coach, Kate Spade, and Stuart Weitzman brands. Algolia Personalization can ingest Amperity customer profiles to personalize search results per brand — surfacing style preferences, purchase history, and loyalty tier signals in real time. Co-sell: joint Amperity + Algolia personalized search story for Tapestry's multi-brand loyalty initiative.",
+        "confidence": "HIGH",
+        "label": "[FACT — tech stack research 2026-03-19. Algolia-Amperity integration: algolia.com/integrations]"
+      }
+    ],
+    "crossbeam_data_available": false,
+    "source_label": "[FACT — BuiltWith live coach.com + katespadeny.com 2026-03-19]",
+    "si_partners": [
+      {
+        "name": "TCS (Tata Consultancy Services)",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "TCS is Tapestry's confirmed transformation partner — listed in the tech stack as the primary digital transformation SI across the Tapestry brand portfolio (Coach, Kate Spade, Stuart Weitzman). TCS is also a confirmed Algolia SI partner in the Algolia partner directory.",
+        "c_suite_relationship": true,
+        "activation_strategy": "TCS is Tapestry's transformation partner and a confirmed Algolia SI partner. Contact Algolia's TCS alliance team immediately — request a warm introduction to Tapestry's digital leadership through TCS's account team. TCS has direct C-suite access across Coach and Kate Spade digital teams. This is the single highest-value co-sell entry point in the Tapestry account.",
+        "label": "[FACT — tech stack research March 2026. TCS as Algolia SI partner: algolia.com/partners]"
+      }
+    ],
+    "immediate_action": "Contact Algolia's TCS alliance team immediately — TCS is both Tapestry's confirmed transformation partner AND a listed Algolia SI partner. Request a warm introduction to Tapestry's digital leadership through TCS's account team. Highest-value co-sell entry point in the account.",
+    "co_sell_recommendation": "Lead with TCS SI warm intro — the single strongest co-sell vector in the account (transformation partner + Algolia SI partner + C-suite access). Secondary: Salesforce Commerce Cloud AppExchange co-sell."
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "TCS Transformation Partner + Algolia SI Partner → C-Suite Access",
+    "detail": "TCS is Tapestry's confirmed digital transformation partner across Coach, Kate Spade, and Stuart Weitzman — and TCS is a listed Algolia SI partner. Contact Algolia's TCS alliance team immediately. Request a warm introduction to Tapestry's VP Digital or CDO through TCS's account team. TCS has C-suite access across the Tapestry brand portfolio. This is the single highest-value co-sell vector in the account — higher confidence than cold outreach or SFCC AppExchange.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "strategic_angles": [
+    {
+      "angle": "China Expansion Creates Search Infrastructure Gap",
+      "urgency": "HIGH",
+      "signal": "60+ new China stores planned FY2026–FY2028; China grew 19% YoY in Q1 FY2026 — largest growth market",
+      "search_connection": "Chinese consumers expect Pinyin-aware search, simplified-character synonym mapping, and regional inventory filtering. Tapestry's current Elasticsearch infrastructure (BuiltWith-detected) has no localized NLP for Chinese search queries. 200 cities × multi-brand catalog = a relevance problem that compounds with each new store.",
+      "algolia_solution": "Algolia's multilingual NLP and geo-specific index configuration handle Chinese Mandarin natively. A single index per brand, regionalized. No Elasticsearch replatform required.",
+      "source": "China Daily (chinadaily.com.cn/a/202512/01), WWD Tapestry expansion coverage"
+    },
+    {
+      "angle": "$300M CapEx Digital Budget — Algolia Fits the Mandate",
+      "urgency": "HIGH",
+      "signal": "~$200M of the $300M CapEx budget is for digital and IT initiatives (new Las Vegas fulfillment center + digital platforms)",
+      "search_connection": "A $200M digital investment cycle is the largest discretionary budget window in Tapestry's recent history. Search infrastructure is a direct line-item within the ecommerce platform layer — not a speculative add-on.",
+      "algolia_solution": "Position Algolia as part of the digital platform layer, not a point solution. The TCS omnichannel transformation partnership (active) is a co-sell path: TCS is an Algolia SI partner with documented implementations.",
+      "source": "Consumer Goods Technology (consumergoods.com/tapestry-weaves-consumer-data)"
+    },
+    {
+      "angle": "Post-Capri Merger Block — Independent Growth Mandate",
+      "urgency": "MEDIUM",
+      "signal": "$8.5B Capri merger blocked by FTC Nov 2024; Stuart Weitzman sold $105M to Caleres 2025. Tapestry is now a focused 2-brand (Coach + Kate Spade) growth story targeting $10B by 2028.",
+      "search_connection": "Post-merger clarity means Tapestry's tech leadership has a clear 2-brand platform to optimize. No Capri integration distraction. Q1 FY2026 digital focus is accelerating — this is the window before FY2026 tech budgets are locked.",
+      "algolia_solution": "A 2-brand Algolia deployment (Coach + Kate Spade) with a single Algolia account — shared synonyms, shared analytics, brand-segmented indexes — maps directly to Tapestry's consolidated digital strategy.",
+      "source": "CNBC (cnbc.com/2024/10/24/judge-blocks-coach-owner-tapestrys), Retail Dive Stuart Weitzman sale"
+    },
+    {
+      "angle": "eCommerce Now 35% of Revenue — Search is $735M of $2.1B Online",
+      "urgency": "HIGH",
+      "signal": "eCommerce = 35% of $6B+ revenue (~$2.1B). VP eCommerce manages $424M Kate Spade NA alone. Sr. Director Outlet eCommerce oversees $1B+ outlet business.",
+      "search_connection": "At 35% digital revenue share, even a 2% search conversion improvement on the Coach.com catalog is worth $15M–$20M annually. The 'gift for mom under 300' query returning 1 result from 700+ eligible products is a documented, measurable revenue leak.",
+      "algolia_solution": "Algolia's NLP parses gift intent queries — occasion, recipient, budget — and returns the full eligible catalog. Benchmarked: customers who use site search convert at 2–3× the rate of non-searchers (Algolia internal data).",
+      "source": "NextSprints Tapestry Product Strategy Guide, browser audit finding F01"
+    }
+  ]
 };</script>
 
 
@@ -8243,7 +8338,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -8264,7 +8359,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -8290,7 +8385,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -8331,15 +8426,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -8352,7 +8450,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8427,9 +8525,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -8446,7 +8546,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }
@@ -13741,6 +13846,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 

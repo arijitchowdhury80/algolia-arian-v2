@@ -1101,40 +1101,90 @@
       }
     ]
   },
-  "abx_sequence": [
-    {
-      "touch": 1,
-      "channel": "Email to IT hiring manager",
-      "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
-      "body_preview": "You're hiring a Senior Engineer to evaluate AI solutions and manage vendor RFPs (saw the LinkedIn posting). We've done the research for you — here's what we found when we tested Brooks' search against the 4 gaps a runner hits every session.",
-      "cta": "15-min call to share the audit findings",
-      "timing": "Week 1 — before Senior Engineer role is filled"
-    },
-    {
-      "touch": 2,
-      "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
-      "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
-      "body_preview": "Two case studies from your vertical — Shoe Carnival (footwear) and Under Armour (athletic) both had the same SFCC native search limitations Brooks has today. Here's what happened after Algolia.",
-      "cta": "Review the audit findings at [audit URL]",
-      "timing": "Week 2"
-    },
-    {
-      "touch": 3,
-      "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
-      "subject": "Direct message",
-      "body_preview": "You're building out the lifestyle footwear merchandising playbook — the hardest part is surfacing the right products to buyers who don't know Brooks as a performance brand. Algolia's merchandising rules let you configure this without engineering tickets.",
-      "cta": "Would you be open to a 20-min chat?",
-      "timing": "Week 2"
-    },
-    {
-      "touch": 4,
-      "channel": "Personalized demo",
-      "subject": "4-scenario demo tailored to Brooks",
-      "body_preview": "1) Live NLP demo: type 'best shoes for marathon training' in Brooks today vs Algolia. 2) Multi-language: German runner searching 'Laufschuhe.' 3) Personalization: Run Club member session. 4) Merchandiser workflow: Cascadia launch banner in 2 minutes.",
-      "cta": "Schedule demo",
-      "timing": "Week 4"
-    }
-  ],
+  "abx_sequence": {
+    "sequence_type": "SFCC Displacement — 3 Contacts, 4 Touches",
+    "total_touches": 4,
+    "duration_days": 28,
+    "channels": [
+      "Email",
+      "LinkedIn"
+    ],
+    "research_basis": "Phase 2 browser audit findings: NLP gap (marathon training query), personalization gap (Ghost 16 no lift), zero PDP recommendations, hiring signal (Senior Engineer Digital Products open)",
+    "triggers": [
+      {
+        "signal": "Senior Engineer — Digital Products hiring (LinkedIn job ID 4382335419)",
+        "urgency": "HIGH — engage before role filled"
+      },
+      {
+        "signal": "SFCC native search platform — no AI/NLP capability",
+        "urgency": "HIGH — displacement opportunity"
+      },
+      {
+        "signal": "No recommendations on PDP — zero cross-sell",
+        "urgency": "MEDIUM — revenue gap"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "C01",
+        "name": "IT Hiring Manager",
+        "title": "Hiring Manager — Senior Engineer, Digital Products",
+        "tier": 1,
+        "role": "Technical Buyer gatekeeper",
+        "angle": "Owns the Senior Engineer Digital Products hire. Engage now — before role is filled — to ensure Algolia evaluation is on the new engineer's roadmap from day 1."
+      },
+      {
+        "id": "C02",
+        "name": "Jessica Brooks",
+        "title": "eCommerce Technical Operations",
+        "tier": 2,
+        "role": "Champion",
+        "angle": "Owns day-to-day ecommerce experience. Feels the NLP and personalization gaps in conversion metrics."
+      },
+      {
+        "id": "C03",
+        "name": "Footwear Merchandiser — Lifestyle",
+        "title": "Footwear Merchandiser I, Lifestyle",
+        "tier": 3,
+        "role": "End-user champion",
+        "angle": "Builds lifestyle assortment. Directly impacted by no merchandising banners in search — cannot surface Cascadia launch or lifestyle collections without engineering."
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "channel": "Email to IT hiring manager",
+        "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
+        "cta": "15-min call to share the audit findings",
+        "timing": "Week 1 — before Senior Engineer role is filled",
+        "body": "Hi —\n\nSaw the Senior Engineer — Digital Products posting on LinkedIn (job ID 4382335419). Whoever fills that role will inherit three search limitations baked into SFCC native that no amount of engineering will fix: zero natural language understanding, no personalization from browsing history, and no recommendations on the product page.\n\nWe ran a quick audit of brooksrunning.com. Two findings stood out:\n\n— Searched 'best shoes for marathon training.' Got generic bestsellers. The query wasn't parsed for intent — cushioning level, surface, or distance. That's a direct revenue miss: a runner who describes exactly what they need leaves with nothing useful.\n\n— Browsed Ghost 16, then searched 'running shoes.' Results were identical to a fresh session. Zero personalization. Ghost 16 didn't move.\n\nYour new engineer won't be able to fix this with SFCC customization — it's a platform capability gap, not a configuration gap. Algolia layers on top of SFCC with a 2-hour SDK install. No replatform.\n\nHappy to share the full audit before the role is filled — takes 15 minutes. Worth it?"
+      },
+      {
+        "touch": 2,
+        "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
+        "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
+        "cta": "Review the audit findings at [audit URL]",
+        "timing": "Week 2",
+        "body": "Jessica —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability."
+      },
+      {
+        "touch": 3,
+        "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
+        "subject": "Direct message",
+        "cta": "Would you be open to a 20-min chat?",
+        "timing": "Week 2",
+        "body": "Hi —\n\nQuick question about the Lifestyle Footwear Merchandiser role: when you're building out the lifestyle assortment, how are you surfacing those products to buyers who don't already know Brooks as a performance brand?\n\nReason I ask — we audited brooksrunning.com and found that merchandising banners in search results aren't active. A 'trail' search returns 67 products but no Cascadia launch callout. 'Sale' redirects to a category page instead of showing sale items with a banner in search.\n\nAlgolia lets merchandisers inject banners, pin products, and boost SKUs without engineering tickets — the merchandiser owns it directly. For a lifestyle launch that needs discovery, that's the gap worth closing.\n\nWould you be open to a 20-min chat?"
+      },
+      {
+        "touch": 4,
+        "channel": "Personalized demo",
+        "subject": "4-scenario demo tailored to Brooks",
+        "cta": "Schedule demo",
+        "timing": "Week 4",
+        "body": "Demo flow — 4 scenarios, 20 minutes:\n\n1. NLP live: type 'best shoes for marathon training' in Brooks today → generic bestsellers. Same query in Algolia → filters to cushioned road shoes (Glycerin, Ghost, Adrenaline). Runs live on your catalog.\n\n2. Personalization: Browse Ghost 16 for 30 seconds, then search 'running shoes.' In Algolia: Ghost family boosted, preferred gender surfaced. In Brooks today: identical to fresh session.\n\n3. Merchandiser workflow: Launch a Cascadia trail campaign banner on the 'trail' query — no engineering ticket. Under 2 minutes in the Algolia dashboard.\n\n4. PDP recommendations: Add 'Frequently Bought Together' (socks, insoles) and 'You may also like' (Glycerin if viewing Ghost). Zero recommendations on PDP today."
+      }
+    ]
+  },
   "case_studies": [
     {
       "vertical": "Athletic Footwear & Apparel",

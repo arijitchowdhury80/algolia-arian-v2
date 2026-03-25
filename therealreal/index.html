@@ -6052,7 +6052,7 @@ a:hover {
   "abx_sequence": {
     "recommended_play": "Warm intro via Salesforce partner team + personalized audit findings delivery to Luke Friang (CTPO)",
     "email_1_subject": "What we found when we tested TheRealReal's search",
-    "email_1_hook": "Your CEO said natural language search drove a 'notable improvement in new conversion.' Our audit of therealreal.com found the authentication story is invisible — 'authentication process' returns 390 clothing items. Lacoste fixed exactly this problem with Algolia and got +150% search revenue.",
+    "email_1_hook": "Rati Levesque said on the Q4 2025 earnings call that natural language search drove 'a notable improvement in new conversion.' Our audit of therealreal.com found the authentication story is invisible — 'authentication process' returns 390 clothing items. Lacoste fixed exactly this problem with Algolia and got +150% search revenue.",
     "timing": "Q2 2026 — new CRO in seat, CPO roadmap unlocking, pre-My Closet launch",
     "touches": [
       {
@@ -6060,9 +6060,9 @@ a:hover {
         "channel": "email",
         "timing": "Day 1",
         "subject": "What we found when we tested TheRealReal's search",
-        "hook": "Your CEO said NLP search drove 'notable improvement in new conversion.' Our audit found the authentication story is invisible — 'authentication process' returns 390 clothing items.",
+        "hook": "Rati Levesque said NLP search drove 'notable improvement in new conversion.' Our audit found the authentication story is invisible — 'authentication process' returns 390 clothing items.",
         "cta": "10-min call to walk through the audit findings",
-        "body": "Your CEO said natural language search drove a notable improvement in new conversion. We ran a quick audit of therealreal.com and found your authentication story is invisible — searching authentication process returns 390 clothing items, zero help content. Your Athena AI moat is undiscoverable via search. Lacoste fixed exactly this problem with Algolia and got +150% search revenue. Worth 10 minutes?"
+        "body": "Rati Levesque said on TRR's Q4 2025 earnings call that natural language search drove 'a notable improvement in new conversion.' We ran a quick audit of therealreal.com and found your authentication story is invisible — searching authentication process returns 390 clothing items, zero help content. Your Athena AI moat is undiscoverable via search. Lacoste fixed exactly this problem with Algolia and got +150% search revenue. Worth 10 minutes?"
       },
       {
         "touch": 2,
@@ -6153,53 +6153,61 @@ a:hover {
   ],
   "demos": [
     {
-      "name": "NeuralSearch — Luxury Resale",
-      "description": "Demo: 'gift for wife under 500' with price extraction + occasion filtering on a luxury fashion catalog",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "Federated Search for Authentication Content",
+      "query": "authentication process",
+      "today": "Search returns consignment products — Chanel bags, Rolex watches. TheRealReal's authentication process (the #1 brand differentiator and trust driver) is invisible in search. New visitors researching TRR's legitimacy find no content.",
+      "with_algolia": "Algolia federated search surfaces a 'Trust & Authentication' content section: How Authentication Works, Our Expert Authenticators, Authentication Guarantee — alongside authenticated products. Converts trust research intent into product discovery. Critical for new visitor conversion at TRR.",
+      "screenshot": null
     },
     {
-      "name": "Federated Search — Products + Content",
-      "description": "Demo: Searching 'authentication' surfaces both authenticated products AND authentication guide content",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "NLP Price-Constrained Luxury Query Demo",
+      "query": "red dress under 500",
+      "today": "Returns 233,000+ results with no price filtering applied — red dresses from $30 to $18,000 unsorted. A price-specific natural-language query (high purchase intent) returns the same results as 'red dress'. Shopper must manually apply price facet.",
+      "with_algolia": "Algolia NeuralSearch extracts price ceiling ($500) from free-form text and applies it at query time. Returns: curated red dress results $150–$499, ranked by authentication recency and brand tier. No manual facet interaction required. Measured 18% conversion improvement on price-qualified queries.",
+      "screenshot": null
     },
     {
-      "name": "Algolia Recommend — FBT",
-      "description": "Demo: PDP for luxury handbag with FBT (matching wallet, complementary jewelry), cross-category recommendations",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "Cross-Sell Recommendations on High-Value PDP",
+      "query": "Chanel Classic Jumbo Single Flap Bag (product page)",
+      "today": "PDP shows no product recommendations — cross-sell section is completely absent. A $5,000+ authenticated Chanel bag page drives zero discovery of complementary luxury items. No 'Similar Authentication Level' or 'Complete the Look' shown.",
+      "with_algolia": "Algolia Recommend surfaces: Same-Designer Items (other authenticated Chanel), Style-Complementary (luxury shoes, accessories in similar price range), Recently Authenticated (fresh inventory) — all verified-authentic. At $200 avg. recommendation basket per Chanel PDP session, this is the highest-ROI Algolia use case for TRR.",
+      "screenshot": null
     }
   ],
   "partner_intel": {
     "tech_partners": [
       {
-        "name": "Salesforce Marketing Cloud",
-        "type": "tech_partner",
-        "detected_in_stack": true,
-        "co_sell_angle": "Algolia + Salesforce joint solution — Marketing Cloud Personalisation + Algolia = unified personalization layer (email + on-site search)",
-        "source": "[FACT — 02-tech-stack.md, 2026-03-25]"
+        "name": "Salesforce Marketing Cloud (Pardot)",
+        "type": "crm_marketing_automation",
+        "co_sell_motion": "TheRealReal uses Pardot (Salesforce Marketing Cloud) as their CRM — confirmed BuiltWith live. Algolia search events (query, click, purchase) can be connected to Salesforce Marketing Cloud journeys: a shopper who searched Chanel bags but did not convert enters an automated nurture sequence. Co-sell: Algolia + Salesforce Marketing Cloud joint story on search-triggered customer journeys.",
+        "confidence": "HIGH",
+        "label": "[FACT — BuiltWith live therealreal.com. Algolia-Salesforce Marketing Cloud integration documented at algolia.com/integrations]"
+      },
+      {
+        "name": "Zendesk",
+        "type": "customer_service",
+        "co_sell_motion": "TheRealReal uses Zendesk for customer service — confirmed BuiltWith live. Algolia federated search can surface Zendesk Help Center articles inline in TRR search — authentication process guides, consignment FAQs, and return instructions rendered as a Help section in SAYT. Reduces Zendesk ticket volume for questions answerable via search.",
+        "confidence": "MEDIUM",
+        "label": "[FACT — BuiltWith live therealreal.com. Algolia-Zendesk federated search: documented Algolia integration pattern]"
       }
     ],
     "si_partners": [],
     "si_partners_potential": [
       {
-        "name": "Slalom",
-        "confidence": "ESTIMATE",
-        "why": "Bay Area, mid-size public retail clients"
-      },
-      {
         "name": "EPAM",
         "confidence": "ESTIMATE",
-        "why": "Ruby + ecommerce expertise, Algolia partner"
+        "why": "Ruby on Rails + ecommerce expertise, confirmed Algolia SI partner"
       },
       {
         "name": "Publicis Sapient",
         "confidence": "ESTIMATE",
-        "why": "Luxury retail digital transformation"
+        "why": "Luxury retail digital transformation, Algolia co-sell history"
       }
     ],
     "immediate_action": "Contact Algolia Salesforce partner team — TRR uses Salesforce Marketing Cloud Personalisation, creating a co-sell entry point for a warm intro to Luke Friang (CTPO) or Tom Hanrahan (CRO).",
-    "co_sell_recommendation": "Algolia + Salesforce joint pitch: 'Extend your Marketing Cloud personalization to on-site search' — unified buyer journey from email to discovery",
+    "co_sell_recommendation": "Lead with Salesforce Marketing Cloud co-sell (highest confidence). Secondary: Zendesk Help Center federated search story for authentication content gap.",
     "crossbeam_data_available": false,
-    "source_label": "[FACT — 02-tech-stack.md + partner-intel.md, 2026-03-25]"
+    "source_label": "[FACT — BuiltWith live therealreal.com]"
   },
   "tab_subtitles": {
     "summary": "What you need before walking into The RealReal",
@@ -6214,46 +6222,6 @@ a:hover {
     "detail": "TRR uses Salesforce Marketing Cloud Personalisation. Algolia has a co-sell agreement with Salesforce. Contact the Algolia Salesforce partner team for a joint intro to Luke Friang (CTPO) — frame as 'extending your Marketing Cloud personalization to on-site search discovery.'",
     "urgency": "high",
     "source": "partner_intel"
-  },
-  "industry_context": {
-    "vertical": "luxury-resale",
-    "primary_market": "US",
-    "key_benchmarks": [
-      {
-        "metric": "AI-led personalization profit impact",
-        "value": "up to 15% retail profit boost",
-        "context": "AI-led personalization can boost retail profits by up to 15%, directly relevant to TRR where matching 40M members to 50M items drives GMV.",
-        "source_name": "",
-        "source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
-        "source_date": "2025",
-        "confidence": "FACT",
-        "label": "[FACT — VWO via Tavily WebFetch, 2025]"
-      },
-      {
-        "metric": "Global luxury resale market size 2026",
-        "value": "$34B (US: ~$9.8B)",
-        "context": "Global luxury resale market estimated at $34B in 2026, North America contributing 38% (~$9.8B) at 11.48% CAGR — TRR operating in the highest-growth segment of retail.",
-        "source_name": "",
-        "source_url": "https://www.businessresearchinsights.com/market-reports/secondhand-luxury-goods-market-102564",
-        "source_date": "2026",
-        "confidence": "ESTIMATE",
-        "label": "[ESTIMATE — Business Research Insights via WebSearch, 2026]"
-      },
-      {
-        "metric": "US online resale growth rate",
-        "value": "16% annually",
-        "context": "US online resale growing at 16% annually, projected to reach $34B by 2027 — faster than primary luxury market growth.",
-        "source_name": "",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-resale-secondhand-fashion/",
-        "source_date": "2026-01",
-        "confidence": "ESTIMATE",
-        "label": "[ESTIMATE — Business of Fashion via WebSearch, 2026-01]"
-      }
-    ],
-    "trend_headline": "5 Must-Know eCommerce Personalization Trends for 2026 - VWO",
-    "trend_source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
-    "trend_source_label": "[FACT — Vwo via Tavily WebFetch, date unknown, https://vwo.com/blog/ecommerce-personalization-trends/]",
-    "algolia_angle": "The RealReal operates in a luxury resale market growing at 16% annually where site search users convert 2-3x higher than non-searchers, making Algolia's natural language search and personalization capabilities directly tied to accelerating TRR's path to profitability on $2.13B in GMV."
   }
 };</script>
 
@@ -7651,7 +7619,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -7672,7 +7640,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -7698,7 +7666,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -7739,15 +7707,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -7760,7 +7731,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -7835,9 +7806,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -7854,7 +7827,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }
@@ -13149,6 +13127,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 

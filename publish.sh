@@ -4,7 +4,14 @@
 # Example: ./publish.sh dsw
 
 SLUG="${1:-dsw}"
-AUDIT_BASE="${2:-/Users/arijitchowdhury/Library/CloudStorage/GoogleDrive-arijit.chowdhury@algolia.com/My Drive/AI/MarketingProject/Algolia Search Audit}"
+if [ -n "$2" ]; then
+  AUDIT_BASE="$2"
+elif [ -n "$ALGOLIA_AUDIT_DIR" ]; then
+  AUDIT_BASE="$ALGOLIA_AUDIT_DIR"
+else
+  echo "⚠️  ALGOLIA_AUDIT_DIR not set — using current directory fallback"
+  AUDIT_BASE="$(pwd)"
+fi
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 SCRIPTS=~/.claude/skills/algolia-search-audit/scripts
 DELIV="$AUDIT_BASE/$(echo "$SLUG" | tr '[:lower:]' '[:upper:]')/deliverables"
