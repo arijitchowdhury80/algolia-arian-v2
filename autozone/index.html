@@ -8383,21 +8383,65 @@ function sectionOverviewGrid(D) {
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
-  const tile4 = `<div class="ov-tile ov-tile-opp" data-spotlight-color="5,150,105">
-    <div class="ov-q">WHAT'S THE OPPORTUNITY?</div>
-    <div style="${T.scoreNumXl('var(--green)')};margin-bottom:4px;">${escHtml(fin.search_roi_est||'—')}</div>
-    <div style="${T.bodySm};color:var(--mid);margin-bottom:16px;">conservative annual uplift estimate</div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      ${fin.roi_multiple?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
-        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.roi_multiple)}</div>
-        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">ROI</div>
-      </div>`:''}
-      ${fin.payback_period?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
-        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.payback_period)}</div>
-        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">Payback</div>
-      </div>`:''}
-    </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"case\"]');if(b)b.click();})()" title="Go to Business Case tab">Business Case <span>→</span></div>
+  // ── Why Now tile — pick top urgency signals (non-hiring), both old + new schema types ──
+  const WHY_NOW_TIER = {
+    // Tier 1 — act immediately (red)
+    'hiring_signal':'1','news-leadership':'1','news-funding':'1',
+    // old compat
+    'hiring':'1',
+    // Tier 2 — high urgency (amber)
+    'earnings_quote':'2','news_signal':'2','sec_risk':'2','social_signal':'2',
+    // old compat
+    'exec':'2','competitor':'2','news-tech':'2','social-li':'2','social-x':'2',
+    // Tier 3 — medium (amber/neutral)
+    'media_quote':'3','media':'3','industry-risk':'3','news-launch':'3','news-international':'3',
+    // Tier 4 — positive (green)
+    'industry-opp':'4','customer':'4','partner':'4',
+  };
+  const WHY_NOW_ICON = {
+    'earnings_quote':'💬','exec':'💬',
+    'news_signal':'📰','competitor':'⚠️','media':'📰','news-tech':'📰','news-leadership':'📰',
+    'media_quote':'📰',
+    'sec_risk':'⚠️',
+    'social_signal':'📲','social-li':'📲','social-x':'📲',
+    'hiring_signal':'👤','hiring':'👤',
+    'industry-opp':'📈','industry-risk':'⚠️',
+  };
+  const WHY_NOW_COLOR = { '1':'var(--red)','2':'var(--amber)','3':'var(--amber)','4':'var(--green)' };
+
+  const whyNowSignals = [...(D.intelligence_signals||[])]
+    .filter(s => !['hiring','hiring_signal'].includes(s.type))
+    .sort((a,b) => (WHY_NOW_TIER[a.type]||'5').localeCompare(WHY_NOW_TIER[b.type]||'5'))
+    .slice(0, 3);
+
+  const whyNowRows = whyNowSignals.map(s => {
+    const tier  = WHY_NOW_TIER[s.type] || '5';
+    const color = WHY_NOW_COLOR[tier] || 'var(--mid)';
+    const icon  = WHY_NOW_ICON[s.type] || '🔔';
+    const label = escHtml(s.badge_label || s.title || s.type);
+    const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
+    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
+    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
+      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
+          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+        </div>
+        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const whyNowCount = whyNowSignals.length;
+  const tile4 = `<div class="ov-tile ov-tile-opp" data-spotlight-color="220,100,30">
+    <div class="ov-q">WHY ACT NOW?</div>
+    ${whyNowCount
+      ? `<div style="${T.bodySm};color:var(--mid);margin-bottom:12px;">${whyNowCount} active trigger${whyNowCount!==1?'s':''} — call this week, not next quarter.</div>
+         <div style="flex:1;">${whyNowRows}</div>`
+      : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
+    }
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8513,6 +8557,35 @@ function sectionOverviewGrid(D) {
       ${tile4}
       ${tile2}
     </div>
+    ${(()=>{
+      // ── Proof point teaser: deduplicate findings by company, parse stat, show ≤3 bounce-cards ──
+      function parseProofStat(result) {
+        const m = (result||'').match(/^([+\-$]?[\d.,]+[xXmMbBkK%]?)/);
+        if (m) return { stat: m[1], label: result.slice(m[1].length).trim() };
+        const parts = (result||'').split(' ');
+        return { stat: parts[0]||result, label: parts.slice(1).join(' ') };
+      }
+      const seenCo = new Set();
+      const proofItems = (D.findings||[])
+        .filter(f => f.algolia_case_study_company && !seenCo.has(f.algolia_case_study_company) && seenCo.add(f.algolia_case_study_company))
+        .slice(0, 3)
+        .map(f => ({ ...parseProofStat(f.algolia_case_study_result||''), company: f.algolia_case_study_company, url: f.algolia_case_study_url }));
+      if (!proofItems.length) return '';
+      const cards = proofItems.map(p => `
+        <div class="bounce-card bounce-card--green" style="flex:1;min-width:180px;cursor:${p.url?'pointer':'default'};" ${p.url?`onclick="window.open('${p.url}','_blank')"`:''}">
+          <div class="bounce-card__content">
+            <div style="${T.eyebrowCol('var(--green)')};margin-bottom:6px;">CUSTOMER PROOF</div>
+            <div style="${T.h5};margin-bottom:4px;">${escHtml(p.company)}</div>
+            <div style="${T.bodySm};color:var(--mid);">Similar challenge. Proven with Algolia.</div>
+          </div>
+          <div class="bounce-card__gradient">
+            <div class="bounce-card__amount">${escHtml(p.stat)}</div>
+            <div class="bounce-card__amount-sub">${escHtml(p.label||'improvement')}</div>
+            ${p.url?`<span style="margin-top:8px;background:rgba(255,255,255,0.2);padding:3px 12px;border-radius:20px;${T.eyebrowSmCol('white')};">See case study →</span>`:''}
+          </div>
+        </div>`).join('');
+      return `<div style="display:flex;gap:14px;flex-wrap:wrap;padding:16px 0 4px;">${cards}</div>`;
+    })()}
   </section>`;
 }
 
@@ -10429,15 +10502,15 @@ function sectionSignals(D) {
   // Tier signals by urgency — ordering matters for visual impact
 
   const URGENCY_TIER = {
-
-    'hiring':'1','news-leadership':'1','news-funding':'1',
-
-    'exec':'2','competitor':'2','news-tech':'2','social-li':'2','social-x':'2',
-
-    'media':'3','industry-risk':'3','news-launch':'3','news-international':'3',
-
+    // Tier 1 — act immediately
+    'hiring':'1','hiring_signal':'1','news-leadership':'1','news-funding':'1',
+    // Tier 2 — high urgency
+    'exec':'2','earnings_quote':'2','competitor':'2','news_signal':'2',
+    'news-tech':'2','sec_risk':'2','social-li':'2','social-x':'2','social_signal':'2',
+    // Tier 3 — medium
+    'media':'3','media_quote':'3','industry-risk':'3','news-launch':'3','news-international':'3',
+    // Tier 4 — positive
     'industry-opp':'4','customer':'4','partner':'4',
-
   };
 
   const PLATFORM_ICON = {
@@ -12007,9 +12080,47 @@ function initCaseStudyCountUp() {
 
 function sectionCaseStudies(D) {
 
-  const cases = D.case_studies || [];
+  // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
+  const topLevel = D.case_studies || [];
 
-  if (!cases.length) return '';
+  if (!topLevel.length) {
+    // Build from findings — deduplicate by company, derive stat from result string
+    function _parseStat(result) {
+      const m = (result||'').match(/^([+\-$]?[\d.,]+[xXmMbBkK%]?)/);
+      if (m) return { stat: m[1], label: result.slice(m[1].length).trim() };
+      const parts = (result||'').split(' ');
+      return { stat: parts[0]||result, label: parts.slice(1).join(' ') };
+    }
+    const seen = new Set();
+    const proofItems = (D.findings||[])
+      .filter(f => f.algolia_case_study_company && !seen.has(f.algolia_case_study_company) && seen.add(f.algolia_case_study_company))
+      .map(f => ({ ...(_parseStat(f.algolia_case_study_result||'')), company: f.algolia_case_study_company, url: f.algolia_case_study_url }));
+    if (!proofItems.length) return '';
+
+    const cards = proofItems.map(p => `
+      <div class="bounce-card bounce-card--green" style="flex:1;min-width:200px;max-width:320px;cursor:${p.url?'pointer':'default'};" ${p.url?`onclick="window.open('${p.url}','_blank')"`:''}">
+        <div class="bounce-card__content">
+          <div style="${T.eyebrowCol('var(--green)')};margin-bottom:6px;">CUSTOMER PROOF</div>
+          <div style="${T.h5};margin-bottom:8px;">${escHtml(p.company)}</div>
+          <div style="${T.bodySm};color:var(--mid);flex:1;">Similar challenge — same capability gaps, different brand. Results proven in production.</div>
+          ${p.url?`<div style="${T.bodySmGray12};margin-top:10px;opacity:0.6;">algolia.com/customers</div>`:''}
+        </div>
+        <div class="bounce-card__gradient">
+          <div class="bounce-card__amount">${escHtml(p.stat)}</div>
+          <div class="bounce-card__amount-sub">${escHtml(p.label||'improvement')}</div>
+          ${p.url?`<span style="margin-top:10px;background:rgba(255,255,255,0.2);padding:4px 14px;border-radius:20px;${T.eyebrowSmCol('white')};">Read case study →</span>`:''}
+        </div>
+      </div>`).join('');
+
+    return `<section id="section-case-studies" class="audit-section">
+      <div class="section-eyebrow">Business Case · Proof</div>
+      <div class="section-title">Customer Proof</div>
+      <p class="section-desc">Companies that faced the same search gaps — and fixed them with Algolia. Hover each card for the result.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:8px;">${cards}</div>
+    </section>`;
+  }
+
+  const cases = topLevel;
 
   const cs = D.company_snapshot || {};
 
@@ -12225,24 +12336,25 @@ function sectionWhyNow(D) {
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
+  const SIG_TRIGGER_TYPES = new Set([
+    'funding','exec','earnings_quote','hiring','hiring_signal',
+    'competitor','news_signal','sec_risk','industry-opp',
+  ]);
   const sigTriggers = (D.intelligence_signals||[])
-
-    .filter(s => ['funding','exec','hiring','competitor','industry-opp'].includes(s.type))
-
+    .filter(s => SIG_TRIGGER_TYPES.has(s.type))
     .slice(0, 3)
-
     .map(s => ({
-
-      icon: s.type==='funding'?'🏦': s.type==='exec'?'💬': s.type==='hiring'?'👤': s.type==='competitor'?'⚠️':'📈',
-
-      label: s.badge_label || s.type,
-
-      detail: (s.text||'').slice(0, 160) + ((s.text||'').length > 160 ? '…' : ''),
-
-      urgency: s.type==='exec'||s.type==='funding' ? 'high' : s.type==='competitor' ? 'medium' : 'positive',
-
+      icon: (s.type==='funding') ? '🏦'
+          : (s.type==='exec'||s.type==='earnings_quote') ? '💬'
+          : (s.type==='hiring'||s.type==='hiring_signal') ? '👤'
+          : (s.type==='competitor'||s.type==='sec_risk') ? '⚠️'
+          : '📈',
+      label: s.badge_label || s.title || s.type,
+      detail: (s.body||s.text||'').slice(0, 160) + ((s.body||s.text||'').length > 160 ? '…' : ''),
+      urgency: (s.type==='exec'||s.type==='earnings_quote'||s.type==='funding'||s.type==='sec_risk') ? 'high'
+             : (s.type==='competitor'||s.type==='news_signal') ? 'medium'
+             : 'positive',
       url: s.source_url
-
     }));
 
   const vacantTrigger = vacantRole

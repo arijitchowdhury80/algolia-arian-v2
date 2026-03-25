@@ -376,11 +376,12 @@
     {
       "name": "Michael Kors",
       "domain": "michaelkors.com",
-      "search_vendor": "Algolia (confirmed via BuiltWith 2026-03-19) + Oracle ATG headless architecture",
+      "search_vendor": "Algolia (confirmed)",
       "monthly_traffic": "20.6M",
       "traffic_rank": null,
       "notes": "Oracle ATG headless architecture with Algolia for site search (BuiltWith live confirmed March 2026). Shopping Muse AI assistant for conversational search. Direct accessible luxury competitor. Coach can leapfrog MK \u2014 they chose Algolia on SFCC, proving the migration path works.",
-      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 7.0M was from Feb 2024 scratchpad \u2014 now corrected."
+      "monthly_traffic_note": "Nov 2025 SimilarWeb API (total, ww). Previous value 7.0M was from Feb 2024 scratchpad \u2014 now corrected.",
+      "search_vendor_note": "BuiltWith live scan 2026-03-19 confirmed Algolia active on michaelkors.com"
     },
     {
       "name": "Tory Burch",
@@ -1626,8 +1627,11 @@
     ]
   },
   "golden_angle": {
-    "confirmed": false,
-    "competitors_using_algolia": [],
-    "talk_track": "Zero of Tapestry's five direct competitors \u2014 Michael Kors (Oracle Endeca), Tory Burch (SFCC Einstein), Marc Jacobs (SFCC Einstein), Furla (SFCC Einstein), Longchamp (Shopify native) \u2014 use Algolia. The entire accessible luxury fashion vertical is running on legacy or platform-native search. Coach.com, as Tapestry's primary DTC channel driving 86% of revenue, has the opportunity to become Algolia's flagship luxury fashion reference \u2014 ahead of every major competitor. When a customer searches 'gift for mom under $300' on coach.com and gets 1 result, that's not a tech problem. That's lost DTC revenue on a channel Tapestry's leadership has bet the company on."
+    "confirmed": true,
+    "competitors_using_algolia": [
+      "Michael Kors (confirmed via BuiltWith)"
+    ],
+    "talk_track": "Zero of Tapestry's five direct competitors \u2014 Michael Kors (Oracle Endeca), Tory Burch (SFCC Einstein), Marc Jacobs (SFCC Einstein), Furla (SFCC Einstein), Longchamp (Shopify native) \u2014 use Algolia. The entire accessible luxury fashion vertical is running on legacy or platform-native search. Coach.com, as Tapestry's primary DTC channel driving 86% of revenue, has the opportunity to become Algolia's flagship luxury fashion reference \u2014 ahead of every major competitor. When a customer searches 'gift for mom under $300' on coach.com and gets 1 result, that's not a tech problem. That's lost DTC revenue on a channel Tapestry's leadership has bet the company on.",
+    "confirmation_method": "BuiltWith live scan 2026-03-19"
   }
 }
