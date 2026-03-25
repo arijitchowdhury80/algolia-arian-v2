@@ -13682,7 +13682,7 @@ function initCmdK(D) {
 
   (D.intelligence_signals || []).slice(0, 5).forEach(s =>
 
-    push('📡', s.text.slice(0, 60) + '…', 'Signal', () => {
+    push('📡', (s.text || s.body || s.title || s.badge_label || '').slice(0, 60) + '…', 'Signal', () => {
 
       document.querySelector('[data-tab="intel"]')?.click();
 
