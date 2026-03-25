@@ -8210,7 +8210,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -8231,7 +8231,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -8257,7 +8257,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -8322,7 +8322,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8397,9 +8397,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -13716,6 +13718,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 
