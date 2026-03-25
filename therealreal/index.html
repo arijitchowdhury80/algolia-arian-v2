@@ -8924,10 +8924,22 @@ function sectionFinancials(D) {
 
   const cs  = D.company_snapshot || {};
 
-  if (!f.revenue_3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
+  // Build revenue_3y from individual year fields if array not present (older schema)
+  let _rev3y = f.revenue_3y;
+  if (!_rev3y?.length) {
+    const _fmt = v => v == null ? null : typeof v === 'number' ? '$' + (v >= 1e9 ? (v/1e9).toFixed(1)+'B' : (v/1e6).toFixed(1)+'M') : String(v);
+    const _rows = [
+      f.revenue_fy2023 != null ? {year:'FY2023', revenue: _fmt(f.revenue_fy2023)} : null,
+      f.revenue_fy2024 != null ? {year:'FY2024', revenue: _fmt(f.revenue_fy2024)} : null,
+      f.revenue_fy2025 != null ? {year:'FY2025', revenue: _fmt(f.revenue_fy2025)} : null,
+    ].filter(Boolean);
+    if (_rows.length) _rev3y = _rows;
+  }
+
+  if (!_rev3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
 
   // Reverse so latest year (FY2025) shows first
-  const rev3 = [...(f.revenue_3y || [])].reverse();
+  const rev3 = [...(_rev3y || [])].reverse();
 
   // Parse financial string values to numbers for comparison
   // Handles "$3.315B", "−$10.5M", "4.9%", "−0.35%"
@@ -12957,6 +12969,15 @@ function sectionPartnerIntel(D) {
 }
 
 function renderSections(D) {
+
+  // Normalize finding severity to canonical lowercase form — handles HIGH/high/MEDIUM/medium etc.
+  (D.findings || []).forEach(f => {
+    const l = (f.severity || '').toLowerCase();
+    if (l === 'high') f.severity = 'critical';
+    else if (l === 'medium') f.severity = 'moderate';
+    else if (l === 'low') f.severity = 'positive';
+    else f.severity = l; // already canonical or unknown
+  });
 
   const content  = document.getElementById('content');
 
