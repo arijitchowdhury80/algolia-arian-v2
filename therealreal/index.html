@@ -7587,7 +7587,7 @@ function sectionOverviewGrid(D) {
   const ae    = D.ae_fields  || {};
   const findings = D.findings || [];
 
-  const criticals = findings.filter(function(f){ return f.severity === 'critical'; }).slice(0, 3);
+  const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
 
   // Score colour palette
@@ -7958,9 +7958,9 @@ function sectionExecSummary(D) {
 
       const allFindings = D.findings || [];
 
-      const criticalFindings = allFindings.filter(f => f.severity === 'critical').slice(0, 3);
+      const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
-      const moderateFindings = allFindings.filter(f => f.severity === 'moderate').slice(0, 4);
+      const moderateFindings = allFindings.filter(f => f.severity === 'moderate' || f.severity === 'MEDIUM').slice(0, 4);
 
       const sev = D.score?.breakdown_severity || {};
 
@@ -9254,7 +9254,7 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring');
+  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -9292,7 +9292,7 @@ function sectionHiring(D) {
 
   const urgencyIcon = (sig) => {
 
-    const badge = sig.badge_label || '';
+    const badge = sig.badge_label || sig.title || '';
 
     if (badge.toLowerCase().includes('tier 1') || badge.toLowerCase().includes('critical')) return '🔴';
 
@@ -9306,7 +9306,7 @@ function sectionHiring(D) {
 
   const cardsHtml = hiring.slice(0, 9).map(sig => {
 
-    const fullText = sig.text || '';
+    const fullText = sig.text || sig.body || sig.title || sig.signal || '';
 
     // Smart slice — don't cut mid-word
 
@@ -9782,7 +9782,7 @@ function sectionSignals(D) {
 
   // to avoid duplication. Hiring signals here would repeat the buying committee section.
 
-  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && (s.badge_label || s.text || s.quote));
+  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && s.type !== 'hiring_signal' && (s.badge_label || s.title || s.text || s.body || s.quote || s.signal));
 
   if (!signals.length) return `<section id="section-signals" class="audit-section">
 
@@ -9850,7 +9850,15 @@ function sectionSignals(D) {
 
     const icon = PLATFORM_ICON[sig.type] || '';
 
-    const hasUrl = sig.source_url && sig.source_url.startsWith('http');
+    // Normalize across 3 signal schemas: new (title/body), mid (badge_label/text), old (signal/algolia_angle)
+    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
+    const sigBody  = sig.relevance || sig.algolia_angle || '';
+    // Resolve URL from source_url or extract from string source field
+    const srcStr   = typeof sig.source === 'string' ? sig.source : '';
+    const resolvedUrl  = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
+    const resolvedName = sig.source_name || (srcStr ? srcStr.slice(0,30) : '');
+
+    const hasUrl = resolvedUrl.startsWith('http');
 
     return `<div style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);">
 
@@ -9872,13 +9880,13 @@ function sectionSignals(D) {
 
         <div style="${T.title};line-height:1.4;margin-bottom:4px;">
 
-          ${escHtml(sig.badge_label || sig.text?.slice(0,80) || '—')}
+          ${escHtml(sigTitle)}
 
         </div>
 
         <div style="${T.bodySmMid};">
 
-          ${escHtml(sig.relevance || '')}
+          ${escHtml(sigBody)}
 
         </div>
 
@@ -9888,7 +9896,7 @@ function sectionSignals(D) {
 
       <div style="flex-shrink:0;text-align:right;min-width:100px;">
 
-        ${hasUrl ? `<a href="${sig.source_url}" target="_blank"
+        ${hasUrl ? `<a href="${resolvedUrl}" target="_blank"
 
           style="display:inline-flex;align-items:center;gap:4px;${T.labelBlue};text-decoration:none;padding:4px 0;"
 
@@ -9896,9 +9904,9 @@ function sectionSignals(D) {
 
           onmouseleave="this.style.textDecoration='none'">
 
-          ${escHtml(sig.source_name?.slice(0,25)||'Source')}
+          ${escHtml(resolvedName.slice(0,25)||'Source')}
 
-        </a>` : `<span style="${T.bodySmGray12};">${escHtml(sig.source_name||'—')}</span>`}
+        </a>` : `<span style="${T.bodySmGray12};">${escHtml(resolvedName||'—')}</span>`}
 
         ${sig.source_date ? `<div style="${T.bodySmGray12};margin-top:2px;">${escHtml(sig.source_date.slice(0,10))}</div>` : ''}
 
@@ -9959,7 +9967,7 @@ function sectionExecQuotes(D) {
   // Prefer intelligence_signals[] (v1.1 schema) — filter to quote types only.
   // Fall back to legacy D.executives[] for backward compatibility with pre-v1.1 audits.
   const sigQuotes = (D.intelligence_signals || []).filter(
-    s => (s.type === 'earnings_quote' || s.type === 'media_quote') && s.quote && s.quote.trim()
+    s => (s.type === 'earnings_quote' || s.type === 'media_quote') && (s.quote || s.signal) && (s.quote || s.signal).trim()
   );
 
   const useLegacy = sigQuotes.length === 0;
@@ -9970,18 +9978,27 @@ function sectionExecQuotes(D) {
       ? srcTag('bay', 'MEDIA' + (q.publication ? ' \xB7 ' + escHtml(q.publication) : ''))
       : srcTag('sec', 'EARNINGS CALL');
 
-    const sourceLink = q.source_url
-      ? lnk(q.source_url, escHtml(q.label || q.source_date || 'Source'))
-      : escHtml(q.label || q.source_date || '');
+    // Resolve source URL from source_url or extract from string source field (old schema)
+    const srcStr = typeof q.source === 'string' ? q.source : '';
+    const resolvedSrcUrl = q.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
+    const sourceLink = resolvedSrcUrl
+      ? lnk(resolvedSrcUrl, escHtml(q.label || q.source_date || srcStr.slice(0,30) || 'Source'))
+      : escHtml(q.label || q.source_date || srcStr.slice(0,40) || '');
+
+    // Normalize quote text and attribution across old schema (signal) and new schema (quote/speaker/title)
+    const quoteText = q.quote || q.signal || '';
+    const speaker   = q.speaker || '';
+    const attrTitle = q.title  || '';
+    const context   = q.context || q.algolia_angle || '';
 
     return `
     <div class="quote-card">
 
       <div class="quote-mark">"</div>
 
-      <div class="quote-text">${escHtml(q.quote)}</div>
+      <div class="quote-text">${escHtml(quoteText)}</div>
 
-      <div class="quote-attr" style="${T.labelBlue}">— ${escHtml(q.speaker)}, ${escHtml(q.title)}</div>
+      ${(speaker || attrTitle) ? `<div class="quote-attr" style="${T.labelBlue}">— ${escHtml([speaker, attrTitle].filter(Boolean).join(', '))}</div>` : ''}
 
       <div class="quote-source">
 
@@ -9989,7 +10006,7 @@ function sectionExecQuotes(D) {
 
       </div>
 
-      ${q.context ? `<div class="quote-relevance" style="${T.bodySm}">${escHtml(q.context)}</div>` : ''}
+      ${context ? `<div class="quote-relevance" style="${T.bodySm}">${escHtml(context)}</div>` : ''}
 
     </div>`;
   };
@@ -10506,7 +10523,7 @@ function sectionSources(D) {
 
     <div class="section-title">Sources & Bibliography</div>
 
-    <p class="section-desc">${escHtml(D.methodology || '')}</p>
+    <p class="section-desc">${typeof D.methodology === 'string' ? escHtml(D.methodology) : ''}</p>
 
     ${bibs.length ? `
 
@@ -10516,11 +10533,11 @@ function sectionSources(D) {
 
       <div class="bib-entry">
 
-        <span class="bib-num">[${b.n}]</span>
+        <span class="bib-num">[${b.n || b.id || ''}]</span>
 
         <span class="bib-text">
 
-          ${escHtml(b.label)}
+          ${escHtml(b.label || b.source || b.title || '')}
 
           ${b.url ? ' · ' + lnk(b.url, b.url) : ''}
 
@@ -10764,7 +10781,7 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat((f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
   
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
@@ -11629,7 +11646,8 @@ function sectionWhyNow(D) {
 
   const fin = D.financials || {};
 
-  const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
+  const _bcArr = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  const vacantRole = _bcArr.find(r=>r.status?.includes('OPEN'));
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
@@ -12196,7 +12214,7 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = hir.buying_committee || [];
+  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
 
   const phases = hir.engagement_phases || [];
 
@@ -12944,11 +12962,15 @@ function renderSections(D) {
 
   const findings = D.findings || [];
 
-  const criticalFindings = findings.filter(f => f.severity === 'critical');
+  const isSevCritical = s => s === 'critical' || s === 'HIGH';
+  const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
+  const isSevPositive = s => s === 'positive' || s === 'LOW' || s === 'POSITIVE';
 
-  const moderateFindings = findings.filter(f => f.severity === 'moderate');
+  const criticalFindings = findings.filter(f => isSevCritical(f.severity));
 
-  const positiveFindings = findings.filter(f => f.severity === 'positive');
+  const moderateFindings = findings.filter(f => isSevModerate(f.severity));
+
+  const positiveFindings = findings.filter(f => isSevPositive(f.severity));
 
 
 
@@ -13400,7 +13422,7 @@ function initCmdK(D) {
 
   (D.intelligence_signals || []).slice(0, 5).forEach(s =>
 
-    push('📡', s.text.slice(0, 60) + '…', 'Signal', () => {
+    push('📡', (s.text || s.body || s.title || s.badge_label || '').slice(0, 60) + '…', 'Signal', () => {
 
       document.querySelector('[data-tab="intel"]')?.click();
 
@@ -13477,7 +13499,7 @@ function initCmdK(D) {
   );
 
   // Buying committee members
-  ((D.hiring || {}).buying_committee || []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
+  (Array.isArray((D.hiring || {}).buying_committee) ? (D.hiring || {}).buying_committee : []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
     push('👤', r.name + ' — ' + (r.role || ''), r.signal ? r.signal.toUpperCase() : 'Contact', () => {
       document.querySelector('[data-tab="play"]')?.click();
       setTimeout(() => document.getElementById('section-buying-committee')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
@@ -14038,7 +14060,7 @@ function init() {
       });
     })();
 
-    initCmdK(D);
+    initCmdK(window.AUDIT_DATA || D);
 
     initDrawer();
 
