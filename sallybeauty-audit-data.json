@@ -1561,8 +1561,27 @@
     ],
     "crossbeam_data_available": false,
     "source_label": "[FACT — BuiltWith live domain scan 2026-03-19]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "IBM iX (Bluewolf)",
+        "type": "agency",
+        "confidence": "HIGH",
+        "relationship_evidence": "In September 2018, Sally Beauty formally engaged IBM iX as agency of record for digital transformation. Bluewolf (an IBM Company) led the complete SFCC Storefront Reference Architecture migration. Joe Condomina (CTO, Sally Beauty) named in press release. Matt Candy (Global Leader, IBM iX) named as engagement lead.",
+        "c_suite_relationship": true,
+        "activation_strategy": "IBM iX is Sally Beauty's digital transformation AOR. Engage IBM's Algolia co-sell contacts — IBM iX can champion Algolia as an SFCC Einstein Search upgrade to their existing client. Joe Condomina (CTO) is the named decision-maker. IBM iX relationship is the warmest entry point to the Sally Beauty digital team.",
+        "label": "[FACT — PR Newswire: Sally Beauty Engages IBM iX, Sep 2018 — prnewswire.com/news-releases/sally-beauty-engages-ibm-ix-to-transform-its-commerce-experience-300708618.html]"
+      },
+      {
+        "name": "Perficient",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "Perficient implemented IBM Sterling OMS for Sally Beauty in May 2021, enabling ship-from-store in 10 days (vs. the industry norm of 3–4 months) and 100% ROI within months. Joe Condomina (CTO, Sally Beauty) quoted in BusinessWire announcement.",
+        "c_suite_relationship": true,
+        "activation_strategy": "Perficient is embedded in Sally Beauty's fulfillment stack and has an active relationship with CTO Joe Condomina. Perficient is also an Algolia SI partner. Request a warm introduction to Joe Condomina through Perficient's account team as a complementary search upgrade to the Sterling OMS implementation.",
+        "label": "[FACT — BusinessWire: Sally Beauty Taps Perficient, May 2021 — businesswire.com/news/home/20210503005513/en/Sally-Beauty-Holdings-Taps-Perficient-to-Expand-Product-Fulfillment-Options | Perficient success story: perficient.com/success-stories/leading-beauty-product-retailer]"
+      }
+    ],
+    "immediate_action": "Contact Algolia's IBM alliance team and request a warm introduction to Joe Condomina (CTO, Sally Beauty) through IBM iX's existing AOR relationship. Secondary: Engage Perficient's Algolia practice for a co-sell leveraging the Sterling OMS relationship.",
+    "co_sell_recommendation": "Lead with IBM iX SI warm intro (AOR relationship, CTO-level access). Secondary: Salesforce Commerce Cloud tech partner co-sell via SFCC AppExchange."
   }
 }

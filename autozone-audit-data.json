@@ -1765,8 +1765,18 @@
     ],
     "crossbeam_data_available": false,
     "source_label": "[FACT — BuiltWith live domain scan 2026-03-19]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with Contentstack co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "Callstack",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "Callstack migrated AutoZone's storefront from custom SSR to Next.js (2023), recovering Google search rankings from #3–9 to #1 and cutting JS bundle from 820KB to 560KB. In a separate 18-month engagement, Callstack migrated AutoZone's iOS and Android apps to React Native, doubling the mobile user base and improving App Store rating from 4.2 to 4.7.",
+        "c_suite_relationship": false,
+        "activation_strategy": "Callstack builds AutoZone's Next.js storefront — they know the search integration surface intimately. Check Algolia's partner directory for Callstack. If listed, request a joint co-sell motion through Algolia's partner team. Callstack built the composable stack that Algolia would plug into — they are the fastest path to a technical champion inside the AutoZone account.",
+        "label": "[FACT — Callstack published case studies: callstack.com/case-studies/migration-to-nextjs-for-autozone, callstack.com/case-studies/migrating-ios-and-android-apps-to-react-native-for-autozone]"
+      }
+    ],
+    "immediate_action": "Contact Algolia's partner team to check if Callstack is a listed partner. If so, engage jointly for a composable search co-sell on the Next.js stack Callstack already maintains at AutoZone. Secondary: Contentstack tech partner co-sell motion.",
+    "co_sell_recommendation": "Lead with Contentstack tech partner co-sell (SFCC composable stack Algolia fits natively). Parallel path: Callstack SI co-sell if confirmed Algolia partner."
   }
 }

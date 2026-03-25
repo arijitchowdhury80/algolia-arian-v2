@@ -1518,9 +1518,19 @@
     ],
     "crossbeam_data_available": false,
     "source_label": "[FACT — BuiltWith live scan 2026-03-17]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with commercetools co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "Encora",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "Encora is the confirmed SI partner for L.L.Bean's 3-year migration from a 25-year-old legacy platform to commercetools Composable Commerce. Project scale: $1B digital channel, 5.5M accounts migrated, 250K SKUs, zero unplanned outages, $10M+ in incremental revenue from 100+ enhancements during migration. Project launched April 2022, completed May 2024. Encora is also a listed commercetools Solution Partner.",
+        "c_suite_relationship": true,
+        "activation_strategy": "Encora built LLBean's entire commercetools architecture — they know the platform in detail and have active relationships with JJ Rouhana (CIO, L.L.Bean), Nick Wilkoff (CMO), and Sundar Sivashunmugam (Enterprise Architect). Encora is also a commercetools Solution Partner and likely an Algolia partner. Engage Algolia's commercetools alliance team to co-sell through Encora with a joint commercetools + Algolia MACH story. This is the warmest entry point to the LLBean digital leadership.",
+        "label": "[FACT — Encora case study: encora.com/our-work/llbean-digital-channel-composable-commerce | commercetools customer story: commercetools.com/customer-stories/llbean | PR Newswire Oct 2021]"
+      }
+    ],
+    "immediate_action": "Contact Algolia's commercetools alliance team to co-sell through Encora — the confirmed SI who built LLBean's entire MACH architecture. Encora has active C-suite relationships with JJ Rouhana (CIO) and Sundar Sivashunmugam (Enterprise Architect). This is the warmest entry point in the account.",
+    "co_sell_recommendation": "Lead with Encora + commercetools joint co-sell (MACH architecture with confirmed Algolia + commercetools partnership). Warmest entry: JJ Rouhana (CIO) via Encora relationship."
   },
   "tab_subtitles": {
     "summary": "What you need before walking into L.L.Bean",

@@ -1545,8 +1545,18 @@
     ],
     "crossbeam_data_available": false,
     "source_label": "[FACT — BuiltWith domain scan + tech stack analysis]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with Shopify Plus co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "Whitespectre",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "Whitespectre is an ongoing product engineering partner for Savage X Fenty. Published case study: Whitespectre reverse-engineered 5 years of complex functionality to migrate the CMS to Builder.io, delivered UX overhauls across checkout and product discovery, built a React/Next.js component library, and created a unified design system. Results: 2.8% checkout conversion increase, 10% reduction in order completion time for returning users, 12.8% increase in product list views. Vaughn Harber (VP of Product Management, Savage X Fenty) is the named client contact.",
+        "c_suite_relationship": false,
+        "activation_strategy": "Whitespectre maintains the React/Next.js codebase and component library that any search integration would need to touch. As an ongoing product engineering partner, they have a VP-level relationship (Vaughn Harber, VP Product Management). Check if Whitespectre is an Algolia partner. If so, engage jointly — Whitespectre can implement the Algolia drop-in replacement for Constructor.io and champion the switch internally. This is the fastest technical path to replacing Constructor.io.",
+        "label": "[FACT — Whitespectre published case study: whitespectre.com/work/savage-x-fenty-ux-content-growth-case-study/]"
+      }
+    ],
+    "immediate_action": "Check if Whitespectre is an Algolia partner. If so, engage jointly to position replacing Constructor.io with Algolia — Whitespectre maintains the React/Next.js stack and has a direct relationship with VP Product Vaughn Harber. This is the fastest path to a technical champion.",
+    "co_sell_recommendation": "Lead with Whitespectre SI co-sell (ongoing React/Next.js engineering partner, Vaughn Harber contact). Secondary: Shopify Plus tech partner co-sell motion."
   }
 }

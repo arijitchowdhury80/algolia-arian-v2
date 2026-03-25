@@ -1676,8 +1676,18 @@
     ],
     "crossbeam_data_available": false,
     "source_label": "[FACT — BuiltWith live coach.com + katespadeny.com 2026-03-19]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "TCS (Tata Consultancy Services)",
+        "type": "SI",
+        "confidence": "HIGH",
+        "relationship_evidence": "TCS is Tapestry's confirmed transformation partner — listed in the tech stack as the primary digital transformation SI across the Tapestry brand portfolio (Coach, Kate Spade, Stuart Weitzman). TCS is also a confirmed Algolia SI partner in the Algolia partner directory.",
+        "c_suite_relationship": true,
+        "activation_strategy": "TCS is Tapestry's transformation partner and a confirmed Algolia SI partner. Contact Algolia's TCS alliance team immediately — request a warm introduction to Tapestry's digital leadership through TCS's account team. TCS has direct C-suite access across Coach and Kate Spade digital teams. This is the single highest-value co-sell entry point in the Tapestry account.",
+        "label": "[FACT — tech stack research March 2026. TCS as Algolia SI partner: algolia.com/partners]"
+      }
+    ],
+    "immediate_action": "Contact Algolia's TCS alliance team immediately — TCS is both Tapestry's confirmed transformation partner AND a listed Algolia SI partner. Request a warm introduction to Tapestry's digital leadership through TCS's account team. Highest-value co-sell entry point in the account.",
+    "co_sell_recommendation": "Lead with TCS SI warm intro — the single strongest co-sell vector in the account (transformation partner + Algolia SI partner + C-suite access). Secondary: Salesforce Commerce Cloud AppExchange co-sell."
   }
 }
