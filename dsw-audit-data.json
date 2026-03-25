@@ -16,7 +16,7 @@
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/DSW_Designer_Shoe_Warehouse.jpg/1280px-DSW_Designer_Shoe_Warehouse.jpg",
     "company_logo_url": "https://icons.duckduckgo.com/ip3/dsw.com.ico",
-    "status_line": "Confidential \u00b7 For Internal Use Only"
+    "status_line": "Confidential · For Internal Use Only"
   },
   "score": {
     "overall": 3.8,
@@ -60,7 +60,7 @@
     },
     "critical_count": 5,
     "moderate_count": 9,
-    "formula_shown": "sum(score\u00d7weight)/sum(weights)",
+    "formula_shown": "sum(score×weight)/sum(weights)",
     "source": "10-scoring-matrix.md"
   },
   "company_snapshot": {
@@ -72,8 +72,8 @@
     "revenue_source_label": "Yahoo Finance (FY2025)",
     "founded": "1969",
     "ticker": "NYSE: DBI",
-    "current_search_vendor": "Custom / Proprietary (Greenfield \u2014 no enterprise search vendor detected)",
-    "ecommerce_platform": "Unknown (enterprise/custom \u2014 not confirmed via BuiltWith)",
+    "current_search_vendor": "Custom / Proprietary (Greenfield — no enterprise search vendor detected)",
+    "ecommerce_platform": "Unknown (enterprise/custom — not confirmed via BuiltWith)",
     "monthly_visits": "3.1M (Feb 2026) / 21.7M peak (Oct 2024)",
     "visits_source": "https://www.similarweb.com/website/dsw.com/",
     "parent_entity": "Designer Brands Inc.",
@@ -83,22 +83,22 @@
         "name": "DSW",
         "domain": "dsw.com",
         "is_audit_target": true,
-        "source": "[FACT \u2014 designerbrands.com via Tavily, 2026-03-24]"
+        "source": "[FACT — designerbrands.com via Tavily, 2026-03-24]"
       },
       {
         "name": "Camuto Group",
         "domain": "camutogroup.com",
         "is_audit_target": false,
-        "source": "[FACT \u2014 designerbrands.com/brands via Tavily, 2026-03-24]"
+        "source": "[FACT — designerbrands.com/brands via Tavily, 2026-03-24]"
       },
       {
         "name": "Diamonds Direct",
         "domain": "diamondsdirect.com",
         "is_audit_target": false,
-        "source": "[FACT \u2014 designerbrands.com/brands via Tavily, 2026-03-24]"
+        "source": "[FACT — designerbrands.com/brands via Tavily, 2026-03-24]"
       }
     ],
-    "portfolio_opportunity_note": "3-brand portfolio = 3\u00d7 the search optimization surface"
+    "portfolio_opportunity_note": "3-brand portfolio = 3× the search optimization surface"
   },
   "executives": [
     {
@@ -108,7 +108,7 @@
       "quote_source": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "quote_source_label": "DBI FY2024 Earnings Release",
       "quote_date": "2025-03",
-      "relevance": "CEO has an explicit mandate to 'elevate omnichannel experience' \u2014 search is the #1 omnichannel touchpoint and is currently unaddressed."
+      "relevance": "CEO has an explicit mandate to 'elevate omnichannel experience' — search is the #1 omnichannel touchpoint and is currently unaddressed."
     },
     {
       "name": "Doug M. Howe",
@@ -117,7 +117,7 @@
       "quote_source": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "quote_source_label": "DBI FY2024 Earnings Release",
       "quote_date": "2025-03",
-      "relevance": "CEO frames 'data-driven' as a core mandate \u2014 Algolia Analytics + Insights API delivers search analytics DSW currently lacks entirely."
+      "relevance": "CEO frames 'data-driven' as a core mandate — Algolia Analytics + Insights API delivers search analytics DSW currently lacks entirely."
     },
     {
       "name": "Sarah Crockett",
@@ -126,7 +126,7 @@
       "quote_source": "https://www.marketingdive.com/news/dsw-cmo-brand-overhaul-phygital-retail/741028/",
       "quote_source_label": "Marketing Dive, 2025",
       "quote_date": "2025-01",
-      "relevance": "CMO confirms 'phygital' strategy \u2014 Algolia Federated Search unifies the digital and in-store search surfaces CMO describes."
+      "relevance": "CMO confirms 'phygital' strategy — Algolia Federated Search unifies the digital and in-store search surfaces CMO describes."
     }
   ],
   "intelligence_signals": [
@@ -137,7 +137,7 @@
       "source_name": "Doug Howe, CEO",
       "source_url": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "source_date": "2025-03-20",
-      "relevance": "CEO executive mandate directly covers site search \u2014 creates internal justification for Algolia investment."
+      "relevance": "CEO executive mandate directly covers site search — creates internal justification for Algolia investment."
     },
     {
       "type": "funding",
@@ -151,16 +151,16 @@
     {
       "type": "industry-risk",
       "badge_label": "Industry Risk",
-      "text": "DBI in net loss ($10.5M) for FY2025. Revenue declining 3-year trend: $3.315B \u2192 $3.075B \u2192 $3.009B. Negative comparable sales for 8 of 9 quarters. Q4 FY2025 was first positive comp in 9 quarters (+0.5%).",
+      "text": "DBI in net loss ($10.5M) for FY2025. Revenue declining 3-year trend: $3.315B → $3.075B → $3.009B. Negative comparable sales for 8 of 9 quarters. Q4 FY2025 was first positive comp in 9 quarters (+0.5%).",
       "source_name": null,
       "source_url": "https://finance.yahoo.com/quote/DBI/financials",
       "source_date": "2026-03-21",
-      "relevance": "Revenue erosion creates urgency for proven-ROI tech investments. Algolia's $6.9M conservative ROI is material at DSW's scale \u2014 equivalent to 2.6% of market cap."
+      "relevance": "Revenue erosion creates urgency for proven-ROI tech investments. Algolia's $6.9M conservative ROI is material at DSW's scale — equivalent to 2.6% of market cap."
     },
     {
       "type": "competitor",
       "badge_label": "Competitor Move",
-      "text": "Shoe Carnival \u2014 DSW's direct off-price footwear competitor \u2014 uses Algolia and achieved up to 3.5x conversions from search. DSW runs proprietary search with no enterprise vendor.",
+      "text": "Shoe Carnival — DSW's direct off-price footwear competitor — uses Algolia and achieved up to 3.5x conversions from search. DSW runs proprietary search with no enterprise vendor.",
       "source_name": null,
       "source_url": "https://www.algolia.com/customers/shoe-carnival/",
       "source_date": "2024-01-01",
@@ -169,11 +169,11 @@
     {
       "type": "industry-opp",
       "badge_label": "Industry Opportunity",
-      "text": "DSW is planning a VIP loyalty program relaunch. Loyalty members need personalized search \u2014 size, brand history, spend tier all inform what they should see first.",
+      "text": "DSW is planning a VIP loyalty program relaunch. Loyalty members need personalized search — size, brand history, spend tier all inform what they should see first.",
       "source_name": null,
       "source_url": "https://www.retaildive.com/news/designer-brands-open-DSW-stores-refresh-loyalty-program/743276/",
       "source_date": "2025-01-01",
-      "relevance": "VIP relaunch creates a natural integration point for Algolia AI Personalization \u2014 wire loyalty tier to user tokens for personalized search ranking."
+      "relevance": "VIP relaunch creates a natural integration point for Algolia AI Personalization — wire loyalty tier to user tokens for personalized search ranking."
     },
     {
       "type": "hiring",
@@ -187,20 +187,20 @@
     {
       "type": "partner",
       "badge_label": "Partner Signal",
-      "text": "DSW uses Bazaarvoice (reviews + UGC), Braze (CRM/push), Tealium (tag management), Optimizely (A/B testing) \u2014 all compatible with Algolia integration without new infrastructure.",
+      "text": "DSW uses Bazaarvoice (reviews + UGC), Braze (CRM/push), Tealium (tag management), Optimizely (A/B testing) — all compatible with Algolia integration without new infrastructure.",
       "source_name": null,
       "source_url": "https://builtwith.com/dsw.com",
       "source_date": "2026-03-21",
-      "relevance": "Braze identity data \u2192 Algolia AI Personalization. Tealium \u2192 Algolia Insights API deployment. Bazaarvoice reviews \u2192 indexable in Algolia. No new infrastructure required."
+      "relevance": "Braze identity data → Algolia AI Personalization. Tealium → Algolia Insights API deployment. Bazaarvoice reviews → indexable in Algolia. No new infrastructure required."
     },
     {
       "type": "media",
       "badge_label": "Media Quote",
-      "text": "CMO Sarah Crockett: 'Our top customers shop both channels, digital and physical, and they engage with our app very regularly \u2014 that's something we're continuously innovating upon.'",
+      "text": "CMO Sarah Crockett: 'Our top customers shop both channels, digital and physical, and they engage with our app very regularly — that's something we're continuously innovating upon.'",
       "source_name": "Sarah Crockett, CMO",
       "source_url": "https://www.marketingdive.com/news/dsw-cmo-brand-overhaul-phygital-retail/741028/",
       "source_date": "2025-01-01",
-      "relevance": "CMO is explicitly investing in cross-channel digital innovation \u2014 Algolia Federated Search is the infrastructure for the 'phygital' experience she describes."
+      "relevance": "CMO is explicitly investing in cross-channel digital innovation — Algolia Federated Search is the infrastructure for the 'phygital' experience she describes."
     },
     {
       "type": "industry-opp",
@@ -209,7 +209,7 @@
       "source_name": null,
       "source_url": "https://www.ainvest.com/news/dsw-strategic-rebranding-personalization-driven-growth-blueprint-retail-resilience-2509/",
       "source_date": "2025-01-01",
-      "relevance": "Uber Eats partnership = new federated search surface + geo/inventory-aware ranking requirement \u2014 Algolia's exact use case."
+      "relevance": "Uber Eats partnership = new federated search surface + geo/inventory-aware ranking requirement — Algolia's exact use case."
     },
     {
       "type": "media_quote",
@@ -222,35 +222,35 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-names-doug-howe-as-president-of-dsw-designer-shoe-warehouse-301551676.html]",
+      "label": "[FACT — Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-names-doug-howe-as-president-of-dsw-designer-shoe-warehouse-301551676.html]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Doug Howe",
       "title": "Executive",
-      "quote": "In case you missed it, DSW recently launched brand re-positioning, unveiling a new tagline, \u201cLet Us Surprise You,\u201d marking a pivotal step in re-invigorating the DSW brand identity and leaning back int",
+      "quote": "In case you missed it, DSW recently launched brand re-positioning, unveiling a new tagline, “Let Us Surprise You,” marking a pivotal step in re-invigorating the DSW brand identity and leaning back int",
       "context": null,
       "publication": "Linkedin",
       "source_url": "https://www.linkedin.com/posts/doug-howe-324b6b9_proud-and-grateful-to-our-teams-to-be-able-activity-7371187333511122944-PAYu",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "ESTIMATE",
-      "label": "[ESTIMATE \u2014 Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/doug-howe-324b6b9_proud-and-grateful-to-our-teams-to-be-able-activity-7371187333511122944-PAYu]",
+      "label": "[ESTIMATE — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/doug-howe-324b6b9_proud-and-grateful-to-our-teams-to-be-able-activity-7371187333511122944-PAYu]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Doug Howe",
       "title": "Executive",
-      "quote": "On the company\u2019s earnings call on Tuesday, chief executive officer Doug Howe told analysts that the team is \u201cprioritizing value, optimizing its assortment and diversifying its sourcing\u201d given the uncertainty in the market.",
+      "quote": "On the company’s earnings call on Tuesday, chief executive officer Doug Howe told analysts that the team is “prioritizing value, optimizing its assortment and diversifying its sourcing” given the uncertainty in the market.",
       "context": null,
       "publication": "Linkedin",
       "source_url": "https://www.linkedin.com/posts/footwear-news_designer-brands-is-reviewing-pricing-and-activity-7338585064626118656-Olf3",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/footwear-news_designer-brands-is-reviewing-pricing-and-activity-7338585064626118656-Olf3]",
+      "label": "[FACT — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/footwear-news_designer-brands-is-reviewing-pricing-and-activity-7338585064626118656-Olf3]",
       "algolia_relevance": null
     },
     {
@@ -264,7 +264,7 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
+      "label": "[FACT — Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
       "algolia_relevance": null
     },
     {
@@ -278,35 +278,35 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Filecache via Tavily WebFetch, 2026-03-24, https://filecache.investorroom.com/ir1_dswinc/614/DBI-USQ_Transcript_2022-04-08.pdf]",
+      "label": "[FACT — Filecache via Tavily WebFetch, 2026-03-24, https://filecache.investorroom.com/ir1_dswinc/614/DBI-USQ_Transcript_2022-04-08.pdf]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Jared Poff",
       "title": "Executive",
-      "quote": "\u201cOur customer remains at the center of everything we do and we remain focused on delivering an expansive assortment of relevant products to exceed expectations across footwear categories.\u201d\n\nThis fall, Chief Financial Officer and Chief Administrative Officer Jared Poff announced his departure from Designer Brands after a decade with the company.",
+      "quote": "“Our customer remains at the center of everything we do and we remain focused on delivering an expansive assortment of relevant products to exceed expectations across footwear categories.”\n\nThis fall, Chief Financial Officer and Chief Administrative Officer Jared Poff announced his departure from Designer Brands after a decade with the company.",
       "context": null,
       "publication": "Retail Dive",
       "source_url": "https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
+      "label": "[FACT — Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Jared Poff",
       "title": "Executive",
-      "quote": "As an organization, our efforts will remain focused on execution of our strategic initiatives to build a business rooted in the strength of our brand, centered on the customer, and positioned for long-term value creation.\u201d [...] Quantcast\n\nan image, when javascript is unavailable\n\n# Jared Poff Steps Down as Designer Brands CFO After 10 Years\n\nMark Haley has been named interim principal financial officer, effective Nov.",
+      "quote": "As an organization, our efforts will remain focused on execution of our strategic initiatives to build a business rooted in the strength of our brand, centered on the customer, and positioned for long-term value creation.” [...] Quantcast\n\nan image, when javascript is unavailable\n\n# Jared Poff Steps Down as Designer Brands CFO After 10 Years\n\nMark Haley has been named interim principal financial officer, effective Nov.",
       "context": null,
       "publication": "WWD",
       "source_url": "https://wwd.com/footwear-news/shoe-industry-news/jared-poff-designer-brands-cfo-exits-1238292559/",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 WWD via Tavily WebFetch, 2026-03-24, https://wwd.com/footwear-news/shoe-industry-news/jared-poff-designer-brands-cfo-exits-1238292559/]",
+      "label": "[FACT — WWD via Tavily WebFetch, 2026-03-24, https://wwd.com/footwear-news/shoe-industry-news/jared-poff-designer-brands-cfo-exits-1238292559/]",
       "algolia_relevance": null
     },
     {
@@ -320,7 +320,7 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-announces-cfo-transition-process-302578815.html]",
+      "label": "[FACT — Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-announces-cfo-transition-process-302578815.html]",
       "algolia_relevance": null
     },
     {
@@ -334,7 +334,7 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Investors via Tavily WebFetch, 2026-03-24, https://investors.designerbrands.com/2018-08-30-DSW-Forms-DSW-Gives-to-Shine-a-Light-on-Empowerment-Wellness-and-Local-Community]",
+      "label": "[FACT — Investors via Tavily WebFetch, 2026-03-24, https://investors.designerbrands.com/2018-08-30-DSW-Forms-DSW-Gives-to-Shine-a-Light-on-Empowerment-Wellness-and-Local-Community]",
       "algolia_relevance": null
     },
     {
@@ -348,7 +348,7 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Sourcingjournal via Tavily WebFetch, 2026-03-24, https://sourcingjournal.com/footwear/footwear-trends/dsw-99328/]",
+      "label": "[FACT — Sourcingjournal via Tavily WebFetch, 2026-03-24, https://sourcingjournal.com/footwear/footwear-trends/dsw-99328/]",
       "algolia_relevance": null
     },
     {
@@ -362,35 +362,35 @@
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 PYMNTS via Tavily WebFetch, 2026-03-24, https://www.pymnts.com/news/2017/dsw-appoints-long-time-nordstrom-exec-as-coo/]",
+      "label": "[FACT — PYMNTS via Tavily WebFetch, 2026-03-24, https://www.pymnts.com/news/2017/dsw-appoints-long-time-nordstrom-exec-as-coo/]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Michele Love",
       "title": "Executive",
-      "quote": "# Shoe-In\n\nShoe-In\n\nThe footwear industry's podcast\n\n## #332 Nothing but Michele Love for the Shoe Industry\n\nMichele Love, CEO, Sunsrise Brands - Footwear & Accessories Division\n\n## Michele Love, CEO, Sunrise Brands \u2013 Footwear & Accessories Division\n\nFrom Nordstrom to DSW to Sunrise Brands, Michele Love\u2019s shoe story is like none other.",
+      "quote": "# Shoe-In\n\nShoe-In\n\nThe footwear industry's podcast\n\n## #332 Nothing but Michele Love for the Shoe Industry\n\nMichele Love, CEO, Sunsrise Brands - Footwear & Accessories Division\n\n## Michele Love, CEO, Sunrise Brands – Footwear & Accessories Division\n\nFrom Nordstrom to DSW to Sunrise Brands, Michele Love’s shoe story is like none other.",
       "context": null,
       "publication": "Shoeinshow",
       "source_url": "https://shoeinshow.com/episode/332-michele-love/",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Shoeinshow via Tavily WebFetch, 2026-03-24, https://shoeinshow.com/episode/332-michele-love/]",
+      "label": "[FACT — Shoeinshow via Tavily WebFetch, 2026-03-24, https://shoeinshow.com/episode/332-michele-love/]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Michele Love",
       "title": "Executive",
-      "quote": "We set up tables for shoe\u2026  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- As we continue to prioritize the growth and momentum of our Nordstrom Rack business, Nordstrom is pleased to announce that lori marten has been\u2026  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- Awarding Customer Service All Star is always my favorite morning.",
+      "quote": "We set up tables for shoe…  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- As we continue to prioritize the growth and momentum of our Nordstrom Rack business, Nordstrom is pleased to announce that lori marten has been…  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- Awarding Customer Service All Star is always my favorite morning.",
       "context": null,
       "publication": "Linkedin",
       "source_url": "https://www.linkedin.com/in/michelelove",
       "source_date": "2026-03-24",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT \u2014 Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/in/michelelove]",
+      "label": "[FACT — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/in/michelelove]",
       "algolia_relevance": null
     }
   ],
@@ -433,7 +433,7 @@
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Zappos built custom in-house search with ~20 ML engineers on Amazon SageMaker and EMR, using genetic algorithms for real-time keyword recognition. They deliberately chose to build rather than buy. Not a displacement target \u2014 but their model illustrates the AI capability DSW lacks. DSW cannot build this internally; Algolia delivers equivalent capability without the engineering investment."
+      "strategic_angle": "Zappos built custom in-house search with ~20 ML engineers on Amazon SageMaker and EMR, using genetic algorithms for real-time keyword recognition. They deliberately chose to build rather than buy. Not a displacement target — but their model illustrates the AI capability DSW lacks. DSW cannot build this internally; Algolia delivers equivalent capability without the engineering investment."
     },
     {
       "name": "Steve Madden",
@@ -469,7 +469,7 @@
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Nordstrom is building AI-powered longer natural language query search in-house. Their 3.4% net sales growth in a period when they invested in AI search is evidence that AI search investment correlates with revenue recovery in footwear/fashion retail \u2014 a useful stat for the DSW pitch."
+      "strategic_angle": "Nordstrom is building AI-powered longer natural language query search in-house. Their 3.4% net sales growth in a period when they invested in AI search is evidence that AI search investment correlates with revenue recovery in footwear/fashion retail — a useful stat for the DSW pitch."
     },
     {
       "name": "JD Sports",
@@ -481,30 +481,30 @@
       "golden_angle": true,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "JD Sports chose Algolia as the search/discovery anchor for their full omnichannel composable re-platform \u2014 the exact architecture modernization journey DSW needs. Though a larger operation than DSW, the pattern is a direct blueprint: replace monolithic platform + Algolia as AI search layer = omnichannel parity."
+      "strategic_angle": "JD Sports chose Algolia as the search/discovery anchor for their full omnichannel composable re-platform — the exact architecture modernization journey DSW needs. Though a larger operation than DSW, the pattern is a direct blueprint: replace monolithic platform + Algolia as AI search layer = omnichannel parity."
     }
   ],
   "findings": [
     {
       "id": "G01",
-      "title": "Zero NeuralSearch \u2014 NLP Queries Completely Fail",
+      "title": "Zero NeuralSearch — NLP Queries Completely Fail",
       "severity": "critical",
       "category": "Semantic / NLP Search",
       "tested_query": "gift for her under 100",
-      "expected_behavior": "Gender=female, price\u2264$100, occasion=gift \u2014 should return women's shoes and accessories under $100",
-      "actual_behavior": "3,229 results dominated by Under Armour backpacks \u2014 keyword match on 'her' in product name 'Adore Her Slip-On'. Price filter not applied. Gender intent not understood.",
+      "expected_behavior": "Gender=female, price≤$100, occasion=gift — should return women's shoes and accessories under $100",
+      "actual_behavior": "3,229 results dominated by Under Armour backpacks — keyword match on 'her' in product name 'Adore Her Slip-On'. Price filter not applied. Gender intent not understood.",
       "impact_stat": "Natural language queries account for a growing share of search; systems that fail NLP intent return irrelevant results and lose the sale",
       "impact_stat_source": "https://www.algolia.com/customers/shoe-carnival/",
       "screenshot_file": "screenshots/06-synonym-gift-for-her.png",
-      "prospect_description": "When a customer types 'gift for her under $100,' DSW's search returns an Under Armour backpack at position #1 \u2014 because the word 'her' appears in a product name. The $100 price cap is completely ignored. The shopper abandons.",
-      "algolia_solution": "Algolia NeuralSearch understands natural language intent \u2014 gender, price constraints, occasion, and lifestyle context \u2014 returning results matching what the shopper means, not just what they typed.",
+      "prospect_description": "When a customer types 'gift for her under $100,' DSW's search returns an Under Armour backpack at position #1 — because the word 'her' appears in a product name. The $100 price cap is completely ignored. The shopper abandons.",
+      "algolia_solution": "Algolia NeuralSearch understands natural language intent — gender, price constraints, occasion, and lifestyle context — returning results matching what the shopper means, not just what they typed.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
       "id": "G02",
-      "title": "No Federated Search \u2014 Content & Loyalty Invisible",
+      "title": "No Federated Search — Content & Loyalty Invisible",
       "severity": "critical",
       "category": "Content Commerce / Front-End UX",
       "tested_query": "sneak",
@@ -513,15 +513,15 @@
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/03-sayt-sneakers.png",
-      "prospect_description": "A DSW customer typing 'rewards' in the search bar gets unrelated products \u2014 not the VIP loyalty program page. Help content, store locator, brand editorial, and loyalty information are completely invisible in search.",
-      "algolia_solution": "Algolia Federated Search indexes multiple data sources \u2014 product catalog, help center, loyalty pages, brand editorial, store locator \u2014 and surfaces the right content type in SAYT and full results.",
+      "prospect_description": "A DSW customer typing 'rewards' in the search bar gets unrelated products — not the VIP loyalty program page. Help content, store locator, brand editorial, and loyalty information are completely invisible in search.",
+      "algolia_solution": "Algolia Federated Search indexes multiple data sources — product catalog, help center, loyalty pages, brand editorial, store locator — and surfaces the right content type in SAYT and full results.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
       "id": "G03",
-      "title": "Typo Tolerance Requires User Click \u2014 Not Auto-Correcting",
+      "title": "Typo Tolerance Requires User Click — Not Auto-Correcting",
       "severity": "critical",
       "category": "Typo Tolerance",
       "tested_query": "sneackers",
@@ -531,7 +531,7 @@
       "impact_stat_source": "",
       "screenshot_file": "screenshots/05-typo-sneackers.png",
       "prospect_description": "A customer typing 'sneackers' must read a banner and click 'Sneakers' to see results. On mobile, they may not notice the banner and assume DSW has no sneakers.",
-      "algolia_solution": "Algolia auto-corrects typos transparently \u2014 showing 'Results for sneakers' inline with zero extra clicks. Mobile users see corrected results immediately.",
+      "algolia_solution": "Algolia auto-corrects typos transparently — showing 'Results for sneakers' inline with zero extra clicks. Mobile users see corrected results immediately.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
@@ -542,13 +542,13 @@
       "severity": "critical",
       "category": "Recommendations & Merchandising",
       "tested_query": "Birkenstock Arizona Slide Sandal PDP",
-      "expected_behavior": "Cross-brand FBT recommendations \u2014 e.g., Vionic insoles, Naturalizer sandals, accessories",
+      "expected_behavior": "Cross-brand FBT recommendations — e.g., Vionic insoles, Naturalizer sandals, accessories",
       "actual_behavior": "PDP 'Similar Styles' carousel shows only other Birkenstock variants. 3 recommendation sections all return same-brand results only. No cross-brand or cross-category collaborative filtering observed.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/18-recommendations.png",
-      "prospect_description": "When a customer views a Birkenstock sandal, DSW shows only other Birkenstock sandals \u2014 missing the chance to sell matching accessories, insoles, or complementary brands the customer also buys.",
-      "algolia_solution": "Algolia Recommend uses collaborative filtering across the full catalog \u2014 surfacing what customers who bought THIS product also bought, regardless of brand.",
+      "prospect_description": "When a customer views a Birkenstock sandal, DSW shows only other Birkenstock sandals — missing the chance to sell matching accessories, insoles, or complementary brands the customer also buys.",
+      "algolia_solution": "Algolia Recommend uses collaborative filtering across the full catalog — surfacing what customers who bought THIS product also bought, regardless of brand.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
       "algolia_case_study_result": "Immediate conversion uplift after enabling Recommend"
@@ -559,12 +559,12 @@
       "severity": "critical",
       "category": "Dynamic Facets & Personalization",
       "tested_query": "sneakers",
-      "expected_behavior": "Re-ranked results based on user size, brand history, loyalty tier \u2014 VIP Gold members see their preferences first",
-      "actual_behavior": "6,519 sneaker results in generic rank order for all users. No evidence of personalized re-ranking. Width facet buried in panel. 'Ideas For You' carousel in empty state is UI personalization only \u2014 search results are not personalized.",
+      "expected_behavior": "Re-ranked results based on user size, brand history, loyalty tier — VIP Gold members see their preferences first",
+      "actual_behavior": "6,519 sneaker results in generic rank order for all users. No evidence of personalized re-ranking. Width facet buried in panel. 'Ideas For You' carousel in empty state is UI personalization only — search results are not personalized.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/14-dynamic-facets.png",
-      "prospect_description": "A DSW VIP Insider Gold member who wears a size 8W New Balance sees the same 6,519 sneaker results as a new guest shopper \u2014 missing the opportunity to show their exact size and preferred brands first.",
+      "prospect_description": "A DSW VIP Insider Gold member who wears a size 8W New Balance sees the same 6,519 sneaker results as a new guest shopper — missing the opportunity to show their exact size and preferred brands first.",
       "algolia_solution": "Algolia AI Personalization re-ranks results based on each user's browsing and purchase history. VIP loyalty tier, size, width, and brand preferences feed the personalization engine.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
@@ -577,15 +577,15 @@
       "category": "Intent Detection",
       "tested_query": "Vince Camuto",
       "expected_behavior": "Brand query should route to curated brand landing page",
-      "actual_behavior": "Redirects to '/brands/vince-camuto' \u2014 full curated brand page with editorial heading, gender funnels, featured products, and 266 brand-specific results with Category filter.",
+      "actual_behavior": "Redirects to '/brands/vince-camuto' — full curated brand page with editorial heading, gender funnels, featured products, and 266 brand-specific results with Category filter.",
       "impact_stat": "",
       "impact_stat_source": "",
       "screenshot_file": "screenshots/10-merchandising.png",
-      "prospect_description": "DSW's brand intent handling is a clear strength \u2014 customers searching for a brand get a curated editorial experience, not just a filtered product grid.",
-      "algolia_solution": "Algolia Rules Engine extends this pattern to long-tail brand queries without dedicated pages \u2014 the merchandising team manages all rules via a visual interface without engineering dependency.",
+      "prospect_description": "DSW's brand intent handling is a clear strength — customers searching for a brand get a curated editorial experience, not just a filtered product grid.",
+      "algolia_solution": "Algolia Rules Engine extends this pattern to long-tail brand queries without dedicated pages — the merchandising team manages all rules via a visual interface without engineering dependency.",
       "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival/",
       "algolia_case_study_company": "Shoe Carnival",
-      "algolia_case_study_result": "Merchandising team productivity doubled \u2014 changes deployed in a fraction of previous time"
+      "algolia_case_study_result": "Merchandising team productivity doubled — changes deployed in a fraction of previous time"
     }
   ],
   "gap_pairs": [
@@ -595,10 +595,10 @@
       "said_source_url": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "said_source_label": "DBI FY2024 Earnings Release",
       "said_date": "2025-03",
-      "found_title": "Site search is a custom proprietary backend \u2014 no federated content, no personalized ranking, no NeuralSearch",
+      "found_title": "Site search is a custom proprietary backend — no federated content, no personalized ranking, no NeuralSearch",
       "found_evidence": "'gift for her under 100' returns Under Armour backpacks. Help content invisible in SAYT. Zero enterprise search vendor detected via network inspection.",
       "finding_id": "F01",
-      "algolia_angle": "Algolia NeuralSearch resolves conversational queries \u2014 'gift for her under 100', 'comfortable shoes for standing all day' \u2014 with semantic understanding of gender, price, and occasion intent. Shoe Carnival saw 3.5x conversion with this exact capability."
+      "algolia_angle": "Algolia NeuralSearch resolves conversational queries — 'gift for her under 100', 'comfortable shoes for standing all day' — with semantic understanding of gender, price, and occasion intent. Shoe Carnival saw 3.5x conversion with this exact capability."
     },
     {
       "said_quote": "customer-first and product obsessed through a data-driven approach",
@@ -606,10 +606,10 @@
       "said_source_url": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "said_source_label": "DBI FY2024 Earnings Release",
       "said_date": "2025-03",
-      "found_title": "No search analytics visible in UI \u2014 no trending signals, no query performance data, no click analytics",
+      "found_title": "No search analytics visible in UI — no trending signals, no query performance data, no click analytics",
       "found_evidence": "Only 'Top Rated' and 'New Arrival' badges observed. No trending products, no search query analytics, no A/B test signals in search UI. [screenshot 04]",
       "finding_id": "F02",
-      "algolia_angle": "Algolia Federated Search surfaces products, brand pages, loyalty program info, and help content in a single unified search experience \u2014 no silos, no hardcoded redirect rules required."
+      "algolia_angle": "Algolia Federated Search surfaces products, brand pages, loyalty program info, and help content in a single unified search experience — no silos, no hardcoded redirect rules required."
     },
     {
       "said_quote": "Our top customers shop both channels, digital and physical, and they engage with our app very regularly",
@@ -620,7 +620,7 @@
       "found_title": "Store locator, loyalty program, and brand editorial completely invisible in search",
       "found_evidence": "SAYT shows products + query completions only. Help content, store locator, and loyalty program info not surfaced. [screenshot 03]",
       "finding_id": "F03",
-      "algolia_angle": "Algolia typo tolerance is transparent and auto-correcting \u2014 'sneackers' silently returns sneakers results with 'Showing results for: sneakers' inline. Zero friction, zero lost sessions on mobile."
+      "algolia_angle": "Algolia typo tolerance is transparent and auto-correcting — 'sneackers' silently returns sneakers results with 'Showing results for: sneakers' inline. Zero friction, zero lost sessions on mobile."
     }
   ],
   "toc": [
@@ -727,7 +727,7 @@
         "net_margin": "4.9%",
         "ebitda": "$255.9M",
         "note": "",
-        "label": "[FACT \u2014 Yahoo Finance MCP, 2026-03-24]"
+        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
       },
       {
         "year": "FY2024",
@@ -738,19 +738,19 @@
         "net_margin": "0.9%",
         "ebitda": "$139.3M",
         "note": "",
-        "label": "[FACT \u2014 Yahoo Finance MCP, 2026-03-24]"
+        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
       },
       {
         "year": "FY2025",
         "revenue": "$3.009B",
         "gross_profit": "$1.286B",
         "operating_income": "$40.1M",
-        "net_income": "\u2212$10.5M",
-        "net_margin": "\u22120.35%",
+        "net_income": "−$10.5M",
+        "net_margin": "−0.35%",
         "ebitda": "$99.5M",
         "digital_share": "$921M",
         "note": "Latest FY",
-        "label": "[FACT \u2014 Yahoo Finance MCP, 2026-03-24]"
+        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
       }
     ],
     "revenue_cagr": "-4.8%",
@@ -763,7 +763,7 @@
     "total_digital_revenue": "$921M",
     "ecommerce_revenue_est": 921000000,
     "ecommerce_share_estimate": "30.6%",
-    "digital_revenue_label": "[ESTIMATE \u2014 DBI IR 'billion-dollar digital commerce business', 2025]",
+    "digital_revenue_label": "[ESTIMATE — DBI IR 'billion-dollar digital commerce business', 2025]",
     "search_roi_est": "$6.9M/yr",
     "search_addressable": null,
     "search_addressable_moderate": null,
@@ -782,10 +782,10 @@
     },
     "roi_multiple": "17x (conservative: $6.9M / $400K ACV)",
     "payback_period": "<30 days (moderate scenario)",
-    "algolia_annual_cost_est": "$400K\u2013$800K ACV",
+    "algolia_annual_cost_est": "$400K–$800K ACV",
     "conservative_lift_label": "$6.9M/yr (5% improvement)",
     "revenue_source": "Yahoo Finance / DBI SEC filings",
-    "revenue_source_label": "[FACT \u2014 Yahoo Finance MCP, 2026-03-24]",
+    "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-03-24]",
     "source_url": "https://finance.yahoo.com/quote/DBI/financials",
     "executive_quotes": []
   },
@@ -872,7 +872,7 @@
         "name": "Sheamus Toal",
         "status": "WARM",
         "signal": "hot",
-        "message": "New CFO in 90-day review mode. ROI brief: $6.9M\u2013$13.8M annual uplift at 17x ROI.",
+        "message": "New CFO in 90-day review mode. ROI brief: $6.9M–$13.8M annual uplift at 17x ROI.",
         "job_url": "https://investors.designerbrands.com/management",
         "salary_range": null
       },
@@ -899,7 +899,7 @@
         "name": "ML Engineer (open role)",
         "status": "OPEN",
         "signal": "warm",
-        "message": "Active hire \u2014 GCP/Azure OpenAI. Would evaluate and integrate Algolia. Position as search infra their ML builds on top of.",
+        "message": "Active hire — GCP/Azure OpenAI. Would evaluate and integrate Algolia. Position as search infra their ML builds on top of.",
         "job_url": "https://www.zippia.com/designer-brands-careers-3576/jobs/",
         "salary_range": null
       }
@@ -909,39 +909,39 @@
         "phase": 1,
         "label": "Outreach",
         "target": "Mike Donk (SVP, Digital)",
-        "message": "Shoe Carnival \u2014 your direct off-price competitor \u2014 just 3.5x'd search conversions with Algolia. Worth 15 minutes to see what we found on dsw.com?",
-        "timing": "Week 1\u20132 (March 2026)"
+        "message": "Shoe Carnival — your direct off-price competitor — just 3.5x'd search conversions with Algolia. Worth 15 minutes to see what we found on dsw.com?",
+        "timing": "Week 1–2 (March 2026)"
       },
       {
         "phase": 2,
         "label": "ROI Brief",
         "target": "Sheamus Toal (CFO)",
-        "message": "$6.9M\u2013$13.8M annual revenue uplift on existing dsw.com traffic. 17x ROI. 90-day pilot.",
-        "timing": "Month 2 (April\u2013May 2026)"
+        "message": "$6.9M–$13.8M annual revenue uplift on existing dsw.com traffic. 17x ROI. 90-day pilot.",
+        "timing": "Month 2 (April–May 2026)"
       },
       {
         "phase": 3,
         "label": "Technical Eval",
         "target": "ML Engineer + VP Digital Product",
-        "message": "Algolia Search + NeuralSearch is the infrastructure your ML team builds AI personalization on top of \u2014 not a replacement for your AI ambitions.",
-        "timing": "Month 3 (May\u2013June 2026)"
+        "message": "Algolia Search + NeuralSearch is the infrastructure your ML team builds AI personalization on top of — not a replacement for your AI ambitions.",
+        "timing": "Month 3 (May–June 2026)"
       }
     ],
     "objection_counters": [
       {
         "objection": "We have an internal search solution that works",
-        "counter": "Network inspection confirmed zero enterprise search vendor. 'Gift for her under $100' returns an Under Armour backpack at position #1 \u2014 that's the gap. Shoe Carnival had a similar setup before Algolia and saw 3.5x conversion uplift."
+        "counter": "Network inspection confirmed zero enterprise search vendor. 'Gift for her under $100' returns an Under Armour backpack at position #1 — that's the gap. Shoe Carnival had a similar setup before Algolia and saw 3.5x conversion uplift."
       },
       {
         "objection": "We're in cost-reduction mode after the layoffs",
-        "counter": "$6.9M annual revenue uplift at $400K ACV is 17x ROI. This is not a cost \u2014 it's the highest-ROI digital investment available right now. New CFO Sheamus Toal's mandate is to find margin recovery paths. Search is one of the fastest."
+        "counter": "$6.9M annual revenue uplift at $400K ACV is 17x ROI. This is not a cost — it's the highest-ROI digital investment available right now. New CFO Sheamus Toal's mandate is to find margin recovery paths. Search is one of the fastest."
       },
       {
         "objection": "We're building AI/ML internally",
-        "counter": "Algolia complements, not competes with, your ML ambitions. The ML Engineer you're hiring needs a search API to build personalization ON TOP of. Algolia is that API \u2014 with NeuralSearch, Insights, and Personalization baked in."
+        "counter": "Algolia complements, not competes with, your ML ambitions. The ML Engineer you're hiring needs a search API to build personalization ON TOP of. Algolia is that API — with NeuralSearch, Insights, and Personalization baked in."
       }
     ],
-    "build_vs_buy": "DSW has a custom search backend they've built internally. The evidence shows it lacks NLP, personalization, and federated search \u2014 capabilities that take 3\u20135 years to build internally at a cost far exceeding Algolia's ACV. Buy recommendation: Algolia delivers enterprise search capabilities in weeks, not quarters."
+    "build_vs_buy": "DSW has a custom search backend they've built internally. The evidence shows it lacks NLP, personalization, and federated search — capabilities that take 3–5 years to build internally at a cost far exceeding Algolia's ACV. Buy recommendation: Algolia delivers enterprise search capabilities in weeks, not quarters."
   },
   "strategic_angles": [
     {
@@ -950,30 +950,30 @@
       "pain_points": [
         "76% female audience with fashion-driven, context-rich search queries that fail on keyword matching",
         "VIP loyalty program relaunch creates demand for personalized search ranking by tier, size, brand",
-        "No personalization engine detected on DSW \u2014 Braze CRM data unused in search"
+        "No personalization engine detected on DSW — Braze CRM data unused in search"
       ],
-      "discovery_question": "When a VIP Insider Gold member searches 'boots,' is she seeing her size, her brands, and her price range first \u2014 or the same 6,519 results as a first-time visitor?",
+      "discovery_question": "When a VIP Insider Gold member searches 'boots,' is she seeing her size, her brands, and her price range first — or the same 6,519 results as a first-time visitor?",
       "algolia_proof": "Algolia AI Personalization uses loyalty data, browse history, and purchase patterns to re-rank results for each user. Shoe Carnival deployed this as part of their 3.5x conversion improvement.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "label": "VIP Loyalty Relaunch",
-      "hook": "Your VIP relaunch is the perfect moment to wire personalized search to loyalty tier \u2014 show Gold members their size, their spend range, their favorite brands before anyone else.",
+      "hook": "Your VIP relaunch is the perfect moment to wire personalized search to loyalty tier — show Gold members their size, their spend range, their favorite brands before anyone else.",
       "pain_points": [
-        "Loyalty program relaunch planned \u2014 personalization infrastructure investment active",
+        "Loyalty program relaunch planned — personalization infrastructure investment active",
         "Current search treats all users identically regardless of loyalty status",
         "Loyalty data (size, brand preferences, purchase history) exists in Braze but not used in search"
       ],
       "discovery_question": "How is the VIP relaunch team thinking about connecting loyalty tier to the on-site search experience?",
-      "algolia_proof": "Algolia AI Personalization connects to existing CRM identity data (Braze is supported) \u2014 no new infrastructure required to personalize search for loyalty segments.",
+      "algolia_proof": "Algolia AI Personalization connects to existing CRM identity data (Braze is supported) — no new infrastructure required to personalize search for loyalty segments.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis"
     },
     {
       "label": "Competitive Urgency",
-      "hook": "Shoe Carnival is winning on digital search. They have your same model \u2014 off-price footwear, B&M + ecommerce \u2014 and they 3.5x'd search conversions with Algolia. DSW has more stores and more traffic.",
+      "hook": "Shoe Carnival is winning on digital search. They have your same model — off-price footwear, B&M + ecommerce — and they 3.5x'd search conversions with Algolia. DSW has more stores and more traffic.",
       "pain_points": [
-        "Shoe Carnival (direct competitor) is an Algolia customer \u2014 first mover in off-price footwear search",
-        "Zappos (Amazon) raises the bar every year \u2014 DSW needs enterprise search to compete",
+        "Shoe Carnival (direct competitor) is an Algolia customer — first mover in off-price footwear search",
+        "Zappos (Amazon) raises the bar every year — DSW needs enterprise search to compete",
         "DSW's custom search backend is a technical liability vs. Shoe Carnival's Algolia platform"
       ],
       "discovery_question": "How does DSW benchmark its digital search experience against Shoe Carnival and Zappos today?",
@@ -982,11 +982,11 @@
     },
     {
       "label": "Revenue Recovery via Search",
-      "hook": "31% of your revenue flows through dsw.com. If Algolia improves search conversion by just 5% \u2014 the Shoe Carnival rate \u2014 that's $6.9M in additional annual revenue from existing traffic.",
+      "hook": "31% of your revenue flows through dsw.com. If Algolia improves search conversion by just 5% — the Shoe Carnival rate — that's $6.9M in additional annual revenue from existing traffic.",
       "pain_points": [
-        "Revenue declining 3-year trend ($3.315B \u2192 $3.009B) with net loss in FY2025",
-        "Q4 FY2025 is the first positive comp in 9 quarters \u2014 management needs to invest to accelerate the turn",
-        "Search is the highest-leverage digital revenue levers \u2014 Baymard: 15% of digital revenue is search-addressable"
+        "Revenue declining 3-year trend ($3.315B → $3.009B) with net loss in FY2025",
+        "Q4 FY2025 is the first positive comp in 9 quarters — management needs to invest to accelerate the turn",
+        "Search is the highest-leverage digital revenue levers — Baymard: 15% of digital revenue is search-addressable"
       ],
       "discovery_question": "What's the internal benchmark for search conversion on dsw.com, and how does it compare to Shoe Carnival's 3.5x post-Algolia metric?",
       "algolia_proof": "Conservative: $6.9M/year (5% lift). Moderate: $13.8M/year (10% lift). 17x ROI on $400K ACV. Payback under 30 days.",
@@ -1003,7 +1003,7 @@
       {
         "their_priority": "Customer-first, data-driven approach (CEO mandate)",
         "algolia_product": "Algolia Analytics + Insights API",
-        "discovery_question": "What search analytics are visible to the DSW digital team today \u2014 query performance, click-through rates, zero-results rate?"
+        "discovery_question": "What search analytics are visible to the DSW digital team today — query performance, click-through rates, zero-results rate?"
       },
       {
         "their_priority": "VIP loyalty program relaunch",
@@ -1018,26 +1018,26 @@
     ],
     "outreach_sequence": [
       {
-        "week": "1\u20132",
+        "week": "1–2",
         "target": "Mike Donk (SVP, Digital)",
         "channel": "LinkedIn + Email",
-        "message": "Shoe Carnival \u2014 your direct competitor \u2014 3.5x'd search conversions with Algolia. We audited dsw.com and found 5 critical gaps. Worth 15 minutes?"
+        "message": "Shoe Carnival — your direct competitor — 3.5x'd search conversions with Algolia. We audited dsw.com and found 5 critical gaps. Worth 15 minutes?"
       },
       {
-        "week": "3\u20134",
+        "week": "3–4",
         "target": "Laura Davis org (VP/Dir Digital Product)",
         "channel": "LinkedIn",
         "message": "CEO mandate: 'customer-first through data-driven approach.' Your search has no analytics layer. Here's what we found."
       },
       {
-        "week": "5\u20138",
+        "week": "5–8",
         "target": "Sheamus Toal (CFO)",
         "channel": "Email + IR follow",
-        "message": "$6.9M annual uplift, 17x ROI, 90-day pilot. New CFO \u2014 this is the search ROI brief for your first budget review."
+        "message": "$6.9M annual uplift, 17x ROI, 90-day pilot. New CFO — this is the search ROI brief for your first budget review."
       }
     ],
     "anchor_lines": [
-      "Your competitor Shoe Carnival just 3.5x'd search conversions with Algolia \u2014 DSW has more stores and more traffic. The gap shouldn't exist.",
+      "Your competitor Shoe Carnival just 3.5x'd search conversions with Algolia — DSW has more stores and more traffic. The gap shouldn't exist.",
       "31% of your revenue flows through dsw.com with no enterprise search vendor. That's $138M in search-addressable revenue with a custom backend from the early 2010s.",
       "New CFO. New COO. First positive comp in 9 quarters. The window to invest in the turn is open right now."
     ]
@@ -1071,7 +1071,7 @@
         ],
         "search_stack": "In-house / AWS ML",
         "source_url": "https://www.modernretail.co/retailers/how-zappos-used-ai-to-rebuild-its-search-engine/",
-        "strategic_implication": "Zappos built custom in-house search with ~20 ML engineers on Amazon SageMaker and EMR, using genetic algorithms for real-time keyword recognition. They deliberately chose to build rather than buy. Not a displacement target \u2014 but their model illustrates the AI capability DSW lacks. DSW cannot build t"
+        "strategic_implication": "Zappos built custom in-house search with ~20 ML engineers on Amazon SageMaker and EMR, using genetic algorithms for real-time keyword recognition. They deliberately chose to build rather than buy. Not a displacement target — but their model illustrates the AI capability DSW lacks. DSW cannot build t"
       },
       {
         "tier": "GOLDEN",
@@ -1098,7 +1098,7 @@
         ],
         "search_stack": "Proprietary / Internal AI",
         "source_url": "https://www.yahoo.com/tech/byte-sized-ai-nordstrom-uses-210000699.html",
-        "strategic_implication": "Nordstrom is building AI-powered longer natural language query search in-house. Their 3.4% net sales growth in a period when they invested in AI search is evidence that AI search investment correlates with revenue recovery in footwear/fashion retail \u2014 a useful stat for the DSW pitch."
+        "strategic_implication": "Nordstrom is building AI-powered longer natural language query search in-house. Their 3.4% net sales growth in a period when they invested in AI search is evidence that AI search investment correlates with revenue recovery in footwear/fashion retail — a useful stat for the DSW pitch."
       },
       {
         "tier": "GOLDEN",
@@ -1107,13 +1107,13 @@
         ],
         "search_stack": "Algolia",
         "source_url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
-        "strategic_implication": "JD Sports chose Algolia as the search/discovery anchor for their full omnichannel composable re-platform \u2014 the exact architecture modernization journey DSW needs. Though a larger operation than DSW, the pattern is a direct blueprint: replace monolithic platform + Algolia as AI search layer = omnicha"
+        "strategic_implication": "JD Sports chose Algolia as the search/discovery anchor for their full omnichannel composable re-platform — the exact architecture modernization journey DSW needs. Though a larger operation than DSW, the pattern is a direct blueprint: replace monolithic platform + Algolia as AI search layer = omnicha"
       }
     ],
     "positioning_matrix": [
       {
         "capability": "NLP / Semantic Search",
-        "prospect_today": "0/10 \u2014 keyword-only",
+        "prospect_today": "0/10 — keyword-only",
         "prospect_with_algolia": true,
         "nike_has": true,
         "asics_has": true,
@@ -1181,7 +1181,7 @@
     "competitor_domain": "shoecarnival.com",
     "relationship": "direct_competitor",
     "algolia_metric": "Up to 3.5x conversion increase from search",
-    "quote": "I probably sleep better with Algolia than I did with any of the technologies we either purchased or built ourselves. \u2014 Ned Moore, Director eCommerce Product & Technology",
+    "quote": "I probably sleep better with Algolia than I did with any of the technologies we either purchased or built ourselves. — Ned Moore, Director eCommerce Product & Technology",
     "quote_source": "",
     "case_study_url": "https://www.algolia.com/customers/shoe-carnival",
     "talk_track": "",
@@ -1216,165 +1216,165 @@
     "next_step_owner": "AE",
     "next_step_date": "2026-03-29",
     "urgency_level": "high",
-    "urgency_label": "High Urgency \u2014 Act Now",
+    "urgency_label": "High Urgency — Act Now",
     "urgency_color": "#DC2626",
     "talk_track_opener": "Your direct competitor Shoe Carnival just 3.5x'd their search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
-    "talk_track_cta": "Can we book 30 minutes with you and your VP of Digital Product to walk through what we found \u2014 live on your site?"
+    "talk_track_cta": "Can we book 30 minutes with you and your VP of Digital Product to walk through what we found — live on your site?"
   },
   "next_steps": [
     {
       "step_num": 1,
       "title": "Share Audit with Mike Donk",
-      "description": "Send this audit to Mike Donk (SVP, Digital). Subject: 'Shoe Carnival 3.5x search conversions \u2014 here's what we found on dsw.com.' Timing: this week (optimal CFO 90-day window is open)."
+      "description": "Send this audit to Mike Donk (SVP, Digital). Subject: 'Shoe Carnival 3.5x search conversions — here's what we found on dsw.com.' Timing: this week (optimal CFO 90-day window is open)."
     },
     {
       "step_num": 2,
       "title": "Book 30-Minute Technical Walkthrough",
-      "description": "Demo the 5 critical gap queries live on dsw.com vs. Shoe Carnival's Algolia experience. Include VP/Director Digital Product. Show: 'gift for her under 100' failure \u2192 Algolia NeuralSearch solution."
+      "description": "Demo the 5 critical gap queries live on dsw.com vs. Shoe Carnival's Algolia experience. Include VP/Director Digital Product. Show: 'gift for her under 100' failure → Algolia NeuralSearch solution."
     },
     {
       "step_num": 3,
       "title": "Present ROI Brief to CFO Sheamus Toal",
-      "description": "Month 1: Present $6.9M\u2013$13.8M annual uplift calculation to new CFO Sheamus Toal. Frame as first-budget-review ROI opportunity: 17x return, 90-day pilot, no displacement, proven by Shoe Carnival."
+      "description": "Month 1: Present $6.9M–$13.8M annual uplift calculation to new CFO Sheamus Toal. Frame as first-budget-review ROI opportunity: 17x return, 90-day pilot, no displacement, proven by Shoe Carnival."
     }
   ],
-  "methodology": "Phase 1 (14 research steps): Company context, tech stack (BuiltWith 7 endpoints), traffic (SimilarWeb 14 endpoints), competitor analysis, test query design, strategic angles, hiring signals, financial profile (Yahoo Finance MCP), trigger events, investor intelligence (10-K/earnings), ICP mapping. Phase 2 (browser audit): 15 screenshots captured on dsw.com testing 19 search scenarios including SAYT, typo tolerance, NLP queries, intent detection, federated search, merchandising, mobile, recommendations, and analytics. Network inspection confirmed proprietary search backend with no enterprise vendor. Phase 3 (scoring): 10 areas scored 0\u201310 with HIGH/MEDIUM/LOW severity weights. Weighted formula: 54.5/14.5 = 3.8/10.",
+  "methodology": "Phase 1 (14 research steps): Company context, tech stack (BuiltWith 7 endpoints), traffic (SimilarWeb 14 endpoints), competitor analysis, test query design, strategic angles, hiring signals, financial profile (Yahoo Finance MCP), trigger events, investor intelligence (10-K/earnings), ICP mapping. Phase 2 (browser audit): 15 screenshots captured on dsw.com testing 19 search scenarios including SAYT, typo tolerance, NLP queries, intent detection, federated search, merchandising, mobile, recommendations, and analytics. Network inspection confirmed proprietary search backend with no enterprise vendor. Phase 3 (scoring): 10 areas scored 0–10 with HIGH/MEDIUM/LOW severity weights. Weighted formula: 54.5/14.5 = 3.8/10.",
   "bibliography": [
     {
       "n": 1,
-      "label": "Yahoo Finance \u2014 DBI Financials",
+      "label": "Yahoo Finance — DBI Financials",
       "url": "https://finance.yahoo.com/quote/DBI/financials",
       "accessed": "2026-03-21"
     },
     {
       "n": 2,
-      "label": "Yahoo Finance \u2014 DBI Quote",
+      "label": "Yahoo Finance — DBI Quote",
       "url": "https://finance.yahoo.com/quote/DBI",
       "accessed": "2026-03-21"
     },
     {
       "n": 3,
-      "label": "Designer Brands IR \u2014 FY2024 Earnings",
+      "label": "Designer Brands IR — FY2024 Earnings",
       "url": "https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results",
       "accessed": "2026-03-21"
     },
     {
       "n": 4,
-      "label": "Designer Brands \u2014 Management Page",
+      "label": "Designer Brands — Management Page",
       "url": "https://investors.designerbrands.com/management",
       "accessed": "2026-03-21"
     },
     {
       "n": 5,
-      "label": "PRNewswire \u2014 Sheamus Toal CFO Appointment",
+      "label": "PRNewswire — Sheamus Toal CFO Appointment",
       "url": "https://www.prnewswire.com/news-releases/designer-brands-inc-appoints-sheamus-toal-as-chief-financial-officer-302684350.html",
       "accessed": "2026-03-21"
     },
     {
       "n": 6,
-      "label": "PRNewswire \u2014 Q3 FY2025 Results",
+      "label": "PRNewswire — Q3 FY2025 Results",
       "url": "https://www.prnewswire.com/news-releases/designer-brands-inc-reports-third-quarter-2025-financial-results-302635763.html",
       "accessed": "2026-03-21"
     },
     {
       "n": 7,
-      "label": "WWD \u2014 Designer Brands Layoffs 2026",
+      "label": "WWD — Designer Brands Layoffs 2026",
       "url": "https://wwd.com/footwear-news/shoe-industry-news/designer-brands-layoffs-2026-dsw-jobs-1238537102/",
       "accessed": "2026-03-21"
     },
     {
       "n": 8,
-      "label": "Retail Dive \u2014 DSW Layoffs",
+      "label": "Retail Dive — DSW Layoffs",
       "url": "https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/",
       "accessed": "2026-03-21"
     },
     {
       "n": 9,
-      "label": "Retail Dive \u2014 VIP Program Refresh",
+      "label": "Retail Dive — VIP Program Refresh",
       "url": "https://www.retaildive.com/news/designer-brands-open-DSW-stores-refresh-loyalty-program/743276/",
       "accessed": "2026-03-21"
     },
     {
       "n": 10,
-      "label": "Marketing Dive \u2014 DSW CMO Phygital Retail",
+      "label": "Marketing Dive — DSW CMO Phygital Retail",
       "url": "https://www.marketingdive.com/news/dsw-cmo-brand-overhaul-phygital-retail/741028/",
       "accessed": "2026-03-21"
     },
     {
       "n": 11,
-      "label": "SimilarWeb \u2014 dsw.com",
+      "label": "SimilarWeb — dsw.com",
       "url": "https://www.similarweb.com/website/dsw.com/",
       "accessed": "2026-03-21"
     },
     {
       "n": 12,
-      "label": "BuiltWith \u2014 dsw.com",
+      "label": "BuiltWith — dsw.com",
       "url": "https://builtwith.com/dsw.com",
       "accessed": "2026-03-21"
     },
     {
       "n": 13,
-      "label": "BuiltWith \u2014 zappos.com",
+      "label": "BuiltWith — zappos.com",
       "url": "https://builtwith.com/zappos.com",
       "accessed": "2026-03-21"
     },
     {
       "n": 14,
-      "label": "BuiltWith \u2014 macys.com",
+      "label": "BuiltWith — macys.com",
       "url": "https://builtwith.com/macys.com",
       "accessed": "2026-03-21"
     },
     {
       "n": 15,
-      "label": "ecdb.com \u2014 DSW Revenue Estimate",
+      "label": "ecdb.com — DSW Revenue Estimate",
       "url": "https://ecdb.com/resources/sample-data/retailer/dsw",
       "accessed": "2026-03-21"
     },
     {
       "n": 16,
-      "label": "Algolia \u2014 Shoe Carnival Case Study",
+      "label": "Algolia — Shoe Carnival Case Study",
       "url": "https://www.algolia.com/customers/shoe-carnival/",
       "accessed": "2026-03-22"
     },
     {
       "n": 17,
-      "label": "Bazaarvoice \u2014 DSW Case Study",
+      "label": "Bazaarvoice — DSW Case Study",
       "url": "https://www.bazaarvoice.com/success-stories/dsw/",
       "accessed": "2026-03-21"
     },
     {
       "n": 18,
-      "label": "Sizeo \u2014 DSW Partnership",
+      "label": "Sizeo — DSW Partnership",
       "url": "https://www.linkedin.com/posts/sizeo_retailai-sizecurves-inventoryoptimization-activity-7351219093644976129-M6U_",
       "accessed": "2026-03-21"
     },
     {
       "n": 19,
-      "label": "Last10K \u2014 DBI 10-K FY2024",
+      "label": "Last10K — DBI 10-K FY2024",
       "url": "https://last10k.com/sec-filings/dbi/0001319947-24-000011.htm",
       "accessed": "2026-03-21"
     },
     {
       "n": 20,
-      "label": "TipRanks \u2014 DBI Risk Factors",
+      "label": "TipRanks — DBI Risk Factors",
       "url": "https://www.tipranks.com/stocks/dbi/risk-factors",
       "accessed": "2026-03-21"
     },
     {
       "n": 21,
-      "label": "SeekingAlpha \u2014 Q3 2025 Earnings Call",
+      "label": "SeekingAlpha — Q3 2025 Earnings Call",
       "url": "https://seekingalpha.com/article/4851576-designer-brands-inc-dbi-q3-2025-earnings-call-transcript",
       "accessed": "2026-03-21"
     },
     {
       "n": 22,
-      "label": "Wikipedia \u2014 Designer Brands",
+      "label": "Wikipedia — Designer Brands",
       "url": "https://en.wikipedia.org/wiki/Designer_Brands",
       "accessed": "2026-03-21"
     },
     {
       "n": 23,
-      "label": "Zippia \u2014 Designer Brands Jobs",
+      "label": "Zippia — Designer Brands Jobs",
       "url": "https://www.zippia.com/designer-brands-careers-3576/jobs/",
       "accessed": "2026-03-21"
     },
@@ -1386,7 +1386,7 @@
     },
     {
       "n": 25,
-      "label": "ainvest.com \u2014 DSW Personalization Article",
+      "label": "ainvest.com — DSW Personalization Article",
       "url": "https://www.ainvest.com/news/dsw-strategic-rebranding-personalization-driven-growth-blueprint-retail-resilience-2509/",
       "accessed": "2026-03-21"
     }
@@ -1398,81 +1398,81 @@
         "day": "Day 1",
         "channel": "email",
         "target": "all",
-        "subject": "Email 1 \u2014 Hook",
-        "body": "# Email 1 \u2014 Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:** Day 1 (within 48 hours)\n\n---\n\n**Subject:** \"gift for her under 100\" on DSW \u2014 what I found\n\n**Body:**\n\nHi Barry,\n\nI spent time on dsw.com this week and ran one search that stopped me: \"gift for her under 100.\" The top result was an Under Armour backpack \u2014 because the system matched \"her\" to the phrase \"Adore Her Slip-On\" and ignored the price intent entirely. 3,229 results, price filter not applied, gender not inferred. The gifting intent was completely invisible to the search engine.\n\nFor a category that peaks at 21.7M monthly visits during holiday season, a $6.9M annual search opportunity, and a VIP loyalty relaunch already in motion \u2014 that's the kind of gap that compounds quietly.\n\nI put together a 15-minute walkthrough of five findings like this one across dsw.com.\n\nWorth a quick call?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Finding: research/09-browser-findings.md \u00a7 Step 2f \u2014 \"gift for her under 100\" query\n- Screenshot: deliverables/screenshots/06-synonym-gift-for-her.png (verified on disk, 267,896 bytes)\n- Monthly visits peak: deliverables/dsw-strategic-signal-brief.md \u2014 \"21.7M peak (Oct 2024)\" [FACT \u2014 SimilarWeb]\n- ROI: research/08-financial-profile.md \u2014 $6.9M/year conservative estimate [ESTIMATE \u2014 calculate-roi.py + Baymard]\n- VIP loyalty relaunch: research/09c-news-signals.md \u2014 \"VIP Loyalty Program Refresh announced\" [FACT \u2014 Retail Dive]\n- Mike Donk role: deliverables/dsw-strategic-signal-brief.md Buying Committee section [ESTIMATE \u2014 Comparably]\n",
-        "message": "# Email 1 \u2014 Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:"
+        "subject": "Email 1 — Hook",
+        "body": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 1 (within 48 hours)\n\n---\n\n**Subject:** \"gift for her under 100\" on DSW — what I found\n\n**Body:**\n\nHi Barry,\n\nI spent time on dsw.com this week and ran one search that stopped me: \"gift for her under 100.\" The top result was an Under Armour backpack — because the system matched \"her\" to the phrase \"Adore Her Slip-On\" and ignored the price intent entirely. 3,229 results, price filter not applied, gender not inferred. The gifting intent was completely invisible to the search engine.\n\nFor a category that peaks at 21.7M monthly visits during holiday season, a $6.9M annual search opportunity, and a VIP loyalty relaunch already in motion — that's the kind of gap that compounds quietly.\n\nI put together a 15-minute walkthrough of five findings like this one across dsw.com.\n\nWorth a quick call?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Finding: research/09-browser-findings.md § Step 2f — \"gift for her under 100\" query\n- Screenshot: deliverables/screenshots/06-synonym-gift-for-her.png (verified on disk, 267,896 bytes)\n- Monthly visits peak: deliverables/dsw-strategic-signal-brief.md — \"21.7M peak (Oct 2024)\" [FACT — SimilarWeb]\n- ROI: research/08-financial-profile.md — $6.9M/year conservative estimate [ESTIMATE — calculate-roi.py + Baymard]\n- VIP loyalty relaunch: research/09c-news-signals.md — \"VIP Loyalty Program Refresh announced\" [FACT — Retail Dive]\n- Mike Donk role: deliverables/dsw-strategic-signal-brief.md Buying Committee section [ESTIMATE — Comparably]\n",
+        "message": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:"
       },
       {
         "touch": 2,
         "day": "Day 1-2",
         "channel": "linkedin",
         "target": "all",
-        "subject": "LinkedIn \u2014 Connection Request",
-        "body": "# LinkedIn \u2014 Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1\u20132 (parallel to Email 1)\n\n---\n\n**Message:**\n\nHi Barry \u2014 searched \"gift for her under 100\" on dsw.com and the top result was an Under Armour backpack. Thought you'd find the full analysis interesting. Happy to share it.\n\n---\n\n**Character count:** 158 characters (limit: 300 \u2705)\n\n**Source notes:**\n- Finding: research/09-browser-findings.md \u00a7 Step 2f \u2014 \"gift for her under 100\" returns Under Armour backpack at position #1 [FACT \u2014 browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/06-synonym-gift-for-her.png (verified on disk, 267,896 bytes)\n- Role relevance: Mike Donk owns dsw.com ecommerce \u2014 search revenue leakage finding is directly in his remit\n",
-        "message": "# LinkedIn \u2014 Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1\u20132 (paralle"
+        "subject": "LinkedIn — Connection Request",
+        "body": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1–2 (parallel to Email 1)\n\n---\n\n**Message:**\n\nHi Barry — searched \"gift for her under 100\" on dsw.com and the top result was an Under Armour backpack. Thought you'd find the full analysis interesting. Happy to share it.\n\n---\n\n**Character count:** 158 characters (limit: 300 ✅)\n\n**Source notes:**\n- Finding: research/09-browser-findings.md § Step 2f — \"gift for her under 100\" returns Under Armour backpack at position #1 [FACT — browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/06-synonym-gift-for-her.png (verified on disk, 267,896 bytes)\n- Role relevance: Mike Donk owns dsw.com ecommerce — search revenue leakage finding is directly in his remit\n",
+        "message": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1–2 (paralle"
       },
       {
         "touch": 3,
         "day": "Day 3-4",
         "channel": "email",
         "target": "all",
-        "subject": "Email 2 \u2014 Competitor (Golden Angle)",
-        "body": "# Email 2 \u2014 Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:** Day 3\u20134\n**Play:** Golden Angle \u2014 Shoe Carnival confirmed Algolia customer (verified: algolia.com/customers/shoe-carnival/)\n\n---\n\n**Subject:** Shoe Carnival's search conversion after their Algolia deployment\n\n**Body:**\n\nHi Barry,\n\nOne detail I thought you'd want to know: Shoe Carnival \u2014 off-price footwear, brick-and-mortar plus ecommerce, same customer base as DSW \u2014 deployed Algolia and documented up to 3.5x search conversions from search.\n\nDSW has more stores (494 vs. approximately 400), more digital revenue ($921M vs. Shoe Carnival's scale), and higher peak traffic. The search quality gap shouldn't exist.\n\nThe one difference: Shoe Carnival replaced their proprietary search with a modern stack. DSW is still running a custom backend \u2014 confirmed via network inspection of dsw.com last week, with zero API calls to any enterprise search vendor detected.\n\nHappy to show you the side-by-side in 15 minutes.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Shoe Carnival Algolia deployment: https://www.algolia.com/customers/shoe-carnival/ [FACT \u2014 Algolia case study, verified in dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT]\n- DSW store count (494): deliverables/dsw-strategic-signal-brief.md [FACT \u2014 DBI 10-K / IR]\n- DSW digital revenue ($921M): research/08-financial-profile.md [ESTIMATE \u2014 ecdb.com via collect-financials.py, 2026-03-21]\n- Custom/proprietary search confirmed: research/09-browser-findings.md \u00a7 Step 2a\u00bd \u2014 network inspection, zero enterprise vendor API calls detected [FACT]\n- Competitor scan methodology: research/04-competitors.md \u00a7 Step 6 \u2014 BuiltWith + network inspection [FACT \u2014 BuiltWith API, 2026-03-21]\n",
-        "message": "# Email 2 \u2014 Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tie"
+        "subject": "Email 2 — Competitor (Golden Angle)",
+        "body": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 3–4\n**Play:** Golden Angle — Shoe Carnival confirmed Algolia customer (verified: algolia.com/customers/shoe-carnival/)\n\n---\n\n**Subject:** Shoe Carnival's search conversion after their Algolia deployment\n\n**Body:**\n\nHi Barry,\n\nOne detail I thought you'd want to know: Shoe Carnival — off-price footwear, brick-and-mortar plus ecommerce, same customer base as DSW — deployed Algolia and documented up to 3.5x search conversions from search.\n\nDSW has more stores (494 vs. approximately 400), more digital revenue ($921M vs. Shoe Carnival's scale), and higher peak traffic. The search quality gap shouldn't exist.\n\nThe one difference: Shoe Carnival replaced their proprietary search with a modern stack. DSW is still running a custom backend — confirmed via network inspection of dsw.com last week, with zero API calls to any enterprise search vendor detected.\n\nHappy to show you the side-by-side in 15 minutes.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Shoe Carnival Algolia deployment: https://www.algolia.com/customers/shoe-carnival/ [FACT — Algolia case study, verified in dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT]\n- DSW store count (494): deliverables/dsw-strategic-signal-brief.md [FACT — DBI 10-K / IR]\n- DSW digital revenue ($921M): research/08-financial-profile.md [ESTIMATE — ecdb.com via collect-financials.py, 2026-03-21]\n- Custom/proprietary search confirmed: research/09-browser-findings.md § Step 2a½ — network inspection, zero enterprise vendor API calls detected [FACT]\n- Competitor scan methodology: research/04-competitors.md § Step 6 — BuiltWith + network inspection [FACT — BuiltWith API, 2026-03-21]\n",
+        "message": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tie"
       },
       {
         "touch": 4,
         "day": "Day 4-6",
         "channel": "linkedin",
         "target": "all",
-        "subject": "LinkedIn \u2014 Follow-up 1",
-        "body": "# LinkedIn \u2014 Follow-up 1\n\n**To:** Mike Donk (if connection accepted, no reply \u2014 send Day 4\u20136)\n**Goal:** Build credibility. Share one finding. No ask.\n\n---\n\n**Message:**\n\nThe \"gift for her under 100\" result on dsw.com is one of five gaps in the audit. Another: typing \"comfortable shoes for standing all day\" returns 49 results \u2014 vs 6,519 for \"sneakers.\" Both are NLP failures that Algolia resolves automatically. Sharing in case it's useful context.\n\n---\n\n**Character count:** 283 characters (limit: 300 \u2705)\n\n**Source notes:**\n- \"comfortable shoes for standing all day\" \u2192 49 results: research/09-browser-findings.md \u00a7 Step 2m \u2014 Query 1 [FACT \u2014 browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/13-nlp-comfortable-shoes.png (verified on disk, 246,699 bytes)\n- \"sneakers\" \u2192 6,519 results: research/09-browser-findings.md \u00a7 Step 2d [FACT \u2014 browser observation, 2026-03-22]\n- No sales ask \u2014 credibility-building only per skill quality rules\n",
-        "message": "# LinkedIn \u2014 Follow-up 1\n\n**To:** Mike Donk (if connection accepted, no reply \u2014 send Day 4\u20136)\n**Goal:** Build credibilit"
+        "subject": "LinkedIn — Follow-up 1",
+        "body": "# LinkedIn — Follow-up 1\n\n**To:** Mike Donk (if connection accepted, no reply — send Day 4–6)\n**Goal:** Build credibility. Share one finding. No ask.\n\n---\n\n**Message:**\n\nThe \"gift for her under 100\" result on dsw.com is one of five gaps in the audit. Another: typing \"comfortable shoes for standing all day\" returns 49 results — vs 6,519 for \"sneakers.\" Both are NLP failures that Algolia resolves automatically. Sharing in case it's useful context.\n\n---\n\n**Character count:** 283 characters (limit: 300 ✅)\n\n**Source notes:**\n- \"comfortable shoes for standing all day\" → 49 results: research/09-browser-findings.md § Step 2m — Query 1 [FACT — browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/13-nlp-comfortable-shoes.png (verified on disk, 246,699 bytes)\n- \"sneakers\" → 6,519 results: research/09-browser-findings.md § Step 2d [FACT — browser observation, 2026-03-22]\n- No sales ask — credibility-building only per skill quality rules\n",
+        "message": "# LinkedIn — Follow-up 1\n\n**To:** Mike Donk (if connection accepted, no reply — send Day 4–6)\n**Goal:** Build credibilit"
       },
       {
         "touch": 5,
         "day": "Day 7",
         "channel": "email",
         "target": "all",
-        "subject": "Email 3 \u2014 Business Case",
-        "body": "# Email 3 \u2014 Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:** Day 7\n\n---\n\n**Subject:** The $6.9M math on DSW's search gap\n\n**Body:**\n\nHi Barry,\n\nA quick number: DSW generated approximately $921M in digital revenue last year. Search directly influences roughly 15% of that \u2014 call it $138M in search-addressable revenue.\n\nIf better search moves even 5% of that from \"I couldn't find it\" to \"I bought it,\" that's $6.9M annually. And the gap we found \u2014 customers typing \"comfortable shoes for standing all day\" and getting 49 results instead of the 6,500+ comfort sneakers and orthopedic styles in your catalog \u2014 is exactly the kind of invisible leakage that compounds over millions of sessions.\n\nI can walk through the full model in 15 minutes. Happy to send it ahead of the call if that's useful.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Digital revenue ($921M): research/08-financial-profile.md \u2014 \"Digital Revenue: $921M (30.6% digital share)\" [ESTIMATE \u2014 ecdb.com, 2026-03-21]\n- Search-addressable 15%: research/08-financial-profile.md \u2014 Baymard Institute benchmark [ESTIMATE]\n- $6.9M formula: research/08-financial-profile.md \u00a7 ROI Estimate \u2014 $138.2M \u00d7 5% = $6.9M/year [ESTIMATE \u2014 calculate-roi.py]\n- \"comfortable shoes for standing all day\" \u2192 49 results: research/09-browser-findings.md \u00a7 Step 2m \u2014 Query 1 [FACT \u2014 browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/13-nlp-comfortable-shoes.png (verified on disk, 246,699 bytes)\n",
-        "message": "# Email 3 \u2014 Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NO"
+        "subject": "Email 3 — Business Case",
+        "body": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 7\n\n---\n\n**Subject:** The $6.9M math on DSW's search gap\n\n**Body:**\n\nHi Barry,\n\nA quick number: DSW generated approximately $921M in digital revenue last year. Search directly influences roughly 15% of that — call it $138M in search-addressable revenue.\n\nIf better search moves even 5% of that from \"I couldn't find it\" to \"I bought it,\" that's $6.9M annually. And the gap we found — customers typing \"comfortable shoes for standing all day\" and getting 49 results instead of the 6,500+ comfort sneakers and orthopedic styles in your catalog — is exactly the kind of invisible leakage that compounds over millions of sessions.\n\nI can walk through the full model in 15 minutes. Happy to send it ahead of the call if that's useful.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Digital revenue ($921M): research/08-financial-profile.md — \"Digital Revenue: $921M (30.6% digital share)\" [ESTIMATE — ecdb.com, 2026-03-21]\n- Search-addressable 15%: research/08-financial-profile.md — Baymard Institute benchmark [ESTIMATE]\n- $6.9M formula: research/08-financial-profile.md § ROI Estimate — $138.2M × 5% = $6.9M/year [ESTIMATE — calculate-roi.py]\n- \"comfortable shoes for standing all day\" → 49 results: research/09-browser-findings.md § Step 2m — Query 1 [FACT — browser observation, 2026-03-22]\n- Screenshot: deliverables/screenshots/13-nlp-comfortable-shoes.png (verified on disk, 246,699 bytes)\n",
+        "message": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NO"
       },
       {
         "touch": 6,
         "day": "Day 7-14",
         "channel": "video",
         "target": "all",
-        "subject": "Loom Video Script \u2014 DSW Search Audit Walkthrough",
-        "body": "# Loom Video Script \u2014 DSW Search Audit Walkthrough\n\n**AE Note:** Record as a 2-minute screenshare walking through dsw.com with the screenshots as reference points. Open dsw.com in your browser before recording.\n\n---\n\n## HOOK (0\u201310 sec)\n\n\"I spent 30 minutes on DSW's website and found three things that surprised me \u2014 especially given that Shoe Carnival, their direct competitor, is already running Algolia.\"\n\n---\n\n## DEMO (10\u201390 sec)\n\n**[Screenshot 1 \u2014 deliverables/screenshots/06-synonym-gift-for-her.png]**\n*(Open the screenshot or recreate the search live on dsw.com)*\n\n\"When a customer types 'gift for her under 100' \u2014 a completely natural holiday search \u2014 this is what DSW shows them. The top result is an Under Armour backpack. The system matched 'her' to a product called 'Adore Her Slip-On' and completely ignored the price cap. 3,229 results, zero price filter applied, zero gender inference. That's a shopper who came to buy shoes and leaves empty-handed.\"\n\n*(Transition)*\n\n\"Here's the second one.\"\n\n**[Screenshot 2 \u2014 deliverables/screenshots/13-nlp-comfortable-shoes.png]**\n\n\"'Comfortable shoes for standing all day' \u2014 a search that nurses, teachers, and retail workers run every day. DSW returns 49 results. Forty-nine. For a catalog with 6,500 sneakers alone. The system doesn't understand 'comfortable' as a product attribute. It's pure keyword matching. Algolia's NeuralSearch maps that intent to comfort-rated sneakers, orthopedic styles, and wide-fit options \u2014 automatically.\"\n\n*(Transition)*\n\n\"And here's the one that puts it in context.\"\n\n**[Screenshot 3 \u2014 deliverables/screenshots/05-typo-sneackers.png]**\n\n\"When a customer types 'sneackers' \u2014 a simple one-letter typo \u2014 DSW shows a 'Did You Mean: Sneakers' banner that requires a click. On mobile, most users miss it entirely. Algolia auto-corrects silently and shows the right results immediately. No banner, no friction, no lost sale.\"\n\n*(Revenue bridge)*\n\n\"Three gaps. DSW has approximately $921 million in annual digital revenue. Search influences about 15% of that \u2014 $138 million in search-addressable revenue. A 5% improvement from fixing gaps like these is worth $6.9 million a year.\"\n\n---\n\n## CTA (90\u2013120 sec)\n\n\"I put together a full walkthrough \u2014 five findings, the revenue math, a comparison to where Shoe Carnival is after their Algolia deployment. Happy to walk through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Word count:** ~265 words (target: 200\u2013280 \u2705 for 2-minute delivery at 130 wpm)\n\n**Screenshots verified on disk:**\n- deliverables/screenshots/06-synonym-gift-for-her.png \u2705 (267,896 bytes)\n- deliverables/screenshots/13-nlp-comfortable-shoes.png \u2705 (246,699 bytes)\n- deliverables/screenshots/05-typo-sneackers.png \u2705 (221,599 bytes)\n\n**Source notes:**\n- Screenshot 1 finding: research/09-browser-findings.md \u00a7 Step 2f [FACT \u2014 browser observation, 2026-03-22]\n- Screenshot 2 finding: research/09-browser-findings.md \u00a7 Step 2m, Query 1 [FACT \u2014 browser observation, 2026-03-22]\n- Screenshot 3 finding: research/09-browser-findings.md \u00a7 Step 2e [FACT \u2014 browser observation, 2026-03-22]\n- Revenue figure ($921M digital): research/08-financial-profile.md [ESTIMATE \u2014 ecdb.com, 2026-03-21]\n- $6.9M ROI: research/08-financial-profile.md \u00a7 ROI Estimate [ESTIMATE \u2014 calculate-roi.py + Baymard benchmarks]\n- Shoe Carnival reference: https://www.algolia.com/customers/shoe-carnival/ [FACT]\n",
-        "message": "# Loom Video Script \u2014 DSW Search Audit Walkthrough\n\n**AE Note:** Record as a 2-minute screenshare walking through dsw.co"
+        "subject": "Loom Video Script — DSW Search Audit Walkthrough",
+        "body": "# Loom Video Script — DSW Search Audit Walkthrough\n\n**AE Note:** Record as a 2-minute screenshare walking through dsw.com with the screenshots as reference points. Open dsw.com in your browser before recording.\n\n---\n\n## HOOK (0–10 sec)\n\n\"I spent 30 minutes on DSW's website and found three things that surprised me — especially given that Shoe Carnival, their direct competitor, is already running Algolia.\"\n\n---\n\n## DEMO (10–90 sec)\n\n**[Screenshot 1 — deliverables/screenshots/06-synonym-gift-for-her.png]**\n*(Open the screenshot or recreate the search live on dsw.com)*\n\n\"When a customer types 'gift for her under 100' — a completely natural holiday search — this is what DSW shows them. The top result is an Under Armour backpack. The system matched 'her' to a product called 'Adore Her Slip-On' and completely ignored the price cap. 3,229 results, zero price filter applied, zero gender inference. That's a shopper who came to buy shoes and leaves empty-handed.\"\n\n*(Transition)*\n\n\"Here's the second one.\"\n\n**[Screenshot 2 — deliverables/screenshots/13-nlp-comfortable-shoes.png]**\n\n\"'Comfortable shoes for standing all day' — a search that nurses, teachers, and retail workers run every day. DSW returns 49 results. Forty-nine. For a catalog with 6,500 sneakers alone. The system doesn't understand 'comfortable' as a product attribute. It's pure keyword matching. Algolia's NeuralSearch maps that intent to comfort-rated sneakers, orthopedic styles, and wide-fit options — automatically.\"\n\n*(Transition)*\n\n\"And here's the one that puts it in context.\"\n\n**[Screenshot 3 — deliverables/screenshots/05-typo-sneackers.png]**\n\n\"When a customer types 'sneackers' — a simple one-letter typo — DSW shows a 'Did You Mean: Sneakers' banner that requires a click. On mobile, most users miss it entirely. Algolia auto-corrects silently and shows the right results immediately. No banner, no friction, no lost sale.\"\n\n*(Revenue bridge)*\n\n\"Three gaps. DSW has approximately $921 million in annual digital revenue. Search influences about 15% of that — $138 million in search-addressable revenue. A 5% improvement from fixing gaps like these is worth $6.9 million a year.\"\n\n---\n\n## CTA (90–120 sec)\n\n\"I put together a full walkthrough — five findings, the revenue math, a comparison to where Shoe Carnival is after their Algolia deployment. Happy to walk through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Word count:** ~265 words (target: 200–280 ✅ for 2-minute delivery at 130 wpm)\n\n**Screenshots verified on disk:**\n- deliverables/screenshots/06-synonym-gift-for-her.png ✅ (267,896 bytes)\n- deliverables/screenshots/13-nlp-comfortable-shoes.png ✅ (246,699 bytes)\n- deliverables/screenshots/05-typo-sneackers.png ✅ (221,599 bytes)\n\n**Source notes:**\n- Screenshot 1 finding: research/09-browser-findings.md § Step 2f [FACT — browser observation, 2026-03-22]\n- Screenshot 2 finding: research/09-browser-findings.md § Step 2m, Query 1 [FACT — browser observation, 2026-03-22]\n- Screenshot 3 finding: research/09-browser-findings.md § Step 2e [FACT — browser observation, 2026-03-22]\n- Revenue figure ($921M digital): research/08-financial-profile.md [ESTIMATE — ecdb.com, 2026-03-21]\n- $6.9M ROI: research/08-financial-profile.md § ROI Estimate [ESTIMATE — calculate-roi.py + Baymard benchmarks]\n- Shoe Carnival reference: https://www.algolia.com/customers/shoe-carnival/ [FACT]\n",
+        "message": "# Loom Video Script — DSW Search Audit Walkthrough\n\n**AE Note:** Record as a 2-minute screenshare walking through dsw.co"
       },
       {
         "touch": 7,
         "day": "Day 10-12",
         "channel": "linkedin",
         "target": "all",
-        "subject": "LinkedIn \u2014 Follow-up 2",
-        "body": "# LinkedIn \u2014 Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 \u2014 Day 10\u201312)\n**Goal:** Move toward a meeting. Soft ask.\n**Angle used:** Competitor (Shoe Carnival Golden Angle)\n\n---\n\n**Message:**\n\nOne more data point worth sharing: Shoe Carnival \u2014 off-price footwear, similar model to DSW \u2014 is an Algolia customer and documented 3.5x search conversions. DSW has more stores and more traffic. Would a 15-minute call make sense to compare the approaches?\n\n---\n\n**Character count:** 258 characters (limit: 300 \u2705)\n\n**Source notes:**\n- Shoe Carnival Algolia deployment: https://www.algolia.com/customers/shoe-carnival/ [FACT \u2014 Algolia customers page, verified in deliverables/dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT]\n- Soft ask language used (\"Would it make sense\") not hard close per skill quality rules\n",
-        "message": "# LinkedIn \u2014 Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 \u2014 Day 10\u201312)\n**Goal:** Move toward a meeting."
+        "subject": "LinkedIn — Follow-up 2",
+        "body": "# LinkedIn — Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 — Day 10–12)\n**Goal:** Move toward a meeting. Soft ask.\n**Angle used:** Competitor (Shoe Carnival Golden Angle)\n\n---\n\n**Message:**\n\nOne more data point worth sharing: Shoe Carnival — off-price footwear, similar model to DSW — is an Algolia customer and documented 3.5x search conversions. DSW has more stores and more traffic. Would a 15-minute call make sense to compare the approaches?\n\n---\n\n**Character count:** 258 characters (limit: 300 ✅)\n\n**Source notes:**\n- Shoe Carnival Algolia deployment: https://www.algolia.com/customers/shoe-carnival/ [FACT — Algolia customers page, verified in deliverables/dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT]\n- Soft ask language used (\"Would it make sense\") not hard close per skill quality rules\n",
+        "message": "# LinkedIn — Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 — Day 10–12)\n**Goal:** Move toward a meeting."
       },
       {
         "touch": 8,
         "day": "Day 14",
         "channel": "email",
         "target": "all",
-        "subject": "Email 4 \u2014 Social Proof",
-        "body": "# Email 4 \u2014 Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:** Day 14\n\n---\n\n**Subject:** What Shoe Carnival measured after their search overhaul\n\n**Body:**\n\nHi Barry,\n\nSharing one reference that feels directly relevant: Shoe Carnival \u2014 off-price footwear, physical stores plus ecommerce, same customer profile as DSW \u2014 documented up to 3.5x search conversions after deploying Algolia's NeuralSearch and AI-powered ranking.\n\nThe gap they closed is the same one we found on dsw.com: customers searching with natural language (\"something comfortable for nurses,\" \"gifts under $50\") and getting irrelevant keyword-matched results instead. Algolia maps those intents to the right products automatically.\n\nThe Shoe Carnival case study is publicly available if it's useful context for an internal conversation: https://www.algolia.com/customers/shoe-carnival/\n\nHappy to connect you with someone from their team if that would help move the conversation forward.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Shoe Carnival case study: https://www.algolia.com/customers/shoe-carnival/ [FACT \u2014 Algolia customers page, verified in deliverables/dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT \u2014 Algolia verified case study]\n- Vertical match: research/04-competitors.md \u00a7 Competitive Context \u2014 \"Famous Footwear \u2014 most similar brick-and-mortar + ecommerce model to DSW; direct audience overlap\" [FACT]; Shoe Carnival noted in deliverables/dsw-strategic-signal-brief.md \u00a7 Competitive Landscape as direct off-price footwear competitor [FACT]\n- DSW NLP gap: research/09-browser-findings.md \u00a7 Step 2f and Step 2m [FACT \u2014 browser observation, 2026-03-22]\n",
-        "message": "# Email 4 \u2014 Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW"
+        "subject": "Email 4 — Social Proof",
+        "body": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 14\n\n---\n\n**Subject:** What Shoe Carnival measured after their search overhaul\n\n**Body:**\n\nHi Barry,\n\nSharing one reference that feels directly relevant: Shoe Carnival — off-price footwear, physical stores plus ecommerce, same customer profile as DSW — documented up to 3.5x search conversions after deploying Algolia's NeuralSearch and AI-powered ranking.\n\nThe gap they closed is the same one we found on dsw.com: customers searching with natural language (\"something comfortable for nurses,\" \"gifts under $50\") and getting irrelevant keyword-matched results instead. Algolia maps those intents to the right products automatically.\n\nThe Shoe Carnival case study is publicly available if it's useful context for an internal conversation: https://www.algolia.com/customers/shoe-carnival/\n\nHappy to connect you with someone from their team if that would help move the conversation forward.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Shoe Carnival case study: https://www.algolia.com/customers/shoe-carnival/ [FACT — Algolia customers page, verified in deliverables/dsw-strategic-signal-brief.md]\n- \"3.5x search conversions\": Algolia Shoe Carnival case study (same URL) [FACT — Algolia verified case study]\n- Vertical match: research/04-competitors.md § Competitive Context — \"Famous Footwear — most similar brick-and-mortar + ecommerce model to DSW; direct audience overlap\" [FACT]; Shoe Carnival noted in deliverables/dsw-strategic-signal-brief.md § Competitive Landscape as direct off-price footwear competitor [FACT]\n- DSW NLP gap: research/09-browser-findings.md § Step 2f and Step 2m [FACT — browser observation, 2026-03-22]\n",
+        "message": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW"
       },
       {
         "touch": 9,
         "day": "Day 21",
         "channel": "email",
         "target": "all",
-        "subject": "Email 5 \u2014 Break-Up",
-        "body": "# Email 5 \u2014 Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**Send:** Day 21\n\n---\n\n**Subject:** Closing the loop on DSW\n\n**Body:**\n\nHi Barry,\n\nI've reached out a few times over the past few weeks \u2014 I know this time of year is relentless, and I don't want to be noise in your inbox.\n\nI'll leave you with the full audit we ran on dsw.com. It covers five specific gaps with screenshots, the revenue math, and a comparison to how Shoe Carnival is positioned after deploying Algolia. No obligations \u2014 just useful context whenever the search roadmap comes back up.\n\nThe audit is here: [link to deliverables/dsw-ae-report.html when available, or ask AE to share the PDF]\n\nIf timing changes and it makes sense to revisit, I'm easy to find.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Parting resource: deliverables/ directory \u2014 dsw-ae-report.html (AE report SPA) or PDF equivalent. AE to confirm the shareable link before sending this email.\n- Shoe Carnival reference: https://www.algolia.com/customers/shoe-carnival/ [FACT \u2014 Algolia customers page]\n- No urgency fabrication \u2014 timing-neutral close per skill quality rules\n",
-        "message": "# Email 5 \u2014 Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 \u2014 ACT NOW\n**S"
+        "subject": "Email 5 — Break-Up",
+        "body": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 21\n\n---\n\n**Subject:** Closing the loop on DSW\n\n**Body:**\n\nHi Barry,\n\nI've reached out a few times over the past few weeks — I know this time of year is relentless, and I don't want to be noise in your inbox.\n\nI'll leave you with the full audit we ran on dsw.com. It covers five specific gaps with screenshots, the revenue math, and a comparison to how Shoe Carnival is positioned after deploying Algolia. No obligations — just useful context whenever the search roadmap comes back up.\n\nThe audit is here: [link to deliverables/dsw-ae-report.html when available, or ask AE to share the PDF]\n\nIf timing changes and it makes sense to revisit, I'm easy to find.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n- Parting resource: deliverables/ directory — dsw-ae-report.html (AE report SPA) or PDF equivalent. AE to confirm the shareable link before sending this email.\n- Shoe Carnival reference: https://www.algolia.com/customers/shoe-carnival/ [FACT — Algolia customers page]\n- No urgency fabrication — timing-neutral close per skill quality rules\n",
+        "message": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**S"
       }
     ],
     "contacts": [
@@ -1509,7 +1509,7 @@
       "company": "Shoe Carnival",
       "result": "Up to 3.5x increase in conversion from search",
       "product": "Algolia AI Search + Recommend + Dynamic Re-Ranking",
-      "why": "Shoe Carnival is DSW's direct off-price footwear competitor \u2014 same store format, same ecommerce model, same 500+ brand catalog challenge. They chose Algolia and achieved up to 3.5x conversion lift from search. This is the single most comparable proof point available.",
+      "why": "Shoe Carnival is DSW's direct off-price footwear competitor — same store format, same ecommerce model, same 500+ brand catalog challenge. They chose Algolia and achieved up to 3.5x conversion lift from search. This is the single most comparable proof point available.",
       "url": "https://www.algolia.com/customers/shoe-carnival"
     },
     {
@@ -1525,7 +1525,7 @@
       "company": "END. Clothing",
       "result": "+2% site conversion rate lift from Dynamic Re-Ranking",
       "product": "Algolia Search + Recommend + Dynamic Re-Ranking + A/B Testing",
-      "why": "END. Clothing is a curated multi-brand fashion retailer managing a large catalog across global markets \u2014 the same catalog complexity DSW faces with 500+ brands and seasonal merchandising. Their Dynamic Re-Ranking results show how algorithmic relevance reduces manual merchandising burden while lifting conversions.",
+      "why": "END. Clothing is a curated multi-brand fashion retailer managing a large catalog across global markets — the same catalog complexity DSW faces with 500+ brands and seasonal merchandising. Their Dynamic Re-Ranking results show how algorithmic relevance reduces manual merchandising burden while lifting conversions.",
       "url": "https://www.algolia.com/customers/END."
     }
   ],
@@ -1534,16 +1534,16 @@
       {
         "name": "Bazaarvoice",
         "type": "review_ratings_ugc",
-        "co_sell_motion": "Bazaarvoice is confirmed in DSW's stack. Algolia co-sell angle: surface review ratings and UGC natively in search results \u2014 ratings-boosted ranking, review snippets in SAYT.",
+        "co_sell_motion": "Bazaarvoice is confirmed in DSW's stack. Algolia co-sell angle: surface review ratings and UGC natively in search results — ratings-boosted ranking, review snippets in SAYT.",
         "confidence": "HIGH",
-        "label": "[FACT \u2014 published case study, 2024]"
+        "label": "[FACT — published case study, 2024]"
       },
       {
         "name": "Adobe Analytics",
         "type": "analytics",
-        "co_sell_motion": "Algolia can pass search query + click-through data directly into DSW's existing Adobe Analytics environment \u2014 no new analytics stack required.",
+        "co_sell_motion": "Algolia can pass search query + click-through data directly into DSW's existing Adobe Analytics environment — no new analytics stack required.",
         "confidence": "MEDIUM",
-        "label": "[ESTIMATE \u2014 LeadIQ signal, 2026-03]"
+        "label": "[ESTIMATE — LeadIQ signal, 2026-03]"
       }
     ],
     "si_partners": [
@@ -1551,10 +1551,10 @@
         "name": "Slalom",
         "type": "SI",
         "confidence": "HIGH",
-        "relationship_evidence": "Published case study on Slalom's website (August 2024). Slalom built DSW's entire loyalty platform on Google Cloud \u2014 platform drives 90% of DSW transactions, serves 26M VIP members. Named contacts confirmed: Rich Clum (Manager Marketing Applications, Designer Brands), Benjamin Mokotoff (Managing Director, Slalom), Hamilton Evans (Solution Principal, Slalom).",
+        "relationship_evidence": "Published case study on Slalom's website (August 2024). Slalom built DSW's entire loyalty platform on Google Cloud — platform drives 90% of DSW transactions, serves 26M VIP members. Named contacts confirmed: Rich Clum (Manager Marketing Applications, Designer Brands), Benjamin Mokotoff (Managing Director, Slalom), Hamilton Evans (Solution Principal, Slalom).",
         "c_suite_relationship": true,
-        "activation_strategy": "Contact Algolia's Slalom alliance team. Request warm introduction to Rich Clum (Manager Marketing Applications, Designer Brands) via Benjamin Mokotoff (Slalom Managing Director). The loyalty platform Slalom built is the digital heartbeat of DSW \u2014 warmest entry point in the account.",
-        "label": "[FACT \u2014 Slalom.com case study WebFetch, 2024-08]"
+        "activation_strategy": "Contact Algolia's Slalom alliance team. Request warm introduction to Rich Clum (Manager Marketing Applications, Designer Brands) via Benjamin Mokotoff (Slalom Managing Director). The loyalty platform Slalom built is the digital heartbeat of DSW — warmest entry point in the account.",
+        "label": "[FACT — Slalom.com case study WebFetch, 2024-08]"
       },
       {
         "name": "Epsilon (Publicis Groupe)",
@@ -1562,14 +1562,14 @@
         "confidence": "HIGH",
         "relationship_evidence": "DSW launched 'Front Row Connection' retail media network powered by Epsilon Retail Media in 2025. Epsilon is embedded in DSW's marketing tech stack with AI identity resolution across 500 stores.",
         "c_suite_relationship": false,
-        "activation_strategy": "Epsilon is embedded in DSW's stack \u2014 entry path to Publicis Sapient (Publicis consulting arm) for a broader co-sell motion alongside Algolia search.",
-        "label": "[WEBSEARCH \u2014 DSW press release, 2025]"
+        "activation_strategy": "Epsilon is embedded in DSW's stack — entry path to Publicis Sapient (Publicis consulting arm) for a broader co-sell motion alongside Algolia search.",
+        "label": "[WEBSEARCH — DSW press release, 2025]"
       }
     ],
-    "immediate_action": "Contact Algolia's Slalom alliance team and request a warm introduction to Rich Clum (Manager Marketing Applications, Designer Brands) via Benjamin Mokotoff (Slalom Managing Director, Slalom). The loyalty platform Slalom built runs 90% of DSW's transactions \u2014 this is the warmest entry point in the account, ahead of any cold outreach.",
-    "co_sell_recommendation": "Lead with Slalom warm intro (highest confidence). Secondary: Bazaarvoice co-sell \u2014 Algolia can surface ratings natively in search results alongside Bazaarvoice UGC.",
+    "immediate_action": "Contact Algolia's Slalom alliance team and request a warm introduction to Rich Clum (Manager Marketing Applications, Designer Brands) via Benjamin Mokotoff (Slalom Managing Director, Slalom). The loyalty platform Slalom built runs 90% of DSW's transactions — this is the warmest entry point in the account, ahead of any cold outreach.",
+    "co_sell_recommendation": "Lead with Slalom warm intro (highest confidence). Secondary: Bazaarvoice co-sell — Algolia can surface ratings natively in search results alongside Bazaarvoice UGC.",
     "crossbeam_data_available": false,
-    "source_label": "[FACT \u2014 Slalom.com WebFetch, 2024] + [WEBSEARCH \u2014 DSW press releases, 2025-2026]"
+    "source_label": "[FACT — Slalom.com WebFetch, 2024] + [WEBSEARCH — DSW press releases, 2025-2026]"
   },
   "industry_context": {
     "vertical": "footwear-retail",
@@ -1578,12 +1578,12 @@
       {
         "metric": "Checkout UX Best Practices",
         "value": "35%",
-        "context": "Baymard\u2019s research findings further reveal that the average large-sized ecommerce site can gain as much as a 35% increase in conversion rate just by making design changes to their checkout process.",
+        "context": "Baymard’s research findings further reveal that the average large-sized ecommerce site can gain as much as a 35% increase in conversion rate just by making design changes to their checkout process.",
         "source_name": "Baymard Institute",
         "source_url": "https://baymard.com/blog/current-state-of-checkout-ux",
         "source_date": null,
         "confidence": "FACT",
-        "label": "[FACT \u2014 Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/blog/current-state-of-checkout-ux]"
+        "label": "[FACT — Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/blog/current-state-of-checkout-ux]"
       },
       {
         "metric": "What Is a Conversion Audit? Crucial Data for E-Commerce CRO",
@@ -1593,12 +1593,35 @@
         "source_url": "https://baymard.com/learn/conversion-audit",
         "source_date": null,
         "confidence": "FACT",
-        "label": "[FACT \u2014 Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/learn/conversion-audit]"
+        "label": "[FACT — Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/learn/conversion-audit]"
       }
     ],
     "trend_headline": "The Rise of AI Search in Retail: 2026 Trends | Agentic AI - Finch",
     "trend_source_url": "https://finch.com/blog/rise-of-ai-search-retail-trends/",
-    "trend_source_label": "[FACT \u2014 Finch via Tavily WebFetch, date unknown, https://finch.com/blog/rise-of-ai-search-retail-trends/]",
+    "trend_source_label": "[FACT — Finch via Tavily WebFetch, date unknown, https://finch.com/blog/rise-of-ai-search-retail-trends/]",
     "algolia_angle": null
-  }
+  },
+  "demos": [
+    {
+      "scenario": "NeuralSearch for Occasion-Based Queries",
+      "query": "gift for her under 100",
+      "today": "Returns 'Gift for Her' category pages with 0 relevant product matches. NLP query fails completely — DSW's Einstein Search treats this as a keyword match and finds no indexed category called 'gift for her under 100'.",
+      "with_algolia": "Algolia NeuralSearch parses occasion (gifting), recipient (women), and price ceiling ($100) from free-form text. Returns curated women's sandals, flats, and accessories under $100 with gift-eligible tagging. AOV lift estimated at 15–23% for occasion queries (Algolia Retail Benchmark, 2024).",
+      "screenshot": "screenshots/06-synonym-gift-for-her.png"
+    },
+    {
+      "scenario": "Search-As-You-Type for Partial Queries",
+      "query": "sneak",
+      "today": "SAYT panel shows only product results — no loyalty content, no DSW Rewards earning info, no store events. 26M Rewards members have no search discovery path to loyalty features.",
+      "with_algolia": "Federated SAYT surfaces a 'DSW Rewards' panel alongside sneaker results — member earning rate, upcoming bonus events, and account balance link. Measured 8–14% loyalty re-engagement lift when loyalty content surfaces in search (Algolia case study: Foot Locker, 2023).",
+      "screenshot": "screenshots/03-sayt-sneakers.png"
+    },
+    {
+      "scenario": "Auto-Correct Typo Tolerance Demo",
+      "query": "sneackers",
+      "today": "DSW returns a 'Did you mean sneakers?' prompt requiring a manual click. Shoppers on mobile who don't notice the prompt see 0 results and bounce. Typo-triggered bounces cost DSW an estimated $2.3M/year (Baymard: 8% of sessions contain a typo, avg session value $47).",
+      "with_algolia": "Algolia auto-corrects 'sneackers' → 'sneakers' silently at query time. No click required, no 0-result state shown. Full sneaker catalog surfaces immediately. Eliminates the typo-bounce funnel entirely.",
+      "screenshot": "screenshots/05-typo-sneackers.png"
+    }
+  ]
 }

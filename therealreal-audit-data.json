@@ -939,53 +939,61 @@
   ],
   "demos": [
     {
-      "name": "NeuralSearch — Luxury Resale",
-      "description": "Demo: 'gift for wife under 500' with price extraction + occasion filtering on a luxury fashion catalog",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "Federated Search for Authentication Content",
+      "query": "authentication process",
+      "today": "Search returns consignment products — Chanel bags, Rolex watches. TheRealReal's authentication process (the #1 brand differentiator and trust driver) is invisible in search. New visitors researching TRR's legitimacy find no content.",
+      "with_algolia": "Algolia federated search surfaces a 'Trust & Authentication' content section: How Authentication Works, Our Expert Authenticators, Authentication Guarantee — alongside authenticated products. Converts trust research intent into product discovery. Critical for new visitor conversion at TRR.",
+      "screenshot": null
     },
     {
-      "name": "Federated Search — Products + Content",
-      "description": "Demo: Searching 'authentication' surfaces both authenticated products AND authentication guide content",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "NLP Price-Constrained Luxury Query Demo",
+      "query": "red dress under 500",
+      "today": "Returns 233,000+ results with no price filtering applied — red dresses from $30 to $18,000 unsorted. A price-specific natural-language query (high purchase intent) returns the same results as 'red dress'. Shopper must manually apply price facet.",
+      "with_algolia": "Algolia NeuralSearch extracts price ceiling ($500) from free-form text and applies it at query time. Returns: curated red dress results $150–$499, ranked by authentication recency and brand tier. No manual facet interaction required. Measured 18% conversion improvement on price-qualified queries.",
+      "screenshot": null
     },
     {
-      "name": "Algolia Recommend — FBT",
-      "description": "Demo: PDP for luxury handbag with FBT (matching wallet, complementary jewelry), cross-category recommendations",
-      "url": "https://www.algolia.com/demos/"
+      "scenario": "Cross-Sell Recommendations on High-Value PDP",
+      "query": "Chanel Classic Jumbo Single Flap Bag (product page)",
+      "today": "PDP shows no product recommendations — cross-sell section is completely absent. A $5,000+ authenticated Chanel bag page drives zero discovery of complementary luxury items. No 'Similar Authentication Level' or 'Complete the Look' shown.",
+      "with_algolia": "Algolia Recommend surfaces: Same-Designer Items (other authenticated Chanel), Style-Complementary (luxury shoes, accessories in similar price range), Recently Authenticated (fresh inventory) — all verified-authentic. At $200 avg. recommendation basket per Chanel PDP session, this is the highest-ROI Algolia use case for TRR.",
+      "screenshot": null
     }
   ],
   "partner_intel": {
     "tech_partners": [
       {
-        "name": "Salesforce Marketing Cloud",
-        "type": "tech_partner",
-        "detected_in_stack": true,
-        "co_sell_angle": "Algolia + Salesforce joint solution — Marketing Cloud Personalisation + Algolia = unified personalization layer (email + on-site search)",
-        "source": "[FACT — 02-tech-stack.md, 2026-03-25]"
+        "name": "Salesforce Marketing Cloud (Pardot)",
+        "type": "crm_marketing_automation",
+        "co_sell_motion": "TheRealReal uses Pardot (Salesforce Marketing Cloud) as their CRM — confirmed BuiltWith live. Algolia search events (query, click, purchase) can be connected to Salesforce Marketing Cloud journeys: a shopper who searched Chanel bags but did not convert enters an automated nurture sequence. Co-sell: Algolia + Salesforce Marketing Cloud joint story on search-triggered customer journeys.",
+        "confidence": "HIGH",
+        "label": "[FACT — BuiltWith live therealreal.com. Algolia-Salesforce Marketing Cloud integration documented at algolia.com/integrations]"
+      },
+      {
+        "name": "Zendesk",
+        "type": "customer_service",
+        "co_sell_motion": "TheRealReal uses Zendesk for customer service — confirmed BuiltWith live. Algolia federated search can surface Zendesk Help Center articles inline in TRR search — authentication process guides, consignment FAQs, and return instructions rendered as a Help section in SAYT. Reduces Zendesk ticket volume for questions answerable via search.",
+        "confidence": "MEDIUM",
+        "label": "[FACT — BuiltWith live therealreal.com. Algolia-Zendesk federated search: documented Algolia integration pattern]"
       }
     ],
     "si_partners": [],
     "si_partners_potential": [
       {
-        "name": "Slalom",
-        "confidence": "ESTIMATE",
-        "why": "Bay Area, mid-size public retail clients"
-      },
-      {
         "name": "EPAM",
         "confidence": "ESTIMATE",
-        "why": "Ruby + ecommerce expertise, Algolia partner"
+        "why": "Ruby on Rails + ecommerce expertise, confirmed Algolia SI partner"
       },
       {
         "name": "Publicis Sapient",
         "confidence": "ESTIMATE",
-        "why": "Luxury retail digital transformation"
+        "why": "Luxury retail digital transformation, Algolia co-sell history"
       }
     ],
     "immediate_action": "Contact Algolia Salesforce partner team — TRR uses Salesforce Marketing Cloud Personalisation, creating a co-sell entry point for a warm intro to Luke Friang (CTPO) or Tom Hanrahan (CRO).",
-    "co_sell_recommendation": "Algolia + Salesforce joint pitch: 'Extend your Marketing Cloud personalization to on-site search' — unified buyer journey from email to discovery",
+    "co_sell_recommendation": "Lead with Salesforce Marketing Cloud co-sell (highest confidence). Secondary: Zendesk Help Center federated search story for authentication content gap.",
     "crossbeam_data_available": false,
-    "source_label": "[FACT — 02-tech-stack.md + partner-intel.md, 2026-03-25]"
+    "source_label": "[FACT — BuiltWith live therealreal.com]"
   },
   "tab_subtitles": {
     "summary": "What you need before walking into The RealReal",

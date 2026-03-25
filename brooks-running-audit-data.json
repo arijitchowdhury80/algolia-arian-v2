@@ -1184,7 +1184,29 @@
       "screenshot": "screenshots/14-dynamic-facets.png"
     }
   ],
-  "partner_intel": null,
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Salesforce Commerce Cloud",
+        "type": "ecommerce_platform",
+        "co_sell_motion": "Brooks Running is on Salesforce Commerce Cloud (Demandware SFRA) — confirmed by network inspection March 2026 (all search API calls route to /on/demandware.store/). Algolia maintains a published SFCC cartridge (AppExchange) and an official SFCC integration partner relationship. Co-sell: engage Algolia's Salesforce alliance team to lead a joint SFCC cartridge demo for Brooks Running's digital team. Integration complexity rated LOW — estimated 2–3 week implementation.",
+        "confidence": "HIGH",
+        "label": "[FACT — network inspection March 2026 + Algolia SFCC AppExchange listing]"
+      },
+      {
+        "name": "Amperity",
+        "type": "cdp",
+        "co_sell_motion": "Brooks Running uses Amperity as their Customer Data Platform (BuiltWith + tech stack confirmed). Algolia Personalization can ingest Amperity unified customer profiles to personalize search results for Run Club members — surfacing size, cushioning preference, and running category signals. Co-sell: joint Amperity + Algolia data-to-search story for Brooks' Run Club loyalty program.",
+        "confidence": "MEDIUM",
+        "label": "[FACT — tech stack research March 2026. Algolia-Amperity integration: documented at algolia.com/integrations]"
+      }
+    ],
+    "crossbeam_data_available": false,
+    "source_label": "[FACT — network inspection + BuiltWith tech stack March 2026]",
+    "si_partners": [],
+    "immediate_action": null,
+    "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+  },
   "tab_subtitles": {
     "summary": "What you need to know before walking into Brooks Running",
     "account": "Brooks Running at a glance — #1 performance running brand, 1.2M monthly visitors, $1.6B in revenue, Berkshire Hathaway-backed",
