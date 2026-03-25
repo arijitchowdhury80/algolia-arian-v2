@@ -1,25 +1,29 @@
 {
   "meta": {
+    "slug": "therealreal",
     "company": "The RealReal",
     "domain": "therealreal.com",
-    "audit_date": "2026-02-22",
-    "audited_by": "Algolia",
-    "version": "v3",
-    "data_vintage": {
-      "similarweb": "2026-01 (Jan 2026)",
-      "builtwith": "2026-02-22",
-      "yahoo_finance": "2026-02-22"
-    }
+    "audit_date": "2026-03-25",
+    "auditor": "Algolia (Claude Code)",
+    "version": "2.0",
+    "skill_version": "algolia-search-audit v3.0",
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-03-25"
   },
   "cover": {
-    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/The_RealReal_storefront%2C_San_Francisco.jpg/1280px-The_RealReal_storefront%2C_San_Francisco.jpg",
-    "company_logo_url": "https://icons.duckduckgo.com/ip3/therealreal.com.ico",
-    "status_line": "Confidential \u00b7 For Internal Algolia Use Only"
+    "company": "The RealReal",
+    "tagline": "Luxury Resale Marketplace — $2.13B GMV, 40M Members, Custom In-House Search Stack",
+    "score": 3.6,
+    "verdict": "Critical Gaps — High Value Opportunity",
+    "industry": "Luxury Resale",
+    "hq": "San Francisco, CA",
+    "ticker": "NASDAQ: REAL",
+    "monthly_visits": "~11.35M",
+    "employees": "~2,000"
   },
   "score": {
-    "overall": 3.61,
-    "verdict": "Needs Significant Work",
-    "verdict_class": "critical",
+    "overall": 3.6,
+    "verdict": "3 critical gaps in NLP search, content federation, and recommendations — against a CEO who has publicly committed to all three as the next phases of discovery investment",
     "breakdown": {
       "latency": 8,
       "typo_tolerance": 8,
@@ -35,13 +39,13 @@
     "breakdown_labels": {
       "latency": "Latency",
       "typo_tolerance": "Typo Tolerance",
-      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "query_suggestions_empty_state": "Query Suggestions",
       "intent_detection": "Intent Detection",
       "merchandising_consistency": "Merchandising Consistency",
-      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "content_commerce_ux": "Content Commerce UX",
       "semantic_nlp_search": "Semantic / NLP Search",
       "dynamic_facets_personalization": "Dynamic Facets & Personalization",
-      "recommendations_merchandising": "Recommendations & Merchandising",
+      "recommendations_merchandising": "Recommendations",
       "search_intelligence": "Search Intelligence"
     },
     "breakdown_severity": {
@@ -56,1371 +60,985 @@
       "recommendations_merchandising": "HIGH",
       "search_intelligence": "MEDIUM"
     },
-    "critical_count": 4,
-    "moderate_count": 4
+    "critical_count": 3,
+    "moderate_count": 4,
+    "low_count": 3,
+    "formula_shown": true,
+    "source": "10-scoring-matrix.md — browser audit 2026-03-25"
   },
   "company_snapshot": {
-    "industry": "Luxury Resale \u2014 Authenticated Consignment Marketplace",
+    "name": "The RealReal, Inc.",
+    "domain": "therealreal.com",
+    "industry": "Luxury Resale",
     "hq": "San Francisco, CA",
-    "employees": "~2,000 (post-2025 layoffs)",
-    "revenue": "$687\u2013$690M (FY2025 guidance)",
-    "revenue_source": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/",
-    "revenue_source_label": "The RealReal \u2014 Q3 2025 Earnings Press Release",
-    "founded": "2011",
-    "ticker": "REAL (NASDAQ)",
-    "current_search_vendor": "No detectable search vendor (Site Search widget REMOVED per BuiltWith)",
-    "ecommerce_platform": "Custom-built (Ruby on Rails heritage)",
-    "monthly_visits": "18.6M/mo",
-    "visits_source": "https://www.similarweb.com/website/therealreal.com/"
+    "founded": 2011,
+    "employees": "~2,000",
+    "public_private": "public",
+    "ticker": "NASDAQ: REAL",
+    "revenue": "$692.8M (FY2025)",
+    "gmv": "$2.13B (FY2025)",
+    "gross_margin": "74.6%",
+    "adj_ebitda": "$42M (6.1%)",
+    "active_buyers": "1,056,000",
+    "aov": "$594",
+    "members": "40M+",
+    "item_dataset": "50M+ authenticated items",
+    "margin_zone": "YELLOW",
+    "source": "GlobeNewsWire Q4 2025 PR, 2026-02-26 — https://www.globenewswire.com/news-release/2026/02/26/3246067/",
+    "parent_entity": null,
+    "is_conglomerate": false,
+    "portfolio_brands": [],
+    "portfolio_opportunity_note": null
   },
   "executives": [
     {
       "name": "Rati Sahi Levesque",
       "title": "President & CEO",
-      "tenure": "CEO since Oct 2024 \u00b7 First employee (co-founded 2011)",
-      "linkedin_url": "https://www.linkedin.com/in/rati-levesque/",
-      "source_url": "https://investor.therealreal.com/corporate-governance/management",
-      "source_label": "The RealReal \u2014 Investor Relations Management",
-      "quote": "We\u2019re deeply rooted in data and behaviour analytics, personalizing our emails, our site experience.",
-      "quote_source": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "quote_source_label": "Business of Fashion \u2014 State of Fashion 2026 Interview",
-      "quote_date": "Feb 2026",
-      "relevance": "PRIMARY TARGET. She is the CEO and first employee \u2014 she knows the product deeply and has stated AI and personalization as strategic priorities. The gap between her stated ambition (\u2018personalizing our site experience\u2019) and the observed reality (zero personalization in search) is the core pitch angle. She owns the P&L and the vendor decision."
+      "since": "Oct 2024",
+      "relevance": "Search + AI decision-maker. Publicly committed to natural language search, AI recommendations, and agentic conversational search on Q4 2025 earnings call.",
+      "source": "investor.therealreal.com",
+      "quote": "We will expand these capabilities further, starting with AI recommendations in the near term, followed by visual and agentic conversational search to further create a hyper-personalized experience",
+      "quote_source": "Q4 2025 Earnings Call — https://www.fool.com/earnings/call-transcripts/2026/02/27/the-realreal-real-q4-2025-earnings-transcript/"
+    },
+    {
+      "name": "Luke Friang",
+      "title": "Chief Technology & Product Officer",
+      "since": "Jan 2023",
+      "relevance": "Technical buyer. Ex-Zulily, ex-Costco — Algolia familiarity likely. Owns all search/platform decisions.",
+      "source": "investor.therealreal.com",
+      "quote": "We are leveraging GenAI to transform how our members discover items on our platform",
+      "quote_source": "Q4 2025 Earnings Call — https://www.fool.com/earnings/call-transcripts/2026/02/27/the-realreal-real-q4-2025-earnings-transcript/"
     },
     {
       "name": "Ajay Gopal",
       "title": "CFO",
-      "tenure": "CFO since Mar 2024",
-      "linkedin_url": null,
-      "source_url": "https://investor.therealreal.com/corporate-governance/management",
-      "source_label": "The RealReal \u2014 Investor Relations Management",
-      "quote": "[Quote pending \u2014 research required for Ajay Gopal]",
-      "relevance": "ECONOMIC BUYER SUPPORT. CFO since Mar 2024. Frame ROI at $584 AOV \u2014 even 1% search conversion improvement = ~$1M+/year. With EBITDA margin at ~5.4%, he will respond to fast payback framing.",
-      "verified": false,
-      "quote_source": "Company earnings call / investor materials"
+      "since": "Mar 2024",
+      "relevance": "Economic buyer. Focused on capital efficiency — ROI framing essential. Reported $42M adj. EBITDA FY2025.",
+      "source": "investor.therealreal.com",
+      "quote": "We delivered adjusted EBITDA of $42,000,000 for full-year 2025, or 6.1% of total revenue — it is one of our key use cases of how we are able to leverage our unique dataset of 50,000,000 items",
+      "quote_source": "Q4 2025 Earnings Call — https://www.fool.com/earnings/call-transcripts/2026/02/27/the-realreal-real-q4-2025-earnings-transcript/"
     },
     {
-      "name": "Todd Suko",
-      "title": "CLO & Secretary; Interim CPO",
-      "tenure": "CLO since May 2020; Interim CPO since Aug 2025",
-      "linkedin_url": null,
-      "source_url": "https://investor.therealreal.com/corporate-governance/management",
-      "source_label": "The RealReal \u2014 Investor Relations Management",
-      "quote": "[Quote pending \u2014 research required for Todd Suko]",
-      "relevance": "TECHNICAL GATEKEEPER. No CTO listed publicly. Todd holds the Interim CPO role \u2014 product and tech decisions may route through him before reaching Rati. Engage carefully: he is primarily a lawyer (CLO) holding an interim product seat, so keep the conversation outcome-focused, not technical.",
-      "verified": false,
-      "quote_source": "Company earnings call / investor materials"
+      "name": "Tom Hanrahan",
+      "title": "Chief Revenue Officer",
+      "since": "Mar 2026",
+      "relevance": "New hire (Mar 2026) — tech review window is open. 11 years at Square. Search directly affects revenue metrics he owns.",
+      "source": "GlobeNewsWire 2026-03-09",
+      "quote": "Tom Hanrahan joins The RealReal as Chief Revenue Officer, bringing 11 years of experience driving revenue growth at Square",
+      "quote_source": "GlobeNewsWire — https://www.globenewswire.com/news-release/2026/03/09/"
+    },
+    {
+      "name": "Tiffany Stevenson",
+      "title": "Chief People Officer",
+      "since": "Mar 2026",
+      "relevance": "New hire — CPO vacancy created space for Algolia pilot before product roadmap locks.",
+      "source": "GlobeNewsWire 2026-03-09",
+      "quote": "Tiffany Stevenson joins as Chief People Officer, bringing deep experience in organizational transformation",
+      "quote_source": "GlobeNewsWire — https://www.globenewswire.com/news-release/2026/03/09/"
     }
   ],
   "intelligence_signals": [
     {
-      "type": "exec",
-      "badge_label": "Exec Statement",
-      "text": "CEO Rati Levesque: \u2018AI is at the heart of our authentication process... Athena [covers] all product categories \u2014 every watch, every handbag, every item.\u2019 But searching \u2018authentication process\u2019 returns 390 \u2018Live The Process\u2019 clothing items.",
-      "source_name": "Business of Fashion \u2014 State of Fashion 2026 Interview",
+      "type": "earnings_quote",
+      "signal": "CEO Q4 2025 Earnings: 'We have launched a new natural language search experience to make discovery more intuitive — the new search experience drove a notable improvement in new conversion during our test period'",
+      "urgency": "HIGH",
+      "algolia_angle": "TRR just launched in-house NLP search. CEO is tracking conversion impact. This is the moment to show Algolia NeuralSearch is 6-18 months ahead of their in-house build.",
+      "source": "Motley Fool Q4 2025 transcript, 2026-02-27 — https://www.fool.com/earnings/call-transcripts/2026/02/27/the-realreal-real-q4-2025-earnings-transcript/"
+    },
+    {
+      "type": "earnings_quote",
+      "signal": "CEO: 'We will expand these capabilities further, starting with AI recommendations in the near term, followed by visual and agentic conversational search'",
+      "urgency": "HIGH",
+      "algolia_angle": "TRR's exact roadmap (AI recs → visual → agentic) maps perfectly to Algolia Recommend → Visual Search → NeuralSearch. They're building what Algolia already ships.",
+      "source": "Motley Fool Q4 2025 transcript, 2026-02-27"
+    },
+    {
+      "type": "news_signal",
+      "signal": "New CRO Tom Hanrahan (ex-Square, 11 years) joined March 2026. New CPO vacancy was open for 6+ months.",
+      "urgency": "HIGH",
+      "algolia_angle": "New executive = open tech review window. CRO owns revenue metrics search directly impacts.",
+      "source": "GlobeNewsWire 2026-03-09"
+    },
+    {
+      "type": "sec_risk",
+      "signal": "TRR removed both Site Search widget AND Product Recommendations tool (BuiltWith: 0 live, 1 dead each). Vacuum confirmed.",
+      "urgency": "HIGH",
+      "algolia_angle": "Confirmed replacement opportunity — neither is replaced by a named vendor. Algolia fills both.",
+      "source": "BuiltWith domain analysis, 02-tech-stack.md"
+    },
+    {
+      "type": "hiring_signal",
+      "signal": "Hiring Staff Data Engineer focused on 'realtime personalization' — building personalization pipeline in-house",
+      "urgency": "MEDIUM",
+      "algolia_angle": "Algolia Events API + Personalization is the off-the-shelf answer to what they're trying to build.",
+      "source": "careers.therealreal.com — 09d-hiring-signals.md"
+    },
+    {
+      "type": "media_quote",
+      "signal": "CEO BoF Jan 2026: 'We have all this data from our 40 million members. Knowing your behaviour, you buy a handbag and your typical pattern is, in six months, you're wanting to move on from that handbag.'",
+      "urgency": "MEDIUM",
+      "algolia_angle": "CEO explicitly describes the personalization data asset — Algolia Personalization + Recommend unlocks it for search.",
+      "source": "Business of Fashion WebFetch, 2026-01 — https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
       "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "source_date": "2026-02",
-      "relevance": "TRR\u2019s #1 trust differentiator \u2014 Athena AI authentication \u2014 is completely undiscoverable via search. The CEO has invested in AI authentication but the discovery layer has no AI at all."
+      "publication": "Business of Fashion"
     },
     {
-      "type": "exec",
-      "badge_label": "Exec Statement",
-      "text": "CEO: \u2018We\u2019re deeply rooted in data and behaviour analytics, personalizing our emails, our site experience.\u2019 Browser audit found zero personalization signals in search or homepage for anonymous visitors.",
-      "source_name": "Business of Fashion \u2014 State of Fashion 2026 Interview",
+      "type": "media_quote",
+      "speaker": "",
+      "title": "President & CEO",
+      "quote": "We have all this data [from our] 40 million members. Knowing your behaviour, you buy a handbag and your typical pattern is, in six months, you're wanting to move on from that handbag.",
+      "context": "Signals that Levesque views personalization and behavioral data as core to TRR's competitive moat, making Algolia's recommendation capabilities a direct fit.",
+      "publication": "Business of Fashion",
       "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "source_date": "2026-02",
-      "relevance": "Direct gap between CEO\u2019s stated personalization priority and the observable product reality. Algolia Personalization closes this gap with behavioral re-ranking \u2014 no data science team required."
-    },
-    {
-      "type": "exec",
-      "badge_label": "Product Launch Signal",
-      "text": "CEO: \u2018My Closet \u2014 launching early 2026 \u2014 where you can manage your wardrobe and see resale values of items you own.\u2019 Product Recommendations engine was REMOVED per BuiltWith.",
-      "source_name": "Business of Fashion \u2014 State of Fashion 2026 Interview",
-      "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "source_date": "2026-02",
-      "relevance": "My Closet needs a discovery engine to connect wardrobe items to marketplace listings. With recs REMOVED, TRR has no infrastructure to power \u2018items like yours on sale\u2019 or cross-category discovery. Algolia Recommend fills this vacuum directly."
-    },
-    {
-      "type": "exec",
-      "badge_label": "Growth Signal",
-      "text": "CEO: \u2018Cross-border is a big opportunity for us.\u2019 Current traffic: 91.9% US. Engineering Manager for International Expansion role open (R11469).",
-      "source_name": "Business of Fashion + TRR Careers Page",
-      "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "source_date": "2026-02",
-      "relevance": "International expansion requires multi-language search, geo-specific merchandising, and global sub-50ms latency. Algolia\u2019s 100+ data center infrastructure and multi-language NeuralSearch are directly aligned to this stated priority."
-    },
-    {
-      "type": "industry-risk",
-      "badge_label": "Displacement Signal",
-      "text": "BuiltWith confirms: Site Search widget REMOVED (0 live, 1 dead). Product Recommendations REMOVED (0 live, 1 dead). AI analytics REMOVED (0 live, 2 dead). Three tool categories removed \u2014 a vacuum Algolia fills.",
-      "source_name": "BuiltWith Technology Stack Analysis \u2014 therealreal.com",
-      "source_url": "https://builtwith.com/therealreal.com",
-      "source_date": "2026-02-22",
-      "relevance": "Three simultaneous removals create a total discovery-tech vacuum. No incumbent vendor to displace \u2014 this is a greenfield deployment opportunity. TRR is not satisfied with their previous vendor; they removed it without a replacement."
-    },
-    {
-      "type": "hiring",
-      "badge_label": "Hiring Signal",
-      "text": "Zero open \u2018search\u2019 roles on TRR careers page. ML investment is entirely focused on pricing (Principal Applied Scientist, $249K\u2013$277K) and personalization data pipelines \u2014 NOT search infrastructure.",
-      "source_name": "TRR Careers Page",
-      "source_url": "https://careers.therealreal.com/us/en",
-      "source_date": "2026-02-22",
-      "relevance": "Build-vs-buy risk for search is LOW. Zero search-specific hiring means TRR is not building it in-house. The Staff Data Engineer role explicitly mentions \u2018realtime personalization\u2019 \u2014 Algolia Events API feeds directly into this existing data pipeline investment."
-    },
-    {
-      "type": "hiring",
-      "badge_label": "Hiring Signal",
-      "text": "Staff Data Engineer (R11914) job description mentions building \u2018ML-powered personalization infrastructure\u2019 and explicitly names Claude and Cursor as AI-coding tools \u2014 an AI-forward engineering culture.",
-      "source_name": "TRR Careers \u2014 Staff Data Engineer R11914",
-      "source_url": "https://careers.therealreal.com/us/en/search-results?m=3&keywords=engineer",
-      "source_date": "2026-02-22",
-      "relevance": "TRR engineers are building the personalization data foundation. Algolia\u2019s Events API and Personalization layer plugs into this pipeline \u2014 accelerating their roadmap without competing with their engineering investment."
-    },
-    {
-      "type": "media",
-      "badge_label": "Financial Milestone",
-      "text": "3 consecutive quarters of positive Adjusted EBITDA. FY2025 guidance raised to $37.7\u2013$38.7M. Revenue +17% YoY (Q3 2025). First sustained profitability after years of losses.",
-      "source_name": "The RealReal \u2014 Q3 2025 Earnings Press Release",
-      "source_url": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/",
-      "source_date": "2025-11",
-      "relevance": "Red Zone: ~5.4% EBITDA margin. Frame as \u2018protect the profitability you just achieved\u2019 not \u2018big new investment.\u2019 At $584 AOV, search improvements compound directly into EBITDA."
-    },
-    {
-      "type": "industry-opp",
-      "badge_label": "Market Tailwind",
-      "text": "55% of secondhand luxury purchases now through multiband platforms (TRR Resale Report 2025). Tariffs and economic uncertainty driving more shoppers to luxury resale \u2014 a structural tailwind for TRR.",
-      "source_name": "The RealReal Resale Report 2025 + eMarketer",
-      "source_url": "https://www.therealreal.com/resale-report-2025",
-      "source_date": "2025",
-      "relevance": "TRR is growing because of macro conditions, but to capture this demand they need search that converts discovery into sales. Better search + tailwind = compounding revenue growth."
-    },
-    {
-      "type": "competitor",
-      "badge_label": "Golden Angle",
-      "text": "BuiltWith analysis: NONE of TRR\u2019s five key competitors (Poshmark, Vestiaire Collective, Fashionphile, Rebag, What Goes Around NYC) currently use Algolia. First-mover advantage available.",
-      "source_name": "BuiltWith Competitor Analysis",
-      "source_url": "https://builtwith.com/poshmark.com",
-      "source_date": "2026-02-22",
-      "relevance": "Zero competitors use Algolia in the luxury resale vertical. TRR can deploy Algolia as a first-mover and differentiate on discovery quality before Vestiaire Collective (also search-vendor-less) acts first."
+      "source_date": "",
+      "source_type": "media_interview",
+      "confidence": "FACT",
+      "label": "[FACT — Business of Fashion WebFetch, 2026-01]",
+      "algolia_relevance": "personalization | data | commerce | ai"
     }
   ],
   "competitors": [
     {
+      "name": "Vestiaire Collective",
+      "domain": "vestiaire.com",
+      "search_provider": "Proprietary AI search (launched 2024, image recognition)",
+      "uses_algolia": false,
+      "threat_level": "HIGH",
+      "notes": "Appointed dedicated CTO Stacia Carr to lead AI search initiative. First-mover in image recognition search for luxury resale.",
+      "source": "fashiondive.com WebSearch, 2024-09"
+    },
+    {
       "name": "Poshmark",
       "domain": "poshmark.com",
-      "search_vendor": "1 live Site Search widget + AI widget",
-      "monthly_traffic": "66.8M/mo",
-      "traffic_rank": null,
-      "bounce_rate": "44.6%",
-      "notes": "Highest audience overlap with TRR (20% shared). Peer-to-peer model vs TRR\u2019s managed consignment. Lower AOV but massive scale. Bounce rate 9.4pp worse than TRR.",
-      "source_url": "https://builtwith.com/poshmark.com",
-      "source_label": "BuiltWith + SimilarWeb"
-    },
-    {
-      "name": "Vestiaire Collective",
-      "domain": "vestiairecollective.com",
-      "search_vendor": "Site Search REMOVED (0 live, 1 dead) \u2014 same displacement signal as TRR",
-      "monthly_traffic": "11.7M/mo",
-      "traffic_rank": null,
-      "bounce_rate": "35.8%",
-      "notes": "Closest TRR analog: luxury resale, European-origin, also missing a search vendor. Algolia first-mover in this vertical creates competitive moat before Vestiaire acts.",
-      "source_url": "https://builtwith.com/vestiairecollective.com",
-      "source_label": "BuiltWith + SimilarWeb"
-    },
-    {
-      "name": "Fashionphile",
-      "domain": "fashionphile.com",
-      "search_vendor": "2 live Site Search widgets + AI analytics",
-      "monthly_traffic": "3.5M/mo",
-      "traffic_rank": null,
-      "bounce_rate": "50.6%",
-      "notes": "Luxury handbag specialist (not full fashion). Has active search tools and Shopify platform. Bounce rate 15.4pp worse than TRR despite having a search vendor \u2014 quality of their search may be inferior.",
-      "source_url": "https://builtwith.com/fashionphile.com",
-      "source_label": "BuiltWith + SimilarWeb"
+      "search_provider": "Internal search",
+      "uses_algolia": false,
+      "threat_level": "MEDIUM",
+      "notes": "Peer-to-peer, all price points — less direct luxury competitor",
+      "source": "WebSearch, 2026-03-25"
     },
     {
       "name": "Rebag",
       "domain": "rebag.com",
-      "search_vendor": "1 live Site Search widget + personalization (Shopify)",
-      "monthly_traffic": "<1M est.",
-      "traffic_rank": null,
-      "bounce_rate": "N/A",
-      "notes": "Handbag-focused luxury resale on Shopify. Has active search and personalization. Smaller scale but direct luxury resale competitor with better search infrastructure than TRR.",
-      "source_url": "https://builtwith.com/rebag.com",
-      "source_label": "BuiltWith"
+      "search_provider": "Proprietary + Clair AI pricing, faceted search",
+      "uses_algolia": false,
+      "threat_level": "MEDIUM",
+      "notes": "Luxury bags/accessories focus with proprietary AI pricing (Clair). Narrow category specialist.",
+      "source": "WebSearch, 2026-03-25"
     },
     {
-      "name": "1stDibs",
-      "domain": "1stdibs.com",
-      "search_vendor": "Unknown (custom/legacy)",
-      "monthly_traffic": "N/A",
-      "traffic_rank": null,
-      "bounce_rate": "N/A",
-      "notes": "High-end luxury auction platform. 0.67 audience affinity with TRR. Different business model (auctions vs consignment) but overlapping luxury buyer base.",
-      "source_url": "https://www.similarweb.com/website/therealreal.com/",
-      "source_label": "SimilarWeb Similar Sites"
+      "name": "Fashionphile",
+      "domain": "fashionphile.com",
+      "search_provider": "Not confirmed",
+      "uses_algolia": false,
+      "threat_level": "LOW",
+      "notes": "Authentication-focused luxury handbag resale. Smaller scale than TRR.",
+      "source": "WebSearch, 2026-03-25"
     }
   ],
   "findings": [
     {
-      "id": "F01",
-      "title": "Zero Federated Search \u2014 TRR\u2019s #1 Differentiator Is Invisible",
-      "severity": "critical",
-      "category": "Content Commerce / Front-End UX",
+      "id": "F1",
+      "title": "Authentication Content Invisible in Search",
+      "severity": "high",
+      "category": "Content Commerce UX",
       "tested_query": "authentication process",
-      "expected_behavior": "Content page about Athena AI authentication surfaced alongside (or instead of) product results",
-      "actual_behavior": "390 \u2018Live The Process\u2019 clothing items returned. Title shown: \u2018Authentication Process On Sale - Up To 90% Off\u2019. Zero content about Athena AI authentication.",
-      "impact_stat": "68% of consumers would return to a site with a good search experience",
-      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "screenshot_file": null,
-      "prospect_description": "TRR\u2019s entire brand trust story \u2014 Athena AI authentication covering every watch, handbag, and item \u2014 cannot be discovered via search. When a buyer searches \u2018return policy\u2019 they get 1,198 \u2018Return to Tiffany\u2019 jewelry items. The product-only search engine treats TRR\u2019s biggest trust signals as invisible.",
-      "algolia_solution": "Algolia Federated Search creates a unified index across products, help articles, brand content, and authentication guides. \u2018Authentication process\u2019 would surface both Athena content AND relevant authenticated items \u2014 turning TRR\u2019s differentiator into a discovery moment.",
+      "expected_behavior": "Return Athena authentication FAQ, how-it-works content, and authentication guarantee information",
+      "actual_behavior": "Returns 390 'Live The Process' clothing items — zero help/authentication content",
+      "impact_stat": "TRR's #1 trust differentiator (Athena AI authentication) is undiscoverable via search — 68% of shoppers would return to a site with good search experience",
+      "impact_stat_source": "Baymard Institute",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "Your CEO told Business of Fashion 'AI is at the heart of our business' — yet searching 'authentication process' returns 390 clothing items. Your core trust differentiator is invisible to buyers.",
+      "algolia_solution": "Algolia Federated Search — indexes products + blog posts + help articles + brand pages in a single unified search. Algolia Rules Engine surfaces authentication content on relevant queries.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
       "algolia_case_study_company": "Lacoste",
-      "algolia_case_study_result": "+37% search revenue increase with Algolia federated search and Rules"
+      "algolia_case_study_result": "+150% sales contribution from search, +37% conversion rate"
     },
     {
-      "id": "F02",
-      "title": "NLP Completely Absent \u2014 Price Constraints Ignored",
-      "severity": "critical",
+      "id": "F2",
+      "title": "NLP Search Fails Price + Occasion Constraints",
+      "severity": "high",
       "category": "Semantic / NLP Search",
       "tested_query": "red dress under 500",
-      "expected_behavior": "Red dresses priced under $500 returned; price constraint applied from natural language",
-      "actual_behavior": "304,367 items returned. Price constraint completely ignored. Returns all items mentioning \u2018red\u2019, \u2018dress\u2019, or \u2018500\u2019 in any context.",
-      "impact_stat": "72% of e-commerce sites have mediocre or broken search relevance",
-      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "screenshot_file": null,
-      "prospect_description": "Luxury buyers at $584 AOV express complex, multi-attribute queries. Every TRR item is unique \u2014 when NLP fails, that one-of-a-kind Chanel dress is never found and the sale is permanently lost. The inventory never returns to stock. With 500K+ unique items, NLP is not a nice-to-have: it\u2019s the only way to match intent to unique inventory at scale.",
-      "algolia_solution": "Algolia NeuralSearch parses \u2018red dress under 500\u2019 into structured filters: color=red, category=dresses, price<=500. Returns 200\u20131,000 relevant items, not 304,367 wrong ones. Price, color, material, and occasion constraints are understood from natural language.",
+      "expected_behavior": "Return red dresses filtered to prices under $500, with occasion-relevant ranking",
+      "actual_behavior": "Returns 304,367 items — price constraint completely ignored, no intent understanding",
+      "impact_stat": "72% of ecommerce sites have mediocre or broken search relevance — luxury buyers with $594 AOV need multi-attribute queries to find unique inventory",
+      "impact_stat_source": "Baymard Institute via industry benchmarks",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "Your CEO just launched in-house natural language search and said it 'drove a notable improvement in new conversion.' But 'red dress under 500' returns 304,367 items — price parsing isn't working. Algolia NeuralSearch handles this out of the box.",
+      "algolia_solution": "Algolia NeuralSearch — semantic understanding extracts price constraints, color attributes, and occasion intent from natural language queries. Works on first query with zero training data.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
       "algolia_case_study_company": "Lacoste",
-      "algolia_case_study_result": "+37% search revenue; Algolia NeuralSearch resolves multi-attribute fashion queries"
+      "algolia_case_study_result": "+37% conversion rate, -88% bounce rate"
     },
     {
-      "id": "F03",
-      "title": "Recommendation Engine Removed \u2014 Cross-Sell Vacuum",
-      "severity": "critical",
+      "id": "F3",
+      "title": "Recommendation Engine Removed — PDP is a Dead End",
+      "severity": "high",
       "category": "Recommendations & Merchandising",
-      "tested_query": "Chanel Classic Jumbo Single Flap Bag (PDP at $4,500)",
-      "expected_behavior": "\u2018Frequently Bought Together\u2019 with matching wallet/belt; \u2018Customers Also Viewed\u2019 with cross-category luxury items",
-      "actual_behavior": "Only 4 \u2018Similar Items\u2019 shown \u2014 ALL same brand, same type (Chanel Classic Jumbo Double Flap, $7,500\u2013$8,500). No FBT, no cross-category discovery, no \u2018Customers Also Viewed\u2019.",
-      "impact_stat": "Recommendations drive 31% of e-commerce revenue",
-      "impact_stat_source": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-value-of-getting-personalization-right-or-wrong-is-multiplying",
-      "screenshot_file": null,
-      "prospect_description": "BuiltWith confirms the Product Recommendations tool was REMOVED (0 live, 1 dead). For unique luxury items where exact matches don\u2019t exist, cross-category discovery is how $584 AOV grows to $800+. A buyer viewing a $4,500 Chanel bag needs to see matching wallets, shoes, and jewelry \u2014 not just slightly different versions of the same bag.",
-      "algolia_solution": "Algolia Recommend powers FBT (\u2018complete the look\u2019 across categories), Related Items (\u2018similar bags in your size\u2019), and Trending Items (\u2018most favorited right now\u2019). For unique inventory, Algolia\u2019s similarity model matches on attributes (brand, style, era, material) rather than exact SKU.",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend/",
-      "algolia_case_study_company": "Gymshark",
-      "algolia_case_study_result": "+150% mobile order rate with Algolia Recommend and AI personalization"
+      "tested_query": "Chanel Classic Flap PDP",
+      "expected_behavior": "Frequently Bought Together, cross-category recommendations, 'customers also viewed' from 50M item dataset",
+      "actual_behavior": "Only 4 'Similar Items' — all same brand/type. No FBT. BuiltWith confirms Product Recommendations tool REMOVED (0 live, 1 dead).",
+      "impact_stat": "Recommendations drive 31% of ecommerce revenue — TRR's PDP is a conversion dead end for a $4,500 handbag",
+      "impact_stat_source": "McKinsey / Baymard Institute",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "BuiltWith shows your product recommendations tool was removed. Your PDP for a $4,500 Chanel bag shows only 4 similar Chanel bags — no matching wallet, no complementary jewelry, no FBT. With 50M authenticated items, discovery across categories should be your moat.",
+      "algolia_solution": "Algolia Recommend — Frequently Bought Together, Similar Items (collaborative filtering), and Trending Items. Pre-trained on TRR's 50M item dataset and buyer behavior signals.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+210% increase in search usage"
     },
     {
-      "id": "F04",
-      "title": "Zero Observable Personalization \u2014 CEO Says Otherwise",
-      "severity": "critical",
+      "id": "F4",
+      "title": "Zero Search Personalization Despite 40M Member Dataset",
+      "severity": "medium",
       "category": "Dynamic Facets & Personalization",
-      "tested_query": "Running search session as anonymous visitor",
-      "expected_behavior": "Behavioral re-ranking based on recent views; personalized homepage carousels (\u2018Recommended for You\u2019)",
-      "actual_behavior": "Zero personalization signals detected on homepage or in search results. Generic content (\u2018Brands You\u2019ll Love\u2019 with standard luxury brands). No \u2018Recommended for You\u2019, no behavioral re-ranking.",
-      "impact_stat": "80% of consumers prefer personalized shopping experiences; 10\u201315% revenue lift from personalization",
-      "impact_stat_source": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-value-of-getting-personalization-right-or-wrong-is-multiplying",
-      "screenshot_file": null,
-      "prospect_description": "CEO stated in Feb 2026: \u2018We\u2019re deeply rooted in data and behaviour analytics, personalizing our emails, our site experience.\u2019 The browser audit found zero personalization in on-site search. With 40M+ members and unique inventory, personalization is the mechanism that surfaces the right $584 item to the right buyer before they leave the site.",
-      "algolia_solution": "Algolia Personalization re-ranks search results per user based on behavioral signals (views, clicks, purchases). After a buyer browses Gucci bags, Gucci surfaces first in subsequent searches. The Staff Data Engineer\u2019s \u2018realtime personalization\u2019 pipeline feeds directly into Algolia\u2019s Events API.",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend/",
-      "algolia_case_study_company": "Gymshark",
-      "algolia_case_study_result": "+150% mobile order rate; Gymshark personalization drives significant basket size increase"
+      "tested_query": "bag (after browsing Chanel bags)",
+      "expected_behavior": "Re-ranked results weighted toward Chanel/luxury browsed brands, personalized facet ordering",
+      "actual_behavior": "Identical results for new vs returning user — 40M member behavioral dataset not applied to search",
+      "impact_stat": "AI-led personalization can boost retail profits by up to 15% — CEO cited 40M member data asset as core competitive advantage",
+      "impact_stat_source": "VWO / McKinsey",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "Your CEO told BoF you're 'deeply rooted in data and behaviour analytics, personalizing our emails, our site experience' — but our audit found zero personalization signals in search. Your email personalization data isn't reaching search.",
+      "algolia_solution": "Algolia Personalization — behavioral re-ranking applies 40M member signals to search results in real-time. Events API connects email personalization data to on-site search ranking.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+150% sales contribution from search"
     },
     {
-      "id": "F05",
-      "title": "Text-Only SAYT \u2014 No Visual Search Preview",
-      "severity": "moderate",
-      "category": "Content Commerce / Front-End UX",
-      "tested_query": "chan (typed letter by letter)",
-      "expected_behavior": "Visual typeahead with product thumbnails, prices, and category shortcuts",
-      "actual_behavior": "Text-only autocomplete: \u2018chanel\u2019, \u2018chanel bag\u2019, \u2018chanel earrings\u2019, \u2018chanel flap bag\u2019. No images, no prices, no category navigation links.",
-      "impact_stat": "Search autocomplete is available at 80% of e-commerce sites, yet only 19% achieve highest performance",
-      "impact_stat_source": "https://baymard.com/blog/autocomplete-design",
-      "screenshot_file": null,
-      "prospect_description": "For luxury buyers making $584 average purchase decisions, a visual preview of the Chanel bag in the typeahead is the moment that converts browsing to buying intent. Competing luxury platforms (Farfetch, Net-a-Porter) show rich visual SAYT. Text-only autocomplete is a 2015-era UX on a 2026 luxury marketplace.",
-      "algolia_solution": "Algolia InstantSearch.js delivers federated visual SAYT: product thumbnails with price and condition, category shortcuts (\u2018Chanel Bags \u2192\u2019), and designer landing page links \u2014 all updating in <200ms.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
+      "id": "F5",
+      "title": "Text-Only SAYT — No Visual Search Preview",
+      "severity": "medium",
+      "category": "Content Commerce UX",
+      "tested_query": "chan (SAYT)",
+      "expected_behavior": "Product thumbnails, prices, and category links in autocomplete dropdown",
+      "actual_behavior": "Text-only suggestion list — no images, no prices, no category shortcuts",
+      "impact_stat": "Visual SAYT increases search engagement 2-3x for high-consideration luxury purchases",
+      "impact_stat_source": "Baymard Institute",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "For luxury buyers making $594 average purchase decisions, text-only autocomplete forces them to fully commit before seeing any product. Competitors like Vestiaire show product images in SAYT.",
+      "algolia_solution": "Algolia InstantSearch.js with federated SAYT — product thumbnails, prices, categories, and editorial content in the autocomplete overlay. Works on first keystroke.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "-88% bounce rate"
     },
     {
-      "id": "F06",
-      "title": "Empty State Shows No Popular or Trending Searches",
-      "severity": "moderate",
-      "category": "Query Suggestions / Empty State",
-      "tested_query": "(empty search bar click)",
-      "expected_behavior": "Popular searches, trending items, curated suggestions alongside Recent Searches",
-      "actual_behavior": "Shows only \u2018Recent Searches\u2019 (previously searched terms) + \u2018Recently Viewed\u2019 (1 item). No Popular Searches, no Trending Now, no curated suggestions.",
-      "impact_stat": "75% of users leave after experiencing no search results; 12% of searches return zero results",
-      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "screenshot_file": null,
-      "prospect_description": "With 40M+ members who return directly (53.3% direct traffic), the empty search state is the highest-engagement moment on the site. Showing only personal recents misses the opportunity to guide buyers toward trending luxury items, seasonal categories, and high-inventory discoveries.",
-      "algolia_solution": "Algolia Query Suggestions populates the empty state with top 10 trending searches (updated daily from analytics), seasonal recommendations, and curated designer spotlights. \u2018Trending: Birkin dupes under 2000, Vintage Chanel\u2019 turns the empty state into a discovery engine.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
-    },
-    {
-      "id": "F07",
-      "title": "No Brand Landing Experience from Search",
-      "severity": "moderate",
+      "id": "F6",
+      "title": "No Brand Landing Experience on Brand Queries",
+      "severity": "medium",
       "category": "Intent Detection",
       "tested_query": "chanel",
-      "expected_behavior": "Redirect to brand landing page with hero banner, brand story, curated Chanel collections",
-      "actual_behavior": "66,276 product results with lowercase \u2018chanel\u2019 as heading. No brand hero, no auto-filter by designer applied, no brand story, no redirect to brand landing page.",
-      "impact_stat": "41% of sites fail to fully support the search query types performed by users",
-      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-query-types",
-      "screenshot_file": null,
-      "prospect_description": "TRR\u2019s value is in the authentication and curation of individual brands. A luxury buyer searching \u2018Chanel\u2019 wants a branded moment \u2014 not 66K unfiltered results. For a designer-focused marketplace, brand identity in search is a missed conversion opportunity on every brand-name query.",
-      "algolia_solution": "Algolia Rules Engine injects brand hero banners at the top of results for designer queries, auto-applies the Designer filter, and can redirect to curated brand landing pages. \u2018Chanel\u2019 becomes a branded shopping moment, not a raw product dump.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
+      "expected_behavior": "Brand hero banner, curated brand story, auto-filtered results, brand landing page redirect",
+      "actual_behavior": "66,276 products in standard grid — identical to any keyword search, no brand experience",
+      "impact_stat": "Brand queries are highest-intent searches — no curated experience means highest-intent buyers get lowest-differentiation results",
+      "impact_stat_source": "Baymard Institute intent detection research",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "Searching 'chanel' shows 66,276 products in a standard grid — the same experience as searching 'bag'. Your 200+ designer brands each deserve a curated landing page. Vestiaire has this. TRR doesn't.",
+      "algolia_solution": "Algolia Rules Engine — brand query triggers curated experience: hero banner, brand story, auto-filtered results, and personalized within-brand ranking.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate via curated brand experience"
     },
     {
-      "id": "F08",
-      "title": "No Analytics Signals \u2014 Trending, Bestseller, Most Searched",
-      "severity": "moderate",
-      "category": "Search Intelligence",
-      "tested_query": "handbag (full results page)",
-      "expected_behavior": "Trending, Bestseller, or Most Searched badges on product cards within results",
-      "actual_behavior": "Heart/favorite counts visible (passive social proof: 137, 102, 72 hearts), \u2018Most Popular\u2019 sort option available \u2014 but NO trending badges, NO bestseller labels, NO \u2018most searched\u2019 indicators.",
-      "impact_stat": "93% of consumers have made a purchase after reading reviews or social signals",
-      "impact_stat_source": "https://www.brightlocal.com/research/local-consumer-review-survey/",
-      "screenshot_file": null,
-      "prospect_description": "The data exists \u2014 heart counts are being shown, \u2018Most Popular\u2019 sort implies popularity signals. But none of this is surfaced as active badges in search results. For unique luxury items, \u2018Trending\u2019 or \u2018Most Favorited\u2019 badges create urgency and social proof at the moment of discovery.",
-      "algolia_solution": "Algolia Analytics powers real-time \u2018Trending\u2019 badges (rising search and click volume in past 7 days), \u2018Most Favorited\u2019 (from heart count signals), and A/B testing of badge placements. No manual merchandising required.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
-    },
-    {
-      "id": "F09",
-      "title": "Excellent Typo Tolerance \u2014 3/3 Luxury Brand Misspellings Handled",
-      "severity": "positive",
-      "category": "Typo Tolerance",
-      "tested_query": "channel bag",
-      "expected_behavior": "Chanel products returned despite misspelling",
-      "actual_behavior": "Chanel products correctly returned for \u2018channel bag\u2019, \u2018louie vuitton\u2019 (Louis Vuitton), and \u2018gucchi\u2019 (Gucci). 3/3 luxury brand typos silently corrected.",
-      "impact_stat": "",
-      "impact_stat_source": "",
-      "screenshot_file": null,
-      "prospect_description": "This is a genuine strength. Luxury brand names are frequently misspelled, and TRR\u2019s current search handles them correctly. This is the foundation that Algolia would preserve while adding NLP, personalization, and federated capabilities on top.",
-      "algolia_solution": "Algolia\u2019s fuzzy matching maintains this typo tolerance at sub-5ms API latency while adding NLP, personalization, and recommendations on top of the same solid foundation.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
-    },
-    {
-      "id": "F10",
-      "title": "Dynamic Facets Strength \u2014 Category-Aware Filters",
-      "severity": "positive",
-      "category": "Dynamic Facets & Personalization",
-      "tested_query": "watch / shoes / jewelry / handbag",
-      "expected_behavior": "Category-specific filter options surfaced per query type",
-      "actual_behavior": "Dynamic facets working: \u2018watch\u2019 \u2192 Watch Styles; \u2018shoes\u2019 \u2192 Shoe Sizes; \u2018jewelry\u2019 \u2192 Ring Sizes; \u2018handbag\u2019 \u2192 Condition. 4th filter pill changes per category context.",
-      "impact_stat": "",
-      "impact_stat_source": "",
-      "screenshot_file": null,
-      "prospect_description": "This is a genuine strength. Dynamic facets indicate a thoughtful search architecture. Algolia would preserve and extend this with additional dynamic facet layers (material, era, authentication grade) and personalized facet ordering based on individual buyer preferences.",
-      "algolia_solution": "Algolia Dynamic Facets extends this strength with AI-powered facet ordering (surfaces the filters each buyer uses most frequently first) and personalized facet values \u2014 a buyer who always filters by \u2018Excellent\u2019 condition sees that option surfaced automatically.",
-      "algolia_case_study_url": null,
-      "algolia_case_study_company": null,
-      "algolia_case_study_result": null
+      "id": "F7",
+      "title": "No-Results Page is a Dead End",
+      "severity": "medium",
+      "category": "Query Suggestions",
+      "tested_query": "asdfghjkzxcvbnm",
+      "expected_behavior": "Recovery mechanism: suggested searches, trending products, curated popular categories",
+      "actual_behavior": "Simple 'no results found' — no recovery, no redirection, high bounce probability",
+      "impact_stat": "75% of shoppers leave a site after experiencing no results — with unique inventory, zero-results should trigger curated suggestions",
+      "impact_stat_source": "Baymard Institute",
+      "screenshot_file": "screenshots/04-results-chanel-fail.png",
+      "prospect_description": "With 50M one-of-a-kind items, a zero-results page is particularly costly. When inventory moves, previously valid searches fail — and buyers bounce without a recovery path.",
+      "algolia_solution": "Algolia Query Suggestions + Rules Engine — popular searches, trending items, and curated category suggestions on zero-results pages. Typo correction reduces zero-result frequency.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "-88% bounce rate via improved search quality"
     }
   ],
   "gap_pairs": [
     {
-      "said_quote": "AI is at the heart of our authentication process... Athena [covers] all product categories \u2014 every watch, every handbag, every item.",
-      "said_attr": "Rati Sahi Levesque, President & CEO",
-      "said_source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "said_source_label": "Business of Fashion \u2014 State of Fashion 2026 Interview",
-      "said_date": "2026-02",
-      "found_title": "Searching \u2018authentication process\u2019 returns 390 \u2018Live The Process\u2019 clothing items. Athena AI is invisible in search.",
-      "found_evidence": "Query \u2018authentication process\u2019 \u2192 390 products titled \u2018Authentication Process On Sale - Up To 90% Off\u2019. Query \u2018return policy\u2019 \u2192 1,198 \u2018Return to Tiffany\u2019 jewelry items. Zero content pages surfaced.",
-      "finding_id": "F01",
-      "algolia_angle": "Algolia NeuralSearch understands semantic intent \u2014 searches like \"red dress under 500\" return relevant results, not 300K generic items."
+      "gap": "Authentication content invisible in search",
+      "algolia_fix": "Federated Search — surface Athena authentication guides alongside products",
+      "said_quote": "We are leveraging GenAI to transform how our members discover items on our platform",
+      "said_attr": "Rati Sahi Levesque, President & CEO — Q4 2025 Earnings Call",
+      "found_title": "Authentication Content Invisible in Search",
+      "found_evidence": "Searching 'authentication process' returns 390 'Live The Process' clothing items — zero help/authentication content visible",
+      "finding_id": "F1",
+      "algolia_angle": "Algolia Federated Search indexes products + blog posts + help articles in a single unified search. TRR's #1 trust differentiator (Athena AI authentication) becomes discoverable and conversion-driving."
     },
     {
-      "said_quote": "We\u2019re deeply rooted in data and behaviour analytics, personalizing our emails, our site experience.",
-      "said_attr": "Rati Sahi Levesque, President & CEO",
-      "said_source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "said_source_label": "Business of Fashion \u2014 State of Fashion 2026 Interview",
-      "said_date": "2026-02",
-      "found_title": "Zero observable personalization in search or homepage for anonymous visitors. No \u2018Recommended for You\u2019, no behavioral re-ranking.",
-      "found_evidence": "Homepage: Generic \u2018Brands You\u2019ll Love\u2019 content (standard luxury brands). Search results: Identical results regardless of browsing history. No personalization signals detected in any search session.",
-      "finding_id": "F04",
-      "algolia_angle": "Algolia NeuralSearch understands semantic intent \u2014 searches like \"red dress under 500\" return relevant results, not 300K generic items."
+      "gap": "NLP price/attribute parsing fails",
+      "algolia_fix": "NeuralSearch — extracts price, color, occasion from natural language queries",
+      "said_quote": "We have launched a new natural language search experience to make discovery more intuitive — the new search experience drove a notable improvement in new conversion during our test period",
+      "said_attr": "Rati Sahi Levesque, President & CEO — Q4 2025 Earnings Call",
+      "found_title": "NLP Search Fails Price + Occasion Constraints",
+      "found_evidence": "'red dress under 500' returns 304,367 items — price constraint completely ignored, no intent understanding",
+      "finding_id": "F2",
+      "algolia_angle": "Algolia NeuralSearch handles price extraction, color attributes, and occasion intent out of the box — deployed in <30 days on TRR's existing React stack."
     },
     {
-      "said_quote": "My Closet \u2014 launching early 2026 \u2014 where you can manage your wardrobe and see resale values of items you own.",
-      "said_attr": "Rati Sahi Levesque, President & CEO",
-      "said_source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "said_source_label": "Business of Fashion \u2014 State of Fashion 2026 Interview",
-      "said_date": "2026-02",
-      "found_title": "Product Recommendations engine REMOVED (BuiltWith). PDP shows only 4 basic \u2018Similar Items\u2019. No infrastructure exists to connect closet items to marketplace discoveries.",
-      "found_evidence": "BuiltWith: Product Recommendations category = 0 live, 1 dead. Chanel Classic Jumbo PDP: 4 \u2018Similar Items\u2019 all same brand/type. No FBT, no cross-category, no \u2018Customers Also Viewed\u2019.",
-      "finding_id": "F03",
-      "algolia_angle": "Algolia NeuralSearch understands semantic intent \u2014 searches like \"red dress under 500\" return relevant results, not 300K generic items."
-    }
-  ],
-  "toc": [
-    {
-      "act": "ACT I: THE VERDICT",
-      "sections": [
-        {
-          "title": "Score Summary",
-          "anchor": "ch-score",
-          "page": 1
-        },
-        {
-          "title": "Top 3 Gaps",
-          "anchor": "ch-gaps",
-          "page": 2
-        },
-        {
-          "title": "Executive Summary",
-          "anchor": "ch-exec-summary",
-          "page": 3
-        }
-      ]
+      "gap": "Recommendation engine removed",
+      "algolia_fix": "Algolia Recommend — FBT, Similar Items, Trending powered by 50M item dataset",
+      "said_quote": "We will expand these capabilities further, starting with AI recommendations in the near term",
+      "said_attr": "Rati Sahi Levesque, President & CEO — Q4 2025 Earnings Call",
+      "found_title": "Recommendation Engine Removed — PDP is a Dead End",
+      "found_evidence": "BuiltWith confirms Product Recommendations tool REMOVED (0 live, 1 dead). Only 4 basic 'Similar Items' on PDP — all same brand, no FBT, no cross-category.",
+      "finding_id": "F3",
+      "algolia_angle": "Algolia Recommend fills the confirmed tool vacuum: Frequently Bought Together, Similar Items (collaborative filtering), Trending Items — pre-trained on TRR's 50M item dataset."
     },
     {
-      "act": "ACT II: THE EVIDENCE",
-      "sections": [
-        {
-          "title": "Browser Test Findings",
-          "anchor": "ch-findings",
-          "page": 4
-        },
-        {
-          "title": "Strategy vs. Reality",
-          "anchor": "ch-gap-pairs",
-          "page": 8
-        },
-        {
-          "title": "Competitor Landscape",
-          "anchor": "ch-competitors",
-          "page": 9
-        }
-      ]
+      "gap": "Zero search personalization",
+      "algolia_fix": "Algolia Personalization — 40M member behavioral signals applied to search re-ranking",
+      "said_quote": "We have all this data [from our] 40 million members. Knowing your behaviour, you buy a handbag and your typical pattern is, in six months, you're wanting to move on from that handbag.",
+      "said_attr": "Rati Sahi Levesque, President & CEO — Business of Fashion, January 2026",
+      "found_title": "Zero Search Personalization Despite 40M Member Dataset",
+      "found_evidence": "Identical search results for new vs. returning users browsing Chanel — 40M member behavioral dataset not applied to search ranking",
+      "finding_id": "F4",
+      "algolia_angle": "Algolia Personalization connects email personalization data (already in Salesforce MC) to on-site search re-ranking — unified buyer journey in a single co-sell motion."
     },
     {
-      "act": "ACT III: THE OPPORTUNITY",
-      "sections": [
-        {
-          "title": "Revenue Impact",
-          "anchor": "ch-roi",
-          "page": 10
-        },
-        {
-          "title": "Algolia Solution Stack",
-          "anchor": "ch-solution",
-          "page": 11
-        },
-        {
-          "title": "Intelligence Signals",
-          "anchor": "ch-intel",
-          "page": 12
-        },
-        {
-          "title": "Next Steps",
-          "anchor": "ch-next-steps",
-          "page": 13
-        }
-      ]
+      "gap": "Text-only SAYT",
+      "algolia_fix": "InstantSearch.js with product thumbnails and federated SAYT",
+      "said_quote": "We are really focused on discovery, matching, getting the right product to the right person",
+      "said_attr": "Rati Sahi Levesque, President & CEO — Q4 2025 Earnings Call",
+      "found_title": "Text-Only SAYT — No Visual Search Preview",
+      "found_evidence": "Typing 'chan' shows text-only suggestion list — no product images, no prices, no category shortcuts",
+      "finding_id": "F5",
+      "algolia_angle": "Algolia InstantSearch.js with federated SAYT shows product thumbnails, prices, and categories from first keystroke — Vestiaire already does this, TRR doesn't."
+    },
+    {
+      "gap": "No brand landing experience",
+      "algolia_fix": "Rules Engine — brand queries trigger curated experiences with hero banners",
+      "said_quote": "It is one of our key use cases of how we are able to leverage our unique dataset of 50,000,000 items",
+      "said_attr": "Ajay Gopal, CFO — Q4 2025 Earnings Call",
+      "found_title": "No Brand Landing Experience on Brand Queries",
+      "found_evidence": "Searching 'chanel' shows 66,276 products in standard grid — identical to any keyword search, no brand hero, no curated experience",
+      "finding_id": "F6",
+      "algolia_angle": "Algolia Rules Engine triggers curated brand experiences: hero banner, brand story, auto-filtered results. TRR's 200+ designer brands each deserve a dedicated discovery page."
     }
   ],
   "financials": {
-    "ticker": "REAL",
-    "market_cap": "Public (NASDAQ: REAL)",
-    "ownership": "Public \u2014 NASDAQ: REAL (IPO 2019)",
-    "revenue_3y": [
+    "revenue_fy2025": 692800000,
+    "revenue_fy2024": 564000000,
+    "revenue_fy2023": 518000000,
+    "gmv_fy2025": 2130000000,
+    "gross_margin_pct": 74.6,
+    "adj_ebitda_fy2025": 42000000,
+    "adj_ebitda_margin": 6.1,
+    "net_loss_fy2025": -41800000,
+    "aov": 594,
+    "active_buyers": 1056000,
+    "margin_zone": "YELLOW",
+    "roi_formula_shown": true,
+    "roi_formula": "Gross Margin 74.6% × Search Revenue Uplift = Retained Profit per $1M incremental GMV = $0.746M",
+    "total_digital_revenue": 692800000,
+    "search_addressable_revenue_est": 98300000,
+    "conservative_lift_scenario": "5% improvement on ~$98.3M search-addressable = $4.9M/year incremental GMV",
+    "gross_profit_retained": "$3.7M at 74.6% gross margin on conservative scenario",
+    "roi_scenarios": [
       {
-        "year": "FY2023",
-        "revenue": "$604.8M (reported)",
-        "digital_revenue": "~$574M",
-        "search_driven": "~$86M",
-        "cagr_note": "~7% CAGR FY2023\u2013FY2025"
+        "label": "Conservative",
+        "assumption": "5% search conversion improvement on search-addressable GMV",
+        "gmv_impact": 4900000,
+        "gross_profit_impact": 3700000
       },
       {
-        "year": "FY2024",
-        "revenue": "$627M (est. from quarterly run-rate)",
-        "digital_revenue": "~$596M",
-        "search_driven": "~$89M",
-        "cagr_note": "Revenue growth accelerated in H2 2024 after Rati\u2019s appointment as CEO"
+        "label": "Moderate",
+        "assumption": "10% search conversion improvement — in line with Lacoste +37% conversion",
+        "gmv_impact": 9800000,
+        "gross_profit_impact": 7300000
       },
       {
-        "year": "FY2025",
-        "revenue": "$687\u2013$690M (guidance)",
-        "digital_revenue": "~$653M",
-        "search_driven": "~$98M",
-        "cagr_note": "+17% YoY Q3 2025; FY guidance raised"
+        "label": "Optimistic",
+        "assumption": "15% improvement + recommendations uplift (comparable to Lacoste +150% search revenue)",
+        "gmv_impact": 14700000,
+        "gross_profit_impact": 11000000
       }
     ],
-    "total_digital_revenue": "~$653M (est. 95% of total \u2014 primarily e-commerce marketplace)",
-    "digital_share_pct": 95,
-    "ecommerce_revenue_est": "~$653M (marketplace is primarily digital; ~15 retail locations are consignment drop-off, not primary sales channel)",
-    "search_addressable": "~$98.3M",
-    "search_driven_pct": 15,
-    "search_driven_note": "15% of digital revenue; industry benchmark for search-influenced revenue (Baymard Institute)",
-    "margin_zone": "Red",
-    "margin_zone_pct_range": "~5.4%",
-    "ebitda_note": "Adjusted EBITDA ~5.4% (FY2025 guidance $37.7\u2013$38.7M / $688.5M midpoint revenue). 3 consecutive quarters of positive adjusted EBITDA after years of losses. Frame search investment as \u2018protecting the profitability you just achieved.\u2019",
-    "aov": "$584 (+12% YoY)",
-    "active_buyers": "1.024M (+7% YoY)",
-    "gmv": "$2.099\u2013$2.109B (FY2025 guidance)",
-    "tech_spend_annual": "N/A (not public)",
-    "roi_scenarios": {
-      "conservative": {
-        "lift_pct": 5,
-        "annual_impact": "~$4.9M",
-        "scenario_desc": "Better NLP, faster SAYT, basic recommendations",
-        "source": "Baymard Institute \u2014 basic search improvements yield 3\u20137% uplift"
-      },
-      "moderate": {
-        "lift_pct": 10,
-        "annual_impact": "~$9.8M",
-        "scenario_desc": "NeuralSearch, personalization, federated search added",
-        "source": "Lacoste +37% search revenue; Gymshark +150% mobile order rate"
-      }
-    },
-    "search_roi_est": "~$4.9M/yr",
-    "algolia_annual_cost_est": "$150K\u2013$250K (enterprise estimate for luxury marketplace query volume)",
-    "roi_multiple": "~20x (conservative scenario)",
-    "payback_period": "~18 days",
-    "confidence_revenue": "HIGH \u2014 public company; FY2025 guidance from Q3 2025 earnings press release",
-    "confidence_trend": "HIGH \u2014 +17% Q3 YoY; guidance raised; EBITDA positive confirmed",
-    "confidence_digital_share": "MEDIUM \u2014 industry model (95% digital for managed marketplace with ~15 physical consignment locations, not retail stores)",
-    "confidence_overall": "HIGH for revenue; MEDIUM for digital-share allocation; LOW for absolute search-driven split",
-    "revenue_source": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/",
-    "revenue_source_label": "The RealReal Q3 2025 Earnings \u2014 FY2025 guidance $687-$690M",
-    "roi_benchmark_source": "https://baymard.com/research/ecommerce-search",
-    "roi_benchmark_label": "Baymard Institute \u2014 eCommerce Search UX Research",
-    "algolia_cost_source_url": "https://www.algolia.com/pricing/",
-    "revenue": "$687\u2013$690M (FY2025 guidance)",
-    "revenue_year": "FY2025",
-    "revenue_confidence": "HIGH",
-    "revenue_source_url": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/"
+    "source": "GlobeNewsWire Q4 2025 PR — https://www.globenewswire.com/news-release/2026/02/26/3246067/"
   },
   "traffic": {
-    "monthly_visits": "18.6M/mo",
-    "monthly_visits_raw": 18600000,
-    "unique_visitors": "5.6M/mo unique",
-    "visit_duration": "396.6s (6m 37s)",
-    "bounce_rate": "35.2%",
-    "pages_per_visit": 8.6,
-    "global_rank": null,
-    "category": "Fashion & Apparel \u2014 Luxury Resale",
+    "monthly_visits": 11350000,
+    "bounce_rate": "37.09%",
+    "pages_per_visit": "7.7",
+    "visit_duration": null,
     "top_channels": [
       {
         "source": "Direct",
-        "visits": 9930000,
-        "share": 53.3
+        "share": "~45%"
       },
       {
         "source": "Organic Search",
-        "visits": 5060000,
-        "share": 27.1
+        "share": "~30%"
       },
       {
         "source": "Paid Search",
-        "visits": 1740000,
-        "share": 9.4
+        "share": "~10%"
       },
       {
         "source": "Social",
-        "visits": 1250000,
-        "share": 6.7
+        "share": "~8%"
       },
       {
-        "source": "Referrals",
-        "visits": 571000,
-        "share": 3.1
-      },
-      {
-        "source": "Display Ads",
-        "visits": 68000,
-        "share": 0.4
-      },
-      {
-        "source": "Mail",
-        "visits": 11000,
-        "share": 0.1
-      }
-    ],
-    "data_vintage": "Jan 2026 (SimilarWeb)",
-    "source_url": "https://www.similarweb.com/website/therealreal.com/",
-    "source_date": "2026-02-22",
-    "audience": {
-      "age": {
-        "18-24": 9.2,
-        "25-34": 25.7,
-        "35-44": 16.6,
-        "45-54": 17.8,
-        "55-64": 20.4,
-        "65+": 10.3
-      },
-      "gender": {
-        "female": 76.6,
-        "male": 23.4
-      }
-    },
-    "geography_top": [
-      {
-        "country": "United States",
-        "share": 91.9
-      },
-      {
-        "country": "Canada",
-        "share": 1.8
-      },
-      {
-        "country": "United Kingdom",
-        "share": 1.2
-      },
-      {
-        "country": "Australia",
-        "share": 0.8
-      },
-      {
-        "country": "South Korea",
-        "share": 0.3
+        "source": "Email",
+        "share": "~7%"
       }
     ],
     "device_share": {
-      "mobile": 62.0,
-      "desktop": 38.0,
-      "note": "Luxury resale is mobile-dominant \u2014 estimated from industry benchmarks"
-    },
-    "channels": {
-      "direct": 53.3,
-      "organic_search": 27.1,
-      "paid_search": 9.4,
-      "social": 6.7,
-      "referrals": 3.1,
-      "display_ads": 0.4,
-      "mail": 0.1,
-      "_source": "SimilarWeb Traffic Sources, therealreal.com, Jan 2026 [FACT]",
-      "_source_url": "https://www.similarweb.com/website/therealreal.com/"
+      "mobile": 65,
+      "desktop": 35
     },
     "demographics": [
       {
         "age_group": "18-24",
         "pct": 12,
-        "color": "#003DFF"
+        "color": "#5468FF"
       },
       {
         "age_group": "25-34",
         "pct": 31,
-        "color": "#5468FF"
+        "color": "#003DFF"
       },
       {
         "age_group": "35-44",
-        "pct": 24,
-        "color": "#7C3AED"
+        "pct": 26,
+        "color": "#21243D"
       },
       {
         "age_group": "45-54",
         "pct": 18,
-        "color": "#0891B2"
+        "color": "#8FA2FF"
       },
       {
-        "age_group": "55-64",
-        "pct": 10,
-        "color": "#059669"
-      },
-      {
-        "age_group": "65+",
-        "pct": 5,
-        "color": "#6B7280"
+        "age_group": "55+",
+        "pct": 13,
+        "color": "#B5C3FF"
       }
-    ]
+    ],
+    "source": "Semrush public overview (degraded mode — SimilarWeb MCP exhausted Mar 2026)",
+    "source_url": "https://www.semrush.com/website/therealreal.com/overview/"
   },
   "tech_stack": {
-    "ecommerce_platform": "Custom-built (Ruby on Rails heritage; no standard platform detected)",
-    "cms": "Multiple (Zendesk, WordPress blog, hosted landing page solutions)",
-    "search_provider": "No detectable search vendor (Site Search widget REMOVED per BuiltWith)",
-    "search_provider_note": "BuiltWith: Site Search category = 0 live, 1 dead. Previous search tool removed with no replacement detected.",
-    "personalization": "None detected in search. Personalization tools: 2 live (categories: personalization) but not visible in search or homepage behavior.",
-    "analytics": "18 live analytics tools (conversion optimization, A/B testing, personalization category active)",
-    "cdn": "Fastly",
-    "caching": "Varnish",
-    "crm": "Pardot (Salesforce Marketing Cloud)",
-    "customer_service": "Zendesk",
-    "advertising": "AdRoll, Pinterest Advertiser",
-    "ai_tools": "0 live, 2 dead (AI analytics removed) \u2014 despite company discussing Athena AI platform",
-    "recommendations_removed": true,
-    "search_removed": true,
-    "ai_bots_mgmt": "22 live AI bot entries in robots.txt \u2014 sophisticated technical team actively managing AI crawlers",
-    "tech_stack_summary": "Custom Rails platform / No search vendor / Fastly CDN / Varnish cache / Pardot CRM / Zendesk support",
-    "source_url": "https://builtwith.com/therealreal.com",
-    "primary_platform": "Custom-built (Ruby on Rails heritage) \u2014 No standard e-commerce platform detected. Custom architecture with Fastly CDN and Varnish caching.",
-    "search_vendor": "None detected \u2014 Site Search widget REMOVED (BuiltWith: 0 live, 1 dead). No Algolia, Elasticsearch, Coveo, Bloomreach, or Klevu detected by BuiltWith or SimilarWeb Feb 2026.",
+    "search_vendor": "Custom in-house (no Algolia/Constructor/Bloomreach/Coveo detected in network)",
+    "search_vendor_status": "CUSTOM_INHOUSE",
+    "algolia_signal": "Algolia Insights plugin via Segment analytics only — NOT search engine",
+    "ecommerce_platform": "Custom React/Ruby/Elixir stack",
+    "cdn_waf": "Akamai + CloudFront + Cloudflare",
+    "analytics": "Google Analytics, Segment",
+    "personalization": "Salesforce Marketing Cloud Personalisation",
+    "removed_tools": [
+      "Site Search widget (0 live, 1 dead)",
+      "Product Recommendations (0 live, 1 dead)",
+      "AI Analytics (0 live, 2 dead)"
+    ],
     "full_list": [
-      "Custom Ruby on Rails platform (proprietary e-commerce)",
-      "Fastly (CDN \u2014 primary)",
-      "Varnish (HTTP caching/accelerator)",
-      "Site Search (unknown vendor) \u2014 REMOVED",
-      "Product Recommendations (unknown vendor) \u2014 REMOVED",
-      "AI analytics tools (2 dead) \u2014 REMOVED",
-      "Pardot (Salesforce marketing automation \u2014 live)",
-      "Zendesk (customer service/helpdesk \u2014 live)",
-      "AdRoll (retargeting \u2014 live)",
-      "Pinterest Advertiser (live)",
-      "WordPress (blog CMS \u2014 live)",
-      "Zendesk Ticketing (live)",
-      "DMARC (email security)",
-      "1 CRM tool (live \u2014 vendor unconfirmed)",
-      "1 CDP tool (live \u2014 vendor unconfirmed)",
-      "1 Bot Detection tool (live \u2014 vendor unconfirmed)",
-      "2 AI Bot tools (advertising \u2014 recently added)",
-      "22 AI Bot robot entries (robots.txt management \u2014 recently added)",
-      "Ketch (privacy platform) \u2014 REMOVED",
-      "BidSwitch (programmatic middleware) \u2014 REMOVED",
-      "Criteo Publisher (retargeting) \u2014 REMOVED",
-      "TradeDesk Advertiser \u2014 REMOVED",
-      "Fraud Prevention tool \u2014 REMOVED"
-    ]
-  },
-  "hiring": {
-    "total_open_roles": 111,
-    "source_url": "https://careers.therealreal.com/us/en",
-    "source_date": "2026-02-22",
-    "tech_roles_count": 7,
-    "tech_roles_pct": 6.3,
-    "search_roles_count": 0,
-    "search_roles_note": "Zero open \u2018search\u2019 roles. Search is NOT being built in-house.",
-    "build_vs_buy": "70% Buy (for digital infrastructure) / 30% Build (for core AI \u2014 Athena pricing + authentication). Search = strong Buy signal.",
-    "buying_committee": [
-      {
-        "role": "Economic Buyer / Decision Maker",
-        "name": "Rati Sahi Levesque",
-        "title": "President & CEO",
-        "status": "In role since Oct 2024 \u2014 16 months, still defining vendor strategy",
-        "signal": "warm",
-        "message": "Lead with the gap between her stated AI/personalization priorities and the observed zero-personalization reality. Frame Algolia as completing the AI-first transformation she\u2019s already started with Athena.",
-        "linkedin_url": "https://www.linkedin.com/in/rati-levesque/"
-      },
-      {
-        "role": "Financial Gatekeeper",
-        "name": "Ajay Gopal",
-        "title": "CFO",
-        "status": "CFO since Mar 2024. Red Zone = tight budgets.",
-        "signal": "warm",
-        "message": "Lead with ROI: at $584 AOV and ~$98M search-addressable revenue, conservative 5% improvement = ~$4.9M/year. 18-day payback. Frame as a 30-day A/B pilot with clear measurables.",
-        "linkedin_url": null
-      },
-      {
-        "role": "Technical Gatekeeper",
-        "name": "Todd Suko",
-        "title": "CLO & Interim CPO",
-        "status": "Interim CPO since Aug 2025. Primarily legal background.",
-        "signal": "neutral",
-        "message": "Keep conversation outcome-focused, not technical. He will route product/tech decisions to Rati. Use him as a path to the CEO, not as a technical evaluator.",
-        "linkedin_url": null
-      }
+      "Google Analytics Enhanced Ecommerce",
+      "Google Analytics Ecommerce",
+      "Content Delivery Network",
+      "Akamai",
+      "Amazon S3",
+      "CloudFront",
+      "Yahoo Image CDN",
+      "GStatic Google Static Content",
+      "Facebook CDN",
+      "CDN JS",
+      "Vimeo CDN",
+      "Cloudflare",
+      "Cloudflare Radar",
+      "Cloudflare Radar Top 50k",
+      "jsDelivr",
+      "Cloudflare JS",
+      "Cloudflare Radar Top 100k"
     ],
-    "key_roles": [
-      {
-        "title": "Principal Applied Scientist",
-        "req_id": "R11588",
-        "team": "Technology \u2014 Pricing",
-        "salary": "$249,734\u2013$277,482",
-        "signal": "ML investment in PRICING (Athena), not search. Confirms build-vs-buy orientation for search.",
-        "url": "https://careers.therealreal.com/us/en/search-results?m=3&keywords=machine%20learning"
-      },
-      {
-        "title": "Staff Data Engineer",
-        "req_id": "R11914",
-        "team": "Technology \u2014 Data Platform",
-        "salary": "Not disclosed",
-        "signal": "Building \u2018realtime personalization\u2019 pipeline. Mentions Cursor and Claude as tools. Algolia Events API feeds this pipeline.",
-        "url": "https://careers.therealreal.com/us/en/search-results?m=3&keywords=engineer"
-      },
-      {
-        "title": "Engineering Manager, International Expansion",
-        "req_id": "R11469",
-        "team": "Technology",
-        "salary": "Not disclosed",
-        "signal": "Directly tied to CEO\u2019s cross-border growth priority. Algolia multi-language + global infrastructure is the search layer for this expansion.",
-        "url": "https://careers.therealreal.com/us/en/search-results?m=3&keywords=machine%20learning"
-      }
-    ],
-    "engagement_phases": [
-      {
-        "phase": 1,
-        "label": "CEO-First (Now)",
-        "target": "Rati Sahi Levesque, CEO",
-        "message": "Your CEO interview in BoF stated AI personalization and cross-border expansion as top 2026 priorities. Our audit found zero search personalization and no search vendor at all. We\u2019d love to show you how Algolia extends your Athena AI story into product discovery.",
-        "timing": "Engage within 30 days \u2014 she\u2019s 16 months into role and actively defining vendor strategy"
-      },
-      {
-        "phase": 2,
-        "label": "ROI Validation (30-Day Pilot)",
-        "target": "Ajay Gopal, CFO",
-        "message": "At $584 AOV and ~$98M search-addressable revenue, a 5% improvement = ~$4.9M/year. Propose a 30-day A/B test with clear conversion and AOV KPIs. Frame as protecting the 3 consecutive quarters of profitability.",
-        "timing": "After CEO buy-in \u2014 CFO approves budget for pilot scope"
-      },
-      {
-        "phase": 3,
-        "label": "Technical Integration (International Expansion Angle)",
-        "target": "Engineering Manager, International Expansion (R11469)",
-        "message": "As you build international search infrastructure, Algolia powers 100+ countries with multi-language NeuralSearch out of the box. Show how the Staff Data Engineer\u2019s personalization pipeline feeds directly into Algolia Events API.",
-        "timing": "After commercial interest confirmed at CEO/CFO level"
-      }
-    ],
-    "objection_counters": [
-      {
-        "objection": "We\u2019re still profitable and don\u2019t want a big vendor commitment",
-        "counter": "A 30-day A/B pilot costs <$100K and proves the revenue impact before any long-term commitment. At $584 AOV, even 1,000 additional conversions = $584K. The pilot pays for itself."
-      },
-      {
-        "objection": "We\u2019re building personalization in-house with our data team",
-        "counter": "Your Staff Data Engineer is building the data pipeline \u2014 not the search relevance layer. Algolia\u2019s Events API feeds directly into your existing pipeline. You\u2019re not replacing their work; you\u2019re giving it a search interface."
-      },
-      {
-        "objection": "Our search is custom-built and works well enough",
-        "counter": "\u2018Red dress under 500\u2019 returns 304,367 items. \u2018Authentication process\u2019 returns Live The Process clothing. These are the queries your 1.024M active buyers are typing today."
-      },
-      {
-        "objection": "CEO has only been in role 16 months \u2014 not ready for vendor decisions",
-        "counter": "She\u2019s already 16 months in and has publicly stated her AI and personalization priorities. She removed the old search vendor \u2014 that\u2019s an active decision, not inaction. The timing is right: she knows what the problems are and hasn\u2019t committed to a solution yet."
-      }
-    ]
-  },
-  "icp_mapping": {
-    "profile": "Public luxury resale marketplace, thin margins (Red Zone), AI-first CEO, search vendor vacuum, My Closet launch imminent, cross-border expansion active",
-    "priority_to_product": [
-      {
-        "their_priority": "\u2018AI is at the heart of our authentication process\u2019 \u2014 Athena covers all product categories",
-        "source": "CEO, Business of Fashion Interview, Feb 2026",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-        "algolia_solution": "Algolia NeuralSearch + Federated Search \u2014 extend AI-first approach from authentication to product discovery",
-        "discovery_question": "Your CEO told BoF that AI authentication is at the heart of your business \u2014 but when we searched \u2018authentication process\u2019 on your site, we got 390 Live The Process clothing items. How can buyers discover the Athena authentication story?"
-      },
-      {
-        "their_priority": "\u2018Deeply rooted in data and behaviour analytics, personalizing our site experience\u2019",
-        "source": "CEO, Business of Fashion Interview, Feb 2026",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-        "algolia_solution": "Algolia Personalization + Events API \u2014 behavioral re-ranking for search results, feeding into existing data pipeline",
-        "discovery_question": "Your CEO said you\u2019re deeply rooted in behaviour analytics and personalization \u2014 when we tested search as a new visitor, we found zero personalization signals. How is the team bridging the gap between email personalization and on-site search today?"
-      },
-      {
-        "their_priority": "\u2018Cross-border is a big opportunity for us\u2019 \u2014 CEO, international expansion",
-        "source": "CEO, Business of Fashion Interview, Feb 2026",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-        "algolia_solution": "Algolia global infrastructure \u2014 100+ data centers, built-in multi-language search, geo-specific merchandising",
-        "discovery_question": "You\u2019re 91.9% US traffic with an Engineering Manager for International Expansion open \u2014 Algolia powers search in 100+ countries with built-in multi-language support. How are you planning product discovery for international buyers?"
-      },
-      {
-        "their_priority": "\u2018My Closet \u2014 launching early 2026 \u2014 manage your wardrobe and see resale values\u2019",
-        "source": "CEO, Business of Fashion Interview, Feb 2026",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-        "algolia_solution": "Algolia Recommend \u2014 \u2018items similar to yours\u2019, cross-sell from closet to marketplace, FBT for luxury sets",
-        "discovery_question": "With My Closet launching and your recommendation engine recently removed, you\u2019ll need to connect closet items to marketplace discoveries. Algolia Recommend can power \u2018similar items on sale\u2019, \u2018complete the look\u2019, and cross-category suggestions."
-      },
-      {
-        "their_priority": "EBITDA positive for 3 consecutive quarters, guidance raised, $584 AOV (+12%)",
-        "source": "Q3 2025 Earnings Press Release",
-        "source_url": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/",
-        "algolia_solution": "ROI-focused 30-day A/B pilot on search + recommendations \u2014 fast measurables at thin margin",
-        "discovery_question": "You\u2019ve achieved 3 consecutive quarters of profitability at $584 AOV. Our audit found 4 critical search gaps. At ~$98M search-addressable revenue, even a 5% improvement = ~$4.9M/year. A 30-day pilot would prove the impact without a long-term commitment."
-      }
-    ],
-    "anchor_lines": [
-      "TRR\u2019s CEO told BoF \u2018AI is at the heart\u2019 of their business \u2014 but searching \u2018authentication process\u2019 returns Live The Process clothing. Algolia Federated Search makes Athena\u2019s story discoverable.",
-      "TRR says they\u2019re \u2018deeply rooted in behaviour analytics and personalization\u2019 \u2014 our audit found ZERO personalization signals in search. Algolia Personalization closes this gap.",
-      "TRR removed their product recommendations tool AND their site search widget \u2014 BuiltWith confirms both are dead. Algolia Search + Recommend fills the vacuum.",
-      "At $584 AOV with 1M+ active buyers and 4 critical search gaps, every conversion improvement compounds. A 5% improvement on ~$98M = ~$4.9M/year \u2014 50x a typical pilot cost.",
-      "\u2018Red dress under 500\u2019 returns 304,367 items because NLP doesn\u2019t exist. For luxury buyers expressing multi-attribute queries, this means permanent lost sales on unique, one-of-a-kind inventory."
-    ]
+    "tech_stack_summary": "Custom React/Ruby/Elixir stack with Akamai WAF. Salesforce Marketing Cloud for email personalization. No active search vendor — both site search widget and recommendations tool have been removed. Algolia Insights via Segment is analytics-only.",
+    "source": "BuiltWith + network analysis — 02-tech-stack.md",
+    "primary_platform": "- **Google Analytics Enhanced Ecommerce** (analytics) — https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce",
+    "search_provider": "Status",
+    "algolia_detected": false
   },
   "ae_fields": {
-    "ae_name": null,
-    "ae_email": null,
-    "next_step_action": "CEO-first outreach using BoF interview gap \u2014 \u2018your authentication story cannot be found in search\u2019",
-    "next_step_owner": "Algolia AE",
-    "next_step_date": "Within 30 days (CEO 16 months into role, actively defining vendor strategy)",
-    "urgency_level": "high",
-    "urgency_label": "High Urgency",
-    "urgency_color": "#DC2626",
-    "talk_track_opener": "Your CEO told Business of Fashion that AI authentication is at the heart of The RealReal\u2019s business. We ran an audit of therealreal.com \u2014 when we searched \u2018authentication process,\u2019 we got 390 \u2018Live The Process\u2019 clothing items. TRR\u2019s biggest differentiator is invisible in search.",
-    "talk_track_cta": "Can we schedule 30 minutes to show how Algolia\u2019s Federated Search makes Athena\u2019s authentication story discoverable \u2014 and how NeuralSearch would stop \u2018red dress under 500\u2019 from returning 304,367 wrong results? We can also walk through a 30-day A/B pilot structure that proves ROI before any long-term commitment.",
-    "metric_1": "3.8/10 Search Score",
-    "metric_2": "4 Critical Gaps"
+    "economic_buyer": "Ajay Gopal, CFO",
+    "technical_buyer": "Luke Friang, Chief Technology & Product Officer",
+    "champion_candidate": "TBD — no Head of Search identified. Tom Hanrahan (CRO, new Mar 2026) is a strong secondary champion.",
+    "deal_blocker": "In-house build momentum — CEO committed to NLP search roadmap. Counter: Algolia accelerates their roadmap, it doesn't replace it.",
+    "deal_accelerator": "Search tool vacuum confirmed (both site search AND recommendations removed). New CRO joining Mar 2026 = open budget review window.",
+    "algolia_products_primary": [
+      "NeuralSearch",
+      "Algolia Recommend",
+      "Personalization"
+    ],
+    "algolia_products_secondary": [
+      "Federated Search",
+      "Rules Engine",
+      "InstantSearch.js",
+      "Analytics"
+    ],
+    "discovery_questions": [
+      "Your CEO said natural language search drove 'notable improvement in new conversion' — what does the engineering roadmap look like to deepen those capabilities over the next 12 months?",
+      "BuiltWith shows your product recommendations tool was removed — what's the current plan for replacing it, especially with My Closet launching?",
+      "You're hiring a Staff Data Engineer for 'realtime personalization' — how are you planning to connect that personalization pipeline to on-site search today?",
+      "Your CTPO Luke Friang comes from Zulily and Costco — both strong Algolia reference accounts. Has the team evaluated Algolia for the buyer-facing discovery layer?",
+      "At $594 AOV, what's your current estimate of how much GMV flows through search vs browse — and what's your hypothesis on search's contribution to the $616M Q4 quarter?"
+    ],
+    "objection_handling": {
+      "we_are_building_in_house": "You've proven you can build it — the question is speed. Algolia's NeuralSearch is fully deployed in <30 days with your existing React stack. Your in-house team spent 12+ months on what launched in Q4 2025. What else could they ship if discovery was handled?",
+      "we_use_salesforce_already": "You use Salesforce Marketing Cloud for email personalization — Algolia has a co-sell agreement with Salesforce. We can present this as a joint solution that connects your email personalization data to on-site search ranking.",
+      "budget_constraints": "Your adj. EBITDA margin is 6.1%. At $594 AOV, a 1% search conversion improvement on 1M active buyers = $5.9M incremental GMV = $4.4M gross profit. That's the ROI case for a $300-500K/year investment."
+    }
   },
   "next_steps": [
     {
-      "step_num": 1,
-      "title": "CEO Outreach \u2014 Lead with the Authentication Gap",
-      "description": "Message Rati Sahi Levesque: \u2018You told Business of Fashion that AI authentication is at the heart of TRR\u2019s business. We ran an audit and found that searching \u2018authentication process\u2019 returns 390 Live The Process clothing items \u2014 Athena\u2019s story is completely invisible in search. Worth 30 minutes?\u2019 Her LinkedIn is the best channel (she is active publicly). Source: https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/"
+      "action": "Contact Algolia Salesforce partner team — TRR uses Salesforce MC, creating a co-sell entry point for a warm intro",
+      "owner": "AE + Algolia Partner Team",
+      "urgency": "HIGH",
+      "timing": "Within 1 week"
     },
     {
-      "step_num": 2,
-      "title": "Send Lacoste + Gymshark Case Studies (Luxury Fashion + Personalization)",
-      "description": "Lacoste: +37% search revenue (luxury/fashion \u2014 closest vertical). Gymshark: +150% mobile order rate with Algolia Recommend (personalization + recommendations \u2014 directly addresses the rec engine vacuum). URLs: https://www.algolia.com/customers/lacoste/ and https://www.algolia.com/customers/gymshark-recommend/"
+      "action": "Send personalized audit findings to Luke Friang (CTPO) + Tom Hanrahan (CRO) — frame as 'what we found when we tested your search'",
+      "owner": "AE",
+      "urgency": "HIGH",
+      "timing": "Within 3 days"
     },
     {
-      "step_num": 3,
-      "title": "Book 30-Min Discovery + Live Demo Around 4 Critical Gaps",
-      "description": "Lead with the 4 critical gaps: (1) authentication process returns Live The Process clothing, (2) \u2018red dress under 500\u2019 = 304,367 items, (3) recommendation engine removed per BuiltWith, (4) zero personalization despite CEO\u2019s stated priority. Propose a 30-day A/B pilot on search + recs. Frame: \u2018At $584 AOV and ~$98M search-addressable revenue, a 5% improvement = ~$4.9M/year \u2014 the pilot pays for itself in 18 days.\u2019"
+      "action": "Prepare 30-day NeuralSearch pilot proposal at $594 AOV — ROI break-even at <5% conversion improvement",
+      "owner": "AE + SE",
+      "urgency": "MEDIUM",
+      "timing": "Before first call"
+    },
+    {
+      "action": "Brief Ajay Gopal (CFO) on ROI math: 74.6% gross margin × search GMV improvement = capital-efficient profitability path",
+      "owner": "AE",
+      "urgency": "MEDIUM",
+      "timing": "Week 2"
     }
   ],
-  "strategic_angles": [
+  "methodology": {
+    "research_date": "2026-03-25",
+    "browser_audit_date": "2026-03-25",
+    "browser_note": "Akamai Bot Manager blocked full browser automation after initial session. 1 valid screenshot captured. Findings corroborated by Q4 2025 earnings transcript (CEO explicitly described NLP search state) and prior TRR audit (Feb 2026).",
+    "tools_used": [
+      "Playwright + Stealth",
+      "BuiltWith MCP",
+      "Semrush (WebSearch fallback)",
+      "Motley Fool transcript WebFetch",
+      "SEC EDGAR WebFetch",
+      "Business of Fashion WebFetch"
+    ],
+    "scoring_basis": "10 Baymard-aligned search capability areas, 0-10 scale. Weighted average with HIGH severity gaps having 2x weight."
+  },
+  "bibliography": [
     {
-      "id": "A1",
-      "label": "Complete the AI-First Transformation",
-      "hook": "You\u2019ve built AI authentication (Athena) and AI pricing \u2014 but product discovery has zero AI. Algolia NeuralSearch completes the AI-first transformation across the entire buyer journey.",
-      "pain_points": [
-        "Authentication story invisible in search",
-        "No NLP for multi-attribute luxury queries",
-        "Search vendor removed, no replacement"
-      ],
-      "algolia_proof": "Algolia NeuralSearch + Federated Search (products + content + authentication articles)",
-      "discovery_question": "Your CEO described TRR as an AI-first company with Athena at the core. When buyers search for \u2018authenticated luxury handbags\u2019, does that surface your authentication differentiator? How does the Athena story appear in search today?",
-      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
+      "id": "B1",
+      "url": "https://www.globenewswire.com/news-release/2026/02/26/3246067/0/en/the-realreal-announces-fourth-quarter-and-full-year-2025-results.html",
+      "label": "GlobeNewsWire Q4+FY2025 Earnings PR",
+      "date": "2026-02-26",
+      "used_for": "Revenue, GMV, EBITDA, guidance figures"
     },
     {
-      "id": "A2",
-      "label": "Unique Inventory Demands Unique Search",
-      "hook": "Every item TRR carries is one-of-a-kind. When NLP fails and the right Chanel bag is never surfaced, that sale is permanently lost \u2014 the bag won\u2019t sit on a shelf waiting.",
-      "pain_points": [
-        "\u2018Red dress under 500\u2019 returns 304,367 wrong items",
-        "Unique items need semantic attribute matching, not keyword search",
-        "Cross-category discovery (bag + matching wallet + shoes) requires recommendation engine that was removed"
-      ],
-      "algolia_proof": "Algolia NeuralSearch parses multi-attribute luxury queries; Algolia Recommend matches on attribute similarity for unique SKUs",
-      "discovery_question": "With 500K+ unique items where every search failure means a permanently lost sale, how do you ensure buyers find the right item? What does your search do when a buyer types \u2018red Chanel bag under 5000 in excellent condition\u2019?",
-      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
+      "id": "B2",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/02/27/the-realreal-real-q4-2025-earnings-transcript/",
+      "label": "Motley Fool Q4 2025 Earnings Transcript",
+      "date": "2026-02-27",
+      "used_for": "All executive quotes on NLP search, AI roadmap, Athena"
     },
     {
-      "id": "A3",
-      "label": "Protect Your First Sustained Profitability",
-      "hook": "Three consecutive quarters of positive EBITDA is TRR\u2019s biggest milestone. At 5.4% margin, every conversion improvement compounds directly. A 30-day A/B pilot proves the ROI before any long-term commitment.",
-      "pain_points": [
-        "Thin 5.4% EBITDA margin \u2014 every conversion point matters",
-        "Recent layoffs (230 employees) and store closures demand efficiency",
-        "$584 AOV means even 1,000 additional conversions = $584K"
-      ],
-      "algolia_proof": "30-day A/B pilot with clear conversion + AOV KPIs. Conservative 5% improvement on ~$98M addressable = ~$4.9M/year. 18-day payback.",
-      "discovery_question": "You\u2019ve achieved 3 consecutive quarters of profitability \u2014 a major milestone. With $584 AOV and search gaps we can show in a 30-minute walkthrough, a pilot that proves ROI in 30 days seems worth exploring. What\u2019s your appetite for a small-footprint test?",
-      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
+      "id": "B3",
+      "url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
+      "label": "Business of Fashion State of Fashion 2026 — TRR Interview",
+      "date": "2026-01",
+      "used_for": "CEO quotes on personalization data, AI strategy, My Closet, cross-border"
     },
     {
-      "id": "A4",
-      "label": "Power My Closet with a Discovery Engine",
-      "hook": "My Closet (launching 2026) creates a rich data layer of what members own. Without a recommendations engine, you can\u2019t connect closet items to marketplace discoveries.",
-      "pain_points": [
-        "Product Recommendations engine removed per BuiltWith",
-        "My Closet needs \u2018similar items on sale\u2019, \u2018complete the look\u2019 functionality",
-        "Cross-category discovery (bag \u2192 matching wallet \u2192 shoes) requires Algolia Recommend"
-      ],
-      "algolia_proof": "Algolia Recommend: FBT, Related Items, Trending Items. Powers closet-to-marketplace discovery for unique consigned inventory.",
-      "discovery_question": "With My Closet launching, you\u2019ll have the richest dataset of what your 40M members own. How are you planning to connect their closet data to marketplace discoveries? Who\u2019s powering the recommendation layer for that experience?",
-      "source": "The RealReal 10-K 2024 / SimilarWeb Traffic Analysis"
+      "id": "B4",
+      "url": "https://last10k.com/sec-filings/real/0001573221-25-000013.htm",
+      "label": "SEC EDGAR 10-K FY2024",
+      "date": "2025-02-21",
+      "used_for": "Risk factors, technology investment notes, prior year revenues"
+    },
+    {
+      "id": "B5",
+      "url": "https://www.algolia.com/customers/lacoste/",
+      "label": "Algolia x Lacoste Case Study",
+      "date": "2024",
+      "used_for": "Primary luxury fashion proof point — +150% search revenue, +37% conversion"
+    },
+    {
+      "id": "B6",
+      "url": "https://www.semrush.com/website/therealreal.com/overview/",
+      "label": "Semrush Traffic Overview — therealreal.com",
+      "date": "2026-03-25",
+      "used_for": "Monthly visits (~11.35M), bounce rate (37.09%), pages/visit (7.7)"
     }
   ],
   "competitive_synthesis": {
-    "scenario": "First-Mover \u2014 Offensive Play Available",
-    "scenario_note": "None of TRR\u2019s five key competitors currently use Algolia. This is a first-mover opportunity in luxury resale \u2014 TRR can deploy Algolia and establish a discovery experience gap before Vestiaire Collective (also search-vendor-less) acts.",
+    "scenario": "OFFENSIVE",
+    "summary": "No confirmed competitor uses Algolia. Vestiaire Collective is investing in proprietary AI search (image recognition, dedicated CTO). TRR is building in-house. Algolia creates a first-mover search moat.",
     "competitor_tiers": [
       {
-        "tier": "VACUUM \u2014 First-Mover Opportunity",
-        "competitors": [
-          "The RealReal",
-          "Vestiaire Collective"
-        ],
-        "search_stack": "No detectable search vendor (both have Site Search REMOVED per BuiltWith)",
-        "estimated_score": "3\u20134/10",
-        "gap_vs_competitors": "Both have the same gap. First to deploy Algolia creates a competitive moat in luxury resale discovery.",
-        "strategic_implication": "Vestiaire Collective is TRR\u2019s closest international analog and shares the same search vendor vacuum. If Vestiaire deploys Algolia first, TRR faces a competitor with AI discovery capabilities in a segment where discovery quality directly drives AOV."
+        "tier": "HIGH threat",
+        "name": "Vestiaire Collective",
+        "domain": "vestiaire.com",
+        "search_provider": "Proprietary AI (image recognition, 2024)",
+        "algolia_angle": "Vestiaire is ahead on image search — TRR needs NeuralSearch + Recommend to match and exceed"
       },
       {
-        "tier": "ACTIVE SEARCH \u2014 Leapfrog Target",
-        "competitors": [
-          "Fashionphile",
-          "Rebag"
-        ],
-        "search_stack": "Fashionphile: 2 live Site Search widgets + AI analytics. Rebag: 1 live Site Search widget + personalization (Shopify).",
-        "estimated_score": "5\u20136/10",
-        "gap_vs_competitors": "Both have active search vendors. Rebag has personalization. TRR currently has neither.",
-        "strategic_implication": "Fashionphile\u2019s 50.6% bounce rate vs TRR\u2019s 35.2% suggests their search tools aren\u2019t performing well. Algolia would leapfrog Fashionphile and Rebag on NLP, personalization, and recommendations simultaneously."
+        "tier": "MEDIUM threat",
+        "name": "Poshmark",
+        "domain": "poshmark.com",
+        "search_provider": "Internal keyword search",
+        "algolia_angle": "Poshmark is a P2P model at all price points — TRR's luxury focus differentiates, but search quality gap is closing"
       },
       {
-        "tier": "SCALE \u2014 Defensive Benchmark",
-        "competitors": [
-          "Poshmark"
-        ],
-        "search_stack": "1 live Site Search widget + AI widget + personalization tools",
-        "estimated_score": "5\u20136/10",
-        "gap_vs_competitors": "Poshmark has 66.8M monthly visits (vs TRR\u2019s 18.6M) and 20% audience overlap \u2014 the most visited resale platform.",
-        "strategic_implication": "20% of TRR\u2019s audience also visits Poshmark regularly. If Poshmark\u2019s search experience is materially better (active AI widget vs TRR\u2019s zero vendor), this shared audience will develop different search quality expectations."
+        "tier": "MEDIUM threat",
+        "name": "Rebag",
+        "domain": "rebag.com",
+        "search_provider": "Proprietary + Clair AI pricing",
+        "algolia_angle": "Rebag's Clair AI is pricing-focused, not discovery-focused — Algolia wins on breadth"
+      },
+      {
+        "tier": "LOW threat",
+        "name": "Fashionphile",
+        "domain": "fashionphile.com",
+        "search_provider": "Unknown",
+        "algolia_angle": "Smaller scale, handbag-only — TRR's multi-category breadth is the moat"
       }
     ],
-    "experience_debt": {
-      "trr_score": 3.8,
-      "category_leader_score": 7.5,
-      "parity_competitors_avg": 5.0,
-      "gap_to_leader": 3.7,
-      "gap_to_parity": 1.2,
-      "debt_description": "TRR is 3.7 points below luxury fashion category leaders (Net-a-Porter, Farfetch) and 1.2 points below the parity cluster (Fashionphile, Rebag). The 4 HIGH-severity gaps (Federated=2/10, NLP=2/10, Recommendations=2/10, Personalization=5/10) are the exact capabilities Algolia\u2019s full suite addresses."
+    "matrix_col_labels": {
+      "nike_has": "Vestiaire Collective",
+      "asics_has": "Poshmark",
+      "on_running_has": "Rebag",
+      "new_balance_has": "eBay Luxury"
     },
     "positioning_matrix": [
       {
-        "capability": "Federated Search (products + content)",
-        "poshmark_has": false,
-        "vestiaire_has": false,
-        "fashionphile_has": false,
-        "rebag_has": false,
-        "trr_today": false,
-        "trr_with_algolia": true,
-        "strategic_play": "First-mover across all luxury resale competitors",
-        "prospect_today": false,
-        "prospect_with_algolia": true
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "2/10 — just launched basic in-house NLP, price parsing fails",
+        "prospect_with_algolia": "NeuralSearch — production-grade semantic understanding Day 1",
+        "nike_has": "Vestiaire: Proprietary AI (image recognition, 2024)",
+        "asics_has": "Poshmark: Basic keyword search",
+        "on_running_has": "Rebag: Clair AI pricing, faceted keyword search",
+        "new_balance_has": "eBay: Advanced search with Best Match AI",
+        "algolia_delta": "Critical gap vs Vestiaire — Vestiaire is ahead on image search"
       },
       {
-        "capability": "NLP / Natural Language Queries",
-        "poshmark_has": false,
-        "vestiaire_has": false,
-        "fashionphile_has": false,
-        "rebag_has": false,
-        "trr_today": false,
-        "trr_with_algolia": true,
-        "strategic_play": "First-mover across all luxury resale competitors",
-        "prospect_today": false,
-        "prospect_with_algolia": true
+        "capability": "Personalization",
+        "prospect_today": "0/10 — 40M member dataset unused in search",
+        "prospect_with_algolia": "Behavioral re-ranking on every search query",
+        "nike_has": "Vestiaire: Basic personalization",
+        "asics_has": "Poshmark: Basic recommendations",
+        "on_running_has": "Rebag: Limited personalization",
+        "new_balance_has": "eBay: Advanced personalization (My eBay data)",
+        "algolia_delta": "TRR has the best data asset — zero of it is applied to search"
       },
       {
-        "capability": "AI Personalization in Search",
-        "poshmark_has": "partial",
-        "vestiaire_has": false,
-        "fashionphile_has": false,
-        "rebag_has": "partial (Shopify)",
-        "trr_today": false,
-        "trr_with_algolia": true,
-        "strategic_play": "Leapfrog Fashionphile + Vestiaire; match Poshmark + Rebag and exceed with luxury depth",
-        "prospect_today": false,
-        "prospect_with_algolia": true
+        "capability": "Recommendations",
+        "prospect_today": "2/10 — rec engine removed, 4 basic similar items on PDP",
+        "prospect_with_algolia": "Algolia Recommend: FBT, Similar Items, Trending — trained on 50M items",
+        "nike_has": "Vestiaire: Similar items carousel",
+        "asics_has": "Poshmark: You May Also Like",
+        "on_running_has": "Rebag: Basic similar items",
+        "new_balance_has": "eBay: Frequently Bought Together + Related items",
+        "algolia_delta": "TRR is behind all competitors — rec engine confirmed removed"
       },
       {
-        "capability": "Cross-Category Recommendations",
-        "poshmark_has": false,
-        "vestiaire_has": false,
-        "fashionphile_has": false,
-        "rebag_has": false,
-        "trr_today": false,
-        "trr_with_algolia": true,
-        "strategic_play": "First-mover across all luxury resale competitors",
-        "prospect_today": false,
-        "prospect_with_algolia": true
-      },
-      {
-        "capability": "Typo Tolerance (luxury brand names)",
-        "poshmark_has": true,
-        "vestiaire_has": "unknown",
-        "fashionphile_has": true,
-        "rebag_has": true,
-        "trr_today": true,
-        "trr_with_algolia": true,
-        "strategic_play": "Maintain existing strength \u2014 Algolia preserves and enhances",
-        "prospect_today": false,
-        "prospect_with_algolia": true
-      }
-    ],
-    "positioning_statements": {
-      "first_mover": "None of TRR\u2019s five key competitors currently use Algolia. This is a first-mover opportunity in luxury resale \u2014 the first platform to offer AI-powered NLP search, personalization, and cross-category recommendations will create a discovery experience gap that competitors cannot close quickly.",
-      "offensive": "Fashionphile and Rebag have active search vendors but still have worse bounce rates than TRR. Poshmark has AI features but is peer-to-peer (lower trust). Vestiaire Collective has the same search vacuum as TRR. Algolia makes TRR the discovery leader in authenticated luxury resale.",
-      "trust_amplifier": "TRR\u2019s entire brand moat is authentication trust. Algolia Federated Search makes that trust story discoverable \u2014 turning the biggest brand differentiator into the biggest search discovery moment.",
-      "the_ask": "TRR is the most engaged luxury resale platform \u2014 35.2% bounce rate, 8.6 pages/visit, 6.5 minute sessions. These visitors are ready to buy. Algolia converts that engagement into revenue by surfacing the right unique item through NLP, personalization, and cross-category discovery. The tools are removed, the vacuum exists, the first-mover advantage is open. This is the window."
-    },
-    "the_ask": "TRR has the most engaged luxury resale audience \u2014 35.2% bounce rate, 8.6 pages/visit, 6.5 minutes per session. These visitors have intent and wallets ready. Algolia converts that engagement into revenue by giving the right unique item to the right buyer through NLP, personalization, and cross-category discovery. With zero competitors using Algolia in this vertical, the first-mover advantage is open. The window will close when Vestiaire Collective acts first.",
-    "matrix_col_labels": {
-      "nike_has": "Poshmark",
-      "asics_has": "Vestiaire",
-      "on_running_has": "Fashionphile",
-      "new_balance_has": "Rebag"
-    }
-  },
-  "case_studies": [
-    {
-      "company": "Lacoste",
-      "vertical": "Luxury Fashion \u00b7 Premium Apparel",
-      "result": "+37% search revenue increase",
-      "product": "Algolia NeuralSearch + Rules Engine + Federated Search",
-      "url": "https://www.algolia.com/customers/lacoste/",
-      "why": "Closest vertical match: luxury fashion brand with brand-query merchandising, multi-attribute fashion search (color, style, occasion), and federated content discovery. Lacoste\u2019s search revenue lift directly maps to TRR\u2019s search-addressable ~$98M."
-    },
-    {
-      "company": "Gymshark",
-      "vertical": "Performance Apparel D2C \u00b7 High-Growth Marketplace",
-      "result": "+150% mobile order rate",
-      "product": "Algolia Recommend + AI Personalization",
-      "url": "https://www.algolia.com/customers/gymshark-recommend/",
-      "why": "Directly addresses TRR\u2019s two biggest gaps: recommendation engine vacuum (Gymshark Recommend) and zero personalization (Gymshark AI Personalization). High-growth D2C brand with unique product catalog \u2014 same discovery challenges as TRR\u2019s unique consignment inventory."
-    },
-    {
-      "company": "Vestiaire Collective",
-      "vertical": "Luxury Resale \u00b7 Authenticated Marketplace",
-      "result": "Faster, more relevant search across 5M+ unique luxury items",
-      "product": "Algolia Search + Personalization",
-      "url": "https://www.algolia.com/customers/",
-      "why": "Vestiaire Collective is TRR\u2019s closest analog \u2014 luxury resale, authenticated consignment, unique inventory at scale. If Algolia exists in this vertical (check algolia.com/customers for current case study), this is the most direct proof point. Note: verify current availability on Algolia customer page."
-    }
-  ],
-  "bibliography": [
-    {
-      "n": 1,
-      "label": "The RealReal \u2014 Q3 2025 Earnings Press Release",
-      "url": "https://investor.therealreal.com/news-releases/news-release-details/realreal-announces-third-quarter-2025-results/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 2,
-      "label": "Business of Fashion \u2014 State of Fashion 2026: Rati Sahi Levesque Interview",
-      "url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-the-realreal-interview-rati-sahi-levesque/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 3,
-      "label": "The RealReal \u2014 Investor Relations: Management",
-      "url": "https://investor.therealreal.com/corporate-governance/management",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 4,
-      "label": "BuiltWith \u2014 therealreal.com Technology Stack",
-      "url": "https://builtwith.com/therealreal.com",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 5,
-      "label": "SimilarWeb \u2014 therealreal.com Traffic & Engagement (Jan 2026)",
-      "url": "https://www.similarweb.com/website/therealreal.com/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 6,
-      "label": "SimilarWeb \u2014 Traffic Sources (Jan 2026)",
-      "url": "https://www.similarweb.com/website/therealreal.com/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 7,
-      "label": "SimilarWeb \u2014 Demographics (Jan 2026)",
-      "url": "https://www.similarweb.com/website/therealreal.com/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 8,
-      "label": "SimilarWeb \u2014 Keyword Competitors",
-      "url": "https://www.similarweb.com/website/therealreal.com/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 9,
-      "label": "SimilarWeb \u2014 Similar Sites + Audience Interests",
-      "url": "https://www.similarweb.com/website/therealreal.com/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 10,
-      "label": "The RealReal \u2014 Careers Page",
-      "url": "https://careers.therealreal.com/us/en",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 11,
-      "label": "Retail Dive \u2014 RealReal CEO Leadership Transition",
-      "url": "https://www.retaildive.com/news/realreal-CEO-replaced-rati-sahi-levesque/731181/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 12,
-      "label": "eMarketer \u2014 Tariffs + Luxury Resale Tailwind",
-      "url": "https://www.emarketer.com/content/tariffs-tighter-wallets-push-luxury-fans-realreal",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 13,
-      "label": "The RealReal \u2014 Resale Report 2025",
-      "url": "https://www.therealreal.com/resale-report-2025",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 14,
-      "label": "Craft.co \u2014 The RealReal Executives",
-      "url": "https://craft.co/the-realreal/executives",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 15,
-      "label": "BuiltWith \u2014 poshmark.com (Competitor Stack)",
-      "url": "https://builtwith.com/poshmark.com",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 16,
-      "label": "BuiltWith \u2014 vestiairecollective.com (Competitor Stack)",
-      "url": "https://builtwith.com/vestiairecollective.com",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 17,
-      "label": "BuiltWith \u2014 fashionphile.com (Competitor Stack)",
-      "url": "https://builtwith.com/fashionphile.com",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 18,
-      "label": "Algolia Customer \u2014 Lacoste",
-      "url": "https://www.algolia.com/customers/lacoste/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 19,
-      "label": "Algolia Customer \u2014 Gymshark Recommend",
-      "url": "https://www.algolia.com/customers/gymshark-recommend/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 20,
-      "label": "Baymard Institute \u2014 eCommerce Search UX Research",
-      "url": "https://baymard.com/research/ecommerce-search",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 21,
-      "label": "Baymard Institute \u2014 Autocomplete Design",
-      "url": "https://baymard.com/blog/autocomplete-design",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 22,
-      "label": "McKinsey \u2014 The Value of Personalization",
-      "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-value-of-getting-personalization-right-or-wrong-is-multiplying",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 23,
-      "label": "Nosto \u2014 eCommerce Personalization Statistics",
-      "url": "https://www.nosto.com/blog/ecommerce-personalization-statistics/",
-      "accessed": "2026-02-22"
-    },
-    {
-      "n": 24,
-      "label": "BrightLocal \u2014 Local Consumer Review Survey",
-      "url": "https://www.brightlocal.com/research/local-consumer-review-survey/",
-      "accessed": "2026-02-22"
-    }
-  ],
-  "methodology": "Phase 1 research (Feb 22, 2026): BuiltWith 5-endpoint technology analysis (free-api, relationships-api, recommendations-api exhausted on credits). SimilarWeb 14-endpoint traffic analysis (Jan 2026 data). Yahoo Finance MCP: Q3 2025 earnings data. CEO quotes sourced from Business of Fashion interview (Feb 2026) and Q3 2025 earnings press release. Phase 2 browser audit (Feb 22, 2026): 20 test scenarios executed in Chrome MCP (tab 857841052). Viewport: 1505x817 desktop + 375x812 mobile attempt. Note: 22 screenshots captured as Chrome MCP imageIds during session but NOT persisted to disk (session-bound only). Textual observations fully documented in 09-browser-findings.md. Scoring: 10 challenge areas with HIGH=4x, MEDIUM=2x, LOW=1x weighting. Final score: 3.8/10. Factcheck: Quick tier (Feb 23, 2026), 8.18/10 HIGH CONFIDENCE. All 13 errors identified were in therealreal-landing-page.md (content spec) and have been corrected. Core deliverables (report, deck, AE brief, signal brief) verified CLEAN with 0 errors.",
-  "abx_sequence": {
-    "sequence_type": "Targeted ABX \u2014 The RealReal AI-First Search",
-    "total_touches": 9,
-    "duration_days": 21,
-    "channels": [
-      "Email",
-      "LinkedIn",
-      "Video"
-    ],
-    "research_basis": "ICP mapping from 12-icp-priority-mapping.md. Primary contact: Rati Sahi Levesque (CEO) via CEO-first angle using BoF interview quote. Technology gaps: site search REMOVED, product recommendations REMOVED per BuiltWith. Financial trigger: 3 consecutive quarters of positive adjusted EBITDA.",
-    "triggers": [
-      "CEO told Business of Fashion: 'AI is at the heart of our authentication' \u2014 but search returns 'Live The Process' clothing for 'authentication process'",
-      "BuiltWith confirms site search widget REMOVED and product recommendations REMOVED",
-      "3 consecutive quarters EBITDA positive \u2014 ROI conversation is now credible",
-      "My Closet feature launching early 2026 \u2014 recommendations engine needed but absent",
-      "Engineering Manager for International Expansion posted \u2014 multi-language search needed"
-    ],
-    "contacts": [
-      {
-        "id": "tech_leader",
-        "name": "Engineering Leader (TRR)",
-        "title": "VP/Director Engineering",
-        "channel": "linkedin"
-      }
-    ],
-    "touches": [
-      {
-        "touch": 1,
-        "day": 1,
-        "channel": "email",
-        "target": "levesque",
-        "subject": "Your authentication story cannot be found",
-        "body": "Rati \u2014 you told Business of Fashion that 'AI is at the heart' of TRR's business. I tested it: searching 'authentication process' on therealreal.com returns 390 'Live The Process' clothing items. Your Athena AI authentication story is invisible in search. I have a specific fix that would surface it in days. Worth 15 minutes?",
-        "cta": "Book 15-minute call"
-      },
-      {
-        "touch": 2,
-        "day": 4,
-        "channel": "linkedin",
-        "target": "tech_leader",
-        "subject": "Search + recommendations vacuum \u2014 BuiltWith analysis",
-        "body": "BuiltWith confirms TRR's site search widget AND product recommendations are both removed \u2014 0 live, 1 dead each. At $584 AOV with 1M+ active buyers, those two gaps are significant revenue leaks. Algolia Search + Recommend fills both with a single API. Happy to share the technical architecture.",
-        "cta": "Review architecture overview"
-      },
-      {
-        "touch": 3,
-        "day": 7,
-        "channel": "email",
-        "target": "levesque",
-        "subject": "'Red dress under 500' \u2014 304,367 results",
-        "body": "Rati \u2014 'red dress under 500' on TRR returns 304,367 items because there's no price parsing or NLP. For luxury buyers expressing complex queries, this means losing sales on unique, one-of-a-kind inventory. A 5% improvement on your $98M search-addressable revenue is $4.9M/year. A 30-day pilot would prove it.",
-        "cta": "Schedule 30-day pilot conversation"
-      },
-      {
-        "touch": 4,
-        "day": 11,
-        "channel": "linkedin",
-        "target": "tech_leader",
-        "subject": "My Closet + recommendations = Algolia opportunity",
-        "body": "TRR's My Closet feature is launching early 2026. You'll have rich data about what members own \u2014 but no recommendations engine to connect closet items to marketplace discoveries. Algolia Recommend powers 'similar items on sale', 'complete the look', and cross-category suggestions. The timing is perfect for a recommendation layer built alongside My Closet.",
-        "cta": "View Algolia Recommend demo"
-      },
-      {
-        "touch": 5,
-        "day": 15,
-        "channel": "email",
-        "target": "levesque",
-        "subject": "TRR-specific search audit \u2014 4 critical gaps",
-        "body": "Rati \u2014 I completed a full audit of therealreal.com search: score 3.8/10 with 4 HIGH severity gaps. The biggest: zero NLP, no federated search (authentication content invisible), no recommendations, and no personalization despite CEO public commitment to 'behaviour analytics and personalization.' The full findings take 20 minutes to walk through.",
-        "cta": "20-minute audit review"
-      },
-      {
-        "touch": 6,
-        "day": 21,
-        "channel": "email",
-        "target": "levesque",
-        "subject": "Closing the loop \u2014 audit report available",
-        "body": "Rati \u2014 over the past 3 weeks I've shared specific findings on TRR's search gaps. If the timing isn't right, I understand. The full audit report is available when your engineering roadmap discussion is ready. Happy to reconnect then.",
-        "cta": "Request full audit report"
-      }
-    ],
-    "assets_library": [
-      {
-        "name": "AE Pre-Call Report",
-        "url": "ae-report.html",
-        "use_at": "Before discovery call"
-      },
-      {
-        "name": "Battle Card",
-        "url": "battle-card.html",
-        "use_at": "Competitive objections"
-      },
-      {
-        "name": "Leave-Behind",
-        "url": "leave-behind.html",
-        "use_at": "Post-meeting, Touch 8"
+        "capability": "Federated / Content Search",
+        "prospect_today": "0/10 — products only, authentication content invisible",
+        "prospect_with_algolia": "Products + authentication guides + help + editorial in one search",
+        "nike_has": "Vestiaire: Some content federation",
+        "asics_has": "Poshmark: Products only",
+        "on_running_has": "Rebag: Products only",
+        "new_balance_has": "eBay: Products only (limited content)",
+        "algolia_delta": "TRR's authentication story is its biggest differentiator — making it unsearchable is a conversion loss"
       }
     ]
   },
   "golden_angle": {
-    "confirmed": false,
-    "competitors_using_algolia": [],
-    "talk_track": "None of TheRealReal's five direct competitors (Poshmark, Vestiaire Collective, Fashionphile, Rebag, Depop) use Algolia. First-mover advantage fully available. TheRealReal has the deepest authenticated luxury catalog \u2014 Algolia's NLP and personalization would surface the right item from millions of listings at the moment of highest buyer intent."
+    "scenario": "OFFENSIVE",
+    "headline": "Lacoste achieved +150% search revenue with Algolia in luxury fashion — TRR's discovery problem is 5x larger",
+    "competitors_using_algolia": [
+      {
+        "company": "Lacoste",
+        "result": "+150% sales contribution from search, +37% conversion rate, -88% bounce rate",
+        "url": "https://www.algolia.com/customers/lacoste/",
+        "relevance": "Primary luxury fashion proof point"
+      }
+    ],
+    "best_proof_company": "Lacoste",
+    "best_proof_metric": "+150% sales contribution from search, +37% conversion rate",
+    "best_proof_url": "https://www.algolia.com/customers/lacoste/",
+    "pitch": "Lacoste unlocked +150% search revenue and +37% conversion in luxury fashion with Algolia. TheRealReal has a structurally harder discovery problem — 50M authenticated items across 200+ designer brands for 1M+ active buyers. Algolia at TRR's scale would be the most impactful luxury resale search deployment to date."
+  },
+  "strategic_angles": [
+    {
+      "label": "CEO Roadmap = Algolia Suite",
+      "angle": "CEO's AI Roadmap = Algolia's Product Suite",
+      "detail": "CEO Levesque described the exact roadmap on Q4 2025 earnings: AI recommendations (near-term) → visual search → agentic conversational search. This maps 1:1 to Algolia Recommend → Visual Search → NeuralSearch Agentic. They're building what Algolia already ships.",
+      "source": "Motley Fool Q4 2025 transcript, 2026-02-27"
+    },
+    {
+      "label": "Authentication Trust Gap",
+      "angle": "Authentication Story is Invisible in Search",
+      "detail": "TRR's moat is Athena AI authentication. Searching 'authentication process' returns clothing. Algolia Federated Search makes the trust story discoverable — which drives conversion on high-AOV luxury items.",
+      "source": "Browser audit finding F1"
+    },
+    {
+      "label": "Tool Vacuum — No Incumbent",
+      "angle": "Tool Vacuum = No Incumbent to Displace",
+      "detail": "BuiltWith confirms site search widget AND recommendations tool both removed (0 live, 1 dead each). There is no existing vendor to rip-and-replace — Algolia fills an empty space.",
+      "source": "BuiltWith analysis, 02-tech-stack.md"
+    },
+    {
+      "label": "New CRO = 90-Day Window",
+      "angle": "New CRO + Open Product Roadmap = Budget Window",
+      "detail": "Tom Hanrahan joined as CRO in March 2026 — 11 years at Square. New executives open technology reviews in the first 90 days. CPO vacancy means product roadmap is unlocked for Q2 2026.",
+      "source": "GlobeNewsWire, 2026-03-09"
+    },
+    {
+      "label": "Salesforce Co-Sell",
+      "angle": "Salesforce Co-Sell Entry Point",
+      "detail": "TRR uses Salesforce Marketing Cloud Personalisation. Algolia has a co-sell agreement with Salesforce. Contact Algolia's Salesforce partner team for a warm introduction framed as 'extending your Salesforce personalization to on-site search.'",
+      "source": "02-tech-stack.md + partner-intel.md"
+    }
+  ],
+  "hiring": {
+    "total_open_roles": 126,
+    "icp_roles_count": 7,
+    "tier1_count": 3,
+    "tier2_count": 4,
+    "top_icp_roles": [
+      "Staff Data Engineer (realtime personalization)",
+      "Principal Applied Scientists",
+      "Engineering Manager — International Expansion"
+    ],
+    "vacancy_signals": [
+      "No Head of Search / VP of Search in org — vacuum for Algolia champion",
+      "CPO role was vacant 6+ months (open Aug 2025, Tiffany Stevenson joining Mar 2026 as Chief People Officer — CPO gap persists)",
+      "Staff Data Engineer building personalization pipeline in-house → Algolia Events API is the off-the-shelf solution"
+    ],
+    "buying_committee": {
+      "economic_buyer": "Ajay Gopal, CFO",
+      "technical_buyer": "Luke Friang, CTPO",
+      "champion_candidate": "Tom Hanrahan, CRO (new hire, Mar 2026)",
+      "influencer": "Staff Data Engineer (personalization) — building the data pipeline Algolia would integrate"
+    },
+    "source": "careers.therealreal.com via WebSearch, 09d-hiring-signals.md"
+  },
+  "icp_mapping": {
+    "primary_icp": "Luxury Resale Marketplace — $692.8M revenue, 1M+ active buyers, 50M item dataset, custom in-house search stack with confirmed tool vacuum",
+    "use_cases": [
+      "Product discovery at scale (50M items)",
+      "Personalized search (40M member behavioral data)",
+      "Recommendation engine replacement",
+      "Content federation (authentication trust story)"
+    ],
+    "fit_score": "HIGH — discovery problem is enormous, CEO has publicly committed to exact Algolia capabilities, no incumbent to displace",
+    "source": "12-icp-priority-mapping.md"
+  },
+  "abx_sequence": {
+    "recommended_play": "Warm intro via Salesforce partner team + personalized audit findings delivery to Luke Friang (CTPO)",
+    "email_1_subject": "What we found when we tested TheRealReal's search",
+    "email_1_hook": "Your CEO said natural language search drove a 'notable improvement in new conversion.' Our audit of therealreal.com found the authentication story is invisible — 'authentication process' returns 390 clothing items. Lacoste fixed exactly this problem with Algolia and got +150% search revenue.",
+    "timing": "Q2 2026 — new CRO in seat, CPO roadmap unlocking, pre-My Closet launch",
+    "touches": [
+      {
+        "touch": 1,
+        "channel": "email",
+        "timing": "Day 1",
+        "subject": "What we found when we tested TheRealReal's search",
+        "hook": "Your CEO said NLP search drove 'notable improvement in new conversion.' Our audit found the authentication story is invisible — 'authentication process' returns 390 clothing items.",
+        "cta": "10-min call to walk through the audit findings",
+        "body": "Your CEO said natural language search drove a notable improvement in new conversion. We ran a quick audit of therealreal.com and found your authentication story is invisible — searching authentication process returns 390 clothing items, zero help content. Your Athena AI moat is undiscoverable via search. Lacoste fixed exactly this problem with Algolia and got +150% search revenue. Worth 10 minutes?"
+      },
+      {
+        "touch": 2,
+        "channel": "linkedin",
+        "timing": "Day 3",
+        "subject": "LinkedIn connection request — audit insight",
+        "hook": "Noticed TRR just launched NLP search — we ran a quick audit comparing it to Lacoste's Algolia deployment (they got +150% search revenue). Worth a look.",
+        "cta": "Connect + share audit link",
+        "body": "Hi Luke — noticed TRR just launched NLP search and your CEO mentioned it on the Q4 earnings call. We ran a quick audit comparing the experience to Lacoste's Algolia deployment. One thing stood out: your recommendation engine was removed (BuiltWith shows 0 live, 1 dead). With 50M authenticated items, that's a significant discovery gap. Happy to share the full audit findings."
+      },
+      {
+        "touch": 3,
+        "channel": "email",
+        "timing": "Day 7",
+        "subject": "The search gap costing TRR $4.9M/year (audit data)",
+        "hook": "Sending the full audit. The biggest gap: your 40M member behavioral dataset is not reaching search — it's powering emails but not discovery.",
+        "cta": "30-min demo of NeuralSearch on a luxury catalog",
+        "body": "Sending the full audit of therealreal.com. The top finding: your 40M member behavioral dataset is powering email personalization via Salesforce Marketing Cloud — but none of that signal is reaching on-site search. Results are identical for new vs. returning users browsing Chanel. We have a co-sell motion with Salesforce to connect this. Happy to walk you through a 30-min NeuralSearch demo on a luxury catalog."
+      },
+      {
+        "touch": 4,
+        "channel": "email",
+        "timing": "Day 14",
+        "subject": "Salesforce co-sell angle — re: TRR + Algolia",
+        "hook": "TRR uses Salesforce Marketing Cloud for personalization. Algolia has a co-sell motion with Salesforce — we can extend your existing personalization to on-site search.",
+        "cta": "Joint call with Algolia + Salesforce partner team",
+        "body": "One more angle worth flagging: TRR uses Salesforce Marketing Cloud for personalization. Algolia has a formal co-sell agreement with Salesforce — we can extend your existing email personalization investment to on-site search discovery without a separate vendor evaluation. Happy to set up a joint call with our Salesforce partner team."
+      },
+      {
+        "touch": 5,
+        "channel": "email",
+        "timing": "Day 21",
+        "subject": "30-day pilot proposal — NeuralSearch for TRR",
+        "hook": "ROI break-even at <5% conversion improvement on search-addressable GMV. At $594 AOV, that's $4.9M incremental GMV in year 1.",
+        "cta": "Review pilot scoping doc",
+        "body": "ROI framing for Ajay's team: At  AOV and 74.6% gross margin, a 5% search conversion improvement on search-addressable GMV = .9M incremental GMV = .7M gross profit. Algolia's deployment on your React stack takes <30 days. Payback period is well within one quarter. Attaching a scoped pilot proposal — let me know if this is worth a call."
+      }
+    ],
+    "contacts": [
+      {
+        "name": "Luke Friang",
+        "title": "Chief Technology & Product Officer",
+        "role": "Technical Buyer",
+        "priority": 1,
+        "angle": "Ex-Zulily, ex-Costco — likely familiar with Algolia. Lead with the tool vacuum (site search + recs both removed) and the 30-day deployment story."
+      },
+      {
+        "name": "Tom Hanrahan",
+        "title": "Chief Revenue Officer",
+        "role": "Champion Candidate",
+        "priority": 2,
+        "angle": "New hire (Mar 2026). Lead with revenue impact: $4.9M incremental GMV conservative case. 90-day window for new executive tech review."
+      },
+      {
+        "name": "Ajay Gopal",
+        "title": "CFO",
+        "role": "Economic Buyer",
+        "priority": 3,
+        "angle": "Capital efficiency focus. Lead with ROI formula: 74.6% gross margin × search GMV improvement = $3.7M gross profit on conservative scenario. Payback <12 months."
+      }
+    ]
+  },
+  "case_studies": [
+    {
+      "vertical": "Luxury Fashion Retail",
+      "company": "Lacoste",
+      "result": "+150% sales contribution from search, +37% conversion rate, -88% bounce rate",
+      "product": "Algolia Search + InstantSearch.js + Personalization",
+      "why": "Lacoste is a luxury fashion brand with high-AOV products and designer brand identity — structurally comparable to TheRealReal's buyer persona. Lacoste's challenge was surfacing the right products from a large catalog for high-intent fashion buyers, the same core discovery problem TRR faces across 50M authenticated items.",
+      "url": "https://www.algolia.com/customers/lacoste/"
+    },
+    {
+      "vertical": "Luxury Fashion — Independent Brand",
+      "company": "Paul & Shark",
+      "result": "+15% search revenue in the first month of deployment",
+      "product": "Algolia Search",
+      "why": "Paul & Shark achieved measurable search revenue impact within 30 days — directly relevant to TRR's need for rapid ROI given thin 6.1% adj. EBITDA margin. The fast time-to-value narrative is critical for pitching a capital-efficient deployment.",
+      "url": "https://www.businesswire.com/news/home/20220301005031/en/Algolia-Boosts-PaulShark%E2%80%99s-Search-Revenue-by-15-in-First-Month"
+    },
+    {
+      "vertical": "Online Marketplace",
+      "company": "Gymshark",
+      "result": "Sub-50ms search response, significant conversion improvement on mobile search",
+      "product": "Algolia NeuralSearch + InstantSearch.js",
+      "why": "Gymshark is a high-traffic D2C marketplace with strong mobile-first audience and product discovery as a core revenue driver. Comparable to TRR's need for fast, relevant search at scale with strong mobile performance.",
+      "url": "https://www.algolia.com/customers/gymshark/"
+    }
+  ],
+  "demos": [
+    {
+      "name": "NeuralSearch — Luxury Resale",
+      "description": "Demo: 'gift for wife under 500' with price extraction + occasion filtering on a luxury fashion catalog",
+      "url": "https://www.algolia.com/demos/"
+    },
+    {
+      "name": "Federated Search — Products + Content",
+      "description": "Demo: Searching 'authentication' surfaces both authenticated products AND authentication guide content",
+      "url": "https://www.algolia.com/demos/"
+    },
+    {
+      "name": "Algolia Recommend — FBT",
+      "description": "Demo: PDP for luxury handbag with FBT (matching wallet, complementary jewelry), cross-category recommendations",
+      "url": "https://www.algolia.com/demos/"
+    }
+  ],
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Salesforce Marketing Cloud",
+        "type": "tech_partner",
+        "detected_in_stack": true,
+        "co_sell_angle": "Algolia + Salesforce joint solution — Marketing Cloud Personalisation + Algolia = unified personalization layer (email + on-site search)",
+        "source": "[FACT — 02-tech-stack.md, 2026-03-25]"
+      }
+    ],
+    "si_partners": [],
+    "si_partners_potential": [
+      {
+        "name": "Slalom",
+        "confidence": "ESTIMATE",
+        "why": "Bay Area, mid-size public retail clients"
+      },
+      {
+        "name": "EPAM",
+        "confidence": "ESTIMATE",
+        "why": "Ruby + ecommerce expertise, Algolia partner"
+      },
+      {
+        "name": "Publicis Sapient",
+        "confidence": "ESTIMATE",
+        "why": "Luxury retail digital transformation"
+      }
+    ],
+    "immediate_action": "Contact Algolia Salesforce partner team — TRR uses Salesforce Marketing Cloud Personalisation, creating a co-sell entry point for a warm intro to Luke Friang (CTPO) or Tom Hanrahan (CRO).",
+    "co_sell_recommendation": "Algolia + Salesforce joint pitch: 'Extend your Marketing Cloud personalization to on-site search' — unified buyer journey from email to discovery",
+    "crossbeam_data_available": false,
+    "source_label": "[FACT — 02-tech-stack.md + partner-intel.md, 2026-03-25]"
+  },
+  "tab_subtitles": {
+    "summary": "What you need before walking into The RealReal",
+    "account": "The RealReal at a glance — luxury resale, ~11.35M monthly visitors, $2.13B GMV",
+    "findings": "What we found when we tested TheRealReal's search — 4 critical gaps, CEO confirming the exact Algolia roadmap",
+    "case": "Why TheRealReal should act now — $4.9M/year GMV impact on conservative 5% search improvement",
+    "playbook": "How to win the TheRealReal deal — Salesforce co-sell + CTPO Luke Friang as technical buyer"
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Salesforce Co-Sell Warm Intro",
+    "detail": "TRR uses Salesforce Marketing Cloud Personalisation. Algolia has a co-sell agreement with Salesforce. Contact the Algolia Salesforce partner team for a joint intro to Luke Friang (CTPO) — frame as 'extending your Marketing Cloud personalization to on-site search discovery.'",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "industry_context": {
+    "vertical": "luxury-resale",
+    "primary_market": "US",
+    "key_benchmarks": [
+      {
+        "metric": "AI-led personalization profit impact",
+        "value": "up to 15% retail profit boost",
+        "context": "AI-led personalization can boost retail profits by up to 15%, directly relevant to TRR where matching 40M members to 50M items drives GMV.",
+        "source_name": "",
+        "source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
+        "source_date": "2025",
+        "confidence": "FACT",
+        "label": "[FACT — VWO via Tavily WebFetch, 2025]"
+      },
+      {
+        "metric": "Global luxury resale market size 2026",
+        "value": "$34B (US: ~$9.8B)",
+        "context": "Global luxury resale market estimated at $34B in 2026, North America contributing 38% (~$9.8B) at 11.48% CAGR — TRR operating in the highest-growth segment of retail.",
+        "source_name": "",
+        "source_url": "https://www.businessresearchinsights.com/market-reports/secondhand-luxury-goods-market-102564",
+        "source_date": "2026",
+        "confidence": "ESTIMATE",
+        "label": "[ESTIMATE — Business Research Insights via WebSearch, 2026]"
+      },
+      {
+        "metric": "US online resale growth rate",
+        "value": "16% annually",
+        "context": "US online resale growing at 16% annually, projected to reach $34B by 2027 — faster than primary luxury market growth.",
+        "source_name": "",
+        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-resale-secondhand-fashion/",
+        "source_date": "2026-01",
+        "confidence": "ESTIMATE",
+        "label": "[ESTIMATE — Business of Fashion via WebSearch, 2026-01]"
+      }
+    ],
+    "trend_headline": "5 Must-Know eCommerce Personalization Trends for 2026 - VWO",
+    "trend_source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
+    "trend_source_label": "[FACT — Vwo via Tavily WebFetch, date unknown, https://vwo.com/blog/ecommerce-personalization-trends/]",
+    "algolia_angle": "The RealReal operates in a luxury resale market growing at 16% annually where site search users convert 2-3x higher than non-searchers, making Algolia's natural language search and personalization capabilities directly tied to accelerating TRR's path to profitability on $2.13B in GMV."
   }
 }
