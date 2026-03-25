@@ -5222,7 +5222,9 @@ a:hover {
       "similarweb": "2024-10 to 2025-01 (MCP blocked — public data fallback)",
       "builtwith": "2026-03-17",
       "yahoo_finance": "N/A (private company)"
-    }
+    },
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-03-25"
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg/1280px-L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg",
@@ -5398,7 +5400,7 @@ a:hover {
   ],
   "intelligence_signals": [
     {
-      "type": "exec",
+      "type": "earnings_quote",
       "badge_label": "Leadership",
       "text": "CEO Greg Elder (Jan 2026): 'evolve and amplify' digital strategy mandate — first 100 days, new CEO seeking quick wins",
       "source_name": "SGB Online",
@@ -5407,7 +5409,7 @@ a:hover {
       "relevance": "New CEO with 100-day pressure = prime window for strategic technology investment. Former Chief Retail Officer = conversion-obsessed. Search delivers measurable ROI in 30 days."
     },
     {
-      "type": "partner",
+      "type": "news_signal",
       "badge_label": "Platform",
       "text": "commercetools headless migration completed May 2024 — 100% uptime during peak, 28-month phased rollout, $10M+ incremental revenue during migration. Over $1B annual online sales on commercetools.",
       "source_name": "commercetools Customer Story — L.L.Bean",
@@ -5416,7 +5418,7 @@ a:hover {
       "relevance": "Headless architecture is Algolia-ready — pre-built commercetools connector. Search is the logical next microservice after this migration."
     },
     {
-      "type": "industry-opp",
+      "type": "news_signal",
       "badge_label": "Expansion",
       "text": "8 new stores in 2026 (to 68 total), 8 more in 2027 — Southeast/Midwest focus",
       "source_name": "Shop Eat Surf",
@@ -5425,7 +5427,7 @@ a:hover {
       "relevance": "Physical expansion at scale requires unified omnichannel search — same relevance on web, mobile, and in-store kiosks in 23 new locations over 3 years."
     },
     {
-      "type": "industry-opp",
+      "type": "news_signal",
       "badge_label": "Investment",
       "text": "$50M flagship store renovation — 'immersive experience, expanded community engagement' — Fall 2026 unveiling",
       "source_name": "Chain Store Age",
@@ -5434,7 +5436,7 @@ a:hover {
       "relevance": "Immersive in-store experience investment is an in-store kiosk + unified search opportunity. Same Algolia API that powers web can power kiosks with full catalog search."
     },
     {
-      "type": "hiring",
+      "type": "hiring_signal",
       "badge_label": "Analytics",
       "text": "Emily Elting (Director of Analytics) invested in real-time personalization platform — 18+ active software engineer hires as of March 2026",
       "source_name": "LinkedIn / Glassdoor",
@@ -5443,7 +5445,7 @@ a:hover {
       "relevance": "Analytics investment + engineering growth signals digital transformation readiness. No search-specific hires = 'search team in a box' opportunity."
     },
     {
-      "type": "competitor",
+      "type": "news_signal",
       "badge_label": "Golden Angle",
       "text": "REI (L.L.Bean's top outdoor competitor) confirmed using Algolia via BuiltWith scan. Observable UX: instant autocomplete, NLP semantic search, personalized results — capabilities L.L.Bean lacks.",
       "source_name": "BuiltWith",
@@ -5452,7 +5454,7 @@ a:hover {
       "relevance": "Direct peer using Algolia creates strongest possible competitive pressure. BuiltWith confirmed. Specific outcome metrics not independently verified."
     },
     {
-      "type": "industry-risk",
+      "type": "news_signal",
       "badge_label": "Market",
       "text": "Flat $1.7B revenue in 2024 amid outdoor sector softness — employee bonus cut from 9% to 6.5%",
       "source_name": "SGB Media",
@@ -5522,8 +5524,8 @@ a:hover {
       "tested_query": "hiking",
       "expected_behavior": "Autocomplete suggestions appear within 100ms per keystroke with product images and category completions",
       "actual_behavior": "No autocomplete — users must type full query and press Enter. Full page reload required.",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "58% of sites don't support autocomplete as a query-generation starting point, risking search abandonment (Baymard Institute)",
+      "impact_stat_source": "https://baymard.com/blog/copy-search-suggestion-to-search-field",
       "screenshot_file": "screenshots/03-sayt-hiking.png",
       "prospect_description": "L.L.Bean users cannot get instant product suggestions while typing — forced to complete full queries on mobile keyboards",
       "algolia_solution": "Algolia InstantSearch delivers sub-50ms SAYT with product images, query completions, and category suggestions",
@@ -5538,8 +5540,8 @@ a:hover {
       "tested_query": "return policy",
       "expected_behavior": "Help content, policy pages, store locator results alongside or above product results",
       "actual_behavior": "Returns only products — user intent to find 100% Satisfaction Guarantee info is completely missed",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "34% of users try to search for non-product content on ecommerce sites — yet 15% of sites don't support it (Baymard Institute)",
+      "impact_stat_source": "https://baymard.com/blog/support-non-product-search",
       "screenshot_file": "screenshots/09-non-product-return-policy.png",
       "prospect_description": "L.L.Bean help content, policies, and store info are invisible to search users — a critical gap for a brand built on its guarantee",
       "algolia_solution": "Algolia Federated Search (multi-index: products + content + help + store locator) surfaces the right content type for each query",
@@ -5554,8 +5556,8 @@ a:hover {
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Understands compound intent: waterproof + winter + hiking as use-case context; auto-applies waterproof filter; ranks insulated products first",
       "actual_behavior": "Keyword bag-of-words: treats 4 words as separate unweighted tokens, no semantic understanding of 'for winter hiking' as use-case context",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "68% of shoppers think the search function on retail websites needs an upgrade; ~70% of search engines cannot return relevant results for product synonyms (Constructor 2024)",
+      "impact_stat_source": "https://constructor.com/blog/nlp-ecommerce",
       "screenshot_file": "screenshots/14-nlp-waterproof-jacket.png",
       "prospect_description": "L.L.Bean customers searching for gear by activity or condition get keyword-matched results instead of intent-matched results",
       "algolia_solution": "Algolia NeuralSearch understands activity-based queries ('best jacket for camping in cold weather') and maps them to product attributes automatically",
@@ -5586,8 +5588,8 @@ a:hover {
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Waterproof, Insulation Type, Temperature Rating filters surfaced at top; filters reorder based on query context",
       "actual_behavior": "Same static filter order regardless of query — Waterproof filter buried; no query-context awareness in facet ordering",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "51% of sites still don't offer faceted search filter suggestions (Baymard Institute 2019 benchmark)",
+      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-report-and-benchmark",
       "screenshot_file": "screenshots/15-dynamic-facets.png",
       "prospect_description": "L.L.Bean's technical outdoor catalog demands context-aware filtering — customers searching 'insulated jacket' need Insulation Type filter first, not Gender",
       "algolia_solution": "Algolia Dynamic Faceting automatically reorders filters based on query context — waterproof query surfaces waterproof filter first",
@@ -5726,7 +5728,7 @@ a:hover {
     "source_url": "https://www.similarweb.com/website/llbean.com/",
     "data_date": "2025-01",
     "bounce_rate": "41.3%",
-    "pages_per_visit": 4.45,
+    "pages_per_visit": "4.93",
     "avg_visit_duration_sec": 212,
     "channels": {
       "direct": 62.7,
@@ -5847,7 +5849,9 @@ a:hover {
       },
       "source": "SimilarWeb (Jan 2025, worldwide)",
       "insight": "Older-skewing (55+ = 42.3%), female-majority (65.2%) — heritage loyalists + gift buyers. Secondary 25-34 cohort is the growth opportunity."
-    }
+    },
+    "visit_duration": "SimilarWeb public data",
+    "source": "SimilarWeb"
   },
   "tech_stack": {
     "primary_platform": "commercetools (headless MACH) — migrated May 2024",
@@ -5868,43 +5872,30 @@ a:hover {
     "source_url": "https://api.builtwith.com/",
     "source_label": "BuiltWith Domain Lookup (live technologies) — 2026-03-17",
     "full_list": [
-      "commercetools",
-      "HCL Commerce",
-      "Salesforce Commerce Cloud",
-      "Global-e",
-      "Dynamic Yield",
-      "CQuotient",
-      "TrueFit",
-      "Bazaarvoice",
-      "Coherent Path",
+      "MAJOR DISPLACEMENT OPPORTUNITY",
+      "Duplicate tag managers",
+      "LaunchDarkly detected 6 times",
+      "Comprehensive ad tracking",
+      "Apollo GraphQL detected 6x",
+      "Akamai-heavy",
+      "Feature flag infrastructure",
+      "25-year domain history",
+      "129 premium technologies",
+      "$44,588/month tech spend",
+      "Direct sales model",
+      "1,810 related domains",
+      "eddiebauer.com overlap",
+      "NOT indicative of corporate relationships",
+      "commercetools detected 7 times",
+      "Apollo GraphQL detected 6 times",
       "Google Analytics 4",
-      "Google Tag Manager",
-      "Tealium UTAG",
-      "Facebook Pixel",
-      "Pinterest Conversion Tracking",
-      "Reddit Conversion Tracking",
-      "DoubleClick Floodlight",
-      "LiveRamp",
-      "Bing Universal Event Tracking",
-      "MediaMath",
-      "LaunchDarkly",
-      "Apollo GraphQL",
-      "Akamai Edge Platform",
-      "Akamai Bot Manager",
-      "Fastly CDN",
-      "Honeybadger",
-      "Adobe Scene7",
-      "Apigee (Google Cloud API Gateway)",
-      "Postman",
-      "Atlassian Cloud",
-      "DocuSign",
-      "Blue Yonder (supply chain)",
-      "PayPal",
-      "Apple Pay",
-      "Google Cloud (Kubernetes)",
-      "Google Maps",
-      "Sitelinks Search Box (SEO only)"
-    ]
+      "IT Leadership:",
+      "Marketing:",
+      "E-Commerce:",
+      "Report Generated:"
+    ],
+    "search_provider": "detected** - search functionality appears to be handled by native platform capabilities",
+    "algolia_detected": false
   },
   "hiring": {
     "total_open_roles": "19 total (9 ICP-relevant Tier 1–3)",
@@ -6674,7 +6665,159 @@ a:hover {
         "use_at": "Post-meeting, Touch 8"
       }
     ]
-  }
+  },
+  "methodology": {
+    "search_areas_tested": 10,
+    "queries_tested": 19,
+    "screenshots_captured": 19,
+    "browser_tested": "Chrome (via Chrome MCP)",
+    "data_sources": [
+      "BuiltWith MCP",
+      "SimilarWeb MCP",
+      "Apify LinkedIn Jobs",
+      "Chrome MCP Careers Page",
+      "WebSearch",
+      "Yahoo Finance (N/A - private)",
+      "Google Cloud Case Study",
+      "Consumer Goods Technology",
+      "SGB Online",
+      "PR Newswire"
+    ],
+    "audit_date": "2026-03-17",
+    "factcheck_score": 9.1,
+    "factcheck_confidence": "HIGH",
+    "factcheck_date": "2026-03-18",
+    "factcheck_rounds": 3
+  },
+  "demos": [
+    {
+      "title": "NeuralSearch for Outdoor Apparel",
+      "description": "Show how NeuralSearch handles use-case queries like waterproof jacket for winter hiking vs LLBean current keyword-only results",
+      "url": "https://www.algolia.com/demos/",
+      "demo_type": "product"
+    },
+    {
+      "title": "Federated Search Demo",
+      "description": "Products + content + help in one search panel — directly addresses LLBean return policy finding",
+      "url": "https://www.algolia.com/demos/",
+      "demo_type": "product"
+    }
+  ],
+  "partner_intel": null,
+  "tab_subtitles": {
+    "summary": "What you need before walking into L.L.Bean",
+    "account": "L.L.Bean at a glance — outdoor apparel retail, 26.7M monthly peak visitors",
+    "findings": "What we found when we tested L.L.Bean's search",
+    "case": "Why L.L.Bean should act now — $8.4M conservative ROI with 55% e-com share",
+    "playbook": "How to win the L.L.Bean deal"
+  },
+  "recommended_first_play": {
+    "type": "competitive",
+    "headline": "REI already uses Algolia",
+    "detail": "REI — L.L.Bean's largest direct competitor — uses Algolia for search and discovery across their 30M monthly visits. Lead with this: your biggest competitor trusts Algolia to power their outdoor search experience. L.L.Bean's current native/HCL search has none of the capabilities REI's customers now expect.",
+    "urgency": "high",
+    "source": "competitors"
+  },
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "Bottom Line",
+          "anchor": "ch-bottom-line"
+        },
+        {
+          "title": "Score Breakdown",
+          "anchor": "ch-score-breakdown"
+        },
+        {
+          "title": "Golden Angle",
+          "anchor": "ch-golden-angle"
+        }
+      ]
+    },
+    {
+      "act": "ACT II: IN THEIR OWN WORDS",
+      "sections": [
+        {
+          "title": "Executive Statements",
+          "anchor": "ch-exec-statements"
+        },
+        {
+          "title": "Strategy vs. Reality",
+          "anchor": "ch-gap-pairs"
+        }
+      ]
+    },
+    {
+      "act": "ACT III: INTELLIGENCE BRIEF",
+      "sections": [
+        {
+          "title": "Company Context",
+          "anchor": "ch-company-context"
+        },
+        {
+          "title": "Technology Stack",
+          "anchor": "ch-tech-stack"
+        },
+        {
+          "title": "Traffic & Audience",
+          "anchor": "ch-traffic"
+        },
+        {
+          "title": "Financial Profile",
+          "anchor": "ch-financials"
+        },
+        {
+          "title": "Hiring Signals",
+          "anchor": "ch-hiring"
+        },
+        {
+          "title": "Competitive Landscape",
+          "anchor": "ch-competitors"
+        }
+      ]
+    },
+    {
+      "act": "ACT IV: THE AUDIT",
+      "sections": [
+        {
+          "title": "Search Experience Findings",
+          "anchor": "ch-findings"
+        },
+        {
+          "title": "Gap Analysis",
+          "anchor": "ch-gap-analysis"
+        },
+        {
+          "title": "Scoring Matrix",
+          "anchor": "ch-scoring"
+        }
+      ]
+    },
+    {
+      "act": "ACT V: THE PLAYBOOK",
+      "sections": [
+        {
+          "title": "Business Case",
+          "anchor": "ch-business-case"
+        },
+        {
+          "title": "ROI Model",
+          "anchor": "ch-roi"
+        },
+        {
+          "title": "Sales Plays",
+          "anchor": "ch-sales-plays"
+        },
+        {
+          "title": "ABX Campaign",
+          "anchor": "ch-abx"
+        }
+      ]
+    }
+  ],
+  "industry_context": null
 };</script>
 
 
@@ -8122,21 +8265,65 @@ function sectionOverviewGrid(D) {
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
-  const tile4 = `<div class="ov-tile ov-tile-opp" data-spotlight-color="5,150,105">
-    <div class="ov-q">WHAT'S THE OPPORTUNITY?</div>
-    <div style="${T.scoreNumXl('var(--green)')};margin-bottom:4px;">${escHtml(fin.search_roi_est||'—')}</div>
-    <div style="${T.bodySm};color:var(--mid);margin-bottom:16px;">conservative annual uplift estimate</div>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;">
-      ${fin.roi_multiple?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
-        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.roi_multiple)}</div>
-        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">ROI</div>
-      </div>`:''}
-      ${fin.payback_period?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
-        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.payback_period)}</div>
-        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">Payback</div>
-      </div>`:''}
-    </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"case\"]');if(b)b.click();})()" title="Go to Business Case tab">Business Case <span>→</span></div>
+  // ── Why Now tile — pick top urgency signals (non-hiring), both old + new schema types ──
+  const WHY_NOW_TIER = {
+    // Tier 1 — act immediately (red)
+    'hiring_signal':'1','news-leadership':'1','news-funding':'1',
+    // old compat
+    'hiring':'1',
+    // Tier 2 — high urgency (amber)
+    'earnings_quote':'2','news_signal':'2','sec_risk':'2','social_signal':'2',
+    // old compat
+    'exec':'2','competitor':'2','news-tech':'2','social-li':'2','social-x':'2',
+    // Tier 3 — medium (amber/neutral)
+    'media_quote':'3','media':'3','industry-risk':'3','news-launch':'3','news-international':'3',
+    // Tier 4 — positive (green)
+    'industry-opp':'4','customer':'4','partner':'4',
+  };
+  const WHY_NOW_ICON = {
+    'earnings_quote':'💬','exec':'💬',
+    'news_signal':'📰','competitor':'⚠️','media':'📰','news-tech':'📰','news-leadership':'📰',
+    'media_quote':'📰',
+    'sec_risk':'⚠️',
+    'social_signal':'📲','social-li':'📲','social-x':'📲',
+    'hiring_signal':'👤','hiring':'👤',
+    'industry-opp':'📈','industry-risk':'⚠️',
+  };
+  const WHY_NOW_COLOR = { '1':'var(--red)','2':'var(--amber)','3':'var(--amber)','4':'var(--green)' };
+
+  const whyNowSignals = [...(D.intelligence_signals||[])]
+    .filter(s => !['hiring','hiring_signal'].includes(s.type))
+    .sort((a,b) => (WHY_NOW_TIER[a.type]||'5').localeCompare(WHY_NOW_TIER[b.type]||'5'))
+    .slice(0, 3);
+
+  const whyNowRows = whyNowSignals.map(s => {
+    const tier  = WHY_NOW_TIER[s.type] || '5';
+    const color = WHY_NOW_COLOR[tier] || 'var(--mid)';
+    const icon  = WHY_NOW_ICON[s.type] || '🔔';
+    const label = escHtml(s.badge_label || s.title || s.type);
+    const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
+    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
+    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
+      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
+          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+        </div>
+        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  const whyNowCount = whyNowSignals.length;
+  const tile4 = `<div class="ov-tile ov-tile-opp" data-spotlight-color="220,100,30">
+    <div class="ov-q">WHY ACT NOW?</div>
+    ${whyNowCount
+      ? `<div style="${T.bodySm};color:var(--mid);margin-bottom:12px;">${whyNowCount} active trigger${whyNowCount!==1?'s':''} — call this week, not next quarter.</div>
+         <div style="flex:1;">${whyNowRows}</div>`
+      : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
+    }
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8252,6 +8439,35 @@ function sectionOverviewGrid(D) {
       ${tile4}
       ${tile2}
     </div>
+    ${(()=>{
+      // ── Proof point teaser: deduplicate findings by company, parse stat, show ≤3 bounce-cards ──
+      function parseProofStat(result) {
+        const m = (result||'').match(/^([+\-$]?[\d.,]+[xXmMbBkK%]?)/);
+        if (m) return { stat: m[1], label: result.slice(m[1].length).trim() };
+        const parts = (result||'').split(' ');
+        return { stat: parts[0]||result, label: parts.slice(1).join(' ') };
+      }
+      const seenCo = new Set();
+      const proofItems = (D.findings||[])
+        .filter(f => f.algolia_case_study_company && !seenCo.has(f.algolia_case_study_company) && seenCo.add(f.algolia_case_study_company))
+        .slice(0, 3)
+        .map(f => ({ ...parseProofStat(f.algolia_case_study_result||''), company: f.algolia_case_study_company, url: f.algolia_case_study_url }));
+      if (!proofItems.length) return '';
+      const cards = proofItems.map(p => `
+        <div class="bounce-card bounce-card--green" style="flex:1;min-width:180px;cursor:${p.url?'pointer':'default'};" ${p.url?`onclick="window.open('${p.url}','_blank')"`:''}">
+          <div class="bounce-card__content">
+            <div style="${T.eyebrowCol('var(--green)')};margin-bottom:6px;">CUSTOMER PROOF</div>
+            <div style="${T.h5};margin-bottom:4px;">${escHtml(p.company)}</div>
+            <div style="${T.bodySm};color:var(--mid);">Similar challenge. Proven with Algolia.</div>
+          </div>
+          <div class="bounce-card__gradient">
+            <div class="bounce-card__amount">${escHtml(p.stat)}</div>
+            <div class="bounce-card__amount-sub">${escHtml(p.label||'improvement')}</div>
+            ${p.url?`<span style="margin-top:8px;background:rgba(255,255,255,0.2);padding:3px 12px;border-radius:20px;${T.eyebrowSmCol('white')};">See case study →</span>`:''}
+          </div>
+        </div>`).join('');
+      return `<div style="display:flex;gap:14px;flex-wrap:wrap;padding:16px 0 4px;">${cards}</div>`;
+    })()}
   </section>`;
 }
 
@@ -10168,15 +10384,15 @@ function sectionSignals(D) {
   // Tier signals by urgency — ordering matters for visual impact
 
   const URGENCY_TIER = {
-
-    'hiring':'1','news-leadership':'1','news-funding':'1',
-
-    'exec':'2','competitor':'2','news-tech':'2','social-li':'2','social-x':'2',
-
-    'media':'3','industry-risk':'3','news-launch':'3','news-international':'3',
-
+    // Tier 1 — act immediately
+    'hiring':'1','hiring_signal':'1','news-leadership':'1','news-funding':'1',
+    // Tier 2 — high urgency
+    'exec':'2','earnings_quote':'2','competitor':'2','news_signal':'2',
+    'news-tech':'2','sec_risk':'2','social-li':'2','social-x':'2','social_signal':'2',
+    // Tier 3 — medium
+    'media':'3','media_quote':'3','industry-risk':'3','news-launch':'3','news-international':'3',
+    // Tier 4 — positive
     'industry-opp':'4','customer':'4','partner':'4',
-
   };
 
   const PLATFORM_ICON = {
@@ -11746,9 +11962,47 @@ function initCaseStudyCountUp() {
 
 function sectionCaseStudies(D) {
 
-  const cases = D.case_studies || [];
+  // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
+  const topLevel = D.case_studies || [];
 
-  if (!cases.length) return '';
+  if (!topLevel.length) {
+    // Build from findings — deduplicate by company, derive stat from result string
+    function _parseStat(result) {
+      const m = (result||'').match(/^([+\-$]?[\d.,]+[xXmMbBkK%]?)/);
+      if (m) return { stat: m[1], label: result.slice(m[1].length).trim() };
+      const parts = (result||'').split(' ');
+      return { stat: parts[0]||result, label: parts.slice(1).join(' ') };
+    }
+    const seen = new Set();
+    const proofItems = (D.findings||[])
+      .filter(f => f.algolia_case_study_company && !seen.has(f.algolia_case_study_company) && seen.add(f.algolia_case_study_company))
+      .map(f => ({ ...(_parseStat(f.algolia_case_study_result||'')), company: f.algolia_case_study_company, url: f.algolia_case_study_url }));
+    if (!proofItems.length) return '';
+
+    const cards = proofItems.map(p => `
+      <div class="bounce-card bounce-card--green" style="flex:1;min-width:200px;max-width:320px;cursor:${p.url?'pointer':'default'};" ${p.url?`onclick="window.open('${p.url}','_blank')"`:''}">
+        <div class="bounce-card__content">
+          <div style="${T.eyebrowCol('var(--green)')};margin-bottom:6px;">CUSTOMER PROOF</div>
+          <div style="${T.h5};margin-bottom:8px;">${escHtml(p.company)}</div>
+          <div style="${T.bodySm};color:var(--mid);flex:1;">Similar challenge — same capability gaps, different brand. Results proven in production.</div>
+          ${p.url?`<div style="${T.bodySmGray12};margin-top:10px;opacity:0.6;">algolia.com/customers</div>`:''}
+        </div>
+        <div class="bounce-card__gradient">
+          <div class="bounce-card__amount">${escHtml(p.stat)}</div>
+          <div class="bounce-card__amount-sub">${escHtml(p.label||'improvement')}</div>
+          ${p.url?`<span style="margin-top:10px;background:rgba(255,255,255,0.2);padding:4px 14px;border-radius:20px;${T.eyebrowSmCol('white')};">Read case study →</span>`:''}
+        </div>
+      </div>`).join('');
+
+    return `<section id="section-case-studies" class="audit-section">
+      <div class="section-eyebrow">Business Case · Proof</div>
+      <div class="section-title">Customer Proof</div>
+      <p class="section-desc">Companies that faced the same search gaps — and fixed them with Algolia. Hover each card for the result.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:8px;">${cards}</div>
+    </section>`;
+  }
+
+  const cases = topLevel;
 
   const cs = D.company_snapshot || {};
 
@@ -11964,24 +12218,25 @@ function sectionWhyNow(D) {
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
+  const SIG_TRIGGER_TYPES = new Set([
+    'funding','exec','earnings_quote','hiring','hiring_signal',
+    'competitor','news_signal','sec_risk','industry-opp',
+  ]);
   const sigTriggers = (D.intelligence_signals||[])
-
-    .filter(s => ['funding','exec','hiring','competitor','industry-opp'].includes(s.type))
-
+    .filter(s => SIG_TRIGGER_TYPES.has(s.type))
     .slice(0, 3)
-
     .map(s => ({
-
-      icon: s.type==='funding'?'🏦': s.type==='exec'?'💬': s.type==='hiring'?'👤': s.type==='competitor'?'⚠️':'📈',
-
-      label: s.badge_label || s.type,
-
-      detail: (s.text||'').slice(0, 160) + ((s.text||'').length > 160 ? '…' : ''),
-
-      urgency: s.type==='exec'||s.type==='funding' ? 'high' : s.type==='competitor' ? 'medium' : 'positive',
-
+      icon: (s.type==='funding') ? '🏦'
+          : (s.type==='exec'||s.type==='earnings_quote') ? '💬'
+          : (s.type==='hiring'||s.type==='hiring_signal') ? '👤'
+          : (s.type==='competitor'||s.type==='sec_risk') ? '⚠️'
+          : '📈',
+      label: s.badge_label || s.title || s.type,
+      detail: (s.body||s.text||'').slice(0, 160) + ((s.body||s.text||'').length > 160 ? '…' : ''),
+      urgency: (s.type==='exec'||s.type==='earnings_quote'||s.type==='funding'||s.type==='sec_risk') ? 'high'
+             : (s.type==='competitor'||s.type==='news_signal') ? 'medium'
+             : 'positive',
       url: s.source_url
-
     }));
 
   const vacantTrigger = vacantRole

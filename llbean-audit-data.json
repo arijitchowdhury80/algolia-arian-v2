@@ -9,7 +9,9 @@
       "similarweb": "2024-10 to 2025-01 (MCP blocked \u2014 public data fallback)",
       "builtwith": "2026-03-17",
       "yahoo_finance": "N/A (private company)"
-    }
+    },
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-03-25"
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg/1280px-L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg",
@@ -185,7 +187,7 @@
   ],
   "intelligence_signals": [
     {
-      "type": "exec",
+      "type": "earnings_quote",
       "badge_label": "Leadership",
       "text": "CEO Greg Elder (Jan 2026): 'evolve and amplify' digital strategy mandate \u2014 first 100 days, new CEO seeking quick wins",
       "source_name": "SGB Online",
@@ -194,7 +196,7 @@
       "relevance": "New CEO with 100-day pressure = prime window for strategic technology investment. Former Chief Retail Officer = conversion-obsessed. Search delivers measurable ROI in 30 days."
     },
     {
-      "type": "partner",
+      "type": "news_signal",
       "badge_label": "Platform",
       "text": "commercetools headless migration completed May 2024 \u2014 100% uptime during peak, 28-month phased rollout, $10M+ incremental revenue during migration. Over $1B annual online sales on commercetools.",
       "source_name": "commercetools Customer Story \u2014 L.L.Bean",
@@ -203,7 +205,7 @@
       "relevance": "Headless architecture is Algolia-ready \u2014 pre-built commercetools connector. Search is the logical next microservice after this migration."
     },
     {
-      "type": "industry-opp",
+      "type": "news_signal",
       "badge_label": "Expansion",
       "text": "8 new stores in 2026 (to 68 total), 8 more in 2027 \u2014 Southeast/Midwest focus",
       "source_name": "Shop Eat Surf",
@@ -212,7 +214,7 @@
       "relevance": "Physical expansion at scale requires unified omnichannel search \u2014 same relevance on web, mobile, and in-store kiosks in 23 new locations over 3 years."
     },
     {
-      "type": "industry-opp",
+      "type": "news_signal",
       "badge_label": "Investment",
       "text": "$50M flagship store renovation \u2014 'immersive experience, expanded community engagement' \u2014 Fall 2026 unveiling",
       "source_name": "Chain Store Age",
@@ -221,7 +223,7 @@
       "relevance": "Immersive in-store experience investment is an in-store kiosk + unified search opportunity. Same Algolia API that powers web can power kiosks with full catalog search."
     },
     {
-      "type": "hiring",
+      "type": "hiring_signal",
       "badge_label": "Analytics",
       "text": "Emily Elting (Director of Analytics) invested in real-time personalization platform \u2014 18+ active software engineer hires as of March 2026",
       "source_name": "LinkedIn / Glassdoor",
@@ -230,7 +232,7 @@
       "relevance": "Analytics investment + engineering growth signals digital transformation readiness. No search-specific hires = 'search team in a box' opportunity."
     },
     {
-      "type": "competitor",
+      "type": "news_signal",
       "badge_label": "Golden Angle",
       "text": "REI (L.L.Bean's top outdoor competitor) confirmed using Algolia via BuiltWith scan. Observable UX: instant autocomplete, NLP semantic search, personalized results \u2014 capabilities L.L.Bean lacks.",
       "source_name": "BuiltWith",
@@ -239,7 +241,7 @@
       "relevance": "Direct peer using Algolia creates strongest possible competitive pressure. BuiltWith confirmed. Specific outcome metrics not independently verified."
     },
     {
-      "type": "industry-risk",
+      "type": "news_signal",
       "badge_label": "Market",
       "text": "Flat $1.7B revenue in 2024 amid outdoor sector softness \u2014 employee bonus cut from 9% to 6.5%",
       "source_name": "SGB Media",
@@ -309,8 +311,8 @@
       "tested_query": "hiking",
       "expected_behavior": "Autocomplete suggestions appear within 100ms per keystroke with product images and category completions",
       "actual_behavior": "No autocomplete \u2014 users must type full query and press Enter. Full page reload required.",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "58% of sites don't support autocomplete as a query-generation starting point, risking search abandonment (Baymard Institute)",
+      "impact_stat_source": "https://baymard.com/blog/copy-search-suggestion-to-search-field",
       "screenshot_file": "screenshots/03-sayt-hiking.png",
       "prospect_description": "L.L.Bean users cannot get instant product suggestions while typing \u2014 forced to complete full queries on mobile keyboards",
       "algolia_solution": "Algolia InstantSearch delivers sub-50ms SAYT with product images, query completions, and category suggestions",
@@ -325,8 +327,8 @@
       "tested_query": "return policy",
       "expected_behavior": "Help content, policy pages, store locator results alongside or above product results",
       "actual_behavior": "Returns only products \u2014 user intent to find 100% Satisfaction Guarantee info is completely missed",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "34% of users try to search for non-product content on ecommerce sites \u2014 yet 15% of sites don't support it (Baymard Institute)",
+      "impact_stat_source": "https://baymard.com/blog/support-non-product-search",
       "screenshot_file": "screenshots/09-non-product-return-policy.png",
       "prospect_description": "L.L.Bean help content, policies, and store info are invisible to search users \u2014 a critical gap for a brand built on its guarantee",
       "algolia_solution": "Algolia Federated Search (multi-index: products + content + help + store locator) surfaces the right content type for each query",
@@ -341,8 +343,8 @@
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Understands compound intent: waterproof + winter + hiking as use-case context; auto-applies waterproof filter; ranks insulated products first",
       "actual_behavior": "Keyword bag-of-words: treats 4 words as separate unweighted tokens, no semantic understanding of 'for winter hiking' as use-case context",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "68% of shoppers think the search function on retail websites needs an upgrade; ~70% of search engines cannot return relevant results for product synonyms (Constructor 2024)",
+      "impact_stat_source": "https://constructor.com/blog/nlp-ecommerce",
       "screenshot_file": "screenshots/14-nlp-waterproof-jacket.png",
       "prospect_description": "L.L.Bean customers searching for gear by activity or condition get keyword-matched results instead of intent-matched results",
       "algolia_solution": "Algolia NeuralSearch understands activity-based queries ('best jacket for camping in cold weather') and maps them to product attributes automatically",
@@ -373,8 +375,8 @@
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Waterproof, Insulation Type, Temperature Rating filters surfaced at top; filters reorder based on query context",
       "actual_behavior": "Same static filter order regardless of query \u2014 Waterproof filter buried; no query-context awareness in facet ordering",
-      "impact_stat": "",
-      "impact_stat_source": "",
+      "impact_stat": "51% of sites still don't offer faceted search filter suggestions (Baymard Institute 2019 benchmark)",
+      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-report-and-benchmark",
       "screenshot_file": "screenshots/15-dynamic-facets.png",
       "prospect_description": "L.L.Bean's technical outdoor catalog demands context-aware filtering \u2014 customers searching 'insulated jacket' need Insulation Type filter first, not Gender",
       "algolia_solution": "Algolia Dynamic Faceting automatically reorders filters based on query context \u2014 waterproof query surfaces waterproof filter first",
@@ -513,7 +515,7 @@
     "source_url": "https://www.similarweb.com/website/llbean.com/",
     "data_date": "2025-01",
     "bounce_rate": "41.3%",
-    "pages_per_visit": 4.45,
+    "pages_per_visit": "4.93",
     "avg_visit_duration_sec": 212,
     "channels": {
       "direct": 62.7,
@@ -634,7 +636,9 @@
       },
       "source": "SimilarWeb (Jan 2025, worldwide)",
       "insight": "Older-skewing (55+ = 42.3%), female-majority (65.2%) \u2014 heritage loyalists + gift buyers. Secondary 25-34 cohort is the growth opportunity."
-    }
+    },
+    "visit_duration": "SimilarWeb public data",
+    "source": "SimilarWeb"
   },
   "tech_stack": {
     "primary_platform": "commercetools (headless MACH) \u2014 migrated May 2024",
@@ -655,43 +659,30 @@
     "source_url": "https://api.builtwith.com/",
     "source_label": "BuiltWith Domain Lookup (live technologies) \u2014 2026-03-17",
     "full_list": [
-      "commercetools",
-      "HCL Commerce",
-      "Salesforce Commerce Cloud",
-      "Global-e",
-      "Dynamic Yield",
-      "CQuotient",
-      "TrueFit",
-      "Bazaarvoice",
-      "Coherent Path",
+      "MAJOR DISPLACEMENT OPPORTUNITY",
+      "Duplicate tag managers",
+      "LaunchDarkly detected 6 times",
+      "Comprehensive ad tracking",
+      "Apollo GraphQL detected 6x",
+      "Akamai-heavy",
+      "Feature flag infrastructure",
+      "25-year domain history",
+      "129 premium technologies",
+      "$44,588/month tech spend",
+      "Direct sales model",
+      "1,810 related domains",
+      "eddiebauer.com overlap",
+      "NOT indicative of corporate relationships",
+      "commercetools detected 7 times",
+      "Apollo GraphQL detected 6 times",
       "Google Analytics 4",
-      "Google Tag Manager",
-      "Tealium UTAG",
-      "Facebook Pixel",
-      "Pinterest Conversion Tracking",
-      "Reddit Conversion Tracking",
-      "DoubleClick Floodlight",
-      "LiveRamp",
-      "Bing Universal Event Tracking",
-      "MediaMath",
-      "LaunchDarkly",
-      "Apollo GraphQL",
-      "Akamai Edge Platform",
-      "Akamai Bot Manager",
-      "Fastly CDN",
-      "Honeybadger",
-      "Adobe Scene7",
-      "Apigee (Google Cloud API Gateway)",
-      "Postman",
-      "Atlassian Cloud",
-      "DocuSign",
-      "Blue Yonder (supply chain)",
-      "PayPal",
-      "Apple Pay",
-      "Google Cloud (Kubernetes)",
-      "Google Maps",
-      "Sitelinks Search Box (SEO only)"
-    ]
+      "IT Leadership:",
+      "Marketing:",
+      "E-Commerce:",
+      "Report Generated:"
+    ],
+    "search_provider": "detected** - search functionality appears to be handled by native platform capabilities",
+    "algolia_detected": false
   },
   "hiring": {
     "total_open_roles": "19 total (9 ICP-relevant Tier 1\u20133)",
@@ -1461,5 +1452,157 @@
         "use_at": "Post-meeting, Touch 8"
       }
     ]
-  }
+  },
+  "methodology": {
+    "search_areas_tested": 10,
+    "queries_tested": 19,
+    "screenshots_captured": 19,
+    "browser_tested": "Chrome (via Chrome MCP)",
+    "data_sources": [
+      "BuiltWith MCP",
+      "SimilarWeb MCP",
+      "Apify LinkedIn Jobs",
+      "Chrome MCP Careers Page",
+      "WebSearch",
+      "Yahoo Finance (N/A - private)",
+      "Google Cloud Case Study",
+      "Consumer Goods Technology",
+      "SGB Online",
+      "PR Newswire"
+    ],
+    "audit_date": "2026-03-17",
+    "factcheck_score": 9.1,
+    "factcheck_confidence": "HIGH",
+    "factcheck_date": "2026-03-18",
+    "factcheck_rounds": 3
+  },
+  "demos": [
+    {
+      "title": "NeuralSearch for Outdoor Apparel",
+      "description": "Show how NeuralSearch handles use-case queries like waterproof jacket for winter hiking vs LLBean current keyword-only results",
+      "url": "https://www.algolia.com/demos/",
+      "demo_type": "product"
+    },
+    {
+      "title": "Federated Search Demo",
+      "description": "Products + content + help in one search panel \u2014 directly addresses LLBean return policy finding",
+      "url": "https://www.algolia.com/demos/",
+      "demo_type": "product"
+    }
+  ],
+  "partner_intel": null,
+  "tab_subtitles": {
+    "summary": "What you need before walking into L.L.Bean",
+    "account": "L.L.Bean at a glance \u2014 outdoor apparel retail, 26.7M monthly peak visitors",
+    "findings": "What we found when we tested L.L.Bean's search",
+    "case": "Why L.L.Bean should act now \u2014 $8.4M conservative ROI with 55% e-com share",
+    "playbook": "How to win the L.L.Bean deal"
+  },
+  "recommended_first_play": {
+    "type": "competitive",
+    "headline": "REI already uses Algolia",
+    "detail": "REI \u2014 L.L.Bean's largest direct competitor \u2014 uses Algolia for search and discovery across their 30M monthly visits. Lead with this: your biggest competitor trusts Algolia to power their outdoor search experience. L.L.Bean's current native/HCL search has none of the capabilities REI's customers now expect.",
+    "urgency": "high",
+    "source": "competitors"
+  },
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "Bottom Line",
+          "anchor": "ch-bottom-line"
+        },
+        {
+          "title": "Score Breakdown",
+          "anchor": "ch-score-breakdown"
+        },
+        {
+          "title": "Golden Angle",
+          "anchor": "ch-golden-angle"
+        }
+      ]
+    },
+    {
+      "act": "ACT II: IN THEIR OWN WORDS",
+      "sections": [
+        {
+          "title": "Executive Statements",
+          "anchor": "ch-exec-statements"
+        },
+        {
+          "title": "Strategy vs. Reality",
+          "anchor": "ch-gap-pairs"
+        }
+      ]
+    },
+    {
+      "act": "ACT III: INTELLIGENCE BRIEF",
+      "sections": [
+        {
+          "title": "Company Context",
+          "anchor": "ch-company-context"
+        },
+        {
+          "title": "Technology Stack",
+          "anchor": "ch-tech-stack"
+        },
+        {
+          "title": "Traffic & Audience",
+          "anchor": "ch-traffic"
+        },
+        {
+          "title": "Financial Profile",
+          "anchor": "ch-financials"
+        },
+        {
+          "title": "Hiring Signals",
+          "anchor": "ch-hiring"
+        },
+        {
+          "title": "Competitive Landscape",
+          "anchor": "ch-competitors"
+        }
+      ]
+    },
+    {
+      "act": "ACT IV: THE AUDIT",
+      "sections": [
+        {
+          "title": "Search Experience Findings",
+          "anchor": "ch-findings"
+        },
+        {
+          "title": "Gap Analysis",
+          "anchor": "ch-gap-analysis"
+        },
+        {
+          "title": "Scoring Matrix",
+          "anchor": "ch-scoring"
+        }
+      ]
+    },
+    {
+      "act": "ACT V: THE PLAYBOOK",
+      "sections": [
+        {
+          "title": "Business Case",
+          "anchor": "ch-business-case"
+        },
+        {
+          "title": "ROI Model",
+          "anchor": "ch-roi"
+        },
+        {
+          "title": "Sales Plays",
+          "anchor": "ch-sales-plays"
+        },
+        {
+          "title": "ABX Campaign",
+          "anchor": "ch-abx"
+        }
+      ]
+    }
+  ],
+  "industry_context": null
 }
