@@ -9515,7 +9515,7 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring');
+  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -9553,7 +9553,7 @@ function sectionHiring(D) {
 
   const urgencyIcon = (sig) => {
 
-    const badge = sig.badge_label || '';
+    const badge = sig.badge_label || sig.title || '';
 
     if (badge.toLowerCase().includes('tier 1') || badge.toLowerCase().includes('critical')) return '🔴';
 
@@ -9567,7 +9567,7 @@ function sectionHiring(D) {
 
   const cardsHtml = hiring.slice(0, 9).map(sig => {
 
-    const fullText = sig.text || '';
+    const fullText = sig.text || sig.body || sig.title || '';
 
     // Smart slice — don't cut mid-word
 
@@ -10043,7 +10043,7 @@ function sectionSignals(D) {
 
   // to avoid duplication. Hiring signals here would repeat the buying committee section.
 
-  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && (s.badge_label || s.text || s.quote));
+  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && s.type !== 'hiring_signal' && (s.badge_label || s.title || s.text || s.body || s.quote));
 
   if (!signals.length) return `<section id="section-signals" class="audit-section">
 
@@ -10767,7 +10767,7 @@ function sectionSources(D) {
 
     <div class="section-title">Sources & Bibliography</div>
 
-    <p class="section-desc">${escHtml(D.methodology || '')}</p>
+    <p class="section-desc">${typeof D.methodology === 'string' ? escHtml(D.methodology) : ''}</p>
 
     ${bibs.length ? `
 
@@ -10777,11 +10777,11 @@ function sectionSources(D) {
 
       <div class="bib-entry">
 
-        <span class="bib-num">[${b.n}]</span>
+        <span class="bib-num">[${b.n || b.id || ''}]</span>
 
         <span class="bib-text">
 
-          ${escHtml(b.label)}
+          ${escHtml(b.label || b.source || b.title || '')}
 
           ${b.url ? ' · ' + lnk(b.url, b.url) : ''}
 
