@@ -87,6 +87,8 @@
   --violet-light:#EDE9FE;   /* violet-100 — script bg */
 
   --violet-border:#DDD6FE;  /* violet-200 */
+  --teal-tint:   #F0FDFA;   /* teal-50   */
+  --teal-border: #99F6E4;   /* teal-200  */
 
   --near-white:  #FAFAFA;   /* alternating row bg */
   --indigo:      #3730A3;   /* indigo-800 */
@@ -271,6 +273,24 @@ img { max-width: 100%; display: block; }
   margin-top: calc(var(--topbar-h) + var(--tabrail-h));
 
   min-height: calc(100vh - var(--topbar-h) - var(--tabrail-h));
+
+  max-width: 960px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
+  padding: 0 24px 60px;
+
+}
+
+#content {
+
+  flex: 1;
+
+  min-width: 0;
+
+  padding-top: 24px;
 
 }
 
@@ -1538,7 +1558,7 @@ a:hover .src-tag { opacity: 1; }
 
 }
 
-.section-group--overview  { background: #FFFFFF; }
+.section-group--overview  { background: linear-gradient(135deg, #F0F4FF 0%, #EBF0FD 50%, #F4EFFF 100%); }
 
 .section-group--intel     { background: linear-gradient(180deg, #F9FAFF 0%, #EEF3FD 100%); }
 
@@ -4251,6 +4271,546 @@ a:hover {
   margin-bottom: 6px;
 }
 
+/* ─── Navigation System v2 (2026-03-23 IA rethink, fixed 2026-03-23) ─────── */
+
+/* Tab subtitle — fixed below the floating pill nav, legible size */
+.tab-subtitle {
+  position: fixed;
+  top: calc(var(--topbar-h, 52px) + 10px + 54px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-mid);
+  opacity: 0.85;
+  white-space: nowrap;
+  z-index: 189;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Stat Bar — 4-column editorial KPI row ──────────────────────────────── */
+.stat-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(35,38,59,0.06);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.stat-bar__item {
+  padding: 22px 20px;
+  border-right: 1px solid var(--brand-border);
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.stat-bar__item:last-child { border-right: none; }
+.stat-bar__item:hover { background: var(--brand-light); }
+.stat-bar__item:hover .stat-bar__value { color: var(--brand-blue); }
+
+.stat-bar__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 8px;
+}
+
+.stat-bar__value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  transition: color 0.15s;
+}
+
+.stat-bar__sub {
+  font-size: 12px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+}
+
+.stat-bar__arrow {
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  font-size: 14px;
+  color: var(--brand-mid);
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.stat-bar__item:hover .stat-bar__arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@media (max-width: 700px) {
+  .stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-bar__item:nth-child(2) { border-right: none; }
+  .stat-bar__item:nth-child(1),
+  .stat-bar__item:nth-child(2) { border-bottom: 1px solid var(--brand-border); }
+}
+
+/* ── Section Sidebar — fixed right, vertically centered in viewport ────────── */
+#section-sidebar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 150;
+}
+
+.section-sidebar__inner {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 16px 0 10px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 1px 4px rgba(35,38,59,0.06);
+}
+.section-sidebar__inner::-webkit-scrollbar { display: none; }
+
+.section-sidebar__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-mid);
+  padding: 0 14px 10px;
+  opacity: 0.55;
+}
+
+.section-sidebar__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.section-sidebar__item:hover {
+  background: var(--brand-light);
+  text-decoration: none;
+}
+.section-sidebar__item--active {
+  border-left-color: var(--brand-blue);
+  background: rgba(0,61,255,0.04);
+}
+
+.section-sidebar__num {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--brand-light);
+  color: var(--brand-mid);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+.section-sidebar__item--active .section-sidebar__num {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.section-sidebar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.3;
+  margin-bottom: 1px;
+  transition: color 0.12s;
+}
+.section-sidebar__desc {
+  font-size: 10px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+.section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
+.section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
+
+/* Hide sidebar on narrow screens */
+@media (max-width: 1200px) {
+  #section-sidebar { display: none; }
+}
+
+/* No-op legacy strip classes */
+.section-strip, .section-toc { display: none !important; }
+.section-strip__pill, .section-strip__pill--active,
+.section-toc__link, .section-toc__link--active { display: none !important; }
+
+/* No-op legacy highlight card classes */
+.highlights-grid, .highlight-card,
+.highlight-card__icon, .highlight-card__stat, .highlight-card__label { display: none !important; }
+
+/* Section subtitle — personalized one-liner under every section title */
+.section-subtitle {
+  font-size: 14px;
+  color: var(--brand-mid);
+  font-style: italic;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* ─── Floating Card — Summary stat bar wrapper ──────────────────────────── */
+.floating-card-wrap {
+  perspective: 1400px;
+  margin-bottom: 32px;
+  cursor: default;
+}
+
+.floating-card-inner {
+  transform-style: preserve-3d;
+  animation: float-bob 7s ease-in-out infinite;
+  transition: transform 0.12s ease-out, box-shadow 0.2s ease;
+  will-change: transform;
+  border-radius: 12px;
+}
+
+@keyframes float-bob {
+  0%,  100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  33%        { transform: translateY(-6px) rotateX(0.8deg) rotateY(0.4deg); }
+  66%        { transform: translateY(-3px) rotateX(-0.4deg) rotateY(-0.6deg); }
+}
+
+.floating-card-inner:hover {
+  animation-play-state: paused;
+  box-shadow: 0 20px 60px rgba(0,61,255,0.14), 0 6px 20px rgba(35,38,59,0.12);
+}
+
+/* ─── Case Studies — ruixenui vertical timeline, alternating 2/3+1/3 grid ──
+   Each row: portrait+quote (2/3) | animated metric (1/3)
+   Alternating rows reverse the order (metric on left, portrait+quote on right)
+────────────────────────────────────────────────────────────────────────────── */
+.cs-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-timeline-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  border-bottom: 1px solid var(--brand-border);
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+.cs-timeline-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cs-timeline-row--reversed {
+  grid-template-columns: 1fr 2fr;
+}
+.cs-timeline-row--reversed .cs-left { order: 2; }
+.cs-timeline-row--reversed .cs-metric { order: 1; }
+
+/* Left block: portrait + quote */
+.cs-left {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  border-right: 1px solid var(--brand-border);
+  padding-right: 2.5rem;
+}
+.cs-left--reversed {
+  border-right: none;
+  border-left: 1px solid var(--brand-border);
+  padding-right: 0;
+  padding-left: 2.5rem;
+}
+
+/* Portrait — company monogram, aspect ratio 29/35 */
+.cs-portrait {
+  width: 120px;
+  aspect-ratio: 29 / 35;
+  flex-shrink: 0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.cs-portrait:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.cs-portrait__initials {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.cs-portrait__label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Quote block */
+.cs-quote {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cs-quote__text { margin: 0; }
+.cs-quote__headline {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+.cs-quote__sub {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cs-quote__company {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+.cs-quote__why {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  margin-top: 4px;
+}
+.cs-quote__link:hover { text-decoration: underline; }
+
+/* Metric block */
+.cs-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+.cs-metric--reversed { text-align: right; }
+.cs-metric__num {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin: 0;
+}
+.cs-metric__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  margin: 0;
+}
+.cs-metric__sub {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .cs-timeline-row,
+  .cs-timeline-row--reversed { grid-template-columns: 1fr; }
+  .cs-left, .cs-left--reversed { border: none; padding: 0; }
+  .cs-timeline-row--reversed .cs-left { order: unset; }
+  .cs-timeline-row--reversed .cs-metric { order: unset; }
+  .cs-portrait { width: 80px; }
+}
+
+/* Keep old drawer classes as no-ops */
+.cs-row, .cs-card, .cs-header, .cs-body { display: none !important; }
+
+.cs-card {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cs-card:hover { box-shadow: 0 4px 16px rgba(35,38,59,0.10); }
+.cs-card--open {
+  border-color: var(--brand-blue);
+  box-shadow: 0 4px 20px rgba(0,61,255,0.10);
+}
+
+/* Header — always visible */
+.cs-header {
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.cs-vertical {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.7;
+}
+
+.cs-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1.2;
+}
+
+.cs-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.22);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-green);
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.cs-chevron {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.15s;
+  flex-shrink: 0;
+}
+.cs-card--open .cs-chevron {
+  transform: rotate(90deg);
+  background: rgba(0,61,255,0.08);
+}
+.cs-chevron svg { transition: stroke 0.15s; }
+.cs-card--open .cs-chevron svg { stroke: var(--brand-blue); }
+
+/* Expandable body */
+.cs-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              padding 0.25s ease;
+  opacity: 0;
+  padding: 0 20px;
+  border-top: 0px solid var(--brand-border);
+}
+.cs-card--open .cs-body {
+  max-height: 400px;
+  opacity: 1;
+  padding: 16px 20px 20px;
+  border-top-width: 1px;
+}
+
+.cs-body-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.6;
+  margin-bottom: 5px;
+}
+
+.cs-body-text {
+  font-size: 13px;
+  color: var(--brand-navy);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.cs-big-stat {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-green);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0 0 4px;
+}
+
+.cs-stat-label {
+  font-size: 11px;
+  color: var(--brand-mid);
+  margin-bottom: 16px;
+}
+
+.cs-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(0,61,255,0.25);
+  border-radius: 8px;
+  background: rgba(0,61,255,0.04);
+  transition: background 0.15s, border-color 0.15s;
+}
+.cs-read-link:hover {
+  background: rgba(0,61,255,0.08);
+  border-color: var(--brand-blue);
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .cs-row { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 
@@ -4272,15 +4832,15 @@ a:hover {
 
 <nav id="tab-rail">
 
-  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn active" data-tab="overview" data-subtitle="Score, gaps, and what to know before the call">Overview</button>
 
-  <button class="tab-btn" data-tab="intel">Company Intel</button>
+  <button class="tab-btn" data-tab="intel" data-subtitle="Everything we know about this company">Research</button>
 
-  <button class="tab-btn" data-tab="audit">Search Audit</button>
+  <button class="tab-btn" data-tab="audit" data-subtitle="What we found when we tested their search">Search Audit</button>
 
-  <button class="tab-btn" data-tab="case">Business Case</button>
+  <button class="tab-btn" data-tab="case" data-subtitle="The financial argument for acting now">Business Case</button>
 
-  <button class="tab-btn" data-tab="play">Sales Play</button>
+  <button class="tab-btn" data-tab="play" data-subtitle="How to win this deal — before, during, and after the call">Sales Actions</button>
 
   <div class="tab-rail-spacer"></div>
 
@@ -4399,7 +4959,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg/1280px-L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg",
-    "company_logo_url": "https://www.llbean.com/images/seo_logo.jpg"
+    "company_logo_url": "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABVAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgTWFjaW50b3NoIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjI0MDM2NkU1QTU0NzExRTJBNThGOTQ4MkZDQzY5NzEzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjI0MDM2NkU2QTU0NzExRTJBNThGOTQ4MkZDQzY5NzEzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjQwMzY2RTNBNTQ3MTFFMkE1OEY5NDgyRkNDNjk3MTMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjQwMzY2RTRBNTQ3MTFFMkE1OEY5NDgyRkNDNjk3MTMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAACAQEBAQECAQECAwIBAgMDAgIC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"
   },
   "score": {
     "overall": 3.6,
@@ -5677,12 +6237,12 @@ a:hover {
   ],
   "abx_sequence": {
     "sequence_type": "Targeted ABX — L.L.Bean Search Modernization",
-    "total_touches": 8,
+    "total_touches": 9,
     "duration_days": 21,
     "channels": [
-      "email",
-      "linkedin",
-      "video"
+      "Email",
+      "LinkedIn",
+      "Video"
     ],
     "research_basis": "commercetools migration completed May 2024; Greg Elder new CEO (Feb 2026); Engineering Manager vacancy; REI + Patagonia confirmed Algolia customers; 8 new stores in 2026",
     "triggers": [
@@ -6061,6 +6621,18 @@ const T = {
 
   pill:         (col) => `display:inline-flex;align-items:center;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:600;background:${col}18;color:${col};border:1px solid ${col}30`,
 
+  /* ── Bento tile display sizes ─────────────────────────────────────────── */
+
+  scoreNumLg:   (col) => `font-size:72px;font-weight:900;color:${col};line-height:1;letter-spacing:-3px`,
+  scoreNumXl:   (col) => `font-size:48px;font-weight:900;color:${col};line-height:1;letter-spacing:-2px`,
+  statNumBold:  (col) => `font-size:20px;font-weight:800;color:${col}`,
+  overviewName: 'font-size:22px;font-weight:800;color:var(--gray);line-height:1.2;margin-bottom:14px;letter-spacing:-0.5px',
+  urgLabel:     (col) => `font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:${col}`,
+  iconBadge:    (bg)  => `width:28px;height:28px;border-radius:8px;background:${bg};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0`,
+  badgePill:    (col,bg) => `font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:${bg};color:${col};white-space:nowrap`,
+  nodeLabel:    'font-size:13px;font-weight:700;color:var(--gray);margin-bottom:6px;text-align:center;line-height:1.3',
+  nodeDomain:   'font-size:11px;font-weight:500;text-decoration:none',
+
 };
 
 
@@ -6149,6 +6721,25 @@ function escHtml(str) {
 
 
 
+// Format ISO date strings (YYYY-MM or YYYY-MM-DD or YYYY) into human-readable form
+// "2025-03" → "March 2025" | "2025-03-15" → "March 2025" | "2025" → "2025"
+
+function fmtDate(d) {
+
+  if (!d) return '';
+
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  const m = String(d).match(/^(\d{4})-(\d{2})/);
+
+  if (m) return months[parseInt(m[2],10)-1] + ' ' + m[1];
+
+  return d;
+
+}
+
+
+
 // Resolve a source URL to a readable publisher name
 
 function sourceName(url) {
@@ -6189,13 +6780,7 @@ function algoliaAngleBadge() {
 
   return `<div class="algolia-angle-label">
 
-    <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-      <circle cx="10" cy="10" r="10" fill="var(--blue)"/>
-
-      <text x="10" y="14.5" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="Sora,sans-serif">a</text>
-
-    </svg>
+    <img src="https://www.google.com/s2/favicons?domain=algolia.com&sz=32" width="14" height="14" alt="Algolia" style="display:inline-block;vertical-align:middle;border-radius:2px;">
 
     Algolia Angle
 
@@ -6351,7 +6936,7 @@ function initAnimatedGrid() {
 
   if (typeof document.createElementNS !== 'function' || !document.body) return;
 
-  const GRID = 44, NUM = 35, MAX_OP = 0.30, MIN_OP = 0.08;
+  const GRID = 44, NUM = 45, MAX_OP = 0.55, MIN_OP = 0.12;
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
 
@@ -6367,7 +6952,7 @@ function initAnimatedGrid() {
 
   defs.innerHTML = `<pattern id="agp" x="0" y="0" width="${GRID}" height="${GRID}" patternUnits="userSpaceOnUse">
 
-    <path d="M${GRID} 0 L 0 0 0 ${GRID}" fill="none" stroke="rgba(35,38,59,0.06)" stroke-width="0.6"/>
+    <path d="M${GRID} 0 L 0 0 0 ${GRID}" fill="none" stroke="rgba(0,61,255,0.07)" stroke-width="0.8"/>
 
   </pattern>`;
 
@@ -6772,7 +7357,7 @@ function buildSidebar(D) {
 
   const structure = [
 
-    { id: 'exec-summary', label: 'Executive Summary', icon: '◈' },
+    { id: 'section-overview-grid', label: 'Overview', icon: '◈' },
 
     {
 
@@ -7168,6 +7753,232 @@ function initLightbox() {
 
 ═══════════════════════════════════════════════════ */
 
+
+/* ─── Overview Bento Grid ─── */
+
+function sectionOverviewGrid(D) {
+  const snap = D.company_snapshot || {};
+  const score = D.score || {};
+  const fin   = D.financials || {};
+  const ae    = D.ae_fields  || {};
+  const findings = D.findings || [];
+
+  const criticals = findings.filter(function(f){ return f.severity === 'critical'; }).slice(0, 3);
+  const overall   = parseFloat(score.overall) || 0;
+
+  // Score colour palette
+  const sColor = overall >= 7 ? 'var(--green)' : overall >= 5 ? 'var(--amber)' : 'var(--red)';
+  const sBg    = overall >= 7 ? 'rgba(5,150,105,0.10)' : overall >= 5 ? 'rgba(217,119,6,0.10)' : 'rgba(220,38,38,0.10)';
+
+  // Urgency
+  const urgMap = { high:'var(--red)', medium:'var(--amber)', low:'var(--green)' };
+  const urgC   = urgMap[ae.urgency_level] || urgMap.medium;
+
+  // ── Tile 1: HOW BAD IS THEIR SEARCH? (wide, row 1 left) ──
+  const gapPills = criticals.length
+    ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+      </div>`; }).join('')
+    : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
+
+  const tile1 = `<div class="ov-tile ov-tile-score" data-spotlight-color="220,38,38">
+    <div class="ov-q">HOW BAD IS THEIR SEARCH?</div>
+    <div style="display:flex;align-items:flex-end;gap:16px;margin-bottom:16px;">
+      <div style="${T.scoreNumLg(sColor)}">${overall.toFixed(1)}</div>
+      <div style="padding-bottom:8px;">
+        <div style="${T.eyebrowSm};margin-bottom:4px;">out of 10</div>
+        <div style="display:inline-block;background:${sBg};${T.eyebrowSmCol(sColor)};padding:3px 10px;border-radius:4px;">${escHtml(score.verdict||'')}</div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;">
+      <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
+      ${gapPills}
+    </div>
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  </div>`;
+
+  // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
+  const tile2 = `<div class="ov-tile ov-tile-next" data-spotlight-color="0,61,255">
+    <div class="ov-q">WHAT DO I DO NEXT?</div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
+      <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
+    </div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="${T.eyebrow};">Owner</span>
+        <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_owner||'AE')}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="${T.eyebrow};">Due</span>
+        <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
+      </div>
+    </div>
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  </div>`;
+
+  // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
+  const vendor = snap.current_search_vendor || 'Native search';
+  const isTarget = !vendor.toLowerCase().includes('algolia');
+  const tile3 = `<div class="ov-tile ov-tile-who" data-spotlight-color="71,85,105">
+    <div class="ov-q">WHO IS THIS?</div>
+    <div style="${T.overviewName};">${escHtml(snap.name||D.meta?.company||'')}</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="${T.iconBadge('rgba(0,61,255,0.08)')}">💰</span>
+        <span style="${T.bodySm};color:var(--gray);">${escHtml(snap.revenue||fin.revenue_fy2025||'See financial profile')}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="${T.iconBadge('rgba(0,61,255,0.08)')}">🛒</span>
+        <span style="${T.bodySm};color:var(--gray);">${escHtml(snap.ecommerce_platform||'Unknown platform')}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="${T.iconBadge(isTarget?'rgba(220,38,38,0.08)':'rgba(5,150,105,0.08)')}">${isTarget?'🎯':'✅'}</span>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <span style="${T.bodySm};color:var(--gray);">${escHtml(vendor)}</span>
+          ${isTarget?`<span style="${T.microCol('var(--red)')};background:rgba(220,38,38,0.10);padding:2px 7px;border-radius:3px;">Target</span>`:''}
+        </div>
+      </div>
+    </div>
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  </div>`;
+
+  // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
+  const tile4 = `<div class="ov-tile ov-tile-opp" data-spotlight-color="5,150,105">
+    <div class="ov-q">WHAT'S THE OPPORTUNITY?</div>
+    <div style="${T.scoreNumXl('var(--green)')};margin-bottom:4px;">${escHtml(fin.search_roi_est||'—')}</div>
+    <div style="${T.bodySm};color:var(--mid);margin-bottom:16px;">conservative annual uplift estimate</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      ${fin.roi_multiple?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
+        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.roi_multiple)}</div>
+        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">ROI</div>
+      </div>`:''}
+      ${fin.payback_period?`<div style="background:rgba(5,150,105,0.08);border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:80px;">
+        <div style="${T.statNumBold('var(--green)')}">${escHtml(fin.payback_period)}</div>
+        <div style="${T.compact};color:var(--mid);text-transform:uppercase;letter-spacing:0.06em;">Payback</div>
+      </div>`:''}
+    </div>
+  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"case\"]');if(b)b.click();})()" title="Go to Business Case tab">Business Case <span>→</span></div>
+  </div>`;
+
+  return `<style>
+    /* ── Overview Bento Grid ── */
+    .ov-bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+      padding: 28px 0 4px;
+    }
+    .ov-tile-who   { grid-column: 1 / 4; }
+    .ov-tile-score { grid-column: 4 / 7; }
+    .ov-tile-opp   { grid-column: 1 / 5; }
+    .ov-tile-next  { grid-column: 5 / 7; }
+
+    .ov-tile {
+      position: relative;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.85);
+      border-radius: 20px;
+      padding: 26px 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transform-style: preserve-3d;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.03),
+        0 6px 16px rgba(0,0,0,0.06),
+        0 16px 36px rgba(0,0,0,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+    }
+
+    /* Spotlight layer */
+    .ov-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(600px circle at var(--ov-x, 50%) var(--ov-y, 50%),
+        rgba(var(--ov-spot, 0,61,255), 0.07) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ov-tile:hover::before { opacity: 1; }
+
+    /* Top shimmer border on hover */
+    .ov-tile::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ov-tile:hover::after { opacity: 1; }
+
+    /* Content above pseudo-elements */
+    .ov-tile > * { position: relative; z-index: 1; }
+
+    .ov-q {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #94A3B8;
+      margin-bottom: 14px;
+    }
+
+    .ov-tile-nav {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94A3B8;
+      cursor: pointer;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ov-tile-nav:hover { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .ov-bento { grid-template-columns: 1fr 1fr; }
+      .ov-tile-score { grid-column: 1 / 3; }
+      .ov-tile-next  { grid-column: 1 / 2; }
+      .ov-tile-who   { grid-column: 2 / 3; }
+      .ov-tile-opp   { grid-column: 1 / 3; }
+    }
+    @media (max-width: 600px) {
+      .ov-bento { grid-template-columns: 1fr; }
+      .ov-tile-score, .ov-tile-next, .ov-tile-who, .ov-tile-opp { grid-column: 1 / 2; }
+    }
+  </style>
+
+  <section id="section-overview-grid" class="audit-section" style="padding:0;background:none;box-shadow:none;border:none;">
+    <div class="ov-bento">
+      ${tile3}
+      ${tile1}
+      ${tile4}
+      ${tile2}
+    </div>
+  </section>`;
+}
+
 function sectionExecSummary(D) {
 
   const sc = D.score || {};
@@ -7524,266 +8335,6 @@ function sectionExecSummary(D) {
 
     })()}
 
-
-
-    <!-- SCORE BY DIMENSION — right below the score, before revenue/competitive -->
-
-    <div style="margin-top:40px;">
-
-      ${sectionAppendixScoring(D)}
-
-    </div>
-
-
-
-    <!-- REVENUE BANNER + GOLDEN ANGLE + TIMING -->
-
-    ${(() => {
-
-      const fin = D.financials || {};
-
-      const ga  = D.golden_angle || {};
-
-      const cmp = D.competitive_synthesis || {};
-
-      const hir = D.hiring || {};
-
-      const rs  = fin.roi_scenarios || {};
-
-      const goldenNames = (cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').includes('GOLDEN')).flatMap(t=>t.competitors||[]);
-
-      const vacantRole  = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
-
-
-
-      return `
-
-      <!-- ── Revenue at Risk — single source: sectionRevenueAtRisk(D) ── -->
-
-      <div style="margin-top:56px;">${sectionRevenueAtRisk(D)}</div>
-
-
-
-      <!-- ── Competitive Edge ── -->
-
-      <div style="margin-top:56px;margin-bottom:12px;">
-
-        <div class="section-eyebrow">Competitive Intelligence</div>
-
-        <div style="${T.overviewTitle};">Who in your competitive set is already using Algolia</div>
-
-      </div>
-
-      <div style="margin-bottom:80px;">${renderGoldenAngleCard(ga)}</div>
-
-
-
-      <!-- ── Why Act Now — from intelligence_signals ── -->
-
-      <div style="margin-top:56px;margin-bottom:12px;">
-
-        <div class="section-eyebrow">Timing Signals</div>
-
-        <div style="${T.overviewTitle};">Three reasons this is the right moment to engage</div>
-
-      </div>
-
-      <!-- Aceternity feature-section-with-hover-effects — CSS in algolia-brand.css -->
-
-      <div class="feature-grid" style="margin-bottom:40px;">
-
-        ${(() => {
-
-          const allSigs = D.intelligence_signals || [];
-
-          const urgentSigs = allSigs
-
-            .filter(s => !['hiring'].includes(s.type))
-
-            .slice(0, 6);
-
-          if (!urgentSigs.length) return '<div class="feature-card"><div class="fc-title">No timing signals found</div></div>';
-
-          const urgencyClass = (type) =>
-
-            type==='exec'||type==='funding' ? 'high'
-
-            : type==='competitor'||type==='industry-risk' ? 'medium'
-
-            : 'positive';
-
-          const urgencyIcon = (type) =>
-
-            type==='exec'?'💬': type==='funding'?'🏦': type==='competitor'?'⚠️':
-
-            type==='hiring'?'👤': type==='media'?'📰': type==='industry-opp'?'📈':'🔔';
-
-          return urgentSigs.map(sig => {
-
-            const urg = urgencyClass(sig.type);
-
-            const hasUrl = sig.source_url && sig.source_url.startsWith('http');
-
-            return `<div class="feature-card feature-card--${urg}">
-
-              <div class="fc-icon">
-
-                <span style="${T.h4};">${urgencyIcon(sig.type)}</span>
-
-                <span style="${T.eyebrowSmCol(urg==='high'?'var(--red)':urg==='medium'?'var(--amber)':'var(--green)')}">
-
-                  ${escHtml(sig.badge_label||sig.type)}
-
-                </span>
-
-              </div>
-
-              <div class="fc-title-row">
-
-                <div class="fc-accent-bar"></div>
-
-                <div class="fc-title">${escHtml(sig.text?.slice(0,80)||'')}</div>
-
-              </div>
-
-              <div class="fc-desc">${escHtml((sig.text||'').slice(80,220))}${(sig.text||'').length>220?'…':''}</div>
-
-              ${sig.relevance ? `<div class="fc-desc" style="font-style:italic;">${escHtml(sig.relevance.slice(0,100))}</div>` : ''}
-
-              <div class="fc-source">
-
-                ${hasUrl
-
-                  ? `<a href="${sig.source_url}" target="_blank">${escHtml(sig.source_name||'Source')}</a>`
-
-                  : escHtml(sig.source_name||'')}
-
-                ${sig.source_date ? ` · ${escHtml(sig.source_date.slice(0,7))}` : ''}
-
-              </div>
-
-            </div>`;
-
-          }).join('');
-
-        })()}
-
-      </div>`;
-
-    })()}
-
-
-
-    <!-- 4 TAB NAVIGATION CARDS -->
-
-    ${(() => {
-
-      const cs  = D.company_snapshot || {};
-
-      const fin = D.financials || {};
-
-      const ts  = D.tech_stack || {};
-
-      const cmp = D.competitive_synthesis || {};
-
-      const hir = D.hiring || {};
-
-
-
-      const navCard = (tab, accent, eyebrow, headline, bullets) => {
-
-        const nav = `document.querySelector('[data-tab=\\'${tab}\\']').click();window.scrollTo({top:0,behavior:'instant'});`;
-
-        return `<div data-tab-target="${tab}" class="card card-3d"
-
-          style="padding:20px 22px;cursor:pointer;border:none;transition:box-shadow 0.3s ease,transform 0.25s ease;"
-
-          onclick="${nav}">
-
-          <div style="${T.eyebrowMdCol(accent)};margin-bottom:4px;">${eyebrow}</div>
-
-          <div style="${T.title};margin-bottom:10px;">${headline}</div>
-
-          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;">
-
-            ${bullets.map(b=>`<li style="${T.bodySmMid14};display:flex;gap:6px;line-height:1.4;">
-
-              <span style="color:${accent};font-weight:600;flex-shrink:0;">›</span><span>${b}</span></li>`).join('')}
-
-          </ul>
-
-          <div style="margin-top:12px;${T.labelCol(accent)};display:flex;align-items:center;gap:4px;">
-
-            Open tab <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-
-          </div>
-
-        </div>`;
-
-      };
-
-
-
-      const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
-
-
-
-      return `
-
-      <div style="margin-top:56px;margin-bottom:12px;">
-
-        <div class="section-eyebrow">Deep Dives</div>
-
-        <div style="${T.overviewTitle};">Navigate to any section for full intelligence and evidence</div>
-
-      </div>
-
-      <div id="deep-dive-nav" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;">
-
-        ${navCard('intel','var(--teal)','Company Intel','Who They Are',[
-
-          `${escHtml(cs.revenue||'~$1.2B est.')} revenue · ${escHtml(fin.margin_zone||'Yellow')} margin`,
-
-          `${escHtml(cs.ecommerce_platform||ts.primary_platform||ts.ecommerce_platform||'Commerce Platform')}`,
-
-          `${hir.total_open_roles||38} open roles · ${(hir.buying_committee||[]).find(r=>r.status?.includes('VACAN'))?'Technical Buyer VACANT':'Buying committee mapped'}`,
-
-        ])}
-
-        ${navCard('audit','var(--amber)','Search Audit','The Evidence',[
-
-          `${s(sc.overall)}/10 — ${n(sc.critical_count)} critical gaps · ${n(sc.moderate_count)} moderate`,
-
-          (()=>{const top3=(D.findings||[]).filter(f=>f.severity==='critical').slice(0,3).map((f,i)=>`G${i+1}: ${escHtml((f.category||'').split('/')[0].trim())}`).join(' · ');return top3||`${(D.findings||[]).length} findings documented`;})(),
-
-          `${((D.findings||[]).filter(f=>f.screenshot_file)).length} findings with screenshots`,
-
-        ])}
-
-        ${navCard('case','var(--blue)','Business Case','The Argument',[
-
-          `Said vs Found · Competitive Matrix · Revenue at Risk`,
-
-          `${(cmp.competitor_tiers||[]).filter(t=>String(t.tier||'').toUpperCase().includes('GOLDEN')).flatMap(t=>t.competitors||[]).join(' + ')||(cmp.competitor_tiers||[]).flatMap(t=>t.competitors||[]).slice(0,2).join(' + ')||'Top competitors'} use Algolia`,
-
-          `${(D.icp_mapping?.priority_to_product||[]).length||5} strategic angles in ${escHtml(D.meta?.company||'their')} own language`,
-
-        ])}
-
-        ${navCard('play','var(--violet)','Sales Play','Run the Deal',[
-
-          `Pre-call brief · Buying committee map`,
-
-          `Battle card: ${escHtml(D.company_snapshot?.ecommerce_platform?.split('(')[0]?.split(',')[0]?.trim()||D.tech_stack?.primary_platform?.split('(')[0]?.trim()||'Platform')} vs Algolia`,
-
-          `Discovery Qs · Objection counters · ${n((typeof D.abx_sequence==='object'?D.abx_sequence?.total_touches:0)||8)}-touch sequence`,
-
-        ])}
-
-      </div>`;
-
-    })()}
-
     </div><!-- /.aurora-content -->
 
   </section>`;
@@ -7864,7 +8415,7 @@ function sectionCompanySnapshot(D) {
 
   return `<section id="company-snapshot" class="audit-section">
 
-    <div class="section-eyebrow">Company Intelligence</div>
+    <div class="section-eyebrow">Company Overview</div>
 
     <div class="section-title">Company Snapshot</div>
 
@@ -8066,7 +8617,7 @@ function sectionCompanySnapshot(D) {
 
                 onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
 
-                ${escHtml(e.quote_source_label||sourceName(e.quote_source))} · ${escHtml(e.quote_date||'')}</a>` : ''}
+                ${escHtml(e.quote_source_label||sourceName(e.quote_source))}${!e.quote_source_label && e.quote_date ? ' · ' + escHtml(fmtDate(e.quote_date)) : ''}</a>` : ''}
 
             </div>` : ''}
 
@@ -8111,6 +8662,8 @@ function sectionCompanySnapshot(D) {
 function sectionTraffic(D) {
 
   const t = D.traffic || {};
+
+  if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
   const channels = t.top_channels || [];
 
@@ -8464,27 +9017,62 @@ function sectionFinancials(D) {
 
   const cs  = D.company_snapshot || {};
 
-  const rev3 = f.revenue_3y      || [];
+  if (!f.revenue_3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
 
+  // Reverse so latest year (FY2025) shows first
+  const rev3 = [...(f.revenue_3y || [])].reverse();
 
+  // Parse financial string values to numbers for comparison
+  // Handles "$3.315B", "−$10.5M", "4.9%", "−0.35%"
+  function parseFinVal(s) {
+    if (!s || s === '—') return null;
+    const neg = s.includes('−') || s.startsWith('-');
+    const n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
+    if (isNaN(n)) return null;
+    let v = n;
+    if (/B/i.test(s)) v *= 1000;  // billions → millions
+    return neg ? -v : v;
+  }
 
-  // Bar widths relative to max revenue (last entry = 100%)
+  // Return arrow HTML: green ↑ if current > prior, red ↓ if current < prior
+  function arrow(current, prior) {
+    const c = parseFinVal(current), p = parseFinVal(prior);
+    if (c === null || p === null) return '';
+    if (c > p) return '<span style="color:#10B981;font-size:0.85rem;margin-left:3px;">↑</span>';
+    if (c < p) return '<span style="color:#DC2626;font-size:0.85rem;margin-left:3px;">↓</span>';
+    return '';
+  }
 
+  // Bar widths relative to max revenue
   const revNums = rev3.map(r => {
-
     if (typeof r.revenue === 'number') return r.revenue;
-
     const m = String(r.revenue || '').replace(/[^0-9.]/g, '');
-
-    return parseFloat(m) || 0;
-
+    const v = parseFloat(m) || 0;
+    return /B/i.test(String(r.revenue)) ? v * 1000 : v;
   });
 
   const maxRev = Math.max(...revNums, 1);
 
   const barPcts = revNums.map(v => Math.round((v / maxRev) * 100));
 
-
+  // Pre-compute YoY arrows for each year (current vs prior = next item in reversed array)
+  // Green ↑ if improved, red ↓ if declined, empty string if no prior year
+  function finNum(s) {
+    if (!s || s === '\u2014') return null;
+    var neg = String(s).indexOf('\u2212') >= 0 || String(s).indexOf('-') === 0;
+    var n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
+    if (isNaN(n)) return null;
+    if (/B/i.test(String(s))) n *= 1000;
+    return neg ? -n : n;
+  }
+  function yrArrow(cur, priorR, field) {
+    if (!priorR) return '';
+    var c = finNum(cur), p = finNum(priorR[field]);
+    if (c === null || p === null) return '';
+    if (c > p) return '<span style="color:#10B981;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2191;</span>';
+    if (c < p) return '<span style="color:#DC2626;font-size:0.8rem;margin-left:2px;font-weight:700;">&#x2193;</span>';
+    return '';
+  }
 
   // Per-year rich content — built from revenue_3y scratchpad data
 
@@ -8585,20 +9173,26 @@ function sectionFinancials(D) {
           <div class="tl-metrics-row">
 
             <div class="tl-metric">
-
-              <div class="tl-metric__label">Digital Revenue</div>
-
-              <div class="tl-metric__value">${escHtml(meta.digital)}</div>
-
+              <div class="tl-metric__label">Gross Profit</div>
+              <div class="tl-metric__value">${escHtml(r.gross_profit||'—')}${yrArrow(r.gross_profit, rev3[i+1], 'gross_profit')}</div>
             </div>
 
             <div class="tl-metric">
-
-              <div class="tl-metric__label">Search-Driven</div>
-
-              <div class="tl-metric__value">${escHtml(meta.searchAdj)}</div>
-
+              <div class="tl-metric__label">Net Income</div>
+              <div class="tl-metric__value" style="${String(r.net_income||'').indexOf('\u2212')>=0?'color:var(--red)':''}">${escHtml(r.net_income||'—')}${yrArrow(r.net_income, rev3[i+1], 'net_income')}</div>
             </div>
+
+            <div class="tl-metric">
+              <div class="tl-metric__label">Operating Income</div>
+              <div class="tl-metric__value">${escHtml(r.operating_income||'—')}${yrArrow(r.operating_income, rev3[i+1], 'operating_income')}</div>
+            </div>
+
+            <div class="tl-metric">
+              <div class="tl-metric__label">Net Margin</div>
+              <div class="tl-metric__value" style="${String(r.net_margin||'').indexOf('\u2212')>=0?'color:var(--red)':''}">${escHtml(r.net_margin||'—')}${yrArrow(r.net_margin, rev3[i+1], 'net_margin')}</div>
+            </div>
+
+            ${r.digital_share ? '<div class="tl-metric" style="grid-column:1/-1;border-top:1px solid var(--border);margin-top:4px;padding-top:8px;"><div class="tl-metric__label">Digital Revenue (Est.)</div><div class="tl-metric__value">' + escHtml(r.digital_share) + '</div></div>' : ''}
 
           </div>
 
@@ -8901,6 +9495,8 @@ function sectionHiring(D) {
 function sectionScoreHeatmap(D) {
 
   const sc = D.score || {};
+
+  if (!sc.overall && !Object.keys(sc.breakdown||{}).length) return '';
 
   // Build category→finding map for TOC click targets
 
@@ -9276,7 +9872,7 @@ function sectionSignals(D) {
 
   // to avoid duplication. Hiring signals here would repeat the buying committee section.
 
-  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring');
+  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && (s.badge_label || s.text || s.quote));
 
   if (!signals.length) return `<section id="section-signals" class="audit-section">
 
@@ -9450,18 +10046,46 @@ function sectionSignals(D) {
 
 function sectionExecQuotes(D) {
 
-  const quotes = D.executives || [];
+  // Prefer intelligence_signals[] (v1.1 schema) — filter to quote types only.
+  // Fall back to legacy D.executives[] for backward compatibility with pre-v1.1 audits.
+  const sigQuotes = (D.intelligence_signals || []).filter(
+    s => (s.type === 'earnings_quote' || s.type === 'media_quote') && s.quote && s.quote.trim()
+  );
 
-  return `<section id="section-quotes" class="audit-section">
+  const useLegacy = sigQuotes.length === 0;
 
-    <div class="section-eyebrow">Intelligence · In Their Own Words</div>
+  // ── Render: intelligence_signals schema (v1.1) ────────────────────────────
+  const renderSignalQuote = (q) => {
+    const badgeHtml = q.type === 'media_quote'
+      ? srcTag('bay', 'MEDIA' + (q.publication ? ' \xB7 ' + escHtml(q.publication) : ''))
+      : srcTag('sec', 'EARNINGS CALL');
 
-    <div class="section-title">What Leadership Is Saying</div>
+    const sourceLink = q.source_url
+      ? lnk(q.source_url, escHtml(q.label || q.source_date || 'Source'))
+      : escHtml(q.label || q.source_date || '');
 
-    <p class="section-desc">Direct quotes from named executives, sourced from earnings calls, investor presentations, press interviews, and SEC filings.</p>
+    return `
+    <div class="quote-card">
 
-    ${quotes.map(q => `
+      <div class="quote-mark">"</div>
 
+      <div class="quote-text">${escHtml(q.quote)}</div>
+
+      <div class="quote-attr" style="${T.labelBlue}">— ${escHtml(q.speaker)}, ${escHtml(q.title)}</div>
+
+      <div class="quote-source">
+
+        ${badgeHtml} ${sourceLink}
+
+      </div>
+
+      ${q.context ? `<div class="quote-relevance" style="${T.bodySm}">${escHtml(q.context)}</div>` : ''}
+
+    </div>`;
+  };
+
+  // ── Render: legacy executives[] schema (pre-v1.1 backward compat) ─────────
+  const renderLegacyQuote = (q) => `
     <div class="quote-card">
 
       <div class="quote-mark">"</div>
@@ -9472,13 +10096,27 @@ function sectionExecQuotes(D) {
 
       <div class="quote-source">
 
-        ${lnk(q.quote_source, escHtml(q.quote_source_label || 'Source'))} · ${escHtml(q.quote_date)}
+        ${lnk(q.quote_source, escHtml(q.quote_source_label || 'Source'))}${!q.quote_source_label && q.quote_date ? ' · ' + escHtml(fmtDate(q.quote_date)) : ''}
 
       </div>
 
       ${q.relevance ? `<div class="quote-relevance">${escHtml(q.relevance)}</div>` : ''}
 
-    </div>`).join('')}
+    </div>`;
+
+  const renderedQuotes = useLegacy
+    ? (D.executives || []).map(renderLegacyQuote).join('')
+    : sigQuotes.map(renderSignalQuote).join('');
+
+  return `<section id="section-quotes" class="audit-section">
+
+    <div class="section-eyebrow">Intelligence · In Their Own Words</div>
+
+    <div class="section-title">What Leadership Is Saying</div>
+
+    <p class="section-desc">Direct quotes from named executives, sourced from earnings calls, investor presentations, press interviews, and SEC filings.</p>
+
+    ${renderedQuotes || '<p style="' + T.body + '">No executive quotes available.</p>'}
 
   </section>`;
 
@@ -9495,6 +10133,8 @@ function sectionExecQuotes(D) {
 function sectionCompetitive(D) {
 
   const comps = D.competitors || [];
+
+  if (!comps.length) return '';
 
   return `<section id="section-competitive" class="audit-section">
 
@@ -9557,6 +10197,8 @@ function sectionCompetitive(D) {
 function sectionOpportunity(D) {
 
   const f = D.financials || {};
+
+  if (!f.total_digital_revenue && !f.search_roi_est) return '';
 
   return `<section id="section-opportunity" class="audit-section">
 
@@ -10214,27 +10856,29 @@ function sectionRevenueAtRisk(D) {
 
   const f = D.financials || {};
 
+  if (!f.total_digital_revenue && !f.search_roi_est && !(f.roi_scenarios?.conservative?.annual_impact)) return '';
+
   const rs = f.roi_scenarios || {};
 
   const scenarios = [
 
-    { label:'Conservative', pct:'5%', amt:rs.conservative?.annual_impact||f.search_roi_est||'$4.85M/yr', desc:rs.conservative?.scenario_desc||'Better relevance, faster SAYT, improved typo tolerance', play:'Defensive', col:'var(--red)' },
+    { label:'Conservative', pct:'5%', amt:rs.conservative?.annual_impact||f.search_roi_est||null, desc:rs.conservative?.scenario_desc||'Better relevance, faster SAYT, improved typo tolerance', play:'Defensive', col:'var(--red)' },
 
-    { label:'Moderate',     pct:'10%', amt:rs.moderate?.annual_impact||'$9.7M/yr',   desc:rs.moderate?.scenario_desc||'+ Semantic search, dynamic faceting, personalization', play:'Offensive', col:'var(--amber)' },
+    { label:'Moderate',     pct:'10%', amt:rs.moderate?.annual_impact||null,   desc:rs.moderate?.scenario_desc||'+ Semantic search, dynamic faceting, personalization', play:'Offensive', col:'var(--amber)' },
 
-    { label:'Optimistic',   pct:'15%', amt:rs.optimistic?.annual_impact||'$14.55M/yr', desc:rs.optimistic?.scenario_desc||'+ Full AI personalization, recommendations, federated content', play:'Leadership', col:'var(--green)' },
+    { label:'Optimistic',   pct:'15%', amt:rs.optimistic?.annual_impact||null, desc:rs.optimistic?.scenario_desc||'+ Full AI personalization, recommendations, federated content', play:'Leadership', col:'var(--green)' },
 
   ];
 
   // Build the formula string for transparency
 
-  const revBase = f.total_digital_revenue || '~$540M';
+  const revBase = f.total_digital_revenue || null;
 
   const searchPct = f.search_driven_pct || 18;
 
-  const searchAddr = f.search_addressable || '~$97M';
+  const searchAddr = f.search_addressable || null;
 
-  const algoliaAnnual = f.algolia_annual_cost_est || '~$200K/yr';
+  const algoliaAnnual = f.algolia_annual_cost_est || null;
 
 
 
@@ -10252,11 +10896,11 @@ function sectionRevenueAtRisk(D) {
 
       <span style="font-weight:600;color:var(--amber);">⚠ Model Assumptions — All estimates unless marked verified</span><br>
 
-      <strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : '~7%')} of total revenue) ·
+      ${revBase ? `<strong>Revenue base:</strong> ${escHtml(revBase)} digital revenue (${f.ecommerce_share || (f.digital_share_pct ? f.digital_share_pct+'%' : 'est. ~7%')} of total revenue) · ` : ''}
 
-      <strong>Search-influenced:</strong> ${searchPct}% = ${escHtml(searchAddr)} (industry benchmark — <em>source needed</em>) ·
+      <strong>Search-influenced:</strong> ${searchPct}% ${searchAddr ? `= ${escHtml(searchAddr)} ` : ''}(industry benchmark — <em>source needed</em>) ·
 
-      <strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) ·
+      ${algoliaAnnual ? `<strong>Algolia cost:</strong> ${escHtml(algoliaAnnual)} (<em>estimated — pricing not public, varies by query volume</em>) · ` : ''}
 
       <strong>Lift %:</strong> based on Algolia case studies in comparable verticals — conversion rate improvements, not guaranteed revenue impact
 
@@ -10292,9 +10936,9 @@ function sectionRevenueAtRisk(D) {
 
         <div class="bounce-card__gradient">
 
-          <div class="bounce-card__amount">${escHtml(sc.amt)}</div>
+          <div class="bounce-card__amount">${sc.amt ? escHtml(sc.amt) : 'TBD'}</div>
 
-          <div class="bounce-card__amount-sub">per year · estimate</div>
+          <div class="bounce-card__amount-sub">${sc.amt ? 'per year · estimate' : 'run ROI model'}</div>
 
           <span style="margin-top:6px;background:rgba(255,255,255,0.2);padding:3px 12px;border-radius:20px;${T.eyebrowSmCol('white')};">${escHtml(sc.play)} Play</span>
 
@@ -10496,6 +11140,8 @@ function sectionCompetitiveSynthesis(D) {
 
   const matrix = cs.positioning_matrix || [];
 
+  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+
   const cap = (v) => v===true?'<span class="cap-yes">✓</span>':v===false?'<span class="cap-no">✗</span>':`<span class="cap-part">${escHtml(String(v||'~'))}</span>`;
 
 
@@ -10610,7 +11256,7 @@ function sectionCompetitiveSynthesis(D) {
 
                 <td style="padding:14px 16px;vertical-align:top;">
 
-                  <div style="${T.bodySm};">${escHtml(t.strategic_implication||'')}</div>
+                  <div style="${T.bodySm};">${escHtml(t.strategic_implication||t.strategic_angle||'')}</div>
 
                 </td>
 
@@ -10648,19 +11294,8 @@ function sectionCompetitiveSynthesis(D) {
 
       <div style="${T.eyebrow};margin-bottom:12px;">Capability Matrix</div>
 
-      <table class="data-table" style="table-layout:fixed;width:100%;">
-
-        <colgroup>
-
-          <col style="width:22%">
-
-          <col style="width:10%"><col style="width:10%"><col style="width:11%"><col style="width:11%">
-
-          <col style="width:16%">
-
-          <col style="width:20%">
-
-        </colgroup>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;">
+      <table class="data-table" style="table-layout:auto;width:100%;min-width:680px;border:none;">
 
         ${(()=>{
 
@@ -10697,6 +11332,7 @@ function sectionCompetitiveSynthesis(D) {
         })()}
 
       </table>
+      </div>
 
     </div>`:''}
 
@@ -10714,11 +11350,35 @@ function sectionCompetitiveSynthesis(D) {
 
 
 
+/* ── CountUp helper — Intersection Observer, 1.6s, respects prefers-reduced-motion ── */
+function initCaseStudyCountUp() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting || entry.target._counted) return;
+      entry.target._counted = true;
+      const raw = entry.target.dataset.metric || '';
+      const match = raw.match(/^([^\d\-]*)?([\d,.]+)([^\d]*)$/);
+      if (!match) return;
+      const prefix = match[1] || '';
+      const end = parseFloat(match[2].replace(/,/g, ''));
+      const suffix = match[3] || '';
+      const decimals = (match[2].split('.')[1] || '').length;
+      const start = Date.now();
+      const dur = 1600;
+      function tick() {
+        const p = Math.min((Date.now() - start) / dur, 1);
+        const val = end * p;
+        entry.target.textContent = prefix + val.toLocaleString(undefined, {minimumFractionDigits: decimals, maximumFractionDigits: decimals}) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('[data-metric]').forEach(el => observer.observe(el));
+}
+
 function sectionCaseStudies(D) {
-
-  // Case studies MUST come from audit-data.json — never hardcoded
-
-  // Populated by Phase 5 based on company vertical (see algolia-audit-report SKILL.md)
 
   const cases = D.case_studies || [];
 
@@ -10726,35 +11386,203 @@ function sectionCaseStudies(D) {
 
   const cs = D.company_snapshot || {};
 
+  const csId = 'cs-' + Math.random().toString(36).slice(2,7);
+
+  // Algolia brand gradients — match the app's light-to-blue palette
+  const palettes = [
+    { bg:'linear-gradient(145deg,#003DFF 0%,#5468FF 100%)', overlay:'rgba(0,0,0,0.28)' },
+    { bg:'linear-gradient(145deg,#5468FF 0%,#7B88FF 100%)', overlay:'rgba(0,0,0,0.22)' },
+    { bg:'linear-gradient(145deg,#0029CC 0%,#003DFF 100%)', overlay:'rgba(0,0,0,0.28)' },
+    { bg:'linear-gradient(145deg,#003DFF 0%,#0029CC 100%)', overlay:'rgba(0,0,0,0.22)' },
+  ];
+
+  const items = cases.map((c, i) => {
+    const p = palettes[i % palettes.length];
+    const initials = (c.company||'??').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    // Derive domain for clearbit logo — try logo_domain field first, then derive from name
+    const logoDomain = c.logo_domain || ((c.company||'').toLowerCase().replace(/[^a-z0-9]/g,'') + '.com');
+    // Use google favicon service as primary (works from file://) + clearbit as alt
+    const googleLogoUrl = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${logoDomain}&size=64`;
+    const clearbitUrl = `https://logo.clearbit.com/${logoDomain}?size=80`;
+    return { c, p, initials, logoUrl: clearbitUrl, googleLogoUrl };
+  });
+
   return `<section id="section-case-studies" class="audit-section">
 
     <div class="section-eyebrow">Business Case · Proof</div>
+    <div class="section-title">Customer Proof</div>
+    <p class="section-desc">Selected for ${escHtml(D.meta?.company||'this company')}'s vertical. Real results from comparable Algolia customers.</p>
 
-    <div class="section-title">Vertical Case Studies</div>
+    <style>
+      .iac-wrap { display:flex; gap:8px; height:380px; }
+      .iac-panel {
+        position:relative; border-radius:14px; overflow:hidden;
+        flex:0 0 64px; flex-shrink:0; cursor:pointer;
+        transition:flex 0.38s cubic-bezier(0.4,0,0.2,1), border-color 0.2s;
+        border:1.5px solid transparent;
+      }
+      .iac-panel.iac-active { flex:1 1 auto; cursor:default; }
+      .iac-bg { position:absolute; inset:0; background-size:cover; background-position:center; }
+      .iac-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.55); transition:background 0.4s; }
+      .iac-panel.iac-active .iac-overlay { background:rgba(0,0,0,0.28); }
+      /* collapsed slab — click target, hidden when active */
+      .iac-collapsed {
+        position:absolute; inset:0; display:flex; flex-direction:column;
+        align-items:center; justify-content:center; gap:10px; z-index:1;
+        cursor:pointer;
+      }
+      .iac-panel.iac-active .iac-collapsed { display:none; }
+      .iac-logo-wrap {
+        display:flex; flex-direction:column; align-items:center; gap:6px;
+      }
+      .iac-logo-img {
+        width:44px; height:44px; object-fit:contain; border-radius:8px;
+        background:rgba(255,255,255,0.12); padding:6px;
+      }
+      .iac-monogram-fallback {
+        font-size:18px; font-weight:800; color:rgba(255,255,255,0.6);
+        letter-spacing:2px; display:none;
+      }
+      .iac-label-collapsed {
+        writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg);
+        font-size:11px; font-weight:700; letter-spacing:0.08em;
+        text-transform:uppercase; color:rgba(255,255,255,0.75);
+        white-space:nowrap;
+      }
+      .iac-content {
+        position:absolute; bottom:0; left:0; right:0;
+        padding:24px; opacity:0; transform:translateY(10px);
+        transition:opacity 0.35s 0.15s, transform 0.35s 0.15s;
+        z-index:1;
+      }
+      .iac-panel.iac-active .iac-content { opacity:1; transform:translateY(0); }
+      .iac-vertical { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:6px; }
+      .iac-company { font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
+      .iac-result { font-size:15px; font-weight:600; color:#93c5fd; margin-bottom:8px; }
+      .iac-why { font-size:12px; color:rgba(255,255,255,0.75); line-height:1.55; margin-bottom:12px; }
+      .iac-link { font-size:12px; font-weight:600; color:#60a5fa; text-decoration:none; }
+      .iac-link:hover { color:#93c5fd; }
+      .iac-product-badge {
+        display:inline-block; font-size:10px; padding:2px 8px; border-radius:4px;
+        background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.8);
+        margin-bottom:10px;
+      }
+    </style>
 
-    <p class="section-desc">Selected for ${escHtml(D.meta?.company||'this company')}${cs.industry ? `'s context: ${escHtml(cs.industry)}` : ''}. Each is directly comparable to this account.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;box-sizing:border-box;">
-
-      ${cases.map(c=>`<div class="card card-3d" style="padding:20px;min-width:0;box-sizing:border-box;">
-
-        <div style="${T.eyebrow};margin-bottom:6px;">${escHtml(c.vertical)}</div>
-
-        <div style="${T.h5};margin-bottom:10px;">${escHtml(c.company)}</div>
-
-        <div style="${T.h3};color:var(--green);line-height:1.2;margin-bottom:8px;">${escHtml(c.result)}</div>
-
-        <div style="${T.bodySmMid14};margin-bottom:12px;">${escHtml(c.product)}</div>
-
-        <div style="${T.bodySm};padding:10px;background:var(--light);border-radius:6px;margin-bottom:12px;">${escHtml(c.why)}</div>
-
-        ${proofPill(c.url, c.company, c.result, 'green')}
-
-      </div>`).join('')}
-
+    <div class="iac-wrap" id="${csId}">
+      ${items.map((it, i) => `
+        <div class="iac-panel${i===0?' iac-active':''}" data-cs="${i}" style="">
+          <div class="iac-bg" style="background:${it.p.bg};"></div>
+          <div class="iac-overlay"></div>
+          <div class="iac-collapsed">
+            <div class="iac-logo-wrap">
+              <img class="iac-logo-img" src="${escHtml(it.googleLogoUrl)}" alt="${escHtml(it.c.company||'')}"
+                onerror="if(this.dataset.tried){this.style.display='none';this.nextElementSibling.style.display='flex';}else{this.dataset.tried=1;this.src='${escHtml(it.logoUrl)}';}">
+              <div class="iac-monogram-fallback">${it.initials}</div>
+            </div>
+            <div class="iac-label-collapsed">${escHtml(it.c.company||'')}</div>
+          </div>
+          <div class="iac-content">
+            <div class="iac-vertical">${escHtml(it.c.vertical||'')}</div>
+            <div class="iac-company">${escHtml(it.c.company||'')}</div>
+            <div class="iac-result">${escHtml(it.c.result||'')}</div>
+            ${it.c.product?`<div class="iac-product-badge">${escHtml(it.c.product)}</div>`:''}
+            <div class="iac-why">${escHtml(it.c.why||'')}</div>
+            ${it.c.url?`<a href="${escHtml(it.c.url)}" target="_blank" class="iac-link">Read case study →</a>`:''}
+          </div>
+        </div>`).join('')}
     </div>
 
   </section>`;
+
+}
+
+
+
+function sectionIndustryContext(D) {
+
+  const ic = D.industry_context;
+
+  // Render nothing when industry_context is null/undefined or has no benchmarks
+  if (!ic || !ic.key_benchmarks || !ic.key_benchmarks.length) return '';
+
+  const vertical = ic.vertical || '';
+
+  const market = ic.primary_market || '';
+
+  const subtitle = [vertical, market].filter(Boolean).join(' \xb7 ');
+
+  const benchmarkCards = ic.key_benchmarks.map(b => {
+
+    const confidenceIcon = (b.confidence || '').toUpperCase() === 'FACT' ? '\u2705' : '~';
+
+    const sourceLink = b.source_url
+      ? `<a class="inline-src" href="${escHtml(b.source_url)}" target="_blank" rel="noopener">${escHtml(b.source_name || 'Source')} \u2197</a>`
+      : (b.source_name ? `<span style="${T.compact};">${escHtml(b.source_name)}</span>` : '');
+
+    return `<div class="feature-card">
+
+      <div class="fc-icon">
+
+        <span style="${T.h5};">${confidenceIcon}</span>
+
+      </div>
+
+      <div class="fc-title-row">
+
+        <div class="fc-accent-bar"></div>
+
+        <div class="fc-title">${escHtml(b.metric)}${b.value ? ` \u2014 ${escHtml(b.value)}` : ''}</div>
+
+      </div>
+
+      ${b.context ? `<div class="fc-desc">${escHtml(b.context)}</div>` : ''}
+
+      ${sourceLink ? `<div class="fc-source">${sourceLink}</div>` : ''}
+
+    </div>`;
+
+  }).join('');
+
+  const trendSourceLink = ic.trend_source_url
+    ? `<a class="inline-src" href="${escHtml(ic.trend_source_url)}" target="_blank" rel="noopener">${escHtml(ic.trend_source_label || 'Source')} \u2197</a>`
+    : '';
+
+  const trendBlock = ic.trend_headline
+    ? `<div style="background:var(--blue-tint);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:14px 18px;margin-top:20px;${ic.algolia_angle ? 'margin-bottom:16px;' : ''}">
+
+        <div style="${T.eyebrowBlue};margin-bottom:6px;">Industry Trend</div>
+
+        <div style="${T.h5};">${escHtml(ic.trend_headline)}</div>
+
+        ${trendSourceLink ? `<div style="margin-top:8px;">${trendSourceLink}</div>` : ''}
+
+      </div>`
+    : '';
+
+  const angleBlock = ic.algolia_angle
+    ? `<p style="${T.body};">${escHtml(ic.algolia_angle)}</p>`
+    : '';
+
+  return `<div class="dp-tile"><section id="section-industry-context" class="audit-section">
+
+    <div class="section-eyebrow">Business Case \xb7 Industry</div>
+
+    <div class="section-title">Industry Context</div>
+
+    ${subtitle ? `<div class="section-subtitle">${escHtml(subtitle)}</div>` : ''}
+
+    <div class="feature-grid" style="grid-template-columns:repeat(3,1fr);">
+
+      ${benchmarkCards}
+
+    </div>
+
+    ${trendBlock}
+
+    ${angleBlock}
+
+  </section></div>`;
 
 }
 
@@ -10803,6 +11631,8 @@ function sectionWhyNow(D) {
     : [];
 
   const triggers = [...vacantTrigger, ...sigTriggers, ...berkshireTrigger].slice(0, 4);
+
+  if (!triggers.length) return '';
 
   const urgCol = {high:'var(--red)',medium:'var(--amber)',positive:'var(--green)'};
 
@@ -10920,7 +11750,325 @@ function sectionStrategicAngles(D) {
 
 
 
-/* ─── Sales Play sections ─── */
+/* ─── Sales Play: unified Play Cards accordion ─── */
+
+
+
+function sectionSalesPlays(D) {
+
+  const angles = D.strategic_angles || [];
+
+  if (!angles.length) return '';
+
+  const hir = D.hiring || {};
+
+  const genericObjs = hir.objection_counters || [];
+
+  const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
+
+  const accentBgs    = ['var(--blue-tint)','var(--green-tint)','var(--violet-tint)','var(--teal-tint)'];
+
+  const uid = 'plays-' + Math.random().toString(36).slice(2,7);
+
+  /* ── backward-compat helpers ── */
+
+  function getQuestions(a) {
+
+    if (Array.isArray(a.discovery_questions) && a.discovery_questions.length) return a.discovery_questions;
+
+    if (a.discovery_question) return [a.discovery_question];
+
+    return [];
+
+  }
+
+  function getProofPoints(a) {
+
+    if (Array.isArray(a.proof_points) && a.proof_points.length) return a.proof_points;
+
+    if (a.algolia_proof) return [{ text: a.algolia_proof, source: 'Algolia', url: null }];
+
+    return (a.pain_points || []).map(p => ({ text: p, source: null, url: null }));
+
+  }
+
+  function srcBadge(source, url) {
+
+    if (!source) return '';
+
+    const abbrevMap = { SimilarWeb:'SW', BuiltWith:'BW', Algolia:'AG', 'Yahoo Finance':'YF', SEC:'SEC', Baymard:'Bay', Forrester:'For' };
+
+    const ab = abbrevMap[source] || source.slice(0,3).toUpperCase();
+
+    return url
+
+      ? `<a href="${escHtml(url)}" target="_blank" class="src-tag">${ab}</a>`
+
+      : `<span class="src-tag">${ab}</span>`;
+
+  }
+
+  /* ── panel HTML ── */
+
+  const panelsHTML = angles.map((a, i) => {
+
+    const col  = accentColors[i % accentColors.length];
+
+    const bg   = accentBgs[i % accentBgs.length];
+
+    const qs   = getQuestions(a);
+
+    const pps  = getProofPoints(a);
+
+    const isFirst = i === 0;
+
+    const proofHTML = pps.map(pp => {
+
+      const text   = typeof pp === 'string' ? pp : (pp.text || '');
+
+      const source = typeof pp === 'object' ? pp.source : null;
+
+      const url    = typeof pp === 'object' ? pp.url    : null;
+
+      return `<div style="display:flex;align-items:flex-start;gap:8px;${T.bodySm};margin-bottom:4px;">
+
+        <span style="color:${col};flex-shrink:0;margin-top:2px;font-weight:700;">›</span>
+
+        <span style="line-height:1.5;">${escHtml(text)} ${srcBadge(source, url)}</span>
+
+      </div>`;
+
+    }).join('');
+
+    const questionsHTML = qs.map((q, qi) => `<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
+
+      <div class="play-q-num" style="background:${bg};color:${col};">${qi+1}</div>
+
+      <div style="${T.body};font-style:italic;line-height:1.6;color:var(--indigo);">"${escHtml(q)}"</div>
+
+    </div>`).join('');
+
+    const objHTML = a.objection ? `<div class="play-obj-row">
+
+      <div class="play-obj-side play-obj-bad">
+
+        <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">They'll Say</div>
+
+        <div style="${T.italic};color:var(--red);">"${escHtml(a.objection)}"</div>
+
+      </div>
+
+      <div class="play-obj-side play-obj-good">
+
+        <div style="${T.eyebrowCol('var(--green)')};margin-bottom:8px;">You Say</div>
+
+        <div style="${T.body};line-height:1.6;">${escHtml(a.objection_counter || '')}</div>
+
+      </div>
+
+    </div>` : '';
+
+    return `<div class="play-panel${isFirst ? ' active' : ''}" data-play="${i}" style="border-top:3px solid ${col};">
+
+      <div class="play-collapsed">
+
+        <div class="play-num" style="background:${bg};color:${col};">${i+1}</div>
+
+        <div class="play-label-vert">${escHtml(a.label)}</div>
+
+      </div>
+
+      <div class="play-expanded">
+
+        <div class="play-exp-header">
+
+          <div>
+
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+
+              <div class="play-num-lg" style="background:${col};">${i+1}</div>
+
+              <div style="${T.title};color:${col};">${escHtml(a.label)}</div>
+
+            </div>
+
+            <div style="${T.italic};line-height:1.6;">"${escHtml(a.hook)}"</div>
+
+          </div>
+
+          <div>
+
+            <div style="${T.eyebrow};margin-bottom:10px;">Proof Points</div>
+
+            ${proofHTML}
+
+          </div>
+
+        </div>
+
+        ${qs.length ? `<div class="play-exp-questions">
+
+          <div style="${T.eyebrow};margin-bottom:12px;">Discovery Questions</div>
+
+          ${questionsHTML}
+
+        </div>` : ''}
+
+        ${objHTML}
+
+      </div>
+
+    </div>`;
+
+  }).join('');
+
+  /* ── generic objections (non-angle) ── */
+
+  const commonObjHTML = genericObjs.length ? `<div style="margin-top:28px;">
+
+    <div style="${T.eyebrow};margin-bottom:14px;">Common Objections</div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;">
+
+      ${genericObjs.map(o => `<div class="card" style="padding:16px 18px;">
+
+        <div style="${T.labelRed};margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
+
+        <div style="${T.body};line-height:1.5;">${escHtml(o.counter||'')}</div>
+
+      </div>`).join('')}
+
+    </div>
+
+  </div>` : '';
+
+  return `<style>
+
+    /* ── Play Cards accordion ── */
+
+    .plays-accordion { display:flex; gap:10px; min-height:420px; align-items:stretch; }
+
+    .play-panel {
+
+      flex:0 0 68px; border-radius:12px; border:1.5px solid var(--border);
+
+      overflow:hidden; cursor:pointer; background:white; position:relative;
+
+      display:flex; flex-direction:column;
+
+      transition:flex 0.38s cubic-bezier(0.4,0,0.2,1), border-color 0.2s, box-shadow 0.2s;
+
+    }
+
+    .play-panel:hover:not(.active) { border-color:#c7d2fe; box-shadow:0 2px 12px rgba(0,61,255,0.07); }
+
+    .play-panel.active { flex:1; cursor:default; border-color:var(--blue); box-shadow:0 4px 20px rgba(0,61,255,0.10); }
+
+    .play-collapsed { display:flex; flex-direction:column; align-items:center; padding:20px 0; height:100%; gap:14px; }
+
+    .play-panel.active .play-collapsed { display:none; }
+
+    .play-num { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+    .play-q-num { width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; margin-top:2px; font-size:14px; }
+    .play-num-lg { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:white; flex-shrink:0; font-size:14px; }
+
+    .play-label-vert { writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); font-size:12px; font-weight:600; color:var(--gray); line-height:1.3; flex:1; display:flex; align-items:center; text-align:center; }
+
+    .play-expanded { display:none; flex-direction:column; height:100%; overflow-y:auto; }
+
+    .play-panel.active .play-expanded { display:flex; }
+
+    .play-exp-header { display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:20px 24px 16px; border-bottom:1px solid var(--border); flex-shrink:0; }
+
+    .play-exp-questions { padding:16px 24px; border-bottom:1px solid var(--border); }
+
+    .play-obj-row { display:grid; grid-template-columns:1fr 1fr; margin-top:auto; flex-shrink:0; }
+
+    .play-obj-side { padding:16px 24px; }
+
+    .play-obj-bad { background:#FFF8F8; border-right:1px solid var(--border); }
+
+    .play-obj-good { background:#F8FFF9; }
+
+    .plays-expand-btn {
+
+      background:none; border:1.5px solid var(--border); border-radius:6px;
+
+      padding:6px 16px; font-size:11px; font-weight:700; color:var(--mid);
+
+      cursor:pointer; letter-spacing:0.06em; text-transform:uppercase;
+
+      transition:border-color 0.2s, color 0.2s; white-space:nowrap;
+
+    }
+
+    .plays-expand-btn:hover { border-color:var(--blue); color:var(--blue); }
+
+    /* all-expanded mode */
+
+    .plays-accordion.all-exp .play-panel { flex:1 !important; cursor:default !important; border-color:var(--blue) !important; }
+
+    .plays-accordion.all-exp .play-collapsed { display:none !important; }
+
+    .plays-accordion.all-exp .play-expanded { display:flex !important; }
+
+    /* mobile */
+
+    @media (max-width:768px) {
+
+      .plays-accordion { flex-direction:column; min-height:unset; }
+
+      .play-panel { flex:0 0 auto !important; }
+
+      .play-collapsed { flex-direction:row; padding:14px 18px; height:auto; gap:12px; }
+
+      .play-label-vert { writing-mode:horizontal-tb; transform:none; font-size:14px; }
+
+      .play-panel.active .play-collapsed { display:flex; border-bottom:1px solid var(--border); }
+
+      .play-exp-header { grid-template-columns:1fr; }
+
+      .play-obj-row { grid-template-columns:1fr; }
+
+      .play-obj-bad { border-right:none; border-bottom:1px solid var(--border); }
+
+    }
+
+  </style>
+
+  <section id="section-plays" class="audit-section">
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;gap:16px;flex-wrap:wrap;">
+
+      <div>
+
+        <div class="section-eyebrow">Sales Play · In-Call Strategy</div>
+
+        <div class="section-title">Sales Plays</div>
+
+        <p class="section-desc" style="margin-bottom:0;">${angles.length} plays tailored to ${escHtml(D.meta?.company||"this company's")} priorities. Pick the one that fits your buyer — or expand all for full visibility.</p>
+
+      </div>
+
+      <button class="plays-expand-btn" id="${uid}-toggle">Expand All</button>
+
+    </div>
+
+    <div class="plays-accordion" id="${uid}">
+
+      ${panelsHTML}
+
+    </div>
+
+    ${commonObjHTML}
+
+  </section>`;
+
+}
+
+
+
+/* ─── Sales Play sections (legacy — kept for fallback) ─── */
 
 
 
@@ -11016,7 +12164,18 @@ function sectionBuyingCommittee(D) {
 
   const phases = hir.engagement_phases || [];
 
+  if (!committee.length) return '';
+
   const sigCol = {hot:'var(--red)', warm:'var(--amber)', cold:'var(--mid)'};
+
+  const bcId = 'bc-' + Math.random().toString(36).slice(2,7);
+
+  // Corner plus icon — used in each bento card
+  const plusCorner = (pos) => `<span class="bc-corner bc-corner-${pos}" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>`;
+  const corners = plusCorner('tl') + plusCorner('tr') + plusCorner('bl') + plusCorner('br');
+
+  // Bento span: HOT first card gets wider treatment, rest are standard
+  let hotCount = 0;
 
   return `<section id="section-buying-committee" class="audit-section">
 
@@ -11024,29 +12183,91 @@ function sectionBuyingCommittee(D) {
 
     <div class="section-title">Buying Committee &amp; Engagement Plan</div>
 
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px;">
+    <style>
+      .bc-grid {
+        display:grid; grid-template-columns:repeat(6,1fr);
+        gap:16px; margin-bottom:28px;
+      }
+      .bc-card {
+        position:relative; border-radius:10px; padding:24px;
+        background:#fff; border:1.5px dashed #cbd5e1;
+        overflow:visible; cursor:default;
+        transition:border-color 0.25s, box-shadow 0.25s;
+      }
+      .bc-card:hover {
+        border-color:#003DFF;
+        box-shadow:0 4px 24px rgba(0,61,255,0.08);
+      }
+      .bc-card:hover .bc-corner { color:#003DFF; }
+      .bc-corner {
+        position:absolute; width:20px; height:20px; z-index:2;
+        display:flex; align-items:center; justify-content:center;
+        color:#cbd5e1; pointer-events:none;
+        background:#f8fafc; border-radius:2px;
+        transition:color 0.25s;
+      }
+      .bc-corner-tl { top:-10px; left:-10px; }
+      .bc-corner-tr { top:-10px; right:-10px; }
+      .bc-corner-bl { bottom:-10px; left:-10px; }
+      .bc-corner-br { bottom:-10px; right:-10px; }
+      .bc-role { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px; }
+      .bc-avatar-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+      .bc-avatar { width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; flex-shrink:0; position:relative; }
+      .bc-li-badge {
+        position:absolute; bottom:-3px; right:-3px; width:18px; height:18px;
+        border-radius:4px; background:#0A66C2; display:flex; align-items:center;
+        justify-content:center; border:2px solid #fff; text-decoration:none;
+      }
+      .bc-name { font-size:16px; font-weight:600; color:#0f172a; line-height:1.3; }
+      .bc-title-text { font-size:12px; color:#64748b; margin-top:2px; }
+      .bc-sig { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.07em; padding:2px 8px; border-radius:3px; margin-left:6px; vertical-align:middle; }
+      .bc-tactic-label { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#94a3b8; margin-bottom:4px; margin-top:12px; }
+      .bc-tactic-text { font-size:13px; color:#475569; line-height:1.6; }
+      .bc-open-link { font-size:12px; font-weight:600; color:#003DFF; text-decoration:none; margin-top:10px; display:inline-block; }
+      .bc-open-link:hover { color:#5468FF; }
+      .bc-divider { width:100%; height:1px; background:#f1f5f9; margin:12px 0; }
+    </style>
 
-      ${committee.map(r=>{const c=sigCol[r.signal]||sigCol.warm; return `<div class="card" style="border-top:3px solid ${c};padding:18px 20px;">
+    <div class="bc-grid" id="${bcId}">
 
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-
-          <div style="${T.eyebrowMdCol(c)};">${escHtml(r.role)}</div>
-
-          <span style="${T.eyebrowSmCol(c)};padding:2px 8px;border-radius:3px;background:${c}18;">${(r.signal||'warm').toUpperCase()}</span>
-
-        </div>
-
-        <div style="${T.title};margin-bottom:6px;">${escHtml(r.name||'—')}</div>
-
-        <div style="${T.bodySmMid};margin-bottom:${r.job_url?'10px':'0'};">${escHtml(r.status||'')}${r.message?' · '+r.message:''}</div>
-
-        ${r.job_url?`<a href="${r.job_url}" target="_blank" style="${T.labelBlue};">View job posting →</a>`:''}
-
-        ${r.salary_range?`<div style="${T.bodySmMid14};margin-top:4px;">Salary: ${escHtml(r.salary_range)}</div>`:''}
-
-      </div>`}).join('')}
+      ${committee.map((r,idx)=>{
+        const c = sigCol[r.signal]||sigCol.warm;
+        const isOpen = !r.name || r.name.toLowerCase().includes('tbd') || (r.status||'').toUpperCase().includes('OPEN');
+        const liUrl = r.linkedin_url || (!isOpen ? `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(r.name)}` : null);
+        const initials = isOpen ? '?' : (r.name||'').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+        const liSvg = `<svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
+        // SIGNAL_COLORS_RAW — raw hex needed for CSS alpha-suffix expressions (e.g. ${rawC}15)
+        const SIGNAL_COLORS_RAW = {'var(--red)':'#DC2626','var(--amber)':'#D97706','var(--mid)':'#6B7280'};
+        const rawC = SIGNAL_COLORS_RAW[c] || '#6B7280';
+        // Bento span: first HOT is wide (4 cols), second HOT normal (2), all others 2
+        let span = 2;
+        if (r.signal === 'hot') { span = hotCount === 0 ? 4 : 2; hotCount++; }
+        return `<div class="bc-card" data-idx="${idx}" style="grid-column:span ${span};">
+          ${corners}
+          <div class="bc-role" style="color:${rawC};">${escHtml(r.role)}</div>
+          <div class="bc-avatar-row">
+            <div class="bc-avatar" style="background:${rawC}15;border:2px solid ${rawC}40;color:${rawC};">
+              ${initials}
+              ${liUrl?`<a href="${liUrl}" target="_blank" class="bc-li-badge" title="Find on LinkedIn">${liSvg}</a>`:''}
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;">
+                ${liUrl
+                  ? `<a href="${liUrl}" target="_blank" class="bc-name" style="text-decoration:none;color:var(--gray);">${escHtml(r.name||'Open Role')}</a>`
+                  : `<span class="bc-name">${escHtml(r.name||'Open Role')}</span>`
+                }
+                <span class="bc-sig" style="color:${rawC};background:${rawC}18;">${(r.signal||'warm').toUpperCase()}</span>
+              </div>
+              ${r.title?`<div class="bc-title-text">${escHtml(r.title)}</div>`:''}
+            </div>
+          </div>
+          ${r.message?`<div class="bc-divider"></div><div class="bc-tactic-label">Engagement Tactic</div><div class="bc-tactic-text">${escHtml(r.message)}</div>`:''}
+          ${isOpen && r.job_url?`<a href="${r.job_url}" target="_blank" class="bc-open-link">View open role →</a>`:''}
+        </div>`;
+      }).join('')}
 
     </div>
+
 
     ${phases.length?`<div style="${T.eyebrow};margin-bottom:14px;">3-Phase Engagement Strategy</div>
 
@@ -11228,7 +12449,7 @@ function sectionOutreachPlan(D) {
 
         <div style="${T.bodySm};line-height:1.5;margin-bottom:8px;">${escHtml(c.angle)}</div>
 
-        ${c.linkedin_url ? linkedinBtn(c.linkedin_url) : ''}
+        ${linkedinBtn(c.linkedin_url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(c.name)}`)}
 
       </div>`).join('')}
 
@@ -11476,6 +12697,211 @@ function sectionOutreachPlan(D) {
 
 ═══════════════════════════════════════════════════ */
 
+function sectionStatBar(D) {
+  const sc = D.score || {};
+  const fin = D.financials || {};
+  const ga = D.golden_angle || {};
+  const signals = D.intelligence_signals || [];
+  const criticals = (D.findings || []).filter(f => f.severity === 'critical');
+
+  const navTo = (tab, anchor) =>
+    `document.querySelector('[data-tab=\\'${tab}\\']').click();${anchor
+      ? `setTimeout(()=>document.getElementById('${anchor}')?.scrollIntoView({behavior:'smooth',block:'start'}),180)`
+      : `window.scrollTo({top:0,behavior:'instant'})`}`;
+
+  // Stat 1: Score
+  const score = sc.overall != null ? `${sc.overall}/10` : '—/10';
+  const critCount = sc.critical_count || criticals.length || 0;
+  const scoreDesc = critCount > 0
+    ? `${critCount} critical gap${critCount !== 1 ? 's' : ''} identified`
+    : (sc.verdict || 'Search experience audit');
+
+  // Stat 2: Revenue at risk
+  const roi = fin.roi_scenarios?.conservative?.annual_impact || fin.search_roi_est || null;
+  const roiVal = roi ? escHtml(roi) : '—';
+
+  // Stat 3: Competitive signal
+  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
+  const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
+
+  // Stat 4: Top timing signal
+  const topSig = signals.find(s => ['exec','funding','competitor'].includes(s.type));
+  const sigVal = topSig ? escHtml(topSig.badge_label) : '—';
+  const sigDesc = topSig
+    ? escHtml((topSig.text || '').slice(0, 60)) + ((topSig.text || '').length > 60 ? '…' : '')
+    : 'No urgent signals detected';
+
+  return `<div class="floating-card-wrap" id="fc-wrap"><div class="floating-card-inner" id="fc-inner"><div id="stat-bar" class="stat-bar">
+    <div class="stat-bar__item" onclick="${navTo('audit', 'section-heatmap')}">
+      <div class="stat-bar__label">Search Score</div>
+      <div class="stat-bar__value">${score}</div>
+      <div class="stat-bar__sub">${escHtml(scoreDesc)}</div>
+      <span class="stat-bar__arrow">→</span>
+    </div>
+    <div class="stat-bar__item" onclick="${navTo('case', 'section-roi')}">
+      <div class="stat-bar__label">Revenue at Risk</div>
+      <div class="stat-bar__value">${roiVal}</div>
+      <div class="stat-bar__sub">Conservative annual impact</div>
+      <span class="stat-bar__arrow">→</span>
+    </div>
+    <div class="stat-bar__item" onclick="${navTo('case', 'section-competitive')}">
+      <div class="stat-bar__label">Competitive Signal</div>
+      <div class="stat-bar__value">${compVal}</div>
+      <div class="stat-bar__sub">${compDesc}</div>
+      <span class="stat-bar__arrow">→</span>
+    </div>
+    <div class="stat-bar__item" onclick="${navTo('case', 'section-why-now')}">
+      <div class="stat-bar__label">Timing Signal</div>
+      <div class="stat-bar__value">${sigVal}</div>
+      <div class="stat-bar__sub">${sigDesc}</div>
+      <span class="stat-bar__arrow">→</span>
+    </div>
+  </div></div></div>`;
+}
+
+function renderPortfolioPanel(D) {
+  const cs = D.company_snapshot || {};
+  const brands = cs.portfolio_brands;
+
+  // SPA conditional: only renders when 2+ brands present
+  if (!brands || brands.length <= 1) return '';
+
+  const parentEntity = cs.parent_entity || null;
+  const isConglomerate = cs.is_conglomerate === true;
+  const opportunityNote = cs.portfolio_opportunity_note || null;
+
+  const holdingNote = isConglomerate
+    ? "You're pitching a holding company. The full portfolio represents a platform-level opportunity."
+    : parentEntity
+      ? `This brand is part of the ${escHtml(parentEntity)} portfolio. The parent entity's full portfolio represents a platform-level opportunity.`
+      : "This brand is part of a multi-brand portfolio. The full portfolio represents a platform-level opportunity.";
+
+  // Build tree nodes
+  const rootLabel = parentEntity || (isConglomerate ? 'Holding Company' : 'Parent Portfolio');
+
+  return `<section id="section-portfolio" class="audit-section">
+    <div class="section-eyebrow">Company Intelligence · Brand Portfolio</div>
+    <div class="section-title">Brand Portfolio</div>
+
+    <!-- Tree structure -->
+    <div style="margin:24px 0 28px;padding:28px 32px;background:white;border:1px solid var(--border);border-radius:14px;">
+
+      <!-- Root: Parent entity -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:0;">
+        <div style="width:36px;height:36px;border-radius:8px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <div style="${T.eyebrow};margin-bottom:2px;color:var(--blue);">Parent Entity</div>
+          <div style="${T.label15};font-weight:700;">${escHtml(rootLabel)}</div>
+        </div>
+      </div>
+
+      <!-- Vertical trunk line -->
+      <div style="margin-left:18px;width:2px;height:28px;background:var(--border);"></div>
+
+      <!-- Horizontal branch row -->
+      <div style="position:relative;display:flex;gap:0;align-items:flex-start;">
+
+        <!-- Horizontal connector line spanning all branches -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--border);"></div>
+
+        <!-- Brand nodes -->
+        ${brands.map((brand, i) => {
+          const isTarget = brand.is_audit_target === true;
+          const isFirst = i === 0;
+          const isLast = i === brands.length - 1;
+          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;padding-top:0;">
+            <!-- Drop line from horizontal bar to card -->
+            <div style="width:2px;height:20px;background:var(--border);flex-shrink:0;"></div>
+            <!-- Brand card -->
+            <div style="width:100%;max-width:200px;padding:14px 16px;border-radius:10px;background:${isTarget ? 'var(--blue-tint)' : 'var(--light)'};border:1.5px solid ${isTarget ? 'var(--blue-border)' : 'var(--border)'};${isTarget ? 'box-shadow:0 0 0 2px var(--blue-border);' : ''}position:relative;">
+              ${isTarget ? `<div style="${T.badgePill('white','var(--blue)')};position:absolute;top:-10px;left:50%;transform:translateX(-50%);">THIS AUDIT</div>` : ''}
+              <div style="${T.nodeLabel}">${escHtml(brand.name || '—')}</div>
+              ${brand.domain ? `<div style="text-align:center;">
+                <a href="https://${escHtml(brand.domain)}" target="_blank" rel="noopener"
+                  style="${T.nodeDomain};color:var(--blue);"
+                  onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">
+                  ${escHtml(brand.domain)} ↗
+                </a>
+              </div>` : ''}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+
+    ${opportunityNote ? `<div style="background:var(--blue-tint);border:1px solid var(--blue-border);border-radius:10px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:12px;">
+      <span style="${T.h5};flex-shrink:0;">💡</span>
+      <div>
+        <div style="${T.labelBlue};margin-bottom:4px;">Portfolio Opportunity</div>
+        <div style="${T.body};">${escHtml(opportunityNote)}</div>
+      </div>
+    </div>` : ''}
+
+    <div style="${T.bodySm};color:var(--mid);font-style:italic;">${holdingNote}</div>
+
+  </section>`;
+}
+
+function sectionPartnerIntel(D) {
+  const pi = D.partner_intel;
+  if (!pi) return ''; // Graceful degradation — section hidden when no partner data
+
+  const techPartners = pi.tech_partners || [];
+  const siPartners = pi.si_partners || [];
+  const action = pi.immediate_action || '';
+  const coSell = pi.co_sell_recommendation || '';
+
+  if (!techPartners.length && !siPartners.length) return '';
+
+  const confColor = (c) => c === 'HIGH' ? 'var(--green)' : c === 'MEDIUM' ? 'var(--amber)' : 'var(--mid)';
+
+  return `<section id="section-partner" class="audit-section">
+    <div class="section-eyebrow">Account · Partners</div>
+    <div class="section-title">Partner Intelligence</div>
+    <div class="section-subtitle">${escHtml(coSell || 'Co-sell motions and warm intro routes for this account')}</div>
+
+    ${action ? `<div class="card" style="background:var(--gray);color:white;border:none;padding:20px 24px;margin-bottom:24px;">
+      <div style="${T.eyebrowMd};color:rgba(255,255,255,0.6);margin-bottom:8px;">IMMEDIATE ACTION</div>
+      <div style="${T.body};color:white;line-height:1.5;">${escHtml(action)}</div>
+    </div>` : ''}
+
+    ${techPartners.length ? `
+    <div style="${T.eyebrow};margin-bottom:14px;">Tech Partners — Co-Sell Motions</div>
+    <div class="feature-grid" style="margin-bottom:28px;">
+      ${techPartners.map(tp => `
+        <div class="feature-card">
+          <div class="fc-icon">
+            <span style="${T.h5};">🔗</span>
+            <span style="${T.eyebrowSmCol(confColor(tp.confidence))};padding:2px 8px;border-radius:3px;background:${confColor(tp.confidence)}18;">${escHtml(tp.confidence || 'MEDIUM')}</span>
+          </div>
+          <div class="fc-title-row"><div class="fc-accent-bar"></div><div class="fc-title">${escHtml(tp.name || '')}</div></div>
+          <div class="fc-desc">${escHtml(tp.co_sell_motion || '')}</div>
+          ${tp.label ? `<div class="fc-source">${escHtml(tp.label)}</div>` : ''}
+        </div>`).join('')}
+    </div>` : ''}
+
+    ${siPartners.length ? `
+    <div style="${T.eyebrow};margin-bottom:14px;">SI Partners — Warm Intro Routes</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+      ${siPartners.map(sp => `
+        <div class="card" style="border-left:4px solid ${confColor(sp.confidence)};padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+            <div style="${T.title};">${escHtml(sp.name || '')}</div>
+            <span style="${T.eyebrowSmCol(confColor(sp.confidence))};padding:2px 8px;border-radius:3px;background:${confColor(sp.confidence)}18;">${escHtml(sp.confidence || 'MEDIUM')}</span>
+          </div>
+          <div style="${T.bodySm};margin-bottom:10px;">${escHtml(sp.evidence || '')}</div>
+          ${sp.c_suite_relationship ? `<div style="${T.labelGreen};margin-bottom:8px;">✓ C-Suite relationship confirmed</div>` : ''}
+          ${sp.activation_strategy ? `<div style="${T.bodySmMid14};padding:10px;background:var(--light);border-radius:6px;">${escHtml(sp.activation_strategy)}</div>` : ''}
+          ${sp.label ? `<div style="${T.compact};margin-top:8px;opacity:0.7;">${escHtml(sp.label)}</div>` : ''}
+        </div>`).join('')}
+    </div>` : ''}
+
+  </section>`;
+}
+
 function renderSections(D) {
 
   const content  = document.getElementById('content');
@@ -11492,7 +12918,8 @@ function renderSections(D) {
 
   /* ── TAB 1: OVERVIEW ─────────────────────────── */
 
-  const overviewHTML = sectionExecSummary(D); // Score by Dimension is embedded inside exec summary
+  // Overview tab: stat bar (4 KPI quick-stats) + exec summary (score card + gap list)
+  const overviewHTML = sectionOverviewGrid(D);
 
 
 
@@ -11518,6 +12945,8 @@ function renderSections(D) {
 
     sectionCompanySnapshot(D),
 
+    renderPortfolioPanel(D),
+
     sectionFinancials(D),
 
     digitalPresenceTile,
@@ -11525,6 +12954,8 @@ function renderSections(D) {
     sectionHiring(D),
 
     sectionSignals(D),
+
+    sectionPartnerIntel(D),
 
   ].join('');
 
@@ -11541,6 +12972,8 @@ function renderSections(D) {
   const auditHTML = [
 
     sectionScoreHeatmap(D),
+
+    sectionAppendixScoring(D),
 
     ...allFindingsOrdered.map(f => {
 
@@ -11568,15 +13001,11 @@ function renderSections(D) {
 
     sectionBusinessCaseHook(D),
 
-    sectionCompetitiveSynthesis(D),
-
     sectionRevenueAtRisk(D),
 
     sectionCaseStudies(D),
 
     sectionWhyNow(D),
-
-    sectionStrategicAngles(D),
 
   ].join('');
 
@@ -11590,9 +13019,11 @@ function renderSections(D) {
 
     sectionBuyingCommittee(D),
 
+    sectionCompetitiveSynthesis(D),
+
     sectionBattleCard(D),
 
-    sectionDiscoveryObjections(D),
+    sectionSalesPlays(D),
 
     sectionOutreachPlan(D),
 
@@ -11646,6 +13077,15 @@ function initTabRail() {
 
     sessionStorage.setItem('spa-tab', tabId);
 
+    // Update tab subtitle
+    const subtitleEl = document.getElementById('tab-subtitle-display');
+    if (subtitleEl) {
+      const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      const personalized = (window.AUDIT_DATA && window.AUDIT_DATA.tab_subtitles && window.AUDIT_DATA.tab_subtitles[tabId]) || null;
+      const fallback = (activeBtn && activeBtn.dataset.subtitle) || '';
+      subtitleEl.textContent = personalized || fallback;
+    }
+
   }
 
 
@@ -11660,9 +13100,146 @@ function initTabRail() {
 
   if (saved && document.querySelector(`[data-tab="${saved}"]`)) showTab(saved);
 
+  // Initialize tab subtitle on first load
+  const initialBtn = document.querySelector('.tab-btn.active');
+  const subtitleEl = document.getElementById('tab-subtitle-display');
+  if (subtitleEl && initialBtn) {
+    const personalized = (window.AUDIT_DATA && window.AUDIT_DATA.tab_subtitles && window.AUDIT_DATA.tab_subtitles[initialBtn.dataset.tab]) || null;
+    subtitleEl.textContent = personalized || initialBtn.dataset.subtitle || '';
+  }
+
 }
 
 
+
+/* ── Section Strip — sticky pill nav with IntersectionObserver scroll-spy ── */
+const SECTION_STRIP_CONFIG = {
+  overview: [
+    { id: 'section-overview-grid', label: 'Overview', desc: 'Company · Score · Opportunity · Next Step' },
+  ],
+  intel: [
+    { id: 'company-snapshot',  label: 'Snapshot',  desc: 'Company overview & executives' },
+    { id: 'section-financials', label: 'Financials', desc: 'Revenue & margin profile' },
+    { id: 'section-techstack',  label: 'Tech Stack', desc: 'Platform & search vendor' },
+    { id: 'section-traffic',    label: 'Traffic',    desc: 'Visits, channels & device' },
+    { id: 'section-hiring',     label: 'Hiring',     desc: 'Open roles & signals' },
+    { id: 'section-signals',    label: 'Signals',    desc: 'News, social & events' },
+    { id: 'section-partner',    label: 'Partners',   desc: 'Co-sell & warm intro routes' },
+  ],
+  audit: [
+    { id: 'score-heatmap',      label: 'Scorecard',  desc: '10-area performance heatmap' },
+    { id: 'appendix-scoring', label: 'Score Breakdown', desc: 'Dimension-by-dimension detail' },
+    { id: 'appendix-queries',   label: 'Queries',    desc: 'Test queries & results' },
+  ],
+  case: [
+    { id: 'section-said-found',   label: 'The Hook',         desc: 'Said vs. Found' },
+    { id: 'section-roi',          label: 'Revenue at Risk',  desc: 'ROI model' },
+    { id: 'section-case-studies', label: 'Case Studies',      desc: 'Vertical proof' },
+    { id: 'section-why-now',      label: 'Why Act Now',       desc: 'Timing signals' },
+  ],
+  play: [
+    { id: 'section-precall',          label: 'Pre-Call',    desc: 'Open lines & cheat sheet' },
+    { id: 'section-buying-committee', label: 'Power Map',   desc: 'Who to call and when' },
+    { id: 'section-competitive',      label: 'Competitive', desc: 'Landscape & golden angle' },
+    { id: 'section-battlecard',       label: 'Battle Card', desc: 'Algolia vs current vendor' },
+    { id: 'section-plays',             label: 'Sales Plays', desc: 'Angles · Questions · Objections' },
+    { id: 'section-outreach',         label: 'Outreach',    desc: 'ABX sequence & contacts' },
+  ],
+};
+
+function initSectionStrips() {
+  // Create sidebar as fixed overlay — appended to body, not layout
+  const sidebar = document.createElement('div');
+  sidebar.id = 'section-sidebar';
+  document.body.appendChild(sidebar);
+
+  // Build a panel for each tab
+  function buildPanel(tabId) {
+    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const panel = document.createElement('div');
+    panel.className = 'section-sidebar__panel';
+    panel.id = `sidebar-panel-${tabId}`;
+    panel.style.display = 'none';
+
+    const inner = document.createElement('div');
+    inner.className = 'section-sidebar__inner';
+
+    // Heading — active tab label
+    const tabLabel = document.querySelector(`.tab-btn[data-tab="${tabId}"]`)?.textContent?.trim() || tabId;
+    const heading = document.createElement('div');
+    heading.className = 'section-sidebar__heading';
+    heading.textContent = tabLabel;
+    inner.appendChild(heading);
+
+    // Only show items whose section actually rendered in the DOM
+    const renderedItems = config.filter(item => !!document.getElementById(item.id));
+    renderedItems.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'section-sidebar__item' + (i === 0 ? ' section-sidebar__item--active' : '');
+      el.dataset.targetId = item.id;
+      el.innerHTML = `
+        <div class="section-sidebar__num">${i + 1}</div>
+        <div>
+          <div class="section-sidebar__title">${escHtml(item.label)}</div>
+          ${item.desc ? `<div class="section-sidebar__desc">${escHtml(item.desc)}</div>` : ''}
+        </div>`;
+      el.addEventListener('click', () => {
+        const target = document.getElementById(item.id);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      inner.appendChild(el);
+    });
+    // Hide panel entirely if no items rendered
+    if (!renderedItems.length) panel.style.display = 'none';
+
+    panel.appendChild(inner);
+    return panel;
+  }
+
+  Object.keys(SECTION_STRIP_CONFIG).forEach(tabId => {
+    sidebar.appendChild(buildPanel(tabId));
+  });
+
+  // Show the panel that matches the active tab
+  function showPanel(activeTabId) {
+    const sidebar = document.getElementById('section-sidebar');
+    if (activeTabId === 'overview') {
+      if (sidebar) sidebar.style.display = 'none';
+      return;
+    }
+    if (sidebar) sidebar.style.display = '';
+    document.querySelectorAll('.section-sidebar__panel').forEach(p => {
+      p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
+    });
+  }
+
+  const initialTab = document.querySelector('.tab-btn.active');
+  if (initialTab) showPanel(initialTab.dataset.tab);
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => showPanel(btn.dataset.tab));
+  });
+
+  // Scroll-spy
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const sectionId = entry.target.id;
+      document.querySelectorAll('.section-sidebar__item').forEach(item => {
+        const panel = item.closest('.section-sidebar__panel');
+        if (!panel || panel.style.display === 'none') return;
+        if (item.dataset.targetId === sectionId) {
+          panel.querySelectorAll('.section-sidebar__item').forEach(i => i.classList.remove('section-sidebar__item--active'));
+          item.classList.add('section-sidebar__item--active');
+        }
+      });
+    });
+  }, { threshold: 0.2, rootMargin: '-5% 0px -65% 0px' });
+
+  Object.values(SECTION_STRIP_CONFIG).flat().forEach(item => {
+    const el = document.getElementById(item.id);
+    if (el) observer.observe(el);
+  });
+}
 
 /* ═══════════════════════════════════════════════════
 
@@ -11728,7 +13305,7 @@ function initCmdK(D) {
 
   // Tabs
 
-  const tabMap = { overview: 'Overview', intel: 'Company Intel', audit: 'Search Audit', case: 'Business Case', play: 'Sales Play' };
+  const tabMap = { overview: 'Overview', intel: 'Research', audit: 'Search Audit', case: 'Business Case', play: 'Sales Actions' };
 
   Object.entries(tabMap).forEach(([id, label]) =>
 
@@ -11786,7 +13363,7 @@ function initCmdK(D) {
 
     push('📡', s.text.slice(0, 60) + '…', 'Signal', () => {
 
-      document.querySelector('[data-tab="case"]')?.click();
+      document.querySelector('[data-tab="intel"]')?.click();
 
       setTimeout(() => document.getElementById('section-signals')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
 
@@ -11799,23 +13376,28 @@ function initCmdK(D) {
   // Key sections
 
   const sectionLinks = [
-
-    ['💰', 'Financial Profile', 'section-financials', 'intel'],
-
-    ['🏢', 'Company Snapshot', 'company-snapshot', 'intel'],
-
-    ['👥', 'Hiring Intelligence', 'section-hiring', 'intel'],
-
-    ['🥊', 'Competitive Analysis', 'section-competitive', 'case'],
-
-    ['📊', 'Score Heatmap', 'section-heatmap', 'audit'],
-
-    ['🎯', 'AE Action Brief', 'section-precall', 'play'],
-
-    ['🔑', 'Discovery Questions', 'section-discovery', 'play'],
-
-    ['🏆', 'Golden Angle — Competitive Intel', 'section-competitive', 'case'],
-
+    // Research tab
+    ['🏢', 'Company Snapshot',            'company-snapshot',          'intel'],
+    ['💰', 'Financial Profile',            'section-financials',        'intel'],
+    ['📡', 'Intelligence Signals',         'section-signals',           'intel'],
+    ['🌐', 'Traffic & Digital Presence',   'section-traffic',           'intel'],
+    ['🔧', 'Tech Stack',                   'section-techstack',         'intel'],
+    ['👥', 'Hiring Intelligence',          'section-hiring',            'intel'],
+    ['🤝', 'Partner & Co-Sell Intel',      'section-partner',           'intel'],
+    // Search Audit tab
+    ['📊', 'Score Heatmap — 10 Areas',     'score-heatmap',             'audit'],
+    // Business Case tab
+    ['🎣', 'The Hook — Said vs. Found',    'section-said-found',        'case'],
+    ['💵', 'Revenue at Risk',              'section-roi',               'case'],
+    ['🏆', 'Case Studies',                 'section-case-studies',      'case'],
+    ['⏰', 'Why Act Now',                  'section-why-now',           'case'],
+    ['🥊', 'Competitive Landscape',        'section-competitive',       'case'],
+    // Sales Actions tab
+    ['🎯', 'Pre-Call Brief',               'section-precall',           'play'],
+    ['🗺', 'Buying Committee',             'section-buying-committee',  'play'],
+    ['⚔️',  'Battle Card',                  'section-battlecard',        'play'],
+    ['🎲', 'Sales Plays',                  'section-plays',             'play'],
+    ['📬', 'Outreach Sequence',            'section-outreach',          'play'],
   ];
 
   sectionLinks.forEach(([icon, text, id, tab]) =>
@@ -11828,6 +13410,47 @@ function initCmdK(D) {
 
     })
 
+  );
+
+  // Partner Intel — tech partners
+  const pi = D.partner_intel || {};
+  (pi.tech_partners || []).forEach(tp =>
+    push('🔗', tp.name + ' — co-sell', tp.type || 'Tech Partner', () => {
+      document.querySelector('[data-tab="intel"]')?.click();
+      setTimeout(() => document.getElementById('section-partner')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    })
+  );
+
+  // Partner Intel — SI partners
+  (pi.si_partners || []).forEach(sp =>
+    push('🤝', sp.name + ' — warm intro route', sp.type || 'SI Partner', () => {
+      document.querySelector('[data-tab="intel"]')?.click();
+      setTimeout(() => document.getElementById('section-partner')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    })
+  );
+
+  // Investor / executive quotes from intelligence signals
+  (D.intelligence_signals || []).filter(s => s.type === 'exec_quote' || s.type === 'investor_quote').forEach(s =>
+    push('💬', (s.speaker || 'Executive') + ': ' + (s.text || '').slice(0, 60) + '…', 'Quote', () => {
+      document.querySelector('[data-tab="intel"]')?.click();
+      setTimeout(() => document.getElementById('section-signals')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    })
+  );
+
+  // Buying committee members
+  ((D.hiring || {}).buying_committee || []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
+    push('👤', r.name + ' — ' + (r.role || ''), r.signal ? r.signal.toUpperCase() : 'Contact', () => {
+      document.querySelector('[data-tab="play"]')?.click();
+      setTimeout(() => document.getElementById('section-buying-committee')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    })
+  );
+
+  // ABX contacts
+  ((D.abx_sequence || {}).contacts || []).forEach(c =>
+    push('📬', (c.name || 'Contact') + ' — ' + (c.role || ''), 'ABX Target', () => {
+      document.querySelector('[data-tab="play"]')?.click();
+      setTimeout(() => document.getElementById('section-outreach')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    })
   );
 
 
@@ -12052,7 +13675,7 @@ function openDrawer(type, data) {
 
         ${data.quote_source ? `<a href="${data.quote_source}" target="_blank" style="color:var(--blue);">Source</a>` : ''}
 
-        ${data.quote_date ? ` · ${data.quote_date}` : ''}
+        ${data.quote_date ? ` · ${escHtml(fmtDate(data.quote_date))}` : ''}
 
       </div>
 
@@ -12069,6 +13692,61 @@ function openDrawer(type, data) {
 }
 
 
+
+function initSalesPlays() {
+  document.querySelectorAll('.plays-accordion').forEach(function(acc) {
+    // Panel click — click on the panel itself (not inside the expanded content area)
+    acc.querySelectorAll('.play-panel').forEach(function(panel) {
+      panel.addEventListener('click', function(e) {
+        if (acc.classList.contains('all-exp')) return;
+        if (panel.classList.contains('active')) return;
+        // Ignore clicks that originate inside the expanded content
+        if (e.target.closest('.play-expanded')) return;
+        acc.querySelectorAll('.play-panel').forEach(function(p) { p.classList.remove('active'); });
+        panel.classList.add('active');
+      });
+    });
+    // Expand All / Collapse button
+    var btn = acc.previousElementSibling && acc.previousElementSibling.querySelector('.plays-expand-btn');
+    // Walk up to section, find the button
+    var section = acc.closest('.audit-section');
+    if (section) btn = section.querySelector('.plays-expand-btn');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var isExp = acc.classList.toggle('all-exp');
+        btn.textContent = isExp ? 'Collapse' : 'Expand All';
+        if (!isExp) {
+          acc.querySelectorAll('.play-panel').forEach(function(p, i) { p.classList.toggle('active', i === 0); });
+        }
+      });
+    }
+  });
+}
+
+
+
+function initOverviewGrid() {
+  document.querySelectorAll('.ov-tile').forEach(function(tile) {
+    var spotRaw = tile.getAttribute('data-spotlight-color') || '0,61,255';
+    tile.style.setProperty('--ov-spot', spotRaw);
+    tile.addEventListener('mousemove', function(e) {
+      var r = tile.getBoundingClientRect();
+      var x = e.clientX - r.left;
+      var y = e.clientY - r.top;
+      tile.style.setProperty('--ov-x', x + 'px');
+      tile.style.setProperty('--ov-y', y + 'px');
+      var cx = r.width / 2, cy = r.height / 2;
+      var rx = ((y - cy) / cy) * -6;
+      var ry = ((x - cx) / cx) * 6;
+      tile.style.transform = 'perspective(1200px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateZ(10px)';
+      tile.style.boxShadow = '0 24px 64px rgba(0,0,0,0.14), 0 6px 20px rgba(0,0,0,0.09), inset 0 1px 0 rgba(255,255,255,0.95)';
+    });
+    tile.addEventListener('mouseleave', function() {
+      tile.style.transform = '';
+      tile.style.boxShadow = '';
+    });
+  });
+}
 
 function initDragPill() {
 
@@ -12284,6 +13962,31 @@ function init() {
 
     initSectionTabs();
 
+    initSectionStrips();
+
+    initSalesPlays();
+
+    initOverviewGrid();
+    initCaseStudyCountUp();
+
+    // Floating card mouse tracking for stat bar
+    (function() {
+      const wrap = document.getElementById('fc-wrap');
+      const inner = document.getElementById('fc-inner');
+      if (!wrap || !inner) return;
+      wrap.addEventListener('mousemove', function(e) {
+        const r = wrap.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        const dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        inner.style.transform = 'translateY(-4px) rotateX(' + (-dy * 5) + 'deg) rotateY(' + (dx * 5) + 'deg) scale(1.01)';
+        inner.style.animationPlayState = 'paused';
+      });
+      wrap.addEventListener('mouseleave', function() {
+        inner.style.transform = '';
+        inner.style.animationPlayState = 'running';
+      });
+    })();
+
     initCmdK(D);
 
     initDrawer();
@@ -12319,6 +14022,35 @@ function init() {
     const glowParents = new Set([...glowCards].map(c => c.parentElement));
 
     glowParents.forEach(p => initGlowEffect(p));
+
+    // Init interactive image accordion (case studies) — click-only, no hover, no flicker
+    document.querySelectorAll('.iac-wrap').forEach(wrap => {
+      let currentActive = wrap.querySelector('.iac-panel.iac-active') || null;
+      function activatePanel(panel) {
+        wrap.querySelectorAll('.iac-panel').forEach(p => p.classList.remove('iac-active'));
+        panel.classList.add('iac-active');
+        currentActive = panel;
+      }
+      // Only the collapsed slab is clickable — it's hidden (display:none) when active,
+      // so there is no click surface to re-trigger on the already-active panel.
+      wrap.querySelectorAll('.iac-collapsed').forEach(slab => {
+        slab.addEventListener('click', () => {
+          const panel = slab.closest('.iac-panel');
+          if (panel && panel !== currentActive) activatePanel(panel);
+        });
+      });
+    });
+
+    // Init buying committee card spotlight
+    document.querySelectorAll('.bc-card').forEach(card => {
+      const spot = card.querySelector('.bc-spotlight');
+      if (!spot) return;
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        spot.style.background = 'radial-gradient(400px circle at ' + x + 'px ' + y + 'px, rgba(255,255,255,0.06), transparent 70%)';
+      });
+    });
 
   });
 

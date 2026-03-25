@@ -836,6 +836,546 @@ a:hover {
   margin-bottom: 6px;
 }
 
+/* ─── Navigation System v2 (2026-03-23 IA rethink, fixed 2026-03-23) ─────── */
+
+/* Tab subtitle — fixed below the floating pill nav, legible size */
+.tab-subtitle {
+  position: fixed;
+  top: calc(var(--topbar-h, 52px) + 10px + 54px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-mid);
+  opacity: 0.85;
+  white-space: nowrap;
+  z-index: 189;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Stat Bar — 4-column editorial KPI row ──────────────────────────────── */
+.stat-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(35,38,59,0.06);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.stat-bar__item {
+  padding: 22px 20px;
+  border-right: 1px solid var(--brand-border);
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.stat-bar__item:last-child { border-right: none; }
+.stat-bar__item:hover { background: var(--brand-light); }
+.stat-bar__item:hover .stat-bar__value { color: var(--brand-blue); }
+
+.stat-bar__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 8px;
+}
+
+.stat-bar__value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  transition: color 0.15s;
+}
+
+.stat-bar__sub {
+  font-size: 12px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+}
+
+.stat-bar__arrow {
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  font-size: 14px;
+  color: var(--brand-mid);
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.stat-bar__item:hover .stat-bar__arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@media (max-width: 700px) {
+  .stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-bar__item:nth-child(2) { border-right: none; }
+  .stat-bar__item:nth-child(1),
+  .stat-bar__item:nth-child(2) { border-bottom: 1px solid var(--brand-border); }
+}
+
+/* ── Section Sidebar — fixed right, vertically centered in viewport ────────── */
+#section-sidebar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 150;
+}
+
+.section-sidebar__inner {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 16px 0 10px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 1px 4px rgba(35,38,59,0.06);
+}
+.section-sidebar__inner::-webkit-scrollbar { display: none; }
+
+.section-sidebar__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-mid);
+  padding: 0 14px 10px;
+  opacity: 0.55;
+}
+
+.section-sidebar__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.section-sidebar__item:hover {
+  background: var(--brand-light);
+  text-decoration: none;
+}
+.section-sidebar__item--active {
+  border-left-color: var(--brand-blue);
+  background: rgba(0,61,255,0.04);
+}
+
+.section-sidebar__num {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--brand-light);
+  color: var(--brand-mid);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+.section-sidebar__item--active .section-sidebar__num {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.section-sidebar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.3;
+  margin-bottom: 1px;
+  transition: color 0.12s;
+}
+.section-sidebar__desc {
+  font-size: 10px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+.section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
+.section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
+
+/* Hide sidebar on narrow screens */
+@media (max-width: 1200px) {
+  #section-sidebar { display: none; }
+}
+
+/* No-op legacy strip classes */
+.section-strip, .section-toc { display: none !important; }
+.section-strip__pill, .section-strip__pill--active,
+.section-toc__link, .section-toc__link--active { display: none !important; }
+
+/* No-op legacy highlight card classes */
+.highlights-grid, .highlight-card,
+.highlight-card__icon, .highlight-card__stat, .highlight-card__label { display: none !important; }
+
+/* Section subtitle — personalized one-liner under every section title */
+.section-subtitle {
+  font-size: 14px;
+  color: var(--brand-mid);
+  font-style: italic;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* ─── Floating Card — Summary stat bar wrapper ──────────────────────────── */
+.floating-card-wrap {
+  perspective: 1400px;
+  margin-bottom: 32px;
+  cursor: default;
+}
+
+.floating-card-inner {
+  transform-style: preserve-3d;
+  animation: float-bob 7s ease-in-out infinite;
+  transition: transform 0.12s ease-out, box-shadow 0.2s ease;
+  will-change: transform;
+  border-radius: 12px;
+}
+
+@keyframes float-bob {
+  0%,  100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  33%        { transform: translateY(-6px) rotateX(0.8deg) rotateY(0.4deg); }
+  66%        { transform: translateY(-3px) rotateX(-0.4deg) rotateY(-0.6deg); }
+}
+
+.floating-card-inner:hover {
+  animation-play-state: paused;
+  box-shadow: 0 20px 60px rgba(0,61,255,0.14), 0 6px 20px rgba(35,38,59,0.12);
+}
+
+/* ─── Case Studies — ruixenui vertical timeline, alternating 2/3+1/3 grid ──
+   Each row: portrait+quote (2/3) | animated metric (1/3)
+   Alternating rows reverse the order (metric on left, portrait+quote on right)
+────────────────────────────────────────────────────────────────────────────── */
+.cs-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-timeline-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  border-bottom: 1px solid var(--brand-border);
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+.cs-timeline-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cs-timeline-row--reversed {
+  grid-template-columns: 1fr 2fr;
+}
+.cs-timeline-row--reversed .cs-left { order: 2; }
+.cs-timeline-row--reversed .cs-metric { order: 1; }
+
+/* Left block: portrait + quote */
+.cs-left {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  border-right: 1px solid var(--brand-border);
+  padding-right: 2.5rem;
+}
+.cs-left--reversed {
+  border-right: none;
+  border-left: 1px solid var(--brand-border);
+  padding-right: 0;
+  padding-left: 2.5rem;
+}
+
+/* Portrait — company monogram, aspect ratio 29/35 */
+.cs-portrait {
+  width: 120px;
+  aspect-ratio: 29 / 35;
+  flex-shrink: 0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.cs-portrait:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.cs-portrait__initials {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.cs-portrait__label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Quote block */
+.cs-quote {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cs-quote__text { margin: 0; }
+.cs-quote__headline {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+.cs-quote__sub {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cs-quote__company {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+.cs-quote__why {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  margin-top: 4px;
+}
+.cs-quote__link:hover { text-decoration: underline; }
+
+/* Metric block */
+.cs-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+.cs-metric--reversed { text-align: right; }
+.cs-metric__num {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin: 0;
+}
+.cs-metric__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  margin: 0;
+}
+.cs-metric__sub {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .cs-timeline-row,
+  .cs-timeline-row--reversed { grid-template-columns: 1fr; }
+  .cs-left, .cs-left--reversed { border: none; padding: 0; }
+  .cs-timeline-row--reversed .cs-left { order: unset; }
+  .cs-timeline-row--reversed .cs-metric { order: unset; }
+  .cs-portrait { width: 80px; }
+}
+
+/* Keep old drawer classes as no-ops */
+.cs-row, .cs-card, .cs-header, .cs-body { display: none !important; }
+
+.cs-card {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cs-card:hover { box-shadow: 0 4px 16px rgba(35,38,59,0.10); }
+.cs-card--open {
+  border-color: var(--brand-blue);
+  box-shadow: 0 4px 20px rgba(0,61,255,0.10);
+}
+
+/* Header — always visible */
+.cs-header {
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.cs-vertical {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.7;
+}
+
+.cs-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1.2;
+}
+
+.cs-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.22);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-green);
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.cs-chevron {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.15s;
+  flex-shrink: 0;
+}
+.cs-card--open .cs-chevron {
+  transform: rotate(90deg);
+  background: rgba(0,61,255,0.08);
+}
+.cs-chevron svg { transition: stroke 0.15s; }
+.cs-card--open .cs-chevron svg { stroke: var(--brand-blue); }
+
+/* Expandable body */
+.cs-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              padding 0.25s ease;
+  opacity: 0;
+  padding: 0 20px;
+  border-top: 0px solid var(--brand-border);
+}
+.cs-card--open .cs-body {
+  max-height: 400px;
+  opacity: 1;
+  padding: 16px 20px 20px;
+  border-top-width: 1px;
+}
+
+.cs-body-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.6;
+  margin-bottom: 5px;
+}
+
+.cs-body-text {
+  font-size: 13px;
+  color: var(--brand-navy);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.cs-big-stat {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-green);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0 0 4px;
+}
+
+.cs-stat-label {
+  font-size: 11px;
+  color: var(--brand-mid);
+  margin-bottom: 16px;
+}
+
+.cs-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(0,61,255,0.25);
+  border-radius: 8px;
+  background: rgba(0,61,255,0.04);
+  transition: background 0.15s, border-color 0.15s;
+}
+.cs-read-link:hover {
+  background: rgba(0,61,255,0.08);
+  border-color: var(--brand-blue);
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .cs-row { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -853,7 +1393,7 @@ a:hover {
         <div class="score-badge__num">3.8<span style="font-size:11px;opacity:0.6;">/10</span></div>
         <div class="score-badge__label">Search Score</div>
       </div>
-      <div class="score-badge__verdict score-badge__verdict--critical">Needs Significant Work</div>
+      <div class="score-badge__verdict score-badge__verdict--critical">Critical Gaps</div>
     </div>
     <div class="topbar__meta">
       Current vendor: <strong style="color:white;">Custom / Proprietary (Greenfield — no enterprise search vendor detected)</strong><br>
@@ -957,7 +1497,7 @@ a:hover {
       <div class="col__title" style="margin-top:4px;">Key Executive Voice</div>
       <div class="exec-quote__text">"This year's achievements are a direct result of our decisive actions and commitment to refresh and strengthen our leadership, revitalize and modernize our assortment, refine our marketing strategies, right size our brand portfolio, and elevate our customers' omnichannel experience."</div>
          <div class="exec-quote__attr">Doug M. Howe, CEO, Designer Brands Inc.</div>
-         <div class="exec-quote__source"><a href="https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results" target="_blank">DBI FY2024 Earnings Release</a> · 2025-03</div>
+         <div class="exec-quote__source"><a href="https://investors.designerbrands.com/2025-03-20-Designer-Brands-Inc-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Financial-Results" target="_blank">DBI FY2024 Earnings Release</a> · March 2025</div>
       <!-- Single exec-quote block:
       <div class="exec-quote">
         <div class="exec-quote__text">"This year's achievements are a direct result of our decisive actions and commitment to refresh and strengthen our leadership, revitalize and modernize our assortment, refine our marketing strategies, right size our brand portfolio, and elevate our customers' omnichannel experience."</div>
@@ -1012,7 +1552,7 @@ a:hover {
         <div class="col__title">Recommended Next Step</div>
         <div class="next-step">
           <div class="next-step__label">Action</div>
-          <div class="next-step__action">Share audit + book 15-min call with Barry Esposito (SVP eCommerce)</div>
+          <div class="next-step__action">Share audit + book 15-min call with Mike Donk (SVP, Digital)</div>
           <div class="next-step__owner">Owner: AE · By: 2026-03-29</div>
         </div>
       </div>
@@ -1022,13 +1562,13 @@ a:hover {
 
   <!-- ── BOTTOM BAR ── -->
   <div class="bottombar">
-    <span class="bottombar__item"><strong>Score:</strong> 3.8/10 — Needs Significant Work</span>
+    <span class="bottombar__item"><strong>Score:</strong> 3.8/10 — Critical Gaps</span>
     <span class="bottombar__sep">|</span>
     <span class="bottombar__item"><strong>Traffic:</strong> <a href="https://www.similarweb.com/website/dsw.com/">3.1M (Feb 2026) / 21.7M peak (Oct 2024)/mo</a> <span style="font-size:10px;color:#9CA3AF;">[SimilarWeb 2026-02-01]</span></span>
     <span class="bottombar__sep">|</span>
     <span class="bottombar__item"><strong>Stack:</strong> Custom Search / Cloudflare CDN / Bazaarvoice Reviews / Braze CRM / Tealium / Optimizely</span>
     <span class="bottombar__sep">|</span>
-    <span class="bottombar__item"><strong>Findings:</strong> 5 critical · 4 moderate</span>
+    <span class="bottombar__item"><strong>Findings:</strong> 5 critical · 9 moderate</span>
     <span class="bottombar__sep">|</span>
     <span class="bottombar__item" style="color:#9CA3AF;">Algolia Confidential · 2026-03-22</span>
   </div>
