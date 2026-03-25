@@ -1008,45 +1008,5 @@
     "detail": "TRR uses Salesforce Marketing Cloud Personalisation. Algolia has a co-sell agreement with Salesforce. Contact the Algolia Salesforce partner team for a joint intro to Luke Friang (CTPO) — frame as 'extending your Marketing Cloud personalization to on-site search discovery.'",
     "urgency": "high",
     "source": "partner_intel"
-  },
-  "industry_context": {
-    "vertical": "luxury-resale",
-    "primary_market": "US",
-    "key_benchmarks": [
-      {
-        "metric": "AI-led personalization profit impact",
-        "value": "up to 15% retail profit boost",
-        "context": "AI-led personalization can boost retail profits by up to 15%, directly relevant to TRR where matching 40M members to 50M items drives GMV.",
-        "source_name": "",
-        "source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
-        "source_date": "2025",
-        "confidence": "FACT",
-        "label": "[FACT — VWO via Tavily WebFetch, 2025]"
-      },
-      {
-        "metric": "Global luxury resale market size 2026",
-        "value": "$34B (US: ~$9.8B)",
-        "context": "Global luxury resale market estimated at $34B in 2026, North America contributing 38% (~$9.8B) at 11.48% CAGR — TRR operating in the highest-growth segment of retail.",
-        "source_name": "",
-        "source_url": "https://www.businessresearchinsights.com/market-reports/secondhand-luxury-goods-market-102564",
-        "source_date": "2026",
-        "confidence": "ESTIMATE",
-        "label": "[ESTIMATE — Business Research Insights via WebSearch, 2026]"
-      },
-      {
-        "metric": "US online resale growth rate",
-        "value": "16% annually",
-        "context": "US online resale growing at 16% annually, projected to reach $34B by 2027 — faster than primary luxury market growth.",
-        "source_name": "",
-        "source_url": "https://www.businessoffashion.com/articles/retail/the-state-of-fashion-2026-report-resale-secondhand-fashion/",
-        "source_date": "2026-01",
-        "confidence": "ESTIMATE",
-        "label": "[ESTIMATE — Business of Fashion via WebSearch, 2026-01]"
-      }
-    ],
-    "trend_headline": "5 Must-Know eCommerce Personalization Trends for 2026 - VWO",
-    "trend_source_url": "https://vwo.com/blog/ecommerce-personalization-trends/",
-    "trend_source_label": "[FACT — Vwo via Tavily WebFetch, date unknown, https://vwo.com/blog/ecommerce-personalization-trends/]",
-    "algolia_angle": "The RealReal operates in a luxury resale market growing at 16% annually where site search users convert 2-3x higher than non-searchers, making Algolia's natural language search and personalization capabilities directly tied to accelerating TRR's path to profitability on $2.13B in GMV."
   }
 }

@@ -8298,15 +8298,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -8413,7 +8416,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }

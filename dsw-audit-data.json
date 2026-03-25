@@ -1571,36 +1571,6 @@
     "crossbeam_data_available": false,
     "source_label": "[FACT — Slalom.com WebFetch, 2024] + [WEBSEARCH — DSW press releases, 2025-2026]"
   },
-  "industry_context": {
-    "vertical": "footwear-retail",
-    "primary_market": "US",
-    "key_benchmarks": [
-      {
-        "metric": "Checkout UX Best Practices",
-        "value": "35%",
-        "context": "Baymard’s research findings further reveal that the average large-sized ecommerce site can gain as much as a 35% increase in conversion rate just by making design changes to their checkout process.",
-        "source_name": "Baymard Institute",
-        "source_url": "https://baymard.com/blog/current-state-of-checkout-ux",
-        "source_date": null,
-        "confidence": "FACT",
-        "label": "[FACT — Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/blog/current-state-of-checkout-ux]"
-      },
-      {
-        "metric": "What Is a Conversion Audit? Crucial Data for E-Commerce CRO",
-        "value": "46%",
-        "context": "But in our e-commerce UX benchmark of 93 top e-commerce websites, we found that 46% of the sites we evaluated displayed too little or poorly chosen content in product lists.",
-        "source_name": "Baymard Institute",
-        "source_url": "https://baymard.com/learn/conversion-audit",
-        "source_date": null,
-        "confidence": "FACT",
-        "label": "[FACT — Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/learn/conversion-audit]"
-      }
-    ],
-    "trend_headline": "The Rise of AI Search in Retail: 2026 Trends | Agentic AI - Finch",
-    "trend_source_url": "https://finch.com/blog/rise-of-ai-search-retail-trends/",
-    "trend_source_label": "[FACT — Finch via Tavily WebFetch, date unknown, https://finch.com/blog/rise-of-ai-search-retail-trends/]",
-    "algolia_angle": null
-  },
   "demos": [
     {
       "scenario": "NeuralSearch for Occasion-Based Queries",
@@ -1623,5 +1593,12 @@
       "with_algolia": "Algolia auto-corrects 'sneackers' → 'sneakers' silently at query time. No click required, no 0-result state shown. Full sneaker catalog surfaces immediately. Eliminates the typo-bounce funnel entirely.",
       "screenshot": "screenshots/05-typo-sneackers.png"
     }
-  ]
+  ],
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Slalom Warm Intro — Loyalty Platform Built on Google Cloud",
+    "detail": "Slalom built DSW's entire loyalty platform (90% of transactions, 26M VIP members) on Google Cloud — published case study, August 2024. Named contacts: Rich Clum (Manager Marketing Applications, Designer Brands) and Benjamin Mokotoff (Managing Director, Slalom). Contact Algolia's Slalom alliance team and request a warm introduction to Rich Clum via Benjamin Mokotoff. The loyalty platform Slalom built is the digital heartbeat of DSW — it's the warmest entry point in the account.",
+    "urgency": "high",
+    "source": "partner_intel"
+  }
 }

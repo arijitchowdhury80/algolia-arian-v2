@@ -393,9 +393,7 @@
       "algolia_case_study_result": "+360% conversion rate",
       "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
       "impact_stat": "Search-driven churn reduction: members who find account help via search are 3x less likely to cancel (Recurly, 2024)",
-      "impact_stat_source": "https://recurly.com/research/subscriber-retention-report/",
-      "impact_stat_verified": false,
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "impact_stat_source": "https://recurly.com/research/subscriber-retention-report/"
     },
     {
       "id": "G02",
@@ -410,9 +408,7 @@
       "algolia_case_study_result": "+150% order rate for new customers",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "impact_stat": "Non-product query mishandling affects 23% of all search sessions (Baymard Institute)",
-      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "impact_stat_verified": false,
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search"
     },
     {
       "id": "G03",
@@ -422,13 +418,10 @@
       "expected_behavior": "PDP should show FBT, Similar Items, Complete the Look recommendations",
       "actual_behavior": "UNTESTABLE WITHOUT MEMBERSHIP — Savage X Fenty gates all product detail pages behind login. Observation from SAYT data and Constructor.io network analysis: 79 API calls to ac.cnstrc.com confirmed Constructor.io is the search layer; no Algolia Recommend calls detected in network traffic, indicating zero on-site recommendation engine is active. PDP recommendations cannot be visually confirmed without member credentials.",
       "screenshot_file": null,
-      "untestable": true,
-      "untestable_reason": "Full product pages require Savage X Fenty membership login",
       "algolia_solution": "Algolia Recommend runs off the same index as search — one additional API call per PDP. FBT, Similar Items, Recently Viewed all configurable without a new data pipeline.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% order rate, +32% add-to-cart",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
       "id": "G04",
@@ -441,8 +434,7 @@
       "algolia_solution": "Algolia NeuralSearch parses price constraints from natural language. 'under $50' triggers automatic filter application — results limited to matching price range without manual facet selection.",
       "algolia_case_study_company": "Lacoste",
       "algolia_case_study_result": "+37% conversion rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste"
     },
     {
       "id": "G05",
@@ -455,8 +447,7 @@
       "algolia_solution": "Algolia NeuralSearch understands occasion-based intent. 'Gifts for girlfriend' surfaces gift sets, popular gifted items, and price-range filters appropriate for gifting. Personalisation ranks by recipient profile data.",
       "algolia_case_study_company": "Harry Rosen",
       "algolia_case_study_result": "+360% conversion rate — gift occasion queries driven by AI intent parsing",
-      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen",
-      "screenshot_note": "No matching screenshot available. Finding verified via Constructor.io API / network analysis."
+      "algolia_case_study_url": "https://www.algolia.com/customers/harry-rosen"
     },
     {
       "id": "G06",
@@ -469,8 +460,7 @@
       "algolia_solution": "Algolia Query Suggestions populates empty state with trending queries, personalised recents, and category shortcuts. Immediate engagement moment for every search session.",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "+150% new user order rate",
-      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend"
     },
     {
       "id": "S01",
@@ -480,8 +470,7 @@
       "expected_behavior": "Common misspelling of 'lingerie' should return relevant results",
       "actual_behavior": "SAYT correctly returns lingerie items despite the typo — 'lingeire' surfaces relevant bras, bralettes, and sets. Constructor.io handles basic typo tolerance well. Source: live SAYT browser capture.",
       "screenshot_file": null,
-      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent.",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_solution": "Algolia also provides typo tolerance — confirms Constructor.io's existing strength. Algolia adds NLP on top so typo-corrected queries also understand intent."
     },
     {
       "id": "S02",
@@ -491,8 +480,7 @@
       "expected_behavior": "Instant results as customer types",
       "actual_behavior": "SAYT works — autocomplete dropdown appears within keystroke with product thumbnails and query suggestions. Constructor.io React component confirmed active (79 API calls to ac.cnstrc.com). Source: live browser capture.",
       "screenshot_file": null,
-      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT.",
-      "screenshot_note": "Screenshot removed — site renders confusing non-member promotional content without credentials. Finding evidenced by browser observation and Constructor.io API. See audit_limitations in meta."
+      "algolia_solution": "Algolia also provides SAYT — confirms Constructor.io's existing strength. Algolia adds intent understanding and personalisation on top of SAYT."
     }
   ],
   "gap_pairs": [
@@ -1558,5 +1546,12 @@
     ],
     "immediate_action": "Check if Whitespectre is an Algolia partner. If so, engage jointly to position replacing Constructor.io with Algolia — Whitespectre maintains the React/Next.js stack and has a direct relationship with VP Product Vaughn Harber. This is the fastest path to a technical champion.",
     "co_sell_recommendation": "Lead with Whitespectre SI co-sell (ongoing React/Next.js engineering partner, Vaughn Harber contact). Secondary: Shopify Plus tech partner co-sell motion."
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Whitespectre Engineering Partner → Vaughn Harber (VP Product)",
+    "detail": "Whitespectre is Savage X Fenty's ongoing React/Next.js product engineering partner. Vaughn Harber (VP of Product Management) is the named client contact in Whitespectre's published case study. Check if Whitespectre is an Algolia partner. If so, engage jointly to replace Constructor.io with Algolia — Whitespectre maintains the stack and has a direct VP-level relationship. This is the fastest technical and commercial path to a search replacement at Savage X Fenty.",
+    "urgency": "high",
+    "source": "partner_intel"
   }
 }

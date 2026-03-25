@@ -84,35 +84,6 @@
     },
     "stores": "95+ globally (US: ~67 as of 2025 — was 60 in 2024 + 8 new stores planned 2026; 22 Japan, 13 Canada)"
   },
-  "revenue_3y": [
-    {
-      "year": "FY2022",
-      "revenue": 1800000000,
-      "revenue_label": "~$1.8B",
-      "note": "[ESTIMATE — implied by 'down year' in FY2023 annual results]",
-      "digital_share": "~30%",
-      "search_signal": "Pre-headless migration — search on legacy HCL Commerce platform"
-    },
-    {
-      "year": "FY2023",
-      "revenue": 1700000000,
-      "revenue_label": "$1.7B",
-      "note": "[FACT]",
-      "digital_share": "~32%",
-      "search_signal": "commercetools migration underway (announced); employee bonus cut to 9%",
-      "source_url": "https://sgbonline.com/exec-l-l-bean-approves-9-percent-bonus-for-5600-employees-despite-a-down-year/"
-    },
-    {
-      "year": "FY2024",
-      "revenue": 1700000000,
-      "revenue_label": "$1.7B",
-      "note": "[FACT]",
-      "digital_share": "~35%",
-      "search_signal": "commercetools go-live May 2024; 4 new stores; new CEO transition begins Q3",
-      "source_url": "https://www.llbean.com/llb/shop/518791?page=inside-llbean-17",
-      "roi_callout": "Search ROI opportunity: $8.4M–$25.2M/yr [ESTIMATE] at 5–15% lift on ~$168M search-addressable revenue"
-    }
-  ],
   "executives": [
     {
       "name": "Greg Elder",
@@ -1644,6 +1615,5 @@
         }
       ]
     }
-  ],
-  "industry_context": null
+  ]
 }

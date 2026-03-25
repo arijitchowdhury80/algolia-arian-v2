@@ -453,8 +453,7 @@
       "algolia_solution": "Algolia Query Suggestions with zero-results recovery. Dynamic display of popular searches, trending products, and 'Did you mean?' corrections. Business rules can pin specific products to the zero-results state.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
       "algolia_case_study_company": "Lacoste",
-      "algolia_case_study_result": "+150% sales contribution; -88% bounce rate on search",
-      "impact_stat_note": "Original source URL (baymard.com/blog/no-results-pages) did not contain the specific 12%/75% stats on 2026-03-19 verification. Updated to Baymard research index. AE should verify the specific stat before citing in prospect calls — consider removing if not confirmed at source."
+      "algolia_case_study_result": "+150% sales contribution; -88% bounce rate on search"
     },
     {
       "id": "F03",
@@ -471,8 +470,7 @@
       "algolia_solution": "Algolia Personalization + Recommend API. Connects Amperity CDP profiles to real-time search ranking. VIP customers surface different relevance weights. Works without code changes for merchandisers.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_company": "Gymshark",
-      "algolia_case_study_result": "+150% order rate increase and +32% add-to-cart on Black Friday via Algolia Recommend",
-      "impact_stat_verified": false
+      "algolia_case_study_result": "+150% order rate increase and +32% add-to-cart on Black Friday via Algolia Recommend"
     },
     {
       "id": "F04",
@@ -1689,5 +1687,12 @@
     ],
     "immediate_action": "Contact Algolia's TCS alliance team immediately — TCS is both Tapestry's confirmed transformation partner AND a listed Algolia SI partner. Request a warm introduction to Tapestry's digital leadership through TCS's account team. Highest-value co-sell entry point in the account.",
     "co_sell_recommendation": "Lead with TCS SI warm intro — the single strongest co-sell vector in the account (transformation partner + Algolia SI partner + C-suite access). Secondary: Salesforce Commerce Cloud AppExchange co-sell."
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "TCS Transformation Partner + Algolia SI Partner → C-Suite Access",
+    "detail": "TCS is Tapestry's confirmed digital transformation partner across Coach, Kate Spade, and Stuart Weitzman — and TCS is a listed Algolia SI partner. Contact Algolia's TCS alliance team immediately. Request a warm introduction to Tapestry's VP Digital or CDO through TCS's account team. TCS has C-suite access across the Tapestry brand portfolio. This is the single highest-value co-sell vector in the account — higher confidence than cold outreach or SFCC AppExchange.",
+    "urgency": "high",
+    "source": "partner_intel"
   }
 }

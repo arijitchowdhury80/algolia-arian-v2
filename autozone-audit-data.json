@@ -1778,5 +1778,12 @@
     ],
     "immediate_action": "Contact Algolia's partner team to check if Callstack is a listed partner. If so, engage jointly for a composable search co-sell on the Next.js stack Callstack already maintains at AutoZone. Secondary: Contentstack tech partner co-sell motion.",
     "co_sell_recommendation": "Lead with Contentstack tech partner co-sell (SFCC composable stack Algolia fits natively). Parallel path: Callstack SI co-sell if confirmed Algolia partner."
+  },
+  "recommended_first_play": {
+    "type": "greenfield_timing",
+    "headline": "Search Vacuum Confirmed — No Incumbent to Displace",
+    "detail": "Oracle Endeca is confirmed REMOVED (SimilarWeb Feb 2026, BuiltWith live 2026-03-19). AutoZone's new React/Next.js + Contentstack composable stack has no search vendor in it. This is a greenfield deployment opportunity — Algolia enters without displacing an incumbent. Lead with: 'You've already rebuilt the composable architecture. Algolia is the final piece — it plugs natively into the Contentstack/Next.js stack Callstack already built for you.'",
+    "urgency": "high",
+    "source": "tech_stack"
   }
 }

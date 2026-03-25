@@ -98,35 +98,6 @@
     "market_cap": "~$435B",
     "current_price": "$979.92"
   },
-  "revenue_3y": [
-    {
-      "year": "FY2023",
-      "revenue": 242290000000,
-      "revenue_label": "$242.3B",
-      "note": "[FACT — Yahoo Finance]",
-      "digital_share": "~6.3%",
-      "search_signal": "E-commerce ~$15B; pre-NLP era search infrastructure",
-      "source_url": "https://investor.costco.com/news/news-details/2023/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2023-Operating-Results/"
-    },
-    {
-      "year": "FY2024",
-      "revenue": 254453000000,
-      "revenue_label": "$254.5B",
-      "note": "[FACT — Yahoo Finance]",
-      "digital_share": "~7.0%",
-      "search_signal": "E-commerce +16.1% YoY; new VP IT eCommerce Joel Crabb from Target hired 2022; search enhancements Q1",
-      "source_url": "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Reports-Fourth-Quarter-and-Fiscal-Year-2024-Operating-Results/"
-    },
-    {
-      "year": "FY2025",
-      "revenue": 275235000000,
-      "revenue_label": "$275.2B",
-      "note": "[FACT — Yahoo Finance]",
-      "digital_share": "~7.2%",
-      "search_signal": "E-commerce +15.6% ($19.6B); personalization launched Q1 FY2026; search redesigned with click-through doubling; SVP E-Commerce retired Jan 2026",
-      "source_url": "https://www.macrotrends.net/stocks/charts/COST/costco/revenue"
-    }
-  ],
   "executives": [
     {
       "name": "Ron Vachris",
@@ -442,8 +413,6 @@
       "algolia_solution": "Algolia Federated Search indexes multiple content types — products, policies, travel, help — in a single search bar with clear category sections. Members never leave the shopping context.",
       "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
       "algolia_case_study_result": "+50% conversion rate for personalized search queries",
-      "screenshot_note": "Screenshot shows SAYT dropdown during \"return policy\" query. Live URL evidence (Apify, 2026-03-19) confirms separate domain routing: customerservice.costco.com/app/answers/... for return policy content.",
-      "live_evidence_url": "https://customerservice.costco.com/app/answers/answer_view/a_id/6874/~/return-or-replace-your-costco.com-online-order",
       "algolia_case_study_company": "Decathlon"
     },
     {
@@ -461,8 +430,6 @@
       "algolia_solution": "Algolia NeuralSearch parses multi-attribute intent natively without complex URL parameters that trigger WAF rules. Sub-100ms response, no WAF exposure, no special infrastructure required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-headless",
       "algolia_case_study_result": "Search conversion rate 6.2% → 10%+; revenue from search users up 400%+ YoY with Algolia headless search",
-      "algolia_case_study_result_note": "Corrected by factcheck 2026-03-19. Previous value '+150% order rate on Black Friday' was not found on the live gymshark-headless case study page. Live page metrics: search conversion 6.2%→10%+, revenue from search +400% YoY, £2M/yr from AI merchandising. WebFetch verified 2026-03-19.",
-      "screenshot_note": "error-state.png: WAF/error state screenshot (closest available). Original 13-nlp-gaming-tv.png (28KB Access Denied page) was not persisted. Chrome re-test blocked by active Phase 2 session conflict. To verify: search \"best TV for gaming under 1000\" on costco.com — Access Denied page from Akamai Edgesuite will appear.",
       "algolia_case_study_company": "Gymshark"
     },
     {
@@ -1534,5 +1501,12 @@
     "si_partners": [],
     "immediate_action": null,
     "co_sell_recommendation": "Lead with Segment (Twilio) co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "GrowthLoop AI Partnership = Open AI Conversation",
+    "detail": "Costco announced a GrowthLoop AI partnership in August 2025 for AI-powered audience building on Google Cloud. This signals that Costco's digital leadership is actively evaluating AI-powered tools. Lead with Algolia's AI stack: 'You're already deploying AI for audience building — extend that to search and discovery. Algolia NeuralSearch + Personalization plugs directly into your Segment CDP and Google Cloud stack.' Reach the CTO through the GrowthLoop relationship or via the Segment partnership team.",
+    "urgency": "medium",
+    "source": "intelligence_signals"
   }
 }
