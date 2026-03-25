@@ -486,7 +486,7 @@
   ],
   "findings": [
     {
-      "id": "F01",
+      "id": "G01",
       "title": "Zero NeuralSearch \u2014 NLP Queries Completely Fail",
       "severity": "critical",
       "category": "Semantic / NLP Search",
@@ -503,7 +503,7 @@
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
-      "id": "F02",
+      "id": "G02",
       "title": "No Federated Search \u2014 Content & Loyalty Invisible",
       "severity": "critical",
       "category": "Content Commerce / Front-End UX",
@@ -520,7 +520,7 @@
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
-      "id": "F03",
+      "id": "G03",
       "title": "Typo Tolerance Requires User Click \u2014 Not Auto-Correcting",
       "severity": "critical",
       "category": "Typo Tolerance",
@@ -537,7 +537,7 @@
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
-      "id": "F04",
+      "id": "G04",
       "title": "Recommendations Are Brand-Siloed, Not Collaborative",
       "severity": "critical",
       "category": "Recommendations & Merchandising",
@@ -554,7 +554,7 @@
       "algolia_case_study_result": "Immediate conversion uplift after enabling Recommend"
     },
     {
-      "id": "F05",
+      "id": "G05",
       "title": "No Personalized Search Ranking",
       "severity": "critical",
       "category": "Dynamic Facets & Personalization",
@@ -571,7 +571,7 @@
       "algolia_case_study_result": "Up to 3.5x increase in conversions from search"
     },
     {
-      "id": "F06",
+      "id": "G06",
       "title": "Strong Brand Intent Detection",
       "severity": "positive",
       "category": "Intent Detection",
