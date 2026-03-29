@@ -5524,8 +5524,8 @@ a:hover {
       "tested_query": "hiking",
       "expected_behavior": "Autocomplete suggestions appear within 100ms per keystroke with product images and category completions",
       "actual_behavior": "No autocomplete — users must type full query and press Enter. Full page reload required.",
-      "impact_stat": "58% of sites don't support autocomplete as a query-generation starting point, risking search abandonment (Baymard Institute)",
-      "impact_stat_source": "https://baymard.com/blog/copy-search-suggestion-to-search-field",
+      "impact_stat": "",
+      "impact_stat_source": "",
       "screenshot_file": "screenshots/03-sayt-hiking.png",
       "prospect_description": "L.L.Bean users cannot get instant product suggestions while typing — forced to complete full queries on mobile keyboards",
       "algolia_solution": "Algolia InstantSearch delivers sub-50ms SAYT with product images, query completions, and category suggestions",
@@ -5540,8 +5540,8 @@ a:hover {
       "tested_query": "return policy",
       "expected_behavior": "Help content, policy pages, store locator results alongside or above product results",
       "actual_behavior": "Returns only products — user intent to find 100% Satisfaction Guarantee info is completely missed",
-      "impact_stat": "34% of users try to search for non-product content on ecommerce sites — yet 15% of sites don't support it (Baymard Institute)",
-      "impact_stat_source": "https://baymard.com/blog/support-non-product-search",
+      "impact_stat": "",
+      "impact_stat_source": "",
       "screenshot_file": "screenshots/09-non-product-return-policy.png",
       "prospect_description": "L.L.Bean help content, policies, and store info are invisible to search users — a critical gap for a brand built on its guarantee",
       "algolia_solution": "Algolia Federated Search (multi-index: products + content + help + store locator) surfaces the right content type for each query",
@@ -5556,8 +5556,8 @@ a:hover {
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Understands compound intent: waterproof + winter + hiking as use-case context; auto-applies waterproof filter; ranks insulated products first",
       "actual_behavior": "Keyword bag-of-words: treats 4 words as separate unweighted tokens, no semantic understanding of 'for winter hiking' as use-case context",
-      "impact_stat": "68% of shoppers think the search function on retail websites needs an upgrade; ~70% of search engines cannot return relevant results for product synonyms (Constructor 2024)",
-      "impact_stat_source": "https://constructor.com/blog/nlp-ecommerce",
+      "impact_stat": "",
+      "impact_stat_source": "",
       "screenshot_file": "screenshots/14-nlp-waterproof-jacket.png",
       "prospect_description": "L.L.Bean customers searching for gear by activity or condition get keyword-matched results instead of intent-matched results",
       "algolia_solution": "Algolia NeuralSearch understands activity-based queries ('best jacket for camping in cold weather') and maps them to product attributes automatically",
@@ -5588,8 +5588,8 @@ a:hover {
       "tested_query": "waterproof jacket for winter hiking",
       "expected_behavior": "Waterproof, Insulation Type, Temperature Rating filters surfaced at top; filters reorder based on query context",
       "actual_behavior": "Same static filter order regardless of query — Waterproof filter buried; no query-context awareness in facet ordering",
-      "impact_stat": "51% of sites still don't offer faceted search filter suggestions (Baymard Institute 2019 benchmark)",
-      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-report-and-benchmark",
+      "impact_stat": "",
+      "impact_stat_source": "",
       "screenshot_file": "screenshots/15-dynamic-facets.png",
       "prospect_description": "L.L.Bean's technical outdoor catalog demands context-aware filtering — customers searching 'insulated jacket' need Insulation Type filter first, not Gender",
       "algolia_solution": "Algolia Dynamic Faceting automatically reorders filters based on query context — waterproof query surfaces waterproof filter first",
@@ -5850,8 +5850,7 @@ a:hover {
       "source": "SimilarWeb (Jan 2025, worldwide)",
       "insight": "Older-skewing (55+ = 42.3%), female-majority (65.2%) — heritage loyalists + gift buyers. Secondary 25-34 cohort is the growth opportunity."
     },
-    "visit_duration": "SimilarWeb public data",
-    "source": "SimilarWeb"
+    "visit_duration": "SimilarWeb public data"
   },
   "tech_stack": {
     "primary_platform": "commercetools (headless MACH) — migrated May 2024",
@@ -6703,7 +6702,60 @@ a:hover {
       "demo_type": "product"
     }
   ],
-  "partner_intel": null,
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "commercetools",
+        "co_sell_motion": "\"You just completed your commercetools migration — the next logical step is replacing native search with Algolia. We have a joint solution team. Let me connect you.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Salesforce Commerce Cloud",
+        "co_sell_motion": "\"Salesforce Commerce Cloud customers routinely pair Algolia for search — it's a well-established joint motion. Your SFCC layer is still live alongside commercetools.\"",
+        "confidence": "HIGH",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "HCL Commerce",
+        "co_sell_motion": "\"HCL and Algolia have worked together on enterprise retail. Even as you migrate away from HCL, Algolia can sit atop your new stack from Day 1.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Dynamic Yield",
+        "co_sell_motion": "\"Dynamic Yield + Algolia is a proven personalization-in-search stack. User segments from Dynamic Yield can directly inform Algolia ranking rules — no custom build required.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Bazaarvoice",
+        "co_sell_motion": "\"Algolia can ingest Bazaarvoice review scores as a ranking signal — products with higher reviews rank higher in search results. One integration, measurable lift.\"",
+        "confidence": "HIGH",
+        "label": "[FACT — partner-intel.md]"
+      }
+    ],
+    "si_partners": [
+      {
+        "name": "Encora",
+        "evidence": "Named SI for 28-month commercetools composable commerce migration (April 2022 – May/June 2024). ~50-person collaborative team spanning L.L.Bean, Encora, and commercetools. Migrated $1B digital channel, 5.5M customer accounts, 250K SKUs. Zero outages. $10M+ incremental revenue during transition. Enco",
+        "confidence": "MEDIUM",
+        "c_suite_relationship": true,
+        "activation_strategy": "\"Encora is the most warm path into L.L.Bean's technical leadership. They completed the biggest infrastructure project at L.L.Bean in a decade. Request an intro via the Algolia-Encora channel to JJ Rouhana. Frame as: Encora delivered the composable foundation — Algolia is the search layer that comple",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Fearless Technology Group",
+        "evidence": "Named implementation partner for L.L.Bean's Google Cloud migration (GKE, Cloud Spanner). Named contacts: Chris Cummings (CEO/Founder) and Peter Brumblay (Cloud Architect). L.L.Bean contact named: Randy Dyer (Enterprise Architect).",
+        "confidence": "MEDIUM",
+        "c_suite_relationship": true,
+        "activation_strategy": "\"Fearless Technology Group has an active relationship with L.L.Bean's enterprise architecture team. Engage Chris Cummings at Fearless to understand whether search infrastructure is in scope for their GCP work.\"",
+        "label": "[FACT — partner-intel.md]"
+      }
+    ],
+    "co_sell_recommendation": "",
+    "immediate_action": "Contact Algolia's commercetools Partner Manager and request a co-sell introduction to L.L.Bean via Encora. Encora completed L.L.Bean's 28-month, $1B+ digital channel migration to commercetools — they have deep, current relationships with JJ Rouhana (CIO) and the broader digital platform team. The pitch: \"Encora delivered the composable commerce foundation — Algolia is the intelligent search layer that makes it perform.\" This is the single highest-probability warm path into a technical conversati"
+  },
   "tab_subtitles": {
     "summary": "What you need before walking into L.L.Bean",
     "account": "L.L.Bean at a glance — outdoor apparel retail, 26.7M monthly peak visitors",
@@ -8182,7 +8234,7 @@ function sectionOverviewGrid(D) {
   const ae    = D.ae_fields  || {};
   const findings = D.findings || [];
 
-  const criticals = findings.filter(function(f){ return f.severity === 'critical'; }).slice(0, 3);
+  const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
 
   // Score colour palette
@@ -8214,7 +8266,7 @@ function sectionOverviewGrid(D) {
       <div style="${T.eyebrowCol('var(--red)')};margin-bottom:8px;">Critical Gaps</div>
       ${gapPills}
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"audit\"]');if(b)b.click();})()" title="Go to Search Audit tab">Search Audit <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('audit')" title="Go to Search Audit tab">Search Audit <span>→</span></div>
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
@@ -8235,7 +8287,7 @@ function sectionOverviewGrid(D) {
         <span style="${T.bodySm};color:var(--gray);">${escHtml(ae.next_step_date||'Within 30 days')}</span>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">Sales Actions <span>→</span></div>
   </div>`;
 
   // ── Tile 3: WHO IS THIS? (half, row 2 left) ──
@@ -8261,7 +8313,7 @@ function sectionOverviewGrid(D) {
         </div>
       </div>
     </div>
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"intel\"]');if(b)b.click();})()" title="Go to Research tab">Research <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('intel')" title="Go to Research tab">Research <span>→</span></div>
   </div>`;
 
   // ── Tile 4: WHAT'S THE OPPORTUNITY? (half, row 2 right) ──
@@ -8302,15 +8354,18 @@ function sectionOverviewGrid(D) {
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
     const detail = escHtml((s.body || s.text || s.quote || '').slice(0, 90));
-    const url   = s.source_url ? ` onclick="window.open('${s.source_url}','_blank')" style="cursor:pointer;"` : '';
-    return `<div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.05);"${url}>
-      <span style="font-size:15px;line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
-      <div style="min-width:0;">
+    const clickable = !!s.source_url;
+    return `<div class="why-now-row${clickable?' why-now-row--link':''}"
+        style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
+        ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+      <span style="${T.bodySmMid14};line-height:1;margin-top:1px;flex-shrink:0;">${icon}</span>
+      <div style="min-width:0;flex:1;">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
           <span style="width:6px;height:6px;border-radius:50%;background:${color};flex-shrink:0;"></span>
-          <span style="${T.title};font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+          ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail ? `<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>` : ''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -8323,7 +8378,7 @@ function sectionOverviewGrid(D) {
          <div style="flex:1;">${whyNowRows}</div>`
       : `<div style="${T.body};color:var(--mid);margin-top:8px;">No urgency signals collected yet. Run live-signals to populate.</div>`
     }
-  <div class="ov-tile-nav" onclick="(function(){var b=document.querySelector('#tab-rail [data-tab=\"play\"]');if(b)b.click();})()" title="Go to Sales Actions tab">See all signals <span>→</span></div>
+  <div class="ov-tile-nav" onclick="if(window.showTab)window.showTab('play')" title="Go to Sales Actions tab">See all signals <span>→</span></div>
   </div>`;
 
   return `<style>
@@ -8398,9 +8453,11 @@ function sectionOverviewGrid(D) {
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #94A3B8;
+      color: var(--mid);
+      font-family: 'Sora', sans-serif;
       margin-bottom: 14px;
     }
+    .ov-tile { font-family: 'Sora', sans-serif; }
 
     .ov-tile-nav {
       margin-top: auto;
@@ -8417,7 +8474,12 @@ function sectionOverviewGrid(D) {
       align-items: center;
       justify-content: space-between;
     }
-    .ov-tile-nav:hover { color: var(--blue); }
+    .ov-tile-nav { cursor: pointer; }
+    .ov-tile-nav:hover { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+    .why-now-row { transition: background 0.15s; }
+    .why-now-row--link { cursor: pointer; }
+    .why-now-row--link:hover { background: rgba(0,0,0,0.045); }
+    .why-now-row--link:hover .why-now-label { text-decoration: underline; text-underline-offset: 2px; color: var(--blue); }
 
     @media (max-width: 900px) {
       .ov-bento { grid-template-columns: 1fr 1fr; }
@@ -8543,9 +8605,9 @@ function sectionExecSummary(D) {
 
       const allFindings = D.findings || [];
 
-      const criticalFindings = allFindings.filter(f => f.severity === 'critical').slice(0, 3);
+      const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
-      const moderateFindings = allFindings.filter(f => f.severity === 'moderate').slice(0, 4);
+      const moderateFindings = allFindings.filter(f => f.severity === 'moderate' || f.severity === 'MEDIUM').slice(0, 4);
 
       const sev = D.score?.breakdown_severity || {};
 
@@ -9165,7 +9227,14 @@ function sectionTraffic(D) {
 
   const age = audience.age || {};
 
-  const gender = audience.gender || {};
+  // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
+  const demoArr = t.demographics || [];
+  const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
+  const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
+  const genderFromDemo = (femaleEntry || maleEntry)
+    ? { female: femaleEntry?.pct, male: maleEntry?.pct }
+    : null;
+  const gender = genderFromDemo || audience.gender || {};
 
   const maxAge = Math.max(...Object.values(age).map(Number), 1);
 
@@ -9387,15 +9456,15 @@ function sectionTraffic(D) {
 
           <div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">
 
-            <div style="width:${t.device_share.mobile}%;background:var(--blue);display:flex;align-items:center;justify-content:center;">
+            <div style="width:${String(t.device_share.mobile).replace('%','')}%;background:var(--blue);display:flex;align-items:center;justify-content:center;">
 
-              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}%</span>
+              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}${String(t.device_share.mobile).includes('%')?'':'%'}</span>
 
             </div>
 
-            <div style="width:${t.device_share.desktop}%;background:var(--mid);display:flex;align-items:center;justify-content:center;">
+            <div style="width:${String(t.device_share.desktop).replace('%','')}%;background:var(--mid);display:flex;align-items:center;justify-content:center;">
 
-              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}%</span>
+              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}${String(t.device_share.desktop).includes('%')?'':'%'}</span>
 
             </div>
 
@@ -9509,10 +9578,22 @@ function sectionFinancials(D) {
 
   const cs  = D.company_snapshot || {};
 
-  if (!f.revenue_3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
+  // Build revenue_3y from individual year fields if array not present (older schema)
+  let _rev3y = f.revenue_3y;
+  if (!_rev3y?.length) {
+    const _fmt = v => v == null ? null : typeof v === 'number' ? '$' + (v >= 1e9 ? (v/1e9).toFixed(1)+'B' : (v/1e6).toFixed(1)+'M') : String(v);
+    const _rows = [
+      f.revenue_fy2023 != null ? {year:'FY2023', revenue: _fmt(f.revenue_fy2023)} : null,
+      f.revenue_fy2024 != null ? {year:'FY2024', revenue: _fmt(f.revenue_fy2024)} : null,
+      f.revenue_fy2025 != null ? {year:'FY2025', revenue: _fmt(f.revenue_fy2025)} : null,
+    ].filter(Boolean);
+    if (_rows.length) _rev3y = _rows;
+  }
+
+  if (!_rev3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
 
   // Reverse so latest year (FY2025) shows first
-  const rev3 = [...(f.revenue_3y || [])].reverse();
+  const rev3 = [...(_rev3y || [])].reverse();
 
   // Parse financial string values to numbers for comparison
   // Handles "$3.315B", "−$10.5M", "4.9%", "−0.35%"
@@ -9839,7 +9920,7 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring');
+  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -9877,7 +9958,7 @@ function sectionHiring(D) {
 
   const urgencyIcon = (sig) => {
 
-    const badge = sig.badge_label || '';
+    const badge = sig.badge_label || sig.title || '';
 
     if (badge.toLowerCase().includes('tier 1') || badge.toLowerCase().includes('critical')) return '🔴';
 
@@ -9891,7 +9972,7 @@ function sectionHiring(D) {
 
   const cardsHtml = hiring.slice(0, 9).map(sig => {
 
-    const fullText = sig.text || '';
+    const fullText = sig.text || sig.body || sig.title || sig.signal || '';
 
     // Smart slice — don't cut mid-word
 
@@ -10367,7 +10448,7 @@ function sectionSignals(D) {
 
   // to avoid duplication. Hiring signals here would repeat the buying committee section.
 
-  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && (s.badge_label || s.text || s.quote));
+  const signals = (D.intelligence_signals || []).filter(s => s.type !== 'hiring' && s.type !== 'hiring_signal' && (s.badge_label || s.title || s.text || s.body || s.quote || s.signal));
 
   if (!signals.length) return `<section id="section-signals" class="audit-section">
 
@@ -10435,7 +10516,15 @@ function sectionSignals(D) {
 
     const icon = PLATFORM_ICON[sig.type] || '';
 
-    const hasUrl = sig.source_url && sig.source_url.startsWith('http');
+    // Normalize across 3 signal schemas: new (title/body), mid (badge_label/text), old (signal/algolia_angle)
+    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
+    const sigBody  = sig.relevance || sig.algolia_angle || '';
+    // Resolve URL from source_url or extract from string source field
+    const srcStr   = typeof sig.source === 'string' ? sig.source : '';
+    const resolvedUrl  = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
+    const resolvedName = sig.source_name || (srcStr ? srcStr.slice(0,30) : '');
+
+    const hasUrl = resolvedUrl.startsWith('http');
 
     return `<div style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);">
 
@@ -10457,13 +10546,13 @@ function sectionSignals(D) {
 
         <div style="${T.title};line-height:1.4;margin-bottom:4px;">
 
-          ${escHtml(sig.badge_label || sig.text?.slice(0,80) || '—')}
+          ${escHtml(sigTitle)}
 
         </div>
 
         <div style="${T.bodySmMid};">
 
-          ${escHtml(sig.relevance || '')}
+          ${escHtml(sigBody)}
 
         </div>
 
@@ -10473,7 +10562,7 @@ function sectionSignals(D) {
 
       <div style="flex-shrink:0;text-align:right;min-width:100px;">
 
-        ${hasUrl ? `<a href="${sig.source_url}" target="_blank"
+        ${hasUrl ? `<a href="${resolvedUrl}" target="_blank"
 
           style="display:inline-flex;align-items:center;gap:4px;${T.labelBlue};text-decoration:none;padding:4px 0;"
 
@@ -10481,9 +10570,9 @@ function sectionSignals(D) {
 
           onmouseleave="this.style.textDecoration='none'">
 
-          ${escHtml(sig.source_name?.slice(0,25)||'Source')}
+          ${escHtml(resolvedName.slice(0,25)||'Source')}
 
-        </a>` : `<span style="${T.bodySmGray12};">${escHtml(sig.source_name||'—')}</span>`}
+        </a>` : `<span style="${T.bodySmGray12};">${escHtml(resolvedName||'—')}</span>`}
 
         ${sig.source_date ? `<div style="${T.bodySmGray12};margin-top:2px;">${escHtml(sig.source_date.slice(0,10))}</div>` : ''}
 
@@ -10544,7 +10633,7 @@ function sectionExecQuotes(D) {
   // Prefer intelligence_signals[] (v1.1 schema) — filter to quote types only.
   // Fall back to legacy D.executives[] for backward compatibility with pre-v1.1 audits.
   const sigQuotes = (D.intelligence_signals || []).filter(
-    s => (s.type === 'earnings_quote' || s.type === 'media_quote') && s.quote && s.quote.trim()
+    s => (s.type === 'earnings_quote' || s.type === 'media_quote') && (s.quote || s.signal) && (s.quote || s.signal).trim()
   );
 
   const useLegacy = sigQuotes.length === 0;
@@ -10555,18 +10644,27 @@ function sectionExecQuotes(D) {
       ? srcTag('bay', 'MEDIA' + (q.publication ? ' \xB7 ' + escHtml(q.publication) : ''))
       : srcTag('sec', 'EARNINGS CALL');
 
-    const sourceLink = q.source_url
-      ? lnk(q.source_url, escHtml(q.label || q.source_date || 'Source'))
-      : escHtml(q.label || q.source_date || '');
+    // Resolve source URL from source_url or extract from string source field (old schema)
+    const srcStr = typeof q.source === 'string' ? q.source : '';
+    const resolvedSrcUrl = q.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
+    const sourceLink = resolvedSrcUrl
+      ? lnk(resolvedSrcUrl, escHtml(q.label || q.source_date || srcStr.slice(0,30) || 'Source'))
+      : escHtml(q.label || q.source_date || srcStr.slice(0,40) || '');
+
+    // Normalize quote text and attribution across old schema (signal) and new schema (quote/speaker/title)
+    const quoteText = q.quote || q.signal || '';
+    const speaker   = q.speaker || '';
+    const attrTitle = q.title  || '';
+    const context   = q.context || q.algolia_angle || '';
 
     return `
     <div class="quote-card">
 
       <div class="quote-mark">"</div>
 
-      <div class="quote-text">${escHtml(q.quote)}</div>
+      <div class="quote-text">${escHtml(quoteText)}</div>
 
-      <div class="quote-attr" style="${T.labelBlue}">— ${escHtml(q.speaker)}, ${escHtml(q.title)}</div>
+      ${(speaker || attrTitle) ? `<div class="quote-attr" style="${T.labelBlue}">— ${escHtml([speaker, attrTitle].filter(Boolean).join(', '))}</div>` : ''}
 
       <div class="quote-source">
 
@@ -10574,7 +10672,7 @@ function sectionExecQuotes(D) {
 
       </div>
 
-      ${q.context ? `<div class="quote-relevance" style="${T.bodySm}">${escHtml(q.context)}</div>` : ''}
+      ${context ? `<div class="quote-relevance" style="${T.bodySm}">${escHtml(context)}</div>` : ''}
 
     </div>`;
   };
@@ -11091,7 +11189,7 @@ function sectionSources(D) {
 
     <div class="section-title">Sources & Bibliography</div>
 
-    <p class="section-desc">${escHtml(D.methodology || '')}</p>
+    <p class="section-desc">${typeof D.methodology === 'string' ? escHtml(D.methodology) : ''}</p>
 
     ${bibs.length ? `
 
@@ -11101,11 +11199,11 @@ function sectionSources(D) {
 
       <div class="bib-entry">
 
-        <span class="bib-num">[${b.n}]</span>
+        <span class="bib-num">[${b.n || b.id || ''}]</span>
 
         <span class="bib-text">
 
-          ${escHtml(b.label)}
+          ${escHtml(b.label || b.source || b.title || '')}
 
           ${b.url ? ' · ' + lnk(b.url, b.url) : ''}
 
@@ -11349,7 +11447,7 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat((f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
   
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
@@ -12073,9 +12171,9 @@ function sectionCaseStudies(D) {
         position:absolute; bottom:0; left:0; right:0;
         padding:24px; opacity:0; transform:translateY(10px);
         transition:opacity 0.35s 0.15s, transform 0.35s 0.15s;
-        z-index:1;
+        z-index:1; pointer-events:none;
       }
-      .iac-panel.iac-active .iac-content { opacity:1; transform:translateY(0); }
+      .iac-panel.iac-active .iac-content { opacity:1; transform:translateY(0); pointer-events:auto; }
       .iac-vertical { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:6px; }
       .iac-company { font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
       .iac-result { font-size:15px; font-weight:600; color:#93c5fd; margin-bottom:8px; }
@@ -12214,7 +12312,8 @@ function sectionWhyNow(D) {
 
   const fin = D.financials || {};
 
-  const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
+  const _bcArr = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  const vacantRole = _bcArr.find(r=>r.status?.includes('OPEN'));
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
@@ -12781,7 +12880,7 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = hir.buying_committee || [];
+  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
 
   const phases = hir.engagement_phases || [];
 
@@ -12816,10 +12915,10 @@ function sectionBuyingCommittee(D) {
         transition:border-color 0.25s, box-shadow 0.25s;
       }
       .bc-card:hover {
-        border-color:#003DFF;
+        border-color:var(--blue);
         box-shadow:0 4px 24px rgba(0,61,255,0.08);
       }
-      .bc-card:hover .bc-corner { color:#003DFF; }
+      .bc-card:hover .bc-corner { color:var(--blue); }
       .bc-corner {
         position:absolute; width:20px; height:20px; z-index:2;
         display:flex; align-items:center; justify-content:center;
@@ -12844,8 +12943,8 @@ function sectionBuyingCommittee(D) {
       .bc-sig { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.07em; padding:2px 8px; border-radius:3px; margin-left:6px; vertical-align:middle; }
       .bc-tactic-label { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#94a3b8; margin-bottom:4px; margin-top:12px; }
       .bc-tactic-text { font-size:13px; color:#475569; line-height:1.6; }
-      .bc-open-link { font-size:12px; font-weight:600; color:#003DFF; text-decoration:none; margin-top:10px; display:inline-block; }
-      .bc-open-link:hover { color:#5468FF; }
+      .bc-open-link { font-size:12px; font-weight:600; color:var(--blue); text-decoration:none; margin-top:10px; display:inline-block; }
+      .bc-open-link:hover { color:var(--purple); }
       .bc-divider { width:100%; height:1px; background:#f1f5f9; margin:12px 0; }
     </style>
 
@@ -13525,15 +13624,28 @@ function sectionPartnerIntel(D) {
 
 function renderSections(D) {
 
+  // Normalize finding severity to canonical lowercase form — handles HIGH/high/MEDIUM/medium etc.
+  (D.findings || []).forEach(f => {
+    const l = (f.severity || '').toLowerCase();
+    if (l === 'high') f.severity = 'critical';
+    else if (l === 'medium') f.severity = 'moderate';
+    else if (l === 'low') f.severity = 'positive';
+    else f.severity = l; // already canonical or unknown
+  });
+
   const content  = document.getElementById('content');
 
   const findings = D.findings || [];
 
-  const criticalFindings = findings.filter(f => f.severity === 'critical');
+  const isSevCritical = s => s === 'critical' || s === 'HIGH';
+  const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
+  const isSevPositive = s => s === 'positive' || s === 'LOW' || s === 'POSITIVE';
 
-  const moderateFindings = findings.filter(f => f.severity === 'moderate');
+  const criticalFindings = findings.filter(f => isSevCritical(f.severity));
 
-  const positiveFindings = findings.filter(f => f.severity === 'positive');
+  const moderateFindings = findings.filter(f => isSevModerate(f.severity));
+
+  const positiveFindings = findings.filter(f => isSevPositive(f.severity));
 
 
 
@@ -13712,6 +13824,9 @@ function initTabRail() {
 
 
   tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Expose globally so bento tile nav links can call window.showTab('tabId') directly
+  window.showTab = showTab;
 
 
 
@@ -13982,7 +14097,7 @@ function initCmdK(D) {
 
   (D.intelligence_signals || []).slice(0, 5).forEach(s =>
 
-    push('📡', s.text.slice(0, 60) + '…', 'Signal', () => {
+    push('📡', (s.text || s.body || s.title || s.badge_label || '').slice(0, 60) + '…', 'Signal', () => {
 
       document.querySelector('[data-tab="intel"]')?.click();
 
@@ -14059,7 +14174,7 @@ function initCmdK(D) {
   );
 
   // Buying committee members
-  ((D.hiring || {}).buying_committee || []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
+  (Array.isArray((D.hiring || {}).buying_committee) ? (D.hiring || {}).buying_committee : []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
     push('👤', r.name + ' — ' + (r.role || ''), r.signal ? r.signal.toUpperCase() : 'Contact', () => {
       document.querySelector('[data-tab="play"]')?.click();
       setTimeout(() => document.getElementById('section-buying-committee')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
@@ -14620,7 +14735,7 @@ function init() {
       });
     })();
 
-    initCmdK(D);
+    initCmdK(window.AUDIT_DATA || D);
 
     initDrawer();
 

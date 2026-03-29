@@ -5810,8 +5810,8 @@ a:hover {
       }
     ],
     "device_share": {
-      "mobile": "50.0%",
-      "desktop": "50.0%"
+      "mobile": "50.0",
+      "desktop": "50.0"
     },
     "demographics": [
       {
@@ -5828,7 +5828,13 @@ a:hover {
     "source": "SimilarWeb API",
     "source_url": "https://www.similarweb.com/website/brooksrunning.com/",
     "demographics_note": "ESTIMATE — based on influencer audience gender data (Upfluence). SimilarWeb demographics endpoint 403/404 for brooksrunning.com.",
-    "demographics_source": "Upfluence audience engagement analysis — SimilarWeb demographics returned 404"
+    "demographics_source": "Upfluence audience engagement analysis — SimilarWeb demographics returned 404",
+    "audience": {
+      "gender": {
+        "female": 66,
+        "male": 34
+      }
+    }
   },
   "tech_stack": {
     "primary_platform": "Salesforce Commerce Cloud (Demandware SFRA)",
@@ -6314,90 +6320,40 @@ a:hover {
       }
     ]
   },
-  "abx_sequence": {
-    "sequence_type": "SFCC Displacement — 3 Contacts, 4 Touches",
-    "total_touches": 4,
-    "duration_days": 28,
-    "channels": [
-      "Email",
-      "LinkedIn"
-    ],
-    "research_basis": "Phase 2 browser audit findings: NLP gap (marathon training query), personalization gap (Ghost 16 no lift), zero PDP recommendations, hiring signal (Senior Engineer Digital Products open)",
-    "triggers": [
-      {
-        "signal": "Senior Engineer — Digital Products hiring (LinkedIn job ID 4382335419)",
-        "urgency": "HIGH — engage before role filled"
-      },
-      {
-        "signal": "SFCC native search platform — no AI/NLP capability",
-        "urgency": "HIGH — displacement opportunity"
-      },
-      {
-        "signal": "No recommendations on PDP — zero cross-sell",
-        "urgency": "MEDIUM — revenue gap"
-      }
-    ],
-    "contacts": [
-      {
-        "id": "C01",
-        "name": "IT Hiring Manager",
-        "title": "Hiring Manager — Senior Engineer, Digital Products",
-        "tier": 1,
-        "role": "Technical Buyer gatekeeper",
-        "angle": "Owns the Senior Engineer Digital Products hire. Engage now — before role is filled — to ensure Algolia evaluation is on the new engineer's roadmap from day 1."
-      },
-      {
-        "id": "C02",
-        "name": "Jessica Brooks",
-        "title": "eCommerce Technical Operations",
-        "tier": 2,
-        "role": "Champion",
-        "angle": "Owns day-to-day ecommerce experience. Feels the NLP and personalization gaps in conversion metrics."
-      },
-      {
-        "id": "C03",
-        "name": "Footwear Merchandiser — Lifestyle",
-        "title": "Footwear Merchandiser I, Lifestyle",
-        "tier": 3,
-        "role": "End-user champion",
-        "angle": "Builds lifestyle assortment. Directly impacted by no merchandising banners in search — cannot surface Cascadia launch or lifestyle collections without engineering."
-      }
-    ],
-    "touches": [
-      {
-        "touch": 1,
-        "channel": "Email to IT hiring manager",
-        "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
-        "cta": "15-min call to share the audit findings",
-        "timing": "Week 1 — before Senior Engineer role is filled",
-        "body": "Hi —\n\nSaw the Senior Engineer — Digital Products posting on LinkedIn (job ID 4382335419). Whoever fills that role will inherit three search limitations baked into SFCC native that no amount of engineering will fix: zero natural language understanding, no personalization from browsing history, and no recommendations on the product page.\n\nWe ran a quick audit of brooksrunning.com. Two findings stood out:\n\n— Searched 'best shoes for marathon training.' Got generic bestsellers. The query wasn't parsed for intent — cushioning level, surface, or distance. That's a direct revenue miss: a runner who describes exactly what they need leaves with nothing useful.\n\n— Browsed Ghost 16, then searched 'running shoes.' Results were identical to a fresh session. Zero personalization. Ghost 16 didn't move.\n\nYour new engineer won't be able to fix this with SFCC customization — it's a platform capability gap, not a configuration gap. Algolia layers on top of SFCC with a 2-hour SDK install. No replatform.\n\nHappy to share the full audit before the role is filled — takes 15 minutes. Worth it?"
-      },
-      {
-        "touch": 2,
-        "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
-        "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
-        "cta": "Review the audit findings at [audit URL]",
-        "timing": "Week 2",
-        "body": "Jessica —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability."
-      },
-      {
-        "touch": 3,
-        "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
-        "subject": "Direct message",
-        "cta": "Would you be open to a 20-min chat?",
-        "timing": "Week 2",
-        "body": "Hi —\n\nQuick question about the Lifestyle Footwear Merchandiser role: when you're building out the lifestyle assortment, how are you surfacing those products to buyers who don't already know Brooks as a performance brand?\n\nReason I ask — we audited brooksrunning.com and found that merchandising banners in search results aren't active. A 'trail' search returns 67 products but no Cascadia launch callout. 'Sale' redirects to a category page instead of showing sale items with a banner in search.\n\nAlgolia lets merchandisers inject banners, pin products, and boost SKUs without engineering tickets — the merchandiser owns it directly. For a lifestyle launch that needs discovery, that's the gap worth closing.\n\nWould you be open to a 20-min chat?"
-      },
-      {
-        "touch": 4,
-        "channel": "Personalized demo",
-        "subject": "4-scenario demo tailored to Brooks",
-        "cta": "Schedule demo",
-        "timing": "Week 4",
-        "body": "Demo flow — 4 scenarios, 20 minutes:\n\n1. NLP live: type 'best shoes for marathon training' in Brooks today → generic bestsellers. Same query in Algolia → filters to cushioned road shoes (Glycerin, Ghost, Adrenaline). Runs live on your catalog.\n\n2. Personalization: Browse Ghost 16 for 30 seconds, then search 'running shoes.' In Algolia: Ghost family boosted, preferred gender surfaced. In Brooks today: identical to fresh session.\n\n3. Merchandiser workflow: Launch a Cascadia trail campaign banner on the 'trail' query — no engineering ticket. Under 2 minutes in the Algolia dashboard.\n\n4. PDP recommendations: Add 'Frequently Bought Together' (socks, insoles) and 'You may also like' (Glycerin if viewing Ghost). Zero recommendations on PDP today."
-      }
-    ]
-  },
+  "abx_sequence": [
+    {
+      "touch": 1,
+      "channel": "Email to IT hiring manager",
+      "subject": "Help your new Digital Products Engineer hit the ground running with Algolia + SFCC",
+      "body_preview": "You're hiring a Senior Engineer to evaluate AI solutions and manage vendor RFPs (saw the LinkedIn posting). We've done the research for you — here's what we found when we tested Brooks' search against the 4 gaps a runner hits every session.",
+      "cta": "15-min call to share the audit findings",
+      "timing": "Week 1 — before Senior Engineer role is filled"
+    },
+    {
+      "touch": 2,
+      "channel": "Email to Jessica Brooks (eCommerce Technical Operations)",
+      "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
+      "body_preview": "Two case studies from your vertical — Shoe Carnival (footwear) and Under Armour (athletic) both had the same SFCC native search limitations Brooks has today. Here's what happened after Algolia.",
+      "cta": "Review the audit findings at [audit URL]",
+      "timing": "Week 2"
+    },
+    {
+      "touch": 3,
+      "channel": "LinkedIn to Footwear Merchandiser — Lifestyle",
+      "subject": "Direct message",
+      "body_preview": "You're building out the lifestyle footwear merchandising playbook — the hardest part is surfacing the right products to buyers who don't know Brooks as a performance brand. Algolia's merchandising rules let you configure this without engineering tickets.",
+      "cta": "Would you be open to a 20-min chat?",
+      "timing": "Week 2"
+    },
+    {
+      "touch": 4,
+      "channel": "Personalized demo",
+      "subject": "4-scenario demo tailored to Brooks",
+      "body_preview": "1) Live NLP demo: type 'best shoes for marathon training' in Brooks today vs Algolia. 2) Multi-language: German runner searching 'Laufschuhe.' 3) Personalization: Run Club member session. 4) Merchandiser workflow: Cascadia launch banner in 2 minutes.",
+      "cta": "Schedule demo",
+      "timing": "Week 4"
+    }
+  ],
   "case_studies": [
     {
       "vertical": "Athletic Footwear & Apparel",
@@ -6450,25 +6406,48 @@ a:hover {
   "partner_intel": {
     "tech_partners": [
       {
-        "name": "Salesforce Commerce Cloud",
-        "type": "ecommerce_platform",
-        "co_sell_motion": "Brooks Running is on Salesforce Commerce Cloud (Demandware SFRA) — confirmed by network inspection March 2026 (all search API calls route to /on/demandware.store/). Algolia maintains a published SFCC cartridge (AppExchange) and an official SFCC integration partner relationship. Co-sell: engage Algolia's Salesforce alliance team to lead a joint SFCC cartridge demo for Brooks Running's digital team. Integration complexity rated LOW — estimated 2–3 week implementation.",
-        "confidence": "HIGH",
-        "label": "[FACT — network inspection March 2026 + Algolia SFCC AppExchange listing]"
+        "name": "Salesforce Commerce Cloud (SFCC)",
+        "co_sell_motion": "\"Brooks runs SFCC — Algolia is a certified SFCC AppExchange partner. Joint intro via Salesforce partner team for AI Search overlay on Commerce Cloud storefront.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
       },
       {
-        "name": "Amperity",
-        "type": "cdp",
-        "co_sell_motion": "Brooks Running uses Amperity as their Customer Data Platform (BuiltWith + tech stack confirmed). Algolia Personalization can ingest Amperity unified customer profiles to personalize search results for Run Club members — surfacing size, cushioning preference, and running category signals. Co-sell: joint Amperity + Algolia data-to-search story for Brooks' Run Club loyalty program.",
+        "name": "Optimizely",
+        "co_sell_motion": "\"Brooks already uses Optimizely for A/B testing (80% return-rate decrease). Algolia integrates natively with Optimizely for personalized search ranking — joint value prop around experimentation + search.\"",
         "confidence": "MEDIUM",
-        "label": "[FACT — tech stack research March 2026. Algolia-Amperity integration: documented at algolia.com/integrations]"
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Acquia DAM (Widen)",
+        "co_sell_motion": "\"Brooks uses Acquia DAM to distribute 30K+ digital assets across 60+ countries. Acquia is an Algolia partner — joint pitch: AI search on content/product assets for global markets.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Amperity CDP",
+        "co_sell_motion": "\"Amperity is 'crucial to our tech stack' (CMO Melanie Allen). Algolia's AI personalization can ingest Amperity unified customer profiles for real-time search ranking — strong CDP-to-search bridge.\"",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
+      },
+      {
+        "name": "Adobe Experience Manager (AEM)",
+        "co_sell_motion": "Brooks operates across 60+ country markets; AEM is the dominant global CMS for multi-market DTC brands at this revenue scale ($1.6B). As Brooks expands lifestyle footwear globally, AEM adoption is plausible.",
+        "confidence": "MEDIUM",
+        "label": "[FACT — partner-intel.md]"
       }
     ],
-    "crossbeam_data_available": false,
-    "source_label": "[FACT — network inspection + BuiltWith tech stack March 2026]",
-    "si_partners": [],
-    "immediate_action": null,
-    "co_sell_recommendation": "Lead with Salesforce Commerce Cloud co-sell motion (highest confidence). Engage Algolia alliance team to activate."
+    "si_partners": [
+      {
+        "name": "DAC Group",
+        "evidence": "Formal partnership announcement: Brooks Running engaged DAC for integrated search marketing strategy across North America. Quote from Emily Conlon (Senior Manager, Performance Media): \"We're excited to partner with DAC because of their proven success connecting leading multichannel brands with consu",
+        "confidence": "HIGH",
+        "c_suite_relationship": true,
+        "activation_strategy": "\"DAC manages Brooks' search marketing — reach out to DAC's Jared Hendrickson (GM/VP New York) to explore Algolia co-sell. DAC has ecommerce-to-performance-media workflow context that overlaps with Algolia Search Intelligence.\"",
+        "label": "[FACT — partner-intel.md]"
+      }
+    ],
+    "co_sell_recommendation": "",
+    "immediate_action": ""
   },
   "tab_subtitles": {
     "summary": "What you need to know before walking into Brooks Running",
@@ -6483,7 +6462,8 @@ a:hover {
     "detail": "Senior Engineer — Digital Products (IT) posted March 7, 2026 with explicit 'vendor RFP' and 'evaluate AI solutions' language. This Technical Buyer seat is open now — reach the hiring manager before the new engineer develops an incumbent preference. Window: 4-6 weeks.",
     "urgency": "high",
     "source": "intelligence_signals"
-  }
+  },
+  "industry_context": null
 };</script>
 
 
@@ -8841,7 +8821,14 @@ function sectionTraffic(D) {
 
   const age = audience.age || {};
 
-  const gender = audience.gender || {};
+  // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
+  const demoArr = t.demographics || [];
+  const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
+  const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
+  const genderFromDemo = (femaleEntry || maleEntry)
+    ? { female: femaleEntry?.pct, male: maleEntry?.pct }
+    : null;
+  const gender = genderFromDemo || audience.gender || {};
 
   const maxAge = Math.max(...Object.values(age).map(Number), 1);
 
@@ -9063,15 +9050,15 @@ function sectionTraffic(D) {
 
           <div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">
 
-            <div style="width:${t.device_share.mobile}%;background:var(--blue);display:flex;align-items:center;justify-content:center;">
+            <div style="width:${String(t.device_share.mobile).replace('%','')}%;background:var(--blue);display:flex;align-items:center;justify-content:center;">
 
-              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}%</span>
+              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">📱 ${t.device_share.mobile}${String(t.device_share.mobile).includes('%')?'':'%'}</span>
 
             </div>
 
-            <div style="width:${t.device_share.desktop}%;background:var(--mid);display:flex;align-items:center;justify-content:center;">
+            <div style="width:${String(t.device_share.desktop).replace('%','')}%;background:var(--mid);display:flex;align-items:center;justify-content:center;">
 
-              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}%</span>
+              <span style="${T.eyebrowSmCol('white')};white-space:nowrap;padding:0 6px;">🖥 ${t.device_share.desktop}${String(t.device_share.desktop).includes('%')?'':'%'}</span>
 
             </div>
 
@@ -9185,10 +9172,22 @@ function sectionFinancials(D) {
 
   const cs  = D.company_snapshot || {};
 
-  if (!f.revenue_3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
+  // Build revenue_3y from individual year fields if array not present (older schema)
+  let _rev3y = f.revenue_3y;
+  if (!_rev3y?.length) {
+    const _fmt = v => v == null ? null : typeof v === 'number' ? '$' + (v >= 1e9 ? (v/1e9).toFixed(1)+'B' : (v/1e6).toFixed(1)+'M') : String(v);
+    const _rows = [
+      f.revenue_fy2023 != null ? {year:'FY2023', revenue: _fmt(f.revenue_fy2023)} : null,
+      f.revenue_fy2024 != null ? {year:'FY2024', revenue: _fmt(f.revenue_fy2024)} : null,
+      f.revenue_fy2025 != null ? {year:'FY2025', revenue: _fmt(f.revenue_fy2025)} : null,
+    ].filter(Boolean);
+    if (_rows.length) _rev3y = _rows;
+  }
+
+  if (!_rev3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
 
   // Reverse so latest year (FY2025) shows first
-  const rev3 = [...(f.revenue_3y || [])].reverse();
+  const rev3 = [...(_rev3y || [])].reverse();
 
   // Parse financial string values to numbers for comparison
   // Handles "$3.315B", "−$10.5M", "4.9%", "−0.35%"
@@ -11042,7 +11041,7 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat((f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
   
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
@@ -11766,9 +11765,9 @@ function sectionCaseStudies(D) {
         position:absolute; bottom:0; left:0; right:0;
         padding:24px; opacity:0; transform:translateY(10px);
         transition:opacity 0.35s 0.15s, transform 0.35s 0.15s;
-        z-index:1;
+        z-index:1; pointer-events:none;
       }
-      .iac-panel.iac-active .iac-content { opacity:1; transform:translateY(0); }
+      .iac-panel.iac-active .iac-content { opacity:1; transform:translateY(0); pointer-events:auto; }
       .iac-vertical { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:6px; }
       .iac-company { font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
       .iac-result { font-size:15px; font-weight:600; color:#93c5fd; margin-bottom:8px; }
@@ -11907,7 +11906,8 @@ function sectionWhyNow(D) {
 
   const fin = D.financials || {};
 
-  const vacantRole = (hir.buying_committee||[]).find(r=>r.status?.includes('OPEN'));
+  const _bcArr = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  const vacantRole = _bcArr.find(r=>r.status?.includes('OPEN'));
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
@@ -12474,7 +12474,7 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = hir.buying_committee || [];
+  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
 
   const phases = hir.engagement_phases || [];
 
@@ -12509,10 +12509,10 @@ function sectionBuyingCommittee(D) {
         transition:border-color 0.25s, box-shadow 0.25s;
       }
       .bc-card:hover {
-        border-color:#003DFF;
+        border-color:var(--blue);
         box-shadow:0 4px 24px rgba(0,61,255,0.08);
       }
-      .bc-card:hover .bc-corner { color:#003DFF; }
+      .bc-card:hover .bc-corner { color:var(--blue); }
       .bc-corner {
         position:absolute; width:20px; height:20px; z-index:2;
         display:flex; align-items:center; justify-content:center;
@@ -12537,8 +12537,8 @@ function sectionBuyingCommittee(D) {
       .bc-sig { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.07em; padding:2px 8px; border-radius:3px; margin-left:6px; vertical-align:middle; }
       .bc-tactic-label { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#94a3b8; margin-bottom:4px; margin-top:12px; }
       .bc-tactic-text { font-size:13px; color:#475569; line-height:1.6; }
-      .bc-open-link { font-size:12px; font-weight:600; color:#003DFF; text-decoration:none; margin-top:10px; display:inline-block; }
-      .bc-open-link:hover { color:#5468FF; }
+      .bc-open-link { font-size:12px; font-weight:600; color:var(--blue); text-decoration:none; margin-top:10px; display:inline-block; }
+      .bc-open-link:hover { color:var(--purple); }
       .bc-divider { width:100%; height:1px; background:#f1f5f9; margin:12px 0; }
     </style>
 
@@ -13218,6 +13218,15 @@ function sectionPartnerIntel(D) {
 
 function renderSections(D) {
 
+  // Normalize finding severity to canonical lowercase form — handles HIGH/high/MEDIUM/medium etc.
+  (D.findings || []).forEach(f => {
+    const l = (f.severity || '').toLowerCase();
+    if (l === 'high') f.severity = 'critical';
+    else if (l === 'medium') f.severity = 'moderate';
+    else if (l === 'low') f.severity = 'positive';
+    else f.severity = l; // already canonical or unknown
+  });
+
   const content  = document.getElementById('content');
 
   const findings = D.findings || [];
@@ -13759,7 +13768,7 @@ function initCmdK(D) {
   );
 
   // Buying committee members
-  ((D.hiring || {}).buying_committee || []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
+  (Array.isArray((D.hiring || {}).buying_committee) ? (D.hiring || {}).buying_committee : []).filter(r => r.name && !r.name.toLowerCase().includes('tbd')).forEach(r =>
     push('👤', r.name + ' — ' + (r.role || ''), r.signal ? r.signal.toUpperCase() : 'Contact', () => {
       document.querySelector('[data-tab="play"]')?.click();
       setTimeout(() => document.getElementById('section-buying-committee')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
