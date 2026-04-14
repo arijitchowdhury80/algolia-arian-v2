@@ -2,13 +2,28 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+from uuid import uuid4
+
 import pytest
 from pydantic import ValidationError
 
+from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
 from prism_platform.v2.modules.intel_company.schemas import (
     CompanySeedOutput,
     CompetitorSeed,
     ExecutiveSeed,
+)
+from prism_platform.v2.playbook import PlaybookLoader
+from prism_platform.v2.types import ExecutionContextV2
+
+PLAYBOOK_PATH = (
+    Path(__file__).resolve().parents[2]
+    / "prism_platform"
+    / "v2"
+    / "modules"
+    / "intel_company"
+    / "playbook.md"
 )
 
 
@@ -134,3 +149,40 @@ class TestCompanySeedOutput:
         assert "legal_name" in schema["properties"]
         assert "executives" in schema["properties"]
         assert schema["additionalProperties"] is False
+
+
+class TestIntelCompanyWiring:
+    """Test that config + playbook + schema wire together correctly."""
+
+    def test_config_is_valid(self) -> None:
+        assert INTEL_COMPANY_CONFIG.name == "intel-company"
+        assert INTEL_COMPANY_CONFIG.layer == "seed"
+        assert INTEL_COMPANY_CONFIG.cost_tier == "pro-search"
+
+    def test_playbook_loads(self) -> None:
+        loader = PlaybookLoader()
+        meta, body = loader.load(PLAYBOOK_PATH)
+        assert meta.name == "intel-company"
+        assert "{domain}" in body
+
+    def test_playbook_resolves(self) -> None:
+        loader = PlaybookLoader()
+        _, body = loader.load(PLAYBOOK_PATH)
+        ctx = ExecutionContextV2(
+            audit_id="test-001",
+            account_domain="dell.com",
+            company_name="Dell Technologies",
+            industry="Enterprise Technology",
+            is_public=True,
+        )
+        resolved = loader.resolve(body, ctx)
+        assert "dell.com" in resolved
+        assert "{domain}" not in resolved
+
+    def test_schema_produces_json_schema_for_system_prompt(self) -> None:
+        schema = CompanySeedOutput.model_json_schema()
+        props = schema["properties"]
+        assert "legal_name" in props
+        assert "executives" in props
+        assert "competitors" in props
+        assert schema.get("additionalProperties") is False
