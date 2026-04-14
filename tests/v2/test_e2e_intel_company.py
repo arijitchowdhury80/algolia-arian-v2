@@ -29,105 +29,116 @@ PLAYBOOK_PATH = (
 )
 
 # Realistic mock response matching CompanySeedOutput schema
-REALISTIC_DELL_RESPONSE = json.dumps({
-    "legal_name": "Dell Technologies Inc.",
-    "common_name": "Dell",
-    "domain": "dell.com",
-    "headquarters": "Round Rock, Texas, USA",
-    "employee_count": 133000,
-    "employee_count_source": "LinkedIn",
-    "year_founded": 1984,
-    "business_model": (
-        "Dell Technologies designs, manufactures, and sells enterprise hardware including "
-        "servers, storage, networking equipment, and personal computers. The company generates "
-        "revenue through direct sales to enterprises and consumers, professional services, "
-        "and software solutions through subsidiaries like VMware and Secureworks."
-    ),
-    "industry": "Enterprise Technology",
-    "sub_vertical": "Hardware & Infrastructure",
-    "is_public": True,
-    "ticker": "DELL",
-    "parent_company": None,
-    "revenue_estimate": 88400000000.0,
-    "revenue_source": "SEC 10-K FY2025",
-    "executives": [
-        {
-            "full_name": "Michael Dell",
-            "title": "Chairman & CEO",
-            "role_classification": "economic_buyer",
-            "linkedin_url": "https://www.linkedin.com/in/michaeldell",
-            "tenure_description": "Since 1984",
-            "previous_company": None,
-        },
-        {
-            "full_name": "Yvonne McGill",
-            "title": "Chief Financial Officer",
-            "role_classification": "economic_buyer",
-            "linkedin_url": None,
-            "tenure_description": "Since 2022",
-            "previous_company": "Dell (various roles)",
-        },
-        {
-            "full_name": "Jeff Clarke",
-            "title": "Vice Chairman & COO",
-            "role_classification": "economic_buyer",
-            "linkedin_url": None,
-            "tenure_description": "Since 2021",
-            "previous_company": None,
-        },
-        {
-            "full_name": "John Roese",
-            "title": "Global CTO",
-            "role_classification": "technical_buyer",
-            "linkedin_url": None,
-            "tenure_description": "Since 2020",
-            "previous_company": "Huawei",
-        },
-        {
-            "full_name": "Jen Felch",
-            "title": "Chief Digital Officer",
-            "role_classification": "champion",
-            "linkedin_url": None,
-            "tenure_description": "Since 2019",
-            "previous_company": None,
-        },
-    ],
-    "competitors": [
-        {
-            "company_name": "HP Inc",
-            "domain": "hp.com",
-            "why_competitor": "Competes in PCs, printers, and enterprise hardware",
-            "linkedin_url": None,
-        },
-        {
-            "company_name": "Lenovo",
-            "domain": "lenovo.com",
-            "why_competitor": "Major PC and server manufacturer competing globally",
-            "linkedin_url": None,
-        },
-        {
-            "company_name": "Hewlett Packard Enterprise",
-            "domain": "hpe.com",
-            "why_competitor": "Competes in enterprise servers, storage, and networking",
-            "linkedin_url": None,
-        },
-        {
-            "company_name": "Cisco Systems",
-            "domain": "cisco.com",
-            "why_competitor": "Competes in networking and enterprise infrastructure",
-            "linkedin_url": None,
-        },
-        {
-            "company_name": "IBM",
-            "domain": "ibm.com",
-            "why_competitor": "Competes in enterprise IT services and infrastructure",
-            "linkedin_url": None,
-        },
-    ],
-    "product_categories": ["Laptops", "Desktops", "Servers", "Storage", "Networking", "Services"],
-    "company_linkedin_url": "https://www.linkedin.com/company/dell-technologies",
-    "recent_headline": "Dell Technologies reports strong Q4 FY2025 results driven by AI server demand",
-})
+REALISTIC_DELL_RESPONSE = json.dumps(
+    {
+        "legal_name": "Dell Technologies Inc.",
+        "common_name": "Dell",
+        "domain": "dell.com",
+        "headquarters": "Round Rock, Texas, USA",
+        "employee_count": 133000,
+        "employee_count_source": "LinkedIn",
+        "year_founded": 1984,
+        "business_model": (
+            "Dell Technologies designs, manufactures, and sells enterprise hardware including "
+            "servers, storage, networking equipment, and personal computers. The company generates "
+            "revenue through direct sales to enterprises and consumers, professional services, "
+            "and software solutions through subsidiaries like VMware and Secureworks."
+        ),
+        "industry": "Enterprise Technology",
+        "sub_vertical": "Hardware & Infrastructure",
+        "is_public": True,
+        "ticker": "DELL",
+        "parent_company": None,
+        "revenue_estimate": 88400000000.0,
+        "revenue_source": "SEC 10-K FY2025",
+        "executives": [
+            {
+                "full_name": "Michael Dell",
+                "title": "Chairman & CEO",
+                "role_classification": "economic_buyer",
+                "linkedin_url": "https://www.linkedin.com/in/michaeldell",
+                "tenure_description": "Since 1984",
+                "previous_company": None,
+            },
+            {
+                "full_name": "Yvonne McGill",
+                "title": "Chief Financial Officer",
+                "role_classification": "economic_buyer",
+                "linkedin_url": None,
+                "tenure_description": "Since 2022",
+                "previous_company": "Dell (various roles)",
+            },
+            {
+                "full_name": "Jeff Clarke",
+                "title": "Vice Chairman & COO",
+                "role_classification": "economic_buyer",
+                "linkedin_url": None,
+                "tenure_description": "Since 2021",
+                "previous_company": None,
+            },
+            {
+                "full_name": "John Roese",
+                "title": "Global CTO",
+                "role_classification": "technical_buyer",
+                "linkedin_url": None,
+                "tenure_description": "Since 2020",
+                "previous_company": "Huawei",
+            },
+            {
+                "full_name": "Jen Felch",
+                "title": "Chief Digital Officer",
+                "role_classification": "champion",
+                "linkedin_url": None,
+                "tenure_description": "Since 2019",
+                "previous_company": None,
+            },
+        ],
+        "competitors": [
+            {
+                "company_name": "HP Inc",
+                "domain": "hp.com",
+                "why_competitor": "Competes in PCs, printers, and enterprise hardware",
+                "linkedin_url": None,
+            },
+            {
+                "company_name": "Lenovo",
+                "domain": "lenovo.com",
+                "why_competitor": "Major PC and server manufacturer competing globally",
+                "linkedin_url": None,
+            },
+            {
+                "company_name": "Hewlett Packard Enterprise",
+                "domain": "hpe.com",
+                "why_competitor": "Competes in enterprise servers, storage, and networking",
+                "linkedin_url": None,
+            },
+            {
+                "company_name": "Cisco Systems",
+                "domain": "cisco.com",
+                "why_competitor": "Competes in networking and enterprise infrastructure",
+                "linkedin_url": None,
+            },
+            {
+                "company_name": "IBM",
+                "domain": "ibm.com",
+                "why_competitor": "Competes in enterprise IT services and infrastructure",
+                "linkedin_url": None,
+            },
+        ],
+        "product_categories": [
+            "Laptops",
+            "Desktops",
+            "Servers",
+            "Storage",
+            "Networking",
+            "Services",
+        ],
+        "company_linkedin_url": "https://www.linkedin.com/company/dell-technologies",
+        "recent_headline": (
+            "Dell Technologies reports strong Q4 FY2025 results driven by AI server demand"
+        ),
+    }
+)
 
 
 @pytest.mark.asyncio
@@ -201,7 +212,9 @@ async def test_intel_company_v2_full_pipeline() -> None:
 
     # Verify the API was called with resolved playbook (no {domain} placeholder)
     call_args = mock_api.research.call_args
-    user_prompt = call_args.kwargs.get("user_prompt", call_args.args[1] if len(call_args.args) > 1 else "")
+    user_prompt = call_args.kwargs.get(
+        "user_prompt", call_args.args[1] if len(call_args.args) > 1 else ""
+    )
     assert "dell.com" in user_prompt
     assert "{domain}" not in user_prompt
 

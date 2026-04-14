@@ -30,13 +30,16 @@ class ExecutiveSeed(BaseModel):
 
     full_name: str = Field(description="Full name of the executive")
     title: str = Field(description="Current job title")
-    role_classification: Literal[
-        "economic_buyer",
-        "technical_buyer",
-        "champion",
-        "influencer",
-        "end_user",
-    ] | None = Field(
+    role_classification: (
+        Literal[
+            "economic_buyer",
+            "technical_buyer",
+            "champion",
+            "influencer",
+            "end_user",
+        ]
+        | None
+    ) = Field(
         default=None,
         description=(
             "MEDDPICC role classification based on title. "
@@ -69,9 +72,7 @@ class CompetitorSeed(BaseModel):
 
     company_name: str = Field(description="Competitor's name")
     domain: str = Field(description="Competitor's primary website domain")
-    why_competitor: str = Field(
-        description="One sentence: why they compete with the prospect"
-    )
+    why_competitor: str = Field(description="One sentence: why they compete with the prospect")
     linkedin_url: str | None = Field(
         default=None,
         description="Company LinkedIn page URL, if found",

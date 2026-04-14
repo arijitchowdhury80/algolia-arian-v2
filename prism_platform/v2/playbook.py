@@ -126,12 +126,13 @@ class PlaybookLoader:
                 else:
                     meta_dict[key.strip()] = value
 
-        body = raw[match.end():]
+        body = raw[match.end() :]
         return PlaybookMeta.model_validate(meta_dict), body
 
     @staticmethod
     def _safe_substitute(template: str, variables: dict[str, str]) -> str:
         """Substitute {key} placeholders, preserving unknown variables."""
+
         def replacer(match: re.Match[str]) -> str:
             key = match.group(1)
             return variables.get(key, match.group(0))

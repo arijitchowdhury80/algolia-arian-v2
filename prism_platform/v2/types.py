@@ -116,9 +116,9 @@ class ExecutiveRef(BaseModel):
     name: str
     title: str
     linkedin_url: str | None = None
-    role_classification: Literal[
-        "economic_buyer", "technical_buyer", "champion", "influencer", "end_user"
-    ] | None = None
+    role_classification: (
+        Literal["economic_buyer", "technical_buyer", "champion", "influencer", "end_user"] | None
+    ) = None
 
 
 class ModuleConfig(BaseModel):

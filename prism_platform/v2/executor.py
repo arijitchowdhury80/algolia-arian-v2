@@ -109,7 +109,8 @@ class ModuleExecutor:
                 raw_data = json.loads(response.content)
             except json.JSONDecodeError as e:
                 return self._fail_result(
-                    config, start_ns,
+                    config,
+                    start_ns,
                     errors=[f"JSON parse failed: {e}"],
                     llm_calls=1,
                     input_tokens=response.usage_input_tokens,
@@ -125,7 +126,8 @@ class ModuleExecutor:
                     for err in e.errors()
                 ]
                 return self._fail_result(
-                    config, start_ns,
+                    config,
+                    start_ns,
                     errors=[f"Schema validation failed: {err}" for err in field_errors],
                     llm_calls=1,
                     input_tokens=response.usage_input_tokens,
@@ -168,7 +170,8 @@ class ModuleExecutor:
                 domain=context.account_domain,
             )
             return self._fail_result(
-                config, start_ns,
+                config,
+                start_ns,
                 errors=[f"{type(e).__name__}: {e}"],
             )
 
