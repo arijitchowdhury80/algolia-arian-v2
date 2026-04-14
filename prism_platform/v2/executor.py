@@ -12,12 +12,18 @@ Execution flow:
 The executor does NOT know what any module researches. It follows
 config (which constraints), playbook (what instructions), and
 schema (what shape). Pure plumbing.
+
+Execution strategies (Decision 3 — Phase 2):
+- prospect-only: single call for the prospect domain
+- comparative:   single call with all companies in context (for gap analysis)
+- per-company:   fan-out — one call per company (prospect + each competitor)
 """
 
 from __future__ import annotations
 
 import json
 import time
+from copy import copy
 from pathlib import Path
 from typing import Any, TypeVar
 
@@ -174,6 +180,68 @@ class ModuleExecutor:
                 start_ns,
                 errors=[f"{type(e).__name__}: {e}"],
             )
+
+    async def execute_strategy(
+        self,
+        config: ModuleConfig,
+        context: ExecutionContextV2,
+        output_schema: type[T],
+        playbook_path: Path,
+    ) -> list[ModuleExecutorResult]:
+        """Execute a module using the playbook's declared execution_strategy.
+
+        Strategies:
+        - prospect-only:  Single call for the prospect domain. Returns 1 result.
+        - comparative:    Single call with all competitor domains injected into
+                          the context. Returns 1 result.
+        - per-company:    Fan-out — one call for the prospect, one per competitor.
+                          Returns N+1 results (prospect + N competitors).
+
+        Each call in a fan-out gets a context with account_domain swapped to
+        the company being researched, so {domain} resolves correctly.
+
+        Args:
+            config: ModuleConfig defining the agent's identity and constraints.
+            context: ExecutionContextV2 with runtime data.
+            output_schema: Pydantic model class to validate responses against.
+            playbook_path: Path to the playbook.md file.
+
+        Returns:
+            List of ModuleExecutorResult — always at least 1 element.
+        """
+        meta, _ = self._playbook_loader.load(playbook_path)
+        strategy = meta.execution_strategy
+
+        if strategy == "per-company":
+            return await self._execute_per_company(config, context, output_schema, playbook_path)
+
+        # prospect-only and comparative both make a single call
+        result = await self.execute(config, context, output_schema, playbook_path)
+        return [result]
+
+    async def _execute_per_company(
+        self,
+        config: ModuleConfig,
+        context: ExecutionContextV2,
+        output_schema: type[T],
+        playbook_path: Path,
+    ) -> list[ModuleExecutorResult]:
+        """Fan-out: one execute() call per company (prospect + competitors)."""
+        companies: list[tuple[str, str]] = [(context.company_name, context.account_domain)]
+        for comp in context.competitors:
+            companies.append((comp.name, comp.domain))
+
+        results: list[ModuleExecutorResult] = []
+        for company_name, domain in companies:
+            # Shallow-copy context, override domain + company_name for this company
+            per_company_context = copy(context)
+            object.__setattr__(per_company_context, "account_domain", domain)
+            object.__setattr__(per_company_context, "company_name", company_name)
+
+            result = await self.execute(config, per_company_context, output_schema, playbook_path)
+            results.append(result)
+
+        return results
 
     def _build_system_prompt(self, config: ModuleConfig, schema: type[BaseModel]) -> str:
         """Build the system prompt from config and output schema."""

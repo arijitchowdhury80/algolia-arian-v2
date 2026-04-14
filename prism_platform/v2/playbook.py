@@ -7,6 +7,7 @@ research instructions with template variables like {domain}, {company_name},
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 from typing import Any
@@ -93,6 +94,13 @@ class PlaybookLoader:
         if context.executives:
             exec_lines = [f"- {e.name}, {e.title}" for e in context.executives]
             variables["executives"] = "\n".join(exec_lines)
+
+        # Inject upstream module results as {upstream_{module_name}} variables.
+        # Module names with hyphens are normalised to underscores for template keys.
+        # e.g. "intel-techstack" → {upstream_intel_techstack}
+        for module_name, module_result in context.upstream_results.items():
+            key = f"upstream_{module_name.replace('-', '_')}"
+            variables[key] = json.dumps(module_result, indent=2)
 
         resolved = self._safe_substitute(body, variables)
 
