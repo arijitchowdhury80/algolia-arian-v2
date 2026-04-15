@@ -9,9 +9,9 @@ LLM Provider Selection:
   Set ENRICHER_MODEL to override the default model for the selected provider.
   Defaults:
     anthropic  → claude-haiku-4-5-20251001  (cost-effective for structuring)
-    gemini     → gemini-2.0-flash
+    gemini     → gemini-3.1-flash-lite-preview
     openai     → gpt-4o-mini
-    openrouter → google/gemini-2.0-flash-001
+    openrouter → google/gemini-3.1-flash-lite-preview
 """
 
 from __future__ import annotations
@@ -92,6 +92,20 @@ class Settings(BaseSettings):
     # Tavily (backup research API)
     tavily_api_key: str = ""
 
+    # --- Browser Infrastructure (Shared Tier System) ---
+
+    # Jina Reader API (Tier 1 fallback — JS rendering, free tier available)
+    jina_api_key: str = ""
+
+    # Browserless.io (Tier 3 — managed headless Chrome with stealth)
+    browserless_api_key: str = ""
+
+    # ScrapingBee (Tier 3 — REST API with JS rendering + CAPTCHA solving)
+    scrapingbee_api_key: str = ""
+
+    # Residential proxy for Tier 2 stealth browser (format: http://user:pass@host:port)
+    residential_proxy_url: str = ""
+
     # SerpApi (Google SERP results)
     serpapi_api_key: str = ""
 
@@ -161,8 +175,8 @@ class Settings(BaseSettings):
         defaults = {
             "anthropic": "claude-haiku-4-5-20251001",
             "openai": "gpt-4o-mini",
-            "gemini": "gemini-2.0-flash",
-            "openrouter": "google/gemini-2.0-flash-001",
+            "gemini": "gemini-3.1-flash-lite-preview",
+            "openrouter": "google/gemini-3.1-flash-lite-preview",
         }
         return defaults.get(provider, "claude-haiku-4-5-20251001")
 

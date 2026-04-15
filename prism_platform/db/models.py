@@ -17,7 +17,7 @@ from sqlalchemy import (
     Text,
     UniqueConstraint,
 )
-from sqlalchemy.dialects.postgresql import JSONB, TSVECTOR, UUID
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -49,6 +49,11 @@ class Account(Base):
     parent_company: Mapped[str | None] = mapped_column(Text, nullable=True)
     revenue_estimate: Mapped[float | None] = mapped_column(Numeric(15, 2), nullable=True)
     revenue_source: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # Social presence (populated by intel-company)
+    company_linkedin_url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    twitter_handle: Mapped[str | None] = mapped_column(Text, nullable=True)
+    youtube_url: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     # Website snapshot
     has_search_bar: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
