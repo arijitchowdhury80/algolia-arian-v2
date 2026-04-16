@@ -1,0 +1,1957 @@
+{
+  "meta": {
+    "company": "Oriental Trading Company",
+    "domain": "orientaltrading.com",
+    "audit_date": "2026-04-15",
+    "audited_by": "Algolia",
+    "version": "v1",
+    "data_vintage": {
+      "similarweb": "2026-04-14",
+      "builtwith": "2026-04-14",
+      "yahoo_finance": null
+    },
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-04-15"
+  },
+  "cover": {
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Oriental_Trading_Company_headquarters_%28Omaha%29.jpg/1280px-Oriental_Trading_Company_headquarters_%28Omaha%29.jpg",
+    "company_logo_url": "https://logo.clearbit.com/orientaltrading.com",
+    "status_line": "Confidential \u00b7 For Internal Use Only"
+  },
+  "score": {
+    "overall": 2.6,
+    "verdict": "Critical Gaps",
+    "verdict_class": "critical",
+    "breakdown": {
+      "latency": 5.0,
+      "typo_tolerance": 1.0,
+      "query_suggestions_empty_state": 2.0,
+      "intent_detection": 4.0,
+      "merchandising_consistency": 6.0,
+      "content_commerce_ux": 3.0,
+      "semantic_nlp_search": 1.0,
+      "dynamic_facets_personalization": 2.0,
+      "recommendations_merchandising": 5.0,
+      "search_intelligence": 3.0
+    },
+    "breakdown_severity": {
+      "latency": "MEDIUM",
+      "typo_tolerance": "HIGH",
+      "query_suggestions_empty_state": "HIGH",
+      "intent_detection": "MEDIUM",
+      "merchandising_consistency": "LOW",
+      "content_commerce_ux": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "HIGH",
+      "recommendations_merchandising": "MEDIUM",
+      "search_intelligence": "MEDIUM"
+    },
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "intent_detection": "Intent Detection",
+      "merchandising_consistency": "Merchandising Consistency",
+      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "search_intelligence": "Search Intelligence"
+    },
+    "critical_count": 5,
+    "moderate_count": 9,
+    "formula_shown": "sum(score\u00d7weight)/sum(weights)",
+    "source": "10-scoring-matrix.md"
+  },
+  "company_snapshot": {
+    "industry": "Specialty Retail \u2014 Party Supplies, Crafts, Toys, Education Supplies",
+    "hq": "Omaha, Nebraska, USA",
+    "employees": "~2,000",
+    "revenue": "$766M [ESTIMATE]",
+    "revenue_source": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
+    "revenue_source_label": "ZoomInfo / RocketReach / ecdb.com",
+    "founded": "1932",
+    "ticker": null,
+    "current_search_vendor": "None detected \u2014 Proprietary redirect-mapping + server-side keyword search (GREENFIELD)",
+    "ecommerce_platform": "Custom/Proprietary Java (likely Oracle ATG heritage) + Mirakl Marketplace",
+    "monthly_visits": "3.776M/mo",
+    "visits_source": "https://www.similarweb.com/website/orientaltrading.com/",
+    "parent_entity": "Berkshire Hathaway",
+    "is_conglomerate": false,
+    "portfolio_brands": [
+      {
+        "name": "Oriental Trading",
+        "domain": "orientaltrading.com",
+        "is_audit_target": true,
+        "source": "[FACT \u2014 orientaltrading.com via WebFetch, 2026-04-14]"
+      },
+      {
+        "name": "Fun Express",
+        "domain": "funexpress.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 corp.orientaltrading.com via WebFetch, 2026-04-14]"
+      },
+      {
+        "name": "MindWare",
+        "domain": "mindware.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 orientaltrading.com/h3-about-us.fltr via WebFetch, 2026-04-14]"
+      },
+      {
+        "name": "SmileMakers",
+        "domain": "smilemakers.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 orientaltrading.com/h3-about-us.fltr via WebFetch, 2026-04-14]"
+      },
+      {
+        "name": "Morris Costumes",
+        "domain": "morriscostumes.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 thecharlotteledger.com / corp.orientaltrading.com, 2026-04-14]"
+      }
+    ],
+    "portfolio_opportunity_note": "5-brand portfolio = 5\u00d7 the search optimization surface"
+  },
+  "executives": [
+    {
+      "name": "Steve Mendlik",
+      "title": "President & CEO",
+      "quote": "Oriental Trading will be the first company in the celebration, education, and craft retail space to provide a marketplace of this scale to online customers.",
+      "quote_source": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+      "quote_source_label": "BusinessWire \u2014 Mirakl Marketplace Launch",
+      "quote_date": "2021-06",
+      "relevance": "Marketplace vision signals massive catalog expansion \u2014 the exact environment where Algolia federated search and dynamic filtering deliver immediate lift"
+    },
+    {
+      "name": "Steve Mendlik",
+      "title": "President & CEO",
+      "quote": "By creating this robust marketplace, customers can easily get everything they need, at the prices they want and in one place.",
+      "quote_source": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+      "quote_source_label": "BusinessWire \u2014 Mirakl Marketplace Launch",
+      "quote_date": "2021-06",
+      "relevance": "The 'one place' vision is broken by search \u2014 NLP query returns 10,631 unfiltered results"
+    },
+    {
+      "name": "Brian Moen",
+      "title": "Chief Marketing and Merchandising Officer",
+      "quote": "Fun365 is for anyone looking for easy inspiration to add more fun into everyday life. From party ideas and recipes to DIY crafts for adults and kids, our talented team of influencers provide the inspiration, and we give you the tools and supplies to make it a reality. Our unique experience was designed to help our customers save time and money by providing inspirational content in one easy-to-shop place.",
+      "quote_source": "https://www.prweb.com/releases/2017/12/prweb14978087.htm",
+      "quote_source_label": "PRWeb \u2014 Fun365 Launch",
+      "quote_date": "2017-12",
+      "relevance": "Content-commerce vision requires federated search to surface inspiration alongside products"
+    },
+    {
+      "name": "Brian Moen",
+      "title": "Chief Marketing and Merchandising Officer",
+      "quote": "As our skeleton d\u00e9cor has grown in popularity, we've more than doubled our exclusive items this year for our customers.",
+      "quote_source": "https://www.prweb.com/releases/Oriental_Trading_Company_Hosts_Get_Your_Skeletons_Out_of_the_Closet_Day_on_Friday_the_Thirteenth/prweb16547661.htm",
+      "quote_source_label": "PRWeb \u2014 Skeleton D\u00e9cor Expansion",
+      "quote_date": "2019-09",
+      "relevance": "Exclusive SKUs double annually \u2014 they live or die by OTC's own site search"
+    },
+    {
+      "name": "Jonathan Staruck",
+      "title": "SVP/GM, Fun Express & MindWare",
+      "quote": "2026 is a big year for us. Alongside exciting new partnerships and products, we're celebrating 8 million Qwirkle games sold and 15 years since winning Spiel des Jahres.",
+      "quote_source": "https://www.prnewswire.com/news-releases/mindware-announces-2026-product-innovations-and-celebrates-8-million-qwirkle-games-sold-302685798.html",
+      "quote_source_label": "PR Newswire \u2014 MindWare 2026 Innovations",
+      "quote_date": "2026-02",
+      "relevance": "Staruck leads both Fun Express B2B ($371M) and MindWare \u2014 45+ new SKUs drive catalog expansion"
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "type": "news_signal",
+      "badge_label": "News Signal",
+      "text": "OTC selected as one of only 3 beta retailers for Amazon's Retail Ad Service \u2014 using search queries and viewed categories as ad signals on their own site.",
+      "source_name": "Amazon Ads / Marketing Dive",
+      "source_url": "https://www.marketingdive.com/news/amazon-launches-retail-ad-service-ecommerce-CES-2025/737028/",
+      "source_date": "2025-01-10",
+      "relevance": "OTC is monetizing search signals via Amazon ads \u2014 if underlying search is poor, ad relevance suffers. Algolia fixes the foundation.",
+      "urgency_score": 5,
+      "category_tag": "ai_disruption"
+    },
+    {
+      "type": "news_signal",
+      "badge_label": "News Signal",
+      "text": "Fun Express named to Inc. 5000 for 2nd consecutive year with 991% revenue growth, serving 40,000+ companies.",
+      "source_name": "PRWeb / Inc. 5000",
+      "source_url": "https://www.prweb.com/releases/fun-express-announces-exciting-pricing-updates-and-enhanced-savings-302217550.html",
+      "source_date": "2025-08-18",
+      "relevance": "Fun Express growing 10x needs dedicated B2B search \u2014 60,000+ SKUs with seasonal allocation and bulk pricing.",
+      "urgency_score": 5,
+      "category_tag": "cost_pressure"
+    },
+    {
+      "type": "earnings_quote",
+      "badge_label": "Exec Statement",
+      "text": "CEO Steve Mendlik on CNBC: 'The consumer is feeling the pinch' \u2014 consumer price pressure makes every search conversion dollar count.",
+      "source_name": "CNBC Squawk Box",
+      "source_url": "https://www.cnbc.com/video/2024/05/03/oriental-trading-company-ceo-the-consumer-is-feeling-the-pinch.html",
+      "source_date": "2024-05-03",
+      "relevance": "Price-sensitive consumers abandon on poor search. Algolia's conversion lift directly addresses the pinch.",
+      "urgency_score": 10,
+      "category_tag": "leadership_change"
+    },
+    {
+      "type": "social_signal",
+      "badge_label": "Social Signal",
+      "text": "ChatGPT sends 50.49% of OTC's referral traffic. AI Chatbots represent 55.52% of all referring industry traffic.",
+      "source_name": "SimilarWeb web UI",
+      "source_url": "https://www.similarweb.com/website/orientaltrading.com/",
+      "source_date": "2026-04-14",
+      "relevance": "AI discovery shift requires catalog-quality search to convert AI-referred intent.",
+      "urgency_score": 4,
+      "category_tag": "ai_disruption"
+    },
+    {
+      "type": "news_signal",
+      "badge_label": "News Signal",
+      "text": "OTC is actively bidding on 'party city' in paid search \u2014 direct competitor conquest strategy. Paid search is 13.97% of total traffic.",
+      "source_name": "SimilarWeb web UI",
+      "source_url": "https://www.similarweb.com/website/orientaltrading.com/",
+      "source_date": "2026-04-14",
+      "relevance": "Algolia improves on-site conversion of high-intent intercept arrivals, making paid conquest spend more efficient.",
+      "urgency_score": 5,
+      "category_tag": "ai_disruption"
+    },
+    {
+      "type": "sec_risk",
+      "badge_label": "Industry Risk",
+      "text": "US-China tariff rates at ~15%+ compress COGS on OTC's value-priced, China-sourced 40,000+ SKU catalog.",
+      "source_name": "CNBC / WTO / McKinsey",
+      "source_url": "https://www.cnbc.com/2026/01/29/trump-tariffs-china-trade-surplus-trillions-forced-labor.html",
+      "source_date": "2026-01-29",
+      "relevance": "Margin pressure makes per-visit conversion improvement more financially compelling.",
+      "urgency_score": 7,
+      "category_tag": "cost_pressure"
+    },
+    {
+      "type": "news_signal",
+      "badge_label": "News Signal",
+      "text": "Argano has active, ongoing managed services relationship at OTC post-Oracle Cloud ERP/SCM migration. Direct access to CIO Charles Hunsinger.",
+      "source_name": "Argano Case Study",
+      "source_url": "https://argano.com/insights/client-stories/oriental-trading-company.html",
+      "source_date": "2026-04-15",
+      "relevance": "Warm introduction path via Argano \u2014 request intro to CIO Hunsinger via Argano account team.",
+      "urgency_score": 7,
+      "category_tag": "leadership_change"
+    },
+    {
+      "type": "news_signal",
+      "badge_label": "News Signal",
+      "text": "Mirakl turned profitable in 2025 ($218M ARR, +23% YoY) and launched Mirakl Nexus agentic commerce platform.",
+      "source_name": "Digital Commerce 360",
+      "source_url": "https://www.digitalcommerce360.com/2026/02/27/mirakl-profitable-recurring-revenue-marketplace-2025/",
+      "source_date": "2026-02-27",
+      "relevance": "Mirakl Nexus launch creates a natural opening to discuss Algolia federated search across native + marketplace catalog.",
+      "urgency_score": 5,
+      "category_tag": "digital_transformation"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Media Quote",
+      "text": "CEO Mendlik: 'Oriental Trading will be the first company in the celebration, education, and craft retail space to provide a marketplace of this scale to online customers.'",
+      "source_name": "BusinessWire",
+      "source_url": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+      "source_date": "2021-06-08",
+      "relevance": "Marketplace scale ambition without federated search = broken discovery experience.",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Manager, IT Systems Engineering (ZipRecruiter)",
+      "signal": "Leads architecture and operation of enterprise infrastructure. Cloud-first (on-prem + hybrid + AWS). PCI DSS scope. $73K\u2013$119K, Omaha NE.",
+      "algolia_angle": "This role owns the infrastructure layer where Algolia would be deployed. Cloud-first framing aligns directly with Algolia's cloud-native architecture. Vacant seat = evaluation window is open.",
+      "source_url": "https://www.ziprecruiter.com/c/Oriental-Trading/Job/Manager-IT-Systems-Engineering/-in-Omaha,NE?jid=2c4f1fe9166895ac",
+      "source_name": "ZipRecruiter",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on ziprecruiter.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "ZipRecruiter"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 E-Commerce Product Manager (jobsearcher.com)",
+      "signal": "Defines strategic ecommerce roadmaps and assesses ROI of platform investments. Liaison between business and IT/UX. Role has cycled actively (closed Sep\u2013Oct 2025, re-posted).",
+      "algolia_angle": "This is the canonical Algolia champion role \u2014 evaluates and prioritizes ecommerce investments including search and discovery. Actively cycling means seat is a revolving champion opportunity.",
+      "source_url": "https://jobsearcher.com/j/ecommerce-product-manager-at-oriental-trading-company-in-omaha-ne-BjDgWk4",
+      "source_name": "jobsearcher.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobsearcher.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobsearcher.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Software Engineer \u2014 Java/AWS/eCommerce (Indeed/TealHQ)",
+      "signal": "Develops and documents changes in IT systems for the eCommerce environment. Java, AWS, ecommerce stack. On-site Omaha.",
+      "algolia_angle": "This engineer owns the ecommerce stack where Algolia's Java API client would integrate. 'eCommerce environment' framing = direct implementation path.",
+      "source_url": "https://www.tealhq.com/job/software-engineer_db244a40-ef27-4a98-9406-e111ae4d85f4",
+      "source_name": "TealHQ / Indeed",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on tealhq.com / indeed.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "TealHQ / Indeed"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Java Developer \u2014 Contract via Insight Global (active Jul 2026)",
+      "signal": "Full-stack Java contract (70% backend). Java 8, Spring, AWS (EC2/S3), PostgreSQL. Migrating websites to AWS. Retail/ecommerce experience. Valid through July 2026.",
+      "algolia_angle": "Live, funded AWS migration contract through July 2026. Algolia's Java client + cloud-hosted indexing integrates directly with this stack. The contractor does the hands-on implementation work.",
+      "source_url": "https://jobs.appcast.io/insight-global/java-developer/42755405384",
+      "source_name": "Appcast / Insight Global",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on appcast.io, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "Appcast / Insight Global"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Product Designer / Sr. Product Designer (LinkedIn)",
+      "signal": "UX/Product design for digital products. Nebraska, hybrid.",
+      "algolia_angle": "Designs the search and discovery UX \u2014 directly responsible for the customer-facing search interface. Algolia InstantSearch UI components reduce design + implementation burden.",
+      "source_url": "https://www.linkedin.com/company/oriental-trading-company/jobs/",
+      "source_name": "LinkedIn Jobs",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 LinkedIn Jobs via Apify (valig), 2026-04-15]",
+      "urgency_score": 6,
+      "category_tag": "hiring_signal",
+      "publication": "LinkedIn Jobs"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Party City",
+      "domain": "partycity.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "1",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Shindigz",
+      "domain": "shindigz.com",
+      "search_vendor": "Kibo/Solr (native)",
+      "monthly_traffic": "2",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Dollar Tree",
+      "domain": "dollartree.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "3",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Michaels",
+      "domain": "michaels.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "4",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "School Specialty",
+      "domain": "schoolspecialty.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "5",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Amazon",
+      "domain": "amazon.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "6",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Zero SAYT/Autocomplete on 40K+ SKU Catalog",
+      "severity": "critical",
+      "category": "Query Suggestions / Empty State",
+      "tested_query": "party",
+      "expected_behavior": "Autocomplete dropdown with product suggestions, category suggestions, and popular searches",
+      "actual_behavior": "Nothing. No dropdown, no suggestions, no preview. Search is entirely submit-based across 40,000+ SKUs.",
+      "impact_stat": "Search users convert 2-3x higher than non-searchers",
+      "impact_stat_source": "https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce",
+      "screenshot_file": "screenshots/03-sayt-party.png",
+      "prospect_description": "When shoppers click your search bar, they see nothing \u2014 no suggestions, no trending items, no guidance across 40,000+ products.",
+      "algolia_solution": "Algolia InstantSearch delivers sub-50ms as-you-type suggestions across products, categories, and content.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/bigw/",
+      "algolia_case_study_company": "BIG W",
+      "algolia_case_study_result": "+7% conversion from search, +4.7% basket size"
+    },
+    {
+      "id": "F02",
+      "title": "Zero NLP/Semantic Search Understanding",
+      "severity": "critical",
+      "category": "Semantic / NLP Search",
+      "tested_query": "fun activities for kids birthday party under 50",
+      "expected_behavior": "Filtered results matching birthday party activities, age-appropriate, under $50",
+      "actual_behavior": "10,631 unfiltered Party Supplies results. No price constraint, no age filter, no occasion understanding.",
+      "impact_stat": "41% of ecommerce sites fail at key search query types",
+      "impact_stat_source": "https://baymard.com/blog/ecommerce-search-query-types",
+      "screenshot_file": "screenshots/13-nlp-kids-birthday.png",
+      "prospect_description": "Searching 'fun activities for kids birthday party under 50' shows 10,631 unfiltered results with no price or age filtering.",
+      "algolia_solution": "Algolia NeuralSearch interprets natural language queries, extracting price constraints, audience attributes, and intent context.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate (+62% on mobile)"
+    },
+    {
+      "id": "F03",
+      "title": "Zero Typo Tolerance \u2014 Brand Name Dumps Catalog",
+      "severity": "critical",
+      "category": "Typo Tolerance",
+      "tested_query": "oreintal trading",
+      "expected_behavior": "Corrected to 'Oriental Trading' with 'Did you mean' prompt",
+      "actual_behavior": "Returned entire catalog (18,666 items) as fallback. No correction offered for transposed vowels in brand name.",
+      "impact_stat": "69% of sites mishandle misspellings in autocomplete",
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
+      "screenshot_file": "screenshots/05-typo-oreintal.png",
+      "prospect_description": "Misspelling your own brand name ('oreintal trading') shows 18,666 random products instead of correcting the typo.",
+      "algolia_solution": "Algolia's built-in typo tolerance handles transpositions, missing characters, and phonetic similarity out of the box.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
+      "algolia_case_study_company": "Staples Canada",
+      "algolia_case_study_result": "Double digit increase in conversions across 200,000 SKUs"
+    },
+    {
+      "id": "F04",
+      "title": "No Federated Search \u2014 Content Siloed From Products",
+      "severity": "critical",
+      "category": "Content Commerce / Front-End UX",
+      "tested_query": "return policy",
+      "expected_behavior": "Multi-content-type results combining policy pages and products",
+      "actual_behavior": "Zero federation. Search returns either a category page, content page, or keyword results \u2014 never mixed.",
+      "impact_stat": "72% of websites fail user search expectations",
+      "impact_stat_source": "https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce",
+      "screenshot_file": "screenshots/11-federated.png",
+      "prospect_description": "Search never shows products and help content together. Content and products are completely siloed.",
+      "algolia_solution": "Algolia federated search indexes products, categories, content pages, and brands in a single query.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/walgreens/",
+      "algolia_case_study_company": "Walgreens",
+      "algolia_case_study_result": "Increased conversions and revenue from search"
+    },
+    {
+      "id": "F05",
+      "title": "Zero Personalization + Static Facets",
+      "severity": "critical",
+      "category": "Dynamic Facets & Personalization",
+      "tested_query": "Multiple searches across sessions",
+      "expected_behavior": "Re-ranked results based on browse history; dynamic facets adapting to query context",
+      "actual_behavior": "Same 12 static filters for every search. Zero behavioral personalization across 3.776M monthly visitors.",
+      "impact_stat": "76% of consumers frustrated when experiences are not personalized",
+      "impact_stat_source": "https://www.envive.ai/post/personalized-shopping-experience-statistics",
+      "screenshot_file": "screenshots/17-personalization.png",
+      "prospect_description": "Every shopper sees the exact same experience regardless of browsing history or interests.",
+      "algolia_solution": "Algolia AI Personalization re-ranks results based on user affinity profiles. Dynamic Faceting surfaces context-relevant filters.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/dawnfoods/",
+      "algolia_case_study_company": "Dawn Foods",
+      "algolia_case_study_result": "Doubled sales year-over-year for 3 consecutive years"
+    },
+    {
+      "id": "F06",
+      "title": "Full Page Reload Per Search",
+      "severity": "moderate",
+      "category": "Latency",
+      "tested_query": "inflatable easter bunny costume adult",
+      "expected_behavior": "Sub-200ms client-side search responses",
+      "actual_behavior": "Every search triggers a full server-side page reload (800ms\u20131500ms). No client-side search technology.",
+      "impact_stat": "Advanced search delivers up to 30% higher conversion vs basic search",
+      "impact_stat_source": "https://searchanise.io/blog/site-search-trends/",
+      "screenshot_file": "screenshots/04-results-inflatable-costume.png",
+      "prospect_description": "Every search requires a full page reload taking 1\u20132 seconds.",
+      "algolia_solution": "Algolia's distributed search network delivers results in <50ms globally. InstantSearch provides as-you-type results without page reloads.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste/",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "Results in less than 50ms (as-you-type)"
+    },
+    {
+      "id": "F07",
+      "title": "Portfolio Brand Returns Zero Results",
+      "severity": "moderate",
+      "category": "Intent Detection",
+      "tested_query": "Morris Costumes",
+      "expected_behavior": "Brand page or filtered results for OTC-owned Morris Costumes brand",
+      "actual_behavior": "ZERO results \u2014 homepage fallback. Redirect table not updated for 2021 acquisition.",
+      "impact_stat": "13-15% of visitors use search, generating 31-45% of revenue",
+      "impact_stat_source": "https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce",
+      "screenshot_file": "screenshots/09-intent-morris-costumes.png",
+      "prospect_description": "Your own brand 'Morris Costumes' (acquired 2021) returns zero search results.",
+      "algolia_solution": "Algolia Rules engine with brand detection automatically surfaces brand-specific results without manual redirect updates.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/bigw/",
+      "algolia_case_study_company": "BIG W",
+      "algolia_case_study_result": "Reduced search exits +10%"
+    },
+    {
+      "id": "F08",
+      "title": "No Dynamic Rules Engine for Merchandising",
+      "severity": "moderate",
+      "category": "Recommendations & Merchandising",
+      "tested_query": "sale",
+      "expected_behavior": "Dynamic in-SERP merchandising with promotional banners and boosted products",
+      "actual_behavior": "5 PDP rec widgets exist (proprietary). Campaign pages via redirect only. No in-SERP merchandising or rules engine.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/19-banners.png",
+      "prospect_description": "Merchandising team cannot dynamically promote products in search results. Every campaign requires engineering changes.",
+      "algolia_solution": "Algolia Rules + Merchandising Studio enables marketing teams to configure search merchandising without engineering.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
+      "algolia_case_study_company": "Staples Canada",
+      "algolia_case_study_result": "65% issues automatically solved with dynamic re-ranking"
+    },
+    {
+      "id": "F09",
+      "title": "Analytics-Rich Stack With Zero Search Intelligence",
+      "severity": "moderate",
+      "category": "Search Intelligence",
+      "tested_query": "Observed across search results pages",
+      "expected_behavior": "Trending badges, bestseller tags, analytics-driven signals in search UX",
+      "actual_behavior": "4 analytics vendors but zero analytics signals surface in search. No trending, no bestsellers, no search intelligence.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/20-analytics.png",
+      "prospect_description": "You invest in 4 analytics platforms but none feeds back into your search experience.",
+      "algolia_solution": "Algolia Analytics surfaces search metrics in a merchandiser dashboard, enabling data-driven search optimization.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/walgreens/",
+      "algolia_case_study_company": "Walgreens",
+      "algolia_case_study_result": "Improved click-through rate with AI-powered search analytics"
+    }
+  ],
+  "gap_pairs": [
+    {
+      "said_quote": "By creating this robust marketplace, customers can easily get everything they need, at the prices they want and in one place.",
+      "said_attr": "Steve Mendlik, President & CEO",
+      "said_source_url": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+      "said_source_label": "BusinessWire, June 2021",
+      "said_date": "2021-06",
+      "found_title": "NLP query 'fun activities for kids birthday party under 50' returns 10,631 unfiltered results",
+      "found_evidence": "Query: 'fun activities for kids birthday party under 50' | Screenshot: screenshots/13-nlp-kids-birthday.png",
+      "finding_id": "F02",
+      "algolia_angle": "Algolia NeuralSearch interprets natural language queries, extracting price constraints and audience attributes to deliver precisely filtered results."
+    },
+    {
+      "said_quote": "Our unique experience was designed to help our customers save time and money by providing inspirational content in one easy-to-shop place.",
+      "said_attr": "Brian Moen, Chief Marketing and Merchandising Officer",
+      "said_source_url": "https://www.prweb.com/releases/2017/12/prweb14978087.htm",
+      "said_source_label": "PRWeb, December 2017",
+      "said_date": "2017-12",
+      "found_title": "No federated search \u2014 content and products are completely siloed",
+      "found_evidence": "Content pages and products never appear together in search results. Screenshot: screenshots/11-federated.png",
+      "finding_id": "F04",
+      "algolia_angle": "Algolia federated search indexes products, content pages, and brands in a single query \u2014 surfacing inspiration alongside purchasable products."
+    },
+    {
+      "said_quote": "As our skeleton d\u00e9cor has grown in popularity, we've more than doubled our exclusive items this year for our customers.",
+      "said_attr": "Brian Moen, Chief Marketing and Merchandising Officer",
+      "said_source_url": "https://www.prweb.com/releases/Oriental_Trading_Company_Hosts_Get_Your_Skeletons_Out_of_the_Closet_Day_on_Friday_the_Thirteenth/prweb16547661.htm",
+      "said_source_label": "PRWeb, September 2019",
+      "said_date": "2019-09",
+      "found_title": "Zero typo tolerance on a catalog where >50% of SKUs are exclusive",
+      "found_evidence": "Misspelling 'oreintal trading' returns 18,666 random items. Screenshot: screenshots/05-typo-oreintal.png",
+      "finding_id": "F03",
+      "algolia_angle": "Algolia's built-in typo tolerance ensures exclusive SKUs are discoverable even when shoppers misspell product names."
+    }
+  ],
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "The Bottom Line",
+          "anchor": "ch-bottom-line"
+        },
+        {
+          "title": "Score Breakdown",
+          "anchor": "ch-score-breakdown"
+        }
+      ]
+    },
+    {
+      "act": "ACT II: EVIDENCE",
+      "sections": [
+        {
+          "title": "Critical Findings",
+          "anchor": "ch-critical-findings"
+        },
+        {
+          "title": "Moderate Findings",
+          "anchor": "ch-moderate-findings"
+        }
+      ]
+    },
+    {
+      "act": "ACT III: THE OPPORTUNITY",
+      "sections": [
+        {
+          "title": "Revenue Impact",
+          "anchor": "ch-revenue-impact"
+        },
+        {
+          "title": "Solution Map",
+          "anchor": "ch-solution-map"
+        },
+        {
+          "title": "Case Studies",
+          "anchor": "ch-case-studies"
+        }
+      ]
+    },
+    {
+      "act": "ACT IV: THE PLAN",
+      "sections": [
+        {
+          "title": "Roadmap",
+          "anchor": "ch-roadmap"
+        },
+        {
+          "title": "Next Steps",
+          "anchor": "ch-next-steps"
+        }
+      ]
+    }
+  ],
+  "financials": {
+    "ticker": null,
+    "market_cap": null,
+    "revenue_3y": [
+      {
+        "year": "2024",
+        "revenue": "~$750M [ESTIMATE]"
+      },
+      {
+        "year": "2025",
+        "revenue": "~$766M [ESTIMATE]"
+      },
+      {
+        "year": "2026E",
+        "revenue": "~$760M [ESTIMATE]"
+      }
+    ],
+    "total_digital_revenue": "$197M",
+    "ecommerce_revenue_est": "$197M",
+    "search_roi_est": "$8.9M\u2013$21.4M/year",
+    "search_addressable": "$29.6M",
+    "conservative_lift_label": "$1.5M/yr",
+    "revenue_source": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
+    "revenue_source_label": "ecdb.com (e-commerce only)",
+    "margin_zone": "Yellow",
+    "roi_scenarios": {
+      "conservative": {
+        "annual_impact": "$8.9M/year",
+        "scenario_desc": "6-component model at $50 AOV placeholder: C1 ($5.1M) + C2 ($637K) + C3 ($283K) + C4 ($212K) + C5 ($2.0M) + C6 ($680K). All 6 components active \u2014 OTC's latency gap is confirmed, not conditional.",
+        "source": "algolia-synth-business-case skill, 2026-04-15"
+      },
+      "moderate": {
+        "annual_impact": "$21.4M/year",
+        "scenario_desc": "6-component model at $75 AOV placeholder: C1 ($10.2M) + C2 ($1.9M) + C3 ($765K) + C4 ($637K) + C5 ($6.0M) + C6 ($1.9M). Replace AOV with actual number \u2014 every $25 AOV change scales the total by ~40%.",
+        "source": "algolia-synth-business-case skill, 2026-04-15"
+      }
+    },
+    "roi_multiple": "4\u201310x",
+    "payback_period": "2\u20133 months",
+    "berkshire_note": "Berkshire Hathaway subsidiary (acquired Nov 2012). Financials NOT broken out in BH annual reports. All figures are third-party estimates.",
+    "algolia_annual_cost_est": "$120K\u2013$800K",
+    "exec_quotes": [
+      {
+        "speaker": "Steve Mendlik, President & CEO",
+        "quote": "Oriental Trading will be the first company in the celebration, education, and craft retail space to provide a marketplace of this scale to online customers.",
+        "source": "BusinessWire \u2014 Oriental Trading Company to Launch Marketplace this Summer",
+        "source_url": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+        "date": "June 8, 2021",
+        "algolia_angle": "Mendlik's marketplace-at-scale ambition is exactly where Algolia's federated search fails \u2014 OTC launched millions of Mirakl SKUs in 2021 but search still cannot surface marketplace items alongside core catalog."
+      },
+      {
+        "speaker": "Steve Mendlik, President & CEO",
+        "quote": "By creating this robust marketplace, customers can easily get everything they need, at the prices they want and in one place.",
+        "source": "BusinessWire \u2014 Oriental Trading Company to Launch Marketplace this Summer",
+        "source_url": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+        "date": "June 8, 2021",
+        "algolia_angle": "The 'one place' vision is broken today \u2014 typing 'party' returns zero SAYT, and marketplace items are siloed from core catalog. Algolia's federated search collapses that gap."
+      }
+    ],
+    "roi_calc": {
+      "revenue_basis": "$197M",
+      "revenue_basis_scope": "orientaltrading.com e-commerce channel only (ecdb.com, 2025)",
+      "revenue_basis_source": "ecdb.com \u2014 orientaltrading.com online store revenue, 2025 [ESTIMATE]",
+      "conversion_rate_current": "3.5\u20134.0%",
+      "lift_pct": 0.5,
+      "lift_basis": "Conservative 0.5 pp lift \u2014 Algolia customers typically achieve 10\u201330% search conversion improvement; applied at 0.5 pp on a 3.75% baseline",
+      "incremental_revenue_est": "~$1.4M/year",
+      "fun_express_expansion": "Fun Express B2B ($371M [ESTIMATE]) adds a second beachhead \u2014 B2B catalog search on 60K+ SKUs"
+    },
+    "investor_note": "Berkshire Hathaway subsidiary \u2014 no public filings. Revenue [ESTIMATE] from 6-source waterfall (ZoomInfo/RocketReach convergence).",
+    "roi_components": [
+      {
+        "id": "C1",
+        "label": "Conversion Lift",
+        "gap": "Intent Detection \u2014 4/10 MEDIUM",
+        "gap_detail": "\"Black party supplies\" does not auto-apply color filter. Morris Costumes (OTC-owned brand) returns ZERO results. Brand intent only works for pre-configured redirects.",
+        "benchmark": "BIG W: +7% search conversion (general merchandise, large catalog \u2014 closest OTC peer) [FACT]",
+        "conservative_raw": 5097600,
+        "conservative_fmt": "$5.1M",
+        "moderate_raw": 10195200,
+        "moderate_fmt": "$10.2M",
+        "status": "active",
+        "color": "blue"
+      },
+      {
+        "id": "C2",
+        "label": "AOV Increase",
+        "gap": "Personalization & Recommendations \u2014 2/10 HIGH",
+        "gap_detail": "Zero behavioral personalization. Static facets \u2014 same 12 filters for costumes, crafts, and party supplies. No AI-driven ranking, no in-SERP promotional banners.",
+        "benchmark": "BIG W: +4.7% basket size. Staples Canada: double-digit conversion lift [FACT]",
+        "conservative_raw": 637200,
+        "conservative_fmt": "$637K",
+        "moderate_raw": 1911600,
+        "moderate_fmt": "$1.9M",
+        "status": "active",
+        "color": "violet"
+      },
+      {
+        "id": "C3",
+        "label": "Bounce Reduction",
+        "gap": "Empty State & SAYT \u2014 2/10 HIGH",
+        "gap_detail": "Zero autocomplete \u2014 every search triggers a full server-side page reload (800ms\u20131500ms). Empty state shows nothing. No-results page is static, non-contextual.",
+        "benchmark": "Lacoste: -88% bounce rate after Algolia deployment \u2014 same Solr-era architecture as OTC [FACT]",
+        "conservative_raw": 283200,
+        "conservative_fmt": "$283K",
+        "moderate_raw": 764640,
+        "moderate_fmt": "$765K",
+        "status": "active",
+        "color": "teal"
+      },
+      {
+        "id": "C4",
+        "label": "No-Results Recovery",
+        "gap": "Typo Tolerance \u2014 1/10 HIGH \u00b7 NLP \u2014 1/10 HIGH",
+        "gap_detail": "\"easer bunny costume\" \u2014 typo \"easer\" ignored, no \"Did you mean\". \"oreintal trading\" returns entire 18,666-item catalog as fallback. Morris Costumes brand = zero results.",
+        "benchmark": "Staples Canada: 65% of search issues automatically solved with Algolia [FACT]",
+        "conservative_raw": 212400,
+        "conservative_fmt": "$212K",
+        "moderate_raw": 637200,
+        "moderate_fmt": "$637K",
+        "status": "active",
+        "color": "red"
+      },
+      {
+        "id": "C5",
+        "label": "Speed / Latency",
+        "gap": "Latency \u2014 5/10 MEDIUM (confirmed gap)",
+        "gap_detail": "Full page reload on every search submit \u2014 no client-side search. 800ms\u20131500ms round-trip per query confirmed in browser audit. 8\u201315\u00d7 slower than Algolia's <100ms target.",
+        "benchmark": "Amazon: 100ms latency = 1% revenue loss. Lacoste on Algolia: results in <50ms [FACT]",
+        "conservative_raw": 1982400,
+        "conservative_fmt": "$2.0M",
+        "moderate_raw": 5966400,
+        "moderate_fmt": "$6.0M",
+        "status": "active",
+        "color": "amber"
+      },
+      {
+        "id": "C6",
+        "label": "Long-Tail NLP Discovery",
+        "gap": "Semantic / NLP Search \u2014 1/10 HIGH",
+        "gap_detail": "\"fun activities for kids birthday party under 50\" \u2014 10,631 unfiltered results, no price constraint, no occasion understanding. Pure keyword matching on 40,000+ SKU catalog + Mirakl marketplace.",
+        "benchmark": "BIG W: 'blue socks get blue socks' \u2014 NLP/relevance was the biggest impact. Dawn Foods: search volume grew from <1M to ~20M searches in 2 years [FACT]",
+        "conservative_raw": 679680,
+        "conservative_fmt": "$680K",
+        "moderate_raw": 1911600,
+        "moderate_fmt": "$1.9M",
+        "status": "active",
+        "color": "green"
+      }
+    ]
+  },
+  "traffic": {
+    "monthly_visits": "3.776M/mo",
+    "visit_duration": "[FACT \u2014 SimilarWeb web UI, 2026-04-14]",
+    "bounce_rate": "45.12%",
+    "pages_per_visit": "**4.44**",
+    "top_channels": [
+      {
+        "source": "Organic Search",
+        "share": "39.91%"
+      },
+      {
+        "source": "Direct",
+        "share": "32.72%"
+      },
+      {
+        "source": "Paid Search",
+        "share": "13.97%"
+      },
+      {
+        "source": "Social",
+        "share": "10.49%"
+      },
+      {
+        "source": "Referrals",
+        "share": "2.26%"
+      },
+      {
+        "source": "Display",
+        "share": "0.58%"
+      },
+      {
+        "source": "Email",
+        "share": "0.07%"
+      }
+    ],
+    "device_share": {
+      "mobile": "71.31%",
+      "desktop": "28.69%"
+    },
+    "demographics": [
+      {
+        "age_group": "25-34",
+        "pct": "25%",
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": "20%",
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": "22%",
+        "color": "#3E64FF"
+      },
+      {
+        "age_group": "55-64",
+        "pct": "18%",
+        "color": "#7B93FF"
+      },
+      {
+        "age_group": "65+",
+        "pct": "10%",
+        "color": "#A3B4FF"
+      },
+      {
+        "age_group": "18-24",
+        "pct": "5%",
+        "color": "#C5D0FF"
+      }
+    ],
+    "search_abandonment": {
+      "google_outbound_pct": "3.22%",
+      "google_outbound_mom_change": "\u219161.85%",
+      "narrative": "3.22% of outbound traffic goes to Google (\u219161.85% MoM) \u2014 users abandoning on-site search and returning to Google to find products"
+    },
+    "ai_referral": {
+      "chatgpt_pct": "50.49%",
+      "chatgpt_mom": "\u219375.11%",
+      "gemini_pct": "3.22%",
+      "total_ai_pct": "55.52%",
+      "narrative": "ChatGPT is sending 50.49% of referral traffic (\u219375.11% MoM). AI chatbots represent 55.52% of all referral traffic \u2014 your buyers discover products via AI before visiting your site."
+    },
+    "top_referrers": [
+      {
+        "domain": "chatgpt.com",
+        "share_pct": "50.49%",
+        "mom_change": "\u219375.11%"
+      },
+      {
+        "domain": "capitaloneshopping.com",
+        "share_pct": "20.50%",
+        "mom_change": "\u21911,737.44%"
+      },
+      {
+        "domain": "sherlock-clicks.amazon.com",
+        "share_pct": "9.93%",
+        "mom_change": "\u21911,319.84%"
+      },
+      {
+        "domain": "force.com",
+        "share_pct": "4.14%",
+        "mom_change": null
+      },
+      {
+        "domain": "gemini.google.com",
+        "share_pct": "3.22%",
+        "mom_change": "\u219161.85%"
+      }
+    ],
+    "paid_search": {
+      "share_of_total_pct": "13.97%",
+      "top_keywords": [
+        {
+          "keyword": "spin the wheel",
+          "share_pct": "1.85%",
+          "mom_change": "+6.78%"
+        },
+        {
+          "keyword": "gold chocolate coins",
+          "share_pct": "1.50%",
+          "mom_change": "+2,960.00%"
+        },
+        {
+          "keyword": "party city",
+          "share_pct": "1.45%",
+          "mom_change": "+102.74%"
+        },
+        {
+          "keyword": "mickey and minnie mouse",
+          "share_pct": "0.76%",
+          "mom_change": null
+        },
+        {
+          "keyword": "easter eggs",
+          "share_pct": "0.72%",
+          "mom_change": "+2,366.67%"
+        }
+      ],
+      "competitor_bidding": "party city",
+      "narrative": "OTC actively bids on competitor Party City's brand name. Easter seasonality drove explosive paid spend on seasonal terms."
+    },
+    "competitor_traffic": [
+      {
+        "domain": "michaels.com",
+        "visits_3mo": "84.96M"
+      },
+      {
+        "domain": "orientaltrading.com",
+        "visits_3mo": "11.32M"
+      },
+      {
+        "domain": "halloweencostumes.com",
+        "visits_3mo": "2.764M"
+      },
+      {
+        "domain": "partycity.com",
+        "visits_3mo": "2.009M"
+      },
+      {
+        "domain": "funexpress.com",
+        "visits_3mo": "257,445"
+      }
+    ],
+    "source": "SimilarWeb web UI (manual capture)",
+    "source_url": "https://www.similarweb.com/website/orientaltrading.com/",
+    "organic_search": {
+      "share_of_total_pct": 39.91,
+      "branded_pct": 58,
+      "non_branded_pct": 42,
+      "top_non_branded_keywords": [
+        {
+          "keyword": "tightrope",
+          "share_pct": 3.6,
+          "mom_change": "-"
+        },
+        {
+          "keyword": "oriental",
+          "share_pct": 2.92,
+          "mom_change": "+120.00%"
+        },
+        {
+          "keyword": "oriental express",
+          "share_pct": 1.55,
+          "mom_change": "+73.24%"
+        },
+        {
+          "keyword": "snug as a bug in a rug",
+          "share_pct": 1.07,
+          "mom_change": "+1600.00%"
+        },
+        {
+          "keyword": "easter bunny costume adult",
+          "share_pct": 0.85,
+          "mom_change": "-"
+        }
+      ]
+    },
+    "geo_distribution": [
+      {
+        "country": "United States",
+        "traffic_share_pct": 96.57,
+        "mom_change": "+25.01%"
+      },
+      {
+        "country": "Canada",
+        "traffic_share_pct": 0.4,
+        "mom_change": "+6.58%"
+      },
+      {
+        "country": "United Kingdom",
+        "traffic_share_pct": 0.24,
+        "mom_change": "-0.92%"
+      },
+      {
+        "country": "Nigeria",
+        "traffic_share_pct": 0.19,
+        "mom_change": "-59.19%"
+      },
+      {
+        "country": "Australia",
+        "traffic_share_pct": 0.17,
+        "mom_change": "-49.50%"
+      }
+    ],
+    "outgoing_traffic": [
+      {
+        "domain": "oriental.aftership.com",
+        "share_pct": 56.29,
+        "mom_change": "+67.64%"
+      },
+      {
+        "domain": "capitaloneshopping.com",
+        "share_pct": 35.5,
+        "mom_change": "-"
+      },
+      {
+        "domain": "otc.az1.qualtrics.com",
+        "share_pct": 2.45,
+        "mom_change": "+149.66%"
+      },
+      {
+        "domain": "mail.google.com",
+        "share_pct": 1.81,
+        "mom_change": "-"
+      },
+      {
+        "domain": "careers-orientaltrading.icims.com",
+        "share_pct": 1.71,
+        "mom_change": "-"
+      }
+    ],
+    "rankings": {
+      "global_rank": 11508,
+      "country_rank_us": 2248,
+      "industry_rank": 220,
+      "industry_category": "Marketplace",
+      "source": "[FACT \u2014 SimilarWeb web UI, 2026-04-14]"
+    },
+    "global_rank": 11508,
+    "category_rank": 220,
+    "category": "Marketplace",
+    "referrals": {
+      "share_of_total_pct": 2.26,
+      "top_referring_sites": [
+        {
+          "domain": "chatgpt.com",
+          "share_pct": 50.49,
+          "mom_change": "-75.11%"
+        },
+        {
+          "domain": "capitaloneshopping.com",
+          "share_pct": 20.5,
+          "mom_change": "+1737.44%"
+        },
+        {
+          "domain": "sherlock-clicks.amazon.com",
+          "share_pct": 9.93,
+          "mom_change": "+1319.84%"
+        },
+        {
+          "domain": "force.com",
+          "share_pct": 4.14,
+          "mom_change": "-"
+        },
+        {
+          "domain": "gemini.google.com",
+          "share_pct": 3.22,
+          "mom_change": "+61.85%"
+        }
+      ],
+      "top_referring_industries": [
+        {
+          "industry": "AI Chatbots and Tools",
+          "share_pct": 55.52
+        },
+        {
+          "industry": "Coupons and Rebates",
+          "share_pct": 20.52
+        },
+        {
+          "industry": "Online Marketing",
+          "share_pct": 10.64
+        },
+        {
+          "industry": "Programming and Developer Software",
+          "share_pct": 4.14
+        },
+        {
+          "industry": "Finance - Other",
+          "share_pct": 1.75
+        }
+      ],
+      "source": "[FACT \u2014 SimilarWeb web UI, Jan\u2013Mar 2026, Desktop, 2026-04-14]"
+    },
+    "referring_industries": [
+      {
+        "industry": "AI Chatbots and Tools",
+        "share_pct": 55.52
+      },
+      {
+        "industry": "Coupons and Rebates",
+        "share_pct": 20.52
+      },
+      {
+        "industry": "Online Marketing",
+        "share_pct": 10.64
+      },
+      {
+        "industry": "Programming and Developer Software",
+        "share_pct": 4.14
+      },
+      {
+        "industry": "Finance - Other",
+        "share_pct": 1.75
+      }
+    ]
+  },
+  "tech_stack": {
+    "ecommerce_platform": "Custom/Proprietary Java + Mirakl Marketplace",
+    "primary_platform": "| Field | Value | Confidence |",
+    "cms": null,
+    "search_provider": "Status | UNDETECTED |",
+    "personalization": "None detected",
+    "analytics": "GA4 + Quantum Metric + FullStory + Datadog RUM",
+    "tag_manager": "Google Tag Manager",
+    "tech_stack_summary": "Custom Java / Mirakl / No Search Vendor / GA4 + QM + FS + DD",
+    "full_list": [
+      "Google Cloud Platform",
+      "Cloudflare CDN",
+      "Amazon CloudFront",
+      "Fastly",
+      "Oracle Cloud ERP",
+      "Oracle Cloud SCM",
+      "Mirakl Marketplace",
+      "React",
+      "jQuery",
+      "Stripe v3",
+      "PayPal",
+      "Apple Pay",
+      "Klarna",
+      "Google Analytics 4",
+      "Google Tag Manager",
+      "Quantum Metric",
+      "FullStory",
+      "Datadog RUM",
+      "Usablenet",
+      "Forter",
+      "Sift Science",
+      "ThreatMetrix",
+      "PerimeterX",
+      "Stibo Systems STEP",
+      "Snowflake",
+      "Tableau Server"
+    ],
+    "source_url": "https://builtwith.com/orientaltrading.com",
+    "algolia_detected": false,
+    "architecture_notes": "Frontend: React"
+  },
+  "hiring": {
+    "total_open_roles": 12,
+    "buying_committee": [
+      {
+        "role": "Economic Buyer",
+        "name": "Steve Mendlik (CEO) / Charles Hunsinger (CIO)",
+        "status": "IN-SEAT",
+        "signal": "cold",
+        "message": "CIO is budget holder for search infrastructure.",
+        "job_url": null,
+        "salary_range": null
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Manager IT Systems Engineering (VACANT)",
+        "status": "OPEN",
+        "signal": "hot",
+        "message": "Active posting (4 days old). Senior IT role with search infrastructure ownership.",
+        "job_url": "https://ziprecruiter.com/c/Oriental-Trading/Job/Manager-IT-Systems-Engineering",
+        "salary_range": "$73,700\u2013$119,600"
+      },
+      {
+        "role": "Champion",
+        "name": "E-Commerce Product Manager (recently cycled)",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Role active Q3 2025. Primary outreach target when filled.",
+        "job_url": "https://career.com/job/oriental-trading-company/e-commerce-product-manager/j202201270530112423479",
+        "salary_range": "$113,406\u2013$138,126"
+      },
+      {
+        "role": "Champion (Tech)",
+        "name": "Java Developer (Insight Global contractor)",
+        "status": "ACTIVE",
+        "signal": "warm",
+        "message": "AWS migration + ecommerce + Java = exact Algolia deployment context.",
+        "job_url": "https://jobs.appcast.io/insight-global/java-developer/42755405384",
+        "salary_range": "$45\u2013$65/hr"
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Pre-Hire",
+        "target": "IT Systems Engineering Manager",
+        "message": "Congratulations on the role. Algolia eliminates search infrastructure overhead during AWS migrations.",
+        "timing": "Within 2 weeks of hire"
+      },
+      {
+        "phase": 2,
+        "label": "Champion Build",
+        "target": "E-Commerce PM + Product Designer",
+        "message": "Here is what we found when we tested your site's search with 16 queries.",
+        "timing": "Weeks 2\u20134"
+      },
+      {
+        "phase": 3,
+        "label": "Executive Engagement",
+        "target": "CIO Charles Hunsinger (via Argano)",
+        "message": "Algolia completes your Oracle Cloud modernization by modernizing search.",
+        "timing": "Month 2"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We are in the middle of an AWS migration.",
+        "counter": "Algolia is cloud-hosted and API-first \u2014 it eliminates search from your migration scope. Java SDK integrates in days."
+      },
+      {
+        "objection": "Our redirect-mapping search works well enough.",
+        "counter": "It works for ~200\u2013300 pre-mapped terms. But Morris Costumes returns zero results, NLP queries return 10,631 unfiltered items, and you have zero typo tolerance."
+      },
+      {
+        "objection": "We already have analytics tools.",
+        "counter": "Those tell you what happened after search. Algolia Analytics tells you which queries failed and which convert \u2014 then you act on it in real time."
+      }
+    ],
+    "build_vs_buy": "No search-specific roles posted. Building search in-house requires 3\u20135 FTEs ($500K\u2013$800K/yr); Algolia starts at $120K/yr."
+  },
+  "strategic_angles": [
+    {
+      "label": "GREENFIELD: No Search Vendor \u2014 $400M+ Addressable Revenue Base",
+      "hook": "There is no search vendor here to displace. You get a clean implementation with no migration debt, no political baggage, and a clear ROI baseline measured against your own current conversion rate.",
+      "pain_points": [
+        "GREENFIELD status confirmed \u2014 zero third-party search vendor in 182KB of BuiltWith data; proprietary Java .fltr platform",
+        "orientaltrading.com: $197M e-com revenue at 3.5\u20134.0% conversion",
+        "Fun Express B2B: $371M revenue base with 60,000+ SKU catalog",
+        "Total addressable search revenue base: $400M\u2013$600M across all digital properties"
+      ],
+      "discovery_question": "With no existing search vendor to migrate away from, how is your team thinking about the build-vs-buy decision for search during the current AWS migration \u2014 and who owns that platform choice?",
+      "algolia_proof": "Algolia impact at Lacoste-level lift (+37% CVR, +150% sales from search) on a clean GREENFIELD implementation. [FACT \u2014 04-competitors.md; algolia.com/customers/lacoste, 2026-04-14]",
+      "objection": "We are in the middle of an AWS migration.",
+      "objection_counter": "Algolia is cloud-hosted and API-first \u2014 it eliminates search from your migration checklist rather than adding to it. The Java client integrates in days. Build the right search architecture during the migration, not after.",
+      "source": "[FACT \u2014 02-tech-stack.md (GREENFIELD classification, .fltr pattern, no vendor detected); ESTIMATE \u2014 08-financial-profile.md (revenue base, ecdb.com 2026-04-14); FACT \u2014 04-competitors.md (Lacoste case study)]"
+    },
+    {
+      "label": "OTC Is Paying Amazon to Monetize a Broken Search Foundation",
+      "hook": "You committed to monetizing search. Algolia makes sure you're not monetizing a broken foundation.",
+      "pain_points": [
+        "OTC selected as one of only three beta retailers for Amazon Retail Ad Service \u2014 on-site search advertising using query signals",
+        "Amazon's ad service is only as good as the search engine underneath it \u2014 poor NLP and zero typo tolerance degrade ad placement",
+        "Wasted impressions and underperforming ad revenue when search misfires on shopper intent"
+      ],
+      "discovery_question": "You were selected by Amazon as one of three beta partners to monetize on-site search. When you evaluate the ROI on that investment, how confident are you that the search foundation underneath it is returning relevant results for the queries driving those ad placements?",
+      "algolia_proof": "Algolia NeuralSearch fixes the query understanding gap \u2014 so every search that Amazon's ad service monetizes returns a relevant result. [FACT \u2014 02-tech-stack.md; 09-browser-findings.md]",
+      "objection": "Our redirect-mapping search works well enough.",
+      "objection_counter": "It works for ~200\u2013300 pre-mapped terms. But Morris Costumes returns zero results, 'easer bunny costume' ignores the typo, and 'fun activities for kids birthday party under 50' returns 10,631 unfiltered products. That is the search Amazon is being paid to monetize.",
+      "source": "[FACT \u2014 09b-social-signals.md (Amazon Retail Ad Service beta, Signal 1, score 9/10, Marketing Dive + advertising.amazon.com, 2026-04-14/2025-01-09)]"
+    },
+    {
+      "label": "The B2B Arm Is OTC's Growth Engine \u2014 and It Has No Search",
+      "hook": "Your B2B arm is growing 10x. Is its search experience scaling with it? Fun Express's 60,000-SKU catalog running without purpose-built B2B search is the fastest-growing untapped Algolia beachhead in this account.",
+      "pain_points": [
+        "Fun Express: Inc. 5000 for second consecutive year with 991% revenue growth",
+        "60,000+ SKUs; B2B buyers search by SKU code, quantity threshold, price band \u2014 none supported by generic Java platform",
+        "257K monthly visits vs. orientaltrading.com's 3.8M \u2014 severely underdeveloped"
+      ],
+      "discovery_question": "Fun Express is growing 10x year-over-year. Is the search experience on funexpress.com built for B2B bulk ordering workflows, or does it share the same B2C stack as orientaltrading.com?",
+      "algolia_proof": "Dawn Foods (Algolia B2B customer): 10,000+ SKU catalog, time-to-order fell 30% in four years, sales doubled year-over-year for three consecutive years. Fun Express maps directly. [FACT \u2014 04-competitors.md; algolia.com/customers/dawnfoods, 2026-04-14]",
+      "objection": "We already have analytics tools.",
+      "objection_counter": "Those tell you what happened after search. Algolia Analytics tells you which queries failed, which convert, and which are returning zero results \u2014 then you act on it in real time. That is what you need to scale Fun Express search.",
+      "source": "[FACT \u2014 09b-social-signals.md (Fun Express Inc. 5000, Signal 2, score 8/10, PRWeb 2025-08-18); FACT \u2014 04-competitors.md (Dawn Foods case study, algolia.com/customers/dawnfoods 2026-04-14)]"
+    },
+    {
+      "label": "50%+ of Exclusive SKUs Are Invisible Everywhere Except OTC's Own Search",
+      "hook": "Your exclusive SKUs cannot be found anywhere else. When your search fails on them, the sale vanishes completely. There is no fallback channel.",
+      "pain_points": [
+        "Over 50% of OTC's 40,000+ SKUs are exclusive \u2014 not on Amazon, Google Shopping, or any competitor",
+        "CMO Brian Moen: 'As our skeleton d\u00e9cor has grown in popularity, we've more than doubled our exclusive items this year'",
+        "Zero-results or poor ranking on an exclusive SKU = lost sale with no fallback \u2014 cannot be found elsewhere"
+      ],
+      "discovery_question": "More than half your catalog is exclusive to Oriental Trading. When your search fails on an exclusive SKU \u2014 wrong ranking, typo mismatch, or zero results \u2014 where does that customer go, and what happens to the sale?",
+      "algolia_proof": "Algolia typo tolerance, NLP semantic search, and AI ranking ensure exclusive SKUs surface correctly for every search variation \u2014 'skeleton decor', 'skelton decorations', 'Halloween skeleton party'. [FACT \u2014 09-browser-findings.md]",
+      "objection": "Our redirect-mapping search works well enough.",
+      "objection_counter": "It works for the ~200\u2013300 terms you've manually mapped. It cannot handle typos, synonyms, or long-tail queries on your exclusive catalog. An exclusive SKU that returns zero results is a lost sale with nowhere for the customer to go.",
+      "source": "[FACT \u2014 11-investor-intelligence.md (Moen Quote 6, PRWeb September 2019); FACT \u2014 01-company-context.md (40,000+ SKUs, >50% exclusive); FACT \u2014 08-financial-profile.md (ecdb.com channel data, 2026-04-14)]"
+    },
+    {
+      "label": "Mirakl Nexus AI Launch: Federated Search Is Now Mandatory",
+      "hook": "Your Mirakl partner just launched an AI platform. Algolia's federated search is the missing piece that makes Nexus AI actionable \u2014 unified discovery across your 40,000 owned SKUs and millions of marketplace products in a single experience.",
+      "pain_points": [
+        "OTC launched Mirakl marketplace June 2021 \u2014 millions of marketplace products alongside 40,000 first-party SKUs",
+        "Mirakl announced profitability ($218M ARR, +23% YoY) and launched Mirakl Nexus agentic commerce platform \u2014 February 2026",
+        "OTC search does not federate across 1P and marketplace SKUs \u2014 marketplace is a catalog island"
+      ],
+      "discovery_question": "Mirakl just launched Nexus AI. When a shopper searches for 'Halloween party favors bulk' on orientaltrading.com, are they seeing results from both your first-party catalog and your Mirakl marketplace sellers in a single ranked result set \u2014 or are those two separate discovery surfaces?",
+      "algolia_proof": "Algolia federated search unifies first-party and Mirakl marketplace SKUs in a single ranked, filtered, relevant result set \u2014 the enabling layer for Nexus AI adoption. [FACT \u2014 02-tech-stack.md; 04-competitors.md]",
+      "objection": "We are in the middle of an AWS migration.",
+      "objection_counter": "Algolia's API-first architecture integrates independently of the migration timeline. You can federate Mirakl marketplace search now \u2014 it does not require the AWS migration to complete first.",
+      "source": "[FACT \u2014 09c-news-signals.md (Mirakl Nexus launch, Digital Commerce 360, 2026-02-27); FACT \u2014 11-investor-intelligence.md (Mendlik Quote 1, BusinessWire Mirakl launch 2021); FACT \u2014 02-tech-stack.md (Mirakl SaaS in stack, 2026-04-14)]"
+    }
+  ],
+  "icp_mapping": {
+    "priority_to_product": [
+      {
+        "priority": "Marketplace discovery",
+        "product": "Algolia Federated Search + NeuralSearch",
+        "question": "How are shoppers discovering marketplace products today?"
+      },
+      {
+        "priority": "Conversion under margin pressure",
+        "product": "Algolia NeuralSearch + Personalization",
+        "question": "What is your search conversion rate and zero-results rate?"
+      },
+      {
+        "priority": "Seasonal merchandising agility",
+        "product": "Algolia Rules + Merchandising Studio",
+        "question": "How quickly can your team update search for a new campaign?"
+      },
+      {
+        "priority": "B2B catalog search",
+        "product": "Algolia B2B Commerce Search + Recommend",
+        "question": "Does Fun Express share the B2C search stack?"
+      }
+    ],
+    "outreach_sequence": [
+      "Week 1: Request Argano warm intro to CIO via Algolia Oracle partner channel",
+      "Week 1: Send audit summary to E-Commerce PM via LinkedIn",
+      "Week 2: Share findings with Product Designer",
+      "Week 3: Follow up with CIO office",
+      "Week 4: Propose 30-day POC on Party Supplies category"
+    ],
+    "anchor_lines": [
+      "Your CEO said customers should 'easily get everything in one place' \u2014 NLP queries return 10,631 unfiltered results.",
+      "You're investing in Amazon Retail Ad Service \u2014 but the search underneath has zero typo tolerance and zero NLP.",
+      "Fun Express is growing 991% \u2014 Dawn Foods (B2B, 10K+ SKUs) doubled sales 3 years running on Algolia."
+    ]
+  },
+  "competitive_synthesis": {
+    "scenario": "OFFENSIVE \u2014 No competitor confirmed on Algolia. First-mover advantage available.",
+    "competitor_tiers": [
+      {
+        "tier": "Direct Competitors",
+        "companies": [
+          "Party City (SFCC Einstein)",
+          "Shindigz (Kibo/Solr)"
+        ]
+      },
+      {
+        "tier": "Indirect Competitors",
+        "companies": [
+          "Dollar Tree (Oracle native)",
+          "Michaels (Unknown)"
+        ]
+      },
+      {
+        "tier": "Benchmark",
+        "companies": [
+          "Amazon (A9/proprietary)"
+        ]
+      }
+    ],
+    "experience_debt": {
+      "zero_sayt": "No autocomplete on 40K+ SKUs",
+      "zero_typo": "Misspellings return entire catalog",
+      "zero_nlp": "NLP queries return 10,631+ unfiltered results",
+      "zero_personalization": "Same experience for all visitors",
+      "zero_federated": "Products and content never appear together"
+    },
+    "positioning_matrix": [
+      {
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "1/10 \u2014 pure keyword",
+        "prospect_with_algolia": "NeuralSearch",
+        "nike_has": "SFCC Einstein (limited NLP)",
+        "asics_has": "Kibo/Solr (no semantic)",
+        "on_running_has": "Oracle native (legacy)",
+        "new_balance_has": "Unknown",
+        "algolia_delta": "First-mover in vertical"
+      },
+      {
+        "capability": "Autocomplete / SAYT",
+        "prospect_today": "2/10 \u2014 zero autocomplete",
+        "prospect_with_algolia": "InstantSearch (<50ms)",
+        "nike_has": "Basic autocomplete",
+        "asics_has": "Basic autocomplete",
+        "on_running_has": "Basic autocomplete",
+        "new_balance_has": "Autocomplete present",
+        "algolia_delta": "Only major player without SAYT"
+      },
+      {
+        "capability": "Typo Tolerance",
+        "prospect_today": "1/10 \u2014 zero correction",
+        "prospect_with_algolia": "Built-in typo tolerance",
+        "nike_has": "Partial (SFCC native)",
+        "asics_has": "Partial (Solr fuzzy)",
+        "on_running_has": "Partial (Endeca fuzzy)",
+        "new_balance_has": "Unknown",
+        "algolia_delta": "Brand name misspelling dumps catalog"
+      },
+      {
+        "capability": "Personalization",
+        "prospect_today": "2/10 \u2014 zero behavioral",
+        "prospect_with_algolia": "AI Personalization + Dynamic Faceting",
+        "nike_has": "SFCC Einstein Personalization",
+        "asics_has": "None detected",
+        "on_running_has": "None detected",
+        "new_balance_has": "Unknown",
+        "algolia_delta": "76% frustrated without personalization"
+      },
+      {
+        "capability": "Federated Search",
+        "prospect_today": "3/10 \u2014 redirect-based only",
+        "prospect_with_algolia": "Federated search (products + content + brands)",
+        "nike_has": "Limited federation",
+        "asics_has": "None",
+        "on_running_has": "None",
+        "new_balance_has": "Limited",
+        "algolia_delta": "Critical for Mirakl marketplace"
+      },
+      {
+        "capability": "Recommendations",
+        "prospect_today": "5/10 \u2014 5 PDP widgets (proprietary)",
+        "prospect_with_algolia": "Algolia Recommend (ML-driven)",
+        "nike_has": "Basic recs",
+        "asics_has": "Basic",
+        "on_running_has": "Basic",
+        "new_balance_has": "Present",
+        "algolia_delta": "Consolidate 5 widgets into one engine"
+      },
+      {
+        "capability": "B2B Search",
+        "prospect_today": "N/A \u2014 shares B2C stack",
+        "prospect_with_algolia": "B2B Commerce Search",
+        "nike_has": "No B2B",
+        "asics_has": "Limited B2B",
+        "on_running_has": "No B2B",
+        "new_balance_has": "Limited (MakerPlace)",
+        "algolia_delta": "Fun Express ($371M) is standalone opportunity"
+      }
+    ],
+    "positioning_statements": {
+      "offensive": "While Party City runs SFCC native search and Shindigz runs 2010-era Solr, Algolia gives OTC the same infrastructure as Staples Canada (200K SKUs, double-digit conversion lift).",
+      "timing": "AWS migration active through July 2026 + post-Easter peak + Amazon Retail Ad Service beta = ideal timing for search modernization."
+    },
+    "the_ask": "30-day POC on Party Supplies category: measure conversion lift, zero-results reduction, and latency improvement. 14-day free trial.",
+    "roi_by_scenario": {
+      "conservative": "$1.4M/yr (0.5 pp CVR lift on $197M)",
+      "moderate": "$2.8M/yr (1.0 pp CVR lift on $197M)",
+      "aggressive": "$4M\u2013$12M/yr (full suite, all 5 brands)"
+    },
+    "matrix_col_labels": {
+      "nike_has": "Party City",
+      "asics_has": "Shindigz",
+      "on_running_has": "Dollar Tree",
+      "new_balance_has": "Michaels"
+    }
+  },
+  "golden_angle": {
+    "status": "OFFENSIVE",
+    "detail": "No competitor confirmed on Algolia. First-mover advantage in AI-powered search for party/craft/value specialty retail.",
+    "talk_track": "While Party City runs SFCC native search and Shindigz runs 2010-era Solr, Algolia gives OTC the same search infrastructure as Staples Canada (200K SKUs, double-digit conversion lift) and Walgreens (one of the fastest Algolia implementations in enterprise retail).",
+    "competitors_using_algolia": [],
+    "proof_points": [
+      "BIG W: +7% conversion, +4.7% basket size",
+      "Staples Canada: double digit conversions increase (200K SKUs)",
+      "Walgreens: one of fastest implementations",
+      "Lacoste: +37% conversion rate (replaced Solr)",
+      "Dawn Foods: doubled sales YoY for 3 years (B2B)"
+    ]
+  },
+  "ae_fields": {
+    "ae_name": null,
+    "ae_email": null,
+    "next_step_action": "Request Argano warm introduction to CIO Charles Hunsinger",
+    "next_step_owner": "AE / Partner Manager",
+    "next_step_date": "2026-04-22",
+    "urgency_level": "high",
+    "urgency_label": "High Urgency",
+    "urgency_color": "#DC2626",
+    "talk_track_opener": "Oriental Trading just completed its biggest Easter traffic peak. We tested 16 queries and found 3 critical gaps: zero autocomplete on 40K+ SKUs, zero typo tolerance, and zero NLP.",
+    "talk_track_cta": "Let us run a 30-day POC on Party Supplies \u2014 14-day free trial, zero risk."
+  },
+  "next_steps": [
+    {
+      "step_num": 1,
+      "title": "Argano Warm Introduction",
+      "description": "Contact Algolia Oracle ecosystem team for warm intro to CIO Charles Hunsinger via Argano (active managed services relationship)."
+    },
+    {
+      "step_num": 2,
+      "title": "Share Audit with E-Commerce PM",
+      "description": "Send audit summary to E-Commerce Product Manager. Focus on 3 critical gaps with screenshot evidence."
+    },
+    {
+      "step_num": 3,
+      "title": "Propose 30-Day POC",
+      "description": "Pilot Algolia on Party Supplies category. Measure conversion lift, zero-results reduction, latency improvement."
+    }
+  ],
+  "methodology": "Systematic browser testing of orientaltrading.com using 16 targeted queries across 7 categories. Network traffic monitored to confirm search vendor status. 26 screenshots captured. Scoring uses 10-area framework with weighted severity (HIGH=2x, MEDIUM=1x, LOW=0.5x). Traffic from SimilarWeb (Jan\u2013Mar 2026). Financials from ecdb.com, ZoomInfo, trade press. Executive quotes from BusinessWire, PRWeb, CNBC.",
+  "bibliography": [
+    {
+      "n": 1,
+      "label": "SimilarWeb \u2014 orientaltrading.com",
+      "url": "https://www.similarweb.com/website/orientaltrading.com/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 2,
+      "label": "ecdb.com \u2014 OTC revenue",
+      "url": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 3,
+      "label": "BusinessWire \u2014 Mirakl Launch",
+      "url": "https://www.businesswire.com/news/home/20210608005129/en/Oriental-Trading-Company-to-Launch-Marketplace-this-Summer",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 4,
+      "label": "Argano \u2014 OTC Case Study",
+      "url": "https://argano.com/insights/client-stories/oriental-trading-company.html",
+      "accessed": "2026-04-15"
+    },
+    {
+      "n": 5,
+      "label": "Marketing Dive \u2014 Amazon Retail Ad Service",
+      "url": "https://www.marketingdive.com/news/amazon-launches-retail-ad-service-ecommerce-CES-2025/737028/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 6,
+      "label": "CNBC \u2014 OTC CEO Interview",
+      "url": "https://www.cnbc.com/video/2024/05/03/oriental-trading-company-ceo-the-consumer-is-feeling-the-pinch.html",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 7,
+      "label": "Algolia \u2014 BIG W",
+      "url": "https://www.algolia.com/customers/bigw/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 8,
+      "label": "Algolia \u2014 Staples Canada",
+      "url": "https://www.algolia.com/customers/staples/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 9,
+      "label": "Algolia \u2014 Walgreens",
+      "url": "https://www.algolia.com/customers/walgreens/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 10,
+      "label": "Algolia \u2014 Lacoste",
+      "url": "https://www.algolia.com/customers/lacoste/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 11,
+      "label": "Algolia \u2014 Dawn Foods",
+      "url": "https://www.algolia.com/customers/dawnfoods/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 12,
+      "label": "Baymard \u2014 Search Query Types",
+      "url": "https://baymard.com/blog/ecommerce-search-query-types",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 13,
+      "label": "Baymard \u2014 Ecommerce Search",
+      "url": "https://baymard.com/research/ecommerce-search",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 14,
+      "label": "Opensend \u2014 Search Conversion Stats",
+      "url": "https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 15,
+      "label": "McKinsey/Envive \u2014 Personalization",
+      "url": "https://www.envive.ai/post/personalized-shopping-experience-statistics",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 16,
+      "label": "Searchanise \u2014 Search Trends",
+      "url": "https://searchanise.io/blog/site-search-trends/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 17,
+      "label": "PRWeb \u2014 Fun Express Pricing",
+      "url": "https://www.prweb.com/releases/fun-express-announces-exciting-pricing-updates-and-enhanced-savings-302217550.html",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 18,
+      "label": "PRWeb \u2014 Fun365",
+      "url": "https://www.prweb.com/releases/2017/12/prweb14978087.htm",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 19,
+      "label": "Wikipedia \u2014 Oriental Trading",
+      "url": "https://en.wikipedia.org/wiki/Oriental_Trading_Company",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 20,
+      "label": "Appcast \u2014 Java Dev at OTC",
+      "url": "https://jobs.appcast.io/insight-global/java-developer/42755405384",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 21,
+      "label": "DC360 \u2014 Mirakl 2025",
+      "url": "https://www.digitalcommerce360.com/2026/02/27/mirakl-profitable-recurring-revenue-marketplace-2025/",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 22,
+      "label": "NRF \u2014 Retail 2026",
+      "url": "https://nrf.com/blog/10-trends-and-predictions-for-retail-in-2026",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 23,
+      "label": "PRWeb \u2014 Skeleton D\u00e9cor",
+      "url": "https://www.prweb.com/releases/Oriental_Trading_Company_Hosts_Get_Your_Skeletons_Out_of_the_Closet_Day_on_Friday_the_Thirteenth/prweb16547661.htm",
+      "accessed": "2026-04-14"
+    },
+    {
+      "n": 24,
+      "label": "Stibo Systems \u2014 NRF 2024",
+      "url": "https://www.stibosystems.com/press-releases/stibo-systems-speaks-about-data-that-matters-for-retail-at-nrf-2024",
+      "accessed": "2026-04-15"
+    },
+    {
+      "n": 25,
+      "label": "Forrester \u2014 Retail 2025",
+      "url": "https://www.forrester.com/blogs/predictions-2025-retail-trends/",
+      "accessed": "2026-04-14"
+    }
+  ],
+  "case_studies": [
+    {
+      "vertical": "Multi-Category General Merchandise",
+      "company": "BIG W",
+      "result": "+7% conversion, +4.7% basket size, +10% reduced search exits",
+      "product": "Search, Recommend, Dynamic Re-Ranking, Query Suggestions, Personalization",
+      "why": "BIG W is a multi-category retailer (toys, party goods, clothing, homewares) with the same catalog breadth as Oriental Trading.",
+      "url": "https://www.algolia.com/customers/bigw/"
+    },
+    {
+      "vertical": "Office & Education Retail (B2C+B2B)",
+      "company": "Staples Canada",
+      "result": "Double digit increase in conversions across 200,000 SKUs",
+      "product": "Dynamic Re-Ranking, Synonym Suggestions, Rules, Personalization, AI Search",
+      "why": "Staples Canada operates B2C + B2B channels with 200K SKUs \u2014 directly parallel to OTC's B2C + Fun Express B2B hybrid.",
+      "url": "https://www.algolia.com/customers/staples/"
+    },
+    {
+      "vertical": "B2B Specialty Distribution",
+      "company": "Dawn Foods",
+      "result": "Doubled sales YoY for 3 years; search volume grew from <1M to ~20M searches",
+      "product": "Dynamic Synonyms, Query Suggestions, Custom Rankings, Personalization, Analytics",
+      "why": "Dawn Foods is a B2B distributor (10K+ SKUs, 10M price points) \u2014 parallel to Fun Express's B2B wholesale arm.",
+      "url": "https://www.algolia.com/customers/dawnfoods/"
+    }
+  ],
+  "demos": [
+    {
+      "label": "InstantSearch SAYT Demo",
+      "url": "https://www.algolia.com/doc/guides/building-search-ui/what-is-instantsearch/js/",
+      "description": "Sub-50ms as-you-type search with product, category, and content suggestions"
+    },
+    {
+      "label": "NeuralSearch Demo",
+      "url": "https://www.algolia.com/products/ai-search/",
+      "description": "NLP query understanding for natural language queries"
+    }
+  ],
+  "industry_context": {
+    "vertical": "Specialty Retail \u2014 Party Supplies, Crafts, Toys, Education Supplies",
+    "primary_market": "US",
+    "key_benchmarks": [
+      {
+        "metric": "Advanced search delivers up to 30% conversion increase",
+        "value": "30%",
+        "context": "Ecommerce stores implementing advanced search technologies including multimodal capabilities see up to 30% increase in conversions versus basic keyword search \u2014 desktop conversion rates are 2x higher for retailers with advanced search vs. basic search.",
+        "source_name": "Invesp / Searchanise",
+        "source_url": "https://searchanise.io/blog/site-search-trends/",
+        "source_date": "2025-12-01",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 Invesp via WebFetch, 2025-12-01, https://searchanise.io/blog/site-search-trends/]"
+      },
+      {
+        "metric": "76% of consumers frustrated when experiences are not personalized",
+        "value": "76%",
+        "context": "Three-quarters of consumers express frustration when their shopping experiences are not personalized, while 71% expect personalization from brands and 91% prefer brands that provide relevant recommendations \u2014 making personalized search a baseline expectation in specialty retail.",
+        "source_name": "McKinsey",
+        "source_url": "https://www.envive.ai/post/personalized-shopping-experience-statistics",
+        "source_date": "2025-11-01",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 McKinsey via WebFetch, 2025-11-01, https://www.envive.ai/post/personalized-shopping-experience-statistics]"
+      },
+      {
+        "metric": "Site search users generate disproportionate revenue",
+        "value": "13-15% of visitors use site search but generate 31-45% of ecommerce revenue",
+        "context": "Search users represent high-intent shoppers who already know what they want \u2014 making search quality the single highest-leverage conversion lever for catalog-heavy retailers like Oriental Trading with 40,000+ SKUs.",
+        "source_name": "Klevu / AddSearch",
+        "source_url": "https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce",
+        "source_date": "2025-06-15",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 Klevu/AddSearch via WebFetch, 2025-06-15, https://www.opensend.com/post/on-site-search-conversion-rate-statistics-ecommerce]"
+      }
+    ],
+    "trend_headline": "AI-powered personalization driving 5-25% revenue lifts across retail, with 76% of consumers frustrated when experiences are not personalized",
+    "trend_source_url": "https://www.envive.ai/post/personalized-shopping-experience-statistics",
+    "trend_source_label": "[FACT \u2014 McKinsey/Envive via WebFetch, 2025-11-01, https://www.envive.ai/post/personalized-shopping-experience-statistics]",
+    "algolia_angle": "Oriental Trading operates in a 40,000+ SKU party supplies and crafts market where 41% of ecommerce sites fail at key search query types and search users generate 31-45% of total revenue despite being only 13-15% of visitors, making Algolia's AI-powered search with typo tolerance, synonym detection, and personalized ranking directly tied to capturing the disproportionate conversion value of high-intent searchers across its catalog, Mirakl marketplace, and Fun Express B2B channel."
+  },
+  "tab_subtitles": {
+    "summary": "What you need before walking into Oriental Trading Company",
+    "account": "Oriental Trading at a glance \u2014 specialty retail, 3.776M monthly visitors, Berkshire Hathaway subsidiary",
+    "findings": "What we found when we tested Oriental Trading's search with 16 queries",
+    "case": "Why Oriental Trading should act now \u2014 $1.4M\u2013$12M addressable search revenue",
+    "playbook": "How to win the Oriental Trading deal"
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Argano warm intro to CIO",
+    "detail": "Argano has active managed services relationship at OTC. Request warm introduction to CIO Charles Hunsinger via Algolia Oracle ecosystem partner team.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "partner": "Stripe",
+        "version": "Stripe v3",
+        "partnership_type": "Co-sell / joint-GTM",
+        "co_sell_angle": "Search-to-checkout conversion optimization"
+      }
+    ],
+    "si_partners": [
+      {
+        "partner": "Argano",
+        "evidence": "Led Oracle Cloud ERP+SCM migration. 50+ OIC integrations. Ongoing managed services.",
+        "confidence": "HIGH",
+        "c_suite_access": "CIO Charles Hunsinger",
+        "action": "Request warm intro via Algolia Oracle partner channel"
+      },
+      {
+        "partner": "Stibo Systems",
+        "evidence": "OTC uses Stibo STEP for Product MDM. Tami Rand spoke at NRF 2024.",
+        "confidence": "HIGH",
+        "c_suite_access": "PIM Manager Tami Rand",
+        "action": "Reach out via LinkedIn"
+      }
+    ],
+    "immediate_action": "Contact Algolia Oracle ecosystem team for warm intro to OTC via Argano.",
+    "co_sell_recommendation": "Lead with Argano SI (primary). Follow with Stripe co-sell (secondary). Explore Mirakl marketplace co-sell (tertiary).",
+    "crossbeam_data_available": false,
+    "source_label": "partner-intel.md, 2026-04-15",
+    "unconfirmed_partners": [
+      {
+        "name": "Mirakl Professional Services / Mirakl SI partner (OSF Digital, Skillnet, or similar)",
+        "evidence": "OTC launched a Mirakl marketplace in June 2021. Mirakl implementations typically involve a certified SI partner for onboarding, catalog integration, and seller management. The specific SI is not publicly disclosed.",
+        "next_step": "Check Crossbeam for Mirakl SI partner overlap at OTC. Ask Mirakl directly \u2014 Algolia and Mirakl have a marketplace search co-sell angle. Search LinkedIn for Mirakl-credentialed consultants who list OTC experience.",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "Rithum (formerly ChannelAdvisor)",
+        "evidence": "OTC is listed as a Rithum partner (marketplace/channel management). Rithum provides marketplace listings, inventory management, and order management. This is a technology relationship, not SI \u2014 but Rithum account managers may have contacts at OTC's ecommerce team.",
+        "next_step": "Check Rithum partner profile; low priority \u2014 Rithum is a channel tool, not an SI with C-suite access. [WEBSEARCH \u2014 rithum.com/partners/oriental-trading-company/, 2026-04-15]",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "Slalom Consulting",
+        "evidence": "Slalom has a strong Omaha, NE office (OTC HQ is Omaha). Slalom specializes in cloud, data, and digital transformation for mid-market enterprises. Geographic proximity + OTC's Oracle Cloud migration profile makes Slalom a plausible advisor. No direct evidence found.",
+        "next_step": "Check Crossbeam \u2192 search LinkedIn for Slalom employees who list Oriental Trading or Berkshire Hathaway retail subsidiaries as clients.",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "Perficient",
+        "evidence": "Perficient is a top Oracle consulting partner and has deep retail vertical expertise. OTC's Oracle Cloud ERP/SCM stack is Perficient's core competency. If Argano was the primary implementer, Perficient may still have been considered or may be a future partner for Oracle extensions.",
+        "next_step": "Check Crossbeam \u2192 ask Oracle account team if Perficient has been involved in any OTC engagement.",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "IBM Consulting",
+        "evidence": "OTC uses IBM Netezza Data Warehouse (deployed 2021). IBM Consulting may have been involved in the data warehouse implementation or have an ongoing analytics relationship.",
+        "next_step": "Check Crossbeam \u2192 search for IBM Consulting case studies featuring OTC or Berkshire Hathaway retail. [ESTIMATE \u2014 appsruntheworld.com lists IBM Netezza at OTC, 2026-04-15]",
+        "confidence": "INVESTIGATE"
+      }
+    ]
+  },
+  "abx_sequence": {
+    "touches": [
+      {
+        "touch": 1,
+        "day": "Day 1",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 1 \u2014 Hook",
+        "body": "# Email 1 \u2014 Hook\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 1\n\n---\n\n**Subject:** \"Morris Costumes\" on orientaltrading.com returns zero results\n\n---\n\n**Body:**\n\n[First name] \u2014\n\nOTC's 2021 acquisition of Morris Costumes expanded your portfolio into theatrical and Halloween \u2014 but your own site search doesn't know the brand exists.\n\nI tested it last week: searching \"Morris Costumes\" on orientaltrading.com returns zero results and falls back to the homepage, as if the brand never existed. Meanwhile, 71% of your traffic arrives on mobile, where shoppers type brand names and expect instant answers.\n\nWith your 40,000+ SKU catalog expanding through Mirakl and brand acquisitions, a redirect-table-only search engine can't keep pace \u2014 every new brand addition creates a new discovery gap.\n\nWorth a 15-minute conversation to walk through what we found?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Finding: `09-browser-findings.md` \u2014 Step 2i (Intent Detection Test), lines 92\u201398\n- Screenshot evidence: `deliverables/screenshots/09-intent-morris-costumes.png` \u2014 confirms zero results for \"Morris Costumes\" query\n- Morris Costumes acquisition: `08-financial-profile.md` lines 99, 159 \u2014 acquired March 2021, ~$50M\n- Mobile traffic (71%): `09-browser-findings.md` \u2014 Step 2l (Mobile Experience), confirmed via playbook MEDDPICC section (\"71% mobile traffic\")\n- Catalog size (40,000+ SKUs): `oriental-trading-playbook.md` \u2014 BLUF section and Discovery Questions\n- Mirakl marketplace: `11-investor-intelligence.md` Signal 2 \u2014 \"Marketplace Scale = Search Crisis\"\n",
+        "message": "# Email 1 \u2014 Hook\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 1\n\n---\n\n*"
+      },
+      {
+        "touch": 2,
+        "day": "Day 1-2",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Connection Request",
+        "body": "# LinkedIn \u2014 Connection Request\n\n**Target personas (use persona-specific version below):**\n\n---\n\n## Version A \u2014 For CIO / Technical Buyer (Charles Hunsinger or successor)\n\nHi [Name] \u2014 I audited orientaltrading.com's search last week and found that \"Morris Costumes\" (an OTC brand) returns zero results. Happy to share the full technical findings.\n\n**Character count: 172** \u2713 (under 300 limit)\n\n---\n\n## Version B \u2014 For CMO / Marketing Buyer (Brian Moen)\n\nHi Brian \u2014 I audited orientaltrading.com's search and found that \"fun activities for kids birthday party under 50\" returns 10,631 unfiltered results. Happy to share what that means for seasonal conversion.\n\n**Character count: 190** \u2713 (under 300 limit)\n\n---\n\n## Version C \u2014 For E-Commerce PM / Champion (when role is filled)\n\nHi [Name] \u2014 I audited orientaltrading.com's search and found zero SAYT on a 40K+ SKU catalog. Typing \"party\" in the search bar returns nothing until submit. Happy to share the full findings.\n\n**Character count: 185** \u2713 (under 300 limit)\n\n---\n\n**Source notes:**\n\n- Version A finding: `09-browser-findings.md` Step 2i \u2014 \"Morris Costumes\" \u2192 zero results; screenshot `09-intent-morris-costumes.png`\n- Version B finding: `09-browser-findings.md` Step 2m \u2014 NLP query \"fun activities for kids birthday party under 50\" \u2192 10,631 results; screenshot `13-nlp-kids-birthday.png`\n- Version C finding: `09-browser-findings.md` Step 2c \u2014 \"CRITICAL \u2014 Zero SAYT/autocomplete capability\"; screenshot `03-sayt-party.png`\n- Target contact details: `oriental-trading-playbook.md` Stakeholder Targets table\n- Role-specific targeting per skill rules: Version A for CIO (technical gap), Version B for CMO (revenue/conversion gap), Version C for PM (UX gap)\n",
+        "message": "# LinkedIn \u2014 Connection Request\n\n**Target personas (use persona-specific version below):**\n\n---\n\n## Version A \u2014 For CIO"
+      },
+      {
+        "touch": 3,
+        "day": "Day 3-4",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 2 \u2014 Competitor",
+        "body": "# Email 2 \u2014 Competitor\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 3\u20134\n\n---\n\n**Subject:** While Party City runs SFCC's native search, here's the gap OTC could own\n\n---\n\n**Body:**\n\n[First name] \u2014\n\nParty City \u2014 your most direct competitor \u2014 runs Salesforce Einstein Search, which is bundled into their Commerce Cloud platform. It's constrained, non-semantic, and limited by the platform it lives inside. They also filed Chapter 11 in January 2024, which means their search investment is frozen.\n\nShindigz, your second major competitor in personalized party supplies, runs Apache Solr \u2014 infrastructure from 2010. No AI ranking, no NLP, no personalization.\n\nNeither of them has deployed a dedicated search platform.\n\nThat's the window. Staples Canada \u2014 a B2B+B2C hybrid with 200,000 SKUs (five times OTC's core catalog) \u2014 deployed Algolia and saw a double-digit increase in conversions. Their catalog complexity is analogous to OTC's. Their implementation took 6 months.\n\nFirst-mover in AI-powered search within party and craft specialty retail is still available. Happy to show you what that looks like for your specific catalog and your Fun Express B2B channel.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n**Competitive intelligence \u2014 DEFENSIVE play used (no direct competitor confirmed on Algolia):**\n- Party City platform (Salesforce Commerce Cloud) and search (Einstein Search): `04-competitors.md` lines 19, 35\u201338 \u2014 [FACT \u2014 AfterShip + WebSearch, 2026-04-14]\n- Party City Chapter 11: `04-competitors.md` line 36 \u2014 [FACT]\n- Shindigz platform (Kibo/Apache Solr): `04-competitors.md` lines 20, 43\u201346 \u2014 [FACT \u2014 Echidna case study + Kibo docs, 2026-04-14]; Solr 9 migration June 2024\n- No competitor using Algolia confirmed: `04-competitors.md` Golden Angle Assessment section \u2014 \"OFFENSIVE \u2014 no direct competitor confirmed on Algolia\"\n- Staples Canada case study: `04-competitors.md` lines 110\u2013122 \u2014 [FACT \u2014 algolia.com/customers/staples WebFetch, 2026-04-14]; 200,000 SKUs, double-digit conversion increase, B2B+B2C model\n- Fun Express B2B angle: `08-financial-profile.md` Fun Express section \u2014 $371M B2B segment [ESTIMATE \u2014 ZoomInfo]\n- Golden Angle status: Not applicable \u2014 Defensive play used per skill rules because no direct competitor uses Algolia\n",
+        "message": "# Email 2 \u2014 Competitor\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 3\u20134"
+      },
+      {
+        "touch": 4,
+        "day": "Day 4-6",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Follow-Up 1",
+        "body": "# LinkedIn \u2014 Follow-Up 1\n\n**Timing:** 3\u20135 days after connection accepted, no reply received\n**Goal:** Build credibility. Share the specific finding. No ask.\n\n---\n\n## Message (for CIO / Technical Buyer)\n\nThanks for connecting. The finding I mentioned: when a shopper types \"Morris Costumes\" on orientaltrading.com, they get zero results and land on the homepage.\n\nHere's the deeper context: OTC's search is built on a redirect-mapping architecture \u2014 roughly 200\u2013300 terms manually mapped to category pages. MindWare (acquired 2013) maps correctly. Morris Costumes (acquired 2021) was never added.\n\nWith your AWS migration underway and Mirakl expanding the catalog to millions of SKUs, every new brand addition creates a new discovery gap in the redirect table.\n\nNo ask here \u2014 just thought you'd want to see what we found.\n\n**Character count: 492** \u2713 (under 500 limit)\n\n---\n\n## Message (for CMO / Marketing Buyer)\n\nThanks for connecting. One more data point from the audit: I searched \"fun activities for kids birthday party under 50\" \u2014 a query your target shopper types every day in April and May.\n\nResult: 10,631 unfiltered Party Supplies. No price constraint applied. No age filter. No occasion targeting. Just a firehose of products.\n\nYour CEO said in May 2024 that \"the consumer is feeling the pinch.\" When a price-sensitive shopper gets 10,000 results with no price filter, they don't scroll \u2014 they leave for Amazon.\n\nSharing because the data is compelling. No ask.\n\n**Character count: 487** \u2713 (under 500 limit)\n\n---\n\n**Source notes:**\n\n- Morris Costumes finding: `09-browser-findings.md` Step 2i \u2014 zero results; screenshot `09-intent-morris-costumes.png`\n- Redirect architecture: `09-browser-findings.md` Search Architecture Assessment section\n- MindWare comparison: `09-browser-findings.md` Step 2i \u2014 \"MindWare...correctly maps to its brand page via redirect\"\n- AWS migration: `oriental-trading-playbook.md` Recent News section \u2014 Java dev contract through July 2026\n- Mirakl catalog scale: `11-investor-intelligence.md` Signal 2 \u2014 \"millions of products\"\n- NLP query finding: `09-browser-findings.md` Step 2m \u2014 screenshot `13-nlp-kids-birthday.png`\n- CEO \"feeling the pinch\" quote: `11-investor-intelligence.md` Signal 4 \u2014 [ESTIMATE \u2014 CNBC Squawk Box May 3, 2024]; used as ESTIMATE per source labeling\n- No sales ask in Follow-up 1 per skill rules\n",
+        "message": "# LinkedIn \u2014 Follow-Up 1\n\n**Timing:** 3\u20135 days after connection accepted, no reply received\n**Goal:** Build credibility."
+      },
+      {
+        "touch": 5,
+        "day": "Day 7",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 3 \u2014 Business Case",
+        "body": "# Email 3 \u2014 Business Case\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 7\n\n---\n\n**Subject:** $197M e-commerce, 3.5% conversion \u2014 one number worth stress-testing\n\n---\n\n**Body:**\n\n[First name] \u2014\n\norientaltrading.com generated $197M in e-commerce revenue in 2025 at a 3.5\u20134.0% conversion rate.\n\nHere's the math worth stress-testing: search users convert at 2\u20133x the rate of non-searchers. If OTC's search converts at or below the sitewide average \u2014 because it returns zero results for brand names, delivers 10,631 unfiltered results for NLP queries, and provides zero guidance to mobile users typing in the search bar \u2014 the gap between where you are and where you could be is measurable.\n\nOne component: a 0.5 percentage-point improvement in conversion across the $197M base = $1.4M in additional annual revenue. Algolia's annual cost for a catalog of OTC's size typically runs $120K\u2013$800K depending on scope.\n\nThat's a 2\u201310x return before you factor in Fun Express B2B, where search-influenced purchasing on a $371M revenue base moves a very different needle.\n\nI can send the full business case model as a follow-up, or walk through it live in 15 minutes. Either works.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- E-commerce revenue ($197M, 2025): `08-financial-profile.md` Source 1 (ecdb.com section) \u2014 [ESTIMATE \u2014 ecdb.com WebFetch, April 2026]\n- Conversion rate (3.5\u20134.0%): `08-financial-profile.md` Source 1 \u2014 [ESTIMATE \u2014 ecdb.com WebFetch, April 2026]\n- Search user conversion multiplier (2\u20133x): `oriental-trading-playbook.md` Audit Highlights, Finding 1 \u2014 citing Forrester/Mailmodo via opensend.com\n- Zero results for \"Morris Costumes\": `09-browser-findings.md` Step 2i, screenshot `09-intent-morris-costumes.png`\n- 10,631 results for NLP query: `09-browser-findings.md` Step 2m \u2014 \"fun activities for kids birthday party under 50\" \u2192 10,631 Party Supplies\n- Zero SAYT for mobile users: `09-browser-findings.md` Step 2c \u2014 \"CRITICAL \u2014 Zero SAYT/autocomplete capability\"\n- $1.4M incremental revenue calculation: `08-financial-profile.md` Algolia Search Revenue Opportunity section \u2014 0.5 pp improvement \u00d7 $197M = $1.4M [ESTIMATE \u2014 derived calculation, April 2026]\n- Algolia cost range ($120K\u2013$800K): `oriental-trading-playbook.md` Pilot Strategy section\n- Fun Express revenue ($371M): `08-financial-profile.md` Fun Express section \u2014 [ESTIMATE \u2014 ZoomInfo, April 2026]\n- Leave-behind: `deliverables/oriental-trading-leave-behind.html` \u2014 available at this path\n",
+        "message": "# Email 3 \u2014 Business Case\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day"
+      },
+      {
+        "touch": 6,
+        "day": "Day 7-14",
+        "channel": "video",
+        "target": "all",
+        "subject": "Loom Video Script \u2014 Oriental Trading Company",
+        "body": "# Loom Video Script \u2014 Oriental Trading Company\n\n**AE Guidance:** Record this as a personal screen-share video. Open orientaltrading.com in a browser tab and the screenshots folder in a second window. 2-minute max. Casual, direct \u2014 not a sales pitch.\n\n**Total estimated word count:** 248 words (comfortable 2-minute delivery at 120\u2013130 wpm)\n\n---\n\n## HOOK (0\u201310 sec)\n\n\"I spent 30 minutes on orientaltrading.com last week and found three things that surprised me \u2014 especially given where they are with their AWS migration and marketplace expansion. Let me show you.\"\n\n*[Speaker note: Open to the orientaltrading.com homepage as you say this. Screen should be live, not a recording of a recording.]*\n\n---\n\n## DEMO \u2014 Finding 1 (10\u201340 sec)\n\n*[Display screenshot: `03-sayt-party.png`]*\n\n\"This is what happens when a shopper types 'party' in the search bar on a catalog with 40,000 products. Nothing. No suggestions, no product previews, no category hints \u2014 just a blank text field waiting for them to press Enter. On mobile, which is 71% of their traffic, this is the entire search experience before submit.\"\n\n*[Speaker note: Pause briefly here. Let the silence land.]*\n\n\"Every search begins in the dark.\"\n\n---\n\n## DEMO \u2014 Finding 2 (40\u201375 sec)\n\n*[Display screenshot: `13-nlp-kids-birthday.png`]*\n\n\"This is a shopper typing 'fun activities for kids birthday party under 50' \u2014 a completely normal April search query. They get 10,631 Party Supplies results. No price filter applied from 'under 50.' No age filter from 'kids.' No occasion ranking from 'birthday party.' Just the entire catalog, dumped.\n\nThat shopper's next click is Amazon.\n\nOTC's search doesn't understand natural language \u2014 it treats every query as a bag of keywords, not a question.\"\n\n*[Speaker note: This is your strongest finding. Deliver it at normal pace \u2014 don't rush.]*\n\n---\n\n## DEMO \u2014 Finding 3 (75\u2013105 sec)\n\n*[Display screenshot: `09-intent-morris-costumes.png`]*\n\n\"Last one. OTC acquired Morris Costumes in 2021. If you search that brand name on their own website today, you get zero results and fall back to the homepage.\n\nTheir search is built on a redirect-mapping table \u2014 a manually maintained list of maybe 200 terms. MindWare, acquired in 2013, is in the table. Morris Costumes, acquired three years ago, is not.\n\nWith Mirakl expanding their catalog to millions of SKUs, every new brand addition creates a new discovery gap.\"\n\n*[Speaker note: Cut to your face briefly here before the close.]*\n\n---\n\n## CTA (105\u2013120 sec)\n\n\"Three gaps. On a $197M e-commerce business at 3.5% conversion, even a half-point lift from better search is $1.4 million per year.\n\nI put together a full analysis \u2014 every finding, the revenue math, and how a Party Supplies pilot would work. Happy to walk through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n*[Speaker note: End on your name and title. Keep it warm, not salesy.]*\n\n---\n\n**Screenshot verification (all 3 references confirmed on disk):**\n- `03-sayt-party.png` \u2014 VERIFIED: exists in `deliverables/screenshots/`\n- `13-nlp-kids-birthday.png` \u2014 VERIFIED: exists in `deliverables/screenshots/`\n- `09-intent-morris-costumes.png` \u2014 VERIFIED: exists in `deliverables/screenshots/`\n\n**Source notes:**\n\n- Finding 1 (zero SAYT): `09-browser-findings.md` Step 2c \u2014 screenshot `03-sayt-party.png`; 71% mobile traffic from playbook MEDDPICC section\n- Finding 2 (NLP failure): `09-browser-findings.md` Step 2m \u2014 screenshot `13-nlp-kids-birthday.png`; \"10,631 Party Supplies + thousands more\"\n- Finding 3 (Morris Costumes): `09-browser-findings.md` Step 2i \u2014 screenshot `09-intent-morris-costumes.png`; redirect table architecture from Search Architecture Assessment section\n- Revenue figure ($197M, 3.5%, $1.4M): `08-financial-profile.md` Source 1 (ecdb.com) and Algolia Search Revenue Opportunity section \u2014 [ESTIMATE \u2014 ecdb.com WebFetch, April 2026]\n- Mirakl catalog expansion: `11-investor-intelligence.md` Signal 2 \u2014 [FACT \u2014 BusinessWire WebFetch, 2026-04-14]\n",
+        "message": "# Loom Video Script \u2014 Oriental Trading Company\n\n**AE Guidance:** Record this as a personal screen-share video. Open orie"
+      },
+      {
+        "touch": 7,
+        "day": "Day 10-12",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Follow-Up 2",
+        "body": "# LinkedIn \u2014 Follow-Up 2\n\n**Timing:** 1 week after Follow-Up 1, no reply\n**Goal:** Move toward a meeting with a soft ask.\n\n---\n\n## Message (Competitor angle \u2014 for CIO / Technical Buyer)\n\nOne more data point worth sharing.\n\nStaples Canada \u2014 B2B+B2C hybrid, 200,000 SKUs, two buyer channels \u2014 deployed Algolia and saw a double-digit increase in conversions. Catalog complexity similar to OTC's core + Fun Express combined.\n\nNeither Party City (SFCC Einstein) nor Shindigz (Apache Solr) has a dedicated search platform. The first-mover window in your vertical is still open.\n\nWould a 15-minute conversation make sense? Happy to walk through what a Party Supplies pilot would look like at OTC's scale.\n\n**Character count: 438** \u2713 (under 500 limit)\n\n---\n\n## Message (Business case angle \u2014 for CMO / Marketing Buyer)\n\nLast thought, then I'll leave you alone.\n\norientaltrading.com: $197M e-commerce, 3.5% conversion. A 0.5 percentage-point improvement from better search = $1.4M per year. Algolia's cost for a catalog at OTC's scale: $120K\u2013$800K depending on scope.\n\nSteve Mendlik's vision \u2014 \"customers can easily get everything they need, at the prices they want and in one place\" \u2014 requires search that actually understands what they're looking for.\n\nWould it make sense to spend 15 minutes on what that looks like?\n\n**Character count: 431** \u2713 (under 500 limit)\n\n---\n\n**Source notes:**\n\n- Competitor angle: `04-competitors.md` \u2014 Staples Canada (FACT, lines 110\u2013122), Party City/SFCC, Shindigz/Solr\n- First-mover framing: `04-competitors.md` Golden Angle Assessment \u2014 \"OFFENSIVE \u2014 no direct competitor confirmed on Algolia\"\n- Business case figures: `08-financial-profile.md` Algolia Search Revenue Opportunity section \u2014 $197M, 3.5%, $1.4M calculation, $120K\u2013$800K cost range\n- CEO quote (\"customers can easily get everything they need\"): `11-investor-intelligence.md` Quote 3 \u2014 [FACT \u2014 BusinessWire/Mirakl Press Release WebFetch, 2026-04-14]\n- One angle only per skill rules (competitor OR business case, not both)\n- Soft ask used per skill rules (\"Would it make sense\" not \"Book a time here\")\n",
+        "message": "# LinkedIn \u2014 Follow-Up 2\n\n**Timing:** 1 week after Follow-Up 1, no reply\n**Goal:** Move toward a meeting with a soft ask"
+      },
+      {
+        "touch": 8,
+        "day": "Day 14",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 4 \u2014 Social Proof",
+        "body": "# Email 4 \u2014 Social Proof\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 14\n\n---\n\n**Subject:** Staples Canada, 200K SKUs, double-digit conversion lift \u2014 your model, their result\n\n---\n\n**Body:**\n\n[First name] \u2014\n\nStaples Canada runs a B2B+B2C hybrid model with 200,000 SKUs across Staples.ca (consumer) and Staplespreferred.ca (business). It's a near-direct structural parallel to OTC's orientaltrading.com (B2C) and Fun Express (B2B) \u2014 two channels, two buyer types, one catalog.\n\nTheir gap before Algolia: relevance and ranking that couldn't scale with catalog growth. Sound familiar?\n\nAfter deploying Algolia's Dynamic Re-Ranking, Dynamic Synonym Suggestions, and AI Search, Staples Canada saw a double-digit increase in conversions and 65% of search issues resolved automatically \u2014 without manual intervention.\n\nTheir principal product manager called it: \"What really worked miracles for us was the dynamic re-ranking algorithm \u2014 that was a real game changer.\"\n\nOTC has the same catalog complexity and a structurally weaker search baseline. The lift opportunity is larger, not smaller.\n\nHappy to walk through how we'd scope a pilot on OTC's Party Supplies category \u2014 the highest-traffic, highest-seasonality category on your site. 15 minutes.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Staples Canada case study: `04-competitors.md` lines 110\u2013122 \u2014 [FACT \u2014 algolia.com/customers/staples WebFetch, 2026-04-14]\n- URL verified: https://www.algolia.com/customers/staples/\n- Metrics: \"Double Digit increase in conversions,\" \"65% Issues automatically solved,\" \"200,000 SKUs\" \u2014 verbatim from Algolia case study page [FACT]\n- Executive quote (Diptendu Ray, Principal Product Manager, Staples Canada): `04-competitors.md` line 118 \u2014 [FACT \u2014 algolia.com/customers/staples WebFetch, 2026-04-14]\n- B2B+B2C model parallel: `04-competitors.md` lines 111\u2013113 \u2014 \"directly parallel to OTC's B2C + B2B Fun Express model\"\n- Fun Express B2B: `08-financial-profile.md` Fun Express section \u2014 $371M [ESTIMATE \u2014 ZoomInfo, April 2026]\n- Party Supplies pilot recommendation: `oriental-trading-playbook.md` Pilot Strategy section\n- ICP vertical (multi-category specialty retail): `oriental-trading-playbook.md` Competitive Context section\n",
+        "message": "# Email 4 \u2014 Social Proof\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 1"
+      },
+      {
+        "touch": 9,
+        "day": "Day 21",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 5 \u2014 Break-Up",
+        "body": "# Email 5 \u2014 Break-Up\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 21\n\n---\n\n**Subject:** Closing the loop on Oriental Trading\n\n---\n\n**Body:**\n\n[First name] \u2014\n\nI know this landed during a busy stretch \u2014 AWS migration, post-Easter recovery, Amazon Retail Ad Service rollout. Timing isn't always right.\n\nI'm going to stop following up, but I wanted to leave one thing behind: a full audit of orientaltrading.com's search experience \u2014 what we found, what the gaps mean, and what the revenue math looks like at your scale.\n\nYou can find it here: https://algolia-arian-v2.vercel.app/oriental-trading/index.html\n\nIf search makes it onto your radar in Q3 or Q4, I'm an easy person to reach. This work will still be here.\n\n[Your name]\n[Title], Algolia\n[Email] | [Phone]\n\n---\n\n**Source notes:**\n\n- Timing references (AWS migration, Amazon Retail Ad Service): `oriental-trading-playbook.md` Recent News & Trigger Events section \u2014 Java developer contract through July 2026 (Appcast), Amazon Retail Ad Service beta (Marketing Dive, Jan 2025)\n- Post-Easter traffic peak: `oriental-trading-playbook.md` Recent News section \u2014 \"+23.9% MoM in March\" (SimilarWeb)\n- Leave-behind resource: `deliverables/oriental-trading-leave-behind.html` \u2014 confirmed exists in deliverables directory\n- SPA link: per AGENT-CONTEXT.md path convention \u2014 Vercel URL pattern: https://algolia-arian-v2.vercel.app/{slug}/index.html\n- No \"last chance\" language used per skill rules. No urgency fabrication.\n",
+        "message": "# Email 5 \u2014 Break-Up\n\n**To:** [Name], [Title] \u2014 Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 21\n\n-"
+      }
+    ],
+    "contacts": [
+      {
+        "name": "Charles Hunsinger",
+        "title": "CIO",
+        "role": "Economic Buyer / CIO",
+        "channel": "LinkedIn + Argano warm intro",
+        "tier": 1,
+        "linkedin_url": "https://www.linkedin.com/search/results/people/?keywords=Charles+Hunsinger+Oriental+Trading",
+        "id": "charles_hunsinger"
+      },
+      {
+        "name": "E-Commerce PM (TBD)",
+        "title": "E-Commerce Product Manager",
+        "role": "Champion \u2014 VACANCY",
+        "channel": "LinkedIn InMail",
+        "tier": 1,
+        "linkedin_url": null,
+        "job_url": "https://jobsearcher.com/j/ecommerce-product-manager-at-oriental-trading-company-in-omaha-ne-BjDgWk4",
+        "id": "e-commerce_pm_(tbd)"
+      },
+      {
+        "name": "Product Designer",
+        "title": "Sr. Product Designer",
+        "role": "Champion (UX)",
+        "channel": "LinkedIn",
+        "tier": 2,
+        "linkedin_url": "https://www.linkedin.com/company/oriental-trading-company/jobs/",
+        "id": "product_designer"
+      },
+      {
+        "name": "Tami Rand",
+        "title": "PIM Manager",
+        "role": "Executive Sponsor",
+        "channel": "LinkedIn (Stibo Systems NRF connection)",
+        "tier": 2,
+        "linkedin_url": "https://www.linkedin.com/search/results/people/?keywords=Tami+Rand+Oriental+Trading",
+        "id": "tami_rand"
+      }
+    ],
+    "sequence_type": "ABX Multi-Touch \u2014 Marketplace Discovery + AWS Migration Window",
+    "research_basis": "oriental-trading audit findings, 09d-hiring-signals.md vacancy signals, partner-intel.md Argano SI path, 11-investor-intelligence.md exec signals",
+    "total_touches": 9,
+    "duration_days": 90,
+    "channels": [
+      "Email",
+      "LinkedIn",
+      "Video"
+    ]
+  }
+}

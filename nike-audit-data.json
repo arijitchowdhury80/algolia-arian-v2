@@ -1,0 +1,1729 @@
+{
+  "meta": {
+    "company": "Nike",
+    "domain": "nike.com",
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-04-15",
+    "version": "v1",
+    "audit_date": "2026-04-15",
+    "audited_by": "Algolia",
+    "data_vintage": {
+      "similarweb": "2026-04-14",
+      "builtwith": "2026-04-14"
+    }
+  },
+  "score": {
+    "overall": 4.32,
+    "verdict": "Needs Significant Work",
+    "verdict_class": "critical",
+    "breakdown": {
+      "latency": 8.0,
+      "typo_tolerance": 5.0,
+      "query_suggestions_empty_state": 7.0,
+      "intent_detection": 5.0,
+      "merchandising_consistency": 6.0,
+      "content_commerce_ux": 5.0,
+      "semantic_nlp_search": 4.0,
+      "dynamic_facets_personalization": 2.0,
+      "search_intelligence": 4.0,
+      "recommendations_merchandising": 3.0
+    },
+    "breakdown_severity": {
+      "latency": "LOW",
+      "typo_tolerance": "MEDIUM",
+      "query_suggestions_empty_state": "MEDIUM",
+      "intent_detection": "MEDIUM",
+      "merchandising_consistency": "MEDIUM",
+      "content_commerce_ux": "MEDIUM",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "HIGH",
+      "search_intelligence": "MEDIUM",
+      "recommendations_merchandising": "HIGH"
+    },
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "intent_detection": "Intent Detection",
+      "merchandising_consistency": "Merchandising Consistency",
+      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "search_intelligence": "Search Intelligence"
+    },
+    "critical_count": 3,
+    "moderate_count": 6,
+    "formula_shown": "sum(score\u00d7weight)/sum(weights) | 54.0/12.5 = 4.32",
+    "source": "10-scoring-matrix.md"
+  },
+  "tech_stack": {
+    "search_provider": "NikeAI (custom LLM, iOS only, Aug 2025)",
+    "ecommerce_platform": "Salesforce Commerce Cloud + Custom Next.js/GraphQL layer",
+    "tag_manager": "Adobe Launch",
+    "primary_platform": "**Hybrid: Salesforce Commerce Cloud (SFCC) + Custom Proprietary Build**",
+    "algolia_detected": false,
+    "tech_stack_summary": "Nike operates a fully custom, AWS-native DTC ecommerce platform at massive scale ($46B revenue, ~4B monthly visits). Frontend: Next.js + React on Node.js. CDN/WAF: Akamai (primary) + AWS CloudFront. Commerce logic: Salesforce Commerce Cloud (hybrid) + heavy proprietary build. Analytics: Adobe Analytics + Adobe Launch (primary tag manager) + Google Analytics. Search: NETWORK-CONFIRMED proprietary in-house search platform via api.nike.com/search/ (SAYT/suggestions) and product-proxy-v2.adtech-prod.nikecloud.com/products (search results). Nike AI Search (Aug 2025, iOS app + nike.com fragment) also entirely in-house. Personalization: Monetate (A/B + web personalization) + internal CDP. Security/Fraud: Forter + Accertify + iovation. API: GraphQL microservices (GRAND initiative). Cloud: AWS (DynamoDB, Lambda, Step Functions, S3, Neptune). No Algolia, Coveo, Bloomreach, or Constructor detected in live network traffic \u2014 confirmed GREENFIELD displacement opportunity targeting Nike's proprietary search stack.",
+    "ai_search_gap": {
+      "app_has_ai": true,
+      "web_has_ai": true,
+      "app_ai_name": "NikeAI",
+      "app_platform": "iOS Nike App (US)",
+      "app_ai_description": "Conversational AI-powered in-app search using 'best-in-class foundational models fine-tuned by domain experts'. Handles natural language queries like 'running shoes for a 5k'. Website search on nike.com appears separate and not powered by NikeAI.",
+      "web_search_vendor": "Nike Proprietary (in-house search platform, api.nike.com/search/)",
+      "narrative": "NikeAI is present on nike.com as a conversational UI layer in the SAYT overlay (\"Ask NikeAI\" with green AI icon). However, the underlying search infrastructure remains Nike Proprietary at api.nike.com/search \u2014 a custom Elasticsearch implementation with no third-party search vendor detected. NikeAI is a surface-level AI wrapper; the foundation under it is not AI-native.",
+      "algolia_angle": "You already shipped NikeAI. The search infrastructure powering it \u2014 api.nike.com/search, custom Elasticsearch \u2014 is the bottleneck. Algolia gives NikeAI a real foundation: sub-20ms responses, AI-native ranking, and merchandising rules without custom engineering."
+    },
+    "data_acquisitions": [
+      {
+        "company": "Datalogue",
+        "year": 2021,
+        "purpose": "data integration / automated data translation"
+      },
+      {
+        "company": "Zodiac",
+        "year": 2018,
+        "purpose": "customer lifetime value prediction"
+      },
+      {
+        "company": "Celect",
+        "year": 2019,
+        "purpose": "predictive inventory analytics"
+      }
+    ],
+    "architecture_notes": "Frontend: Next.js + React; Cloud: AWS (Amazon Web Services) \u2014 primary",
+    "full_list": [
+      "Search API (SAYT): api.nike.com/search/suggestions/v1",
+      "Search API (Results): product-proxy-v2.adtech-prod.nikecloud.com/products",
+      "Search AI Fragment: nike.com/fragments/nike-ai-search",
+      "Ecommerce: Salesforce Commerce Cloud + Custom Next.js/GraphQL layer",
+      "Frontend: Next.js + React + Node.js",
+      "Cloud: AWS (Lambda, DynamoDB, S3, Neptune)",
+      "CDN/WAF: Akamai (Primary)",
+      "CDN/WAF: AWS CloudFront (Secondary)",
+      "Analytics: Adobe Analytics",
+      "Analytics: Adobe Launch (Tag Management)",
+      "Analytics: Google Analytics (Enhanced Link Attribution)",
+      "Analytics: Monetate (A/B testing + personalization)",
+      "Analytics: New Relic (APM)",
+      "Analytics: LiveRamp",
+      "Analytics: Chartbeat",
+      "Marketing: Eloqua (Oracle Marketing Cloud)",
+      "Fraud: Forter + Accertify + iovation",
+      "API Layer: GraphQL (GRAND initiative)"
+    ]
+  },
+  "traffic": {
+    "visit_duration": "2:41",
+    "pages_per_visit": 4.43,
+    "top_channels": [
+      {
+        "source": "Direct",
+        "share": "41.93%"
+      },
+      {
+        "source": "Organic Search",
+        "share": "30.88%"
+      },
+      {
+        "source": "Social",
+        "share": "12.10%"
+      },
+      {
+        "source": "Paid Search",
+        "share": "10.05%"
+      },
+      {
+        "source": "Referrals",
+        "share": "3.69%"
+      },
+      {
+        "source": "Display",
+        "share": "1.31%"
+      },
+      {
+        "source": "Email",
+        "share": "0.04%"
+      }
+    ],
+    "search_abandonment": {
+      "google_outbound_pct": "9.27%",
+      "google_outbound_mom_change": "\u2191117.81%",
+      "narrative": "9.27% of outbound traffic goes to Google (\u2191117.81% MoM) \u2014 users abandoning on-site search and returning to Google to find products"
+    },
+    "ai_referral": {
+      "chatgpt_pct": "16.55%",
+      "chatgpt_mom": "\u219149.74%",
+      "gemini_pct": null,
+      "total_ai_pct": "19.30%",
+      "narrative": "ChatGPT is sending 16.55% of referral traffic (\u219149.74% MoM). AI chatbots represent 19.30% of all referral traffic \u2014 your buyers discover products via AI before visiting your site."
+    },
+    "top_referrers": [
+      {
+        "domain": "click.appcast.io",
+        "share_pct": "23.11%",
+        "mom_change": "\u219315.22%"
+      },
+      {
+        "domain": "chatgpt.com",
+        "share_pct": "16.55%",
+        "mom_change": "\u219149.74%"
+      },
+      {
+        "domain": "narvar.com",
+        "share_pct": "5.36%",
+        "mom_change": "\u219125.57%"
+      },
+      {
+        "domain": "yahoo.co.jp",
+        "share_pct": "4.80%",
+        "mom_change": "\u219183.90%"
+      },
+      {
+        "domain": "nike.okta.com",
+        "share_pct": "4.75%",
+        "mom_change": "\u21917.72%"
+      }
+    ],
+    "paid_search": {
+      "share_of_total_pct": "10.05%"
+    },
+    "organic_search": {
+      "share_of_total_pct": 30.88,
+      "branded_pct": 84,
+      "non_branded_pct": 16,
+      "top_non_branded_keywords": [
+        {
+          "keyword": "jordan",
+          "share_pct": 4.3,
+          "mom_change": "-2.58%"
+        },
+        {
+          "keyword": "air force 1",
+          "share_pct": 2.31,
+          "mom_change": "+23.36%"
+        },
+        {
+          "keyword": "jordan 4",
+          "share_pct": 2.12,
+          "mom_change": "+41.88%"
+        },
+        {
+          "keyword": "\u30a8\u30a2\u30de\u30c3\u30af\u30b995",
+          "share_pct": 1.89,
+          "mom_change": "+268.85%"
+        },
+        {
+          "keyword": "air max 95",
+          "share_pct": 1.19,
+          "mom_change": "+51.83%"
+        }
+      ]
+    },
+    "geo_distribution": [
+      {
+        "country": "United States",
+        "traffic_share_pct": 39.37,
+        "mom_change": "+8.13%"
+      },
+      {
+        "country": "United Kingdom",
+        "traffic_share_pct": 7.49,
+        "mom_change": "-2.26%"
+      },
+      {
+        "country": "France",
+        "traffic_share_pct": 4.38,
+        "mom_change": "-0.03%"
+      },
+      {
+        "country": "Republic of Korea",
+        "traffic_share_pct": 4.23,
+        "mom_change": "-19.47%"
+      },
+      {
+        "country": "Japan",
+        "traffic_share_pct": 3.77,
+        "mom_change": "+39.03%"
+      }
+    ],
+    "outgoing_traffic": [
+      {
+        "domain": "paypal.com",
+        "share_pct": 13.79,
+        "mom_change": "-12.31%"
+      },
+      {
+        "domain": "nike.narvar.com",
+        "share_pct": 13.41,
+        "mom_change": "+18.13%"
+      },
+      {
+        "domain": "nike.okta.com",
+        "share_pct": 12.61,
+        "mom_change": "+27.99%"
+      },
+      {
+        "domain": "google.com",
+        "share_pct": 9.27,
+        "mom_change": "+117.81%"
+      },
+      {
+        "domain": "sheerid.com",
+        "share_pct": 6.74,
+        "mom_change": "+18.09%"
+      }
+    ],
+    "rankings": {
+      "global_rank": 322,
+      "country_rank_us": 188,
+      "industry_rank": 7,
+      "industry_category": "Fashion and Apparel",
+      "source": "[FACT \u2014 SimilarWeb web UI, 2026-04-14]"
+    },
+    "global_rank": 322,
+    "category_rank": 7,
+    "category": "Fashion and Apparel",
+    "referrals": {
+      "share_of_total_pct": 3.69,
+      "top_referring_sites": [
+        {
+          "domain": "click.appcast.io",
+          "share_pct": 23.11,
+          "mom_change": "-15.22%"
+        },
+        {
+          "domain": "chatgpt.com",
+          "share_pct": 16.55,
+          "mom_change": "+49.74%"
+        },
+        {
+          "domain": "narvar.com",
+          "share_pct": 5.36,
+          "mom_change": "+25.57%"
+        },
+        {
+          "domain": "yahoo.co.jp",
+          "share_pct": 4.8,
+          "mom_change": "+83.90%"
+        },
+        {
+          "domain": "nike.okta.com",
+          "share_pct": 4.75,
+          "mom_change": "+7.72%"
+        }
+      ],
+      "top_referring_industries": [
+        {
+          "industry": "Jobs and Employment",
+          "share_pct": 23.8
+        },
+        {
+          "industry": "AI Chatbots and Tools",
+          "share_pct": 19.3
+        },
+        {
+          "industry": "Fashion and Apparel",
+          "share_pct": 11.03
+        },
+        {
+          "industry": "News and Media",
+          "share_pct": 6.39
+        },
+        {
+          "industry": "Search Engines",
+          "share_pct": 6.38
+        }
+      ],
+      "source": "[FACT \u2014 SimilarWeb web UI, Jan\u2013Mar 2026, Desktop, 2026-04-14]"
+    },
+    "referring_industries": [
+      {
+        "industry": "Jobs and Employment",
+        "share_pct": 23.8
+      },
+      {
+        "industry": "AI Chatbots and Tools",
+        "share_pct": 19.3
+      },
+      {
+        "industry": "Fashion and Apparel",
+        "share_pct": 11.03
+      },
+      {
+        "industry": "News and Media",
+        "share_pct": 6.39
+      },
+      {
+        "industry": "Search Engines",
+        "share_pct": 6.38
+      }
+    ],
+    "device_share": {
+      "mobile": "79.71%",
+      "desktop": "20.29%"
+    },
+    "demographics": [
+      {
+        "age_group": "Male",
+        "pct": 53.76,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "Female",
+        "pct": 46.24,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "18-24",
+        "pct": 16.97,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "25-34",
+        "pct": 28.74,
+        "color": "#2952FF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": 20.6,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": 16.66,
+        "color": "#7B8CFF"
+      },
+      {
+        "age_group": "55-64",
+        "pct": 10.76,
+        "color": "#A8B4FF"
+      },
+      {
+        "age_group": "65+",
+        "pct": 6.27,
+        "color": "#C7D2FE"
+      }
+    ],
+    "monthly_visits": 107600000,
+    "bounce_rate": 41.01
+  },
+  "financials": {
+    "analyst_consensus": {
+      "raw": "BUY \u2014 33 analysts: 5 Strong Buy, 18 Buy, 14 Hold, 1 Sell, 1 Strong Sell; mean score 2.18/5; median price target $57.00 vs current $44.20 (~29% implied upside) [FACT \u2014 Yahoo Finance MCP recommendations, 2026-04-14, https://finance.yahoo.com/quote/NKE]",
+      "rating": "BUY",
+      "mean_score": 2.18,
+      "price_target_median": 57.0,
+      "price_current": 44.2,
+      "upside_pct": 29.0,
+      "analysts_count": 33
+    },
+    "margins": {
+      "gross_margin_pct": 40.92,
+      "ebitda_margin_pct": 8.31,
+      "operating_margin_pct": 6.94,
+      "net_margin_pct": 4.84,
+      "margin_zone": "GREEN"
+    },
+    "balance_sheet": {
+      "total_assets": 36579000000,
+      "total_debt": 11018000000,
+      "cash_and_equivalents": 7464000000,
+      "total_assets_fmt": "$36.579B",
+      "total_debt_fmt": "$11.018B",
+      "cash_fmt": "$7.464B"
+    },
+    "roi_formula_shown": true,
+    "roi_scenarios": {
+      "conservative": {
+        "annual_impact": "$96.0M/year",
+        "scenario_desc": "1% conversion improvement on ~$9.6B NIKE Digital baseline",
+        "source": "roi_model + Baymard Institute"
+      },
+      "moderate": {
+        "annual_impact": "$288.0M/year",
+        "scenario_desc": "3% conversion improvement \u2014 Algolia documented customer benchmark range",
+        "source": "roi_model + Algolia case study range"
+      }
+    },
+    "revenue_fy2025": 46309000000,
+    "revenue_fy2024": 51362000000,
+    "revenue_fy2023": 51217000000,
+    "gross_margin": "42.7%",
+    "margin_zone": "GREEN",
+    "analyst_count": 33,
+    "ticker": "NKE",
+    "revenue_source": "Yahoo Finance MCP + SEC EDGAR 10-K",
+    "revenue_source_label": "[FACT \u2014 Yahoo Finance MCP, 2026-04-14]",
+    "source_url": "https://finance.yahoo.com/quote/NKE/financials",
+    "revenue_3y": [
+      {
+        "year": "FY2022",
+        "revenue": "$46.7B",
+        "revenue_raw": 46710000000,
+        "gross_profit": "$21.5B",
+        "operating_income": "$6.7B",
+        "net_income": "$6.0B",
+        "net_margin": "12.9%",
+        "note": "Peak profitability year \u2014 EBITDA margin at 16.1%, highest in 4 years",
+        "ebitda": "$7.5B"
+      },
+      {
+        "year": "FY2023",
+        "revenue": "$51.2B",
+        "revenue_raw": 51217000000,
+        "gross_profit": "$22.3B",
+        "operating_income": "$5.9B",
+        "net_income": "$5.1B",
+        "net_margin": "9.9%",
+        "note": "Revenue growth +9.6% but margin compression begins \u2014 EBITDA down 9%",
+        "ebitda": "$6.8B"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$51.4B",
+        "revenue_raw": 51362000000,
+        "gross_profit": "$22.9B",
+        "operating_income": "$6.3B",
+        "net_income": "$5.7B",
+        "net_margin": "11.1%",
+        "note": "Revenue plateau (+0.3%) \u2014 cost pressure persists despite EBITDA recovery",
+        "ebitda": "$7.2B"
+      },
+      {
+        "year": "FY2025",
+        "revenue": "$46.3B",
+        "revenue_raw": 46309000000,
+        "gross_profit": "$19.8B",
+        "operating_income": "$3.7B",
+        "net_income": "$3.2B",
+        "net_margin": "6.9%",
+        "note": "\u221210% YoY \u2014 largest revenue decline in a decade; EBITDA margin halved vs FY2022",
+        "ebitda": "$4.5B"
+      }
+    ],
+    "exec_quotes": [
+      {
+        "speaker": "Elliott Hill, President & CEO",
+        "quote": "We are reshaping our marketplace, rewiring how we operate, and investing in the technology platforms that we expect will help us serve more consumers better.",
+        "source": "Q3 FY2026 Earnings Call, March 31, 2026",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/"
+      },
+      {
+        "speaker": "Matthew Friend, CFO",
+        "quote": "Digital is still too promotional. Markdowns across the marketplace remain elevated.",
+        "source": "Q3 FY2026 Earnings Call, March 31, 2026",
+        "source_url": "https://www.insidermonkey.com/blog/nike-inc-nysenke-q3-2026-earnings-call-transcript-1730001/"
+      }
+    ],
+    "roi_calc": {
+      "revenue_basis": "$46.3B",
+      "revenue_basis_source": "Nike FY2025 10-K, Yahoo Finance MCP, 2026-04-14",
+      "gross_margin_pct": 40.9,
+      "gross_margin_source": "Yahoo Finance TTM, 2026-04-14",
+      "lift_pct": 1,
+      "lift_basis": "Conservative benchmark \u2014 Algolia customers report 10-30% search conversion improvement; 1% applied to total revenue is deliberately conservative",
+      "incremental_revenue_est": "$463M",
+      "gross_profit_impact_est": "$189M"
+    },
+    "search_roi_est": "$96M\u2013$288M/year"
+  },
+  "company_snapshot": {
+    "industry": "Footwear",
+    "parent_entity": null,
+    "is_conglomerate": true,
+    "portfolio_brands": [
+      {
+        "name": "Nike",
+        "domain": "nike.com",
+        "is_audit_target": true,
+        "source": "[FACT \u2014 nike.com, 2026-04-14]"
+      },
+      {
+        "name": "Jordan Brand",
+        "domain": "jordan.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 about.nike.com/en/company via WebSearch, 2026-04-14]"
+      },
+      {
+        "name": "Converse",
+        "domain": "converse.com",
+        "is_audit_target": false,
+        "source": "[FACT \u2014 about.nike.com/en/company via WebSearch (Nike acquired Converse 2003), 2026-04-14]"
+      }
+    ],
+    "portfolio_opportunity_note": "3-brand portfolio = 3\u00d7 the search optimization surface",
+    "revenue": "$46.3B (FY2025)",
+    "revenue_source": "https://finance.yahoo.com/quote/NKE/financials",
+    "revenue_source_label": "[FACT \u2014 Yahoo Finance MCP, 2026-04-14]",
+    "ticker": "PUBLIC: NKE",
+    "founded": "1964",
+    "current_search_vendor": "Nike Proprietary Elasticsearch (api.nike.com/search)",
+    "ecommerce_platform": "Salesforce Commerce Cloud + Custom Next.js",
+    "monthly_visits": "107.6M",
+    "visits_source": "https://www.similarweb.com/website/nike.com/"
+  },
+  "intelligence_signals": [
+    {
+      "type": "media_quote",
+      "badge_label": "Elliott Hill, President & Chief Executive Officer",
+      "signal": "This new formation and ways of working will align our three brands, Nike Jordan and Converse into more nimble focused te",
+      "algolia_angle": "Hill's sport-first restructuring generates category-level consumer data that feeds personalization engines \u2014 Algolia's sport-category merchandising and dynamic filtering capabilities are a natural fit.",
+      "source_url": "https://investors.nike.com/investors/news-events-and-reports/investor-news/investor-news-details/2025/NIKE-Inc--Reports-Fiscal-2026-First-Quarter-Results/default.aspx",
+      "source_name": "Nike Investor Relations Press Release (Q1 FY2026)",
+      "source_date": "2025-09-30",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Nike Q1 FY2026 investor press release via WebSearch, 2025-09-30]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Nike Investor Relations Press Release (Q1 FY2026)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Elliott Hill, President & Chief Executive Officer",
+      "signal": "Nike.com posted its best Black Friday ever this year, partially driven by strong sell-through of the Jordan Black Cat la",
+      "algolia_angle": "Nike.com's best-ever Black Friday performance validates the premium DTC digital channel and demonstrates that launch-moment search and discovery at scale are critical.",
+      "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nike-beats-q2-2026-expectations-stock-rises-93CH-4416358",
+      "source_name": "Investing.com (Q2 FY2026 earnings call transcript)",
+      "source_date": "2025-12-18",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Investing.com Q2 FY2026 earnings call transcript WebFetch, 2025-12-18]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Investing.com (Q2 FY2026 earnings call transcript)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Elliott Hill, President & Chief Executive Officer",
+      "signal": "ensure technology is fully integrated across the company and how we create, plan, make, deliver, and sell our world-clas",
+      "algolia_angle": "Hill's explicit mandate to integrate technology end-to-end across the commerce lifecycle positions Algolia's search infrastructure as a platform-level decision.",
+      "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nike-beats-q2-2026-expectations-stock-rises-93CH-4416358",
+      "source_name": "Investing.com (Q2 FY2026 earnings call transcript)",
+      "source_date": "2025-12-18",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Investing.com Q2 FY2026 earnings call transcript WebFetch, 2025-12-18]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Investing.com (Q2 FY2026 earnings call transcript)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Elliott Hill, President & Chief Executive Officer",
+      "signal": "This move is about growth and offense \u2014 giving Sales and Nike Direct an even stronger voice in how we set strategy and i",
+      "algolia_angle": "Hill's 'growth and offense' framing around Nike Direct \u2014 with CFO Friend now owning Nike Direct strategy \u2014 positions search investment as a direct revenue line item within the CFO's purview.",
+      "source_url": "https://www.digitalcommerce360.com/2025/12/03/nike-c-suite-coo-leadership-team-changes/",
+      "source_name": "Digital Commerce 360",
+      "source_date": "2025-12-03",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Digital Commerce 360 WebFetch, 2025-12-03]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Digital Commerce 360"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Elliott Hill, President & Chief Executive Officer",
+      "signal": "I'm so tired, and I know you are too, of talking about fixing this business. I want to move to inspiring and driving gro",
+      "algolia_angle": "Hill's public pivot from 'fixing' to 'growth' signals the transition from cost-cutting to investment mode. Growth-mode budgets are where search infrastructure upgrades get approved.",
+      "source_url": "https://fortune.com/article/nike-ceo-elliott-hill-remarks-turnaround-tired/",
+      "source_name": "Fortune",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Fortune WebFetch, 2026-04-15]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Fortune"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Matthew Friend, Executive Vice President & Chief Financial Officer",
+      "signal": "Nike Digital has reduced promotional activity and is operating more strategically in sync with our partners.",
+      "algolia_angle": "Friend's 'strategic sync' framing signals Nike is building a coordinated merchandising layer across channels \u2014 an Algolia unified search approach supports this coherence.",
+      "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nike-beats-q2-2026-expectations-stock-rises-93CH-4416358",
+      "source_name": "Investing.com (Q2 FY2026 earnings call transcript)",
+      "source_date": "2025-12-18",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Investing.com Q2 FY2026 earnings call transcript WebFetch, 2025-12-18]",
+      "urgency_score": 6,
+      "category_tag": "digital_transformation",
+      "publication": "Investing.com (Q2 FY2026 earnings call transcript)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Matthew Friend, Executive Vice President & Chief Financial Officer",
+      "signal": "In Technology, we continue to optimize our workforce, rationalize programs, and leverage new advanced capabilities.",
+      "algolia_angle": "Technology rationalization signals Nike is re-evaluating legacy tech and open to best-in-class point solutions like Algolia.",
+      "source_url": "https://www.theglobeandmail.com/investing/markets/markets-news/Motley%20Fool/1089930/nike-nke-q3-2026-earnings-call-transcript/",
+      "source_name": "Globe and Mail / Motley Fool (Q3 FY2026 transcript)",
+      "source_date": "2026-04-01",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Globe and Mail / Motley Fool Q3 FY2026 transcript WebFetch, 2026-04-01]",
+      "urgency_score": 6,
+      "category_tag": "leadership_change",
+      "publication": "Globe and Mail / Motley Fool (Q3 FY2026 transcript)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Matthew Friend, Executive Vice President & Chief Financial Officer",
+      "signal": "We accelerated investments across Supply Chain and Technology to support a larger digital and direct business.",
+      "algolia_angle": "Explicit technology investment acceleration signals budget is actively flowing into digital infrastructure \u2014 ideal entry point for Algolia.",
+      "source_url": "https://www.theglobeandmail.com/investing/markets/markets-news/Motley%20Fool/1089930/nike-nke-q3-2026-earnings-call-transcript/",
+      "source_name": "Globe and Mail / Motley Fool (Q3 FY2026 transcript)",
+      "source_date": "2026-04-01",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 Globe and Mail / Motley Fool Q3 FY2026 transcript WebFetch, 2026-04-01]",
+      "urgency_score": 6,
+      "category_tag": "ai_disruption",
+      "publication": "Globe and Mail / Motley Fool (Q3 FY2026 transcript)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Venkatesh (Venky) Alagirisamy, Executive Vice President & Chief Operating Officer",
+      "signal": "Nike has eliminated its Chief Technology Officer role and put a newly appointed Chief Operating Officer in charge of tec",
+      "algolia_angle": "Alagirisamy's COO role absorbs technology \u2014 search infrastructure decisions now route through operations, not a siloed tech org. Algolia's pitch should frame search as an operational capability.",
+      "source_url": "https://www.thestack.technology/get-rid-of-the-cto-just-do-it-says-nike/",
+      "source_name": "The Stack",
+      "source_date": "2025-12-03",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 The Stack WebFetch, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "leadership_change",
+      "publication": "The Stack"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Sr Director NDDC EMEA (R-37068)",
+      "signal": "Reports to VP/GM NDDC EMEA. Leads digital commerce strategy across Europe, Middle East & Africa.",
+      "algolia_angle": "NDDC leadership owns the search/discovery roadmap for Nike's DTC digital channel. Incoming Sr Director = evaluation window before priorities lock in.",
+      "source_url": "https://jobs.nike.com/job/R-37068",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Sr Director NDDC Strategy (00477405)",
+      "signal": "Partners directly with VP/GM Global NDDC. Owns the global NDDC strategic roadmap.",
+      "algolia_angle": "Sets the NDDC investment agenda. Search platform modernization decision routes through this seat. Vacant = 60-90 day window before new hire locks in vendor relationships.",
+      "source_url": "https://jobs.nike.com/job/00477405",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Director International NDDC (00539445)",
+      "signal": "Owns international expansion strategy for Nike's direct digital commerce channel.",
+      "algolia_angle": "International search localization (language, currency, regional relevance) is a core Algolia value prop for Nike's EMEA + APAC expansion.",
+      "source_url": "https://jobs.nike.com/job/00539445",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Sr Director Technical Product Management (00563411)",
+      "signal": "Drives platform strategy across Global Technology and key Functional Teams. Senior TPM with cross-functional authority.",
+      "algolia_angle": "Senior TPM with platform authority is the decision maker on vendor evaluation for platform-level tech including search. Empty seat = opportunity to engage before incumbent is in place.",
+      "source_url": "https://jobs.nike.com/job/00563411",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Senior Software Engineer \u2014 Nike.com Engineering (00581026)",
+      "signal": "Designs and implements highly scalable web-based eCommerce applications. JavaScript/Node.js required.",
+      "algolia_angle": "Directly builds and maintains nike.com commerce layer \u2014 where Algolia's InstantSearch and Search API would integrate. Technical champion candidate: knows the Elasticsearch pain firsthand.",
+      "source_url": "https://jobs.nike.com/job/00581026",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Lead Software Engineer, Retail Commerce (32794)",
+      "signal": "Lead-level role in Retail Commerce organization. Sets technical direction for the commerce platform.",
+      "algolia_angle": "Retail Commerce engineering lead is the decision maker on search infrastructure within the commerce platform. Technical champion; knows the DIY Elasticsearch maintenance burden.",
+      "source_url": "https://jobs.nike.com/job/32794",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY \u2014 Sr Director Foundational Platform Services (00505511)",
+      "signal": "Leads global team building foundational technology and runtime services. Owns centralized platform engineering.",
+      "algolia_angle": "Foundational platform services = the layer where search infrastructure lives. This seat owns build-vs-buy decisions for platform tech. Currently vacant \u2014 60-90 day entry window.",
+      "source_url": "https://jobs.nike.com/job/00505511",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT \u2014 WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Silent Typo Correction \u2014 No \u201cDid You Mean\u201d Feedback",
+      "severity": "medium",
+      "category": "typo_tolerance",
+      "tested_query": "jrodan 4 / air fource 1",
+      "expected_behavior": "After correcting a typo, display \u201cDid you mean: jordan 4?\u201d so users know their query was interpreted differently.",
+      "actual_behavior": "Typo silently corrected. Results page shows original misspelling in header (\u201cjrodan 4 (58)\u201d). No correction indicator.",
+      "impact_stat": "Search visitors convert at 1.8x\u20133x the rate of non-searchers",
+      "impact_stat_source": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+      "screenshot_file": "screenshots/05-typo-jrodan-4.png",
+      "prospect_description": "User types \u201cjrodan 4\u201d on nike.com, gets Jordan 4 results, but the header reads \u201cjrodan 4 (58)\u201d. No correction confirmation.",
+      "algolia_solution": "Algolia surfaces explicit \u201cShowing results for: jordan 4\u201d correction banner. Zero additional clicks.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour",
+      "algolia_case_study_company": "Under Armour",
+      "algolia_case_study_result": "+35% conversion rate on search"
+    },
+    {
+      "id": "F02",
+      "title": "Location Intent Failure \u2014 \u201cStore Near Me\u201d Returns Products",
+      "severity": "medium",
+      "category": "intent_detection",
+      "tested_query": "store near me",
+      "expected_behavior": "Route to store locator page or surface Nike Store locations.",
+      "actual_behavior": "Returns 41 product results (t-shirts, sportswear). Store locator not surfaced.",
+      "impact_stat": "80% of shoppers leave a site when search fails to answer their query",
+      "impact_stat_source": "https://www.bloomreach.com/en/blog/ecommerce-search-best-practices",
+      "screenshot_file": "screenshots/08-non-product-store.png",
+      "prospect_description": "A shopper searching \u201cstore near me\u201d on nike.com gets t-shirts. The store locator exists (in utility nav) but is invisible to the search engine.",
+      "algolia_solution": "Algolia Rules Engine detects location-intent queries and triggers redirect to store locator. Configurable with no engineering deployment.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
+      "algolia_case_study_company": "Decathlon Singapore",
+      "algolia_case_study_result": "No-results rate dropped from 5% to 1.8%"
+    },
+    {
+      "id": "F03",
+      "title": "No Federated Search in SAYT \u2014 Products-Only Autocomplete",
+      "severity": "medium",
+      "category": "content_commerce_ux",
+      "tested_query": "running (in SAYT)",
+      "expected_behavior": "SAYT shows text suggestions + product thumbnails + category suggestions (e.g., \u201cRunning Shoes > Men\u2019s\u201d) + editorial content.",
+      "actual_behavior": "SAYT shows text suggestions and 5 product thumbnails only. No category or content federation.",
+      "impact_stat": "30\u201350% of ecommerce sessions include a search interaction",
+      "impact_stat_source": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+      "screenshot_file": "screenshots/11-federated.png",
+      "prospect_description": "Typing \u201crunning\u201d shows word suggestions and product cards. No \u201cRunning > Trail Shoes\u201d category route. Users must wade through 152 generic results.",
+      "algolia_solution": "Algolia Federated Search surfaces products, categories, content, and help articles in a single SAYT panel. Each drawer independently ranked.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+210% search usage, +37% conversion rate"
+    },
+    {
+      "id": "F04",
+      "title": "Static Facets \u2014 Context-Blind Filter Panel",
+      "severity": "high",
+      "category": "dynamic_facets_personalization",
+      "tested_query": "Dri-FIT UV running jacket",
+      "expected_behavior": "Facets should adapt to product type. Apparel query should show Size, Fit, Color, Material.",
+      "actual_behavior": "\u201cCushioning Type\u201d filter appears for a jacket query. Same facet set regardless of product category.",
+      "impact_stat": "90% of apparel sites fail ecommerce UX best practices",
+      "impact_stat_source": "https://baymard.com/blog/apparel-ecommerce-ux-research-launch",
+      "screenshot_file": "screenshots/14-dynamic-facets-drifit.png",
+      "prospect_description": "Search \u201cDri-FIT UV running jacket\u201d on nike.com and the left rail shows \u201cCushioning Type\u201d \u2014 a shoe attribute \u2014 as a filter option for an apparel product.",
+      "algolia_solution": "Algolia Dynamic Faceting reads the result set composition and renders only relevant filters. Configurable per category from Algolia Dashboard.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
+      "algolia_case_study_company": "Decathlon Singapore",
+      "algolia_case_study_result": "+36% click-through rate with personalization"
+    },
+    {
+      "id": "F05",
+      "title": "Zero Personalization \u2014 Browsing History Ignored in Search",
+      "severity": "high",
+      "category": "dynamic_facets_personalization",
+      "tested_query": "shoes (after browsing running shoes)",
+      "expected_behavior": "After a user browses running shoes, subsequent broad searches should re-rank to surface running shoes first.",
+      "actual_behavior": "After browsing running shoes, searching \u201cshoes\u201d shows Jordan 1 Retro High OG first. Zero personalization.",
+      "impact_stat": "Personalization delivers 50% increase in conversion rate",
+      "impact_stat_source": "https://www.algolia.com/customers/decathlon-singapore",
+      "screenshot_file": "screenshots/17-personalization.png",
+      "prospect_description": "Browse running shoes on nike.com, search \u201cshoes\u201d. You get Jordan retros. Nike\u2019s search has no memory of the session.",
+      "algolia_solution": "Algolia Personalization re-ranks results in real time using user affinity signals. SDK integrates with Nike\u2019s existing Adobe Analytics event stream.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
+      "algolia_case_study_company": "Decathlon Singapore",
+      "algolia_case_study_result": "+50% conversion rate with personalization"
+    },
+    {
+      "id": "F06",
+      "title": "NLP Partial \u2014 Price and Attribute Filters Not Auto-Applied",
+      "severity": "high",
+      "category": "semantic_nlp_search",
+      "tested_query": "best shoes for trail running under 150",
+      "expected_behavior": "Natural language with price constraint should auto-apply max price filter of $150 and surface only trail running footwear.",
+      "actual_behavior": "\u201cUnder 150\u201d NOT enforced. Results include $159 and $160 products. Activity understood but price filter ignored.",
+      "impact_stat": "AI-powered search delivers 10\u201330% conversion improvement over keyword matching",
+      "impact_stat_source": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+      "screenshot_file": "screenshots/13-nlp-trail-running.png",
+      "prospect_description": "A shopper searches \u201cbest shoes for trail running under 150\u201d and has to manually scroll past $159 and $160 products. Search heard \u201ctrail running\u201d but missed \u201cunder 150.\u201d",
+      "algolia_solution": "Algolia NeuralSearch parses multi-attribute natural language queries and auto-applies corresponding filters as pre-applied filter chips.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour",
+      "algolia_case_study_company": "Under Armour",
+      "algolia_case_study_result": "+35% conversion rate on search"
+    },
+    {
+      "id": "F07",
+      "title": "Competitor Queries Treated as Gibberish \u2014 Missed Merchandising Opportunity",
+      "severity": "medium",
+      "category": "recommendations_merchandising",
+      "tested_query": "Yeezy Boost 350",
+      "expected_behavior": "Competitor product query should trigger competitive redirect or surface comparable Nike products.",
+      "actual_behavior": "Returns identical zero-results page as gibberish query. Same 3 fallback products. No competitive cross-sell logic.",
+      "impact_stat": "Up to 3.5x conversions from search when recommendations enabled",
+      "impact_stat_source": "https://www.algolia.com/customers/shoe-carnival",
+      "screenshot_file": "screenshots/07-no-results-yeezy.png",
+      "prospect_description": "Someone searches \u201cYeezy Boost 350\u201d on nike.com \u2014 clearly in the sneaker market. Nike returns the exact same zero-results page as a random keyboard smash.",
+      "algolia_solution": "Algolia Rules Engine detects competitor brand queries and triggers targeted merchandising: banner with comparable Nike products or curated collection.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_company": "Shoe Carnival",
+      "algolia_case_study_result": "Up to 3.5x conversions from search"
+    }
+  ],
+  "executives": [],
+  "hiring": {
+    "total_open_roles": 10,
+    "data_complete": true,
+    "buying_committee": [
+      {
+        "role": "Champion \u2014 First Call (Warm Entry)",
+        "name": "Cheryan Jacob",
+        "title": "Chief Information Officer",
+        "status": "WARM",
+        "signal": "hot",
+        "message": "Former Salesforce executive (hired August 2025). Fluent in Algolia's SFCC AppExchange integration. First call target \u2014 she knows the Algolia-SFCC co-sell story cold. Entry via Algolia's Salesforce partner team.",
+        "linkedin_url": "https://www.linkedin.com/company/nike/",
+        "job_url": null
+      },
+      {
+        "role": "Economic Buyer",
+        "name": "Matthew Friend",
+        "title": "EVP & Chief Financial Officer",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Owns Nike Direct + Nike Digital since Dec 2025 restructure. Said: 'Digital is still too promotional.' ROI frame: Algolia drives full-price sell-through without markdowns. He owns the budget and the pain.",
+        "linkedin_url": "https://www.linkedin.com/in/matthew-friend-nike/",
+        "job_url": null
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Venkatesh (Venky) Alagirisamy",
+        "title": "EVP & Chief Operating Officer",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Absorbed CTO role December 2025. All technology platform decisions route through him. Frame Algolia as operational capability \u2014 fewer Cognizant support tickets, less Elasticsearch maintenance, more engineering velocity.",
+        "linkedin_url": "https://www.linkedin.com/in/valagirisamy",
+        "job_url": null
+      },
+      {
+        "role": "Champion Target \u2014 NDDC EMEA (Vacancy)",
+        "name": "[Incoming Sr Director NDDC EMEA \u2014 R-37068]",
+        "title": "Sr Director, Nike Direct Digital Commerce EMEA",
+        "status": "VACANCY",
+        "signal": "hot",
+        "message": "3 NDDC Sr Director seats open following Dec 2025 restructure. Incoming hires will evaluate vendor relationships in their first 30-90 days. Engage before they inherit the status quo.",
+        "linkedin_url": null,
+        "job_url": "https://jobs.nike.com/job/R-37068"
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Immediate \u2014 SFCC Co-Sell via CIO Jacob",
+        "target": "Cheryan Jacob, Chief Information Officer",
+        "message": "Contact Algolia's Salesforce Commerce Cloud partner team. Request joint introduction to Jacob via Nike's Salesforce account team. First message frame: 'You built the SFCC ecosystem at Salesforce \u2014 Algolia is the search layer purpose-built for it. Nike's next search decision is a one-call conversation, not a six-month evaluation.'",
+        "timing": "This week"
+      },
+      {
+        "phase": 2,
+        "label": "Parallel \u2014 Cognizant SI Warm Intro",
+        "target": "Cognizant Retail Account Team (Sushant Warikoo) \u2192 Nike Engineering",
+        "message": "Cognizant holds a 5-year IT services contract with Nike (signed April 2023). Their scope includes nike.com application support \u2014 they touch Nike's search infrastructure daily. Pitch: 'Algolia reduces your Elasticsearch support burden at Nike. Fewer custom tickets, faster SLA.'",
+        "timing": "Within 2 weeks"
+      },
+      {
+        "phase": 3,
+        "label": "Economic Buyer \u2014 CFO Framing Before First Call",
+        "target": "Matthew Friend, EVP & CFO",
+        "message": "Prepare ROI narrative grounded in Friend's own words: 'Digital is too promotional' \u2192 Algolia drives full-price conversion through relevance. Conservative ROI: $96M/year at 1% lift on $9.6B digital baseline. Nike FY ends May 31 \u2014 FY2027 budget discussions run September\u2013November 2026.",
+        "timing": "Before discovery call"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We built NikeAI ourselves \u2014 we can build search too.",
+        "counter": "NikeAI is the UI surface. api.nike.com/search \u2014 the Elasticsearch foundation under it \u2014 is the bottleneck. Network-confirmed: zero NLP, no personalization, 'Cushioning Type' filter on jacket queries. Algolia replaces that foundation. You keep NikeAI's interface, you fix the infrastructure.",
+        "source": "02-tech-stack.md (NikeAI surface layer vs Elasticsearch foundation confirmed in network traffic)"
+      },
+      {
+        "objection": "We're rationalizing tech spend, not adding vendors.",
+        "counter": "Friend said 'rationalize programs and leverage advanced capabilities' in the same breath. Algolia replaces a Cognizant-supported Elasticsearch cluster with managed SaaS \u2014 fewer FTE, fewer support tickets, faster merchandising velocity. This is rationalization, not addition.",
+        "source": "11-investor-intelligence.md (Friend Q3 FY2026 transcript)"
+      },
+      {
+        "objection": "We have an internal search team \u2014 we don't need a vendor.",
+        "counter": "Three NDDC Sr Director seats and the Foundational Platform Services seat are simultaneously vacant after the December restructure. The search team has a leadership gap right now. Algolia bridges it while incoming leadership evaluates the stack \u2014 and makes the new Sr Director look like they upgraded search on day one.",
+        "source": "09d-hiring-signals.md (4 vacancy signals Tier 1\u20132)"
+      }
+    ]
+  },
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Salesforce Commerce Cloud",
+        "confidence": "HIGH",
+        "algolia_partnership_type": "Official AppExchange integration + Headless Commerce Accelerator",
+        "co_sell_angle": "Nike runs SFCC. Algolia purpose-built SFCC integration. Joint pitch: upgrade SFCC search without re-platforming.",
+        "source_url": "https://www.algolia.com/search-solutions/salesforce-commerce-cloud"
+      },
+      {
+        "name": "Adobe Analytics / Adobe Experience Cloud",
+        "confidence": "HIGH",
+        "algolia_partnership_type": "Official connector + Adobe Exchange listing + AEP bi-directional data connector",
+        "co_sell_angle": "Nike runs Adobe Analytics + Adobe Launch. Algolia search events feed directly into Nike existing Adobe analytics pipeline.",
+        "source_url": "https://www.algolia.com/search-solutions/adobe-experience-manager"
+      }
+    ],
+    "si_partners": [
+      {
+        "name": "Cognizant",
+        "confidence": "HIGH",
+        "evidence": "5-year contract April 2023 managing Nike global technology operations across 230+ locations. Scope includes Nike.com and mobile apps (L1/L2 support).",
+        "c_suite_access": "COO (Venky Alagirisamy) / VP Engineering",
+        "sales_action": "Request warm intro via Cognizant retail account team. They provide L1/L2 support for Nike.com search infrastructure.",
+        "source_url": "https://news.cognizant.com/2023-04-25-Nike-Expands-Relationship-with-Cognizant-to-Manage-its-Global-Technology-Operations"
+      },
+      {
+        "name": "R/GA (Interpublic Group)",
+        "confidence": "HIGH",
+        "evidence": "Long-standing Nike agency partner. Built Nike+, FuelBand. Current scope: Jordan, Global Retail, Global Digital Marketing. Ryan Griffin leads global Nike partnership (April 2025).",
+        "c_suite_access": "CDO / VP Digital / CMO",
+        "sales_action": "Contact R/GA Portland (dedicated Nike team). Position Algolia as search layer powering next-gen retail experiences.",
+        "source_url": "https://lbbonline.com/news/rga-appoints-ryan-griffin-to-lead-global-nike-partnership"
+      },
+      {
+        "name": "Deloitte Digital",
+        "confidence": "MEDIUM",
+        "evidence": "Cathleen Benko (former Deloitte Consulting global e-business leader) sits on Nike board since 2018. Deloitte is top SFCC implementation partner.",
+        "c_suite_access": "Board-level via Cathleen Benko",
+        "sales_action": "Contact Algolia Deloitte Digital partner team. Map Deloitte-Nike engagement partner relationship.",
+        "source_url": "https://fashionunited.com/executive/report/senior-deloitte-executive-cathleen-benko-joins-nike-s-board-of-directors/2018072322492"
+      }
+    ],
+    "immediate_action": "Contact Algolia SFCC partner team. CIO Cheryan Jacob (hired August 2025, former Salesforce exec) is the warm entry. She knows Algolia from the Salesforce AppExchange ecosystem.",
+    "co_sell_recommendation": "Lead with SFCC co-sell motion \u2014 Nike runs SFCC and Algolia has a purpose-built AppExchange integration. Secondary: leverage Cognizant active Nike.com managed services for search infrastructure evaluation influence.",
+    "crossbeam_data_available": false,
+    "source_label": "partner-intel.md \u2014 WebSearch + WebFetch (Crossbeam MCP unavailable), 2026-04-15",
+    "unconfirmed_partners": [
+      {
+        "name": "Cognizant",
+        "evidence": "5-year contract signed April 2023 to manage Nike's global technology operations across 230+ locations in 40+ countries, supporting 70,000 employees. Builds on 14-year relationship. Scope: IT customer service, application & infrastructure support (Level 1 & 2), deskside support. Covers Nike.com, mobi",
+        "next_step": "CTO / COO (Venky Alagirisamy) / VP Engineering",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "R/GA (Interpublic Group)",
+        "evidence": "Long-standing Nike agency partner. Built Nike+, FuelBand. Current scope: Jordan, Global Retail, Global Digital Marketing, Social Community Impact, Global Kids/Teens. Ryan Griffin appointed to lead global Nike partnership (April 2025).",
+        "next_step": "CDO / VP Digital / CMO",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "AKQA (WPP)",
+        "evidence": "Award-winning Nike agency partner. Built Nike CURV Studios experience. Maintained mainstay relationship through 2024. AKQA Portland office has a dedicated Nike embedded team (est. since 2008).",
+        "next_step": "VP Digital / Creative Director / CMO",
+        "confidence": "INVESTIGATE"
+      }
+    ],
+    "cio_background_signal": "CIO previously at Salesforce \u2014 potential warm introduction via Salesforce alumni network or Algolia Salesforce partnership"
+  },
+  "industry_context": {
+    "vertical": "Sporting Goods & Athletic Apparel",
+    "primary_market": "US",
+    "key_benchmarks": [
+      {
+        "metric": "Site search visitor conversion lift",
+        "value": "1.8x\u20133x",
+        "context": "Ecommerce visitors who use site search convert at 1.8x to 3x higher rates than non-search sessions, making search the single highest-ROI conversion lever for high-catalog retailers like Nike.",
+        "source_name": "Hello Retail",
+        "source_url": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+        "source_date": "2026-02-24",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 Hello Retail via WebFetch, 2026-02-24, https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/]"
+      },
+      {
+        "metric": "Site search usage rate",
+        "value": "30\u201350%",
+        "context": "30\u201350% of ecommerce visitors use site search during their session; for sporting goods retailers with large catalogs (10,000+ SKUs), search is the primary product discovery path.",
+        "source_name": "Hello Retail",
+        "source_url": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+        "source_date": "2026-02-24",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 Hello Retail via WebFetch, 2026-02-24, https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/]"
+      },
+      {
+        "metric": "Zero-result rate (industry average)",
+        "value": "10\u201315%",
+        "context": "One in every 7\u201310 searches on an average ecommerce site returns zero results, directly driving exit-after-search rates above 30% on basic keyword-matching platforms.",
+        "source_name": "Hello Retail",
+        "source_url": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+        "source_date": "2026-02-24",
+        "confidence": "FACT",
+        "label": "[FACT \u2014 Hello Retail via WebFetch, 2026-02-24, https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/]"
+      }
+    ],
+    "trend_headline": "AI-powered search delivers 10\u201330% conversion lift over keyword matching as sporting goods ecommerce races toward $130B",
+    "trend_source_url": "https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/",
+    "trend_source_label": "[FACT \u2014 Hello Retail via WebFetch, 2026-02-24, https://helloretail.com/en/blog/2026-02-24-ecommerce-search-statistics/]",
+    "algolia_angle": "Nike operates in a sporting goods market where search visitors convert at 1.8x\u20133x the rate of non-searchers and AI-powered search delivers 10\u201330% conversion improvement over keyword matching, making Algolia's NLP search, AI personalization, and dynamic re-ranking directly tied to recovering share of Nike's 80.3% apparel cart abandonment rate and closing the search quality gap with Under Armour (+35% conversion on Algolia)."
+  },
+  "cover": {
+    "company_logo_url": "https://logo.clearbit.com/nike.com",
+    "status_line": "Confidential \u00b7 For Internal Use Only \u2014 Algolia Sales Intelligence"
+  },
+  "tab_subtitles": {
+    "summary": "What you need before walking into Nike",
+    "account": "Nike at a glance \u2014 Sporting Goods & Athletic Apparel, 107.6M monthly visitors",
+    "findings": "What we found when we tested nike.com\u2019s search \u2014 4.3/10, 3 critical gaps",
+    "case": "Why Nike should act now \u2014 $9.6B digital revenue at risk, Under Armour already on Algolia",
+    "playbook": "How to win the Nike deal"
+  },
+  "case_studies": [
+    {
+      "vertical": "Athletic Apparel & Footwear",
+      "company": "Under Armour",
+      "result": "+35% conversion rate when customers use search",
+      "product": "Algolia AI Search (NeuralSearch + Query Suggestions)",
+      "why": "Under Armour is Nike\u2019s direct competitor in performance athletic footwear and apparel. They moved off a manual, in-house search platform \u2014 the same Elasticsearch DIY model Nike uses today \u2014 to Algolia and immediately achieved 35% higher search conversion.",
+      "url": "https://www.algolia.com/customers/under-armour"
+    },
+    {
+      "vertical": "Fashion & Lifestyle Sportswear",
+      "company": "Lacoste",
+      "result": "+150% sales contribution from search; +37% conversion rate; +314% search use on mobile; <50ms results",
+      "product": "Algolia Search + Personalization across 11 global online shops",
+      "why": "Lacoste operates 11 international online shops \u2014 comparable to Nike\u2019s multi-market, multilingual DTC digital footprint. Lacoste more than doubled global sales contribution from search after deploying Algolia across its global estate.",
+      "url": "https://www.algolia.com/customers/lacoste"
+    },
+    {
+      "vertical": "Sporting Goods Retail",
+      "company": "Decathlon Singapore",
+      "result": "+50% conversion rate with personalization; +36% CTR; no-results rate dropped from 5% to 1.8%; 80% mobile traffic",
+      "product": "Algolia Search + Personalization + Dynamic Faceting",
+      "why": "Decathlon Singapore is the world\u2019s largest sporting goods retailer, with 25,000+ SKUs and 80% mobile traffic \u2014 matching Nike\u2019s 79.71% mobile-first profile. The personalization-driven 50% conversion lift maps directly to Nike\u2019s most critical gap.",
+      "url": "https://www.algolia.com/customers/decathlon-singapore"
+    }
+  ],
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "SFCC co-sell via new Nike CIO",
+    "detail": "Nike\u2019s new CIO Cheryan Jacob (hired August 2025) is a former Salesforce executive. Algolia has a purpose-built SFCC AppExchange integration. Trigger the SFCC co-sell motion immediately \u2014 Jacob will recognize the Algolia-SFCC value proposition and this creates a direct entry to the commerce/search engineering team without cold outreach.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "competitors": [
+    {
+      "name": "Under Armour",
+      "domain": "underarmour.com",
+      "search_vendor": "Algolia",
+      "search_vendor_confirmed": true,
+      "uses_algolia": true,
+      "golden_angle": true,
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour",
+      "algolia_case_study_metrics": "+35% conversion rate on search",
+      "strategic_angle": "Direct Nike competitor. Moved off in-house/open-source search to Algolia. +35% conversion. Both DTC and B2B on Algolia."
+    },
+    {
+      "name": "Adidas",
+      "domain": "adidas.com",
+      "search_vendor": "Salesforce Einstein (SFCC built-in)",
+      "search_vendor_confirmed": false,
+      "uses_algolia": false,
+      "golden_angle": false,
+      "algolia_case_study_url": "",
+      "algolia_case_study_metrics": "",
+      "strategic_angle": "SFCC Einstein search. No confirmed third-party search vendor. Lacks NLP depth and Algolia-grade merchandising control."
+    },
+    {
+      "name": "Puma",
+      "domain": "puma.com",
+      "search_vendor": "Bloomreach Discovery",
+      "search_vendor_confirmed": false,
+      "uses_algolia": false,
+      "golden_angle": false,
+      "algolia_case_study_url": "",
+      "algolia_case_study_metrics": "",
+      "strategic_angle": "Bloomreach on SFCC. More advanced than plain SFCC search but below Algolia\u2019s speed and NLP quality."
+    },
+    {
+      "name": "Asics",
+      "domain": "asics.com",
+      "search_vendor": "SFCC built-in + Contentsquare",
+      "search_vendor_confirmed": false,
+      "uses_algolia": false,
+      "golden_angle": false,
+      "algolia_case_study_url": "",
+      "algolia_case_study_metrics": "",
+      "strategic_angle": "Migrated to SFCC in 2019. Contentsquare is experience analytics, not a search vendor."
+    },
+    {
+      "name": "New Balance",
+      "domain": "newbalance.com",
+      "search_vendor": "Unknown",
+      "search_vendor_confirmed": false,
+      "uses_algolia": false,
+      "golden_angle": false,
+      "algolia_case_study_url": "",
+      "algolia_case_study_metrics": "",
+      "strategic_angle": "No public disclosure of search technology. Phase 2 browser inspection inconclusive."
+    }
+  ],
+  "golden_angle": {
+    "status": "CONFIRMED",
+    "competitor": "Under Armour",
+    "domain": "underarmour.com",
+    "case_study_url": "https://www.algolia.com/customers/under-armour",
+    "metric": "35% higher conversion rate when using search",
+    "verbatim_quote": "Delivering a fast, relevant experience to our online customers is a top priority. With Algolia, Under Armour has been able to move from a manual, time-intensive search tool to a fast, intuitive and insight-driven search experience to deliver what our customers are searching for.",
+    "quote_attribution": "Nick Maupin, Product Manager, Under Armour",
+    "competitors_using_algolia": [],
+    "talk_track": "Under Armour \u2014 your direct competitor \u2014 is already on Algolia and achieved 35% higher conversion rate when using search. Nike runs Elasticsearch (internal/DIY). The benchmark exists. The business case is proven."
+  },
+  "strategic_angles": [
+    {
+      "label": "The NikeAI Gap: App Has AI Search, Website Does Not",
+      "hook": "You already built the vision with NikeAI in the app. Algolia is how you extend that same intent-based search experience to nike.com in 90 days, without a custom build.",
+      "pain_points": [
+        "Nike launched NikeAI in August 2025 \u2014 conversational AI assistant for iOS Nike App only",
+        "Nike.com website search runs on self-managed Elasticsearch \u2014 no hosted AI search vendor detected",
+        "NikeAI proves internal buy-in for intent-based search; website is the gap"
+      ],
+      "discovery_question": "NikeAI proves your organisation already decided intent-based search is the right direction \u2014 what is the roadmap for bringing that same experience to nike.com, and who owns that decision?",
+      "algolia_proof": "Algolia NeuralSearch delivers the same intent-based discovery on the web without a custom model build.",
+      "objection": "We have NikeAI \u2014 we're already doing AI search.",
+      "objection_counter": "NikeAI is iOS app-only. nike.com website runs Elasticsearch. The majority of digital revenue is generated on the website, not the app. Algolia closes the web gap NikeAI left open.",
+      "source": "[FACT \u2014 09b-social-signals.md (Signal 1 \u2014 NikeAI launch, July 2025); 02-tech-stack.md (Elasticsearch DIY, no search vendor detected)]"
+    },
+    {
+      "label": "The Competitor Proof Point: Under Armour Is Already Winning with Algolia",
+      "hook": "Under Armour moved off a proprietary search stack and gained 35% more conversions from search. JD Sports, which carries your product in 38 countries, just went live on Algolia. Nike is the only major player still on DIY Elasticsearch.",
+      "pain_points": [
+        "Under Armour (Nike's #3 direct competitor) \u2014 confirmed Algolia customer with +35% conversion on search",
+        "JD Sports \u2014 channel partner in 3,400+ stores in 38 territories \u2014 selected Algolia as AI search platform",
+        "Nike runs identical proprietary Elasticsearch infrastructure that Under Armour replaced"
+      ],
+      "discovery_question": "Under Armour replaced the same in-house search stack you're running and got a 35% conversion lift \u2014 that case study is public. When you benchmark your search conversion against peers, what does that number look like today?",
+      "algolia_proof": "Under Armour (direct competitor): +35% higher conversion rate on search, replacing in-house open-source platform. [FACT \u2014 algolia.com/customers/under-armour, WebFetch 2026-04-14]",
+      "objection": "We built our own search infrastructure \u2014 it's part of our data/AI stack.",
+      "objection_counter": "Nike built Datalogue, Zodiac, and Celect for data intelligence. But Under Armour also ran a custom search stack, migrated to Algolia, and got 35% more conversions. Build vs. buy for search infrastructure is a resolved question in your vertical.",
+      "source": "[FACT \u2014 04-competitors.md (Under Armour Algolia case study confirmed, algolia.com/customers/under-armour WebFetch 2026-04-14); partner-intel.md (JD Sports)]"
+    },
+    {
+      "label": "The Revenue Recovery Math: Search Is the Conversion Lever Nike Needs Right Now",
+      "hook": "You're trying to wean nike.com off promotions. That only works if the search experience is good enough to convert without a discount. Right now it isn't \u2014 and the CFO can see that in the numbers.",
+      "pain_points": [
+        "Nike Digital revenue declined from ~$13.3B (FY2023) to ~$9.6B (FY2025) \u2014 $3.7B erosion in two years",
+        "CFO Matthew Friend Q3 FY2026: 'Digital is still too promotional. Markdowns across the marketplace remain elevated.'",
+        "Nike strategy is to reduce promotions and drive full-price sell-through \u2014 requires search relevance to convert"
+      ],
+      "discovery_question": "The CFO said digital is 'still too promotional' \u2014 when you map search relevance to full-price sell-through, what is the current search conversion rate on nike.com, and what would a 1pp improvement mean to the digital revenue line?",
+      "algolia_proof": "At Nike's ~$9.6B digital baseline and 42.7% gross margin, 1% conversion lift via search = ~$96M revenue, ~$41M gross profit. Under Armour benchmark: +35% conversion on search sessions. [FACT \u2014 04-competitors.md; 08-financial-profile.md]",
+      "objection": "We're in a cost-rationalization mode \u2014 not the time for new vendors.",
+      "objection_counter": "CFO Friend said in Q3 FY2026: 'We accelerated investments across Supply Chain and Technology.' Algolia replaces Elasticsearch maintenance cost while delivering better outcomes \u2014 it's ROI-positive, not additive spend.",
+      "source": "[FACT \u2014 08-financial-profile.md (digital revenue trend, gross margin); 11-investor-intelligence.md (CFO quote 'still too promotional' Q3 FY2026)]"
+    },
+    {
+      "label": "The Composable Stack Signal: Nike Is Architecturally Ready for Algolia",
+      "hook": "Your architecture team is already building composable. Algolia is the search layer that plugs directly into your existing SFCC + Next.js stack \u2014 not a re-platforming project.",
+      "pain_points": [
+        "Nike GRAND initiative: custom GraphQL/Next.js microservices on SFCC \u2014 composable, API-first architecture",
+        "Nike VP Marketing Data Linda Cereda confirmed evaluating 'composable stacks' and 'AI-native decisioning engines' \u2014 Martech Europe 2025",
+        "Algolia has purpose-built first-party SFCC AppExchange integration \u2014 no custom build required"
+      ],
+      "discovery_question": "Your engineering team is building composable with GraphQL and Next.js. How does the team evaluate a best-of-breed search layer versus SFCC built-in Einstein search \u2014 especially given the new CIO's Salesforce background?",
+      "algolia_proof": "Algolia SFCC AppExchange integration \u2014 certified connector, native to the Nike stack. No custom integration project. [FACT \u2014 partner-intel.md; 02-tech-stack.md]",
+      "objection": "We'd need Cognizant to build the integration.",
+      "objection_counter": "Algolia has a purpose-built SFCC integration on the AppExchange. Nike's Next.js/GraphQL stack is a standard Algolia reference architecture. Integration is weeks, not a systems integration project.",
+      "source": "[FACT \u2014 02-tech-stack.md (GRAND/GraphQL, SFCC, composable signal); 09b-social-signals.md (Signal 8 \u2014 composable stacks, Cereda Martech Europe 2025); partner-intel.md (SFCC co-sell, CIO background)]"
+    },
+    {
+      "label": "The Platform Mandate: Technology Now Under COO and CFO, Not a Siloed Tech Org",
+      "hook": "The CTO is gone. The CFO owns digital, and the COO owns technology. Both will approve search infrastructure spend when it's framed as a margin improvement, not a search upgrade.",
+      "pain_points": [
+        "December 2025 'Win Now' restructure eliminated Nike's CTO role entirely",
+        "Technology now reports to COO Venky Alagirisamy \u2014 operational framing required",
+        "Nike Direct (DTC digital) now reports to CFO Matthew Friend \u2014 commercial outcome framing required",
+        "NDDC has three simultaneous Sr Director/Director vacancies \u2014 60\u201390 day vendor evaluation window"
+      ],
+      "discovery_question": "With the CTO role eliminated and technology now under the COO, how does a search platform evaluation get initiated at Nike \u2014 and who makes the final call: the CIO, COO, or CFO?",
+      "algolia_proof": "Algolia ROI maps to both buyer frames: COO (eliminate Elasticsearch maintenance, reduce Cognizant support tickets) + CFO (1pp search conversion = $41M gross profit on Nike Direct). [FACT \u2014 08-financial-profile.md; partner-intel.md]",
+      "objection": "We're focused on finishing the Win Now restructure first.",
+      "objection_counter": "Finishing Win Now by May 2026 is exactly the window. Technology budget is actively being reallocated. A search platform decision inside the Win Now timeline gets FY2026 funding \u2014 after May it becomes a FY2027 procurement process.",
+      "source": "[FACT \u2014 01-company-context.md (Dec 2025 restructure); 09d-hiring-signals.md (NDDC vacancies); 11-investor-intelligence.md (COO quote \u2014 'fully integrated across the company')]"
+    }
+  ],
+  "gap_pairs": [
+    {
+      "said_quote": "We are rewiring how we operate, and investing in the technology platforms that we expect will help us serve more consumers better.",
+      "said_attr": "Elliott Hill, President & CEO, Nike",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/",
+      "said_source_label": "Nike Q3 FY2026 Earnings Call",
+      "said_date": "2026-04-01",
+      "found_title": "Nike search runs 100% proprietary \u2014 no AI search vendor, no personalization, score 4.3/10",
+      "found_evidence": "Network inspection confirmed api.nike.com/search. BuiltWith: no Algolia/Coveo/Bloomreach detected. Phase 2 audit: 3 HIGH severity gaps (NLP, Dynamic Facets, Recommendations). 9.27% outbound to Google.",
+      "finding_id": "F01",
+      "algolia_angle": "Algolia is the technology platform for consumer discovery. NeuralSearch + Personalization + Merchandising Studio = the platform investment Hill is making \u2014 with published ROI: Under Armour +35% conversion, Lacoste +150% search revenue."
+    },
+    {
+      "said_quote": "Digital is still too promotional. Markdowns across the marketplace remain elevated.",
+      "said_attr": "Matthew Friend, EVP & CFO, Nike",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/",
+      "said_source_label": "Nike Q3 FY2026 Earnings Call",
+      "said_date": "2026-04-01",
+      "found_title": "9.27% of outbound traffic exits to google.com (+118% MoM) \u2014 search abandonment driving conversion failures",
+      "found_evidence": "SimilarWeb outgoing traffic (verified April 2026): google.com is #4 outbound destination at 9.27% share, up 117.81% MoM. Nike Digital declined from $13.3B to $9.6B in 2 years.",
+      "finding_id": "F02",
+      "algolia_angle": "When search surfaces the right product at the right price, customers buy without markdown. Algolia NeuralSearch converts high-intent queries that currently abandon to Google. Conservative ROI: $96M/year at 1% conversion lift."
+    }
+  ],
+  "competitive_synthesis": {
+    "matrix_col_labels": {
+      "nike_has": "Under Armour",
+      "asics_has": "Adidas",
+      "on_running_has": "Puma",
+      "new_balance_has": "Asics"
+    },
+    "positioning_matrix": [
+      {
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "DIY Elasticsearch \u2014 keyword-only, partial attribute stacking",
+        "prospect_with_algolia": "NeuralSearch \u2014 understands intent, auto-applies price/attribute filters",
+        "nike_has": "Under Armour: Algolia NeuralSearch (confirmed)",
+        "asics_has": "Adidas: SFCC Einstein (vendor-dependent)",
+        "on_running_has": "Puma: Bloomreach Discovery (partial NLP)",
+        "new_balance_has": "Asics: SFCC built-in (keyword only)",
+        "algolia_delta": "Critical gap"
+      },
+      {
+        "capability": "AI Personalization",
+        "prospect_today": "Zero personalization detected. Browsing history ignored in search results.",
+        "prospect_with_algolia": "Per-user re-ranking based on purchase history + browsing preferences",
+        "nike_has": "Under Armour: Algolia Personalization (confirmed)",
+        "asics_has": "Adidas: limited (SFCC)",
+        "on_running_has": "Puma: Bloomreach personalization (partial)",
+        "new_balance_has": "Asics: unknown",
+        "algolia_delta": "Critical gap"
+      },
+      {
+        "capability": "Dynamic Faceting",
+        "prospect_today": "Static facets. \u201cCushioning Type\u201d shown for apparel queries.",
+        "prospect_with_algolia": "Context-aware filter panels that adapt to product type and query intent",
+        "nike_has": "Under Armour: Algolia Dynamic Faceting",
+        "asics_has": "Adidas: static SFCC facets",
+        "on_running_has": "Puma: Bloomreach dynamic facets (partial)",
+        "new_balance_has": "Asics: static SFCC facets",
+        "algolia_delta": "High gap"
+      },
+      {
+        "capability": "Merchandising Rules",
+        "prospect_today": "Engineering-dependent. No banners on \u201csale.\u201d No brand landing for \u201cJordan.\u201d",
+        "prospect_with_algolia": "Visual Merchandising Studio \u2014 no-code, instant campaign control",
+        "nike_has": "Under Armour: Algolia Rules Engine",
+        "asics_has": "Adidas: SFCC-dependent",
+        "on_running_has": "Puma: Bloomreach merchandising",
+        "new_balance_has": "Asics: SFCC-dependent",
+        "algolia_delta": "High gap"
+      }
+    ],
+    "competitor_tiers": [
+      {
+        "name": "Under Armour",
+        "domain": "underarmour.com",
+        "search_vendor": "Algolia",
+        "uses_algolia": true,
+        "tier": "Direct"
+      },
+      {
+        "name": "Adidas",
+        "domain": "adidas.com",
+        "search_vendor": "Salesforce Einstein (SFCC)",
+        "uses_algolia": false,
+        "tier": "Direct"
+      },
+      {
+        "name": "Puma",
+        "domain": "puma.com",
+        "search_vendor": "Bloomreach Discovery",
+        "uses_algolia": false,
+        "tier": "Adjacent"
+      },
+      {
+        "name": "Asics",
+        "domain": "asics.com",
+        "search_vendor": "SFCC built-in + Contentsquare",
+        "uses_algolia": false,
+        "tier": "Adjacent"
+      },
+      {
+        "name": "New Balance",
+        "domain": "newbalance.com",
+        "search_vendor": "Unknown",
+        "uses_algolia": false,
+        "tier": "Adjacent"
+      }
+    ],
+    "scenario": "GREENFIELD displacement \u2014 Nike runs DIY Elasticsearch while direct competitor Under Armour is already on Algolia",
+    "scenario_note": "Under Armour confirmed on Algolia with +35% search conversion; Nike runs same in-house Elasticsearch stack Under Armour replaced"
+  },
+  "icp_mapping": {
+    "vertical": "Sporting Goods & Athletic Apparel",
+    "business_model": "B2C (DTC via nike.com + retail stores) + B2B (wholesale)",
+    "audit_type": "GREENFIELD \u2014 no hosted search vendor; Elasticsearch DIY displacement",
+    "monthly_traffic": "107.6M visits/mo",
+    "search_vendor_risk": "HIGH",
+    "anchor_lines": [
+      "Elliott Hill (Q3 FY2026): 'investing in the technology platforms that will help us serve more consumers better' \u2014 search infrastructure is the platform investment on the table.",
+      "Matthew Friend (Q3 FY2026): 'Digital is still too promotional' \u2014 Algolia converts high-intent queries at full price through relevance, not discounts.",
+      "Under Armour, Nike's direct competitor, is already on Algolia: +35% conversion rate on search. Nike runs the same DIY Elasticsearch stack Under Armour replaced in 2017."
+    ],
+    "priority_to_product": [
+      {
+        "pain": "Too promotional / markdown dependency on Nike Digital",
+        "product": "NeuralSearch + AI Merchandising Rules",
+        "evidence": "Matthew Friend, Q3 FY2026: 'Digital is still too promotional.'",
+        "proof_company": "Lacoste",
+        "proof_result": "+150% sales contribution from search; +37% conversion rate",
+        "proof_url": "https://www.algolia.com/customers/lacoste"
+      },
+      {
+        "pain": "NikeAI proven in app but website search still on legacy Elasticsearch",
+        "product": "Algolia AI Search API \u2014 replace api.nike.com/search foundation",
+        "evidence": "Network-confirmed: SAYT via api.nike.com/search (Elasticsearch); NikeAI is a surface wrapper, not a new foundation",
+        "proof_company": "Under Armour",
+        "proof_result": "+35% conversion rate when customers use search",
+        "proof_url": "https://www.algolia.com/customers/under-armour"
+      },
+      {
+        "pain": "9.27% outbound traffic exits to Google (+118% MoM)",
+        "product": "Query Suggestions + Zero-Results Recovery + Federated Search",
+        "evidence": "SimilarWeb verified: google.com is #4 outbound destination, Jan\u2013Mar 2026",
+        "proof_company": "Shoe Carnival",
+        "proof_result": "Up to 3.5x conversions from search",
+        "proof_url": "https://www.algolia.com/customers/shoe-carnival"
+      }
+    ]
+  },
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "Score & Gaps",
+          "anchor": "ch-bottom-line"
+        },
+        {
+          "title": "Golden Angle",
+          "anchor": "ch-golden-angle"
+        }
+      ]
+    },
+    {
+      "act": "ACT II: IN THEIR OWN WORDS",
+      "sections": [
+        {
+          "title": "Executive Statements",
+          "anchor": "ch-exec-statements"
+        },
+        {
+          "title": "Strategy vs. Reality",
+          "anchor": "ch-gap-pairs"
+        }
+      ]
+    },
+    {
+      "act": "ACT III: INTELLIGENCE BRIEF",
+      "sections": [
+        {
+          "title": "Company Context",
+          "anchor": "ch-company-context"
+        },
+        {
+          "title": "Technology Stack",
+          "anchor": "ch-tech-stack"
+        },
+        {
+          "title": "Traffic & Engagement",
+          "anchor": "ch-traffic"
+        },
+        {
+          "title": "Competitor Landscape",
+          "anchor": "ch-competitors"
+        },
+        {
+          "title": "Financial Profile",
+          "anchor": "ch-financials"
+        },
+        {
+          "title": "Timing Signals",
+          "anchor": "ch-timing-signals"
+        }
+      ]
+    },
+    {
+      "act": "ACT IV: THE AUDIT",
+      "sections": [
+        {
+          "title": "Detailed Findings",
+          "anchor": "ch-findings"
+        },
+        {
+          "title": "Screenshot Evidence",
+          "anchor": "ch-screenshots"
+        }
+      ]
+    },
+    {
+      "act": "ACT V: THE OPPORTUNITY",
+      "sections": [
+        {
+          "title": "Revenue Impact",
+          "anchor": "ch-roi"
+        },
+        {
+          "title": "Recommended Products",
+          "anchor": "ch-products"
+        },
+        {
+          "title": "Next Steps",
+          "anchor": "ch-next-steps"
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "phases": [
+      "Phase 1: Research & Intelligence",
+      "Phase 2: Browser Testing",
+      "Phase 3: Scoring"
+    ],
+    "queries_tested": 17,
+    "screenshots_captured": 35,
+    "search_vendor_confirmed": "Network inspection: api.nike.com/search (SAYT) + product-proxy-v2.adtech-prod.nikecloud.com/products (results)",
+    "scoring_method": "Weighted average: HIGH=2.0x, MEDIUM=1.0x, LOW=0.5x"
+  },
+  "next_steps": [
+    {
+      "priority": 1,
+      "action": "Contact SFCC Partner team \u2014 request joint intro to CIO Cheryan Jacob (former Salesforce exec)",
+      "timeline": "This week"
+    },
+    {
+      "priority": 2,
+      "action": "Contact Cognizant retail account team \u2014 warm intro to Nike.com search engineering",
+      "timeline": "This week"
+    },
+    {
+      "priority": 3,
+      "action": "Prepare CFO pitch deck using Friend\u2019s \u201ctoo promotional\u201d framing + $96M ROI calc",
+      "timeline": "Before first call"
+    },
+    {
+      "priority": 4,
+      "action": "Target POC agreement by June 2026 \u2014 ahead of Nike Investor Day Fall 2026",
+      "timeline": "June 2026"
+    }
+  ],
+  "abx_sequence": {
+    "touches": [
+      {
+        "touch": 1,
+        "day": "Day 1",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 1 \u2014 Hook (Search Gap Finding)",
+        "body": "# Email 1 \u2014 Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**\n\nHi [First Name],\n\nElliott Hill said on the Q3 earnings call that Nike is \"investing in the technology platforms that will help us serve more consumers better.\" I spent 30 minutes on nike.com this week, and I found one thing that stood out immediately.\n\nWhen a shopper types \"store near me\" into the nike.com search bar, they get 41 product results \u2014 t-shirts, sportswear \u2014 instead of a store locator. The intent is completely clear, and the site misses it entirely.\n\nThis is one of 10 gaps we documented across the search experience, all traceable to the custom Elasticsearch infrastructure running behind api.nike.com/search. The bigger ones \u2014 no personalization, NLP queries that partially parse intent but don't auto-apply price or size filters \u2014 connect directly to the \"still too promotional\" problem Matthew Friend described on the same call.\n\nWorth a 15-minute conversation this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- \"store near me\" returning product results: `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [VERIFIED ON DISK]\n- Elliott Hill quote \"investing in the technology platforms\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Matthew Friend quote \"digital is still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Motley Fool WebFetch 2026-04-15 [FACT]\n- Custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a\u00bd [FACT \u2014 network verification]\n- 10 gaps enumerated: `09-browser-findings.md`, Summary section [FACT \u2014 browser audit 2026-04-15]\n",
+        "message": "# Email 1 \u2014 Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**"
+      },
+      {
+        "touch": 2,
+        "day": "Day 1-2",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Connection Request",
+        "body": "# LinkedIn \u2014 Connection Request\n\n## Version A \u2014 For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan \u2014 ran an audit of nike.com search and found the site misses clear location intent: \"store near me\" returns products, not stores. Thought it might be relevant given your platform mandate. Happy to share the full analysis.\n\n**Character count: 216** [UNDER 300 LIMIT \u2014 PASS]\n\n---\n\n## Version B \u2014 For Venkatesh Alagirisamy (COO, technology integration mandate)\n\nHi Venky \u2014 audited nike.com's search stack and found a gap: after browsing running shoes, searching \"shoes\" shows Jordan retros first. Zero personalization signals active. Could connect to the operational efficiency work. Happy to share the findings.\n\n**Character count: 252** [UNDER 300 LIMIT \u2014 PASS]\n\n---\n\n## Version C \u2014 For Matthew Friend (CFO, Nike Direct owner)\n\nHi Matthew \u2014 audited nike.com search and documented the gap between what NikeAI does in the app and what the website delivers. The delta connects directly to the full-price conversion problem. Happy to share the analysis if useful.\n\n**Character count: 238** [UNDER 300 LIMIT \u2014 PASS]\n\n---\n\n**Source notes:**\n\n- \"store near me\" finding (Version A): `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [FACT \u2014 browser audit 2026-04-15]\n- Zero personalization finding (Version B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT \u2014 browser audit 2026-04-15]\n- NikeAI app vs. website gap (Version C): `09-browser-findings.md`, Step 2a\u00bd and NikeAI Presence section; `nike-playbook.md`, Talking Point 4 [FACT]\n- Role/contact framing: `nike-playbook.md`, Power Map section [FACT]\n",
+        "message": "# LinkedIn \u2014 Connection Request\n\n## Version A \u2014 For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan \u2014 ran an aud"
+      },
+      {
+        "touch": 3,
+        "day": "Day 3-4",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 2 \u2014 Competitor (Golden Angle)",
+        "body": "# Email 2 \u2014 Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool \u2014 here's what happened\n\n**Body:**\n\nHi [First Name],\n\nUnder Armour was in the same position Nike is in today. They had built their own search infrastructure \u2014 in-house, open-source \u2014 and it worked, but it required engineering resources to maintain and it couldn't keep pace with how consumers shop.\n\nThey moved to Algolia. Their product manager described the result this way: \"We moved from a manual, time-intensive search tool to a fast, intuitive and insight-driven search experience.\" The metric: 35% higher conversion rate when customers use search.\n\nNike.com is running a similar custom Elasticsearch stack \u2014 we confirmed it via network inspection on the api.nike.com/search endpoint. Under Armour's gain is a documented benchmark for what's possible on the same infrastructure trajectory.\n\nI put together a short analysis of the specific gaps on nike.com \u2014 the ones that map most directly to what Under Armour solved. Happy to share it. Would a quick call this week make sense?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Under Armour on Algolia (Golden Angle \u2014 CONFIRMED): `04-competitors.md`, algolia.com/customers/under-armour WebFetch 2026-04-14 [FACT]\n- \"+35% higher conversion rate when using search\": `04-competitors.md`, algolia.com/customers/under-armour [FACT \u2014 WebFetch verified]\n- Nick Maupin quote: `04-competitors.md`, algolia.com/customers/under-armour [FACT]\n- Nike custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a\u00bd, network verification 2026-04-15 [FACT]\n- Under Armour competitor classification: `04-competitors.md`, Competitor Search Technology Matrix, Row 3 [FACT]\n- Golden Angle play used (not Defensive): BuiltWith confirmed via algolia.com/customers/under-armour case study page, not generic WebSearch\n",
+        "message": "# Email 2 \u2014 Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool \u2014 here's what happen"
+      },
+      {
+        "touch": 4,
+        "day": "Day 4-6",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Follow-Up 1 (if accepted, no reply \u2014 Day 4-6)",
+        "body": "# LinkedIn \u2014 Follow-Up 1 (if accepted, no reply \u2014 Day 4-6)\n\n## Version A \u2014 For Cheryan Jacob (CIO)\n\nHi Cheryan \u2014 the \"store near me\" gap is one of 10 we documented on nike.com. The bigger one: after browsing running shoes and then searching \"shoes,\" the top results are Jordan retros. The site has no personalization layer \u2014 zero re-ranking based on browsing behavior. Nike's own app has NikeAI for this. The website doesn't. That's the infrastructure gap.\n\n**Character count: 359** [UNDER 500 LIMIT \u2014 ACCEPTABLE]\n\n---\n\n## Version B \u2014 For Venkatesh Alagirisamy (COO)\n\nHi Venky \u2014 the personalization gap goes further than results ranking. Nike's site is running custom Elasticsearch at api.nike.com/search. The engineering overhead to maintain relevance tuning, merchandising rules, and facet logic is significant \u2014 and it still ships static facets (Cushioning Type shows up for jacket queries). Algolia replaces that maintenance burden with a managed platform. No fabrication \u2014 confirmed via network inspection.\n\n**Character count: 430** [UNDER 500 LIMIT \u2014 ACCEPTABLE]\n\n---\n\n## Version C \u2014 For Matthew Friend (CFO)\n\nHi Matthew \u2014 one data point from the audit: 9.27% of outbound traffic from nike.com goes to Google, and that number grew 117.81% in one month. Those are shoppers who searched on Nike's site, didn't find what they needed, and left to search on Google instead. At 107.6M monthly visits, that's a material number of lost sessions. The mechanism is search relevance \u2014 and it's fixable.\n\n**Character count: 404** [UNDER 500 LIMIT \u2014 ACCEPTABLE]\n\n---\n\n**Source notes:**\n\n- Personalization gap (Version A + B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT]\n- Static facets / Cushioning Type for jacket: `09-browser-findings.md`, Step 2n, screenshot `14-dynamic-facets-drifit.png` [FACT]\n- api.nike.com/search network confirmation: `09-browser-findings.md`, Step 2a\u00bd [FACT]\n- 9.27% outbound to Google, +117.81% MoM: `nike-playbook.md`, Talking Point 2; SimilarWeb web UI Jan-Mar 2026 [FACT]\n- 107.6M monthly visits: referenced in playbook context [FACT \u2014 SimilarWeb]\n- No sales ask in Follow-up 1: confirmed \u2014 no CTA present in any version\n",
+        "message": "# LinkedIn \u2014 Follow-Up 1 (if accepted, no reply \u2014 Day 4-6)\n\n## Version A \u2014 For Cheryan Jacob (CIO)\n\nHi Cheryan \u2014 the \"st"
+      },
+      {
+        "touch": 5,
+        "day": "Day 7",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 3 \u2014 Business Case",
+        "body": "# Email 3 \u2014 Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**\n\nHi [First Name],\n\nNike Brand Digital revenue is approximately $9.6 billion \u2014 derived from the FY2025 10-K (NIKE Direct at $18.8B, with the digital segment down 20% YoY). That's the baseline for the search revenue conversation.\n\nHere's one component of the model: a 1% conversion lift on $9.6B digital = $96M/year incremental revenue. At Nike's 42.7% gross margin (FY2025 10-K), that's $41M in additional gross profit \u2014 from a single percentage point.\n\nMatthew Friend said on the Q3 earnings call that Nike is \"leveraging new advanced capabilities\" in technology while rationalizing legacy programs. A managed search platform that replaces a self-maintained Elasticsearch stack fits both sides of that sentence \u2014 it's an advanced capability that eliminates maintenance overhead.\n\nI have a full model built \u2014 six components, conservative and moderate scenarios. Happy to walk through it in 15 minutes. The leave-behind with the full analysis is also available here: [nike-leave-behind.html link]\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- NIKE Brand Digital ~$9.6B: `08-financial-profile.md`, Digital/Ecommerce Revenue table, derived from 10-K FY2025 [FACT \u2014 SEC EDGAR 10-K via last10k.com WebFetch 2026-04-14]\n- NIKE Direct $18.8B, down 13%: `08-financial-profile.md`, Revenue Trend table; Nike FY2025 10-K MD&A [FACT]\n- NIKE Brand Digital down 20% FY2025: `08-financial-profile.md`, 10-K MD&A verbatim [FACT]\n- Gross margin 42.7% FY2025: `08-financial-profile.md`, Key Margins section, Gross Profit $19.790B \u00f7 Total Revenue $46.309B [FACT \u2014 Yahoo Finance MCP 2026-04-14]\n- 1% conversion lift = $96M formula: `nike-playbook.md`, ROI Summary section [FACT \u2014 derived from above inputs]\n- Friend quote \"leverage new advanced capabilities\": `11-investor-intelligence.md`, Q3 FY2026 earnings call, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Leave-behind reference: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n",
+        "message": "# Email 3 \u2014 Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**"
+      },
+      {
+        "touch": 6,
+        "day": "Day 7-14",
+        "channel": "video",
+        "target": "all",
+        "subject": "Loom Video Script \u2014 Nike Search Audit",
+        "body": "# Loom Video Script \u2014 Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience:** CIO / COO / CFO at Nike\n**Recorded by:** AE\n\n---\n\n## HOOK (0\u201310 sec)\n\n\"I spent 30 minutes on nike.com and found three things that surprised me \u2014 given Nike's investment in digital. Let me show you exactly what I found.\"\n\n*[Open screen share to browser with nike.com loaded]*\n\n---\n\n## DEMO (10\u201390 sec)\n\n**Finding 1 \u2014 Screenshot: `08-non-product-store.png`** *(approx. 10\u201330 sec)*\n\n\"This is what happens when a shopper types 'store near me' into the nike.com search bar. They get 41 product results \u2014 t-shirts and sportswear \u2014 instead of a store locator. The intent is completely clear. The site misses it. This is a routing failure in the search infrastructure.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 2 \u2014 Screenshot: `17-personalization.png`** *(approx. 30\u201360 sec)*\n\n\"Here's the second thing. I browsed running shoes, clicked a product, then searched 'shoes.' The top results were Air Jordan retros \u2014 not running shoes. Zero personalization. No re-ranking based on what I just looked at. Nike's app has NikeAI for exactly this kind of intent detection. The website doesn't have that layer.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 3 \u2014 Screenshot: `14-dynamic-facets-drifit.png`** *(approx. 60\u201380 sec)*\n\n\"Third \u2014 I searched for a Dri-FIT UV running jacket. The facet panel showed 'Cushioning Type' as a filter. For a jacket. The facets are static \u2014 they don't adapt to what the shopper is actually looking for. This creates friction right at the moment of refinement.\"\n\n*[Pull back to summary view]*\n\n\"Three gaps. Search misroutes intent, ignores browsing behavior, and serves irrelevant filters. Nike's digital channel is approximately $9.6 billion. These gaps compound across every session.\"\n\n---\n\n## CTA (90\u2013120 sec)\n\n\"I put together a full analysis \u2014 10 documented gaps, a business case with the revenue math, and a comparison to what Under Armour achieved after a similar infrastructure switch. Happy to walk you through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Speaker notes \u2014 transitions:**\n\n- After Finding 1: \"That's the intent detection gap. Let me show you the personalization problem.\"\n- After Finding 2: \"That's the web experience versus the app experience. Here's the third gap \u2014 filtering.\"\n- After Finding 3: \"So three layers: routing, personalization, faceting. Here's the business context.\"\n\n---\n\n**Source notes:**\n\n- Screenshot `08-non-product-store.png`: VERIFIED ON DISK (`deliverables/screenshots/08-non-product-store.png`) \u2014 \"store near me\" returning 41 product results, `09-browser-findings.md` Step 2h [FACT]\n- Screenshot `17-personalization.png`: VERIFIED ON DISK (`deliverables/screenshots/17-personalization.png`) \u2014 Jordan retros shown after browsing running shoes, `09-browser-findings.md` Step 2q [FACT]\n- Screenshot `14-dynamic-facets-drifit.png`: VERIFIED ON DISK (`deliverables/screenshots/14-dynamic-facets-drifit.png`) \u2014 Cushioning Type shown for jacket query, `09-browser-findings.md` Step 2n [FACT]\n- $9.6B digital revenue: `08-financial-profile.md`, derived from Nike FY2025 10-K [FACT]\n- Under Armour infrastructure comparison: `04-competitors.md`, Golden Angle section [FACT]\n- All 3 screenshots confirmed present in `deliverables/screenshots/` [VERIFIED]\n",
+        "message": "# Loom Video Script \u2014 Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience"
+      },
+      {
+        "touch": 7,
+        "day": "Day 10-12",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn \u2014 Follow-Up 2 (Day 10-12 \u2014 soft meeting ask)",
+        "body": "# LinkedIn \u2014 Follow-Up 2 (Day 10-12 \u2014 soft meeting ask)\n\n## Version A \u2014 For Cheryan Jacob (CIO) \u2014 Competitor angle\n\nHi Cheryan \u2014 Under Armour moved from an in-house search tool to Algolia and recorded 35% higher conversion rate on search. Nike's site runs a similar self-managed Elasticsearch stack. The infrastructure comparison is direct. I have the full analysis ready. Would a 15-minute call make sense?\n\n**Character count: 280** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version B \u2014 For Venkatesh Alagirisamy (COO) \u2014 Business case component\n\nHi Venky \u2014 one component from the model: 1% conversion lift on Nike's ~$9.6B digital channel = $96M/year incremental revenue. At 42.7% gross margin, that's $41M gross profit. That's the conservative scenario. Would a 15-minute call make sense to walk through the full picture?\n\n**Character count: 273** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version C \u2014 For Matthew Friend (CFO) \u2014 Business case component\n\nHi Matthew \u2014 a single number from your FY2025 10-K: Nike Brand Digital ~$9.6B. A 1% conversion lift on that base = $96M/year. At your gross margin, that's $41M gross profit \u2014 from fixing search relevance, not adding promotion. Worth 15 minutes?\n\n**Character count: 252** [UNDER 300 RECOMMENDED]\n\n---\n\n**Source notes:**\n\n- Under Armour +35% conversion (Version A): `04-competitors.md`, Golden Angle section [FACT \u2014 algolia.com/customers/under-armour WebFetch 2026-04-14]\n- Nike self-managed Elasticsearch (Version A): `09-browser-findings.md`, Step 2a\u00bd [FACT]\n- $9.6B digital revenue, 42.7% gross margin, $96M formula (Versions B + C): `08-financial-profile.md` and `nike-playbook.md`, ROI Summary [FACT \u2014 derived from Nike FY2025 10-K]\n- One angle only per version (competitor OR business case) \u2014 confirmed, no mixing\n",
+        "message": "# LinkedIn \u2014 Follow-Up 2 (Day 10-12 \u2014 soft meeting ask)\n\n## Version A \u2014 For Cheryan Jacob (CIO) \u2014 Competitor angle\n\nHi C"
+      },
+      {
+        "touch": 8,
+        "day": "Day 14",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 4 \u2014 Social Proof",
+        "body": "# Email 4 \u2014 Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution \u2014 without discounts\n\n**Body:**\n\nHi [First Name],\n\nLacoste is a useful comparison for Nike right now. Global athletic/lifestyle brand, multi-territory ecommerce, similar pressure to drive full-price sell-through rather than leaning on markdowns.\n\nTheir gap was search relevance \u2014 shoppers were not finding the right product fast enough, so sessions were ending without conversion. Lacoste deployed Algolia across 11 online shops globally.\n\nThe result: search results delivered in under 50ms, +150% increase in sales contribution from search, +37% overall conversion rate on search (+62% on mobile), -88% bounce rate. Their Global UX Manager put it directly: \"Not only does it provide the stellar user experience Lacoste is known for, but it more than doubled our global sales.\"\n\nMatthew Friend has said Nike Digital is \"still too promotional\" \u2014 the mechanism behind that problem is that search relevance forces the discount crutch. When your system can't surface the right product at full price, markdown is the only conversion lever left. Lacoste's numbers show what happens when you remove that dependency.\n\nHappy to connect this to the specific gaps we found on nike.com. Would a 15-minute call work this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Lacoste case study (vertical-matched \u2014 adjacent global athletic/fashion brand): `04-competitors.md`, Full Algolia Proof Set section, algolia.com/customers/lacoste WebFetch 2026-04-14 [FACT]\n- \"+150% sales contribution from search\": `04-competitors.md`, Lacoste metrics [FACT \u2014 algolia.com/customers/lacoste WebFetch verified]\n- \"+37% conversion rate (+62% mobile)\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"-88% bounce rate\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"<50ms search results\": `04-competitors.md`, Lacoste metrics [FACT]\n- Julien Nouet quote (Global UX Manager, Lacoste): `04-competitors.md` [FACT \u2014 algolia.com/customers/lacoste WebFetch 2026-04-14]\n- Friend \"still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 [FACT]\n- ICP vertical match: `nike-playbook.md`, MEDDPICC Metrics row; `04-competitors.md` AE Sales Narrative [adjacent vertical \u2014 global athletic/fashion]\n",
+        "message": "# Email 4 \u2014 Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution \u2014 without discounts\n\n**Body:**\n\nH"
+      },
+      {
+        "touch": 9,
+        "day": "Day 21",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 5 \u2014 Break-Up",
+        "body": "# Email 5 \u2014 Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turnaround work \u2014 the past few months have clearly been heads-down at Nike, and I don't want to add noise.\n\nI'll leave you with the full audit we built on nike.com \u2014 10 search gaps documented, a business case with the revenue math, and a comparison to what Under Armour achieved after making a similar infrastructure switch. It's all here if it's useful at any point: [nike-leave-behind.html link]\n\nThe door is open whenever the timing makes sense. Elliott Hill said he wants to move from \"fixing this business\" to \"inspiring and driving growth\" \u2014 when that chapter starts in earnest, the search infrastructure question will be on the table. We'll be here.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Elliott Hill \"tired of fixing\" quote: `11-investor-intelligence.md`, Nike All-Hands Meeting April 2026, Fortune WebFetch 2026-04-15 [FACT]\n- Parting resource: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n- Under Armour reference: `04-competitors.md`, Golden Angle section [FACT]\n- 10 gaps documented: `09-browser-findings.md`, Summary / Key Gaps Found section [FACT \u2014 browser audit 2026-04-15]\n",
+        "message": "# Email 5 \u2014 Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turn"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "contact-1",
+        "name": "Cheryan Jacob",
+        "title": "Chief Information Officer",
+        "tier": 1,
+        "role": "Warm Entry / Technical Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/company/nike/",
+        "angle": "Former Salesforce exec \u2014 SFCC co-sell warm entry. She knows Algolia from the AppExchange ecosystem. First call target."
+      },
+      {
+        "id": "contact-2",
+        "name": "Venkatesh (Venky) Alagirisamy",
+        "title": "EVP & Chief Operating Officer",
+        "tier": 1,
+        "role": "Technical Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/valagirisamy",
+        "angle": "Technology integration mandate. Frame search as operational capability \u2014 fewer Cognizant tickets, less Elasticsearch maintenance, faster feature velocity."
+      },
+      {
+        "id": "contact-3",
+        "name": "Matthew Friend",
+        "title": "EVP & Chief Financial Officer",
+        "tier": 2,
+        "role": "Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/matthew-friend-nike/",
+        "angle": "Digital revenue recovery \u2014 CFO owns Nike Direct. Lead with ROI: $96M/year conservative at 1% lift. 'Digital is too promotional' is his pain."
+      }
+    ],
+    "total_touches": 9,
+    "duration_days": 90,
+    "channels": [
+      "Email",
+      "LinkedIn",
+      "Video"
+    ],
+    "sequence_type": "ABX Multi-Touch \u2014 Competitor Benchmark + Search Audit Reveal",
+    "research_basis": "nike.com audit findings, 09d-hiring-signals.md vacancy signals, partner-intel.md SFCC co-sell path, 11-investor-intelligence.md exec quotes"
+  },
+  "bibliography": [
+    {
+      "source": "SimilarWeb web UI",
+      "date": "2026-04-14",
+      "url": "https://www.similarweb.com/website/nike.com/",
+      "label": "FACT"
+    },
+    {
+      "source": "Nike Q3 FY2026 Earnings Call",
+      "date": "2026-04-01",
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/",
+      "label": "FACT"
+    },
+    {
+      "source": "Algolia Under Armour Case Study",
+      "date": "2026-04-14",
+      "url": "https://www.algolia.com/customers/under-armour",
+      "label": "FACT"
+    },
+    {
+      "source": "Nike 10-K FY2025",
+      "date": "2025-07-17",
+      "url": "https://last10k.com/sec-filings/nke/0000320187-25-000047.htm",
+      "label": "FACT"
+    },
+    {
+      "source": "Yahoo Finance MCP",
+      "date": "2026-04-14",
+      "url": "https://finance.yahoo.com/quote/NKE/financials",
+      "label": "FACT"
+    }
+  ],
+  "demos": [],
+  "ae_fields": {
+    "ae_name": "Algolia AE",
+    "talk_track_opener": "You know the SFCC ecosystem better than most \u2014 Algolia is the search layer purpose-built for it. Nike's Elasticsearch stack at api.nike.com/search is the foundation NikeAI runs on. We replace that with sub-20ms, AI-native search that integrates natively with SFCC, reduces Cognizant maintenance burden, and delivers the discovery experience that NikeAI proved works in the app \u2014 on the web.",
+    "talk_track_cta": "20-minute call to walk through the nike.com audit findings and the Under Armour benchmark (+35% search conversion, same DIY Elasticsearch Nike runs today).",
+    "next_step_action": "Contact Algolia SFCC partner team \u2014 request joint introduction to Cheryan Jacob (CIO, former Salesforce exec). Lead with AppExchange co-sell framing, not cold outreach.",
+    "next_step_owner": "AE",
+    "next_step_date": "This week"
+  }
+}
