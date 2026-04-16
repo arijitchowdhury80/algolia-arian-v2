@@ -5235,16 +5235,16 @@ a:hover {
     "verdict": "Needs Significant Work",
     "verdict_class": "critical",
     "breakdown": {
-      "latency": 8,
-      "typo_tolerance": 5,
-      "query_suggestions_empty_state": 7,
-      "intent_detection": 5,
-      "merchandising_consistency": 6,
-      "content_commerce_ux": 5,
-      "semantic_nlp_search": 4,
-      "dynamic_facets_personalization": 2,
-      "search_intelligence": 4,
-      "recommendations_merchandising": 3
+      "latency": 8.0,
+      "typo_tolerance": 5.0,
+      "query_suggestions_empty_state": 7.0,
+      "intent_detection": 5.0,
+      "merchandising_consistency": 6.0,
+      "content_commerce_ux": 5.0,
+      "semantic_nlp_search": 4.0,
+      "dynamic_facets_personalization": 2.0,
+      "search_intelligence": 4.0,
+      "recommendations_merchandising": 3.0
     },
     "breakdown_severity": {
       "latency": "LOW",
@@ -5631,9 +5631,9 @@ a:hover {
       "raw": "BUY — 33 analysts: 5 Strong Buy, 18 Buy, 14 Hold, 1 Sell, 1 Strong Sell; mean score 2.18/5; median price target $57.00 vs current $44.20 (~29% implied upside) [FACT — Yahoo Finance MCP recommendations, 2026-04-14, https://finance.yahoo.com/quote/NKE]",
       "rating": "BUY",
       "mean_score": 2.18,
-      "price_target_median": 57,
+      "price_target_median": 57.0,
       "price_current": 44.2,
-      "upside_pct": 29,
+      "upside_pct": 29.0,
       "analysts_count": 33
     },
     "margins": {
@@ -5651,16 +5651,6 @@ a:hover {
       "total_debt_fmt": "$11.018B",
       "cash_fmt": "$7.464B"
     },
-    "digital_revenue": {
-      "latest_year": "FY2025",
-      "estimated_amount": "~$9.6B",
-      "pct_of_total": 20.7,
-      "yoy_change_pct": -20,
-      "confidence": "MEDIUM — derived from Nike IR percentage disclosures"
-    },
-    "total_digital_revenue": "$9.6B",
-    "ecommerce_revenue_est": 9600000000,
-    "digital_revenue_label": "[ESTIMATE — derived from NIKE Direct disclosures and press reporting]",
     "roi_formula_shown": true,
     "roi_scenarios": {
       "conservative": {
@@ -5683,7 +5673,78 @@ a:hover {
     "ticker": "NKE",
     "revenue_source": "Yahoo Finance MCP + SEC EDGAR 10-K",
     "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-04-14]",
-    "source_url": "https://finance.yahoo.com/quote/NKE/financials"
+    "source_url": "https://finance.yahoo.com/quote/NKE/financials",
+    "revenue_3y": [
+      {
+        "year": "FY2022",
+        "revenue": "$46.7B",
+        "revenue_raw": 46710000000,
+        "gross_profit": "$21.5B",
+        "operating_income": "$6.7B",
+        "net_income": "$6.0B",
+        "net_margin": "12.9%",
+        "note": "Peak profitability year — EBITDA margin at 16.1%, highest in 4 years",
+        "ebitda": "$7.5B"
+      },
+      {
+        "year": "FY2023",
+        "revenue": "$51.2B",
+        "revenue_raw": 51217000000,
+        "gross_profit": "$22.3B",
+        "operating_income": "$5.9B",
+        "net_income": "$5.1B",
+        "net_margin": "9.9%",
+        "note": "Revenue growth +9.6% but margin compression begins — EBITDA down 9%",
+        "ebitda": "$6.8B"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$51.4B",
+        "revenue_raw": 51362000000,
+        "gross_profit": "$22.9B",
+        "operating_income": "$6.3B",
+        "net_income": "$5.7B",
+        "net_margin": "11.1%",
+        "note": "Revenue plateau (+0.3%) — cost pressure persists despite EBITDA recovery",
+        "ebitda": "$7.2B"
+      },
+      {
+        "year": "FY2025",
+        "revenue": "$46.3B",
+        "revenue_raw": 46309000000,
+        "gross_profit": "$19.8B",
+        "operating_income": "$3.7B",
+        "net_income": "$3.2B",
+        "net_margin": "6.9%",
+        "note": "−10% YoY — largest revenue decline in a decade; EBITDA margin halved vs FY2022",
+        "ebitda": "$4.5B"
+      }
+    ],
+    "exec_quotes": [
+      {
+        "speaker": "Elliott Hill, President & CEO",
+        "quote": "We are reshaping our marketplace, rewiring how we operate, and investing in the technology platforms that we expect will help us serve more consumers better.",
+        "source": "Q3 FY2026 Earnings Call, March 31, 2026",
+        "source_url": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/"
+      },
+      {
+        "speaker": "Matthew Friend, CFO",
+        "quote": "Digital is still too promotional. Markdowns across the marketplace remain elevated.",
+        "source": "Q3 FY2026 Earnings Call, March 31, 2026",
+        "source_url": "https://www.insidermonkey.com/blog/nike-inc-nysenke-q3-2026-earnings-call-transcript-1730001/"
+      }
+    ],
+    "roi_calc": {
+      "revenue_basis": "$46.3B",
+      "revenue_basis_source": "Nike FY2025 10-K, Yahoo Finance MCP, 2026-04-14",
+      "gross_margin_pct": 40.9,
+      "gross_margin_source": "Yahoo Finance TTM, 2026-04-14",
+      "lift_pct": 1,
+      "lift_basis": "Conservative benchmark — Algolia customers report 10-30% search conversion improvement; 1% applied to total revenue is deliberately conservative",
+      "incremental_revenue_est": "$463M",
+      "gross_profit_impact_est": "$189M"
+    },
+    "search_roi_est": "$96M–$288M/year"
   },
   "company_snapshot": {
     "industry": "Footwear",
@@ -5714,7 +5775,11 @@ a:hover {
     "revenue_source": "https://finance.yahoo.com/quote/NKE/financials",
     "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-04-14]",
     "ticker": "PUBLIC: NKE",
-    "founded": "1964"
+    "founded": "1964",
+    "current_search_vendor": "Nike Proprietary Elasticsearch (api.nike.com/search)",
+    "ecommerce_platform": "Salesforce Commerce Cloud + Custom Next.js",
+    "monthly_visits": "107.6M",
+    "visits_source": "https://www.similarweb.com/website/nike.com/"
   },
   "intelligence_signals": [
     {
@@ -5842,6 +5907,104 @@ a:hover {
       "urgency_score": 8,
       "category_tag": "leadership_change",
       "publication": "The Stack"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY — Sr Director NDDC EMEA (R-37068)",
+      "signal": "Reports to VP/GM NDDC EMEA. Leads digital commerce strategy across Europe, Middle East & Africa.",
+      "algolia_angle": "NDDC leadership owns the search/discovery roadmap for Nike's DTC digital channel. Incoming Sr Director = evaluation window before priorities lock in.",
+      "source_url": "https://jobs.nike.com/job/R-37068",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY — Sr Director NDDC Strategy (00477405)",
+      "signal": "Partners directly with VP/GM Global NDDC. Owns the global NDDC strategic roadmap.",
+      "algolia_angle": "Sets the NDDC investment agenda. Search platform modernization decision routes through this seat. Vacant = 60-90 day window before new hire locks in vendor relationships.",
+      "source_url": "https://jobs.nike.com/job/00477405",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY — Director International NDDC (00539445)",
+      "signal": "Owns international expansion strategy for Nike's direct digital commerce channel.",
+      "algolia_angle": "International search localization (language, currency, regional relevance) is a core Algolia value prop for Nike's EMEA + APAC expansion.",
+      "source_url": "https://jobs.nike.com/job/00539445",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY — Sr Director Technical Product Management (00563411)",
+      "signal": "Drives platform strategy across Global Technology and key Functional Teams. Senior TPM with cross-functional authority.",
+      "algolia_angle": "Senior TPM with platform authority is the decision maker on vendor evaluation for platform-level tech including search. Empty seat = opportunity to engage before incumbent is in place.",
+      "source_url": "https://jobs.nike.com/job/00563411",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Senior Software Engineer — Nike.com Engineering (00581026)",
+      "signal": "Designs and implements highly scalable web-based eCommerce applications. JavaScript/Node.js required.",
+      "algolia_angle": "Directly builds and maintains nike.com commerce layer — where Algolia's InstantSearch and Search API would integrate. Technical champion candidate: knows the Elasticsearch pain firsthand.",
+      "source_url": "https://jobs.nike.com/job/00581026",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 9,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "Lead Software Engineer, Retail Commerce (32794)",
+      "signal": "Lead-level role in Retail Commerce organization. Sets technical direction for the commerce platform.",
+      "algolia_angle": "Retail Commerce engineering lead is the decision maker on search infrastructure within the commerce platform. Technical champion; knows the DIY Elasticsearch maintenance burden.",
+      "source_url": "https://jobs.nike.com/job/32794",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
+    },
+    {
+      "type": "hiring_signal",
+      "badge_label": "VACANCY — Sr Director Foundational Platform Services (00505511)",
+      "signal": "Leads global team building foundational technology and runtime services. Owns centralized platform engineering.",
+      "algolia_angle": "Foundational platform services = the layer where search infrastructure lives. This seat owns build-vs-buy decisions for platform tech. Currently vacant — 60-90 day entry window.",
+      "source_url": "https://jobs.nike.com/job/00505511",
+      "source_name": "jobs.nike.com",
+      "source_date": "2026-04-15",
+      "confidence": "FACT",
+      "label": "[FACT — WebSearch on jobs.nike.com, 2026-04-15]",
+      "urgency_score": 8,
+      "category_tag": "hiring_signal",
+      "publication": "jobs.nike.com"
     }
   ],
   "findings": [
@@ -5922,13 +6085,13 @@ a:hover {
       "expected_behavior": "After a user browses running shoes, subsequent broad searches should re-rank to surface running shoes first.",
       "actual_behavior": "After browsing running shoes, searching “shoes” shows Jordan 1 Retro High OG first. Zero personalization.",
       "impact_stat": "Personalization delivers 50% increase in conversion rate",
-      “impact_stat_source”: “https://www.algolia.com/customers/decathlon-singapore”,
-      “screenshot_file”: “screenshots/17-personalization.png”,
-      “prospect_description”: “Browse running shoes on nike.com, search “shoes”. You get Jordan retros. Nike’s search has no memory of the session.”,
-      “algolia_solution”: “Algolia Personalization re-ranks results in real time using user affinity signals. SDK integrates with Nike’s existing Adobe Analytics event stream.”,
-      “algolia_case_study_url”: “https://www.algolia.com/customers/under-armour”,
-      “algolia_case_study_company”: “Under Armour”,
-      “algolia_case_study_result”: “+35% conversion rate on search”
+      "impact_stat_source": "https://www.algolia.com/customers/decathlon-singapore",
+      "screenshot_file": "screenshots/17-personalization.png",
+      "prospect_description": "Browse running shoes on nike.com, search “shoes”. You get Jordan retros. Nike’s search has no memory of the session.",
+      "algolia_solution": "Algolia Personalization re-ranks results in real time using user affinity signals. SDK integrates with Nike’s existing Adobe Analytics event stream.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour",
+      "algolia_case_study_company": "Under Armour",
+      "algolia_case_study_result": "+35% conversion rate on search"
     },
     {
       "id": "F06",
@@ -5967,17 +6130,28 @@ a:hover {
   ],
   "executives": [],
   "hiring": {
-    "total_open_roles": 6,
+    "total_open_roles": 10,
+    "data_complete": true,
     "buying_committee": [
+      {
+        "role": "Champion — First Call (Warm Entry)",
+        "name": "Cheryan Jacob",
+        "title": "Chief Information Officer",
+        "status": "WARM",
+        "signal": "hot",
+        "message": "Former Salesforce executive (hired August 2025). Fluent in Algolia's SFCC AppExchange integration. First call target — she knows the Algolia-SFCC co-sell story cold. Entry via Algolia's Salesforce partner team.",
+        "linkedin_url": "https://www.linkedin.com/company/nike/",
+        "job_url": null
+      },
       {
         "role": "Economic Buyer",
         "name": "Matthew Friend",
         "title": "EVP & Chief Financial Officer",
         "status": "WARM",
         "signal": "warm",
-        "message": "Owns Nike Direct + Nike Digital since Dec 2025 restructure. \"Digital is still too promotional.\" Primary commercial sign-off.",
-        "job_url": "https://www.linkedin.com/in/matthew-friend-nike/",
-        "salary_range": null
+        "message": "Owns Nike Direct + Nike Digital since Dec 2025 restructure. Said: 'Digital is still too promotional.' ROI frame: Algolia drives full-price sell-through without markdowns. He owns the budget and the pain.",
+        "linkedin_url": "https://www.linkedin.com/in/matthew-friend-nike/",
+        "job_url": null
       },
       {
         "role": "Technical Buyer",
@@ -5985,19 +6159,59 @@ a:hover {
         "title": "EVP & Chief Operating Officer",
         "status": "WARM",
         "signal": "warm",
-        "message": "Absorbed CTO role December 2025. Technology decisions route through him. \"Ensure technology is fully integrated across the company.\"",
-        "job_url": "https://www.linkedin.com/in/valagirisamy",
-        "salary_range": null
+        "message": "Absorbed CTO role December 2025. All technology platform decisions route through him. Frame Algolia as operational capability — fewer Cognizant support tickets, less Elasticsearch maintenance, more engineering velocity.",
+        "linkedin_url": "https://www.linkedin.com/in/valagirisamy",
+        "job_url": null
       },
       {
-        "role": "Champion",
-        "name": "Cheryan Jacob",
-        "title": "Chief Information Officer",
-        "status": "NOT YET CONTACTED",
-        "signal": "warm",
-        "message": "Former Salesforce executive (hired August 2025). Knows SFCC + AppExchange ecosystem. Best warm entry point.",
-        "job_url": "https://www.linkedin.com/company/nike/",
-        "salary_range": null
+        "role": "Champion Target — NDDC EMEA (Vacancy)",
+        "name": "[Incoming Sr Director NDDC EMEA — R-37068]",
+        "title": "Sr Director, Nike Direct Digital Commerce EMEA",
+        "status": "VACANCY",
+        "signal": "hot",
+        "message": "3 NDDC Sr Director seats open following Dec 2025 restructure. Incoming hires will evaluate vendor relationships in their first 30-90 days. Engage before they inherit the status quo.",
+        "linkedin_url": null,
+        "job_url": "https://jobs.nike.com/job/R-37068"
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Immediate — SFCC Co-Sell via CIO Jacob",
+        "target": "Cheryan Jacob, Chief Information Officer",
+        "message": "Contact Algolia's Salesforce Commerce Cloud partner team. Request joint introduction to Jacob via Nike's Salesforce account team. First message frame: 'You built the SFCC ecosystem at Salesforce — Algolia is the search layer purpose-built for it. Nike's next search decision is a one-call conversation, not a six-month evaluation.'",
+        "timing": "This week"
+      },
+      {
+        "phase": 2,
+        "label": "Parallel — Cognizant SI Warm Intro",
+        "target": "Cognizant Retail Account Team (Sushant Warikoo) → Nike Engineering",
+        "message": "Cognizant holds a 5-year IT services contract with Nike (signed April 2023). Their scope includes nike.com application support — they touch Nike's search infrastructure daily. Pitch: 'Algolia reduces your Elasticsearch support burden at Nike. Fewer custom tickets, faster SLA.'",
+        "timing": "Within 2 weeks"
+      },
+      {
+        "phase": 3,
+        "label": "Economic Buyer — CFO Framing Before First Call",
+        "target": "Matthew Friend, EVP & CFO",
+        "message": "Prepare ROI narrative grounded in Friend's own words: 'Digital is too promotional' → Algolia drives full-price conversion through relevance. Conservative ROI: $96M/year at 1% lift on $9.6B digital baseline. Nike FY ends May 31 — FY2027 budget discussions run September–November 2026.",
+        "timing": "Before discovery call"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We built NikeAI ourselves — we can build search too.",
+        "counter": "NikeAI is the UI surface. api.nike.com/search — the Elasticsearch foundation under it — is the bottleneck. Network-confirmed: zero NLP, no personalization, 'Cushioning Type' filter on jacket queries. Algolia replaces that foundation. You keep NikeAI's interface, you fix the infrastructure.",
+        "source": "02-tech-stack.md (NikeAI surface layer vs Elasticsearch foundation confirmed in network traffic)"
+      },
+      {
+        "objection": "We're rationalizing tech spend, not adding vendors.",
+        "counter": "Friend said 'rationalize programs and leverage advanced capabilities' in the same breath. Algolia replaces a Cognizant-supported Elasticsearch cluster with managed SaaS — fewer FTE, fewer support tickets, faster merchandising velocity. This is rationalization, not addition.",
+        "source": "11-investor-intelligence.md (Friend Q3 FY2026 transcript)"
+      },
+      {
+        "objection": "We have an internal search team — we don't need a vendor.",
+        "counter": "Three NDDC Sr Director seats and the Foundational Platform Services seat are simultaneously vacant after the December restructure. The search team has a leadership gap right now. Algolia bridges it while incoming leadership evaluates the stack — and makes the new Sr Director look like they upgraded search on day one.",
+        "source": "09d-hiring-signals.md (4 vacancy signals Tier 1–2)"
       }
     ]
   },
@@ -6111,7 +6325,7 @@ a:hover {
     "algolia_angle": "Nike operates in a sporting goods market where search visitors convert at 1.8x–3x the rate of non-searchers and AI-powered search delivers 10–30% conversion improvement over keyword matching, making Algolia's NLP search, AI personalization, and dynamic re-ranking directly tied to recovering share of Nike's 80.3% apparel cart abandonment rate and closing the search quality gap with Under Armour (+35% conversion on Algolia)."
   },
   "cover": {
-    "company_logo_url": "data:image/x-icon;base64,AAABAAMAMDAAAAEAIACoJQAANgAAACAgAAABACAAqBAAAN4lAAAQEAAAAQAgAGgEAACGNgAAKAAAADAAAABgAAAAAQAgAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wL///8g////Wv///5r////P////8/////////////////////////////////////n////Z////qf///2r///8t////BgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////Qf///5b////X////+P////////////////////////////////////////////////////////////////////v////j////qf///1b///8SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Bv///0b///+v////8v////////////////////////////////////////////////////////////////////////////////////////////////////n////F////X////w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8l////mv////H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+f///7f///89////AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////A////1H////V///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////p////dP///wwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8I////df///+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///5z///8WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wr///+F////9/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7///+u////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////4P////5////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rv///xcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8B////bv////b//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5z///8MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9H////6v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r///90////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xz////I///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////o////PgAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///4b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////tv///w8AAAAAAAAAAAAAAAAAAAAA////M////+b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///2AAAAAAAAAAAAAAAAD///8C////lf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8T///8TAAAAAAAAAAD///8q////4/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////n///9WAAAAAAAAAAD///90//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+p////Bv///w3///+7///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////i////Lf///zX////o////////////////////////////////+Pj4/+fn5//l5eX/7+/v//z8/P/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////av///2v////8//////////////////////z8/P+2trb/WVlZ/zMzM/8vLy//QEBA/2NjY/+cnJz/19fX//v7+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////qf///57//////////////////////////6+vr/8gICD/DAwM/w4ODv8PDw//Dg4O/w0NDf8RERH/KSkp/2VlZf+3t7f/8fHx////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2f///8j/////////////////////9PT0/01NTf8MDAz/ERER/xEREf8RERH/ERER/xEREf8QEBD/Dw8P/w0NDf8ZGRn/SkpK/5ubm//i4uL//v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+f///93/////////////////////5eXl/y8vL/8PDw//ERER/xEREf8RERH/ERER/xAQEP8QEBD/EBAQ/xEREf8QEBD/DQ0N/xISEv80NDT/fHx8/8zMzP/5+fn///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H/////////////////////6urq/zg4OP8ODg7/ERER/xEREf8QEBD/Dg4O/xMTE/8VFRX/ExMT/w4ODv8NDQ3/Dw8P/xAQEP8ODg7/Dg4O/yIiIv9gYGD/s7Oz/+7u7v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3/////////////////////+/v7/19fX/8NDQ3/ERER/w8PD/8eHh7/cXFx/7CwsP+7u7v/q6ur/4aGhv9UVFT/LCws/xUVFf8NDQ3/DQ0N/w4ODv8NDQ3/FxcX/0VFRf+VlZX/3t7e//39/f////////////////////////////////////////////////////////////////////////////////////////////////////////////////z//////////////////////////6mpqf8VFRX/EBAQ/xYWFv+YmJj//Pz8///////////////////////4+Pj/3d3d/7Gxsf97e3v/SEhI/yQkJP8SEhL/DAwM/wsLC/8QEBD/MDAw/3d3d//Hx8f/9/f3/////////////////////////////////////////////////////////////////////////////////////////////////////+z//////////////////////////+7u7v9KSkr/CwsL/zw8PP/q6ur/////////////////////////////////////////////////8/Pz/9TU1P+kpKT/bm5u/z4+Pv8eHh7/Dg4O/woKCv8dHR3/WVlZ/62trf/s7Oz//////////////////////////////////////////////////////////////////////////////////////////9n///////////////////////////////+1tbX/Ghoa/1BQUP/5+fn//////////////////////////////////////////////////////////////////v7+/+zs7P/Jycn/l5eX/2FhYf8zMzP/FhYW/xMTE/89PT3/jY2N/9nZ2f/8/Pz//////////////////////////////////////////////////////////////////////////7/////////////////////////////////8/Pz/gYGB/0JCQv/u7u7///////////////////////////////////////////////////////////////////////////////////////v7+//l5eX/vr6+/4mJif9RUVH/Kysr/zAwMP9tbW3/v7+///T09P//////////////////////////////////////////////////////////8////5L/////////////////////////////////////7+/v/3Nzc//IyMj////////////////////////////////////////////////////////////////////////////////////////////////////////////4+Pj/3d3d/7CwsP94eHj/VVVV/2hoaP+np6f/5eXl//39/f//////////////////////////////////////////zv///13////5/////////////////////////////////////+Li4v++vr7//v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8vLy/9DQ0P+oqKj/mZmZ/7a2tv/j4+P/+/v7////////////////////////////////mv///yn////g///////////////////////////////////////////19fX//Pz8////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/v7/+vr6//h4eH/7+/v///////////////////////////3////Wv///wb///+s///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////X////IQAAAAD///9g/////f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+V////AQAAAAD///8c////1P////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H///9CAAAAAAAAAAAAAAAA////e////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////67///8JAAAAAAAAAAAAAAAA////IP///9T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8P///0YAAAAAAAAAAAAAAAAAAAAAAAAAAP///2f////6////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////mf///wUAAAAAAAAAAAAAAAAAAAAAAAAAAP///w3///+s///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////U////JgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8r////1f///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+////9SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Sv///+b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////3X///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///1r////r///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5////hf///wgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///9a////5v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////b///+D////CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Sf///9X/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6v///27///8HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///yr///+s////+f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////J////Rv///wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8N////Z////9X////+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5v///4b///8bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x////97////1f////z//////////////////////////////////////////////////////////////////////////////////////////////+T///+V////Mv///wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////G////2D///+s////4P////n//////////////////////////////////////////////////////////P///+n///+8////dP///yr///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////Kf///13///+S////v////9n////s////+/////3////x////3f///8j///+e////a////zX///8NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//wAP//wAA//4AAH//AAD/+AAAH/8AAP/gAAAH/wAA/8AAAAP/AAD/gAAAAP8AAP4AAAAAfwAA/AAAAAA/AAD8AAAAAB8AAPgAAAAAHwAA8AAAAAAPAADgAAAAAAcAAOAAAAAABwAAwAAAAAADAADAAAAAAAMAAMAAAAAAAQAAgAAAAAABAACAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAQAAgAAAAAABAADAAAAAAAEAAMAAAAAAAwAA4AAAAAADAADgAAAAAAcAAPAAAAAABwAA8AAAAAAPAAD4AAAAAB8AAPwAAAAAPwAA/gAAAAA/AAD/AAAAAH8AAP+AAAAB/wAA/8AAAAP/AAD/8AAAB/8AAP/8AAAf/wAA//8AAP//AAD//+AH//8AACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////PP///4j////J////8v/////////////////////////2////0v///5T///9I////DgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////SP///6z////s//////////////////////////////////////////////////////////H///+6////WP///wwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///53////z///////////////////////////////////////////////////////////////////////////////4////sf///zQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0L////Q////////////////////////////////////////////////////////////////////////////////////////////////////4P///1n///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9M////4f//////////////////////////////////////////////////////////////////////////////////////////////////////////////7////2f///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Pv///+D/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7v///1oAAAAAAAAAAAAAAAAAAAAAAAAAAP///x/////J////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3////zUAAAAAAAAAAAAAAAD///8D////kP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sP///wwAAAAAAAAAAP///zr////r///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4////WQAAAAD///8D////mf////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+6////Dv///yr////f//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H///9J////a/////v////////////////29vb/5eXl/+np6f/5+fn//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5T///+q////////////////zs7O/1hYWP8wMDD/NjY2/1hYWP+Wlpb/2dnZ//z8/P//////////////////////////////////////////////////////////////////////////////////////////////////////////0f///9b///////////T09P9SUlL/CwsL/w4ODv8ODg7/DQ0N/xAQEP8rKyv/b29v/8LCwv/19fX////////////////////////////////////////////////////////////////////////////////////////////////2////7f//////////5eXl/y8vL/8PDw//EBAQ/w4ODv8NDQ3/DQ0N/wsLC/8LCwv/HBwc/1NTU/+mpqb/6Ojo///////////////////////////////////////////////////////////////////////////////////////////8///////////y8vL/RkZG/w0NDf8SEhL/SEhI/4KCgv+AgID/XV1d/zIyMv8XFxf/CgoK/xAQEP85OTn/h4eH/9XV1f/7+/v///////////////////////////////////////////////////////////////////////////v///////////////+NjY3/DQ0N/0lJSf/n5+f////////////7+/v/5OTk/7y8vP+Ghob/UVFR/ycnJ/8SEhL/JCQk/2ZmZv+7u7v/8/Pz////////////////////////////////////////////////////////////////6v///////////////+Pj4/87Ozv/fX19///////////////////////////////////////39/f/3Nzc/6+vr/93d3f/Q0ND/ywsLP9OTk7/nJyc/+Li4v/+/v7////////////////////////////////////////////////Q/////////////////////7W1tf+AgID//f39///////////////////////////////////////////////////////y8vL/0dHR/56env9sbGz/YWFh/42Njf/Ozs7/9/f3////////////////////////////////8v///6D//////////////////////Pz8/8LCwv/u7u7///////////////////////////////////////////////////////////////////////39/f/q6ur/xcXF/6ioqP+xsbH/2NjY//j4+P/////////////////////I////X/////n//////////////////////Pz8//v7+/////////////////////////////////////////////////////////////////////////////////////////////j4+P/s7Oz/8/Pz/////////////////////4j///8h////1//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r////PQAAAAD///+K/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6v///8IAAAAAP///y3////i///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////y////SAAAAAAAAAAAAAAAAP///3v////+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////53///8GAAAAAAAAAAAAAAAA////E////7X////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////P////JAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////87/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4f///0IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Nf///87//////////////////////////////////////////////////////////////////////////////////////////////////////////////+D///9MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////7b////9///////////////////////////////////////////////////////////////////////////////////////////////K////PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////E////3v////j///////////////////////////////////////////////////////////////////////////////s////kP///x4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///yz///+K////2P////n///////////////////////////////////////////////z////g////mv///zr///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wL///8g////X////6H////Q////6/////v////8////7v///9b///+q////a////yn///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+AH//+AAf/+AAB//AAAP/gAAB/wAAAP4AAAB8AAAAPAAAADgAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAYAAAAHAAAAD4AAAA+AAAAfwAAAP+AAAH/wAAD//AAB//4AB///wD/8oAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///1P///+1////8P//////////////8v///7z///9c////DAAAAAAAAAAAAAAAAAAAAAAAAAAA////HP///5v////z////////////////////////////////////9v///6b///8jAAAAAAAAAAAAAAAA////G////7f/////////////////////////////////////////////////////////w////yMAAAAA////Bv///5b///////////////////////////////////////////////////////////////////+m////DP///0r////u////////////////////////////////////////////////////////////////////9f///1z///+n//////b29v/m5ub/9fX1//////////////////////////////////////////////////////////+7////4vb29v9vb2//Li4u/0tLS/+Wlpb/4ODg//7+/v//////////////////////////////////////////8v////rp6en/MjIy/yQkJP9NTU3/OTk5/zw8PP94eHj/x8fH//f39//////////////////////////////////////5/f39/3d3d/+dnZ3/+/v7/+rq6v/Dw8P/j4+P/2xsbP98fHz/tra2/+vr6//+/v7/////////////////////3//////i4uL/09PT///////////////////////5+fn/39/f/7+/v/+2trb/0dHR//T09P//////////7////6D///////////z8/P///////////////////////////////////////v7+//b29v/39/f//////////7X///9D////6v////////////////////////////////////////////////////////////////////L///9T////BP///4v///////////////////////////////////////////////////////////////////+b////CAAAAAD///8U////qv////7///////////////////////////////////////////////////+3////HAAAAAAAAAAAAAAAAP///xT///+L////7P////////////////////////////////////D///+W////GwAAAAAAAAAAAAAAAAAAAAAAAAAA////Bf///0L///+h////3/////n////7////4////6j///9K////BwAAAAAAAAAAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA=",
+    "company_logo_url": "https://logo.clearbit.com/nike.com",
     "status_line": "Confidential · For Internal Use Only — Algolia Sales Intelligence"
   },
   "tab_subtitles": {
@@ -6224,34 +6438,75 @@ a:hover {
   },
   "strategic_angles": [
     {
-      "label": "Under Armour on Algolia: +35% search conversion",
-      "detail": "Your direct competitor has been on Algolia since 2017 and achieved 35% higher conversion rate on search. Nike runs the same DIY Elasticsearch infrastructure Under Armour replaced.",
-      "source": "https://www.algolia.com/customers/under-armour",
-      "urgency": "high"
+      "label": "The NikeAI Gap: App Has AI Search, Website Does Not",
+      "hook": "You already built the vision with NikeAI in the app. Algolia is how you extend that same intent-based search experience to nike.com in 90 days, without a custom build.",
+      "pain_points": [
+        "Nike launched NikeAI in August 2025 — conversational AI assistant for iOS Nike App only",
+        "Nike.com website search runs on self-managed Elasticsearch — no hosted AI search vendor detected",
+        "NikeAI proves internal buy-in for intent-based search; website is the gap"
+      ],
+      "discovery_question": "NikeAI proves your organisation already decided intent-based search is the right direction — what is the roadmap for bringing that same experience to nike.com, and who owns that decision?",
+      "algolia_proof": "Algolia NeuralSearch delivers the same intent-based discovery on the web without a custom model build.",
+      "objection": "We have NikeAI — we're already doing AI search.",
+      "objection_counter": "NikeAI is iOS app-only. nike.com website runs Elasticsearch. The majority of digital revenue is generated on the website, not the app. Algolia closes the web gap NikeAI left open.",
+      "source": "[FACT — 09b-social-signals.md (Signal 1 — NikeAI launch, July 2025); 02-tech-stack.md (Elasticsearch DIY, no search vendor detected)]"
     },
     {
-      "label": "9.27% outbound traffic to Google (+118% MoM) — quantified search failure",
-      "detail": "9.27% of outbound traffic exits to google.com, growing 117.81% MoM. Users are giving up on nike.com search and returning to Google.",
-      "source": "SimilarWeb verified, Jan–Mar 2026",
-      "urgency": "high"
+      "label": "The Competitor Proof Point: Under Armour Is Already Winning with Algolia",
+      "hook": "Under Armour moved off a proprietary search stack and gained 35% more conversions from search. JD Sports, which carries your product in 38 countries, just went live on Algolia. Nike is the only major player still on DIY Elasticsearch.",
+      "pain_points": [
+        "Under Armour (Nike's #3 direct competitor) — confirmed Algolia customer with +35% conversion on search",
+        "JD Sports — channel partner in 3,400+ stores in 38 territories — selected Algolia as AI search platform",
+        "Nike runs identical proprietary Elasticsearch infrastructure that Under Armour replaced"
+      ],
+      "discovery_question": "Under Armour replaced the same in-house search stack you're running and got a 35% conversion lift — that case study is public. When you benchmark your search conversion against peers, what does that number look like today?",
+      "algolia_proof": "Under Armour (direct competitor): +35% higher conversion rate on search, replacing in-house open-source platform. [FACT — algolia.com/customers/under-armour, WebFetch 2026-04-14]",
+      "objection": "We built our own search infrastructure — it's part of our data/AI stack.",
+      "objection_counter": "Nike built Datalogue, Zodiac, and Celect for data intelligence. But Under Armour also ran a custom search stack, migrated to Algolia, and got 35% more conversions. Build vs. buy for search infrastructure is a resolved question in your vertical.",
+      "source": "[FACT — 04-competitors.md (Under Armour Algolia case study confirmed, algolia.com/customers/under-armour WebFetch 2026-04-14); partner-intel.md (JD Sports)]"
     },
     {
-      "label": "CEO: “investing in technology platforms” — Q3 FY2026",
-      "detail": "Elliott Hill explicitly declared Nike is “investing in the technology platforms that will help us serve more consumers better.” This is a direct CEO-level invitation.",
-      "source": "https://www.fool.com/earnings/call-transcripts/2026/04/01/nike-nke-q3-2026-earnings-call-transcript/",
-      "urgency": "high"
+      "label": "The Revenue Recovery Math: Search Is the Conversion Lever Nike Needs Right Now",
+      "hook": "You're trying to wean nike.com off promotions. That only works if the search experience is good enough to convert without a discount. Right now it isn't — and the CFO can see that in the numbers.",
+      "pain_points": [
+        "Nike Digital revenue declined from ~$13.3B (FY2023) to ~$9.6B (FY2025) — $3.7B erosion in two years",
+        "CFO Matthew Friend Q3 FY2026: 'Digital is still too promotional. Markdowns across the marketplace remain elevated.'",
+        "Nike strategy is to reduce promotions and drive full-price sell-through — requires search relevance to convert"
+      ],
+      "discovery_question": "The CFO said digital is 'still too promotional' — when you map search relevance to full-price sell-through, what is the current search conversion rate on nike.com, and what would a 1pp improvement mean to the digital revenue line?",
+      "algolia_proof": "At Nike's ~$9.6B digital baseline and 42.7% gross margin, 1% conversion lift via search = ~$96M revenue, ~$41M gross profit. Under Armour benchmark: +35% conversion on search sessions. [FACT — 04-competitors.md; 08-financial-profile.md]",
+      "objection": "We're in a cost-rationalization mode — not the time for new vendors.",
+      "objection_counter": "CFO Friend said in Q3 FY2026: 'We accelerated investments across Supply Chain and Technology.' Algolia replaces Elasticsearch maintenance cost while delivering better outcomes — it's ROI-positive, not additive spend.",
+      "source": "[FACT — 08-financial-profile.md (digital revenue trend, gross margin); 11-investor-intelligence.md (CFO quote 'still too promotional' Q3 FY2026)]"
     },
     {
-      "label": "ChatGPT is #2 referral source (+49.74% MoM)",
-      "detail": "ChatGPT is sending 16.55% of referral traffic and growing. AI chatbots are a new discovery channel driving high-intent users to nike.com.",
-      "source": "SimilarWeb verified, Jan–Mar 2026",
-      "urgency": "high"
+      "label": "The Composable Stack Signal: Nike Is Architecturally Ready for Algolia",
+      "hook": "Your architecture team is already building composable. Algolia is the search layer that plugs directly into your existing SFCC + Next.js stack — not a re-platforming project.",
+      "pain_points": [
+        "Nike GRAND initiative: custom GraphQL/Next.js microservices on SFCC — composable, API-first architecture",
+        "Nike VP Marketing Data Linda Cereda confirmed evaluating 'composable stacks' and 'AI-native decisioning engines' — Martech Europe 2025",
+        "Algolia has purpose-built first-party SFCC AppExchange integration — no custom build required"
+      ],
+      "discovery_question": "Your engineering team is building composable with GraphQL and Next.js. How does the team evaluate a best-of-breed search layer versus SFCC built-in Einstein search — especially given the new CIO's Salesforce background?",
+      "algolia_proof": "Algolia SFCC AppExchange integration — certified connector, native to the Nike stack. No custom integration project. [FACT — partner-intel.md; 02-tech-stack.md]",
+      "objection": "We'd need Cognizant to build the integration.",
+      "objection_counter": "Algolia has a purpose-built SFCC integration on the AppExchange. Nike's Next.js/GraphQL stack is a standard Algolia reference architecture. Integration is weeks, not a systems integration project.",
+      "source": "[FACT — 02-tech-stack.md (GRAND/GraphQL, SFCC, composable signal); 09b-social-signals.md (Signal 8 — composable stacks, Cereda Martech Europe 2025); partner-intel.md (SFCC co-sell, CIO background)]"
     },
     {
-      "label": "SFCC co-sell: new CIO is former Salesforce exec",
-      "detail": "Cheryan Jacob (CIO, hired August 2025) is a former Salesforce executive. Algolia has a purpose-built SFCC AppExchange integration. Warm entry without cold outreach.",
-      "source": "https://www.businessoffashion.com/news/retail/nike-hires-former-salesforce-executive-as-cio-in-tech-division-shakeup/",
-      "urgency": "high"
+      "label": "The Platform Mandate: Technology Now Under COO and CFO, Not a Siloed Tech Org",
+      "hook": "The CTO is gone. The CFO owns digital, and the COO owns technology. Both will approve search infrastructure spend when it's framed as a margin improvement, not a search upgrade.",
+      "pain_points": [
+        "December 2025 'Win Now' restructure eliminated Nike's CTO role entirely",
+        "Technology now reports to COO Venky Alagirisamy — operational framing required",
+        "Nike Direct (DTC digital) now reports to CFO Matthew Friend — commercial outcome framing required",
+        "NDDC has three simultaneous Sr Director/Director vacancies — 60–90 day vendor evaluation window"
+      ],
+      "discovery_question": "With the CTO role eliminated and technology now under the COO, how does a search platform evaluation get initiated at Nike — and who makes the final call: the CIO, COO, or CFO?",
+      "algolia_proof": "Algolia ROI maps to both buyer frames: COO (eliminate Elasticsearch maintenance, reduce Cognizant support tickets) + CFO (1pp search conversion = $41M gross profit on Nike Direct). [FACT — 08-financial-profile.md; partner-intel.md]",
+      "objection": "We're focused on finishing the Win Now restructure first.",
+      "objection_counter": "Finishing Win Now by May 2026 is exactly the window. Technology budget is actively being reallocated. A search platform decision inside the Win Now timeline gets FY2026 funding — after May it becomes a FY2027 procurement process.",
+      "source": "[FACT — 01-company-context.md (Dec 2025 restructure); 09d-hiring-signals.md (NDDC vacancies); 11-investor-intelligence.md (COO quote — 'fully integrated across the company')]"
     }
   ],
   "gap_pairs": [
@@ -6363,14 +6618,47 @@ a:hover {
         "uses_algolia": false,
         "tier": "Adjacent"
       }
-    ]
+    ],
+    "scenario": "GREENFIELD displacement — Nike runs DIY Elasticsearch while direct competitor Under Armour is already on Algolia",
+    "scenario_note": "Under Armour confirmed on Algolia with +35% search conversion; Nike runs same in-house Elasticsearch stack Under Armour replaced"
   },
   "icp_mapping": {
     "vertical": "Sporting Goods & Athletic Apparel",
     "business_model": "B2C (DTC via nike.com + retail stores) + B2B (wholesale)",
     "audit_type": "GREENFIELD — no hosted search vendor; Elasticsearch DIY displacement",
     "monthly_traffic": "107.6M visits/mo",
-    "search_vendor_risk": "HIGH"
+    "search_vendor_risk": "HIGH",
+    "anchor_lines": [
+      "Elliott Hill (Q3 FY2026): 'investing in the technology platforms that will help us serve more consumers better' — search infrastructure is the platform investment on the table.",
+      "Matthew Friend (Q3 FY2026): 'Digital is still too promotional' — Algolia converts high-intent queries at full price through relevance, not discounts.",
+      "Under Armour, Nike's direct competitor, is already on Algolia: +35% conversion rate on search. Nike runs the same DIY Elasticsearch stack Under Armour replaced in 2017."
+    ],
+    "priority_to_product": [
+      {
+        "pain": "Too promotional / markdown dependency on Nike Digital",
+        "product": "NeuralSearch + AI Merchandising Rules",
+        "evidence": "Matthew Friend, Q3 FY2026: 'Digital is still too promotional.'",
+        "proof_company": "Lacoste",
+        "proof_result": "+150% sales contribution from search; +37% conversion rate",
+        "proof_url": "https://www.algolia.com/customers/lacoste"
+      },
+      {
+        "pain": "NikeAI proven in app but website search still on legacy Elasticsearch",
+        "product": "Algolia AI Search API — replace api.nike.com/search foundation",
+        "evidence": "Network-confirmed: SAYT via api.nike.com/search (Elasticsearch); NikeAI is a surface wrapper, not a new foundation",
+        "proof_company": "Under Armour",
+        "proof_result": "+35% conversion rate when customers use search",
+        "proof_url": "https://www.algolia.com/customers/under-armour"
+      },
+      {
+        "pain": "9.27% outbound traffic exits to Google (+118% MoM)",
+        "product": "Query Suggestions + Zero-Results Recovery + Federated Search",
+        "evidence": "SimilarWeb verified: google.com is #4 outbound destination, Jan–Mar 2026",
+        "proof_company": "Shoe Carnival",
+        "proof_result": "Up to 3.5x conversions from search",
+        "proof_url": "https://www.algolia.com/customers/shoe-carnival"
+      }
+    ]
   },
   "toc": [
     {
@@ -6496,58 +6784,124 @@ a:hover {
     "touches": [
       {
         "touch": 1,
+        "day": "Day 1",
         "channel": "email",
-        "day": 0,
-        "subject": "Nike.com search: your competitor is already ahead",
-        "template": "cold_opener",
-        "personalization_hook": "Under Armour on Algolia, +35% search conversion. Nike runs DIY Elasticsearch."
+        "target": "all",
+        "subject": "Email 1 — Hook (Search Gap Finding)",
+        "body": "# Email 1 — Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**\n\nHi [First Name],\n\nElliott Hill said on the Q3 earnings call that Nike is \"investing in the technology platforms that will help us serve more consumers better.\" I spent 30 minutes on nike.com this week, and I found one thing that stood out immediately.\n\nWhen a shopper types \"store near me\" into the nike.com search bar, they get 41 product results — t-shirts, sportswear — instead of a store locator. The intent is completely clear, and the site misses it entirely.\n\nThis is one of 10 gaps we documented across the search experience, all traceable to the custom Elasticsearch infrastructure running behind api.nike.com/search. The bigger ones — no personalization, NLP queries that partially parse intent but don't auto-apply price or size filters — connect directly to the \"still too promotional\" problem Matthew Friend described on the same call.\n\nWorth a 15-minute conversation this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- \"store near me\" returning product results: `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [VERIFIED ON DISK]\n- Elliott Hill quote \"investing in the technology platforms\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Matthew Friend quote \"digital is still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Motley Fool WebFetch 2026-04-15 [FACT]\n- Custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a½ [FACT — network verification]\n- 10 gaps enumerated: `09-browser-findings.md`, Summary section [FACT — browser audit 2026-04-15]\n",
+        "message": "# Email 1 — Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**"
       },
       {
         "touch": 2,
+        "day": "Day 1-2",
         "channel": "linkedin",
-        "day": 3,
-        "subject": "LinkedIn connection request",
-        "template": "li_connect",
-        "personalization_hook": "Elliott Hill Q3 FY2026: “investing in the technology platforms”"
+        "target": "all",
+        "subject": "LinkedIn — Connection Request",
+        "body": "# LinkedIn — Connection Request\n\n## Version A — For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan — ran an audit of nike.com search and found the site misses clear location intent: \"store near me\" returns products, not stores. Thought it might be relevant given your platform mandate. Happy to share the full analysis.\n\n**Character count: 216** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO, technology integration mandate)\n\nHi Venky — audited nike.com's search stack and found a gap: after browsing running shoes, searching \"shoes\" shows Jordan retros first. Zero personalization signals active. Could connect to the operational efficiency work. Happy to share the findings.\n\n**Character count: 252** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version C — For Matthew Friend (CFO, Nike Direct owner)\n\nHi Matthew — audited nike.com search and documented the gap between what NikeAI does in the app and what the website delivers. The delta connects directly to the full-price conversion problem. Happy to share the analysis if useful.\n\n**Character count: 238** [UNDER 300 LIMIT — PASS]\n\n---\n\n**Source notes:**\n\n- \"store near me\" finding (Version A): `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [FACT — browser audit 2026-04-15]\n- Zero personalization finding (Version B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT — browser audit 2026-04-15]\n- NikeAI app vs. website gap (Version C): `09-browser-findings.md`, Step 2a½ and NikeAI Presence section; `nike-playbook.md`, Talking Point 4 [FACT]\n- Role/contact framing: `nike-playbook.md`, Power Map section [FACT]\n",
+        "message": "# LinkedIn — Connection Request\n\n## Version A — For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan — ran an aud"
       },
       {
         "touch": 3,
+        "day": "Day 3-4",
         "channel": "email",
-        "day": 7,
-        "subject": "nike.com search audit — what we found in 20 minutes",
-        "template": "audit_reveal",
-        "personalization_hook": "9.27% outbound traffic to Google (+118% MoM) — quantified search abandonment"
+        "target": "all",
+        "subject": "Email 2 — Competitor (Golden Angle)",
+        "body": "# Email 2 — Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool — here's what happened\n\n**Body:**\n\nHi [First Name],\n\nUnder Armour was in the same position Nike is in today. They had built their own search infrastructure — in-house, open-source — and it worked, but it required engineering resources to maintain and it couldn't keep pace with how consumers shop.\n\nThey moved to Algolia. Their product manager described the result this way: \"We moved from a manual, time-intensive search tool to a fast, intuitive and insight-driven search experience.\" The metric: 35% higher conversion rate when customers use search.\n\nNike.com is running a similar custom Elasticsearch stack — we confirmed it via network inspection on the api.nike.com/search endpoint. Under Armour's gain is a documented benchmark for what's possible on the same infrastructure trajectory.\n\nI put together a short analysis of the specific gaps on nike.com — the ones that map most directly to what Under Armour solved. Happy to share it. Would a quick call this week make sense?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Under Armour on Algolia (Golden Angle — CONFIRMED): `04-competitors.md`, algolia.com/customers/under-armour WebFetch 2026-04-14 [FACT]\n- \"+35% higher conversion rate when using search\": `04-competitors.md`, algolia.com/customers/under-armour [FACT — WebFetch verified]\n- Nick Maupin quote: `04-competitors.md`, algolia.com/customers/under-armour [FACT]\n- Nike custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a½, network verification 2026-04-15 [FACT]\n- Under Armour competitor classification: `04-competitors.md`, Competitor Search Technology Matrix, Row 3 [FACT]\n- Golden Angle play used (not Defensive): BuiltWith confirmed via algolia.com/customers/under-armour case study page, not generic WebSearch\n",
+        "message": "# Email 2 — Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool — here's what happen"
+      },
+      {
+        "touch": 4,
+        "day": "Day 4-6",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)",
+        "body": "# LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)\n\n## Version A — For Cheryan Jacob (CIO)\n\nHi Cheryan — the \"store near me\" gap is one of 10 we documented on nike.com. The bigger one: after browsing running shoes and then searching \"shoes,\" the top results are Jordan retros. The site has no personalization layer — zero re-ranking based on browsing behavior. Nike's own app has NikeAI for this. The website doesn't. That's the infrastructure gap.\n\n**Character count: 359** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO)\n\nHi Venky — the personalization gap goes further than results ranking. Nike's site is running custom Elasticsearch at api.nike.com/search. The engineering overhead to maintain relevance tuning, merchandising rules, and facet logic is significant — and it still ships static facets (Cushioning Type shows up for jacket queries). Algolia replaces that maintenance burden with a managed platform. No fabrication — confirmed via network inspection.\n\n**Character count: 430** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version C — For Matthew Friend (CFO)\n\nHi Matthew — one data point from the audit: 9.27% of outbound traffic from nike.com goes to Google, and that number grew 117.81% in one month. Those are shoppers who searched on Nike's site, didn't find what they needed, and left to search on Google instead. At 107.6M monthly visits, that's a material number of lost sessions. The mechanism is search relevance — and it's fixable.\n\n**Character count: 404** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n**Source notes:**\n\n- Personalization gap (Version A + B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT]\n- Static facets / Cushioning Type for jacket: `09-browser-findings.md`, Step 2n, screenshot `14-dynamic-facets-drifit.png` [FACT]\n- api.nike.com/search network confirmation: `09-browser-findings.md`, Step 2a½ [FACT]\n- 9.27% outbound to Google, +117.81% MoM: `nike-playbook.md`, Talking Point 2; SimilarWeb web UI Jan-Mar 2026 [FACT]\n- 107.6M monthly visits: referenced in playbook context [FACT — SimilarWeb]\n- No sales ask in Follow-up 1: confirmed — no CTA present in any version\n",
+        "message": "# LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)\n\n## Version A — For Cheryan Jacob (CIO)\n\nHi Cheryan — the \"st"
+      },
+      {
+        "touch": 5,
+        "day": "Day 7",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 3 — Business Case",
+        "body": "# Email 3 — Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**\n\nHi [First Name],\n\nNike Brand Digital revenue is approximately $9.6 billion — derived from the FY2025 10-K (NIKE Direct at $18.8B, with the digital segment down 20% YoY). That's the baseline for the search revenue conversation.\n\nHere's one component of the model: a 1% conversion lift on $9.6B digital = $96M/year incremental revenue. At Nike's 42.7% gross margin (FY2025 10-K), that's $41M in additional gross profit — from a single percentage point.\n\nMatthew Friend said on the Q3 earnings call that Nike is \"leveraging new advanced capabilities\" in technology while rationalizing legacy programs. A managed search platform that replaces a self-maintained Elasticsearch stack fits both sides of that sentence — it's an advanced capability that eliminates maintenance overhead.\n\nI have a full model built — six components, conservative and moderate scenarios. Happy to walk through it in 15 minutes. The leave-behind with the full analysis is also available here: [nike-leave-behind.html link]\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- NIKE Brand Digital ~$9.6B: `08-financial-profile.md`, Digital/Ecommerce Revenue table, derived from 10-K FY2025 [FACT — SEC EDGAR 10-K via last10k.com WebFetch 2026-04-14]\n- NIKE Direct $18.8B, down 13%: `08-financial-profile.md`, Revenue Trend table; Nike FY2025 10-K MD&A [FACT]\n- NIKE Brand Digital down 20% FY2025: `08-financial-profile.md`, 10-K MD&A verbatim [FACT]\n- Gross margin 42.7% FY2025: `08-financial-profile.md`, Key Margins section, Gross Profit $19.790B ÷ Total Revenue $46.309B [FACT — Yahoo Finance MCP 2026-04-14]\n- 1% conversion lift = $96M formula: `nike-playbook.md`, ROI Summary section [FACT — derived from above inputs]\n- Friend quote \"leverage new advanced capabilities\": `11-investor-intelligence.md`, Q3 FY2026 earnings call, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Leave-behind reference: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n",
+        "message": "# Email 3 — Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**"
+      },
+      {
+        "touch": 6,
+        "day": "Day 7-14",
+        "channel": "video",
+        "target": "all",
+        "subject": "Loom Video Script — Nike Search Audit",
+        "body": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience:** CIO / COO / CFO at Nike\n**Recorded by:** AE\n\n---\n\n## HOOK (0–10 sec)\n\n\"I spent 30 minutes on nike.com and found three things that surprised me — given Nike's investment in digital. Let me show you exactly what I found.\"\n\n*[Open screen share to browser with nike.com loaded]*\n\n---\n\n## DEMO (10–90 sec)\n\n**Finding 1 — Screenshot: `08-non-product-store.png`** *(approx. 10–30 sec)*\n\n\"This is what happens when a shopper types 'store near me' into the nike.com search bar. They get 41 product results — t-shirts and sportswear — instead of a store locator. The intent is completely clear. The site misses it. This is a routing failure in the search infrastructure.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 2 — Screenshot: `17-personalization.png`** *(approx. 30–60 sec)*\n\n\"Here's the second thing. I browsed running shoes, clicked a product, then searched 'shoes.' The top results were Air Jordan retros — not running shoes. Zero personalization. No re-ranking based on what I just looked at. Nike's app has NikeAI for exactly this kind of intent detection. The website doesn't have that layer.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 3 — Screenshot: `14-dynamic-facets-drifit.png`** *(approx. 60–80 sec)*\n\n\"Third — I searched for a Dri-FIT UV running jacket. The facet panel showed 'Cushioning Type' as a filter. For a jacket. The facets are static — they don't adapt to what the shopper is actually looking for. This creates friction right at the moment of refinement.\"\n\n*[Pull back to summary view]*\n\n\"Three gaps. Search misroutes intent, ignores browsing behavior, and serves irrelevant filters. Nike's digital channel is approximately $9.6 billion. These gaps compound across every session.\"\n\n---\n\n## CTA (90–120 sec)\n\n\"I put together a full analysis — 10 documented gaps, a business case with the revenue math, and a comparison to what Under Armour achieved after a similar infrastructure switch. Happy to walk you through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Speaker notes — transitions:**\n\n- After Finding 1: \"That's the intent detection gap. Let me show you the personalization problem.\"\n- After Finding 2: \"That's the web experience versus the app experience. Here's the third gap — filtering.\"\n- After Finding 3: \"So three layers: routing, personalization, faceting. Here's the business context.\"\n\n---\n\n**Source notes:**\n\n- Screenshot `08-non-product-store.png`: VERIFIED ON DISK (`deliverables/screenshots/08-non-product-store.png`) — \"store near me\" returning 41 product results, `09-browser-findings.md` Step 2h [FACT]\n- Screenshot `17-personalization.png`: VERIFIED ON DISK (`deliverables/screenshots/17-personalization.png`) — Jordan retros shown after browsing running shoes, `09-browser-findings.md` Step 2q [FACT]\n- Screenshot `14-dynamic-facets-drifit.png`: VERIFIED ON DISK (`deliverables/screenshots/14-dynamic-facets-drifit.png`) — Cushioning Type shown for jacket query, `09-browser-findings.md` Step 2n [FACT]\n- $9.6B digital revenue: `08-financial-profile.md`, derived from Nike FY2025 10-K [FACT]\n- Under Armour infrastructure comparison: `04-competitors.md`, Golden Angle section [FACT]\n- All 3 screenshots confirmed present in `deliverables/screenshots/` [VERIFIED]\n",
+        "message": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience"
+      },
+      {
+        "touch": 7,
+        "day": "Day 10-12",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)",
+        "body": "# LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)\n\n## Version A — For Cheryan Jacob (CIO) — Competitor angle\n\nHi Cheryan — Under Armour moved from an in-house search tool to Algolia and recorded 35% higher conversion rate on search. Nike's site runs a similar self-managed Elasticsearch stack. The infrastructure comparison is direct. I have the full analysis ready. Would a 15-minute call make sense?\n\n**Character count: 280** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO) — Business case component\n\nHi Venky — one component from the model: 1% conversion lift on Nike's ~$9.6B digital channel = $96M/year incremental revenue. At 42.7% gross margin, that's $41M gross profit. That's the conservative scenario. Would a 15-minute call make sense to walk through the full picture?\n\n**Character count: 273** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version C — For Matthew Friend (CFO) — Business case component\n\nHi Matthew — a single number from your FY2025 10-K: Nike Brand Digital ~$9.6B. A 1% conversion lift on that base = $96M/year. At your gross margin, that's $41M gross profit — from fixing search relevance, not adding promotion. Worth 15 minutes?\n\n**Character count: 252** [UNDER 300 RECOMMENDED]\n\n---\n\n**Source notes:**\n\n- Under Armour +35% conversion (Version A): `04-competitors.md`, Golden Angle section [FACT — algolia.com/customers/under-armour WebFetch 2026-04-14]\n- Nike self-managed Elasticsearch (Version A): `09-browser-findings.md`, Step 2a½ [FACT]\n- $9.6B digital revenue, 42.7% gross margin, $96M formula (Versions B + C): `08-financial-profile.md` and `nike-playbook.md`, ROI Summary [FACT — derived from Nike FY2025 10-K]\n- One angle only per version (competitor OR business case) — confirmed, no mixing\n",
+        "message": "# LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)\n\n## Version A — For Cheryan Jacob (CIO) — Competitor angle\n\nHi C"
+      },
+      {
+        "touch": 8,
+        "day": "Day 14",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 4 — Social Proof",
+        "body": "# Email 4 — Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution — without discounts\n\n**Body:**\n\nHi [First Name],\n\nLacoste is a useful comparison for Nike right now. Global athletic/lifestyle brand, multi-territory ecommerce, similar pressure to drive full-price sell-through rather than leaning on markdowns.\n\nTheir gap was search relevance — shoppers were not finding the right product fast enough, so sessions were ending without conversion. Lacoste deployed Algolia across 11 online shops globally.\n\nThe result: search results delivered in under 50ms, +150% increase in sales contribution from search, +37% overall conversion rate on search (+62% on mobile), -88% bounce rate. Their Global UX Manager put it directly: \"Not only does it provide the stellar user experience Lacoste is known for, but it more than doubled our global sales.\"\n\nMatthew Friend has said Nike Digital is \"still too promotional\" — the mechanism behind that problem is that search relevance forces the discount crutch. When your system can't surface the right product at full price, markdown is the only conversion lever left. Lacoste's numbers show what happens when you remove that dependency.\n\nHappy to connect this to the specific gaps we found on nike.com. Would a 15-minute call work this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Lacoste case study (vertical-matched — adjacent global athletic/fashion brand): `04-competitors.md`, Full Algolia Proof Set section, algolia.com/customers/lacoste WebFetch 2026-04-14 [FACT]\n- \"+150% sales contribution from search\": `04-competitors.md`, Lacoste metrics [FACT — algolia.com/customers/lacoste WebFetch verified]\n- \"+37% conversion rate (+62% mobile)\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"-88% bounce rate\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"<50ms search results\": `04-competitors.md`, Lacoste metrics [FACT]\n- Julien Nouet quote (Global UX Manager, Lacoste): `04-competitors.md` [FACT — algolia.com/customers/lacoste WebFetch 2026-04-14]\n- Friend \"still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 [FACT]\n- ICP vertical match: `nike-playbook.md`, MEDDPICC Metrics row; `04-competitors.md` AE Sales Narrative [adjacent vertical — global athletic/fashion]\n",
+        "message": "# Email 4 — Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution — without discounts\n\n**Body:**\n\nH"
+      },
+      {
+        "touch": 9,
+        "day": "Day 21",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 5 — Break-Up",
+        "body": "# Email 5 — Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turnaround work — the past few months have clearly been heads-down at Nike, and I don't want to add noise.\n\nI'll leave you with the full audit we built on nike.com — 10 search gaps documented, a business case with the revenue math, and a comparison to what Under Armour achieved after making a similar infrastructure switch. It's all here if it's useful at any point: [nike-leave-behind.html link]\n\nThe door is open whenever the timing makes sense. Elliott Hill said he wants to move from \"fixing this business\" to \"inspiring and driving growth\" — when that chapter starts in earnest, the search infrastructure question will be on the table. We'll be here.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Elliott Hill \"tired of fixing\" quote: `11-investor-intelligence.md`, Nike All-Hands Meeting April 2026, Fortune WebFetch 2026-04-15 [FACT]\n- Parting resource: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n- Under Armour reference: `04-competitors.md`, Golden Angle section [FACT]\n- 10 gaps documented: `09-browser-findings.md`, Summary / Key Gaps Found section [FACT — browser audit 2026-04-15]\n",
+        "message": "# Email 5 — Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turn"
       }
     ],
     "contacts": [
       {
-        "name": "Venkatesh (Venky) Alagirisamy",
-        "title": "EVP & Chief Operating Officer",
-        "linkedin": "https://www.linkedin.com/in/valagirisamy",
-        "priority": 1,
-        "angle": "Technology integration mandate — search as operational capability"
-      },
-      {
-        "name": "Matthew Friend",
-        "title": "EVP & Chief Financial Officer",
-        "linkedin": "https://www.linkedin.com/in/matthew-friend-nike/",
-        "priority": 2,
-        "angle": "Digital revenue recovery — CFO owns Nike Direct; ROI framing lands directly"
-      },
-      {
+        "id": "contact-1",
         "name": "Cheryan Jacob",
         "title": "Chief Information Officer",
-        "linkedin": "https://www.linkedin.com/company/nike/",
-        "priority": 3,
-        "angle": "Former Salesforce exec — SFCC co-sell warm entry"
+        "tier": 1,
+        "role": "Warm Entry / Technical Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/company/nike/",
+        "angle": "Former Salesforce exec — SFCC co-sell warm entry. She knows Algolia from the AppExchange ecosystem. First call target."
+      },
+      {
+        "id": "contact-2",
+        "name": "Venkatesh (Venky) Alagirisamy",
+        "title": "EVP & Chief Operating Officer",
+        "tier": 1,
+        "role": "Technical Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/valagirisamy",
+        "angle": "Technology integration mandate. Frame search as operational capability — fewer Cognizant tickets, less Elasticsearch maintenance, faster feature velocity."
+      },
+      {
+        "id": "contact-3",
+        "name": "Matthew Friend",
+        "title": "EVP & Chief Financial Officer",
+        "tier": 2,
+        "role": "Economic Buyer",
+        "linkedin_url": "https://www.linkedin.com/in/matthew-friend-nike/",
+        "angle": "Digital revenue recovery — CFO owns Nike Direct. Lead with ROI: $96M/year conservative at 1% lift. 'Digital is too promotional' is his pain."
       }
     ],
-    "total_touches": 3,
-    "duration_days": 14,
+    "total_touches": 9,
+    "duration_days": 90,
     "channels": [
-      "email",
-      "linkedin"
-    ]
+      "Email",
+      "LinkedIn",
+      "Video"
+    ],
+    "sequence_type": "ABX Multi-Touch — Competitor Benchmark + Search Audit Reveal",
+    "research_basis": "nike.com audit findings, 09d-hiring-signals.md vacancy signals, partner-intel.md SFCC co-sell path, 11-investor-intelligence.md exec quotes"
   },
   "bibliography": [
     {
@@ -6581,7 +6935,15 @@ a:hover {
       "label": "FACT"
     }
   ],
-  "demos": []
+  "demos": [],
+  "ae_fields": {
+    "ae_name": "Algolia AE",
+    "talk_track_opener": "You know the SFCC ecosystem better than most — Algolia is the search layer purpose-built for it. Nike's Elasticsearch stack at api.nike.com/search is the foundation NikeAI runs on. We replace that with sub-20ms, AI-native search that integrates natively with SFCC, reduces Cognizant maintenance burden, and delivers the discovery experience that NikeAI proved works in the app — on the web.",
+    "talk_track_cta": "20-minute call to walk through the nike.com audit findings and the Under Armour benchmark (+35% search conversion, same DIY Elasticsearch Nike runs today).",
+    "next_step_action": "Contact Algolia SFCC partner team — request joint introduction to Cheryan Jacob (CIO, former Salesforce exec). Lead with AppExchange co-sell framing, not cold outreach.",
+    "next_step_owner": "AE",
+    "next_step_date": "This week"
+  }
 };</script>
 
 
@@ -9139,8 +9501,8 @@ function sectionTraffic(D) {
           <div style="font-size:2rem;font-weight:800;color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
           <div style="font-size:12px;color:var(--mid);margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
           <div class="algolia-angle-box" style="margin-top:10px;">
-            <div class="algolia-angle-label">Algolia Angle</div>
-            <p style="font-size:12px;color:var(--gray);line-height:1.5;margin:0;">1 in ${Math.round(100/parseFloat(sa.google_outbound_pct))} visitors gives up on your search and goes back to Google. That's a revenue leak — not a UX problem. We fix that.</p>
+            ${algoliaAngleBadge()}
+            <p style="${T.compact};margin:0;">1 in ${Math.round(100/parseFloat(sa.google_outbound_pct))} visitors gives up on your search and goes back to Google. That's a revenue leak — not a UX problem. We fix that.</p>
           </div>
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
@@ -9544,8 +9906,8 @@ function sectionTraffic(D) {
           </div>`;
         }).join('')}
         <div class="algolia-angle-box" style="margin-top:16px;">
-          <div class="algolia-angle-label">Algolia Angle</div>
-          <p style="font-size:12px;color:var(--gray);line-height:1.5;margin:0;">Search requirements differ by market — Korean and Japanese users search in their language, with different query patterns. Algolia's multi-language and geo-aware search handles this out of the box.</p>
+          ${algoliaAngleBadge()}
+          <p style="${T.compact};margin:0;">Search requirements differ by market — Korean and Japanese users search in their own language with different query patterns. Algolia's multi-language and geo-aware search handles this out of the box.</p>
         </div>
       </div>
     </div></div>`;
@@ -9571,8 +9933,8 @@ function sectionTraffic(D) {
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
-          <div class="algolia-angle-label">Algolia Angle</div>
-          <p style="font-size:12px;color:var(--gray);line-height:1.5;margin:0;">1 in ${Math.round(100/googleRow.share_pct)} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
+          ${algoliaAngleBadge()}
+          <p style="${T.compact};margin:0;">1 in ${Math.round(100/googleRow.share_pct)} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
         </div>` : ''}
       </div>
     </div></div>`;
@@ -9605,15 +9967,14 @@ function sectionTraffic(D) {
 
 function sectionFinancials(D) {
 
-  const f   = D.financials       || {};
+  const f  = D.financials       || {};
 
-  const cs  = D.company_snapshot || {};
-
-  // Build revenue_3y from individual year fields if array not present (older schema)
+  // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
   if (!_rev3y?.length) {
     const _fmt = v => v == null ? null : typeof v === 'number' ? '$' + (v >= 1e9 ? (v/1e9).toFixed(1)+'B' : (v/1e6).toFixed(1)+'M') : String(v);
     const _rows = [
+      f.revenue_fy2022 != null ? {year:'FY2022', revenue: _fmt(f.revenue_fy2022)} : null,
       f.revenue_fy2023 != null ? {year:'FY2023', revenue: _fmt(f.revenue_fy2023)} : null,
       f.revenue_fy2024 != null ? {year:'FY2024', revenue: _fmt(f.revenue_fy2024)} : null,
       f.revenue_fy2025 != null ? {year:'FY2025', revenue: _fmt(f.revenue_fy2025)} : null,
@@ -9623,238 +9984,295 @@ function sectionFinancials(D) {
 
   if (!_rev3y?.length && !f.annual_revenue_estimate && !f.revenue_current) return '';
 
-  // Reverse so latest year (FY2025) shows first
-  const rev3 = [...(_rev3y || [])].reverse();
+  const revChron = [...(_rev3y || [])];
+  const latest   = revChron[revChron.length - 1] || {};
+  const nYrs     = revChron.length;
 
-  // Parse financial string values to numbers for comparison
-  // Handles "$3.315B", "−$10.5M", "4.9%", "−0.35%"
-  function parseFinVal(s) {
-    if (!s || s === '—') return null;
-    const neg = s.includes('−') || s.startsWith('-');
-    const n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
+  // ── Parse $B / % string to number ─────────────────────────────────────────
+  function pv(s) {
+    if (!s || s === '—' || s === '\u2014') return null;
+    const str = String(s);
+    const neg = str.includes('\u2212') || str.startsWith('-');
+    const n = parseFloat(str.replace(/[^0-9.]/g, ''));
     if (isNaN(n)) return null;
-    let v = n;
-    if (/B/i.test(s)) v *= 1000;  // billions → millions
-    return neg ? -v : v;
+    return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
   }
 
-  // Return arrow HTML: green ↑ if current > prior, red ↓ if current < prior
-  function arrow(current, prior) {
-    const c = parseFinVal(current), p = parseFinVal(prior);
-    if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:var(--green);${T.bodySm}margin-left:3px;">↑</span>';
-    if (c < p) return '<span style="color:var(--red);${T.bodySm}margin-left:3px;">↓</span>';
-    return '';
+  function yoyStr(cur, prev) {
+    const c = pv(cur), p = pv(prev);
+    if (c === null || p === null || p === 0) return '';
+    const pct = Math.round(((c - p) / Math.abs(p)) * 100);
+    const up = pct > 0;
+    return `<span style="color:${up?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
   }
 
-  // Bar widths relative to max revenue
-  const revNums = rev3.map(r => {
-    if (typeof r.revenue === 'number') return r.revenue;
-    const m = String(r.revenue || '').replace(/[^0-9.]/g, '');
-    const v = parseFloat(m) || 0;
-    return /B/i.test(String(r.revenue)) ? v * 1000 : v;
-  });
-
-  const maxRev = Math.max(...revNums, 1);
-
-  const barPcts = revNums.map(v => Math.round((v / maxRev) * 100));
-
-  // Pre-compute YoY arrows for each year (current vs prior = next item in reversed array)
-  // Green ↑ if improved, red ↓ if declined, empty string if no prior year
-  function finNum(s) {
-    if (!s || s === '\u2014') return null;
-    var neg = String(s).indexOf('\u2212') >= 0 || String(s).indexOf('-') === 0;
-    var n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
-    if (isNaN(n)) return null;
-    if (/B/i.test(String(s))) n *= 1000;
-    return neg ? -n : n;
-  }
-  function yrArrow(cur, priorR, field) {
-    if (!priorR) return '';
-    var c = finNum(cur), p = finNum(priorR[field]);
-    if (c === null || p === null) return '';
-    if (c > p) return '<span style="color:var(--green);${T.compact}margin-left:2px;font-weight:700;">&#x2191;</span>';
-    if (c < p) return '<span style="color:var(--red);${T.compact}margin-left:2px;font-weight:700;">&#x2193;</span>';
-    return '';
-  }
-
-  // Per-year rich content — built from revenue_3y scratchpad data
-
-  const yearMeta = rev3.map((r, i) => {
-
-    // rev3 is reversed: index 0 = latest year (FY2025), last index = oldest year
-    const isLatest = i === 0;
-
-    const sigText = r.search_signal ? [r.search_signal] : [];
-
-    return {
-
-      digital: r.digital_share ? `~${r.digital_share} of revenue` : (isLatest ? (f.ecommerce_revenue || f.total_digital_revenue || '') : ''),
-
-      searchAdj: isLatest ? (f.search_addressable || '') : '',
-
-      signals: sigText,
-
-      // ROI callout removed — comes from interactive calculator, not static data
-      roi: null,
-
-      note: r.note || '',
-
-    };
-
-  });
-
-
-
-  const nodes = rev3.map((r, i) => {
-
-    const meta  = yearMeta[i] || {};
-
-    const pct   = barPcts[i]  || 0;
-
-    // rev3 is reversed: index 0 = latest year
-    const isLatest = i === 0;
-
-    const signalHtml = (meta.signals || []).map(sig =>
-
-      `<div class="tl-signal"><div class="tl-signal__dot"></div><span>${escHtml(sig)}</span></div>`
-
-    ).join('');
-
-    const roiHtml = meta.roi ? `
-
-      <div class="tl-roi-callout">
-
-        <div>
-
-          <div class="tl-roi-callout__label">Est. Search ROI / yr</div>
-
-          <div class="tl-roi-callout__value">${escHtml(meta.roi)}</div>
-
-        </div>
-
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-
-          <circle cx="16" cy="16" r="16" fill="rgba(255,255,255,0.12)"/>
-
-          <path d="M10 22 L16 10 L22 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-          <line x1="12" y1="19" x2="20" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
-
-        </svg>
-
-      </div>` : '';
-
-
-
-    return `
-
-    <div class="tl-node" data-tl-node>
-
-      <div class="tl-node__label">
-
-        <span class="tl-node__year-badge">${escHtml(r.year)}</span>
-
-      </div>
-
-      <div class="tl-node__dot-col">
-
-        <div class="tl-node__dot"></div>
-
-      </div>
-
-      <div class="tl-node__content">
-
-        <div class="tl-card">
-
-          <div class="tl-card__header">
-
-            <div class="tl-card__rev">${escHtml(r.revenue_label || String(r.revenue))}</div>
-
-            ${isLatest ? `<span class="tl-card__cagr">${escHtml(r.note||'Latest FY')}</span>` : `<span style="${T.bodySmMid14};">${escHtml(r.note||'')}</span>`}
-
-          </div>
-
-          <div class="tl-rev-bar"><div class="tl-rev-bar__fill" style="--bar-pct:${pct}%;"></div></div>
-
-          <div class="tl-metrics-row">
-
-            <div class="tl-metric">
-              <div class="tl-metric__label">Gross Profit</div>
-              <div class="tl-metric__value">${escHtml(r.gross_profit||'—')}${yrArrow(r.gross_profit, rev3[i+1], 'gross_profit')}</div>
-            </div>
-
-            <div class="tl-metric">
-              <div class="tl-metric__label">Net Income</div>
-              <div class="tl-metric__value" style="${String(r.net_income||'').indexOf('\u2212')>=0?'color:var(--red)':''}">${escHtml(r.net_income||'—')}${yrArrow(r.net_income, rev3[i+1], 'net_income')}</div>
-            </div>
-
-            <div class="tl-metric">
-              <div class="tl-metric__label">Operating Income</div>
-              <div class="tl-metric__value">${escHtml(r.operating_income||'—')}${yrArrow(r.operating_income, rev3[i+1], 'operating_income')}</div>
-            </div>
-
-            <div class="tl-metric">
-              <div class="tl-metric__label">Net Margin</div>
-              <div class="tl-metric__value" style="${String(r.net_margin||'').indexOf('\u2212')>=0?'color:var(--red)':''}">${escHtml(r.net_margin||'—')}${yrArrow(r.net_margin, rev3[i+1], 'net_margin')}</div>
-            </div>
-
-            ${r.digital_share ? '<div class="tl-metric" style="grid-column:1/-1;border-top:1px solid var(--border);margin-top:4px;padding-top:8px;"><div class="tl-metric__label">Digital Revenue (Est.)</div><div class="tl-metric__value">' + escHtml(r.digital_share) + '</div></div>' : ''}
-
-          </div>
-
-          <div class="tl-signals">${signalHtml}</div>
-
-          ${roiHtml}
-
-        </div>
-
-      </div>
-
-    </div>`;
-
+  // ── Per-year metric arrays ─────────────────────────────────────────────────
+  const rvVals = revChron.map(r => pv(r.revenue)          || 0);
+  const gpVals = revChron.map(r => pv(r.gross_profit)     || 0);
+  const ebVals = revChron.map(r => pv(r.ebitda)           || 0);
+  const opVals = revChron.map(r => pv(r.operating_income) || 0);
+  const niVals = revChron.map(r => pv(r.net_income)       || 0);
+
+  // Margins derived (all valid — calculated from sourced numbers)
+  const gmVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  const nmVals = revChron.map(r => pv(r.net_margin));
+
+  // ── SVG Composite Chart ────────────────────────────────────────────────────
+  const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
+  const plotW=cW-padL-padR, plotH=cH-padT-padB;
+  const maxBarVal=56; // $B scale left axis
+  const maxPctVal=20; // % scale right axis
+
+  function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
+  function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
+  function lY(p){ return p===null?null: padT + plotH - Math.round((p/maxPctVal)*plotH); }
+
+  const grpW = plotW/nYrs;
+  const bw = Math.max(Math.floor(grpW*0.19), 7);
+  const grpPad = (grpW - 3*bw) / 4;
+
+  const svgBars = revChron.map((r,i) => {
+    const x0 = padL + i*grpW + grpPad;
+    const x1 = x0 + bw + grpPad;
+    const x2 = x1 + bw + grpPad;
+    const isL = i===nYrs-1;
+    const cRv = isL?'var(--blue)':'var(--blue-border)';
+    const cGp = isL?'var(--teal)':'var(--teal-border)';
+    const cEb = isL?'var(--violet)':'var(--violet-border)';
+    const xLbl = padL + i*grpW + grpW/2;
+    return [
+      `<rect x="${x0}" y="${bY(rvVals[i])}" width="${bw}" height="${bH(rvVals[i])}" style="fill:${cRv}" rx="2"/>`,
+      gpVals[i]>0?`<rect x="${x1}" y="${bY(gpVals[i])}" width="${bw}" height="${bH(gpVals[i])}" style="fill:${cGp}" rx="2"/>` : '',
+      ebVals[i]>0?`<rect x="${x2}" y="${bY(ebVals[i])}" width="${bw}" height="${bH(ebVals[i])}" style="fill:${cEb}" rx="2"/>` : '',
+      `<text x="${xLbl}" y="${cH-6}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="10" font-weight="${isL?700:600}" style="fill:${isL?'var(--blue)':'var(--mid)'}">${escHtml(r.year)}</text>`,
+    ].join('');
   }).join('');
 
+  // EBITDA margin trend line
+  const linePts = revChron.map((r,i)=>{
+    const p=emVals[i]; if(p===null) return null;
+    return {x: padL + i*grpW + grpW/2, y: lY(p), p};
+  }).filter(Boolean);
+  const linePath = linePts.length>1 ? linePts.map((pt,i)=>(i===0?`M${pt.x},${pt.y}`:`L${pt.x},${pt.y}`)).join(' ') : '';
+  const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
+  // Grid lines + left axis
+  const gridLines = [0,10,20,30,40,50].map(v=>{
+    const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
+    return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
+            <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
+  }).join('');
+
+  // Right axis (%)
+  const rightAxis = [0,5,10,15,20].map(v=>{
+    const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
+    return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
+  }).join('');
+
+  // Hover overlay rects + data attributes per year group
+  const ttId = 'fin-tt-' + Math.random().toString(36).slice(2,6);
+  const hoverRects = revChron.map((r,i) => {
+    const x = padL + i*grpW;
+    const em = emVals[i];
+    const rv = rvVals[i], gp = gpVals[i], eb = ebVals[i];
+    const rvPri = i>0?rvVals[i-1]:null, gpPri = i>0?gpVals[i-1]:null, ebPri = i>0?ebVals[i-1]:null, emPri = i>0?emVals[i-1]:null;
+    const pct = (cur,pri) => pri&&pri!==0 ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
+    const yoyFmt = (p) => p===null ? '' : (p>0?`↑${p}%`:`↓${Math.abs(p)}%`);
+    const payload = JSON.stringify({
+      year: r.year,
+      rv: `$${rv.toFixed(1)}B`, rvY: yoyFmt(pct(rv,rvPri)),
+      gp: gp>0?`$${gp.toFixed(1)}B`:'—', gpY: yoyFmt(pct(gp,gpPri)),
+      eb: eb>0?`$${eb.toFixed(1)}B`:'—', ebY: yoyFmt(pct(eb,ebPri)),
+      em: em!==null?`${em}%`:'—', emY: yoyFmt(pct(em,emPri)),
+      note: r.note||''
+    }).replace(/"/g,'&quot;');
+    return `<rect x="${x}" y="${padT}" width="${grpW}" height="${plotH}" fill="transparent" rx="0"
+      onmouseenter="(function(el,e){var d=JSON.parse(el.dataset.fin);var t=document.getElementById('${ttId}');if(!t)return;var neg=function(s){return s&&s.startsWith('\u2193');};t.innerHTML='<div style=\\'font-size:11px;font-weight:700;color:var(--gray);margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--border);\\'>'+d.year+'</div><table style=\\'border-collapse:collapse;width:100%;\\'>'+[['Revenue',d.rv,d.rvY],['Gross Profit',d.gp,d.gpY],['EBITDA',d.eb,d.ebY],['EBITDA Margin',d.em,d.emY]].map(function(row){return '<tr><td style=\\'padding:2px 8px 2px 0;font-size:11px;color:var(--mid);white-space:nowrap;\\'>'+row[0]+'</td><td style=\\'padding:2px 4px;font-size:11px;font-weight:700;color:var(--gray);text-align:right;\\'>'+row[1]+'</td><td style=\\'padding:2px 0 2px 6px;font-size:11px;font-weight:700;color:'+(row[2]&&row[2].startsWith('\u2191')?'var(--green)':row[2]?'var(--red)':'var(--mid)')+';text-align:right;white-space:nowrap;\\'>'+row[2]+'</td></tr>';}).join('')+'</table>'+(d.note?'<div style=\\'margin-top:6px;padding-top:6px;border-top:1px solid var(--border);font-size:11px;color:var(--mid);line-height:1.4;\\'>'+d.note+'</div>':'');var svgEl=el.closest('svg');var rect=svgEl.getBoundingClientRect();var ex=e.clientX-rect.left;var ey=e.clientY-rect.top;var svgW=rect.width;t.style.left=(ex/svgW*100>60?'auto':'calc('+(ex/svgW*100)+'% + 8px)');t.style.right=(ex/svgW*100>60?'calc('+(100-ex/svgW*100)+'% + 8px)':'auto');t.style.top=(ey+20)+'px';t.style.display='block';})(this, event)"
+      onmouseleave="(function(){var t=document.getElementById('${ttId}');if(t)t.style.display='none';})()"
+      data-fin="${payload}" style="cursor:default;"/>`;
+  }).join('');
+
+  // Margin dot hover
+  const mDotHover = linePts.map((pt,i) => {
+    const em = pt.p, emFirst = emVals[0];
+    const diff = em!==null&&emFirst!==null ? (em-emFirst).toFixed(1) : null;
+    const note2 = diff!==null ? `${diff<0?'Down':'Up'} ${Math.abs(diff)}pt from ${emFirst}% in ${revChron[0].year}` : '';
+    const payload2 = JSON.stringify({year: revChron[i]?.year||'', em: `${em}%`, note: note2}).replace(/"/g,'&quot;');
+    return `<circle cx="${pt.x}" cy="${pt.y}" r="10" fill="transparent"
+      onmouseenter="(function(el,e){var d=JSON.parse(el.dataset.mdot);var t=document.getElementById('${ttId}');if(!t)return;t.innerHTML='<div style=\\'font-size:11px;font-weight:700;color:#23263B;margin-bottom:4px;\\'>EBITDA Margin — '+d.year+'</div><div style=\\'font-size:18px;font-weight:700;color:#23263B;margin-bottom:4px;\\'>'+d.em+'</div><div style=\\'font-size:11px;color:#6B7280;\\'>'+d.note+'</div>';var svgEl=el.closest('svg');var rect=svgEl.getBoundingClientRect();t.style.left=(e.clientX-rect.left+12)+'px';t.style.top=(e.clientY-rect.top-10)+'px';t.style.right='auto';t.style.display='block';})(this,event)"
+      onmouseleave="(function(){var t=document.getElementById('${ttId}');if(t)t.style.display='none';})()"
+      data-mdot="${payload2}" style="cursor:crosshair;"/>`;
+  }).join('');
+
+  const svgChart = `<div style="position:relative;">
+  <svg viewBox="0 0 ${cW} ${cH}" style="width:100%;height:auto;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+    ${gridLines}${rightAxis}
+    <line x1="${padL}" y1="${padT+plotH}" x2="${padL+plotW}" y2="${padT+plotH}" style="stroke:var(--border)" stroke-width="1"/>
+    ${svgBars}
+    ${linePath?`<path d="${linePath}" fill="none" style="stroke:var(--gray)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4,2"/>`:'' }
+    ${lineDots}
+    <text x="${padL-2}" y="${padT-8}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$B →</text>
+    <text x="${padL+plotW+4}" y="${padT-8}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">% →</text>
+    ${hoverRects}
+    ${mDotHover}
+  </svg>
+  <div id="${ttId}" style="display:none;position:absolute;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;box-shadow:var(--shadow);min-width:200px;max-width:260px;pointer-events:none;z-index:10;font-family:'Sora',sans-serif;"></div>
+  </div>`;
+
+  const legendHtml = `<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:6px;">
+    ${[['var(--blue)','Revenue'],['var(--teal)','Gross Profit'],['var(--violet)','EBITDA'],['','EBITDA Margin % ----']].map(([c,lbl])=>
+      c ? `<div style="display:flex;align-items:center;gap:5px;${T.compact};color:var(--mid);"><div style="width:10px;height:8px;background:${c};border-radius:2px;"></div>${escHtml(lbl)}</div>`
+        : `<div style="display:flex;align-items:center;gap:5px;${T.compact};color:var(--mid);"><svg width="22" height="8"><line x1="0" y1="4" x2="22" y2="4" style="stroke:var(--gray)" stroke-width="1.5" stroke-dasharray="4,2"/><circle cx="11" cy="4" r="2.5" style="fill:var(--gray)"/></svg>${escHtml(lbl)}</div>`
+    ).join('')}
+  </div>`;
+
+  // ── Metric Table with inline sparklines ────────────────────────────────────
+  // Trend line sparkline — tiny SVG polyline showing direction over time
+  function spark(vals) {
+    const clean = vals.map(v => (v !== null && isFinite(v)) ? v : null);
+    const defined = clean.filter(v => v !== null);
+    if (defined.length < 2) return '';
+    const mn = Math.min(...defined), mx = Math.max(...defined);
+    const range = mx - mn || 1;
+    const sw = 56, sh = 20, padX = 3, padY = 3;
+    const plotW2 = sw - 2*padX, plotH2 = sh - 2*padY;
+    const pts = clean.map((v, i) => {
+      if (v === null) return null;
+      const x = padX + (i / (clean.length - 1)) * plotW2;
+      const y = padY + plotH2 - ((v - mn) / range) * plotH2;
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).filter(Boolean);
+    // Color: is last value higher or lower than first?
+    const first = defined[0], last = defined[defined.length - 1];
+    const col = last < first ? 'var(--red)' : last > first ? 'var(--green)' : 'var(--mid)';
+    return `<svg viewBox="0 0 ${sw} ${sh}" style="width:56px;height:20px;display:block;">
+      <polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="${pts[pts.length-1].split(',')[0]}" cy="${pts[pts.length-1].split(',')[1]}" r="2.5" fill="${col}"/>
+    </svg>`;
+  }
+
+  function mRow(label, vals, fmt, isMargin) {
+    const lat = vals[vals.length-1], pri = vals[vals.length-2];
+    const yoy = (lat!==null&&pri!==null&&pri!==0) ? Math.round(((lat-pri)/Math.abs(pri))*100) : null;
+    const isNeg = yoy!==null&&yoy<0;
+    const bg = isNeg&&!isMargin ? 'background:var(--red-light);' : '';
+    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
+    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;font-size:12px;font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
+    return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
+  }
+
+  const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
+  const fPt = v => v!==null ? `${v.toFixed(1)}%` : '—';
+
+  const yhdr = revChron.map((r,i)=>`<th style="padding:7px 10px;text-align:right;${T.eyebrowSm};color:${i===nYrs-1?'var(--blue)':'var(--mid)'};">${escHtml(r.year)}</th>`).join('');
+
+  const tableHtml = `<div class="card-3d" style="padding:0;margin-bottom:20px;overflow:hidden;">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead><tr style="background:var(--near-white);border-bottom:2px solid var(--border);">
+        <th style="padding:7px 10px;text-align:left;${T.eyebrowSm};">Metric</th>
+        ${yhdr}
+        <th style="padding:7px 10px;text-align:center;${T.eyebrowSm};" title="4-year trend line (FY2022 → FY2025). Red = declining, green = improving.">4yr Trend</th>
+        <th style="padding:7px 10px;text-align:right;${T.eyebrowSm};" title="Year-over-year change: latest year vs prior year">YoY</th>
+      </tr></thead>
+      <tbody>
+        ${mRow('Revenue',      rvVals, fB,  false)}
+        ${mRow('Gross Profit', gpVals, fB,  false)}
+        ${mRow('EBITDA',       ebVals, fB,  false)}
+        ${mRow('Op. Income',   opVals, fB,  false)}
+        ${mRow('Net Income',   niVals, fB,  false)}
+        <tr><td colspan="${nYrs+3}" style="padding:0;background:var(--border);height:1px;"></td></tr>
+        ${mRow('Gross Margin', gmVals, fPt, true)}
+        ${mRow('EBITDA Margin',emVals, fPt, true)}
+        ${mRow('Net Margin',   nmVals, fPt, true)}
+      </tbody>
+    </table>
+  </div>`;
+
+  // ── Exec quotes ────────────────────────────────────────────────────────────
+  const execQuotes = (f.exec_quotes || []).slice(0, 2);
+  const quotesHtml = execQuotes.map(q=>`
+    <div style="padding:14px 16px;border-left:3px solid var(--blue-border);background:var(--blue-light);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
+      <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
+        <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
+        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
+      </div>
+    </div>`).join('');
+
+  // ── Algolia Angle + ROI accordion ─────────────────────────────────────────
+  const roi = f.roi_calc || {};
+  const roiAccordion = roi.gross_profit_impact_est ? `
+    <div style="margin-top:10px;">
+      <button onclick="(function(btn){const b=btn.nextElementSibling;const open=b.style.display!=='none';b.style.display=open?'none':'block';btn.querySelector('span').textContent=open?'How is this calculated? ↓':'Hide calculation ↑';})(this)"
+        style="background:none;border:none;padding:0;${T.compact};color:var(--blue);cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:2px;">
+        <span>How is this calculated? ↓</span>
+      </button>
+      <div style="display:none;margin-top:10px;padding:12px 14px;background:var(--near-white);border:1px solid var(--border);border-radius:var(--radius);">
+        <div style="${T.eyebrowSm};margin-bottom:10px;">ROI Calculation Methodology</div>
+        <div style="display:grid;grid-template-columns:auto 1fr auto;gap:6px 12px;align-items:baseline;">
+          <span style="${T.compact};color:var(--mid);">Total revenue</span>
+          <span style="${T.compact};color:var(--mid);">${roi.revenue_basis_source ? `· ${escHtml(roi.revenue_basis_source)}` : ''}</span>
+          <span style="${T.compact};font-weight:600;color:var(--gray);text-align:right;">${escHtml(roi.revenue_basis||'')}</span>
+          <span style="${T.compact};color:var(--mid);">× Conversion lift</span>
+          <span style="${T.compact};color:var(--amber);">${roi.lift_basis ? `· ${escHtml(roi.lift_basis)}` : ''}</span>
+          <span style="${T.compact};font-weight:600;color:var(--gray);text-align:right;">${roi.lift_pct||1}%</span>
+          <span style="${T.compact};color:var(--mid);">= Incremental revenue</span>
+          <span></span>
+          <span style="${T.compact};font-weight:600;color:var(--gray);text-align:right;">${escHtml(roi.incremental_revenue_est||'')}</span>
+          <span style="${T.compact};color:var(--mid);">× Gross margin</span>
+          <span style="${T.compact};color:var(--mid);">${roi.gross_margin_source ? `· ${escHtml(roi.gross_margin_source)}` : ''}</span>
+          <span style="${T.compact};font-weight:600;color:var(--gray);text-align:right;">${roi.gross_margin_pct||''}%</span>
+        </div>
+        <div style="border-top:2px solid var(--border);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="${T.title};color:var(--gray);">= Gross profit impact</span>
+          <span style="font-size:20px;font-weight:700;color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
+        </div>
+      </div>
+    </div>` : '';
+
+  const latNm = nmVals[nYrs-1], firstNm = nmVals[0];
+  const latEm = emVals[nYrs-1], firstEm = emVals[0];
+  const angleText = roi.gross_profit_impact_est
+    ? `Revenue down 10%, EBITDA margin compressed from ${firstEm!==null?firstEm+'%':''} → ${latEm!==null?latEm+'%':''} over 4 years. CEO says "investing in technology platforms." At ${roi.gross_margin_pct||''}% gross margin, a ${roi.lift_pct||1}% revenue lift from better search = <strong>${escHtml(roi.gross_profit_impact_est)}</strong> gross profit.`
+    : (f.algolia_angle || '');
+
+  const algoliaAngleHtml = angleText ? `
+    <div class="algolia-angle-box" style="margin-top:20px;">
+      ${algoliaAngleBadge()}
+      <p style="${T.compact};margin:0;">${angleText}</p>
+      ${roiAccordion}
+    </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-
     <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
-
     <div class="section-title">Financial Profile</div>
+    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
 
-    <p class="section-desc">
-
-      3-year revenue trajectory · Data as of ${s(D.meta?.data_vintage?.yahoo_finance)}
-
-      ${f.source_url ? `· ${lnk(f.source_url, 'Source')}` : ''}
-
-      ${f.revenue_source_url ? `<a class="inline-src" href="${escHtml(f.revenue_source_url)}" target="_blank" rel="noopener">${escHtml(f.revenue_source_label || 'Source')}</a>` : ''}
-
-    </p>
-
-    <div class="fin-timeline" id="fin-timeline">
-
-      <div class="fin-timeline__track"><div class="fin-timeline__fill" id="fin-fill"></div></div>
-
-      ${nodes}
-
+    <!-- B: Composite SVG chart -->
+    <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
+      ${svgChart}
+      ${legendHtml}
     </div>
 
-    <div style="margin-top:6px;">
+    <!-- C: Metric table with sparklines -->
+    ${tableHtml}
 
+    <!-- Exec quote bridge -->
+    ${quotesHtml ? `<div style="margin-bottom:20px;">${quotesHtml}</div>` : ''}
+
+    <!-- Algolia Angle + ROI accordion -->
+    ${algoliaAngleHtml}
+
+    <div style="margin-top:10px;">
       <span class="tl-confidence">
-
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-
-        ${escHtml(f.revenue_confidence || 'Revenue data sourced from public filings. See bibliography for sources.')}.
-
-        ${lnk(f.revenue_source_url || f.revenue_source || '#', f.revenue_source_label || 'Source', '')}
-
+        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
+        Margins calculated from sourced figures.
+        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
       </span>
-
     </div>
-
   </section>`;
 
 }
@@ -9938,30 +10356,32 @@ function sectionTechStack(D) {
     </div>` : ''}
 
     ${(ts.data_acquisitions||[]).length ? `
-    <div style="margin-top:24px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Data & AI Acquisitions</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Nike Press Releases</a>` : 'Nike Press Releases · digitalcommerce360.com'}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
         ${(ts.data_acquisitions).map(a => `
           <div style="display:inline-flex;flex-direction:column;padding:8px 14px;background:var(--violet-tint);border:1px solid var(--violet-border);border-radius:8px;">
-            <span style="font-size:13px;font-weight:700;color:var(--violet);">${escHtml(a.company)} <span style="font-size:11px;font-weight:600;color:var(--mid);">(${a.year})</span></span>
-            <span style="font-size:11px;color:var(--mid);margin-top:2px;">${escHtml(a.purpose)}</span>
+            <span style="${T.title};color:var(--violet);">${escHtml(a.company)} <span style="${T.bodySmGray12};font-weight:600;">(${a.year})</span></span>
+            <span style="${T.compact};margin-top:2px;">${escHtml(a.purpose)}</span>
           </div>`).join('')}
       </div>
       <div class="algolia-angle-box">
-        <div class="algolia-angle-label">Algolia Angle</div>
-        <p style="font-size:13px;color:var(--gray);line-height:1.55;margin:0;">3 data/AI acquisitions across 3 years — CLV modeling, demand forecasting, data integration. They've internalized their data layer. Algolia's API-first approach accelerates what their engineering teams are already building — not a replacement, an accelerator.</p>
+        ${algoliaAngleBadge()}
+        <p style="${T.compact};margin:0;">${ts.data_acquisitions.length} data/AI acquisitions — CLV modeling, demand forecasting, data integration. They've internalized their data layer. Algolia's API-first approach accelerates what their engineering teams are already building — not a replacement, an accelerator.</p>
       </div>
     </div>` : ''}
 
     ${ts.ai_search_gap && (ts.ai_search_gap.app_has_ai || ts.ai_search_gap.narrative) ? `
-    <div style="margin-top:20px;border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;padding:16px 18px;background:var(--amber-tint);">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:8px;">⚡ AI Search Gap</div>
-      ${ts.ai_search_gap.app_ai_name ? `<div style="font-size:14px;font-weight:700;color:var(--gray);margin-bottom:4px;">${escHtml(ts.ai_search_gap.app_ai_name)}${ts.ai_search_gap.app_platform ? ` · <span style="font-weight:400;color:var(--mid);">${escHtml(ts.ai_search_gap.app_platform)}</span>` : ''}</div>` : ''}
-      ${ts.ai_search_gap.web_search_vendor ? `<div style="font-size:12px;font-family:var(--font-mono,monospace);background:rgba(0,0,0,0.05);border:1px solid var(--border);border-radius:4px;padding:4px 8px;margin-bottom:10px;color:var(--gray);display:inline-block;">Web search: ${escHtml(ts.ai_search_gap.web_search_vendor)}</div>` : ''}
-      <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;">${escHtml(ts.ai_search_gap.narrative || '')}</div>
-      <div class="algolia-angle-box">
-        <div class="algolia-angle-label">Algolia Angle</div>
-        <p style="font-size:13px;color:var(--gray);line-height:1.55;margin:0;">${ts.ai_search_gap.algolia_angle || `You've invested in ${escHtml(ts.ai_search_gap.app_ai_name||'AI search')}. The underlying infrastructure is still custom-built. Algolia powers the search layer that makes AI experiences work on every surface — not just the app.`}</p>
+    <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+      <p class="section-desc" style="margin-bottom:12px;">AI Search Gap · Browser network inspection · ${s(D.meta?.data_vintage?.browser || '2026-04-14')}</p>
+      <div style="border:1px solid var(--amber-border);border-left:3px solid var(--amber);border-radius:var(--radius);padding:14px 16px;background:var(--amber-tint);">
+        ${ts.ai_search_gap.app_ai_name ? `<div style="${T.title};margin-bottom:4px;">${escHtml(ts.ai_search_gap.app_ai_name)}${ts.ai_search_gap.app_platform ? ` <span style="${T.bodySmGray12};font-weight:400;">· ${escHtml(ts.ai_search_gap.app_platform)}</span>` : ''}</div>` : ''}
+        ${ts.ai_search_gap.web_search_vendor ? `<div style="font-family:var(--font-mono,'SF Mono',monospace);${T.compact};background:rgba(0,0,0,0.04);border:1px solid var(--border);border-radius:4px;padding:3px 8px;margin-bottom:10px;display:inline-block;">Web search: ${escHtml(ts.ai_search_gap.web_search_vendor)}</div>` : ''}
+        <p style="${T.bodySmMid};line-height:1.6;margin:0 0 12px;">${escHtml(ts.ai_search_gap.narrative || '')}</p>
+        <div class="algolia-angle-box">
+          ${algoliaAngleBadge()}
+          <p style="${T.compact};margin:0;">${escHtml(ts.ai_search_gap.algolia_angle || `You've invested in ${ts.ai_search_gap.app_ai_name||'AI search'}. The underlying infrastructure is still custom-built. Algolia powers the search layer that makes AI experiences work on every surface.`)}</p>
+        </div>
       </div>
     </div>` : ''}
 
@@ -11155,24 +11575,6 @@ function sectionBattleCard(D) {
 
 
 
-        ${objections.length ? `
-
-        <div>
-
-          <div style="${T.eyebrow};margin-bottom:8px;">When They Push Back</div>
-
-          ${objections.slice(0,3).map(o=>`
-
-          <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
-
-            <div style="${T.labelRed};margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
-
-            <div style="${T.bodySm};">→ ${escHtml(o.counter||'')}</div>
-
-          </div>`).join('')}
-
-        </div>` : ''}
-
       </div>
 
 
@@ -11224,6 +11626,28 @@ function sectionBattleCard(D) {
 
 
     </div>
+
+    ${objections.length ? `
+
+    <div style="margin-top:24px;">
+
+      <div style="${T.eyebrow};margin-bottom:12px;">When They Push Back</div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+
+        ${objections.slice(0,3).map(o=>`
+
+        <div style="border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+
+          <div style="${T.labelRed};margin-bottom:8px;">"${escHtml(o.objection||'')}"</div>
+
+          <div style="${T.bodySm};line-height:1.5;">→ ${escHtml(o.counter||'')}</div>
+
+        </div>`).join('')}
+
+      </div>
+
+    </div>` : ''}
 
   </section>`;
 
@@ -11506,11 +11930,99 @@ function renderBerkshire(f) {
 function sectionROI(D) {
   const f = D.financials || {};
   const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  
+  const components = f.roi_components || [];
+  const rs = f.roi_scenarios || {};
+
+  const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
+  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'#f0fdfa', red:'var(--red-tint)', amber:'#fffbeb', green:'var(--green-tint)' };
+
+  const activeComps = components.filter(c => c.status === 'active');
+  const condComps   = components.filter(c => c.status === 'conditional');
+  const totalCons   = activeComps.reduce((s,c) => s + (c.conservative_raw||0), 0);
+  const totalMod    = activeComps.reduce((s,c) => s + (c.moderate_raw||0), 0);
+  const fmtM = n => '$' + (n/1e6).toFixed(1) + 'M';
+
+  const componentBreakdown = components.length ? `
+    <div style="margin-bottom:32px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <div style="${T.eyebrow};margin-bottom:4px;">6-Component Revenue Model — Each gap mapped to a dollar line</div>
+          <div style="${T.bodySm};color:var(--mid);">Based on 107.6M monthly visits · ~$9.6B digital revenue · 42.7% gross margin · AOV $110 placeholder — replace with Nike's actual numbers</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-shrink:0;">
+          <div style="text-align:center;background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:8px;padding:10px 16px;">
+            <div style="${T.eyebrowSmCol('var(--blue)')};margin-bottom:2px;">Conservative</div>
+            <div style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</div>
+            <div style="${T.bodySmGray12};">excl. C5 latency</div>
+          </div>
+          <div style="text-align:center;background:var(--green-tint);border:1px solid #bbf7d0;border-radius:8px;padding:10px 16px;">
+            <div style="${T.eyebrowSmCol('var(--green)')};margin-bottom:2px;">Moderate</div>
+            <div style="${T.h4};color:var(--green);">${fmtM(totalMod)}</div>
+            <div style="${T.bodySmGray12};">excl. C5 latency</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="background:var(--light);">
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);">Component · Search Gap</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on Nike.com</th>
+              <th style="${T.eyebrowSm};padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Conservative</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Moderate</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${components.map((c,i) => {
+              const col = colMap[c.color] || 'var(--blue)';
+              const bg  = bgMap[c.color]  || 'var(--blue-tint)';
+              const isCond = c.status === 'conditional';
+              return `<tr style="border-bottom:1px solid var(--border);${isCond?'opacity:0.65;':''}" title="${isCond?'Conditional — current latency acceptable; use as floor-preservation argument':''}">
+                <td style="padding:12px 16px;vertical-align:top;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
+                    <span style="${T.title};color:${col};">${escHtml(c.label)}</span>
+                    ${isCond ? `<span style="${T.eyebrowSmCol(col)};background:${bg};border-radius:3px;padding:1px 6px;font-size:9px;">CONDITIONAL</span>` : ''}
+                  </div>
+                  <div style="${T.bodySmGray12};padding-left:32px;">${escHtml(c.gap)}</div>
+                </td>
+                <td style="padding:12px 16px;vertical-align:top;">
+                  <div style="${T.bodySm};line-height:1.5;color:var(--gray);">${escHtml(c.gap_detail)}</div>
+                </td>
+                <td style="padding:12px 12px;text-align:right;vertical-align:top;">
+                  <span style="${T.title};color:var(--blue);">${escHtml(c.conservative_fmt)}</span>
+                </td>
+                <td style="padding:12px 16px;text-align:right;vertical-align:top;">
+                  <span style="${T.title};color:var(--green);">${escHtml(c.moderate_fmt)}</span>
+                </td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--light);">
+              <td colspan="2" style="padding:12px 16px;">
+                <strong style="${T.title};">Total (C5 excluded — conditional)</strong>
+                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: 107.6M visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
+              </td>
+              <td style="padding:12px 12px;text-align:right;"><strong style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</strong></td>
+              <td style="padding:12px 16px;text-align:right;"><strong style="${T.h4};color:var(--green);">${fmtM(totalMod)}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="${T.bodySmGray12};margin-top:8px;padding:0 4px;">
+        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (2.5%) — industry estimates. Replace with Nike's actual analytics before presenting to executive stakeholders. Monthly visits (107.6M) and gross margin (42.7%) are verified facts from SimilarWeb and Nike 10-K.
+      </div>
+    </div>` : '';
+
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
-    <div class="section-title">Revenue & ROI Calculator</div>
-    
+    <div class="section-title">Revenue & ROI Model</div>
+
+    ${componentBreakdown}
+
+    <div style="${T.eyebrow};margin-bottom:16px;">Interactive Calculator — Adjust to Your Numbers</div>
     <div class="roi-container">
         <div class="roi-builder">
             <div style="${T.bodySm}color:var(--mid);margin-bottom:20px;">Adjust the baseline metrics to calculate potential revenue impact based on actual customer case studies.</div>
@@ -11880,7 +12392,21 @@ function sectionCompetitiveSynthesis(D) {
 
   if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
 
-  const cap = (v) => v===true?'<span class="cap-yes">✓</span>':v===false?'<span class="cap-no">✗</span>':`<span class="cap-part">${escHtml(String(v||'~'))}</span>`;
+  const cap = (v) => {
+    if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
+    if (v === false) return '<span class="cap-no"  title="Not available">✗</span>';
+    if (!v || v === '—' || v === '-') return '<span class="cap-part" title="Unknown">—</span>';
+    const s = String(v).toLowerCase();
+    const tooltip = escHtml(String(v));
+    // ✓ : confirmed Algolia or explicit capability
+    if (/algolia|confirmed|✓|full support/.test(s))
+      return `<span class="cap-yes" title="${tooltip}">✓</span>`;
+    // ✗ : explicit gaps
+    if (/none|no |not |zero|lacks|missing|unknown|diy only|keyword.only/.test(s))
+      return `<span class="cap-no" title="${tooltip}">✗</span>`;
+    // ~ : partial or vendor-dependent
+    return `<span class="cap-part" title="${tooltip}">~</span>`;
+  };
 
 
 
@@ -11924,11 +12450,15 @@ function sectionCompetitiveSynthesis(D) {
 
     <p class="section-desc">${escHtml(cs.scenario||'')} ${cs.scenario_note?'— '+escHtml(cs.scenario_note):''}</p>
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:28px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${matrix.length ? `<div style="padding:14px 16px;background:var(--gray);border-radius:var(--radius);margin-bottom:20px;">
+      <div style="font-size:13px;font-weight:600;color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
+    </div>` : ''}
+
+    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
-    ${tiers.length ? `
+    ${false && tiers.length ? `
 
     <div style="margin-bottom:28px;">
 
@@ -12373,20 +12903,19 @@ function sectionWhyNow(D) {
   const _bcArr = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
   const vacantRole = _bcArr.find(r=>r.status?.includes('OPEN'));
 
-  // Build timing triggers — diverse: 1 exec quote, 1 hiring signal, 1 other
-  const QUOTE_TYPES   = new Set(['funding','exec','earnings_quote','media_quote']);
-  const HIRING_TYPES  = new Set(['hiring','hiring_signal']);
-  const OTHER_TYPES   = new Set(['competitor','news_signal','sec_risk','industry-opp']);
+  // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
+
+  // Diverse deduplicated: 1 exec quote + 1 hiring signal + 1 other, no repeat person
+  const QUOTE_TYPES  = new Set(['funding','exec','earnings_quote','media_quote','leadership_change']);
+  const HIRING_TYPES = new Set(['hiring','hiring_signal']);
+  const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
   const allSigs = D.intelligence_signals || [];
-
-  // Pre-deduplicate each bucket independently (by badge_label)
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
   const uniqueOther   = _uniqBy(allSigs.filter(s => OTHER_TYPES.has(s.type)));
 
-  // Pick across buckets with cross-bucket dedup: 1 quote + 1 hiring + 1 other, fill remaining with more quotes
   const _gSeen = new Set();
   const _pick = (arr, n) => arr.filter(s => { const k=s.badge_label||s.title||s.type; if(_gSeen.has(k)) return false; _gSeen.add(k); return true; }).slice(0, n);
 
@@ -12394,14 +12923,14 @@ function sectionWhyNow(D) {
     ..._pick(uniqueQuotes,  1),
     ..._pick(uniqueHiring,  1),
     ..._pick(uniqueOther,   1),
-    ..._pick(uniqueQuotes,  2),  // fill remaining slots with more unique exec quotes
+    ..._pick(uniqueQuotes,  2),
   ];
 
-  const _getDetail = s => { const raw = s.body||s.text||s.signal||s.quote||''; return raw.slice(0,160)+(raw.length>160?'…':''); };
+  const _getDetail = s => { const raw = s.signal||s.body||s.text||''; return raw.slice(0,200)+(raw.length>200?'…':''); };
 
   const sigTriggers = candidatePool.slice(0, 3).map(s => ({
-      icon: QUOTE_TYPES.has(s.type) && s.type!=='funding' ? '💬'
-          : s.type==='funding' ? '🏦'
+      icon: s.type==='funding' ? '🏦'
+          : QUOTE_TYPES.has(s.type) ? '💬'
           : HIRING_TYPES.has(s.type) ? '👤'
           : (s.type==='competitor'||s.type==='sec_risk') ? '⚠️'
           : '📈',
@@ -12856,8 +13385,6 @@ function sectionSalesPlays(D) {
 
     </div>
 
-    ${commonObjHTML}
-
   </section>`;
 
 }
@@ -13225,29 +13752,11 @@ function sectionOutreachPlan(D) {
 
 
 
-    <!-- Contact Cards -->
+    <!-- Contact summary — compact, links back to Buying Committee section above -->
 
-    <div style="${T.eyebrow};margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
-
-      ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
-
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-
-          <span style="${T.microCol(c.tier===1?'var(--blue)':'var(--green)')};padding:2px 7px;border-radius:20px;${c.tier===1?'background:var(--blue-tint);':'background:var(--green-tint);'}">T${c.tier} ${escHtml(c.role)}</span>
-
-        </div>
-
-        <div style="${T.title};margin-bottom:2px;">${escHtml(c.name)}</div>
-
-        <div style="${T.bodySm};margin-bottom:8px;">${escHtml(c.title)}</div>
-
-        <div style="${T.bodySm};line-height:1.5;margin-bottom:8px;">${escHtml(c.angle)}</div>
-
-        ${linkedinBtn(c.linkedin_url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(c.name)}`)}
-
-      </div>`).join('')}
+      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
 
     </div>
 
@@ -13308,6 +13817,24 @@ function sectionOutreachPlan(D) {
               <span>${escHtml(a)}</span>
 
             </div>`).join('')}
+
+          </div>` : ''}
+
+          ${isLinkedIn && !t.actions && (t.subject || t.body) ? `
+
+          <!-- LinkedIn connection note (no actions array) -->
+
+          <div style="background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:12px 14px;">
+
+            ${t.subject ? `<div style="margin-bottom:8px;">
+
+              <span style="${T.eyebrowSmCol('var(--linkedin)')};">Note: </span>
+
+              <span style="${T.bodySm};font-style:italic;">"${escHtml(t.subject)}"</span>
+
+            </div>` : ''}
+
+            ${t.body ? `<div style="background:white;border:1px solid #bfdbfe;border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
 
           </div>` : ''}
 
@@ -13806,13 +14333,176 @@ function renderSections(D) {
 
   /* ── TAB 4: BUSINESS CASE ────────────────────── */
 
+  // ── The Pitch in 5 Minutes ──────────────────────────────────────────────
+  function sectionCaseNarrative(D) {
+    const sc  = D.score || {};
+    const sa  = D.traffic?.search_abandonment || {};
+    const rfp = D.recommended_first_play || {};
+    const roi = D.financials?.roi_calc || {};
+    const eq  = (D.financials?.exec_quotes || [])[0] || {};
+    const topCs = (D.findings || []).filter(f => f.algolia_case_study_company).slice(0,2);
+    const critCount = sc.critical_count || 0;
+    const modCount  = sc.moderate_count  || 0;
+    if (!sc.overall) return '';
+    return `<section id="section-case-narrative" class="audit-section">
+      <div class="section-eyebrow">Business Case · The Narrative ${srcTag('audit','Search Audit')}</div>
+      <div class="section-title">The Pitch in 5 Minutes</div>
+      <p class="section-desc">Everything you need to open the conversation — synthesized from the full audit</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+        <!-- Left: The numbers -->
+        <div style="background:linear-gradient(135deg,#0D1240 0%,#003DFF 100%);border-radius:10px;padding:20px;color:white;">
+          <div style="${T.eyebrowSmCol('rgba(255,255,255,0.55)')};margin-bottom:16px;">The Situation</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <div style="font-size:32px;font-weight:700;color:white;line-height:1;">${sc.overall}/10</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
+            </div>
+            ${sa.google_outbound_pct ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
+              <div style="font-size:22px;font-weight:700;color:#FCA5A5;">${escHtml(sa.google_outbound_pct)}</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:#FCA5A5;">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
+            </div>` : ''}
+            ${roi.gross_profit_impact_est ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
+              <div style="font-size:22px;font-weight:700;color:#6EE7B7;">${escHtml(roi.gross_profit_impact_est)}</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
+            </div>` : ''}
+          </div>
+        </div>
+        <!-- Right: The narrative -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          ${eq.quote ? `<div style="padding:14px 16px;background:var(--blue-light);border-left:3px solid var(--blue-border);border-radius:0 var(--radius) var(--radius) 0;">
+            <div style="font-size:13px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
+            <div style="${T.eyebrowSm};color:var(--blue);">${escHtml(eq.speaker)}</div>
+          </div>` : ''}
+          ${topCs.length ? `<div style="padding:12px 14px;background:var(--green-tint);border:1px solid var(--green-border);border-radius:var(--radius);">
+            <div style="${T.eyebrowSm};color:var(--green);margin-bottom:8px;">Proof it works</div>
+            ${topCs.map(c=>`<div style="${T.compact};margin-bottom:4px;"><strong>${escHtml(c.algolia_case_study_company)}</strong> — ${escHtml(c.algolia_case_study_result)}</div>`).join('')}
+          </div>` : ''}
+          ${rfp.headline ? `<div style="padding:12px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:var(--radius);">
+            <div style="${T.eyebrowSm};color:var(--amber);margin-bottom:4px;">First move</div>
+            <div style="${T.compact};">${escHtml(rfp.headline)}</div>
+          </div>` : ''}
+        </div>
+      </div>
+      <div class="algolia-angle-box">
+        ${algoliaAngleBadge()}
+        <p style="${T.compact};margin:0;">${critCount} critical gaps. ${modCount} moderate gaps. The CEO said "investing in technology platforms." The traffic data shows a ${sa.google_outbound_pct||''} leak to Google. ${roi.gross_profit_impact_est ? `At ${roi.gross_margin_pct||''}% gross margin, fixing search returns ${escHtml(roi.gross_profit_impact_est)} gross profit.` : ''} This is the call.</p>
+      </div>
+    </section>`;
+  }
+
+  // ── Problem → Dollar Impact ─────────────────────────────────────────────
+  function sectionProblemDollar(D) {
+    const findings = (D.findings || []).filter(f => f.id && f.title);
+    if (!findings.length) return '';
+    const critical = findings.filter(f => f.severity === 'high' || f.severity === 'critical');
+    const moderate = findings.filter(f => f.severity !== 'high' && f.severity !== 'critical');
+    function renderFinding(f, idx) {
+      const sevCol = (f.severity==='high'||f.severity==='critical') ? 'var(--red)' : 'var(--amber)';
+      const sevBg  = (f.severity==='high'||f.severity==='critical') ? 'var(--red-tint)' : 'var(--amber-tint)';
+      const sevBdr = (f.severity==='high'||f.severity==='critical') ? 'var(--red-border)' : 'var(--amber-border)';
+      return `<div style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-left:3px solid ${sevCol};border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;">
+          <div style="${T.title};flex:1;">${escHtml(f.title)}</div>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
+        </div>
+        ${f.tested_query ? `<div style="${T.compact};color:var(--mid);margin-bottom:6px;font-family:var(--font-mono,'SF Mono',monospace);">Query tested: "${escHtml(f.tested_query)}"</div>` : ''}
+        ${f.actual_behavior ? `<div style="${T.compact};color:var(--mid);margin-bottom:8px;">${escHtml(f.actual_behavior)}</div>` : ''}
+        ${f.impact_stat ? `<div style="display:flex;align-items:baseline;gap:6px;padding:8px 10px;background:${sevBg};border:1px solid ${sevBdr};border-radius:6px;">
+          <div style="font-size:13px;font-weight:600;color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
+          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="font-size:10px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
+        </div>` : ''}
+      </div>`;
+    }
+    return `<section id="section-problem-dollar" class="audit-section">
+      <div class="section-eyebrow">Business Case · The Problem ${srcTag('audit','Search Audit')} ${srcTag('bay','Baymard')} ${srcTag('sw','SimilarWeb')}</div>
+      <div class="section-title">Problem → Dollar Impact</div>
+      <p class="section-desc">${critical.length} critical gaps · ${moderate.length} moderate gaps · Each finding sourced from live browser testing</p>
+      ${critical.length ? `<div style="${T.eyebrowSm};margin-bottom:10px;">Critical</div>${critical.map(renderFinding).join('')}` : ''}
+      ${moderate.length ? `<div style="${T.eyebrowSm};margin-top:16px;margin-bottom:10px;">Moderate</div>${moderate.map(renderFinding).join('')}` : ''}
+    </section>`;
+  }
+
+  // ── Solution Map ────────────────────────────────────────────────────────
+  function sectionSolutionMap(D) {
+    const icp = D.icp_mapping || {};
+    const ptp = icp.priority_to_product || [];
+    const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
+    if (!ptp.length && !findings.length) return '';
+    return `<section id="section-solution-map" class="audit-section">
+      <div class="section-eyebrow">Business Case · The Solution</div>
+      <div class="section-title">Solution Map</div>
+      <p class="section-desc">Each gap found in the audit mapped to the Algolia product that closes it — with proof</p>
+      ${ptp.length ? `
+      <div style="margin-bottom:20px;">
+        <div style="${T.eyebrowSm};margin-bottom:12px;">Priority plays — sourced from exec language</div>
+        ${ptp.map(p=>`
+        <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:10px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+          <div style="padding:12px 14px;background:var(--red-tint);">
+            <div style="${T.eyebrowSm};color:var(--red);margin-bottom:6px;">Pain</div>
+            <div style="${T.compact};">${escHtml(p.pain||'')}</div>
+            ${p.evidence ? `<div style="${T.compact};color:var(--mid);font-style:italic;margin-top:6px;">${escHtml(p.evidence.slice(0,100))}${p.evidence.length>100?'…':''}</div>` : ''}
+          </div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="padding:12px 14px;background:var(--blue-tint);">
+            <div style="${T.eyebrowSm};color:var(--blue);margin-bottom:6px;">Algolia Product</div>
+            <div style="${T.compact};font-weight:600;">${escHtml(p.product||'')}</div>
+          </div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="padding:12px 14px;background:var(--green-tint);">
+            <div style="${T.eyebrowSm};color:var(--green);margin-bottom:6px;">Proof</div>
+            ${p.proof_company && p.proof_url
+              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
+                 <div style="${T.compact};color:var(--gray);margin-top:4px;">${escHtml(p.proof_result||'')}</div>`
+              : `<div style="${T.compact};color:var(--mid);">See case studies below</div>`
+            }
+          </div>
+        </div>`).join('')}
+      </div>` : ''}
+      ${findings.length ? `
+      <div style="${T.eyebrowSm};margin-bottom:12px;">Finding-level map — from browser audit</div>
+      <div style="overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:var(--near-white);border-bottom:2px solid var(--border);">
+            <th style="padding:8px 12px;text-align:left;${T.eyebrowSm};">Gap Found</th>
+            <th style="padding:8px 12px;text-align:left;${T.eyebrowSm};">Algolia Fix</th>
+            <th style="padding:8px 12px;text-align:left;${T.eyebrowSm};">Proof</th>
+          </tr></thead>
+          <tbody>
+          ${findings.map((f,i)=>`<tr style="border-bottom:1px solid var(--border);${i%2?'background:var(--near-white);':''}">
+            <td style="padding:9px 12px;font-size:12px;font-weight:600;color:var(--gray);">${escHtml(f.title)}</td>
+            <td style="padding:9px 12px;font-size:12px;color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
+            <td style="padding:9px 12px;font-size:12px;">
+              ${f.algolia_case_study_url ? `<a href="${escHtml(f.algolia_case_study_url)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:600;">${escHtml(f.algolia_case_study_company)}</a>` : escHtml(f.algolia_case_study_company||'')}
+              ${f.algolia_case_study_result ? `<div style="${T.compact};color:var(--green);margin-top:2px;">${escHtml(f.algolia_case_study_result)}</div>` : ''}
+            </td>
+          </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>` : ''}
+      <div class="algolia-angle-box" style="margin-top:16px;">
+        ${algoliaAngleBadge()}
+        <p style="${T.compact};margin:0;">Every gap has a fix. Every fix has proof. This isn't a pitch — it's a diagnosis with a prescription.</p>
+      </div>
+    </section>`;
+  }
+
+  /* ── TAB 4: BUSINESS CASE ────────────────────── */
+
   const caseHTML = [
 
-    sectionBusinessCaseHook(D),
+    sectionCaseNarrative(D),       // 1. Pitch in 5 Minutes
 
-    sectionROI(D),
+    sectionBusinessCaseHook(D),    // 2. Said vs. Found
 
-    sectionWhyNow(D),
+    sectionProblemDollar(D),       // 3. What's broken + dollar impact
+
+    sectionCompetitiveSynthesis(D),// 4. Competitive gap (now before ROI — creates urgency)
+
+    sectionROI(D),                 // 5. ROI — lands harder after seeing competitor gap
+
+    sectionSolutionMap(D),         // 6. How Algolia fixes it
+
+    sectionWhyNow(D),              // 8. Why now
 
   ].join('');
 
@@ -13822,17 +14512,15 @@ function renderSections(D) {
 
   const playHTML = [
 
-    sectionPreCallBrief(D),
+    sectionBattleCard(D),           // 1. Battle card — quick reference, the hook
 
-    sectionBuyingCommittee(D),
+    sectionSalesPlays(D),           // 2. Sales plays — accordion with discovery Qs + objections
 
-    sectionCompetitiveSynthesis(D),
+    sectionPreCallBrief(D),         // 3. Pre-call brief — cheat sheet + talk track
 
-    sectionBattleCard(D),
+    sectionBuyingCommittee(D),      // 4. Buying committee + engagement phases
 
-    sectionSalesPlays(D),
-
-    sectionOutreachPlan(D),
+    sectionOutreachPlan(D),         // 5. ABX / Outreach sequence
 
     sectionSources(D),
 
@@ -13948,12 +14636,11 @@ const SECTION_STRIP_CONFIG = {
     { id: 'section-why-now',      label: 'Why Act Now',       desc: 'Timing signals' },
   ],
   play: [
-    { id: 'section-precall',          label: 'Pre-Call',    desc: 'Open lines & cheat sheet' },
-    { id: 'section-buying-committee', label: 'Power Map',   desc: 'Who to call and when' },
-    { id: 'section-competitive',      label: 'Competitive', desc: 'Landscape & golden angle' },
-    { id: 'section-battlecard',       label: 'Battle Card', desc: 'Algolia vs current vendor' },
-    { id: 'section-plays',             label: 'Sales Plays', desc: 'Angles · Questions · Objections' },
-    { id: 'section-outreach',         label: 'Outreach',    desc: 'ABX sequence & contacts' },
+    { id: 'section-battlecard',       label: 'Battle Card',   desc: 'Algolia vs current vendor' },
+    { id: 'section-plays',            label: 'Sales Plays',   desc: 'Plays & discovery questions' },
+    { id: 'section-precall',          label: 'Pre-Call',      desc: 'Cheat sheet & talk track' },
+    { id: 'section-buying-committee', label: 'Power Map',     desc: 'Who to call and when' },
+    { id: 'section-outreach',         label: 'ABX Campaign',  desc: 'Outreach sequence & contacts' },
   ],
 };
 
@@ -14204,10 +14891,11 @@ function initCmdK(D) {
     ['🥊', 'Competitive Landscape',        'section-competitive',       'case'],
     // Sales Actions tab
     ['🎯', 'Pre-Call Brief',               'section-precall',           'play'],
-    ['🗺', 'Buying Committee',             'section-buying-committee',  'play'],
+    ['🔍', 'Discovery & Objections',       'section-discovery',         'play'],
     ['⚔️',  'Battle Card',                  'section-battlecard',        'play'],
     ['🎲', 'Sales Plays',                  'section-plays',             'play'],
-    ['📬', 'Outreach Sequence',            'section-outreach',          'play'],
+    ['🗺', 'Buying Committee',             'section-buying-committee',  'play'],
+    ['📬', 'ABX Campaign',                 'section-outreach',          'play'],
   ];
 
   sectionLinks.forEach(([icon, text, id, tab]) =>
