@@ -10223,7 +10223,10 @@ function sectionFinancials(D) {
     const neg = str.includes('\u2212') || str.startsWith('-');
     const n = parseFloat(str.replace(/[^0-9.]/g, ''));
     if (isNaN(n)) return null;
-    return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
+    const raw = neg ? -n : n;
+    // Normalize to $B: M-suffix values are millions → divide by 1000
+    if (/\$[\d\s~,.]*[Mm]\b|[\d][Mm]\b/.test(str)) return raw / 1000;
+    return raw; // B stays as B, % stays as %
   }
 
   function yoyStr(cur, prev) {
@@ -10236,24 +10239,26 @@ function sectionFinancials(D) {
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
   const rvVals = revChron.map(r => pv(r.revenue)          || 0);
-  const gpVals = revChron.map(r => pv(r.gross_profit)     || 0);
-  const ebVals = revChron.map(r => pv(r.ebitda)           || 0);
-  const opVals = revChron.map(r => pv(r.operating_income) || 0);
-  const niVals = revChron.map(r => pv(r.net_income)       || 0);
+  const gpVals = revChron.map(r => pv(r.gross_profit)     ?? null);
+  const ebVals = revChron.map(r => pv(r.ebitda)           ?? null);
+  const opVals = revChron.map(r => pv(r.operating_income) ?? null);
+  const niVals = revChron.map(r => pv(r.net_income)       ?? null);
 
-  // Margins derived (all valid — calculated from sourced numbers)
-  const gmVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
-  const emVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  // Margins derived — only when both numerator and revenue are non-null
+  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!==null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!==null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
   const nmVals = revChron.map(r => pv(r.net_margin));
 
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
+  // Dynamic scale: derive maxBarVal from actual data, never hardcode $56B
+  const _maxRv = Math.max(...rvVals.filter(v=>v>0), 0.001);
+  const maxBarVal = Math.max(Math.ceil(_maxRv * 1.3 * 20) / 20, 0.1);
   const maxPctVal=20; // % scale right axis
 
-  function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
-  function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
+  function bY(v){ return Math.max(padT, padT + plotH - Math.round((Math.min(Math.max(v,0),maxBarVal)/maxBarVal)*plotH)); }
+  function bH(v){ const top=bY(v); return Math.max(Math.min(padT+plotH-top, plotH), 2); }
   function lY(p){ return p===null?null: padT + plotH - Math.round((p/maxPctVal)*plotH); }
 
   const grpW = plotW/nYrs;
@@ -10285,11 +10290,15 @@ function sectionFinancials(D) {
   const linePath = linePts.length>1 ? linePts.map((pt,i)=>(i===0?`M${pt.x},${pt.y}`:`L${pt.x},${pt.y}`)).join(' ') : '';
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
-  // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  // Grid lines + left axis — dynamic scale with M/B smart labels
+  const _gStep = maxBarVal <= 0.5 ? 0.1 : maxBarVal <= 2 ? 0.25 : maxBarVal <= 10 ? 1 : maxBarVal <= 30 ? 5 : 10;
+  const _gCount = Math.min(Math.floor(maxBarVal / _gStep), 6);
+  const _gVals = Array.from({length: _gCount + 1}, (_, i) => parseFloat((_gStep * i).toFixed(4)));
+  const _fmtAx = v => v === 0 ? '$0' : v < 1 ? `$${Math.round(v*1000)}M` : `$${v % 1 === 0 ? v : v.toFixed(1)}B`;
+  const gridLines = _gVals.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
-            <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
+            <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${_fmtAx(v)}</text>`;
   }).join('');
 
   // Right axis (%)
@@ -10334,7 +10343,7 @@ function sectionFinancials(D) {
   }).join('');
 
   const svgChart = `<div style="position:relative;">
-  <svg viewBox="0 0 ${cW} ${cH}" style="width:100%;height:auto;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 ${cW} ${cH}" style="width:100%;height:auto;overflow:hidden;" xmlns="http://www.w3.org/2000/svg">
     ${gridLines}${rightAxis}
     <line x1="${padL}" y1="${padT+plotH}" x2="${padL+plotW}" y2="${padT+plotH}" style="stroke:var(--border)" stroke-width="1"/>
     ${svgBars}
@@ -10390,7 +10399,7 @@ function sectionFinancials(D) {
     return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
   }
 
-  const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
+  const fB  = v => v===null ? '—' : v < 1 ? `$${Math.round(v*1000)}M` : `$${v.toFixed(1)}B`;
   const fPt = v => v!==null ? `${v.toFixed(1)}%` : '—';
 
   const yhdr = revChron.map((r,i)=>`<th style="padding:7px 10px;text-align:right;${T.eyebrowSm};color:${i===nYrs-1?'var(--blue)':'var(--mid)'};">${escHtml(r.year)}</th>`).join('');
@@ -10424,6 +10433,7 @@ function sectionFinancials(D) {
       <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
+        ${q.date?`<span style="${T.bodySmGray12};">· ${escHtml(q.date)}</span>`:''}
         <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
         ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
       </div>
@@ -10462,21 +10472,64 @@ function sectionFinancials(D) {
 
   const latNm = nmVals[nYrs-1], firstNm = nmVals[0];
   const latEm = emVals[nYrs-1], firstEm = emVals[0];
-  const angleText = roi.gross_profit_impact_est
-    ? `Revenue down 10%, EBITDA margin compressed from ${firstEm!==null?firstEm+'%':''} → ${latEm!==null?latEm+'%':''} over 4 years. CEO says "investing in technology platforms." At ${roi.gross_margin_pct||''}% gross margin, a ${roi.lift_pct||1}% revenue lift from better search = <strong>${escHtml(roi.gross_profit_impact_est)}</strong> gross profit.`
-    : (f.algolia_angle || '');
+
+  // ROI components accordion — for private companies with roi_components breakdown
+  const roiComponents = f.roi_components || [];
+  const roiCompAccordion = roiComponents.length ? `
+    <div style="margin-top:10px;">
+      <button onclick="(function(btn){const b=btn.nextElementSibling;const open=b.style.display!=='none';b.style.display=open?'none':'block';btn.querySelector('span').textContent=open?'How is this calculated? ↓':'Hide calculation ↑';})(this)"
+        style="background:none;border:none;padding:0;${T.compact};color:var(--blue);cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:2px;">
+        <span>How is this calculated? ↓</span>
+      </button>
+      <div style="display:none;margin-top:10px;padding:12px 14px;background:var(--near-white);border:1px solid var(--border);border-radius:var(--radius);">
+        <div style="${T.eyebrowSm};margin-bottom:10px;">6-Component Search ROI Model</div>
+        ${roiComponents.map(c=>`
+          <div style="display:grid;grid-template-columns:auto 1fr auto auto;gap:4px 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);">
+            <span style="${T.compact};font-weight:700;color:var(--blue);">${escHtml(c.id)}</span>
+            <span style="${T.compact};color:var(--gray);">${escHtml(c.label)}</span>
+            <span style="${T.compact};color:var(--mid);text-align:right;">${escHtml(c.conservative_fmt)}</span>
+            <span style="${T.compact};color:var(--mid);text-align:right;">${escHtml(c.moderate_fmt)}</span>
+          </div>`).join('')}
+        <div style="margin-top:8px;padding-top:8px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="${T.bodySmGray12};">Conservative · Moderate</span>
+          <span style="font-size:16px;font-weight:700;color:var(--blue);">${escHtml(f.search_roi_est||'')}</span>
+        </div>
+      </div>
+    </div>` : '';
+
+  // Build angle text — public company path (gross_profit_impact_est) or private company path (roi_components/search_roi_est)
+  let angleText = '';
+  if (roi.gross_profit_impact_est) {
+    angleText = `Revenue down 10%, EBITDA margin compressed from ${firstEm!==null?firstEm+'%':''} → ${latEm!==null?latEm+'%':''} over 4 years. CEO says "investing in technology platforms." At ${roi.gross_margin_pct||''}% gross margin, a ${roi.lift_pct||1}% revenue lift from better search = <strong>${escHtml(roi.gross_profit_impact_est)}</strong> gross profit.`;
+  } else if (f.search_roi_est || roiComponents.length) {
+    const topLine = f.search_roi_est ? `Search revenue opportunity: <strong>${escHtml(f.search_roi_est)}</strong> across 6 audit-evidenced components.` : '';
+    const roiLine = roi.incremental_revenue_est ? ` Conservative baseline: ${escHtml(roi.incremental_revenue_est)} from a ${roi.lift_pct||0.5}% conversion lift on ${escHtml(roi.revenue_basis||'')} e-commerce revenue.` : '';
+    // Surface the first per-quote algolia angle as supporting context
+    const firstQuoteAngle = execQuotes[0]?.algolia_angle || '';
+    const quoteAngleLine = firstQuoteAngle ? ` ${escHtml(firstQuoteAngle)}` : '';
+    angleText = topLine + roiLine + quoteAngleLine;
+  } else {
+    angleText = f.algolia_angle || '';
+  }
+
+  const activeAccordion = roi.gross_profit_impact_est ? roiAccordion : roiCompAccordion;
 
   const algoliaAngleHtml = angleText ? `
     <div class="algolia-angle-box" style="margin-top:20px;">
       ${algoliaAngleBadge()}
       <p style="${T.compact};margin:0;">${angleText}</p>
-      ${roiAccordion}
+      ${activeAccordion}
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
     <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
     <div class="section-title">Financial Profile</div>
     <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+
+    ${(f.berkshire_note || f.investor_note) ? `<div style="margin-bottom:16px;padding:10px 14px;background:var(--amber-tint,#fffbeb);border:1px solid var(--amber-border,#fde68a);border-radius:var(--radius);display:flex;gap:10px;align-items:flex-start;">
+      <span style="font-size:14px;flex-shrink:0;">⚠️</span>
+      <span style="${T.bodySmGray12};color:var(--gray);line-height:1.5;">${escHtml(f.berkshire_note || f.investor_note)}</span>
+    </div>` : ''}
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
