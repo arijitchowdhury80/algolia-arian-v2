@@ -8536,6 +8536,7 @@ function sectionOverviewGrid(D) {
 
   const whyNowSignals = [...(D.intelligence_signals||[])]
     .filter(s => !['hiring','hiring_signal'].includes(s.type))
+    .filter(s => !!(s.relevance || s.algolia_angle))  // must have Algolia angle to appear
     .sort((a,b) => (WHY_NOW_TIER[a.type]||'5').localeCompare(WHY_NOW_TIER[b.type]||'5'))
     .slice(0, 3);
 
@@ -8544,7 +8545,9 @@ function sectionOverviewGrid(D) {
     const color = WHY_NOW_COLOR[tier] || 'var(--mid)';
     const icon  = WHY_NOW_ICON[s.type] || '🔔';
     const label = escHtml(s.badge_label || s.title || s.type);
-    const detail = escHtml((s.body || s.text || s.quote || s.signal || '').slice(0, 90));
+    const signalText = (s.body || s.text || s.quote || s.signal || '').slice(0, 90);
+    const algoliaAngle = (s.relevance || s.algolia_angle || '').slice(0, 120);
+    const detail = escHtml(signalText);
     const clickable = !!s.source_url;
     return `<div class="why-now-row${clickable?' why-now-row--link':''}"
         style="display:flex;align-items:flex-start;gap:10px;padding:9px 4px;border-bottom:1px solid rgba(0,0,0,0.05);border-radius:6px;"
@@ -8556,7 +8559,8 @@ function sectionOverviewGrid(D) {
           <span class="why-now-label" style="${T.compact};font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
           ${clickable?`<span style="${T.compact};color:var(--mid);margin-left:auto;flex-shrink:0;transition:transform 0.15s;">↗</span>`:''}
         </div>
-        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${detail}</div>`:''}
+        ${detail?`<div style="${T.compact};color:var(--mid);line-height:1.4;margin-bottom:3px;">${detail}</div>`:''}
+        ${algoliaAngle?`<div style="${T.compact};color:var(--blue);line-height:1.4;font-style:italic;">${escHtml(algoliaAngle)}</div>`:''}
       </div>
     </div>`;
   }).join('');
