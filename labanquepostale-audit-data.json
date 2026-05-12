@@ -14,7 +14,7 @@
     },
     "skill_enrichment_completed": true,
     "generated_by": "generate-audit-data.py + LLM synthesis",
-    "patch_date": "2026-05-11"
+    "patch_date": "2026-05-12"
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/La_Banque_postale_-_Paris_07.jpg/1280px-La_Banque_postale_-_Paris_07.jpg",
@@ -201,7 +201,9 @@
       "urgency_score": 9,
       "category_tag": "leadership_change",
       "source_url": "https://www.vd-communication.fr/nomination-la-banque-postale-directeur-digital-de-la-banque-de-detail/",
-      "source_date": "2025-06-01"
+      "source_date": "2025-06-01",
+      "text": "Audrey Pujalte appointed Head of Digital Retail Banking (June 2025) — ex-CDO Carrefour Banque & Assurance, ex-Director Digital Transformation Société Générale Assurances. Now 11 months in role, actively building her 2026 digital roadmap.",
+      "badge_label": "News"
     },
     {
       "type": "earnings_quote",
@@ -210,7 +212,9 @@
       "urgency_score": 8,
       "category_tag": "tech_investment",
       "source_url": "https://www.labanquepostale.com/en/newsroom-publications/news-feed/2026/2025-annual-results.html",
-      "source_date": "2026-02-26"
+      "source_date": "2026-02-26",
+      "text": "FY2025 record results: net income €1.6B (+31.2% YoY), NBI €7.7B (+2.7%), RONE 11.5% (+2.5 pts), H1 2025 digital sales +28% YoY — the strongest half-year digital performance on record.",
+      "badge_label": "Earnings"
     },
     {
       "type": "news_signal",
@@ -219,7 +223,9 @@
       "urgency_score": 8,
       "category_tag": "digital_transformation",
       "source_url": "https://techcrunch.com/2025/12/23/frances-postal-and-banking-services-disrupted-by-suspected-ddos-attack/",
-      "source_date": "2025-12-23"
+      "source_date": "2025-12-23",
+      "text": "Dec 22, 2025 – Jan 5, 2026: Largest DDoS attack in French banking history, attributed to Russian hacktivist group. labanquepostale.fr, Colissimo, Digiposte disrupted. No data breach but 2-week partial outage.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -228,7 +234,9 @@
       "urgency_score": 8,
       "category_tag": "ai_disruption",
       "source_url": "https://www.larevuedudigital.com/ai-act-la-banque-postale-mobilisee-sur-la-conformite-de-ses-ia/",
-      "source_date": "2026-05-05"
+      "source_date": "2026-05-05",
+      "text": "La Banque Postale signed a Mistral AI deal (May 2026) — accelerating AI investment narrative. Also deployed a custom ChatGPT GPT (chatgpt.com/g/g-JAup87oUs) and an internal 'Lucy' conversational callbot.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -237,7 +245,9 @@
       "urgency_score": 7,
       "category_tag": "competitive_threat",
       "source_url": "https://www.inbenta.com/industries/banking/",
-      "source_date": "2026-04-28"
+      "source_date": "2026-04-28",
+      "text": "BNP Paribas and Crédit Agricole confirmed Inbenta customers; Société Générale, Caisse d'Épargne, and BoursoBank show similar FAQ tooling profiles [WEBSEARCH — not confirmed at inbenta.com]",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -246,7 +256,9 @@
       "urgency_score": 7,
       "category_tag": "tech_investment",
       "source_url": "https://www.larevuedudigital.com/ai-act-la-banque-postale-mobilisee-sur-la-conformite-de-ses-ia/",
-      "source_date": "2025-01-01"
+      "source_date": "2025-01-01",
+      "text": "Active EU AI Act compliance program (three pillars: cartography, governance, acculturation). All vendor AI audited by embedded risk managers. Goube: 'We didn't wait for the AI Act to address this — it reinforces the need.' AI governance infrastructure is live.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -255,7 +267,9 @@
       "urgency_score": 6,
       "category_tag": "digital_transformation",
       "source_url": "https://www.labanquepostale.com/content/dam/lbp/documents/communiques-de-presse/2025/CP-LBP-Nouvelle-Application-2025.pdf",
-      "source_date": "2025-03-24"
+      "source_date": "2025-03-24",
+      "text": "New mobile app launched March 2025 — co-designed with 800 customers, eco-designed, 5.7M downloads by end 2025. App redesign represents a major UX quality investment for the 5.7M app users. Web search (57% of traffic = 9.7M mobile web sessions/month) has received no equivalent upgrade.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -264,7 +278,9 @@
       "urgency_score": 7,
       "category_tag": "competitive_threat",
       "source_url": "https://www.similarweb.com/website/labanquepostale.fr/",
-      "source_date": "2026-04-28"
+      "source_date": "2026-04-28",
+      "text": "Outgoing traffic shows google.fr / google.com as primary outgoing destination — users arriving at labanquepostale.fr, failing to find what they need via on-site search, and re-querying on Google. 61.93% of outgoing traffic goes to financial services comparison sites.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -273,7 +289,9 @@
       "urgency_score": 6,
       "category_tag": "strategic_signal",
       "source_url": "https://www.gestiondefortune.com/banque-cgp/rubriques-banque-privee/nominations-banque/10524-la-banque-postale-modifie-sa-gouvernance.html",
-      "source_date": "2025-12-31"
+      "source_date": "2025-12-31",
+      "text": "Organizational restructuring effective Dec 31, 2025: four business poles consolidated into three — Retail Banking & Insurance (LBP Network), Open Model Insurance & Savings, Business & Local Development Banking. Sandrine Pierrot appointed General Director of Retail Banking.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -282,7 +300,9 @@
       "urgency_score": 6,
       "category_tag": "ai_disruption",
       "source_url": "https://thedigitalbloom.com/learn/gen-ai-website-traffic-share-february-2026/",
-      "source_date": "2026-02-01"
+      "source_date": "2026-02-01",
+      "text": "Finance sector AI referral traffic growth: +1,200% (July 2024 to February 2025). La Banque Postale already has a custom ChatGPT GPT deployed. AI-assisted banking discovery is accelerating.",
+      "badge_label": "News"
     },
     {
       "type": "news_signal",
@@ -291,7 +311,9 @@
       "urgency_score": 5,
       "category_tag": "tech_investment",
       "source_url": "https://www.kyndryl.com/gb/en/about-us/news/2023/07/it-sustainability-solutions-for-french-bank",
-      "source_date": "2023-07-01"
+      "source_date": "2023-07-01",
+      "text": "Kyndryl IT partnership extended through 2030 (July 2023). Inbenta purchased 2018 (8-year relationship). Azure cloud since 2017. LBP pattern: multi-year SaaS/tech vendor commitments at enterprise scale.",
+      "badge_label": "News"
     },
     {
       "type": "media_quote",
@@ -304,7 +326,8 @@
       "confidence": "FACT",
       "label": "[FACT — La Poste Groupe press release, Feb 26 2026, https://www.lapostegroupe.com/en/news/la-banque-postales-annual-results-for-2025]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Our transformation plan launched at the end of 2023 is bearing fruit and marking a return to balance in banking activiti"
     },
     {
       "type": "media_quote",
@@ -317,7 +340,8 @@
       "confidence": "FACT",
       "label": "[FACT — La Poste Groupe press release, Feb 26 2026, https://www.lapostegroupe.com/en/news/la-banque-postales-annual-results-for-2025]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "This development has also been accompanied by a significant acceleration in the digitisation of the customer journey, ce"
     },
     {
       "type": "media_quote",
@@ -330,7 +354,8 @@
       "confidence": "FACT",
       "label": "[FACT — La Banque Postale official newsroom, January 2026, https://www.labanquepostale.com/newsroom-publications/actualites/2026/cyberattaque-banque-groupe-la-poste.html]",
       "urgency_score": 6,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Le cœur de notre système bancaire est resté pleinement opérationnel et totalement inviolé, sans aucune intrusion, aucune"
     },
     {
       "type": "media_quote",
@@ -343,7 +368,8 @@
       "confidence": "FACT",
       "label": "[FACT — Kyndryl press release, July 2023, https://www.kyndryl.com/us/en/about-us/news/2023/07/it-sustainability-solutions-for-french-bank]",
       "urgency_score": 6,
-      "category_tag": "digital_transformation"
+      "category_tag": "digital_transformation",
+      "text": "Protecting our customers' data is a major challenge for La Banque Postale. The use of data by the bank is a real issue o"
     },
     {
       "type": "media_quote",
@@ -356,7 +382,8 @@
       "confidence": "FACT",
       "label": "[FACT — La Revue du Digital, 2025, https://www.larevuedudigital.com/ai-act-la-banque-postale-mobilisee-sur-la-conformite-de-ses-ia/]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Nous n'avons pas attendu l'AI Act pour nous en soucier, mais effectivement, ça renforce le besoin et les enjeux."
     },
     {
       "type": "media_quote",
@@ -369,7 +396,8 @@
       "confidence": "FACT",
       "label": "[FACT — La Revue du Digital, 2025, https://www.larevuedudigital.com/ai-act-la-banque-postale-mobilisee-sur-la-conformite-de-ses-ia/]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Il est extrêmement important que tous les collaborateurs soient au courant des exigences de la réglementation, des bonne"
     },
     {
       "type": "media_quote",
@@ -382,7 +410,8 @@
       "confidence": "FACT",
       "label": "[FACT — CNP Assurances press release, 2024, https://www.cnp.fr/en/the-cnp-assurances-group/newsroom/press-releases/2024/la-banque-postale-and-cnp-assurances-sign-the-l-autre-cercle-lgbt-commitment-charter]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "A state-owned company like La Banque Postale, which connects all French people, must reflect the diversity of its custom"
     },
     {
       "type": "media_quote",
@@ -395,7 +424,8 @@
       "confidence": "FACT",
       "label": "[FACT — ESG News, 2025, https://esgnews.com/la-banque-postale-rolls-out-esg-tiered-savings-products-to-accelerate-responsible-investment/]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "A mission-led company for the past 3 years, La Banque Postale has made the just transition a key driver of its developme"
     }
   ],
   "competitors": [
@@ -825,13 +855,13 @@
     "category": "Financial Planning & Management (France)",
     "top_channels": [
       {
-        "source": "Direct",
+        "channel": "Direct",
         "share": "60.44%"
       }
     ],
     "device_share": {
-      "mobile": "57.24",
-      "desktop": "42.76"
+      "mobile": "57.24%",
+      "desktop": "42.76%"
     },
     "demographics": [
       {
@@ -1501,7 +1531,12 @@
     "pilot_anchor": "NeuralSearch + Query Suggestions on labanquepostale.fr public site — defined 90-day success metrics against Co-op benchmark (+39% conversion).",
     "economic_buyer": "Zakaria Moursli (EVP Digital + IS + Payments)",
     "champion": "Audrey Pujalte (Head of Digital Retail Banking)",
-    "entry_point": "LinkedIn outreach to Pujalte referencing Carrefour Banque background"
+    "entry_point": "LinkedIn outreach to Pujalte referencing Carrefour Banque background",
+    "next_step_action": "30-minute discovery call to walk through the full browser audit findings. We'll show 12 specific gaps found during live testing and a 90-day proof of concept proposal.",
+    "next_step_owner": "Audrey Pujalte (Head of Digital Retail Banking)",
+    "next_step_date": "Within 30 days",
+    "opportunity_headline": "The Banking & Insurance (Bancassurance) Search Opportunity for La Banque Postale",
+    "benchmark_proof": "Club Med: +20% mobile traffic · +80% mobile revenue · 10ms search (200× industry benchmark) after deploying Algolia Algolia Search — 70 destinations, 35 local markets, 1.5M annual travelers — https://www.businesswire.com/news/home/20260310260293/en/Club-Med-Introduces-Lightning-Fast-AI-Powered-Search-with-Algolia-to-Modernize-Digital-Travel-Discovery"
   },
   "next_steps": [
     {

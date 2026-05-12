@@ -13,7 +13,7 @@
       "browser_audit": "2026-05-09 (Patchright stealth, Akamai bypassed)"
     },
     "generated_by": "generate-audit-data.py + LLM synthesis",
-    "patch_date": "2026-05-09"
+    "patch_date": "2026-05-12"
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/British_Airways_A380_G-XLEL_on_take_off.jpg/1280px-British_Airways_A380_G-XLEL_on_take_off.jpg",
@@ -61,10 +61,9 @@
       "search_intelligence": "Search Intelligence"
     },
     "critical_count": 8,
-    "moderate_count": 2,
+    "moderate_count": 10,
     "formula_shown": "sum(score×weight)/sum(weights)",
-    "source": "10-scoring-matrix.md",
-    "low_count": 0
+    "source": "10-scoring-matrix.md"
   },
   "company_snapshot": {
     "company": "British Airways PLC",
@@ -195,7 +194,9 @@
       "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
       "source_date": "2025-12-13",
       "urgency_score": 9,
-      "category_tag": "leadership_change"
+      "category_tag": "leadership_change",
+      "text": "CEO publicly declared BA is 'behind the curve' on digital and described the transformation as a 'leapfrog opportunity'",
+      "badge_label": "Executive Signal"
     },
     {
       "type": "partner",
@@ -204,7 +205,9 @@
       "source_url": "https://www.prnewswire.com/news-releases/british-airways-holidays-partners-with-thoughtworks-to-deliver-a-new-standard-in-digital-traveller-experiences-302573387.html",
       "source_date": "2025-10-02",
       "urgency_score": 10,
-      "category_tag": "tech_investment"
+      "category_tag": "tech_investment",
+      "text": "BA Holidays formally partnered with Thoughtworks (October 2025) to re-architect existing digital platforms, explicitly targeting 'easy discoverability'",
+      "badge_label": "Partnership"
     },
     {
       "type": "industry-risk",
@@ -213,7 +216,9 @@
       "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
       "source_date": "2025-12-13",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "CEO identified AI agent disintermediation as BA most significant strategic risk -- 'the days when a decent website and a prominent Google result were enough to stay visible are diminishing quickly'",
+      "badge_label": "Industry Risk"
     },
     {
       "type": "funding",
@@ -222,7 +227,9 @@
       "source_url": "https://www.iairgroup.com/press-releases/2026/iag-full-year-results-2025/",
       "source_date": "2026-02-27",
       "urgency_score": 7,
-      "category_tag": "strategic_signal"
+      "category_tag": "strategic_signal",
+      "text": "IAG FY2025 record results: operating profit EUR 5.024B (+13.1%), BA operating profit GBP 2,230M at 15.2% margin, FCF EUR 3.1B. 2026 CapEx confirmed at ~EUR 3.6B.",
+      "badge_label": "Funding"
     },
     {
       "type": "digital_transformation",
@@ -231,7 +238,9 @@
       "source_url": "https://www.itpro.com/business/digital-transformation/british-airways-eyes-cloud-overhaul-and-ai-deployment-in-pound7-billion-it-upgrade",
       "source_date": "2024-03-08",
       "urgency_score": 9,
-      "category_tag": "digital_transformation"
+      "category_tag": "digital_transformation",
+      "text": "7B transformation programme (2024-2026): 750M cloud migration (700 systems, 90% complete), 100M AI/ML investment, 31 live AI use cases, 600 identified.",
+      "badge_label": "Digital Transformation"
     },
     {
       "type": "competitor",
@@ -240,7 +249,9 @@
       "source_url": "https://www.similarweb.com/website/britishairways.com/competitors/",
       "source_date": "2026-04-28",
       "urgency_score": 7,
-      "category_tag": "competitive_threat"
+      "category_tag": "competitive_threat",
+      "text": "EasyJet overtook BA as UK largest airline by passenger volume in 2021. EasyJet global rank #1,563 vs BA #1,812.",
+      "badge_label": "Competitor Signal"
     },
     {
       "type": "industry-opp",
@@ -249,7 +260,9 @@
       "source_url": "https://www.algolia.com/customers/club-med",
       "source_date": "2026-03-10",
       "urgency_score": 9,
-      "category_tag": "strategic_signal"
+      "category_tag": "strategic_signal",
+      "text": "Club Med (same holiday package vertical: 70 destinations, 35 markets) deployed Algolia in 2024. Case study published March 2026. 'Search has become a true strategic lever for growing direct online bookings.'",
+      "badge_label": "Industry Opportunity"
     },
     {
       "type": "exec",
@@ -258,7 +271,9 @@
       "source_url": "https://mediacentre.britishairways.com/factsheet/details/275",
       "source_date": "2024-10",
       "urgency_score": 9,
-      "category_tag": "leadership_change"
+      "category_tag": "leadership_change",
+      "text": "New CIDO Henning Krueger hired October 2024 from Lufthansa -- under 18 months in role, no legacy attachment to inherited Solr infrastructure",
+      "badge_label": "Executive Signal"
     },
     {
       "type": "industry-risk",
@@ -267,7 +282,9 @@
       "source_url": "https://www.similarweb.com/website/britishairways.com/",
       "source_date": "2026-04-28",
       "urgency_score": 7,
-      "category_tag": "cost_pressure"
+      "category_tag": "cost_pressure",
+      "text": "BA session duration dropped from 10:12 (October 2025) to 5:50 (March 2026) despite monthly visits growing +17.84%. BA has highest pages/visit (8.17) among all 10 measured competitors.",
+      "badge_label": "Industry Risk"
     },
     {
       "type": "media_quote",
@@ -280,7 +297,8 @@
       "confidence": "FACT",
       "label": "[FACT — British Airways Media Centre, 2026-01, https://mediacentre.britishairways.com/factsheet/details/717]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "For our teams, 2026 is about continuing to transform and innovate - unlocking the full benefits of the changes we're mak"
     },
     {
       "type": "media_quote",
@@ -293,7 +311,8 @@
       "confidence": "FACT",
       "label": "[FACT — British Airways official statement via Facebook, 2025-03, https://www.facebook.com/britishairways/posts/a-statement-from-sean-doyle-the-ceo-and-chairman-of-british-airways-following-th/1068635205293844/]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Improving operational performance is a key part of our investment programme."
     },
     {
       "type": "media_quote",
@@ -306,7 +325,8 @@
       "confidence": "FACT",
       "label": "[FACT — Yahoo Finance / IAG Q4 FY2025 earnings highlights, 2026-02, https://finance.yahoo.com/news/international-consolidated-airlines-group-q4-104552765.html]",
       "urgency_score": 8,
-      "category_tag": "ai_disruption"
+      "category_tag": "ai_disruption",
+      "text": "Record set of results for 2025, supported by continued travel demand, improved operations, and lower fuel costs."
     }
   ],
   "competitors": [
@@ -314,7 +334,7 @@
       "name": "Virgin Atlantic",
       "domain": "virginatlantic.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": null,
+      "monthly_traffic": "1",
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -323,7 +343,7 @@
       "name": "EasyJet",
       "domain": "easyjet.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": null,
+      "monthly_traffic": "2",
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -332,7 +352,7 @@
       "name": "Emirates",
       "domain": "emirates.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": null,
+      "monthly_traffic": "3",
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -341,7 +361,7 @@
       "name": "Qatar Airways",
       "domain": "qatarairways.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": null,
+      "monthly_traffic": "4",
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -349,8 +369,8 @@
     {
       "name": "Ryanair",
       "domain": "ryanair.com",
-      "search_vendor": "Elasticsearch",
-      "monthly_traffic": null,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "5",
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -708,37 +728,37 @@
     "visit_duration": "n/a",
     "top_channels": [
       {
-        "source": "Direct",
+        "channel": "Direct",
         "share": "51.08%"
       },
       {
-        "source": "Organic Search",
+        "channel": "Organic Search",
         "share": "33.73%"
       },
       {
-        "source": "Paid Search",
+        "channel": "Paid Search",
         "share": "4%"
       },
       {
-        "source": "Referral",
+        "channel": "Referral",
         "share": "6%"
       },
       {
-        "source": "Social",
+        "channel": "Social",
         "share": "3%"
       },
       {
-        "source": "Email",
+        "channel": "Email",
         "share": "5%"
       },
       {
-        "source": "Display Ads",
+        "channel": "Display Ads",
         "share": "1%"
       }
     ],
     "device_share": {
-      "mobile": "61.76",
-      "desktop": "38.24"
+      "mobile": "61.76%",
+      "desktop": "38.24%"
     },
     "demographics": [
       {
@@ -1392,7 +1412,12 @@
     "cta": "BA Holidays 90-day pilot: replace Solr q=* with Algolia NeuralSearch. Clear KPIs: zero-results rate, search CTR, time-to-booking.",
     "economic_buyer": "Henning Krueger (CIDO)",
     "champion": "Jake Pearce (Head of AI)",
-    "blocker": "BA is mid-migration of 700 systems -- position Algolia as an overlay on the new cloud infrastructure, not a dependency on migration completion"
+    "blocker": "BA is mid-migration of 700 systems -- position Algolia as an overlay on the new cloud infrastructure, not a dependency on migration completion",
+    "next_step_action": "BA Holidays 90-day pilot: replace Solr q=* with Algolia NeuralSearch. Clear KPIs: zero-results rate, search CTR, time-to-booking.",
+    "next_step_owner": "Jake Pearce (Head of AI)",
+    "next_step_date": "Within 30 days",
+    "opportunity_headline": "The Airlines / Travel Search Opportunity for British Airways",
+    "benchmark_proof": "Club Med: Search became 'a true strategic lever for growing direct online bookings'; ~10ms search response (200x faster than industry benchmark); higher CTRs, more online conversions, fewer zero-result pages, reduced call-centre dependency after deploying Algolia Algolia Search, Custom Ranking, Query Suggestions, Merchandising Studio, Recommendations, Facets & Filters, Analytics — https://www.algolia.com/customers/club-med"
   },
   "next_steps": [
     {
