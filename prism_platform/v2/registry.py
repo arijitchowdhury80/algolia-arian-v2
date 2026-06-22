@@ -26,6 +26,12 @@ logger = structlog.get_logger(__name__)
 # Uses Any for the result type to avoid a circular import with executor.py.
 PostExecuteFn = Callable[[Any, ExecutionContextV2], Awaitable[None]]
 
+# Type alias for the optional deterministic Track-1 collector.
+# Called BEFORE the LLM Track-2 call. Gathers structured data from APIs/Scout
+# (no LLM) and returns a dict merged into context.upstream_results, where the
+# playbook can reference it as {upstream_<key>}. Collector failure is non-fatal.
+CollectorFn = Callable[[ExecutionContextV2], Awaitable[dict[str, Any]]]
+
 # Central registry — populated by register_all_v2_modules() at startup.
 V2_MODULE_REGISTRY: dict[str, ModuleHandle] = {}
 
@@ -42,6 +48,7 @@ class ModuleHandle:
     output_schema: type[BaseModel]
     playbook_path: Path
     post_execute: PostExecuteFn | None = None
+    collector: CollectorFn | None = None
 
     # ── Convenience properties forwarding from config ──────────────────────
 
@@ -186,6 +193,100 @@ def register_all_v2_modules() -> None:
             config=INTEL_HIRING_CONFIG,
             output_schema=HiringV2Output,
             playbook_path=_MODULES_ROOT / "intel_hiring" / "playbook.md",
+        )
+    )
+
+    # ── intel-competitors (Track-1 Scout vendor detection + Track-2 LLM) ────
+    from prism_platform.v2.modules.intel_competitors.collector import (
+        collect as intel_competitors_collect,
+    )
+    from prism_platform.v2.modules.intel_competitors.config import INTEL_COMPETITORS_CONFIG
+    from prism_platform.v2.modules.intel_competitors.schemas import CompetitorsV2Output
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_COMPETITORS_CONFIG,
+            output_schema=CompetitorsV2Output,
+            playbook_path=_MODULES_ROOT / "intel_competitors" / "playbook.md",
+            collector=intel_competitors_collect,
+        )
+    )
+
+    # ── intel-partner (Track-1 static partner table + Track-2 LLM) ─────────
+    from prism_platform.v2.modules.intel_partner.collector import (
+        intel_partner_collector,
+    )
+    from prism_platform.v2.modules.intel_partner.config import INTEL_PARTNER_CONFIG
+    from prism_platform.v2.modules.intel_partner.schemas import PartnerV2Output
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_PARTNER_CONFIG,
+            output_schema=PartnerV2Output,
+            playbook_path=_MODULES_ROOT / "intel_partner" / "playbook.md",
+            collector=intel_partner_collector,
+        )
+    )
+
+    # ── intel-industry (LLM-only — vertical benchmarks, trends, analyst quotes) ─
+    from prism_platform.v2.modules.intel_industry.config import INTEL_INDUSTRY_CONFIG
+    from prism_platform.v2.modules.intel_industry.schemas import IndustryIntelOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_INDUSTRY_CONFIG,
+            output_schema=IndustryIntelOutput,
+            playbook_path=_MODULES_ROOT / "intel_industry" / "playbook.md",
+            # No collector — this is the one justified pure-LLM module.
+            # Vertical benchmarks and analyst quotes have no structured API.
+        )
+    )
+
+    # ── intel-queries (Track-1 pure-Python generation, Wave 1C) ────────────
+    from prism_platform.v2.modules.intel_queries.collector import (
+        collect as intel_queries_collect,
+    )
+    from prism_platform.v2.modules.intel_queries.config import INTEL_QUERIES_CONFIG
+    from prism_platform.v2.modules.intel_queries.schemas import QueryIntelOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_QUERIES_CONFIG,
+            output_schema=QueryIntelOutput,
+            playbook_path=_MODULES_ROOT / "intel_queries" / "playbook.md",
+            collector=intel_queries_collect,
+        )
+    )
+
+    # ── intel-investor (Track-1 Yahoo Finance + Track-2 LLM quote extraction) ─
+    from prism_platform.v2.modules.intel_investor.collector import (
+        collect as intel_investor_collect,
+    )
+    from prism_platform.v2.modules.intel_investor.config import INTEL_INVESTOR_CONFIG
+    from prism_platform.v2.modules.intel_investor.schemas import InvestorIntelOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_INVESTOR_CONFIG,
+            output_schema=InvestorIntelOutput,
+            playbook_path=_MODULES_ROOT / "intel_investor" / "playbook.md",
+            collector=intel_investor_collect,
+        )
+    )
+
+    # ── intel-social (Track-1 Apify scraping + Track-2 LLM relevance scoring) ─
+    from prism_platform.v2.modules.intel_social.collector import (
+        collect as intel_social_collect,
+    )
+    from prism_platform.v2.modules.intel_social.config import INTEL_SOCIAL_CONFIG
+    from prism_platform.v2.modules.intel_social.schemas import SocialIntelOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=INTEL_SOCIAL_CONFIG,
+            output_schema=SocialIntelOutput,
+            playbook_path=_MODULES_ROOT / "intel_social" / "playbook.md",
+            collector=intel_social_collect,
         )
     )
 

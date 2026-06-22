@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any
 
 import structlog
+from google import genai
 from pydantic import BaseModel
 
 from prism_platform.config import settings
@@ -45,13 +46,19 @@ class SynthesisClient:
     """
 
     def __init__(self) -> None:
-        self._provider = settings.get_enricher_provider()
-        self._model = settings.get_enricher_model()
-        logger.info(
-            "SynthesisClient initialized",
-            provider=self._provider,
-            model=self._model,
-        )
+        self._provider: str | None = None
+        self._model: str | None = None
+
+    def _resolve_provider(self) -> tuple[str, str]:
+        if self._provider is None:
+            self._provider = settings.get_enricher_provider()
+            self._model = settings.get_enricher_model()
+            logger.info(
+                "SynthesisClient initialized",
+                provider=self._provider,
+                model=self._model,
+            )
+        return self._provider, self._model  # type: ignore[return-value]
 
     async def synthesize(
         self,
@@ -70,6 +77,7 @@ class SynthesisClient:
         Returns:
             SynthesisResult with reconciled output or error.
         """
+        provider, model = self._resolve_provider()
         start = time.monotonic()
 
         # Load and resolve the playbook
@@ -97,7 +105,7 @@ class SynthesisClient:
         )
 
         try:
-            if self._provider == "gemini":
+            if provider == "gemini":
                 return await self._call_gemini(system_prompt, resolved, start)
             else:
                 # Fallback: use Perplexity (wasteful but works)
@@ -105,11 +113,11 @@ class SynthesisClient:
 
         except Exception as exc:
             duration_ms = int((time.monotonic() - start) * 1000)
-            logger.error("Synthesis failed", error=str(exc), provider=self._provider)
+            logger.error("Synthesis failed", error=str(exc), provider=provider)
             return SynthesisResult(
                 status="failed",
                 duration_ms=duration_ms,
-                model_used=self._model,
+                model_used=model,
                 error=str(exc),
             )
 
@@ -117,8 +125,6 @@ class SynthesisClient:
         self, system_prompt: str, user_prompt: str, start: float
     ) -> SynthesisResult:
         """Call Gemini via google-genai SDK."""
-        from google import genai
-
         client = genai.Client(api_key=settings.gemini_api_key)
 
         response = await client.aio.models.generate_content(
