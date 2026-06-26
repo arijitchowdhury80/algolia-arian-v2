@@ -72,9 +72,13 @@ async def main(domain: str) -> None:
             from prism_platform.v2.executor import ModuleExecutor
             from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
             from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-            from prism_platform.v2.registry import REGISTRY
+            from prism_platform.v2.registry import (
+                V2_MODULE_REGISTRY,
+                register_all_v2_modules,
+            )
 
-            handle = REGISTRY["intel-company"]
+            register_all_v2_modules()
+            handle = V2_MODULE_REGISTRY["intel-company"]
             api = AgentAPIClient(api_key=perplexity_key, timeout=120.0)
             executor = ModuleExecutor(agent_api=api)
             result = await executor.execute(
