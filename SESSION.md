@@ -1,76 +1,126 @@
-# SESSION — 2026-04-14/15
-## Status: COMMITTED — Context cleared, resuming next session
-## Commit: a78f0cb
+# SESSION — PRISM · 2026-06-24 (13/13 modules done, VPS deployed, smoke test Track 1 verified)
 
----
+## Status: PIPELINE COMPLETE — smoke test blocked on PERPLEXITY_API_KEY
 
-## What was built this session
+## Resume action
+1. Read this file.
+2. **Add to `.env.local`** (required to unblock Track 2 smoke test):
+   ```
+   PERPLEXITY_API_KEY=pplx-...your-key
+   SCOUT_API_KEY=5b3fcb6435d0687dd8b32555df226c3e545a8fbff391e91b
+   SCOUT_URL=http://localhost:8421
+   ```
+3. **Open SSH tunnel** (Scout on VPS → localhost):
+   ```bash
+   ssh -i ~/.ssh/chowmes_ed25519 -fNL 8421:127.0.0.1:8421 chowmesadmin@72.61.72.147
+   ```
+4. **Run smoke test** (Track 1 + Track 2):
+   ```bash
+   uv run python scripts/smoke_real.py nike.com
+   ```
+5. **Run browser/detector tests** (needs tunnel + Scout key):
+   ```bash
+   uv run python -m pytest tests/v2/test_search_vendor_detector_integration.py -m browser -v
+   ```
 
-### Shared Browser Infrastructure — prism_platform/browser/
-- BrowserClient: httpx → Jina Reader (JS) → Playwright stub → Browserless stub
-- FetchResult, FetchOptions, FetchTier (Pydantic, universal types)
-- Bot-block detector: Cloudflare, WAF, CAPTCHA, login walls
-- Tier 1 fully working; Tiers 2+3 stubbed with clear interfaces
+## Where we stopped (exact)
 
-### intel-company: 3-Track Pipeline
-- Track 1 (WebFetch): leadership/IR/newsroom via BrowserClient. Smart homepage link discovery.
-- Track 2 (Perplexity sonar-pro): playbook v2.2.0 — targeted, explicit LinkedIn search per exec
-- Track 3 (Synthesis): Gemini gemini-3.1-flash-lite-preview reconciles both. WebFetch wins conflicts.
-- Pipeline health log: every failure/fallback/warning captured → in report, JSON, console
-- Smoke test: cache-first (checks module_executions), --refresh flag
+Ran `scripts/smoke_real.py nike.com`. Result:
+- Track 1 (Scout browser): **PASS** — 3 pages fetched from nike.com (leadership: 8K chars, IR: 1K, newsroom: 1K)
+- Track 2 (Perplexity): **SKIP** — PERPLEXITY_API_KEY not in .env.local
+- intel-competitors detector: **PASS** — ran cleanly, nike.com detected as no-Algolia (correct)
 
-### Schema + DB
-- CompanySeedOutput: twitter_handle, youtube_url, company_linkedin_url
-- CompetitorSeed: ticker, twitter_handle, youtube_url, linkedin_url
-- ExecutiveSeed: linkedin_url, tenure_description, previous_company
-- Migration 006 applied. Docker up, both prospects seeded in PostgreSQL.
+Before smoke test: Parallel.ai vs Perplexity research done. Decision locked: keep Perplexity now, Parallel is search-only (not a drop-in replacement).
 
-### Results in DB
-- nike.com: accounts + module_executions, cache HIT on repeat, HEALTHY
-- orientaltrading.com: accounts + module_executions, cache HIT on repeat, DEGRADED (leadership page not public)
+## What was completed this session (2026-06-22 → 2026-06-24)
 
----
+### Code (commit 85b7de5)
+- **5 new v2 modules** built + registered: intel-industry, intel-investor, intel-partner, intel-queries, intel-social
+- **Registry** now has all 13 modules
+- **SynthesisClient lazy init** fix — no longer raises ValueError when LLM key absent at import time
+- **TestCollect async fix** — 13 failing tests in test_intel_queries_v2.py converted from sync `asyncio.get_event_loop().run_until_complete()` to `async def` + `await` (pytest-asyncio `asyncio_mode=auto` compat)
+- **433/433 v2 tests pass**
 
-## What REMAINS for intel-company to be COMPLETE
+### VPS deployment (Chowmes — 72.61.72.147)
+- **Temporal** (auto-setup 1.27 + postgres + UI) — running at 127.0.0.1:7233/8088
+- **Scout** (Docker, built from source) — running at 127.0.0.1:8421
+- **Caddy** updated — `temporal.contentengagement.info` route added (basic_auth: prism/prism2026)
+- Configs at: `/opt/prism/temporal/docker-compose.yml`, `/opt/prism/scout/docker/docker-compose.yml`
+- **DNS not yet added** — temporal.contentengagement.info → 72.61.72.147 still needed
 
-### Code (incomplete)
-- [ ] Wire synthesis (Track 3) into activities.py — Temporal production path only has Track 1+2 today
-- [ ] Tier 2 Playwright stealth — shared with search audit module, build when that module ships
+### Smoke test script
+- `scripts/smoke_real.py` — standalone script, no Postgres/Temporal required, calls Track 1 + Track 2 directly
 
-### Tests (all missing)
-- [ ] Unit: BrowserClient tier escalation (mock httpx)
-- [ ] Unit: PipelineHealthLog event capture + markdown render
-- [ ] Unit: SynthesisClient mock Gemini, assert reconciliation
-- [ ] Integration: full 3-track run with VCR cassettes
-- [ ] Contract: CompanySeedOutput schema stability
+### Research
+- Parallel.ai vs Perplexity comparison done — decision: keep Perplexity, add Parallel seam later if accuracy becomes an issue
 
-### UI (not started)
-- [ ] Company identity card view (nike.com / orientaltrading.com)
-- [ ] Pipeline health badge (HEALTHY/DEGRADED/FAILED + event list)
-- [ ] Cache freshness indicator + refresh button
+### ADR
+- `docs/decisions/2026-06-22-infrastructure-architecture.md` — Postgres→Supabase path, Temporal on VPS, Vercel frontend
 
----
+## Decisions locked this session
 
-## Key architectural decisions
+| # | Decision | Choice |
+|---|---|---|
+| D18 | LLM provider (Track 2) | Keep Perplexity Sonar. Parallel.ai is search-only, not drop-in. |
+| D19 | VPS orchestration | Temporal self-hosted on Chowmes. Workers will run as Python processes on VPS. |
+| D20 | Scout deployment | Scout runs on VPS (127.0.0.1:8421). Local dev uses SSH tunnel. |
 
-1. 3-track: WebFetch (wins) + Perplexity (external lens) + Synthesis LLM (reconciles)
-2. Single Perplexity call — make it better, not two calls
-3. Browser infra is shared — all modules use BrowserClient not raw httpx
-4. Pipeline health mandatory — no silent failures
-5. Cache mandatory — module_executions, zero API calls on repeat
-6. Gemini model: gemini-3.1-flash-lite-preview everywhere
+## Remaining work (priority order)
 
----
+1. **[IMMEDIATE] Add PERPLEXITY_API_KEY to .env.local → re-run smoke test** — proves Track 2 end-to-end
+2. **Run browser detector tests** — `pytest tests/v2/test_search_vendor_detector_integration.py -m browser -v`
+3. **DNS** — add A record: `temporal.contentengagement.info → 72.61.72.147`
+4. **Deploy PRISM Python workers to VPS** — Temporal activities need a worker process running on VPS; codebase + deps not yet deployed there
+5. **Local Postgres** — bring up Docker Postgres to test full persistence path (hooks, module_executions)
+6. **Agent Studio trial** — stand up minimal agent over PRISM_Data; lock D9 (aRRIe architecture)
+7. **Postgres→Algolia sync** — new intel findings flow to PRISM_Data
+8. **Waves 4–6** — insights-engine, synth trio, audit-report SPA
+9. **aRRIe copilot** — grounded on PRISM_Data, 3-panel Next.js shell
 
-## Environment
-- Docker: running (docker compose up -d)
-- Alembic: through 006
-- Venv: rebuilt at current path (old one pointed to Google Drive)
-  Always use: .venv/bin/python3
+## What has NOT been done
 
-## Next session
-1. Verify intel-company completion checklist — what's actually missing?
-2. Wire Track 3 into activities.py
-3. Write unit + integration tests
-4. Build company identity card UI
-5. Then spoke modules
+- PERPLEXITY_API_KEY not in .env.local (Track 2 never ran live)
+- PRISM Python workers not deployed to VPS (Temporal infra is up but no worker process)
+- Local Postgres not running (DB hooks untested)
+- DNS for temporal.contentengagement.info not added
+- Agent Studio trial pending
+- Postgres→Algolia sync not built
+- Waves 4–6 not started
+
+## Reference files
+
+| File | Purpose |
+|---|---|
+| `prism_platform/v2/registry.py` | All 13 modules registered here |
+| `prism_platform/v2/modules/intel_company/` | 3-track seed module (exemplar) |
+| `prism_platform/v2/modules/intel_competitors/` | 2-track exemplar with Scout detector |
+| `prism_platform/orchestrator/activities.py` | F1 context hydration + F2 collector run |
+| `prism_platform/orchestrator/workflows.py` | F3 sub-wave split (1A→1B→1C) |
+| `prism_platform/v2/synthesis.py` | SynthesisClient (lazy init, Gemini) |
+| `scripts/smoke_real.py` | Direct smoke test script (no Postgres/Temporal) |
+| `docs/decisions/2026-06-22-infrastructure-architecture.md` | Infra ADR (locked) |
+| `tests/v2/` | 433 tests, all pass |
+| `/opt/prism/temporal/docker-compose.yml` | Temporal on VPS |
+| `/opt/prism/scout/docker/docker-compose.yml` | Scout on VPS |
+| `/home/chowmesadmin/lab-judge/Caddyfile` | Caddy routes on VPS |
+
+## VPS quick reference
+
+```bash
+# SSH into VPS
+ssh -i ~/.ssh/chowmes_ed25519 chowmesadmin@72.61.72.147
+
+# Open Scout tunnel for local dev
+ssh -i ~/.ssh/chowmes_ed25519 -fNL 8421:127.0.0.1:8421 chowmesadmin@72.61.72.147
+
+# Check all services
+sudo docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
+# Expected: scout (healthy), temporal, temporal-ui, temporal-db (healthy), hermes, ac2-lab-backend (healthy), caddy
+```
+
+## Fix-and-Learn log (this session)
+
+- **Scout Dockerfile build fail**: hatchling needs `scout/` package dir before `pip install .` — Dockerfile only copied `pyproject.toml`. Fix: copy `scout/` before pip install.
+- **Docker port ghost**: after Docker daemon restart, iptables NAT rules stale → container starts without network attached. Fix: `docker compose down` + `docker compose up -d` after daemon restart.
+- **asyncio_mode=auto + run_until_complete**: `asyncio.get_event_loop().run_until_complete()` in sync test methods breaks when full suite runs with `asyncio_mode=auto`. Fix: convert to `async def` + `await`.
+- **SynthesisClient eager init**: calling `settings.get_enricher_provider()` in `__init__` raises ValueError when no LLM key. Fix: defer to `_resolve_provider()` called inside `synthesize()`.

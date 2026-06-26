@@ -108,6 +108,11 @@ For each field in the output schema:
 ### Recent Headline
 - Prefer Perplexity (has web search context). Newsroom press releases as supplement.
 
+### Company Hierarchy
+- **parent_company**: Prefer Perplexity. WebFetch supplement (some companies mention parent on about page).
+- **parent_domain**: Perplexity only — not typically on the company's own website.
+- **subsidiaries**: Perplexity only — a company rarely lists its own subsidiaries on its homepage. Use Perplexity's brand portfolio research. Verify domain for each subsidiary if available.
+
 ---
 
 ## Output Format

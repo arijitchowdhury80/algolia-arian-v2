@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any
 
 import structlog
 from fastapi import APIRouter, HTTPException, Query
@@ -10,7 +10,6 @@ from pydantic import BaseModel, ConfigDict
 from sqlalchemy import or_, select
 
 from prism_platform.api.deps import DbSession
-from prism_platform.core.domain_normalizer import normalize_domain
 from prism_platform.db.models import (
     AlgoliaAdvocate,
     AlgoliaCaseStudy,
@@ -19,6 +18,7 @@ from prism_platform.db.models import (
     AlgoliaQuote,
     ModuleExecution,
 )
+from prism_platform.v2.domain_normalizer import normalize_domain
 
 logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
 
@@ -127,11 +127,11 @@ class EvidenceMatchResponse(BaseModel):
 @router.get("/customers", response_model=list[CustomerResponse])
 async def list_customers(
     session: DbSession,
-    industry: Optional[str] = Query(default=None, description="Filter by industry (case-insensitive)"),
-    vertical: Optional[str] = Query(default=None, description="Filter by sub_vertical (case-insensitive)"),
-    partner: Optional[str] = Query(default=None, description="Filter by partner ecosystem (e.g. 'Adobe')"),
-    feature: Optional[str] = Query(default=None, description="Filter by feature used (e.g. 'Neural Search')"),
-    arr_tier: Optional[str] = Query(default=None, description="Filter by ARR tier (e.g. 'Enterprise 100k+')"),
+    industry: str | None = Query(default=None, description="Filter by industry (case-insensitive)"),
+    vertical: str | None = Query(default=None, description="Filter by sub_vertical (case-insensitive)"),
+    partner: str | None = Query(default=None, description="Filter by partner ecosystem (e.g. 'Adobe')"),
+    feature: str | None = Query(default=None, description="Filter by feature used (e.g. 'Neural Search')"),
+    arr_tier: str | None = Query(default=None, description="Filter by ARR tier (e.g. 'Enterprise 100k+')"),
 ) -> list[CustomerResponse]:
     """List customers with logo_rights or publicity_consent, optionally filtered."""
     logger.info(
@@ -182,8 +182,8 @@ async def list_customers(
 @router.get("/case-studies", response_model=list[CaseStudyResponse])
 async def list_case_studies(
     session: DbSession,
-    industry: Optional[str] = Query(default=None, description="Filter by industry (case-insensitive)"),
-    customer: Optional[str] = Query(default=None, description="Filter by customer name (case-insensitive)"),
+    industry: str | None = Query(default=None, description="Filter by industry (case-insensitive)"),
+    customer: str | None = Query(default=None, description="Filter by customer name (case-insensitive)"),
 ) -> list[CaseStudyResponse]:
     """List case studies, optionally filtered by industry or customer."""
     logger.info("evidence.list_case_studies.start", industry=industry, customer=customer)
@@ -221,8 +221,8 @@ async def list_case_studies(
 @router.get("/quotes", response_model=list[QuoteResponse])
 async def list_quotes(
     session: DbSession,
-    industry: Optional[str] = Query(default=None, description="Filter by industry (case-insensitive)"),
-    feature: Optional[str] = Query(default=None, description="Text search on quote_text for a feature keyword"),
+    industry: str | None = Query(default=None, description="Filter by industry (case-insensitive)"),
+    feature: str | None = Query(default=None, description="Text search on quote_text for a feature keyword"),
 ) -> list[QuoteResponse]:
     """List quotes, optionally filtered by industry or feature keyword."""
     logger.info("evidence.list_quotes.start", industry=industry, feature=feature)
@@ -257,7 +257,7 @@ async def list_quotes(
 @router.get("/proofpoints", response_model=list[ProofpointResponse])
 async def list_proofpoints(
     session: DbSession,
-    industry: Optional[str] = Query(default=None, description="Filter by industry (case-insensitive)"),
+    industry: str | None = Query(default=None, description="Filter by industry (case-insensitive)"),
 ) -> list[ProofpointResponse]:
     """List shareable proofpoints, optionally filtered by industry."""
     logger.info("evidence.list_proofpoints.start", industry=industry)
@@ -289,8 +289,8 @@ async def list_proofpoints(
 @router.get("/advocates", response_model=list[AdvocateResponse])
 async def list_advocates(
     session: DbSession,
-    industry: Optional[str] = Query(default=None, description="Filter by industry (case-insensitive)"),
-    company: Optional[str] = Query(default=None, description="Filter by company name (case-insensitive)"),
+    industry: str | None = Query(default=None, description="Filter by industry (case-insensitive)"),
+    company: str | None = Query(default=None, description="Filter by company name (case-insensitive)"),
 ) -> list[AdvocateResponse]:
     """List customer advocates, optionally filtered by industry or company."""
     logger.info("evidence.list_advocates.start", industry=industry, company=company)
@@ -327,7 +327,7 @@ async def list_advocates(
 @router.get("/match", response_model=EvidenceMatchResponse)
 async def match_evidence(
     session: DbSession,
-    domain: Optional[str] = Query(default=None, description="Prospect domain to match evidence against"),
+    domain: str | None = Query(default=None, description="Prospect domain to match evidence against"),
 ) -> EvidenceMatchResponse:
     """Match Algolia customer evidence against a prospect domain's intel data.
 

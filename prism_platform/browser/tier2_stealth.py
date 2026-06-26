@@ -1,24 +1,18 @@
-"""Tier 2 — Stealth browser (Playwright + anti-detection).
+"""Tier 2 — Stealth browser via Scout (Crawl4AI / Playwright).
 
-This tier handles JS-rendered sites behind Cloudflare/WAF that Tier 1 can't reach.
-Also required for interactive operations (search audit: type queries, take screenshots).
+Scout wraps Crawl4AI's Playwright-based crawler with stealth patches and
+anti-detection. This tier is invoked by BrowserClient when Tier 1 (httpx +
+Jina) fails — JS-rendered pages, Cloudflare/WAF blocks, etc.
 
-Implementation options (in order of effectiveness):
-  1. Camoufox — modified Firefox binary, patches anti-detection at binary level
-  2. Playwright + stealth patches — playwright-extra with stealth plugin
-  3. nodriver — patches Chrome binary to remove automation markers
+PRISM imports ScoutCrawler from the scout.core library directly — no HTTP
+overhead. The FastAPI service is for external callers only.
 
-Current status: STUB — interface defined, implementation pending.
-When implemented, add to pyproject.toml:
-  - camoufox>=0.3  (preferred)
-  - OR: playwright-stealth>=1.0
-
-For residential proxy support (strongest anti-detection):
-  - Add RESIDENTIAL_PROXY_URL to .env
-  - Format: http://user:pass@proxy.brightdata.com:22225
+interactive_session remains a stub until the search audit module is built.
 """
 
 from __future__ import annotations
+
+import time
 
 import structlog
 
@@ -32,57 +26,113 @@ async def fetch_stealth(
     options: FetchOptions,
     proxy_url: str = "",
 ) -> FetchResult:
-    """Fetch a URL using a stealth browser — handles JS + WAF.
+    """Fetch a URL via Scout (Crawl4AI Playwright stealth browser).
 
-    NOT YET IMPLEMENTED. Returns a FetchResult with error indicating
-    Tier 2 is not available. The BrowserClient will handle this gracefully
-    and escalate to Tier 3 if configured.
+    Uses ScoutCrawler.scrape() with JS enabled. Handles redirects —
+    the final URL after any redirect chain is recorded in FetchResult.url.
 
     Args:
         url: Target URL.
-        options: Fetch options (screenshot, interactive, etc.)
-        proxy_url: Optional residential proxy URL.
+        options: Fetch options (screenshot, timeout, min_content_length).
+        proxy_url: Unused — Scout uses Crawl4AI's built-in proxy rotation.
 
     Returns:
-        FetchResult with error indicating Tier 2 is not yet available.
+        FetchResult with tier_used=PLAYWRIGHT on success or failure.
     """
-    logger.warning(
-        "Tier 2 stealth browser not yet implemented — returning unavailable",
+    from scout.core import ScoutCrawler
+    from scout.core.types import ScrapeRequest
+
+    start = time.monotonic()
+    crawler = ScoutCrawler()
+
+    req = ScrapeRequest(
         url=url,
+        use_js=True,
+        timeout_ms=int(options.timeout * 1000),
     )
-    return FetchResult(
+
+    try:
+        resp = await crawler.scrape(req)
+    except Exception as exc:
+        duration_ms = int((time.monotonic() - start) * 1000)
+        logger.error("Scout scrape raised exception", url=url, error=str(exc))
+        return FetchResult(
+            url=url,
+            text="",
+            status_code=0,
+            tier_used=FetchTier.PLAYWRIGHT,
+            is_bot_blocked=False,
+            fetch_duration_ms=duration_ms,
+            error=f"scout_exception: {type(exc).__name__}",
+        )
+
+    duration_ms = int((time.monotonic() - start) * 1000)
+    final_url = resp.metadata.url if resp.success else url
+
+    if not resp.success:
+        logger.info(
+            "Scout scrape failed",
+            url=url,
+            error=resp.error,
+            duration_ms=duration_ms,
+        )
+        return FetchResult(
+            url=final_url,
+            text="",
+            status_code=0,
+            tier_used=FetchTier.PLAYWRIGHT,
+            is_bot_blocked=False,
+            fetch_duration_ms=duration_ms,
+            error=resp.error or "scout_scrape_failed",
+        )
+
+    content = resp.markdown
+    if len(content) < options.min_content_length:
+        logger.info(
+            "Scout content too short — likely bot challenge",
+            url=url,
+            content_len=len(content),
+            min_required=options.min_content_length,
+            duration_ms=duration_ms,
+        )
+        return FetchResult(
+            url=final_url,
+            text=content,
+            status_code=200,
+            tier_used=FetchTier.PLAYWRIGHT,
+            is_bot_blocked=True,
+            fetch_duration_ms=duration_ms,
+            error=f"content_too_short: {len(content)} < {options.min_content_length}",
+        )
+
+    logger.info(
+        "Scout scrape succeeded",
         url=url,
-        text="",
-        html=None,
-        status_code=0,
+        final_url=final_url,
+        content_len=len(content),
+        duration_ms=duration_ms,
+    )
+
+    return FetchResult(
+        url=final_url,
+        text=content,
+        html=resp.raw_html or None,
+        status_code=200,
         tier_used=FetchTier.PLAYWRIGHT,
         is_bot_blocked=False,
-        fetch_duration_ms=0,
-        error="tier2_not_implemented",
+        fetch_duration_ms=duration_ms,
     )
 
 
 async def interactive_session(
     url: str,
     options: FetchOptions,
-    actions: list[dict],
+    actions: list[dict[str, object]],
     proxy_url: str = "",
 ) -> FetchResult:
     """Run an interactive browser session — type queries, click, screenshot.
 
-    Required for the search audit module. Needs full Playwright with
-    stealth patches to avoid detection on e-commerce search pages.
-
-    NOT YET IMPLEMENTED.
-
-    Args:
-        url: Starting URL.
-        options: Fetch options.
-        actions: List of actions to perform (type, click, wait, screenshot).
-        proxy_url: Optional residential proxy URL.
-
-    Returns:
-        FetchResult — screenshot path in metadata when implemented.
+    Required for the search audit module. NOT YET IMPLEMENTED.
     """
     logger.warning(
         "Tier 2 interactive session not yet implemented",
@@ -92,7 +142,6 @@ async def interactive_session(
     return FetchResult(
         url=url,
         text="",
-        html=None,
         status_code=0,
         tier_used=FetchTier.PLAYWRIGHT,
         is_bot_blocked=False,

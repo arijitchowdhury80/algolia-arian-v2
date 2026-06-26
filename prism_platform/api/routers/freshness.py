@@ -11,8 +11,8 @@ from sqlalchemy import select
 
 from prism_platform.api.deps import DbSession
 from prism_platform.config import settings
-from prism_platform.core.domain_normalizer import normalize_domain
 from prism_platform.db.models import Account, Audit, ModuleExecution
+from prism_platform.v2.domain_normalizer import normalize_domain
 
 logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
 

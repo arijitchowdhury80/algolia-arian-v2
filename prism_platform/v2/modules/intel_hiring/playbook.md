@@ -7,6 +7,18 @@ execution_strategy: prospect-only
 composes: []
 ---
 
+## Live Career Page Content
+
+The following content was fetched directly from **{company_name}**'s career page immediately before this prompt. **Treat job titles and descriptions as authoritative** — they reflect currently open positions.
+
+```
+{upstream_careers_page}
+```
+
+If the above is empty, a LinkedIn redirect was detected, or content is minimal, fall back to web search on LinkedIn Jobs, Indeed, and Glassdoor.
+
+---
+
 ## Research Mission
 
 Analyse the current hiring activity of **{company_name}** ({domain}) to detect buying signals. You are looking for: open roles that suggest search investment, leadership hires that trigger tech evaluation, and build-vs-buy signals from job posting language.

@@ -108,6 +108,8 @@ async def _update_account_by_domain(domain: str, output: CompanySeedOutput) -> N
                     product_categories=output.product_categories,
                     executives=[e.model_dump() for e in output.executives],
                     competitors=[c.model_dump() for c in output.competitors],
+                    subsidiaries=[s.model_dump() for s in output.subsidiaries],
+                    parent_domain=output.parent_domain,
                     recent_news=recent_news,
                     updated_at=datetime.now(UTC),
                 )

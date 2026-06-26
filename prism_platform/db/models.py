@@ -47,6 +47,8 @@ class Account(Base):
     is_public: Mapped[bool] = mapped_column(Boolean, default=False)
     ticker: Mapped[str | None] = mapped_column(Text, nullable=True)
     parent_company: Mapped[str | None] = mapped_column(Text, nullable=True)
+    parent_domain: Mapped[str | None] = mapped_column(Text, nullable=True)
+    subsidiaries: Mapped[dict[str, Any]] = mapped_column(JSONB, default=list)
     revenue_estimate: Mapped[float | None] = mapped_column(Numeric(15, 2), nullable=True)
     revenue_source: Mapped[str | None] = mapped_column(Text, nullable=True)
 

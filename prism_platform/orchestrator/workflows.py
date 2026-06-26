@@ -30,21 +30,36 @@ from temporalio.common import RetryPolicy
 # Wave definitions
 # ---------------------------------------------------------------------------
 
-WAVE_1_INTEL: list[str] = [
-    "intel-company",
-    "intel-techstack",
-    "intel-traffic",
+# Wave 1 runs in three ORDERED sub-waves so composing modules see upstream
+# output. Each sub-wave runs its members in parallel; sub-waves run
+# sequentially (the DB cache from an earlier sub-wave is what a later
+# sub-wave's _hydrate_context_from_upstream reads). All keep wave_num=1 so the
+# intel-company gate and MODULE_WAVE_MAP are unchanged — the gate fires after
+# 1A (seed) before 1B runs.
+WAVE_1A_SEED: list[str] = [
+    "intel-company",  # seed — produces competitors/executives/industry for all others
+]
+
+WAVE_1B_BASE: list[str] = [
+    "intel-techstack",  # produces search-vendor stack consumed by 1C
+    "intel-traffic",  # produces top keywords consumed by intel-queries (1C)
     "intel-financial-public",
     "intel-financial-private",
     "intel-news",
     "intel-hiring",
     "intel-social",
     "intel-investor",
-    "intel-partner",
     "intel-industry",
-    "intel-competitors",
-    "intel-queries",
 ]
+
+WAVE_1C_DERIVED: list[str] = [
+    "intel-competitors",  # composes intel-techstack
+    "intel-partner",  # composes intel-techstack
+    "intel-queries",  # composes intel-traffic (Q1: placed in 1C for guaranteed keywords)
+]
+
+# Full Wave 1 set — kept for MODULE_WAVE_MAP and refresh-mode filtering.
+WAVE_1_INTEL: list[str] = [*WAVE_1A_SEED, *WAVE_1B_BASE, *WAVE_1C_DERIVED]
 
 WAVE_2_BROWSER: list[str] = ["audit-browser"]
 
@@ -298,13 +313,17 @@ class AuditWorkflow:
 
         # "full" mode — all 6 waves
         # gather → validate → analyze → synthesize → deliver
+        # Wave 1 is split into 3 ordered sub-waves (all wave_num=1) so composing
+        # modules read upstream output: 1A seed → 1B base → 1C derived.
         return [
-            (1, list(WAVE_1_INTEL)),        # Gather all intelligence
-            (2, list(WAVE_2_BROWSER)),       # Browser-based search audit
-            (3, list(WAVE_3_FACTCHECK)),     # Validate collected data
-            (4, list(WAVE_4_INSIGHTS)),      # Extract patterns and benchmarks
-            (5, list(WAVE_5_SYNTHESIS)),     # Build deliverables from validated insights
-            (6, list(WAVE_6_REPORT)),        # Final report package
+            (1, list(WAVE_1A_SEED)),  # 1A: seed (intel-company) — gate aborts on failure
+            (1, list(WAVE_1B_BASE)),  # 1B: modules needing only company context
+            (1, list(WAVE_1C_DERIVED)),  # 1C: modules composing techstack/traffic
+            (2, list(WAVE_2_BROWSER)),  # Browser-based search audit
+            (3, list(WAVE_3_FACTCHECK)),  # Validate collected data
+            (4, list(WAVE_4_INSIGHTS)),  # Extract patterns and benchmarks
+            (5, list(WAVE_5_SYNTHESIS)),  # Build deliverables from validated insights
+            (6, list(WAVE_6_REPORT)),  # Final report package
         ]
 
     async def _execute_wave(

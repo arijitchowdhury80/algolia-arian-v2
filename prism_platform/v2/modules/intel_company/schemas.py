@@ -65,6 +65,28 @@ class ExecutiveSeed(BaseModel):
     )
 
 
+class SubsidiarySeed(BaseModel):
+    """A brand or subsidiary owned by the prospect company.
+
+    Captures the full brand portfolio — wholly-owned subsidiaries,
+    acquired brands, and operating divisions with their own identity.
+    Examples: Nike owns Jordan and Converse; Berkshire Hathaway owns
+    Oriental Trading which owns MindWare, Fun Express, Smile Makers.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    name: str = Field(description="Brand or subsidiary name, e.g. 'Jordan', 'MindWare'")
+    domain: str | None = Field(
+        default=None,
+        description="Their own domain if they have one, e.g. 'jordan.com'. None if no separate domain.",
+    )
+    description: str | None = Field(
+        default=None,
+        description="One sentence: what this brand/subsidiary does and how it relates to the parent company.",
+    )
+
+
 class CompetitorSeed(BaseModel):
     """A direct competitor discovered during seed research."""
 
@@ -73,9 +95,24 @@ class CompetitorSeed(BaseModel):
     company_name: str = Field(description="Competitor's name")
     domain: str = Field(description="Competitor's primary website domain")
     why_competitor: str = Field(description="One sentence: why they compete with the prospect")
+    ticker: str | None = Field(
+        default=None,
+        description="Stock ticker symbol if publicly traded, e.g. 'ADDYY'. None if private.",
+    )
     linkedin_url: str | None = Field(
         default=None,
-        description="Company LinkedIn page URL, if found",
+        description=(
+            "Company LinkedIn page URL, e.g. 'https://www.linkedin.com/company/adidas/'. "
+            "Only include if actually found."
+        ),
+    )
+    twitter_handle: str | None = Field(
+        default=None,
+        description="Twitter/X handle without @ symbol, e.g. 'adidas'. None if not found.",
+    )
+    youtube_url: str | None = Field(
+        default=None,
+        description="YouTube channel URL, e.g. 'https://www.youtube.com/@adidas'. None if not found.",  # noqa: E501
     )
 
 
@@ -132,7 +169,11 @@ class CompanySeedOutput(BaseModel):
     )
     parent_company: str | None = Field(
         default=None,
-        description="Parent company name if subsidiary. None if independent.",
+        description="Parent company name if subsidiary, e.g. 'Berkshire Hathaway Inc.'. None if independent.",
+    )
+    parent_domain: str | None = Field(
+        default=None,
+        description="Parent company's primary domain, e.g. 'berkshirehathaway.com'. None if independent or unknown.",
     )
     revenue_estimate: float | None = Field(
         default=None,
@@ -146,13 +187,27 @@ class CompanySeedOutput(BaseModel):
         description="Source of revenue figure, e.g. 'SEC 10-K FY2025'",
     )
 
+    # Company hierarchy
+    subsidiaries: list[SubsidiarySeed] = Field(
+        default_factory=list,
+        description=(
+            "All brands and subsidiaries OWNED by this company. "
+            "Include wholly-owned subsidiaries, acquired brands, and operating divisions "
+            "that have their own identity. "
+            "Nike example: [Jordan, Converse, Hurley]. "
+            "Oriental Trading example: [MindWare, Fun Express, Smile Makers, Morris Costumes]. "
+            "Empty list if the company owns no distinct sub-brands."
+        ),
+    )
+
     # People & competitors
     executives: list[ExecutiveSeed] = Field(
         default_factory=list,
         description=(
-            "5-12 key executives. Must include CEO, CTO, CFO at minimum. "
+            "5-12 CURRENT, ACTIVE key executives. Must include CEO, CTO, CFO at minimum. "
             "Include VP/Director of Engineering, Product, E-commerce, Digital, Search. "
-            "For subsidiaries, include both subsidiary and relevant parent company leaders."
+            "For subsidiaries, include both subsidiary and relevant parent company leaders. "
+            "Do NOT include historical figures or anyone with 'Former' in their title."
         ),
     )
     competitors: list[CompetitorSeed] = Field(
@@ -170,7 +225,18 @@ class CompanySeedOutput(BaseModel):
     )
     company_linkedin_url: str | None = Field(
         default=None,
-        description="Company LinkedIn page URL",
+        description=(
+            "Company LinkedIn page URL, e.g. 'https://www.linkedin.com/company/nike/'. "
+            "Only include if actually found."
+        ),
+    )
+    twitter_handle: str | None = Field(
+        default=None,
+        description="Twitter/X handle without @ symbol, e.g. 'Nike'. None if not found.",
+    )
+    youtube_url: str | None = Field(
+        default=None,
+        description="YouTube channel URL, e.g. 'https://www.youtube.com/@nike'. None if not found.",
     )
     recent_headline: str | None = Field(
         default=None,

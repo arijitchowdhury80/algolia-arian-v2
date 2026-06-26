@@ -1,4 +1,4 @@
-"""PRISM Modules Router -- list and execute registered modules."""
+"""PRISM Modules Router — list and execute registered v2 modules."""
 
 from __future__ import annotations
 
@@ -9,10 +9,13 @@ import structlog
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict
 
-from prism_platform.core.domain_normalizer import normalize_domain
-from prism_platform.core.module import ExecutionContext
-from prism_platform.core.registry import MODULE_REGISTRY
+from prism_platform.config import settings
 from prism_platform.db.cache import get_cached_result, persist_result
+from prism_platform.v2.agent_api import AgentAPIClient
+from prism_platform.v2.domain_normalizer import normalize_domain
+from prism_platform.v2.executor import ModuleExecutor
+from prism_platform.v2.registry import V2_MODULE_REGISTRY
+from prism_platform.v2.types import ExecutionContextV2
 
 logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
 
@@ -35,23 +38,23 @@ class ExecuteModuleRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     domain: str
-    company_name: str
+    company_name: str = ""
 
 
 @router.get("/", response_model=list[ModuleInfo])
 async def list_modules() -> list[ModuleInfo]:
-    """List every registered module with its health status."""
-    logger.info("list_modules.start", count=len(MODULE_REGISTRY))
+    """List every registered v2 module with its health status."""
+    logger.info("list_modules.start", count=len(V2_MODULE_REGISTRY))
     try:
         modules: list[ModuleInfo] = []
-        for name, mod in MODULE_REGISTRY.items():
-            healthy = await mod.health_check()
+        for handle in V2_MODULE_REGISTRY.values():
+            healthy = await handle.health_check()
             modules.append(
                 ModuleInfo(
-                    name=name,
-                    version=mod.version,
-                    description=mod.description,
-                    layer=mod.layer,
+                    name=handle.name,
+                    version=handle.version,
+                    description=handle.description,
+                    layer=handle.layer,
                     healthy=healthy,
                 )
             )
@@ -64,17 +67,22 @@ async def list_modules() -> list[ModuleInfo]:
 
 @router.post("/{module_name}/execute")
 async def execute_module(module_name: str, body: ExecuteModuleRequest) -> dict[str, Any]:
-    """Execute a single module with database-first caching.
+    """Execute a single v2 module with database-first caching.
 
-    1. Check PostgreSQL for a cached result within TTL
+    1. Check PostgreSQL for an existing result for this module+domain
     2. If fresh cache exists, return it immediately (no API call)
-    3. If no cache or stale, execute the module and persist the result
+    3. If no cache, execute via ModuleExecutor and persist the result
     """
     domain = normalize_domain(body.domain)
-    logger.info("execute_module.start", module_name=module_name, domain=domain, raw_domain=body.domain)
+    logger.info(
+        "execute_module.start",
+        module_name=module_name,
+        domain=domain,
+        raw_domain=body.domain,
+    )
 
-    mod = MODULE_REGISTRY.get(module_name)
-    if mod is None:
+    handle = V2_MODULE_REGISTRY.get(module_name)
+    if handle is None:
         logger.warning("execute_module.not_found", module_name=module_name)
         raise HTTPException(status_code=404, detail=f"Module '{module_name}' not found.")
 
@@ -82,37 +90,64 @@ async def execute_module(module_name: str, body: ExecuteModuleRequest) -> dict[s
     try:
         cached = await get_cached_result(module_name, domain)
         if cached is not None:
-            logger.info(
-                "execute_module.cache_hit",
-                module_name=module_name,
-                domain=domain,
-            )
+            logger.info("execute_module.cache_hit", module_name=module_name, domain=domain)
             return cached
     except Exception as exc:
         logger.error("execute_module.cache_check_failed", error=str(exc))
-        # Continue to fresh execution if cache check fails
 
-    # Step 2: No cache — execute fresh
+    # Step 2: Execute fresh
     try:
-        context = ExecutionContext(
+        v2_context = ExecutionContextV2(
             audit_id=str(uuid.uuid4()),
-            account_id=str(uuid.uuid4()),
-            domain=domain,
-            company_name=body.company_name,
+            account_domain=domain,
+            company_name=body.company_name or domain.split(".")[0].title(),
         )
 
-        result = await mod.execute(context)
-        result_dict = result.model_dump(mode="json")
+        api = AgentAPIClient(
+            api_key=settings.perplexity_api_key,
+            timeout=float(handle.config.timeout_seconds),
+        )
+        executor = ModuleExecutor(agent_api=api)
+
+        result = await executor.execute(
+            config=handle.config,
+            context=v2_context,
+            output_schema=handle.output_schema,
+            playbook_path=handle.playbook_path,
+        )
 
         logger.info(
             "execute_module.fresh_api_call",
             module_name=module_name,
             domain=domain,
             status=result.status,
-            duration_ms=result.duration_ms,
+            llm_calls=result.llm_calls,
         )
 
-        # Step 3: Persist to PostgreSQL for future cache hits
+        # Optional post-execute hook (e.g. accounts table for intel-company)
+        if handle.post_execute and result.status == "success":
+            try:
+                await handle.post_execute(result, v2_context)
+            except Exception as exc:
+                logger.error(
+                    "execute_module.post_execute_failed",
+                    module_name=module_name,
+                    error=str(exc),
+                )
+
+        result_dict: dict[str, Any] = {
+            "module_name": result.module_name,
+            "module_version": result.module_version,
+            "status": result.status,
+            "output": result.output or {},
+            "sources": result.citations,
+            "duration_ms": result.duration_ms,
+            "llm_calls": result.llm_calls,
+            "llm_cost_usd": 0.0,
+            "errors": result.errors,
+        }
+
+        # Step 3: Persist for future cache hits
         await persist_result(
             module_name=module_name,
             domain=domain,
