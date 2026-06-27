@@ -290,6 +290,21 @@ def register_all_v2_modules() -> None:
         )
     )
 
+    # ── synth-business-case (Wave 5 — pure synthesis from upstream intel) ───
+    from prism_platform.v2.modules.synth_business_case.config import (
+        SYNTH_BUSINESS_CASE_CONFIG,
+    )
+    from prism_platform.v2.modules.synth_business_case.schemas import BusinessCaseOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=SYNTH_BUSINESS_CASE_CONFIG,
+            output_schema=BusinessCaseOutput,
+            playbook_path=_MODULES_ROOT / "synth_business_case" / "playbook.md",
+            # No collector — reads upstream via composes + {upstream_*} injection.
+        )
+    )
+
     logger.info(
         "[Registry] all v2 modules registered",
         count=len(V2_MODULE_REGISTRY),
