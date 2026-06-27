@@ -67,11 +67,12 @@ WAVE_3_FACTCHECK: list[str] = ["audit-factcheck"]
 
 WAVE_4_INSIGHTS: list[str] = ["insights-engine"]
 
-WAVE_5_SYNTHESIS: list[str] = [
-    "synth-business-case",
-    "synth-sales-plays",
-    "campaign-abx",
-]
+# Wave 5 runs in two ORDERED sub-waves (both wave_num=5) so the composing modules
+# read the business case from cache: 5A produces it, 5B (sales-plays, campaign) consume it.
+WAVE_5A_BASE: list[str] = ["synth-business-case"]
+WAVE_5B_DERIVED: list[str] = ["synth-sales-plays", "campaign-abx"]
+# Full Wave 5 set — kept for MODULE_WAVE_MAP and refresh-mode filtering.
+WAVE_5_SYNTHESIS: list[str] = [*WAVE_5A_BASE, *WAVE_5B_DERIVED]
 
 WAVE_6_REPORT: list[str] = ["audit-report"]
 
@@ -305,7 +306,8 @@ class AuditWorkflow:
                 waves.append((2, list(WAVE_2_BROWSER)))
             waves.append((3, list(WAVE_3_FACTCHECK)))
             waves.append((4, list(WAVE_4_INSIGHTS)))
-            waves.append((5, list(WAVE_5_SYNTHESIS)))
+            waves.append((5, list(WAVE_5A_BASE)))
+            waves.append((5, list(WAVE_5B_DERIVED)))
             waves.append((6, list(WAVE_6_REPORT)))
             # Sort waves by wave number so execution order is correct
             waves.sort(key=lambda w: w[0])
@@ -322,7 +324,8 @@ class AuditWorkflow:
             (2, list(WAVE_2_BROWSER)),  # Browser-based search audit
             (3, list(WAVE_3_FACTCHECK)),  # Validate collected data
             (4, list(WAVE_4_INSIGHTS)),  # Extract patterns and benchmarks
-            (5, list(WAVE_5_SYNTHESIS)),  # Build deliverables from validated insights
+            (5, list(WAVE_5A_BASE)),  # 5A: business case (consumed by 5B)
+            (5, list(WAVE_5B_DERIVED)),  # 5B: sales-plays + campaign compose business case
             (6, list(WAVE_6_REPORT)),  # Final report package
         ]
 
