@@ -305,6 +305,44 @@ def register_all_v2_modules() -> None:
         )
     )
 
+    # ── synth-sales-plays (Wave 5 — pure synthesis; composes synth-business-case) ─
+    from prism_platform.v2.modules.synth_sales_plays.config import (
+        SYNTH_SALES_PLAYS_CONFIG,
+    )
+    from prism_platform.v2.modules.synth_sales_plays.schemas import SalesPlaysOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=SYNTH_SALES_PLAYS_CONFIG,
+            output_schema=SalesPlaysOutput,
+            playbook_path=_MODULES_ROOT / "synth_sales_plays" / "playbook.md",
+        )
+    )
+
+    # ── campaign-abx (Wave 5 — pure synthesis; composes both synth modules) ─
+    from prism_platform.v2.modules.campaign_abx.config import CAMPAIGN_ABX_CONFIG
+    from prism_platform.v2.modules.campaign_abx.schemas import CampaignOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=CAMPAIGN_ABX_CONFIG,
+            output_schema=CampaignOutput,
+            playbook_path=_MODULES_ROOT / "campaign_abx" / "playbook.md",
+        )
+    )
+
+    # ── audit-report (Wave 6 — final deliverable; pure synthesis from all upstream) ─
+    from prism_platform.v2.modules.audit_report.config import AUDIT_REPORT_CONFIG
+    from prism_platform.v2.modules.audit_report.schemas import AuditReportOutput
+
+    register_v2_module(
+        ModuleHandle(
+            config=AUDIT_REPORT_CONFIG,
+            output_schema=AuditReportOutput,
+            playbook_path=_MODULES_ROOT / "audit_report" / "playbook.md",
+        )
+    )
+
     logger.info(
         "[Registry] all v2 modules registered",
         count=len(V2_MODULE_REGISTRY),

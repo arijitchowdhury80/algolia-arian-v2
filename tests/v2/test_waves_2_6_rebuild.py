@@ -18,6 +18,9 @@ register_all_v2_modules()
 # Rebuilt Waves 2-6 modules — extended as each is built.
 REBUILT = [
     "synth-business-case",  # W5
+    "synth-sales-plays",  # W5
+    "campaign-abx",  # W5
+    "audit-report",  # W6
 ]
 
 
