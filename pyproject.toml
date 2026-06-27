@@ -22,6 +22,7 @@ dependencies = [
     "structlog>=24.0",
     "yfinance>=0.2",
     "playwright>=1.49",
+    "playwright-stealth>=2.0",
     "scout",
 ]
 

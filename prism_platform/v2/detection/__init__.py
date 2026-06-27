@@ -7,6 +7,7 @@ platform. No paid third-party API (BuiltWith is out — no budget).
 from prism_platform.v2.detection.search_vendor import (
     SearchVendorResult,
     detect_search_vendor,
+    scan_search_vendors,
 )
 
-__all__ = ["SearchVendorResult", "detect_search_vendor"]
+__all__ = ["SearchVendorResult", "detect_search_vendor", "scan_search_vendors"]
