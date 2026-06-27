@@ -1,27 +1,27 @@
-# SESSION — PRISM · 2026-06-24 (13/13 modules done, VPS deployed, smoke test Track 1 verified)
+# SESSION — PRISM · 2026-06-27 (search-vendor detector rebuilt + wired; Track 2 live; v1 deleted)
 
-## Status: PIPELINE COMPLETE — smoke test blocked on PERPLEXITY_API_KEY
+## Status: search-vendor detector SHIPPED (packet inspection, zero-FP, wired to intel-competitors)
 
-## Resume action
+### Latest work (2026-06-27)
+- **Search-vendor detector rebuilt** → live network-packet inspection (replaces faulty substring
+  source-scan). Validated 17 vendors / ~230 sites / 59 confirms / **zero false positives**.
+  Wired into `intel_competitors/collector.py` (Golden Angle; fixed competitors_scanned=0). Commit **a72aea6**.
+  - Module: `prism_platform/v2/detection/search_vendor.py` (`detect_search_vendor` + `scan_search_vendors`)
+  - Harness: `scripts/detect_search_packet.py` · Evidence: `docs/workspace/search-detector-validation/REPORT.md`
+  - Vault ADR: `Projects/PRISM/wiki/decisions/2026-06-27-search-vendor-packet-detection.md`
+- **.env.local loading fixed** (commit bc9bb82) → Track 2 (Perplexity) now VERIFIED live.
+- **v1 tree deleted** (commit f4cea8f) → v2 is the sole architecture.
+- Verified: ruff clean · 433 non-browser v2 tests pass · 4 live browser detector tests pass.
+
+### Resume action
 1. Read this file.
-2. **Add to `.env.local`** (required to unblock Track 2 smoke test):
-   ```
-   PERPLEXITY_API_KEY=pplx-...your-key
-   SCOUT_API_KEY=5b3fcb6435d0687dd8b32555df226c3e545a8fbff391e91b
-   SCOUT_URL=http://localhost:8421
-   ```
-3. **Open SSH tunnel** (Scout on VPS → localhost):
+2. Confirm `.env.local` has `PERPLEXITY_API_KEY` (already set). For Scout/browser work, tunnel:
    ```bash
    ssh -i ~/.ssh/chowmes_ed25519 -fNL 8421:127.0.0.1:8421 chowmesadmin@72.61.72.147
    ```
-4. **Run smoke test** (Track 1 + Track 2):
-   ```bash
-   uv run python scripts/smoke_real.py nike.com
-   ```
-5. **Run browser/detector tests** (needs tunnel + Scout key):
-   ```bash
-   uv run python -m pytest tests/v2/test_search_vendor_detector_integration.py -m browser -v
-   ```
+3. Smoke: `uv run python scripts/smoke_real.py nike.com`
+4. Detector tests: `uv run python -m pytest tests/v2/test_search_vendor_detector_integration.py -m browser -v`
+5. Next big rocks: deploy Python workers to VPS · local Postgres · DNS · Agent Studio trial · Algolia sync.
 
 ## Where we stopped (exact)
 
