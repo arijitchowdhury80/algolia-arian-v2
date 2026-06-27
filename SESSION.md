@@ -2,6 +2,12 @@
 
 ## Status: search-vendor detector SHIPPED (packet inspection, zero-FP, wired to intel-competitors)
 
+> **PIPELINE REALITY (audited 2026-06-27):** Only **Wave 1 of 6** is built in v2 (13 intel modules).
+> **Waves 2-6 are NOT built** — audit-browser (W2), audit-factcheck (W3), insights-engine (W4),
+> synth-business-case/synth-sales-plays/campaign-abx (W5), audit-report (W6) were deleted with v1
+> and never rebuilt. The orchestrator references them; `full` mode would crash. The pipeline has
+> **never run end-to-end** (no Temporal worker exists). **Rebuild of Waves 2-6 started 2026-06-27.**
+
 ### Latest work (2026-06-27)
 - **Search-vendor detector rebuilt** → live network-packet inspection (replaces faulty substring
   source-scan). Validated 17 vendors / ~230 sites / 59 confirms / **zero false positives**.
