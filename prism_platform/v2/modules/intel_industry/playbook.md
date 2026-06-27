@@ -19,7 +19,7 @@ This is the one module where LLM-by-default is correct — vertical benchmarks, 
 
 ## Context from intel-company
 
-{upstream_intel-company}
+{upstream_intel_company}
 
 Use the `vertical`, `sub_vertical`, `company_description`, and `product_categories` fields from the above to calibrate your research. If the upstream is empty, infer the vertical from the domain and company name.
 

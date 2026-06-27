@@ -24,11 +24,11 @@ The Track-1 static table lookup already matched the prospect's tech stack agains
 
 ## Company context (from intel-company)
 
-{upstream_intel-company}
+{upstream_intel_company}
 
 ## Tech stack context (from intel-techstack)
 
-{upstream_intel-techstack}
+{upstream_intel_techstack}
 
 ## What you DO research
 
