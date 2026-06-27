@@ -8,35 +8,46 @@
 > and never rebuilt. The orchestrator references them; `full` mode would crash. The pipeline has
 > **never run end-to-end** (no Temporal worker exists). **Rebuild of Waves 2-6 started 2026-06-27.**
 
-### Latest work (2026-06-27)
-- **Search-vendor detector rebuilt** → live network-packet inspection (replaces faulty substring
-  source-scan). Validated 17 vendors / ~230 sites / 59 confirms / **zero false positives**.
-  Wired into `intel_competitors/collector.py` (Golden Angle; fixed competitors_scanned=0). Commit **a72aea6**.
-  - Module: `prism_platform/v2/detection/search_vendor.py` (`detect_search_vendor` + `scan_search_vendors`)
-  - Harness: `scripts/detect_search_packet.py` · Evidence: `docs/workspace/search-detector-validation/REPORT.md`
-  - Vault ADR: `Projects/PRISM/wiki/decisions/2026-06-27-search-vendor-packet-detection.md`
-- **.env.local loading fixed** (commit bc9bb82) → Track 2 (Perplexity) now VERIFIED live.
-- **v1 tree deleted** (commit f4cea8f) → v2 is the sole architecture.
-- Verified: ruff clean · 433 non-browser v2 tests pass · 4 live browser detector tests pass.
+## CURRENT STATUS (2026-06-27) — /goal: finish full build, run end-to-end
 
-### Resume action
-1. Read this file.
-2. Confirm `.env.local` has `PERPLEXITY_API_KEY` (already set). For Scout/browser work, tunnel:
-   ```bash
-   ssh -i ~/.ssh/chowmes_ed25519 -fNL 8421:127.0.0.1:8421 chowmesadmin@72.61.72.147
-   ```
-3. Smoke: `uv run python scripts/smoke_real.py nike.com`
-4. Detector tests: `uv run python -m pytest tests/v2/test_search_vendor_detector_integration.py -m browser -v`
-5. Next big rocks: deploy Python workers to VPS · local Postgres · DNS · Agent Studio trial · Algolia sync.
+### The 6-wave pipeline — what's actually built
+| Wave | Modules | Status |
+|---|---|---|
+| 1 — intel | 13 intel-* modules | ✅ built (pre-session) |
+| 2 — audit-browser | audit-browser | ❌ NOT rebuilt (needs Playwright + Vision LLM) |
+| 3 — audit-factcheck | audit-factcheck | ❌ NOT rebuilt (collector over all modules + child-wf verdict) |
+| 4 — insights-engine | insights-engine | ❌ NOT rebuilt (cross-audit DB query + vertical_benchmarks write) |
+| 5 — synth | synth-business-case, synth-sales-plays, campaign-abx | ✅ REBUILT this session |
+| 6 — report | audit-report | ✅ REBUILT this session |
 
-## Where we stopped (exact)
+### Rebuild progress: 4 of 7 missing modules done
+- Done (pure-synthesis, playbook-only; committed, ruff-clean, 453 tests pass):
+  synth-business-case, synth-sales-plays, campaign-abx, audit-report + Wave-5 sub-wave ordering (5A→5B).
+- Remaining 3 (code-heavy + infra-dependent — cannot be runtime-verified until infra up):
+  **audit-browser** (W2, Playwright + Vision), **audit-factcheck** (W3, DB collector + verdict),
+  **insights-engine** (W4, cross-audit DB).
 
-Ran `scripts/smoke_real.py nike.com`. Result:
-- Track 1 (Scout browser): **PASS** — 3 pages fetched from nike.com (leadership: 8K chars, IR: 1K, newsroom: 1K)
-- Track 2 (Perplexity): **SKIP** — PERPLEXITY_API_KEY not in .env.local
-- intel-competitors detector: **PASS** — ran cleanly, nike.com detected as no-Algolia (correct)
+### Pipeline has NEVER run end-to-end
+No Temporal **worker runner** exists (activities/workflows defined, but no `Worker(...)` process).
+Local Postgres not running. Vision client not wired. These block a full run.
 
-Before smoke test: Parallel.ai vs Perplexity research done. Decision locked: keep Perplexity now, Parallel is search-only (not a drop-in replacement).
+### To reach end-to-end test (today's /goal)
+1. Build remaining 3 modules (audit-browser, audit-factcheck, insights-engine).
+2. Write the Temporal worker runner (`Worker(...)` hosting activities + workflows).
+3. Stand up local Postgres (Docker) for module_executions / cache / persistence.
+4. Wire a Vision client (Claude Vision) for audit-browser scoring.
+5. Run one full audit end-to-end (worker + Postgres + Temporal) and verify deliverables.
+
+### This session's commits (newest first)
+d93b39b W5 ordering · 93d348c sales-plays+campaign+report · 8044f69 playbook bugfix ·
+7149d4b business-case · 932ee29 status correction · a72aea6 search detector + wiring ·
+bc9bb82 .env.local fix · f4cea8f v1 deletion
+
+### Reference
+- Search detector: `prism_platform/v2/detection/search_vendor.py` (packet inspection, zero-FP,
+  17 vendors/230 sites validated; evidence `docs/workspace/search-detector-validation/REPORT.md`).
+- Rebuild spec (the 7 modules, v2 contract): from investigation — playbook-only vs collector vs bespoke.
+- Infra ADR (Temporal + workers locked): `docs/decisions/2026-06-22-infrastructure-architecture.md`.
 
 ## What was completed this session (2026-06-22 → 2026-06-24)
 
