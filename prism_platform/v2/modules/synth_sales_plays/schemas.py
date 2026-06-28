@@ -125,7 +125,7 @@ class PartnerAngles(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    si_partner: str = Field(default="", description="HIGH-confidence SI (Crossbeam); #1 if present.")
+    si_partner: str = Field(default="", description="HIGH-confidence SI (Crossbeam); #1 if any.")
     si_activation: str = Field(default="", description="How to activate the SI relationship.")
     tech_partner: str = Field(default="", description="Tech partner co-sell angle.")
     competitor_angle: str = Field(default="", description="Golden-Angle competitor-based play.")
