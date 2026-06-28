@@ -101,6 +101,35 @@ def _match_slug(text):
     return None
 
 
+def _slug_from_session_key(kwargs):
+    """Deterministic bind from a Hermes session-key carrying `…:acct:<domain>`.
+
+    The SPA proxy sets X-Hermes-Session-Key = agent:main:prism:rep:<rep>:acct:<domain>,
+    which Hermes threads into the hook ctx. Resolving the report by that domain removes
+    the reliance on the user's message naming the company. No-op (returns None) if no
+    such key is present in ctx — so existing message-match behaviour is unchanged.
+    """
+    candidates = [v for v in kwargs.values() if isinstance(v, str) and ":acct:" in v]
+    for name in ("gateway_session_key", "session_key", "x_hermes_session_key"):
+        v = kwargs.get(name)
+        if isinstance(v, str) and ":acct:" in v and v not in candidates:
+            candidates.append(v)
+    for key in candidates:
+        domain = key.split(":acct:", 1)[1].strip().lower().split(":")[0]
+        if not domain:
+            continue
+        rows = _load_index()
+        for r in rows:                                   # exact domain match
+            if (r.get("domain") or "").lower() == domain:
+                return r["slug"]
+        root = domain.split(".")[0]                       # petsmart.com -> petsmart
+        for r in rows:                                    # root match on slug/company
+            comp = "".join(ch for ch in (r.get("company") or "").lower() if ch.isalnum())
+            if root and (root in (r.get("slug") or "").lower() or (comp and root in comp)):
+                return r["slug"]
+    return None
+
+
 def _load_report(slug):
     with open(os.path.join(REPORTS_DIR, slug, "audit-data.json")) as f:
         return f.read()
@@ -130,6 +159,8 @@ def _gemini_key():
 # ---------------------------------------------------------------- L1: inject report
 def inject_report(session_id=None, user_message=None, conversation_history=None, **kwargs):
     slug = _BINDINGS.get(session_id)
+    if not slug:
+        slug = _slug_from_session_key(kwargs)        # deterministic, key-driven (preferred)
     if not slug:
         slug = _match_slug(user_message)
         if not slug and conversation_history:
