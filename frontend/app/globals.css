@@ -1,0 +1,319 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Algolia Brand — Tailwind utilities ──────────────────────────────────
+     Enables: text-brand-blue, bg-brand-navy, text-brand-muted, etc.
+     Font:    text-body (16px) · text-label (14px) · text-small (13px) · text-caption (12px)
+  ───────────────────────────────────────────────────────────────────────── */
+  --color-brand-blue:   var(--brand-blue);
+  --color-brand-navy:   var(--brand-navy);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-muted:  var(--muted-text);
+  --color-brand-ghost:  #9CA3AF;
+
+  --text-body:    var(--font-body);    /* 16px */
+  --text-label:   var(--font-label);   /* 14px */
+  --text-small:   var(--font-small);   /* 13px */
+  --text-caption: 12px;                /* absolute minimum */
+  --text-h5:      var(--font-h5);      /* 18px */
+  --text-h4:      var(--font-h4);      /* 22px */
+  --text-h3:      var(--font-h3);      /* 28px */
+
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-semibold: 600;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Algolia Brand Palette */
+  --sidebar-bg: #F5F5F7;
+  --chat-bg: #FFFFFF;
+  --border-warm: #E5E7EB;
+  --user-bubble: #003DFF;
+  --user-bubble-text: #FFFFFF;
+  --muted-text: #6B7280;
+  --accent-warm: #5468FF;
+  --brand-blue: #003DFF;
+  --brand-purple: #5468FF;
+  --brand-navy: #23263B;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Algolia brand custom properties */
+:root {
+  --sidebar-bg: #F5F5F7;
+  --border-warm: #E5E7EB;
+  --muted-text: #6B7280;
+  --accent-warm: #5468FF;
+  --user-bubble: #003DFF;
+  --user-bubble-text: #FFFFFF;
+}
+
+/* Top bar loading progress animation (from Algolia Audit SPA) */
+@keyframes loadProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ALGOLIA BRAND ENFORCEMENT — from algolia-search-audit/templates/algolia-brand.css
+   Font:    Sora — 300 / 400 / 600
+   Colors:  #23263B (text), #003DFF (blue), #5468FF (purple), #6B7280 (mid)
+   Scale:   H1=56px/300, H2=36px/300, H3=28px/400, H4=22px/600,
+            body=16px/400, label=14px/600, small=13px/400
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Algolia Typography Tokens */
+  --font-body: 16px;
+  --font-label: 14px;
+  --font-small: 13px;
+  --font-h1: 56px;
+  --font-h2: 36px;
+  --font-h3: 28px;
+  --font-h4: 22px;
+  --font-h5: 18px;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+
+  /* Algolia Semantic Colors */
+  --signal-critical: #DC2626;
+  --signal-critical-bg: #FEF2F2;
+  --signal-critical-border: #FECACA;
+  --signal-positive: #059669;
+  --signal-positive-bg: #F0FDF4;
+  --signal-positive-border: #BBF7D0;
+  --signal-warning: #D97706;
+  --signal-warning-bg: #FFFBEB;
+  --signal-warning-border: #FDE68A;
+
+  /* Card styling */
+  --card-radius: 12px;
+  --card-shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+  --card-shadow-hover: 0 4px 16px rgba(35, 38, 59, 0.12);
+}
+
+/* ── Algolia Type Scale ── */
+@layer base {
+  body {
+    font-size: var(--font-body);
+    font-weight: var(--weight-regular);
+    color: #23263B;
+    line-height: 1.6;
+  }
+
+  h1, .h1 { font-size: var(--font-h1); font-weight: var(--weight-light); line-height: 1.10; letter-spacing: -2px; }
+  h2, .h2 { font-size: var(--font-h2); font-weight: var(--weight-light); line-height: 1.40; letter-spacing: -2px; }
+  h3, .h3 { font-size: var(--font-h3); font-weight: var(--weight-regular); line-height: 1.40; letter-spacing: -1px; }
+  h4, .h4 { font-size: var(--font-h4); font-weight: var(--weight-semibold); line-height: 1.40; }
+  h5, .h5 { font-size: var(--font-h5); font-weight: var(--weight-semibold); line-height: 1.40; }
+
+  /* Links: Algolia blue, no underline, underline on hover */
+  a { color: #003DFF; text-decoration: none; transition: text-decoration 0.1s; }
+  a:hover { text-decoration: underline; color: #003DFF; }
+}
+
+/* ── Algolia Minimum Font Sizes ─────────────────────────────
+   Enforce minimum readability across the app.
+   The SPA template uses 16px body, 14px labels, 12px captions.
+   Never go below 12px for any visible text.
+──────────────────────────────────────────────────────────── */
+
+/* Chat messages — body text at 16px */
+.aui-thread-root { font-size: 16px; line-height: 1.6; }
+
+/* Compact summaries and card content — minimum 13px */
+.compact-summary { font-size: 14px; }
+.compact-summary .text-xs { font-size: 13px !important; }
+
+/* Badge text — minimum 12px (was 9-10px, unreadable) */
+.aui-thread-root [class*="text-[9px]"],
+.aui-thread-root [class*="text-[10px]"] { font-size: 12px !important; }
+.aui-thread-root [class*="text-[11px]"] { font-size: 13px !important; }
+
+/* Evidence badges — readable at 12px */
+.proof-pill, [data-slot="evidence-badge"] { font-size: 12px !important; }
+
+/* Tool loading indicators */
+.aui-thread-root .text-sm { font-size: 14px; }
+
+/* ── Unverified Data Warning (from SPA template) ── */
+.unverified-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--signal-warning);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: var(--signal-warning-bg);
+  border: 1px solid var(--signal-warning-border);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+/* ── Glow Card — Algolia standard ── */
+.glow-card {
+  position: relative;
+  border-radius: var(--card-radius);
+  background: white;
+  border: 1px solid var(--border-warm, #E5E7EB);
+  box-shadow: var(--card-shadow);
+  isolation: isolate;
+  transition: box-shadow 0.2s;
+}
+.glow-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--glow-angle, 0deg),
+    transparent 0%,
+    #003dff 10%,
+    #5468ff 25%,
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(var(--card-radius) - 1px);
+  background: white;
+  z-index: -1;
+}
+.glow-card.glow-active::before { opacity: 1; }
+.glow-card.glow-active { border-color: transparent; }
