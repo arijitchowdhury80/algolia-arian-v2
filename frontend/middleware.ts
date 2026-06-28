@@ -1,7 +1,9 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/api/chat(.*)", "/demo(.*)"]);
+// /api/chat removed from public — chat now flows through /api/hermes (Clerk-protected,
+// non-public by default). No unauthenticated path reaches a brain that holds account intel.
+const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/demo(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
   // Bypass auth for local development

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
 import { useAISDKRuntime } from "@assistant-ui/react-ai-sdk";
 import { AssistantRuntimeProvider } from "@assistant-ui/react";
 import { Thread } from "@/components/assistant-ui/thread";
@@ -46,7 +47,16 @@ import {
  * Tool renderers are registered as children of the AssistantRuntimeProvider.
  */
 export function PrismChat() {
-  const chat = useChat({ id: "prism-chat" });
+  // W-D: one brain = Hermes. Chat streams grounded report-QA from /api/hermes
+  // (server-side proxy → Hermes /v1/responses). `domain` is read fresh per turn
+  // so the report-QA plugin binds the account currently in view.
+  const chat = useChat({
+    id: "prism-chat",
+    transport: new DefaultChatTransport({
+      api: "/api/hermes",
+      body: () => ({ domain: usePrismStore.getState().currentDomain }),
+    }),
+  });
   const runtime = useAISDKRuntime(chat);
 
   // Expose the chat sendMessage function so other components can trigger messages
