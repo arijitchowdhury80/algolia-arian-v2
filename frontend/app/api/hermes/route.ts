@@ -99,11 +99,10 @@ export async function POST(req: Request): Promise<Response> {
   // The SPA passes the current account domain (Zustand currentDomain) via transport body.
   // If absent, we skip the binding tag and rely on the user naming the company.
   const domain = (body.domain ?? "").trim();
-  const isFirstTurn = userMessages.length <= 1;
 
   // Same key+conversation from phone and laptop → one thread, one memory scope.
   const scope = resolveHermesScope(repSource, domain || "unscoped");
-  const input = domain ? tagAccountForBinding(userText, domain, isFirstTurn) : userText;
+  const input = domain ? tagAccountForBinding(userText, domain) : userText;
 
   const hermesRes = await fetch(`${HERMES_API_URL}/v1/responses`, {
     method: "POST",

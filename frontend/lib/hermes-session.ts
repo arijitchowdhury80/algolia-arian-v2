@@ -68,19 +68,17 @@ export function resolveHermesScope(clerkUserId: string, domain: string): HermesS
 }
 
 /**
- * v1 report-QA binding helper. The prism-report-qa plugin binds the report by
- * content-matching the user's MESSAGE TEXT (company/domain/slug), per session_id —
- * it does NOT read X-Hermes-Session-Key (see reference-prism-report-qa-binding).
- * So the proxy tags the account into the first turn of a conversation to force a
- * deterministic bind. Returns the input string to send to /v1/responses.
- *
- * (Follow-up: a ~10-line plugin patch to bind from acct:<domain> would remove the
- *  need for this tag — see G §3.3 / the binding memo.)
+ * Report-QA binding helper. The prism-report-qa plugin binds the report by
+ * content-matching the user's MESSAGE TEXT (company/domain/slug), per session_id.
+ * Hermes does NOT thread X-Hermes-Session-Key into the plugin hook ctx (verified on
+ * the box), so the deterministic key-bind patch is a no-op and the message tag is the
+ * live binding mechanism. We tag EVERY turn (not just the first): the prefix is sent to
+ * Hermes only — never shown in the SPA — so it's invisible + idempotent, and binding
+ * survives a Hermes restart that clears the per-session_id cache.
  */
-export function tagAccountForBinding(userText: string, domain: string, isFirstTurn: boolean): string {
-  if (!isFirstTurn) return userText;
+export function tagAccountForBinding(userText: string, domain: string): string {
   const d = normalizeDomain(domain);
-  // Only tag if the user didn't already name the account, to keep the transcript clean.
+  // Skip if the user already named the account, to keep the transcript clean.
   if (userText.toLowerCase().includes(d) || userText.toLowerCase().includes(d.split(".")[0])) {
     return userText;
   }
