@@ -49,10 +49,17 @@ If the synth modules are empty, build a lighter campaign from the intel modules 
 
 ## What to produce
 
+### Part 0 — Signal tier (`signal_tier`, `campaign_type`)
+First set `signal_tier` from the urgency signals upstream — it decides scope:
+`tier_1_act_now` (HOT → full 5-email + LinkedIn + Loom, AE-led, 48h), `tier_2_monitor`
+(WARM → 3-email + LinkedIn, BDR-led, 1-2wk), `tier_3_watch` (COLD → email 1 + nurture). Set
+`campaign_type` (e.g. displacement / expansion / greenfield) from the techstack + competitor data.
+
 ### Part 1 — Email sequence (`emails`)
-Exactly 5 emails, one per `purpose` in order: hook → insight → proof → roi → ask. Each `body`
-references specific audit data; list the `personalization_tokens` used; set `target_role` and
-`recommended_send_day`. Subject lines < 80 chars.
+Up to 5 emails (fewer for tier_2/3), one per `purpose` in order:
+hook → competitor → business_case → social_proof → breakup. Each `body` is **sendable copy only**
+(no citations inline); put citations in `source_notes`. Reference specific audit data; list
+`personalization_tokens`; set `target_role` + `recommended_send_day`. Subject lines < 80 chars.
 
 ### Part 2 — LinkedIn messages (`linkedin_messages`)
 For the top buying-committee members (from sales-plays power map / intel-hiring): a

@@ -76,6 +76,11 @@ class ValueLever(BaseModel):
         default_factory=list,
         description="List of assumptions underlying this lever's estimates.",
     )
+    ae_fill_in_prompt: str = Field(
+        default="",
+        description="Discovery question the AE asks to replace estimated inputs with real numbers, "
+        "e.g. 'What is your current search-to-purchase conversion rate?'",
+    )
 
 
 class DisplacementCost(BaseModel):
@@ -157,6 +162,11 @@ class BusinessCaseOutput(BaseModel):
     sensitivity_analysis: str = Field(
         default="",
         description="Narrative describing how estimates change under different assumptions.",
+    )
+    assumption_inventory: list[str] = Field(
+        default_factory=list,
+        description="Every [ESTIMATE] input the AE must replace before presenting, "
+        "each labeled [FACT] or [ESTIMATE] with its source.",
     )
 
     # Part 3 — Displacement cost

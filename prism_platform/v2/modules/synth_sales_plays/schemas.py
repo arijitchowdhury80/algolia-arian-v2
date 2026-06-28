@@ -92,12 +92,55 @@ class PowerMapMember(BaseModel):
     linkedin_url: str | None = None
 
 
+class BlufHeader(BaseModel):
+    """30-second AE read at the top of the playbook."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_tier: Literal["hot", "warm", "cold"] = "warm"
+    campaign_type: str = ""
+    top_angle: str = Field(description="The single challenger insight to lead with.")
+    key_exec_name: str = ""
+    key_exec_title: str = ""
+    key_exec_contact_route: str = Field(default="", description="warm intro / LinkedIn / cold")
+    partner_play: str = Field(default="", description="SI warm intro, or 'no confirmed partner'.")
+    urgency_signal: str = Field(default="", description="Most urgent trigger + date.")
+
+
+class TalkingPoint(BaseModel):
+    """One of the 5 talking points — each grounded in a verbatim exec quote."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    hook: str = Field(description="Opener using the prospect's own language.")
+    audit_finding: str = Field(description="What the browser/intel audit found (cite module).")
+    their_words: str = Field(description="Verbatim exec quote + speaker + title + source + date.")
+    competitor_proof: str = Field(default="", description="What a competitor does (Golden Angle).")
+    open_with: str = Field(description="The exact line the AE says.")
+    expected_reaction: str = Field(default="", description="Anticipated prospect response.")
+
+
+class PartnerAngles(BaseModel):
+    """Partner motion in priority order — SI partner first if confirmed."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    si_partner: str = Field(default="", description="HIGH-confidence SI (Crossbeam); #1 if present.")
+    si_activation: str = Field(default="", description="How to activate the SI relationship.")
+    tech_partner: str = Field(default="", description="Tech partner co-sell angle.")
+    competitor_angle: str = Field(default="", description="Golden-Angle competitor-based play.")
+    fallback_approach: str = Field(default="", description="Cold outbound (last resort).")
+
+
 class SalesPlaysOutput(BaseModel):
     """Full sales playbook output synthesized from upstream intelligence modules."""
 
     model_config = ConfigDict(extra="forbid")
 
     domain: str
+
+    # Part 0 — BLUF header (AE's 30-second read)
+    bluf: BlufHeader | None = None
 
     # Part 1 — MEDDPICC
     meddpicc: list[MEDDPICCField] = Field(default_factory=list)
@@ -108,11 +151,16 @@ class SalesPlaysOutput(BaseModel):
     # Part 3 — Objection handling
     objection_handlers: list[ObjectionHandler] = Field(default_factory=list)
 
-    # Part 4 — Talk tracks
+    # Part 4 — Talk tracks (legacy opener/bridge/close lines)
     talk_tracks: list[TalkTrack] = Field(default_factory=list)
+    # Part 4b — Structured talking points (skill: 5, each grounded in an exec quote)
+    talking_points: list[TalkingPoint] = Field(default_factory=list)
 
     # Part 5 — Power map
     power_map: list[PowerMapMember] = Field(default_factory=list)
+
+    # Part 6 — Partner angles (SI-partner-first per the skill)
+    partner_angles: PartnerAngles | None = None
 
     # Summary
     playbook_summary: str = ""

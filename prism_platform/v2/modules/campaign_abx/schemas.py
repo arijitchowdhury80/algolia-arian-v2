@@ -21,13 +21,18 @@ class Email(BaseModel):
         description="Email subject line. Must be concise (<80 chars) and personalized."
     )
     body: str = Field(
-        description="Full email body. Must reference real audit data — no generic templates."
+        description="Sendable email body ONLY — no source notes. Must reference real audit data."
     )
-    purpose: Literal["hook", "insight", "proof", "roi", "ask"] = Field(
+    purpose: Literal["hook", "competitor", "business_case", "social_proof", "breakup"] = Field(
         description=(
-            "Strategic purpose: hook=exec quote, insight=competitive intel, proof=case study, "
-            "roi=ROI numbers, ask=request a meeting."
+            "Strategic purpose (skill-canonical): hook=SCR opener w/ audit finding, "
+            "competitor=Golden Angle/defensive, business_case=one ROI component, "
+            "social_proof=vertical-matched case study, breakup=honest door-open close."
         )
+    )
+    source_notes: str = Field(
+        default="",
+        description="Internal AE prep — where each claim came from (citations). NEVER in body.",
     )
     personalization_tokens: list[str] = Field(
         default_factory=list,
@@ -107,6 +112,17 @@ class CampaignOutput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     domain: str
+
+    signal_tier: Literal["tier_1_act_now", "tier_2_monitor", "tier_3_watch"] = Field(
+        default="tier_2_monitor",
+        description=(
+            "Determines campaign scope (skill rule): tier_1=full 5-email+LinkedIn+Loom, AE-led, "
+            "48h; tier_2=3-email+LinkedIn, BDR-led, 1-2wk; tier_3=email-1+nurture, monthly."
+        ),
+    )
+    campaign_type: str = Field(
+        default="", description="Campaign motion label, e.g. 'displacement', 'expansion'."
+    )
 
     emails: list[Email] = Field(default_factory=list)
     linkedin_messages: list[LinkedInMessage] = Field(default_factory=list)
