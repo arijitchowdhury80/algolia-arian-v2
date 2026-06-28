@@ -3937,6 +3937,8 @@ a:hover .src-tag { opacity: 1; }
 </style>
 
 
+
+
 <!-- Algolia Brand CSS — edit algolia-brand.css to update all reports -->
 <style>
 /**
@@ -5233,7 +5235,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Oriental_Trading_Company_headquarters_%28Omaha%29.jpg/1280px-Oriental_Trading_Company_headquarters_%28Omaha%29.jpg",
-    "company_logo_url": "https://logo.clearbit.com/orientaltrading.com",
+    "company_logo_url": "https://icons.duckduckgo.com/ip3/orientaltrading.com.ico",
     "status_line": "Confidential · For Internal Use Only"
   },
   "score": {
@@ -5241,16 +5243,16 @@ a:hover {
     "verdict": "Critical Gaps",
     "verdict_class": "critical",
     "breakdown": {
-      "latency": 5.0,
-      "typo_tolerance": 1.0,
-      "query_suggestions_empty_state": 2.0,
-      "intent_detection": 4.0,
-      "merchandising_consistency": 6.0,
-      "content_commerce_ux": 3.0,
-      "semantic_nlp_search": 1.0,
-      "dynamic_facets_personalization": 2.0,
-      "recommendations_merchandising": 5.0,
-      "search_intelligence": 3.0
+      "latency": 5,
+      "typo_tolerance": 1,
+      "query_suggestions_empty_state": 2,
+      "intent_detection": 4,
+      "merchandising_consistency": 6,
+      "content_commerce_ux": 3,
+      "semantic_nlp_search": 1,
+      "dynamic_facets_personalization": 2,
+      "recommendations_merchandising": 5,
+      "search_intelligence": 3
     },
     "breakdown_severity": {
       "latency": "MEDIUM",
@@ -10223,10 +10225,34 @@ function sectionFinancials(D) {
     const neg = str.includes('\u2212') || str.startsWith('-');
     const n = parseFloat(str.replace(/[^0-9.]/g, ''));
     if (isNaN(n)) return null;
-    const raw = neg ? -n : n;
-    // Normalize to $B: M-suffix values are millions → divide by 1000
-    if (/\$[\d\s~,.]*[Mm]\b|[\d][Mm]\b/.test(str)) return raw / 1000;
-    return raw; // B stays as B, % stays as %
+    return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
+  }
+
+  // Money parser → normalizes ANY monetary string to a number in $B.
+  // Fixes two recurring scaling bugs that pv() cannot: (1) ranges like
+  // "~$9–10B" (pv concatenates "9"+"10" → 910) and (2) non-billion units
+  // like "$910M" / "$1.2T" (pv ignores the suffix → 1000× off). The chart
+  // axis, table, tooltips and YoY are all in $B, so every $ value must be
+  // normalized here. Keep in sync with scripts/tests/test-finance-parse.mjs.
+  function pvB(s) {
+    if (s == null) return null;
+    const str = String(s).trim();
+    if (!str || str === '—' || str === '—') return null;
+    const negative = /^\s*[-−]/.test(str); // leading minus only; mid hyphen = range
+    const nums = (str.match(/\d[\d,]*\.?\d*/g) || []).map(x => parseFloat(x.replace(/,/g, '')));
+    if (!nums.length) return null;
+    const isRange = nums.length >= 2 && /\d\s*(?:[-–—]|to)\s*\d/i.test(str);
+    const val = isRange ? (nums[0] + nums[1]) / 2 : nums[0];
+    const um = str.match(/\d\s*([tTbBmMkK])/);
+    const u = um ? um[1].toLowerCase() : '';
+    let mult;
+    if (u === 't') mult = 1000;
+    else if (u === 'b') mult = 1;
+    else if (u === 'm') mult = 0.001;
+    else if (u === 'k') mult = 1e-6;
+    else mult = val >= 1e6 ? 1e-9 : 1; // raw $ → B, else assume already-B
+    const out = val * mult;
+    return negative ? -out : out;
   }
 
   function yoyStr(cur, prev) {
@@ -10238,27 +10264,26 @@ function sectionFinancials(D) {
   }
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
-  const rvVals = revChron.map(r => pv(r.revenue)          || 0);
-  const gpVals = revChron.map(r => pv(r.gross_profit)     ?? null);
-  const ebVals = revChron.map(r => pv(r.ebitda)           ?? null);
-  const opVals = revChron.map(r => pv(r.operating_income) ?? null);
-  const niVals = revChron.map(r => pv(r.net_income)       ?? null);
+  const rvVals = revChron.map(r => pvB(r.revenue)          || 0);
+  // Absent metrics stay null (render "—"); do NOT coerce to 0 (would show "$0.0B").
+  const gpVals = revChron.map(r => pvB(r.gross_profit));
+  const ebVals = revChron.map(r => pvB(r.ebitda));
+  const opVals = revChron.map(r => pvB(r.operating_income));
+  const niVals = revChron.map(r => pvB(r.net_income));
 
-  // Margins derived — only when both numerator and revenue are non-null
-  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!==null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
-  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!==null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  // Margins derived (all valid — calculated from sourced numbers)
+  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!=null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!=null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
   const nmVals = revChron.map(r => pv(r.net_margin));
 
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  // Dynamic scale: derive maxBarVal from actual data, never hardcode $56B
-  const _maxRv = Math.max(...rvVals.filter(v=>v>0), 0.001);
-  const maxBarVal = Math.max(Math.ceil(_maxRv * 1.3 * 20) / 20, 0.1);
+  const maxBarVal=56; // $B scale left axis
   const maxPctVal=20; // % scale right axis
 
-  function bY(v){ return Math.max(padT, padT + plotH - Math.round((Math.min(Math.max(v,0),maxBarVal)/maxBarVal)*plotH)); }
-  function bH(v){ const top=bY(v); return Math.max(Math.min(padT+plotH-top, plotH), 2); }
+  function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
+  function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
   function lY(p){ return p===null?null: padT + plotH - Math.round((p/maxPctVal)*plotH); }
 
   const grpW = plotW/nYrs;
@@ -10290,15 +10315,11 @@ function sectionFinancials(D) {
   const linePath = linePts.length>1 ? linePts.map((pt,i)=>(i===0?`M${pt.x},${pt.y}`:`L${pt.x},${pt.y}`)).join(' ') : '';
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
-  // Grid lines + left axis — dynamic scale with M/B smart labels
-  const _gStep = maxBarVal <= 0.5 ? 0.1 : maxBarVal <= 2 ? 0.25 : maxBarVal <= 10 ? 1 : maxBarVal <= 30 ? 5 : 10;
-  const _gCount = Math.min(Math.floor(maxBarVal / _gStep), 6);
-  const _gVals = Array.from({length: _gCount + 1}, (_, i) => parseFloat((_gStep * i).toFixed(4)));
-  const _fmtAx = v => v === 0 ? '$0' : v < 1 ? `$${Math.round(v*1000)}M` : `$${v % 1 === 0 ? v : v.toFixed(1)}B`;
-  const gridLines = _gVals.map(v=>{
+  // Grid lines + left axis
+  const gridLines = [0,10,20,30,40,50].map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
-            <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${_fmtAx(v)}</text>`;
+            <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
@@ -10314,7 +10335,7 @@ function sectionFinancials(D) {
     const em = emVals[i];
     const rv = rvVals[i], gp = gpVals[i], eb = ebVals[i];
     const rvPri = i>0?rvVals[i-1]:null, gpPri = i>0?gpVals[i-1]:null, ebPri = i>0?ebVals[i-1]:null, emPri = i>0?emVals[i-1]:null;
-    const pct = (cur,pri) => pri&&pri!==0 ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
+    const pct = (cur,pri) => (cur!=null&&pri!=null&&pri!==0) ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
     const yoyFmt = (p) => p===null ? '' : (p>0?`↑${p}%`:`↓${Math.abs(p)}%`);
     const payload = JSON.stringify({
       year: r.year,
@@ -10343,7 +10364,7 @@ function sectionFinancials(D) {
   }).join('');
 
   const svgChart = `<div style="position:relative;">
-  <svg viewBox="0 0 ${cW} ${cH}" style="width:100%;height:auto;overflow:hidden;" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 ${cW} ${cH}" style="width:100%;height:auto;overflow:visible;" xmlns="http://www.w3.org/2000/svg">
     ${gridLines}${rightAxis}
     <line x1="${padL}" y1="${padT+plotH}" x2="${padL+plotW}" y2="${padT+plotH}" style="stroke:var(--border)" stroke-width="1"/>
     ${svgBars}
@@ -10399,7 +10420,7 @@ function sectionFinancials(D) {
     return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
   }
 
-  const fB  = v => v===null ? '—' : v < 1 ? `$${Math.round(v*1000)}M` : `$${v.toFixed(1)}B`;
+  const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
   const fPt = v => v!==null ? `${v.toFixed(1)}%` : '—';
 
   const yhdr = revChron.map((r,i)=>`<th style="padding:7px 10px;text-align:right;${T.eyebrowSm};color:${i===nYrs-1?'var(--blue)':'var(--mid)'};">${escHtml(r.year)}</th>`).join('');
@@ -10433,7 +10454,6 @@ function sectionFinancials(D) {
       <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
-        ${q.date?`<span style="${T.bodySmGray12};">· ${escHtml(q.date)}</span>`:''}
         <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
         ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
       </div>
@@ -10472,64 +10492,21 @@ function sectionFinancials(D) {
 
   const latNm = nmVals[nYrs-1], firstNm = nmVals[0];
   const latEm = emVals[nYrs-1], firstEm = emVals[0];
-
-  // ROI components accordion — for private companies with roi_components breakdown
-  const roiComponents = f.roi_components || [];
-  const roiCompAccordion = roiComponents.length ? `
-    <div style="margin-top:10px;">
-      <button onclick="(function(btn){const b=btn.nextElementSibling;const open=b.style.display!=='none';b.style.display=open?'none':'block';btn.querySelector('span').textContent=open?'How is this calculated? ↓':'Hide calculation ↑';})(this)"
-        style="background:none;border:none;padding:0;${T.compact};color:var(--blue);cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:2px;">
-        <span>How is this calculated? ↓</span>
-      </button>
-      <div style="display:none;margin-top:10px;padding:12px 14px;background:var(--near-white);border:1px solid var(--border);border-radius:var(--radius);">
-        <div style="${T.eyebrowSm};margin-bottom:10px;">6-Component Search ROI Model</div>
-        ${roiComponents.map(c=>`
-          <div style="display:grid;grid-template-columns:auto 1fr auto auto;gap:4px 10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);">
-            <span style="${T.compact};font-weight:700;color:var(--blue);">${escHtml(c.id)}</span>
-            <span style="${T.compact};color:var(--gray);">${escHtml(c.label)}</span>
-            <span style="${T.compact};color:var(--mid);text-align:right;">${escHtml(c.conservative_fmt)}</span>
-            <span style="${T.compact};color:var(--mid);text-align:right;">${escHtml(c.moderate_fmt)}</span>
-          </div>`).join('')}
-        <div style="margin-top:8px;padding-top:8px;display:flex;justify-content:space-between;align-items:center;">
-          <span style="${T.bodySmGray12};">Conservative · Moderate</span>
-          <span style="font-size:16px;font-weight:700;color:var(--blue);">${escHtml(f.search_roi_est||'')}</span>
-        </div>
-      </div>
-    </div>` : '';
-
-  // Build angle text — public company path (gross_profit_impact_est) or private company path (roi_components/search_roi_est)
-  let angleText = '';
-  if (roi.gross_profit_impact_est) {
-    angleText = `Revenue down 10%, EBITDA margin compressed from ${firstEm!==null?firstEm+'%':''} → ${latEm!==null?latEm+'%':''} over 4 years. CEO says "investing in technology platforms." At ${roi.gross_margin_pct||''}% gross margin, a ${roi.lift_pct||1}% revenue lift from better search = <strong>${escHtml(roi.gross_profit_impact_est)}</strong> gross profit.`;
-  } else if (f.search_roi_est || roiComponents.length) {
-    const topLine = f.search_roi_est ? `Search revenue opportunity: <strong>${escHtml(f.search_roi_est)}</strong> across 6 audit-evidenced components.` : '';
-    const roiLine = roi.incremental_revenue_est ? ` Conservative baseline: ${escHtml(roi.incremental_revenue_est)} from a ${roi.lift_pct||0.5}% conversion lift on ${escHtml(roi.revenue_basis||'')} e-commerce revenue.` : '';
-    // Surface the first per-quote algolia angle as supporting context
-    const firstQuoteAngle = execQuotes[0]?.algolia_angle || '';
-    const quoteAngleLine = firstQuoteAngle ? ` ${escHtml(firstQuoteAngle)}` : '';
-    angleText = topLine + roiLine + quoteAngleLine;
-  } else {
-    angleText = f.algolia_angle || '';
-  }
-
-  const activeAccordion = roi.gross_profit_impact_est ? roiAccordion : roiCompAccordion;
+  const angleText = roi.gross_profit_impact_est
+    ? `Revenue down 10%, EBITDA margin compressed from ${firstEm!==null?firstEm+'%':''} → ${latEm!==null?latEm+'%':''} over 4 years. CEO says "investing in technology platforms." At ${roi.gross_margin_pct||''}% gross margin, a ${roi.lift_pct||1}% revenue lift from better search = <strong>${escHtml(roi.gross_profit_impact_est)}</strong> gross profit.`
+    : (f.algolia_angle || '');
 
   const algoliaAngleHtml = angleText ? `
     <div class="algolia-angle-box" style="margin-top:20px;">
       ${algoliaAngleBadge()}
       <p style="${T.compact};margin:0;">${angleText}</p>
-      ${activeAccordion}
+      ${roiAccordion}
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
     <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
     <div class="section-title">Financial Profile</div>
     <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
-
-    ${(f.berkshire_note || f.investor_note) ? `<div style="margin-bottom:16px;padding:10px 14px;background:var(--amber-tint,#fffbeb);border:1px solid var(--amber-border,#fde68a);border-radius:var(--radius);display:flex;gap:10px;align-items:flex-start;">
-      <span style="font-size:14px;flex-shrink:0;">⚠️</span>
-      <span style="${T.bodySmGray12};color:var(--gray);line-height:1.5;">${escHtml(f.berkshire_note || f.investor_note)}</span>
-    </div>` : ''}
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10638,7 +10615,7 @@ function sectionTechStack(D) {
 
     ${(ts.data_acquisitions||[]).length ? `
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Nike Press Releases</a>` : 'Nike Press Releases · digitalcommerce360.com'}</p>
+      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Press Releases</a>` : 'Press Releases · digitalcommerce360.com'}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
         ${(ts.data_acquisitions).map(a => `
           <div style="display:inline-flex;flex-direction:column;padding:8px 14px;background:var(--violet-tint);border:1px solid var(--violet-border);border-radius:8px;">
@@ -12228,7 +12205,7 @@ function sectionROI(D) {
       <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
         <div>
           <div style="${T.eyebrow};margin-bottom:4px;">6-Component Revenue Model — Each gap mapped to a dollar line</div>
-          <div style="${T.bodySm};color:var(--mid);">Based on 107.6M monthly visits · ~$9.6B digital revenue · 42.7% gross margin · AOV $110 placeholder — replace with Nike's actual numbers</div>
+          <div style="${T.bodySm};color:var(--mid);">Based on — monthly visits · ~the company's digital revenue · gross margin · AOV (estimate) placeholder — replace with the company's actual numbers</div>
         </div>
         <div style="display:flex;gap:10px;flex-shrink:0;">
           <div style="text-align:center;background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:8px;padding:10px 16px;">
@@ -12249,7 +12226,7 @@ function sectionROI(D) {
           <thead>
             <tr style="background:var(--light);">
               <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);">Component · Search Gap</th>
-              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on Nike.com</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on the site</th>
               <th style="${T.eyebrowSm};padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Conservative</th>
               <th style="${T.eyebrowSm};padding:10px 16px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Moderate</th>
             </tr>
@@ -12284,7 +12261,7 @@ function sectionROI(D) {
             <tr style="background:var(--light);">
               <td colspan="2" style="padding:12px 16px;">
                 <strong style="${T.title};">Total (C5 excluded — conditional)</strong>
-                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: 107.6M visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
+                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: — visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
               </td>
               <td style="padding:12px 12px;text-align:right;"><strong style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</strong></td>
               <td style="padding:12px 16px;text-align:right;"><strong style="${T.h4};color:var(--green);">${fmtM(totalMod)}</strong></td>
@@ -12293,7 +12270,7 @@ function sectionROI(D) {
         </table>
       </div>
       <div style="${T.bodySmGray12};margin-top:8px;padding:0 4px;">
-        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (2.5%) — industry estimates. Replace with Nike's actual analytics before presenting to executive stakeholders. Monthly visits (107.6M) and gross margin (42.7%) are verified facts from SimilarWeb and Nike 10-K.
+        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (estimate) — industry estimates. Replace with the company's actual analytics before presenting to executive stakeholders. Monthly visits (—) and gross margin (42.7%) are verified facts from SimilarWeb and public filings.
       </div>
     </div>` : '';
 
@@ -12340,7 +12317,7 @@ function sectionROI(D) {
                     <div class="lever-value">+<span id="val_conversion">15</span>%</div>
                 </div>
                 <div class="slider-container"><input type="range" id="lever_conversion" min="0" max="100" value="15"></div>
-                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Decathlon</strong> saw +50% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Under Armour</strong> saw +35% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
             </div>
             <div class="lever-row">
                 <div class="lever-header">
@@ -12850,7 +12827,7 @@ function sectionCompetitiveSynthesis(D) {
 
           // Dynamic competitor columns — read from matrix_col_labels or fall back to defaults
 
-          const colLabels = cs.matrix_col_labels || {nike_has:'Nike',asics_has:'Asics',on_running_has:'On Running',new_balance_has:'New Balance'};
+          const colLabels = cs.matrix_col_labels || {nike_has:'Competitor 1',asics_has:'Competitor 2',on_running_has:'Competitor 3',new_balance_has:'Competitor 4'};
 
           const compKeys = ['nike_has','asics_has','on_running_has','new_balance_has'];
 
@@ -13186,26 +13163,43 @@ function sectionWhyNow(D) {
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
-  const SIG_TRIGGER_TYPES = new Set([
-    'funding','exec','earnings_quote','media_quote',
-    'competitor','news_signal','sec_risk','industry-opp','leadership_change',
-  ]);
-  const sigTriggers = (D.intelligence_signals||[])
-    .filter(s => SIG_TRIGGER_TYPES.has(s.type))
-    .slice(0, 3)
-    .map(s => ({
-      icon: (s.type==='funding') ? '🏦'
-          : (s.type==='exec'||s.type==='earnings_quote'||s.type==='media_quote') ? '💬'
+  // Diverse deduplicated: 1 exec quote + 1 hiring signal + 1 other, no repeat person
+  const QUOTE_TYPES  = new Set(['funding','exec','earnings_quote','media_quote','leadership_change']);
+  const HIRING_TYPES = new Set(['hiring','hiring_signal']);
+  const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
+
+  const allSigs = D.intelligence_signals || [];
+  const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
+  const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
+  const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
+  const uniqueOther   = _uniqBy(allSigs.filter(s => OTHER_TYPES.has(s.type)));
+
+  const _gSeen = new Set();
+  const _pick = (arr, n) => arr.filter(s => { const k=s.badge_label||s.title||s.type; if(_gSeen.has(k)) return false; _gSeen.add(k); return true; }).slice(0, n);
+
+  const candidatePool = [
+    ..._pick(uniqueQuotes,  1),
+    ..._pick(uniqueHiring,  1),
+    ..._pick(uniqueOther,   1),
+    ..._pick(uniqueQuotes,  2),
+  ];
+
+  const _getDetail = s => { const raw = s.signal||s.body||s.text||''; return raw.slice(0,200)+(raw.length>200?'…':''); };
+
+  const sigTriggers = candidatePool.slice(0, 3).map(s => ({
+      icon: s.type==='funding' ? '🏦'
+          : QUOTE_TYPES.has(s.type) ? '💬'
+          : HIRING_TYPES.has(s.type) ? '👤'
           : (s.type==='competitor'||s.type==='sec_risk') ? '⚠️'
-          : (s.type==='leadership_change') ? '👤'
           : '📈',
       label: s.badge_label || s.title || s.type,
-      detail: (s.signal||s.body||s.text||'').slice(0, 200) + ((s.signal||s.body||s.text||'').length > 200 ? '…' : ''),
-      urgency: (s.type==='exec'||s.type==='earnings_quote'||s.type==='media_quote'||s.type==='funding'||s.type==='sec_risk') ? 'high'
+      detail: _getDetail(s),
+      urgency: (QUOTE_TYPES.has(s.type)||s.type==='sec_risk') ? 'high'
              : (s.type==='competitor'||s.type==='news_signal') ? 'medium'
              : 'positive',
-      url: s.source_url
-    }));
+      url: s.source_url,
+      linkLabel: HIRING_TYPES.has(s.type) ? 'View role' : 'View source',
+  }));
 
   const vacantTrigger = vacantRole
 
@@ -13261,7 +13255,7 @@ function sectionWhyNow(D) {
 
           <div class="fc-desc">${escHtml(t.detail)}</div>
 
-          ${t.url?`<div class="fc-source"><a href="${t.url}" target="_blank">View role →</a></div>`:''}
+          ${t.url?`<div class="fc-source"><a href="${t.url}" target="_blank">${t.linkLabel||'View source'} →</a></div>`:''}
 
         </div>`;
 
@@ -14765,8 +14759,6 @@ function renderSections(D) {
     sectionROI(D),                 // 5. ROI — lands harder after seeing competitor gap
 
     sectionSolutionMap(D),         // 6. How Algolia fixes it
-
-    sectionCaseStudies(D),         // 7. Proof
 
     sectionWhyNow(D),              // 8. Why now
 

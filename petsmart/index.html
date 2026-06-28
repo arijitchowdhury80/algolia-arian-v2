@@ -5234,7 +5234,7 @@ a:hover {
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/PetSmart_store_in_Mountain_View%2C_California.jpg",
-    "company_logo_url": "data:image/vnd.microsoft.icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8Ay8T3P4Fv7Z9PNebeNhnj/TYZ4/1PNebegW/tn8vE9z////8A////AP///wD///8A////AP///wDx7/wPdGHrrjYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9jn3ujvHv/A////8A////AP///wDx7/wPW0TozzYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/1bROjP8e/8D////wD///8AdGHrrjYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/Y597o7///8A2NL4MDYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP95OH6H4Fv7Z82GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/Y597o5bROjPNhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/1oUum/Nhnj/TYZ4/0+MuX9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9aFLpvzYZ4/02GeP9qrn2/UdE5v02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/WhS6b9oUum/Nhnj/YOT8P3I0/n9PjLl/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/1oUum/jn3ujjYZ4/1jcOv9/////cjT+f0+MuX9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9pZnycOTh+h82GeP9Nhnj/bjF9/3////96O79/W587f02GeP9Nhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Qifk7vHv/A////8AmYrwgTYZ4/1HROb92OH8/f////3////96O79/Zyr8/14iO79WWLp/T4y5f02GeP9Nhnj/aWZ8nD///8A////AP///wCBb+2fNhnj/T4y5f2cq/P96O79/f////3////9yNP5/WNw6/02GeP9Nhnj/YFv7Z////8A////AP///wD///8A////AJmK8IFCJ+TuNhnj/TYZ4/02GeP9Nhnj/TYZ4/02GeP9Qifk7qWZ8nD///8A////AP///wD///8A////AP///wD///8A8e/8D6WZ8nB0YeuuaFLpv2hS6b90YeuupZnycPHv/A////8A////AP///wD///8A+B8AAOAHAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAQAAgAMAAMADAADgDwAA/D8AAA==",
+    "company_logo_url": "https://icons.duckduckgo.com/ip3/petsmart.com.ico",
     "status_line": "Confidential · For Internal Use Only · Existing-Customer Expansion Audit"
   },
   "score": {
@@ -9688,6 +9688,33 @@ function sectionFinancials(D) {
     return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
   }
 
+  // Money parser → normalizes ANY monetary string to a number in $B.
+  // Fixes two recurring scaling bugs that pv() cannot: (1) ranges like
+  // "~$9–10B" (pv concatenates "9"+"10" → 910) and (2) non-billion units
+  // like "$910M" / "$1.2T" (pv ignores the suffix → 1000× off). The chart
+  // axis, table, tooltips and YoY are all in $B, so every $ value must be
+  // normalized here. Keep in sync with scripts/tests/test-finance-parse.mjs.
+  function pvB(s) {
+    if (s == null) return null;
+    const str = String(s).trim();
+    if (!str || str === '—' || str === '—') return null;
+    const negative = /^\s*[-−]/.test(str); // leading minus only; mid hyphen = range
+    const nums = (str.match(/\d[\d,]*\.?\d*/g) || []).map(x => parseFloat(x.replace(/,/g, '')));
+    if (!nums.length) return null;
+    const isRange = nums.length >= 2 && /\d\s*(?:[-–—]|to)\s*\d/i.test(str);
+    const val = isRange ? (nums[0] + nums[1]) / 2 : nums[0];
+    const um = str.match(/\d\s*([tTbBmMkK])/);
+    const u = um ? um[1].toLowerCase() : '';
+    let mult;
+    if (u === 't') mult = 1000;
+    else if (u === 'b') mult = 1;
+    else if (u === 'm') mult = 0.001;
+    else if (u === 'k') mult = 1e-6;
+    else mult = val >= 1e6 ? 1e-9 : 1; // raw $ → B, else assume already-B
+    const out = val * mult;
+    return negative ? -out : out;
+  }
+
   function yoyStr(cur, prev) {
     const c = pv(cur), p = pv(prev);
     if (c === null || p === null || p === 0) return '';
@@ -9697,15 +9724,16 @@ function sectionFinancials(D) {
   }
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
-  const rvVals = revChron.map(r => pv(r.revenue)          || 0);
-  const gpVals = revChron.map(r => pv(r.gross_profit)     || 0);
-  const ebVals = revChron.map(r => pv(r.ebitda)           || 0);
-  const opVals = revChron.map(r => pv(r.operating_income) || 0);
-  const niVals = revChron.map(r => pv(r.net_income)       || 0);
+  const rvVals = revChron.map(r => pvB(r.revenue)          || 0);
+  // Absent metrics stay null (render "—"); do NOT coerce to 0 (would show "$0.0B").
+  const gpVals = revChron.map(r => pvB(r.gross_profit));
+  const ebVals = revChron.map(r => pvB(r.ebitda));
+  const opVals = revChron.map(r => pvB(r.operating_income));
+  const niVals = revChron.map(r => pvB(r.net_income));
 
   // Margins derived (all valid — calculated from sourced numbers)
-  const gmVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
-  const emVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!=null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!=null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
   const nmVals = revChron.map(r => pv(r.net_margin));
 
   // ── SVG Composite Chart ────────────────────────────────────────────────────
@@ -9767,7 +9795,7 @@ function sectionFinancials(D) {
     const em = emVals[i];
     const rv = rvVals[i], gp = gpVals[i], eb = ebVals[i];
     const rvPri = i>0?rvVals[i-1]:null, gpPri = i>0?gpVals[i-1]:null, ebPri = i>0?ebVals[i-1]:null, emPri = i>0?emVals[i-1]:null;
-    const pct = (cur,pri) => pri&&pri!==0 ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
+    const pct = (cur,pri) => (cur!=null&&pri!=null&&pri!==0) ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
     const yoyFmt = (p) => p===null ? '' : (p>0?`↑${p}%`:`↓${Math.abs(p)}%`);
     const payload = JSON.stringify({
       year: r.year,
