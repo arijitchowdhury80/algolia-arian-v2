@@ -1,7 +1,23 @@
 # SESSION.md — PRISM (PIP)
 
 **Last updated:** 2026-06-27
-**Status:** Session CLOSED for handoff. Deep UX/journey design done + data-engine ground truth established → founder took a **complete tangent**. Next session starts FRESH on a new strategic fork: **Hermes-as-PRISM**.
+**Status:** FORK RESOLVED → **HYBRID**. Primary = orchestrate via Hermes (run existing skills →
+report + chat/mobile UX, fastest to a working product). Secondary = the deterministic PRISM modules
+(keep + swap in over time as token-free drop-in replacements).
+
+## UPDATE — this session (deterministic-build track, now SECONDARY)
+Built/realigned the deterministic modules against the **skills as source of truth** (corrected an
+earlier mistake of porting from deleted v1 code). Committed, ruff-clean, 453 tests pass:
+- Vendored canonical **AuditData** contract (`prism_platform/v2/audit_data_schema.py`) from the
+  skill; audit-report now outputs it (commit 77fdfe7).
+- Realigned synth-business-case / sales-plays / campaign-abx schemas to the skills (signal_tier,
+  source_notes, BLUF, talking-points, partner-angles, AE fill-in, assumption inventory) (a38536e).
+- Earlier: search-vendor packet detector shipped + wired (a72aea6); 4 synth/report modules rebuilt.
+These are the **drop-in-replacement track** — NOT the urgent path. STILL pending on this track:
+audit-report assembler, audit-browser+Vision, audit-factcheck, render, full e2e run.
+
+**Primary next (per Hybrid):** the Hermes-as-PRISM orchestrate fork below — run the algolia-* skill
+suite via the Hermes harness → SPA report → chat/mobile UX. Founder parked this for a FRESH session.
 
 ---
 
