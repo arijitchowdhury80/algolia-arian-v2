@@ -36,3 +36,22 @@ pgdata/
 
 # Worktrees
 .worktrees/
+
+# Node / Next.js (frontend)
+node_modules/
+.next/
+.turbo/
+*.tsbuildinfo
+.clerk/
+
+# Claude Code local config
+.claude/
+
+# Scratch / temp
+TEMP/
+*.bak
+*.orig
+*~
+
+# Ruff
+.ruff_cache/
