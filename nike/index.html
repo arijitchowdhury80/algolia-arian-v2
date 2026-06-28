@@ -98,6 +98,11 @@
   --partner:     #0D9488;   /* partner signal */
   --social-x:    #000000;   /* X/Twitter */
   --chart-other: #9CA3AF;   /* donut chart other */
+  --blue-200:    #BFDBFE;   /* blue-200 — tint card border */
+  --red-300:     #FCA5A5;   /* red-300  — dark-panel stat (Google exit) */
+  --green-300:   #6EE7B7;   /* green-300— dark-panel stat (ROI gain) */
+  --ink-900:     #21243D;   /* gradient stop — hero panel */
+  --navy-900:    #0D1240;   /* gradient stop — dark panel */
 
 
 
@@ -3937,6 +3942,8 @@ a:hover .src-tag { opacity: 1; }
 </style>
 
 
+
+
 <!-- Algolia Brand CSS — edit algolia-brand.css to update all reports -->
 <style>
 /**
@@ -5235,16 +5242,16 @@ a:hover {
     "verdict": "Needs Significant Work",
     "verdict_class": "critical",
     "breakdown": {
-      "latency": 8.0,
-      "typo_tolerance": 5.0,
-      "query_suggestions_empty_state": 7.0,
-      "intent_detection": 5.0,
-      "merchandising_consistency": 6.0,
-      "content_commerce_ux": 5.0,
-      "semantic_nlp_search": 4.0,
-      "dynamic_facets_personalization": 2.0,
-      "search_intelligence": 4.0,
-      "recommendations_merchandising": 3.0
+      "latency": 8,
+      "typo_tolerance": 5,
+      "query_suggestions_empty_state": 7,
+      "intent_detection": 5,
+      "merchandising_consistency": 6,
+      "content_commerce_ux": 5,
+      "semantic_nlp_search": 4,
+      "dynamic_facets_personalization": 2,
+      "search_intelligence": 4,
+      "recommendations_merchandising": 3
     },
     "breakdown_severity": {
       "latency": "LOW",
@@ -5631,9 +5638,9 @@ a:hover {
       "raw": "BUY — 33 analysts: 5 Strong Buy, 18 Buy, 14 Hold, 1 Sell, 1 Strong Sell; mean score 2.18/5; median price target $57.00 vs current $44.20 (~29% implied upside) [FACT — Yahoo Finance MCP recommendations, 2026-04-14, https://finance.yahoo.com/quote/NKE]",
       "rating": "BUY",
       "mean_score": 2.18,
-      "price_target_median": 57.0,
+      "price_target_median": 57,
       "price_current": 44.2,
-      "upside_pct": 29.0,
+      "upside_pct": 29,
       "analysts_count": 33
     },
     "margins": {
@@ -6011,7 +6018,7 @@ a:hover {
     {
       "id": "F01",
       "title": "Silent Typo Correction — No “Did You Mean” Feedback",
-      "severity": "medium",
+      "severity": "moderate",
       "category": "typo_tolerance",
       "tested_query": "jrodan 4 / air fource 1",
       "expected_behavior": "After correcting a typo, display “Did you mean: jordan 4?” so users know their query was interpreted differently.",
@@ -6028,7 +6035,7 @@ a:hover {
     {
       "id": "F02",
       "title": "Location Intent Failure — “Store Near Me” Returns Products",
-      "severity": "medium",
+      "severity": "moderate",
       "category": "intent_detection",
       "tested_query": "store near me",
       "expected_behavior": "Route to store locator page or surface Nike Store locations.",
@@ -6045,7 +6052,7 @@ a:hover {
     {
       "id": "F03",
       "title": "No Federated Search in SAYT — Products-Only Autocomplete",
-      "severity": "medium",
+      "severity": "moderate",
       "category": "content_commerce_ux",
       "tested_query": "running (in SAYT)",
       "expected_behavior": "SAYT shows text suggestions + product thumbnails + category suggestions (e.g., “Running Shoes > Men’s”) + editorial content.",
@@ -6062,7 +6069,7 @@ a:hover {
     {
       "id": "F04",
       "title": "Static Facets — Context-Blind Filter Panel",
-      "severity": "high",
+      "severity": "critical",
       "category": "dynamic_facets_personalization",
       "tested_query": "Dri-FIT UV running jacket",
       "expected_behavior": "Facets should adapt to product type. Apparel query should show Size, Fit, Color, Material.",
@@ -6079,7 +6086,7 @@ a:hover {
     {
       "id": "F05",
       "title": "Zero Personalization — Browsing History Ignored in Search",
-      "severity": "high",
+      "severity": "critical",
       "category": "dynamic_facets_personalization",
       "tested_query": "shoes (after browsing running shoes)",
       "expected_behavior": "After a user browses running shoes, subsequent broad searches should re-rank to surface running shoes first.",
@@ -6096,7 +6103,7 @@ a:hover {
     {
       "id": "F06",
       "title": "NLP Partial — Price and Attribute Filters Not Auto-Applied",
-      "severity": "high",
+      "severity": "critical",
       "category": "semantic_nlp_search",
       "tested_query": "best shoes for trail running under 150",
       "expected_behavior": "Natural language with price constraint should auto-apply max price filter of $150 and surface only trail running footwear.",
@@ -6113,7 +6120,7 @@ a:hover {
     {
       "id": "F07",
       "title": "Competitor Queries Treated as Gibberish — Missed Merchandising Opportunity",
-      "severity": "medium",
+      "severity": "moderate",
       "category": "recommendations_merchandising",
       "tested_query": "Yeezy Boost 350",
       "expected_behavior": "Competitor product query should trigger competitive redirect or surface comparable Nike products.",
@@ -6325,7 +6332,7 @@ a:hover {
     "algolia_angle": "Nike operates in a sporting goods market where search visitors convert at 1.8x–3x the rate of non-searchers and AI-powered search delivers 10–30% conversion improvement over keyword matching, making Algolia's NLP search, AI personalization, and dynamic re-ranking directly tied to recovering share of Nike's 80.3% apparel cart abandonment rate and closing the search quality gap with Under Armour (+35% conversion on Algolia)."
   },
   "cover": {
-    "company_logo_url": "https://logo.clearbit.com/nike.com",
+    "company_logo_url": "data:image/x-icon;base64,AAABAAMAMDAAAAEAIACoJQAANgAAACAgAAABACAAqBAAAN4lAAAQEAAAAQAgAGgEAACGNgAAKAAAADAAAABgAAAAAQAgAAAAAAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wL///8g////Wv///5r////P////8/////////////////////////////////////n////Z////qf///2r///8t////BgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////Qf///5b////X////+P////////////////////////////////////////////////////////////////////v////j////qf///1b///8SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Bv///0b///+v////8v////////////////////////////////////////////////////////////////////////////////////////////////////n////F////X////w8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8l////mv////H/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+f///7f///89////AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////A////1H////V///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////p////dP///wwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8I////df///+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///5z///8WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wr///+F////9/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7///+u////HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////B////4P////5////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////rv///xcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8B////bv////b//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5z///8MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9H////6v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r///90////AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///xz////I///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////o////PgAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///4b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////tv///w8AAAAAAAAAAAAAAAAAAAAA////M////+b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+v///2AAAAAAAAAAAAAAAAD///8C////lf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8T///8TAAAAAAAAAAD///8q////4/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////n///9WAAAAAAAAAAD///90//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+p////Bv///w3///+7///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////i////Lf///zX////o////////////////////////////////+Pj4/+fn5//l5eX/7+/v//z8/P/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////av///2v////8//////////////////////z8/P+2trb/WVlZ/zMzM/8vLy//QEBA/2NjY/+cnJz/19fX//v7+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////qf///57//////////////////////////6+vr/8gICD/DAwM/w4ODv8PDw//Dg4O/w0NDf8RERH/KSkp/2VlZf+3t7f/8fHx////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2f///8j/////////////////////9PT0/01NTf8MDAz/ERER/xEREf8RERH/ERER/xEREf8QEBD/Dw8P/w0NDf8ZGRn/SkpK/5ubm//i4uL//v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+f///93/////////////////////5eXl/y8vL/8PDw//ERER/xEREf8RERH/ERER/xAQEP8QEBD/EBAQ/xEREf8QEBD/DQ0N/xISEv80NDT/fHx8/8zMzP/5+fn///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H/////////////////////6urq/zg4OP8ODg7/ERER/xEREf8QEBD/Dg4O/xMTE/8VFRX/ExMT/w4ODv8NDQ3/Dw8P/xAQEP8ODg7/Dg4O/yIiIv9gYGD/s7Oz/+7u7v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3/////////////////////+/v7/19fX/8NDQ3/ERER/w8PD/8eHh7/cXFx/7CwsP+7u7v/q6ur/4aGhv9UVFT/LCws/xUVFf8NDQ3/DQ0N/w4ODv8NDQ3/FxcX/0VFRf+VlZX/3t7e//39/f////////////////////////////////////////////////////////////////////////////////////////////////////////////////z//////////////////////////6mpqf8VFRX/EBAQ/xYWFv+YmJj//Pz8///////////////////////4+Pj/3d3d/7Gxsf97e3v/SEhI/yQkJP8SEhL/DAwM/wsLC/8QEBD/MDAw/3d3d//Hx8f/9/f3/////////////////////////////////////////////////////////////////////////////////////////////////////+z//////////////////////////+7u7v9KSkr/CwsL/zw8PP/q6ur/////////////////////////////////////////////////8/Pz/9TU1P+kpKT/bm5u/z4+Pv8eHh7/Dg4O/woKCv8dHR3/WVlZ/62trf/s7Oz//////////////////////////////////////////////////////////////////////////////////////////9n///////////////////////////////+1tbX/Ghoa/1BQUP/5+fn//////////////////////////////////////////////////////////////////v7+/+zs7P/Jycn/l5eX/2FhYf8zMzP/FhYW/xMTE/89PT3/jY2N/9nZ2f/8/Pz//////////////////////////////////////////////////////////////////////////7/////////////////////////////////8/Pz/gYGB/0JCQv/u7u7///////////////////////////////////////////////////////////////////////////////////////v7+//l5eX/vr6+/4mJif9RUVH/Kysr/zAwMP9tbW3/v7+///T09P//////////////////////////////////////////////////////////8////5L/////////////////////////////////////7+/v/3Nzc//IyMj////////////////////////////////////////////////////////////////////////////////////////////////////////////4+Pj/3d3d/7CwsP94eHj/VVVV/2hoaP+np6f/5eXl//39/f//////////////////////////////////////////zv///13////5/////////////////////////////////////+Li4v++vr7//v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8vLy/9DQ0P+oqKj/mZmZ/7a2tv/j4+P/+/v7////////////////////////////////mv///yn////g///////////////////////////////////////////19fX//Pz8////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/v7/+vr6//h4eH/7+/v///////////////////////////3////Wv///wb///+s///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////X////IQAAAAD///9g/////f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+V////AQAAAAD///8c////1P////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H///9CAAAAAAAAAAAAAAAA////e////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////67///8JAAAAAAAAAAAAAAAA////IP///9T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8P///0YAAAAAAAAAAAAAAAAAAAAAAAAAAP///2f////6////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////mf///wUAAAAAAAAAAAAAAAAAAAAAAAAAAP///w3///+s///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////U////JgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8r////1f///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+////9SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Sv///+b/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9////3X///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///1r////r///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5////hf///wgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wH///9a////5v////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////b///+D////CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Sf///9X/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6v///27///8HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///yr///+s////+f////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////J////Rv///wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8N////Z////9X////+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5v///4b///8bAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///x////97////1f////z//////////////////////////////////////////////////////////////////////////////////////////////+T///+V////Mv///wIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////G////2D///+s////4P////n//////////////////////////////////////////////////////////P///+n///+8////dP///yr///8DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////Kf///13///+S////v////9n////s////+/////3////x////3f///8j///+e////a////zX///8NAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//wAP//wAA//4AAH//AAD/+AAAH/8AAP/gAAAH/wAA/8AAAAP/AAD/gAAAAP8AAP4AAAAAfwAA/AAAAAA/AAD8AAAAAB8AAPgAAAAAHwAA8AAAAAAPAADgAAAAAAcAAOAAAAAABwAAwAAAAAADAADAAAAAAAMAAMAAAAAAAQAAgAAAAAABAACAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAQAAgAAAAAABAADAAAAAAAEAAMAAAAAAAwAA4AAAAAADAADgAAAAAAcAAPAAAAAABwAA8AAAAAAPAAD4AAAAAB8AAPwAAAAAPwAA/gAAAAA/AAD/AAAAAH8AAP+AAAAB/wAA/8AAAAP/AAD/8AAAB/8AAP/8AAAf/wAA//8AAP//AAD//+AH//8AACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8J////PP///4j////J////8v/////////////////////////2////0v///5T///9I////DgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8H////SP///6z////s//////////////////////////////////////////////////////////H///+6////WP///wwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////JP///53////z///////////////////////////////////////////////////////////////////////////////4////sf///zQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///0L////Q////////////////////////////////////////////////////////////////////////////////////////////////////4P///1n///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///9M////4f//////////////////////////////////////////////////////////////////////////////////////////////////////////////7////2f///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Pv///+D/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7v///1oAAAAAAAAAAAAAAAAAAAAAAAAAAP///x/////J////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////3////zUAAAAAAAAAAAAAAAD///8D////kP//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////sP///wwAAAAAAAAAAP///zr////r///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4////WQAAAAD///8D////mf////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+6////Dv///yr////f//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////H///9J////a/////v////////////////29vb/5eXl/+np6f/5+fn//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////5T///+q////////////////zs7O/1hYWP8wMDD/NjY2/1hYWP+Wlpb/2dnZ//z8/P//////////////////////////////////////////////////////////////////////////////////////////////////////////0f///9b///////////T09P9SUlL/CwsL/w4ODv8ODg7/DQ0N/xAQEP8rKyv/b29v/8LCwv/19fX////////////////////////////////////////////////////////////////////////////////////////////////2////7f//////////5eXl/y8vL/8PDw//EBAQ/w4ODv8NDQ3/DQ0N/wsLC/8LCwv/HBwc/1NTU/+mpqb/6Ojo///////////////////////////////////////////////////////////////////////////////////////////8///////////y8vL/RkZG/w0NDf8SEhL/SEhI/4KCgv+AgID/XV1d/zIyMv8XFxf/CgoK/xAQEP85OTn/h4eH/9XV1f/7+/v///////////////////////////////////////////////////////////////////////////v///////////////+NjY3/DQ0N/0lJSf/n5+f////////////7+/v/5OTk/7y8vP+Ghob/UVFR/ycnJ/8SEhL/JCQk/2ZmZv+7u7v/8/Pz////////////////////////////////////////////////////////////////6v///////////////+Pj4/87Ozv/fX19///////////////////////////////////////39/f/3Nzc/6+vr/93d3f/Q0ND/ywsLP9OTk7/nJyc/+Li4v/+/v7////////////////////////////////////////////////Q/////////////////////7W1tf+AgID//f39///////////////////////////////////////////////////////y8vL/0dHR/56env9sbGz/YWFh/42Njf/Ozs7/9/f3////////////////////////////////8v///6D//////////////////////Pz8/8LCwv/u7u7///////////////////////////////////////////////////////////////////////39/f/q6ur/xcXF/6ioqP+xsbH/2NjY//j4+P/////////////////////I////X/////n//////////////////////Pz8//v7+/////////////////////////////////////////////////////////////////////////////////////////////j4+P/s7Oz/8/Pz/////////////////////4j///8h////1//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////r////PQAAAAD///+K/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////6v///8IAAAAAP///y3////i///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////y////SAAAAAAAAAAAAAAAAP///3v////+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////53///8GAAAAAAAAAAAAAAAA////E////7X////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////P////JAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////87/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////4f///0IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Nf///87//////////////////////////////////////////////////////////////////////////////////////////////////////////////+D///9MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////7b////9///////////////////////////////////////////////////////////////////////////////////////////////K////PgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////E////3v////j///////////////////////////////////////////////////////////////////////////////s////kP///x4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Af///yz///+K////2P////n///////////////////////////////////////////////z////g////mv///zr///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wL///8g////X////6H////Q////6/////v////8////7v///9b///+q////a////yn///8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+AH//+AAf/+AAB//AAAP/gAAB/wAAAP4AAAB8AAAAPAAAADgAAAAYAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAYAAAAHAAAAD4AAAA+AAAAfwAAAP+AAAH/wAAD//AAB//4AB///wD/8oAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cf///1P///+1////8P//////////////8v///7z///9c////DAAAAAAAAAAAAAAAAAAAAAAAAAAA////HP///5v////z////////////////////////////////////9v///6b///8jAAAAAAAAAAAAAAAA////G////7f/////////////////////////////////////////////////////////w////yMAAAAA////Bv///5b///////////////////////////////////////////////////////////////////+m////DP///0r////u////////////////////////////////////////////////////////////////////9f///1z///+n//////b29v/m5ub/9fX1//////////////////////////////////////////////////////////+7////4vb29v9vb2//Li4u/0tLS/+Wlpb/4ODg//7+/v//////////////////////////////////////////8v////rp6en/MjIy/yQkJP9NTU3/OTk5/zw8PP94eHj/x8fH//f39//////////////////////////////////////5/f39/3d3d/+dnZ3/+/v7/+rq6v/Dw8P/j4+P/2xsbP98fHz/tra2/+vr6//+/v7/////////////////////3//////i4uL/09PT///////////////////////5+fn/39/f/7+/v/+2trb/0dHR//T09P//////////7////6D///////////z8/P///////////////////////////////////////v7+//b29v/39/f//////////7X///9D////6v////////////////////////////////////////////////////////////////////L///9T////BP///4v///////////////////////////////////////////////////////////////////+b////CAAAAAD///8U////qv////7///////////////////////////////////////////////////+3////HAAAAAAAAAAAAAAAAP///xT///+L////7P////////////////////////////////////D///+W////GwAAAAAAAAAAAAAAAAAAAAAAAAAA////Bf///0L///+h////3/////n////7////4////6j///9K////BwAAAAAAAAAAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA=",
     "status_line": "Confidential · For Internal Use Only — Algolia Sales Intelligence"
   },
   "tab_subtitles": {
@@ -6337,28 +6344,31 @@ a:hover {
   },
   "case_studies": [
     {
-      "vertical": "Athletic Apparel & Footwear",
       "company": "Under Armour",
-      "result": "+35% conversion rate when customers use search",
-      "product": "Algolia AI Search (NeuralSearch + Query Suggestions)",
-      "why": "Under Armour is Nike’s direct competitor in performance athletic footwear and apparel. They moved off a manual, in-house search platform — the same Elasticsearch DIY model Nike uses today — to Algolia and immediately achieved 35% higher search conversion.",
-      "url": "https://www.algolia.com/customers/under-armour"
+      "vertical": "Athletic Apparel & Footwear",
+      "stat": "+35% conversion rate on search",
+      "url": "https://www.algolia.com/customers/under-armour",
+      "result": "+35% conversion rate on search",
+      "product": "Algolia Search",
+      "why": "Under Armour — Nike's #3 direct competitor — replaced the same DIY in-house search stack Nike currently runs on Elasticsearch and achieved +35% conversion on search, making this the most directly comparable peer proof point in the athletic-apparel vertical."
     },
     {
-      "vertical": "Fashion & Lifestyle Sportswear",
-      "company": "Lacoste",
-      "result": "+150% sales contribution from search; +37% conversion rate; +314% search use on mobile; <50ms results",
-      "product": "Algolia Search + Personalization across 11 global online shops",
-      "why": "Lacoste operates 11 international online shops — comparable to Nike’s multi-market, multilingual DTC digital footprint. Lacoste more than doubled global sales contribution from search after deploying Algolia across its global estate.",
-      "url": "https://www.algolia.com/customers/lacoste"
-    },
-    {
-      "vertical": "Footwear Retail",
       "company": "Shoe Carnival",
+      "vertical": "Footwear Retail",
+      "stat": "Up to 3.5x conversions from search",
+      "url": "https://www.algolia.com/customers/shoe-carnival",
       "result": "Up to 3.5x conversions from search",
-      "product": "Algolia AI Search",
-      "why": "Shoe Carnival is one of the largest US footwear retailers. After moving to Algolia they achieved up to 3.5x search conversion — directly applicable to Nike’s DTC footwear discovery problem.",
-      "url": "https://www.algolia.com/customers/shoe-carnival"
+      "product": "Algolia Search",
+      "why": "Shoe Carnival is a specialist footwear retailer operating in Nike's core category; achieving up to 3.5× conversions from search demonstrates the scale of lift Algolia delivers in the exact footwear-retail segment where nike.com competes for direct digital revenue."
+    },
+    {
+      "company": "Lacoste",
+      "vertical": "Sport & Lifestyle Apparel",
+      "stat": "+210% search usage, +37% conversion rate",
+      "url": "https://www.algolia.com/customers/lacoste",
+      "result": "+210% search usage, +37% conversion rate",
+      "product": "Algolia Search, Federated Search",
+      "why": "Lacoste is a sport-lifestyle apparel brand — same category as Nike — and their +210% search usage alongside +37% conversion directly benchmarks what federated SAYT and relevance tuning can unlock on a large multi-category apparel and footwear catalogue like nike.com."
     }
   ],
   "recommended_first_play": {
@@ -6788,7 +6798,7 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 1 — Hook (Search Gap Finding)",
-        "body": "# Email 1 — Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**\n\nHi [First Name],\n\nElliott Hill said on the Q3 earnings call that Nike is \"investing in the technology platforms that will help us serve more consumers better.\" I spent 30 minutes on nike.com this week, and I found one thing that stood out immediately.\n\nWhen a shopper types \"store near me\" into the nike.com search bar, they get 41 product results — t-shirts, sportswear — instead of a store locator. The intent is completely clear, and the site misses it entirely.\n\nThis is one of 10 gaps we documented across the search experience, all traceable to the custom Elasticsearch infrastructure running behind api.nike.com/search. The bigger ones — no personalization, NLP queries that partially parse intent but don't auto-apply price or size filters — connect directly to the \"still too promotional\" problem Matthew Friend described on the same call.\n\nWorth a 15-minute conversation this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- \"store near me\" returning product results: `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [VERIFIED ON DISK]\n- Elliott Hill quote \"investing in the technology platforms\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Matthew Friend quote \"digital is still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 earnings call transcript, Motley Fool WebFetch 2026-04-15 [FACT]\n- Custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a½ [FACT — network verification]\n- 10 gaps enumerated: `09-browser-findings.md`, Summary section [FACT — browser audit 2026-04-15]\n",
+        "body": "# Email 1 — Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**\n\nHi [First Name],\n\nElliott Hill said on the Q3 earnings call that Nike is \"investing in the technology platforms that will help us serve more consumers better.\" I spent 30 minutes on nike.com this week, and I found one thing that stood out immediately.\n\nWhen a shopper types \"store near me\" into the nike.com search bar, they get 41 product results — t-shirts, sportswear — instead of a store locator. The intent is completely clear, and the site misses it entirely.\n\nThis is one of 10 gaps we documented across the search experience, all traceable to the custom Elasticsearch infrastructure running behind api.nike.com/search. The bigger ones — no personalization, NLP queries that partially parse intent but don't auto-apply price or size filters — connect directly to the \"still too promotional\" problem Matthew Friend described on the same call.\n\nWorth a 15-minute conversation this week?\n\n[Your name]\n[Title], Algolia\n\n---",
         "message": "# Email 1 — Hook (Search Gap Finding)\n\n**Subject:** What I found when I searched \"store near me\" on nike.com\n\n**Body:**"
       },
       {
@@ -6797,7 +6807,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Connection Request",
-        "body": "# LinkedIn — Connection Request\n\n## Version A — For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan — ran an audit of nike.com search and found the site misses clear location intent: \"store near me\" returns products, not stores. Thought it might be relevant given your platform mandate. Happy to share the full analysis.\n\n**Character count: 216** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO, technology integration mandate)\n\nHi Venky — audited nike.com's search stack and found a gap: after browsing running shoes, searching \"shoes\" shows Jordan retros first. Zero personalization signals active. Could connect to the operational efficiency work. Happy to share the findings.\n\n**Character count: 252** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version C — For Matthew Friend (CFO, Nike Direct owner)\n\nHi Matthew — audited nike.com search and documented the gap between what NikeAI does in the app and what the website delivers. The delta connects directly to the full-price conversion problem. Happy to share the analysis if useful.\n\n**Character count: 238** [UNDER 300 LIMIT — PASS]\n\n---\n\n**Source notes:**\n\n- \"store near me\" finding (Version A): `09-browser-findings.md`, Step 2h, screenshot `08-non-product-store.png` [FACT — browser audit 2026-04-15]\n- Zero personalization finding (Version B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT — browser audit 2026-04-15]\n- NikeAI app vs. website gap (Version C): `09-browser-findings.md`, Step 2a½ and NikeAI Presence section; `nike-playbook.md`, Talking Point 4 [FACT]\n- Role/contact framing: `nike-playbook.md`, Power Map section [FACT]\n",
+        "body": "# LinkedIn — Connection Request\n\n## Version A — For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan — ran an audit of nike.com search and found the site misses clear location intent: \"store near me\" returns products, not stores. Thought it might be relevant given your platform mandate. Happy to share the full analysis.\n\n**Character count: 216** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO, technology integration mandate)\n\nHi Venky — audited nike.com's search stack and found a gap: after browsing running shoes, searching \"shoes\" shows Jordan retros first. Zero personalization signals active. Could connect to the operational efficiency work. Happy to share the findings.\n\n**Character count: 252** [UNDER 300 LIMIT — PASS]\n\n---\n\n## Version C — For Matthew Friend (CFO, Nike Direct owner)\n\nHi Matthew — audited nike.com search and documented the gap between what NikeAI does in the app and what the website delivers. The delta connects directly to the full-price conversion problem. Happy to share the analysis if useful.\n\n**Character count: 238** [UNDER 300 LIMIT — PASS]\n\n---",
         "message": "# LinkedIn — Connection Request\n\n## Version A — For Cheryan Jacob (CIO, former Salesforce exec)\n\nHi Cheryan — ran an aud"
       },
       {
@@ -6806,7 +6816,7 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 2 — Competitor (Golden Angle)",
-        "body": "# Email 2 — Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool — here's what happened\n\n**Body:**\n\nHi [First Name],\n\nUnder Armour was in the same position Nike is in today. They had built their own search infrastructure — in-house, open-source — and it worked, but it required engineering resources to maintain and it couldn't keep pace with how consumers shop.\n\nThey moved to Algolia. Their product manager described the result this way: \"We moved from a manual, time-intensive search tool to a fast, intuitive and insight-driven search experience.\" The metric: 35% higher conversion rate when customers use search.\n\nNike.com is running a similar custom Elasticsearch stack — we confirmed it via network inspection on the api.nike.com/search endpoint. Under Armour's gain is a documented benchmark for what's possible on the same infrastructure trajectory.\n\nI put together a short analysis of the specific gaps on nike.com — the ones that map most directly to what Under Armour solved. Happy to share it. Would a quick call this week make sense?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Under Armour on Algolia (Golden Angle — CONFIRMED): `04-competitors.md`, algolia.com/customers/under-armour WebFetch 2026-04-14 [FACT]\n- \"+35% higher conversion rate when using search\": `04-competitors.md`, algolia.com/customers/under-armour [FACT — WebFetch verified]\n- Nick Maupin quote: `04-competitors.md`, algolia.com/customers/under-armour [FACT]\n- Nike custom Elasticsearch at api.nike.com/search: `09-browser-findings.md`, Step 2a½, network verification 2026-04-15 [FACT]\n- Under Armour competitor classification: `04-competitors.md`, Competitor Search Technology Matrix, Row 3 [FACT]\n- Golden Angle play used (not Defensive): BuiltWith confirmed via algolia.com/customers/under-armour case study page, not generic WebSearch\n",
+        "body": "# Email 2 — Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool — here's what happened\n\n**Body:**\n\nHi [First Name],\n\nUnder Armour was in the same position Nike is in today. They had built their own search infrastructure — in-house, open-source — and it worked, but it required engineering resources to maintain and it couldn't keep pace with how consumers shop.\n\nThey moved to Algolia. Their product manager described the result this way: \"We moved from a manual, time-intensive search tool to a fast, intuitive and insight-driven search experience.\" The metric: 35% higher conversion rate when customers use search.\n\nNike.com is running a similar custom Elasticsearch stack — we confirmed it via network inspection on the api.nike.com/search endpoint. Under Armour's gain is a documented benchmark for what's possible on the same infrastructure trajectory.\n\nI put together a short analysis of the specific gaps on nike.com — the ones that map most directly to what Under Armour solved. Happy to share it. Would a quick call this week make sense?\n\n[Your name]\n[Title], Algolia\n\n---",
         "message": "# Email 2 — Competitor (Golden Angle)\n\n**Subject:** Under Armour switched off their DIY search tool — here's what happen"
       },
       {
@@ -6815,7 +6825,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)",
-        "body": "# LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)\n\n## Version A — For Cheryan Jacob (CIO)\n\nHi Cheryan — the \"store near me\" gap is one of 10 we documented on nike.com. The bigger one: after browsing running shoes and then searching \"shoes,\" the top results are Jordan retros. The site has no personalization layer — zero re-ranking based on browsing behavior. Nike's own app has NikeAI for this. The website doesn't. That's the infrastructure gap.\n\n**Character count: 359** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO)\n\nHi Venky — the personalization gap goes further than results ranking. Nike's site is running custom Elasticsearch at api.nike.com/search. The engineering overhead to maintain relevance tuning, merchandising rules, and facet logic is significant — and it still ships static facets (Cushioning Type shows up for jacket queries). Algolia replaces that maintenance burden with a managed platform. No fabrication — confirmed via network inspection.\n\n**Character count: 430** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version C — For Matthew Friend (CFO)\n\nHi Matthew — one data point from the audit: 9.27% of outbound traffic from nike.com goes to Google, and that number grew 117.81% in one month. Those are shoppers who searched on Nike's site, didn't find what they needed, and left to search on Google instead. At 107.6M monthly visits, that's a material number of lost sessions. The mechanism is search relevance — and it's fixable.\n\n**Character count: 404** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n**Source notes:**\n\n- Personalization gap (Version A + B): `09-browser-findings.md`, Step 2q, screenshot `17-personalization.png` [FACT]\n- Static facets / Cushioning Type for jacket: `09-browser-findings.md`, Step 2n, screenshot `14-dynamic-facets-drifit.png` [FACT]\n- api.nike.com/search network confirmation: `09-browser-findings.md`, Step 2a½ [FACT]\n- 9.27% outbound to Google, +117.81% MoM: `nike-playbook.md`, Talking Point 2; SimilarWeb web UI Jan-Mar 2026 [FACT]\n- 107.6M monthly visits: referenced in playbook context [FACT — SimilarWeb]\n- No sales ask in Follow-up 1: confirmed — no CTA present in any version\n",
+        "body": "# LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)\n\n## Version A — For Cheryan Jacob (CIO)\n\nHi Cheryan — the \"store near me\" gap is one of 10 we documented on nike.com. The bigger one: after browsing running shoes and then searching \"shoes,\" the top results are Jordan retros. The site has no personalization layer — zero re-ranking based on browsing behavior. Nike's own app has NikeAI for this. The website doesn't. That's the infrastructure gap.\n\n**Character count: 359** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO)\n\nHi Venky — the personalization gap goes further than results ranking. Nike's site is running custom Elasticsearch at api.nike.com/search. The engineering overhead to maintain relevance tuning, merchandising rules, and facet logic is significant — and it still ships static facets (Cushioning Type shows up for jacket queries). Algolia replaces that maintenance burden with a managed platform. No fabrication — confirmed via network inspection.\n\n**Character count: 430** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---\n\n## Version C — For Matthew Friend (CFO)\n\nHi Matthew — one data point from the audit: 9.27% of outbound traffic from nike.com goes to Google, and that number grew 117.81% in one month. Those are shoppers who searched on Nike's site, didn't find what they needed, and left to search on Google instead. At 107.6M monthly visits, that's a material number of lost sessions. The mechanism is search relevance — and it's fixable.\n\n**Character count: 404** [UNDER 500 LIMIT — ACCEPTABLE]\n\n---",
         "message": "# LinkedIn — Follow-Up 1 (if accepted, no reply — Day 4-6)\n\n## Version A — For Cheryan Jacob (CIO)\n\nHi Cheryan — the \"st"
       },
       {
@@ -6824,7 +6834,7 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 3 — Business Case",
-        "body": "# Email 3 — Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**\n\nHi [First Name],\n\nNike Brand Digital revenue is approximately $9.6 billion — derived from the FY2025 10-K (NIKE Direct at $18.8B, with the digital segment down 20% YoY). That's the baseline for the search revenue conversation.\n\nHere's one component of the model: a 1% conversion lift on $9.6B digital = $96M/year incremental revenue. At Nike's 42.7% gross margin (FY2025 10-K), that's $41M in additional gross profit — from a single percentage point.\n\nMatthew Friend said on the Q3 earnings call that Nike is \"leveraging new advanced capabilities\" in technology while rationalizing legacy programs. A managed search platform that replaces a self-maintained Elasticsearch stack fits both sides of that sentence — it's an advanced capability that eliminates maintenance overhead.\n\nI have a full model built — six components, conservative and moderate scenarios. Happy to walk through it in 15 minutes. The leave-behind with the full analysis is also available here: [nike-leave-behind.html link]\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- NIKE Brand Digital ~$9.6B: `08-financial-profile.md`, Digital/Ecommerce Revenue table, derived from 10-K FY2025 [FACT — SEC EDGAR 10-K via last10k.com WebFetch 2026-04-14]\n- NIKE Direct $18.8B, down 13%: `08-financial-profile.md`, Revenue Trend table; Nike FY2025 10-K MD&A [FACT]\n- NIKE Brand Digital down 20% FY2025: `08-financial-profile.md`, 10-K MD&A verbatim [FACT]\n- Gross margin 42.7% FY2025: `08-financial-profile.md`, Key Margins section, Gross Profit $19.790B ÷ Total Revenue $46.309B [FACT — Yahoo Finance MCP 2026-04-14]\n- 1% conversion lift = $96M formula: `nike-playbook.md`, ROI Summary section [FACT — derived from above inputs]\n- Friend quote \"leverage new advanced capabilities\": `11-investor-intelligence.md`, Q3 FY2026 earnings call, Globe and Mail / Motley Fool WebFetch 2026-04-15 [FACT]\n- Leave-behind reference: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n",
+        "body": "# Email 3 — Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**\n\nHi [First Name],\n\nNike Brand Digital revenue is approximately $9.6 billion — derived from the FY2025 10-K (NIKE Direct at $18.8B, with the digital segment down 20% YoY). That's the baseline for the search revenue conversation.\n\nHere's one component of the model: a 1% conversion lift on $9.6B digital = $96M/year incremental revenue. At Nike's 42.7% gross margin (FY2025 10-K), that's $41M in additional gross profit — from a single percentage point.\n\nMatthew Friend said on the Q3 earnings call that Nike is \"leveraging new advanced capabilities\" in technology while rationalizing legacy programs. A managed search platform that replaces a self-maintained Elasticsearch stack fits both sides of that sentence — it's an advanced capability that eliminates maintenance overhead.\n\nI have a full model built — six components, conservative and moderate scenarios. Happy to walk through it in 15 minutes. The leave-behind with the full analysis is also available here: [nike-leave-behind.html link]\n\n[Your name]\n[Title], Algolia\n\n---",
         "message": "# Email 3 — Business Case\n\n**Subject:** One number from your FY2025 10-K that keeps coming up in our analysis\n\n**Body:**"
       },
       {
@@ -6833,8 +6843,9 @@ a:hover {
         "channel": "video",
         "target": "all",
         "subject": "Loom Video Script — Nike Search Audit",
-        "body": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience:** CIO / COO / CFO at Nike\n**Recorded by:** AE\n\n---\n\n## HOOK (0–10 sec)\n\n\"I spent 30 minutes on nike.com and found three things that surprised me — given Nike's investment in digital. Let me show you exactly what I found.\"\n\n*[Open screen share to browser with nike.com loaded]*\n\n---\n\n## DEMO (10–90 sec)\n\n**Finding 1 — Screenshot: `08-non-product-store.png`** *(approx. 10–30 sec)*\n\n\"This is what happens when a shopper types 'store near me' into the nike.com search bar. They get 41 product results — t-shirts and sportswear — instead of a store locator. The intent is completely clear. The site misses it. This is a routing failure in the search infrastructure.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 2 — Screenshot: `17-personalization.png`** *(approx. 30–60 sec)*\n\n\"Here's the second thing. I browsed running shoes, clicked a product, then searched 'shoes.' The top results were Air Jordan retros — not running shoes. Zero personalization. No re-ranking based on what I just looked at. Nike's app has NikeAI for exactly this kind of intent detection. The website doesn't have that layer.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 3 — Screenshot: `14-dynamic-facets-drifit.png`** *(approx. 60–80 sec)*\n\n\"Third — I searched for a Dri-FIT UV running jacket. The facet panel showed 'Cushioning Type' as a filter. For a jacket. The facets are static — they don't adapt to what the shopper is actually looking for. This creates friction right at the moment of refinement.\"\n\n*[Pull back to summary view]*\n\n\"Three gaps. Search misroutes intent, ignores browsing behavior, and serves irrelevant filters. Nike's digital channel is approximately $9.6 billion. These gaps compound across every session.\"\n\n---\n\n## CTA (90–120 sec)\n\n\"I put together a full analysis — 10 documented gaps, a business case with the revenue math, and a comparison to what Under Armour achieved after a similar infrastructure switch. Happy to walk you through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Speaker notes — transitions:**\n\n- After Finding 1: \"That's the intent detection gap. Let me show you the personalization problem.\"\n- After Finding 2: \"That's the web experience versus the app experience. Here's the third gap — filtering.\"\n- After Finding 3: \"So three layers: routing, personalization, faceting. Here's the business context.\"\n\n---\n\n**Source notes:**\n\n- Screenshot `08-non-product-store.png`: VERIFIED ON DISK (`deliverables/screenshots/08-non-product-store.png`) — \"store near me\" returning 41 product results, `09-browser-findings.md` Step 2h [FACT]\n- Screenshot `17-personalization.png`: VERIFIED ON DISK (`deliverables/screenshots/17-personalization.png`) — Jordan retros shown after browsing running shoes, `09-browser-findings.md` Step 2q [FACT]\n- Screenshot `14-dynamic-facets-drifit.png`: VERIFIED ON DISK (`deliverables/screenshots/14-dynamic-facets-drifit.png`) — Cushioning Type shown for jacket query, `09-browser-findings.md` Step 2n [FACT]\n- $9.6B digital revenue: `08-financial-profile.md`, derived from Nike FY2025 10-K [FACT]\n- Under Armour infrastructure comparison: `04-competitors.md`, Golden Angle section [FACT]\n- All 3 screenshots confirmed present in `deliverables/screenshots/` [VERIFIED]\n",
-        "message": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience"
+        "body": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience:** CIO / COO / CFO at Nike\n**Recorded by:** AE\n\n---\n\n## HOOK (0–10 sec)\n\n\"I spent 30 minutes on nike.com and found three things that surprised me — given Nike's investment in digital. Let me show you exactly what I found.\"\n\n*[Open screen share to browser with nike.com loaded]*\n\n---\n\n## DEMO (10–90 sec)\n\n**Finding 1 — Screenshot: `08-non-product-store.png`** *(approx. 10–30 sec)*\n\n\"This is what happens when a shopper types 'store near me' into the nike.com search bar. They get 41 product results — t-shirts and sportswear — instead of a store locator. The intent is completely clear. The site misses it. This is a routing failure in the search infrastructure.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 2 — Screenshot: `17-personalization.png`** *(approx. 30–60 sec)*\n\n\"Here's the second thing. I browsed running shoes, clicked a product, then searched 'shoes.' The top results were Air Jordan retros — not running shoes. Zero personalization. No re-ranking based on what I just looked at. Nike's app has NikeAI for exactly this kind of intent detection. The website doesn't have that layer.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 3 — Screenshot: `14-dynamic-facets-drifit.png`** *(approx. 60–80 sec)*\n\n\"Third — I searched for a Dri-FIT UV running jacket. The facet panel showed 'Cushioning Type' as a filter. For a jacket. The facets are static — they don't adapt to what the shopper is actually looking for. This creates friction right at the moment of refinement.\"\n\n*[Pull back to summary view]*\n\n\"Three gaps. Search misroutes intent, ignores browsing behavior, and serves irrelevant filters. Nike's digital channel is approximately $9.6 billion. These gaps compound across every session.\"\n\n---\n\n## CTA (90–120 sec)\n\n\"I put together a full analysis — 10 documented gaps, a business case with the revenue math, and a comparison to what Under Armour achieved after a similar infrastructure switch. Happy to walk you through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Speaker notes — transitions:**\n\n- After Finding 1: \"That's the intent detection gap. Let me show you the personalization problem.\"\n- After Finding 2: \"That's the web experience versus the app experience. Here's the third gap — filtering.\"\n- After Finding 3: \"So three layers: routing, personalization, faceting. Here's the business context.\"\n\n---",
+        "message": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience",
+        "video_script": "# Loom Video Script — Nike Search Audit\n\n**Target length:** 2 minutes (120 seconds)\n**Word count:** 243 words\n**Audience:** CIO / COO / CFO at Nike\n**Recorded by:** AE\n\n---\n\n## HOOK (0–10 sec)\n\n\"I spent 30 minutes on nike.com and found three things that surprised me — given Nike's investment in digital. Let me show you exactly what I found.\"\n\n*[Open screen share to browser with nike.com loaded]*\n\n---\n\n## DEMO (10–90 sec)\n\n**Finding 1 — Screenshot: `08-non-product-store.png`** *(approx. 10–30 sec)*\n\n\"This is what happens when a shopper types 'store near me' into the nike.com search bar. They get 41 product results — t-shirts and sportswear — instead of a store locator. The intent is completely clear. The site misses it. This is a routing failure in the search infrastructure.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 2 — Screenshot: `17-personalization.png`** *(approx. 30–60 sec)*\n\n\"Here's the second thing. I browsed running shoes, clicked a product, then searched 'shoes.' The top results were Air Jordan retros — not running shoes. Zero personalization. No re-ranking based on what I just looked at. Nike's app has NikeAI for exactly this kind of intent detection. The website doesn't have that layer.\"\n\n*[Transition: move to next screenshot]*\n\n**Finding 3 — Screenshot: `14-dynamic-facets-drifit.png`** *(approx. 60–80 sec)*\n\n\"Third — I searched for a Dri-FIT UV running jacket. The facet panel showed 'Cushioning Type' as a filter. For a jacket. The facets are static — they don't adapt to what the shopper is actually looking for. This creates friction right at the moment of refinement.\"\n\n*[Pull back to summary view]*\n\n\"Three gaps. Search misroutes intent, ignores browsing behavior, and serves irrelevant filters. Nike's digital channel is approximately $9.6 billion. These gaps compound across every session.\"\n\n---\n\n## CTA (90–120 sec)\n\n\"I put together a full analysis — 10 documented gaps, a business case with the revenue math, and a comparison to what Under Armour achieved after a similar infrastructure switch. Happy to walk you through it in 15 minutes.\n\n[Your name], [Title], Algolia.\"\n\n---\n\n**Speaker notes — transitions:**\n\n- After Finding 1: \"That's the intent detection gap. Let me show you the personalization problem.\"\n- After Finding 2: \"That's the web experience versus the app experience. Here's the third gap — filtering.\"\n- After Finding 3: \"So three layers: routing, personalization, faceting. Here's the business context.\"\n\n---"
       },
       {
         "touch": 7,
@@ -6842,7 +6853,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)",
-        "body": "# LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)\n\n## Version A — For Cheryan Jacob (CIO) — Competitor angle\n\nHi Cheryan — Under Armour moved from an in-house search tool to Algolia and recorded 35% higher conversion rate on search. Nike's site runs a similar self-managed Elasticsearch stack. The infrastructure comparison is direct. I have the full analysis ready. Would a 15-minute call make sense?\n\n**Character count: 280** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO) — Business case component\n\nHi Venky — one component from the model: 1% conversion lift on Nike's ~$9.6B digital channel = $96M/year incremental revenue. At 42.7% gross margin, that's $41M gross profit. That's the conservative scenario. Would a 15-minute call make sense to walk through the full picture?\n\n**Character count: 273** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version C — For Matthew Friend (CFO) — Business case component\n\nHi Matthew — a single number from your FY2025 10-K: Nike Brand Digital ~$9.6B. A 1% conversion lift on that base = $96M/year. At your gross margin, that's $41M gross profit — from fixing search relevance, not adding promotion. Worth 15 minutes?\n\n**Character count: 252** [UNDER 300 RECOMMENDED]\n\n---\n\n**Source notes:**\n\n- Under Armour +35% conversion (Version A): `04-competitors.md`, Golden Angle section [FACT — algolia.com/customers/under-armour WebFetch 2026-04-14]\n- Nike self-managed Elasticsearch (Version A): `09-browser-findings.md`, Step 2a½ [FACT]\n- $9.6B digital revenue, 42.7% gross margin, $96M formula (Versions B + C): `08-financial-profile.md` and `nike-playbook.md`, ROI Summary [FACT — derived from Nike FY2025 10-K]\n- One angle only per version (competitor OR business case) — confirmed, no mixing\n",
+        "body": "# LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)\n\n## Version A — For Cheryan Jacob (CIO) — Competitor angle\n\nHi Cheryan — Under Armour moved from an in-house search tool to Algolia and recorded 35% higher conversion rate on search. Nike's site runs a similar self-managed Elasticsearch stack. The infrastructure comparison is direct. I have the full analysis ready. Would a 15-minute call make sense?\n\n**Character count: 280** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version B — For Venkatesh Alagirisamy (COO) — Business case component\n\nHi Venky — one component from the model: 1% conversion lift on Nike's ~$9.6B digital channel = $96M/year incremental revenue. At 42.7% gross margin, that's $41M gross profit. That's the conservative scenario. Would a 15-minute call make sense to walk through the full picture?\n\n**Character count: 273** [UNDER 300 RECOMMENDED]\n\n---\n\n## Version C — For Matthew Friend (CFO) — Business case component\n\nHi Matthew — a single number from your FY2025 10-K: Nike Brand Digital ~$9.6B. A 1% conversion lift on that base = $96M/year. At your gross margin, that's $41M gross profit — from fixing search relevance, not adding promotion. Worth 15 minutes?\n\n**Character count: 252** [UNDER 300 RECOMMENDED]\n\n---",
         "message": "# LinkedIn — Follow-Up 2 (Day 10-12 — soft meeting ask)\n\n## Version A — For Cheryan Jacob (CIO) — Competitor angle\n\nHi C"
       },
       {
@@ -6851,7 +6862,7 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 4 — Social Proof",
-        "body": "# Email 4 — Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution — without discounts\n\n**Body:**\n\nHi [First Name],\n\nLacoste is a useful comparison for Nike right now. Global athletic/lifestyle brand, multi-territory ecommerce, similar pressure to drive full-price sell-through rather than leaning on markdowns.\n\nTheir gap was search relevance — shoppers were not finding the right product fast enough, so sessions were ending without conversion. Lacoste deployed Algolia across 11 online shops globally.\n\nThe result: search results delivered in under 50ms, +150% increase in sales contribution from search, +37% overall conversion rate on search (+62% on mobile), -88% bounce rate. Their Global UX Manager put it directly: \"Not only does it provide the stellar user experience Lacoste is known for, but it more than doubled our global sales.\"\n\nMatthew Friend has said Nike Digital is \"still too promotional\" — the mechanism behind that problem is that search relevance forces the discount crutch. When your system can't surface the right product at full price, markdown is the only conversion lever left. Lacoste's numbers show what happens when you remove that dependency.\n\nHappy to connect this to the specific gaps we found on nike.com. Would a 15-minute call work this week?\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Lacoste case study (vertical-matched — adjacent global athletic/fashion brand): `04-competitors.md`, Full Algolia Proof Set section, algolia.com/customers/lacoste WebFetch 2026-04-14 [FACT]\n- \"+150% sales contribution from search\": `04-competitors.md`, Lacoste metrics [FACT — algolia.com/customers/lacoste WebFetch verified]\n- \"+37% conversion rate (+62% mobile)\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"-88% bounce rate\": `04-competitors.md`, Lacoste metrics [FACT]\n- \"<50ms search results\": `04-competitors.md`, Lacoste metrics [FACT]\n- Julien Nouet quote (Global UX Manager, Lacoste): `04-competitors.md` [FACT — algolia.com/customers/lacoste WebFetch 2026-04-14]\n- Friend \"still too promotional\": `11-investor-intelligence.md`, Q3 FY2026 [FACT]\n- ICP vertical match: `nike-playbook.md`, MEDDPICC Metrics row; `04-competitors.md` AE Sales Narrative [adjacent vertical — global athletic/fashion]\n",
+        "body": "# Email 4 — Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution — without discounts\n\n**Body:**\n\nHi [First Name],\n\nLacoste is a useful comparison for Nike right now. Global athletic/lifestyle brand, multi-territory ecommerce, similar pressure to drive full-price sell-through rather than leaning on markdowns.\n\nTheir gap was search relevance — shoppers were not finding the right product fast enough, so sessions were ending without conversion. Lacoste deployed Algolia across 11 online shops globally.\n\nThe result: search results delivered in under 50ms, +150% increase in sales contribution from search, +37% overall conversion rate on search (+62% on mobile), -88% bounce rate. Their Global UX Manager put it directly: \"Not only does it provide the stellar user experience Lacoste is known for, but it more than doubled our global sales.\"\n\nMatthew Friend has said Nike Digital is \"still too promotional\" — the mechanism behind that problem is that search relevance forces the discount crutch. When your system can't surface the right product at full price, markdown is the only conversion lever left. Lacoste's numbers show what happens when you remove that dependency.\n\nHappy to connect this to the specific gaps we found on nike.com. Would a 15-minute call work this week?\n\n[Your name]\n[Title], Algolia\n\n---",
         "message": "# Email 4 — Social Proof\n\n**Subject:** Lacoste doubled their search sales contribution — without discounts\n\n**Body:**\n\nH"
       },
       {
@@ -6860,7 +6871,7 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 5 — Break-Up",
-        "body": "# Email 5 — Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turnaround work — the past few months have clearly been heads-down at Nike, and I don't want to add noise.\n\nI'll leave you with the full audit we built on nike.com — 10 search gaps documented, a business case with the revenue math, and a comparison to what Under Armour achieved after making a similar infrastructure switch. It's all here if it's useful at any point: [nike-leave-behind.html link]\n\nThe door is open whenever the timing makes sense. Elliott Hill said he wants to move from \"fixing this business\" to \"inspiring and driving growth\" — when that chapter starts in earnest, the search infrastructure question will be on the table. We'll be here.\n\n[Your name]\n[Title], Algolia\n\n---\n\n**Source notes:**\n\n- Elliott Hill \"tired of fixing\" quote: `11-investor-intelligence.md`, Nike All-Hands Meeting April 2026, Fortune WebFetch 2026-04-15 [FACT]\n- Parting resource: `deliverables/nike-leave-behind.html` [VERIFIED ON DISK]\n- Under Armour reference: `04-competitors.md`, Golden Angle section [FACT]\n- 10 gaps documented: `09-browser-findings.md`, Summary / Key Gaps Found section [FACT — browser audit 2026-04-15]\n",
+        "body": "# Email 5 — Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turnaround work — the past few months have clearly been heads-down at Nike, and I don't want to add noise.\n\nI'll leave you with the full audit we built on nike.com — 10 search gaps documented, a business case with the revenue math, and a comparison to what Under Armour achieved after making a similar infrastructure switch. It's all here if it's useful at any point: [nike-leave-behind.html link]\n\nThe door is open whenever the timing makes sense. Elliott Hill said he wants to move from \"fixing this business\" to \"inspiring and driving growth\" — when that chapter starts in earnest, the search infrastructure question will be on the table. We'll be here.\n\n[Your name]\n[Title], Algolia\n\n---",
         "message": "# Email 5 — Break-Up\n\n**Subject:** Closing the loop on Nike\n\n**Body:**\n\nHi [First Name],\n\nI know you're deep in the turn"
       }
     ],
@@ -7177,6 +7188,35 @@ const T = {
   badgePill:    (col,bg) => `font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:${bg};color:${col};white-space:nowrap`,
   nodeLabel:    'font-size:13px;font-weight:700;color:var(--gray);margin-bottom:6px;text-align:center;line-height:1.3',
   nodeDomain:   'font-size:11px;font-weight:500;text-decoration:none',
+
+  /* ── Typography-only tokens (font-size + contiguous weight/transform/spacing) ──
+     Per-element color/margin/padding stay appended as literal props.
+     Each token expands to the EXACT same CSS substring it replaced. */
+  statLabel:    'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em',
+  statLabel06:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statLabel12:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em',
+  microLabel06: 'font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statNum:      'font-size:2rem;font-weight:800',
+  cap10:        'font-size:10px',
+  cap11:        'font-size:11px',
+  cap12:        'font-size:12px',
+  cap13:        'font-size:13px',
+  cap14:        'font-size:14px',
+  cap16:        'font-size:16px',
+  bold11:       'font-size:11px;font-weight:700',
+  semi11:       'font-size:11px;font-weight:600',
+  bold12:       'font-size:12px;font-weight:700',
+  semi12:       'font-size:12px;font-weight:600',
+  bold13:       'font-size:13px;font-weight:700',
+  semi13:       'font-size:13px;font-weight:600',
+  bold14:       'font-size:14px;font-weight:700',
+  semi14:       'font-size:14px;font-weight:600',
+  bold15:       'font-size:15px;font-weight:700',
+  bold20:       'font-size:20px;font-weight:700',
+  bold22:       'font-size:22px;font-weight:700',
+  bold32:       'font-size:32px;font-weight:700',
+  italic13:     'font-size:13px;font-style:italic',
+  italic14:     'font-size:14px;font-style:italic',
 
 };
 
@@ -9492,23 +9532,23 @@ function sectionTraffic(D) {
       const ai = t.ai_referral;
       return `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
         <div style="padding:16px 20px;background:var(--blue-tint);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--blue);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:6px;">Via Search</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--blue);line-height:1;">${searchPctNum}%</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of all traffic arrives via organic or paid search</div>
+          <div style="${T.statLabel};color:var(--blue);margin-bottom:6px;">Via Search</div>
+          <div style="${T.statNum};color:var(--blue);line-height:1;">${searchPctNum}%</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">of all traffic arrives via organic or paid search</div>
         </div>
         ${sa ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
+          <div style="${T.statNum};color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
           <div class="algolia-angle-box" style="margin-top:10px;">
             ${algoliaAngleBadge()}
             <p style="${T.compact};margin:0;">1 in ${Math.round(100/parseFloat(sa.google_outbound_pct))} visitors gives up on your search and goes back to Google. That's a revenue leak — not a UX problem. We fix that.</p>
           </div>
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9519,7 +9559,7 @@ function sectionTraffic(D) {
     <!-- PANEL: Traffic Sources & Device Split -->
     <div class="acc-panel">
       <button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">
-        <span style="font-size:14px;font-weight:700;color:var(--gray);">Traffic Sources & Device Split</span>
+        <span style="${T.bold14};color:var(--gray);">Traffic Sources & Device Split</span>
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
       <div class="acc-body" style="display:none;padding:14px;">
@@ -9619,15 +9659,15 @@ function sectionTraffic(D) {
         ${Object.keys(gender).length ? (() => {
           const f = parseFloat(gender.female || gender.Female || 0);
           const m = parseFloat(gender.male   || gender.Male   || 0);
-          return '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Gender</div>' +
+          return '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Gender</div>' +
             '<div style="height:28px;border-radius:5px;overflow:hidden;display:flex;margin-bottom:4px;">' +
-            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
-            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
+            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
+            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
             '</div>' +
-            '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
+            '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
         })() : ''}
         ${Object.keys(age).length ? (
-          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
+          '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
           Object.entries(age).map(([bracket, pct]) => {
             const barW = Math.round((Number(pct) / maxAge) * 100);
             return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9648,17 +9688,17 @@ function sectionTraffic(D) {
     const m = parseFloat(gender.male   || gender.Male   || 0);
     const genderHtml = hasGender ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
       '<div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">' +
-      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
-      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
+      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
+      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
       '</div>' +
-      '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
+      '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
       '</div>'
     ) : '';
     const ageHtml = hasAge ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
       Object.entries(age).map(([bracket, pct]) => {
         const barW = Math.round((Number(pct) / maxAge) * 100);
         return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9667,7 +9707,7 @@ function sectionTraffic(D) {
     ) : '';
     return '<div class="acc-panel">' +
       '<button class="acc-header" onclick="(function(btn){var body=btn.nextElementSibling;var open=body.style.display!==\'none\';body.style.display=open?\'none\':\'block\';btn.querySelector(\'.acc-chevron\').style.transform=open?\'rotate(0deg)\':\'rotate(180deg)\';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">' +
-      '<span style="font-size:14px;font-weight:700;color:var(--gray);">Audience Profile</span>' +
+      '<span style="${T.bold14};color:var(--gray);">Audience Profile</span>' +
       '<svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>' +
       '</button>' +
       '<div class="acc-body" style="display:none;padding:14px;">' +
@@ -9679,7 +9719,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Organic Search */ ''}
   ${t.organic_search ? (() => {
     const _accLabel = `Organic Search${t.organic_search.share_of_total_pct ? ' — ' + t.organic_search.share_of_total_pct + '% of traffic' : ''}`;
-    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const _accSuffix = `</div></div>`;
     return _accPrefix + (() => {
     const os = t.organic_search;
@@ -9706,20 +9746,20 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;">
 
       <!-- Branded vs NB mini donut -->
       <div class="card-3d" style="padding:16px;text-align:center;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
         <svg width="88" height="88" viewBox="0 0 88 88" style="display:block;margin:0 auto 10px;">
           <path d="${miniArc(-90, bEnd, R, innerR2)}"  fill="var(--blue)"/>
           <path d="${miniArc(bEnd+0.5, nbEnd, R, innerR2)}" fill="var(--border)"/>
-          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:var(--gray);">${branded}%</text>
+          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="${T.bold11};fill:var(--gray);">${branded}%</text>
         </svg>
-        <div style="display:flex;justify-content:center;gap:16px;font-size:12px;">
+        <div style="display:flex;justify-content:center;gap:16px;${T.cap12};">
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--blue);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Branded <strong>${branded}%</strong></span>
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Non-Brand <strong>${nonBranded}%</strong></span>
         </div>
@@ -9728,17 +9768,17 @@ function sectionTraffic(D) {
       <!-- Top non-branded keywords -->
       ${kws.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
         ${kws.map(k => {
           const pct = parseFloat(k.share_pct)||0;
           const barW = Math.round((pct/maxKwShare)*100);
           const mom  = String(k.mom_change||'—');
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--green);border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9750,7 +9790,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Paid Search */ ''}
   ${t.paid_search?.top_keywords?.length ? (() => {
     const _psLabel = `Paid Search${t.paid_search?.share_of_total_pct ? ' — ' + t.paid_search.share_of_total_pct + ' of traffic' : ''}`;
-    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
     const kws = ps.top_keywords || [];
@@ -9759,25 +9799,25 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
       ${kws.map(k => {
         const pct = parseFloat(k.share_pct)||0;
         const barW = Math.round((pct/maxKwShare)*100);
         const mom  = String(k.mom_change||'—');
         const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
         return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
           <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--amber);border-radius:3px;"></div></div>
-          <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-          <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+          <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+          <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
         </div>`;
       }).join('')}
       ${ps.competitor_bidding ? `
-      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;font-size:13px;font-weight:600;color:var(--amber);">
+      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;${T.semi13};color:var(--amber);">
         ⚠ Competitor conquest bidding detected: ${escHtml(String(ps.competitor_bidding))}
       </div>` : ''}
     </div>
@@ -9792,7 +9832,7 @@ function sectionTraffic(D) {
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
-    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const maxRefShare = Math.max(...refs.map(r => parseFloat(r.share_pct||r.share)||0), 1);
     const maxIndShare = Math.max(...inds.map(i => parseFloat(i.share_pct||i.traffic_share)||0), 1);
     return _accPre3 + `
@@ -9800,7 +9840,7 @@ function sectionTraffic(D) {
 
       ${refs.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
         ${refs.map(r => {
           const pct = parseFloat(r.share_pct||r.share)||0;
           const barW = Math.round((pct/maxRefShare)*100);
@@ -9808,25 +9848,25 @@ function sectionTraffic(D) {
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           const isChatGpt = (r.domain||'').includes('chatgpt');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
+            <div style="${T.cap13};font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isChatGpt?'var(--blue)':'var(--purple)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
 
       ${inds.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
         ${inds.map(ind => {
           const pct = parseFloat(ind.share_pct||ind.traffic_share||ind.share)||0;
           const barW = Math.round((pct/maxIndShare)*100);
           const isAI = (ind.industry||ind.category||'').toLowerCase().includes('ai') || (ind.industry||ind.category||'').toLowerCase().includes('chatbot');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
+            <div style="${T.cap13};font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isAI?'var(--blue)':'var(--teal)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9838,7 +9878,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Competitor Traffic */ ''}
   ${(t.competitor_traffic||[]).length ? (() => {
     const _cLabel = 'Competitor Traffic Scale';
-    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
     const comps = t.competitor_traffic || [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
@@ -9864,19 +9904,19 @@ function sectionTraffic(D) {
       });
     return `
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
       ${sorted.map(c => {
         const v = c._v;
         const barW = Math.round((v/maxV)*100);
         const isProspect = (c.domain||'').toLowerCase().includes(prospectDomain.split('.')[0]);
         return `<div style="display:grid;grid-template-columns:200px 1fr 80px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
-            ${escHtml(c.domain||'')}${isProspect?' <span style="font-size:11px;background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
+          <div style="${T.cap13};font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
+            ${escHtml(c.domain||'')}${isProspect?' <span style="${T.cap11};background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
           </div>
           <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${barW}%;background:${isProspect?'var(--blue)':'var(--border)'};border-radius:4px;"></div>
           </div>
-          <div style="font-size:12px;font-weight:700;color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
+          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
         </div>`;
       }).join('')}
     </div>
@@ -9888,21 +9928,21 @@ function sectionTraffic(D) {
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
     const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
           const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
           return `<div style="display:grid;grid-template-columns:160px 1fr 60px 60px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(g.country)}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(g.country)}</div>
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="font-size:13px;font-weight:700;color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
-            <div style="font-size:11px;font-weight:600;color:${momColor};text-align:right;">${escHtml(momStr)}</div>
+            <div style="${T.bold13};color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="${T.semi11};color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
         <div class="algolia-angle-box" style="margin-top:16px;">
@@ -9918,18 +9958,18 @@ function sectionTraffic(D) {
     const outgoing = t.outgoing_traffic;
     const sa = t.search_abandonment || {};
     const googleRow = outgoing.find(o => (o.domain||'').includes('google'));
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
         ${outgoing.map(o => {
           const isGoogle = (o.domain||'').includes('google');
           const momVal = parseFloat((o.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = isGoogle ? 'var(--red)' : (momVal >= 0 ? 'var(--green)' : 'var(--red)');
           const rowBg = isGoogle ? 'background:var(--red-tint);border-radius:6px;padding:2px 6px;margin:-2px -6px;' : '';
           return `<div style="display:grid;grid-template-columns:1fr 80px 80px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="font-size:10px;background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
-            <div style="font-size:13px;font-weight:700;color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
-            <div style="font-size:11px;font-weight:700;color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
+            <div style="${T.cap13};font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="${T.cap10};background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
+            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
+            <div style="${T.bold11};color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
@@ -9944,12 +9984,12 @@ function sectionTraffic(D) {
 
   ${/* ══ WHAT THIS MEANS FOR ALGOLIA — always visible, outside accordion ══ */ ''}
   ${(t.search_audit_signals||[]).length ? `
-  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,#21243D 0%,#003DFF 100%);border-radius:10px;color:white;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
+  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,var(--ink-900) 0%,var(--blue) 100%);border-radius:10px;color:white;">
+    <div style="${T.statLabel12};color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
     ${(t.search_audit_signals||[]).map(sig => `
     <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
-      <div style="color:rgba(255,255,255,0.5);font-size:14px;flex-shrink:0;margin-top:1px;">→</div>
-      <div style="font-size:13px;line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
+      <div style="color:rgba(255,255,255,0.5);${T.cap14};flex-shrink:0;margin-top:1px;">→</div>
+      <div style="${T.cap13};line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
     </div>`).join('')}
   </div>` : ''}
 
@@ -9998,24 +10038,52 @@ function sectionFinancials(D) {
     return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
   }
 
+  // Money parser → normalizes ANY monetary string to a number in $B.
+  // Fixes two recurring scaling bugs that pv() cannot: (1) ranges like
+  // "~$9–10B" (pv concatenates "9"+"10" → 910) and (2) non-billion units
+  // like "$910M" / "$1.2T" (pv ignores the suffix → 1000× off). The chart
+  // axis, table, tooltips and YoY are all in $B, so every $ value must be
+  // normalized here. Keep in sync with scripts/tests/test-finance-parse.mjs.
+  function pvB(s) {
+    if (s == null) return null;
+    const str = String(s).trim();
+    if (!str || str === '—' || str === '—') return null;
+    const negative = /^\s*[-−]/.test(str); // leading minus only; mid hyphen = range
+    const nums = (str.match(/\d[\d,]*\.?\d*/g) || []).map(x => parseFloat(x.replace(/,/g, '')));
+    if (!nums.length) return null;
+    const isRange = nums.length >= 2 && /\d\s*(?:[-–—]|to)\s*\d/i.test(str);
+    const val = isRange ? (nums[0] + nums[1]) / 2 : nums[0];
+    const um = str.match(/\d\s*([tTbBmMkK])/);
+    const u = um ? um[1].toLowerCase() : '';
+    let mult;
+    if (u === 't') mult = 1000;
+    else if (u === 'b') mult = 1;
+    else if (u === 'm') mult = 0.001;
+    else if (u === 'k') mult = 1e-6;
+    else mult = val >= 1e6 ? 1e-9 : 1; // raw $ → B, else assume already-B
+    const out = val * mult;
+    return negative ? -out : out;
+  }
+
   function yoyStr(cur, prev) {
     const c = pv(cur), p = pv(prev);
     if (c === null || p === null || p === 0) return '';
     const pct = Math.round(((c - p) / Math.abs(p)) * 100);
     const up = pct > 0;
-    return `<span style="color:${up?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
+    return `<span style="color:${up?'var(--green)':'var(--red)'};${T.bold11};">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
   }
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
-  const rvVals = revChron.map(r => pv(r.revenue)          || 0);
-  const gpVals = revChron.map(r => pv(r.gross_profit)     || 0);
-  const ebVals = revChron.map(r => pv(r.ebitda)           || 0);
-  const opVals = revChron.map(r => pv(r.operating_income) || 0);
-  const niVals = revChron.map(r => pv(r.net_income)       || 0);
+  const rvVals = revChron.map(r => pvB(r.revenue)          || 0);
+  // Absent metrics stay null (render "—"); do NOT coerce to 0 (would show "$0.0B").
+  const gpVals = revChron.map(r => pvB(r.gross_profit));
+  const ebVals = revChron.map(r => pvB(r.ebitda));
+  const opVals = revChron.map(r => pvB(r.operating_income));
+  const niVals = revChron.map(r => pvB(r.net_income));
 
   // Margins derived (all valid — calculated from sourced numbers)
-  const gmVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
-  const emVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!=null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!=null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
   const nmVals = revChron.map(r => pv(r.net_margin));
 
   // ── SVG Composite Chart ────────────────────────────────────────────────────
@@ -10077,7 +10145,7 @@ function sectionFinancials(D) {
     const em = emVals[i];
     const rv = rvVals[i], gp = gpVals[i], eb = ebVals[i];
     const rvPri = i>0?rvVals[i-1]:null, gpPri = i>0?gpVals[i-1]:null, ebPri = i>0?ebVals[i-1]:null, emPri = i>0?emVals[i-1]:null;
-    const pct = (cur,pri) => pri&&pri!==0 ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
+    const pct = (cur,pri) => (cur!=null&&pri!=null&&pri!==0) ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
     const yoyFmt = (p) => p===null ? '' : (p>0?`↑${p}%`:`↓${Math.abs(p)}%`);
     const payload = JSON.stringify({
       year: r.year,
@@ -10157,9 +10225,9 @@ function sectionFinancials(D) {
     const yoy = (lat!==null&&pri!==null&&pri!==0) ? Math.round(((lat-pri)/Math.abs(pri))*100) : null;
     const isNeg = yoy!==null&&yoy<0;
     const bg = isNeg&&!isMargin ? 'background:var(--red-light);' : '';
-    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
-    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;font-size:12px;font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
-    return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
+    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};${T.bold11};">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
+    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;${T.cap12};font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
+    return `<tr style="${bg}"><td style="padding:5px 10px;${T.semi12};color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
   }
 
   const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
@@ -10193,11 +10261,11 @@ function sectionFinancials(D) {
   const execQuotes = (f.exec_quotes || []).slice(0, 2);
   const quotesHtml = execQuotes.map(q=>`
     <div style="padding:14px 16px;border-left:3px solid var(--blue-border);background:var(--blue-light);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
-      <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
+      <div style="${T.italic14};color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
         <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
-        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
+        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="${T.cap11};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
       </div>
     </div>`).join('');
 
@@ -10227,7 +10295,7 @@ function sectionFinancials(D) {
         </div>
         <div style="border-top:2px solid var(--border);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
           <span style="${T.title};color:var(--gray);">= Gross profit impact</span>
-          <span style="font-size:20px;font-weight:700;color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
+          <span style="${T.bold20};color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
         </div>
       </div>
     </div>` : '';
@@ -10357,7 +10425,7 @@ function sectionTechStack(D) {
 
     ${(ts.data_acquisitions||[]).length ? `
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Nike Press Releases</a>` : 'Nike Press Releases · digitalcommerce360.com'}</p>
+      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Press Releases</a>` : 'Press Releases · digitalcommerce360.com'}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
         ${(ts.data_acquisitions).map(a => `
           <div style="display:inline-flex;flex-direction:column;padding:8px 14px;background:var(--violet-tint);border:1px solid var(--violet-border);border-radius:8px;">
@@ -10412,16 +10480,16 @@ function sectionHiring(D) {
     <p class="section-desc">ICP role detection — Economic Buyer, Technical Buyer, Champion signals</p>
 
     ${(D.hiring?.data_complete === false || D.hiring?.data_complete == null) ? `
-    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);font-size:13px;">
+    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);${T.cap13};">
       Hiring data collection incomplete — run the hiring module to populate signals.
     </div>` : `
     <div style="border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;padding:16px 18px;background:var(--amber-tint);">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
-      <div style="font-size:14px;font-weight:600;color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
+      <div style="${T.statLabel};color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
+      <div style="${T.semi14};color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
+      <div style="${T.cap13};color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
       <div class="algolia-angle-box">
         <div class="algolia-angle-label">Algolia Angle</div>
-        <p style="font-size:13px;color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
+        <p style="${T.cap13};color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
       </div>
     </div>`}
 
@@ -11934,7 +12002,7 @@ function sectionROI(D) {
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
-  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'#f0fdfa', red:'var(--red-tint)', amber:'#fffbeb', green:'var(--green-tint)' };
+  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'var(--teal-tint)', red:'var(--red-tint)', amber:'var(--amber-tint)', green:'var(--green-tint)' };
 
   const activeComps = components.filter(c => c.status === 'active');
   const condComps   = components.filter(c => c.status === 'conditional');
@@ -11947,15 +12015,15 @@ function sectionROI(D) {
       <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
         <div>
           <div style="${T.eyebrow};margin-bottom:4px;">6-Component Revenue Model — Each gap mapped to a dollar line</div>
-          <div style="${T.bodySm};color:var(--mid);">Based on 107.6M monthly visits · ~$9.6B digital revenue · 42.7% gross margin · AOV $110 placeholder — replace with Nike's actual numbers</div>
+          <div style="${T.bodySm};color:var(--mid);">Based on — monthly visits · ~the company's digital revenue · gross margin · AOV (estimate) placeholder — replace with the company's actual numbers</div>
         </div>
         <div style="display:flex;gap:10px;flex-shrink:0;">
-          <div style="text-align:center;background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:8px;padding:10px 16px;">
+          <div style="text-align:center;background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:8px;padding:10px 16px;">
             <div style="${T.eyebrowSmCol('var(--blue)')};margin-bottom:2px;">Conservative</div>
             <div style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</div>
             <div style="${T.bodySmGray12};">excl. C5 latency</div>
           </div>
-          <div style="text-align:center;background:var(--green-tint);border:1px solid #bbf7d0;border-radius:8px;padding:10px 16px;">
+          <div style="text-align:center;background:var(--green-tint);border:1px solid var(--green-border);border-radius:8px;padding:10px 16px;">
             <div style="${T.eyebrowSmCol('var(--green)')};margin-bottom:2px;">Moderate</div>
             <div style="${T.h4};color:var(--green);">${fmtM(totalMod)}</div>
             <div style="${T.bodySmGray12};">excl. C5 latency</div>
@@ -11968,7 +12036,7 @@ function sectionROI(D) {
           <thead>
             <tr style="background:var(--light);">
               <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);">Component · Search Gap</th>
-              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on Nike.com</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on the site</th>
               <th style="${T.eyebrowSm};padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Conservative</th>
               <th style="${T.eyebrowSm};padding:10px 16px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Moderate</th>
             </tr>
@@ -11981,7 +12049,7 @@ function sectionROI(D) {
               return `<tr style="border-bottom:1px solid var(--border);${isCond?'opacity:0.65;':''}" title="${isCond?'Conditional — current latency acceptable; use as floor-preservation argument':''}">
                 <td style="padding:12px 16px;vertical-align:top;">
                   <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
+                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};${T.bold11};display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
                     <span style="${T.title};color:${col};">${escHtml(c.label)}</span>
                     ${isCond ? `<span style="${T.eyebrowSmCol(col)};background:${bg};border-radius:3px;padding:1px 6px;font-size:9px;">CONDITIONAL</span>` : ''}
                   </div>
@@ -12003,7 +12071,7 @@ function sectionROI(D) {
             <tr style="background:var(--light);">
               <td colspan="2" style="padding:12px 16px;">
                 <strong style="${T.title};">Total (C5 excluded — conditional)</strong>
-                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: 107.6M visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
+                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: — visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
               </td>
               <td style="padding:12px 12px;text-align:right;"><strong style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</strong></td>
               <td style="padding:12px 16px;text-align:right;"><strong style="${T.h4};color:var(--green);">${fmtM(totalMod)}</strong></td>
@@ -12012,7 +12080,7 @@ function sectionROI(D) {
         </table>
       </div>
       <div style="${T.bodySmGray12};margin-top:8px;padding:0 4px;">
-        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (2.5%) — industry estimates. Replace with Nike's actual analytics before presenting to executive stakeholders. Monthly visits (107.6M) and gross margin (42.7%) are verified facts from SimilarWeb and Nike 10-K.
+        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (estimate) — industry estimates. Replace with the company's actual analytics before presenting to executive stakeholders. Monthly visits (—) and gross margin (42.7%) are verified facts from SimilarWeb and public filings.
       </div>
     </div>` : '';
 
@@ -12451,7 +12519,7 @@ function sectionCompetitiveSynthesis(D) {
     <p class="section-desc">${escHtml(cs.scenario||'')} ${cs.scenario_note?'— '+escHtml(cs.scenario_note):''}</p>
 
     ${matrix.length ? `<div style="padding:14px 16px;background:var(--gray);border-radius:var(--radius);margin-bottom:20px;">
-      <div style="font-size:13px;font-weight:600;color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
+      <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
     ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
@@ -12569,7 +12637,7 @@ function sectionCompetitiveSynthesis(D) {
 
           // Dynamic competitor columns — read from matrix_col_labels or fall back to defaults
 
-          const colLabels = cs.matrix_col_labels || {nike_has:'Nike',asics_has:'Asics',on_running_has:'On Running',new_balance_has:'New Balance'};
+          const colLabels = cs.matrix_col_labels || {nike_has:'Competitor 1',asics_has:'Competitor 2',on_running_has:'Competitor 3',new_balance_has:'Competitor 4'};
 
           const compKeys = ['nike_has','asics_has','on_running_has','new_balance_has'];
 
@@ -13756,7 +13824,7 @@ function sectionOutreachPlan(D) {
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
 
-      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
+      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
 
     </div>
 
@@ -13824,7 +13892,7 @@ function sectionOutreachPlan(D) {
 
           <!-- LinkedIn connection note (no actions array) -->
 
-          <div style="background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:12px 14px;">
+          <div style="background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:12px 14px;">
 
             ${t.subject ? `<div style="margin-bottom:8px;">
 
@@ -13834,7 +13902,7 @@ function sectionOutreachPlan(D) {
 
             </div>` : ''}
 
-            ${t.body ? `<div style="background:white;border:1px solid #bfdbfe;border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid var(--blue-200);border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
 
           </div>` : ''}
 
@@ -14350,27 +14418,27 @@ function renderSections(D) {
       <p class="section-desc">Everything you need to open the conversation — synthesized from the full audit</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
         <!-- Left: The numbers -->
-        <div style="background:linear-gradient(135deg,#0D1240 0%,#003DFF 100%);border-radius:10px;padding:20px;color:white;">
+        <div style="background:linear-gradient(135deg,var(--navy-900) 0%,var(--blue) 100%);border-radius:10px;padding:20px;color:white;">
           <div style="${T.eyebrowSmCol('rgba(255,255,255,0.55)')};margin-bottom:16px;">The Situation</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <div>
-              <div style="font-size:32px;font-weight:700;color:white;line-height:1;">${sc.overall}/10</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
+              <div style="${T.bold32};color:white;line-height:1;">${sc.overall}/10</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
             </div>
             ${sa.google_outbound_pct ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#FCA5A5;">${escHtml(sa.google_outbound_pct)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:#FCA5A5;">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
+              <div style="${T.bold22};color:var(--red-300);">${escHtml(sa.google_outbound_pct)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:var(--red-300);">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
             </div>` : ''}
             ${roi.gross_profit_impact_est ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#6EE7B7;">${escHtml(roi.gross_profit_impact_est)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
+              <div style="${T.bold22};color:var(--green-300);">${escHtml(roi.gross_profit_impact_est)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
             </div>` : ''}
           </div>
         </div>
         <!-- Right: The narrative -->
         <div style="display:flex;flex-direction:column;gap:12px;">
           ${eq.quote ? `<div style="padding:14px 16px;background:var(--blue-light);border-left:3px solid var(--blue-border);border-radius:0 var(--radius) var(--radius) 0;">
-            <div style="font-size:13px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
+            <div style="${T.italic13};color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
             <div style="${T.eyebrowSm};color:var(--blue);">${escHtml(eq.speaker)}</div>
           </div>` : ''}
           ${topCs.length ? `<div style="padding:12px 14px;background:var(--green-tint);border:1px solid var(--green-border);border-radius:var(--radius);">
@@ -14403,13 +14471,13 @@ function renderSections(D) {
       return `<div style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-left:3px solid ${sevCol};border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;">
           <div style="${T.title};flex:1;">${escHtml(f.title)}</div>
-          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
+          <span style="${T.microLabel06};color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
         </div>
         ${f.tested_query ? `<div style="${T.compact};color:var(--mid);margin-bottom:6px;font-family:var(--font-mono,'SF Mono',monospace);">Query tested: "${escHtml(f.tested_query)}"</div>` : ''}
         ${f.actual_behavior ? `<div style="${T.compact};color:var(--mid);margin-bottom:8px;">${escHtml(f.actual_behavior)}</div>` : ''}
         ${f.impact_stat ? `<div style="display:flex;align-items:baseline;gap:6px;padding:8px 10px;background:${sevBg};border:1px solid ${sevBdr};border-radius:6px;">
-          <div style="font-size:13px;font-weight:600;color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
-          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="font-size:10px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
+          <div style="${T.semi13};color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
+          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="${T.cap10};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
         </div>` : ''}
       </div>`;
     }
@@ -14442,16 +14510,16 @@ function renderSections(D) {
             <div style="${T.compact};">${escHtml(p.pain||'')}</div>
             ${p.evidence ? `<div style="${T.compact};color:var(--mid);font-style:italic;margin-top:6px;">${escHtml(p.evidence.slice(0,100))}${p.evidence.length>100?'…':''}</div>` : ''}
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--blue-tint);">
             <div style="${T.eyebrowSm};color:var(--blue);margin-bottom:6px;">Algolia Product</div>
             <div style="${T.compact};font-weight:600;">${escHtml(p.product||'')}</div>
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--green-tint);">
             <div style="${T.eyebrowSm};color:var(--green);margin-bottom:6px;">Proof</div>
             ${p.proof_company && p.proof_url
-              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
+              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="${T.bold13};color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
                  <div style="${T.compact};color:var(--gray);margin-top:4px;">${escHtml(p.proof_result||'')}</div>`
               : `<div style="${T.compact};color:var(--mid);">See case studies below</div>`
             }
@@ -14469,9 +14537,9 @@ function renderSections(D) {
           </tr></thead>
           <tbody>
           ${findings.map((f,i)=>`<tr style="border-bottom:1px solid var(--border);${i%2?'background:var(--near-white);':''}">
-            <td style="padding:9px 12px;font-size:12px;font-weight:600;color:var(--gray);">${escHtml(f.title)}</td>
-            <td style="padding:9px 12px;font-size:12px;color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
-            <td style="padding:9px 12px;font-size:12px;">
+            <td style="padding:9px 12px;${T.semi12};color:var(--gray);">${escHtml(f.title)}</td>
+            <td style="padding:9px 12px;${T.cap12};color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
+            <td style="padding:9px 12px;${T.cap12};">
               ${f.algolia_case_study_url ? `<a href="${escHtml(f.algolia_case_study_url)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:600;">${escHtml(f.algolia_case_study_company)}</a>` : escHtml(f.algolia_case_study_company||'')}
               ${f.algolia_case_study_result ? `<div style="${T.compact};color:var(--green);margin-top:2px;">${escHtml(f.algolia_case_study_result)}</div>` : ''}
             </td>
