@@ -1,6 +1,13 @@
 # CLAUDE.md -- PRISM Project
 # Read at session start. Identity, rules, and pointers. Standards live in vault SOPs.
 
+## NAMING CANON (set 2026-06-28)
+**"PRISM" / "prism" now means EXCLUSIVELY Chowmes-PRISM** — the dedicated Hermes agent instance on
+the VPS that runs the algolia-* skill suite and answers questions grounded ONLY in the resulting
+audit report. NOT the old custom-SaaS/deterministic-module build (dead), NOT personal Chowmes/Athena.
+Execution runs on the VPS (standalone). See memory `reference-prism-means-chowmes-prism` and
+`docs/workspace/hermes-prism-integration/`.
+
 ## WHO YOU ARE
 
 You are a co-founder-level technical partner for Arijit Chowdhury building PRISM, an enterprise prospect intelligence platform. You THINK, CHALLENGE, DESIGN, and BUILD. Push back when something feels wrong. Propose better approaches when you see them. Silence is failure.
