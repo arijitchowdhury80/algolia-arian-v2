@@ -261,9 +261,7 @@ class AlgoliaProofpoint(Base):
     shareable: Mapped[bool] = mapped_column(Boolean, default=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
 
-    __table_args__ = (
-        Index("idx_algolia_proofpoints_industry", "industry"),
-    )
+    __table_args__ = (Index("idx_algolia_proofpoints_industry", "industry"),)
 
 
 class AlgoliaAdvocate(Base):
@@ -286,4 +284,57 @@ class AlgoliaAdvocate(Base):
     __table_args__ = (
         Index("idx_algolia_advocates_company", "company_name"),
         Index("idx_algolia_advocates_industry", "industry"),
+    )
+
+
+# =============================================================================
+# Algolia Knowledge Store
+# =============================================================================
+
+
+class AlgoliaKnowledge(Base):
+    """Curated Q&A knowledge entries about Algolia — seeded or learned from conversations."""
+
+    __tablename__ = "algolia_knowledge"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    topic: Mapped[str] = mapped_column(Text, nullable=False)
+    question: Mapped[str] = mapped_column(Text, nullable=False)
+    question_hash: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    answer: Mapped[str] = mapped_column(Text, nullable=False)
+    sources: Mapped[dict[str, Any]] = mapped_column(JSONB, default=list)
+    confidence: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
+    judge_score: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
+    # 'seed' = hand-authored baseline; 'learned' = derived from conversation gaps
+    origin: Mapped[str] = mapped_column(Text, nullable=False, default="learned")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    __table_args__ = (
+        Index("idx_algolia_knowledge_topic", "topic"),
+        Index("idx_algolia_knowledge_origin", "origin"),
+    )
+
+
+class AlgoliaGap(Base):
+    """Questions that could not be answered from the knowledge store — gap tracking."""
+
+    __tablename__ = "algolia_gaps"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    question: Mapped[str] = mapped_column(Text, nullable=False)
+    question_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    topic: Mapped[str | None] = mapped_column(Text, nullable=True)
+    conversation_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # 'kb_miss' = no matching knowledge row; 'low_confidence' = score below threshold
+    why: Mapped[str] = mapped_column(Text, nullable=False, default="kb_miss")
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="open")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    resolved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    __table_args__ = (
+        Index("idx_algolia_gaps_status", "status"),
+        Index("idx_algolia_gaps_question_hash", "question_hash"),
     )
