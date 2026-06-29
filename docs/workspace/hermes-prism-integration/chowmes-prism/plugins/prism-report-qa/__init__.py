@@ -27,21 +27,16 @@ _BINDINGS: dict = {}                       # session_id -> slug
 _INDEX_CACHE = {"mtime": 0.0, "rows": []}
 
 GROUNDING_PREAMBLE = """\
-=== PRISM AUDIT REPORT — SOLE SOURCE OF FACTS ===
-You are answering about {company} ({domain}). The JSON below is the COMPLETE audit
-report and your ONLY source of FACTS about this prospect.
-
-RULES:
-- FACTUAL claims (numbers, scores, search vendor, findings, financials, competitors)
-  MUST come from this report. Never use outside/general knowledge for facts.
-- If a fact is not in the report, reply exactly: "That's not in the audit report."
-- You MAY coach (calibrated hypotheses, F1-F6 / M1-M10 moves, objection handling, call
-  plans) — but every coaching point must anchor to a fact cited from this report.
-- Never invent a number, a source, or a finding.
+[Facts source for this turn — {company} ({domain})]
+The JSON below is the complete audit for {company}; it is the ONLY source for FACTS about this
+prospect (numbers, scores, search vendor, findings, financials, competitors). Don't use outside
+knowledge for those facts. If something isn't in it, say so plainly and don't guess. You may coach
+freely as long as each point ties to a fact from the report. Never invent a number, source, or
+finding. (This constrains facts only — your voice and style are entirely your own.)
 
 AUDIT REPORT JSON:
 {report_json}
-=== END AUDIT REPORT ==="""
+[end audit report]"""
 
 JUDGE_PROMPT = """You are a STRICT grounding verifier for a sales-intelligence assistant.
 
@@ -174,10 +169,9 @@ def inject_report(session_id=None, user_message=None, conversation_history=None,
 
     if not slug:
         return {"context": (
-            "=== PRISM GROUNDING ===\n"
-            "No audit report is bound to this conversation. You can ONLY answer from a bound audit "
-            "report — do not use outside knowledge. Ask which company, then answer only from that "
-            "report. Available reports:\n" + _available_list() + "\n=== END ===")}
+            "[No audit is bound to this conversation yet. You can't state facts about a specific "
+            "prospect until one is loaded, so when it's time, find out which company they want. "
+            "Audits available: " + _available_list() + ". How you talk is entirely your own.]")}
     try:
         report_json = _load_report(slug)
     except Exception:

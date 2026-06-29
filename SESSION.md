@@ -1,135 +1,108 @@
 # SESSION.md — PRISM (= Chowmes-PRISM)
 
-**Last updated:** 2026-06-28 (unify+audit spike)
-**Status:** **Chowmes-PRISM LIVE; grounded report-QA VERIFIED.** This session: 4-thread spike done —
-skills HARDENED+committed+pushed (arijit-skills a9db07a; dead scripts wired, 5 bugs fixed, Scout
-only-in-industry), public-repo key leak SCRUBBED from history, Hermes fat-audit (18.3 GB reclaimed),
-self-learning loop confirmed ON+staged, W-A executor synced + browser-plane proven + scaffold ready,
-W-D fully designed. **Full spike record: `docs/workspace/hermes-prism-integration/spike-unify-audit/`
-(A–J). The finish runbook is `spike-unify-audit/J-RESUME-RUNBOOK.md` — start there.**
+**Last updated:** 2026-06-28 (autonomous-standardization PILOT complete; loop prompt ready, NOT launched)
 
-> ⚠️ Headless work hit the permission gate (file deletes/commit/push) + missing secrets. The PIP
-> cleanup is PREPARED (.gitignore fixed) but the deletes+commit+push must be RUN by the user (J §1–2).
+## STATUS (one line)
+**Pilot for the autonomous report-standardization run is COMPLETE.** Render pipeline unblocked + proven, model-routing economics standardized, petsmart canary ran end-to-end (staged-sync model), and a copy-paste `/loop` prompt is ready. **Next action = launch the loop** (or eyeball `run/` first).
 
-> **NAMING CANON:** "PRISM"/"prism" = **Chowmes-PRISM** only — the dedicated Hermes agent instance on
-> the VPS. NOT the old custom-SaaS idea, NOT the personal Chowmes/Athena agent.
+> **NAMING CANON:** "PRISM" = Chowmes-PRISM (Hermes instance on the VPS). Published reports site = `prism-hub` (GH repo; live `algolia-arian-v2.vercel.app`; local `~/prism-hub`). Internal app = `PIP/frontend` (NOT the chat target).
 
 ---
 
-## RESUME ACTION (do this first, next session)
-1. Read this file fully, then memory `MEMORY.md` (esp. `[[reference-prism-means-chowmes-prism]]`,
-   `[[project-prism-hermes-direction]]`, `[[reference-skills-symlinked-to-repo]]`, and the 5 feedback
-   findings).
-2. Read the project plan: `docs/workspace/hermes-prism-integration/03-plan.md` (workstreams W-A..W-F)
-   and `_status.md` in that folder.
-3. Check the two pending USER actions (below) — they gate the next build.
-4. Continue from "REMAINING WORK".
+## RESUME ACTION (do FIRST next session)
+1. Read this file + `MEMORY.md` (esp. `[[feedback-model-routing-by-tier]]`, `[[project-prism-hub-chat-live]]`).
+2. Read the disk-truth ledger: `docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json` — every company × step, prereqs (DONE), gates, findings.
+3. **Launch the autonomous loop:** type `/loop`, paste THE LOOP PROMPT below, send (no interval = self-paced). OR review `run/sync-all.sh` + `run/state.json` first if not yet confident.
 
-## PENDING USER ACTIONS (gate progress) — all in J-RESUME-RUNBOOK.md
-- **🚨 (0) ROTATE the exposed keys.** arijit-skills is PUBLIC; old BuiltWith+SimilarWeb keys were in
-  history (scrubbed+force-pushed, but assume scraped). Rotate at both dashboards NOW. (task #15)
-- **(1) Run the PIP cleanup + clean push** — gated headless. J §1–2 (deletes restore canonical docs,
-  drop TEMP/junk, `git rm CHECKPOINT.md`, then commit+push the private `prism` repo, latest-only).
-- **(A) Anthropic account credits.** Executor key loaded+valid on VPS but balance low. Generation
-  (W-A) can't run until topped up at console.anthropic.com.
-- **(2) W-A finish:** fill `/opt/prism-executor/.mcp.json` (algolia/builtwith/yahoo) + `.mcp.env` keys
-  (ALGOLIA_APP_ID/KEY, BUILTWITH, APIFY) → `cd /opt/prism-executor && ./run-audit.sh petsmart.com`. (J §3)
-- **(3) W-D build:** deploy FastAPI on VPS (R1) → enable Hermes API → SPA proxy → identity map → e2e.
-  Full checklist in `spike-unify-audit/G-wd-design.md`; sequence in J §4.
-- **(B) Try the live bot.** DM `prism_bot` (id 8870557089), e.g. "For PetSmart, what's their
-  no-results rate?" — should answer grounded.
+### THE LOOP PROMPT (paste after `/loop`)
+```
+ultracode. Autonomous report standardization, hands-off. Disk truth =
+docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json — read
+it FIRST every tick; source of truth, survives compaction.
+
+DONE (do NOT redo): prereqs (render path fix, template tokenization — committed
+314d045 in arijit-skills); petsmart canary (RENDER/SPA done, SYNC staged, COMMIT
+db32cad). Start at the next PENDING units.
+
+ONE-TIME before first gap company: move homedepot-mexico JSON from nested
+~/prism-hub/homedepot-mexico/homedepot-mexico-audit-data.json to root
+~/prism-hub/homedepot-mexico-audit-data.json (render + index scan read root path).
+
+MODEL ROUTING (per global CLAUDE.md MODEL ECONOMICS — every subagent declares a
+tier): collectors/validators/renders/file-ops → model:haiku (low). gap-fill
+grounded-synthesis/edits → model:sonnet (medium). orchestration (you) + adversarial
+verify of a critical report claim → model:opus (high). All-opus = cost bug.
+
+LOOP each tick: read state.json → pick next PENDING unit (steps_order) → dispatch a
+FRESH SUBAGENT at the right tier returning ONLY {status, artifact_path, note}
+(heavy output stays in the subagent) → run the gate → write result to ledger →
+persist → advance.
+
+PER-STEP GATES (DONE only if gate passes): GAPCHECK/FIX_DATA = audit_data_schema.py
+PASS; SKILL_PATCH = pytest PASS (only if a skill bug found); RENDER = {slug}/index
+.html written AND hub-root index.html md5 unchanged; SYNC = APPEND slug to run/sync
+-all.sh (LOCAL write — never write the live VPS store); COMMIT = git commit LOCAL
+only, no push. DEPLOY is global/staged in run/DEPLOY.txt — never deploy.
+
+RULES: two failures same unit → BLOCKED + skip + continue. 429/quota = retry-later
+(re-queue, not BLOCKED). compromised-key auth-fail = BLOCKED + surface. Wave 2 (7
+dataless full re-audits: dell, footlocker, jbl, michaelkors, thenorthface, torrid,
+autozone) needs MCP keys — if BuiltWith/SimilarWeb keys 401, BLOCK that audit +
+surface (keys may be compromised). Don't ask me anything with a sane default — log
+to ledger assumptions_log + continue. STOP only for: destructive/irreversible op,
+secret rotation, or all-remaining BLOCKED. When all units DONE/BLOCKED: write
+run/FINAL-REPORT.md and stop.
+
+When you stop: tell me to review run/sync-all.sh then run `! bash <path>/run/sync
+-all.sh` and `! vercel --prod` to publish.
+```
 
 ---
 
-## WHAT IS BUILT + LIVE (verified this session)
-- **Chowmes-PRISM instance**: separate Hermes Docker container `hermes-prism` on the VPS
-  (72.61.72.147). Volume `/root/.hermes-prism` → container `/opt/data`. Dashboard 127.0.0.1:9120.
-  Telegram connected (bot id 8870557089). Model = **gemini-2.5-flash direct** (paid Gemini key, in
-  `/root/.hermes-prism/.env`). Compose: `/opt/chowmes-prism/docker-compose.yml`. Personal `hermes`
-  container untouched (its dashboard 9119).
-- **Identity files** (`/root/.hermes-prism/`): SOUL.md, USER.md, AGENTS.md, MEMORY.md = a
-  sales-research orchestrator (local copies in `docs/workspace/hermes-prism-integration/chowmes-prism/`).
-- **Data layer**: `/root/.hermes-prism/reports/` (= `/opt/data/reports`) with `index.json` +
-  `petsmart/audit-data.json` + `homedepot-mexico/audit-data.json` (imported from the algolia-arian-v2
-  hub). 8 more companies importable.
-- **prism-report-qa plugin** (`/root/.hermes-prism/plugins/prism-report-qa/`, ENABLED): `pre_llm_call`
-  injects the bound report (L1) + `transform_llm_output` runs a Gemini grounding judge that
-  rewrites/blocks unsupported FACTUAL claims (L4). **No Hermes fork** (the transform_llm_output hook
-  can rewrite output). VERIFIED over PetSmart: grounded fact (15.98%, cited real field), absent fact
-  → "That's not in the audit report", coaching allowed + anchored to cited facts.
-- **W-A executor** (`/opt/prism-executor`, by teammate `wa-executor`): node22 / deno2.9 / Claude Code
-  CLI / Playwright+Chromium+stealth / arijit-skills cloned (35 algolia skills) / chrome MCP wired.
-  Anthropic key loaded. **Blocked on Anthropic credits + 3 MCP keys (apify/similarweb/builtwith).**
+## WHERE WE STOPPED (exact)
+Pilot done; loop NOT launched. petsmart canary fully proven under the staged-sync model. Both repos have LOCAL commits (no push): `~/.claude/skills/algolia-search-audit` @ `314d045` (render fix + template tokenization + migrate tool); `~/prism-hub` @ `db32cad` (gitignore + homepage regen + petsmart render). Awaiting user to launch `/loop` or eyeball `run/`.
 
-## DECISIONS LOCKED THIS SESSION (full rationale in vault ADRs)
-1. **PRISM = Chowmes-PRISM**, a dedicated Hermes instance (not custom SaaS, not a profile); execution
-   on VPS (standalone). Vault ADR `2026-06-28-prism-is-chowmes-prism-hermes-instance`.
-2. **Temporal DROPPED** for PRISM — Hermes-native kanban/cron orchestrate. VPS Temporal stack deleted.
-   (Org-wide Temporal decision in vault DecisionLog left intact — PRISM-only cleanup.)
-3. **Two model planes:** control = Gemini-direct (cheap chat); execution = headless Claude/Anthropic
-   (skills tuned for Claude).
-4. **Grounding gate** = Hermes plugin (`transform_llm_output`), NOT a source fork. Scope =
-   **facts grounded, coaching allowed**. Vault ADR `2026-06-28-grounded-report-qa-gate`.
-5. (earlier this session) financials-chart parser bug fixed (`pvB`), skills backed up to `arijit-skills`
-   repo + symlinked, hub `index.html` PetSmart card + logo fixed.
+## DECISIONS LOCKED THIS SESSION
+- **Autonomy mechanism:** `/loop` (NOT `/goal` — doesn't exist) + `ultracode` keyword (flips to Workflow orchestration) + disk-truth `state.json` ledger + per-unit subagents (context firewall) + validator gates + two-strikes-then-BLOCK. Context rot solved by: heavy work never enters main context (subagents return thin), state lives on disk.
+- **MODEL ECONOMICS & ROUTING** standardized GLOBALLY (`~/.claude/CLAUDE.md` new section + memory `feedback-model-routing-by-tier`): T1 haiku / T2 sonnet / T3 opus / T4 fable; orchestrator stays high, workers route down; severity escalates a tier. Pricing verified via `claude-api` skill (Opus out = 5× Haiku).
+- **Prod writes are STAGED, not executed by the loop** (user chose "stage, run once"): SYNC appends to `run/sync-all.sh`; DEPLOY in `run/DEPLOY.txt`. User runs `! bash run/sync-all.sh` + `! vercel --prod` on return. Loop never writes the live VPS store or deploys (auto-mode permission guard blocks it anyway — correctly).
+- **Style gate = template-hygiene linter** (doesn't change output). Chose to TOKENIZE all 108 violations (design SOP stays strict) over warn/bypass. Zero visual change PROVEN by resolved-CSS diff.
+- **Commits: LOCAL only, no push** (held for user).
+
+## PILOT FINDINGS (all fixed/handled)
+1. `render-audit.ts` site mode wrote to cwd → clobbered hub homepage. FIXED (`join(cwd, slug)`), verified, committed.
+2. Render hard-blocked by 108 template style violations (would BLOCK all 17). Tokenized (96 font-size + 12 raw-color), gate EXIT=0, zero-visual-change proven (`scratchpad/verify_tokenization.py`), committed.
+3. Wrong agent-type (no Bash → can't verify) + subagent over-scoped (added :root vars). Caught by independent verify, proved benign.
+4. SSH to VPS: use `chowmesadmin` + `~/.ssh/chowmes_ed25519` (root login DISABLED), passwordless sudo. NOT root.
+5. Prod SYNC overwrite BLOCKED by auto-mode permission guard → solved via staged `sync-all.sh`.
+6. Missing DEPLOY step (rendered pages need `vercel --prod`/push) → added, staged in `run/DEPLOY.txt`.
+7. homedepot-mexico JSON at NESTED path `homedepot-mexico/homedepot-mexico-audit-data.json` (no root file) → loop must move to root before GAPCHECK/RENDER.
+8. Homepage finds 8/10 (homedepot-mexico + oriental-trading lack rendered `<slug>/index.html`) → loop RENDER fills.
 
 ## REMAINING WORK (order)
-- **W-A generation** (blocked on Anthropic credits + MCP keys): once unblocked, hand `wa-executor`
-  the go → wire keys, run an end-to-end audit on a new company → deliverables to `/opt/data/reports`.
-  Risk gate: browser/WAF on datacenter IP (residential runner or degrade).
-- **W-B hardening** (non-blocking): force-a-fabrication stress test of the gate; QA-mode tool/
-  delegation lockdown (L2 — agent sometimes delegates instead of answering); persist report-binding
-  to a file (currently in-memory per session).
-- **W-C** sales-coach identity refine (SOUL/AGENTS). **W-D** SPA chat + cross-channel (Hermes
-  Responses API named-conversations + Caddy auth — NO fork). **W-E** Discovery-OS (finding metadata +
-  translation layer → call plans). **W-F** skill review / determinism (ongoing).
+1. **Launch the loop** (paste prompt above after `/loop`).
+2. Loop processes: 6 with-data gaps (nike, savage-x-fenty, oriental-trading, llbean, dsw, homedepot-mexico) — FIX_DATA→RENDER→SPA→SYNC-stage→COMMIT; + render the already-clean british-airways/labanquepostale/brooks-running; then Wave 2 = 7 dataless full re-audits (dell, footlocker, jbl, michaelkors, thenorthface, torrid, autozone).
+3. **USER actions on loop completion:** review `run/sync-all.sh` → `! bash …/run/sync-all.sh` (prod grounding) → `! vercel --prod` (publish pages) → `git push` both repos if desired.
+4. **USER (still pending from before):** rotate BuiltWith + SimilarWeb keys (Wave 2 audits 401 until done); rotate free-tier grounding-gate Gemini key (Nike chat 429s); Vercel project rename→prism-hub.
 
-## REFERENCE FILES (read as needed)
-- Plan + recon: `docs/workspace/hermes-prism-integration/{03-plan.md,_status.md,01-skill-engine-map.md,02-hermes-architecture-truth.md}`
-- Chowmes-PRISM artifacts (local copies): `docs/workspace/hermes-prism-integration/chowmes-prism/`
-  (SOUL/USER/AGENTS/MEMORY, L4-grounding-gate-design.md, plugins/prism-report-qa/)
-- Vault: `Projects/PRISM/` — overview (rewritten), open-questions (refreshed), wiki/decisions/ (2 new
-  ADRs + 2 marked superseded), dev-log.
-- GitHub: `arijitchowdhury80/prism` (commit 87342f6). Skills repo: `arijitchowdhury80/arijit-skills`.
-- VPS access: skill `hostinger-vps-ssh`; helper `~/.claude/skills/hostinger-vps-ssh/scripts/ssh-hermes-vps`;
-  temp env `/tmp/chowmes-prism.env` (SSH_HOST/USER/KEY — recreate if gone: host 72.61.72.147, user
-  chowmesadmin, key ~/.ssh/chowmes_ed25519). `sudo -n` is passwordless. Run SSH with
-  Bash `dangerouslyDisableSandbox: true`.
+## WHAT HAS NOT BEEN DONE (no false claims)
+- Loop NOT launched. Only petsmart (canary) processed; 16 companies PENDING.
+- `run/sync-all.sh` NOT executed (prod VPS store untouched this session). `vercel --prod` NOT run (pages not republished).
+- Commits NOT pushed (both repos local-only).
+- Keys NOT rotated. Vercel project NOT renamed.
+- 6 with-data gap reports still fail schema (genuine content gaps); 7 dataless have no audit data.
 
-## WHAT HAS NOT BEEN DONE (no false completion)
-- Generation has NEVER run end-to-end on the VPS (blocked on Anthropic credits). No new audit
-  produced by Chowmes-PRISM yet.
-- The grounding gate's HARD backstop wasn't stress-tested with a forced fabrication (the model
-  answered correctly once the report was injected; the judge's block-path is unproven in a live run).
-- L2 (tool/delegation lockdown) NOT done — the agent can still try to delegate for some phrasings.
-- SPA chat (W-D), Discovery-OS (W-E), skill determinism (W-F): not started.
-- MCP keys (apify/similarweb/builtwith) not on the box; BuiltWith-vs-SimilarWeb "dropped vs required"
-  discrepancy unresolved.
+## REFERENCE FILES
+- **Ledger (resume here):** `docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json` (17×8 + prereqs + gates + findings). Staging: `run/sync-all.sh`, `run/DEPLOY.txt`.
+- Lessons: `docs/sop/lessons-log.md` (render clobber, gate display-cap, agent-type/Bash, byte-diff-wrong-test, subagent over-scope).
+- Spike docs A–L: `docs/workspace/hermes-prism-integration/spike-unify-audit/` (L = standardization status).
+- Verifier: `<scratchpad>/verify_tokenization.py` (resolved-CSS zero-visual-change proof).
+- Global routing rule: `~/.claude/CLAUDE.md` "MODEL ECONOMICS & ROUTING".
+- Tools: render `render-audit.ts <slug> site`; hub homepage `generate-index.ts`; migrate `migrate-audit-data.py`; validators `audit_data_schema.py` + `template_contract.py` (in `~/.claude/skills/algolia-search-audit/scripts/`).
 
-## KEY LEARNINGS THIS SESSION (also in memory)
-- Injection + "answer only from it" instructions do NOT stop fabrication (gemini said 12.5%, real
-  15.98%) → a hard post-gen verifier gate is mandatory. [[feedback-injection-insufficient-need-hard-gate]]
-- Hermes plugins are OPT-IN (`hermes plugins enable` + restart) — deploying files does nothing.
-  [[feedback-hermes-plugins-opt-in]]
-- Hermes has a `transform_llm_output` hook that CAN rewrite output (docs hook-table was incomplete —
-  read the source). LLM "no final response" can mask a provider 402. [[feedback-llm-402-no-final-response]]
-- Cross-channel continuity needs NO fork (Hermes Responses API named-conversations).
-- Verify a subagent's "already built/proven" claims vs the primary source. [[feedback-verify-subagent-overclaims]]
-
-## FILES WRITTEN/TOUCHED THIS SESSION (so nothing is lost)
-- VPS: `/root/.hermes-prism/{config.yaml,.env,SOUL.md,USER.md,AGENTS.md,MEMORY.md,reports/*,plugins/prism-report-qa/*}`;
-  `/opt/chowmes-prism/docker-compose.yml`; `/opt/prism-executor/*` (teammate); deleted `/opt/prism/temporal`.
-- Repo PIP: `docs/workspace/hermes-prism-integration/*` (recon, plan, status, chowmes-prism/ staging,
-  plugin, L4 design); `CLAUDE.md` (naming canon). Committed 87342f6 + pushed.
-- Hub repo algolia-arian-v2 (earlier): index.html PetSmart card + clearbit logo; 3 financials fixes.
-- Skills repo arijit-skills (earlier): audit skill sync + detect skills handling.
-- Vault Projects/PRISM: overview.md (rewritten), open-questions.md (refreshed), 2 new ADRs, 2 ADRs
-  superseded, index.md/log.md/dev-log.md; Architecture/DecisionLog.md (+1 PRISM note).
-- Memory: reference-prism-means-chowmes-prism, reference-skills-symlinked-to-repo, feedback-*
-  (verify-subagent-overclaims, strip-parsefloat-unit-blind, llm-402, injection-insufficient,
-  hermes-plugins-opt-in), project-prism-hermes-direction (updated), MEMORY.md index, session_pointer.
-
-## TEAMMATE
-`wa-executor` (background agent) — finished W-A A1+A2 (executor install + skills), reported, now idle.
-Resume it via SendMessage(to:'wa-executor') once Anthropic credits + MCP keys are available, to
-finish A3 wiring + e2e.
+## FILES WRITTEN THIS SESSION (key)
+- **arijit-skills** (committed `314d045`, NOT pushed): `scripts/render-audit.ts` (site path fix), `templates/index-template.html` (108 tokenized), `scripts/migrate-audit-data.py`.
+- **prism-hub** (committed `db32cad`, NOT pushed): `.gitignore`, `index.html` (homepage regen), `petsmart/index.html` (re-render).
+- **PIP** (uncommitted): `docs/workspace/.../run/{state.json,sync-all.sh,DEPLOY.txt}`, this SESSION.md, `docs/sop/lessons-log.md` (+4 entries).
+- **Global** `~/.claude/CLAUDE.md`: MODEL ECONOMICS & ROUTING section.
+- **Memory:** `feedback-model-routing-by-tier.md` + MEMORY.md index line.

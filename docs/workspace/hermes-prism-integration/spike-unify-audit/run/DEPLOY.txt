@@ -1,0 +1,13 @@
+STAGED PUBLISH STEPS — run after sync-all.sh, when you're ready to make the
+standardized reports live. Two reviewed actions:
+
+# 1) Push rendered pages to the published hub (Vercel). From the hub repo:
+cd ~/prism-hub && vercel --prod
+#    (or: git push  — if the Vercel git-integration is confirmed, push auto-deploys.
+#     The loop holds push by design; you decide when pages go live.)
+
+# 2) VPS chat grounding (live store) — already covered by sync-all.sh; run that first:
+#    ! bash docs/workspace/hermes-prism-integration/spike-unify-audit/run/sync-all.sh
+
+Order: sync-all.sh (grounding) → vercel --prod (pages). Chat works off the VPS
+store independent of Vercel; the rendered pages need the Vercel deploy.

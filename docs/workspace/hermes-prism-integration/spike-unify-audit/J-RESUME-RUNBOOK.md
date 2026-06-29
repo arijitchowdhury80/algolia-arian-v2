@@ -1,6 +1,32 @@
 # J — RESUME RUNBOOK (paste-and-go when you're back)
 
-Everything below was blocked headless — either the auto-permission gate (file deletes/commits while you were away) or needs your secrets. Each block is copy-pasteable. Do them in order.
+## PROGRESS (updated 2026-06-28 — infra now LIVE)
+- ✅ PIP cleanup + clean push DONE (c237cfb, 1d6df58 — junk gone, frontend gitlink fixed, latest-only).
+- ✅ Skills hardened+pushed; key history SCRUBBED (still rotate — section 0).
+- ✅ **R1: prism_platform FastAPI LIVE on VPS** (systemd, 127.0.0.1:8000, /health ok, 17 modules, migrations@007).
+- ✅ **Hermes API server UP** (127.0.0.1:8642, key at /root/.hermes-prism-api-key.txt; /v1/capabilities good).
+- ✅ **PRISM reachable from hermes-prism container** (host-net → http://127.0.0.1:8000), NOT public. report-QA intact.
+- ▶️ REMAINING for chat e2e (NOT Anthropic-blocked — brain is gemini, works): build SPA `app/api/hermes` proxy + SSE shim → deploy the SPA on the VPS behind Caddy (so phone/laptop hit it, not localhost) → identity map (Clerk userId ↔ telegram, one session-key) → gate /api/chat → e2e. See §4.
+- ▶️ REMAINING for generation (W-A) — needs YOUR keys+credits: §3.
+
+---
+
+## TWO GATING KEYS (only you can supply — everything else is wired)
+- **Paid GEMINI key** on hermes-prism → unblocks the CHAT brain (free tier = 429 RESOURCE_EXHAUSTED). Set the provider key in /root/.hermes-prism/.env, restart hermes-prism.
+- **Anthropic credit + the 4 MCP keys** → unblocks GENERATION (new audits, W-A §3).
+
+## TRACK A v1 — DONE except your Vercel deploy
+Brain WORKS (paid Gemini; the earlier 429s were burst rate-limiting). e2e PROVEN: a live call returned PetSmart's 15.98% no-results figure [FACT], grounded.
+DONE (committed): Hermes API public (bearer+TLS) · proxy `app/api/hermes/route.ts` + `lib/hermes-session.ts` (9bcf5c5) · transport flipped to /api/hermes + /api/chat gated (10467c1) · all tsc-clean.
+REMAINING — just deploy the SPA (your Vercel account):
+1. Vercel project on this repo; set env: `HERMES_API_URL=https://judge.contentengagement.info/hermes-api`, `HERMES_API_KEY=<bearer = value after API_SERVER_KEY= on line 2 of /root/.hermes-prism-api-key.txt>`, plus your Clerk keys. (Do NOT set BYPASS_AUTH in prod.)
+2. Deploy. Server-side proxy → public Hermes API (no CORS).
+3. E2E: open the Vercel URL on phone + laptop, ask about petsmart / homedepot-mexico → grounded answer; same on Telegram; phone↔laptop continues the thread (stable X-Hermes-Session-Id per Clerk user+domain).
+RECOMMENDED follow-up: ~10-line prism-report-qa patch to bind the report from the `acct:<domain>` segment of X-Hermes-Session-Key (deterministic; removes reliance on the message naming the company). See reference-prism-report-qa-binding.
+
+---
+
+Each block below is copy-pasteable. Do them in order.
 
 `.gitignore` is ALREADY fixed (excludes node_modules/.next/.claude/TEMP/*.bak), so the push below won't suck in junk.
 

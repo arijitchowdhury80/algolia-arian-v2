@@ -1,0 +1,391 @@
+{
+  "_doc": "Disk-truth ledger for the autonomous standardization run. The loop reads this FIRST every tick, picks the next PENDING unit, dispatches a subagent, validates, writes the result back here, then advances. Survives context compaction: resume = re-read this file. Status values: PENDING | DONE | BLOCKED | SKIP | INPROG.",
+  "updated": "2026-06-28 tick2 \u2014 Wave-2 method = browser-agent screenshots; awaiting user run",
+  "config": {
+    "two_strike_limit": 2,
+    "stop_conditions": [
+      "destructive/irreversible op",
+      "secret rotation needed",
+      "all companies BLOCKED"
+    ],
+    "push_to_remote": "HOLD_FOR_USER (commit locally only; do not git push without explicit user ok)",
+    "vps_sync": "back up /root/.hermes-prism/reports/<slug> before overwrite; only sync data that PASSED schema gate",
+    "ratelimit_policy": "429/quota = retry-later (re-queue, not BLOCKED). auth-fail on a compromised key = BLOCKED + surface.",
+    "execution_plane": "laptop (this machine \u2014 MCP + residential IP). VPS only for the SYNC step via hostinger-vps-ssh."
+  },
+  "prereqs_one_time": {
+    "_doc": "Must ALL be DONE before the per-company loop is safe to launch. A pilot-discovered gate.",
+    "RENDER_PATH_FIX": {
+      "status": "DONE",
+      "note": "render-audit.ts renderSite now writes {slug}/index.html not hub-root index.html. Verified path logic."
+    },
+    "STYLE_GATE_FIX": {
+      "status": "DONE",
+      "note": "Tokenized all 108 (96 font-size + 12 raw-color) via subagent. Gate EXIT=0 (independently verified). ZERO visual change PROVEN by deterministic verifier (verify_tokenization.py): all token+var expansions resolve byte-identical, only diffs are definitions/comments + case-insensitive hex. Scope deviation accepted: agent added 5 :root vars (exact original hex) + uppercased some hex \u2014 both visually inert. UNCOMMITTED in arijit-skills repo."
+    },
+    "VPS_STORE_BACKUP": {
+      "status": "DEFERRED_TO_USER",
+      "note": "sync-all.sh does the tar backup as step 1 before any prod overwrite. Loop never writes VPS directly, so this is discharged at user-run sync time."
+    },
+    "GITIGNORE_BAK": {
+      "status": "DONE",
+      "note": "~/prism-hub/.gitignore already contains *.bak + .DS_Store (verified 2026-06-28). homedepot JSON also moved nested\u2192root this tick."
+    }
+  },
+  "steps_order": [
+    "AUDIT",
+    "GAPCHECK",
+    "FIX_DATA",
+    "SKILL_PATCH",
+    "RENDER",
+    "SPA",
+    "SYNC",
+    "COMMIT"
+  ],
+  "gates": {
+    "GAPCHECK": "python3 audit_data_schema.py <slug>-audit-data.json && python3 template_contract.py \u2014 must pass",
+    "FIX_DATA": "re-run audit_data_schema.py until PASS",
+    "SKILL_PATCH": "pytest the patched skill's tests \u2014 must pass; conditional step (only if a skill bug is found)",
+    "RENDER": "deno render site \u2192 assert {slug}/index.html written AND hub-root index.html md5 unchanged",
+    "SYNC": "APPEND slug to run/sync-all.sh (local write only \u2014 passed-schema slugs). PROD WRITE DEFERRED: user runs `! bash run/sync-all.sh` (backup + push). Loop never writes the live VPS store directly (permission-gated).",
+    "COMMIT": "git commit LOCAL only, current branch, NO push (both prism-hub + arijit-skills when skills patched)",
+    "DEPLOY": "GLOBAL final, staged in run/DEPLOY.txt \u2014 user runs `! vercel --prod` (or git push if integrated). Loop never deploys."
+  },
+  "homedepot_path_fix": "DONE 2026-06-28 \u2014 moved homedepot-mexico JSON nested\u2192root ~/prism-hub/homedepot-mexico-audit-data.json.",
+  "render_harness": "cd ~/prism-hub && deno run --allow-read --allow-write --allow-net ~/.claude/skills/algolia-search-audit/scripts/render-audit.ts <slug> site \u2192 writes <slug>/index.html (path fix verified render-audit.ts:1403). Gates inside: check-style-tokens.py + validate-json-schema.py. RENDER gate: assert <slug>/index.html exists AND hub-root index.html md5 == HUB_ROOT_INDEX_MD5_BASELINE below (SPA step is the only legit changer of hub-root index.html).",
+  "HUB_ROOT_INDEX_MD5_BASELINE": "7d51b356d0857b1434356c5de66b5225",
+  "schema_gate_cmd": "python3 ~/.claude/skills/algolia-search-audit/scripts/audit_data_schema.py <slug>-audit-data.json  (run from ~/prism-hub; EXIT 0 + '\u2705 Schema validation passed')",
+  "companies": {
+    "british-airways": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "SKIP",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "clean. RENDER 612KB, hub-root md5 unchanged, exit0 (logo ddg fallback)"
+    },
+    "labanquepostale": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "SKIP",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "clean. RENDER 632KB, hub-root md5 unchanged, exit0"
+    },
+    "brooks-running": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "SKIP",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "clean. RENDER 572KB, hub-root md5 unchanged, exit0"
+    },
+    "petsmart": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "SKIP",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "CANARY COMPLETE. RENDER\u2192petsmart/index.html (root md5 unchanged). SPA\u2192homepage regen. SYNC staged in run/sync-all.sh (prod write deferred to user). COMMIT local db32cad (no push). Data byte-identical to live store."
+    },
+    "nike": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS. 3 case_studies product+why grounded in existing result fields (UnderArmour/ShoeCarnival/Lacoste), no new metrics. NEEDS opus spot-verify of case-study grounding before SYNC. | RENDER DONE 614KB, hub-root md5 unchanged."
+    },
+    "savage-x-fenty": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS (23 viol fixed). algolia_proof/case-study metrics (Gymshark+150/+32, Lacoste+37/-88, Decathlon) ADVERSARIALLY VERIFIED present multiple times elsewhere in file = grounded, not invented. RENDER 724KB, hub-root unchanged."
+    },
+    "oriental-trading": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS. 4 Q-card evidence grounded in file: Mendlik CEO/Mirakl, SimilarWeb abandonment, Moen CMO seasonal, Staruck Fun Express B2B. No invention. | RENDER DONE 604KB, hub-root md5 unchanged."
+    },
+    "llbean": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS. 6 evidence fields = verbatim their_priority quotes already in file (Elder CEO, Rouhana CIO, Dyer EA, Elting, expansion signal). | RENDER DONE 594KB, hub-root md5 unchanged."
+    },
+    "dsw": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS. 4 evidence = Howe/Crockett FY2024 earnings quotes already in file. card[3] reuses card[0] quote (only fin-direction quote available) \u2014 logged, not fabricated. | RENDER DONE 590KB, hub-root md5 unchanged."
+    },
+    "homedepot-mexico": {
+      "bucket": "with-data",
+      "steps": {
+        "AUDIT": "SKIP",
+        "GAPCHECK": "DONE",
+        "FIX_DATA": "DONE",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "DONE",
+        "SPA": "DONE",
+        "SYNC": "STAGED",
+        "COMMIT": "DONE"
+      },
+      "strikes": 0,
+      "note": "FIX_DATA verified PASS. JSON moved to root. exec[5].quote extracted verbatim from its own key_signal ('we are using AI and improved search engines'). | RENDER DONE 613KB, hub-root md5 unchanged."
+    },
+    "dell": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "footlocker": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "jbl": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "michaelkors": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "thenorthface": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "torrid": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    },
+    "autozone": {
+      "bucket": "dataless",
+      "steps": {
+        "AUDIT": "BLOCKED",
+        "GAPCHECK": "BLOCKED",
+        "FIX_DATA": "BLOCKED",
+        "SKILL_PATCH": "SKIP",
+        "RENDER": "BLOCKED",
+        "SPA": "BLOCKED",
+        "SYNC": "BLOCKED",
+        "COMMIT": "BLOCKED"
+      },
+      "strikes": 0,
+      "note": "BLOCKED \u2014 see blocked[] / FINAL-REPORT. SimilarWeb MCP missing + keys pending rotation."
+    }
+  },
+  "blocked": [
+    {
+      "company": "dell",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "footlocker",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "jbl",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "michaelkors",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "thenorthface",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "torrid",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    },
+    {
+      "company": "autozone",
+      "step": "AUDIT",
+      "reason": "CORRECTED: SimilarWeb traffic module blocked by VERIFIED HTTP 401 'invalid API key' \u2014 key IS present in PIP/.env.local (len32) but DEAD (live-probed api.similarweb.com/v1 dell.com \u2192 401). Matches security #15 (exposed\u2192revoked). BuiltWith MCP alive. This is the loop's exact 401 BLOCK trigger. Other 12 modules (techstack/financials/hiring/news/social/company) don't need SimilarWeb \u2192 degraded Wave-2 (skip traffic) is feasible if user wants."
+    }
+  ],
+  "assumptions_log": [
+    "Wave-2 (7 dataless full re-audits) NOT auto-launched. Rationale: SimilarWeb MCP unavailable (traffic module would fail) + BuiltWith/SimilarWeb keys exposed & pending rotation (security #15). Default chosen = BLOCK+surface (consistent with STOP-for-secret-rotation + all-remaining-BLOCKED), not fire 7 full audits on rotation-pending keys. User re-launches Wave-2 after key rotation + scope confirm.",
+    "CORRECTION (tick2, user-flagged): earlier I said SimilarWeb 'MCP absent' \u2014 wrong. It's a direct env-key API (collect-traffic.py reads SIMILARWEB_API_KEY). Key present but live-probe = 401 invalid. So Wave-2 traffic genuinely blocked, but on a dead key (needs rotation, security #15), not a missing capability. Degraded Wave-2 (12/13 modules, no traffic) possible \u2014 awaiting user call on scope.",
+    "tick2 cont: SimilarWeb browser session expired (May13). Canary dell scrape \u2192 device-verification email-code login wall, can't automate. User must run --setup once. Then Wave-2 traffic unblocked via browser. API key remains 401 (separate, needs rotation #15)."
+  ],
+  "run_log": [
+    "2026-06-28 pilot: created ledger. RENDER_PATH_FIX done. STYLE_GATE_FIX done (zero-visual-change proven).",
+    "2026-06-28 petsmart canary: RENDER done, SPA done (homepage regen, 8 cards \u2014 homedepot-mexico+oriental-trading missing rendered index.html, loop RENDER fills). VPS SSH solved (chowmesadmin+key, root disabled, passwordless sudo). petsmart VPS audit-data.json byte-identical to local (migration didn't touch it).",
+    "2026-06-28 FINDING (critical for loop): SYNC = prod data overwrite, BLOCKED by auto-mode permission classifier. Unattended loop in auto mode halts at every SYNC. Needs: batched-sync-script-for-user OR scoped Bash permission rule OR launch loop in dontAsk/bypassPermissions.",
+    "2026-06-28 FINDING: missing DEPLOY step \u2014 rendered pages publish via `vercel --prod` or git push (held); SYNC (VPS grounding) and page-publish are SEPARATE prod actions. Add DEPLOY to pipeline.",
+    "2026-06-28 loop tick1: prereqs cleared (homedepot moved, gitignore ok). RENDER 8/8 with-data DONE (3 clean + 5 fixed), hub-root md5 unchanged throughout. FIX_DATA verified-PASS for 6 gap cos (oriental-trading,llbean,dsw,homedepot,nike) \u2014 savage-x-fenty still in flight. Next: savage FIX\u2192RENDER, then SPA regen + SYNC append + COMMIT.",
+    "2026-06-28 tick1: savage FIX done+verified (metrics grounded). All 9 with-data RENDER+SPA done. SPA regen \u2192 hub-root index.html 10 cards, new md5 7d51b356. SYNC: 10 slugs staged in sync-all.sh (prod deferred). NEXT: COMMIT local, then dataless Wave-2 (probe MCP keys).",
+    "2026-06-28 tick1: COMMIT fa6a34b LOCAL (no push) \u2014 9 with-data standardized (8 rendered pages + 6 fixed JSONs + homedepot rename + homepage). Junk left untracked (.prebak, nested dup JSONs). WAVE 1 COMPLETE (10/10 incl petsmart canary). Next: Wave-2 dataless \u2014 probe BuiltWith/SimilarWeb keys; BLOCK if 401 (compromised).",
+    "2026-06-28 tick1 END: Wave-2 probe \u2014 BuiltWith ALIVE, SimilarWeb MCP ABSENT. 7 dataless \u2192 BLOCKED (capability gap + keys pending rotation). All remaining units BLOCKED \u2192 loop stops, FINAL-REPORT written.",
+    "2026-06-28 tick2 (scheduled re-fire): re-read ledger \u2014 Wave1 10/10 DONE, Wave2 7/7 AUDIT BLOCKED, nothing changed (SimilarWeb MCP still absent, keys still pending rotation). Marked downstream dataless steps BLOCKED (dependency). All units terminal \u2192 loop STOPPED, no re-arm.",
+    "2026-06-28 tick2 CORRECTION: probed SIMILARWEB_API_KEY from .env.local \u2192 HTTP 401 invalid. SimilarWeb key DEAD not absent. BuiltWith MCP alive. Wave-2 traffic blocked on dead key; rest of pipeline runnable. Surfacing degraded-mode decision to user.",
+    "2026-06-28 tick2: confirmed SimilarWeb path = browser scraper not API. Session EXPIRED \u2014 needs user interactive --setup (SSO+MFA+device code). Wave-2 stays BLOCKED pending that one user step; everything else (BuiltWith MCP, render harness) ready.",
+    "2026-06-28 tick2: Wave-2 traffic method DECIDED = Claude-browser-agent on Brave (logged-in) \u2192 screenshots to /tmp/sw-wave2. Prompt delivered to user. Awaiting 'screenshots done' + /loop re-trigger."
+  ],
+  "companies_homepage": "10 cards live in ~/prism-hub/index.html (15.5KB): all with-data incl hyphenated oriental-trading + homedepot-mexico. Old orientaltrading/ dir orphaned (harmless).",
+  "wave2_unblock_path": {
+    "traffic_source": "SimilarWeb via browser (collect-similarweb-browser.js), NOT the dead API key (401).",
+    "blocker_now": "browser session EXPIRED (last setup May 13). Canary dell scrape fell to login \u2192 device-verification email code \u2192 needs user interactive login. API key separately dead (401).",
+    "user_action_required": "Run interactively (headed, user completes SSO+MFA+email device code): cd ~/.claude/skills/algolia-search-audit/scripts && node collect-similarweb-browser.js --setup   then keep window open until it says session saved.",
+    "after_setup": "loop resumes: per Wave-2 company run `node collect-similarweb-browser.js --mode traffic --domain <d>` (headless) + BuiltWith MCP (alive) + other modules \u2192 full audit. Re-trigger /loop.",
+    "verify_cmd": "node collect-similarweb-browser.js --mode traffic --domain dell.com  (non-empty JSON = session live)",
+    "chosen_method": "Claude-browser-agent on user's logged-in Brave (Chrome held by Codex; CDP-attach needs Brave relaunch w/ --remote-debugging-port, rejected as disruptive). Agent screenshots SimilarWeb \u2192 /tmp/sw-wave2/<prefix>-<section>.png; main loop reads images (vision), extracts traffic, grounds audits, deletes folder.",
+    "screens_dir": "/tmp/sw-wave2/",
+    "domains": {
+      "dell": "dell.com",
+      "footlocker": "footlocker.com",
+      "jbl": "jbl.com",
+      "michaelkors": "michaelkors.com",
+      "thenorthface": "thenorthface.com",
+      "torrid": "torrid.com",
+      "autozone": "autozone.com"
+    },
+    "resume_trigger": "User runs browser-agent prompt \u2192 says 'screenshots done' \u2192 re-run /loop. Loop: read /tmp/sw-wave2 images per company, extract traffic JSON, + BuiltWith MCP + yahoo/apify/web modules \u2192 audit-data.json \u2192 schema gate \u2192 render \u2192 SPA \u2192 SYNC \u2192 COMMIT. Canary dell first, verify, then 6."
+  }
+}
