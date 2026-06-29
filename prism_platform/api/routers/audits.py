@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+import asyncio
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 
 import structlog
 from fastapi import APIRouter, HTTPException
@@ -13,8 +14,14 @@ from sqlalchemy import select
 from prism_platform.api.deps import DbSession, TemporalDep
 from prism_platform.config import settings
 from prism_platform.db.models import Account, Audit
+from prism_platform.db.session import async_session_factory
+from prism_platform.orchestrator.pipeline import run_pipeline
 from prism_platform.orchestrator.workflows import AuditInput, AuditWorkflow
 from prism_platform.v2.domain_normalizer import normalize_domain
+
+# Hold references to detached background pipeline tasks so they aren't GC'd
+# mid-run (asyncio only keeps weak refs to tasks).
+_BG_TASKS: set[asyncio.Task] = set()
 
 logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
 
@@ -67,6 +74,14 @@ class RunAuditResponse(BaseModel):
     workflow_id: str
     run_id: str
     status: str
+
+
+class RunLocalResponse(BaseModel):
+    """Response after launching an in-process (Temporal-free) audit run."""
+
+    audit_id: uuid.UUID
+    status: str
+    audit_mode: str
 
 
 # ---------------------------------------------------------------------------
@@ -212,3 +227,81 @@ async def run_audit(
     except Exception as exc:
         logger.error("run_audit.failed", error=str(exc), audit_id=str(audit_id))
         raise HTTPException(status_code=500, detail="Failed to start audit workflow.") from exc
+
+
+async def _set_audit_status(audit_id: uuid.UUID, status: str, *, completed: bool = False) -> None:
+    """Update an audit row's status in its own session (background-task safe)."""
+    async with async_session_factory() as session:
+        res = await session.execute(select(Audit).where(Audit.id == audit_id))
+        audit = res.scalar_one_or_none()
+        if audit is None:
+            return
+        audit.status = status
+        now = datetime.now(UTC)
+        if audit.started_at is None:
+            audit.started_at = now
+        if completed:
+            audit.completed_at = now
+        await session.commit()
+
+
+async def _run_pipeline_bg(audit_input: AuditInput) -> None:
+    """Run the in-process pipeline and reflect terminal status on the audit row."""
+    audit_id = uuid.UUID(audit_input.audit_id)
+    await _set_audit_status(audit_id, "running")
+    try:
+        result = await run_pipeline(audit_input)
+        await _set_audit_status(audit_id, result.status, completed=True)
+        logger.info("run_local.done", audit_id=audit_input.audit_id, status=result.status)
+    except Exception as exc:
+        logger.error("run_local.pipeline_failed", error=str(exc), audit_id=audit_input.audit_id)
+        await _set_audit_status(audit_id, "failed", completed=True)
+
+
+@router.post("/{audit_id}/run-local", response_model=RunLocalResponse, status_code=202)
+async def run_audit_local(
+    audit_id: uuid.UUID,
+    body: RunAuditRequest,
+    session: DbSession,
+) -> RunLocalResponse:
+    """Run an existing audit in-process (no Temporal worker required).
+
+    Walks the same wave plan as the Temporal workflow via ``run_pipeline``,
+    detached as a background task. Returns 202 immediately; poll
+    ``GET /api/v1/audits/{audit_id}`` for status. This is the execution path
+    Cass's ``run_audit`` tool calls — modules with deterministic collectors run
+    at zero LLM cost; research modules use the configured Perplexity key.
+    """
+    logger.info("run_local.start", audit_id=str(audit_id), audit_mode=body.audit_mode)
+    try:
+        result = await session.execute(select(Audit).where(Audit.id == audit_id))
+        audit = result.scalar_one_or_none()
+        if audit is None:
+            raise HTTPException(status_code=404, detail="Audit not found.")
+
+        acct_result = await session.execute(select(Account).where(Account.id == audit.account_id))
+        account = acct_result.scalar_one()
+
+        audit_input = AuditInput(
+            audit_id=str(audit_id),
+            account_id=str(account.id),
+            domain=account.domain,
+            company_name=account.company_name,
+            ticker=account.ticker,
+            is_private=not account.is_public,
+            audit_mode=body.audit_mode,
+            modules_to_run=body.modules_to_run,
+            skip_modules=body.skip_modules,
+            refresh_modules=body.refresh_modules,
+        )
+
+        task = asyncio.create_task(_run_pipeline_bg(audit_input))
+        _BG_TASKS.add(task)
+        task.add_done_callback(_BG_TASKS.discard)
+
+        return RunLocalResponse(audit_id=audit_id, status="running", audit_mode=body.audit_mode)
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logger.error("run_local.failed", error=str(exc), audit_id=str(audit_id))
+        raise HTTPException(status_code=500, detail="Failed to start local audit run.") from exc
