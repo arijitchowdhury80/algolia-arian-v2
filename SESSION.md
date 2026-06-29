@@ -1,108 +1,170 @@
-# SESSION.md — PRISM (= Chowmes-PRISM)
+# SESSION.md — PRISM / Cass Agent Evolution
 
-**Last updated:** 2026-06-28 (autonomous-standardization PILOT complete; loop prompt ready, NOT launched)
+**Status:** Phase A Wave 1 COMPLETE. **Phase B L1 = DEPLOYED + VERIFIED LIVE ON PROD** (Cass is now a real
+grounded Algolia coach). NEXT = L2 orchestrator brain ($0 build; flip live on Perplexity key — first action).
 
-## STATUS (one line)
-**Pilot for the autonomous report-standardization run is COMPLETE.** Render pipeline unblocked + proven, model-routing economics standardized, petsmart canary ran end-to-end (staged-sync model), and a copy-paste `/loop` prompt is ready. **Next action = launch the loop** (or eyeball `run/` first).
+**Last updated:** 2026-06-29 (~5:05am EDT)
 
-> **NAMING CANON:** "PRISM" = Chowmes-PRISM (Hermes instance on the VPS). Published reports site = `prism-hub` (GH repo; live `algolia-arian-v2.vercel.app`; local `~/prism-hub`). Internal app = `PIP/frontend` (NOT the chat target).
+## L1 — DEPLOYED + VERIFIED LIVE (2026-06-29) ✅
+Done on prod this session:
+- Migration 008 applied to live `prism` DB (alembic 007→008). Backup at container /tmp/prism-predeploy-008.dump.
+- Knowledge DB seeded (faithful, verify PASS): algolia_knowledge=8, case_studies=10, proofpoints=2, quotes=1.
+- Plugin deployed to /root/.hermes-prism/plugins/prism-report-qa/ + hermes-prism restarted, loaded clean.
+- **Live-tested via /v1/responses (curl on VPS, port 8642):**
+  - T1 unbound "Algolia vs Constructor for apparel" → real coach answer (speed/synonyms/positioning), persona
+    intact, self-enforced no-fabrication. input_tokens 16k = knowledge injecting.
+  - T2 "what are the highlights for home depot?" → **binds homedepot-mexico** (input 50k = full report), full
+    grounded brief with [FACT]/[ESTIMATE] labels (250M visits, 0.2% conv, $15-30M, new CTO/CIO, Leroy Merlin
+    $28M from knowledge DB = two-source gate working). This is the EXACT Telegram failure, now fixed.
+- Retrieval verified across all 4 tables (lacoste→case study, shoe carnival→case+quote, baymard/constructor→knowledge).
 
----
+## RESUME ACTION (next session, do first)
+1. Read this file + the 2 design docs in docs/workspace/hermes-prism-integration/phase-b-cass-agent/.
+2. **L2 orchestrator brain build** (decision locked, $0 to build). FIRST sub-step = stage the fuel:
+   add `PERPLEXITY_API_KEY=<value from local .env.local>` (+ optional `PERPLEXITY_MODEL=sonar`) to VPS
+   `/opt/prism-platform/.env`, `sudo systemctl restart prism-platform.service` → 17 modules go healthy.
+   (I could NOT do this — reading local .env.local is permission-blocked; user/next-session handles the secret.)
+3. Then build L2 per L1.5 doc: capabilities manifest (she knows which module/skill does what + when) +
+   Hermes tools run_audit/run_module/audit_status wired to prism_platform + monitor (SSE /audits/{id}/stream)
+   + record pipeline → knowledge DB. Architecture: Cass=control plane, prism_platform=execution plane.
 
-## RESUME ACTION (do FIRST next session)
-1. Read this file + `MEMORY.md` (esp. `[[feedback-model-routing-by-tier]]`, `[[project-prism-hub-chat-live]]`).
-2. Read the disk-truth ledger: `docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json` — every company × step, prereqs (DONE), gates, findings.
-3. **Launch the autonomous loop:** type `/loop`, paste THE LOOP PROMPT below, send (no interval = self-paced). OR review `run/sync-all.sh` + `run/state.json` first if not yet confident.
+## LESSONS THIS SESSION (fix-and-learn)
+- FastAPI POST to a collection route WITHOUT trailing slash → 307 redirect drops the body (silent no-op write).
+  Always trailing-slash collection POSTs (`/api/v1/knowledge/`).
+- Postgres will NOT auto-cast `text[]`→`jsonb`. JSONB columns need a JSON literal `'[...]'::jsonb`, not `ARRAY[...]::text[]`.
+  Insert/seed generators must emit per the real column type.
+- Hermes hooks do NOT receive the gateway session key (`:acct:`); it lives on `agent._gateway_session_key`.
+  Binding works via content-match on the message instead (SPA already tags account every turn).
 
-### THE LOOP PROMPT (paste after `/loop`)
-```
-ultracode. Autonomous report standardization, hands-off. Disk truth =
-docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json — read
-it FIRST every tick; source of truth, survives compaction.
-
-DONE (do NOT redo): prereqs (render path fix, template tokenization — committed
-314d045 in arijit-skills); petsmart canary (RENDER/SPA done, SYNC staged, COMMIT
-db32cad). Start at the next PENDING units.
-
-ONE-TIME before first gap company: move homedepot-mexico JSON from nested
-~/prism-hub/homedepot-mexico/homedepot-mexico-audit-data.json to root
-~/prism-hub/homedepot-mexico-audit-data.json (render + index scan read root path).
-
-MODEL ROUTING (per global CLAUDE.md MODEL ECONOMICS — every subagent declares a
-tier): collectors/validators/renders/file-ops → model:haiku (low). gap-fill
-grounded-synthesis/edits → model:sonnet (medium). orchestration (you) + adversarial
-verify of a critical report claim → model:opus (high). All-opus = cost bug.
-
-LOOP each tick: read state.json → pick next PENDING unit (steps_order) → dispatch a
-FRESH SUBAGENT at the right tier returning ONLY {status, artifact_path, note}
-(heavy output stays in the subagent) → run the gate → write result to ledger →
-persist → advance.
-
-PER-STEP GATES (DONE only if gate passes): GAPCHECK/FIX_DATA = audit_data_schema.py
-PASS; SKILL_PATCH = pytest PASS (only if a skill bug found); RENDER = {slug}/index
-.html written AND hub-root index.html md5 unchanged; SYNC = APPEND slug to run/sync
--all.sh (LOCAL write — never write the live VPS store); COMMIT = git commit LOCAL
-only, no push. DEPLOY is global/staged in run/DEPLOY.txt — never deploy.
-
-RULES: two failures same unit → BLOCKED + skip + continue. 429/quota = retry-later
-(re-queue, not BLOCKED). compromised-key auth-fail = BLOCKED + surface. Wave 2 (7
-dataless full re-audits: dell, footlocker, jbl, michaelkors, thenorthface, torrid,
-autozone) needs MCP keys — if BuiltWith/SimilarWeb keys 401, BLOCK that audit +
-surface (keys may be compromised). Don't ask me anything with a sane default — log
-to ledger assumptions_log + continue. STOP only for: destructive/irreversible op,
-secret rotation, or all-remaining BLOCKED. When all units DONE/BLOCKED: write
-run/FINAL-REPORT.md and stop.
-
-When you stop: tell me to review run/sync-all.sh then run `! bash <path>/run/sync
--all.sh` and `! vercel --prod` to publish.
-```
+## L2 ORCHESTRATOR BRAIN (next build after deploy — decision locked 2026-06-29, $0)
+Cass = conversational CONTROL plane; prism_platform = EXECUTION plane ("the temporal"). Build now, inert until
+fuel: (a) capabilities manifest — she knows which module/skill does what + which wave + when to invoke; (b)
+Hermes tools run_audit(domain,mode)/run_module(name,domain)/audit_status(id) wired to prism_platform; (c)
+monitor via /audits/{id}/stream (SSE); (d) record pipeline → knowledge DB + report store. FLIP LIVE on ONE
+Perplexity key (lights all 17 modules — no Anthropic credit, no BuiltWith). Uses detect-tech + Scout +
+manual SimilarWeb for key-free layers. claude-cli skills path = richer but needs credit (rejected for now).
 
 ---
 
-## WHERE WE STOPPED (exact)
-Pilot done; loop NOT launched. petsmart canary fully proven under the staged-sync model. Both repos have LOCAL commits (no push): `~/.claude/skills/algolia-search-audit` @ `314d045` (render fix + template tokenization + migrate tool); `~/prism-hub` @ `db32cad` (gitignore + homepage regen + petsmart render). Awaiting user to launch `/loop` or eyeball `run/`.
+## RESUME ACTION (do first, in order)
+1. Read this file fully, then the two design docs:
+   - `docs/workspace/hermes-prism-integration/phase-b-cass-agent/L1-brain-design.md`
+   - `docs/workspace/hermes-prism-integration/phase-b-cass-agent/L1.5-algolia-self-learning-loop-design.md`
+     (the "ARCHITECTURE REVISION" section is authoritative — knowledge lives in Postgres, NOT MD).
+2. Check the seed-loader subagent result (was running at persist): expect
+   `prism_platform/scripts/seed_algolia_knowledge.py` + `docs/temp/seed-dryrun.json` + a verify report
+   (every extracted number grepped back to source — any FAIL = fabrication, fix before apply).
+3. Confirm with user: design approved as-is? (They reviewed the docs; get explicit go before plugin + prod deploy.)
+4. Continue build at **step 3 (plugin)** — see Remaining Work.
 
-## DECISIONS LOCKED THIS SESSION
-- **Autonomy mechanism:** `/loop` (NOT `/goal` — doesn't exist) + `ultracode` keyword (flips to Workflow orchestration) + disk-truth `state.json` ledger + per-unit subagents (context firewall) + validator gates + two-strikes-then-BLOCK. Context rot solved by: heavy work never enters main context (subagents return thin), state lives on disk.
-- **MODEL ECONOMICS & ROUTING** standardized GLOBALLY (`~/.claude/CLAUDE.md` new section + memory `feedback-model-routing-by-tier`): T1 haiku / T2 sonnet / T3 opus / T4 fable; orchestrator stays high, workers route down; severity escalates a tier. Pricing verified via `claude-api` skill (Opus out = 5× Haiku).
-- **Prod writes are STAGED, not executed by the loop** (user chose "stage, run once"): SYNC appends to `run/sync-all.sh`; DEPLOY in `run/DEPLOY.txt`. User runs `! bash run/sync-all.sh` + `! vercel --prod` on return. Loop never writes the live VPS store or deploys (auto-mode permission guard blocks it anyway — correctly).
-- **Style gate = template-hygiene linter** (doesn't change output). Chose to TOKENIZE all 108 violations (design SOP stays strict) over warn/bypass. Zero visual change PROVEN by resolved-CSS diff.
-- **Commits: LOCAL only, no push** (held for user).
+---
 
-## PILOT FINDINGS (all fixed/handled)
-1. `render-audit.ts` site mode wrote to cwd → clobbered hub homepage. FIXED (`join(cwd, slug)`), verified, committed.
-2. Render hard-blocked by 108 template style violations (would BLOCK all 17). Tokenized (96 font-size + 12 raw-color), gate EXIT=0, zero-visual-change proven (`scratchpad/verify_tokenization.py`), committed.
-3. Wrong agent-type (no Bash → can't verify) + subagent over-scoped (added :root vars). Caught by independent verify, proved benign.
-4. SSH to VPS: use `chowmesadmin` + `~/.ssh/chowmes_ed25519` (root login DISABLED), passwordless sudo. NOT root.
-5. Prod SYNC overwrite BLOCKED by auto-mode permission guard → solved via staged `sync-all.sh`.
-6. Missing DEPLOY step (rendered pages need `vercel --prod`/push) → added, staged in `run/DEPLOY.txt`.
-7. homedepot-mexico JSON at NESTED path `homedepot-mexico/homedepot-mexico-audit-data.json` (no root file) → loop must move to root before GAPCHECK/RENDER.
-8. Homepage finds 8/10 (homedepot-mexico + oriental-trading lack rendered `<slug>/index.html`) → loop RENDER fills.
+## HARD CONSTRAINTS (user, this session — NON-NEGOTIABLE)
+- **NO fabrication / hallucination / invented data. EVER.** Use only data we actually have. Blank fields stay
+  blank ("no data / not run"), never guessed. No naked numbers.
+- **NO new credit / paid builds** without explicit OK. → Gemini cron learner DEFERRED (grounding costs).
+  → L3 new audits DEFERRED (Anthropic credit).
+- **BuiltWith is DEAD** (key expired, NO subscription) — gone, not rotation-pending. Tech-stack routes around it:
+  `detect-search` + new `detect-tech` (#21) + SimilarWeb Technologies tab (screenshotted Wave 2).
+- Plain language. CAVEMAN MODE active this session (terse).
 
-## REMAINING WORK (order)
-1. **Launch the loop** (paste prompt above after `/loop`).
-2. Loop processes: 6 with-data gaps (nike, savage-x-fenty, oriental-trading, llbean, dsw, homedepot-mexico) — FIX_DATA→RENDER→SPA→SYNC-stage→COMMIT; + render the already-clean british-airways/labanquepostale/brooks-running; then Wave 2 = 7 dataless full re-audits (dell, footlocker, jbl, michaelkors, thenorthface, torrid, autozone).
-3. **USER actions on loop completion:** review `run/sync-all.sh` → `! bash …/run/sync-all.sh` (prod grounding) → `! vercel --prod` (publish pages) → `git push` both repos if desired.
-4. **USER (still pending from before):** rotate BuiltWith + SimilarWeb keys (Wave 2 audits 401 until done); rotate free-tier grounding-gate Gemini key (Nike chat 429s); Vercel project rename→prism-hub.
+---
 
-## WHAT HAS NOT BEEN DONE (no false claims)
-- Loop NOT launched. Only petsmart (canary) processed; 16 companies PENDING.
-- `run/sync-all.sh` NOT executed (prod VPS store untouched this session). `vercel --prod` NOT run (pages not republished).
-- Commits NOT pushed (both repos local-only).
-- Keys NOT rotated. Vercel project NOT renamed.
-- 6 with-data gap reports still fail schema (genuine content gaps); 7 dataless have no audit data.
+## PHASE A — COMPLETE ✅ (Wave 1, 10 companies)
+1. VPS grounding: `bash run/sync-all.sh` → 10/10 md5 match; store 2→10 reports. Backup
+   `/root/.hermes-prism/reports.bak-20260629-030829.tar.gz`.
+2. Vercel: `vercel --prod` (~/prism-hub) → READY, algolia-arian-v2.vercel.app.
+3. GitHub: pushed `237e6b8..fa6a34b`.
+- Ledger: `docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json`.
 
-## REFERENCE FILES
-- **Ledger (resume here):** `docs/workspace/hermes-prism-integration/spike-unify-audit/run/state.json` (17×8 + prereqs + gates + findings). Staging: `run/sync-all.sh`, `run/DEPLOY.txt`.
-- Lessons: `docs/sop/lessons-log.md` (render clobber, gate display-cap, agent-type/Bash, byte-diff-wrong-test, subagent over-scope).
-- Spike docs A–L: `docs/workspace/hermes-prism-integration/spike-unify-audit/` (L = standardization status).
-- Verifier: `<scratchpad>/verify_tokenization.py` (resolved-CSS zero-visual-change proof).
-- Global routing rule: `~/.claude/CLAUDE.md` "MODEL ECONOMICS & ROUTING".
-- Tools: render `render-audit.ts <slug> site`; hub homepage `generate-index.ts`; migrate `migrate-audit-data.py`; validators `audit_data_schema.py` + `template_contract.py` (in `~/.claude/skills/algolia-search-audit/scripts/`).
+## WAVE 2 SCREENSHOTS — CAPTURED, NOT SYNTHESIZED
+- 70/70 full-page SimilarWeb shots: `docs/temp/similarweb-wave2/<slug>/00..09-*.png` for dell, footlocker,
+  jbl, michaelkors, thenorthface, torrid, autozone (10 sections each).
+- `docs/temp/` EPHEMERAL + gitignored (`_DELETE-ON-CLEANUP.md`). Cover **traffic** + **tech-stack** modules.
+- Step 6: synthesize → audit-data.json traffic+tech fields ONLY; rest "no data". No fabrication. Then delete.
 
-## FILES WRITTEN THIS SESSION (key)
-- **arijit-skills** (committed `314d045`, NOT pushed): `scripts/render-audit.ts` (site path fix), `templates/index-template.html` (108 tokenized), `scripts/migrate-audit-data.py`.
-- **prism-hub** (committed `db32cad`, NOT pushed): `.gitignore`, `index.html` (homepage regen), `petsmart/index.html` (re-render).
-- **PIP** (uncommitted): `docs/workspace/.../run/{state.json,sync-all.sh,DEPLOY.txt}`, this SESSION.md, `docs/sop/lessons-log.md` (+4 entries).
-- **Global** `~/.claude/CLAUDE.md`: MODEL ECONOMICS & ROUTING section.
-- **Memory:** `feedback-model-routing-by-tier.md` + MEMORY.md index line.
+---
+
+## PHASE B — Cass: RAG-chatbot → real Algolia agent
+
+### THE SKINNY (design in one breath)
+Cass is a dead-ish RAG bot: knows company names, can't read reports, no Algolia brain, no tools. Fix in
+3 shippable layers: **L1 Brain** (real Algolia knowledge + fixed binding, $0, today) → **L2 Tool-arms**
+(she can call the 17 modules + live search; needs Perplexity key) → **L3 Generation** (run full audits from
+chat; needs Anthropic credit + SimilarWeb-key rotation). Knowledge lives in **Postgres** (reuse prism DB),
+the plugin retrieves top-k per turn over HTTP and injects only relevant rows (no MD dump). A **self-learning
+loop** logs Algolia questions Cass can't answer (free, now) and a cron fills them via Gemini+Google-search
+behind a strict source+ai-judge gate (deferred — costs credit). One brain serves Telegram + SPA. SPA gets a
+global floating Cass + a dedicated section.
+
+### The 5 gaps
+1. No real brain (KNOWLEDGE pack not loaded). 2. Fragile binding (accent + direction + dead SPA session-key).
+3. Zero tool-calling. 4. Execution plane blocked (keys/credit/no Temporal worker). 5. Parallel brains (old
+aRRIe prompt, now bypassed).
+
+### Locked decisions
+- Sequencing: **Layered, ship each** L1→L2→L3.
+- Security gate before L3: **SimilarWeb key only** (BuiltWith moot).
+- Grounding gate: **two sources** (prospect report + knowledge pack); invented numbers stripped.
+- Self-learning (L1.5/ASL): **gap-driven now, live at L2**; **gate-on-entry** (≥1 source + ai-judge);
+  learn from **logged gaps + seed curriculum**.
+- **Knowledge in Postgres, NOT MD** (user). Plugin → prism_platform HTTP → DB.
+- SPA: global floating Cass + dedicated section (frontend, not built; routes through frontend-design).
+
+---
+
+## BUILD STATUS (Phase B)
+
+### DONE + VERIFIED — knowledge backend (step 1)  [$0]
+ruff clean, 26 pure tests pass:
+- `prism_platform/db/models.py` (M) — `AlgoliaKnowledge`, `AlgoliaGap`.
+- `alembic/versions/008_add_knowledge_store.py` (NEW) — rev 008→007; both tables + GENERATED tsvector+GIN on
+  knowledge/case_studies/proofpoints/quotes; swaps legacy-004 FTS indexes; symmetric downgrade. I verified it.
+- `prism_platform/api/routers/knowledge.py` (NEW) — 3 endpoints, bound-param FTS (no string SQL — verified).
+- `prism_platform/main.py` (M) — router at /api/v1/knowledge.
+- `tests/test_knowledge.py` (NEW) — 26 pass; 4 `@pytest.mark.db` need live PG (`pytest tests/test_knowledge.py -m db -v`).
+- `pyproject.toml` (M) — db marker.
+
+### API CONTRACT
+- `POST /api/v1/knowledge/retrieve` {query,k=8} → {results:[{kind,title,text,sources[],score}],count}
+- `POST /api/v1/knowledge/gaps` {question,topic?,conversation_id?,why} → {id,status:"open",deduped}
+- `POST /api/v1/knowledge` {topic,question,answer,sources[],confidence?,judge_score?,origin} → {id,created,updated}
+
+### IN PROGRESS — seed loader (step 2) [$0]
+`prism_platform/scripts/seed_algolia_knowledge.py` (faithful KNOWLEDGE-pack → rows; --dry-run + verify; --apply
+emits SQL, no execute). Check agent result on resume.
+
+### NOT STARTED
+- **Step 3 plugin** [#20,$0]: `chowmes-prism/plugins/prism-report-qa/__init__.py` — HTTP retrieve+inject (httpx
+  → 127.0.0.1:8000), gap-log, two-source gate, binding fixes (NFKD accents, token alias, session-key threading).
+  **READ RECEIPT FIRST**: how Hermes threads session/context into pre_llm_call/transform_llm_output kwargs (read
+  hermes-prism container source on VPS).
+- **Step 4 deploy+test**: apply migration 008 to live `prism` (need prism_platform VPS deploy flow; restart
+  prism-platform.service), seed --apply, db tests, scp plugin → /root/.hermes-prism/plugins/, restart hermes-prism,
+  drop stale Telegram sessions if needed. Tests T1–T5 + loop test.
+- **Step 5 detect-tech** [#21,$0]: extend detect-search → full client-side stack (~60 sigs, Wappalyzer-style).
+  arijit-skills search-detector. Client-side only.
+- **Step 6 Wave2 synthesis** (screenshots → traffic+tech only).
+- **DEFERRED**: Gemini learner (credit), L3 audits (credit), SPA Cass UI (frontend-design).
+
+---
+
+## KEY INFRA FACTS (verified)
+- VPS `chowmesadmin@72.61.72.147`, key `/Users/arijitchowdhury/.ssh/chowmes_ed25519`.
+- DB: `prism-platform-postgres-1` PG16, db/user=`prism` (pw in /opt/prism-platform compose). FTS yes,
+  **pgvector NO**. ⚠ pg on 0.0.0.0:5432 (lock to loopback later).
+- prism_platform: 127.0.0.1:8000, systemd `prism-platform.service`, alembic 007 (008 pending). VPS /opt/prism-platform; local mirror prism_platform/.
+- hermes-prism: network_mode host → reaches 127.0.0.1:8000 (proven). httpx+asyncpg, NO psycopg → plugin uses HTTP.
+  Only prism-report-qa plugin enabled (2 hooks).
+- Empty knowledge tables already existed: algolia_customers/case_studies/quotes/proofpoints/advocates, vertical_benchmarks.
+
+## NOT DONE (no false claims)
+Plugin unchanged. Migration NOT applied to live DB. Seed NOT in DB. Cass still RAG-only. detect-tech NOT built.
+Wave2 NOT synthesized. Learner NOT built. L2/L3 NOT started. SPA Cass UI NOT built. SimilarWeb key NOT rotated (#15).
+
+## FILES WRITTEN THIS SESSION
+- Design: phase-b-cass-agent/{L1-brain-design.md, L1.5-algolia-self-learning-loop-design.md}
+- Backend: prism_platform/db/models.py(M), alembic/versions/008_add_knowledge_store.py, api/routers/knowledge.py,
+  prism_platform/main.py(M), tests/test_knowledge.py, pyproject.toml(M)
+- Seed loader (pending): prism_platform/scripts/seed_algolia_knowledge.py
+- Ephemeral: docs/temp/similarweb-wave2/ (70 png), .gitignore(M)
