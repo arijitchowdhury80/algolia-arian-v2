@@ -82,6 +82,10 @@ class Settings(BaseSettings):
     # Perplexity (web intelligence)
     perplexity_api_key: str = ""
 
+    # Scout (evidence/acquisition engine — PRISM calls it over HTTP, never reimplements it)
+    scout_base_url: str = "http://127.0.0.1:8421"
+    scout_api_key: str = "dev-key"
+
     # SimilarWeb (traffic analytics)
     similarweb_api_key: str = ""
 

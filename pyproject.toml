@@ -59,6 +59,7 @@ testpaths = ["tests"]
 markers = [
     "browser: tests requiring a real Playwright browser (deselect with -m 'not browser')",
     "db: tests requiring a live Postgres with all migrations applied (deselect with -m 'not db')",
+    "scout_live: tests requiring a running local Scout service (deselect with -m 'not scout_live')",
 ]
 
 [tool.uv.sources]
