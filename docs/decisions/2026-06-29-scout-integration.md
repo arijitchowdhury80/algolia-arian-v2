@@ -38,10 +38,12 @@ evolution never breaks the adapter.
 
 ## Why HTTP over library import
 
-- **Clean boundary + deployment independence.** Scout can run as a local service,
-  Docker, or remote host; PRISM doesn't inherit Scout's crawler deps or browser
-  binaries. (PRISM on the VPS, Scout on the Mac today — HTTP spans that; a direct
-  import cannot, since `scout` is a Mac-local path dep.)
+- **Clean boundary + deployment independence.** Scout runs as its own Docker
+  container; PRISM doesn't inherit Scout's crawler deps or browser binaries.
+  Scout is **co-hosted on the same VPS** as prism_platform (Docker container
+  `scout`, loopback `127.0.0.1:8421`), so prism_platform reaches it directly. The
+  Mac checkout (`../Scout`, editable path dep) is the dev/source copy. HTTP works
+  for both; a direct library import would couple PRISM to Scout's heavy deps.
 - **Provenance is first-class over the wire.** Records carry `citations[]`
   (source_id → source_url, field, claim, confidence); `GET /runs/{id}/sources`
   resolves each source_id to the fetched URL. The adapter preserves both.
@@ -59,8 +61,13 @@ invents it.
 ## Configuration
 
 `prism_platform/config.py`:
-- `scout_base_url` (default `http://127.0.0.1:8421`)
-- `scout_api_key` (sent as `X-API-Key`; local default `dev-key`, override per env)
+- `scout_base_url` (default `http://127.0.0.1:8421` — correct for the VPS, where
+  Scout's container is bound to loopback)
+- `scout_api_key` (sent as `X-API-Key`). **The VPS Scout requires its real
+  48-char key — `dev-key` returns 403.** prism_platform's `.env` must carry
+  `SCOUT_API_KEY=<the Scout container's key>` (both services on the same VPS, so
+  it's copied container→prism `.env` server-side). The `dev-key` default only
+  works against a fresh dev Scout.
 
 Scout must be running and reachable at `scout_base_url` for the research tier to
 acquire evidence. When Scout is down, acquisition fails closed (no fabricated
