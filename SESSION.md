@@ -1,116 +1,72 @@
-# SESSION.md — PRISM About-page splash + hub restructure + Cassandra + vault update
+# SESSION — Downloadable Algolia-branded audit artifacts (+ Cassandra chat polish)
 
-**Status:** About/splash page redesign DONE + LIVE; site restructured (About = `/`); Cassandra rename +
-portrait done; detect-search vendored; Wave-2 unblocked. All 3 repos pushed/synced. **Vault wiki update
-was running in a background fork at persist time** (verify on resume).
+**Status:** Building the downloadable audit DECK/REPORT. Pivoted to a portrait A4 chaptered DOCUMENT matching the user's L.L. Bean reference. PetSmart pilot rendered + opened. Awaiting user feedback on the v1 portrait doc, plus a known logo-strip fix.
 
-**Last updated:** 2026-06-30
+Date: 2026-06-30. PIP branch: feat/prism-e2e-cycle. prism-hub branch: feat/prism-vps-hosting (auto-deploys on push).
 
----
-
-## RESUME ACTION (do first, in order)
-1. Read this file + `memory/MEMORY.md`.
-2. **Verify the vault fork finished.** A fork was writing the PRISM wiki at
-   `~/Library/CloudStorage/GoogleDrive-arijit.chowdhury@algolia.com/My Drive/AI-Docs/Obsidian/ArijitOS-Brain/Projects/PRISM/`
-   (6 new ADRs dated 2026-06-30, dev-log entries, `wiki/entities/` pages for prism/scout/hermes/cassandra/
-   detect-search/gemini/yfinance/chrome, a `right-tool-for-each-job` concept, index/log/open-questions updates).
-   Check `wiki/decisions/` for the 2026-06-30-*.md files + that `wiki/entities/` exists. If incomplete,
-   finish via record-knowledge "record this".
-3. Use `dangerouslyDisableSandbox:true` on every VPS bash (`ssh chowmes-vps`).
-4. Work the PENDING items below.
+NOTE: there are THREE open tracks. (A) THIS one: downloadable artifacts. (B) PRISM login/multi-tenancy Slice 1 (code complete, human-gated, awaiting user Clerk setup) — see memory `project-prism-login-multitenancy` + `docs/plans/2026-06-30-slice1-google-login-deploy.md`. (C) PAUSED — IA report redesign A/B prototype, tag `IA-Redesign-Pending`: built + pushed to Vercel preview, prod untouched; resume via `docs/status/IA-Redesign-Pending.md` (trigger: "resume IA-Redesign-Pending"). This SESSION.md covers track A.
 
 ---
 
-## WHAT SHIPPED THIS SESSION (all live + pushed, prism-hub `feat/prism-vps-hosting`)
-
-### The About / splash page (the big work) — repo `~/prism-hub`, file `index.html`
-Demo centerpiece for Friday (200 people). Built ENTIRELY as static vanilla HTML/CSS/JS (NO React/GSAP/
-Tailwind — the site is static + auto-deployed). Pieces:
-- **Premium prism hero** — glassy gradient prism, glowing refracted spectrum, traveling light beam,
-  shimmer (SVG + CSS anim, reduced-motion guard). Replaced the flat wireframe.
-- **Inside-the-audit tour** — auto-cycling cross-fade of FULL audit screenshots (Overview→Research→
-  Search Audit→Business Case→Sales Actions→chat), 3.8s, hover-pause. `assets/tour/*.png` (full-viewport
-  WITH the audit's own chrome — user preferred this over cropped). NO external pill tabs (they duplicated
-  the screenshot's own tab bar).
-- **MagicBento deliverables** — vanilla port: spotlight + reactive border-glow + 3D tilt + magnetism +
-  particles + ripple, LIGHT theme. Bento layout (deck wide, chat-agent featured/dark/wide).
-- **Glowing-edge role cards** (AE/BDR/Leader) — pointer-following conic glow + halo, masked to the arc
-  nearest cursor. Top colored accent lines REMOVED.
-- **Shared animated-grid background** — `assets/grid-bg.js` (one lib); index + about + audits show the
-  same pulsing grid. About bands made transparent so the grid shows through.
-- **Plain-English copy** — rewrote Hermes/Cassandra + skills sections (dropped jargon: claude-cli, agent
-  runtime, grounding gate, report-QA, keyless). Skill count `~23` → `22`.
-- **NO EM DASHES** on `/` and `/reports/` (grammar rewritten). Global rule [[feedback-no-em-dashes]].
-  Audit report pages LEFT with em dashes (user: "let them be").
-- Section order set by user: Who it's for → What it produces → How it works → Inside the audit →
-  The skills → The execution layer.
-
-### Site restructure (routing)
-- `/` serves the **About splash** (was the reports list). Hero CTA "Browse the audits" + topbar
-  "Reports" → `/reports/`.
-- `/reports/` = audit list (old index; card links absolutized `/{slug}/`; "About" → `/`).
-- `/about/` = redirect to `/`. Canonical About content lives in ROOT `index.html`; `about/index.html`
-  is the redirect stub.
-- Audit-page logos still link to `/` (= About). OPEN: point to `/reports/`? (template + 16-page render).
-
-### GitHub → VPS auto-deploy
-Push to `origin/feat/prism-vps-hosting` → GitHub webhook → `prism-deploy-hook.service` (Node) →
-`git pull /opt/prism-hub` → live in seconds. No scp. [[reference-prism-hub-autodeploy]].
-
-### Cassandra (rename + portrait + housekeeping)
-- Rename **Cass → Cassandra** everywhere incl SOUL.md + AGENTS.md (`/root/.hermes-prism/`, sudo; 0
-  standalone "Cass"). SOUL frozen per session → **all Hermes sessions wiped** so new chats use new SOUL.
-- Portrait: 4 via Imagen 4 on the VPS gemini key; user picked **cass-2**. SPA chat avatar
-  `/assets/cassandra.png` (live). Telegram avatar DONE (user uploaded `cassandra-telegram-640x360.png`
-  via BotFather, 2026-06-30). Same face on SPA + Telegram now.
-- `sessions.auto_prune: true`, `retention_days: 7` in config.yaml (restarted). No custom cron.
-- [[reference-vps-image-gen-imagen-telegram-avatar]].
-
-### detect-search
-Vendored into `arijit-skills/skills/detect-search/` (pushed to main); `~/.claude/skills/detect-search`
-is a SYMLINK into the repo (backup `.prelink-bak-20260629`). Runs on VPS (`--full-tech` → Algolia on
-petsmart, 14 categories).
-
-### Wave-2 SimilarWeb blocker — RESOLVED
-User manually captured logged-in SimilarWeb screenshots (10 tabs × 7 companies: dell, footlocker, jbl,
-michaelkors, thenorthface, torrid, autozone) at `PIP/docs/temp/similarweb-wave2/`. Traffic now comes
-from those screenshots, not the dead API. Wave-2 audits fully keyless + runnable.
-[[feedback-wave2-blocker-similarweb-mcp]].
+## RESUME ACTION (do FIRST next session)
+1. Read this file + `docs/workspace/hermes-prism-integration/artifacts/README.md` (how to run the generators) + `downloadable-artifacts-deep-look.md` (the full investigation).
+2. Open the current pilot output: `~/prism-hub/petsmart/petsmart-search-audit.pdf` (portrait doc, the lead deliverable) and `petsmart-audit-deck.pdf` (16:9 deck, secondary).
+3. The reference to MATCH: `PIP/docs/example-and-context/L.L. Bean Search Audit -Algolia.pdf` (7-page A4 portrait). Render it to PNG (pdftoppm) to re-study if needed.
+4. Generators live at `docs/workspace/hermes-prism-integration/artifacts/make_report.py` (portrait, LEAD) and `make_deck.py` (16:9). Iterate THESE (they were developed in scratchpad and copied here; scratchpad is ephemeral).
+5. FIRST fix: the customer-logo trust strip is empty (build-time curl to logo.clearbit.com was sandbox-blocked). Re-fetch with sandbox disabled OR vendor real Algolia-customer logos into the design system + inline. Then re-render + verify.
+6. Then user-feedback polish, then roll out to the other 7 reports + bake into the arijit-skills audit pipeline.
 
 ---
 
-## DECISIONS LOCKED THIS SESSION
-- About = splash at `/`; reports → `/reports/`; `/about/` redirects.
-- Port any sent React/shadcn/GSAP component to **vanilla** (static site). [[feedback-port-react-to-vanilla]]
-- No em dashes in reader-facing copy. [[feedback-no-em-dashes]]
-- Cassandra (never "Cass"); cass-2 portrait; auto_prune 7d.
-- Audit report pages keep their em dashes.
+## DECISIONS LOCKED THIS SESSION (artifacts track)
+- Deliverable scope = BOTH the existing document PDFs (leave-behind/AE/battle/book — wire up + brand-polish) AND a net-new presentation. Delivery = pre-generated files per report + real Download buttons in the SPA. (Existing PDF wiring + download UI NOT started yet.)
+- Presentation format: started as editable PPTX, then user chose a "beautiful PDF deck"; then user pivoted again to **match the L.L. Bean example = portrait A4 chaptered DOCUMENT.** That is now the lead format.
+- NO financials, NO pricing page (user removed both). End on a scoped POC ask.
+- Deck/doc content must be customer-facing, visual, chaptered, and 100% VERIFIED from the audit JSON with sources shown. No hallucination, no invented numbers, no em dashes. (User stated these hard rules repeatedly.)
+- Audience = exec, presented live (for the deck); the portrait doc is a leave-behind/read-alone. 14-16 slides for the deck; portrait doc = 7 pages like the reference.
+- Brand source of truth = `Algolia-Design-System/` (Sora font, #003DFF, logo pack, deck-stage engine, colors_and_type.css). Use the real assets, never redraw the mark.
+- Scorecard heatmap uses the SPA red/amber/green by `score.breakdown_severity` (LOW=green #059669, MEDIUM=amber #D97706, HIGH/CRITICAL=red #DC2626/#B91C1C).
 
-## PENDING / NOT DONE (no false claims)
-- **Vault fork** — verify it completed (resume step 2).
-- ~~Telegram avatar~~ — DONE (user uploaded `cassandra-telegram-640x360.png` via BotFather 2026-06-30).
-- **Audit-page logos** → decide `/` vs `/reports/`.
-- **Wave-2 e2e audits** (7) — NOT run; now unblocked. "Cassandra runs audit e2e" chat-trigger NOT built.
-- **OAuth token rotation** — not done (older item).
-- Audit pages still have em dashes (intentional).
+## HOW THE PORTRAIT DOC IS BUILT (make_report.py)
+Self-contained HTML (Sora embedded as @font-face base64, all images as data URIs) -> headless Chrome `--print-to-pdf` (A4). 7 pages: (1) cover = Algolia logo + "eCommerce Search Audit for {Co}" + their `screenshots/01-homepage.png` in a monitor frame + prepared-for/by + footer; (2) About Algolia + About this document + Why-discovery-matters (80%/1.8x/81%, sourced) + Algolia delivers (case_studies w/ links); (3) scorecard heatmap; (4-6) "Areas of improvement" chapter band + findings (2/page): shopper query + prospect_description + "With Algolia {solution}" + source + the real screenshot tagged "What shoppers see today"; (7) close = scoped POC + next_steps. Running header + footer (logo strip + algolia.com navy bar) on every page.
 
-## KEY FILES
-- `~/prism-hub/index.html` (About splash, canonical) · `reports/index.html` (audit list) ·
-  `about/index.html` (redirect) · `assets/grid-bg.js` · `assets/cassandra.png` ·
-  `assets/cassandra-telegram-640x360.png` · `assets/tour/*.png` · `chat-widget.js`.
-  Unused: `assets/parallax/*.png` (failed parallax), `assets/covers/*.png`, `assets/cass-candidates/`.
-- VPS: `/opt/prism-hub` (git auto-pull) · `/opt/prism-deploy-hook/` · `/root/.hermes-prism/`
-  (SOUL.md, AGENTS.md, config.yaml).
-- Vault: `Projects/PRISM/` (wiki).
+## VERIFIED DATA FIELDS USED (petsmart JSON) — all source-backed
+- score.{overall,verdict,breakdown,breakdown_labels,breakdown_severity,critical/moderate/low_count}
+- findings[].{title,tested_query,expected_behavior,actual_behavior,impact_stat,impact_stat_source,screenshot_file,prospect_description,pain_frame,algolia_solution,algolia_case_study_company/result/url}
+- gap_pairs[] (you said/we found, w/ said_source_url), intelligence_signals[] (each has source_url: exec/media_quote/competitor/industry-opp/industry-risk/partner/hiring/funding), competitors[] (search_vendor), case_studies[] (result/company/why/url), industry_context, bibliography[17], recommended_first_play, next_steps.
+- Screenshots: `screenshots/` (33 files; screenshot_file already includes the `screenshots/` prefix).
 
-## REPOS (all synced at persist)
-- prism-hub `feat/prism-vps-hosting` · PIP `feat/prism-e2e-cycle` · arijit-skills `feat/gemini-grounded-search`
+## ENV / TOOLING (verified this session)
+- Chrome headless renders HTML->PDF (16:9 deck @page set by deck-stage; portrait @page A4 in make_report). `--virtual-time-budget=12000-15000` so fonts/images load.
+- Sora TTF: fetched from google/fonts, saved to `Algolia-Design-System/assets/fonts/Sora.ttf` + installed to `~/Library/Fonts`. (Theme font fallback is Arial; force Sora on runs.)
+- pdftoppm (poppler) for PDF->PNG to verify visually by Reading the PNGs. qlmanage = page 1 only. No LibreOffice; PPTX visual check used qlmanage (page 1) only.
+- python-pptx 1.0.2 installed (only the abandoned PPTX path used it).
 
----
+## FILES WRITTEN / CHANGED THIS SESSION
+PIP repo (uncommitted):
+- `docs/workspace/hermes-prism-integration/artifacts/{make_report.py,make_deck.py,inspect_tpl.py,README.md}` — generators (durable copies).
+- `docs/workspace/hermes-prism-integration/downloadable-artifacts-deep-look.md` — investigation + decisions.
+- `docs/workspace/hermes-prism-integration/canonical-output-contract.md` — (earlier chat work).
+- `docs/example-and-context/L.L. Bean Search Audit -Algolia.pdf` — the reference (user-added).
+- `SESSION.md` (this file). (Also `frontend/middleware.ts`, `frontend/app/sign-up/` show modified/untracked — from the parallel login track, not this session.)
+Outside repo:
+- `~/prism-hub/petsmart/petsmart-search-audit.pdf` (portrait doc) + `petsmart-audit-deck.pdf` (16:9 deck) — pilot outputs.
+- `Algolia-Design-System/assets/fonts/Sora.ttf` (added); `~/Library/Fonts/Sora.ttf` (installed).
 
-## HANDOFF BOOTSTRAP (paste into a fresh session)
-> Resuming PRISM. Read `/Users/arijitchowdhury/Dropbox/AI-Development/PIP/SESSION.md` + its `memory/MEMORY.md`
-> first. FIRST verify the vault wiki fork finished (Projects/PRISM/ — 6 ADRs dated 2026-06-30 +
-> wiki/entities/); finish it if not. Use `dangerouslyDisableSandbox:true` on every `ssh chowmes-vps`.
-> Rules: port React components to vanilla (static site); NO em dashes in copy; right tool per job
-> (Scout/Gemini/detect-search/yfinance/chrome); no fabrication. Then work the PENDING list.
+EARLIER THIS SESSION (Cassandra chat polish — DONE + deployed, separate from artifacts):
+- `~/prism-hub/chat-widget.js`: bare-URL autolink, [FACT]→ⓘ citation links, aggressive inline section linking, "Suggested questions" chips, tab-aware jumps, drag-resize/dock/expand drawer, body-padding reflow, [CONTINUATION]/[Account:] strip. Pushed (auto-deployed).
+- VPS Hermes plugin `prism-report-qa/__init__.py` (repo copy in `docs/workspace/hermes-prism-integration/chowmes-prism/plugins/`): _clean_for_send strips tags + plainifies markdown for Telegram + appends clickable Evidence footer + suggested-questions line. Deployed to VPS, sessions pruned.
+- SOUL.md restored to the rich personality version (from VPS backup) — `docs/workspace/.../chowmes-prism/SOUL.md`. Deployed.
+
+## WHAT HAS NOT BEEN DONE (no false claims)
+- Portrait doc logo strip + G2 trust badges: NOT rendering (sandbox blocked the logo fetch). Top fix.
+- Existing document PDFs (leave-behind/AE/battle/book) NOT wired/generated/brand-polished yet.
+- Download buttons in the SPA: NOT built (the SPA `assets_library` is empty; Print button is crude).
+- Rollout to the other 7 reports: NOT done. Pipeline integration: NOT done.
+- The 16:9 deck is superseded but still exists; user has not said to delete it.
+- Nothing committed to git this session.
+- Login/multi-tenancy Slice 1 (track B): unchanged, still awaiting user Clerk setup.
+
+## OPEN QUESTIONS FOR USER
+1. Is the portrait doc v1 close to the bar? What to adjust (content depth, more findings/page, capability before/after sections like the reference's NeuralSearch page, G2 badges)?
+2. After the doc is right: proceed to wire the existing document PDFs + Download buttons, then roll out?
