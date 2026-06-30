@@ -34,6 +34,7 @@
     "#prism-chat-panel{position:fixed;bottom:24px;right:24px;z-index:99999;width:390px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 48px);background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(33,36,61,.30);display:none;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif}" +
     "#prism-chat-head{background:#21243D;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px}" +
     "#prism-chat-head .t{font-size:15px;font-weight:600}#prism-chat-head .s{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}" +
+    "#prism-chat-head .av{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:2px solid rgba(255,255,255,.25)}" +
     "#prism-chat-x{margin-left:auto;background:0;border:0;color:rgba(255,255,255,.7);font-size:22px;cursor:pointer;line-height:1}" +
     "#prism-chat-log{flex:1;overflow-y:auto;padding:18px;background:#F8F9FB;display:flex;flex-direction:column;gap:12px}" +
     ".pc-msg{max-width:85%;padding:11px 14px;border-radius:13px;font-size:14px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}" +
@@ -55,7 +56,7 @@
   btn.innerHTML = "<span>🔍</span> Ask about this audit";
   var panel = el("div", { id: "prism-chat-panel" });
   panel.innerHTML =
-    '<div id="prism-chat-head"><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div><button id=\"prism-chat-x\" aria-label=\"close\">×</button></div>" +
+    '<div id="prism-chat-head"><img class="av" src="/assets/cassandra.png" alt="Cassandra" /><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div><button id=\"prism-chat-x\" aria-label=\"close\">×</button></div>" +
     '<div id="prism-chat-log"></div>' +
     '<form id="prism-chat-form"><textarea id="prism-chat-in" rows="1" placeholder="Ask anything about this audit…"></textarea><button id="prism-chat-send" type="submit">Send</button></form>';
   document.body.appendChild(btn);
