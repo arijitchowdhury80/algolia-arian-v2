@@ -1,125 +1,78 @@
-# Slice 1 — Google login + deploy + identity capture
+# Slice 1 — Unify the site under the authed Next app (public landing + Google login + gated audits)
 
-**Date:** 2026-06-30
+**Date:** 2026-06-30 (revised after scope change: Next owns the root)
 **Status:** Design — pending user review → writing-plans
 **Depends on:** nothing (foundation slice)
-**Unblocks:** Slice 2 (multi-tenancy / ACL) — see `2026-06-30-slice2-multitenancy-acl-design.md`
+**Unblocks:** Slice 2 (per-user multi-tenancy / ACL) — see `2026-06-30-slice2-multitenancy-acl-design.md`
 
 ## Goal
 
-A visitor hits the deployed Next.js app at **`prism.chowmes.com/app`**, lands on `/app/sign-in`,
-clicks **Continue with Google**, authenticates, and lands on `/app/chat`. Any Google account is
-allowed. The authenticated Clerk userId is captured and persisted as the **tenant key** so Slice 2's
-ACL has a clean foundation.
+Make the Next.js app the entire front door for `prism.chowmes.com`:
+- **`/` is a public landing page** (the existing static About splash, served as-is).
+- **Google login** ("Continue with Google", a Clerk dashboard toggle).
+- **All audit reports + chat are behind login** (blanket gate: any logged-in user can see them; per-user ACL is Slice 2).
+- Each authenticated Clerk user is persisted into a `users` table as the durable tenant key.
 
-## Deployment model: VPS + Caddy + systemd (NOT Vercel)
+The static-site-at-root serving is **retired** (cutover): the Next service serves the whole domain.
 
-The whole stack runs on the Chowmes VPS behind Caddy — there is no Vercel. Verified on the box
-(2026-06-30):
-- `prism-platform` = `uvicorn prism_platform.main:app` on `127.0.0.1:8000`, systemd service.
-- static `prism-hub` = node server on `127.0.0.1:8651`, fronted by Caddy (TLS, :80/:443).
-- **Node 22.23.1 + npm present**; `/opt/prism-hub` and `/opt/prism-platform` exist; **no Next.js app
-  deployed** (`/opt/prism-frontend` absent).
+## Boundary (explicit, per user's "don't put everything behind login")
 
-The Next.js app cannot be a static export — Clerk middleware + the `/api/hermes` server route need a
-Node runtime. So:
-- Deploy to `/opt/prism-frontend`, build (`next build`), run `next start` as a **systemd service**
-  (`prism-frontend.service`) on `127.0.0.1:3000` — mirrors `prism-platform.service`.
-- **Same-origin path route** at `prism.chowmes.com/app` (chosen over a subdomain): when Slice 2 gates
-  the reports, app + reports share the origin so the Clerk session cookie covers both — no
-  cross-origin/satellite-domain dance.
-- Three concrete requirements of the path route (all standard, no blockers):
-  1. `next.config` → `basePath: '/app'` (routes/assets become `/app/...`).
-  2. Caddy → `handle_path /app/*` reverse_proxy `127.0.0.1:3000`; the static prism-hub node server
-     (`:8651`) keeps everything else. Order so the static server never claims `/app`.
-  3. Clerk path env: `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/app/sign-in` (and siblings); prod redirect URLs
-     point at `/app/*`. Clerk binds to the domain `prism.chowmes.com` and handles custom paths.
-- Service env: Clerk **prod** keys, `PRISM_API_URL=http://127.0.0.1:8000`, `HERMES_API_URL/KEY`,
-  `BYPASS_AUTH` **unset**.
+| Route | Serving | Auth |
+|-------|---------|------|
+| `/` (landing / About splash) | existing static `index.html` copied into `public/` + a `next.config` rewrite | **Public** |
+| `/assets/*`, `/chat-widget.js`, `/sign-in` | `public/` static + Clerk | **Public** |
+| `/reports`, `/reports/<slug>/...` (report HTML + screenshots) | gated catch-all route handler streaming from a report-data dir, with its own `auth()` check | **Login** |
+| `/api/report-chat` | new Clerk-gated handler = static `api/chat.js` logic (slug → Hermes) | **Login** |
+| `/chat` + dashboard, `/api/hermes` | existing | **Login** |
+| `/api/chat` (aRRIe LLM tools), `/demo` | existing | as-is (`/demo` public) |
 
-## The core truth: this is config + deploy, not building auth
+## Three integration landmines (designed around, from the codebase map)
 
-The Clerk wiring already exists and works end-to-end in dev:
+1. **Two different `/api/chat` collide.** The static report `chat-widget.js` POSTs `/api/chat` expecting a *Hermes grounded-proxy* (static `~/prism-hub/api/chat.js`: `slug → /v1/responses`). The Next app **already has** an `/api/chat` that is a different aRRIe LLM-tools handler. Reusing it would break report grounding. **Fix:** new gated `/api/report-chat` replicating `api/chat.js`, and repoint the widget to it.
+2. **Dotted paths bypass Clerk middleware.** The middleware matcher (`middleware.ts:19`) skips any path containing a `.`. So report **screenshots (.png)** and **chat-widget.js** are *not* gated by middleware. **The report route handler MUST do its own `auth()` check** — this is load-bearing, or screenshots leak to anonymous users.
+3. **Reports live at root slugs today** (`/petsmart/`, not `/reports/petsmart/`; map confirms 10 report dirs + `reports/index.html` hardcoded grid). Moving in, namespace under gated `/reports/<slug>/` to avoid colliding with app routes; build a small gated report-list; and fix the widget's slug extraction (`chat-widget.js:18` reads `pathname.split("/")[0]`, which becomes "reports").
 
-- `frontend/app/layout.tsx:41` — `<ClerkProvider>` wraps the app.
-- `frontend/middleware.ts:8-16` — `clerkMiddleware` protects everything except `/sign-in` and
-  `/demo`; `BYPASS_AUTH=true` short-circuits for local dev.
-- `frontend/app/sign-in/[[...sign-in]]/page.tsx:14` — Clerk `<SignIn>` component. **It
-  auto-renders whatever social connections are enabled in the Clerk dashboard** — so "Sign in
-  with Google" is a dashboard toggle, not code.
-- Flow: `/` → redirect `/chat` (`app/page.tsx:4`) → `/chat` is in the `(authenticated)` group →
-  middleware bounces unauthenticated users to `/sign-in` → after login → `/chat`.
-- `frontend/.env.local` exists (Clerk dev keys present). No `vercel.json` / `.vercel` → the app
-  has never been deployed.
+Other notes: `audit-data.json` is read **server-side by Hermes** (`REPORTS_DIR=/opt/data/reports`), not client-side, so Next serves only report HTML + screenshots. The public landing also loads `chat-widget.js`, so its chat 401s for anonymous visitors (acceptable under blanket gate; revisit in Slice 2).
 
-## Scope
+## Report serving mechanism
 
-### In scope
-1. **Enable Google** as a Clerk social connection (dashboard). Dev works on Clerk's shared Google
-   credentials instantly; prod needs your own Google Cloud OAuth client.
-2. **Deploy `frontend/` to the VPS** as `prism-frontend.service` (systemd + `next start`,
-   `127.0.0.1:3000`) behind a Caddy `/app` route, with Clerk **production** keys, `BYPASS_AUTH` unset.
-3. **Identity capture hook** — persist the authenticated Clerk userId as the tenant key (a real
-   `users` row, not `"system"`), so Slice 2 can build ACL without re-plumbing identity.
-4. **Verify** Google sign-in end-to-end (dev, then the live prod URL).
+- Report HTML + assets are **not committed to git** (~14 MB). They are **synced at deploy time** into a directory the Next service reads, addressed by `REPORTS_HTML_DIR` (default a small local dir in dev).
+- `app/reports/[[...slug]]/route.ts`: `auth()` gate → resolve the requested path **safely under `REPORTS_HTML_DIR`** (path-traversal guard) → stream the file with the right `Content-Type`. Serves `/reports/<slug>/index.html` and `/reports/<slug>/screenshots/*.png`.
+- Report assets referenced at root (`/chat-widget.js`, `/assets/*`) live in `public/` (public; not sensitive). Only report HTML + screenshots are gated.
+- Report list: a gated server component listing `REPORTS_HTML_DIR` subdirs → links `/reports/<slug>/`.
 
-### Out of scope (Slice 2)
-Gating the reports, migrating reports into the app, multi-tenant org model, ACL,
-retiring/repurposing the static prism-hub site.
+## Report chat (kept working)
 
-## Task split (most steps are human/browser-gated, not code)
+- `app/api/report-chat/route.ts`: Clerk-gated port of `api/chat.js`. Reads `{message, slug, sid}`; builds `X-Hermes-Session-Key = agent:main:prism:web:<sid>:acct:<reportSlug>`; tags input `[Account: <slug>]`; proxies `POST $HERMES_API_URL/v1/responses` (bearer server-side); streams plain-text deltas. Uses the Web `Response`/`ReadableStream` form (like `app/api/hermes/route.ts`), not Node `res.write`.
+- Copy `chat-widget.js` into `public/`, modified: endpoint `/api/chat` → `/api/report-chat`; slug extraction handles `/reports/<slug>/`.
 
-| # | Step | Owner | Why |
-|---|------|-------|-----|
-| 1 | Confirm/create Clerk **production** instance | User (Clerk dashboard) | Dev keys can't serve prod |
-| 2 | Enable **Google** social connection | User (Clerk dashboard) | A toggle, not code |
-| 3 | Create **Google Cloud OAuth client** (prod), paste client ID/secret into Clerk | User (Google Cloud + Clerk) | Console actions Claude can't perform |
-| 4 | Add the `prism.chowmes.com/app` **DNS/Clerk prod domain** binding + prod redirect URLs | User (Clerk dashboard) | Clerk prod binds to the domain; OAuth redirects must list `/app/*` |
-| 5 | Build + deploy to `/opt/prism-frontend`; write `prism-frontend.service`; add Caddy `/app` route; set service env | Claude (on VPS) + User (authorize) | Mirrors `prism-platform.service`; Claude has VPS admin for service/Caddy work |
-| 6 | **Verify** Google sign-in end-to-end (dev → live `prism.chowmes.com/app`) | Claude | Evidence, not assertion |
+## Identity capture (unchanged from the original slice)
 
-## Identity capture hook (the one piece of real code)
+- `users` table (`id` = Clerk userId PK, `email`, `name`, `org_id` nullable — org-ready seam).
+- `POST /api/v1/users/upsert` (loopback-only on `127.0.0.1:8000`, idempotent).
+- Server-side `syncUser()` mirrors the Clerk-verified user into the backend on authed load.
+- Blanket gate now; per-user ACL is Slice 2. Identity is captured now so Slice 2 has the tenant key.
 
-When a user is authenticated, mirror their Clerk identity into a local `users` row and derive the
-tenant key from it. This is the seam Slice 2 builds ACL on.
+## Deployment (VPS, cutover)
 
-- `users` table: `id` (text PK = Clerk userId), `email`, `name`, `org_id` (nullable — org-ready seam).
-- On first authenticated request (or a Clerk webhook), upsert the `users` row.
-- The Hermes session key derived in `frontend/lib/hermes-session.ts` must carry this userId in its
-  identity segment (already maps Clerk userId → session key; confirm it threads the verified id).
+- `prism-frontend.service` (systemd + `next start -H 127.0.0.1 -p 3000`). **No basePath** (app owns root).
+- Caddy: `prism.chowmes.com` → `reverse_proxy 127.0.0.1:3000` for the **whole domain**. Retire the static-root node serving (`:8651`) for this domain.
+- Deploy-time: sync the 10 report dirs + `/assets` + `chat-widget.js` into the app's `REPORTS_HTML_DIR` / `public/`. The report-source pipeline (prism-hub GitHub auto-deploy) must feed `REPORTS_HTML_DIR`.
+- Service env: Clerk **prod** keys, the `NEXT_PUBLIC_CLERK_*` path vars, `PRISM_API_URL=http://127.0.0.1:8000`, `HERMES_API_URL` + `HERMES_API_KEY`, `REPORTS_HTML_DIR`. `BYPASS_AUTH` **unset**.
 
-> Detail deferred to the plan: webhook-driven upsert vs lazy upsert-on-request. Either works;
-> pick in writing-plans.
+## Verified facts (carried from pre-design probes, 2026-06-30)
 
-## Security
-
-- **`BYPASS_AUTH` must never be set in the `prism-frontend.service` env.** It is read at
-  `middleware.ts:10` and `layout.tsx:18`; if set, it disables auth entirely. The deploy checklist
-  must assert it is unset in the systemd unit.
-- **Caddy route isolation:** the `/app` reverse_proxy must not let the static prism-hub server claim
-  `/app/*`, and the Next app must not shadow the public report routes. Verify route precedence post-deploy.
-- The Clerk **secret key** and (later) the Hermes API key stay server-side only — never
-  `NEXT_PUBLIC_*`.
+- FastAPI live on `127.0.0.1:8000` (`/health`=200); loopback reachable from on-box callers (proven by the report-qa plugin already calling it).
+- `uvicorn` single async process; concurrency for ~10 users is a non-issue.
+- Alembic head = `008`; next revision `009`.
+- `create_audit` (`audits.py:113`) defaults `user_id="system"`; that becomes a real FK in Slice 2.
+- Next app is a server app (no static export); `next.config.ts` currently only sets `devIndicators:false`.
 
 ## Validation risk surface
 
-- **What dev verification proves:** the code path + sign-in flow are correct (Google button
-  appears, OAuth round-trips, user lands on `/chat`).
-- **What it does NOT prove:** production Google OAuth. That is only proven once the prod Clerk
-  instance + your Google prod OAuth client + the deployed domain are live and sign-in is tested
-  against the real URL.
-- **Remaining risk:** prod-only OAuth redirect/origin misconfig **plus** the `/app` basePath +
-  Caddy route interaction (the redirect could resolve to `/sign-in` instead of `/app/sign-in`, or
-  the static server could intercept `/app`). The only proof is a live sign-in on
-  `prism.chowmes.com/app` after deploy.
+- **Dev verification proves:** the route map, the gate (anonymous blocked from `/reports/*` and `/api/report-chat`), the public landing, and report chat grounding all work locally.
+- **It does NOT prove:** the production cutover (Caddy root → `:3000` replacing the static serve), prod Google OAuth, or that the report-source pipeline correctly feeds `REPORTS_HTML_DIR`. Those are only proven by the live verification on `prism.chowmes.com` after deploy.
+- **Remaining risk:** the cutover is destructive to the current public serving. Keep a rollback (Caddy can re-point to `:8651` instantly). Dotted-path bypass means the handler `auth()` check is the only thing gating screenshots — test an anonymous screenshot fetch returns 401/redirect.
 
-## Open items for the plan
-- Identity upsert mechanism (webhook vs lazy).
-- Whether `users` lands in this slice's migration or is created here and extended in Slice 2.
-- Confirm `hermes-session.ts` carries the verified Clerk userId (not a placeholder).
-- `basePath: '/app'` rollout — verify it doesn't break dev asset/route paths; test the full sign-in
-  flow in dev with basePath set before deploying.
-- Caddy route precedence vs the static prism-hub node server (`:8651`) — confirm `/app/*` reaches the
-  Next service and nothing else does.
-- `npm` vs `pnpm` on the VPS — package.json implies pnpm; only `npm` confirmed present. Decide
-  install path (use npm, or install pnpm) in the plan.
+## Out of scope (Slice 2)
+Per-user audit visibility (Rob sees only Rob's), the `can_user_see()` ACL, identity-driven Hermes binding (+ its runtime probe), per-audit reports, audit-ownership stamping.
