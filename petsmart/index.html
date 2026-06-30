@@ -9773,8 +9773,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -9810,14 +9826,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
