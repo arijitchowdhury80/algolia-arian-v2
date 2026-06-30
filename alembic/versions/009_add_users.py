@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import sqlalchemy as sa
 
-from alembic import op  # type: ignore[attr-defined]
+from alembic import op
 
 revision: str = "009"
 down_revision: str = "008"
