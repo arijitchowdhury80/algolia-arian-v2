@@ -1,0 +1,52 @@
+import { assertEquals, assert } from "https://deno.land/std@0.224.0/assert/mod.ts";
+import { buildModel } from "./job-model.js";
+
+const data = JSON.parse(await Deno.readTextFile(new URL("../../homedepot-mexico-audit-data.json", import.meta.url)));
+
+Deno.test("brief surfaces company + score-derived verdict", () => {
+  const m = buildModel(data);
+  assert(m.brief.company && m.brief.company.length > 0);
+  assert(["critical", "moderate", "ok"].includes(m.brief.verdict));
+  assert(typeof m.brief.score === "number");
+});
+
+Deno.test("exactly six jobs in the locked carve order", () => {
+  const m = buildModel(data);
+  assertEquals(m.jobs.map((j) => j.id), ["account", "broken", "money", "who", "convo", "reach"]);
+  assertEquals(m.jobs.map((j) => j.label), [
+    "Know the account", "Prove it's broken", "Make the money case",
+    "Know who decides", "Run the conversation", "Reach out",
+  ]);
+});
+
+Deno.test("every job has at least one section", () => {
+  const m = buildModel(data);
+  for (const j of m.jobs) assert(j.sections.length >= 1, `job ${j.id} empty`);
+});
+
+Deno.test("findings feed the 'broken' job", () => {
+  const m = buildModel(data);
+  const broken = m.jobs.find((j) => j.id === "broken");
+  assert(broken.sections.some((s) => s.key === "findings"));
+});
+
+Deno.test("abx_sequence feeds the 'reach' job", () => {
+  const m = buildModel(data);
+  const reach = m.jobs.find((j) => j.id === "reach");
+  assert(reach.sections.some((s) => s.key === "abx"));
+});
+
+Deno.test("exports link to existing deliverable pages", () => {
+  const m = buildModel(data);
+  const hrefs = m.exports.map((e) => e.href);
+  assert(hrefs.includes("/homedepot-mexico/ae-report.html"));
+  assert(hrefs.includes("/homedepot-mexico/battle-card.html"));
+  assert(hrefs.includes("/homedepot-mexico/leave-behind.html"));
+});
+
+Deno.test("prospect view excludes internal-only surfaces", () => {
+  const m = buildModel(data);
+  const blob = JSON.stringify(m.prospect).toLowerCase();
+  assert(!blob.includes("meddpicc"));
+  assert(!blob.includes("abx"));
+});
