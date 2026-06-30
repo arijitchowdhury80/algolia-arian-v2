@@ -96,12 +96,13 @@ a { color: var(--blue); text-decoration: none; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
 section { position: relative; }
 .band { padding: 96px 0; }
-.band--hero       { padding: 132px 0 104px; background: linear-gradient(135deg, #F8FAFF 0%, #EEF2FF 45%, #F3F0FF 100%); }
-.band--who        { background: linear-gradient(180deg, #FFFFFF 0%, #F9FAFF 100%); }
-.band--produce    { background: linear-gradient(180deg, #F9FAFF 0%, #EEF3FD 100%); }
-.band--how        { background: linear-gradient(180deg, #FFFFFF 0%, #F4F1FF 100%); }
-.band--skills     { background: linear-gradient(180deg, #FAF8FF 0%, #F0EBFF 100%); }
-.band--close      { background: linear-gradient(135deg, #F0F4FF 0%, #EBF0FD 50%, #F4EFFF 100%); padding: 88px 0; }
+/* bands transparent so the shared animated grid shows through — matches the audit pages */
+.band--hero       { padding: 132px 0 104px; background: transparent; }
+.band--who        { background: transparent; }
+.band--produce    { background: transparent; }
+.band--how        { background: transparent; }
+.band--skills     { background: transparent; }
+.band--close      { background: transparent; padding: 88px 0; }
 
 /* ── Section heading kit ───────────────────────── */
 .eyebrow {
@@ -347,36 +348,9 @@ section { position: relative; }
   .flow { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
 }
-/* ── ZOOM PARALLAX (vanilla; scroll-driven scale of real audit screenshots) ── */
-.zp-track  { position: relative; height: 320vh; }
-.zp-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; background: linear-gradient(180deg,#F3F0FF 0%,#EEF2FF 55%,#F8FAFF 100%); }
-.zp-head  { text-align: center; padding: 96px 24px 72px; background: linear-gradient(180deg,#FFFFFF 0%,#F3F0FF 100%); }
-.zp-head .eyebrow { display: inline-flex; justify-content: center; }
-.zp-head h2 { font-size: clamp(30px,3.8vw,52px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.06;
-  background: linear-gradient(115deg, var(--ink) 0%, var(--blue) 60%, var(--purple) 100%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.zp-head p { font-size: 17px; color: var(--mid); margin-top: 14px; font-weight: 300; }
-.zp-tile { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; will-change: transform; transform-origin: center center; }
-.zp-box  { position: relative; height: 26vh; width: 26vw; overflow: hidden; border-radius: 12px;
-  box-shadow: 0 24px 60px rgba(33,36,61,0.22); border: 1px solid rgba(255,255,255,0.65); }
-.zp-box img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.zp-1 .zp-box { top: -30vh; left: 5vw;     height: 30vh; width: 35vw; }
-.zp-2 .zp-box { top: -10vh; left: -25vw;   height: 45vh; width: 20vw; }
-.zp-3 .zp-box { left: 27.5vw;              height: 25vh; width: 25vw; }
-.zp-4 .zp-box { top: 27.5vh; left: 5vw;    height: 25vh; width: 20vw; }
-.zp-5 .zp-box { top: 27.5vh; left: -22.5vw; height: 25vh; width: 30vw; }
-.zp-6 .zp-box { top: 22.5vh; left: 25vw;   height: 15vh; width: 15vw; }
-
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  /* parallax collapses to one static report image */
-  .zp-track { height: auto; }
-  .zp-sticky { position: static; height: auto; padding: 56px 0; }
-  .zp-tile { position: static; transform: none !important; }
-  .zp-tile:not(.zp-0) { display: none; }
-  .zp-0 .zp-box { height: auto; width: min(90vw,900px); margin: 0 auto; top: 0; left: 0; }
-  .zp-0 .zp-box img { height: auto; }
 }
 </style>
 </head>
@@ -446,24 +420,6 @@ section { position: relative; }
         <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Grounded chat agent</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══ ZOOM PARALLAX — real audit reports ═══ -->
-<section class="zp-head reveal" aria-hidden="false">
-  <span class="eyebrow">Real audits, not mockups</span>
-  <h2>This is what comes out.</h2>
-  <p>Actual PRISM audit reports — keep scrolling to dive in.</p>
-</section>
-<section id="zoom-parallax" class="zp-track" aria-label="Real PRISM audit reports">
-  <div class="zp-sticky">
-    <div class="zp-tile zp-0" data-scale="4"><div class="zp-box"><img src="/assets/parallax/petsmart.png" alt="PetSmart audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-1" data-scale="5"><div class="zp-box"><img src="/assets/parallax/nike.png" alt="Nike audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-2" data-scale="6"><div class="zp-box"><img src="/assets/parallax/dsw.png" alt="DSW audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-3" data-scale="5"><div class="zp-box"><img src="/assets/parallax/llbean.png" alt="L.L.Bean audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-4" data-scale="6"><div class="zp-box"><img src="/assets/parallax/brooks-running.png" alt="Brooks Running audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-5" data-scale="8"><div class="zp-box"><img src="/assets/parallax/oriental-trading.png" alt="Oriental Trading audit report" loading="lazy"></div></div>
-    <div class="zp-tile zp-6" data-scale="9"><div class="zp-box"><img src="/assets/parallax/british-airways.png" alt="British Airways audit report" loading="lazy"></div></div>
   </div>
 </section>
 
@@ -765,29 +721,6 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   if (document.readyState !== 'loading') initAnimatedGrid();
   else document.addEventListener('DOMContentLoaded', initAnimatedGrid);
 }
-
-/* ── Zoom parallax: scroll progress → tile scale ── */
-(function () {
-  var track = document.getElementById('zoom-parallax');
-  if (!track) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var tiles = Array.prototype.slice.call(track.querySelectorAll('.zp-tile'));
-  var ticking = false;
-  function update() {
-    ticking = false;
-    var total = track.offsetHeight - window.innerHeight;
-    var scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), total);
-    var t = total > 0 ? scrolled / total : 0;
-    for (var i = 0; i < tiles.length; i++) {
-      var max = parseFloat(tiles[i].getAttribute('data-scale')) || 4;
-      tiles[i].style.transform = 'scale(' + (1 + t * (max - 1)) + ')';
-    }
-  }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  update();
-})();
 </script>
 </body>
 </html>
