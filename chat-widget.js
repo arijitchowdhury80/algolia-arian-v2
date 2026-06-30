@@ -26,14 +26,26 @@
 
   // --- styles (fluid panel + expand state + rendered-markdown typography) ---
   var css =
+    ":root{--pc-w:440px}" +
     "#prism-chat-btn{position:fixed;bottom:24px;right:24px;z-index:99999;height:54px;padding:0 22px;border:0;border-radius:27px;background:#21243D;color:#fff;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 28px rgba(33,36,61,.32);display:flex;align-items:center;gap:9px}" +
     "#prism-chat-btn:hover{background:#2c3050}" +
-    "#prism-chat-panel{position:fixed;bottom:24px;right:24px;z-index:99999;width:clamp(320px,30vw,420px);height:min(620px,calc(100vh - 48px));max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(33,36,61,.30);display:flex;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif;transform:translateX(118%);opacity:0;visibility:hidden;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .18s ease,width .18s ease,height .18s ease}" +
-    "#prism-chat-panel.pc-open{transform:translateX(0);opacity:1;visibility:visible}" +
-    "#prism-chat-panel.pc-max{top:16px;bottom:16px;right:16px;height:auto;width:clamp(360px,42vw,640px)}" +
-    // chat slides in beside content (never over it) on screens with room; reserves left for TOC, right for chat
-    "@media(min-width:1200px){html.pc-chat-open #content{margin-left:248px!important;margin-right:470px!important;max-width:none!important;transition:margin .24s ease}}" +
-    "@media(min-width:1500px){html.pc-chat-open.pc-chat-max #content{margin-right:700px!important}}" +
+    // Full-height side drawer. Slides from the edge, never floats over content. Width is a live CSS var so resize is fluid.
+    "#prism-chat-panel{position:fixed;top:0;right:0;bottom:0;z-index:99999;width:var(--pc-w);max-width:100vw;background:#fff;box-shadow:-14px 0 50px rgba(33,36,61,.22);display:flex;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif;transform:translateX(101%);transition:transform .26s cubic-bezier(.2,.8,.2,1)}" +
+    "#prism-chat-panel.pc-open{transform:none}" +
+    "#prism-chat-panel.pc-left{left:0;right:auto;box-shadow:14px 0 50px rgba(33,36,61,.22);transform:translateX(-101%)}" +
+    "#prism-chat-panel.pc-left.pc-open{transform:none}" +
+    // drag handle on the inner edge → resize
+    "#prism-chat-grip{position:absolute;top:0;left:0;width:8px;height:100%;cursor:ew-resize;background:transparent;z-index:6}" +
+    "#prism-chat-grip:hover,#prism-chat-grip.pc-dragging{background:rgba(47,84,255,.25)}" +
+    "#prism-chat-panel.pc-left #prism-chat-grip{left:auto;right:0}" +
+    "#prism-chat-dock{background:0;border:0;color:rgba(255,255,255,.7);cursor:pointer;line-height:1;padding:4px;border-radius:6px;font-size:17px}" +
+    "#prism-chat-dock:hover{background:rgba(255,255,255,.12);color:#fff}" +
+    // Reflow the report so the drawer never covers it. Follows the live width var. Right dock by default; left when docked left.
+    "@media(min-width:760px){" +
+      "html.pc-chat-open #content{margin-right:calc(var(--pc-w) + 28px)!important;max-width:none!important;transition:margin .26s ease}" +
+      "html.pc-chat-open.pc-chat-left #content{margin-right:28px!important;margin-left:calc(var(--pc-w) + 28px)!important}" +
+    "}" +
+    "@media(max-width:759px){#prism-chat-panel{width:100vw}}" +
     "#prism-chat-head{background:#21243D;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}" +
     "#prism-chat-head .t{font-size:15px;font-weight:600}#prism-chat-head .s{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}" +
     "#prism-chat-head .av{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:2px solid rgba(255,255,255,.25)}" +
@@ -67,8 +79,9 @@
   btn.innerHTML = "<span>🔍</span> Ask about this audit";
   var panel = el("div", { id: "prism-chat-panel" });
   panel.innerHTML =
+    '<div id="prism-chat-grip" title="Drag to resize"></div>' +
     '<div id="prism-chat-head"><img class="av" src="/assets/cassandra.png" alt="Cassandra" /><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div>" +
-    '<div id="prism-chat-tools"><button id="prism-chat-exp" aria-label="expand" title="Expand">⤢</button><button id="prism-chat-x" aria-label="close" title="Close">×</button></div></div>' +
+    '<div id="prism-chat-tools"><button id="prism-chat-dock" aria-label="dock side" title="Dock left/right">⇄</button><button id="prism-chat-exp" aria-label="expand" title="Expand">⤢</button><button id="prism-chat-x" aria-label="close" title="Close">×</button></div></div>' +
     '<div id="prism-chat-log"></div>' +
     '<form id="prism-chat-form"><textarea id="prism-chat-in" rows="1" placeholder="Ask anything about this audit…"></textarea><button id="prism-chat-send" type="submit">Send</button></form>';
   document.body.appendChild(btn);
@@ -79,23 +92,73 @@
   var input = panel.querySelector("#prism-chat-in");
   var send = panel.querySelector("#prism-chat-send");
   var expBtn = panel.querySelector("#prism-chat-exp");
-  var greeted = false;
+  var dockBtn = panel.querySelector("#prism-chat-dock");
+  var grip = panel.querySelector("#prism-chat-grip");
+  var greeted = false, expanded = false, normalW = 440;
 
   var root = document.documentElement;
+
+  function clampW(w) { return Math.max(320, Math.min(Math.round(window.innerWidth * 0.92), w)); }
+  function setWidth(w, persist) {
+    w = clampW(w);
+    root.style.setProperty("--pc-w", w + "px");
+    if (persist) { try { localStorage.setItem("prism_chat_w", String(w)); } catch (e) {} }
+    return w;
+  }
+
+  // restore saved width + dock side
+  try {
+    var sw = parseInt(localStorage.getItem("prism_chat_w"), 10);
+    if (sw) { normalW = clampW(sw); }
+    if (localStorage.getItem("prism_chat_side") === "left") panel.classList.add("pc-left");
+  } catch (e) {}
+  setWidth(normalW, false);
+
   btn.onclick = function () {
-    panel.classList.add("pc-open"); root.classList.add("pc-chat-open"); btn.style.display = "none"; input.focus();
+    panel.classList.add("pc-open");
+    root.classList.add("pc-chat-open");
+    if (panel.classList.contains("pc-left")) root.classList.add("pc-chat-left");
+    btn.style.display = "none"; input.focus();
     if (!greeted) { greeted = true; addMsg("bot", "Ask me anything about the " + company + " search audit — I answer only from the report."); }
   };
   panel.querySelector("#prism-chat-x").onclick = function () {
-    panel.classList.remove("pc-open"); root.classList.remove("pc-chat-open", "pc-chat-max"); btn.style.display = "flex";
+    panel.classList.remove("pc-open"); root.classList.remove("pc-chat-open", "pc-chat-left"); btn.style.display = "flex";
   };
   expBtn.onclick = function () {
-    var max = panel.classList.toggle("pc-max");
-    root.classList.toggle("pc-chat-max", max);
-    expBtn.textContent = max ? "⤡" : "⤢";
-    expBtn.title = max ? "Restore" : "Expand";
+    expanded = !expanded;
+    if (expanded) { normalW = parseInt(getComputedStyle(root).getPropertyValue("--pc-w"), 10) || normalW; setWidth(Math.round(window.innerWidth * 0.9), false); }
+    else { setWidth(normalW, true); }
+    expBtn.textContent = expanded ? "⤡" : "⤢";
+    expBtn.title = expanded ? "Restore" : "Expand";
     log.scrollTop = log.scrollHeight;
   };
+  dockBtn.onclick = function () {
+    var left = panel.classList.toggle("pc-left");
+    root.classList.toggle("pc-chat-left", left && panel.classList.contains("pc-open"));
+    try { localStorage.setItem("prism_chat_side", left ? "left" : "right"); } catch (e) {}
+  };
+
+  // drag-to-resize via the inner-edge grip; content reflow follows the live width var
+  grip.addEventListener("pointerdown", function (e) {
+    e.preventDefault();
+    var left = panel.classList.contains("pc-left");
+    grip.classList.add("pc-dragging");
+    try { grip.setPointerCapture(e.pointerId); } catch (_) {}
+    function move(ev) {
+      var w = left ? ev.clientX : (window.innerWidth - ev.clientX);
+      setWidth(w, false);
+      expanded = false; expBtn.textContent = "⤢"; expBtn.title = "Expand";
+    }
+    function up() {
+      grip.classList.remove("pc-dragging");
+      normalW = parseInt(getComputedStyle(root).getPropertyValue("--pc-w"), 10) || normalW;
+      setWidth(normalW, true);
+      document.removeEventListener("pointermove", move);
+      document.removeEventListener("pointerup", up);
+    }
+    document.addEventListener("pointermove", move);
+    document.addEventListener("pointerup", up);
+  });
 
   input.addEventListener("keydown", function (e) {
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
@@ -154,6 +217,10 @@
   function mdToHtml(src) {
     if (!src) return "";
     var s = escapeHtml(src);
+    // Strip internal grounding markers that must never reach the reader:
+    // [FACT], [ESTIMATE], and source-path citations like [FACT: strategic_angles.0.pain_points.0].
+    // (The grounding discipline stays server-side; only the literal tag is removed from display.)
+    s = s.replace(/[ \t]*\[(?:FACT|ESTIMATE)\b[^\]]*\]/gi, "");
     s = s.replace(/```([\s\S]*?)```/g, function (_, c) { return "<pre><code>" + c.replace(/^\n/, "") + "</code></pre>"; });
     s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
     s = s.replace(/^###\s+(.*)$/gm, "<h4>$1</h4>").replace(/^##\s+(.*)$/gm, "<h3>$1</h3>").replace(/^#\s+(.*)$/gm, "<h3>$1</h3>");
