@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRISM — AI Prospect Intelligence for Algolia Sales</title>
+<title>PRISM: AI Prospect Intelligence for Algolia Sales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════════════════
-   PRISM — ABOUT / EXPLAINER
+   PRISM - ABOUT / EXPLAINER
    Reuses the Algolia Search Audit design system:
    Sora · #F8F9FB + pulsing blue grid · #23263B topbar ·
    blue→purple gradient · pastel section bands · white cards
@@ -96,7 +96,7 @@ a { color: var(--blue); text-decoration: none; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
 section { position: relative; }
 .band { padding: 96px 0; }
-/* bands transparent so the shared animated grid shows through — matches the audit pages */
+/* bands transparent so the shared animated grid shows through - matches the audit pages */
 .band--hero       { padding: 132px 0 104px; background: transparent; }
 .band--who        { background: transparent; }
 .band--produce    { background: transparent; }
@@ -191,9 +191,9 @@ section { position: relative; }
 }
 .pc-chip .sw { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
-/* ── WHO — role cards ──────────────────────────── */
+/* ── WHO - role cards ──────────────────────────── */
 .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
-/* shell — holds the glowing edge behind the white inner card */
+/* shell - holds the glowing edge behind the white inner card */
 .role-card { position: relative; border-radius: var(--radius); transition: transform 0.2s;
   --card-deg: 90deg; --card-d: 0; }
 .role-card:hover { transform: translateY(-6px); }
@@ -201,7 +201,7 @@ section { position: relative; }
   background: #fff; border: 1px solid var(--border); border-radius: inherit;
   padding: 32px 28px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
 .role-card:hover .role-inner { box-shadow: var(--shadow-lg); }
-/* (top accent bars removed — the glowing edge is the treatment) */
+/* (top accent bars removed - the glowing edge is the treatment) */
 /* pointer-following glowing edge (colored conic ring + soft halo, masked to the arc nearest the cursor) */
 .ge-edge { position: absolute; inset: -1.5px; border-radius: calc(var(--radius) + 1.5px); z-index: 0; pointer-events: none;
   background: conic-gradient(from 90deg, #003DFF, #5468FF, #7C3AED, #DC2626, #D97706, #059669, #0891B2, #003DFF);
@@ -218,7 +218,7 @@ section { position: relative; }
 .role-card h3 { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
 .role-card p  { font-size: 15px; color: var(--mid); line-height: 1.6; font-weight: 300; }
 
-/* ── PRODUCE — deliverables ────────────────────── */
+/* ── PRODUCE - deliverables ────────────────────── */
 .deliv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 52px; perspective: 1200px; }
 .deliv {
   position: relative; overflow: hidden; --mx: 50%; --my: 50%;
@@ -255,7 +255,7 @@ section { position: relative; }
 .deliv.featured p { color: rgba(255,255,255,0.7); }
 .deliv.featured .di { background: rgba(255,255,255,0.12); color: #fff; }
 
-/* ── HOW — tools ───────────────────────────────── */
+/* ── HOW - tools ───────────────────────────────── */
 .howbar {
   display: flex; align-items: center; gap: 14px; margin-top: 40px; margin-bottom: 6px;
   background: #fff; border: 1px solid var(--green-border); border-radius: 12px;
@@ -316,7 +316,7 @@ section { position: relative; }
 .orch .sg-head .cnt { background: rgba(255,255,255,0.18); color: #fff; }
 .skills-cta { display: flex; justify-content: center; margin-top: 44px; }
 
-/* ── HERMES — dark execution layer ─────────────── */
+/* ── HERMES - dark execution layer ─────────────── */
 .hermes {
   position: relative; color: #fff; overflow: hidden;
   background: linear-gradient(135deg, #0d1b38 0%, #1a2d52 55%, #13244a 100%);
@@ -412,7 +412,7 @@ section { position: relative; }
 
 <!-- ═══ TOPBAR ═══ -->
 <header id="topbar">
-  <a class="tb-logo" href="/" aria-label="Algolia — back to reports">
+  <a class="tb-logo" href="/" aria-label="Algolia logo, back to reports">
     <svg height="19" viewBox="0 0 2196.2 500" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" fill-rule="evenodd" d="M1070.38 275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72z"/><rect width="62.58" height="277.9" x="1845.88" y="104.73" fill="#fff" rx="5.9" ry="5.9"/><path fill="#fff" fill-rule="evenodd" d="M1851.78 71.38h50.77c3.26 0 5.9-2.64 5.9-5.9V5.9c0-3.62-3.24-6.39-6.82-5.83l-50.77 7.95a5.9 5.9 0 0 0-4.99 5.83v51.62c0 3.26 2.64 5.9 5.9 5.9zm-87.75 203.92V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72zm-132.08-132.58c-11.14-12.25-24.83-21.65-40.78-28.31-15.92-6.53-33.26-9.85-52.07-9.85-18.78 0-36.15 3.17-51.92 9.85-15.59 6.66-29.29 16.05-40.76 28.31-11.47 12.23-20.38 26.87-26.76 44.03-6.38 17.17-9.24 37.37-9.24 58.36s3.19 36.87 9.55 54.21c6.38 17.32 15.14 32.11 26.45 44.36 11.29 12.23 24.83 21.62 40.6 28.46 15.77 6.83 40.12 10.33 52.4 10.48 12.25 0 36.78-3.82 52.7-10.48 15.92-6.68 29.46-16.23 40.78-28.46 11.29-12.25 20.05-27.04 26.25-44.36 6.22-17.34 9.24-33.22 9.24-54.21s-3.34-41.19-10.03-58.36c-6.38-17.17-15.14-31.8-26.43-44.03zm-44.43 163.75c-11.47 15.75-27.56 23.7-48.09 23.7-20.55 0-36.63-7.8-48.1-23.7-11.47-15.75-17.21-34.01-17.21-61.2 0-26.89 5.59-49.14 17.06-64.87 11.45-15.75 27.54-23.52 48.07-23.52 20.55 0 36.63 7.78 48.09 23.52 11.47 15.57 17.36 37.98 17.36 64.87 0 27.19-5.72 45.3-17.19 61.2zm-693.1-201.74h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm1239.55-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm-819.92-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-11.79 18.34-19.6 39.64-22.11 62.59a148.5 148.5 0 0 0 .05 32.73c4.28 38.09 23.14 71.61 50.66 94.52 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 17.99 0 34.61-5.93 48.16-15.97 16.29-11.58 28.88-28.54 34.48-47.75v50.26h-.11v11.08c0 21.84-5.71 38.27-17.34 49.36-11.61 11.08-31.04 16.63-58.25 16.63-11.12 0-28.79-.59-46.6-2.41-2.83-.29-5.46 1.5-6.27 4.22l-12.78 43.11c-1.02 3.46 1.27 7.02 4.83 7.53 21.52 3.08 42.52 4.68 54.65 4.68 48.91 0 85.16-10.75 108.89-32.21 21.48-19.41 33.15-48.89 35.2-88.52V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32zm0 64.1s.65 139.13 0 143.36c-12.08 9.77-27.11 13.59-43.49 14.7-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-1.32 0-2.63-.03-3.94-.1-40.41-2.11-74.52-37.26-74.52-79.38 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33z"/><path fill="#fff" d="M249.83 0C113.3 0 2 110.09.03 246.16c-2 138.19 110.12 252.7 248.33 253.5 42.68.25 83.79-10.19 120.3-30.03 3.56-1.93 4.11-6.83 1.08-9.51l-23.38-20.72c-4.75-4.21-11.51-5.4-17.36-2.92-25.48 10.84-53.17 16.38-81.71 16.03-111.68-1.37-201.91-94.29-200.13-205.96 1.76-110.26 92-199.41 202.67-199.41h202.69v360.27l-115-102.18c-3.72-3.31-9.42-2.66-12.42 1.31-18.46 24.44-48.53 39.64-81.93 37.34-46.33-3.2-83.87-40.5-87.34-86.81-4.15-55.24 39.63-101.52 94-101.52 49.18 0 89.68 37.85 93.91 85.95.38 4.28 2.31 8.27 5.52 11.12l29.95 26.55c3.4 3.01 8.79 1.17 9.63-3.3 2.16-11.55 2.92-23.58 2.07-35.92-4.82-70.34-61.8-126.93-132.17-131.26-80.68-4.97-148.13 58.14-150.27 137.25-2.09 77.1 61.08 143.56 138.19 145.26 32.19.71 62.03-9.41 86.14-26.95l150.26 133.2c6.44 5.71 16.61 1.14 16.61-7.47V9.48c-.01-5.23-4.25-9.48-9.49-9.48z"/></svg>
   </a>
   <span class="tb-div"></span>
@@ -433,7 +433,7 @@ section { position: relative; }
       <span class="hero-badge"><span class="dot"></span>Evidence-grounded · Keyless · No fabrication</span>
       <h1>PRISM</h1>
       <p class="hero-tag">A prospect domain in.<br><span class="accent">A grounded sales audit out.</span></p>
-      <p class="hero-sub">PRISM is an AI prospect-intelligence and search-audit engine for Algolia sales. Give it a prospect's domain and it runs a full, <strong>evidence-grounded</strong> audit of their site search plus company and market intelligence — then produces a branded report and a complete set of sales deliverables. And you can <strong>chat with the findings</strong>, grounded and fabrication-free, on the web and on Telegram.</p>
+      <p class="hero-sub">PRISM is an AI prospect-intelligence and search-audit engine for Algolia sales. Give it a prospect's domain and it runs a full, <strong>evidence-grounded</strong> audit of their site search plus company and market intelligence, then produces a branded report and a complete set of sales deliverables. And you can <strong>chat with the findings</strong>, grounded and fabrication-free, on the web and on Telegram.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="/reports/">
           Browse the audits
@@ -478,7 +478,7 @@ section { position: relative; }
           <line class="pr6" x1="210" y1="82" x2="360" y2="136" stroke="#DC2626" stroke-width="3.4" stroke-linecap="round"/>
         </g>
       </svg>
-      <div class="pc-label" style="margin-top:6px;">Output — a grounded spectrum</div>
+      <div class="pc-label" style="margin-top:6px;">Output: a grounded spectrum</div>
       <div class="pc-out">
         <div class="pc-chip"><span class="sw" style="background:#003DFF"></span>Audit deck &amp; report</div>
         <div class="pc-chip"><span class="sw" style="background:#5468FF"></span>Sales plays</div>
@@ -497,7 +497,7 @@ section { position: relative; }
     <div class="reveal">
       <span class="eyebrow">Who it's for</span>
       <h2 class="s-title">Built for the Algolia sales floor</h2>
-      <p class="s-lead">For pre-call prep, displacement narratives, and evidence-grounded outreach — every deliverable grounded in the prospect's own data and the open web.</p>
+      <p class="s-lead">For pre-call prep, displacement narratives, and evidence-grounded outreach. Every deliverable is grounded in the prospect's own data and the open web.</p>
     </div>
     <div class="role-grid">
       <div class="role-card r1 reveal">
@@ -521,7 +521,7 @@ section { position: relative; }
         <div class="role-inner">
           <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Sales Leaders</h3>
-          <p>A repeatable, grounded intelligence motion across the team — consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
+          <p>A repeatable, grounded intelligence motion across the team: consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
         </div>
       </div>
     </div>
@@ -534,7 +534,7 @@ section { position: relative; }
     <div class="reveal">
       <span class="eyebrow">What it produces</span>
       <h2 class="s-title">One domain. A full sales kit.</h2>
-      <p class="s-lead">Every audit fans out into a complete, branded deliverable package — built from evidence, ready to present and act on.</p>
+      <p class="s-lead">Every audit fans out into a complete, branded deliverable package, built from evidence and ready to present and act on.</p>
     </div>
     <div class="deliv-grid">
       <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8" stroke-linecap="round"/></svg></div><h4>McKinsey-style audit deck</h4><p>Scored, narrative-driven findings.</p></div>
@@ -549,7 +549,7 @@ section { position: relative; }
         <span class="b-spot"></span><span class="b-glow"></span>
         <div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg></div>
         <h4>Grounded "chat with this audit" agent</h4>
-        <p>Ask the audit anything — answers come only from the produced report, never invented. Live on the web and Telegram.</p>
+        <p>Ask the audit anything. Answers come only from the produced report, never invented. Live on the web and Telegram.</p>
       </div>
       <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>5-touch ABX campaign</h4><p>Emails, LinkedIn &amp; Loom script.</p></div>
     </div>
@@ -560,14 +560,14 @@ section { position: relative; }
 <section class="band band--how" id="how">
   <div class="wrap">
     <div class="reveal">
-      <span class="eyebrow">How it works — the engine</span>
+      <span class="eyebrow">How it works</span>
       <h2 class="s-title">The right tool for every job</h2>
-      <p class="s-lead">PRISM runs a suite of specialized Claude skills from start to finish. Each fact-gathering job goes to the tool built for it — and none of them need a paid subscription or data key. No data brokers, no paywalled scrapers.</p>
+      <p class="s-lead">PRISM runs a suite of specialized Claude skills from start to finish. Each fact-gathering job goes to the tool built for it, and none of them need a paid subscription or data key. No data brokers, no paywalled scrapers.</p>
     </div>
 
     <div class="howbar reveal">
       <span class="hb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></span>
-      <span><b>One hard rule everywhere: no fabrication.</b> Every fact carries a citation. A field with no grounded source stays <span class="nf">blank</span> — never guessed, never invented.</span>
+      <span><b>One hard rule everywhere: no fabrication.</b> Every fact carries a citation. A field with no grounded source stays <span class="nf">blank</span>. Never guessed, never invented.</span>
     </div>
 
     <div class="tool-list">
@@ -576,47 +576,47 @@ section { position: relative; }
           <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg></span>
           <div><h3>Scout</h3><div class="tn-tag">First-party data</div></div>
         </div>
-        <div class="tool-desc">Acquires the target company's <strong>own</strong> data — company info, executives, careers and jobs, investor relations — by intelligent scraping of their site, JS-rendered pages, sitemaps and PDFs.</div>
+        <div class="tool-desc">Acquires the target company's <strong>own</strong> data (company info, executives, careers and jobs, investor relations) by intelligent scraping of their site, JS-rendered pages, sitemaps and PDFs.</div>
       </div>
       <div class="tool t-gemini reveal">
         <div class="tool-name">
           <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg></span>
           <div><h3>Gemini-grounded Search</h3><div class="tn-tag">Open-web research</div></div>
         </div>
-        <div class="tool-desc">Open-web research — industry benchmarks, analyst quotes, news, competitor tech. <strong>Every fact carries a citation;</strong> anything ungrounded is left blank.</div>
+        <div class="tool-desc">Open-web research: industry benchmarks, analyst quotes, news, competitor tech. <strong>Every fact carries a citation;</strong> anything ungrounded is left blank.</div>
       </div>
       <div class="tool t-detect reveal">
         <div class="tool-name">
           <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div><h3>detect-search</h3><div class="tn-tag">Packet inspection<span class="kbadge">keyless</span></div></div>
         </div>
-        <div class="tool-desc">Keyless network packet inspection via Playwright — loads the site across multiple pages and fingerprints the <strong>search vendor and full tech stack</strong>. Exactly how BuiltWith / Wappalyzer work, but free.</div>
+        <div class="tool-desc">Keyless network packet inspection via Playwright. It loads the site across multiple pages and fingerprints the <strong>search vendor and full tech stack</strong>. Exactly how BuiltWith / Wappalyzer work, but free.</div>
       </div>
       <div class="tool t-yf reveal">
         <div class="tool-name">
           <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18" stroke-linecap="round"/><path d="M7 14l3-4 3 2 5-7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <div><h3>yfinance</h3><div class="tn-tag">Public financials</div></div>
         </div>
-        <div class="tool-desc">Public financials — revenue trend, margins, analyst consensus — pulled straight from public Yahoo Finance data for any company with a ticker.</div>
+        <div class="tool-desc">Public financials (revenue trend, margins, analyst consensus) pulled straight from public Yahoo Finance data for any company with a ticker.</div>
       </div>
       <div class="tool t-chrome reveal">
         <div class="tool-name">
           <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M21 12h-6M5 19l4-4" stroke-linecap="round"/></svg></span>
           <div><h3>chrome (browser)</h3><div class="tn-tag">Live search testing</div></div>
         </div>
-        <div class="tool-desc">Drives a real browser to <strong>test the prospect's live search</strong> — typo tolerance, NLP queries, zero-results, autocomplete — capturing screenshots as evidence for every finding.</div>
+        <div class="tool-desc">Drives a real browser to <strong>test the prospect's live search</strong> (typo tolerance, NLP queries, zero-results, autocomplete), capturing screenshots as evidence for every finding.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ INSIDE THE AUDIT — auto-cycling product tour ═══ -->
+<!-- ═══ INSIDE THE AUDIT - auto-cycling product tour ═══ -->
 <section class="band band--tour">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Inside the audit</span>
       <h2 class="s-title">One audit, every angle.</h2>
-      <p class="s-lead">Overview, deep research, live search findings, the ROI case, the sales playbook — and a grounded agent to ask. Here's what's actually inside, end to end.</p>
+      <p class="s-lead">Overview, deep research, live search findings, the ROI case, the sales playbook, and a grounded agent to ask. Here's what's actually inside, end to end.</p>
     </div>
     <div class="tour reveal">
       <div class="tour-stage">
@@ -625,7 +625,7 @@ section { position: relative; }
         <img class="tour-img" data-i="2" src="/assets/tour/search-audit.png" alt="Search audit findings" loading="lazy">
         <img class="tour-img" data-i="3" src="/assets/tour/business-case.png" alt="ROI business case" loading="lazy">
         <img class="tour-img" data-i="4" src="/assets/tour/sales-actions.png" alt="Sales actions" loading="lazy">
-        <img class="tour-img" data-i="5" src="/assets/tour/chat.png" alt="Ask Cassandra — grounded chat" loading="lazy">
+        <img class="tour-img" data-i="5" src="/assets/tour/chat.png" alt="Ask Cassandra, grounded chat" loading="lazy">
       </div>
     </div>
   </div>
@@ -637,7 +637,7 @@ section { position: relative; }
     <div class="reveal">
       <span class="eyebrow">The skills</span>
       <h2 class="s-title">22 specialized skills, one pipeline</h2>
-      <p class="s-lead">The engine is a suite of open Claude skills — the <code>algolia-*</code> family. Each does one job well, and they run together start to finish. All of it is on GitHub.</p>
+      <p class="s-lead">The engine is a suite of open Claude skills, the <code>algolia-*</code> family. Each does one job well, and they run together start to finish. All of it is on GitHub.</p>
       <div class="skill-meta">
         <div class="skill-stat"><div class="num">22</div><div class="lbl">Specialized skills</div></div>
         <div class="skill-stat"><div class="num">5</div><div class="lbl">Skill groups</div></div>
@@ -647,8 +647,8 @@ section { position: relative; }
 
     <div class="skill-cols">
       <a class="skill-group span2 reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#003DFF"></span><h3>Intelligence — Wave 1</h3><span class="cnt">13 skills</span></div>
-        <p class="sg-sub">Parallel research on the company, its market, and its money — the evidence base for everything downstream.</p>
+        <div class="sg-head"><span class="sg-dot" style="background:#003DFF"></span><h3>Intelligence: Wave 1</h3><span class="cnt">13 skills</span></div>
+        <p class="sg-sub">Parallel research on the company, its market, and its money. The evidence base for everything downstream.</p>
         <div class="sg-tags">
           <span class="sg-tag">intel-company</span><span class="sg-tag">intel-techstack</span><span class="sg-tag">intel-traffic</span>
           <span class="sg-tag">intel-competitors</span><span class="sg-tag">intel-financial-public</span><span class="sg-tag">intel-financial-private</span>
@@ -673,7 +673,7 @@ section { position: relative; }
       </a>
       <a class="skill-group orch reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
         <div class="sg-head"><span class="sg-dot" style="background:#ffffff"></span><h3>Orchestrator</h3><span class="cnt">1 skill</span></div>
-        <p class="sg-sub">Runs the whole pipeline — research to deliverables — in a single end-to-end pass.</p>
+        <p class="sg-sub">Runs the whole pipeline, research to deliverables, in a single end-to-end pass.</p>
         <div class="sg-tags"><span class="sg-tag">algolia-search-audit</span></div>
       </a>
     </div>
@@ -692,18 +692,18 @@ section { position: relative; }
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Behind the scenes</span>
-      <h2 class="s-title">Hermes — the engine that runs it</h2>
-      <p class="s-lead">Hermes is the engine that does the work. It quietly runs every step that builds an audit, then turns the finished report into something you can talk to — so the findings don't just sit on a page, you can ask questions and get answers.</p>
+      <h2 class="s-title">Hermes: the engine that runs it</h2>
+      <p class="s-lead">Hermes is the engine that does the work. It quietly runs every step that builds an audit, then turns the finished report into something you can talk to. So instead of the findings just sitting on a page, you can ask questions and get answers.</p>
     </div>
 
     <div class="hermes-grid">
       <div class="hcard reveal">
         <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></span>Hermes</h3>
-        <p>The <strong>engine</strong>. It does the heavy lifting — running each step that builds an audit behind the scenes — and then keeps the finished report live, so you can have a conversation with it instead of just reading it.</p>
+        <p>The <strong>engine</strong>. It does the heavy lifting, running each step that builds an audit behind the scenes, and then keeps the finished report live, so you can have a conversation with it instead of just reading it.</p>
       </div>
       <div class="hcard reveal">
         <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-2 7H7c0-2-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 21h6M10 18h4" stroke-linecap="round"/></svg></span>Cassandra</h3>
-        <p>Your guide to each audit. Ask her anything about a report and she answers — but <strong>only using what's actually in it</strong>. If the answer's there, she gives it to you and shows where it came from. If it isn't, she says so instead of making something up.</p>
+        <p>Your guide to each audit. Ask her anything about a report and she answers, but <strong>only using what's actually in it</strong>. If the answer's there, she gives it to you and shows where it came from. If it isn't, she says so instead of making something up.</p>
       </div>
     </div>
 
@@ -716,7 +716,7 @@ section { position: relative; }
     </div>
 
     <div class="chan-row reveal">
-      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg>Web SPA — prism.chowmes.com</span>
+      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg>Web: prism.chowmes.com</span>
       <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>Telegram</span>
     </div>
   </div>
@@ -727,7 +727,7 @@ section { position: relative; }
   <div class="wrap close-inner">
     <span class="eyebrow">PRISM</span>
     <h2>Give it a domain.<br>Get a grounded audit you can present, send, and talk to.</h2>
-    <p>Evidence in, never invention. The right tool for every fact, all keyless. A full sales kit out — and an agent that answers only from what's true.</p>
+    <p>Evidence in, never invention. The right tool for every fact, all keyless. A full sales kit out, and an agent that answers only from what's true.</p>
     <div class="close-foot">
       <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
