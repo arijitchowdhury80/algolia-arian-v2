@@ -193,16 +193,27 @@ section { position: relative; }
 
 /* ── WHO — role cards ──────────────────────────── */
 .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
-.role-card {
-  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 32px 28px; box-shadow: var(--shadow); position: relative; overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.role-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.role-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-.role-card.r1::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
-.role-card.r2::before { background: linear-gradient(90deg, var(--teal), var(--green)); }
-.role-card.r3::before { background: linear-gradient(90deg, var(--violet), var(--purple)); }
+/* shell — holds the glowing edge behind the white inner card */
+.role-card { position: relative; border-radius: var(--radius); transition: transform 0.2s;
+  --card-deg: 90deg; --card-d: 0; }
+.role-card:hover { transform: translateY(-6px); }
+.role-inner { position: relative; z-index: 1; height: 100%;
+  background: #fff; border: 1px solid var(--border); border-radius: inherit;
+  padding: 32px 28px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
+.role-card:hover .role-inner { box-shadow: var(--shadow-lg); }
+/* top accent bar (now on the inner card) */
+.role-inner::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.r1 .role-inner::before { background: linear-gradient(90deg, var(--blue), var(--purple)); }
+.r2 .role-inner::before { background: linear-gradient(90deg, var(--teal), var(--green)); }
+.r3 .role-inner::before { background: linear-gradient(90deg, var(--violet), var(--purple)); }
+/* pointer-following glowing edge (colored conic ring + soft halo, masked to the arc nearest the cursor) */
+.ge-edge { position: absolute; inset: -1.5px; border-radius: calc(var(--radius) + 1.5px); z-index: 0; pointer-events: none;
+  background: conic-gradient(from 90deg, #003DFF, #5468FF, #7C3AED, #DC2626, #D97706, #059669, #0891B2, #003DFF);
+  -webkit-mask: conic-gradient(from var(--card-deg) at 50% 50%, #000 0 10%, transparent 26% 74%, #000 90% 100%);
+          mask: conic-gradient(from var(--card-deg) at 50% 50%, #000 0 10%, transparent 26% 74%, #000 90% 100%);
+  opacity: 0; transition: opacity 0.35s ease; }
+.ge-edge::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; filter: blur(13px); opacity: 0.55; }
+.role-card:hover .ge-edge { opacity: calc(0.3 + 0.7 * var(--card-d)); }
 .role-ic { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
 .role-ic svg { width: 24px; height: 24px; }
 .r1 .role-ic { background: var(--blue-tint); color: var(--blue); }
@@ -475,19 +486,28 @@ section { position: relative; }
     </div>
     <div class="role-grid">
       <div class="role-card r1 reveal">
-        <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Account Executives</h3>
-        <p>Walk into every discovery call with an evidence-grounded view of the prospect's search, their tech stack, and the exact displacement angle to lead with.</p>
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Account Executives</h3>
+          <p>Walk into every discovery call with an evidence-grounded view of the prospect's search, their tech stack, and the exact displacement angle to lead with.</p>
+        </div>
       </div>
       <div class="role-card r2 reveal">
-        <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>BDRs</h3>
-        <p>Open with proof, not guesswork. Personalized, fabrication-free outreach built from the prospect's own signals, executive language, and competitor evidence.</p>
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>BDRs</h3>
+          <p>Open with proof, not guesswork. Personalized, fabrication-free outreach built from the prospect's own signals, executive language, and competitor evidence.</p>
+        </div>
       </div>
       <div class="role-card r3 reveal">
-        <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Sales Leaders</h3>
-        <p>A repeatable, grounded intelligence motion across the team — consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Sales Leaders</h3>
+          <p>A repeatable, grounded intelligence motion across the team — consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -792,6 +812,26 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   if (document.readyState !== 'loading') initAnimatedGrid();
   else document.addEventListener('DOMContentLoaded', initAnimatedGrid);
 }
+
+/* ── Role cards: glowing edge follows the pointer ── */
+(function () {
+  var cards = document.querySelectorAll('.role-card');
+  if (!cards.length) return;
+  cards.forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width / 2;
+      var y = e.clientY - r.top - r.height / 2;
+      var deg = Math.atan2(y, x) * 180 / Math.PI + 90;
+      if (deg < 0) deg += 360;
+      var kx = (r.width / 2) / (Math.abs(x) || 0.0001);
+      var ky = (r.height / 2) / (Math.abs(y) || 0.0001);
+      var edge = Math.min(1, 1 / Math.min(kx, ky));
+      card.style.setProperty('--card-deg', deg.toFixed(1) + 'deg');
+      card.style.setProperty('--card-d', edge.toFixed(3));
+    });
+  });
+})();
 
 /* ── Inside-the-audit tour: auto-cycle + tabs + hover-pause ── */
 (function () {
