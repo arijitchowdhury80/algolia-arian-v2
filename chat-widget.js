@@ -40,10 +40,12 @@
     "#prism-chat-panel.pc-left #prism-chat-grip{left:auto;right:0}" +
     "#prism-chat-dock{background:0;border:0;color:rgba(255,255,255,.7);cursor:pointer;line-height:1;padding:4px;border-radius:6px;font-size:17px}" +
     "#prism-chat-dock:hover{background:rgba(255,255,255,.12);color:#fff}" +
-    // Reflow the report so the drawer never covers it. Follows the live width var. Right dock by default; left when docked left.
+    // Reflow the report so the drawer never covers it. The report column (#layout) is centered in the
+    // body, so we pad the BODY by the drawer width — the column re-centers in the remaining space and
+    // can never sit under the drawer. Follows the live width var. Right dock default; left when docked left.
     "@media(min-width:760px){" +
-      "html.pc-chat-open #content{margin-right:calc(var(--pc-w) + 28px)!important;max-width:none!important;transition:margin .26s ease}" +
-      "html.pc-chat-open.pc-chat-left #content{margin-right:28px!important;margin-left:calc(var(--pc-w) + 28px)!important}" +
+      "html.pc-chat-open body{padding-right:calc(var(--pc-w) + 28px)!important;transition:padding .26s ease}" +
+      "html.pc-chat-open.pc-chat-left body{padding-right:0!important;padding-left:calc(var(--pc-w) + 28px)!important}" +
     "}" +
     "@media(max-width:759px){#prism-chat-panel{width:100vw}}" +
     "#prism-chat-head{background:#21243D;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}" +
