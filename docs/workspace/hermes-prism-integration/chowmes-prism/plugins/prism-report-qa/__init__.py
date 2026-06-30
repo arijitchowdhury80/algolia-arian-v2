@@ -345,15 +345,37 @@ def _gemini_judge(source_report, source_knowledge, answer):
     return json.loads(text)
 
 
-# Internal grounding markers Cassandra is told to emit (SOUL.md: label [FACT]/[ESTIMATE]).
-# The discipline stays; the literal tag must never reach the reader on ANY channel
-# (SPA, Telegram, WhatsApp). Strip e.g. [FACT], [ESTIMATE], [FACT - AméricaEconomía, Feb 2025],
-# [FACT: strategic_angles.0.pain_points.0]. The leading space is consumed so no double spaces remain.
-_TAG_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE)\b[^\]]*\]", re.IGNORECASE)
+# The final message reaches Telegram (and any non-streaming client), whose Markdown parser mangles
+# rich Markdown — backticks become huge monospace blocks, ** shows literally. The SPA does NOT use
+# this output (it renders the pre-transform stream itself), so we make the final message clean PLAIN
+# text here: remove internal markers AND neutralize Markdown so it reads cleanly on every channel.
+_MARKER_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE|CONTINUATION)\b[^\]]*\]", re.IGNORECASE)
+_ACCT_RE = re.compile(r"\[Account:[^\]]*\]\s*", re.IGNORECASE)
+_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
 
 
-def _strip_tags(text):
-    return _TAG_RE.sub("", text) if isinstance(text, str) else text
+def _clean_for_send(text):
+    """Strip internal markers and flatten Markdown to Telegram-safe plain text."""
+    if not isinstance(text, str):
+        return text
+    t = _MARKER_RE.sub("", text)
+    t = _ACCT_RE.sub("", t)
+    # code fences + inline code -> keep inner text
+    t = re.sub(r"```[a-zA-Z0-9]*\n", "", t)      # opening fence with optional language + newline
+    t = re.sub(r"```([\s\S]*?)```", r"\1", t)    # inline ```x``` -> x
+    t = t.replace("```", "")                      # stray fence
+    t = re.sub(r"`([^`]*)`", r"\1", t).replace("`", "")
+    # links [text](url) -> text (url)
+    t = _LINK_RE.sub(r"\1 (\2)", t)
+    # bold / italic markers -> plain
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    t = re.sub(r"__([^_]+)__", r"\1", t)
+    t = re.sub(r"(?<!\*)\*([^*\n]+)\*(?!\*)", r"\1", t)
+    # headings -> plain
+    t = re.sub(r"(?m)^[ \t]{0,3}#{1,6}[ \t]*", "", t)
+    # leftover stray emphasis chars
+    t = t.replace("**", "")
+    return t
 
 
 def grounding_gate(response_text=None, session_id=None, **kwargs):
@@ -362,27 +384,27 @@ def grounding_gate(response_text=None, session_id=None, **kwargs):
     slug = _BINDINGS.get(session_id)
     if not slug:
         # not report-QA mode, but still never leak internal tags if present
-        stripped = _strip_tags(response_text)
+        stripped = _clean_for_send(response_text)
         return stripped if stripped != response_text else None
     try:
         source_report = _load_report(slug)
     except Exception:
-        stripped = _strip_tags(response_text)
+        stripped = _clean_for_send(response_text)
         return stripped if stripped != response_text else None
     source_knowledge = _KNOWLEDGE_CACHE.get(session_id, "")
     try:
         verdict = _gemini_judge(source_report, source_knowledge, response_text)
     except Exception:
         # fail-closed: never silently pass unverified facts
-        return (_strip_tags(response_text) +
+        return (_clean_for_send(response_text) +
                 "\n\n_(⚠ Could not verify these details against the audit report — "
                 "treat factual specifics with caution.)_")
     if not isinstance(verdict, dict) or verdict.get("verdict") == "PASS":
-        stripped = _strip_tags(response_text)   # supported -> unchanged except tag removal
+        stripped = _clean_for_send(response_text)   # supported -> unchanged except tag removal
         return stripped if stripped != response_text else None
     corrected = verdict.get("corrected")
     if isinstance(corrected, str) and corrected.strip():
-        return _strip_tags(corrected)
+        return _clean_for_send(corrected)
     return ("Some details in my draft weren't supported by the audit report, so I held them back. "
             "Ask about specific fields in the report and I'll answer only from it.")
 
