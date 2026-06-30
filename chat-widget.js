@@ -159,6 +159,14 @@
     s = s.replace(/^###\s+(.*)$/gm, "<h4>$1</h4>").replace(/^##\s+(.*)$/gm, "<h3>$1</h3>").replace(/^#\s+(.*)$/gm, "<h3>$1</h3>");
     s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>").replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
     s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    // Canonical contract: Cassandra emits BARE urls (not [text](url)) so they render identically on
+    // Telegram (native autolink) and SPA. Autolink bare urls here; preceding char guard skips urls
+    // already inside an href="..." from the rule above. Trailing punctuation is kept outside the link.
+    s = s.replace(/(^|[\s(])(https?:\/\/[^\s<]+)/g, function (_, pre, url) {
+      var trail = "", m = url.match(/[.,;:!?)\]]+$/);
+      if (m) { trail = m[0]; url = url.slice(0, -trail.length); }
+      return pre + '<a href="' + url + '" target="_blank" rel="noopener">' + url + '</a>' + trail;
+    });
     s = s.replace(/(^|\n)((?:[-*]\s+.*(?:\n|$))+)/g, function (_, pre, blk) {
       var items = blk.trim().split("\n").map(function (li) { return "<li>" + li.replace(/^[-*]\s+/, "") + "</li>"; }).join("");
       return pre + "<ul>" + items + "</ul>";
