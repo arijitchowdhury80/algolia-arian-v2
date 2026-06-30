@@ -2,7 +2,7 @@
  * PRISM report-chat widget — drop-in for every published audit page.
  *
  * A floating "Ask about this audit" panel. Reads the company slug from the URL
- * (/<slug>/), streams grounded answers from /api/chat (→ Hermes-PRISM report-QA,
+ * (/<slug>/), streams grounded answers from /api/report-chat (→ Hermes-PRISM report-QA,
  * the same brain as the Telegram bot). Answers come ONLY from this company's audit;
  * anything not in the report is refused by the Hermes grounding gate.
  *

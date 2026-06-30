@@ -76,12 +76,15 @@ export async function POST(req: Request): Promise<Response> {
               } catch {
                 /* skip malformed frame */
               }
+            } else if (event === "response.completed" || event === "response.error") {
+              break;
             }
           }
         }
       } catch {
         /* upstream cut — end what we have */
       } finally {
+        reader.releaseLock();
         controller.close();
       }
     },
