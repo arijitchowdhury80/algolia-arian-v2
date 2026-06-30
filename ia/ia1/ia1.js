@@ -4,8 +4,14 @@ import { renderBrief, renderPanel, renderProspect, renderExports } from "../shar
 import { createChat } from "../shared/chat-client.js";
 import { mountFeedback } from "../shared/feedback.js";
 
-const data = await (await fetch("/homedepot-mexico-audit-data.json")).json();
-const model = buildModel(data);
+let data, model;
+try {
+  data = await (await fetch("/homedepot-mexico-audit-data.json")).json();
+  model = buildModel(data);
+} catch (_e) {
+  document.getElementById("ia-brief-host").innerHTML = "Could not load the audit data. Check the data file path.";
+  throw _e;
+}
 let mode = "seller";
 
 document.getElementById("ia-title").textContent = "PRISM IA1 (browse) " + model.brief.company;

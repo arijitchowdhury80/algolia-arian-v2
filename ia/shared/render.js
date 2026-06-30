@@ -19,7 +19,7 @@ function kv(obj) {
 function list(arr) {
   const a = Array.isArray(arr) ? arr : (arr?.items ?? Object.values(arr ?? {}));
   return `<ul class="ia-list">` + (a || []).map((it) =>
-    `<li>${esc(typeof it === "object" ? (it.title ?? it.name ?? it.headline ?? JSON.stringify(it).slice(0, 200)) : it)}</li>`
+    `<li>${esc(typeof it === "object" ? (it.title ?? it.name ?? it.headline ?? it.text ?? it.badge_label ?? JSON.stringify(it).slice(0, 200)) : it)}</li>`
   ).join("") + `</ul>`;
 }
 
@@ -59,7 +59,7 @@ const DISPATCH = { kv, list, findings, pairs, abx };
 
 export function renderBrief(brief) {
   const whyNow = (brief.whyNow || []).map((s) =>
-    `<li>${esc(typeof s === "object" ? (s.headline ?? s.title ?? JSON.stringify(s).slice(0, 160)) : s)}</li>`
+    `<li>${esc(typeof s === "object" ? (s.headline ?? s.title ?? s.text ?? s.badge_label ?? JSON.stringify(s).slice(0, 160)) : s)}</li>`
   ).join("");
   return `
     <section class="ia-brief">
@@ -78,7 +78,7 @@ export function renderPanel(job) {
   return `<div class="ia-panel" data-job="${esc(job.id)}"><h3>${esc(job.label)}</h3>` +
     job.sections.map((s) =>
       `<section class="ia-section" data-key="${esc(s.key)}">` +
-      `<h4>${esc(s.title)} <button class="ia-export-btn" data-export="${esc(s.key)}">Export</button></h4>` +
+      `<h4>${esc(s.title)}</h4>` +
       `${(DISPATCH[s.render] || kv)(s.data)}</section>`
     ).join("") +
     `</div>`;

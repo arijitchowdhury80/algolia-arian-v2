@@ -22,7 +22,7 @@ export function buildModel(data) {
   const brief = {
     // company_snapshot has no "name" field; company name lives in meta.company
     company: data.company_snapshot?.name ?? data.meta?.company ?? data.cover?.company ?? SLUG,
-    oneLiner: data.company_snapshot?.description ?? data.cover?.subtitle ?? "",
+    oneLiner: data.company_snapshot?.description ?? data.cover?.subtitle ?? data.cover?.status_line ?? "",
     score: scoreNumber(data.score),
     verdict: verdictFromScore(data.score),
     damningFinding: (Array.isArray(data.findings) ? data.findings[0]?.title : data.findings?.[0]?.title) ?? ae.opportunity_headline ?? "",
@@ -42,7 +42,7 @@ export function buildModel(data) {
       S("financials", "Financials", "kv", data.financials),
       S("traffic", "Traffic", "kv", data.traffic),
       S("techstack", "Tech stack", "kv", data.tech_stack),
-      S("hiring", "Hiring signals", "list", data.hiring),
+      S("hiring", "Hiring signals", "kv", data.hiring),
       S("signals", "News and social signals", "list", data.intelligence_signals),
       S("partner", "Partner intel", "list", data.partner_intel),
       S("industry", "Industry context", "kv", data.industry_context),
@@ -65,7 +65,7 @@ export function buildModel(data) {
     ].filter((s) => s.data != null) },
     { id: "who", label: "Know who decides", sections: [
       S("icp", "Buying committee (ICP)", "kv", data.icp_mapping),
-      S("hiring", "Hiring as buying signal", "list", data.hiring),
+      S("hiring", "Hiring as buying signal", "kv", data.hiring),
       S("execs", "Power map", "list", data.executives),
       S("nextowner", "Next-step owner", "kv", { owner: ae.next_step_owner, action: ae.next_step_action, date: ae.next_step_date }),
     ].filter((s) => s.data != null) },

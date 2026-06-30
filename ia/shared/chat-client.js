@@ -34,6 +34,7 @@ export function createChat({ mount, onOpenFull }) {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, slug: SLUG, sid: sid() }),
       });
+      if (!res.ok || !res.body) { out.textContent = "Chat is unavailable right now."; return; }
       const reader = res.body.getReader();
       const dec = new TextDecoder();
       let full = "";
