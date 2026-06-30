@@ -1,19 +1,19 @@
 /**
- * PRISM hub — standalone chat proxy (VPS Node service; replaces the Vercel /api/chat function).
+ * PRISM hub - standalone chat proxy (VPS Node service; replaces the Vercel /api/chat function).
  *
  * Serves POST /api/chat for the static SPA hosted under prism.chowmes.com (Caddy file_server).
- * Streams a grounded report-QA answer from the Hermes-PRISM brain on the loopback — the SAME
+ * Streams a grounded report-QA answer from the Hermes-PRISM brain on the loopback - the SAME
  * brain + grounding gate as Telegram. Bearer + URL stay server-side (env). Same-origin (no CORS).
  * The page slug binds the right company's report via an invisible [Account: <slug>] prefix.
  *
- * This is the on-VPS equivalent of api/chat.js — logic kept identical so behaviour matches the
+ * This is the on-VPS equivalent of api/chat.js - logic kept identical so behaviour matches the
  * proven Vercel path. Difference: HERMES_API_URL points at the loopback (http://127.0.0.1:8642),
  * so nothing routes through judge.contentengagement.info.
  *
  * Env (server-side only):
  *   HERMES_API_URL  http://127.0.0.1:8642   (loopback to the Hermes brain)
  *   HERMES_API_KEY  the bearer (Hermes API_SERVER_KEY)
- *   PORT            listen port (default 8651, bind 127.0.0.1 — Caddy fronts it)
+ *   PORT            listen port (default 8651, bind 127.0.0.1 - Caddy fronts it)
  */
 
 import http from "node:http";
@@ -69,7 +69,7 @@ async function serveStatic(res, urlPath) {
   } catch {
     res.statusCode = 404;
     res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.end("<!doctype html><meta charset=utf-8><title>404</title><h1>404 — not found</h1>");
+    res.end("<!doctype html><meta charset=utf-8><title>404</title><h1>404 - not found</h1>");
   }
 }
 
@@ -165,7 +165,7 @@ async function handleChat(req, res) {
       }
     }
   } catch {
-    /* upstream cut — end what we have */
+    /* upstream cut - end what we have */
   }
   res.end();
 }
@@ -176,14 +176,14 @@ const server = http.createServer((req, res) => {
     return sendJson(res, 200, { status: "ok" });
   }
   // --- IA prototype feedback capture (additive; does not touch /api/chat) ---
-  if (req.method === "POST" && req.url === "/api/feedback") {
+  if (req.method === "POST" && url === "/api/feedback") {
     let raw = "";
     req.on("data", (c) => (raw += c));
-    req.on("end", () => {
+    req.on("end", async () => {
       try {
         const rec = { ...JSON.parse(raw || "{}"), ts: new Date().toISOString() };
-        import("node:fs").then((fs) =>
-          fs.appendFileSync(process.env.IA_FEEDBACK_FILE || "/opt/prism-hub-feedback.jsonl", JSON.stringify(rec) + "\n"));
+        const fs = await import("node:fs");
+        fs.appendFileSync(process.env.IA_FEEDBACK_FILE || "/opt/prism-hub-feedback.jsonl", JSON.stringify(rec) + "\n");
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ ok: true }));
       } catch {

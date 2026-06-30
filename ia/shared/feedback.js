@@ -1,4 +1,4 @@
-// ia/shared/feedback.js — in-prototype feedback widget
+// ia/shared/feedback.js - in-prototype feedback widget
 export function mountFeedback(shell) {
   const sid = localStorage.getItem("prism_ia_sid") || "anon";
   const box = document.createElement("div");
