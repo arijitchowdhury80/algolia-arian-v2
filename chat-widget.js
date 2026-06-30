@@ -69,6 +69,9 @@
     ".pc-rel-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#8a90ab;width:100%;margin-bottom:1px}" +
     ".pc-bot a.pc-chip{display:inline-block;background:#eef1fb;border:1px solid #dfe3f5;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;color:#2f54ff!important;text-decoration:none!important}" +
     ".pc-bot a.pc-chip:hover{background:#2f54ff;color:#fff!important;border-color:#2f54ff}" +
+    ".pc-bot a.pc-cite{font-size:10px;line-height:1;vertical-align:super;color:#2f54ff!important;text-decoration:none!important;margin:0 1px;cursor:pointer;font-weight:700}" +
+    ".pc-bot a.pc-cite:hover{color:#1a36c2!important}" +
+    ".pc-bot .pc-cite-flat{font-size:10px;vertical-align:super;color:#b9bed4;margin:0 1px;cursor:help}" +
     "@keyframes pcflash{0%{background:rgba(255,224,102,.55)}100%{background:transparent}}" +
     ".pc-flash{animation:pcflash 1.8s ease;border-radius:8px}" +
     ".pc-bot code{background:#eef0f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}" +
@@ -240,11 +243,20 @@
   function mdToHtml(src) {
     if (!src) return "";
     var s = escapeHtml(src);
-    // Strip internal markers that must never reach the reader: [FACT], [ESTIMATE], source-path
-    // citations like [FACT: strategic_angles.0.pain_points.0], the [CONTINUATION] chunk marker, and
-    // the invisible [Account: slug] binding prefix. (Grounding discipline stays server-side.)
-    s = s.replace(/[ \t]*\[(?:FACT|ESTIMATE|CONTINUATION)\b[^\]]*\]/gi, "");
+    // Strip the true junk markers: [CONTINUATION] chunk marker + the invisible [Account: slug] prefix.
+    s = s.replace(/[ \t]*\[CONTINUATION\b[^\]]*\]/gi, "");
     s = s.replace(/\[Account:[^\]]*\]\s*/gi, "");
+    // Turn grounding citations into provenance: [FACT — SimilarWeb…] / [FACT: traffic.x] become a small
+    // ⓘ that jumps to the finding's section (which shows the screenshot + source). No resolvable
+    // section → a non-link ⓘ that still reveals the source on hover. Never raw [FACT] junk.
+    s = s.replace(/[ \t]*\[(?:FACT|ESTIMATE)\b([^\]]*)\]/gi, function (_, body) {
+      var src = body.replace(/^[\s:—.-]+/, "").replace(/&quot;/g, "").trim() || "source";
+      var sec = citeSection(body);
+      if (sec && document.getElementById(sec)) {
+        return '<a class="pc-cite pc-jump" href="#' + sec + '" title="' + src + '">&#9432;</a>';
+      }
+      return '<sup class="pc-cite-flat" title="' + src + '">&#9432;</sup>';
+    });
     s = s.replace(/```([\s\S]*?)```/g, function (_, c) { return "<pre><code>" + c.replace(/^\n/, "") + "</code></pre>"; });
     s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
     s = s.replace(/^###\s+(.*)$/gm, "<h4>$1</h4>").replace(/^##\s+(.*)$/gm, "<h3>$1</h3>").replace(/^#\s+(.*)$/gm, "<h3>$1</h3>");
@@ -293,6 +305,22 @@
     "section-case-studies": "Case Studies", "section-signals": "Signals", "section-discovery": "Discovery",
     "section-outreach": "Outreach",
   };
+  // Map a citation's text (source name or JSON path) to the report section that holds its evidence.
+  var CITE_MAP = [
+    ["section-traffic", /similarweb|traffic|visit|bounce|engagement|session/i],
+    ["section-financials", /financ|revenue|ebitda|margin|conversion|aov|gmv/i],
+    ["section-techstack", /tech.?stack|vendor|algolia|neuralsearch|search platform|\bibm\b|\bwcs\b|app.?id|index|constructor|coveo/i],
+    ["section-competitive", /competitor|competitive|chewy|amazon|leroy|adeo/i],
+    ["section-hiring", /hiring|job|\brole\b|headcount|recruit/i],
+    ["section-roi", /\broi\b|business case|uplift|payback|opportunity/i],
+    ["section-quotes", /quote|earnings/i],
+    ["section-signals", /signal|strategic_angle|intelligence_signal|news|leadership|\bcto\b|\bcio\b|\bceo\b|president|hot sale|priorit|mandate/i],
+  ];
+  function citeSection(t) {
+    for (var i = 0; i < CITE_MAP.length; i++) { if (CITE_MAP[i][1].test(t)) return CITE_MAP[i][0]; }
+    return null;
+  }
+
   // Reliable clickable navigation: append a "Jump to in the report" chip row with the sections the
   // answer actually touches (and that exist on this page). Each chip is a pc-jump so the delegated
   // click handler scrolls to it. This guarantees clickable sections even when inline matching misses.
