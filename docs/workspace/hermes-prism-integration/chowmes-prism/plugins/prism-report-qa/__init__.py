@@ -413,6 +413,10 @@ def _clean_for_send(text, slug=None):
         if cited:
             links = "\n".join(f"↗ {_SECTION_LABEL.get(sid, sid)}: {REPORT_BASE}/{slug}/#{sid}" for sid in cited)
             t = t.rstrip() + "\n\nEvidence in the report:\n" + links
+        # Suggested follow-ups (Telegram can't render tappable buttons from this hook; text prompts).
+        if cited or len(t) > 180:
+            t = t.rstrip() + ("\n\nTry asking: What are the biggest gaps? · What's the ROI opportunity? · "
+                              "Who are their competitors? · How should I open the call?")
     return t
 
 
