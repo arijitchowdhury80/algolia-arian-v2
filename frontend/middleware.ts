@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 // /api/chat removed from public — chat now flows through /api/hermes (Clerk-protected,
 // non-public by default). No unauthenticated path reaches a brain that holds account intel.
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/demo(.*)"]);
+const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/demo(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
   // Bypass auth for local development
