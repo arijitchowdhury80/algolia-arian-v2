@@ -50,3 +50,26 @@ Deno.test("prospect view excludes internal-only surfaces", () => {
   assert(!blob.includes("meddpicc"));
   assert(!blob.includes("abx"));
 });
+
+// Render tests (render.js)
+import { renderBrief, renderPanel, renderProspect } from "./render.js";
+
+Deno.test("renderBrief contains company and verdict class", () => {
+  const m = buildModel(data);
+  const html = renderBrief(m.brief);
+  assert(html.includes(m.brief.company));
+  assert(html.includes(`ia-verdict ${m.brief.verdict}`));
+});
+
+Deno.test("renderPanel for 'reach' renders abx", () => {
+  const m = buildModel(data);
+  const reach = m.jobs.find((j) => j.id === "reach");
+  const html = renderPanel(reach);
+  assert(html.includes("ABX") || html.toLowerCase().includes("email"));
+});
+
+Deno.test("renderers never emit an em dash", () => {
+  const m = buildModel(data);
+  const all = renderBrief(m.brief) + m.jobs.map(renderPanel).join("") + renderProspect(m.prospect);
+  assert(!all.includes("—"), "em dash found in rendered output");
+});
