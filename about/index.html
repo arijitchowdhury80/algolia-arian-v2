@@ -347,9 +347,37 @@ section { position: relative; }
   .flow { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
 }
+/* ── ZOOM PARALLAX (vanilla; scroll-driven scale of real audit screenshots) ── */
+.zp-track  { position: relative; height: 320vh; }
+.zp-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; background: linear-gradient(180deg,#F3F0FF 0%,#EEF2FF 55%,#F8FAFF 100%); }
+.zp-intro  { position: absolute; top: 0; left: 0; right: 0; z-index: 3; text-align: center; padding-top: 96px; pointer-events: none; }
+.zp-intro .eyebrow { display: inline-flex; justify-content: center; }
+.zp-intro h2 { font-size: clamp(28px,3.4vw,46px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08;
+  background: linear-gradient(115deg, var(--ink) 0%, var(--blue) 60%, var(--purple) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.zp-intro p { font-size: 16px; color: var(--mid); margin-top: 12px; font-weight: 300; }
+.zp-tile { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; will-change: transform; transform-origin: center center; }
+.zp-box  { position: relative; height: 26vh; width: 26vw; overflow: hidden; border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(33,36,61,0.22); border: 1px solid rgba(255,255,255,0.65); }
+.zp-box img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.zp-1 .zp-box { top: -30vh; left: 5vw;     height: 30vh; width: 35vw; }
+.zp-2 .zp-box { top: -10vh; left: -25vw;   height: 45vh; width: 20vw; }
+.zp-3 .zp-box { left: 27.5vw;              height: 25vh; width: 25vw; }
+.zp-4 .zp-box { top: 27.5vh; left: 5vw;    height: 25vh; width: 20vw; }
+.zp-5 .zp-box { top: 27.5vh; left: -22.5vw; height: 25vh; width: 30vw; }
+.zp-6 .zp-box { top: 22.5vh; left: 25vw;   height: 15vh; width: 15vw; }
+
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  /* parallax collapses to one static report image */
+  .zp-track { height: auto; }
+  .zp-sticky { position: static; height: auto; padding: 56px 0; }
+  .zp-intro { position: static; padding-top: 0; margin-bottom: 28px; }
+  .zp-tile { position: static; transform: none !important; }
+  .zp-tile:not(.zp-0) { display: none; }
+  .zp-0 .zp-box { height: auto; width: min(90vw,900px); margin: 0 auto; top: 0; left: 0; }
+  .zp-0 .zp-box img { height: auto; }
 }
 </style>
 </head>
@@ -419,6 +447,24 @@ section { position: relative; }
         <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Grounded chat agent</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ ZOOM PARALLAX — real audit reports ═══ -->
+<section id="zoom-parallax" class="zp-track" aria-label="Real PRISM audit reports">
+  <div class="zp-sticky">
+    <div class="zp-intro reveal">
+      <span class="eyebrow">Real audits, not mockups</span>
+      <h2>This is what comes out.</h2>
+      <p>Actual PRISM audit reports — keep scrolling to dive in.</p>
+    </div>
+    <div class="zp-tile zp-0" data-scale="4"><div class="zp-box"><img src="/assets/parallax/petsmart.png" alt="PetSmart audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-1" data-scale="5"><div class="zp-box"><img src="/assets/parallax/nike.png" alt="Nike audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-2" data-scale="6"><div class="zp-box"><img src="/assets/parallax/dsw.png" alt="DSW audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-3" data-scale="5"><div class="zp-box"><img src="/assets/parallax/llbean.png" alt="L.L.Bean audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-4" data-scale="6"><div class="zp-box"><img src="/assets/parallax/brooks-running.png" alt="Brooks Running audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-5" data-scale="8"><div class="zp-box"><img src="/assets/parallax/oriental-trading.png" alt="Oriental Trading audit report" loading="lazy"></div></div>
+    <div class="zp-tile zp-6" data-scale="9"><div class="zp-box"><img src="/assets/parallax/british-airways.png" alt="British Airways audit report" loading="lazy"></div></div>
   </div>
 </section>
 
@@ -720,6 +766,31 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   if (document.readyState !== 'loading') initAnimatedGrid();
   else document.addEventListener('DOMContentLoaded', initAnimatedGrid);
 }
+
+/* ── Zoom parallax: scroll progress → tile scale ── */
+(function () {
+  var track = document.getElementById('zoom-parallax');
+  if (!track) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var tiles = Array.prototype.slice.call(track.querySelectorAll('.zp-tile'));
+  var intro = track.querySelector('.zp-intro');
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var total = track.offsetHeight - window.innerHeight;
+    var scrolled = Math.min(Math.max(-track.getBoundingClientRect().top, 0), total);
+    var t = total > 0 ? scrolled / total : 0;
+    for (var i = 0; i < tiles.length; i++) {
+      var max = parseFloat(tiles[i].getAttribute('data-scale')) || 4;
+      tiles[i].style.transform = 'scale(' + (1 + t * (max - 1)) + ')';
+    }
+    if (intro) intro.style.opacity = String(Math.max(0, 1 - t * 3));
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
 </script>
 </body>
 </html>
