@@ -28,8 +28,12 @@
   var css =
     "#prism-chat-btn{position:fixed;bottom:24px;right:24px;z-index:99999;height:54px;padding:0 22px;border:0;border-radius:27px;background:#21243D;color:#fff;font-family:'Sora',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 8px 28px rgba(33,36,61,.32);display:flex;align-items:center;gap:9px}" +
     "#prism-chat-btn:hover{background:#2c3050}" +
-    "#prism-chat-panel{position:fixed;bottom:24px;right:24px;z-index:99999;width:clamp(320px,30vw,420px);height:min(620px,calc(100vh - 48px));max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(33,36,61,.30);display:none;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif;transition:width .18s ease,height .18s ease}" +
+    "#prism-chat-panel{position:fixed;bottom:24px;right:24px;z-index:99999;width:clamp(320px,30vw,420px);height:min(620px,calc(100vh - 48px));max-width:calc(100vw - 32px);background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(33,36,61,.30);display:flex;flex-direction:column;overflow:hidden;font-family:'Sora',sans-serif;transform:translateX(118%);opacity:0;visibility:hidden;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .18s ease,width .18s ease,height .18s ease}" +
+    "#prism-chat-panel.pc-open{transform:translateX(0);opacity:1;visibility:visible}" +
     "#prism-chat-panel.pc-max{top:16px;bottom:16px;right:16px;height:auto;width:clamp(360px,42vw,640px)}" +
+    // chat slides in beside content (never over it) on screens with room; reserves left for TOC, right for chat
+    "@media(min-width:1200px){html.pc-chat-open #content{margin-left:248px!important;margin-right:470px!important;max-width:none!important;transition:margin .24s ease}}" +
+    "@media(min-width:1500px){html.pc-chat-open.pc-chat-max #content{margin-right:700px!important}}" +
     "#prism-chat-head{background:#21243D;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0}" +
     "#prism-chat-head .t{font-size:15px;font-weight:600}#prism-chat-head .s{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}" +
     "#prism-chat-head .av{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:center top;flex-shrink:0;border:2px solid rgba(255,255,255,.25)}" +
@@ -77,13 +81,17 @@
   var expBtn = panel.querySelector("#prism-chat-exp");
   var greeted = false;
 
+  var root = document.documentElement;
   btn.onclick = function () {
-    panel.style.display = "flex"; btn.style.display = "none"; input.focus();
+    panel.classList.add("pc-open"); root.classList.add("pc-chat-open"); btn.style.display = "none"; input.focus();
     if (!greeted) { greeted = true; addMsg("bot", "Ask me anything about the " + company + " search audit — I answer only from the report."); }
   };
-  panel.querySelector("#prism-chat-x").onclick = function () { panel.style.display = "none"; btn.style.display = "flex"; };
+  panel.querySelector("#prism-chat-x").onclick = function () {
+    panel.classList.remove("pc-open"); root.classList.remove("pc-chat-open", "pc-chat-max"); btn.style.display = "flex";
+  };
   expBtn.onclick = function () {
     var max = panel.classList.toggle("pc-max");
+    root.classList.toggle("pc-chat-max", max);
     expBtn.textContent = max ? "⤡" : "⤢";
     expBtn.title = max ? "Restore" : "Expand";
     log.scrollTop = log.scrollHeight;
