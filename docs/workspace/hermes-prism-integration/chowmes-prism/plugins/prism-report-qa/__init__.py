@@ -18,6 +18,7 @@ Report binding is detected from the conversation and held per session_id.
 
 import json
 import os
+import re
 import unicodedata
 
 try:
@@ -344,29 +345,44 @@ def _gemini_judge(source_report, source_knowledge, answer):
     return json.loads(text)
 
 
+# Internal grounding markers Cassandra is told to emit (SOUL.md: label [FACT]/[ESTIMATE]).
+# The discipline stays; the literal tag must never reach the reader on ANY channel
+# (SPA, Telegram, WhatsApp). Strip e.g. [FACT], [ESTIMATE], [FACT - AméricaEconomía, Feb 2025],
+# [FACT: strategic_angles.0.pain_points.0]. The leading space is consumed so no double spaces remain.
+_TAG_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE)\b[^\]]*\]", re.IGNORECASE)
+
+
+def _strip_tags(text):
+    return _TAG_RE.sub("", text) if isinstance(text, str) else text
+
+
 def grounding_gate(response_text=None, session_id=None, **kwargs):
     if not response_text:
         return None
     slug = _BINDINGS.get(session_id)
     if not slug:
-        return None                          # not report-QA mode; leave unchanged
+        # not report-QA mode, but still never leak internal tags if present
+        stripped = _strip_tags(response_text)
+        return stripped if stripped != response_text else None
     try:
         source_report = _load_report(slug)
     except Exception:
-        return None
+        stripped = _strip_tags(response_text)
+        return stripped if stripped != response_text else None
     source_knowledge = _KNOWLEDGE_CACHE.get(session_id, "")
     try:
         verdict = _gemini_judge(source_report, source_knowledge, response_text)
     except Exception:
         # fail-closed: never silently pass unverified facts
-        return (response_text +
+        return (_strip_tags(response_text) +
                 "\n\n_(⚠ Could not verify these details against the audit report — "
                 "treat factual specifics with caution.)_")
     if not isinstance(verdict, dict) or verdict.get("verdict") == "PASS":
-        return None                          # supported -> unchanged
+        stripped = _strip_tags(response_text)   # supported -> unchanged except tag removal
+        return stripped if stripped != response_text else None
     corrected = verdict.get("corrected")
     if isinstance(corrected, str) and corrected.strip():
-        return corrected
+        return _strip_tags(corrected)
     return ("Some details in my draft weren't supported by the audit report, so I held them back. "
             "Ask about specific fields in the report and I'll answer only from it.")
 
