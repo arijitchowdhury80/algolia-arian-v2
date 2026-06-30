@@ -1,128 +1,116 @@
-# SESSION.md — PRISM (skills v2.1.0 · auto-deploy pipe · SPA chat upgrade)
+# SESSION.md — PRISM About-page splash + hub restructure + Cassandra + vault update
 
-**Status:** Session COMPLETE for what was tackled. arijit-skills v2.1.0 shipped + tagged; prism-hub
-GitHub→VPS auto-deploy LIVE; SPA chat upgraded + LIVE. Four-item chat/channel initiative started:
-chat done; **TOC blocked on user screenshot**; WhatsApp + canonical-format pending.
+**Status:** About/splash page redesign DONE + LIVE; site restructured (About = `/`); Cassandra rename +
+portrait done; detect-search vendored; Wave-2 unblocked. All 3 repos pushed/synced. **Vault wiki update
+was running in a background fork at persist time** (verify on resume).
 
-Date: 2026-06-30. Working dir: `/Users/arijitchowdhury/Dropbox/AI-Development/PIP` (home project; actual
-work spanned the **arijit-skills** and **prism-hub** repos + the **chowmes VPS**).
-
-**LATEST (post-persist reconcile):**
-- arijit-skills: TOC commit `937841c` MERGED to **main** + pushed (resolves the earlier "push 937841c?"
-  question — DONE). main = 937841c, clean.
-- Verified: an arijit-skills→main push does **NOT** trigger the prism-hub webhook (different repo +
-  the listener filters branch `feat/prism-vps-hosting`). Template/source changes reach live only via
-  a prism-hub re-render+push (Tier 1).
-- prism-hub keeps moving from the user's parallel pushes; the **pipe auto-deployed them cleanly**
-  (VPS observed advancing dc738db → 845bd22 → local now c2ae53b). Pipe confirmed working on real pushes.
-- **Tier-2 (CI-render) QUEUED** — see Remaining work + `memory/reference-prism-hub-autodeploy.md`.
+**Last updated:** 2026-06-30
 
 ---
 
-## RESUME ACTION (do these first, in order)
-1. Read this file + `memory/MEMORY.md` + `memory/project-prism-chat-cross-channel.md` +
-   `memory/reference-prism-hub-autodeploy.md`.
-2. **Ask the user for a screenshot with the TOC circled** before any layout change (see "TOC" below).
-3. Check if the user finished the **Meta Business account** (WhatsApp). If yes → investigate Hermes
-   channel architecture on the VPS, then build the WhatsApp channel bound to Cassandra.
-4. Continue the **canonical output format** work (one Markdown contract across channels).
+## RESUME ACTION (do first, in order)
+1. Read this file + `memory/MEMORY.md`.
+2. **Verify the vault fork finished.** A fork was writing the PRISM wiki at
+   `~/Library/CloudStorage/GoogleDrive-arijit.chowdhury@algolia.com/My Drive/AI-Docs/Obsidian/ArijitOS-Brain/Projects/PRISM/`
+   (6 new ADRs dated 2026-06-30, dev-log entries, `wiki/entities/` pages for prism/scout/hermes/cassandra/
+   detect-search/gemini/yfinance/chrome, a `right-tool-for-each-job` concept, index/log/open-questions updates).
+   Check `wiki/decisions/` for the 2026-06-30-*.md files + that `wiki/entities/` exists. If incomplete,
+   finish via record-knowledge "record this".
+3. Use `dangerouslyDisableSandbox:true` on every VPS bash (`ssh chowmes-vps`).
+4. Work the PENDING items below.
 
 ---
 
-## WHAT SHIPPED THIS SESSION (all live / pushed)
+## WHAT SHIPPED THIS SESSION (all live + pushed, prism-hub `feat/prism-vps-hosting`)
 
-### A. arijit-skills v2.1.0 (repo: `/Users/arijitchowdhury/Dropbox/AI-Development/Personal/arijit-skills`, branch feat/gemini-grounded-search merged to main, tags v2.0.0 + v2.1.0 pushed)
-- **v2.0.0**: 22 per-skill READMEs + root README for `skills/algolia-audit-skills/`; version fields
-  normalized to 3-part semver (floor 2.0.0; `algolia-intel-hiring` = 3.0.0, full source redesign).
-- **Financial-chart axis fix** (`algolia-search-audit/templates/index-template.html`): replaced
-  hardcoded `maxBarVal=56` + fixed gridlines with data-driven `axisMax()` (niceStep + 1-step headroom).
-  Home Depot ($165B revenue) overflowed the old $56B axis (~3x off chart); now scales to any size.
-  Separate bug from the older `pvB` parser fix. Test: `scripts/tests/test-finance-axis.mjs` (9 cases).
-- **News migrated OFF Tavily** → keyless Google News RSS primary (`scripts/collect-news.py` rewritten;
-  Tavily path + dead Apify code removed; docstring fixed). SKILL.md + README made consistent.
-- **techstack**: README added + version → 2.0.0; SimilarWeb mislabel fixed (it's REST API, not MCP).
-- **Frontmatter accuracy audit** across the suite: SimilarWeb = REST (traffic/competitors/techstack)
-  not MCP; financials = yfinance lib not Yahoo MCP; eval named non-existent modules (fixed);
-  campaign-abx stale sub-skill names; sales-plays missing 6th section.
+### The About / splash page (the big work) — repo `~/prism-hub`, file `index.html`
+Demo centerpiece for Friday (200 people). Built ENTIRELY as static vanilla HTML/CSS/JS (NO React/GSAP/
+Tailwind — the site is static + auto-deployed). Pieces:
+- **Premium prism hero** — glassy gradient prism, glowing refracted spectrum, traveling light beam,
+  shimmer (SVG + CSS anim, reduced-motion guard). Replaced the flat wireframe.
+- **Inside-the-audit tour** — auto-cycling cross-fade of FULL audit screenshots (Overview→Research→
+  Search Audit→Business Case→Sales Actions→chat), 3.8s, hover-pause. `assets/tour/*.png` (full-viewport
+  WITH the audit's own chrome — user preferred this over cropped). NO external pill tabs (they duplicated
+  the screenshot's own tab bar).
+- **MagicBento deliverables** — vanilla port: spotlight + reactive border-glow + 3D tilt + magnetism +
+  particles + ripple, LIGHT theme. Bento layout (deck wide, chat-agent featured/dark/wide).
+- **Glowing-edge role cards** (AE/BDR/Leader) — pointer-following conic glow + halo, masked to the arc
+  nearest cursor. Top colored accent lines REMOVED.
+- **Shared animated-grid background** — `assets/grid-bg.js` (one lib); index + about + audits show the
+  same pulsing grid. About bands made transparent so the grid shows through.
+- **Plain-English copy** — rewrote Hermes/Cassandra + skills sections (dropped jargon: claude-cli, agent
+  runtime, grounding gate, report-QA, keyless). Skill count `~23` → `22`.
+- **NO EM DASHES** on `/` and `/reports/` (grammar rewritten). Global rule [[feedback-no-em-dashes]].
+  Audit report pages LEFT with em dashes (user: "let them be").
+- Section order set by user: Who it's for → What it produces → How it works → Inside the audit →
+  The skills → The execution layer.
 
-### B. prism-hub → VPS auto-deploy (Vercel-style) — LIVE, verified
-- See `memory/reference-prism-hub-autodeploy.md` for the full runbook.
-- Push to `origin/feat/prism-vps-hosting` → GitHub webhook (id 647828356) → `prism.chowmes.com/gh-deploy`
-  → Caddy `handle /gh-deploy*` → listener `127.0.0.1:9099` (HMAC) → `git -C /opt/prism-hub reset --hard`
-  → served by `prism-chat-proxy.service` (8651). No restart needed. Verified end-to-end (real push
-  af43e71 + dc738db auto-deployed; GitHub ping 200; bad sig 401).
-- VPS pieces: `/opt/prism-hub` is now a git checkout (was manual copy; untracked `autozone` preserved —
-  deploy NEVER runs `git clean`). `/opt/prism-deploy-hook/` (hook.mjs, deploy.sh, .env chmod600).
-  systemd `prism-deploy-hook.service`. Caddyfile = `/home/chowmesadmin/lab-judge/Caddyfile` (docker
-  caddy, host-net). Backup: `/tmp/prism-hub-backup.tgz`. Webhook secret in scratchpad
-  `gh_webhook_secret.txt` (this session's tmp) + VPS .env.
-- VPS access: `ssh-hermes-vps` helper + scratchpad `chowmes.env` (SSH_HOST=72.61.72.147,
-  user=chowmesadmin, key ~/.ssh/chowmes_ed25519). sudo passwordless.
+### Site restructure (routing)
+- `/` serves the **About splash** (was the reports list). Hero CTA "Browse the audits" + topbar
+  "Reports" → `/reports/`.
+- `/reports/` = audit list (old index; card links absolutized `/{slug}/`; "About" → `/`).
+- `/about/` = redirect to `/`. Canonical About content lives in ROOT `index.html`; `about/index.html`
+  is the redirect stub.
+- Audit-page logos still link to `/` (= About). OPEN: point to `/reports/`? (template + 16-page render).
 
-### C. SPA chat upgrade (`/Users/arijitchowdhury/prism-hub/chat-widget.js`) — LIVE
-- Renders Markdown (bold/italic/headings/lists/code/links) instead of raw text. Inline links clickable.
-- Auto-links mentions of audit sections → in-page `#section-…` anchors that smooth-scroll.
-- Fluid sizing (clamp), slide-in animation, expand toggle → full viewport height.
-- Does NOT cover content: on ≥1200px viewports, `html.pc-chat-open #content{margin-left:248px;
-  margin-right:470px}` shifts the report so the panel sits beside it. Verified live.
-- All 10 reports re-rendered (TOC template change + still benefit from earlier axis fix).
+### GitHub → VPS auto-deploy
+Push to `origin/feat/prism-vps-hosting` → GitHub webhook → `prism-deploy-hook.service` (Node) →
+`git pull /opt/prism-hub` → live in seconds. No scp. [[reference-prism-hub-autodeploy]].
 
----
+### Cassandra (rename + portrait + housekeeping)
+- Rename **Cass → Cassandra** everywhere incl SOUL.md + AGENTS.md (`/root/.hermes-prism/`, sudo; 0
+  standalone "Cass"). SOUL frozen per session → **all Hermes sessions wiped** so new chats use new SOUL.
+- Portrait: 4 via Imagen 4 on the VPS gemini key; user picked **cass-2**. SPA chat avatar
+  `/assets/cassandra.png` (live). Telegram avatar DONE (user uploaded `cassandra-telegram-640x360.png`
+  via BotFather, 2026-06-30). Same face on SPA + Telegram now.
+- `sessions.auto_prune: true`, `retention_days: 7` in config.yaml (restarted). No custom cron.
+- [[reference-vps-image-gen-imagen-telegram-avatar]].
 
-## OPEN / NOT DONE (be explicit — do not claim these done)
+### detect-search
+Vendored into `arijit-skills/skills/detect-search/` (pushed to main); `~/.claude/skills/detect-search`
+is a SYMLINK into the repo (backup `.prelink-bak-20260629`). Runs on VPS (`--full-tech` → Algolia on
+petsmart, 14 categories).
 
-### TOC — BLOCKED on user input
-- User rule: **TOC always LEFT, chat always RIGHT, standardized across EVERY audit.**
-- I moved `#section-sidebar` (right→left in index-template.html, re-rendered all 10, deployed).
-- **PROBLEM:** `#section-sidebar` renders as a 0×0 empty box on Overview AND Search Audit tabs — and
-  it was ALSO 0×0 on the live site BEFORE any change. So it is likely NOT the element the user calls
-  "the TOC", or it is pre-existing-broken. Candidates: the top tab bar; `#section-sidebar` (side
-  scroll-nav, empty); the in-content `.toc-list` score-heatmap.
-- **NEXT: get a screenshot with the TOC circled before changing layout again.** Don't guess.
-
-### WhatsApp channel (Meta WhatsApp Cloud API — decided)
-- User has NO Meta Business account yet; is creating one. Steps in
-  `memory/project-prism-chat-cross-channel.md`. Then: investigate whether Hermes has a WhatsApp
-  adapter or build one; bind to the SAME Cassandra agent/profile as Telegram + SPA.
-
-### Cross-channel canonical output format
-- Not built. Plan: Cassandra emits ONE Markdown; section refs as URLs `…/<slug>/#section-<id>`; each
-  channel renders that one format (SPA=HTML+scroll built; Telegram=TG markdown; WhatsApp=WA format).
-  This is the "modify Hermes base functionality" work (prism-report-qa plugin output contract).
-
-### Tier-2 auto-deploy (CI-render) — QUEUED (optimization, not blocking)
-- Pipe is Tier 1 (VPS serves committed HTML; author runs `deno render` before push). To remove the
-  local render step: build **GitHub Actions on prism-hub** that renders changed audit-data (checks out
-  prism-hub + arijit-skills template) and commits HTML → existing webhook auto-pulls. Keep prod VPS
-  dumb (do NOT render on it — shared with Hermes). Guardrails: temp→validate→atomic swap→keep-last-good.
-  Full notes in `memory/reference-prism-hub-autodeploy.md`. Sequence after TOC/WhatsApp/canonical.
+### Wave-2 SimilarWeb blocker — RESOLVED
+User manually captured logged-in SimilarWeb screenshots (10 tabs × 7 companies: dell, footlocker, jbl,
+michaelkors, thenorthface, torrid, autozone) at `PIP/docs/temp/similarweb-wave2/`. Traffic now comes
+from those screenshots, not the dead API. Wave-2 audits fully keyless + runnable.
+[[feedback-wave2-blocker-similarweb-mcp]].
 
 ---
 
-## DECISIONS LOCKED
-- Versioning: per-skill semver, floor 2.0.0 baseline, hiring 3.0.0. Git tags v2.0.0 + v2.1.0.
-- News retires Tavily via **Google News RSS** (not Gemini — wrong shape for dated articles).
-- Auto-deploy = **webhook pull** (not Actions push) — keeps VPS creds out of GitHub. Tier-1 (serve
-  committed HTML) now; Tier-2 (VPS render) is a 1-line flip in deploy.sh.
-- Prod branch for prism-hub auto-deploy = `feat/prism-vps-hosting` (had content; main was behind).
-- WhatsApp provider = **Meta WhatsApp Cloud API**.
-- TOC standard = always left; chat always right (element TBD — see OPEN).
+## DECISIONS LOCKED THIS SESSION
+- About = splash at `/`; reports → `/reports/`; `/about/` redirects.
+- Port any sent React/shadcn/GSAP component to **vanilla** (static site). [[feedback-port-react-to-vanilla]]
+- No em dashes in reader-facing copy. [[feedback-no-em-dashes]]
+- Cassandra (never "Cass"); cass-2 portrait; auto_prune 7d.
+- Audit report pages keep their em dashes.
 
-## FILES WRITTEN THIS SESSION
-- arijit-skills: 22 READMEs + root README; `index-template.html` (axis + TOC-left);
-  `scripts/collect-news.py` (rewrite); `scripts/tests/test-finance-axis.mjs` (new); version fields in
-  ~21 SKILL.md; techstack SKILL.md+README; frontmatter fixes (traffic/competitors/financial-public/
-  sales-plays/campaign-abx/eval/news/techstack). Commits ef458f8(user), d940ec3, 1598f39, 80ae128,
-  d3a7854. Tags v2.0.0, v2.1.0.
-- prism-hub: `chat-widget.js` (rewrite); all 10 `*/index.html` re-rendered (×3 rounds). Commits incl
-  af43e71, dc738db. Branch feat/prism-vps-hosting pushed.
-- VPS: /opt/prism-hub→git, /opt/prism-deploy-hook/*, systemd unit, Caddyfile gh-deploy route.
-- memory: feedback-parallel-user-commit-mid-session, reference-prism-hub-autodeploy,
-  project-prism-chat-cross-channel, updated feedback-strip-parsefloat-unit-blind, MEMORY.md,
-  session_pointer.
+## PENDING / NOT DONE (no false claims)
+- **Vault fork** — verify it completed (resume step 2).
+- ~~Telegram avatar~~ — DONE (user uploaded `cassandra-telegram-640x360.png` via BotFather 2026-06-30).
+- **Audit-page logos** → decide `/` vs `/reports/`.
+- **Wave-2 e2e audits** (7) — NOT run; now unblocked. "Cassandra runs audit e2e" chat-trigger NOT built.
+- **OAuth token rotation** — not done (older item).
+- Audit pages still have em dashes (intentional).
 
-## REFERENCE FILES (read on resume)
-- `memory/project-prism-chat-cross-channel.md` — the 4-item initiative + WhatsApp steps + canonical fmt
-- `memory/reference-prism-hub-autodeploy.md` — auto-deploy runbook
-- `~/prism-hub/chat-widget.js` — SPA chat (markdown + section-jumps + slide-in)
-- arijit-skills `.../templates/index-template.html` — report template (TOC `#section-sidebar`, axis)
+## KEY FILES
+- `~/prism-hub/index.html` (About splash, canonical) · `reports/index.html` (audit list) ·
+  `about/index.html` (redirect) · `assets/grid-bg.js` · `assets/cassandra.png` ·
+  `assets/cassandra-telegram-640x360.png` · `assets/tour/*.png` · `chat-widget.js`.
+  Unused: `assets/parallax/*.png` (failed parallax), `assets/covers/*.png`, `assets/cass-candidates/`.
+- VPS: `/opt/prism-hub` (git auto-pull) · `/opt/prism-deploy-hook/` · `/root/.hermes-prism/`
+  (SOUL.md, AGENTS.md, config.yaml).
+- Vault: `Projects/PRISM/` (wiki).
+
+## REPOS (all synced at persist)
+- prism-hub `feat/prism-vps-hosting` · PIP `feat/prism-e2e-cycle` · arijit-skills `feat/gemini-grounded-search`
+
+---
+
+## HANDOFF BOOTSTRAP (paste into a fresh session)
+> Resuming PRISM. Read `/Users/arijitchowdhury/Dropbox/AI-Development/PIP/SESSION.md` + its `memory/MEMORY.md`
+> first. FIRST verify the vault wiki fork finished (Projects/PRISM/ — 6 ADRs dated 2026-06-30 +
+> wiki/entities/); finish it if not. Use `dangerouslyDisableSandbox:true` on every `ssh chowmes-vps`.
+> Rules: port React components to vanilla (static site); NO em dashes in copy; right tool per job
+> (Scout/Gemini/detect-search/yfinance/chrome); no fabrication. Then work the PENDING list.
