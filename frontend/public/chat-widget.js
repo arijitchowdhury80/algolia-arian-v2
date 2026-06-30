@@ -15,7 +15,8 @@
 (function () {
   "use strict";
 
-  var slug = (location.pathname.split("/").filter(Boolean)[0] || "").toLowerCase();
+  var segs = location.pathname.split("/").filter(Boolean);
+  var slug = (segs[0] === "reports" ? (segs[1] || "") : (segs[0] || "")).toLowerCase();
   if (!slug || slug === "index.html") return;
 
   var sid;
@@ -218,7 +219,7 @@
     var bot = addMsg("bot", "");
     bot.innerHTML = "<p>…</p>";
     try {
-      var res = await fetch("/api/chat", {
+      var res = await fetch("/api/report-chat", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, slug: slug, sid: sid }),
       });
