@@ -348,24 +348,9 @@ section { position: relative; }
   .flow { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
 }
-/* ── HERO MARQUEE (vanilla infinite auto-scroll of real audit covers) ── */
-.hero-marquee { position: relative; margin-top: 60px; overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%); }
-.hm-track { display: flex; width: max-content; animation: hm-scroll 64s linear infinite; }
-.hero-marquee:hover .hm-track { animation-play-state: paused; }
-.hm-card { flex: 0 0 auto; width: 446px; height: 222px; margin-right: 22px; border-radius: 14px;
-  overflow: hidden; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-  transition: transform 0.25s ease; }
-.hm-card:hover { transform: translateY(-6px); }
-.hm-card img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-@keyframes hm-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .hm-track { animation: none; }
-  .hero-marquee { overflow-x: auto; }
 }
 </style>
 </head>
@@ -434,25 +419,6 @@ section { position: relative; }
         <div class="pc-chip"><span class="sw" style="background:#D97706"></span>Battle card</div>
         <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Grounded chat agent</div>
       </div>
-    </div>
-  </div>
-  <!-- infinite auto-scroll of real audit covers -->
-  <div class="hero-marquee reveal" aria-label="Recent PRISM audits">
-    <div class="hm-track">
-      <a class="hm-card" href="/petsmart/"><img src="/assets/covers/petsmart.png" alt="PetSmart audit" loading="lazy"></a>
-      <a class="hm-card" href="/nike/"><img src="/assets/covers/nike.png" alt="Nike audit" loading="lazy"></a>
-      <a class="hm-card" href="/dsw/"><img src="/assets/covers/dsw.png" alt="DSW audit" loading="lazy"></a>
-      <a class="hm-card" href="/llbean/"><img src="/assets/covers/llbean.png" alt="L.L.Bean audit" loading="lazy"></a>
-      <a class="hm-card" href="/brooks-running/"><img src="/assets/covers/brooks-running.png" alt="Brooks Running audit" loading="lazy"></a>
-      <a class="hm-card" href="/oriental-trading/"><img src="/assets/covers/oriental-trading.png" alt="Oriental Trading audit" loading="lazy"></a>
-      <a class="hm-card" href="/british-airways/"><img src="/assets/covers/british-airways.png" alt="British Airways audit" loading="lazy"></a>
-      <a class="hm-card" href="/petsmart/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/petsmart.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/nike/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/nike.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/dsw/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/dsw.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/llbean/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/llbean.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/brooks-running/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/brooks-running.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/oriental-trading/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/oriental-trading.png" alt="" loading="lazy"></a>
-      <a class="hm-card" href="/british-airways/" aria-hidden="true" tabindex="-1"><img src="/assets/covers/british-airways.png" alt="" loading="lazy"></a>
     </div>
   </div>
 </section>
