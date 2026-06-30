@@ -240,10 +240,11 @@
   function mdToHtml(src) {
     if (!src) return "";
     var s = escapeHtml(src);
-    // Strip internal grounding markers that must never reach the reader:
-    // [FACT], [ESTIMATE], and source-path citations like [FACT: strategic_angles.0.pain_points.0].
-    // (The grounding discipline stays server-side; only the literal tag is removed from display.)
-    s = s.replace(/[ \t]*\[(?:FACT|ESTIMATE)\b[^\]]*\]/gi, "");
+    // Strip internal markers that must never reach the reader: [FACT], [ESTIMATE], source-path
+    // citations like [FACT: strategic_angles.0.pain_points.0], the [CONTINUATION] chunk marker, and
+    // the invisible [Account: slug] binding prefix. (Grounding discipline stays server-side.)
+    s = s.replace(/[ \t]*\[(?:FACT|ESTIMATE|CONTINUATION)\b[^\]]*\]/gi, "");
+    s = s.replace(/\[Account:[^\]]*\]\s*/gi, "");
     s = s.replace(/```([\s\S]*?)```/g, function (_, c) { return "<pre><code>" + c.replace(/^\n/, "") + "</code></pre>"; });
     s = s.replace(/`([^`]+)`/g, "<code>$1</code>");
     s = s.replace(/^###\s+(.*)$/gm, "<h4>$1</h4>").replace(/^##\s+(.*)$/gm, "<h3>$1</h3>").replace(/^#\s+(.*)$/gm, "<h3>$1</h3>");
