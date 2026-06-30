@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { readFile } from "node:fs/promises";
+import { readFile, realpath } from "node:fs/promises";
 import path from "node:path";
 
 const REPORTS_DIR = path.resolve(
@@ -26,6 +26,9 @@ export async function GET(
   // Load-bearing: dotted paths (.png/.js) bypass middleware, so gate HERE.
   const { userId } = await auth();
   if (!userId) return new Response("Unauthorized", { status: 401 });
+  // Note: this handler self-authenticates because Next middleware skips dotted
+  // paths (.png). BYPASS_AUTH (middleware-only) does NOT apply here — dev access
+  // to gated reports requires a real signed-in Clerk session.
 
   const segments = (await params).slug ?? [];
   const rel = segments.join("/");
@@ -40,9 +43,18 @@ export async function GET(
     return new Response("Forbidden", { status: 403 });
   }
 
+  // Resolve symlinks and re-check containment (a symlink inside REPORTS_DIR
+  // could otherwise point outside it and be followed by readFile).
+  const realBase = await realpath(REPORTS_DIR).catch(() => REPORTS_DIR);
+  const realAbs = await realpath(abs).catch(() => null);
+  if (!realAbs) return new Response("Not found", { status: 404 });
+  if (realAbs !== realBase && !realAbs.startsWith(realBase + path.sep)) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
   let data: Buffer;
   try {
-    data = await readFile(abs);
+    data = await readFile(realAbs);
   } catch {
     return new Response("Not found", { status: 404 });
   }
