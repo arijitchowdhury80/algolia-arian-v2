@@ -65,6 +65,10 @@
     ".pc-bot ul,.pc-bot ol{margin:4px 0 8px;padding-left:20px}.pc-bot li{margin:2px 0}" +
     ".pc-bot a{color:#2f54ff;text-decoration:underline;text-underline-offset:2px}" +
     ".pc-bot a.pc-jump{color:#21243D;text-decoration-color:#9aa2c8;font-weight:600;cursor:pointer}.pc-bot a.pc-jump:hover{color:#2f54ff}" +
+    ".pc-rel{margin-top:11px;padding-top:9px;border-top:1px solid #eceef4;display:flex;flex-wrap:wrap;gap:6px;align-items:center}" +
+    ".pc-rel-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#8a90ab;width:100%;margin-bottom:1px}" +
+    ".pc-bot a.pc-chip{display:inline-block;background:#eef1fb;border:1px solid #dfe3f5;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;color:#2f54ff!important;text-decoration:none!important}" +
+    ".pc-bot a.pc-chip:hover{background:#2f54ff;color:#fff!important;border-color:#2f54ff}" +
     ".pc-bot code{background:#eef0f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}" +
     ".pc-bot pre{background:#1f2233;color:#e8eaf6;border-radius:8px;padding:10px 12px;overflow-x:auto;margin:6px 0}.pc-bot pre code{background:0;color:inherit;padding:0}" +
     "#prism-chat-form{display:flex;gap:8px;padding:14px;border-top:1px solid #eceef4;background:#fff;flex-shrink:0}" +
@@ -200,7 +204,7 @@
         log.scrollTop = log.scrollHeight;
       }
       if (!acc.trim()) { bot.innerHTML = "<p>(no response)</p>"; }
-      else { bot.innerHTML = mdToHtml(acc); linkSections(bot); }
+      else { bot.innerHTML = mdToHtml(acc); linkSections(bot); appendRelated(bot, acc); }
     } catch (err) {
       bot.textContent = "Connection error. Please try again."; bot.classList.add("err");
     } finally {
@@ -250,20 +254,43 @@
 
   // --- auto-link mentions of audit sections → in-page anchors (only sections present on this page) ---
   var SECTION_KEYWORDS = [
-    ["section-financials", /\b(financials?|revenue|ebitda|margin)\b/i],
-    ["section-techstack", /\b(tech stack|technology stack|search vendor|search platform)\b/i],
-    ["section-traffic", /\b(traffic|engagement|bounce rate|visits)\b/i],
-    ["section-competitive", /\b(competitors?|competitive landscape)\b/i],
-    ["section-hiring", /\b(hiring|open roles?|job postings?)\b/i],
-    ["section-roi", /\b(roi|return on investment|business case)\b/i],
-    ["section-industry-context", /\b(industry context|industry benchmarks?)\b/i],
-    ["section-partner", /\b(partners?|co-sell)\b/i],
-    ["section-quotes", /\b(executive quotes?|earnings call)\b/i],
-    ["section-case-studies", /\b(case stud(?:y|ies))\b/i],
-    ["section-signals", /\b(signals?)\b/i],
-    ["section-discovery", /\b(discovery questions?)\b/i],
-    ["section-outreach", /\b(outreach|email sequence|campaign)\b/i],
+    ["section-financials", /\b(financials?|revenue|ebitda|margin|conversion rate|conversion|aov|average order|basket size|sales)\b/i],
+    ["section-techstack", /\b(tech stack|technology stack|search vendor|search platform|search engine|neuralsearch|current vendor|the platform|ibm|wcs|elastic|coveo|constructor|algolia)\b/i],
+    ["section-traffic", /\b(traffic|engagement|bounce rate|visits?|annual visits|audience|sessions)\b/i],
+    ["section-competitive", /\b(competitors?|competitive landscape|competition|rival|leroy merlin|adeo|chewy|amazon)\b/i],
+    ["section-hiring", /\b(hiring|open roles?|job postings?|headcount|recruiting)\b/i],
+    ["section-roi", /\b(roi|return on investment|business case|uplift|lost revenue|revenue opportunity|payback)\b/i],
+    ["section-industry-context", /\b(industry context|industry benchmarks?|benchmark|vertical)\b/i],
+    ["section-partner", /\b(partners?|co-sell|ecosystem)\b/i],
+    ["section-quotes", /\b(executive quotes?|earnings call|quote)\b/i],
+    ["section-case-studies", /\b(case stud(?:y|ies)|customer story|big w|decathlon|customers?)\b/i],
+    ["section-signals", /\b(signals?|priorities|mandate|initiative|hot sale|cto|cio|ceo|cfo|leadership|new leaders?|executives?|c-suite|president)\b/i],
+    ["section-discovery", /\b(discovery questions?|discovery)\b/i],
+    ["section-outreach", /\b(outreach|email sequence|campaign|cold email)\b/i],
   ];
+  var SECTION_LABEL = {
+    "section-financials": "Financials", "section-techstack": "Tech Stack", "section-traffic": "Traffic",
+    "section-competitive": "Competitors", "section-hiring": "Hiring", "section-roi": "Business Case",
+    "section-industry-context": "Industry", "section-partner": "Partners", "section-quotes": "Exec Quotes",
+    "section-case-studies": "Case Studies", "section-signals": "Signals", "section-discovery": "Discovery",
+    "section-outreach": "Outreach",
+  };
+  // Reliable clickable navigation: append a "Jump to in the report" chip row with the sections the
+  // answer actually touches (and that exist on this page). Each chip is a pc-jump so the delegated
+  // click handler scrolls to it. This guarantees clickable sections even when inline matching misses.
+  function appendRelated(container, text) {
+    var done = {}, html = [];
+    SECTION_KEYWORDS.forEach(function (k) {
+      if (done[k[0]] || !document.getElementById(k[0]) || !k[1].test(text)) return;
+      done[k[0]] = 1;
+      html.push('<a class="pc-jump pc-chip" href="#' + k[0] + '">' + (SECTION_LABEL[k[0]] || k[0]) + " →</a>");
+    });
+    if (!html.length) return;
+    var row = document.createElement("div");
+    row.className = "pc-rel";
+    row.innerHTML = '<span class="pc-rel-l">Jump to in the report</span>' + html.join("");
+    container.appendChild(row);
+  }
   function linkSections(container) {
     var avail = SECTION_KEYWORDS.filter(function (k) { return document.getElementById(k[0]); });
     if (!avail.length) return;
