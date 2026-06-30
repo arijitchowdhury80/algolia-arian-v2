@@ -100,6 +100,27 @@ class Audit(Base):
     )
 
 
+class User(Base):
+    """Tenant identity — mirrors a Clerk user. id == Clerk userId.
+
+    org_id is the org-ready seam (null today; populated when Clerk Organizations
+    is enabled in a later slice). See docs/specs/2026-06-30-slice2-multitenancy-acl-design.md.
+    """
+
+    __tablename__ = "users"
+
+    id: Mapped[str] = mapped_column(Text, primary_key=True)  # Clerk userId
+    email: Mapped[str | None] = mapped_column(Text, nullable=True)
+    name: Mapped[str | None] = mapped_column(Text, nullable=True)
+    org_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    __table_args__ = (Index("idx_users_org", "org_id"),)
+
+
 class ModuleExecution(Base):
     __tablename__ = "module_executions"
 
