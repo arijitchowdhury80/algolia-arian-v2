@@ -3,285 +3,922 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algolia Search Audit Hub</title>
+<title>PRISM — AI Prospect Intelligence for Algolia Sales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ═══════════════════════════════════════════════════════
+   PRISM — ABOUT / EXPLAINER
+   Reuses the Algolia Search Audit design system:
+   Sora · #F8F9FB + pulsing blue grid · #23263B topbar ·
+   blue→purple gradient · pastel section bands · white cards
+═══════════════════════════════════════════════════════ */
+:root {
+  --blue:    #003DFF;
+  --purple:  #5468FF;
+  --gray:    #23263B;
+  --ink:     #21243D;
+  --mid:     #6B7280;
+  --light:   #F5F5F7;
+  --border:  #E5E7EB;
+  --white:   #FFFFFF;
+  --red:     #DC2626;
+  --amber:   #D97706;
+  --green:   #059669;
+  --teal:    #0891B2;
+  --violet:  #7C3AED;
+
+  --blue-tint:   #EEF2FF;
+  --blue-border: #C7D2FE;
+  --blue-light:  #F8F9FF;
+  --red-tint:    #FEF2F2;
+  --red-border:  #FECACA;
+  --amber-tint:  #FFFBEB;
+  --amber-border:#FDE68A;
+  --green-tint:  #F0FDF4;
+  --green-border:#BBF7D0;
+  --violet-tint: #F5F3FF;
+  --violet-border:#DDD6FE;
+  --teal-tint:   #F0FDFA;
+  --teal-border: #99F6E4;
+
+  --navy-900:    #0D1240;
+  --topbar-h:    52px;
+  --radius:      14px;
+  --shadow:      0 2px 8px rgba(33,36,61,0.08);
+  --shadow-lg:   0 24px 60px rgba(33,36,61,0.16);
+  --maxw:        1180px;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
 body {
-  font-family: 'Sora', sans-serif;
-  background: #F8F9FB;
-  color: #23263B;
-  min-height: 100vh;
+  font-family: 'Sora', sans-serif; color: var(--gray);
+  background: #F8F9FB; font-weight: 400; position: relative;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-a { text-decoration: none; color: inherit; }
+#animated-grid { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+a { color: var(--blue); text-decoration: none; }
+::selection { background: rgba(0,61,255,0.16); }
 
-/* ── Header ── */
-header {
-  background: #21243D;
-  padding: 0 48px;
-  display: flex; align-items: center;
-  height: 60px; gap: 14px;
+/* ── Topbar ────────────────────────────────────── */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: var(--topbar-h);
+  background: var(--gray); display: flex; align-items: center;
+  padding: 0 24px; gap: 14px; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
-.header-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
-.header-title { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.85); }
-.header-about { margin-left: auto; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.78); transition: color 0.15s; }
-.header-about:hover { color: #fff; }
-.header-count { margin-left: 20px; font-size: 14px; color: rgba(255,255,255,0.40); }
+.tb-logo { display: flex; align-items: center; cursor: pointer; }
+.tb-logo svg { height: 19px; display: block; }
+.tb-div { width: 1px; height: 20px; background: rgba(255,255,255,0.25); }
+.tb-name { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
+.tb-sub  { font-size: 13px; color: rgba(255,255,255,0.45); white-space: nowrap; }
+.tb-spacer { flex: 1; }
+.tb-link { color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 600; margin-right: 6px; transition: color 0.15s; }
+.tb-link:hover { color: #fff; }
+.tb-gh {
+  display: flex; align-items: center; gap: 7px; padding: 6px 14px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 6px; color: #fff; font-size: 13px; font-weight: 600;
+  transition: background 0.15s;
+}
+.tb-gh:hover { background: rgba(255,255,255,0.22); }
+.tb-gh svg { width: 15px; height: 15px; fill: #fff; }
 
-/* ── Hero ── */
-.hero {
-  padding: 72px 48px 52px;
-  max-width: 1100px; margin: 0 auto;
-}
-.hero-eyebrow {
-  font-size: 13px; font-weight: 600; text-transform: uppercase;
-  letter-spacing: 0.12em; color: #003DFF; margin-bottom: 10px;
-}
-.hero-title {
-  font-size: 42px; font-weight: 600; color: #23263B;
-  line-height: 1.1; letter-spacing: -1px; margin-bottom: 14px;
-  white-space: nowrap;
-}
-.hero-sub { font-size: 17px; color: #6B7280; line-height: 1.6; max-width: 520px; }
-
-/* ── Grid ── */
-.grid {
-  max-width: 1100px; margin: 0 auto;
-  padding: 0 48px 80px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
+/* ── Scroll progress ───────────────────────────── */
+#scroll-progress {
+  position: fixed; top: var(--topbar-h); left: 0; right: 0; height: 3px; z-index: 199;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--purple) 50%, #00C8FF 100%);
+  transform-origin: left; transform: scaleX(0); pointer-events: none;
+  transition: transform 0.08s linear;
 }
 
-/* ── Card ── */
-.audit-card {
-  background: #fff;
-  border-radius: 14px;
-  border: 1px solid #E5E7EB;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s;
-  display: flex; flex-direction: column;
-  box-shadow: 0 2px 8px rgba(33,36,61,0.06);
-}
-.audit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(33,36,61,0.14);
-}
+/* ── Layout primitives ─────────────────────────── */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
+section { position: relative; }
+.band { padding: 96px 0; }
+/* bands transparent so the shared animated grid shows through — matches the audit pages */
+.band--hero       { padding: 132px 0 104px; background: transparent; }
+.band--who        { background: transparent; }
+.band--produce    { background: transparent; }
+.band--how        { background: transparent; }
+.band--skills     { background: transparent; }
+.band--close      { background: transparent; padding: 88px 0; }
+.band--tour       { background: transparent; }
+/* ── Inside-the-audit product tour ── */
+.tour { margin-top: 48px; }
+.tour-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 26px; }
+.tour-tab { font-family: inherit; font-size: 14px; font-weight: 600; color: var(--mid); background: #fff;
+  border: 1px solid var(--border); border-radius: 30px; padding: 9px 18px; cursor: pointer; box-shadow: var(--shadow); transition: transform 0.18s, color 0.18s, background 0.18s; }
+.tour-tab:hover { color: var(--gray); transform: translateY(-1px); }
+.tour-tab.is-active { background: linear-gradient(135deg, var(--blue), var(--purple)); color: #fff; border-color: transparent; box-shadow: 0 8px 20px rgba(0,61,255,0.28); }
+.tour-stage { position: relative; aspect-ratio: 1280 / 820; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-lg); background: #fff; }
+.tour-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; opacity: 0; transition: opacity 0.6s ease; }
+.tour-img.is-active { opacity: 1; }
 
-/* Logo block — large, centred */
-.card-logo-wrap {
-  padding: 32px 24px 24px;
-  display: flex; flex-direction: column;
-  align-items: flex-start; gap: 16px;
+/* ── Section heading kit ───────────────────────── */
+.eyebrow {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--blue); margin-bottom: 16px;
+  display: inline-flex; align-items: center; gap: 10px;
 }
-.card-logo-img {
-  width: 56px; height: 56px; border-radius: 12px;
-  object-fit: contain; border: 1px solid #E5E7EB;
-  background: #F8F9FB; padding: 6px;
-}
-.card-logo-fallback {
-  width: 56px; height: 56px; border-radius: 12px;
-  background: #003DFF; display: flex;
-  align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 600; color: white;
-}
-.card-name { font-size: 19px; font-weight: 600; color: #23263B; line-height: 1.2; }
-.card-industry { font-size: 14px; color: #6B7280; margin-top: 3px; }
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--blue); border-radius: 2px; }
+.s-title { font-size: clamp(30px, 3.6vw, 46px); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; }
+.s-lead  { font-size: clamp(17px, 1.4vw, 20px); color: var(--mid); line-height: 1.65; max-width: 760px; margin-top: 20px; font-weight: 300; }
 
-/* Footer */
-.card-footer {
-  margin-top: auto;
-  padding: 14px 24px;
-  border-top: 1px solid #F3F4F6;
-  display: flex; align-items: center; justify-content: space-between;
+/* ── HERO ──────────────────────────────────────── */
+.hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px; padding: 7px 16px;
+  background: #fff; border: 1px solid var(--blue-border); border-radius: 30px;
+  font-size: 13px; font-weight: 600; color: var(--blue); box-shadow: var(--shadow); margin-bottom: 26px;
 }
-.card-date { font-size: 13px; color: #9CA3AF; }
-.card-arrow { font-size: 14px; font-weight: 600; color: #003DFF; }
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(5,150,105,0.18); }
+.hero h1 {
+  font-size: clamp(52px, 8vw, 104px); font-weight: 800; line-height: 0.92;
+  letter-spacing: -0.045em; margin-bottom: 10px;
+  background: linear-gradient(115deg, var(--ink) 0%, var(--blue) 55%, var(--purple) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-tag {
+  font-size: clamp(20px, 2.3vw, 30px); font-weight: 600; color: var(--ink);
+  line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 26px;
+}
+.hero-tag .accent { color: var(--blue); }
+.hero-sub { font-size: 18px; line-height: 1.7; color: var(--mid); font-weight: 300; max-width: 600px; }
+.hero-sub strong { color: var(--gray); font-weight: 600; }
+.hero-cta { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
+  border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s; border: none;
+}
+.btn-primary { background: linear-gradient(135deg, var(--blue), var(--purple)); color: #fff; box-shadow: 0 8px 24px rgba(0,61,255,0.28); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,61,255,0.36); }
+.btn-ghost { background: #fff; color: var(--gray); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.btn-ghost:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.btn svg { width: 16px; height: 16px; }
 
-/* ── Empty ── */
-.empty { text-align: center; padding: 80px 48px; color: #6B7280; }
-.empty h2 { font-size: 24px; font-weight: 600; margin-bottom: 8px; color: #23263B; }
-.empty code {
-  display: inline-block; margin-top: 16px;
-  background: #F3F4F6; border-radius: 6px;
-  padding: 8px 16px; font-size: 14px; color: #374151;
-  font-family: 'SF Mono', monospace;
+/* ── Prism visual (domain in → spectrum out) ───── */
+.prism-card {
+  background: #fff; border: 1px solid var(--border); border-radius: 20px;
+  box-shadow: var(--shadow-lg); padding: 34px 30px; position: relative; overflow: hidden;
+}
+.prism-card .pc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mid); }
+.pc-in {
+  display: flex; align-items: center; gap: 10px; margin: 12px 0 26px;
+  background: var(--gray); color: #fff; border-radius: 9px; padding: 12px 16px;
+  font-size: 15px; font-weight: 500; font-family: 'Sora', monospace;
+}
+.pc-in .caret { color: var(--purple); font-weight: 700; }
+.prism-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pc-dot { animation: pc-travel 2.8s cubic-bezier(0.6,0,0.4,1) infinite; }
+@keyframes pc-travel {
+  0%   { cx: 4px;   opacity: 0; }
+  12%  { opacity: 1; }
+  50%  { cx: 150px; opacity: 1; }
+  58%  { cx: 150px; opacity: 0; }
+  100% { cx: 150px; opacity: 0; }
+}
+.pc-rays line { animation: pc-shimmer 3.2s ease-in-out infinite; }
+.pc-rays .pr1 { animation-delay: 0s; } .pc-rays .pr2 { animation-delay: 0.12s; }
+.pc-rays .pr3 { animation-delay: 0.24s; } .pc-rays .pr4 { animation-delay: 0.36s; }
+.pc-rays .pr5 { animation-delay: 0.48s; } .pc-rays .pr6 { animation-delay: 0.6s; }
+@keyframes pc-shimmer { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
+.pc-out { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.pc-chip {
+  display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;
+  padding: 9px 12px; border-radius: 8px; background: var(--blue-light); border: 1px solid var(--border);
+}
+.pc-chip .sw { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── WHO — role cards ──────────────────────────── */
+.role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+/* shell — holds the glowing edge behind the white inner card */
+.role-card { position: relative; border-radius: var(--radius); transition: transform 0.2s;
+  --card-deg: 90deg; --card-d: 0; }
+.role-card:hover { transform: translateY(-6px); }
+.role-inner { position: relative; z-index: 1; height: 100%;
+  background: #fff; border: 1px solid var(--border); border-radius: inherit;
+  padding: 32px 28px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
+.role-card:hover .role-inner { box-shadow: var(--shadow-lg); }
+/* (top accent bars removed — the glowing edge is the treatment) */
+/* pointer-following glowing edge (colored conic ring + soft halo, masked to the arc nearest the cursor) */
+.ge-edge { position: absolute; inset: -1.5px; border-radius: calc(var(--radius) + 1.5px); z-index: 0; pointer-events: none;
+  background: conic-gradient(from 90deg, #003DFF, #5468FF, #7C3AED, #DC2626, #D97706, #059669, #0891B2, #003DFF);
+  -webkit-mask: conic-gradient(from var(--card-deg) at 50% 50%, #000 0 10%, transparent 26% 74%, #000 90% 100%);
+          mask: conic-gradient(from var(--card-deg) at 50% 50%, #000 0 10%, transparent 26% 74%, #000 90% 100%);
+  opacity: 0; transition: opacity 0.35s ease; }
+.ge-edge::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: inherit; filter: blur(13px); opacity: 0.55; }
+.role-card:hover .ge-edge { opacity: calc(0.3 + 0.7 * var(--card-d)); }
+.role-ic { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.role-ic svg { width: 24px; height: 24px; }
+.r1 .role-ic { background: var(--blue-tint); color: var(--blue); }
+.r2 .role-ic { background: var(--teal-tint); color: var(--teal); }
+.r3 .role-ic { background: var(--violet-tint); color: var(--violet); }
+.role-card h3 { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
+.role-card p  { font-size: 15px; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+/* ── PRODUCE — deliverables ────────────────────── */
+.deliv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 52px; perspective: 1200px; }
+.deliv {
+  position: relative; overflow: hidden; --mx: 50%; --my: 50%;
+  background: #fff; border: 1px solid var(--border); border-radius: 14px;
+  padding: 22px 20px; box-shadow: var(--shadow);
+  transition: box-shadow 0.18s, transform 0.3s ease; transform-style: preserve-3d; will-change: transform;
+}
+.deliv:hover { box-shadow: var(--shadow-lg); }
+.deliv-grid > .deliv:first-child { grid-column: span 2; }
+.deliv > .di, .deliv > h4, .deliv > p { position: relative; z-index: 3; }
+/* spotlight + reactive border glow (mouse-following) */
+.b-spot { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease;
+  background: radial-gradient(260px circle at var(--mx) var(--my), rgba(84,104,255,0.16), transparent 70%); }
+.deliv:hover .b-spot { opacity: 1; }
+.deliv.featured .b-spot { background: radial-gradient(260px circle at var(--mx) var(--my), rgba(124,139,255,0.30), transparent 70%); }
+.b-glow { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2; padding: 1.5px; opacity: 0; transition: opacity 0.3s ease;
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(0,61,255,0.9), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);         mask-composite: exclude; }
+.deliv:hover .b-glow { opacity: 1; }
+/* particles + ripple */
+.b-particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(0,61,255,0.7); box-shadow: 0 0 6px rgba(84,104,255,0.6); pointer-events: none; z-index: 4; animation: b-float 2.6s ease-out forwards; }
+.deliv.featured .b-particle { background: rgba(190,202,255,0.95); box-shadow: 0 0 6px rgba(190,202,255,0.7); }
+@keyframes b-float { 0% { transform: translate(0,0) scale(0); opacity: 0; } 18% { opacity: 0.95; transform: scale(1); } 100% { transform: translate(var(--pdx,0px), var(--pdy,-30px)) scale(0.35); opacity: 0; } }
+.b-rip { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: rgba(84,104,255,0.35); pointer-events: none; z-index: 5; animation: b-ripple 0.7s ease-out forwards; }
+@keyframes b-ripple { to { transform: scale(42); opacity: 0; } }
+.deliv .di { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--blue-tint), var(--violet-tint));
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px; color: var(--blue); }
+.deliv .di svg { width: 19px; height: 19px; }
+.deliv h4 { font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 5px; }
+.deliv p { font-size: 13px; color: var(--mid); line-height: 1.5; font-weight: 300; }
+.deliv.featured { grid-column: span 2; background: linear-gradient(135deg, var(--gray) 0%, #2d3154 100%); border: none; color: #fff; }
+.deliv.featured h4 { color: #fff; }
+.deliv.featured p { color: rgba(255,255,255,0.7); }
+.deliv.featured .di { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* ── HOW — tools ───────────────────────────────── */
+.howbar {
+  display: flex; align-items: center; gap: 14px; margin-top: 40px; margin-bottom: 6px;
+  background: #fff; border: 1px solid var(--green-border); border-radius: 12px;
+  padding: 18px 24px; box-shadow: var(--shadow);
+}
+.howbar .hb-ic { width: 40px; height: 40px; border-radius: 10px; background: var(--green-tint); color: var(--green);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.howbar .hb-ic svg { width: 22px; height: 22px; }
+.howbar b { font-weight: 700; }
+.howbar span { font-size: 15.5px; color: var(--gray); line-height: 1.5; }
+.howbar .nf { color: var(--green); font-weight: 700; }
+
+.tool-list { margin-top: 30px; display: flex; flex-direction: column; gap: 16px; }
+.tool {
+  display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: center;
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px 30px; box-shadow: var(--shadow); transition: box-shadow 0.2s, transform 0.2s;
+}
+.tool:hover { transform: translateX(4px); box-shadow: var(--shadow-lg); }
+.tool-name { display: flex; align-items: center; gap: 13px; }
+.tool-name .tn-ic { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.tool-name .tn-ic svg { width: 22px; height: 22px; }
+.tool-name h3 { font-size: 19px; font-weight: 700; line-height: 1.1; }
+.tool-name .tn-tag { font-size: 12px; color: var(--mid); font-weight: 500; margin-top: 2px; }
+.tool-desc { font-size: 15.5px; color: var(--mid); line-height: 1.62; font-weight: 300; }
+.tool-desc strong { color: var(--gray); font-weight: 600; }
+.t-scout  .tn-ic { background: var(--blue-tint); color: var(--blue); }
+.t-gemini .tn-ic { background: var(--violet-tint); color: var(--violet); }
+.t-detect .tn-ic { background: var(--teal-tint); color: var(--teal); }
+.t-yf     .tn-ic { background: var(--green-tint); color: var(--green); }
+.t-chrome .tn-ic { background: var(--amber-tint); color: var(--amber); }
+.kbadge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--green); background: var(--green-tint); border: 1px solid var(--green-border); border-radius: 5px; padding: 2px 8px; margin-left: 8px; vertical-align: middle; }
+
+/* ── SKILLS ────────────────────────────────────── */
+.skill-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+.skill-stat { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px 22px; box-shadow: var(--shadow); }
+.skill-stat .num { font-size: 30px; font-weight: 800; line-height: 1; color: var(--blue); letter-spacing: -0.02em; }
+.skill-stat .lbl { font-size: 13px; color: var(--mid); margin-top: 5px; font-weight: 500; }
+.skill-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 38px; }
+.skill-group {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 24px 22px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+}
+.skill-group.span2 { grid-column: span 2; }
+.sg-head { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.sg-dot { width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+.sg-head h3 { font-size: 17px; font-weight: 700; }
+.sg-head .cnt { margin-left: auto; font-size: 12px; font-weight: 600; color: var(--mid); background: var(--light); border-radius: 20px; padding: 3px 10px; }
+.sg-sub { font-size: 13px; color: var(--mid); font-weight: 300; margin-bottom: 16px; line-height: 1.5; }
+.sg-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.sg-tag { font-size: 12.5px; font-weight: 500; color: var(--gray); background: var(--blue-light);
+  border: 1px solid var(--border); border-radius: 7px; padding: 5px 10px; font-family: 'Sora', monospace; }
+.orch { background: linear-gradient(135deg, #003DFF 0%, #5468FF 100%); border: none; color: #fff; }
+.orch .sg-head h3 { color: #fff; }
+.orch .sg-sub { color: rgba(255,255,255,0.78); }
+.orch .sg-tag { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.25); color: #fff; }
+.orch .sg-head .cnt { background: rgba(255,255,255,0.18); color: #fff; }
+.skills-cta { display: flex; justify-content: center; margin-top: 44px; }
+
+/* ── HERMES — dark execution layer ─────────────── */
+.hermes {
+  position: relative; color: #fff; overflow: hidden;
+  background: linear-gradient(135deg, #0d1b38 0%, #1a2d52 55%, #13244a 100%);
+  padding: 104px 0;
+}
+.hermes::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(680px circle at 82% 18%, rgba(84,104,255,0.30), transparent 60%);
+  pointer-events: none;
+}
+.hermes .wrap { position: relative; z-index: 1; }
+.hermes .eyebrow { color: #8FA4FF; }
+.hermes .eyebrow::before { background: #8FA4FF; }
+.hermes .s-title { color: #fff; }
+.hermes .s-lead { color: rgba(255,255,255,0.72); }
+.hermes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 52px; }
+.hcard {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius); padding: 30px 28px; backdrop-filter: blur(8px);
+}
+.hcard h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 11px; }
+.hcard h3 .hi { width: 40px; height: 40px; border-radius: 10px; background: rgba(143,164,255,0.18); color: #B7C5FF;
+  display: flex; align-items: center; justify-content: center; }
+.hcard h3 .hi svg { width: 22px; height: 22px; }
+.hcard p { font-size: 15.5px; color: rgba(255,255,255,0.72); line-height: 1.68; font-weight: 300; }
+.hcard p strong { color: #fff; font-weight: 600; }
+.flow {
+  margin-top: 40px; display: flex; align-items: center; justify-content: center; gap: 18px;
+  flex-wrap: wrap; background: rgba(0,0,0,0.20); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius); padding: 26px 30px;
+}
+.flow-node { display: flex; align-items: center; gap: 11px; font-size: 15px; font-weight: 600; color: #fff; }
+.flow-node .fn-ic { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+.flow-node .fn-ic svg { width: 19px; height: 19px; }
+.flow-node.f1 .fn-ic { background: rgba(0,61,255,0.4); color: #B7C5FF; }
+.flow-node.f2 .fn-ic { background: rgba(84,104,255,0.4); color: #C9D2FF; }
+.flow-node.f3 .fn-ic { background: rgba(8,145,178,0.4); color: #99F6E4; }
+.flow-arrow { color: rgba(255,255,255,0.4); font-size: 22px; font-weight: 300; }
+.chan-row { display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+.chan { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 9px 14px; color: #fff; }
+.chan svg { width: 16px; height: 16px; }
+
+/* ── CLOSING ───────────────────────────────────── */
+.close-inner { text-align: center; max-width: 880px; margin: 0 auto; }
+.close-inner .eyebrow { display: inline-flex; justify-content: center; }
+.close-inner h2 {
+  font-size: clamp(32px, 4.4vw, 56px); font-weight: 800; line-height: 1.08; letter-spacing: -0.025em;
+  background: linear-gradient(115deg, var(--ink) 0%, var(--blue) 60%, var(--purple) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.close-inner p { font-size: 19px; color: var(--mid); line-height: 1.7; margin-top: 22px; font-weight: 300; }
+.close-foot { margin-top: 40px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.close-meta { text-align: center; margin-top: 64px; font-size: 13px; color: var(--mid); }
+.close-meta .dotsep { margin: 0 8px; opacity: 0.5; }
+
+/* ── Reveal animation ──────────────────────────── */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+  .deliv-grid { grid-template-columns: repeat(2, 1fr); }
+  .deliv.featured { grid-column: span 2; }
+  .skill-cols { grid-template-columns: 1fr 1fr; }
+  .skill-group.span2 { grid-column: span 2; }
+  .hermes-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { padding: 0 24px; }
+  .band { padding: 64px 0; }
+  .role-grid { grid-template-columns: 1fr; }
+  .deliv-grid { grid-template-columns: 1fr; }
+  .deliv.featured { grid-column: span 1; }
+  .skill-cols { grid-template-columns: 1fr; }
+  .skill-group.span2 { grid-column: span 1; }
+  .tool { grid-template-columns: 1fr; gap: 14px; }
+  .tb-sub { display: none; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  .pc-dot, .pc-rays line { animation: none !important; }
+  .pc-dot { opacity: 0; }
+  .pc-rays line { opacity: 1; }
 }
 </style>
 </head>
 <body>
 
-<header>
-  <svg height="22" viewBox="0 0 2196.2 500" xmlns="http://www.w3.org/2000/svg" aria-label="Algolia"><path fill="#fff" fill-rule="evenodd" d="M1070.38 275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72z"/><rect width="62.58" height="277.9" x="1845.88" y="104.73" fill="#fff" rx="5.9" ry="5.9"/><path fill="#fff" fill-rule="evenodd" d="M1851.78 71.38h50.77c3.26 0 5.9-2.64 5.9-5.9V5.9c0-3.62-3.24-6.39-6.82-5.83l-50.77 7.95a5.9 5.9 0 0 0-4.99 5.83v51.62c0 3.26 2.64 5.9 5.9 5.9zm-87.75 203.92V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72zm-132.08-132.58c-11.14-12.25-24.83-21.65-40.78-28.31-15.92-6.53-33.26-9.85-52.07-9.85-18.78 0-36.15 3.17-51.92 9.85-15.59 6.66-29.29 16.05-40.76 28.31-11.47 12.23-20.38 26.87-26.76 44.03-6.38 17.17-9.24 37.37-9.24 58.36s3.19 36.87 9.55 54.21c6.38 17.32 15.14 32.11 26.45 44.36 11.29 12.23 24.83 21.62 40.6 28.46 15.77 6.83 40.12 10.33 52.4 10.48 12.25 0 36.78-3.82 52.7-10.48 15.92-6.68 29.46-16.23 40.78-28.46 11.29-12.25 20.05-27.04 26.25-44.36 6.22-17.34 9.24-33.22 9.24-54.21s-3.34-41.19-10.03-58.36c-6.38-17.17-15.14-31.8-26.43-44.03zm-44.43 163.75c-11.47 15.75-27.56 23.7-48.09 23.7-20.55 0-36.63-7.8-48.1-23.7-11.47-15.75-17.21-34.01-17.21-61.2 0-26.89 5.59-49.14 17.06-64.87 11.45-15.75 27.54-23.52 48.07-23.52 20.55 0 36.63 7.78 48.09 23.52 11.47 15.57 17.36 37.98 17.36 64.87 0 27.19-5.72 45.3-17.19 61.2zm-693.1-201.74h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm1239.55-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm-819.92-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-11.79 18.34-19.6 39.64-22.11 62.59a148.5 148.5 0 0 0 .05 32.73c4.28 38.09 23.14 71.61 50.66 94.52 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 17.99 0 34.61-5.93 48.16-15.97 16.29-11.58 28.88-28.54 34.48-47.75v50.26h-.11v11.08c0 21.84-5.71 38.27-17.34 49.36-11.61 11.08-31.04 16.63-58.25 16.63-11.12 0-28.79-.59-46.6-2.41-2.83-.29-5.46 1.5-6.27 4.22l-12.78 43.11c-1.02 3.46 1.27 7.02 4.83 7.53 21.52 3.08 42.52 4.68 54.65 4.68 48.91 0 85.16-10.75 108.89-32.21 21.48-19.41 33.15-48.89 35.2-88.52V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32zm0 64.1s.65 139.13 0 143.36c-12.08 9.77-27.11 13.59-43.49 14.7-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-1.32 0-2.63-.03-3.94-.1-40.41-2.11-74.52-37.26-74.52-79.38 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33z"/><path fill="#fff" d="M249.83 0C113.3 0 2 110.09.03 246.16c-2 138.19 110.12 252.7 248.33 253.5 42.68.25 83.79-10.19 120.3-30.03 3.56-1.93 4.11-6.83 1.08-9.51l-23.38-20.72c-4.75-4.21-11.51-5.4-17.36-2.92-25.48 10.84-53.17 16.38-81.71 16.03-111.68-1.37-201.91-94.29-200.13-205.96 1.76-110.26 92-199.41 202.67-199.41h202.69v360.27l-115-102.18c-3.72-3.31-9.42-2.66-12.42 1.31-18.46 24.44-48.53 39.64-81.93 37.34-46.33-3.2-83.87-40.5-87.34-86.81-4.15-55.24 39.63-101.52 94-101.52 49.18 0 89.68 37.85 93.91 85.95.38 4.28 2.31 8.27 5.52 11.12l29.95 26.55c3.4 3.01 8.79 1.17 9.63-3.3 2.16-11.55 2.92-23.58 2.07-35.92-4.82-70.34-61.8-126.93-132.17-131.26-80.68-4.97-148.13 58.14-150.27 137.25-2.09 77.1 61.08 143.56 138.19 145.26 32.19.71 62.03-9.41 86.14-26.95l150.26 133.2c6.44 5.71 16.61 1.14 16.61-7.47V9.48c-.01-5.23-4.25-9.48-9.49-9.48z"/></svg>
-  <div class="header-divider"></div>
-  <span class="header-title">Algolia Search Audit Intelligence</span>
-  <a href="/about/" class="header-about">About</a>
-  <span class="header-count">10 audits</span>
+<!-- ═══ TOPBAR ═══ -->
+<header id="topbar">
+  <a class="tb-logo" href="/" aria-label="Algolia — back to reports">
+    <svg height="19" viewBox="0 0 2196.2 500" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" fill-rule="evenodd" d="M1070.38 275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72z"/><rect width="62.58" height="277.9" x="1845.88" y="104.73" fill="#fff" rx="5.9" ry="5.9"/><path fill="#fff" fill-rule="evenodd" d="M1851.78 71.38h50.77c3.26 0 5.9-2.64 5.9-5.9V5.9c0-3.62-3.24-6.39-6.82-5.83l-50.77 7.95a5.9 5.9 0 0 0-4.99 5.83v51.62c0 3.26 2.64 5.9 5.9 5.9zm-87.75 203.92V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46 7.94a5.91 5.91 0 0 0-4.99 5.84l.17 273.22c0 12.92 0 92.7 95.97 95.49 3.33.1 6.09-2.58 6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72zm-132.08-132.58c-11.14-12.25-24.83-21.65-40.78-28.31-15.92-6.53-33.26-9.85-52.07-9.85-18.78 0-36.15 3.17-51.92 9.85-15.59 6.66-29.29 16.05-40.76 28.31-11.47 12.23-20.38 26.87-26.76 44.03-6.38 17.17-9.24 37.37-9.24 58.36s3.19 36.87 9.55 54.21c6.38 17.32 15.14 32.11 26.45 44.36 11.29 12.23 24.83 21.62 40.6 28.46 15.77 6.83 40.12 10.33 52.4 10.48 12.25 0 36.78-3.82 52.7-10.48 15.92-6.68 29.46-16.23 40.78-28.46 11.29-12.25 20.05-27.04 26.25-44.36 6.22-17.34 9.24-33.22 9.24-54.21s-3.34-41.19-10.03-58.36c-6.38-17.17-15.14-31.8-26.43-44.03zm-44.43 163.75c-11.47 15.75-27.56 23.7-48.09 23.7-20.55 0-36.63-7.8-48.1-23.7-11.47-15.75-17.21-34.01-17.21-61.2 0-26.89 5.59-49.14 17.06-64.87 11.45-15.75 27.54-23.52 48.07-23.52 20.55 0 36.63 7.78 48.09 23.52 11.47 15.57 17.36 37.98 17.36 64.87 0 27.19-5.72 45.3-17.19 61.2zm-693.1-201.74h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm1239.55-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-14.52 22.58-22.99 49.63-22.99 78.73 0 44.89 20.13 84.92 51.59 111.1 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 1.23 0 2.46-.03 3.68-.09.36-.02.71-.05 1.07-.07.87-.05 1.75-.11 2.62-.2.34-.03.68-.08 1.02-.12.91-.1 1.82-.21 2.73-.34.21-.03.42-.07.63-.1 32.89-5.07 61.56-30.82 70.9-62.81v57.83c0 3.26 2.64 5.9 5.9 5.9h50.42c3.26 0 5.9-2.64 5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9zm0 206.92c-12.2 10.16-27.97 13.98-44.84 15.12-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-42.24 0-77.12-35.89-77.12-79.37 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33zm-819.92-206.92h-49.33c-48.36 0-90.91 25.48-115.75 64.1-11.79 18.34-19.6 39.64-22.11 62.59a148.5 148.5 0 0 0 .05 32.73c4.28 38.09 23.14 71.61 50.66 94.52 2.93 2.6 6.05 4.98 9.31 7.14 12.86 8.49 28.11 13.47 44.52 13.47 17.99 0 34.61-5.93 48.16-15.97 16.29-11.58 28.88-28.54 34.48-47.75v50.26h-.11v11.08c0 21.84-5.71 38.27-17.34 49.36-11.61 11.08-31.04 16.63-58.25 16.63-11.12 0-28.79-.59-46.6-2.41-2.83-.29-5.46 1.5-6.27 4.22l-12.78 43.11c-1.02 3.46 1.27 7.02 4.83 7.53 21.52 3.08 42.52 4.68 54.65 4.68 48.91 0 85.16-10.75 108.89-32.21 21.48-19.41 33.15-48.89 35.2-88.52V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32zm0 64.1s.65 139.13 0 143.36c-12.08 9.77-27.11 13.59-43.49 14.7-.16.01-.33.03-.49.04-1.12.07-2.24.1-3.36.1-1.32 0-2.63-.03-3.94-.1-40.41-2.11-74.52-37.26-74.52-79.38 0-10.25 1.96-20.01 5.42-28.98 11.22-29.12 38.77-49.74 71.06-49.74h49.33z"/><path fill="#fff" d="M249.83 0C113.3 0 2 110.09.03 246.16c-2 138.19 110.12 252.7 248.33 253.5 42.68.25 83.79-10.19 120.3-30.03 3.56-1.93 4.11-6.83 1.08-9.51l-23.38-20.72c-4.75-4.21-11.51-5.4-17.36-2.92-25.48 10.84-53.17 16.38-81.71 16.03-111.68-1.37-201.91-94.29-200.13-205.96 1.76-110.26 92-199.41 202.67-199.41h202.69v360.27l-115-102.18c-3.72-3.31-9.42-2.66-12.42 1.31-18.46 24.44-48.53 39.64-81.93 37.34-46.33-3.2-83.87-40.5-87.34-86.81-4.15-55.24 39.63-101.52 94-101.52 49.18 0 89.68 37.85 93.91 85.95.38 4.28 2.31 8.27 5.52 11.12l29.95 26.55c3.4 3.01 8.79 1.17 9.63-3.3 2.16-11.55 2.92-23.58 2.07-35.92-4.82-70.34-61.8-126.93-132.17-131.26-80.68-4.97-148.13 58.14-150.27 137.25-2.09 77.1 61.08 143.56 138.19 145.26 32.19.71 62.03-9.41 86.14-26.95l150.26 133.2c6.44 5.71 16.61 1.14 16.61-7.47V9.48c-.01-5.23-4.25-9.48-9.49-9.48z"/></svg>
+  </a>
+  <span class="tb-div"></span>
+  <span class="tb-name">PRISM</span>
+  <span class="tb-sub">AI Prospect Intelligence &amp; Search-Audit Engine</span>
+  <span class="tb-spacer"></span>
+  <a class="tb-link" href="/reports/">Reports</a>
+  <a class="tb-gh" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    View skills on GitHub
+  </a>
 </header>
+<div id="scroll-progress"></div>
 
-<div class="hero">
-  <div class="hero-eyebrow">Search Audit Hub</div>
-  <h1 class="hero-title">Prospect Intelligence at a Glance</h1>
-  <p class="hero-sub">Click any company to open their full search audit — score, gaps, competitive intelligence, and sales play.</p>
-</div>
+<!-- ═══ HERO ═══ -->
+<section class="band band--hero">
+  <div class="wrap hero-grid">
+    <div class="hero reveal">
+      <span class="hero-badge"><span class="dot"></span>Evidence-grounded · Keyless · No fabrication</span>
+      <h1>PRISM</h1>
+      <p class="hero-tag">A prospect domain in.<br><span class="accent">A grounded sales audit out.</span></p>
+      <p class="hero-sub">PRISM is an AI prospect-intelligence and search-audit engine for Algolia sales. Give it a prospect's domain and it runs a full, <strong>evidence-grounded</strong> audit of their site search plus company and market intelligence — then produces a branded report and a complete set of sales deliverables. And you can <strong>chat with the findings</strong>, grounded and fabrication-free, on the web and on Telegram.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="/reports/">
+          Browse the audits
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          The skills
+        </a>
+      </div>
+    </div>
 
+    <!-- Prism visual: domain in → spectrum of deliverables out -->
+    <div class="prism-card reveal">
+      <div class="pc-label">Input</div>
+      <div class="pc-in"><span class="caret">▸</span> prospect-domain.com</div>
+      <svg class="prism-svg" viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" aria-label="A prism refracting one domain into a spectrum of deliverables">
+        <defs>
+          <linearGradient id="pc-glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7C8BFF" stop-opacity="0.40"/>
+            <stop offset="0.5" stop-color="#5468FF" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#003DFF" stop-opacity="0.06"/>
+          </linearGradient>
+          <filter id="pc-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- incoming beam + traveling light -->
+        <line x1="0" y1="80" x2="150" y2="80" stroke="#23263B" stroke-width="3.5" stroke-linecap="round"/>
+        <circle class="pc-dot" cy="80" r="4.5" fill="#003DFF" filter="url(#pc-glow)"/>
+        <!-- glassy prism -->
+        <polygon points="150,40 150,120 214,80" fill="url(#pc-glass)" stroke="#003DFF" stroke-width="2.4" stroke-linejoin="round"/>
+        <polygon points="150,40 150,120 214,80" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="0.9" stroke-linejoin="round"/>
+        <!-- refracted spectrum (glowing, shimmering) -->
+        <g filter="url(#pc-glow)" class="pc-rays">
+          <line class="pr1" x1="210" y1="78" x2="360" y2="24"  stroke="#003DFF" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr2" x1="211" y1="79" x2="360" y2="47"  stroke="#5468FF" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr3" x1="212" y1="80" x2="360" y2="69"  stroke="#0891B2" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr4" x1="212" y1="80" x2="360" y2="91"  stroke="#059669" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr5" x1="211" y1="81" x2="360" y2="113" stroke="#D97706" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr6" x1="210" y1="82" x2="360" y2="136" stroke="#DC2626" stroke-width="3.4" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div class="pc-label" style="margin-top:6px;">Output — a grounded spectrum</div>
+      <div class="pc-out">
+        <div class="pc-chip"><span class="sw" style="background:#003DFF"></span>Audit deck &amp; report</div>
+        <div class="pc-chip"><span class="sw" style="background:#5468FF"></span>Sales plays</div>
+        <div class="pc-chip"><span class="sw" style="background:#0891B2"></span>ROI business case</div>
+        <div class="pc-chip"><span class="sw" style="background:#059669"></span>ABX campaign</div>
+        <div class="pc-chip"><span class="sw" style="background:#D97706"></span>Battle card</div>
+        <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Grounded chat agent</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="grid">
-  <a href="./british-airways/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=britishairways.com&sz=128" alt="British Airways" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">BA</div>
-        <div>
-          <div class="card-name">British Airways</div>
-          <div class="card-industry">Airlines / Travel</div>
+<!-- ═══ WHO IT'S FOR ═══ -->
+<section class="band band--who">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2 class="s-title">Built for the Algolia sales floor</h2>
+      <p class="s-lead">For pre-call prep, displacement narratives, and evidence-grounded outreach — every deliverable grounded in the prospect's own data and the open web.</p>
+    </div>
+    <div class="role-grid">
+      <div class="role-card r1 reveal">
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Account Executives</h3>
+          <p>Walk into every discovery call with an evidence-grounded view of the prospect's search, their tech stack, and the exact displacement angle to lead with.</p>
         </div>
       </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-05-09</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./brooks-running/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=brooksrunning.com&sz=128" alt="Brooks Running" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">BR</div>
-        <div>
-          <div class="card-name">Brooks Running</div>
-          <div class="card-industry">Performance Running Footwear & Apparel</div>
+      <div class="role-card r2 reveal">
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>BDRs</h3>
+          <p>Open with proof, not guesswork. Personalized, fabrication-free outreach built from the prospect's own signals, executive language, and competitor evidence.</p>
         </div>
       </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-03-25</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./dsw/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://icons.duckduckgo.com/ip3/dsw.com.ico" alt="DSW Designer Shoe Warehouse" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">DD</div>
-        <div>
-          <div class="card-name">DSW Designer Shoe Warehouse</div>
-          <div class="card-industry">Footwear & Accessories Retail (Off-Price / Multi-Brand)</div>
+      <div class="role-card r3 reveal">
+        <span class="ge-edge"></span>
+        <div class="role-inner">
+          <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Sales Leaders</h3>
+          <p>A repeatable, grounded intelligence motion across the team — consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
         </div>
       </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-03-22</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./llbean/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.llbean.com/images/seo_logo.jpg" alt="L.L.Bean" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">L</div>
-        <div>
-          <div class="card-name">L.L.Bean</div>
-          <div class="card-industry">Outdoor Apparel & Equipment Retail</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-03-17</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./labanquepostale/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/7/75/Logo_La_Banque_Postale.svg/200px-Logo_La_Banque_Postale.svg.png" alt="La Banque Postale" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">LB</div>
-        <div>
-          <div class="card-name">La Banque Postale</div>
-          <div class="card-industry">Banking & Insurance (Bancassurance)</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-05-08</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./nike/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=nike.com&sz=128" alt="Nike" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">N</div>
-        <div>
-          <div class="card-name">Nike</div>
-          <div class="card-industry">Footwear</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-04-15</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./oriental-trading/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=orientaltrading.com&sz=128" alt="Oriental Trading Company" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">OT</div>
-        <div>
-          <div class="card-name">Oriental Trading Company</div>
-          <div class="card-industry">Specialty Retail — Party Supplies, Crafts, Toys, Education Supplies</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-04-15</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./petsmart/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=petsmart.com&sz=128" alt="PetSmart" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">P</div>
-        <div>
-          <div class="card-name">PetSmart</div>
-          <div class="card-industry">Specialty Retail — Pet Care / Pet Supplies (omnichannel)</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-06-19</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./savage-x-fenty/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://icons.duckduckgo.com/ip3/savagex.com.ico" alt="Savage X Fenty" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">SX</div>
-        <div>
-          <div class="card-name">Savage X Fenty</div>
-          <div class="card-industry">Lingerie & Intimate Apparel — DTC Subscription Commerce</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-03-19</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-  <a href="./homedepot-mexico/index.html" class="audit-card">
-      <div class="card-logo-wrap">
-        <img src="https://www.google.com/s2/favicons?domain=homedepot.com.mx&sz=128" alt="The Home Depot México" class="card-logo-img"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-             <div class="card-logo-fallback" style="display:none;">TH</div>
-        <div>
-          <div class="card-name">The Home Depot México</div>
-          <div class="card-industry">Home Improvement Retail</div>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="card-date">Audited 2026-05-13</span>
-        <span class="card-arrow">Open audit</span>
-      </div>
-    </a>
-</div>
+    </div>
+  </div>
+</section>
 
-<script src="/assets/grid-bg.js" defer></script>
+<!-- ═══ WHAT IT PRODUCES ═══ -->
+<section class="band band--produce">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">What it produces</span>
+      <h2 class="s-title">One domain. A full sales kit.</h2>
+      <p class="s-lead">Every audit fans out into a complete, branded deliverable package — built from evidence, ready to present and act on.</p>
+    </div>
+    <div class="deliv-grid">
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8" stroke-linecap="round"/></svg></div><h4>McKinsey-style audit deck</h4><p>Scored, narrative-driven findings.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linecap="round"/></svg></div><h4>Dual-view landing page</h4><p>Exec and deep-dive in one page.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8l-5-5H5a1 1 0 0 0-1 1z"/><path d="M14 3v5h5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>PDF book</h4><p>The full audit as a leave-behind.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>AE pre-call playbook</h4><p>Talking points &amp; discovery tree.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"/></svg></div><h4>Battle card</h4><p>Competitive positioning at a glance.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke-linecap="round"/></svg></div><h4>Leave-behind one-pager</h4><p>The executive summary, distilled.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>ROI business case</h4><p>Component-level revenue model.</p></div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></div><h4>AE / BDR sales plays</h4><p>MEDDPICC, objections, outreach.</p></div>
+      <div class="deliv featured reveal">
+        <span class="b-spot"></span><span class="b-glow"></span>
+        <div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg></div>
+        <h4>Grounded "chat with this audit" agent</h4>
+        <p>Ask the audit anything — answers come only from the produced report, never invented. Live on the web and Telegram.</p>
+      </div>
+      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>5-touch ABX campaign</h4><p>Emails, LinkedIn &amp; Loom script.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSIDE THE AUDIT — auto-cycling product tour ═══ -->
+<section class="band band--tour">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Inside the audit</span>
+      <h2 class="s-title">One audit, every angle.</h2>
+      <p class="s-lead">Overview, deep research, live search findings, the ROI case, the sales playbook — and a grounded agent to ask. Here's what's actually inside, end to end.</p>
+    </div>
+    <div class="tour reveal">
+      <div class="tour-tabs" role="tablist">
+        <button class="tour-tab is-active" data-i="0">Overview</button>
+        <button class="tour-tab" data-i="1">Research</button>
+        <button class="tour-tab" data-i="2">Search Audit</button>
+        <button class="tour-tab" data-i="3">Business Case</button>
+        <button class="tour-tab" data-i="4">Sales Actions</button>
+        <button class="tour-tab" data-i="5">Ask Cassandra</button>
+      </div>
+      <div class="tour-stage">
+        <img class="tour-img is-active" data-i="0" src="/assets/tour/overview.png" alt="Audit overview" loading="lazy">
+        <img class="tour-img" data-i="1" src="/assets/tour/research.png" alt="Deep research" loading="lazy">
+        <img class="tour-img" data-i="2" src="/assets/tour/search-audit.png" alt="Search audit findings" loading="lazy">
+        <img class="tour-img" data-i="3" src="/assets/tour/business-case.png" alt="ROI business case" loading="lazy">
+        <img class="tour-img" data-i="4" src="/assets/tour/sales-actions.png" alt="Sales actions" loading="lazy">
+        <img class="tour-img" data-i="5" src="/assets/tour/chat.png" alt="Ask Cassandra — grounded chat" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="band band--how" id="how">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">How it works — the engine</span>
+      <h2 class="s-title">The right tool for every job</h2>
+      <p class="s-lead">PRISM orchestrates a suite of specialized claude-cli skills end-to-end. Each fact-gathering job goes to the tool built for it — and every one of them is keyless. No paid data brokers, no scraped APIs behind a paywall.</p>
+    </div>
+
+    <div class="howbar reveal">
+      <span class="hb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></span>
+      <span><b>One hard rule everywhere: no fabrication.</b> Every fact carries a citation. A field with no grounded source stays <span class="nf">blank</span> — never guessed, never invented.</span>
+    </div>
+
+    <div class="tool-list">
+      <div class="tool t-scout reveal">
+        <div class="tool-name">
+          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg></span>
+          <div><h3>Scout</h3><div class="tn-tag">First-party data</div></div>
+        </div>
+        <div class="tool-desc">Acquires the target company's <strong>own</strong> data — company info, executives, careers and jobs, investor relations — by intelligent scraping of their site, JS-rendered pages, sitemaps and PDFs.</div>
+      </div>
+      <div class="tool t-gemini reveal">
+        <div class="tool-name">
+          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg></span>
+          <div><h3>Gemini-grounded Search</h3><div class="tn-tag">Open-web research</div></div>
+        </div>
+        <div class="tool-desc">Open-web research — industry benchmarks, analyst quotes, news, competitor tech. <strong>Every fact carries a citation;</strong> anything ungrounded is left blank.</div>
+      </div>
+      <div class="tool t-detect reveal">
+        <div class="tool-name">
+          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><h3>detect-search</h3><div class="tn-tag">Packet inspection<span class="kbadge">keyless</span></div></div>
+        </div>
+        <div class="tool-desc">Keyless network packet inspection via Playwright — loads the site across multiple pages and fingerprints the <strong>search vendor and full tech stack</strong>. Exactly how BuiltWith / Wappalyzer work, but free.</div>
+      </div>
+      <div class="tool t-yf reveal">
+        <div class="tool-name">
+          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18" stroke-linecap="round"/><path d="M7 14l3-4 3 2 5-7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><h3>yfinance</h3><div class="tn-tag">Public financials</div></div>
+        </div>
+        <div class="tool-desc">Public financials — revenue trend, margins, analyst consensus — pulled straight from public Yahoo Finance data for any company with a ticker.</div>
+      </div>
+      <div class="tool t-chrome reveal">
+        <div class="tool-name">
+          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M21 12h-6M5 19l4-4" stroke-linecap="round"/></svg></span>
+          <div><h3>chrome (browser)</h3><div class="tn-tag">Live search testing</div></div>
+        </div>
+        <div class="tool-desc">Drives a real browser to <strong>test the prospect's live search</strong> — typo tolerance, NLP queries, zero-results, autocomplete — capturing screenshots as evidence for every finding.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE SKILLS ═══ -->
+<section class="band band--skills">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The skills</span>
+      <h2 class="s-title">22 specialized skills, one pipeline</h2>
+      <p class="s-lead">The engine is a suite of open claude-cli skills — the <code>algolia-*</code> family. Each does one job well; the orchestrator runs them end-to-end. All of it is on GitHub.</p>
+      <div class="skill-meta">
+        <div class="skill-stat"><div class="num">22</div><div class="lbl">Specialized skills</div></div>
+        <div class="skill-stat"><div class="num">5</div><div class="lbl">Skill groups</div></div>
+        <div class="skill-stat"><div class="num">100%</div><div class="lbl">Keyless &amp; grounded</div></div>
+      </div>
+    </div>
+
+    <div class="skill-cols">
+      <a class="skill-group span2 reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#003DFF"></span><h3>Intelligence — Wave 1</h3><span class="cnt">13 skills</span></div>
+        <p class="sg-sub">Parallel research on the company, its market, and its money — the evidence base for everything downstream.</p>
+        <div class="sg-tags">
+          <span class="sg-tag">intel-company</span><span class="sg-tag">intel-techstack</span><span class="sg-tag">intel-traffic</span>
+          <span class="sg-tag">intel-competitors</span><span class="sg-tag">intel-financial-public</span><span class="sg-tag">intel-financial-private</span>
+          <span class="sg-tag">intel-investor</span><span class="sg-tag">intel-hiring</span><span class="sg-tag">intel-social</span>
+          <span class="sg-tag">intel-news</span><span class="sg-tag">intel-industry</span><span class="sg-tag">intel-partner</span><span class="sg-tag">intel-queries</span>
+        </div>
+      </a>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#D97706"></span><h3>Browser testing</h3><span class="cnt">1 skill</span></div>
+        <p class="sg-sub">Hands-on, live search testing in a real browser with screenshot evidence.</p>
+        <div class="sg-tags"><span class="sg-tag">audit-browser</span></div>
+      </a>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#0891B2"></span><h3>Synthesis &amp; QA</h3><span class="cnt">4 skills</span></div>
+        <p class="sg-sub">Pull the evidence together, score it, fact-check it, and render the report.</p>
+        <div class="sg-tags"><span class="sg-tag">audit-research</span><span class="sg-tag">audit-factcheck</span><span class="sg-tag">audit-eval</span><span class="sg-tag">audit-report</span></div>
+      </a>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#059669"></span><h3>Sales activation</h3><span class="cnt">3 skills</span></div>
+        <p class="sg-sub">Turn findings into a business case, sales plays, and a multi-touch campaign.</p>
+        <div class="sg-tags"><span class="sg-tag">synth-business-case</span><span class="sg-tag">synth-sales-plays</span><span class="sg-tag">campaign-abx</span></div>
+      </a>
+      <a class="skill-group orch reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#ffffff"></span><h3>Orchestrator</h3><span class="cnt">1 skill</span></div>
+        <p class="sg-sub">Runs the whole pipeline — research to deliverables — in a single end-to-end pass.</p>
+        <div class="sg-tags"><span class="sg-tag">algolia-search-audit</span></div>
+      </a>
+    </div>
+
+    <div class="skills-cta reveal">
+      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        View the skills on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HERMES / CASSANDRA ═══ -->
+<section class="hermes">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">The execution layer</span>
+      <h2 class="s-title">Hermes — the executioner</h2>
+      <p class="s-lead">The skills run headlessly via claude-cli on a VPS executor. Hermes is the agent runtime that turns the static audit into a live, grounded conversation — so the evidence doesn't just sit in a report, it answers questions.</p>
+    </div>
+
+    <div class="hermes-grid">
+      <div class="hcard reveal">
+        <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></span>Hermes</h3>
+        <p>The <strong>execution layer</strong>. It hosts the agents that run the skills and serve their output. Skills produce the evidence; Hermes makes it conversational — the runtime that takes a finished audit and stands a live agent in front of it.</p>
+      </div>
+      <div class="hcard reveal">
+        <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-2 7H7c0-2-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 21h6M10 18h4" stroke-linecap="round"/></svg></span>Cassandra</h3>
+        <p>A grounded report-QA and sales-coach agent. Cassandra answers <strong>only from the produced audit</strong> — a post-generation grounding gate enforces no-fabrication. Ask about a finding and you get the cited fact; ask about something absent and it refuses rather than invents.</p>
+      </div>
+    </div>
+
+    <div class="flow reveal">
+      <div class="flow-node f1"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Skills produce the evidence</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node f2"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></span>Hermes / Cassandra make it conversational</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node f3"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/></svg></span>One brain, two channels</div>
+    </div>
+
+    <div class="chan-row reveal">
+      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg>Web SPA — prism.chowmes.com</span>
+      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>Telegram</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="band--close">
+  <div class="wrap close-inner">
+    <span class="eyebrow">PRISM</span>
+    <h2>Give it a domain.<br>Get a grounded audit you can present, send, and talk to.</h2>
+    <p>Evidence in, never invention. The right tool for every fact, all keyless. A full sales kit out — and an agent that answers only from what's true.</p>
+    <div class="close-foot">
+      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        Explore the skills
+      </a>
+    </div>
+    <div class="close-meta">
+      PRISM · AI Prospect Intelligence &amp; Search-Audit Engine for Algolia Sales
+      <span class="dotsep">·</span> Evidence-grounded
+      <span class="dotsep">·</span> Keyless
+      <span class="dotsep">·</span> No fabrication
+    </div>
+  </div>
+</section>
+
+<script>
+/* ── Scroll progress bar ── */
+(function () {
+  var bar = document.getElementById('scroll-progress');
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? h.scrollTop / max : 0;
+    bar.style.transform = 'scaleX(' + p + ')';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ── Reveal-on-scroll ── */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en, i) {
+      if (en.isIntersecting) {
+        var el = en.target;
+        setTimeout(function () { el.classList.add('in'); }, (i % 4) * 70);
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+/* ── Animated grid background (reused from audit reports) ── */
+function initAnimatedGrid() {
+  if (typeof document.createElementNS !== 'function' || !document.body) return;
+  var GRID = 44, NUM = 45, MAX_OP = 0.55, MIN_OP = 0.12;
+  var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.id = 'animated-grid';
+  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  defs.innerHTML = '<pattern id="agp" x="0" y="0" width="' + GRID + '" height="' + GRID + '" patternUnits="userSpaceOnUse">' +
+    '<path d="M' + GRID + ' 0 L 0 0 0 ' + GRID + '" fill="none" stroke="rgba(0,61,255,0.07)" stroke-width="0.8"/></pattern>';
+  svg.appendChild(defs);
+  var bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  bg.setAttribute('width', '100%'); bg.setAttribute('height', '100%'); bg.setAttribute('fill', 'url(#agp)');
+  svg.appendChild(bg);
+  var squares = Array.from({ length: NUM }, function () {
+    var r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('width', GRID - 1); r.setAttribute('height', GRID - 1);
+    r.style.opacity = '0'; r.style.fill = 'rgba(0,61,255,0.10)';
+    svg.appendChild(r); return r;
+  });
+  document.body.insertBefore(svg, document.body.firstChild);
+  function reposition(r) {
+    var cols = Math.ceil(window.innerWidth / GRID) + 1;
+    var rows = Math.ceil(window.innerHeight / GRID) + 1;
+    r.setAttribute('x', Math.floor(Math.random() * cols) * GRID);
+    r.setAttribute('y', Math.floor(Math.random() * rows) * GRID);
+  }
+  function pulse(r, delay) {
+    setTimeout(function () {
+      reposition(r);
+      r.style.transition = 'opacity 1.8s ease';
+      r.style.opacity = String(MIN_OP + Math.random() * (MAX_OP - MIN_OP));
+      setTimeout(function () {
+        r.style.opacity = '0';
+        setTimeout(function () { pulse(r, 0); }, 2000 + Math.random() * 1500);
+      }, 1800 + Math.random() * 800);
+    }, delay);
+  }
+  squares.forEach(function (r, i) { pulse(r, i * 200 + Math.random() * 300); });
+}
+if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (document.readyState !== 'loading') initAnimatedGrid();
+  else document.addEventListener('DOMContentLoaded', initAnimatedGrid);
+}
+
+/* ── Role cards: glowing edge follows the pointer ── */
+(function () {
+  var cards = document.querySelectorAll('.role-card');
+  if (!cards.length) return;
+  cards.forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width / 2;
+      var y = e.clientY - r.top - r.height / 2;
+      var deg = Math.atan2(y, x) * 180 / Math.PI + 90;
+      if (deg < 0) deg += 360;
+      var kx = (r.width / 2) / (Math.abs(x) || 0.0001);
+      var ky = (r.height / 2) / (Math.abs(y) || 0.0001);
+      var edge = Math.min(1, 1 / Math.min(kx, ky));
+      card.style.setProperty('--card-deg', deg.toFixed(1) + 'deg');
+      card.style.setProperty('--card-d', edge.toFixed(3));
+    });
+  });
+})();
+
+/* ── Deliverables bento: spotlight, border glow, 3D tilt, magnetism, particles, ripple ── */
+(function () {
+  var cards = document.querySelectorAll('.deliv-grid .deliv');
+  if (!cards.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  cards.forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+      if (reduce) return;
+      var rx = ((y - r.height / 2) / (r.height / 2)) * -6;
+      var ry = ((x - r.width / 2) / (r.width / 2)) * 6;
+      var mxp = (x - r.width / 2) * 0.04, myp = (y - r.height / 2) * 0.04;
+      card.style.transform = 'perspective(900px) rotateX(' + rx.toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg) translate3d(' + mxp.toFixed(1) + 'px,' + (myp - 4).toFixed(1) + 'px,0)';
+    });
+    if (reduce) return;
+    card.addEventListener('mouseenter', function () {
+      var r = card.getBoundingClientRect();
+      for (var i = 0; i < 10; i++) {
+        (function (k) {
+          setTimeout(function () {
+            if (!card.matches(':hover')) return;
+            var p = document.createElement('span');
+            p.className = 'b-particle';
+            p.style.left = (Math.random() * r.width) + 'px';
+            p.style.top = (Math.random() * r.height) + 'px';
+            p.style.setProperty('--pdx', ((Math.random() - 0.5) * 80).toFixed(0) + 'px');
+            p.style.setProperty('--pdy', (-30 - Math.random() * 50).toFixed(0) + 'px');
+            card.appendChild(p);
+            p.addEventListener('animationend', function () { p.remove(); });
+          }, k * 90);
+        })(i);
+      }
+    });
+    card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    card.addEventListener('click', function (e) {
+      var r = card.getBoundingClientRect();
+      var rip = document.createElement('span');
+      rip.className = 'b-rip';
+      rip.style.left = (e.clientX - r.left) + 'px';
+      rip.style.top = (e.clientY - r.top) + 'px';
+      card.appendChild(rip);
+      rip.addEventListener('animationend', function () { rip.remove(); });
+    });
+  });
+})();
+
+/* ── Inside-the-audit tour: auto-cycle + tabs + hover-pause ── */
+(function () {
+  var tour = document.querySelector('.tour');
+  if (!tour) return;
+  var tabs = Array.prototype.slice.call(tour.querySelectorAll('.tour-tab'));
+  var imgs = Array.prototype.slice.call(tour.querySelectorAll('.tour-img'));
+  var i = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function show(n) {
+    i = (n + imgs.length) % imgs.length;
+    tabs.forEach(function (t, k) { t.classList.toggle('is-active', k === i); });
+    imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === i); });
+  }
+  function start() { if (reduce) return; stop(); timer = setInterval(function () { show(i + 1); }, 3800); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(+t.getAttribute('data-i')); start(); }); });
+  tour.addEventListener('mouseenter', stop);
+  tour.addEventListener('mouseleave', start);
+  start();
+})();
+</script>
 </body>
 </html>
