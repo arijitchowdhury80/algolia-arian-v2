@@ -22,7 +22,7 @@ export function buildModel(data) {
   const brief = {
     // company_snapshot has no "name" field; company name lives in meta.company
     company: data.company_snapshot?.name ?? data.meta?.company ?? data.cover?.company ?? SLUG,
-    oneLiner: data.company_snapshot?.description ?? data.cover?.subtitle ?? data.cover?.status_line ?? "",
+    oneLiner: data.company_snapshot?.description ?? data.cover?.subtitle ?? "",
     score: scoreNumber(data.score),
     verdict: verdictFromScore(data.score),
     damningFinding: (Array.isArray(data.findings) ? data.findings[0]?.title : data.findings?.[0]?.title) ?? ae.opportunity_headline ?? "",

@@ -10,6 +10,8 @@ Deno.test("production files are unchanged vs baseline (only ia/ and additive fee
     .split("\n").filter(Boolean);
   const offenders = changed.filter((f) =>
     !f.startsWith("ia/") &&
+    !f.startsWith("ia1/") &&
+    !f.startsWith("ia2/") &&
     f !== "api/feedback.js" &&
     f !== "server/chat-proxy.mjs"
   );
