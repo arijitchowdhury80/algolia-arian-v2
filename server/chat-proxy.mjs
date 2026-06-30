@@ -175,6 +175,24 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET" && url === "/healthz") {
     return sendJson(res, 200, { status: "ok" });
   }
+  // --- IA prototype feedback capture (additive; does not touch /api/chat) ---
+  if (req.method === "POST" && req.url === "/api/feedback") {
+    let raw = "";
+    req.on("data", (c) => (raw += c));
+    req.on("end", () => {
+      try {
+        const rec = { ...JSON.parse(raw || "{}"), ts: new Date().toISOString() };
+        import("node:fs").then((fs) =>
+          fs.appendFileSync(process.env.IA_FEEDBACK_FILE || "/opt/prism-hub-feedback.jsonl", JSON.stringify(rec) + "\n"));
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ ok: true }));
+      } catch {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ ok: false }));
+      }
+    });
+    return;
+  }
   if (req.method === "POST" && url === "/api/chat") {
     return handleChat(req, res).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
