@@ -349,21 +349,49 @@ def _gemini_judge(source_report, source_knowledge, answer):
 # rich Markdown — backticks become huge monospace blocks, ** shows literally. The SPA does NOT use
 # this output (it renders the pre-transform stream itself), so we make the final message clean PLAIN
 # text here: remove internal markers AND neutralize Markdown so it reads cleanly on every channel.
-_MARKER_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE|CONTINUATION)\b[^\]]*\]", re.IGNORECASE)
 _ACCT_RE = re.compile(r"\[Account:[^\]]*\]\s*", re.IGNORECASE)
+_CONT_RE = re.compile(r"[ \t]*\[CONTINUATION\b[^\]]*\]", re.IGNORECASE)
+_CITE_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE)\b([^\]]*)\]", re.IGNORECASE)
 _LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+REPORT_BASE = os.environ.get("PRISM_REPORT_BASE", "https://prism.chowmes.com")
+
+# Citation text (source name or JSON path) -> the report section that holds its evidence.
+_CITE_MAP = [
+    ("section-traffic", re.compile(r"similarweb|traffic|visit|bounce|engagement|session", re.I)),
+    ("section-financials", re.compile(r"financ|revenue|ebitda|margin|conversion|aov|gmv", re.I)),
+    ("section-techstack", re.compile(r"tech.?stack|search vendor|neuralsearch|search platform|\bibm\b|\bwcs\b|app.?id|constructor|coveo", re.I)),
+    ("section-competitive", re.compile(r"competitor|competitive|chewy|amazon|leroy|adeo", re.I)),
+    ("section-hiring", re.compile(r"hiring|\bjob\b|\brole\b|headcount|recruit", re.I)),
+    ("section-roi", re.compile(r"\broi\b|business case|uplift|payback|opportunity", re.I)),
+    ("section-quotes", re.compile(r"quote|earnings", re.I)),
+    ("section-signals", re.compile(r"signal|strategic_angle|intelligence_signal|news|leadership|\bcto\b|\bcio\b|\bceo\b|president|hot sale|priorit|mandate", re.I)),
+]
+_SECTION_LABEL = {
+    "section-traffic": "Traffic", "section-financials": "Financials", "section-techstack": "Tech Stack",
+    "section-competitive": "Competitors", "section-hiring": "Hiring", "section-roi": "Business Case",
+    "section-quotes": "Exec Quotes", "section-signals": "Signals",
+}
 
 
-def _clean_for_send(text):
-    """Strip internal markers and flatten Markdown to Telegram-safe plain text."""
+def _cite_section(body):
+    for sid, rx in _CITE_MAP:
+        if rx.search(body):
+            return sid
+    return None
+
+
+def _clean_for_send(text, slug=None):
+    """Flatten Markdown to Telegram-safe text; turn citations into a clickable Evidence footer."""
     if not isinstance(text, str):
         return text
-    t = _MARKER_RE.sub("", text)
+    t = _CONT_RE.sub("", text)
     t = _ACCT_RE.sub("", t)
+    t = _CITE_RE.sub("", t)            # drop any inline [FACT]/[ESTIMATE] tags she did emit
+    t = re.sub(r"[ \t]{2,}", " ", t)   # tidy double spaces left where a tag was removed
     # code fences + inline code -> keep inner text
-    t = re.sub(r"```[a-zA-Z0-9]*\n", "", t)      # opening fence with optional language + newline
-    t = re.sub(r"```([\s\S]*?)```", r"\1", t)    # inline ```x``` -> x
-    t = t.replace("```", "")                      # stray fence
+    t = re.sub(r"```[a-zA-Z0-9]*\n", "", t)
+    t = re.sub(r"```([\s\S]*?)```", r"\1", t)
+    t = t.replace("```", "")
     t = re.sub(r"`([^`]*)`", r"\1", t).replace("`", "")
     # links [text](url) -> text (url)
     t = _LINK_RE.sub(r"\1 (\2)", t)
@@ -373,8 +401,18 @@ def _clean_for_send(text):
     t = re.sub(r"(?<!\*)\*([^*\n]+)\*(?!\*)", r"\1", t)
     # headings -> plain
     t = re.sub(r"(?m)^[ \t]{0,3}#{1,6}[ \t]*", "", t)
-    # leftover stray emphasis chars
     t = t.replace("**", "")
+    # Clickable Evidence footer: the report sections this answer actually discusses (topic match, not
+    # dependent on her emitting [FACT]). Bare URLs — Telegram autolinks them. Capped to keep it tight.
+    if slug:
+        cited = []
+        for sid, rx in _CITE_MAP:
+            if sid not in cited and rx.search(t):
+                cited.append(sid)
+        cited = cited[:4]
+        if cited:
+            links = "\n".join(f"↗ {_SECTION_LABEL.get(sid, sid)}: {REPORT_BASE}/{slug}/#{sid}" for sid in cited)
+            t = t.rstrip() + "\n\nEvidence in the report:\n" + links
     return t
 
 
@@ -383,28 +421,28 @@ def grounding_gate(response_text=None, session_id=None, **kwargs):
         return None
     slug = _BINDINGS.get(session_id)
     if not slug:
-        # not report-QA mode, but still never leak internal tags if present
-        stripped = _clean_for_send(response_text)
-        return stripped if stripped != response_text else None
+        # not report-QA mode; no report to cite, just neutralize any markers/markdown
+        cleaned = _clean_for_send(response_text)
+        return cleaned if cleaned != response_text else None
     try:
         source_report = _load_report(slug)
     except Exception:
-        stripped = _clean_for_send(response_text)
-        return stripped if stripped != response_text else None
+        cleaned = _clean_for_send(response_text, slug)
+        return cleaned if cleaned != response_text else None
     source_knowledge = _KNOWLEDGE_CACHE.get(session_id, "")
     try:
         verdict = _gemini_judge(source_report, source_knowledge, response_text)
     except Exception:
         # fail-closed: never silently pass unverified facts
-        return (_clean_for_send(response_text) +
+        return (_clean_for_send(response_text, slug) +
                 "\n\n_(⚠ Could not verify these details against the audit report — "
                 "treat factual specifics with caution.)_")
     if not isinstance(verdict, dict) or verdict.get("verdict") == "PASS":
-        stripped = _clean_for_send(response_text)   # supported -> unchanged except tag removal
-        return stripped if stripped != response_text else None
+        cleaned = _clean_for_send(response_text, slug)   # supported -> citations become evidence links
+        return cleaned if cleaned != response_text else None
     corrected = verdict.get("corrected")
     if isinstance(corrected, str) and corrected.strip():
-        return _clean_for_send(corrected)
+        return _clean_for_send(corrected, slug)
     return ("Some details in my draft weren't supported by the audit report, so I held them back. "
             "Ask about specific fields in the report and I'll answer only from it.")
 
