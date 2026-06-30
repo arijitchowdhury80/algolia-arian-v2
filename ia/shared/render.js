@@ -4,7 +4,7 @@
 // Any em dash in data values (U+2014) becomes a space so output is always em-dash-free.
 function esc(s) {
   return String(s ?? "")
-    .replace(/—/g, " ")
+    .replace(/\u2014/g, " ")
     .replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 

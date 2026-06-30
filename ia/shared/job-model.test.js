@@ -71,5 +71,5 @@ Deno.test("renderPanel for 'reach' renders abx", () => {
 Deno.test("renderers never emit an em dash", () => {
   const m = buildModel(data);
   const all = renderBrief(m.brief) + m.jobs.map(renderPanel).join("") + renderProspect(m.prospect);
-  assert(!all.includes("—"), "em dash found in rendered output");
+  assert(!all.includes("\u2014"), "em dash found in rendered output");
 });

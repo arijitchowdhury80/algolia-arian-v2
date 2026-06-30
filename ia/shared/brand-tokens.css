@@ -1,14 +1,14 @@
 /**
- * Algolia Brand CSS — Single source of truth for typography and brand tokens
+ * Algolia Brand CSS  -  Single source of truth for typography and brand tokens
  * Applied to ALL audit deliverables by render-audit.ts (injected before </head>)
  *
  * Source: https://algolia.frontify.com/document/1?#/basics/typography
  *
- * Font:    Sora (Google Fonts) — 3 weights only: 300 / 400 / 600
+ * Font:    Sora (Google Fonts)  -  3 weights only: 300 / 400 / 600
  * Colors:  #23263B (text), #003DFF (blue), #5468FF (purple), #6B7280 (mid)
  * Scale:   H1=56px/300, H2=36px/300, H3=28px/400, H4=22px/600, body=16px/400, label=14px/600
  *
- * CHANGE THIS FILE — all reports update on next render.
+ * CHANGE THIS FILE  -  all reports update on next render.
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap');
@@ -114,7 +114,7 @@ a {
   text-decoration: none;
 }
 /* ══════════════════════════════════════════════════════════════════════════════
-   ⚡ TRANSPARENCY DIRECTIVE — NON-NEGOTIABLE SYSTEM RULE
+   ⚡ TRANSPARENCY DIRECTIVE  -  NON-NEGOTIABLE SYSTEM RULE
    ══════════════════════════════════════════════════════════════════════════════
    Every data point that is a fact, estimate, claim, or statistic MUST have
    an inline source link. No unlinked data. No claim without a URL.
@@ -139,10 +139,10 @@ a {
    NEVER present unverified data as fact.
 ══════════════════════════════════════════════════════════════════════════════ */
 
-/* ── Global link style — DESIGN DIRECTIVE ────────────────────────────────────
+/* ── Global link style  -  DESIGN DIRECTIVE ────────────────────────────────────
    All links across the entire system:
    - Default: colored (blue) text, no underline, no icons, no arrows
-   - Hover: underline only — no color change, no icons
+   - Hover: underline only  -  no color change, no icons
    - Never use ↗ → or any arrow/icon on links
    - This applies everywhere: signal cards, exec cards, nav, source badges, etc.
 ─────────────────────────────────────────────────────────────────────────────── */
@@ -156,12 +156,12 @@ a:hover {
   color: var(--brand-blue);
 }
 
-/* ─── Digital Presence Tile — groups Tech Stack + Traffic as one chapter ─────
+/* ─── Digital Presence Tile  -  groups Tech Stack + Traffic as one chapter ─────
    Matches the exec block pattern: .card with padding, inner sections transparent.
    .dp-tile suppresses .audit-section margin-bottom so spacing is tile-controlled.
 ────────────────────────────────────────────────────────────────────────────── */
 .dp-tile {
-  /* Very light blue gradient — white at top-left fading to faint sky-blue at bottom-right */
+  /* Very light blue gradient  -  white at top-left fading to faint sky-blue at bottom-right */
   background: linear-gradient(135deg, #ffffff 0%, #EFF6FF 50%, #DBEAFE 100%);
   border: 1px solid rgba(59,130,246,0.12);
   border-radius: var(--radius);
@@ -180,7 +180,7 @@ a:hover {
   padding: 28px !important;
 }
 
-/* card-3d without lift — keeps shadow on hover but no translateY */
+/* card-3d without lift  -  keeps shadow on hover but no translateY */
 .card-3d--no-lift {
   transition: box-shadow 0.3s ease;
 }
@@ -193,9 +193,9 @@ a:hover {
     0 40px 64px rgba(35,38,59,0.06);
 }
 
-/* ─── 3D Shadow Card — floating bevel, no glow border ───────────────────────
+/* ─── 3D Shadow Card  -  floating bevel, no glow border ───────────────────────
    Use on content-heavy cards with internal interactivity (donut charts, bars).
-   The glow border competes with internal hover states — 3D shadow instead.
+   The glow border competes with internal hover states  -  3D shadow instead.
 ────────────────────────────────────────────────────────────────────────────── */
 .card-3d {
   background: white;
@@ -217,7 +217,7 @@ a:hover {
   transform: translateY(-2px);
 }
 
-/* ─── Glowing Effect — mouse-tracking conic-gradient border glow ─────────────
+/* ─── Glowing Effect  -  mouse-tracking conic-gradient border glow ─────────────
    Vanilla CSS + JS replication of Aceternity glowing-effect.
    Usage: add class="glow-card" to any card element.
    JS: call initGlowEffect(containerEl) after DOM insertion.
@@ -230,7 +230,7 @@ a:hover {
   border: 1px solid var(--brand-border);
   isolation: isolate;
 }
-/* Gradient border layer — sits behind the card */
+/* Gradient border layer  -  sits behind the card */
 .glow-card::before {
   content: '';
   position: absolute;
@@ -265,7 +265,7 @@ a:hover {
   border-color: transparent;
 }
 
-/* ─── Bounce Card — shrink + rotate on hover with gradient reveal ────────────
+/* ─── Bounce Card  -  shrink + rotate on hover with gradient reveal ────────────
    Vanilla CSS replication of uniquesonu/bounce-card-features.
    Usage:
      <div class="bounce-card bounce-card--red|amber|green">
@@ -325,7 +325,7 @@ a:hover {
   color: rgba(255,255,255,0.75);
   text-align: center;
 }
-/* Color variants — deep-to-light single-hue gradients (premium, not aggressive) */
+/* Color variants  -  deep-to-light single-hue gradients (premium, not aggressive) */
 .bounce-card--red   .bounce-card__gradient {
   background: linear-gradient(150deg, #C53030 0%, #FC8181 100%);
 }
@@ -367,7 +367,7 @@ a:hover {
 .feature-card:nth-child(3n) { border-right: none; }
 .feature-card:nth-last-child(-n+3) { border-bottom: none; }
 
-/* Gradient overlay — appears on hover */
+/* Gradient overlay  -  appears on hover */
 .feature-card::before {
   content: '';
   position: absolute;
@@ -391,7 +391,7 @@ a:hover {
   gap: 8px;
 }
 
-/* Title row — accent bar on left, title beside it (matching Aceternity layout) */
+/* Title row  -  accent bar on left, title beside it (matching Aceternity layout) */
 .fc-title-row {
   display: flex;
   align-items: flex-start;
@@ -443,7 +443,7 @@ a:hover {
 }
 .fc-source a:hover { text-decoration: underline; }
 
-/* Urgency variants — accent bar color on hover */
+/* Urgency variants  -  accent bar color on hover */
 .feature-card--high:hover .fc-accent-bar   { background: #DC2626; }
 .feature-card--high::before                { background: linear-gradient(to bottom, rgba(220,38,38,0.05) 0%, transparent 100%); }
 .feature-card--medium:hover .fc-accent-bar { background: #D97706; }
@@ -451,7 +451,7 @@ a:hover {
 .feature-card--positive:hover .fc-accent-bar { background: #059669; }
 .feature-card--positive::before            { background: linear-gradient(to bottom, rgba(5,150,105,0.05) 0%, transparent 100%); }
 
-/* ─── Animated Background — sliding hover highlight for card grids ───────────
+/* ─── Animated Background  -  sliding hover highlight for card grids ───────────
    Vanilla CSS + JS replication of motion-primitives AnimatedBackground.
    Spring-like cubic-bezier gives the "bounce to settle" motion.
 
@@ -493,9 +493,9 @@ a:hover {
   transition: color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
-/* No color override — cards have opaque white background so highlight slides behind them */
+/* No color override  -  cards have opaque white background so highlight slides behind them */
 
-/* ─── Proof Pill — hero-pill style case study badge ─────────────────────────
+/* ─── Proof Pill  -  hero-pill style case study badge ─────────────────────────
    Usage: proofPill(url, company, result) function in index-template.html
    CSS classes for the two variants (light bg, dark/gradient bg)
    [Company badge] Result text →
@@ -525,7 +525,7 @@ a:hover {
   white-space: nowrap;
   line-height: 1.4;
 }
-/* Green variant (default — case study in search findings) */
+/* Green variant (default  -  case study in search findings) */
 .proof-pill--green {
   background: rgba(5,150,105,0.08);
   border: 1px solid rgba(5,150,105,0.25);
@@ -565,7 +565,7 @@ a:hover {
   --violet: var(--brand-violet);
 }
 
-/* ── Unverified source warning — web search only, not URL-confirmed ──────────
+/* ── Unverified source warning  -  web search only, not URL-confirmed ──────────
    Apply to any data point where source_url could not be WebFetched and confirmed.
    Renders a red warning badge + amber border to flag it for the AE.
 ────────────────────────────────────────────────────────────────────────────── */
@@ -592,7 +592,7 @@ a:hover {
   position: relative;
 }
 .unverified-wrapper::before {
-  content: '⚠ Web search only — verify before using';
+  content: '⚠ Web search only - verify before using';
   display: block;
   font-size: 10px;
   font-weight: 700;
@@ -604,7 +604,7 @@ a:hover {
 
 /* ─── Navigation System v2 (2026-03-23 IA rethink, fixed 2026-03-23) ─────── */
 
-/* Tab subtitle — fixed below the floating pill nav, legible size */
+/* Tab subtitle  -  fixed below the floating pill nav, legible size */
 .tab-subtitle {
   position: fixed;
   top: calc(var(--topbar-h, 52px) + 10px + 54px);
@@ -620,7 +620,7 @@ a:hover {
   transition: opacity 0.2s ease;
 }
 
-/* ── Stat Bar — 4-column editorial KPI row ──────────────────────────────── */
+/* ── Stat Bar  -  4-column editorial KPI row ──────────────────────────────── */
 .stat-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -689,7 +689,7 @@ a:hover {
   .stat-bar__item:nth-child(2) { border-bottom: 1px solid var(--brand-border); }
 }
 
-/* ── Section Sidebar — fixed right, vertically centered in viewport ────────── */
+/* ── Section Sidebar  -  fixed right, vertically centered in viewport ────────── */
 #section-sidebar {
   position: fixed;
   right: 24px;
@@ -792,7 +792,7 @@ a:hover {
 .highlights-grid, .highlight-card,
 .highlight-card__icon, .highlight-card__stat, .highlight-card__label { display: none !important; }
 
-/* Section subtitle — personalized one-liner under every section title */
+/* Section subtitle  -  personalized one-liner under every section title */
 .section-subtitle {
   font-size: 14px;
   color: var(--brand-mid);
@@ -802,7 +802,7 @@ a:hover {
   line-height: 1.5;
 }
 
-/* ─── Floating Card — Summary stat bar wrapper ──────────────────────────── */
+/* ─── Floating Card  -  Summary stat bar wrapper ──────────────────────────── */
 .floating-card-wrap {
   perspective: 1400px;
   margin-bottom: 32px;
@@ -828,7 +828,7 @@ a:hover {
   box-shadow: 0 20px 60px rgba(0,61,255,0.14), 0 6px 20px rgba(35,38,59,0.12);
 }
 
-/* ─── Case Studies — ruixenui vertical timeline, alternating 2/3+1/3 grid ──
+/* ─── Case Studies  -  ruixenui vertical timeline, alternating 2/3+1/3 grid ──
    Each row: portrait+quote (2/3) | animated metric (1/3)
    Alternating rows reverse the order (metric on left, portrait+quote on right)
 ────────────────────────────────────────────────────────────────────────────── */
@@ -871,7 +871,7 @@ a:hover {
   padding-left: 2.5rem;
 }
 
-/* Portrait — company monogram, aspect ratio 29/35 */
+/* Portrait  -  company monogram, aspect ratio 29/35 */
 .cs-portrait {
   width: 120px;
   aspect-ratio: 29 / 35;
@@ -1007,7 +1007,7 @@ a:hover {
   box-shadow: 0 4px 20px rgba(0,61,255,0.10);
 }
 
-/* Header — always visible */
+/* Header  -  always visible */
 .cs-header {
   padding: 20px 20px 16px;
   display: flex;
