@@ -159,7 +159,20 @@ section { position: relative; }
   font-size: 15px; font-weight: 500; font-family: 'Sora', monospace;
 }
 .pc-in .caret { color: var(--purple); font-weight: 700; }
-.prism-svg { width: 100%; height: auto; display: block; }
+.prism-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.pc-dot { animation: pc-travel 2.8s cubic-bezier(0.6,0,0.4,1) infinite; }
+@keyframes pc-travel {
+  0%   { cx: 4px;   opacity: 0; }
+  12%  { opacity: 1; }
+  50%  { cx: 150px; opacity: 1; }
+  58%  { cx: 150px; opacity: 0; }
+  100% { cx: 150px; opacity: 0; }
+}
+.pc-rays line { animation: pc-shimmer 3.2s ease-in-out infinite; }
+.pc-rays .pr1 { animation-delay: 0s; } .pc-rays .pr2 { animation-delay: 0.12s; }
+.pc-rays .pr3 { animation-delay: 0.24s; } .pc-rays .pr4 { animation-delay: 0.36s; }
+.pc-rays .pr5 { animation-delay: 0.48s; } .pc-rays .pr6 { animation-delay: 0.6s; }
+@keyframes pc-shimmer { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
 .pc-out { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
 .pc-chip {
   display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500;
@@ -351,6 +364,9 @@ section { position: relative; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  .pc-dot, .pc-rays line { animation: none !important; }
+  .pc-dot { opacity: 0; }
+  .pc-rays line { opacity: 1; }
 }
 </style>
 </head>
@@ -397,18 +413,33 @@ section { position: relative; }
     <div class="prism-card reveal">
       <div class="pc-label">Input</div>
       <div class="pc-in"><span class="caret">▸</span> prospect-domain.com</div>
-      <svg class="prism-svg" viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" aria-label="A prism splitting one beam into a spectrum">
-        <!-- incoming white beam -->
-        <line x1="0" y1="75" x2="150" y2="75" stroke="#23263B" stroke-width="3"/>
-        <!-- prism triangle -->
-        <polygon points="150,38 150,112 210,75" fill="rgba(0,61,255,0.08)" stroke="#003DFF" stroke-width="2.2" stroke-linejoin="round"/>
-        <!-- fanned spectrum -->
-        <line x1="205" y1="73" x2="360" y2="30"  stroke="#003DFF" stroke-width="3"/>
-        <line x1="206" y1="74" x2="360" y2="48"  stroke="#5468FF" stroke-width="3"/>
-        <line x1="207" y1="75" x2="360" y2="66"  stroke="#0891B2" stroke-width="3"/>
-        <line x1="207" y1="76" x2="360" y2="84"  stroke="#059669" stroke-width="3"/>
-        <line x1="206" y1="77" x2="360" y2="102" stroke="#D97706" stroke-width="3"/>
-        <line x1="205" y1="78" x2="360" y2="120" stroke="#DC2626" stroke-width="3"/>
+      <svg class="prism-svg" viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" aria-label="A prism refracting one domain into a spectrum of deliverables">
+        <defs>
+          <linearGradient id="pc-glass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7C8BFF" stop-opacity="0.40"/>
+            <stop offset="0.5" stop-color="#5468FF" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#003DFF" stop-opacity="0.06"/>
+          </linearGradient>
+          <filter id="pc-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- incoming beam + traveling light -->
+        <line x1="0" y1="80" x2="150" y2="80" stroke="#23263B" stroke-width="3.5" stroke-linecap="round"/>
+        <circle class="pc-dot" cy="80" r="4.5" fill="#003DFF" filter="url(#pc-glow)"/>
+        <!-- glassy prism -->
+        <polygon points="150,40 150,120 214,80" fill="url(#pc-glass)" stroke="#003DFF" stroke-width="2.4" stroke-linejoin="round"/>
+        <polygon points="150,40 150,120 214,80" fill="none" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="0.9" stroke-linejoin="round"/>
+        <!-- refracted spectrum (glowing, shimmering) -->
+        <g filter="url(#pc-glow)" class="pc-rays">
+          <line class="pr1" x1="210" y1="78" x2="360" y2="24"  stroke="#003DFF" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr2" x1="211" y1="79" x2="360" y2="47"  stroke="#5468FF" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr3" x1="212" y1="80" x2="360" y2="69"  stroke="#0891B2" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr4" x1="212" y1="80" x2="360" y2="91"  stroke="#059669" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr5" x1="211" y1="81" x2="360" y2="113" stroke="#D97706" stroke-width="3.4" stroke-linecap="round"/>
+          <line class="pr6" x1="210" y1="82" x2="360" y2="136" stroke="#DC2626" stroke-width="3.4" stroke-linecap="round"/>
+        </g>
       </svg>
       <div class="pc-label" style="margin-top:6px;">Output — a grounded spectrum</div>
       <div class="pc-out">
