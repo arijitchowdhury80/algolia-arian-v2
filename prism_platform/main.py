@@ -14,6 +14,7 @@ from prism_platform.api.routers import (
     freshness,
     knowledge,
     modules,
+    users,
 )
 from prism_platform.v2.registry import register_all_v2_modules
 
@@ -35,6 +36,7 @@ app.include_router(benchmarks.router, prefix="/api/v1/benchmarks", tags=["benchm
 app.include_router(evidence.router, prefix="/api/v1/evidence", tags=["evidence"])
 app.include_router(freshness.router, prefix="/api/v1/accounts", tags=["freshness"])
 app.include_router(knowledge.router, prefix="/api/v1/knowledge", tags=["knowledge"])
+app.include_router(users.router, prefix="/api/v1/users", tags=["users"])
 
 
 @app.get("/health")
