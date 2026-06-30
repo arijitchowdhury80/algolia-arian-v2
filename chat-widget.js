@@ -69,6 +69,8 @@
     ".pc-rel-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#8a90ab;width:100%;margin-bottom:1px}" +
     ".pc-bot a.pc-chip{display:inline-block;background:#eef1fb;border:1px solid #dfe3f5;border-radius:999px;padding:3px 11px;font-size:12px;font-weight:600;color:#2f54ff!important;text-decoration:none!important}" +
     ".pc-bot a.pc-chip:hover{background:#2f54ff;color:#fff!important;border-color:#2f54ff}" +
+    "@keyframes pcflash{0%{background:rgba(255,224,102,.55)}100%{background:transparent}}" +
+    ".pc-flash{animation:pcflash 1.8s ease;border-radius:8px}" +
     ".pc-bot code{background:#eef0f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}" +
     ".pc-bot pre{background:#1f2233;color:#e8eaf6;border-radius:8px;padding:10px 12px;overflow-x:auto;margin:6px 0}.pc-bot pre code{background:0;color:inherit;padding:0}" +
     "#prism-chat-form{display:flex;gap:8px;padding:14px;border-top:1px solid #eceef4;background:#fff;flex-shrink:0}" +
@@ -176,13 +178,28 @@
     input.value = ""; addMsg("user", text); ask(text);
   });
 
-  // in-page section jumps (event delegation)
+  // in-page section jumps (event delegation). Tab-aware: report content is split across tabs
+  // (#tab-rail [data-tab] ↔ .section-group[data-tab]); a target in a hidden tab needs the tab
+  // activated first, then we scroll + flash it so the user sees where they landed.
   log.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a.pc-jump");
     if (!a) return;
     var id = a.getAttribute("href").slice(1);
     var t = document.getElementById(id);
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    if (!t) return;
+    e.preventDefault();
+    var grp = t.closest && t.closest(".section-group");
+    if (grp && getComputedStyle(grp).display === "none") {
+      var tab = grp.getAttribute("data-tab");
+      var tabBtn = tab && document.querySelector('#tab-rail [data-tab="' + tab + '"]');
+      if (tabBtn) tabBtn.click();
+    }
+    setTimeout(function () {
+      var el2 = document.getElementById(id);
+      if (!el2) return;
+      el2.scrollIntoView({ behavior: "smooth", block: "start" });
+      el2.classList.remove("pc-flash"); void el2.offsetWidth; el2.classList.add("pc-flash");
+    }, 70);
   });
 
   async function ask(text) {
