@@ -1,4 +1,4 @@
-/* ia/shared/ia-shared.css — built on brand-tokens.css custom properties */
+/* ia/shared/ia-shared.css: built on brand-tokens.css custom properties */
 * { box-sizing: border-box; }
 body { margin: 0; font-family: var(--font-family, 'Sora', sans-serif); color: var(--brand-navy, #23263B); background: #fff; }
 .ia-topbar { display:flex; gap:16px; align-items:center; padding:12px 20px; border-bottom:1px solid #eee; font-weight:600; }
