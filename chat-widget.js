@@ -55,7 +55,7 @@
   btn.innerHTML = "<span>🔍</span> Ask about this audit";
   var panel = el("div", { id: "prism-chat-panel" });
   panel.innerHTML =
-    '<div id="prism-chat-head"><div><div class="t">PRISM</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div><button id=\"prism-chat-x\" aria-label=\"close\">×</button></div>" +
+    '<div id="prism-chat-head"><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div><button id=\"prism-chat-x\" aria-label=\"close\">×</button></div>" +
     '<div id="prism-chat-log"></div>' +
     '<form id="prism-chat-form"><textarea id="prism-chat-in" rows="1" placeholder="Ask anything about this audit…"></textarea><button id="prism-chat-send" type="submit">Send</button></form>';
   document.body.appendChild(btn);

@@ -2,3 +2,7 @@
 .DS_Store
 *.bak
 *-audit-data.json.bak
+
+# session artifacts
+*.prebak
+assets/cass-candidates/
