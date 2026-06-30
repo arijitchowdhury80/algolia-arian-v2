@@ -72,6 +72,12 @@
     ".pc-bot a.pc-cite{font-size:10px;line-height:1;vertical-align:super;color:#2f54ff!important;text-decoration:none!important;margin:0 1px;cursor:pointer;font-weight:700}" +
     ".pc-bot a.pc-cite:hover{color:#1a36c2!important}" +
     ".pc-bot .pc-cite-flat{font-size:10px;vertical-align:super;color:#b9bed4;margin:0 1px;cursor:help}" +
+    ".pc-bot a.pc-cite-inline{color:#23263B;text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#9aa2c8;text-underline-offset:2px;cursor:pointer;font-weight:600}" +
+    ".pc-bot a.pc-cite-inline:hover{color:#2f54ff;text-decoration-color:#2f54ff}" +
+    ".pc-sugg{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:2px 18px 14px;background:#F8F9FB}" +
+    ".pc-sugg-l{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:#8a90ab;width:100%;margin-bottom:1px}" +
+    ".pc-sugg-b{background:#fff;border:1px solid #d7dae6;border-radius:999px;padding:6px 13px;font-family:inherit;font-size:12.5px;font-weight:600;color:#21243D;cursor:pointer;text-align:left}" +
+    ".pc-sugg-b:hover{border-color:#21243D;background:#21243D;color:#fff}" +
     "@keyframes pcflash{0%{background:rgba(255,224,102,.55)}100%{background:transparent}}" +
     ".pc-flash{animation:pcflash 1.8s ease;border-radius:8px}" +
     ".pc-bot code{background:#eef0f6;border-radius:4px;padding:1px 5px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}" +
@@ -130,7 +136,7 @@
     root.classList.add("pc-chat-open");
     if (panel.classList.contains("pc-left")) root.classList.add("pc-chat-left");
     btn.style.display = "none"; input.focus();
-    if (!greeted) { greeted = true; addMsg("bot", "Ask me anything about the " + company + " search audit — I answer only from the report."); }
+    if (!greeted) { greeted = true; addMsg("bot", "Ask me anything about the " + company + " search audit — I answer only from the report."); renderSuggestions(); }
   };
   panel.querySelector("#prism-chat-x").onclick = function () {
     panel.classList.remove("pc-open"); root.classList.remove("pc-chat-open", "pc-chat-left"); btn.style.display = "flex";
@@ -185,6 +191,8 @@
   // (#tab-rail [data-tab] ↔ .section-group[data-tab]); a target in a hidden tab needs the tab
   // activated first, then we scroll + flash it so the user sees where they landed.
   log.addEventListener("click", function (e) {
+    var sg = e.target.closest && e.target.closest(".pc-sugg-b");
+    if (sg) { var q = sg.textContent.trim(); if (q) { addMsg("user", q); ask(q); } return; }
     var a = e.target.closest && e.target.closest("a.pc-jump");
     if (!a) return;
     var id = a.getAttribute("href").slice(1);
@@ -224,7 +232,7 @@
         log.scrollTop = log.scrollHeight;
       }
       if (!acc.trim()) { bot.innerHTML = "<p>(no response)</p>"; }
-      else { bot.innerHTML = mdToHtml(acc); linkSections(bot); appendRelated(bot, acc); }
+      else { bot.innerHTML = mdToHtml(acc); linkSections(bot); appendRelated(bot, acc); renderSuggestions(); }
     } catch (err) {
       bot.textContent = "Connection error. Please try again."; bot.classList.add("err");
     } finally {
@@ -337,29 +345,66 @@
     row.innerHTML = '<span class="pc-rel-l">Jump to in the report</span>' + html.join("");
     container.appendChild(row);
   }
+  // Aggressively turn topic mentions into inline links to their report section (tab-aware via pc-jump).
+  // Each distinct section is linked once (its first mention anywhere in the answer), capped, so the
+  // prose stays readable but is richly navigable. Skips text already inside a link or code.
   function linkSections(container) {
     var avail = SECTION_KEYWORDS.filter(function (k) { return document.getElementById(k[0]); });
     if (!avail.length) return;
+    function esc(s) { return s.replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
+    var used = {}, count = 0, MAX = 10;
     var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
     var nodes = [], n;
-    while ((n = walker.nextNode())) { if (n.parentNode.closest("a")) continue; nodes.push(n); }
-    var used = {};
+    while ((n = walker.nextNode())) {
+      if (n.parentNode.closest("a") || n.parentNode.closest("code,pre")) continue;
+      nodes.push(n);
+    }
     nodes.forEach(function (node) {
-      for (var i = 0; i < avail.length; i++) {
-        var id = avail[i][0], re = avail[i][1];
-        if (used[id]) continue;
-        var m = node.nodeValue.match(re);
-        if (!m) continue;
-        var idx = node.nodeValue.toLowerCase().indexOf(m[0].toLowerCase());
-        var matched = node.splitText(idx);
-        matched.splitText(m[0].length);
-        var a = document.createElement("a");
-        a.className = "pc-jump"; a.href = "#" + id; a.textContent = matched.nodeValue;
-        matched.parentNode.replaceChild(a, matched);
-        used[id] = true;
-        return; // one link per text node keeps it readable
-      }
+      if (count >= MAX) return;
+      var text = node.nodeValue, hits = [];
+      avail.forEach(function (k) {
+        if (used[k[0]]) return;
+        var m = new RegExp(k[1].source, "i").exec(text);
+        if (m) hits.push({ idx: m.index, len: m[0].length, id: k[0] });
+      });
+      if (!hits.length) return;
+      hits.sort(function (a, b) { return a.idx - b.idx; });
+      var picked = [], lastEnd = -1;
+      hits.forEach(function (h) {
+        if (h.idx >= lastEnd && !used[h.id] && count < MAX) { picked.push(h); lastEnd = h.idx + h.len; used[h.id] = 1; count++; }
+      });
+      if (!picked.length) return;
+      var out = "", cur = 0;
+      picked.forEach(function (h) {
+        out += esc(text.slice(cur, h.idx));
+        out += '<a class="pc-jump pc-cite-inline" href="#' + h.id + '">' + esc(text.slice(h.idx, h.idx + h.len)) + "</a>";
+        cur = h.idx + h.len;
+      });
+      out += esc(text.slice(cur));
+      var span = document.createElement("span");
+      span.innerHTML = out;
+      node.parentNode.replaceChild(span, node);
     });
+  }
+
+  // Clickable starter / follow-up questions. Always available so the user knows what to ask and where
+  // to go next. Clicking one sends it. Only the latest row is kept (no pile-up).
+  var SUGGESTIONS = [
+    "What are the biggest gaps?",
+    "What's the ROI opportunity?",
+    "Who are their competitors?",
+    "What search tech do they run?",
+    "How should I open the call?",
+  ];
+  function renderSuggestions() {
+    var olds = log.querySelectorAll(".pc-sugg");
+    for (var i = 0; i < olds.length; i++) olds[i].remove();
+    var row = el("div", { class: "pc-sugg" });
+    var html = '<span class="pc-sugg-l">Suggested questions</span>';
+    SUGGESTIONS.forEach(function (q) { html += '<button class="pc-sugg-b" type="button">' + escapeHtml(q) + "</button>"; });
+    row.innerHTML = html;
+    log.appendChild(row);
+    log.scrollTop = log.scrollHeight;
   }
 
   function el(tag, attrs) {
