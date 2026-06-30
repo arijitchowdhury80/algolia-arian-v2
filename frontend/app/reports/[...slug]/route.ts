@@ -59,6 +59,19 @@ export async function GET(
     return new Response("Not found", { status: 404 });
   }
   const ext = path.extname(abs).toLowerCase();
+  if (ext === ".html") {
+    const slug = segments[0] ?? "";
+    let html = data.toString("utf8");
+    // Inject <base> so the report's RELATIVE asset URLs (e.g. "screenshots/x.png")
+    // resolve under /reports/<slug>/ regardless of trailing-slash normalization.
+    if (slug && !/<base\s/i.test(html)) {
+      html = html.replace(/<head([^>]*)>/i, `<head$1><base href="/reports/${slug}/">`);
+    }
+    return new Response(html, {
+      status: 200,
+      headers: { "Content-Type": CONTENT_TYPES[".html"] },
+    });
+  }
   return new Response(new Uint8Array(data), {
     status: 200,
     headers: { "Content-Type": CONTENT_TYPES[ext] ?? "application/octet-stream" },
