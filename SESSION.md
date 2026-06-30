@@ -17,10 +17,12 @@ PUSHED**; Cass portraits generated (awaiting user pick to deploy avatar). Branch
 - **Branches PUSHED** — skills feature pushed + **main fast-forwarded** (`80ae128..80e3245`, main==feature,
   reconcile DONE). hub `feat/prism-vps-hosting` pushed (about page, Cassandra rename, 4 audit-data.json).
   PIP `feat/prism-e2e-cycle` pushed.
-- **Cass portrait** — read SOUL (`/root/.hermes-prism/SOUL.md`, sudo). VPS key supports Imagen 4 /
-  gemini-3-pro-image. Generated 4 candidates via `imagen-4.0-generate-001`, pulled to
-  `~/prism-hub/assets/cass-candidates/cass-{0..3}.png` (gitignored). **AWAITING user pick** → then deploy as
-  SPA chat avatar (chat-widget.js) + Telegram avatar. Recommendation: cass-3 (dry knowing smile), cass-1 2nd.
+- **Cass portrait DONE (SPA) / 1 manual step (Telegram)** — read SOUL (`/root/.hermes-prism/SOUL.md`, sudo).
+  Generated 4 via `imagen-4.0-generate-001`; **user picked cass-3**. Deployed as SPA chat avatar: round 40px
+  in chat-widget.js header, `/assets/cassandra.png` (256²), live-verified HTTP 200 on prism.chowmes.com,
+  committed+pushed (hub `b2c9483`). **Telegram avatar = USER manual step** (BotFather `/setuserpic`, no Bot
+  API for own avatar): upload `~/prism-hub/assets/cassandra-telegram-512.png`. See memory
+  [[reference-vps-image-gen-imagen-telegram-avatar]].
 - ⚠️ **Concurrent process active** — kept committing to arijit-skills (`1598f39`,`80ae128`) AND modifying
   ~10 hub report `index.html` (re-render). Left those hub edits UNSTAGED/uncommitted (not mine to commit).
 
