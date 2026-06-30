@@ -24,10 +24,26 @@ independent threads, no cross-tenant data leakage.
 All five pre-design gates were verified on the live box and against source. Repo == production
 (`prism-report-qa/__init__.py` sha `b897d9…` identical local and deployed).
 
-1. **Session-key binding already built and *preferred*.** `_slug_from_session_key()`
-   (`prism-report-qa/__init__.py:166`) reads `…:acct:<domain>` from the Hermes session key. Bind
-   order (lines 286–298): existing binding → **key-driven (preferred)** → message-match (fallback).
-   The identity-driven path already exists; it just lacks an ACL check.
+1. **Session-key binding exists in code but is a runtime NO-OP (corrected 2026-06-30).**
+   `_slug_from_session_key()` (`prism-report-qa/__init__.py:166`) reads `…:acct:<domain>` and is
+   *preferred* in bind order (lines 286–298). **BUT** on-box evidence
+   (`frontend/lib/hermes-session.ts:70-86`, verified live) states: *"Hermes does NOT thread
+   X-Hermes-Session-Key into the plugin hook ctx … so the deterministic key-bind patch is a no-op
+   and the message tag is the live binding mechanism."* So today binding is actually driven by the
+   `[Account: <domain>]` **message tag** (`tagAccountForBinding`, `hermes-session.ts:79`) parsed by
+   `_match_slug`, NOT by the session key. An earlier draft of this spec over-claimed "already built
+   + preferred" from a source read without a runtime probe — corrected here.
+
+   **HARD PREREQUISITE for Slice 2's identity-driven binding:** before building, run a *runtime*
+   probe to determine whether Hermes threads the session key into the hook `kwargs` (it may have
+   changed since the comment was written — the plugin code was added expecting it). Two paths
+   depending on the result:
+   - **If Hermes now threads the key:** proceed with key-carried userId → plugin ACL call (as below).
+   - **If it still does not:** the plugin only reliably receives `session_id`. Then identity must
+     ride differently — e.g. a **server-signed account+user assertion in the message tag** (the Next
+     server already injects `[Account: …]`; extend it to a signed `[Auth: <userId> <sig>]` the
+     plugin verifies), or map `session_id → user` via a backend lookup. Pick in Slice 2 planning
+     AFTER the probe. This is the one genuinely unresolved mechanism in this design.
 2. **Per-session isolation is safe.** `_BINDINGS` (`:34`) and `_KNOWLEDGE_CACHE` (`:36`) are keyed
    by `session_id`. Concurrent distinct sessions do not share state.
 3. **Hermes→FastAPI loopback is live and proven.** Plugin already POSTs to `http://127.0.0.1:8000`
@@ -94,9 +110,13 @@ audit's report.
 > Simpler variant (rejected by default): one shared report per company. Means Rob and Matt see the
 > *same* PetSmart report — fine for shared intel, wrong once their audits diverge. Default = per-audit.
 
-## Identity-driven binding rewrite (small — adds ACL to an existing path)
+## Identity-driven binding rewrite (gated on the runtime probe — see verified fact #1)
 
-The key-driven bind already exists; this slice **adds an ACL check to it**:
+> **Prerequisite:** the runtime probe (verified fact #1) must first confirm HOW authenticated
+> identity reaches the plugin — session key in `kwargs`, or a server-signed message-tag assertion,
+> or a `session_id → user` backend lookup. The flow below assumes the key reaches the plugin; if it
+> does not, swap the "reads userId from key" step for the chosen alternative. Everything downstream
+> (the ACL call + refuse-on-disallowed) is identical.
 
 ```
 Rob logs in (Clerk, Google) → clerkUserId = tenant key
