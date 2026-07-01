@@ -254,7 +254,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 13px; font-weight: 500; color: #64748B;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -7631,7 +7631,7 @@ function renderTopbar(D) {
 
     <div class="tb-ticker-wrap no-print">
 
-      <span class="tb-ticker-text">⚠ All data elements are source linked. Always double check and verify before using. AI can make mistakes.</span>
+      <span class="tb-ticker-text">Every figure in this audit is source-linked. Verify before use — AI can make mistakes.</span>
 
     </div>
 
@@ -8136,13 +8136,21 @@ function sectionOverviewGrid(D) {
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
+  // Never render blank: synthesize a concrete first play from the top critical gap
+  // + the company's leadership priority when ae.next_step_action isn't supplied.
+  const _topGap = (D.findings || []).find(f => f.severity === 'critical');
+  const _nextActionFallback = _topGap
+    ? `Open with the "${_topGap.title}" gap — demo the failure live, then anchor it to ${snap.name || 'their'} leadership's stated AI priority.`
+    : `Book a 20-minute discovery call: surface the top search gap, then map it to a stated leadership priority.`;
+  const _nextAction = (ae.next_step_action && ae.next_step_action.trim() && ae.next_step_action.trim() !== '—') ? ae.next_step_action : _nextActionFallback;
+  const _urgLabel   = (ae.urgency_label && ae.urgency_label.trim() && ae.urgency_label.trim() !== '—') ? ae.urgency_label : (_topGap ? 'Act this week' : 'Prioritize');
   const tile2 = `<div class="ov-tile ov-tile-next" data-spotlight-color="0,61,255">
     <div class="ov-q">WHAT DO I DO NEXT?</div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
-      <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
+      <div style="${T.urgLabel(urgC)}">${escHtml(_urgLabel)}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(_nextAction)}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8398,35 +8406,41 @@ function sectionOverviewGrid(D) {
     })()}
 
     ${(()=>{
-      // ── Key Signals strip — top 2-3 signals ranked ACT NOW first, then THIS QUARTER ──
-      const SIG_URGENCY = {
-        'hiring_signal':'1','news-leadership':'1','news-funding':'1','hiring':'1',
-        'exec':'2','earnings_quote':'2','competitor':'2','news_signal':'2',
-        'news-tech':'2','sec_risk':'2','social-li':'2','social-x':'2','social_signal':'2',
-        'media_quote':'3','media':'3','industry-risk':'3','news-launch':'3',
+      // ── Top Sales Signals strip — top 3 by urgency_score, color-coded ask-first first ──
+      const tierOf = (s) => {
+        const u = typeof s.urgency_score === 'number' ? s.urgency_score
+          : ({'hiring':8,'hiring_signal':8,'earnings_quote':7,'media_quote':6,'news_signal':6,'competitor':7,'sec_risk':7,'social_signal':5}[s.type] || 5);
+        return u >= 8 ? 1 : u >= 6 ? 2 : 3;
       };
-      const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
-      const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
+      const TIER_COLOR = { 1:'var(--red)', 2:'var(--amber)', 3:'var(--green)' };
+      const TIER_LABEL = { 1:'ASK FIRST', 2:'THIS QUARTER', 3:'CONTEXT' };
+      const sigText = (s) => s.badge_label || s.title || s.signal || s.text || s.body || s.quote || '';
+      const sigWhy  = (s) => s.ae_action || s.relevance || s.algolia_angle || s.context || (s.text||s.quote||s.body||'').slice(0,110) || '';
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
-        .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
+        .filter(s => sigText(s))
+        .sort((a,b) => tierOf(a) - tierOf(b) || ((b.urgency_score||0)-(a.urgency_score||0)))
         .slice(0, 3);
       if (!topSignals.length) return '';
       const sigRows = topSignals.map(s => {
-        const tier = SIG_URGENCY[s.type] || '5';
-        const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
-        const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
-        const aeAct = s.ae_action || '';
-        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
-          <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
-          ${urgLabel ? `<span style="${T.eyebrowSmCol(dotColor)};flex-shrink:0;">${urgLabel}</span>` : ''}
-          <span style="${T.bodySm};color:var(--gray);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(sigTitle.slice(0,80))}</span>
-          ${aeAct ? `<span style="${T.compact};color:var(--mid);flex-shrink:0;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(aeAct.slice(0,80))}</span>` : ''}
+        const tier = tierOf(s);
+        const color = TIER_COLOR[tier];
+        const label = TIER_LABEL[tier];
+        const title = sigText(s);
+        const why   = sigWhy(s);
+        const clickable = !!s.source_url;
+        return `<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.05);${clickable?'cursor:pointer;':''}" ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
+          <span style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0;margin-top:5px;"></span>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+              <span style="${T.eyebrowSmCol(color)};flex-shrink:0;">${label}</span>
+              <span style="${T.bodySm};color:var(--gray);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(title.slice(0,90))}</span>
+            </div>
+            ${why?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${escHtml(why.slice(0,120))}</div>`:''}
+          </div>
         </div>`;
       }).join('');
       return `<div class="dp-tile" style="margin-top:4px;padding:16px 20px 12px;">
-        <div style="${T.eyebrowBlue};margin-bottom:10px;">KEY SIGNALS</div>
+        <div style="${T.eyebrowBlue};margin-bottom:10px;">TOP SALES SIGNALS — WHO TO ASK FIRST</div>
         ${sigRows}
         <div style="margin-top:10px;">
           <span style="${T.labelBlue};cursor:pointer;" onclick="if(window.showTab)window.showTab('intel')">See all signals →</span>
@@ -10780,24 +10794,20 @@ function sectionSignals(D) {
 
 
 
-  const sorted = [...signals].sort((a,b) => {
+  // Merge near-duplicate signals (e.g. 3 quotes from the same CEO) into one primary + nested extras
+  const _dedupKey = (s) => (s.badge_label || s.speaker || s.title || '').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,40);
+  const _byKey = new Map();
+  let _dupI = 0;
+  for (const s of signals) {
+    const k = _dedupKey(s) || ('u' + (_dupI++));
+    if (!_byKey.has(k)) _byKey.set(k, Object.assign({}, s, { _extras: [] }));
+    else _byKey.get(k)._extras.push(s);
+  }
+  const deduped = [..._byKey.values()];
 
-    const ta = URGENCY_TIER[a.type] || '5';
-
-    const tb = URGENCY_TIER[b.type] || '5';
-
-    return ta.localeCompare(tb);
-
-  });
-
-
-
-  // Group into tiers for visual hierarchy
-
+  const sorted = [...deduped].sort((a,b) => (URGENCY_TIER[a.type]||'5').localeCompare(URGENCY_TIER[b.type]||'5'));
   const tier1 = sorted.filter(s => URGENCY_TIER[s.type] === '1');
-
   const tier2 = sorted.filter(s => URGENCY_TIER[s.type] === '2');
-
   const tier3plus = sorted.filter(s => !['1','2'].includes(URGENCY_TIER[s.type]||'5'));
 
 
@@ -10824,77 +10834,73 @@ function sectionSignals(D) {
     return 'Use as outreach hook — timely context for first contact';
   };
 
-  // ── Table row renderer ─────────────────────────────────────────────────────
-  const signalTableRow = (sig) => {
-    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
-    const aeAction = deriveAeAction(sig);
+  const angleOf = (s) => s.relevance || s.algolia_angle || s.context || s.description || '';
+  // ── Table row renderer (angle column optional; AE action shown once per group) ──
+  const signalTableRow = (sig, showAngle) => {
+    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || (sig.text||'').slice(0,80) || '—';
+    const algAngle = angleOf(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
     const hasUrl = resolvedUrl.startsWith('http');
     const dateStr = sig.source_date || sig.date || '';
-
+    const extraNote = (sig._extras && sig._extras.length)
+      ? `<div style="${T.compact};color:var(--mid);margin-top:3px;">+${sig._extras.length} more from same source</div>` : '';
     return `<tr style="border-bottom:1px solid var(--border);vertical-align:top;">
-      <td style="padding:10px 12px 10px 0;width:30%;">
-        <div style="${T.title};line-height:1.4;margin-bottom:2px;">${escHtml(sigTitle.slice(0,100))}</div>
+      <td style="padding:10px 12px 10px 14px;${showAngle?'width:42%':'width:78%'};">
+        <div style="${T.title};line-height:1.4;margin-bottom:2px;">${escHtml(sigTitle.slice(0,110))}</div>
         ${dateStr ? `<div style="${T.compact};">${escHtml(dateStr.slice(0,10))}</div>` : ''}
+        ${extraNote}
       </td>
-      <td style="padding:10px 12px;width:35%;${T.bodySm};color:var(--gray);line-height:1.5;">
-        ${escHtml(algAngle.slice(0,180))}
-      </td>
-      <td style="padding:10px 12px;width:25%;${T.bodySm};color:var(--gray);line-height:1.5;">
-        ${escHtml(aeAction.slice(0,160))}
-      </td>
-      <td style="padding:10px 0 10px 12px;width:10%;text-align:center;">
+      ${showAngle ? `<td style="padding:10px 12px;width:42%;${T.bodySm};color:var(--gray);line-height:1.5;">${escHtml(algAngle.slice(0,180))}</td>` : ''}
+      <td style="padding:10px 14px 10px 12px;width:16%;text-align:right;">
         ${hasUrl
-          ? `<a href="${resolvedUrl}" target="_blank"
-              style="${T.labelBlue};text-decoration:none;white-space:nowrap;"
-              onmouseenter="this.style.textDecoration='underline'"
-              onmouseleave="this.style.textDecoration='none'">→ Source</a>`
-          : '<span style="${T.compact};">—</span>'}
+          ? `<a href="${resolvedUrl}" target="_blank" style="${T.labelBlue};text-decoration:none;white-space:nowrap;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">→ Source</a>`
+          : `<span style="${T.compact};">—</span>`}
       </td>
     </tr>`;
   };
 
-  // ── Group table renderer ───────────────────────────────────────────────────
+  // ── Group renderer: colored left rail, drop empty angle col, shared AE action once in header ──
   const renderGroupTable = (emoji, label, items, headerBg, headerColor) => {
     if (!items.length) return '';
+    const showAngle = items.some(s => angleOf(s).trim());
+    const actions = [...new Set(items.map(deriveAeAction))];
+    const sharedAction = actions.length === 1 ? actions[0] : '';
     return `
-    <div style="margin-bottom:28px;">
-      <div style="background:${headerBg};border-radius:8px 8px 0 0;padding:9px 14px;display:flex;align-items:center;gap:8px;">
+    <div style="margin-bottom:22px;border-left:3px solid ${headerColor};border-radius:0 8px 8px 0;overflow:hidden;">
+      <div style="background:${headerBg};padding:9px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.bodySm};">${emoji}</span>
         <span style="${T.eyebrowBlue};color:${headerColor};">${label} (${items.length})</span>
+        ${sharedAction?`<span style="${T.compact};color:var(--mid);margin-left:auto;">AE play — ${escHtml(sharedAction.slice(0,90))}</span>`:''}
       </div>
-      <table style="width:100%;border-collapse:collapse;border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
+      <table style="width:100%;border-collapse:collapse;background:white;">
         <thead>
           <tr style="background:rgba(0,0,0,0.02);">
-            <th style="padding:8px 12px 8px 0;text-align:left;${T.eyebrowBlue};width:30%;border-bottom:1px solid var(--border);">SIGNAL</th>
-            <th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:35%;border-bottom:1px solid var(--border);">ALGOLIA ANGLE</th>
-            <th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:25%;border-bottom:1px solid var(--border);">AE ACTION</th>
-            <th style="padding:8px 0 8px 12px;text-align:center;${T.eyebrowBlue};width:10%;border-bottom:1px solid var(--border);">SOURCE</th>
+            <th style="padding:8px 12px 8px 14px;text-align:left;${T.eyebrowBlue};${showAngle?'width:42%':'width:78%'};border-bottom:1px solid var(--border);">SIGNAL</th>
+            ${showAngle?`<th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:42%;border-bottom:1px solid var(--border);">ALGOLIA ANGLE</th>`:''}
+            <th style="padding:8px 14px 8px 12px;text-align:right;${T.eyebrowBlue};width:16%;border-bottom:1px solid var(--border);">SOURCE</th>
           </tr>
         </thead>
-        <tbody>
-          ${items.map(signalTableRow).join('')}
-        </tbody>
+        <tbody>${items.map(s=>signalTableRow(s, showAngle)).join('')}</tbody>
       </table>
     </div>`;
   };
 
   return `<section id="section-signals" class="audit-section">
-
     <div class="section-eyebrow">Company Intelligence · Live Signals</div>
-
     <div class="section-title">Sales Signals</div>
-
-    <p class="section-desc">${signals.length} signals · Sourced from LinkedIn Jobs, LinkedIn Posts, Twitter/X, Google News, and manual research. Every signal links to its source.</p>
-
-    ${renderGroupTable('🔴', 'ACT NOW', tier1, 'rgba(220,38,38,0.08)', 'var(--red)')}
-
-    ${renderGroupTable('🟡', 'THIS QUARTER', tier2, 'rgba(217,119,6,0.08)', 'var(--amber)')}
-
-    ${renderGroupTable('🟢', 'MONITOR', tier3plus, 'rgba(5,150,105,0.08)', 'var(--mid)')}
-
+    <details class="signals-accordion" style="margin-top:6px;">
+      <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(0,61,255,0.03);border:1px solid var(--border);border-radius:10px;user-select:none;">
+        <span style="${T.eyebrowBlue};">▸ ${deduped.length} synthesized signal${deduped.length!==1?'s':''} — prioritized</span>
+        <span style="${T.compact};color:var(--mid);margin-left:auto;">Click to expand the evidence</span>
+      </summary>
+      <div style="padding:18px 2px 2px;">
+        <p class="section-desc" style="margin-top:0;">Ranked by urgency; near-duplicate quotes grouped. Every signal links to its source.</p>
+        ${renderGroupTable('🔴', 'ASK FIRST', tier1, 'rgba(220,38,38,0.08)', 'var(--red)')}
+        ${renderGroupTable('🟡', 'THIS QUARTER', tier2, 'rgba(217,119,6,0.08)', 'var(--amber)')}
+        ${renderGroupTable('🟢', 'CONTEXT', tier3plus, 'rgba(5,150,105,0.08)', 'var(--green)')}
+      </div>
+    </details>
   </section>`;
 
 }
@@ -13975,6 +13981,8 @@ function renderSections(D) {
 
     sectionCompanySnapshot(D),
 
+    sectionSignals(D),
+
     renderPortfolioPanel(D),
 
     sectionFinancials(D),
@@ -13984,8 +13992,6 @@ function renderSections(D) {
     sectionHiring(D),
 
     sectionPartnerIntel(D),
-
-    sectionSignals(D),
 
   ].join('');
 
