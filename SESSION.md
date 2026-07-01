@@ -1,107 +1,32 @@
-# SESSION — Downloadable Algolia-branded audit artifacts (+ Cassandra chat polish)
+# SESSION — Login gate on prism.chowmes.com/reports (Clerk Google)
 
-**Status:** Building the downloadable audit DECK/REPORT. Pivoted to a portrait A4 chaptered DOCUMENT matching the user's L.L. Bean reference. PetSmart pilot rendered + opened. **2026-06-30 polish wave DONE** (see below); awaiting user feedback on the v2 portrait doc.
+**Status:** Login gate DONE + working locally + pushed (feature branches, NOT deployed). This session's task was: gate `prism.chowmes.com/reports` behind Google login, keep `/` public. Done at the EXISTING prism-hub server (a wrong Next.js rebuild was tried, then abandoned + deleted).
 
-## PPTX DECK PIVOT 2026-06-30 (DONE, verified — user's chosen direction)
-User feedback on the HTML->PDF doc: (1) wants an EDITABLE deck, not a fixed PDF; (2) the tested/expected/found
-structure from the audit was being thrown away; (3) sources shown as trailing "Source ->" tags should be
-INLINE clickable; (4) misalignment/overlap; (5) asked about other collateral. DECISIONS (AskUserQuestion):
-format = **PPTX on the official Algolia 2026 template**; scope = **perfect the audit deck first**, then replicate.
+Date: 2026-06-30 (late). Full detail: memory `project-prism-login-multitenancy`. Other open tracks (artifacts, IA prototype) live in memory `session_pointer`.
 
-- New generator: `docs/workspace/hermes-prism-integration/artifacts/make_deck_pptx.py`. Builds ON
-  `Algolia-Design-System/uploads/Algolia Slide Tempalte 2026.PPTX` (16:9, 10x5.62in, 22 layouts).
-  Removes the 11 example slides via `drop_rel` (clean, no orphan/duplicate parts), then adds:
-  cover (layout 0 + white Algolia logo) / scorecard (layout 4 + 2x5 severity heatmap) / section divider
-  (layout 2) / 5 finding slides / close. python-pptx 1.0.2.
-- **Finding slide** = the fix for feedback #2/#3/#4: white body layout (4), manual bounded placement (no
-  overlap). Left col = **WE TESTED / WE EXPECTED / WE FOUND** (real JSON fields, `summarize()` keeps bullets
-  crisp on word boundaries, no mid-word cut) + light-blue "With Algolia" box + **inline clickable source**
-  ("Verified against <host>" where host is a hyperlink run, via `run.hyperlink.address`; non-URL analytics
-  sources render as plain italic, no tag). Right col = real screenshot + red "What shoppers see today" tag.
-- **Render/verify loop (no LibreOffice on this Mac):** python-pptx -> Keynote AppleScript export to PDF ->
-  pdftoppm -> Read the PNGs. Verified all 9 slides visually. Grounding: 0 em/en-dashes in slide XML,
-  hyperlink runs present, no fabrication.
-- White Algolia logo: `Algolia-logo-white.svg` has an empty `<defs>` so its `cls-2` fill is undefined =>
-  rasterized BLACK. Fixed by forcing `fill:#fff` in an HTML wrapper + Chrome transparent screenshot ->
-  `Algolia-Design-System/assets/Algolia-logo-white.png` (vendored).
-- Output: `~/prism-hub/petsmart/petsmart-search-audit-deck.pptx` (editable) + `-deck-preview.pdf`. Opened.
-- NEXT: user review of the deck; then replicate the pattern to the other collateral (AE brief, battle card,
-  leave-behind, business case, ABX) in PPTX, and bake into the arijit-skills audit pipeline. Old `make_deck.py`
-  (HTML 16:9) is superseded by `make_deck_pptx.py`. The portrait `make_report.py` doc stays as the read-alone.
+## RESUME ACTION (next session, do FIRST)
+1. Read memory `project-prism-login-multitenancy` (the whole state) + `feedback-gate-existing-dont-rebuild` (the lesson).
+2. The remaining work is the **VPS deploy** of the gate (deferred, user-approved as a future step). Steps in the memory file: `npm install @clerk/backend` on `/opt/prism-hub`; set Clerk keys in the chat-proxy service env; restart it; create a Clerk **PRODUCTION** instance for `prism.chowmes.com` + point clerk-js at it; get the code onto `/opt/prism-hub` (auto-deploy branch is `feat/prism-vps-hosting`, current work is on `feat/ia-ab-prototype`); verify live.
+3. Do NOT rebuild anything. The gate is ~80 lines in `~/prism-hub/server/chat-proxy.mjs`.
 
-## POLISH WAVE 2026-06-30 (DONE, verified by rendering + Reading the PNGs)
-- **Truncation killed.** `clip()` limits were ~half the real field lengths, ellipsing mid-sentence on a leave-behind. Raised: case-study why 90->210, finding why 200->320, solution 150->240, next-step desc 150->280, rfp detail 160->330. Verified 0 ellipses (`…`) in HTML.
-- **Logo trust strip: root cause = clearbit free logo API is DEAD** (DNS won't resolve; shut down post-HubSpot). Not a sandbox block. Removed `fetch_uri`/`TRUST`. Strip now a clean uppercase typographic row of REAL Algolia customers cited in THIS audit's `case_studies` (Revival Animal Health, BIG W, Decathlon Singapore). **Prospect (PetSmart) explicitly excluded** — listing them would falsely imply they are already a customer. Real SVG logos can be vendored + swapped in later (one line at `strip=`).
-- **URL sources** that were raw-clipped ("Source: https://nielseniq.com/glob…") now render as clean domain links (e.g. `nielseniq.com`, `algolia.com`) via new `domain()` + `src()` URL-label branch.
-- **Long multi-query** `tested_query` now shows the first complete query (split on `;`), no mid-word cut.
-- Guards: 0 em-dashes, 0 ellipses, py_compile OK. Re-published `~/prism-hub/petsmart/petsmart-search-audit.pdf`.
-- STILL OPEN (deliberately not done): pages 2/3/4/5/7 keep an empty lower third (gap #3). Did NOT pad with ungrounded filler. Enrichment (3 findings/page, a capability before/after page like the reference's NeuralSearch page) is a content decision for the user.
-
-Date: 2026-06-30. PIP branch: feat/prism-e2e-cycle. prism-hub branch: feat/prism-vps-hosting (auto-deploys on push).
-
-NOTE: there are THREE open tracks. (A) THIS one: downloadable artifacts. (B) PRISM login/multi-tenancy Slice 1 (code complete, human-gated, awaiting user Clerk setup) — see memory `project-prism-login-multitenancy` + `docs/plans/2026-06-30-slice1-google-login-deploy.md`. (C) PAUSED — IA report redesign A/B prototype, tag `IA-Redesign-Pending`: built + pushed to Vercel preview, prod untouched; resume via `docs/status/IA-Redesign-Pending.md` (trigger: "resume IA-Redesign-Pending"). This SESSION.md covers track A.
-
----
-
-## RESUME ACTION (do FIRST next session)
-1. Read this file + `docs/workspace/hermes-prism-integration/artifacts/README.md` (how to run the generators) + `downloadable-artifacts-deep-look.md` (the full investigation).
-2. Open the current pilot output: `~/prism-hub/petsmart/petsmart-search-audit.pdf` (portrait doc, the lead deliverable) and `petsmart-audit-deck.pdf` (16:9 deck, secondary).
-3. The reference to MATCH: `PIP/docs/example-and-context/L.L. Bean Search Audit -Algolia.pdf` (7-page A4 portrait). Render it to PNG (pdftoppm) to re-study if needed.
-4. Generators live at `docs/workspace/hermes-prism-integration/artifacts/make_report.py` (portrait, LEAD) and `make_deck.py` (16:9). Iterate THESE (they were developed in scratchpad and copied here; scratchpad is ephemeral).
-5. FIRST fix: the customer-logo trust strip is empty (build-time curl to logo.clearbit.com was sandbox-blocked). Re-fetch with sandbox disabled OR vendor real Algolia-customer logos into the design system + inline. Then re-render + verify.
-6. Then user-feedback polish, then roll out to the other 7 reports + bake into the arijit-skills audit pipeline.
-
----
-
-## DECISIONS LOCKED THIS SESSION (artifacts track)
-- Deliverable scope = BOTH the existing document PDFs (leave-behind/AE/battle/book — wire up + brand-polish) AND a net-new presentation. Delivery = pre-generated files per report + real Download buttons in the SPA. (Existing PDF wiring + download UI NOT started yet.)
-- Presentation format: started as editable PPTX, then user chose a "beautiful PDF deck"; then user pivoted again to **match the L.L. Bean example = portrait A4 chaptered DOCUMENT.** That is now the lead format.
-- NO financials, NO pricing page (user removed both). End on a scoped POC ask.
-- Deck/doc content must be customer-facing, visual, chaptered, and 100% VERIFIED from the audit JSON with sources shown. No hallucination, no invented numbers, no em dashes. (User stated these hard rules repeatedly.)
-- Audience = exec, presented live (for the deck); the portrait doc is a leave-behind/read-alone. 14-16 slides for the deck; portrait doc = 7 pages like the reference.
-- Brand source of truth = `Algolia-Design-System/` (Sora font, #003DFF, logo pack, deck-stage engine, colors_and_type.css). Use the real assets, never redraw the mark.
-- Scorecard heatmap uses the SPA red/amber/green by `score.breakdown_severity` (LOW=green #059669, MEDIUM=amber #D97706, HIGH/CRITICAL=red #DC2626/#B91C1C).
-
-## HOW THE PORTRAIT DOC IS BUILT (make_report.py)
-Self-contained HTML (Sora embedded as @font-face base64, all images as data URIs) -> headless Chrome `--print-to-pdf` (A4). 7 pages: (1) cover = Algolia logo + "eCommerce Search Audit for {Co}" + their `screenshots/01-homepage.png` in a monitor frame + prepared-for/by + footer; (2) About Algolia + About this document + Why-discovery-matters (80%/1.8x/81%, sourced) + Algolia delivers (case_studies w/ links); (3) scorecard heatmap; (4-6) "Areas of improvement" chapter band + findings (2/page): shopper query + prospect_description + "With Algolia {solution}" + source + the real screenshot tagged "What shoppers see today"; (7) close = scoped POC + next_steps. Running header + footer (logo strip + algolia.com navy bar) on every page.
-
-## VERIFIED DATA FIELDS USED (petsmart JSON) — all source-backed
-- score.{overall,verdict,breakdown,breakdown_labels,breakdown_severity,critical/moderate/low_count}
-- findings[].{title,tested_query,expected_behavior,actual_behavior,impact_stat,impact_stat_source,screenshot_file,prospect_description,pain_frame,algolia_solution,algolia_case_study_company/result/url}
-- gap_pairs[] (you said/we found, w/ said_source_url), intelligence_signals[] (each has source_url: exec/media_quote/competitor/industry-opp/industry-risk/partner/hiring/funding), competitors[] (search_vendor), case_studies[] (result/company/why/url), industry_context, bibliography[17], recommended_first_play, next_steps.
-- Screenshots: `screenshots/` (33 files; screenshot_file already includes the `screenshots/` prefix).
-
-## ENV / TOOLING (verified this session)
-- Chrome headless renders HTML->PDF (16:9 deck @page set by deck-stage; portrait @page A4 in make_report). `--virtual-time-budget=12000-15000` so fonts/images load.
-- Sora TTF: fetched from google/fonts, saved to `Algolia-Design-System/assets/fonts/Sora.ttf` + installed to `~/Library/Fonts`. (Theme font fallback is Arial; force Sora on runs.)
-- pdftoppm (poppler) for PDF->PNG to verify visually by Reading the PNGs. qlmanage = page 1 only. No LibreOffice; PPTX visual check used qlmanage (page 1) only.
-- python-pptx 1.0.2 installed (only the abandoned PPTX path used it).
-
-## FILES WRITTEN / CHANGED THIS SESSION
-PIP repo (uncommitted):
-- `docs/workspace/hermes-prism-integration/artifacts/{make_report.py,make_deck.py,inspect_tpl.py,README.md}` — generators (durable copies).
-- `docs/workspace/hermes-prism-integration/downloadable-artifacts-deep-look.md` — investigation + decisions.
-- `docs/workspace/hermes-prism-integration/canonical-output-contract.md` — (earlier chat work).
-- `docs/example-and-context/L.L. Bean Search Audit -Algolia.pdf` — the reference (user-added).
-- `SESSION.md` (this file). (Also `frontend/middleware.ts`, `frontend/app/sign-up/` show modified/untracked — from the parallel login track, not this session.)
-Outside repo:
-- `~/prism-hub/petsmart/petsmart-search-audit.pdf` (portrait doc) + `petsmart-audit-deck.pdf` (16:9 deck) — pilot outputs.
-- `Algolia-Design-System/assets/fonts/Sora.ttf` (added); `~/Library/Fonts/Sora.ttf` (installed).
-
-EARLIER THIS SESSION (Cassandra chat polish — DONE + deployed, separate from artifacts):
-- `~/prism-hub/chat-widget.js`: bare-URL autolink, [FACT]→ⓘ citation links, aggressive inline section linking, "Suggested questions" chips, tab-aware jumps, drag-resize/dock/expand drawer, body-padding reflow, [CONTINUATION]/[Account:] strip. Pushed (auto-deployed).
-- VPS Hermes plugin `prism-report-qa/__init__.py` (repo copy in `docs/workspace/hermes-prism-integration/chowmes-prism/plugins/`): _clean_for_send strips tags + plainifies markdown for Telegram + appends clickable Evidence footer + suggested-questions line. Deployed to VPS, sessions pruned.
-- SOUL.md restored to the rich personality version (from VPS backup) — `docs/workspace/.../chowmes-prism/SOUL.md`. Deployed.
+## WHAT WAS DONE
+- **Gate:** `~/prism-hub/server/chat-proxy.mjs` — public allowlist (`/`, `/about`, `/assets`, `/ia*`, `/api`, `/chat-widget.js`, `/sign-in`, `/healthz`); everything else (`/reports` + report slugs) requires a Clerk session (`@clerk/backend`, resilient/fail-open import). `/sign-in` page = clerk-js `<SignIn>`.
+- **Auth control:** `~/prism-hub/index.html` topbar — Sign in link / avatar+Sign out (clerk-js).
+- **Clerk:** Algolia-account app `app_3Frh5zKzvYMFRRkn94e0J7ylX3y`; dev keys in `PIP/.env.local` (consolidated; `frontend/.env.local` is a SYMLINK to it); `BYPASS_AUTH`/`NEXT_PUBLIC_BYPASS_AUTH`=false.
+- **Verified local:** server on `localhost:8651` (run: `STATIC_DIR=~/prism-hub PORT=8651 CLERK_SECRET_KEY=.. CLERK_PUBLISHABLE_KEY=.. node server/chat-proxy.mjs`). Gate proven (curl `/`=200, `/reports/`=302→/sign-in). User confirmed Google login + avatar/Sign-out in browser.
+- **TOC bug fixed:** removed the `@media(max-width:1200px){#section-sidebar{display:none}}` rule AND the JS `if(activeTabId==='overview'){hide}` special-case, in 17 reports + templates.
+- **Cleanup:** deleted the abandoned Next.js site-rebuild + the unused `prism_platform` users table/migration/endpoint (design docs kept).
+- **Pushed:** prism-hub `feat/ia-ab-prototype`; arijit-skills `feat/gemini-grounded-search`; PIP `feat/prism-e2e-cycle`.
 
 ## WHAT HAS NOT BEEN DONE (no false claims)
-- Portrait doc logo strip + G2 trust badges: NOT rendering (sandbox blocked the logo fetch). Top fix.
-- Existing document PDFs (leave-behind/AE/battle/book) NOT wired/generated/brand-polished yet.
-- Download buttons in the SPA: NOT built (the SPA `assets_library` is empty; Print button is crude).
-- Rollout to the other 7 reports: NOT done. Pipeline integration: NOT done.
-- The 16:9 deck is superseded but still exists; user has not said to delete it.
-- Nothing committed to git this session.
-- Login/multi-tenancy Slice 1 (track B): unchanged, still awaiting user Clerk setup.
+- The gate is **NOT live** on prism.chowmes.com (pushed to a non-deploy branch; VPS not prepped). Live site unchanged.
+- Clerk **production** instance for prism.chowmes.com: NOT created (dev keys only work on Clerk's dev domain).
+- Local **chat** is unavailable (public Hermes endpoint 404s; no loopback locally) — works on the VPS, not a regression.
+- Per-user multi-tenancy/ACL: NOT built (design docs only).
+- A local prism-hub server may still be running (nohup) on :8651.
 
-## OPEN QUESTIONS FOR USER
-1. Is the portrait doc v1 close to the bar? What to adjust (content depth, more findings/page, capability before/after sections like the reference's NeuralSearch page, G2 badges)?
-2. After the doc is right: proceed to wire the existing document PDFs + Download buttons, then roll out?
+## KEY FILES
+- `~/prism-hub/server/chat-proxy.mjs` (the gate), `~/prism-hub/index.html` (auth control)
+- `PIP/.env.local` (Clerk + other keys; frontend/.env.local symlinks here)
+- Templates: `~/.claude/skills/algolia-search-audit/templates/{index-template.html,algolia-brand.css}`
+- Lesson: memory `feedback-gate-existing-dont-rebuild`. Standing rule: no em dashes.
