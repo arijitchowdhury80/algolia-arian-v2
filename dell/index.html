@@ -9813,7 +9813,16 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
+  // Data-driven left-axis max ($B) — scale to the tallest bar (revenue) so large
+  // companies (e.g. Dell $113B) don't overflow the plot. Round up to a nice step.
+  const _rawMax = Math.max(...rvVals, ...gpVals, ...ebVals, 1);
+  const _targetStep = _rawMax / 5;
+  const _mag = Math.pow(10, Math.floor(Math.log10(_targetStep)));
+  const _norm = _targetStep / _mag;
+  const _niceStep = (_norm <= 1 ? 1 : _norm <= 2 ? 2 : _norm <= 2.5 ? 2.5 : _norm <= 5 ? 5 : 10) * _mag;
+  const maxBarVal = Math.max(Math.ceil(_rawMax / _niceStep) * _niceStep, _niceStep);
+  const _gridVals = [];
+  for (let _v = 0; _v <= maxBarVal + 1e-9; _v += _niceStep) _gridVals.push(Math.round(_v * 100) / 100);
   const maxPctVal=20; // % scale right axis
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
@@ -9850,7 +9859,7 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _gridVals.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
