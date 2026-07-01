@@ -266,7 +266,7 @@ The plugin's *no-report-bound* branch fired (the "which company / available repo
 
 Imported all available published audit reports into the Hermes-PRISM report store so grounded chat binds for every company page (was 2/17). **No hermes-prism restart** — plugin reads `index.json` live (mtime-cached `_INDEX_CACHE`), confirmed by the working Nike probe below.
 
-**Source (Mac):** `/Users/arijitchowdhury/prism-hub/<slug>-audit-data.json`. Canonical fields are `meta.company` + `meta.domain` (verified by inspecting nike/petsmart/british-airways — not top-level `company`/`domain`).
+**Source (Mac):** `/Users/arijitchowdhury/prism/<slug>-audit-data.json`. Canonical fields are `meta.company` + `meta.domain` (verified by inspecting nike/petsmart/british-airways — not top-level `company`/`domain`).
 
 **Imported (8 new + petsmart already present = 9 from Mac, 10 total with homedepot-mexico):**
 | slug | domain | company |
@@ -302,7 +302,7 @@ Imported all available published audit reports into the Hermes-PRISM report stor
 
 ## hub chat deploy — 2026-06-28
 
-**Production URL:** https://prism.chowmes.com (Vercel project `prism`, prj_yOUkUWmGkCF8DVQ3J8GK2VJSg4SX). Linked dir /Users/arijitchowdhury/prism-hub → project `prism`.
+**Production URL:** https://prism.chowmes.com (Vercel project `prism`, prj_yOUkUWmGkCF8DVQ3J8GK2VJSg4SX). Linked dir /Users/arijitchowdhury/prism → project `prism`.
 
 **Env set:** Y (Production). `HERMES_API_URL` + `HERMES_API_KEY` both Encrypted/Production, confirmed via `vercel env ls` (values never printed). Preview NOT set — this project's production branch is `main`, and Vercel rejects preview env vars on the production branch ("Cannot set Production Branch main for a Preview Environment Variable"). Production is what `vercel --prod` uses, so this does not affect the live deploy.
 

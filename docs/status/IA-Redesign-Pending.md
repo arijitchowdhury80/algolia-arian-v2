@@ -34,7 +34,7 @@ Two side-by-side IA prototypes of one audit (Home Depot Mexico) so real users de
 - Feedback = in-prototype widget; durable capture only on the VPS path.
 
 ## HOW TO RESUME (next session)
-1. `cd ~/prism-hub && git checkout feat/ia-ab-prototype`
+1. `cd ~/prism && git checkout feat/ia-ab-prototype`
 2. Read this file + `prism-hub/.superpowers/sdd/progress.md` (the granular ledger).
 3. Open the Vercel preview and run the manual click-through (chrome MCP was DOWN at pause):
    - `/ia/` compare landing; `/ia/ia1/` brief + 6-job rail + toggle; `/ia/ia2/` ask box + 6 chips + Enter-to-send + browse-all drawer + open-full.

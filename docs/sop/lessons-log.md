@@ -13,7 +13,7 @@
 - **Prevention (future me):** On an old/static Vercel project, don't assume `config={runtime:"edge"}` opts you into Edge — verify with `vercel inspect`. If it deploys as λ, write the function for the Node serverless contract (`(req,res)` + `res.end()`), NOT the Web `Response` contract. Pick the contract that matches the deployed runtime, not the one you wish you had.
 
 ### render-audit.ts `site` mode wrote to cwd, clobbering the hub homepage `index.html` — 2026-06-28
-- **Symptom:** `deno run render-audit.ts <slug> site` from `~/prism-hub` overwrote the hub's ROOT `index.html` (homepage) instead of `<slug>/index.html`; had to `git checkout index.html` to restore.
+- **Symptom:** `deno run render-audit.ts <slug> site` from `~/prism` overwrote the hub's ROOT `index.html` (homepage) instead of `<slug>/index.html`; had to `git checkout index.html` to restore.
 - **Root cause:** `renderSite(data, _slug, cwd)` ignored the slug (`_slug`) and wrote `join(cwd, "index.html")`. Every OTHER mode uses `join(cwd, slug, …)` (`inSlugDir:true`). The `site` mode was the lone offender — and the screenshot-path logic (`screenshots/x.png` resolving from `{slug}/index.html`) was already written assuming the slug-dir output, so root-write broke screenshots too.
 - **Fix:** `const outDir = join(cwd, slug)` in `renderSite`; renamed `_slug`→`slug`. Verified: render writes `petsmart/index.html` (589.5KB), root `index.html` md5 unchanged.
 - **Prevention (future me):** A renderer that takes both `slug` and `cwd` but writes to `cwd` directly is a clobber waiting to happen. Any per-entity output path must include the entity dir. Before batch-rendering into a shared dir, render ONE and assert the shared root file's md5 is unchanged.

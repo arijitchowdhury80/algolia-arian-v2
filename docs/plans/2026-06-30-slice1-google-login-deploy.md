@@ -318,9 +318,9 @@ git commit -m "feat(auth): POST /api/v1/users/upsert — idempotent tenant-ident
 - [ ] **Step 1: Copy the static landing + assets + widget into `public/`**
 
 ```bash
-cp ~/prism-hub/index.html frontend/public/landing.html
-cp -R ~/prism-hub/assets frontend/public/assets
-cp ~/prism-hub/chat-widget.js frontend/public/chat-widget.js
+cp ~/prism/index.html frontend/public/landing.html
+cp -R ~/prism/assets frontend/public/assets
+cp ~/prism/chat-widget.js frontend/public/chat-widget.js
 ```
 
 (The widget is repointed in Task 5. Assets are referenced at root `/assets/*` by both landing and reports.)
@@ -382,8 +382,8 @@ git commit -m "feat(site): Next owns the root — public static landing at / (sl
 
 ```bash
 mkdir -p frontend/report-data
-cp -R ~/prism-hub/petsmart frontend/report-data/petsmart
-cp -R ~/prism-hub/nike frontend/report-data/nike
+cp -R ~/prism/petsmart frontend/report-data/petsmart
+cp -R ~/prism/nike frontend/report-data/nike
 ```
 
 - [ ] **Step 3: Write the gated catch-all streamer** — create `frontend/app/reports/[...slug]/route.ts`:
@@ -502,7 +502,7 @@ git commit -m "feat(reports): gated report serving — catch-all streamer (self-
 
 **Interfaces:** `POST /api/report-chat` consumes `{message, slug, sid}`, streams plain-text deltas from Hermes. Consumes env `HERMES_API_URL`, `HERMES_API_KEY`.
 
-- [ ] **Step 1: Write the gated Hermes proxy** — create `frontend/app/api/report-chat/route.ts` (port of `~/prism-hub/api/chat.js` to a Web-Response handler, like `app/api/hermes/route.ts`, plus a Clerk gate):
+- [ ] **Step 1: Write the gated Hermes proxy** — create `frontend/app/api/report-chat/route.ts` (port of `~/prism/api/chat.js` to a Web-Response handler, like `app/api/hermes/route.ts`, plus a Clerk gate):
 
 ```ts
 import { auth } from "@clerk/nextjs/server";

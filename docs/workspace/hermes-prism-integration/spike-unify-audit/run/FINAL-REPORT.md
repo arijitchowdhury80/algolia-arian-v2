@@ -30,7 +30,7 @@ Pipeline per company: FIX_DATA → RENDER → SPA → SYNC(staged) → COMMIT(lo
 
 **Homepage:** regenerated — now **10 audit cards** (was 8; added hyphenated `oriental-trading` + `homedepot-mexico`). New hub-root md5 `7d51b356d0857b1434356c5de66b5225`.
 
-**Commit:** `fa6a34b` in `~/prism-hub`, **local only, not pushed** (8 rendered pages + 6 fixed JSONs + homedepot rename + homepage). Junk left untracked (`.prebak`, stray nested dup JSONs).
+**Commit:** `fa6a34b` in `~/prism`, **local only, not pushed** (8 rendered pages + 6 fixed JSONs + homedepot rename + homepage). Junk left untracked (`.prebak`, stray nested dup JSONs).
 
 ---
 
@@ -61,7 +61,7 @@ Nothing is live yet — both prod actions are deliberately deferred to you.
 
 2. **Publish the rendered pages** to Vercel:
    ```
-   cd ~/prism-hub && vercel --prod
+   cd ~/prism && vercel --prod
    ```
 
 Order matters: `sync-all.sh` (chat grounding) → `vercel --prod` (pages). Chat works off the VPS store independently of Vercel.

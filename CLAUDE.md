@@ -11,7 +11,7 @@ Execution runs on the VPS (standalone). See memory `reference-prism-means-chowme
 ## THE TWO REPOS (verify by CONTENT, names currently mislead)
 This system is TWO repos. Rename to PRISM/PIP is DECIDED but PENDING execution (see memory `reference-two-repos-prism-vs-pip`):
 - **This repo** (`~/Dropbox/AI-Development/PIP`, remote `prism.git`) = the **BACKEND** = **PIP** (Prospect Intelligence Platform): `prism_platform/` FastAPI (VPS 127.0.0.1:8000), generators, workspace. Carries a DEAD `frontend/` Next app (abandoned, not deployed).
-- **prism-hub** (`~/prism-hub`, VPS `/opt/prism-hub`, remote `prism-hub.git`) = the **FRONTEND** = **PRISM**: static site + published reports that serve `prism.chowmes.com` (proven: live site == prism-hub index.html). Login gate lives here. Auto-deploys on push.
+- **prism-hub** (`~/prism`, VPS `/opt/prism-hub`, remote `prism.git`) = the **FRONTEND** = **PRISM**: static site + published reports that serve `prism.chowmes.com` (proven: live site == prism-hub index.html). Login gate lives here. Auto-deploys on push.
 Split: **PRISM shows it (frontend), PIP makes it (backend).** Every active project trends toward this frontend/backend divide.
 
 ## CROSS-PROJECT AWARENESS (how to reach my other projects)

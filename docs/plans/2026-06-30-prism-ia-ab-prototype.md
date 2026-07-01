@@ -16,7 +16,7 @@
 - **Data source (single, frozen):** `/homedepot-mexico-audit-data.json` (repo root, same-origin fetch). Never copy or fork it.
 - **Slug binding:** chat must POST `slug: "homedepot-mexico"` in the request body (NOT inferred from the URL path).
 - **Vendored skin:** brand tokens copied once from `~/.claude/skills/algolia-search-audit/templates/algolia-brand.css` into `ia/shared/brand-tokens.css`; both shells link it. No live dependency on the skills dir at runtime.
-- **Repo:** `/Users/arijitchowdhury/prism-hub` (git remote `origin` → `github.com/arijitchowdhury80/prism-hub`, branch `main`). Commit there; this PIP repo holds only the spec/plan.
+- **Repo:** `/Users/arijitchowdhury/prism` (git remote `origin` → `github.com/arijitchowdhury80/prism`, branch `main`). Commit there; this PIP repo holds only the spec/plan.
 
 ---
 
@@ -81,7 +81,7 @@ Data fed to the model (top-level keys present in `homedepot-mexico-audit-data.js
 
 - [ ] **Step 1: Capture the production baseline (the isolation guard's source of truth).**
 
-Run from `/Users/arijitchowdhury/prism-hub`:
+Run from `/Users/arijitchowdhury/prism`:
 ```bash
 git rev-parse HEAD > /tmp/ia_baseline_ref.txt
 git ls-files reports index.html chat-widget.js api/chat.js server/chat-proxy.mjs > /tmp/ia_protected_files.txt
@@ -92,9 +92,9 @@ Expected: a list including `index.html`, `chat-widget.js`, `api/chat.js`, `serve
 - [ ] **Step 2: Vendor the brand tokens.**
 
 ```bash
-mkdir -p /Users/arijitchowdhury/prism-hub/ia/shared
+mkdir -p /Users/arijitchowdhury/prism/ia/shared
 cp ~/.claude/skills/algolia-search-audit/templates/algolia-brand.css \
-   /Users/arijitchowdhury/prism-hub/ia/shared/brand-tokens.css
+   /Users/arijitchowdhury/prism/ia/shared/brand-tokens.css
 ```
 
 - [ ] **Step 3: Write `ia-shared.css`** built on the vendored tokens. Minimal layout + components both shells reuse.
@@ -148,13 +148,13 @@ Deno.test("production files are unchanged vs baseline (only ia/ and additive fee
 
 - [ ] **Step 5: Run the guard to confirm it passes on a clean tree.**
 
-Run: `cd /Users/arijitchowdhury/prism-hub && deno test --allow-read --allow-run ia/verify.ts`
+Run: `cd /Users/arijitchowdhury/prism && deno test --allow-read --allow-run ia/verify.ts`
 Expected: PASS (only `ia/` files are new/untracked, so `git diff HEAD` shows no tracked-file changes).
 
 - [ ] **Step 6: Commit.**
 
 ```bash
-cd /Users/arijitchowdhury/prism-hub
+cd /Users/arijitchowdhury/prism
 git add ia/shared/brand-tokens.css ia/shared/ia-shared.css ia/verify.ts
 git commit -m "feat(ia): scaffold prototype dir, vendored brand tokens, isolation guard"
 ```
@@ -238,7 +238,7 @@ Deno.test("prospect view excludes internal-only surfaces", () => {
 
 - [ ] **Step 2: Run tests to verify they fail.**
 
-Run: `cd /Users/arijitchowdhury/prism-hub && deno test --allow-read ia/shared/job-model.test.js`
+Run: `cd /Users/arijitchowdhury/prism && deno test --allow-read ia/shared/job-model.test.js`
 Expected: FAIL with "Module not found" / `buildModel is not a function`.
 
 - [ ] **Step 3: Implement `job-model.js`.**
@@ -345,7 +345,7 @@ export function buildModel(data) {
 
 - [ ] **Step 4: Run tests to verify they pass.**
 
-Run: `cd /Users/arijitchowdhury/prism-hub && deno test --allow-read ia/shared/job-model.test.js`
+Run: `cd /Users/arijitchowdhury/prism && deno test --allow-read ia/shared/job-model.test.js`
 Expected: PASS (7 tests). If a key-name assumption is wrong (e.g. `company_snapshot.name`), fix the accessor in `job-model.js` to match the actual JSON and re-run — do not change the test's intent.
 
 - [ ] **Step 5: Commit.**
@@ -658,7 +658,7 @@ mountFeedback("ia1");
 
 Run a static server from the repo root:
 ```bash
-cd /Users/arijitchowdhury/prism-hub && python3 -m http.server 8777 >/tmp/ia_http.log 2>&1 &
+cd /Users/arijitchowdhury/prism && python3 -m http.server 8777 >/tmp/ia_http.log 2>&1 &
 ```
 Then with the Chrome MCP: `navigate_page` to `http://localhost:8777/ia/ia1/`, and `evaluate_script`:
 ```js
@@ -768,12 +768,12 @@ if (req.method === "POST" && req.url === "/api/feedback") {
 
 - [ ] **Step 4: Verify isolation guard still passes** (chat-proxy edit is on the allowlist; nothing else changed).
 
-Run: `cd /Users/arijitchowdhury/prism-hub && deno test --allow-read --allow-run ia/verify.ts`
+Run: `cd /Users/arijitchowdhury/prism && deno test --allow-read --allow-run ia/verify.ts`
 Expected: PASS (only `ia/`, `api/feedback.js`, `server/chat-proxy.mjs` changed).
 
 - [ ] **Step 5: Verify the chat-proxy still parses + starts** (syntax check the additive edit).
 
-Run: `node --check /Users/arijitchowdhury/prism-hub/server/chat-proxy.mjs`
+Run: `node --check /Users/arijitchowdhury/prism/server/chat-proxy.mjs`
 Expected: no output, exit 0.
 
 - [ ] **Step 6: Browser-verify feedback POST** (local server from Task 5 still running). With Chrome MCP on `/ia/ia1/`, `evaluate_script`:
@@ -990,7 +990,7 @@ async function* walk(dir: string): AsyncGenerator<{ path: string; name: string; 
 
 - [ ] **Step 2: Run the full verify suite.**
 
-Run: `cd /Users/arijitchowdhury/prism-hub && deno test --allow-read --allow-run ia/verify.ts`
+Run: `cd /Users/arijitchowdhury/prism && deno test --allow-read --allow-run ia/verify.ts`
 Expected: PASS (isolation + parity + no-em-dash).
 
 - [ ] **Step 3: Confirm production pages byte-unchanged.**
@@ -1014,9 +1014,9 @@ git commit -m "test(ia): A/B parity + production-isolation verification suite"
 - [ ] **Step 1: Decide top-level URL shape.** The shells live at `/ia/ia1/` and `/ia/ia2/`. To also expose the spec's `/ia1` and `/ia2` top-level paths, create thin redirect stubs (avoids duplicating assets):
 
 ```bash
-mkdir -p /Users/arijitchowdhury/prism-hub/ia1 /Users/arijitchowdhury/prism-hub/ia2
-printf '<!doctype html><meta http-equiv="refresh" content="0; url=/ia/ia1/">' > /Users/arijitchowdhury/prism-hub/ia1/index.html
-printf '<!doctype html><meta http-equiv="refresh" content="0; url=/ia/ia2/">' > /Users/arijitchowdhury/prism-hub/ia2/index.html
+mkdir -p /Users/arijitchowdhury/prism/ia1 /Users/arijitchowdhury/prism/ia2
+printf '<!doctype html><meta http-equiv="refresh" content="0; url=/ia/ia1/">' > /Users/arijitchowdhury/prism/ia1/index.html
+printf '<!doctype html><meta http-equiv="refresh" content="0; url=/ia/ia2/">' > /Users/arijitchowdhury/prism/ia2/index.html
 git add ia1/index.html ia2/index.html
 git commit -m "feat(ia): /ia1 and /ia2 redirect stubs to the prototype shells"
 ```
@@ -1024,7 +1024,7 @@ git commit -m "feat(ia): /ia1 and /ia2 redirect stubs to the prototype shells"
 - [ ] **Step 2: Push to deploy (Vercel auto-build).**
 
 ```bash
-cd /Users/arijitchowdhury/prism-hub && git push origin main
+cd /Users/arijitchowdhury/prism && git push origin main
 ```
 Expected: push succeeds; Vercel begins a build for project `prj_yOUkUWmGkCF8DVQ3J8GK2VJSg4SX`.
 

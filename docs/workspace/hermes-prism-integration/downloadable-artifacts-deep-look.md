@@ -21,7 +21,7 @@ Templates (arijit-skills `.../templates/`): `index-template.html` (the SPA), `bo
 | Slide deck / presentation (16:9) | DOES NOT EXIST | none | never | NO |
 
 **Bottom line:**
-1. Zero PDFs are published to prism-hub. Not a single `.pdf`, `.pptx` under `~/prism-hub/`.
+1. Zero PDFs are published to prism-hub. Not a single `.pdf`, `.pptx` under `~/prism/`.
 2. The "Download" UI exists but is dead: the SPA topbar has a "Print" button (`window.print()`, crude `@media print` that dumps all 5 tabs sequentially) and a "Downloads" dropdown driven by `abx_sequence.assets_library[]`, which is an empty array for every published report, so it is hidden.
 3. The PDF infrastructure (Chrome headless, 4 modes) exists but is a manual local dev step. `render-audit.ts` literally prints "Run generate-pdf.sh to convert HTML files to PDF." It is never run during publish.
 4. There is NO real presentation/slide-deck format anywhere. The "McKinsey deck" in the skill descriptions is marketing language for the book-binder HTML, which is a document, not 16:9 slides. No pptxgenjs / python-pptx / reveal.js exists.

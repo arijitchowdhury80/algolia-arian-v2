@@ -20,7 +20,7 @@ Build Algolia-branded downloadable deliverables from a `{slug}-audit-data.json`.
 
 ## Run (portrait document)
 ```
-J=/Users/arijitchowdhury/prism-hub/petsmart/petsmart-audit-data.json
+J=/Users/arijitchowdhury/prism/petsmart/petsmart-audit-data.json
 python3 make_report.py "$J" /tmp/report.html
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --disable-gpu \
   --no-pdf-header-footer --print-to-pdf=/tmp/out.pdf --virtual-time-budget=15000 "file:///tmp/report.html"

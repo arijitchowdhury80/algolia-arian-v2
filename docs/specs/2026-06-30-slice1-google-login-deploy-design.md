@@ -28,7 +28,7 @@ The static-site-at-root serving is **retired** (cutover): the Next service serve
 
 ## Three integration landmines (designed around, from the codebase map)
 
-1. **Two different `/api/chat` collide.** The static report `chat-widget.js` POSTs `/api/chat` expecting a *Hermes grounded-proxy* (static `~/prism-hub/api/chat.js`: `slug → /v1/responses`). The Next app **already has** an `/api/chat` that is a different aRRIe LLM-tools handler. Reusing it would break report grounding. **Fix:** new gated `/api/report-chat` replicating `api/chat.js`, and repoint the widget to it.
+1. **Two different `/api/chat` collide.** The static report `chat-widget.js` POSTs `/api/chat` expecting a *Hermes grounded-proxy* (static `~/prism/api/chat.js`: `slug → /v1/responses`). The Next app **already has** an `/api/chat` that is a different aRRIe LLM-tools handler. Reusing it would break report grounding. **Fix:** new gated `/api/report-chat` replicating `api/chat.js`, and repoint the widget to it.
 2. **Dotted paths bypass Clerk middleware.** The middleware matcher (`middleware.ts:19`) skips any path containing a `.`. So report **screenshots (.png)** and **chat-widget.js** are *not* gated by middleware. **The report route handler MUST do its own `auth()` check** — this is load-bearing, or screenshots leak to anonymous users.
 3. **Reports live at root slugs today** (`/petsmart/`, not `/reports/petsmart/`; map confirms 10 report dirs + `reports/index.html` hardcoded grid). Moving in, namespace under gated `/reports/<slug>/` to avoid colliding with app routes; build a small gated report-list; and fix the widget's slug extraction (`chat-widget.js:18` reads `pathname.split("/")[0]`, which becomes "reports").
 

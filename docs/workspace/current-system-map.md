@@ -16,7 +16,7 @@
 
 **Supporting runtime (VPS, verified up):** Scout (`8421`), `prism-deploy-hook` (webhook to `git pull /opt/prism-hub`, `9099`), caddy, postgres, redis.
 
-**The live site (frontend = `prism`):** repo `github.com/arijitchowdhury80/prism` (renamed from `prism-hub` on 2026-07-01), served from `/opt/prism-hub`, local `~/prism-hub`. Human-facing UI at prism.chowmes.com. Deploy branch the VPS pulls: `feat/prism-vps-hosting`. (Local folder still named `prism-hub`; rename to `~/prism` is a pending follow-up.)
+**The live site (frontend = `prism`):** repo `github.com/arijitchowdhury80/prism` (renamed from `prism-hub` on 2026-07-01), served from `/opt/prism-hub`, local `~/prism`. Human-facing UI at prism.chowmes.com. Deploy branch the VPS pulls: `feat/prism-vps-hosting`. (Local folder still named `prism-hub`; rename to `~/prism` is a pending follow-up.)
 
 **This repo (PIP = backend):** remote `github.com/arijitchowdhury80/pip.git` (renamed from `prism` on 2026-07-01), active branch `feat/prism-e2e-cycle`. NOTE: `prism.git` is now the FRONTEND, not this repo.
 

@@ -37,7 +37,7 @@ Markdown parsing at all.
 
 ## Implementation
 
-1. **SPA renderer** (`~/prism-hub/chat-widget.js`, `mdToHtml`): added bare-URL autolinking after the
+1. **SPA renderer** (`~/prism/chat-widget.js`, `mdToHtml`): added bare-URL autolinking after the
    `[text](url)` rule. Preceding-char guard skips URLs already inside an `href="…"`; trailing
    punctuation kept outside the link. Verified: bare URL links, `[text](url)` keeps its label, no
    double-linking, `).` trailing handled. **DONE.**
