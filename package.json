@@ -1,4 +1,11 @@
 {
+  "name": "prism-hub",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@clerk/backend": "^3.10.0"
+  }
 }

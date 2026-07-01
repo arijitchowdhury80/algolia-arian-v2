@@ -13,6 +13,7 @@
  * Env (server-side only):
  *   HERMES_API_URL  http://127.0.0.1:8642   (loopback to the Hermes brain)
  *   HERMES_API_KEY  the bearer (Hermes API_SERVER_KEY)
+ *   CLERK_SECRET_KEY / CLERK_PUBLISHABLE_KEY  Clerk auth gate for reports + chat
  *   PORT            listen port (default 8651, bind 127.0.0.1 — Caddy fronts it)
  */
 
@@ -25,6 +26,36 @@ const HERMES_API_KEY = process.env.HERMES_API_KEY;
 const PORT = Number(process.env.PORT || 8651);
 const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism-hub";
 const MAX_MESSAGE_CHARS = 2000;
+
+let createClerkClient = null;
+try {
+  ({ createClerkClient } = await import("@clerk/backend"));
+} catch {
+  console.warn("[auth] @clerk/backend not installed; protected PRISM routes will fail closed");
+}
+
+const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY || "";
+const CLERK_PUBLISHABLE_KEY = process.env.CLERK_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "";
+const CLERK_JS_HOST =
+  process.env.CLERK_FRONTEND_HOST ||
+  (() => {
+    try {
+      return Buffer.from(CLERK_PUBLISHABLE_KEY.split("_")[2] || "", "base64").toString("utf8").replace(/\$$/, "");
+    } catch {
+      return "";
+    }
+  })();
+const clerk =
+  createClerkClient && CLERK_SECRET_KEY && CLERK_PUBLISHABLE_KEY
+    ? createClerkClient({ secretKey: CLERK_SECRET_KEY, publishableKey: CLERK_PUBLISHABLE_KEY })
+    : null;
+
+if (!clerk) {
+  console.warn("[auth] Clerk is not fully configured; protected PRISM routes will fail closed");
+}
+
+const PUBLIC_EXACT = new Set(["/", "/index.html", "/chat-widget.js", "/favicon.ico", "/robots.txt", "/healthz", "/sign-in"]);
+const PUBLIC_PREFIXES = ["/about", "/assets", "/ia", "/ia1", "/ia2"];
 
 const CONTENT_TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -44,6 +75,97 @@ const CONTENT_TYPES = {
   ".txt": "text/plain; charset=utf-8",
   ".pdf": "application/pdf",
 };
+
+function isPublicStaticPath(urlPath) {
+  if (PUBLIC_EXACT.has(urlPath)) return true;
+  return PUBLIC_PREFIXES.some((prefix) => urlPath === prefix || urlPath.startsWith(`${prefix}/`) || urlPath.startsWith(`${prefix}.`));
+}
+
+function appendHeader(res, name, value) {
+  const existing = res.getHeader(name);
+  if (!existing) {
+    res.setHeader(name, value);
+  } else if (Array.isArray(existing)) {
+    res.setHeader(name, [...existing, value]);
+  } else {
+    res.setHeader(name, [existing, value]);
+  }
+}
+
+function toWebRequest(req) {
+  const host = req.headers.host || "localhost";
+  const proto = String(req.headers["x-forwarded-proto"] || "http").split(",")[0];
+  const headers = new Headers();
+  for (const [key, value] of Object.entries(req.headers)) {
+    if (Array.isArray(value)) value.forEach((entry) => headers.append(key, entry));
+    else if (value != null) headers.set(key, String(value));
+  }
+  return new Request(`${proto}://${host}${req.url}`, { method: req.method || "GET", headers });
+}
+
+async function checkAuth(req) {
+  if (!clerk) return { ok: false };
+  try {
+    const state = await clerk.authenticateRequest(toWebRequest(req), {});
+    if (state.status === "handshake") {
+      return {
+        ok: false,
+        redirect: state.headers.get("location"),
+        setCookies: state.headers.getSetCookie?.() || [],
+      };
+    }
+    const auth = state.toAuth();
+    return auth?.userId ? { ok: true } : { ok: false };
+  } catch {
+    return { ok: false };
+  }
+}
+
+async function requireAuth(req, res, urlPath) {
+  const auth = await checkAuth(req);
+  if (auth.ok) return true;
+  if (auth.setCookies?.length) {
+    for (const cookie of auth.setCookies) appendHeader(res, "Set-Cookie", cookie);
+  }
+  res.statusCode = 302;
+  res.setHeader("Location", auth.redirect || `/sign-in?redirect_url=${encodeURIComponent(urlPath)}`);
+  res.end();
+  return false;
+}
+
+function signInHtml() {
+  const disabled = !CLERK_PUBLISHABLE_KEY || !CLERK_JS_HOST;
+  const body = disabled
+    ? `<p>Authentication is not configured. Reports are locked until Clerk is configured.</p>`
+    : `<p>Sign in to view the audit reports</p>
+<div id="sign-in"></div>
+<script async crossorigin="anonymous" data-clerk-publishable-key="${CLERK_PUBLISHABLE_KEY}"
+ src="https://${CLERK_JS_HOST}/npm/@clerk/clerk-js@5/dist/clerk.browser.js"></script>
+<script>
+window.addEventListener("load", function(){
+  var tries=0;(function go(){
+    if(!window.Clerk){ if(tries++<50){ setTimeout(go,100); } return; }
+    window.Clerk.load().then(function(){
+      var p=new URLSearchParams(location.search), r=p.get("redirect_url")||"/reports/";
+      if(window.Clerk.user){ location.replace(r); return; }
+      window.Clerk.mountSignIn(document.getElementById("sign-in"),{fallbackRedirectUrl:r,forceRedirectUrl:r});
+    }).catch(function(){});
+  })();
+});
+</script>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · PRISM</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">
+<style>body{font-family:Sora,sans-serif;background:#F8F9FB;color:#23263B;display:flex;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;margin:0;padding:24px;text-align:center}h1{font-size:30px;font-weight:600;margin:0 0 4px}p{color:#6B7280;margin:0 0 28px;max-width:520px}#sign-in{min-height:380px}</style></head>
+<body><h1>PRISM</h1>${body}</body></html>`;
+}
+
+function sendSignIn(res) {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.end(signInHtml());
+}
 
 // Serve a static file under STATIC_DIR. Directory → its index.html. Path traversal is blocked.
 async function serveStatic(res, urlPath) {
@@ -93,7 +215,8 @@ async function readBody(req) {
   }
 }
 
-async function handleChat(req, res) {
+async function handleChat(req, res, urlPath) {
+  if (!(await requireAuth(req, res, urlPath))) return;
   if (!HERMES_API_URL || !HERMES_API_KEY) {
     return sendJson(res, 500, { error: "chat not configured" });
   }
@@ -170,18 +293,27 @@ async function handleChat(req, res) {
   res.end();
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = (req.url || "").split("?")[0];
   if (req.method === "GET" && url === "/healthz") {
     return sendJson(res, 200, { status: "ok" });
   }
+  if ((req.method === "GET" || req.method === "HEAD") && url === "/sign-in") {
+    return sendSignIn(res);
+  }
+  if (req.method === "POST" && url === "/api/feedback") {
+    return sendJson(res, 200, { ok: true });
+  }
   if (req.method === "POST" && url === "/api/chat") {
-    return handleChat(req, res).catch(() => {
+    return handleChat(req, res, url).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
       else res.end();
     });
   }
   if (req.method === "GET" || req.method === "HEAD") {
+    if (!isPublicStaticPath(url) && !(await requireAuth(req, res, url))) {
+      return;
+    }
     return serveStatic(res, url).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
       else res.end();
