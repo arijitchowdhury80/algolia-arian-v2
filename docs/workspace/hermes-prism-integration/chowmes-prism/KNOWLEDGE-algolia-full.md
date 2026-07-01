@@ -6,7 +6,7 @@
   that runs the 22 `algolia-*` skills to produce a scored search audit + sales deliverables.
 - **Deliverables per audit:** scored SPA deck, AE pre-call report, battle card, leave-behind + PDF,
   business case (ROI), sales playbook, ABX campaign, strategic signal brief.
-- **Published reports** land on the hub: `algolia-arian-v2.vercel.app/<company>/`.
+- **Published reports** land on the hub: `prism.chowmes.com/<company>/`.
 - **The wedge:** the *scored search audit* + the single damning finding. Constructor.io is THE
   competitor for ICP-sized ecommerce.
 - **Locked decisions:** control model = `google/gemini-2.5-flash` (OpenRouter); execution = headless

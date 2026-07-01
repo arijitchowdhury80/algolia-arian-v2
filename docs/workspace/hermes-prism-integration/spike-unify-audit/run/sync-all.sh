@@ -6,7 +6,7 @@ set -euo pipefail
 
 KEY=/Users/arijitchowdhury/.ssh/chowmes_ed25519
 H=chowmesadmin@72.61.72.147
-HUB=~/prism-hub
+HUB=~/prism
 STORE=/root/.hermes-prism/reports
 
 # Slugs verified by the loop (passed schema gate). Edit/extend as needed.

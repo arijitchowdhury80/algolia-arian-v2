@@ -302,11 +302,11 @@ Imported all available published audit reports into the Hermes-PRISM report stor
 
 ## hub chat deploy — 2026-06-28
 
-**Production URL:** https://algolia-arian-v2.vercel.app (Vercel project `prism`, prj_yOUkUWmGkCF8DVQ3J8GK2VJSg4SX). Linked dir /Users/arijitchowdhury/prism-hub → project `prism`.
+**Production URL:** https://prism.chowmes.com (Vercel project `prism`, prj_yOUkUWmGkCF8DVQ3J8GK2VJSg4SX). Linked dir /Users/arijitchowdhury/prism-hub → project `prism`.
 
 **Env set:** Y (Production). `HERMES_API_URL` + `HERMES_API_KEY` both Encrypted/Production, confirmed via `vercel env ls` (values never printed). Preview NOT set — this project's production branch is `main`, and Vercel rejects preview env vars on the production branch ("Cannot set Production Branch main for a Preview Environment Variable"). Production is what `vercel --prod` uses, so this does not affect the live deploy.
 
-**Deploy:** Y. Latest prod deployment READY, aliased to algolia-arian-v2.vercel.app.
+**Deploy:** Y. Latest prod deployment READY, aliased to prism.chowmes.com.
 
 **Widget on page:** Y. `curl -s .../petsmart/ | grep -c chat-widget.js` = 1.
 
@@ -320,7 +320,7 @@ Imported all available published audit reports into the Hermes-PRISM report stor
 
 ## hub chat deploy — RETEST after Node-serverless fix — 2026-06-28
 
-**Fix verified.** Team-lead's commit 237e6b8 rewrote `api/chat.js` to the Node serverless handler (`export default async function handler(req, res)` + `res.write`/`res.end`, `export const config = { maxDuration: 60 }`). Redeployed to https://algolia-arian-v2.vercel.app (deployment prism-9r3qo3to5, READY). `vercel inspect` now shows `λ api/chat (3.08KB) [iad1]` — λ is now CORRECT because the handler is genuinely Node `(req,res)`.
+**Fix verified.** Team-lead's commit 237e6b8 rewrote `api/chat.js` to the Node serverless handler (`export default async function handler(req, res)` + `res.write`/`res.end`, `export const config = { maxDuration: 60 }`). Redeployed to https://prism.chowmes.com (deployment prism-9r3qo3to5, READY). `vercel inspect` now shows `λ api/chat (3.08KB) [iad1]` — λ is now CORRECT because the handler is genuinely Node `(req,res)`.
 
 **The HTTP=000 hang is GONE.** Every call now returns HTTP=200 with a streamed plain-text body in ~1–4s (was 000 / full-timeout before). The runtime is serving the stream correctly.
 
