@@ -98,17 +98,14 @@ Generated audits can also expose downloadable assets through the report topbar:
 │   ├── tour/                     # Landing product-tour screenshots
 │   ├── covers/                   # Report library covers
 │   └── parallax/                 # Report library motion assets
-├── {account}/
+├── reports/{account}/
 │   ├── index.html                # Published five-tab audit SPA
 │   ├── ae-report.html            # AE pre-call report
 │   ├── battle-card.html          # Competitive battle card
 │   ├── leave-behind.html         # Prospect leave-behind
-│   └── screenshots/              # Browser audit evidence
-├── *-audit-data.json             # Audit data snapshots used by report pages
-├── petsmart/
-│   ├── petsmart-search-audit.pdf
-│   ├── petsmart-search-audit-deck.pptx
-│   └── petsmart-search-audit-deck-preview.pdf
+│   ├── screenshots/              # Browser audit evidence
+│   └── *.pdf / *.pptx            # Generated decks and printable assets where available
+├── reports/data/*-audit-data.json # Audit data snapshots used by report pages and IA prototypes
 ├── ia/                           # IA prototypes and shared IA components
 ├── tests/
 │   └── landing-page.test.mjs     # Static regression tests for landing copy, links, IA, and assets
@@ -155,6 +152,8 @@ http://127.0.0.1:4173/
 ## Deployment Notes
 
 - The PRISM Hub repo remote is `https://github.com/arijitchowdhury80/prism.git`.
+- Published audits live under `/reports/{account}/`; legacy root audit URLs redirect there in Vercel.
+- `publish.sh` writes new generated audits to `reports/{account}/` and snapshots to `reports/data/`.
 - Vercel/serverless deployment uses `api/chat.js` for report chat.
 - VPS/static deployment can use `server/chat-proxy.mjs` with `HERMES_API_URL` and `HERMES_API_KEY` set in the environment.
 - Never commit local `.env` files, secrets, `node_modules`, `.vercel`, or generated scratch artifacts.

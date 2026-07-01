@@ -5,7 +5,7 @@ import { mountFeedback } from "../shared/feedback.js";
 
 let data, model;
 try {
-  data = await (await fetch("/homedepot-mexico-audit-data.json")).json();
+  data = await (await fetch("/reports/data/homedepot-mexico-audit-data.json")).json();
   model = buildModel(data);
 } catch (_e) {
   document.getElementById("ia-brief-host").innerHTML = "Could not load the audit data. Check the data file path.";

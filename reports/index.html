@@ -41,7 +41,7 @@ header {
 }
 .hero-title {
   font-size: 42px; font-weight: 600; color: #23263B;
-  line-height: 1.1; letter-spacing: -1px; margin-bottom: 14px;
+  line-height: 1.1; letter-spacing: 0; margin-bottom: 14px;
   white-space: nowrap;
 }
 .hero-sub { font-size: 17px; color: #6B7280; line-height: 1.6; max-width: 520px; }
@@ -110,6 +110,38 @@ header {
   padding: 8px 16px; font-size: 14px; color: #374151;
   font-family: 'SF Mono', monospace;
 }
+
+@media (max-width: 720px) {
+  header {
+    padding: 0 18px;
+    gap: 10px;
+  }
+  header svg {
+    width: 88px;
+    min-width: 88px;
+  }
+  .header-title {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .header-count {
+    display: none;
+  }
+  .hero {
+    padding: 48px 20px 34px;
+  }
+  .hero-title {
+    font-size: 34px;
+    white-space: normal;
+  }
+  .hero-sub {
+    font-size: 15px;
+  }
+  .grid {
+    padding: 0 20px 56px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 </style>
 </head>
 <body>
@@ -130,7 +162,7 @@ header {
 
 
 <div class="grid">
-  <a href="/british-airways/" class="audit-card">
+  <a href="/reports/british-airways/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=britishairways.com&sz=128" alt="British Airways" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -145,7 +177,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/brooks-running/" class="audit-card">
+  <a href="/reports/brooks-running/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=brooksrunning.com&sz=128" alt="Brooks Running" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -160,7 +192,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/dsw/" class="audit-card">
+  <a href="/reports/dsw/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://icons.duckduckgo.com/ip3/dsw.com.ico" alt="DSW Designer Shoe Warehouse" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -175,7 +207,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/llbean/" class="audit-card">
+  <a href="/reports/llbean/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.llbean.com/images/seo_logo.jpg" alt="L.L.Bean" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -190,7 +222,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/labanquepostale/" class="audit-card">
+  <a href="/reports/labanquepostale/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/7/75/Logo_La_Banque_Postale.svg/200px-Logo_La_Banque_Postale.svg.png" alt="La Banque Postale" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -205,7 +237,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/nike/" class="audit-card">
+  <a href="/reports/nike/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=nike.com&sz=128" alt="Nike" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -220,7 +252,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/oriental-trading/" class="audit-card">
+  <a href="/reports/oriental-trading/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=orientaltrading.com&sz=128" alt="Oriental Trading Company" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -235,7 +267,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/petsmart/" class="audit-card">
+  <a href="/reports/petsmart/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=petsmart.com&sz=128" alt="PetSmart" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -250,7 +282,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/savage-x-fenty/" class="audit-card">
+  <a href="/reports/savage-x-fenty/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://icons.duckduckgo.com/ip3/savagex.com.ico" alt="Savage X Fenty" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -265,7 +297,7 @@ header {
         <span class="card-arrow">Open audit</span>
       </div>
     </a>
-  <a href="/homedepot-mexico/" class="audit-card">
+  <a href="/reports/homedepot-mexico/" class="audit-card">
       <div class="card-logo-wrap">
         <img src="https://www.google.com/s2/favicons?domain=homedepot.com.mx&sz=128" alt="The Home Depot México" class="card-logo-img"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">

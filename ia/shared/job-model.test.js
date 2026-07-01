@@ -1,7 +1,7 @@
 import { assertEquals, assert } from "https://deno.land/std@0.224.0/assert/mod.ts";
 import { buildModel } from "./job-model.js";
 
-const data = JSON.parse(await Deno.readTextFile(new URL("../../homedepot-mexico-audit-data.json", import.meta.url)));
+const data = JSON.parse(await Deno.readTextFile(new URL("../../reports/data/homedepot-mexico-audit-data.json", import.meta.url)));
 
 Deno.test("brief surfaces company + score-derived verdict", () => {
   const m = buildModel(data);
@@ -39,9 +39,9 @@ Deno.test("abx_sequence feeds the 'reach' job", () => {
 Deno.test("exports link to existing deliverable pages", () => {
   const m = buildModel(data);
   const hrefs = m.exports.map((e) => e.href);
-  assert(hrefs.includes("/homedepot-mexico/ae-report.html"));
-  assert(hrefs.includes("/homedepot-mexico/battle-card.html"));
-  assert(hrefs.includes("/homedepot-mexico/leave-behind.html"));
+  assert(hrefs.includes("/reports/homedepot-mexico/ae-report.html"));
+  assert(hrefs.includes("/reports/homedepot-mexico/battle-card.html"));
+  assert(hrefs.includes("/reports/homedepot-mexico/leave-behind.html"));
 });
 
 Deno.test("prospect view excludes internal-only surfaces", () => {

@@ -90,9 +90,9 @@ export function buildModel(data) {
   };
 
   const exports = [
-    { label: "AE pre-call brief", href: `/${SLUG}/ae-report.html` },
-    { label: "Battle card", href: `/${SLUG}/battle-card.html` },
-    { label: "Leave-behind", href: `/${SLUG}/leave-behind.html` },
+    { label: "AE pre-call brief", href: `/reports/${SLUG}/ae-report.html` },
+    { label: "Battle card", href: `/reports/${SLUG}/battle-card.html` },
+    { label: "Leave-behind", href: `/reports/${SLUG}/leave-behind.html` },
   ];
 
   return { brief, jobs, prospect, exports };
