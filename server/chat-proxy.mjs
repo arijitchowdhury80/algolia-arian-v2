@@ -26,6 +26,87 @@ const PORT = Number(process.env.PORT || 8651);
 const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism-hub";
 const MAX_MESSAGE_CHARS = 2000;
 
+// ── Auth gate (Clerk) ───────────────────────────────────────────────────────
+// The landing ("/") + marketing pages stay public. The audit reports (/reports
+// and every report slug dir) require a signed-in Clerk session. Secure-by-default:
+// anything NOT in the public allowlist below is gated.
+// Resilient import: if @clerk/backend isn't installed on the box yet, the server
+// must still start (gate simply stays OFF / fail-open) rather than crash on boot.
+let createClerkClient = null;
+try {
+  ({ createClerkClient } = await import("@clerk/backend"));
+} catch {
+  console.warn("[auth] @clerk/backend not installed — /reports NOT gated until it is");
+}
+
+const CLERK_SECRET_KEY = process.env.CLERK_SECRET_KEY;
+const CLERK_PUBLISHABLE_KEY =
+  process.env.CLERK_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || "";
+// clerk-js host is derived from the publishable key (dev: glad-skunk-4.clerk.accounts.dev).
+const CLERK_JS_HOST = process.env.CLERK_FRONTEND_HOST ||
+  (() => { try { return atob(CLERK_PUBLISHABLE_KEY.split("_")[2] || "").replace(/\$$/, ""); } catch { return ""; } })();
+const clerk = createClerkClient && CLERK_SECRET_KEY && CLERK_PUBLISHABLE_KEY
+  ? createClerkClient({ secretKey: CLERK_SECRET_KEY, publishableKey: CLERK_PUBLISHABLE_KEY })
+  : null;
+if (!clerk) console.warn("[auth] Clerk NOT configured — reports are NOT gated (set CLERK_SECRET_KEY + CLERK_PUBLISHABLE_KEY)");
+
+const PUBLIC_EXACT = new Set(["/", "/index.html", "/chat-widget.js", "/favicon.ico", "/robots.txt", "/healthz", "/sign-in"]);
+const PUBLIC_PREFIXES = ["/about", "/assets", "/ia", "/ia1", "/ia2", "/api"];
+function isPublicPath(u) {
+  if (PUBLIC_EXACT.has(u)) return true;
+  return PUBLIC_PREFIXES.some((p) => u === p || u.startsWith(p + "/") || u.startsWith(p + "."));
+}
+
+function toWebRequest(req) {
+  const host = req.headers.host || "localhost";
+  const proto = String(req.headers["x-forwarded-proto"] || "http").split(",")[0];
+  const headers = new Headers();
+  for (const [k, v] of Object.entries(req.headers)) {
+    if (Array.isArray(v)) v.forEach((x) => headers.append(k, x));
+    else if (v != null) headers.set(k, String(v));
+  }
+  return new Request(`${proto}://${host}${req.url}`, { method: "GET", headers });
+}
+
+// { ok:true } signed-in (or auth disabled); { redirect, setCookies } otherwise.
+async function checkAuth(req) {
+  if (!clerk) return { ok: true };
+  try {
+    const state = await clerk.authenticateRequest(toWebRequest(req), {});
+    if (state.status === "handshake") {
+      return { redirect: state.headers.get("location"), setCookies: state.headers.getSetCookie?.() || [] };
+    }
+    const auth = state.toAuth();
+    return auth && auth.userId ? { ok: true } : { redirect: null };
+  } catch {
+    return { redirect: null };
+  }
+}
+
+const SIGN_IN_HTML = `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in &middot; PRISM</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&display=swap" rel="stylesheet">
+<style>body{font-family:Sora,sans-serif;background:#F8F9FB;color:#23263B;display:flex;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;margin:0}
+h1{font-size:30px;font-weight:600;margin:0 0 4px}p{color:#6B7280;margin:0 0 28px}#sign-in{min-height:380px}</style></head>
+<body>
+<h1>PRISM</h1><p>Sign in to view the audit reports</p>
+<div id="sign-in"></div>
+<script async crossorigin="anonymous" data-clerk-publishable-key="${CLERK_PUBLISHABLE_KEY}"
+ src="https://${CLERK_JS_HOST}/npm/@clerk/clerk-js@5/dist/clerk.browser.js"></script>
+<script>
+window.addEventListener("load", function(){
+  var tries=0;(function go(){
+    if(!window.Clerk){ if(tries++<50){ setTimeout(go,100); } return; }
+    window.Clerk.load().then(function(){
+      var p=new URLSearchParams(location.search), r=p.get("redirect_url")||"/reports/";
+      if(window.Clerk.user){ location.replace(r); return; }
+      window.Clerk.mountSignIn(document.getElementById("sign-in"),{fallbackRedirectUrl:r,forceRedirectUrl:r});
+    }).catch(function(){});
+  })();
+});
+</script></body></html>`;
+
 const CONTENT_TYPES = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -170,7 +251,7 @@ async function handleChat(req, res) {
   res.end();
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
   const url = (req.url || "").split("?")[0];
   if (req.method === "GET" && url === "/healthz") {
     return sendJson(res, 200, { status: "ok" });
@@ -199,7 +280,23 @@ const server = http.createServer((req, res) => {
       else res.end();
     });
   }
+  if (req.method === "GET" && url === "/sign-in") {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    return res.end(SIGN_IN_HTML);
+  }
   if (req.method === "GET" || req.method === "HEAD") {
+    if (!isPublicPath(url)) {
+      const a = await checkAuth(req);
+      if (!a.ok) {
+        if (a.setCookies && a.setCookies.length) {
+          for (const c of a.setCookies) res.appendHeader("Set-Cookie", c);
+        }
+        res.statusCode = 302;
+        res.setHeader("Location", a.redirect || `/sign-in?redirect_url=${encodeURIComponent(url)}`);
+        return res.end();
+      }
+    }
     return serveStatic(res, url).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
       else res.end();
