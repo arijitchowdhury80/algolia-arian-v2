@@ -54,7 +54,7 @@ if (!clerk) {
   console.warn("[auth] Clerk is not fully configured; protected PRISM routes will fail closed");
 }
 
-const PUBLIC_EXACT = new Set(["/", "/index.html", "/chat-widget.js", "/favicon.ico", "/robots.txt", "/healthz", "/sign-in"]);
+const PUBLIC_EXACT = new Set(["/", "/index.html", "/auth.js", "/chat-widget.js", "/favicon.ico", "/robots.txt", "/healthz", "/sign-in"]);
 const PUBLIC_PREFIXES = ["/about", "/assets", "/ia", "/ia1", "/ia2"];
 
 const CONTENT_TYPES = {
@@ -165,6 +165,79 @@ function sendSignIn(res) {
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.end(signInHtml());
+}
+
+function authClientJs() {
+  const config =
+    CLERK_PUBLISHABLE_KEY && CLERK_JS_HOST
+      ? {
+          publishableKey: CLERK_PUBLISHABLE_KEY,
+          scriptUrl: `https://${CLERK_JS_HOST}/npm/@clerk/clerk-js@5/dist/clerk.browser.js`,
+        }
+      : null;
+
+  return `"use strict";
+(function(){
+  var config = ${JSON.stringify(config)};
+  var slotId = "prism-auth";
+
+  function ready(fn) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn, { once: true });
+    else fn();
+  }
+
+  function fallback(slot) {
+    if (!slot) return;
+    slot.classList.remove("is-authenticated");
+    if (!slot.querySelector("[data-prism-auth-fallback]")) {
+      slot.innerHTML = '<a class="tb-link" href="/sign-in" data-prism-auth-fallback>Sign in</a>';
+    }
+  }
+
+  function loadClerk() {
+    if (window.Clerk) return Promise.resolve(window.Clerk);
+    if (!config) return Promise.reject(new Error("missing Clerk publishable key"));
+    return new Promise(function(resolve, reject) {
+      var script = document.createElement("script");
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.setAttribute("data-clerk-publishable-key", config.publishableKey);
+      script.src = config.scriptUrl;
+      script.onload = function() { resolve(window.Clerk); };
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  ready(function(){
+    var slot = document.getElementById(slotId);
+    fallback(slot);
+    if (!slot || !config) return;
+
+    loadClerk()
+      .then(function(Clerk) {
+        if (!Clerk) throw new Error("Clerk browser client unavailable");
+        return Clerk.load().then(function() { return Clerk; });
+      })
+      .then(function(Clerk) {
+        if (!Clerk.user) {
+          fallback(slot);
+          return;
+        }
+        slot.innerHTML = "";
+        slot.classList.add("is-authenticated");
+        Clerk.mountUserButton(slot, { afterSignOutUrl: "/" });
+      })
+      .catch(function() { fallback(slot); });
+  });
+})();`;
+}
+
+function sendAuthClientJs(req, res) {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/javascript; charset=utf-8");
+  if (req.method === "HEAD") res.end();
+  else res.end(authClientJs());
 }
 
 // Serve a static file under STATIC_DIR. Directory → its index.html. Path traversal is blocked.
@@ -300,6 +373,9 @@ const server = http.createServer(async (req, res) => {
   }
   if ((req.method === "GET" || req.method === "HEAD") && url === "/sign-in") {
     return sendSignIn(res);
+  }
+  if ((req.method === "GET" || req.method === "HEAD") && url === "/auth.js") {
+    return sendAuthClientJs(req, res);
   }
   if (req.method === "POST" && url === "/api/feedback") {
     return sendJson(res, 200, { ok: true });

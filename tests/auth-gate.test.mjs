@@ -83,8 +83,21 @@ test("public landing and static assets remain public", async (t) => {
 
   assert.equal((await request(baseUrl, "/")).status, 200);
   assert.equal((await request(baseUrl, "/index.html")).status, 200);
+  assert.equal((await request(baseUrl, "/auth.js")).status, 200);
   assert.equal((await request(baseUrl, "/chat-widget.js")).status, 200);
   assert.equal((await request(baseUrl, "/assets/app.js")).status, 200);
+});
+
+test("auth client script is public and does not expose secrets when Clerk config is absent", async (t) => {
+  const baseUrl = await withServer(t);
+  const res = await request(baseUrl, "/auth.js");
+  const js = await res.text();
+
+  assert.equal(res.status, 200);
+  assert.match(js, /prism-auth/);
+  assert.match(js, /Sign in/);
+  assert.doesNotMatch(js, /sk_(test|live)_/);
+  assert.doesNotMatch(js, /pk_(test|live)_/);
 });
 
 test("anonymous report routes and legacy report slugs fail closed without Clerk config", async (t) => {
@@ -120,6 +133,8 @@ test("anonymous report chat is gated before Hermes is called", async (t) => {
 test("landing page links to sign-in without hardcoded Clerk keys", async () => {
   const html = await import("node:fs/promises").then(({ readFile }) => readFile("index.html", "utf8"));
 
+  assert.match(html, /id="prism-auth"/);
+  assert.match(html, /src="\/auth\.js"/);
   assert.match(html, /href="\/sign-in"/);
   assert.doesNotMatch(html, /pk_(test|live)_/);
   assert.doesNotMatch(html, /clerk\.accounts\.dev/);
