@@ -97,7 +97,7 @@
   var panel = el("div", { id: "prism-chat-panel" });
   panel.innerHTML =
     '<div id="prism-chat-grip" title="Drag to resize"></div>' +
-    '<div id="prism-chat-head"><img class="av" src="/assets/cassandra.png" alt="Cassandra" /><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div>" +
+    '<div id="prism-chat-head"><img class="av" src="/assets/cassandra.png?v=20260701" alt="Cassandra" /><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div>" +
     '<div id="prism-chat-tools"><button id="prism-chat-dock" aria-label="dock side" title="Dock left/right">⇄</button><button id="prism-chat-exp" aria-label="expand" title="Expand">⤢</button><button id="prism-chat-x" aria-label="close" title="Close">×</button></div></div>' +
     '<div id="prism-chat-log"></div>' +
     '<form id="prism-chat-form"><textarea id="prism-chat-in" rows="1" placeholder="Ask anything about this audit…"></textarea><button id="prism-chat-send" type="submit">Send</button></form>';

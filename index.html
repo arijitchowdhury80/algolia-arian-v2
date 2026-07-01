@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRISM: AI Prospect Intelligence for Algolia Sales</title>
+<link rel="icon" type="image/png" href="/assets/cassandra.png?v=20260701">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -147,6 +148,10 @@ section { position: relative; }
 .hero-sub { font-size: 18px; line-height: 1.7; color: var(--mid); font-weight: 300; max-width: 600px; }
 .hero-sub strong { color: var(--gray); font-weight: 600; }
 .hero-cta { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+.scan-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 28px; max-width: 650px; }
+.scan-item { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px 13px; box-shadow: var(--shadow); }
+.scan-item b { display: block; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.scan-item span { display: block; font-size: 12px; color: var(--mid); line-height: 1.35; }
 .btn {
   display: inline-flex; align-items: center; gap: 9px; padding: 14px 26px;
   border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer;
@@ -192,17 +197,18 @@ section { position: relative; }
 .pc-chip .sw { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
 /* ── WHO - role cards ──────────────────────────── */
-.role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
-/* shell - holds the glowing edge behind the white inner card */
-.role-card { position: relative; border-radius: var(--radius); transition: transform 0.2s;
-  --card-deg: 90deg; --card-d: 0; }
-.role-card:hover { transform: translateY(-6px); }
+.role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; perspective: 1200px; }
+.role-card {
+  position: relative; border-radius: var(--radius); overflow: hidden; --mx: 50%; --my: 50%;
+  transition: transform 0.3s ease; transform-style: preserve-3d; will-change: transform;
+}
 .role-inner { position: relative; z-index: 1; height: 100%;
   background: #fff; border: 1px solid var(--border); border-radius: inherit;
   padding: 32px 28px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
 .role-card:hover .role-inner { box-shadow: var(--shadow-lg); }
-/* (top accent bars removed - the glowing edge is the treatment) */
-/* pointer-following glowing edge (colored conic ring + soft halo, masked to the arc nearest the cursor) */
+.role-inner > .role-ic, .role-inner > h3, .role-inner > p { position: relative; z-index: 3; }
+.role-card:hover .b-spot, .role-card:hover .b-glow { opacity: 1; }
+.role-card .b-spot { background: radial-gradient(260px circle at var(--mx) var(--my), rgba(84,104,255,0.16), transparent 70%); }
 .ge-edge { position: absolute; inset: -1.5px; border-radius: calc(var(--radius) + 1.5px); z-index: 0; pointer-events: none;
   background: conic-gradient(from 90deg, #003DFF, #5468FF, #7C3AED, #DC2626, #D97706, #059669, #0891B2, #003DFF);
   -webkit-mask: conic-gradient(from var(--card-deg) at 50% 50%, #000 0 10%, transparent 26% 74%, #000 90% 100%);
@@ -219,29 +225,29 @@ section { position: relative; }
 .role-card p  { font-size: 15px; color: var(--mid); line-height: 1.6; font-weight: 300; }
 
 /* ── PRODUCE - deliverables ────────────────────── */
-.deliv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 52px; perspective: 1200px; }
+.deliv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 52px; }
 .deliv {
-  position: relative; overflow: hidden; --mx: 50%; --my: 50%;
-  background: #fff; border: 1px solid var(--border); border-radius: 14px;
-  padding: 22px 20px; box-shadow: var(--shadow);
-  transition: box-shadow 0.18s, transform 0.3s ease; transform-style: preserve-3d; will-change: transform;
+  position: relative; overflow: visible; --card-deg: 90deg; --card-d: 0;
+  background: transparent; border-radius: 14px;
+  padding: 22px 20px; transition: transform 0.2s;
 }
-.deliv:hover { box-shadow: var(--shadow-lg); }
+.deliv:hover { transform: translateY(-6px); }
+.deliv::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit;
+  background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); transition: box-shadow 0.2s;
+}
+.deliv:hover::before { box-shadow: var(--shadow-lg); }
 .deliv-grid > .deliv:first-child { grid-column: span 2; }
 .deliv > .di, .deliv > h4, .deliv > p { position: relative; z-index: 3; }
-/* spotlight + reactive border glow (mouse-following) */
 .b-spot { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease;
   background: radial-gradient(260px circle at var(--mx) var(--my), rgba(84,104,255,0.16), transparent 70%); }
-.deliv:hover .b-spot { opacity: 1; }
-.deliv.featured .b-spot { background: radial-gradient(260px circle at var(--mx) var(--my), rgba(124,139,255,0.30), transparent 70%); }
 .b-glow { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 2; padding: 1.5px; opacity: 0; transition: opacity 0.3s ease;
   background: radial-gradient(240px circle at var(--mx) var(--my), rgba(0,61,255,0.9), transparent 45%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
           mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);         mask-composite: exclude; }
-.deliv:hover .b-glow { opacity: 1; }
 /* particles + ripple */
 .b-particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: rgba(0,61,255,0.7); box-shadow: 0 0 6px rgba(84,104,255,0.6); pointer-events: none; z-index: 4; animation: b-float 2.6s ease-out forwards; }
-.deliv.featured .b-particle { background: rgba(190,202,255,0.95); box-shadow: 0 0 6px rgba(190,202,255,0.7); }
+.role-card .b-particle { background: rgba(0,61,255,0.7); box-shadow: 0 0 6px rgba(84,104,255,0.6); }
 @keyframes b-float { 0% { transform: translate(0,0) scale(0); opacity: 0; } 18% { opacity: 0.95; transform: scale(1); } 100% { transform: translate(var(--pdx,0px), var(--pdy,-30px)) scale(0.35); opacity: 0; } }
 .b-rip { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: rgba(84,104,255,0.35); pointer-events: none; z-index: 5; animation: b-ripple 0.7s ease-out forwards; }
 @keyframes b-ripple { to { transform: scale(42); opacity: 0; } }
@@ -250,7 +256,10 @@ section { position: relative; }
 .deliv .di svg { width: 19px; height: 19px; }
 .deliv h4 { font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 5px; }
 .deliv p { font-size: 13px; color: var(--mid); line-height: 1.5; font-weight: 300; }
-.deliv.featured { grid-column: span 2; background: linear-gradient(135deg, var(--gray) 0%, #2d3154 100%); border: none; color: #fff; }
+.deliv .ge-edge { opacity: 0; transition: opacity 0.35s ease; }
+.deliv:hover .ge-edge { opacity: calc(0.3 + 0.7 * var(--card-d)); }
+.deliv.featured { grid-column: span 2; color: #fff; }
+.deliv.featured::before { background: linear-gradient(135deg, var(--gray) 0%, #2d3154 100%); border: none; }
 .deliv.featured h4 { color: #fff; }
 .deliv.featured p { color: rgba(255,255,255,0.7); }
 .deliv.featured .di { background: rgba(255,255,255,0.12); color: #fff; }
@@ -289,6 +298,13 @@ section { position: relative; }
 .t-chrome .tn-ic { background: var(--amber-tint); color: var(--amber); }
 .kbadge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--green); background: var(--green-tint); border: 1px solid var(--green-border); border-radius: 5px; padding: 2px 8px; margin-left: 8px; vertical-align: middle; }
+.ops-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 38px; }
+.op-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 22px; box-shadow: var(--shadow); }
+.op-card .op-step { font-size: 12px; font-weight: 800; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+.op-card h3 { font-size: 20px; font-weight: 750; margin-bottom: 8px; color: var(--ink); }
+.op-card p { font-size: 14px; line-height: 1.55; color: var(--mid); font-weight: 300; }
+.op-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.op-tags span { font-size: 11px; font-weight: 700; color: var(--gray); background: var(--blue-light); border: 1px solid var(--border); border-radius: 999px; padding: 4px 8px; }
 
 /* ── SKILLS ────────────────────────────────────── */
 .skill-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
@@ -316,23 +332,50 @@ section { position: relative; }
 .orch .sg-head .cnt { background: rgba(255,255,255,0.18); color: #fff; }
 .skills-cta { display: flex; justify-content: center; margin-top: 44px; }
 
-/* ── HERMES - dark execution layer ─────────────── */
-.hermes {
+/* ── CASSANDRA - dark execution layer ──────────── */
+.cassandra {
   position: relative; color: #fff; overflow: hidden;
-  background: linear-gradient(135deg, #0d1b38 0%, #1a2d52 55%, #13244a 100%);
+  background:
+    linear-gradient(125deg, rgba(243,179,122,0.12) 0%, transparent 26%),
+    linear-gradient(135deg, #0b1430 0%, #17284b 52%, #20183f 100%);
   padding: 104px 0;
 }
-.hermes::before {
+.cassandra::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(680px circle at 82% 18%, rgba(84,104,255,0.30), transparent 60%);
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.26;
   pointer-events: none;
 }
-.hermes .wrap { position: relative; z-index: 1; }
-.hermes .eyebrow { color: #8FA4FF; }
-.hermes .eyebrow::before { background: #8FA4FF; }
-.hermes .s-title { color: #fff; }
-.hermes .s-lead { color: rgba(255,255,255,0.72); }
-.hermes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 52px; }
+.cassandra .wrap { position: relative; z-index: 1; }
+.cassandra .eyebrow { color: #F3B37A; }
+.cassandra .eyebrow::before { background: #F3B37A; }
+.cassandra .s-title { color: #fff; }
+.cassandra .s-lead { color: rgba(255,255,255,0.76); }
+.cassandra-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 34px; align-items: stretch; margin-top: 52px; }
+.cass-profile {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+  display: flex; flex-direction: column;
+}
+.cass-portrait { position: relative; aspect-ratio: 1 / 1.05; overflow: hidden; background: rgba(255,255,255,0.04); }
+.cass-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; display: block; }
+.cass-portrait::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 34%;
+  background: linear-gradient(180deg, transparent, rgba(11,20,48,0.92));
+}
+.cass-profile-copy { padding: 26px 28px 28px; }
+.cass-status {
+  display: inline-flex; align-items: center; gap: 8px; color: #FFE0BF;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cass-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,0.16); }
+.cass-profile h3 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+.cass-profile p { font-size: 15.5px; line-height: 1.68; color: rgba(255,255,255,0.74); font-weight: 300; }
+.cass-panel { display: flex; flex-direction: column; gap: 16px; }
 .hcard {
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius); padding: 30px 28px; backdrop-filter: blur(8px);
@@ -376,26 +419,33 @@ section { position: relative; }
 /* ── Reveal animation ──────────────────────────── */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
 .reveal.in { opacity: 1; transform: none; }
+.deliv.reveal.in:hover { transform: translateY(-6px); }
 
 /* ── Responsive ────────────────────────────────── */
 @media (max-width: 1080px) {
   .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+  .scan-strip { grid-template-columns: repeat(2, 1fr); }
   .deliv-grid { grid-template-columns: repeat(2, 1fr); }
   .deliv.featured { grid-column: span 2; }
   .skill-cols { grid-template-columns: 1fr 1fr; }
   .skill-group.span2 { grid-column: span 2; }
-  .hermes-grid { grid-template-columns: 1fr; }
+  .ops-grid { grid-template-columns: repeat(2, 1fr); }
+  .cassandra-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   .wrap { padding: 0 24px; }
   .band { padding: 64px 0; }
+  .scan-strip { grid-template-columns: repeat(2, 1fr); }
   .role-grid { grid-template-columns: 1fr; }
   .deliv-grid { grid-template-columns: 1fr; }
   .deliv.featured { grid-column: span 1; }
   .skill-cols { grid-template-columns: 1fr; }
   .skill-group.span2 { grid-column: span 1; }
+  .ops-grid { grid-template-columns: 1fr; }
   .tool { grid-template-columns: 1fr; gap: 14px; }
   .tb-sub { display: none; }
+  .tb-gh { width: 44px; min-width: 44px; height: 38px; padding: 0; justify-content: center; gap: 0; font-size: 0; }
+  .tb-gh svg { width: 17px; height: 17px; }
   .flow { flex-direction: column; }
   .flow-arrow { transform: rotate(90deg); }
 }
@@ -420,9 +470,9 @@ section { position: relative; }
   <span class="tb-spacer"></span>
   <a class="tb-link" href="/reports/">Reports</a>
   <span id="prism-auth" class="tb-auth"><a class="tb-link" href="/sign-in">Sign in</a></span>
-  <a class="tb-gh" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+  <a class="tb-gh" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener" aria-label="View PRISM on GitHub">
     <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-    View skills on GitHub
+    View PRISM on GitHub
   </a>
 </header>
 <div id="scroll-progress"></div>
@@ -431,19 +481,25 @@ section { position: relative; }
 <section class="band band--hero">
   <div class="wrap hero-grid">
     <div class="hero reveal">
-      <span class="hero-badge"><span class="dot"></span>Evidence-grounded · Keyless · No fabrication</span>
+      <span class="hero-badge"><span class="dot"></span>Evidence-grounded · Audit engine · No fabrication</span>
       <h1>PRISM</h1>
-      <p class="hero-tag">A prospect domain in.<br><span class="accent">A grounded sales audit out.</span></p>
-      <p class="hero-sub">PRISM is an AI prospect-intelligence and search-audit engine for Algolia sales. Give it a prospect's domain and it runs a full, <strong>evidence-grounded</strong> audit of their site search plus company and market intelligence, then produces a branded report and a complete set of sales deliverables. And you can <strong>chat with the findings</strong>, grounded and fabrication-free, on the web and on Telegram.</p>
+      <p class="hero-tag">Domain in.<br><span class="accent">Audit, sales kit, answers out.</span></p>
+      <p class="hero-sub">PRISM turns a prospect domain into a sourced search audit, business case, sales plays, and grounded chat. Built for a seller who has 30 seconds to find the angle.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="/reports/">
           Browse the audits
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="btn btn-ghost" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+        <a class="btn btn-ghost" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          The skills
+          The repo
         </a>
+      </div>
+      <div class="scan-strip" aria-label="PRISM workflow summary">
+        <div class="scan-item"><b>Investigate</b><span>Company, market, people, signals.</span></div>
+        <div class="scan-item"><b>Test</b><span>Live search, tech stack, screenshots.</span></div>
+        <div class="scan-item"><b>Build</b><span>Report, ROI, playbook, campaign.</span></div>
+        <div class="scan-item"><b>Answer</b><span>Grounded chat on web and Telegram.</span></div>
       </div>
     </div>
 
@@ -479,14 +535,14 @@ section { position: relative; }
           <line class="pr6" x1="210" y1="82" x2="360" y2="136" stroke="#DC2626" stroke-width="3.4" stroke-linecap="round"/>
         </g>
       </svg>
-      <div class="pc-label" style="margin-top:6px;">Output: a grounded spectrum</div>
+      <div class="pc-label" style="margin-top:6px;">Output: audit sections + downloads</div>
       <div class="pc-out">
-        <div class="pc-chip"><span class="sw" style="background:#003DFF"></span>Audit deck &amp; report</div>
-        <div class="pc-chip"><span class="sw" style="background:#5468FF"></span>Sales plays</div>
-        <div class="pc-chip"><span class="sw" style="background:#0891B2"></span>ROI business case</div>
-        <div class="pc-chip"><span class="sw" style="background:#059669"></span>ABX campaign</div>
-        <div class="pc-chip"><span class="sw" style="background:#D97706"></span>Battle card</div>
-        <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Grounded chat agent</div>
+        <div class="pc-chip"><span class="sw" style="background:#003DFF"></span>Overview</div>
+        <div class="pc-chip"><span class="sw" style="background:#5468FF"></span>Research</div>
+        <div class="pc-chip"><span class="sw" style="background:#0891B2"></span>Search Audit</div>
+        <div class="pc-chip"><span class="sw" style="background:#059669"></span>Business Case</div>
+        <div class="pc-chip"><span class="sw" style="background:#D97706"></span>Sales Actions</div>
+        <div class="pc-chip"><span class="sw" style="background:#DC2626"></span>Downloadable assets</div>
       </div>
     </div>
   </div>
@@ -498,31 +554,31 @@ section { position: relative; }
     <div class="reveal">
       <span class="eyebrow">Who it's for</span>
       <h2 class="s-title">Built for the Algolia sales floor</h2>
-      <p class="s-lead">For pre-call prep, displacement narratives, and evidence-grounded outreach. Every deliverable is grounded in the prospect's own data and the open web.</p>
+      <p class="s-lead">For AEs, BDRs, and leaders who need proof, angle, and next action fast.</p>
     </div>
     <div class="role-grid">
       <div class="role-card r1 reveal">
-        <span class="ge-edge"></span>
         <div class="role-inner">
+          <span class="b-spot"></span><span class="b-glow"></span>
           <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Account Executives</h3>
-          <p>Walk into every discovery call with an evidence-grounded view of the prospect's search, their tech stack, and the exact displacement angle to lead with.</p>
+          <p>Walk in with the search gap, the business case, and the opening question.</p>
         </div>
       </div>
       <div class="role-card r2 reveal">
-        <span class="ge-edge"></span>
         <div class="role-inner">
+          <span class="b-spot"></span><span class="b-glow"></span>
           <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>BDRs</h3>
-          <p>Open with proof, not guesswork. Personalized, fabrication-free outreach built from the prospect's own signals, executive language, and competitor evidence.</p>
+          <p>Open with proof from the prospect's site, not generic personalization.</p>
         </div>
       </div>
       <div class="role-card r3 reveal">
-        <span class="ge-edge"></span>
         <div class="role-inner">
+          <span class="b-spot"></span><span class="b-glow"></span>
           <div class="role-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l4-4 3 3 5-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           <h3>Sales Leaders</h3>
-          <p>A repeatable, grounded intelligence motion across the team: consistent narratives, defensible numbers, and a shared evidence base for every account.</p>
+          <p>Standardize account intelligence without flattening every deal into the same pitch.</p>
         </div>
       </div>
     </div>
@@ -534,25 +590,21 @@ section { position: relative; }
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">What it produces</span>
-      <h2 class="s-title">One domain. A full sales kit.</h2>
-      <p class="s-lead">Every audit fans out into a complete, branded deliverable package, built from evidence and ready to present and act on.</p>
+      <h2 class="s-title">What PRISM builds</h2>
+      <p class="s-lead">Five live audit tabs and the asset package PRISM exposes in the Downloads menu.</p>
     </div>
     <div class="deliv-grid">
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8" stroke-linecap="round"/></svg></div><h4>McKinsey-style audit deck</h4><p>Scored, narrative-driven findings.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9" stroke-linecap="round"/></svg></div><h4>Dual-view landing page</h4><p>Exec and deep-dive in one page.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8l-5-5H5a1 1 0 0 0-1 1z"/><path d="M14 3v5h5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>PDF book</h4><p>The full audit as a leave-behind.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>AE pre-call playbook</h4><p>Talking points &amp; discovery tree.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"/></svg></div><h4>Battle card</h4><p>Competitive positioning at a glance.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5" stroke-linecap="round"/></svg></div><h4>Leave-behind one-pager</h4><p>The executive summary, distilled.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>ROI business case</h4><p>Component-level revenue model.</p></div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></div><h4>AE / BDR sales plays</h4><p>MEDDPICC, objections, outreach.</p></div>
+      <div class="deliv reveal"><span class="ge-edge"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8" stroke-linecap="round"/></svg></div><h4>Overview</h4><p>Score, gaps, and next step.</p></div>
+      <div class="deliv reveal"><span class="ge-edge"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg></div><h4>Research</h4><p>Company context, financials, tech stack, traffic, hiring, signals, partners.</p></div>
+      <div class="deliv reveal"><span class="ge-edge"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Search Audit</h4><p>Tested queries, scorecard, findings, and screenshots.</p></div>
+      <div class="deliv reveal"><span class="ge-edge"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Business Case</h4><p>Said-vs-found hook, ROI model, case studies, why now.</p></div>
       <div class="deliv featured reveal">
-        <span class="b-spot"></span><span class="b-glow"></span>
-        <div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/><path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/></svg></div>
-        <h4>Grounded "chat with this audit" agent</h4>
-        <p>Ask the audit anything. Answers come only from the produced report, never invented. Live on the web and Telegram.</p>
+        <span class="ge-edge"></span>
+        <div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Downloadable assets</h4>
+        <p>AE report, battle card, leave-behind, full audit binder, PDF/PPTX where generated.</p>
       </div>
-      <div class="deliv reveal"><span class="b-spot"></span><span class="b-glow"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>5-touch ABX campaign</h4><p>Emails, LinkedIn &amp; Loom script.</p></div>
+      <div class="deliv reveal"><span class="ge-edge"></span><div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h4>Sales Actions</h4><p>Battle card, plays, pre-call brief, power map, ABX campaign.</p></div>
     </div>
   </div>
 </section>
@@ -562,8 +614,8 @@ section { position: relative; }
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">How it works</span>
-      <h2 class="s-title">The right tool for every job</h2>
-      <p class="s-lead">PRISM runs a suite of specialized Claude skills from start to finish. Each fact-gathering job goes to the tool built for it, and none of them need a paid subscription or data key. No data brokers, no paywalled scrapers.</p>
+      <h2 class="s-title">How PRISM works</h2>
+      <p class="s-lead">The system dispatches tools, checks evidence, and turns raw signals into a sales narrative.</p>
     </div>
 
     <div class="howbar reveal">
@@ -571,41 +623,30 @@ section { position: relative; }
       <span><b>One hard rule everywhere: no fabrication.</b> Every fact carries a citation. A field with no grounded source stays <span class="nf">blank</span>. Never guessed, never invented.</span>
     </div>
 
-    <div class="tool-list">
-      <div class="tool t-scout reveal">
-        <div class="tool-name">
-          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg></span>
-          <div><h3>Scout</h3><div class="tn-tag">First-party data</div></div>
-        </div>
-        <div class="tool-desc">Acquires the target company's <strong>own</strong> data (company info, executives, careers and jobs, investor relations) by intelligent scraping of their site, JS-rendered pages, sitemaps and PDFs.</div>
+    <div class="ops-grid">
+      <div class="op-card reveal">
+        <div class="op-step">01 / Read</div>
+        <h3>Prospect reality</h3>
+        <p>Company pages, jobs, investors, news, market context.</p>
+        <div class="op-tags"><span>Scout</span><span>grounded search</span></div>
       </div>
-      <div class="tool t-gemini reveal">
-        <div class="tool-name">
-          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg></span>
-          <div><h3>Gemini-grounded Search</h3><div class="tn-tag">Open-web research</div></div>
-        </div>
-        <div class="tool-desc">Open-web research: industry benchmarks, analyst quotes, news, competitor tech. <strong>Every fact carries a citation;</strong> anything ungrounded is left blank.</div>
+      <div class="op-card reveal">
+        <div class="op-step">02 / Test</div>
+        <h3>Search behavior</h3>
+        <p>Live queries, vendor detection, screenshots, failure modes.</p>
+        <div class="op-tags"><span>Chrome</span><span>packet inspection</span></div>
       </div>
-      <div class="tool t-detect reveal">
-        <div class="tool-name">
-          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><h3>detect-search</h3><div class="tn-tag">Packet inspection<span class="kbadge">keyless</span></div></div>
-        </div>
-        <div class="tool-desc">Keyless network packet inspection via Playwright. It loads the site across multiple pages and fingerprints the <strong>search vendor and full tech stack</strong>. Exactly how BuiltWith / Wappalyzer work, but free.</div>
+      <div class="op-card reveal">
+        <div class="op-step">03 / Build</div>
+        <h3>Sales motion</h3>
+        <p>Audit, ROI case, playbook, outreach, battle card.</p>
+        <div class="op-tags"><span>synthesis</span><span>ABX</span></div>
       </div>
-      <div class="tool t-yf reveal">
-        <div class="tool-name">
-          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18" stroke-linecap="round"/><path d="M7 14l3-4 3 2 5-7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><h3>yfinance</h3><div class="tn-tag">Public financials</div></div>
-        </div>
-        <div class="tool-desc">Public financials (revenue trend, margins, analyst consensus) pulled straight from public Yahoo Finance data for any company with a ticker.</div>
-      </div>
-      <div class="tool t-chrome reveal">
-        <div class="tool-name">
-          <span class="tn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M21 12h-6M5 19l4-4" stroke-linecap="round"/></svg></span>
-          <div><h3>chrome (browser)</h3><div class="tn-tag">Live search testing</div></div>
-        </div>
-        <div class="tool-desc">Drives a real browser to <strong>test the prospect's live search</strong> (typo tolerance, NLP queries, zero-results, autocomplete), capturing screenshots as evidence for every finding.</div>
+      <div class="op-card reveal">
+        <div class="op-step">04 / Stay</div>
+        <h3>Grounded chat</h3>
+        <p>Cassandra answers only from the audit.</p>
+        <div class="op-tags"><span>report QA</span><span>no fabrication</span></div>
       </div>
     </div>
   </div>
@@ -617,7 +658,7 @@ section { position: relative; }
     <div class="reveal">
       <span class="eyebrow">Inside the audit</span>
       <h2 class="s-title">One audit, every angle.</h2>
-      <p class="s-lead">Overview, deep research, live search findings, the ROI case, the sales playbook, and a grounded agent to ask. Here's what's actually inside, end to end.</p>
+      <p class="s-lead">Overview, research, search findings, ROI, sales actions, and chat.</p>
     </div>
     <div class="tour reveal">
       <div class="tour-stage">
@@ -637,8 +678,8 @@ section { position: relative; }
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">The skills</span>
-      <h2 class="s-title">22 specialized skills, one pipeline</h2>
-      <p class="s-lead">The engine is a suite of open Claude skills, the <code>algolia-*</code> family. Each does one job well, and they run together start to finish. All of it is on GitHub.</p>
+      <h2 class="s-title">Skill bench, not feature soup</h2>
+      <p class="s-lead">Specialized skills gather, test, score, and activate the audit.</p>
       <div class="skill-meta">
         <div class="skill-stat"><div class="num">22</div><div class="lbl">Specialized skills</div></div>
         <div class="skill-stat"><div class="num">5</div><div class="lbl">Skill groups</div></div>
@@ -647,77 +688,83 @@ section { position: relative; }
     </div>
 
     <div class="skill-cols">
-      <a class="skill-group span2 reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#003DFF"></span><h3>Intelligence: Wave 1</h3><span class="cnt">13 skills</span></div>
-        <p class="sg-sub">Parallel research on the company, its market, and its money. The evidence base for everything downstream.</p>
-        <div class="sg-tags">
-          <span class="sg-tag">intel-company</span><span class="sg-tag">intel-techstack</span><span class="sg-tag">intel-traffic</span>
-          <span class="sg-tag">intel-competitors</span><span class="sg-tag">intel-financial-public</span><span class="sg-tag">intel-financial-private</span>
-          <span class="sg-tag">intel-investor</span><span class="sg-tag">intel-hiring</span><span class="sg-tag">intel-social</span>
-          <span class="sg-tag">intel-news</span><span class="sg-tag">intel-industry</span><span class="sg-tag">intel-partner</span><span class="sg-tag">intel-queries</span>
-        </div>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#003DFF"></span><h3>Intel</h3><span class="cnt">13</span></div>
+        <p class="sg-sub">Company, traffic, hiring, finance, news, competitors.</p>
+        <div class="sg-tags"><span class="sg-tag">evidence base</span></div>
       </a>
-      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#D97706"></span><h3>Browser testing</h3><span class="cnt">1 skill</span></div>
-        <p class="sg-sub">Hands-on, live search testing in a real browser with screenshot evidence.</p>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#D97706"></span><h3>Browser</h3><span class="cnt">1</span></div>
+        <p class="sg-sub">Live search tests with screenshot proof.</p>
         <div class="sg-tags"><span class="sg-tag">audit-browser</span></div>
       </a>
-      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#0891B2"></span><h3>Synthesis &amp; QA</h3><span class="cnt">4 skills</span></div>
-        <p class="sg-sub">Pull the evidence together, score it, fact-check it, and render the report.</p>
-        <div class="sg-tags"><span class="sg-tag">audit-research</span><span class="sg-tag">audit-factcheck</span><span class="sg-tag">audit-eval</span><span class="sg-tag">audit-report</span></div>
+      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#0891B2"></span><h3>Synthesis</h3><span class="cnt">4</span></div>
+        <p class="sg-sub">Score, fact-check, render, and package.</p>
+        <div class="sg-tags"><span class="sg-tag">report QA</span></div>
       </a>
-      <a class="skill-group reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#059669"></span><h3>Sales activation</h3><span class="cnt">3 skills</span></div>
-        <p class="sg-sub">Turn findings into a business case, sales plays, and a multi-touch campaign.</p>
-        <div class="sg-tags"><span class="sg-tag">synth-business-case</span><span class="sg-tag">synth-sales-plays</span><span class="sg-tag">campaign-abx</span></div>
-      </a>
-      <a class="skill-group orch reveal" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
-        <div class="sg-head"><span class="sg-dot" style="background:#ffffff"></span><h3>Orchestrator</h3><span class="cnt">1 skill</span></div>
-        <p class="sg-sub">Runs the whole pipeline, research to deliverables, in a single end-to-end pass.</p>
-        <div class="sg-tags"><span class="sg-tag">algolia-search-audit</span></div>
+      <a class="skill-group orch reveal" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
+        <div class="sg-head"><span class="sg-dot" style="background:#ffffff"></span><h3>Activation</h3><span class="cnt">4</span></div>
+        <p class="sg-sub">Business case, sales plays, ABX, orchestration.</p>
+        <div class="sg-tags"><span class="sg-tag">sales motion</span></div>
       </a>
     </div>
 
     <div class="skills-cta reveal">
-      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        View the skills on GitHub
+        View PRISM on GitHub
       </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ HERMES / CASSANDRA ═══ -->
-<section class="hermes">
+<!-- ═══ CASSANDRA ═══ -->
+<section class="cassandra">
   <div class="wrap">
     <div class="reveal">
-      <span class="eyebrow">Behind the scenes</span>
-      <h2 class="s-title">Hermes: the engine that runs it</h2>
-      <p class="s-lead">Hermes is the engine that does the work. It quietly runs every step that builds an audit, then turns the finished report into something you can talk to. So instead of the findings just sitting on a page, you can ask questions and get answers.</p>
+      <span class="eyebrow">The guide</span>
+      <h2 class="s-title">Cassandra keeps the audit alive</h2>
+      <p class="s-lead">She gives the system a voice: grounded, direct, and available after the report is built.</p>
     </div>
 
-    <div class="hermes-grid">
-      <div class="hcard reveal">
-        <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></span>Hermes</h3>
-        <p>The <strong>engine</strong>. It does the heavy lifting, running each step that builds an audit behind the scenes, and then keeps the finished report live, so you can have a conversation with it instead of just reading it.</p>
+    <div class="cassandra-grid">
+      <div class="cass-profile reveal">
+        <div class="cass-portrait">
+          <img src="/assets/cass-candidates/cass-0.png" srcset="/assets/cassandra.png 256w, /assets/cass-candidates/cass-0.png 1024w" sizes="(max-width: 1080px) 100vw, 430px" alt="Cassandra, the operator behind PRISM" loading="lazy">
+        </div>
+        <div class="cass-profile-copy">
+          <span class="cass-status">Live operator</span>
+          <h3>Cassandra</h3>
+          <p>The human access layer for PRISM: direct, grounded, and allergic to guesses.</p>
+        </div>
       </div>
-      <div class="hcard reveal">
-        <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-2 7H7c0-2-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 21h6M10 18h4" stroke-linecap="round"/></svg></span>Cassandra</h3>
-        <p>Your guide to each audit. Ask her anything about a report and she answers, but <strong>only using what's actually in it</strong>. If the answer's there, she gives it to you and shows where it came from. If it isn't, she says so instead of making something up.</p>
+      <div class="cass-panel">
+        <div class="hcard reveal">
+          <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Guides the audit</h3>
+          <p>Keeps the work moving without becoming the product.</p>
+        </div>
+        <div class="hcard reveal">
+          <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg></span>Protects the truth</h3>
+          <p>Grounds every answer in the audit.</p>
+        </div>
+        <div class="hcard reveal">
+          <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg></span>Stays with the seller</h3>
+          <p>Answers follow-up questions on web and Telegram.</p>
+        </div>
       </div>
     </div>
 
     <div class="flow reveal">
       <div class="flow-node f1"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Skills produce the evidence</div>
       <span class="flow-arrow">→</span>
-      <div class="flow-node f2"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></span>Hermes / Cassandra make it conversational</div>
+      <div class="flow-node f2"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" stroke-linejoin="round"/></svg></span>System builds the motion</div>
       <span class="flow-arrow">→</span>
-      <div class="flow-node f3"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/></svg></span>One brain, two channels</div>
+      <div class="flow-node f3"><span class="fn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-linejoin="round"/></svg></span>Cassandra keeps it accessible</div>
     </div>
 
     <div class="chan-row reveal">
-      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg>Web: prism.chowmes.com</span>
+      <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke-linecap="round"/></svg>Ask Cassandra on the web</span>
       <span class="chan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>Telegram</span>
     </div>
   </div>
@@ -727,12 +774,12 @@ section { position: relative; }
 <section class="band--close">
   <div class="wrap close-inner">
     <span class="eyebrow">PRISM</span>
-    <h2>Give it a domain.<br>Get a grounded audit you can present, send, and talk to.</h2>
-    <p>Evidence in, never invention. The right tool for every fact, all keyless. A full sales kit out, and an agent that answers only from what's true.</p>
+    <h2>Give PRISM a domain.<br>Get the account story.</h2>
+    <p>Evidence, search proof, ROI, sales motion, and a grounded operator to ask.</p>
     <div class="close-foot">
-      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/arijit-skills" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        Explore the skills
+        Open the repo
       </a>
     </div>
     <div class="close-meta">
@@ -822,9 +869,9 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   else document.addEventListener('DOMContentLoaded', initAnimatedGrid);
 }
 
-/* ── Role cards: glowing edge follows the pointer ── */
+/* ── Deliverables: glowing edge follows the pointer ── */
 (function () {
-  var cards = document.querySelectorAll('.role-card');
+  var cards = document.querySelectorAll('.deliv-grid .deliv');
   if (!cards.length) return;
   cards.forEach(function (card) {
     card.addEventListener('pointermove', function (e) {
@@ -842,9 +889,9 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   });
 })();
 
-/* ── Deliverables bento: spotlight, border glow, 3D tilt, magnetism, particles, ripple ── */
+/* ── Role cards: spotlight, border glow, 3D tilt, magnetism, particles, ripple ── */
 (function () {
-  var cards = document.querySelectorAll('.deliv-grid .deliv');
+  var cards = document.querySelectorAll('.role-grid .role-card');
   if (!cards.length) return;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   cards.forEach(function (card) {
