@@ -15411,6 +15411,10 @@ if (document.readyState === 'loading') {
 
 </script>
 
+<!-- Grounded "chat with this audit" widget — must ship on every published report page.
+     (Previously injected post-render, which meant re-renders silently dropped it.) -->
+<script src="/chat-widget.js" defer></script>
+
 </body>
 
 </html>
