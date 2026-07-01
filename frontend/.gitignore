@@ -42,6 +42,3 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
-
-# runtime-synced audit reports (not committed; ~14 MB)
-/report-data/
