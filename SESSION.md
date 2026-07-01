@@ -1,6 +1,41 @@
 # SESSION — Downloadable Algolia-branded audit artifacts (+ Cassandra chat polish)
 
-**Status:** Building the downloadable audit DECK/REPORT. Pivoted to a portrait A4 chaptered DOCUMENT matching the user's L.L. Bean reference. PetSmart pilot rendered + opened. Awaiting user feedback on the v1 portrait doc, plus a known logo-strip fix.
+**Status:** Building the downloadable audit DECK/REPORT. Pivoted to a portrait A4 chaptered DOCUMENT matching the user's L.L. Bean reference. PetSmart pilot rendered + opened. **2026-06-30 polish wave DONE** (see below); awaiting user feedback on the v2 portrait doc.
+
+## PPTX DECK PIVOT 2026-06-30 (DONE, verified — user's chosen direction)
+User feedback on the HTML->PDF doc: (1) wants an EDITABLE deck, not a fixed PDF; (2) the tested/expected/found
+structure from the audit was being thrown away; (3) sources shown as trailing "Source ->" tags should be
+INLINE clickable; (4) misalignment/overlap; (5) asked about other collateral. DECISIONS (AskUserQuestion):
+format = **PPTX on the official Algolia 2026 template**; scope = **perfect the audit deck first**, then replicate.
+
+- New generator: `docs/workspace/hermes-prism-integration/artifacts/make_deck_pptx.py`. Builds ON
+  `Algolia-Design-System/uploads/Algolia Slide Tempalte 2026.PPTX` (16:9, 10x5.62in, 22 layouts).
+  Removes the 11 example slides via `drop_rel` (clean, no orphan/duplicate parts), then adds:
+  cover (layout 0 + white Algolia logo) / scorecard (layout 4 + 2x5 severity heatmap) / section divider
+  (layout 2) / 5 finding slides / close. python-pptx 1.0.2.
+- **Finding slide** = the fix for feedback #2/#3/#4: white body layout (4), manual bounded placement (no
+  overlap). Left col = **WE TESTED / WE EXPECTED / WE FOUND** (real JSON fields, `summarize()` keeps bullets
+  crisp on word boundaries, no mid-word cut) + light-blue "With Algolia" box + **inline clickable source**
+  ("Verified against <host>" where host is a hyperlink run, via `run.hyperlink.address`; non-URL analytics
+  sources render as plain italic, no tag). Right col = real screenshot + red "What shoppers see today" tag.
+- **Render/verify loop (no LibreOffice on this Mac):** python-pptx -> Keynote AppleScript export to PDF ->
+  pdftoppm -> Read the PNGs. Verified all 9 slides visually. Grounding: 0 em/en-dashes in slide XML,
+  hyperlink runs present, no fabrication.
+- White Algolia logo: `Algolia-logo-white.svg` has an empty `<defs>` so its `cls-2` fill is undefined =>
+  rasterized BLACK. Fixed by forcing `fill:#fff` in an HTML wrapper + Chrome transparent screenshot ->
+  `Algolia-Design-System/assets/Algolia-logo-white.png` (vendored).
+- Output: `~/prism-hub/petsmart/petsmart-search-audit-deck.pptx` (editable) + `-deck-preview.pdf`. Opened.
+- NEXT: user review of the deck; then replicate the pattern to the other collateral (AE brief, battle card,
+  leave-behind, business case, ABX) in PPTX, and bake into the arijit-skills audit pipeline. Old `make_deck.py`
+  (HTML 16:9) is superseded by `make_deck_pptx.py`. The portrait `make_report.py` doc stays as the read-alone.
+
+## POLISH WAVE 2026-06-30 (DONE, verified by rendering + Reading the PNGs)
+- **Truncation killed.** `clip()` limits were ~half the real field lengths, ellipsing mid-sentence on a leave-behind. Raised: case-study why 90->210, finding why 200->320, solution 150->240, next-step desc 150->280, rfp detail 160->330. Verified 0 ellipses (`…`) in HTML.
+- **Logo trust strip: root cause = clearbit free logo API is DEAD** (DNS won't resolve; shut down post-HubSpot). Not a sandbox block. Removed `fetch_uri`/`TRUST`. Strip now a clean uppercase typographic row of REAL Algolia customers cited in THIS audit's `case_studies` (Revival Animal Health, BIG W, Decathlon Singapore). **Prospect (PetSmart) explicitly excluded** — listing them would falsely imply they are already a customer. Real SVG logos can be vendored + swapped in later (one line at `strip=`).
+- **URL sources** that were raw-clipped ("Source: https://nielseniq.com/glob…") now render as clean domain links (e.g. `nielseniq.com`, `algolia.com`) via new `domain()` + `src()` URL-label branch.
+- **Long multi-query** `tested_query` now shows the first complete query (split on `;`), no mid-word cut.
+- Guards: 0 em-dashes, 0 ellipses, py_compile OK. Re-published `~/prism-hub/petsmart/petsmart-search-audit.pdf`.
+- STILL OPEN (deliberately not done): pages 2/3/4/5/7 keep an empty lower third (gap #3). Did NOT pad with ungrounded filler. Enrichment (3 findings/page, a capability before/after page like the reference's NeuralSearch page) is a content decision for the user.
 
 Date: 2026-06-30. PIP branch: feat/prism-e2e-cycle. prism-hub branch: feat/prism-vps-hosting (auto-deploys on push).
 
