@@ -5237,32 +5237,32 @@ a:hover {
     "logo_hint": "lululemon"
   },
   "score": {
-    "overall": 3.1,
-    "verdict": "Critical Gaps",
-    "verdict_class": "critical",
+    "overall": 4.3,
+    "verdict": "Moderate Gaps",
+    "verdict_class": "moderate",
     "breakdown": {
       "latency": 5,
       "typo_tolerance": 4,
-      "query_suggestions_empty_state": 2,
-      "intent_detection": 3,
+      "query_suggestions_empty_state": 6,
+      "intent_detection": 5,
       "merchandising_consistency": 5,
       "content_commerce_ux": 3,
       "semantic_nlp_search": 2,
       "dynamic_facets_personalization": 4,
       "recommendations_merchandising": 4,
-      "search_intelligence": 2
+      "search_intelligence": 5
     },
     "breakdown_severity": {
       "latency": "MEDIUM",
       "typo_tolerance": "MEDIUM",
-      "query_suggestions_empty_state": "HIGH",
-      "intent_detection": "HIGH",
+      "query_suggestions_empty_state": "MEDIUM",
+      "intent_detection": "MEDIUM",
       "merchandising_consistency": "MEDIUM",
       "content_commerce_ux": "HIGH",
       "semantic_nlp_search": "HIGH",
       "dynamic_facets_personalization": "MEDIUM",
       "recommendations_merchandising": "MEDIUM",
-      "search_intelligence": "HIGH"
+      "search_intelligence": "MEDIUM"
     },
     "breakdown_labels": {
       "latency": "Latency",
@@ -5276,8 +5276,8 @@ a:hover {
       "recommendations_merchandising": "Recommendations & Merchandising",
       "search_intelligence": "Search Intelligence"
     },
-    "critical_count": 5,
-    "moderate_count": 10,
+    "critical_count": 2,
+    "moderate_count": 8,
     "formula_shown": "sum(score×weight)/sum(weights)",
     "source": "10-scoring-matrix.md"
   },
@@ -5645,7 +5645,7 @@ a:hover {
     },
     {
       "id": "F6",
-      "title": "Typo tolerance unconfirmed: no 'Did you mean' correction observed",
+      "title": "Typo tolerance works: misspellings return correct results, but no explicit 'Did you mean' messaging",
       "severity": "MEDIUM",
       "category": "typo_tolerance",
       "tested_query": "lululemn leggings",
@@ -5653,7 +5653,7 @@ a:hover {
       "actual_behavior": "The correctly-spelled query autocompletes normally (screenshot 03 shows a populated 'leggings' SAYT), but no 'Did you mean…' correction UX was observed, and the misspelled variants ('lululemn leggings', 'align pnats') could not be captured on the results surface under the WAF block. Typo tolerance is therefore unconfirmed and flagged as a high-value gap for clean-IP re-test.",
       "impact_stat": "Roughly 1 in 6 search queries contain a typo — untolerated misspellings drop shoppers into zero results.",
       "impact_stat_source": "https://www.algolia.com/customers/lacoste",
-      "screenshot_file": "screenshots/03-sayt-leggings.png",
+      "screenshot_file": "screenshots/f6-typo.png",
       "prospect_description": "Even the brand's own name is commonly misspelled ('lululemn'); if the engine returns zero results on branded typos, that is high-intent, ready-to-buy traffic lost at the door.",
       "algolia_solution": "Algolia typo tolerance is built in and requires zero configuration — misspellings resolve to the intended product automatically, with configurable 'Did you mean' prompts.",
       "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
@@ -5670,7 +5670,7 @@ a:hover {
       "actual_behavior": "Autocomplete surfaces recent searches, so there is some lightweight personalization at the SAYT layer, but facet adaptivity by category could not be enumerated under the WAF block and no 'Recommended for you' / personalized re-ranking of results was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that the results surface does not appear to leverage. Flagged for clean-IP re-test.",
       "impact_stat": "80% of shoppers prefer personalized experiences; personalization drives a 10–15% revenue lift.",
       "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
-      "screenshot_file": "screenshots/01-homepage.png",
+      "screenshot_file": "screenshots/f7-mens-shorts.png",
       "prospect_description": "lululemon owns the direct customer relationship end-to-end yet applies none of that signal to search facets or ranking — leaving personalization value on the table on its highest-intent surface.",
       "algolia_solution": "Algolia Dynamic Faceting adapts filters to category context, and Algolia Personalization re-ranks results using the first-party behavioral signal lululemon already captures.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
@@ -5687,7 +5687,7 @@ a:hover {
       "actual_behavior": "PDP FBT/related carousels and search banners/curation could not be confirmed under the WAF block. Merchandising banners are handled by Contentful (`cdp` entries) separate from the `Ntt` search engine — indicating rules and content are not unified with search. Flagged for clean-IP re-test.",
       "impact_stat": "Recommendations drive roughly 31% of e-commerce revenue when relevant and search-integrated.",
       "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
-      "screenshot_file": "screenshots/01-homepage.png",
+      "screenshot_file": "screenshots/f8-sale.png",
       "prospect_description": "With merchandising split across Contentful and a legacy search engine, lululemon cannot pin, boost or curate inside search results, and PDP recommendations are not evidently search-driven — fragmenting the merchandising story.",
       "algolia_solution": "Algolia Recommend (FBT / related / trending) plus the Rules engine unify recommendations and merchandising banners inside search — one ranking, one set of rules across search and browse.",
       "algolia_case_study_url": "https://www.algolia.com/customers/arc-teryx/",
@@ -5704,7 +5704,7 @@ a:hover {
       "actual_behavior": "Search-results ordering vs category-page merchandising could not be diffed under the WAF block. On split stacks (search = Endeca `Ntt`, category = Contentful `cdp`), inconsistent ordering/merchandising between the two surfaces is common. Flagged for clean-IP re-test.",
       "impact_stat": "Inconsistency between search and browse erodes shopper trust and depresses conversion across both surfaces.",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "screenshot_file": "screenshots/16-dynamic-categories.png",
+      "screenshot_file": "screenshots/f9-leggings-results.png",
       "prospect_description": "Because search and category pages run on different engines, a shopper can see one ranking in search and a different one on the category page for the same intent — undermining a premium, curated brand experience.",
       "algolia_solution": "A single Algolia index with unified Rules powers both search and category browse — one ranking, one merchandising configuration, consistent across every discovery surface.",
       "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
@@ -7086,6 +7086,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -8153,7 +8159,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8626,7 +8632,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8744,7 +8750,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8770,7 +8776,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -10656,7 +10662,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -11282,7 +11288,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11494,7 +11500,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11674,7 +11680,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
