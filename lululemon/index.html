@@ -5560,16 +5560,16 @@ a:hover {
   "findings": [
     {
       "id": "F1",
-      "title": "Semantic / NLP FAIL — keyword `Ntt` engine cannot parse conversational intent",
+      "title": "Semantic / NLP FAIL: keyword `Ntt` engine cannot parse conversational intent",
       "severity": "HIGH",
       "category": "semantic_nlp_search",
-      "tested_query": "black yoga pants for hot yoga",
-      "expected_behavior": "Interpret 'hot yoga' as an activity signal (breathable / Nulu fabric), 'black' as a color facet, and 'yoga pants' as category — return a semantically-resolved set of relevant leggings.",
-      "actual_behavior": "The accessible page state echoed the raw query in the search field and rendered generic homepage/nav chrome ('Groove Wide-Leg Pant… What's New') rather than a semantically-resolved result set — consistent with a keyword `Ntt` match, not intent understanding. An Endeca-lineage keyword engine will not parse 'for hot yoga' (activity→fabric), 'under 100' (price), or 'that packs down' (feature).",
-      "impact_stat": "Search users who use natural language convert far higher — apparel searchers convert at 13% vs 6% for non-searchers.",
+      "tested_query": "yoga pants under 100",
+      "expected_behavior": "Interpret 'yoga pants' as a category, 'under 100' as a price constraint, and activity phrasing like 'for hot yoga' as a breathable / Nulu fabric signal, then return a semantically-resolved set of relevant leggings.",
+      "actual_behavior": "Typing a natural-language, price-scoped query ('yoga pants under 100') returned a completely empty 'Top Suggestions' overlay: the heading rendered with zero results beneath it. The keyword `Ntt` engine tokenizes words and cannot read 'under 100' as a price constraint or 'for hot yoga' as an activity/fabric signal, so intent queries fall through to nothing. Note the contrast with plain keyword terms, which do autocomplete richly (see F2/F4).",
+      "impact_stat": "Search users who use natural language convert far higher: apparel searchers convert at 13% vs 6% for non-searchers.",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
-      "screenshot_file": "screenshots/03-sayt-leggings.png",
-      "prospect_description": "lululemon's highest-intent shoppers — those typing what they actually want ('lightweight running jacket that packs down', 'men's joggers under 100') — get keyword-matched chrome, not answers. On a DTC-only model there is no wholesale fallback to catch that lost sale.",
+      "screenshot_file": "screenshots/intent-empty.png",
+      "prospect_description": "lululemon's highest-intent shoppers, the ones typing what they actually want ('lightweight running jacket that packs down', 'men's joggers under 100'), get an empty suggestions overlay, not answers. On a DTC-only model there is no wholesale fallback to catch that lost sale.",
       "algolia_solution": "Algolia NeuralSearch understands activity, price and feature intent natively — combining vector search with structured attribute filtering in a single query, no manual facet-setting required. This is the strongest wedge given the new CAITO's AI mandate.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark/",
       "algolia_case_study_company": "Gymshark",
@@ -5577,80 +5577,80 @@ a:hover {
     },
     {
       "id": "F2",
-      "title": "Empty SAYT & unpopulated 'Trending Searches' — the silent front door",
+      "title": "Query suggestions are a static curated list, not demand-ranked or personalized",
       "severity": "HIGH",
       "category": "query_suggestions_empty_state",
-      "tested_query": "leggings",
-      "expected_behavior": "Typing 'leggings' should surface query suggestions, product previews, category shortcuts and popular/recent searches in the autocomplete overlay.",
-      "actual_behavior": "The SAYT overlay returned no query-specific suggestions across 'leggings', 'align', and 'run' — it continued to show only a static 'Trending Searches' label with no populated terms, no product previews, no recent-search history. Confirmed on-disk (screenshots 02, 03, 15, 16).",
-      "impact_stat": "43% of retail shoppers go straight to the search bar, and search users convert 5–6x higher — a blank front door wastes the highest-intent surface.",
+      "tested_query": "(empty search box)",
+      "expected_behavior": "The empty-state overlay should surface popular searches ranked from real search demand, plus recent searches and product previews, refreshed automatically by behavioral data and personalized to the shopper.",
+      "actual_behavior": "lululemon does populate the empty-state overlay: a 'Trending Searches' list renders (Belt Bag, Define Jacket, Align, Swiftly, Align Leggings) and returning guests also see a 'Recent Searches' block (screenshots 15 and 02). The gap is that this is a fixed, hand-curated list, not popularity ranked from real search demand, and it does not personalize to the individual shopper beyond simple recent history. So the highest-intent surface works, but it cannot flex to real-time demand, season or the specific guest.",
+      "impact_stat": "43% of retail shoppers go straight to the search bar; suggestions ranked from real demand outperform a fixed curated list on the highest-intent surface.",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/15-popular-searches.png",
-      "prospect_description": "Every visitor who taps lululemon's search box gets an empty 'Trending Searches' header — a broken first impression on the highest-intent surface, and with 80.26% mobile traffic that empty overlay hits the majority of guests.",
-      "algolia_solution": "Algolia Query Suggestions + Autocomplete deliver data-driven popular searches, recent history, and product previews in the SAYT overlay out of the box — turning the empty front door into a merchandising surface.",
+      "prospect_description": "Every guest who taps lululemon's search box sees the same five fixed trending terms. With 80.26% mobile traffic on the highest-intent surface, that static list cannot adapt to real-time demand, seasonality or the individual shopper.",
+      "algolia_solution": "Algolia Query Suggestions ranks the overlay from live search analytics and refreshes automatically, and Personalization tailors it per shopper: the fixed curated list becomes a live, demand-ranked merchandising surface.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "New user order rate increased by 150% during Black Friday with Algolia Recommend"
     },
     {
       "id": "F3",
-      "title": "No federated search — content, policy and service siloed from search",
+      "title": "No federated search: help, service and policy content siloed from search",
       "severity": "HIGH",
       "category": "content_commerce_ux",
-      "tested_query": "align",
-      "expected_behavior": "SAYT should federate products, content, collections, and stores (e.g. surface 'hemming' service and 'return policy' content alongside product results).",
-      "actual_behavior": "SAYT is products-only in intent but returns nothing federated — no product previews, no category suggestions, no content/store/brand entries; the overlay shows only the static 'Trending Searches' label. Content lives in a separate Contentful layer (`cdn-contentful.lululemon.com`, content_type=cdp), not indexed into search.",
-      "impact_stat": "68% of shoppers would return to a site with good search — federated discovery keeps them from leaving to find help content.",
+      "tested_query": "hemming",
+      "expected_behavior": "SAYT should federate products, content, collections and stores, e.g. surface the free 'hemming' service and 'return policy' help content alongside product results.",
+      "actual_behavior": "Search returns products but no service, help or policy content. Typing 'hemming' surfaces hem-named PRODUCTS (Nulu Cinch-Hem Pant, LuluLinen Adjustable-Hem Skirt, Cotton Jersey Bubble-Hem Tee, Notched-Hem Crop) plus a 'Curved Hem' suggestion, but never lululemon's free-hemming SERVICE or any policy/help page. That content lives in a separate Contentful layer (`cdn-contentful.lululemon.com`, content_type=cdp) and is not indexed into search, so the brand's signature service is invisible on the search surface.",
+      "impact_stat": "68% of shoppers would return to a site with good search; federated discovery keeps them from leaving to find help content.",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/11-federated.png",
-      "prospect_description": "lululemon's distinctive services (free hemming) and policy/help content are invisible to search — shoppers who type 'hemming' or 'return policy' get no federated answer, forcing them off-search to find it.",
-      "algolia_solution": "Algolia Federated Search unifies products, content, collections and stores in a single overlay — indexing the Contentful content lululemon already produces (including lululemon Studio content) alongside the apparel catalog.",
+      "prospect_description": "lululemon's distinctive services (free hemming) and policy/help content are invisible to search: a shopper who types 'hemming' gets hem-named products, not the free-hemming service, forcing them off-search to find it.",
+      "algolia_solution": "Algolia Federated Search unifies products, content, collections and stores in a single overlay, indexing the Contentful content lululemon already produces (including lululemon Studio content) alongside the apparel catalog.",
       "algolia_case_study_url": "https://www.algolia.com/customers/arc-teryx/",
       "algolia_case_study_company": "Arc'teryx",
       "algolia_case_study_result": "Uses Algolia AI Synonyms and Dynamic Re-Ranking to automate merchandising and surface real-time insights"
     },
     {
       "id": "F4",
-      "title": "No intent detection — franchise/brand terms not routed to curated views",
+      "title": "Franchise terms autocomplete richly but do not route to curated, merchandised views",
       "severity": "HIGH",
       "category": "intent_detection",
-      "tested_query": "run",
-      "expected_behavior": "Typing a franchise term ('Align') or activity ('run') should trigger scoped suggestions or a curated collection view (e.g. 'run' → Men's/Women's Running).",
-      "actual_behavior": "No dynamic category or franchise intent detection while typing. 'run', 'align', and 'lululemon Studio' all surfaced only the static 'Trending Searches' label — no scoped suggestions, no collection routing. Keyword `Ntt` token-match only.",
-      "impact_stat": "Over half of US online adults rely more on search than menus, and 57% use filters to narrow results — intent routing is now table stakes.",
+      "tested_query": "align",
+      "expected_behavior": "Typing a franchise term ('Align') or activity ('run') should return scoped suggestions AND route to a curated, merchandised collection view (e.g. 'run' to Men's/Women's Running).",
+      "actual_behavior": "Brand and franchise terms do autocomplete richly: typing 'align' returns four Align product cards plus scoped query suggestions (Align Leggings, Align Bra, Align 25, Align Dress, Align 6 Shorts, Camo Align Leggings). The gap is downstream, not in autocomplete: those terms resolve to a generic keyword results page with no curated collection routing or merchandised landing, so a signature franchise gets matched, not merchandised. There is no intent categorization that sends 'run' to a curated Running view.",
+      "impact_stat": "Over half of US online adults rely more on search than menus, and 57% use filters to narrow results: curated intent routing is now table stakes.",
       "impact_stat_source": "https://www.forrester.com",
       "screenshot_file": "screenshots/16-dynamic-categories.png",
-      "prospect_description": "lululemon's signature franchises (Align, Wunder Train) and sub-brand (lululemon Studio, formerly MIRROR) are core to its merchandising story, yet search treats them as raw keywords with no curated intent routing.",
-      "algolia_solution": "Algolia Rules + query categorization route franchise, brand and activity terms to curated, filtered collection views and scoped suggestions — merchandised, not just matched.",
+      "prospect_description": "lululemon's signature franchises (Align, Wunder Train) and sub-brand (lululemon Studio, formerly MIRROR) are core to its merchandising story, yet search resolves them to a plain keyword results page rather than a curated, merchandised collection view.",
+      "algolia_solution": "Algolia Rules + query categorization route franchise, brand and activity terms to curated, filtered collection views: merchandised, not just matched.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
       "algolia_case_study_result": "35% higher conversion rate for customers who use search"
     },
     {
       "id": "F5",
-      "title": "No search intelligence — trending terms empty, no social-proof signals",
+      "title": "Behavioral signal not fed into ranking: no popularity-ranked results or social proof",
       "severity": "HIGH",
       "category": "search_intelligence",
-      "tested_query": "leggings",
-      "expected_behavior": "Popular/most-searched terms and bestseller/trending badges should be populated and surfaced as social proof; behavioral signal should inform ranking.",
-      "actual_behavior": "No populated trending terms, no bestseller/most-searched badges, no social-proof signals. The 'Trending Searches' label is present but empty; there is no evidence Quantum Metric behavioral capture feeds search ranking or is surfaced to shoppers.",
-      "impact_stat": "Recommendations and popularity signals drive roughly 31% of e-commerce revenue — leaving them off wastes proven demand data.",
+      "tested_query": "(empty search box)",
+      "expected_behavior": "Popular/most-searched terms and bestseller/trending badges should be ranked from behavioral demand and surfaced as social proof, and that signal should inform result ranking.",
+      "actual_behavior": "lululemon captures rich first-party behavior (Quantum Metric confirmed on site) and does surface recent searches and a trending list in the empty state (screenshot 02). What is missing is that this demand signal does not visibly rank what shoppers see: no bestseller or most-searched badges, no popularity-ranked result ordering, and no social-proof cues at the point of discovery. The signal is collected but not fed back into ranking.",
+      "impact_stat": "Recommendations and popularity signals drive roughly 31% of e-commerce revenue: leaving them out of ranking wastes proven demand data.",
       "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
       "screenshot_file": "screenshots/02-empty-state.png",
-      "prospect_description": "lululemon captures rich first-party DTC behavior (Quantum Metric confirmed on site) but none of it visibly informs search — no popularity ranking, no trending, no social proof at the point of discovery.",
-      "algolia_solution": "Algolia Analytics + insights-driven ranking turn behavioral data into popularity-ranked suggestions, trending terms and bestseller signals — closing the loop between the data lululemon already collects and what shoppers see.",
+      "prospect_description": "lululemon captures rich first-party DTC behavior (Quantum Metric confirmed on site), but beyond a static recent/trending list none of it visibly ranks search: no popularity ranking, no bestseller badges, no social proof at the point of discovery.",
+      "algolia_solution": "Algolia Analytics + insights-driven ranking turn behavioral data into popularity-ranked suggestions, trending terms and bestseller signals, closing the loop between the data lululemon already collects and what shoppers see.",
       "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
       "algolia_case_study_company": "Gymshark",
       "algolia_case_study_result": "Returning customers: 13% higher order rate and 10% higher add-to-cart rate"
     },
     {
       "id": "F6",
-      "title": "Typo tolerance unconfirmed — no 'Did you mean' correction observed",
+      "title": "Typo tolerance unconfirmed: no 'Did you mean' correction observed",
       "severity": "MEDIUM",
       "category": "typo_tolerance",
       "tested_query": "lululemn leggings",
       "expected_behavior": "Misspellings of the brand's own most-searched terms ('lululemn leggings', 'align pnats') should be corrected automatically or prompt a 'Did you mean…' suggestion.",
-      "actual_behavior": "No 'Did you mean…' correction was observed in the accessible page states; full typo behavior was WAF-limited on the results surface. On a keyword `Ntt` engine with no correction UX present, typo tolerance is a high-value gap flagged for clean-IP re-test.",
+      "actual_behavior": "The correctly-spelled query autocompletes normally (screenshot 03 shows a populated 'leggings' SAYT), but no 'Did you mean…' correction UX was observed, and the misspelled variants ('lululemn leggings', 'align pnats') could not be captured on the results surface under the WAF block. Typo tolerance is therefore unconfirmed and flagged as a high-value gap for clean-IP re-test.",
       "impact_stat": "Roughly 1 in 6 search queries contain a typo — untolerated misspellings drop shoppers into zero results.",
       "impact_stat_source": "https://www.algolia.com/customers/lacoste",
       "screenshot_file": "screenshots/03-sayt-leggings.png",
@@ -5667,7 +5667,7 @@ a:hover {
       "category": "dynamic_facets_personalization",
       "tested_query": "men's shorts",
       "expected_behavior": "Facets should adapt to category context (inseam/activity for shorts vs support-level/cup for bras) and results should personalize using first-party behavioral signal.",
-      "actual_behavior": "Facet adaptivity by category could not be enumerated under the WAF block, and no 'Recommended for you' / personalized re-ranking was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that search does not appear to leverage. Flagged for clean-IP re-test.",
+      "actual_behavior": "Autocomplete surfaces recent searches, so there is some lightweight personalization at the SAYT layer, but facet adaptivity by category could not be enumerated under the WAF block and no 'Recommended for you' / personalized re-ranking of results was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that the results surface does not appear to leverage. Flagged for clean-IP re-test.",
       "impact_stat": "80% of shoppers prefer personalized experiences; personalization drives a 10–15% revenue lift.",
       "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
       "screenshot_file": "screenshots/01-homepage.png",
@@ -5718,7 +5718,7 @@ a:hover {
       "category": "latency",
       "tested_query": "leggings",
       "expected_behavior": "Search should return results in well under 300ms with instant client-side SAYT.",
-      "actual_behavior": "Latency was not directly measured (WAF disrupted controlled timing). Results route server-side via Next.js SSR to `shop.lululemon.com/search?Ntt=`, with no instant client-side search. Endeca-lineage in-house engines typically show 300–500ms P99. Flagged for AE measurement from a clean IP.",
+      "actual_behavior": "Latency was not directly measured (WAF disrupted controlled timing). Autocomplete suggestions render client-side as the shopper types, but submitting a query routes the full results set server-side via Next.js SSR to `shop.lululemon.com/search?Ntt=` rather than from an edge index. Endeca-lineage in-house engines typically show 300 to 500ms P99 on that round-trip. Flagged for AE measurement from a clean IP.",
       "impact_stat": "39% of shoppers leave if search is too slow; every 100ms of added latency costs roughly 1% of revenue.",
       "impact_stat_source": "https://www.algolia.com/customers/under-armour/",
       "screenshot_file": "screenshots/03-sayt-leggings.png",
@@ -5736,8 +5736,8 @@ a:hover {
       "said_quote": "The teams are working to increase conversion with sharper visual merchandising, better storytelling, and by offering a more premium shopping experience.",
       "said_source": "Q1 FY2026 Earnings Call, June 4, 2026",
       "said_source_url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
-      "found_title": "Search runs on an Endeca-lineage `Ntt` keyword engine with an empty SAYT and no unified merchandising",
-      "found_evidence": "Browser audit: SAYT returned no suggestions across 'leggings'/'align'/'run' (only a static empty 'Trending Searches' label); merchandising banners are siloed in Contentful, separate from the `Ntt` search engine.",
+      "found_title": "Search runs on an Endeca-lineage `Ntt` keyword engine with static suggestions and no unified merchandising",
+      "found_evidence": "Browser audit: SAYT autocomplete works for keyword and brand terms ('leggings' and 'align' return product previews plus scoped suggestions), but the trending/suggestion list is a fixed curated set and merchandising banners are siloed in Contentful, separate from the `Ntt` search engine, so the team has no unified, real-time control over what search surfaces.",
       "finding_id": "F2",
       "algolia_angle": "Merchandising and conversion both live inside search and browse — Algolia's Rules + Merchandising give the team real-time, zero-code control over exactly what Maestrini named.",
       "algolia_fix": "Algolia unifies ranking, Rules and merchandising across search and browse — the 'sharper visual merchandising to increase conversion' mandate becomes a configurable surface, not a code deploy."
@@ -5749,7 +5749,7 @@ a:hover {
       "said_source": "SEC EDGAR 10-K FY2025, Item 1A Risk Factors",
       "said_source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
       "found_title": "Conversational NLP queries fail on the keyword `Ntt` engine",
-      "found_evidence": "Browser audit: 'black yoga pants for hot yoga' returned generic homepage chrome, not a semantically-resolved set. The engine cannot parse activity, price or feature intent — the exact AI gap the 10-K flags.",
+      "found_evidence": "Browser audit: 'yoga pants under 100' returned a completely empty 'Top Suggestions' overlay, and 'black yoga pants for hot yoga' was not semantically resolved. The engine cannot parse price, activity or feature intent, the exact AI gap the 10-K flags.",
       "finding_id": "F1",
       "algolia_angle": "lululemon named Algolia's value proposition as a board-level risk in its own SEC filing — NeuralSearch retires that specific risk on the search and discovery layer.",
       "algolia_fix": "Algolia NeuralSearch is the AI layer the 10-K says is missing — semantic, attribute-aware query understanding out of the box."
@@ -6165,12 +6165,12 @@ a:hover {
       "Phase 4/5 — Report + deliverables synthesis"
     ],
     "data_labels": "Every claim labeled [FACT] (WebFetch/network verified) or [ESTIMATE] (derived/modeled).",
-    "limitations": "lululemon.com is fronted by an Akamai-class WAF that blocked full results-page capture after cold probes. 6 high-quality on-disk screenshots back the confirmed SAYT/empty-state/federation findings; results-page behaviors (typo, NLP precision, facets, personalization, recommendations) are documented from cold-session probes + partial evidence and flagged for clean-IP re-test.",
+    "limitations": "lululemon.com is fronted by an Akamai-class WAF that blocked full results-page capture after cold probes. 7 high-quality on-disk screenshots (homepage, empty-state recent searches, trending list, populated 'leggings' and 'align' autocomplete, 'hemming' federation, and the empty 'yoga pants under 100' intent query) back the confirmed autocomplete, empty-state, intent and federation findings; deeper results-page behaviors (typo, facet adaptivity, personalization ranking, recommendations, latency) are documented from cold-session probes + partial evidence and flagged for clean-IP re-test.",
     "source": "AGENT-CONTEXT + REFERENCE.md scoring rubric"
   },
   "competitive_synthesis": {
     "scenario": "GREENFIELD DISPLACEMENT with a GOLDEN competitor angle",
-    "summary": "lululemon runs a proprietary Oracle Endeca-lineage keyword engine (no SaaS incumbent to unseat), while its two fastest-growing DTC challengers — Gymshark and Vuori — both run Algolia today. Under Armour published a 35% conversion lift on Algolia; Arc'teryx automates merchandising with Algolia AI. The established players (Nike, Alo Yoga) run costly proprietary search. lululemon is the only major DTC activewear brand still on a legacy keyword engine with no autocomplete and an empty trending state.",
+    "summary": "lululemon runs a proprietary Oracle Endeca-lineage keyword engine (no SaaS incumbent to unseat), while its two fastest-growing DTC challengers — Gymshark and Vuori — both run Algolia today. Under Armour published a 35% conversion lift on Algolia; Arc'teryx automates merchandising with Algolia AI. The established players (Nike, Alo Yoga) run costly proprietary search. lululemon is the only major DTC activewear brand still on a legacy keyword engine that cannot parse conversational intent and lacks federated content, personalization and unified merchandising.",
     "matrix_col_labels": {
       "nike_has": "Gymshark",
       "asics_has": "Vuori",
@@ -6190,13 +6190,13 @@ a:hover {
       },
       {
         "capability": "Autocomplete / SAYT",
-        "prospect_today": "2/10 — empty 'Trending Searches' label; no suggestions or product previews",
-        "prospect_with_algolia": "Autocomplete + Query Suggestions with product previews and recent/popular searches",
+        "prospect_today": "6/10 — autocomplete works (product previews + scoped suggestions), but suggestions are a static curated list, not demand-ranked or personalized",
+        "prospect_with_algolia": "Autocomplete + Query Suggestions with product previews and demand-ranked, personalized recent/popular searches",
         "nike_has": "Algolia Autocomplete",
         "asics_has": "Algolia Autocomplete",
         "on_running_has": "Constructor autocomplete",
         "new_balance_has": "Proprietary autocomplete",
-        "algolia_delta": "Confirmed empty front door — highest-intent surface wasted"
+        "algolia_delta": "Autocomplete works but is static, not demand-ranked or personalized"
       },
       {
         "capability": "Federated Search (products + content + stores)",
@@ -6220,7 +6220,7 @@ a:hover {
       },
       {
         "capability": "Search Intelligence / Analytics-driven ranking",
-        "prospect_today": "2/10 — empty trending, no bestseller/social-proof signals",
+        "prospect_today": "4/10 — recent/trending surfaced, but behavioral signal does not rank results and there are no bestseller/social-proof cues",
         "prospect_with_algolia": "Analytics + insights-driven ranking, trending and popularity signals",
         "nike_has": "Algolia Analytics",
         "asics_has": "Algolia Analytics",
@@ -6258,7 +6258,7 @@ a:hover {
   },
   "golden_angle": {
     "headline": "Gymshark and Vuori — your two fastest-growing DTC competitors — both run Algolia today.",
-    "detail": "Live packet inspection confirmed Gymshark (app_id 2DEAES0CUO) and Vuori (app_id P2MLBKGFDS) both run Algolia Search. Gymshark published the results: search conversion 6.2% → 10%+, revenue from search users +400% YoY, and an estimated £2M/yr in extra sales from AI Re-Ranking alone. Under Armour published 35% higher conversion for search users on Algolia. lululemon is the only major DTC activewear brand still on a proprietary Endeca-lineage keyword engine with no autocomplete and an empty trending state.",
+    "detail": "Live packet inspection confirmed Gymshark (app_id 2DEAES0CUO) and Vuori (app_id P2MLBKGFDS) both run Algolia Search. Gymshark published the results: search conversion 6.2% → 10%+, revenue from search users +400% YoY, and an estimated £2M/yr in extra sales from AI Re-Ranking alone. Under Armour published 35% higher conversion for search users on Algolia. lululemon is the only major DTC activewear brand still on a proprietary Endeca-lineage keyword engine that cannot parse conversational intent and lacks federated content, personalization and unified merchandising.",
     "competitors_using_algolia": true,
     "competitors_using_algolia_note": "Gymshark + Vuori confirmed on Algolia via live packet inspection; Under Armour published an Algolia case study; Arc'teryx uses Algolia AI merchandising.",
     "source": "[FACT — detect-search live packet inspection + algolia.com/customers, 2026-07-01]",
@@ -6331,7 +6331,7 @@ a:hover {
       "algolia_proof": "Gymshark's Algolia Recommend drove a 150% higher new-user order rate during Black Friday. [FACT — https://www.algolia.com/customers/gymshark/]",
       "pain_points": [
         "No wholesale fallback — a failed on-site search is unrecoverable revenue",
-        "80.26% mobile traffic amplifies the empty-SAYT gap",
+        "80.26% mobile traffic amplifies the intent-parsing and federation gaps",
         "At $4.9B digital, even a fractional search improvement is worth tens of millions"
       ],
       "objection": "Too expensive / budget isn't there right now.",
@@ -6517,7 +6517,7 @@ a:hover {
         "channel": "Email",
         "persona": "Ranju Das (CAITO)",
         "subject": "Your 10-K named the risk we close — and Gymshark already proved it",
-        "body": "Ranju — congratulations on the CAITO role. We ran a live audit of lululemon.com's search last week. Two things stood out. First, your own FY2025 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — rare candor, and exactly the layer we address. Second, when we typed 'black yoga pants for hot yoga,' the Endeca-lineage `Ntt` engine returned generic homepage chrome rather than a semantically-resolved set; the empty 'Trending Searches' overlay returned no suggestions across 'leggings', 'align', and 'run.' Gymshark and Vuori — your two fastest-growing DTC competitors — both run Algolia today; Gymshark took search conversion from 6.2% to over 10%. On your $4.9B digital business a single conversion point is ~$27M in gross profit. Worth 20 minutes to walk the audit?"
+        "body": "Ranju — congratulations on the CAITO role. We ran a live audit of lululemon.com's search last week. Two things stood out. First, your own FY2025 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — rare candor, and exactly the layer we address. Second, a natural-language query like 'yoga pants under 100' returned a completely empty suggestions overlay: the Endeca-lineage `Ntt` engine autocompletes plain keywords fine but cannot parse price or activity intent, and it surfaces no help or service content (a search for 'hemming' returns hem-named products, not your free-hemming service). Gymshark and Vuori — your two fastest-growing DTC competitors — both run Algolia today; Gymshark took search conversion from 6.2% to over 10%. On your $4.9B digital business a single conversion point is ~$27M in gross profit. Worth 20 minutes to walk the audit?"
       },
       {
         "touch": 2,
@@ -6525,7 +6525,7 @@ a:hover {
         "channel": "LinkedIn connection",
         "persona": "Ranju Das (CAITO)",
         "subject": "Connection request",
-        "body": "Ranju — I lead AI-search for premium DTC retailers at Algolia. We audited lululemon.com's search and found the front door (SAYT + trending) is empty and the `Ntt` engine can't parse conversational intent — exactly the AI gap your 10-K flags. Gymshark and Vuori already run Algolia. Would love to share the 6-screenshot findings deck. Open to connect?"
+        "body": "Ranju — I lead AI-search for premium DTC retailers at Algolia. We audited lululemon.com's search and found the `Ntt` engine can't parse conversational intent (a query like 'yoga pants under 100' returns an empty suggestions overlay) and that search is products-only, with no federation of help or service content: exactly the AI gap your 10-K flags. Gymshark and Vuori already run Algolia. Would love to share the annotated findings. Open to connect?"
       },
       {
         "touch": 3,
@@ -6533,7 +6533,7 @@ a:hover {
         "channel": "Email (follow-up)",
         "persona": "Senior PM — Search & Elevation",
         "subject": "For the Search & Elevation roadmap — a competitor benchmark",
-        "body": "Hi — I saw lululemon is building out Search & Elevation. We just audited lululemon.com and captured the gaps on video: no autocomplete suggestions, an empty 'Trending Searches' overlay, no federation of hemming/return-policy content, and a keyword engine that ignores 'for hot yoga'/'under 100' intent. For context, Gymshark (a direct competitor) runs Algolia and published 6.2% → 10%+ search conversion and +400% search-user revenue YoY, and Under Armour published 35% higher conversion for search users. Happy to hand your team the full annotated findings + a NeuralSearch demo on a lululemon catalog sample. When works?"
+        "body": "Hi — I saw lululemon is building out Search & Elevation. We just audited lululemon.com and captured the gaps on video: a keyword engine that ignores 'for hot yoga'/'under 100' intent (natural-language queries return an empty suggestions overlay), no federation of hemming/return-policy content into search, and suggestions that are static rather than demand-ranked or personalized. For context, Gymshark (a direct competitor) runs Algolia and published 6.2% → 10%+ search conversion and +400% search-user revenue YoY, and Under Armour published 35% higher conversion for search users. Happy to hand your team the full annotated findings + a NeuralSearch demo on a lululemon catalog sample. When works?"
       },
       {
         "touch": 4,
@@ -6558,7 +6558,7 @@ a:hover {
         "persona": "Ranju Das (CAITO)",
         "subject": "A 2-minute walkthrough of lululemon.com's search",
         "body": "Ranju — I recorded a short 2-minute Loom walking through the three search gaps we found on lululemon.com, with the screenshots on screen. No prep needed on your end; press play when you have a moment. Happy to go deeper in 15 minutes whenever it's useful.",
-        "video_script": "# Loom Script — lululemon (2 minutes / ~250 words)\n\nHOOK (0-10 sec):\n\"I spent 30 minutes on lululemon.com and found three things about your search that surprised me — none of them require guessing, they're all on screen.\"\n\nDEMO (10-90 sec):\n\n[Screenshot 1 — screenshots/02-empty-state.png]\n\"When a guest clicks your search box, this is what they see: a 'Trending Searches' heading with nothing under it. No popular terms, no recent searches, no product previews. That's your highest-intent surface, sitting empty.\"\n\n[Screenshot 2 — screenshots/03-sayt-leggings.png]\n\"Now watch what happens when they type naturally. 'black yoga pants for hot yoga' — and the engine returns generic homepage chrome, not breathable leggings. Your Oracle Endeca-lineage engine matches keywords; it can't read 'for hot yoga' as an activity or 'under 100' as a price.\"\n\n[Screenshot 3 — screenshots/11-federated.png]\n\"And search is products-only — type 'align' and there's no federation of content or services like your free hemming. All of that lives in a separate Contentful layer, invisible to search.\"\n\n\"Three gaps, on a $4.9 billion digital business where a single point of search conversion is about $27 million in gross profit a year.\"\n\nCTA (90-120 sec):\n\"Two of your fastest-growing competitors — Gymshark and Vuori — already run Algolia; Gymshark went from 6.2% to over 10% search conversion. I put together the full analysis with the ROI model. Happy to walk you through it in 15 minutes.\n— [Your name], [Title], Algolia\""
+        "video_script": "# Loom Script: lululemon (2 minutes / ~250 words)\n\nHOOK (0-10 sec):\n\"I spent 30 minutes on lululemon.com and found three things about your search that surprised me. None of them require guessing, they're all on screen.\"\n\nDEMO (10-90 sec):\n\n[Screenshot 1 - screenshots/intent-empty.png]\n\"Watch what happens when a guest types naturally. 'yoga pants under 100', and the overlay comes back completely empty. Your Oracle Endeca-lineage engine matches keywords fine, but it can't read 'under 100' as a price or 'for hot yoga' as an activity, so your highest-intent shopper gets silence.\"\n\n[Screenshot 2 - screenshots/11-federated.png]\n\"Search is also products-only. Type 'hemming' and you get hem-named products, but not your signature free-hemming service or any help content. All of that lives in a separate Contentful layer, invisible to search.\"\n\n[Screenshot 3 - screenshots/15-popular-searches.png]\n\"And your autocomplete does work, but the trending list is a fixed, hand-curated set of five terms. It doesn't rank by real demand and it doesn't personalize, so the most valuable surface you have can't flex to the moment or the shopper.\"\n\n\"Three gaps, on a $4.9 billion digital business where a single point of search conversion is about $27 million in gross profit a year.\"\n\nCTA (90-120 sec):\n\"Two of your fastest-growing competitors, Gymshark and Vuori, already run Algolia; Gymshark went from 6.2% to over 10% search conversion. I put together the full analysis with the ROI model. Happy to walk you through it in 15 minutes.\n- [Your name], [Title], Algolia\""
       }
     ],
     "contacts": [
@@ -6617,13 +6617,13 @@ a:hover {
   "demos": [
     {
       "name": "NeuralSearch — 'black yoga pants for hot yoga'",
-      "description": "Side-by-side: lululemon's `Ntt` engine returns generic homepage chrome. Algolia NeuralSearch parses 'hot yoga' as a breathable-fabric activity signal and 'black' as a color facet — surfacing relevant leggings in one query.",
+      "description": "Side-by-side: lululemon's `Ntt` engine returns an empty suggestions overlay for 'yoga pants under 100'. Algolia NeuralSearch parses 'hot yoga' as a breathable-fabric activity signal and 'under 100' as a price filter, surfacing relevant leggings in one query.",
       "algolia_product": "NeuralSearch",
       "build_time": "~2 hours with a lululemon catalog sample"
     },
     {
-      "name": "Autocomplete + Query Suggestions — the front door",
-      "description": "Replace the empty 'Trending Searches' overlay with data-driven popular searches, recent history and product previews as the shopper types 'leggings' / 'align' / 'run'.",
+      "name": "Autocomplete + Query Suggestions: from static to demand-ranked",
+      "description": "Upgrade the fixed 'Trending Searches' list to data-driven popular searches, recent history and product previews, ranked from real search demand and personalized per shopper as they type 'leggings' / 'align' / 'run'.",
       "algolia_product": "Autocomplete + Query Suggestions",
       "build_time": "~1 day"
     },

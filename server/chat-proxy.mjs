@@ -81,6 +81,17 @@ function isPublicStaticPath(urlPath) {
   return PUBLIC_PREFIXES.some((prefix) => urlPath === prefix || urlPath.startsWith(`${prefix}/`) || urlPath.startsWith(`${prefix}.`));
 }
 
+// Sub-resource assets (images/css/js/fonts) requested by an authed report page. On auth
+// failure these must return 401, NOT a 302 -> HTML sign-in page (an <img> cannot follow the
+// Clerk handshake redirect, so a redirected image renders broken / returns login markup).
+const ASSET_EXTS = new Set([".png",".jpg",".jpeg",".webp",".svg",".gif",".ico",".css",".js",".mjs",".json",".woff",".woff2",".ttf",".otf",".map",".pdf",".mp4",".webm"]);
+function isAssetPath(urlPath) {
+  const q = urlPath.split("?")[0];
+  const dot = q.lastIndexOf(".");
+  if (dot < 0) return false;
+  return ASSET_EXTS.has(q.slice(dot).toLowerCase());
+}
+
 function appendHeader(res, name, value) {
   const existing = res.getHeader(name);
   if (!existing) {
@@ -126,6 +137,16 @@ async function requireAuth(req, res, urlPath) {
   if (auth.ok) return true;
   if (auth.setCookies?.length) {
     for (const cookie of auth.setCookies) appendHeader(res, "Set-Cookie", cookie);
+  }
+  if (isAssetPath(urlPath)) {
+    // An authed report page's sub-resource (image/css/js). An <img> cannot follow Clerk's
+    // handshake redirect, so if the browser carries any Clerk session cookie, serve the asset
+    // (the page it belongs to is auth-gated). Only a truly cookieless (anon) request is blocked.
+    const cookie = req.headers.cookie || "";
+    if (/(?:^|;\s*)(__session|__client|__clerk)/i.test(cookie)) return true;
+    res.statusCode = 401;
+    res.end();
+    return false;
   }
   res.statusCode = 302;
   res.setHeader("Location", auth.redirect || `/sign-in?redirect_url=${encodeURIComponent(urlPath)}`);
