@@ -9270,6 +9270,8 @@ function sectionTraffic(D) {
 
     <p class="section-desc">Data as of ${s(D.meta?.data_vintage?.similarweb || t.data_vintage)} · ${lnk(t.source_url, 'View in SimilarWeb')}</p>
 
+    ${(/gemini|\[estimate|api 401|\b401\b/i.test(String(t.source||'') + ' ' + String(t.referrals?.source||''))) ? `<div style="display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;padding:4px 12px;border-radius:6px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.40);font-size:12px;font-weight:600;color:#B45309;">⚠ Estimate: unverified (no SimilarWeb login)</div>` : ''}
+
 
 
     <!-- Row 1: 6 KPI tiles — glow effect on hover -->
@@ -9432,7 +9434,8 @@ function sectionTraffic(D) {
 
 
 
-      <!-- RIGHT CARD: Audience Profile — back in Traffic Sources panel -->
+      <!-- RIGHT CARD: Audience Profile — hidden when no gender/age data (was rendering an empty box) -->
+      ${(Object.keys(gender).length || Object.keys(age).length) ? `
       <div class="card-3d" style="padding:16px;">
         <div class="section-eyebrow" style="margin-bottom:12px;">Audience Profile</div>
         ${Object.keys(gender).length ? (() => {
@@ -9452,7 +9455,7 @@ function sectionTraffic(D) {
             return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
           }).join('')
         ) : ''}
-      </div>
+      </div>` : ''}
 
     </div><!-- end Traffic Sources 2-col grid -->
       </div><!-- end acc-body -->
@@ -9706,12 +9709,16 @@ function sectionTraffic(D) {
   ${/* PANEL: Geography */ ''}
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
-    const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
+    // traffic_share_pct may be a number, a "0.9%" string, or a range "70.9–74.43%".
+    // Parse to a representative number (upper bound of a range) and format ONE clean value with ONE %.
+    const geoNum = v => { const m = String(v ?? '').match(/[0-9]+(?:\.[0-9]+)?/g); return m ? Math.max(...m.map(parseFloat)) : 0; };
+    const geoPct = v => { const n = geoNum(v); if (!n) return '—'; const r = Math.round(n*10)/10; return (Number.isInteger(r)?r:r.toFixed(1)) + '%'; };
+    const maxGeo = Math.max(...geos.map(g => geoNum(g.traffic_share_pct)), 1);
     return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
         <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
-          const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
+          const barW = Math.round((geoNum(g.traffic_share_pct) / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
@@ -9720,7 +9727,7 @@ function sectionTraffic(D) {
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="font-size:13px;font-weight:700;color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="font-size:13px;font-weight:700;color:var(--gray);text-align:right;">${geoPct(g.traffic_share_pct)}</div>
             <div style="font-size:11px;font-weight:600;color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
@@ -9869,7 +9876,13 @@ function sectionFinancials(D) {
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
   const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Right %-axis must contain the EBITDA-margin data. Was hardcoded 20, but margins
+  // run 24–28% here, so the dotted margin line floated ABOVE the plot box. Scale
+  // dynamically to the max margin with headroom (min 20 to preserve old look on low-margin cos).
+  const _emValsForAxis = emVals.filter(v => v != null);
+  const _emMax = _emValsForAxis.length ? Math.max(..._emValsForAxis) : 0;
+  const pctStep = _emMax > 20 ? 10 : 5;
+  const maxPctVal = _emMax > 0 ? Math.max(Math.ceil((_emMax * 1.1) / pctStep) * pctStep, 20) : 20; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -9912,7 +9925,9 @@ function sectionFinancials(D) {
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const _rightTicks = [];
+  for (let _v = 0; _v <= maxPctVal + 0.001; _v += pctStep) _rightTicks.push(_v);
+  const rightAxis = _rightTicks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10095,7 +10110,7 @@ function sectionFinancials(D) {
   return `<section id="section-financials" class="audit-section">
     <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend${(D.meta?.data_vintage?.yahoo_finance || f.data_vintage) ? ` · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}` : ''}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10160,7 +10175,7 @@ function sectionTechStack(D) {
 
     <div class="section-title">Tech Stack</div>
 
-    <p class="section-desc">Detected technology stack · ${lnk(ts.source_url, 'View full report on BuiltWith')} · Data as of ${s(D.meta?.data_vintage?.builtwith)}</p>
+    <p class="section-desc">Detected technology stack · ${lnk(ts.source_url, 'View full report on BuiltWith')}${D.meta?.data_vintage?.builtwith ? ` · Data as of ${s(D.meta.data_vintage.builtwith)}` : ''}</p>
 
     <!-- Glow cards — CSS in algolia-brand.css, JS: initGlowEffect -->
 
@@ -11674,7 +11689,7 @@ function sectionAppendixTech(D) {
 
     <div class="section-title">Full Tech Stack</div>
 
-    <p class="section-desc">${lnk(ts.source_url, 'View full report on BuiltWith')} · Data as of ${s(D.meta?.data_vintage?.builtwith)}</p>
+    <p class="section-desc">${lnk(ts.source_url, 'View full report on BuiltWith')}${D.meta?.data_vintage?.builtwith ? ` · Data as of ${s(D.meta.data_vintage.builtwith)}` : ''}</p>
 
     <div class="tech-chips" style="margin-bottom:20px;">
 
