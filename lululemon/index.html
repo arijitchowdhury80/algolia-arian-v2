@@ -5237,7 +5237,7 @@ a:hover {
     "logo_hint": "lululemon"
   },
   "score": {
-    "overall": 3.07,
+    "overall": 3.1,
     "verdict": "Critical Gaps",
     "verdict_class": "critical",
     "breakdown": {
@@ -5316,7 +5316,9 @@ a:hover {
         "source": "[FACT — gemini grounded search, 2026-07-01]"
       }
     ],
-    "portfolio_opportunity_note": "3-brand portfolio = 3× the search optimization surface"
+    "portfolio_opportunity_note": "3-brand portfolio = 3× the search optimization surface",
+    "revenue_source": "SEC EDGAR 10-K FY2025 + Yahoo Finance",
+    "revenue_source_label": "FACT"
   },
   "executives": [
     {
@@ -5860,15 +5862,30 @@ a:hover {
     "revenue_3y": [
       {
         "year": "FY2026 (TTM)",
-        "revenue": "$11.103B"
+        "revenue": "$11.103B",
+        "gross_profit": "$6.284B",
+        "ebitda": "$2.707B",
+        "operating_income": "$2.211B",
+        "net_income": "$1.579B",
+        "net_margin": "14.2%"
       },
       {
         "year": "FY2025",
-        "revenue": "$10.588B"
+        "revenue": "$10.588B",
+        "gross_profit": "$6.271B",
+        "ebitda": "$2.952B",
+        "operating_income": "$2.506B",
+        "net_income": "$1.815B",
+        "net_margin": "17.1%"
       },
       {
         "year": "FY2024",
-        "revenue": "$9.619B"
+        "revenue": "$9.619B",
+        "gross_profit": "$5.609B",
+        "ebitda": "$2.587B",
+        "operating_income": "$2.207B",
+        "net_income": "$1.550B",
+        "net_margin": "16.1%"
       }
     ],
     "digital_revenue": {
@@ -5913,7 +5930,8 @@ a:hover {
         "amount": "$65.5M gross profit/yr",
         "basis": "Blended search program (conversion lift + no-results recovery + bounce reduction + NLP/long-tail discovery) ≈ $117.7M incremental revenue × 55.69% gross margin = $65.5M gross profit/yr (see lululemon-business-case.md, AOV=$100 base)."
       }
-    }
+    },
+    "data_vintage": "2026-07-01"
   },
   "traffic": {
     "monthly_visits": "17.9M",
@@ -5930,12 +5948,8 @@ a:hover {
         "share": "41.23%"
       },
       {
-        "channel": "Google (Organic Search)",
+        "channel": "Organic Search",
         "share": "30.67%"
-      },
-      {
-        "channel": "Paid Search",
-        "share": "276.44%"
       }
     ],
     "demographics": [
@@ -6020,10 +6034,7 @@ a:hover {
       }
     ],
     "paid_search": {
-      "share_of_total_pct": "+276.44% MoM increase",
-      "top_keywords": [],
-      "competitor_bidding": null,
-      "narrative": "Paid search grew +276.44% MoM (May 2026) — a surge of high-intent paid arrivals whose on-site conversion depends on a working search experience."
+      "mom_change_pct": "276.44%"
     },
     "rankings": {
       "global_rank": 1033,
@@ -6068,7 +6079,8 @@ a:hover {
       ],
       "source": "[ESTIMATE — Gemini search + SimilarWeb dashboard data, https://www.similarweb.com/website/lululemon.com/, 2026-07-01]"
     },
-    "demographics_note": "[ESTIMATE — age distribution modeled for premium DTC athleisure; SimilarWeb demographics API returned 401]"
+    "demographics_note": "[ESTIMATE — age distribution modeled for premium DTC athleisure; SimilarWeb demographics API returned 401]",
+    "data_vintage": "2026-04 – 2026-06"
   },
   "tech_stack": {
     "search_vendor": "Proprietary / in-house (Oracle Endeca-lineage `Ntt` param)",
@@ -6078,24 +6090,15 @@ a:hover {
     "cdn_waf": "Akamai-class WAF",
     "frontend": "Next.js (build path static/upper-funnel/17.7.0)",
     "full_list": [
-      "Pages inspected:",
-      "Status:",
-      "Detected Vendor:",
-      "Network Confirmed:",
-      "Algolia already in use:",
-      "Deal type:",
-      "detect-search:",
-      "Result:",
-      "Confidence:",
-      "Client-side only",
-      "No historical/removed-tech",
-      "WAF blocks automated access"
+      "Likely Akamai or Cloudflare (inferred from HTTP/2 error pattern)",
+      "Contentful",
+      "Quantum Metric"
     ],
     "architecture_notes": "GREENFIELD DISPLACEMENT — no incumbent SaaS search vendor. Zero calls to any third-party search domain (algolia.net, coveo, constructor.io, bloomreach, klevu, etc.). Search served same-origin from shop.lululemon.com/search?Ntt=. Both SFCC and commercetools have certified Algolia connectors.",
     "source": "02-tech-stack.md + 09-browser-findings.md + 07-partner-intel.md",
     "deal_type": "GREENFIELD DISPLACEMENT",
-    "primary_platform": "Salesforce Commerce Cloud + commercetools (composable); Next.js SSR storefront",
-    "search_provider": "- **Status:** ACTIVE — CONFIRMED via Phase 2 network inspection (2026-07-01)",
+    "primary_platform": "Unable to detect (WAF-blocked; browser-based detection required)",
+    "search_provider": "Proprietary / in-house (Oracle Endeca-lineage `Ntt` param; Next.js \"upper-funnel\" SSR app)",
     "algolia_detected": false,
     "tech_stack_summary": "Tech stack detection blocked by WAF. Live network fingerprinting yielded no platform or analytics detections due to HTTP/2 protocol error during page load."
   },
@@ -6118,7 +6121,10 @@ a:hover {
       "When André talked about increasing conversion with sharper visual merchandising, where does search and product discovery sit in that roadmap today — owned by the new Search & Elevation PM, by Ranju's AI org, or split?",
       "Your 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — who owns closing that specific AI-in-discovery risk internally?",
       "You're DTC-only with no wholesale channel — when a guest searches on lululemon.com and doesn't find what they want, where does that sale go, and do you know your zero-results rate?"
-    ]
+    ],
+    "next_step_action": "Request a warm intro to Ranju Das (CAITO) via the commercetools/IMPACT or KPMG partner path; open with the 10-K AI-risk finding + Gymshark proof.",
+    "urgency_label": "HIGH",
+    "talk_track_opener": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or wants to keep watching competitors compound it."
   },
   "next_steps": [
     {
@@ -6324,7 +6330,7 @@ a:hover {
   "hiring": {
     "total_open_roles": 13,
     "icp_roles_count": 9,
-    "summary": "13 ICP-relevant open roles across Digital, eCommerce, Product, Engineering and Platform. Critical: an open 'Senior Product Manager - Search & Elevation' (search named in the title) plus 5 Technical Buyer architect/engineer roles — a search & personalization transformation initiative underway. Buying window: OPEN NOW.",
+    "summary": "9 ICP-relevant open roles (of 13 total scraped) across Digital, eCommerce, Product, Engineering and Platform. Critical: an open 'Senior Product Manager - Search & Elevation' (search named in the title) plus 5 Technical Buyer architect/engineer roles — a search & personalization transformation initiative underway. Buying window: OPEN NOW.",
     "top_signals": [
       "Senior PM - Search & Elevation (Seattle) — owns the search product roadmap; direct Algolia buyer",
       "Architect (Guest Data & CIAM) (Seattle, $184K–$204K) — CIAM/guest-data foundational to search personalization",
@@ -6348,7 +6354,81 @@ a:hover {
         "status": "ACTIVE — 4 open champion-tier product roles, 1 critical (Search & Elevation); 30–60 day window",
         "count": 4
       }
-    }
+    },
+    "roles": [
+      {
+        "title": "Architect",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Staff Platform Engineer - Enterprise Device Management",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Canada"
+      },
+      {
+        "title": "Senior Solution Architect",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      },
+      {
+        "title": "Senior Solution Architect - Salesforce Service Cloud",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      },
+      {
+        "title": "Senior Product Manager - Search & Elevation",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 7,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Staff Software Engineer",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Product Manager",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 6.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Canada"
+      },
+      {
+        "title": "Senior Product Manager - Omni Channel Fulfillment",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 6,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Product Manager, Warehouse Management Systems",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      }
+    ]
   },
   "icp_mapping": {
     "vertical": "Athletic Apparel & Athleisure Retail (DTC omnichannel)",
@@ -10166,7 +10246,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -11696,7 +11788,19 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
   const components = f.roi_components || [];
   const rs = f.roi_scenarios || {};
 
