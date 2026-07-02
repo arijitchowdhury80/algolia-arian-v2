@@ -5326,7 +5326,7 @@ a:hover {
     "portfolio_opportunity_note": "4-brand portfolio = 4× the search optimization surface",
     "current_search_vendor": "Bloomreach (server-side/proxied)",
     "ecommerce_platform": "Custom (Angular SPA + AWS CloudFront)",
-    "monthly_visits": "Not available (SimilarWeb API 401)",
+    "monthly_visits": "27.76M",
     "visits_source": "https://www.similarweb.com/website/dell.com/",
     "revenue": "$113.5B (FY2026)",
     "revenue_source": "https://finance.yahoo.com/quote/DELL/financials",
@@ -5690,7 +5690,7 @@ a:hover {
       "impact_stat": "Behaviorally-ranked results improve conversion by surfacing proven sellers",
       "impact_stat_source": "https://www.algolia.com/customers/staples/",
       "screenshot_file": "screenshots/20-analytics-signals.png",
-      "prospect_description": "Dell has rich purchase and click data from millions of direct transactions on dell.com, but none of that signal is fed back into the search results. A '247 monitors' result page is ranked by undefined 'Relevance' when it could be ranked by what actually sells — a direct revenue optimization gap.",
+      "prospect_description": "Dell has rich purchase and click data from millions of direct transactions on dell.com, but none of that signal is fed back into the search results. A '247 monitors' result page is ranked by an opaque 'Relevance' sort when it could be ranked by what actually sells — a direct revenue optimization gap.",
       "algolia_solution": "Algolia Analytics + Dynamic Re-Ranking uses real purchase, click, and conversion signals to automatically re-rank search results toward top performers. Trending Items and Bestseller flags surface social proof. Analytics dashboards give the ecommerce team visibility into zero-result rates, top search terms, and click-through rates.",
       "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
       "algolia_case_study_company": "Staples Canada",
@@ -8970,7 +8970,7 @@ function sectionCompanySnapshot(D) {
 
         <div style="${T.bodySmMid14};line-height:1.6;">
 
-          Direct-to-consumer specialty commerce.
+          ${escHtml(cs.business_model) || 'Direct-to-consumer specialty commerce.'}
 
           ${hir.build_vs_buy ? `<br><br>
 
@@ -10214,7 +10214,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -13398,9 +13410,21 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = (abx.contacts || []).map((c,i) => ({
+    ...c,
+    tier: c.tier || (i===0 ? 1 : 2),
+    role: c.role || (c.role_in_deal||'').split(' — ')[0] || c.title || '',
+    angle: c.angle || c.role_in_deal || '',
+    linkedin_url: c.linkedin_url || c.linkedin || null,
+  }));
 
-  const touches  = abx.touches || [];
+  const touches  = (abx.touches || []).map(t => ({
+    ...t,
+    day: (t.day != null) ? t.day : (parseInt((t.timing||'').replace(/[^0-9]/g,''),10) || t.touch || 1),
+    channel: t.type || (t.channel||'').toLowerCase().split(' ')[0] || 'email',
+    target: t.target || 'all',
+    hook_type: t.hook_type || '',
+  }));
 
   const variants = abx.ab_variants || [];
 
@@ -13442,7 +13466,7 @@ function sectionOutreachPlan(D) {
 
     <div class="section-title">${escHtml(abx.sequence_type||'Outreach Sequence')}</div>
 
-    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels||[]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
+    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels && abx.channels.length ? abx.channels : [...new Set(touches.map(t=>chLabel[t.channel]||t.channel))]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
 
 
 
