@@ -345,6 +345,8 @@ section { position: relative; }
 .hcard h3 .hi { width: 40px; height: 40px; border-radius: 10px; background: rgba(143,164,255,0.18); color: #B7C5FF;
   display: flex; align-items: center; justify-content: center; }
 .hcard h3 .hi svg { width: 22px; height: 22px; }
+.hcard h3 .hi-photo { overflow: hidden; border-radius: 50%; background: none; }
+.hcard h3 .hi-photo img { width: 100%; height: 100%; object-fit: cover; }
 .hcard p { font-size: 15.5px; color: rgba(255,255,255,0.72); line-height: 1.68; font-weight: 300; }
 .hcard p strong { color: #fff; font-weight: 600; }
 .flow {
@@ -703,7 +705,7 @@ section { position: relative; }
 
     <div class="hermes-grid">
       <div class="hcard reveal">
-        <h3><span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a7 7 0 0 1 7 7c0 3-2 5-2 7H7c0-2-2-4-2-7a7 7 0 0 1 7-7z"/><path d="M9 21h6M10 18h4" stroke-linecap="round"/></svg></span>Cassandra</h3>
+        <h3><span class="hi hi-photo"><img src="/assets/cassandra.png" alt="Cassandra"></span>Cassandra</h3>
         <p>Your guide to each audit. Ask her anything about a report and she answers, but <strong>only using what's actually in it</strong>. If the answer's there, she gives it to you and shows where it came from. If it isn't, she says so instead of making something up.</p>
       </div>
       <div class="hcard reveal">
