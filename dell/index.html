@@ -5703,16 +5703,16 @@ a:hover {
   ],
   "gap_pairs": [
     {
-      "gap": "Dell's Virtual Assistant BETA is a chatbot patch on broken keyword search",
+      "gap": "Dell built NLP-capable product discovery twice — once well, once not — and the two don't talk to each other",
       "said_attr": "Jeff Clarke, COO, Dell Technologies",
       "said_quote": "The modernization push...will 'connect our data, break down silos, streamline our software applications and give us the foundation to work as one connected company.'",
       "said_source": "Jeff Clarke, COO, January 2026 — One Dell Way memo",
       "said_source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000008/dell-20260130.htm",
-      "found_title": "Homepage carries separate 'Virtual Assistant BETA' AI chat alongside broken keyword search",
-      "found_evidence": "Browser audit: NLP queries ('under $1,000', 'for video editing', 'RTX 4070 32GB RAM') all fail in the keyword layer. Dell compensates by layering a generative chatbot ON TOP of search — an architectural admission the core engine can't handle natural language.",
+      "found_title": "Same search box auto-launches TWO systems for one query: a keyword grid that fails on spec/use-case intent, and a Virtual Assistant that handles it correctly",
+      "found_evidence": "Browser audit: 'gaming pc with rtx 4070 and 32gb ram' submitted via the header search box auto-launches the Virtual Assistant alongside the results grid — same query, same action, no extra click. The grid returns 231 results with the WRONG GPU tier on its own top cards (RTX 5090/5070/5080, not the requested 4070) — confirmed grid failure. The Assistant, running in the same session from the same query, correctly parsed 'RTX 4070' + '32GB RAM', asked a clarifying budget question, and returned an accurately-matched product. 'best laptop for video editing' shows the same pattern: grid returns 416 undifferentiated SKUs. Dell already has a working, deployed NLP layer — it just isn't the one connected to search.",
       "finding_id": "F1",
-      "algolia_angle": "Algolia NeuralSearch fixes the root cause — AI-native search at the query layer — rather than routing shoppers to a separate chatbot surface.",
-      "algolia_fix": "Algolia NeuralSearch fixes the core search layer rather than routing shoppers to a separate chatbot. The 'broken silos' Jeff Clarke describes are exactly what federated search solves — one unified search experience across products, support, and content."
+      "algolia_angle": "Algolia's wedge isn't 'give Dell NLP they don't have' — they already built it, in the Assistant. The wedge is consolidation: one search+facet+ranking+NLP layer instead of two disconnected systems giving two shoppers with the identical query two different answers.",
+      "algolia_fix": "Algolia NeuralSearch unifies what Dell already runs as two separate, disconnected systems into one search+facet+ranking layer — so the correct, spec-aware answer the Assistant already gives shows up in the primary search results too, not just in a side chatbot."
     },
     {
       "gap": "B2B buyers enter precision order codes and get 109 fuzzy results",
@@ -6175,7 +6175,7 @@ a:hover {
     "territory": "Global",
     "competitive_scenario": "OFFENSIVE",
     "competitive_scenario_note": "No Dell competitor uses Algolia. HP on HawkSearch (inferior legacy platform). Dell on Algolia creates a competitive moat in the PC/tech ecommerce category.",
-    "next_step": "Request a 30-minute search experience review with Chris Cowger (SVP Global Consumer & eCommerce) — lead with the 'under $1,000 laptop' demo showing $2,000 results. Then pivot to competitive: HP is on HawkSearch with no AI roadmap.",
+    "next_step": "Request a 30-minute search experience review with Chris Cowger (SVP Global Consumer & eCommerce) — lead with the live 'gaming pc with rtx 4070 and 32gb ram' demo: the results grid shows the wrong GPU tier, but Dell's own Virtual Assistant (auto-launched from the same box) gets it right. Then pivot to competitive: HP is on HawkSearch with no AI roadmap.",
     "discovery_questions": [
       "What percentage of dell.com shoppers use the search bar vs. navigation — and what's the conversion rate delta between the two?",
       "How does your team currently handle the 'under $1,000' or 'best for video editing' queries that we observed returning 400+ results?",
@@ -6197,7 +6197,7 @@ a:hover {
     },
     {
       "action": "Book 30-min search experience review with Chris Cowger",
-      "detail": "Lead with the live '$2,000 laptop returned for under-$1,000 query' demo. Transition to competitive: HP is on HawkSearch with no AI roadmap. Dell on Algolia NeuralSearch = definitive B2C search moat.",
+      "detail": "Lead with the live 'gaming pc with rtx 4070 and 32gb ram' demo: grid shows the wrong GPU tier, Dell's own Assistant (same box) gets it right. Transition to competitive: HP is on HawkSearch with no AI roadmap. Dell on Algolia NeuralSearch = one correct system instead of two disconnected ones.",
       "priority": "WEEK_1",
       "owner": "AE"
     },
@@ -6267,7 +6267,7 @@ a:hover {
     "positioning_matrix": [
       {
         "capability": "NLP / Semantic Search",
-        "prospect_today": "0/10 — keyword-only, price ceilings ignored, use-case intent not parsed",
+        "prospect_today": "1/10 — keyword-only grid returns wrong-spec results and 400+ SKU dumps on use-case queries; a separate, disconnected Assistant already solves it correctly",
         "prospect_with_algolia": "NeuralSearch — semantic + attribute-aware, 'under $1,000' understood natively",
         "nike_has": "HawkSearch — no NLP/AI capability",
         "asics_has": "Proprietary (custom) — no confirmed AI NLP",
@@ -6348,14 +6348,14 @@ a:hover {
       "label": "The chatbot-patch problem",
       "angle": "The chatbot-patch problem",
       "hook": "Dell built a 'Virtual Assistant BETA' chatbot ON TOP of broken keyword search — an architectural workaround that admits the core engine can't handle natural language. Algolia NeuralSearch fixes the root cause, not the symptom.",
-      "evidence": "Browser audit: homepage carries both 'Search Dell' (keyword) AND 'How can I help you today?' conversational AI box (Virtual Assistant BETA) as separate surfaces. NLP queries ('under $1,000', 'for video editing', 'RTX 4070') all fail in the keyword layer.",
+      "evidence": "Browser audit: homepage carries both 'Search Dell' (keyword grid) AND an auto-launched Virtual Assistant as two separate systems answering the same query. Confirmed grid failures: wrong GPU tier on 'rtx 4070' query, 416 undifferentiated results on 'best laptop for video editing.' The Assistant, launched automatically from the same search box with no extra shopper action, correctly resolves the same queries live — it is not a broken system, it's a disconnected one.",
       "source": "09-browser-findings.md, 2026-06-30",
       "source_url": "https://www.dell.com",
       "persona": "Chris Cowger (SVP eCommerce), John Roese (CTO/Chief AI Officer)",
       "discovery_question": "The homepage currently shows both a 'Search Dell' bar and a separate 'Virtual Assistant BETA' chatbox — is the long-term plan to improve the core search layer, or to route more traffic to the conversational AI?",
       "algolia_proof": "PcComponentes replaced keyword search with Algolia NeuralSearch and saw an 81% increase in search CTR — without a separate AI chatbot. [FACT — https://www.algolia.com/customers/pc-componentes/]",
       "pain_points": [
-        "NLP queries ('under $1,000', 'for video editing', 'RTX 4070 and 32GB RAM') all fail in the keyword layer",
+        "Grid and Assistant give two different answers to the identical query, with no reconciliation between them",
         "Dell compensates by adding a 'Virtual Assistant BETA' chatbot — separate from search, not an improvement to it",
         "Shoppers must context-switch between search and chatbot to find products — increasing cognitive load and abandonment"
       ],
@@ -6481,9 +6481,9 @@ a:hover {
     ],
     "priority_to_product": [
       {
-        "priority": "Fix 'under $1,000' NLP failure — shoppers getting $2,000 results",
+        "priority": "Fix grid/Assistant fragmentation — same query gets a wrong answer from search and a right answer from the chatbot",
         "product": "Algolia NeuralSearch",
-        "evidence": "Browser audit: 'laptop with good battery life for travel under 1000' returned results including $1,099–$2,000 items. Price ceiling completely ignored by Bloomreach keyword matching.",
+        "evidence": "Browser audit: 'gaming pc with rtx 4070 and 32gb ram' returns the wrong GPU tier in the results grid (confirmed) while Dell's own auto-launched Virtual Assistant, same query, same box, correctly resolves it live. 'best laptop for video editing' returns 416 undifferentiated SKUs in the grid (confirmed). The 'under $1,000' price-ceiling claim is UNVERIFIED — re-test needed before citing it.",
         "proof_url": "https://www.algolia.com/customers/pc-componentes/",
         "proof_company": "PcComponentes",
         "proof_result": "81% increase in search results click-through rate; search users convert at 4x the site average"
@@ -6545,8 +6545,8 @@ a:hover {
         "type": "email",
         "channel": "Email",
         "persona": "Chris Cowger",
-        "subject": "Your search returned $2,000 results for a 'laptop under $1,000' — we found it",
-        "body": "Chris — our team ran a live audit of dell.com's search experience last week. When we typed 'laptop with good battery life for travel under $1,000,' your search engine returned 49 results — including laptops priced at $1,099, $1,379, and $2,000. The $1,000 ceiling was completely ignored.\n\nDell's current search runs Bloomreach server-side, which handles typos and taxonomy synonyms well but cannot parse multi-attribute conversational intent. PcComponentes — an electronics retailer similar in catalog complexity to Dell's consumer lineup — switched to Algolia NeuralSearch and saw an 81% increase in search CTR and search users converting at 4x the site average.\n\nWould you spend 20 minutes with me to see what this looks like on a Dell SKU catalog? I can run the 'under $1,000' demo live and show you how NeuralSearch maps price constraints, portability signals, and use-case intent simultaneously.\n\nBest,\n[AE Name]",
+        "subject": "Dell's search grid and its AI assistant disagree — we tested it live",
+        "body": "Chris — our team ran a live audit of dell.com's search experience last week. When we typed \"gaming pc with rtx 4070 and 32gb ram,\" the results grid surfaced 231 items with the WRONG GPU tier on the top cards (RTX 5090/5070/5080, not the 4070 we asked for). But the SAME query, same box, auto-launched Dell's Virtual Assistant — which correctly parsed the spec and budget and returned a matched product. Two systems, one query, two different answers. That's the gap Algolia closes: one search layer instead of two disconnected ones.",
         "timing": "Day 1"
       },
       {
@@ -6582,7 +6582,7 @@ a:hover {
         "channel": "Email — value delivery",
         "persona": "Chris Cowger",
         "subject": "Dell search audit findings + $35M conservative ROI estimate",
-        "body": "Chris — I've attached the full dell.com search audit we completed. Key findings:\n\n• Score: 2.7/10 — 6 critical gaps, 2 moderate\n• NLP: 'under $1,000' price ceiling ignored; results include $2,000 laptops\n• B2B: order code '210-AKXX' → 109 fuzzy results (not 1 exact SKU)\n• SAYT: query strings only — no product cards, prices, or content\n• PDP: zero product recommendation carousels\n• Ranking: 3 sort options, no Bestseller/Trending/Most Popular\n\nThe conservative ROI model: a 1% conversion lift on Dell's estimated $12B direct ecommerce revenue, at a 19.21% gross margin, projects to approximately $23M annual gross profit improvement. Including support deflection from federated search (reducing 'return policy' and 'order status' calls) and B2B order-code efficiency gains, the conservative case is $35M annually; the moderate case is $121M.\n\nThe best comparable in electronics retail: PcComponentes (30,000+ SKUs) saw 81% CTR lift and search users converting at 4x the site average after switching to Algolia.\n\nI'd like to present the full findings to your team. Can we schedule 45 minutes?\n\n[AE Name]",
+        "body": "Chris — I've attached the full dell.com search audit we completed. Key findings:\n\n• Score: 2.7/10 — 6 critical gaps, 2 moderate\n• NLP: results grid returns wrong GPU tier / 400+ undifferentiated SKUs on use-case queries — but Dell's own auto-launched Assistant already resolves the same queries correctly, live, from the same search box\n• B2B: order code \"210-AKXX\" returns 109 fuzzy results instead of the 1 exact SKU it identifies\n• The real wedge isn't \"Dell lacks NLP\" — they don't. It's that Dell runs two disconnected AI/search systems with no shared results, facets, or ranking.",
         "timing": "Day 21"
       }
     ],
@@ -6631,8 +6631,8 @@ a:hover {
   ],
   "demos": [
     {
-      "name": "NeuralSearch — 'under $1,000 laptop for travel'",
-      "description": "Side-by-side: Bloomreach returns 49 results including $2,000 laptops. Algolia NeuralSearch parses 'under $1,000' as a price filter and 'travel' as a portability signal — surfaces 12 matching under-$1,000 portable laptops.",
+      "name": "NeuralSearch — 'gaming pc with rtx 4070 and 32gb ram'",
+      "description": "Side-by-side: Dell's classic grid returns 231 results with the wrong GPU tier on its own top cards (RTX 5090/5070/5080, not the requested 4070). Algolia NeuralSearch parses GPU model + RAM as structured attributes and surfaces only matching configs — the same correct result Dell's own disconnected Assistant already produces, but inside the primary search experience instead of a separate chatbot.",
       "algolia_product": "NeuralSearch",
       "build_time": "2 hours with Dell catalog sample"
     },
