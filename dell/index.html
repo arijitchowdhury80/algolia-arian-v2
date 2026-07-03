@@ -10715,7 +10715,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
