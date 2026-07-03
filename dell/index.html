@@ -14205,6 +14205,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14220,11 +14243,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
