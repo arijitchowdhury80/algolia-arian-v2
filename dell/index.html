@@ -5600,12 +5600,12 @@ a:hover {
   "findings": [
     {
       "id": "F1",
-      "title": "Semantic NLP FAIL — price ceiling and use-case intent completely ignored",
-      "severity": "HIGH",
+      "title": "Semantic NLP: grid ignores use-case intent (price-ceiling claim unverified)",
+      "severity": "MODERATE",
       "category": "semantic_nlp_search",
       "tested_query": "laptop with good battery life for travel under 1000",
       "expected_behavior": "Filter results to laptops under $1,000; prioritize portable/lightweight models; surface relevant battery-life specs",
-      "actual_behavior": "Returned 49 results including laptops at $1,099, $1,139, $1,379, $1,509, and $2,000. 'Under 1000' price ceiling was completely ignored. 'Travel' use-case not parsed. Engine tokenized the sentence and matched loosely.",
+      "actual_behavior": "Returned 46 results, default Relevance sort. No price FILTER auto-applied in the grid (confirmed - no filter chip appears). CORRECTION (2026-07-03): the original claim that results included laptops priced $1,099-$2,000 is UNVERIFIED, not confirmed - the only evidence actually captured (top 3 visible results: $929.99 / $699.99 / $899.99) shows all three under $1,000, which does not support that claim. A re-verification attempt (sorting High-to-Low) hit an Akamai WAF block and produced no clean evidence either way. Needs a real re-test before any pass/fail claim on the price ceiling specifically.",
       "impact_stat": "4x conversion lift when NeuralSearch replaces keyword matching",
       "impact_stat_source": "https://www.algolia.com/customers/pc-componentes/",
       "screenshot_file": "13b-nlp-battery-travel-results.png",
