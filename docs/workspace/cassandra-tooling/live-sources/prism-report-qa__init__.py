@@ -74,7 +74,10 @@ Return ONLY minified JSON, no prose:
 {{"verdict":"PASS" or "FAIL","unsupported":["<short claim>",...],"corrected":"<ANSWER rewritten so \
 each unsupported factual claim is removed or replaced with the correct value from SOURCE_REPORT or \
 SOURCE_KNOWLEDGE (or with '(not in the audit report)'); keep ALL coaching and ALL supported \
-facts intact>"}}
+facts intact. CRITICAL: you are a fact-checker, not a ghostwriter — preserve the original's voice, \
+tone, humor, and personality EXACTLY as written. Only the unsupported words change; every other word, \
+including phrasing and wit, must read exactly as she wrote it. Never produce a flat, generic, \
+corporate-sounding rewrite>"}}
 
 SOURCE_REPORT:
 {source_report}
@@ -116,9 +119,15 @@ def _match_slug(text):
     2. Alias-token matching:
          - slug-without-hyphens  (e.g. "homedepotmexico")
          - domain root (text before first '.')  (e.g. "homedepot")
-         - each normalized company word with len>=5 not in _STOPWORDS
-           (>=5 avoids false positives from generic 4-letter words like "home")
        Any token with len>=4 found as a substring in the normalized message → match.
+
+    Deliberately does NOT tokenize individual words out of the company name (e.g.
+    "Running" out of "Brooks Running") -- a multi-word company name can contain an
+    ordinary English word that appears constantly in unrelated text ("is the audit
+    still running?", cron's own "you are running as a scheduled job" boilerplate),
+    which caused every such message to falsely bind to that company (found live
+    2026-07-03). The exact-full-name check above already catches a real mention of
+    the whole company name; only the risky single-word fallback is removed.
     """
     if not text:
         return None
@@ -149,12 +158,6 @@ def _match_slug(text):
             domain_root = domain.split(".")[0]
             if domain_root and len(domain_root) >= 4:
                 alias_tokens.add(domain_root)
-
-        # Company words: require >=5 chars to avoid short generic words ("home", "shop")
-        for word in company.split():
-            word_alnum = "".join(ch for ch in word if ch.isalnum())
-            if len(word_alnum) >= 5 and word_alnum not in _STOPWORDS:
-                alias_tokens.add(word_alnum)
 
         for token in alias_tokens:
             if len(token) >= 4 and token in msg:
@@ -282,20 +285,31 @@ def inject_report(session_id=None, user_message=None, conversation_history=None,
         except Exception:
             pass  # fail-open; gap logging is non-critical
 
-    # 3. Resolve bound slug (unchanged logic from production)
-    slug = _BINDINGS.get(session_id)
+    # 3. Resolve bound slug — ALWAYS check the CURRENT message first so an
+    # explicit company mention wins over a stale binding. Sticky-binding bug
+    # (2026-07-03): once _BINDINGS[session_id] was set, this block never
+    # re-checked the new message, so a session welded to one company (e.g.
+    # Brooks Running) stayed welded to it for its entire lifetime — asking
+    # about a different company (Belk) kept answering from the old one.
+    slug = _match_slug(user_message)
+    if not slug:
+        slug = _BINDINGS.get(session_id)
     if not slug:
         slug = _slug_from_session_key(kwargs)        # deterministic, key-driven (preferred)
-    if not slug:
-        slug = _match_slug(user_message)
-        if not slug and conversation_history:
-            for m in reversed(conversation_history):
-                if isinstance(m, dict) and m.get("role") == "user":
-                    slug = _match_slug(m.get("content"))
-                    if slug:
-                        break
-        if slug and session_id:
-            _BINDINGS[session_id] = slug
+    if not slug and conversation_history:
+        # Only the last 5 USER turns — scanning the entire history re-surfaces
+        # companies mentioned long ago. This is why a container restart alone
+        # didn't fix the stuck-on-Brooks-Running bug: _BINDINGS was empty but
+        # conversation_history (persisted in state.db) was not, so the very
+        # first post-restart message fell through to an old mention.
+        recent_user_msgs = [m.get("content") for m in conversation_history
+                             if isinstance(m, dict) and m.get("role") == "user"][-5:]
+        for content in reversed(recent_user_msgs):
+            slug = _match_slug(content)
+            if slug:
+                break
+    if slug and session_id:
+        _BINDINGS[session_id] = slug
 
     def _with_knowledge(ctx):
         """Prepend the knowledge block to any context string."""
@@ -413,16 +427,34 @@ def _clean_for_send(text, slug=None):
         if cited:
             links = "\n".join(f"↗ {_SECTION_LABEL.get(sid, sid)}: {REPORT_BASE}/{slug}/#{sid}" for sid in cited)
             t = t.rstrip() + "\n\nEvidence in the report:\n" + links
-        # Suggested follow-ups (Telegram can't render tappable buttons from this hook; text prompts).
-        if cited or len(t) > 180:
-            t = t.rstrip() + ("\n\nTry asking: What are the biggest gaps? · What's the ROI opportunity? · "
-                              "Who are their competitors? · How should I open the call?")
+        # Canned "Try asking..." footer REMOVED (2026-07-03) — it appended the identical four
+        # questions to every message regardless of context, reading as a broken record. SOUL.md
+        # already instructs her to coach and engage naturally; let her own drafted voice decide
+        # what's worth suggesting, in her own words, instead of a bolted-on generic template.
     return t
+
+
+_RAW_HTML_RE = re.compile(
+    r"<!doctype html|<html[\s>]|<title>Sign in|clerk\.accounts\.dev|mountSignIn",
+    re.IGNORECASE,
+)
 
 
 def grounding_gate(response_text=None, session_id=None, **kwargs):
     if not response_text:
         return None
+    # Hard guard (2026-07-03): a fetch tool call can hit the public Clerk-gated
+    # report URL instead of internal data and get a login-page back; nothing
+    # downstream validated that before forwarding it verbatim as a chat answer
+    # (reproduced live on JBL; same failure class as the lululemon incident in
+    # the airtight-pipeline plan, §2.7). Refuse to send anything that looks
+    # like raw HTML/a login page, full stop.
+    if _RAW_HTML_RE.search(response_text):
+        return (
+            "Something I tried to pull up came back as a raw web page instead of real "
+            "data — I'm not going to forward that. Ask me again and I'll answer from the "
+            "audit report directly."
+        )
     slug = _BINDINGS.get(session_id)
     if not slug:
         # not report-QA mode; no report to cite, just neutralize any markers/markdown
@@ -490,16 +522,27 @@ def _runner_call(method, path, payload=None, timeout=15):
 RUN_AUDIT_SCHEMA = {
     "name": "run_audit",
     "description": (
-        "Kick off a NEW Algolia search audit for a prospect domain on the VPS executor. Use when the "
-        "user asks to run / generate / create / start an audit for a company or domain (e.g. 'run an "
-        "audit on dell.com', 'audit footlocker.com', 'can you audit Torrid?'). Returns immediately with "
-        "a job id; the audit itself takes ~10-20 minutes (research, live search testing, scoring, "
-        "factcheck, publish). Do NOT use to answer questions about an existing report."),
+        "Kick off an Algolia search audit for a prospect domain on the VPS executor. Use when "
+        "the user asks to run / generate / create / start an audit for a company or domain "
+        "(e.g. 'run an audit on dell.com', 'audit footlocker.com'). Pass phase or skill (not "
+        "both) to run only part of the pipeline instead of the full audit — e.g. 'just re-check "
+        "traffic for dell' -> skill='algolia-intel-traffic'. Returns immediately with a job id; "
+        "a full audit takes ~10-20 minutes, a single phase/skill is faster. Do NOT use to answer "
+        "questions about an existing report, and do NOT use to re-run part of an ALREADY-FINISHED "
+        "audit — use rerun for that (this tool starts a fresh workspace scaffold on a full run)."),
     "parameters": {
         "type": "object",
         "properties": {
             "domain": {"type": "string",
                        "description": "Prospect domain or company website, e.g. 'dell.com'."},
+            "phase": {"type": "string",
+                      "description": "Optional: run only this phase (research|browser|report|"
+                                     "factcheck) instead of the full pipeline. Mutually exclusive "
+                                     "with skill."},
+            "skill": {"type": "string",
+                      "description": "Optional: run only this named skill (e.g. "
+                                     "'algolia-intel-traffic') instead of the full pipeline. "
+                                     "Mutually exclusive with phase."},
         },
         "required": ["domain"],
     },
@@ -525,17 +568,233 @@ def _handle_run_audit(args: dict, **kw) -> str:
     domain = str(args.get("domain") or "").strip()
     if not domain:
         return "I need a domain to audit (for example dell.com)."
+    phase = str(args.get("phase") or "").strip()
+    skill = str(args.get("skill") or "").strip()
+    if phase and skill:
+        return "Give me either a phase or a skill to target, not both."
+    payload = {"domain": domain}
+    if phase:
+        payload["phase"] = phase
+    if skill:
+        payload["skill"] = skill
     try:
-        resp = _runner_call("POST", "/run", {"domain": domain})
+        resp = _runner_call("POST", "/run", payload)
     except Exception as e:
-        return (f"I couldn't reach the audit runner ({type(e).__name__}). The executor service may be "
-                "down; that needs a look before I can start a run.")
+        return (f"I couldn't reach the audit runner ({type(e).__name__}). "
+                "The executor service may be down; that needs a look before I can start a run.")
     slug = resp.get("slug", "")
+    target = ("phase " + phase) if phase else ("skill " + skill)
+    scope = f" (scoped to {target})" if (phase or skill) else ""
     return (
-        f"Started the audit for {domain} (job {resp.get('job_id')}). It runs end to end on the box: "
-        "research, live search testing, scoring, then a factcheck gate, then publish. Give it about 10 "
-        f"to 20 minutes. Ask me whether the {slug} audit is ready and I'll check. The moment it passes "
-        "factcheck it lands in the report store and I can walk you through the findings.")
+        f"Started the audit for {domain}{scope} (job {resp.get('job_id')}). "
+        f"Give it a few minutes. Ask me whether the {slug} audit is ready and I'll check.")
+
+
+# ---------------------------------------------------------------- rerun
+
+RERUN_SCHEMA = {
+    "name": "rerun",
+    "description": (
+        "Re-run ONE phase or skill of an ALREADY-EXISTING audit, without redoing the whole "
+        "thing. Use when the user says 're-run just X for Y', 'redo traffic for dell', "
+        "'the tech-stack section looks stale, refresh it', or after validate_audit / "
+        "list_needs_human surfaces a specific gap that needs fixing. Requires the slug of an "
+        "existing audit and exactly one of phase or skill."),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "slug": {"type": "string",
+                      "description": "The audit's slug, e.g. 'dell' or 'petsmart'."},
+            "phase": {"type": "string",
+                      "description": "The phase to re-run (research|browser|report|factcheck). "
+                                     "Mutually exclusive with skill."},
+            "skill": {"type": "string",
+                      "description": "The specific skill to re-run, e.g. "
+                                     "'algolia-intel-traffic'. Mutually exclusive with phase."},
+        },
+        "required": ["slug"],
+    },
+}
+
+
+def _handle_rerun(args: dict, **kw) -> str:
+    slug = str(args.get("slug") or "").strip()
+    if not slug:
+        return "Which audit's slug should I re-run part of?"
+    phase = str(args.get("phase") or "").strip()
+    skill = str(args.get("skill") or "").strip()
+    if bool(phase) == bool(skill):
+        return "Tell me exactly one of a phase or a skill to re-run, not zero or both."
+    payload = {"slug": slug}
+    if phase:
+        payload["phase"] = phase
+    if skill:
+        payload["skill"] = skill
+    try:
+        resp = _runner_call("POST", "/rerun", payload)
+    except Exception as e:
+        return f"I couldn't reach the audit runner ({type(e).__name__})."
+    if "error" in resp:
+        return f"Couldn't re-run that: {resp['error']}"
+    what = f"phase '{phase}'" if phase else f"skill '{skill}'"
+    return (f"Re-running {what} for {slug} (job {resp.get('job_id')}). "
+            f"I'll pull the rest of the report from what's already there — only that part updates.")
+
+
+# ---------------------------------------------------------------- live_status
+
+LIVE_STATUS_SCHEMA = {
+    "name": "live_status",
+    "description": (
+        "Get a GRANULAR status report for an audit — including one that's STILL RUNNING right "
+        "now: which phases/skills are done, which is running this moment, what's next, what's "
+        "pending, and any module waiting on a human (needs_human). Use whenever the user asks "
+        "'status?', 'how's the X audit going?', 'what's happening with Y right now?', or wants "
+        "detail beyond a one-line done/not-done answer. Accepts either a job id OR a slug (if a "
+        "slug is given, the most recent job for that slug is used)."),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "slug_or_job": {"type": "string",
+                             "description": "An audit slug (e.g. 'dell') or a job id "
+                                            "(e.g. 'dell-20260702-181234'). If omitted, the "
+                                            "most recent job overall is used."},
+        },
+    },
+}
+
+
+def _resolve_job_id(slug_or_job: str) -> str:
+    """A job id always contains a timestamp suffix like -YYYYMMDD-HHMMSS(-rerun-...);
+    a bare slug won't. If it looks like a slug, look up its most recent job via /jobs
+    (the runner has no separate slug->job index exposed over HTTP, so we scan)."""
+    import re as _re
+    if _re.search(r"-\d{8}-\d{6}", slug_or_job or ""):
+        return slug_or_job
+    jobs = _runner_call("GET", "/jobs").get("jobs", [])
+    matches = [j for j in jobs if j.get("slug") == slug_or_job]
+    if not matches:
+        return ""
+    matches.sort(key=lambda j: j.get("created", ""))
+    return matches[-1].get("job_id", "")
+
+
+def _handle_live_status(args: dict, **kw) -> str:
+    slug_or_job = str(args.get("slug_or_job") or "").strip()
+    try:
+        if slug_or_job:
+            job_id = _resolve_job_id(slug_or_job)
+            if not job_id:
+                return f"I don't have any job on record for '{slug_or_job}'."
+        else:
+            jobs = _runner_call("GET", "/jobs").get("jobs", [])
+            if not jobs:
+                return "No audit jobs have run yet."
+            job_id = jobs[-1].get("job_id", "")
+        j = _runner_call("GET", "/status/" + job_id)
+    except Exception as e:
+        return f"I couldn't reach the audit runner ({type(e).__name__})."
+
+    slug = j.get("slug", "?")
+    status = j.get("status", "unknown")
+    skills = j.get("skills") or {}
+    needs_human = j.get("needs_human") or {}
+    done = [k for k, v in skills.items() if v == "done"]
+    running = [k for k, v in skills.items() if v == "running"]
+    pending = [k for k, v in skills.items() if v == "pending"]
+
+    lines = [f"{slug} — status: {status} (phase: {j.get('phase', 'starting')})"]
+    if done:
+        lines.append(f"Done: {', '.join(done)}")
+    if running:
+        lines.append(f"Running now: {', '.join(running)}")
+    if pending:
+        lines.append(f"Pending: {', '.join(pending)}")
+    if needs_human:
+        blocked = "; ".join(f"{mod} ({why})" for mod, why in needs_human.items())
+        lines.append(f"Waiting on a human: {blocked}")
+    if status in ("failed", "published_failed"):
+        reason = (j.get("publish") or j.get("error") or "").strip()
+        if reason:
+            lines.append(f"Failure reason: {reason}")
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------- validate_audit
+#
+# NOTE on scope: the airtight plan's runner-side POST /validate {slug} (running
+# factcheck_mechanical.py against a finished audit) is Phase-1 scope and was
+# NOT part of this build task (which built /run, /rerun, /status, /kill,
+# /needs_human, and the DB write path only — see prism-runner.py's docstring).
+# This tool is written against that future route so the plugin side is ready
+# the moment /validate ships; until then it will 404 and the handler reports
+# that honestly rather than pretending success.
+
+VALIDATE_AUDIT_SCHEMA = {
+    "name": "validate_audit",
+    "description": (
+        "Run the mechanical completeness/factcheck gate against a finished audit and report "
+        "structured gaps (missing sections, broken sources, render issues). Use when the user "
+        "asks to validate, double-check, or spot-check whether an audit's data is solid before "
+        "it goes to a prospect."),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "slug": {"type": "string", "description": "The audit's slug, e.g. 'dell'."},
+        },
+        "required": ["slug"],
+    },
+}
+
+
+def _handle_validate_audit(args: dict, **kw) -> str:
+    slug = str(args.get("slug") or "").strip()
+    if not slug:
+        return "Which audit's slug should I validate?"
+    try:
+        resp = _runner_call("POST", "/validate", {"slug": slug})
+    except Exception as e:
+        if "404" in str(e) or "HTTPError" in type(e).__name__:
+            return ("The runner doesn't have a /validate endpoint deployed yet — that ships in "
+                    "a later pipeline upgrade. I can't run the mechanical gate myself.")
+        return f"I couldn't reach the audit runner ({type(e).__name__})."
+    verdict = resp.get("verdict", "unknown")
+    findings = resp.get("findings") or []
+    if verdict == "CLEAN" or (verdict == "unknown" and not findings):
+        return f"{slug} passes the mechanical gate clean — no completeness or sourcing gaps found."
+    lines = [f"{slug} — validation verdict: {verdict}"]
+    lines += [f"- {f}" for f in findings[:12]]
+    if len(findings) > 12:
+        lines.append(f"...and {len(findings) - 12} more.")
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------- list_needs_human
+
+LIST_NEEDS_HUMAN_SCHEMA = {
+    "name": "list_needs_human",
+    "description": (
+        "List every audit/section currently waiting on Arijit — e.g. a SimilarWeb login the "
+        "traffic module needs, or a job that timed out. Use when asked 'what's waiting on me?', "
+        "'anything need my login?', or before starting new work, to surface open blockers."),
+    "parameters": {"type": "object", "properties": {}},
+}
+
+
+def _handle_list_needs_human(args: dict, **kw) -> str:
+    try:
+        resp = _runner_call("GET", "/needs_human")
+    except Exception as e:
+        return f"I couldn't reach the audit runner ({type(e).__name__})."
+    waiting = resp.get("waiting") or []
+    if not waiting:
+        return ("Nothing's waiting on you right now — every module either finished clean "
+                "or hasn't hit a blocker.")
+    lines = ["Waiting on you:"]
+    for w in waiting:
+        blocked = "; ".join(f"{mod} ({why})" for mod, why in (w.get("needs_human") or {}).items())
+        lines.append(f"- {w.get('slug')} ({w.get('domain')}): {blocked}")
+    return "\n".join(lines)
 
 
 def _handle_audit_status(args: dict, **kw) -> str:
@@ -574,6 +833,10 @@ def _handle_audit_status(args: dict, **kw) -> str:
 _EXEC_TOOLS = (
     ("run_audit", RUN_AUDIT_SCHEMA, _handle_run_audit, "🛰️"),
     ("audit_status", AUDIT_STATUS_SCHEMA, _handle_audit_status, "⏱️"),
+    ("rerun", RERUN_SCHEMA, _handle_rerun, "🔁"),
+    ("live_status", LIVE_STATUS_SCHEMA, _handle_live_status, "📡"),
+    ("validate_audit", VALIDATE_AUDIT_SCHEMA, _handle_validate_audit, "✅"),
+    ("list_needs_human", LIST_NEEDS_HUMAN_SCHEMA, _handle_list_needs_human, "🙋"),
 )
 
 
