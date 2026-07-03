@@ -9342,8 +9342,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
