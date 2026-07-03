@@ -10910,7 +10910,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
