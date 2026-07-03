@@ -17,7 +17,7 @@ Split: **PRISM shows it (frontend), PIP makes it (backend).** Every active proje
 ## CROSS-PROJECT AWARENESS (how to reach my other projects)
 Arijit runs a portfolio, not one project. The cross-project index is the vault tracker:
 - **`Projects/ArijitOS/My-Projects.md`** (Obsidian vault) — one-pager per project (what / value prop / customer / benefits / stage / health / next) + append-only progress log. Read this on demand when a question touches another project.
-- Vault base: `~/Library/CloudStorage/GoogleDrive-arijit.chowdhury@algolia.com/My Drive/AI-Docs/Obsidian/ArijitOS-Brain/`. Each project has its own wiki at `Projects/<name>/` (index.md, wiki/, log.md) — read it directly for depth.
+- Vault base: `~/Dropbox/AI-Development/Obsidian/Arijit-Second-Brain/` (migrated off Google Drive 2026-07-01 for single source of truth). Each project has its own wiki at `Projects/<name>/` (index.md, wiki/, log.md) — read it directly for depth.
 - Example: while working on PRISM, if asked to fetch the latest Scout and embed it, read `Projects/Scout/index.md` for where Scout lives + its interface, then act. You are never blind to another project; the tracker tells you where to look.
 - Who Arijit is + how to partner with him: `Projects/ArijitOS/Operating-Principles.md` + `About-Arijit.md`. Kept current by the `project-tracker` skill.
 

@@ -86,10 +86,13 @@ class Audit(Base):
     )
     user_id: Mapped[str] = mapped_column(Text, nullable=False, default="system")
     status: Mapped[str] = mapped_column(Text, default="pending")
-    score: Mapped[float | None] = mapped_column(Numeric(3, 1), nullable=True)
-    factcheck_score: Mapped[float | None] = mapped_column(Numeric(3, 1), nullable=True)
+    score: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
+    factcheck_score: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
     factcheck_action: Mapped[str | None] = mapped_column(Text, nullable=True)
     config: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+    # Full audit-data JSON blob — Postgres as source of truth for the whole audit
+    # (airtight plan §1.4). config stays for run-config; audit_data holds the report.
+    audit_data: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)

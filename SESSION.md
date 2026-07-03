@@ -1,44 +1,37 @@
-# SESSION — PRISM/PIP · Claude (2026-07-01, Crossbeam partner-refresh thread)
+# SESSION — PRISM/PIP · 2026-07-03 (Dell screenshot fix done; skill patch is next; goal NOT complete)
 
-**This repo = PIP = BACKEND** (github `pip.git`). Frontend = PRISM (`prism.git`, local `~/prism`, VPS `/opt/prism-hub`). Deploy = push to `prism.git` → webhook → prism.chowmes.com live. VPS can't push; publish from laptop.
+## STATUS (headline)
+**Dell interim task DONE.** 11 broken screenshots fixed and deployed. A real, higher-value finding surfaced along the way: Dell's original "NLP = FAIL" verdict was WRONG — corrected and redeployed to `09-browser-findings.md`. **The goal (full airtight-pipeline plan) is NOT complete — nowhere close (~25-30% at last honest check).** Do not claim otherwise.
 
-## ▶ STATUS (headline)
-Big job APPROVED + planned, NOT started: **portfolio-wide Partner-Intelligence refresh via live Crossbeam + full cascade.** Plan on disk: `~/.claude/plans/of-course-re-run-first-jiggly-pelican.md`. Ready to execute P0 in this fresh session. User wants AUTO mode + ultracode (/goal + /loop + Workflow). Pilot-first (Dell+Nike) → human review → portfolio.
+## RESUME ACTION — do this FIRST, before anything else (Arijit's explicit instruction)
+**Patch `algolia-audit-browser`'s SKILL.md** to fix the class of bug just found: the skill only ever tests the PRIMARY search entry point on a site and never checks whether a secondary response surface (chat panel, assistant drawer, "Ask AI" box) auto-launches from the same action. Add a mandatory step: after submitting any test query, check for a secondary UI panel; if one opens, screenshot and evaluate BOTH surfaces before writing any NLP/semantic verdict. Full technical detail + evidence: `docs/sop/lessons-log.md` top entry (dated 2026-07-02/03, title "Dell NLP=FAIL verdict was wrong"). This is NOT done yet — do it before resuming the main goal.
 
-## ▶ RESUME ACTION (do in order)
-1. Read `~/.claude/plans/of-course-re-run-first-jiggly-pelican.md` (the approved plan — full detail).
-2. Read memory `reference-crossbeam-mcp-live.md` (Crossbeam is live; the ACCOUNT-RESOLUTION crux; the corrected Dell finding).
-3. **Verify Crossbeam still authed** — call a cheap tool (e.g. `get_account_context` name=Dell). If tools gone / 401 → re-auth: call `mcp__crossbeam__authenticate`, give user the URL, they authorize in browser (allow cookies / drop Brave shields, one clean pass).
-4. Execute **P0 prerequisites** (before any prospect loop): P0-A rebuild `algolia-intel-partner` Crossbeam logic (account resolution + 4-tool recipe) · P0-B fix deploy path (publish-audit.sh targets DEAD `~/algolia-arian-v2`; real = `~/prism/reports/{slug}/` + `prism.git` push; root-cause the `reports/dell/` 404) · P0-C schema seam (`partner_intel` unmodeled in audit_data_schema.py; parse_partner_extended lifts only B2/C; wire migrate-audit-data.py) + pinpoint where partner-dependent strategic_angles are authored.
-5. **Pilot**: full per-prospect pipeline on Dell + Nike → stage into `~/prism/reports/` (DO NOT push) → STOP, get user eyeball on both live-preview.
-6. On sign-off → portfolio loop (13 remaining) via resumable ledger (state.json) → stage all → single batch review → one push.
+## THEN: resume the main goal
+Read `docs/plans/2026-07-02-cassandra-airtight-pipeline-goal.md` (Part 1, Phases 0-4) and `docs/plans/2026-07-02-autonomous-status.md` (full chronological log of what's actually done vs pending — the phase-by-phase breakdown near the bottom is the honest scorecard). Continue from there.
 
-## Crossbeam recipe per prospect (the corrected method — see plan)
-Resolve OWNED SFDC record (`owner != null` + non-empty `populations`, prefer high-intent) FIRST, then: `find_overlap_partners`(owned id) + `find_partner_recommendations`(deal/account name) + `find_partner_contacts`(owned id). Naive domain lookup = dead legacy records = false zeros (this is what made all prior audits fall back to WebSearch). Label `[FACT — Crossbeam MCP, date]`.
+## WHAT GOT DONE THIS SESSION (in order — full detail in autonomous-status.md)
+1. Safe autonomous track (backups, multi-tenancy design doc, 3 isolated tested modules) — complete.
+2. Live prod DB migration (schema + 18 historical audits) — complete, verified, zero visual impact.
+3. Cassandra tooling (granular runner, run-audit.sh v2, 4 new plugin tools) — built, tested, deployed live, verified working (Telegram send confirmed, CLI-channel tool tests passed).
+4. Found + fixed a real bug live: `run-audit.sh` had no flag-vs-domain validation (`--help` launched a real audit against a fake domain) — patched, verified, deployed.
+5. Dell screenshot interim task — 11 files fixed (mix of automated Playwright + manual real-browser evidence for the 2 that automated re-runs got wrong twice). Bigger catch: the NLP verdict itself was wrong — Dell has TWO search entry points (classic grid = fails NLP; auto-launched Assistant on the SAME action = correctly resolves it). Findings doc corrected and redeployed with real evidence screenshots.
 
-## DONE + VERIFIED this session
-- **Drift merge SHIPPED** (RESUME #1 from prior session): grafted signal-synthesis (`synthesize_signals` + 10 helpers) into canonical arijit-skills `generate-audit-data.py`. Commit **8ec80a1** on `feat/gemini-grounded-search`, unpushed. All gates passed (py_compile, Dell synthesis 24→11 merges, British Airways full render, schema+completeness, 212 pytest pass/1 pre-existing fail). Caught + fixed a real bug: canonical `lift_media_quotes` dropped `speaker` → `dedupe_merge_signals` was inert. The Attempt-1 style-token blocker was STALE (both templates already pass the gate). `resynth-signals.py` already in both copies.
-- **Crossbeam MCP LIVE** — OAuth authed (was never used before; all ~15 audits ran on WebSearch fallback, 0 FACT labels). Verified real data: Dell owned record = 64 overlaps + 7 EI recs; ecosystem = 130,776 records.
-- **Corrected a wrong conclusion I made mid-session**: "Dell = zero overlap / retail-only" was a wrong-record artifact. Fixed in memory `reference-crossbeam-mcp-live.md` + MEMORY.md index + noted observation 8713 was wrong.
-- **Red ticker restored to bright red** (`#FF0000`, was softened `#FF4444`) in canonical `index-template.html` line 262. Source-of-truth fixed; live reports get it on the re-render sweep (offered immediate one-off patch+push if wanted).
-- **MEMORY.md compacted** 20.7KB→14.5KB (was near read limit), all 80 entries preserved as one-liners.
-- Emailed-update content drafted for Gerard/Crossbeam (in-thread, not sent by me).
+## WHAT IS STILL PENDING (do not claim done)
+- **Skill patch for the dual-search-entry-point testing gap — NEXT STEP, not yet done.**
+- Phase 0: block-detector built but never tested against a real site, never wired into the browser skill.
+- Phase 1: self-heal loop built but not wired in; render/source-correctness gate not built; Postgres write path is additive not authoritative; no context-caching; no provenance-badge system.
+- Phase 2: tiered model routing (flash-lite/pro) never touched; web-channel toolset gap not fixed; delegation not enabled; proactive vision-validation not built.
+- Phase 3: screenshot-gate module built but not wired in; SimilarWeb HITL flow (noVNC/Browserbase) not built.
+- Phase 4 (Belk acceptance test): not run.
+- Parts 2 (multi-tenancy build), 3 (backfill+regression), 4 (role-driven IA + Jahia): not started.
 
-## ⚠ NOT DONE (no false completion)
-- Partner refresh NOT started (P0 not begun). publish-audit.sh NOT fixed. `reports/dell/` 404 NOT root-caused. Schema seam NOT done. No ledger/state.json exists yet.
-- Nothing pushed (drift merge commit 8ec80a1 unpushed; 3 render-contract SKILL.md still dirty in arijit-skills — leave them).
-- Live reports still show old `#FF4444` ticker until re-render sweep.
+## REFERENCE FILES
+- `docs/plans/2026-07-02-autonomous-status.md` — full chronological log + honest phase-by-phase scorecard.
+- `docs/plans/2026-07-02-cassandra-airtight-pipeline-goal.md` — the full plan being executed against.
+- `docs/sop/lessons-log.md` — top entry is the skill-patch finding; read before doing the patch.
+- `docs/workspace/dell-screenshot-audit/` — full Dell diagnosis, before/after screenshots, corrected findings doc.
+- `docs/workspace/cassandra-tooling/` — staged/deployed tooling + deploy plan.
+- VPS: `ssh -i ~/.ssh/chowmes_ed25519 chowmesadmin@72.61.72.147`.
 
-## Other open threads (parked)
-- **Clerk login** — blocked on user: run the `!` one-liner (keys → VPS `/opt/prism-chat-proxy/.env` + restart + verify reports gated). Static prod proxy `~/prism/server/chat-proxy.mjs` already has the gate; fail-open until keys set.
-- **Tech-stack badge rename** — "BuiltWith" hardcoded (template ~5043/7445/4508/8943) but we use detect-search; user to confirm name (my pick "NETWORK SCAN").
-- Network/VPN security architecture (own thread, ADR first). 6 Wave-2 audits not run. Scout-on-VPS. Cassandra single-skill invocation.
-
-## Reference files
-- Plan (authoritative): `~/.claude/plans/of-course-re-run-first-jiggly-pelican.md`
-- Memory: `reference-crossbeam-mcp-live.md` (Crossbeam + crux), `feedback-audit-pipeline-reconciliation-gotchas.md`, `feedback-audit-financials-render-not-data.md`
-- Canonical skills: `~/.claude/skills/algolia-*` → symlink to `~/Dropbox/AI-Development/Personal/arijit-skills/skills/algolia-audit-skills/`
-- Portfolio audits: `~/Dropbox/AI-Development/Algolia Search Audit/{Company}/research/`
-- Lessons this session: `docs/sop/lessons-log.md` (merge lessons appended)
-
-## git remote -v before push (prism.git = FRONTEND, pip.git = BACKEND). Branch feat/prism-e2e-cycle (PIP), feat/gemini-grounded-search (arijit-skills, has 8ec80a1 unpushed).
+## OPEN QUESTION FOR ARIJIT (unanswered, do not act without his input)
+Repo architecture for Hermes/Cassandra/skills — monorepo vs split. He said "I don't know, we need to discuss." Do NOT create any new repo or move plugin/config files without his direct input.
