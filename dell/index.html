@@ -8185,7 +8185,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8451,7 +8451,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8459,7 +8459,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
