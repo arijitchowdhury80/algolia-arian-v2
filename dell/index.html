@@ -98,6 +98,11 @@
   --partner:     #0D9488;   /* partner signal */
   --social-x:    #000000;   /* X/Twitter */
   --chart-other: #9CA3AF;   /* donut chart other */
+  --blue-200:    #BFDBFE;   /* blue-200 — tint card border */
+  --red-300:     #FCA5A5;   /* red-300  — dark-panel stat (Google exit) */
+  --green-300:   #6EE7B7;   /* green-300— dark-panel stat (ROI gain) */
+  --ink-900:     #21243D;   /* gradient stop — hero panel */
+  --navy-900:    #0D1240;   /* gradient stop — dark panel */
 
 
 
@@ -254,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 13px; font-weight: 500; color: #64748B;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2721,7 +2726,7 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
@@ -2804,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -3937,6 +3942,8 @@ a:hover .src-tag { opacity: 1; }
 </style>
 
 
+
+
 <!-- Algolia Brand CSS — edit algolia-brand.css to update all reports -->
 <style>
 /**
@@ -4630,10 +4637,10 @@ a:hover {
   .stat-bar__item:nth-child(2) { border-bottom: 1px solid var(--brand-border); }
 }
 
-/* ── Section Sidebar — fixed LEFT, vertically centered (STANDARD: TOC left, chat right) ── */
+/* ── Section Sidebar — fixed right, vertically centered in viewport ────────── */
 #section-sidebar {
   position: fixed;
-  left: 24px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -4719,10 +4726,7 @@ a:hover {
 .section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-/* Hide sidebar on narrow screens */
-@media (max-width: 1200px) {
-  #section-sidebar { display: none; }
-}
+
 
 /* No-op legacy strip classes */
 .section-strip, .section-toc { display: none !important; }
@@ -5326,7 +5330,7 @@ a:hover {
     "portfolio_opportunity_note": "4-brand portfolio = 4× the search optimization surface",
     "current_search_vendor": "Bloomreach (server-side/proxied)",
     "ecommerce_platform": "Custom (Angular SPA + AWS CloudFront)",
-    "monthly_visits": "27.76M",
+    "monthly_visits": "Not available (SimilarWeb API 401)",
     "visits_source": "https://www.similarweb.com/website/dell.com/",
     "revenue": "$113.5B (FY2026)",
     "revenue_source": "https://finance.yahoo.com/quote/DELL/financials",
@@ -5604,7 +5608,7 @@ a:hover {
       "actual_behavior": "Returned 49 results including laptops at $1,099, $1,139, $1,379, $1,509, and $2,000. 'Under 1000' price ceiling was completely ignored. 'Travel' use-case not parsed. Engine tokenized the sentence and matched loosely.",
       "impact_stat": "4x conversion lift when NeuralSearch replaces keyword matching",
       "impact_stat_source": "https://www.algolia.com/customers/pc-componentes/",
-      "screenshot_file": "screenshots/13b-nlp-battery-travel-results.png",
+      "screenshot_file": "13b-nlp-battery-travel-results.png",
       "prospect_description": "Dell's B2C shoppers researching laptops with budget constraints are getting results that exceed their stated price by 100-200%. This is a direct conversion loss — the shopper's intent is clear but the engine can't parse it.",
       "algolia_solution": "Algolia NeuralSearch understands 'under 1000' as a price constraint and 'travel' as a portability signal — applying both as semantic filters without requiring the shopper to manually set facets. Combines vector search with structured attribute filtering in a single query.",
       "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
@@ -5621,7 +5625,7 @@ a:hover {
       "actual_behavior": "Returned 109 results fuzzy-matching on number fragments ('210w power delivery', 'i7 2.10GHz', other order codes). Did NOT resolve to the specific SKU the order code identifies.",
       "impact_stat": "Double-digit conversion lift across B2B commerce deployments",
       "impact_stat_source": "https://www.algolia.com/customers/staples/",
-      "screenshot_file": "screenshots/14b-b2b-partnumber-results.png",
+      "screenshot_file": "14b-b2b-partnumber-results.png",
       "prospect_description": "Dell's B2B revenue is dominant — PremierConnect and APEX buyers routinely search by order code. Returning 109 fuzzy results for a precise order code forces B2B buyers to re-search, re-filter, or abandon. This is a direct revenue risk on Dell's highest-value customer segment.",
       "algolia_solution": "Algolia's exact match rules and Query Rules engine can pin order/part codes to their exact product — a B2B staple. Typo tolerance handles transpositions in long order codes while exact string priority ensures the right SKU surfaces first.",
       "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
@@ -5638,7 +5642,7 @@ a:hover {
       "actual_behavior": "SAYT returns 10 text-completion strings only (e.g. 'laptop 16', 'laptop 15 inch', 'laptop i7'). No product previews, no prices, no images, no categories, no content/support results in the dropdown.",
       "impact_stat": "81% CTR increase when autocomplete includes product previews",
       "impact_stat_source": "https://www.algolia.com/customers/pc-componentes/",
-      "screenshot_file": "screenshots/03-sayt-laptop.png",
+      "screenshot_file": "03-sayt-laptop.png",
       "prospect_description": "Every search session on dell.com starts with a text-only autocomplete. Shoppers browsing by intent ('gaming laptop', 'XPS 15') see no merchandise in the dropdown — they must commit to a full results page to see any products. This is a keyword-era pattern that inflates bounce rate on the search results page.",
       "algolia_solution": "Algolia Autocomplete with Federated Search delivers a rich dropdown: product cards with images and prices, category shortcuts, support articles, and trending queries — all in a single sub-100ms response. Dell's extensive support content corpus (drivers, warranties, manuals) can be federated directly into the same SAYT experience.",
       "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
@@ -5655,7 +5659,7 @@ a:hover {
       "actual_behavior": "Clicking into the 'Search Dell' combobox without typing surfaces NO dropdown at all — no popular searches, no trending queries, no recent searches, no category shortcuts. The listbox only populates once characters are entered.",
       "impact_stat": "Trending queries in empty state reduce dead clicks and improve session depth",
       "impact_stat_source": "https://www.algolia.com/products/search-and-discovery/query-suggestions/",
-      "screenshot_file": "screenshots/02-empty-state.png",
+      "screenshot_file": "02-empty-state.png",
       "prospect_description": "A shopper who clicks into dell.com's search box and sees nothing has zero guidance for what to search. This is the highest-intent moment in a shopping session — and Dell wastes it. The empty state is the conversion opportunity that keyword-era engines miss entirely.",
       "algolia_solution": "Algolia Query Suggestions populates the empty state with trending/popular queries derived from real-time search analytics. Recent searches (client-side) surface personalized shortcuts. Together they reduce blank-box abandonment and guide high-intent shoppers directly to relevant results.",
       "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
@@ -5672,7 +5676,7 @@ a:hover {
       "actual_behavior": "The XPS 13 product page offers only service/support upsells (Dell Care Plus, ProDeploy, Microsoft Office, data migration) configured manually. NO algorithmic product-recommendation carousels. No FBT, no Similar Items, no You May Also Like, no Customers Also Viewed.",
       "impact_stat": "B2B customers using Algolia Recommend see significant increase in attach rate and AOV",
       "impact_stat_source": "https://www.algolia.com/customers/hagergroup/",
-      "screenshot_file": "screenshots/18-recommendations-pdp.png",
+      "screenshot_file": "18-recommendations-pdp.png",
       "prospect_description": "Dell's PDP page is a pure configuration-and-services flow with no behavioral product discovery. A shopper viewing the XPS 13 cannot discover the XPS 15, the Alienware laptop, or the compatible UltraSharp monitor — they must navigate away and search again. This is a significant AOV and attach-rate gap, especially in the B2B context where dock-laptop compatibility is a daily use case.",
       "algolia_solution": "Algolia Recommend (FBT, Related Items, Trending Items) uses collaborative filtering on purchase/click behavior to surface the right product carousels on every PDP. For B2B, Recommend's 'compatible accessories' capability directly addresses the dock-laptop attach problem observed in the browser audit.",
       "algolia_case_study_url": "https://www.algolia.com/customers/hagergroup/",
@@ -5689,8 +5693,8 @@ a:hover {
       "actual_behavior": "Sort menu has only 3 options: Relevance, Price Low→High, Price High→Low. No Bestseller, Most Popular, Newest, or Top Rated sort. No Trending/New Arrival/Bestseller labels on any product cards despite star ratings being present. No behavioral ranking signals exposed to shoppers.",
       "impact_stat": "Behaviorally-ranked results improve conversion by surfacing proven sellers",
       "impact_stat_source": "https://www.algolia.com/customers/staples/",
-      "screenshot_file": "screenshots/20-analytics-signals.png",
-      "prospect_description": "Dell has rich purchase and click data from millions of direct transactions on dell.com, but none of that signal is fed back into the search results. A '247 monitors' result page is ranked by an opaque 'Relevance' sort when it could be ranked by what actually sells — a direct revenue optimization gap.",
+      "screenshot_file": "20-analytics-signals.png",
+      "prospect_description": "Dell has rich purchase and click data from millions of direct transactions on dell.com, but none of that signal is fed back into the search results. A '247 monitors' result page is ranked by undefined 'Relevance' when it could be ranked by what actually sells — a direct revenue optimization gap.",
       "algolia_solution": "Algolia Analytics + Dynamic Re-Ranking uses real purchase, click, and conversion signals to automatically re-rank search results toward top performers. Trending Items and Bestseller flags surface social proof. Analytics dashboards give the ecommerce team visibility into zero-result rates, top search terms, and click-through rates.",
       "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
       "algolia_case_study_company": "Staples Canada",
@@ -6480,31 +6484,41 @@ a:hover {
         "priority": "Fix 'under $1,000' NLP failure — shoppers getting $2,000 results",
         "product": "Algolia NeuralSearch",
         "evidence": "Browser audit: 'laptop with good battery life for travel under 1000' returned results including $1,099–$2,000 items. Price ceiling completely ignored by Bloomreach keyword matching.",
-        "proof_url": "https://www.algolia.com/customers/pc-componentes/"
+        "proof_url": "https://www.algolia.com/customers/pc-componentes/",
+        "proof_company": "PcComponentes",
+        "proof_result": "81% increase in search results click-through rate; search users convert at 4x the site average"
       },
       {
         "priority": "Fix B2B order code resolution — 109 fuzzy results for exact order codes",
         "product": "Algolia Query Rules + B2B Search",
         "evidence": "Browser audit: '210-AKXX' returned 109 results fuzzy-matched on number fragments. B2B buyers need 1 exact result for precision order codes.",
-        "proof_url": "https://www.algolia.com/customers/staples/"
+        "proof_url": "https://www.algolia.com/customers/staples/",
+        "proof_company": "Staples Canada",
+        "proof_result": "Double-digit improvement in conversion rates; increases in add-to-cart rates, click-through rates, and overall revenue"
       },
       {
         "priority": "Federate product + support + content in SAYT",
         "product": "Algolia Autocomplete + Federated Search",
         "evidence": "Browser audit: SAYT is query-strings only. 'Return policy' SAYT returns irrelevant products. 'Order status' SAYT returns stylus pens. Dell's support corpus (drivers, warranties, manuals) is completely absent from autocomplete.",
-        "proof_url": "https://www.algolia.com/products/search-and-discovery/federated-search/"
+        "proof_url": "https://www.algolia.com/customers/hagergroup/",
+        "proof_company": "Hager Group",
+        "proof_result": "Customers find products directly in the search bar without navigating to a results page; reduced steps to find correct products in a 20,000+ product-per-country B2B catalog"
       },
       {
         "priority": "Add product recommendations to PDP (no FBT today)",
         "product": "Algolia Recommend",
         "evidence": "Browser audit: XPS 13 PDP has zero product carousels — only service/support upsells. No FBT, no Similar Items, no Customers Also Viewed.",
-        "proof_url": "https://www.algolia.com/customers/hagergroup/"
+        "proof_url": "https://www.algolia.com/customers/hagergroup/",
+        "proof_company": "Hager Group",
+        "proof_result": "Customers find products directly in the search bar without navigating to a results page; reduced steps to find correct products in a 20,000+ product-per-country B2B catalog"
       },
       {
         "priority": "Surface analytics-driven ranking + trending/bestseller signals",
         "product": "Algolia Analytics + Dynamic Re-Ranking",
         "evidence": "Browser audit: Sort menu has only 3 options (no 'Most Popular'/'Best Selling'). No Trending/Bestseller/New Arrival labels on any product cards despite star ratings present.",
-        "proof_url": "https://www.algolia.com/customers/staples/"
+        "proof_url": "https://www.algolia.com/customers/staples/",
+        "proof_company": "Staples Canada",
+        "proof_result": "Double-digit improvement in conversion rates; increases in add-to-cart rates, click-through rates, and overall revenue"
       }
     ]
   },
@@ -6970,6 +6984,35 @@ const T = {
   nodeLabel:    'font-size:13px;font-weight:700;color:var(--gray);margin-bottom:6px;text-align:center;line-height:1.3',
   nodeDomain:   'font-size:11px;font-weight:500;text-decoration:none',
 
+  /* ── Typography-only tokens (font-size + contiguous weight/transform/spacing) ──
+     Per-element color/margin/padding stay appended as literal props.
+     Each token expands to the EXACT same CSS substring it replaced. */
+  statLabel:    'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em',
+  statLabel06:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statLabel12:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em',
+  microLabel06: 'font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statNum:      'font-size:2rem;font-weight:800',
+  cap10:        'font-size:10px',
+  cap11:        'font-size:11px',
+  cap12:        'font-size:12px',
+  cap13:        'font-size:13px',
+  cap14:        'font-size:14px',
+  cap16:        'font-size:16px',
+  bold11:       'font-size:11px;font-weight:700',
+  semi11:       'font-size:11px;font-weight:600',
+  bold12:       'font-size:12px;font-weight:700',
+  semi12:       'font-size:12px;font-weight:600',
+  bold13:       'font-size:13px;font-weight:700',
+  semi13:       'font-size:13px;font-weight:600',
+  bold14:       'font-size:14px;font-weight:700',
+  semi14:       'font-size:14px;font-weight:600',
+  bold15:       'font-size:15px;font-weight:700',
+  bold20:       'font-size:20px;font-weight:700',
+  bold22:       'font-size:22px;font-weight:700',
+  bold32:       'font-size:32px;font-weight:700',
+  italic13:     'font-size:13px;font-style:italic',
+  italic14:     'font-size:14px;font-style:italic',
+
 };
 
 
@@ -7161,7 +7204,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -7631,7 +7674,7 @@ function renderTopbar(D) {
 
     <div class="tb-ticker-wrap no-print">
 
-      <span class="tb-ticker-text">Every figure in this audit is source-linked. Verify before use — AI can make mistakes.</span>
+      <span class="tb-ticker-text">⚠ All data elements are source linked. Always double check and verify before using. AI can make mistakes.</span>
 
     </div>
 
@@ -8136,21 +8179,13 @@ function sectionOverviewGrid(D) {
   </div>`;
 
   // ── Tile 2: WHAT DO I DO NEXT? (narrow, row 1 right) ──
-  // Never render blank: synthesize a concrete first play from the top critical gap
-  // + the company's leadership priority when ae.next_step_action isn't supplied.
-  const _topGap = (D.findings || []).find(f => f.severity === 'critical');
-  const _nextActionFallback = _topGap
-    ? `Open with the "${_topGap.title}" gap — demo the failure live, then anchor it to ${snap.name || 'their'} leadership's stated AI priority.`
-    : `Book a 20-minute discovery call: surface the top search gap, then map it to a stated leadership priority.`;
-  const _nextAction = (ae.next_step_action && ae.next_step_action.trim() && ae.next_step_action.trim() !== '—') ? ae.next_step_action : _nextActionFallback;
-  const _urgLabel   = (ae.urgency_label && ae.urgency_label.trim() && ae.urgency_label.trim() !== '—') ? ae.urgency_label : (_topGap ? 'Act this week' : 'Prioritize');
   const tile2 = `<div class="ov-tile ov-tile-next" data-spotlight-color="0,61,255">
     <div class="ov-q">WHAT DO I DO NEXT?</div>
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
-      <div style="${T.urgLabel(urgC)}">${escHtml(_urgLabel)}</div>
+      <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(_nextAction)}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8406,41 +8441,35 @@ function sectionOverviewGrid(D) {
     })()}
 
     ${(()=>{
-      // ── Top Sales Signals strip — top 3 by urgency_score, color-coded ask-first first ──
-      const tierOf = (s) => {
-        const u = typeof s.urgency_score === 'number' ? s.urgency_score
-          : ({'hiring':8,'hiring_signal':8,'earnings_quote':7,'media_quote':6,'news_signal':6,'competitor':7,'sec_risk':7,'social_signal':5}[s.type] || 5);
-        return u >= 8 ? 1 : u >= 6 ? 2 : 3;
+      // ── Key Signals strip — top 2-3 signals ranked ACT NOW first, then THIS QUARTER ──
+      const SIG_URGENCY = {
+        'hiring_signal':'1','news-leadership':'1','news-funding':'1','hiring':'1',
+        'exec':'2','earnings_quote':'2','competitor':'2','news_signal':'2',
+        'news-tech':'2','sec_risk':'2','social-li':'2','social-x':'2','social_signal':'2',
+        'media_quote':'3','media':'3','industry-risk':'3','news-launch':'3',
       };
-      const TIER_COLOR = { 1:'var(--red)', 2:'var(--amber)', 3:'var(--green)' };
-      const TIER_LABEL = { 1:'ASK FIRST', 2:'THIS QUARTER', 3:'CONTEXT' };
-      const sigText = (s) => s.badge_label || s.title || s.signal || s.text || s.body || s.quote || '';
-      const sigWhy  = (s) => s.ae_action || s.relevance || s.algolia_angle || s.context || (s.text||s.quote||s.body||'').slice(0,110) || '';
+      const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
+      const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => sigText(s))
-        .sort((a,b) => tierOf(a) - tierOf(b) || ((b.urgency_score||0)-(a.urgency_score||0)))
+        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
       const sigRows = topSignals.map(s => {
-        const tier = tierOf(s);
-        const color = TIER_COLOR[tier];
-        const label = TIER_LABEL[tier];
-        const title = sigText(s);
-        const why   = sigWhy(s);
-        const clickable = !!s.source_url;
-        return `<div style="display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.05);${clickable?'cursor:pointer;':''}" ${clickable?`onclick="window.open('${s.source_url}','_blank')"`:''}>
-          <span style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0;margin-top:5px;"></span>
-          <div style="flex:1;min-width:0;">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
-              <span style="${T.eyebrowSmCol(color)};flex-shrink:0;">${label}</span>
-              <span style="${T.bodySm};color:var(--gray);font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(title.slice(0,90))}</span>
-            </div>
-            ${why?`<div style="${T.compact};color:var(--mid);line-height:1.4;">${escHtml(why.slice(0,120))}</div>`:''}
-          </div>
+        const tier = SIG_URGENCY[s.type] || '5';
+        const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
+        const urgLabel = SIG_LABEL[tier] || '';
+        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const aeAct = s.ae_action || '';
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
+          <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
+          ${urgLabel ? `<span style="${T.eyebrowSmCol(dotColor)};flex-shrink:0;">${urgLabel}</span>` : ''}
+          <span style="${T.bodySm};color:var(--gray);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(sigTitle.slice(0,80))}</span>
+          ${aeAct ? `<span style="${T.compact};color:var(--mid);flex-shrink:0;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(aeAct.slice(0,80))}</span>` : ''}
         </div>`;
       }).join('');
       return `<div class="dp-tile" style="margin-top:4px;padding:16px 20px 12px;">
-        <div style="${T.eyebrowBlue};margin-bottom:10px;">TOP SALES SIGNALS — WHO TO ASK FIRST</div>
+        <div style="${T.eyebrowBlue};margin-bottom:10px;">KEY SIGNALS</div>
         ${sigRows}
         <div style="margin-top:10px;">
           <span style="${T.labelBlue};cursor:pointer;" onclick="if(window.showTab)window.showTab('intel')">See all signals →</span>
@@ -8970,7 +8999,7 @@ function sectionCompanySnapshot(D) {
 
         <div style="${T.bodySmMid14};line-height:1.6;">
 
-          ${escHtml(cs.business_model) || 'Direct-to-consumer specialty commerce.'}
+          Direct-to-consumer specialty commerce.
 
           ${hir.build_vs_buy ? `<br><br>
 
@@ -9298,23 +9327,23 @@ function sectionTraffic(D) {
       const ai = t.ai_referral;
       return `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
         <div style="padding:16px 20px;background:var(--blue-tint);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--blue);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:6px;">Via Search</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--blue);line-height:1;">${searchPctNum}%</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of all traffic arrives via organic or paid search</div>
+          <div style="${T.statLabel};color:var(--blue);margin-bottom:6px;">Via Search</div>
+          <div style="${T.statNum};color:var(--blue);line-height:1;">${searchPctNum}%</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">of all traffic arrives via organic or paid search</div>
         </div>
         ${sa ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
+          <div style="${T.statNum};color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
           <div class="algolia-angle-box" style="margin-top:10px;">
             ${algoliaAngleBadge()}
             <p style="${T.compact};margin:0;">1 in ${Math.round(100/parseFloat(sa.google_outbound_pct))} visitors gives up on your search and goes back to Google. That's a revenue leak — not a UX problem. We fix that.</p>
           </div>
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9325,7 +9354,7 @@ function sectionTraffic(D) {
     <!-- PANEL: Traffic Sources & Device Split -->
     <div class="acc-panel">
       <button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">
-        <span style="font-size:14px;font-weight:700;color:var(--gray);">Traffic Sources & Device Split</span>
+        <span style="${T.bold14};color:var(--gray);">Traffic Sources & Device Split</span>
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
       <div class="acc-body" style="display:none;padding:14px;">
@@ -9425,15 +9454,15 @@ function sectionTraffic(D) {
         ${Object.keys(gender).length ? (() => {
           const f = parseFloat(gender.female || gender.Female || 0);
           const m = parseFloat(gender.male   || gender.Male   || 0);
-          return '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Gender</div>' +
+          return '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Gender</div>' +
             '<div style="height:28px;border-radius:5px;overflow:hidden;display:flex;margin-bottom:4px;">' +
-            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
-            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
+            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
+            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
             '</div>' +
-            '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
+            '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
         })() : ''}
         ${Object.keys(age).length ? (
-          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
+          '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
           Object.entries(age).map(([bracket, pct]) => {
             const barW = Math.round((Number(pct) / maxAge) * 100);
             return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9454,17 +9483,17 @@ function sectionTraffic(D) {
     const m = parseFloat(gender.male   || gender.Male   || 0);
     const genderHtml = hasGender ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
       '<div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">' +
-      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
-      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
+      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
+      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
       '</div>' +
-      '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
+      '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
       '</div>'
     ) : '';
     const ageHtml = hasAge ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
       Object.entries(age).map(([bracket, pct]) => {
         const barW = Math.round((Number(pct) / maxAge) * 100);
         return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9473,7 +9502,7 @@ function sectionTraffic(D) {
     ) : '';
     return '<div class="acc-panel">' +
       '<button class="acc-header" onclick="(function(btn){var body=btn.nextElementSibling;var open=body.style.display!==\'none\';body.style.display=open?\'none\':\'block\';btn.querySelector(\'.acc-chevron\').style.transform=open?\'rotate(0deg)\':\'rotate(180deg)\';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">' +
-      '<span style="font-size:14px;font-weight:700;color:var(--gray);">Audience Profile</span>' +
+      '<span style="${T.bold14};color:var(--gray);">Audience Profile</span>' +
       '<svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>' +
       '</button>' +
       '<div class="acc-body" style="display:none;padding:14px;">' +
@@ -9485,7 +9514,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Organic Search */ ''}
   ${t.organic_search ? (() => {
     const _accLabel = `Organic Search${t.organic_search.share_of_total_pct ? ' — ' + t.organic_search.share_of_total_pct + '% of traffic' : ''}`;
-    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const _accSuffix = `</div></div>`;
     return _accPrefix + (() => {
     const os = t.organic_search;
@@ -9512,20 +9541,20 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;">
 
       <!-- Branded vs NB mini donut -->
       <div class="card-3d" style="padding:16px;text-align:center;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
         <svg width="88" height="88" viewBox="0 0 88 88" style="display:block;margin:0 auto 10px;">
           <path d="${miniArc(-90, bEnd, R, innerR2)}"  fill="var(--blue)"/>
           <path d="${miniArc(bEnd+0.5, nbEnd, R, innerR2)}" fill="var(--border)"/>
-          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:var(--gray);">${branded}%</text>
+          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="${T.bold11};fill:var(--gray);">${branded}%</text>
         </svg>
-        <div style="display:flex;justify-content:center;gap:16px;font-size:12px;">
+        <div style="display:flex;justify-content:center;gap:16px;${T.cap12};">
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--blue);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Branded <strong>${branded}%</strong></span>
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Non-Brand <strong>${nonBranded}%</strong></span>
         </div>
@@ -9534,17 +9563,17 @@ function sectionTraffic(D) {
       <!-- Top non-branded keywords -->
       ${kws.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
         ${kws.map(k => {
           const pct = parseFloat(k.share_pct)||0;
           const barW = Math.round((pct/maxKwShare)*100);
           const mom  = String(k.mom_change||'—');
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--green);border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9556,7 +9585,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Paid Search */ ''}
   ${t.paid_search?.top_keywords?.length ? (() => {
     const _psLabel = `Paid Search${t.paid_search?.share_of_total_pct ? ' — ' + t.paid_search.share_of_total_pct + ' of traffic' : ''}`;
-    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
     const kws = ps.top_keywords || [];
@@ -9565,25 +9594,25 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
       ${kws.map(k => {
         const pct = parseFloat(k.share_pct)||0;
         const barW = Math.round((pct/maxKwShare)*100);
         const mom  = String(k.mom_change||'—');
         const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
         return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
           <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--amber);border-radius:3px;"></div></div>
-          <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-          <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+          <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+          <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
         </div>`;
       }).join('')}
       ${ps.competitor_bidding ? `
-      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;font-size:13px;font-weight:600;color:var(--amber);">
+      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;${T.semi13};color:var(--amber);">
         ⚠ Competitor conquest bidding detected: ${escHtml(String(ps.competitor_bidding))}
       </div>` : ''}
     </div>
@@ -9598,7 +9627,7 @@ function sectionTraffic(D) {
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
-    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const maxRefShare = Math.max(...refs.map(r => parseFloat(r.share_pct||r.share)||0), 1);
     const maxIndShare = Math.max(...inds.map(i => parseFloat(i.share_pct||i.traffic_share)||0), 1);
     return _accPre3 + `
@@ -9606,7 +9635,7 @@ function sectionTraffic(D) {
 
       ${refs.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
         ${refs.map(r => {
           const pct = parseFloat(r.share_pct||r.share)||0;
           const barW = Math.round((pct/maxRefShare)*100);
@@ -9614,25 +9643,25 @@ function sectionTraffic(D) {
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           const isChatGpt = (r.domain||'').includes('chatgpt');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
+            <div style="${T.cap13};font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isChatGpt?'var(--blue)':'var(--purple)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
 
       ${inds.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
         ${inds.map(ind => {
           const pct = parseFloat(ind.share_pct||ind.traffic_share||ind.share)||0;
           const barW = Math.round((pct/maxIndShare)*100);
           const isAI = (ind.industry||ind.category||'').toLowerCase().includes('ai') || (ind.industry||ind.category||'').toLowerCase().includes('chatbot');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
+            <div style="${T.cap13};font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isAI?'var(--blue)':'var(--teal)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9644,7 +9673,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Competitor Traffic */ ''}
   ${(t.competitor_traffic||[]).length ? (() => {
     const _cLabel = 'Competitor Traffic Scale';
-    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
     const comps = t.competitor_traffic || [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
@@ -9670,19 +9699,19 @@ function sectionTraffic(D) {
       });
     return `
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
       ${sorted.map(c => {
         const v = c._v;
         const barW = Math.round((v/maxV)*100);
         const isProspect = (c.domain||'').toLowerCase().includes(prospectDomain.split('.')[0]);
         return `<div style="display:grid;grid-template-columns:200px 1fr 80px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
-            ${escHtml(c.domain||'')}${isProspect?' <span style="font-size:11px;background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
+          <div style="${T.cap13};font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
+            ${escHtml(c.domain||'')}${isProspect?' <span style="${T.cap11};background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
           </div>
           <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${barW}%;background:${isProspect?'var(--blue)':'var(--border)'};border-radius:4px;"></div>
           </div>
-          <div style="font-size:12px;font-weight:700;color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
+          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
         </div>`;
       }).join('')}
     </div>
@@ -9694,21 +9723,21 @@ function sectionTraffic(D) {
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
     const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
           const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
           return `<div style="display:grid;grid-template-columns:160px 1fr 60px 60px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(g.country)}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(g.country)}</div>
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="font-size:13px;font-weight:700;color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
-            <div style="font-size:11px;font-weight:600;color:${momColor};text-align:right;">${escHtml(momStr)}</div>
+            <div style="${T.bold13};color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="${T.semi11};color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
         <div class="algolia-angle-box" style="margin-top:16px;">
@@ -9724,18 +9753,18 @@ function sectionTraffic(D) {
     const outgoing = t.outgoing_traffic;
     const sa = t.search_abandonment || {};
     const googleRow = outgoing.find(o => (o.domain||'').includes('google'));
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
         ${outgoing.map(o => {
           const isGoogle = (o.domain||'').includes('google');
           const momVal = parseFloat((o.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = isGoogle ? 'var(--red)' : (momVal >= 0 ? 'var(--green)' : 'var(--red)');
           const rowBg = isGoogle ? 'background:var(--red-tint);border-radius:6px;padding:2px 6px;margin:-2px -6px;' : '';
           return `<div style="display:grid;grid-template-columns:1fr 80px 80px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="font-size:10px;background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
-            <div style="font-size:13px;font-weight:700;color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
-            <div style="font-size:11px;font-weight:700;color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
+            <div style="${T.cap13};font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="${T.cap10};background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
+            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
+            <div style="${T.bold11};color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
@@ -9750,12 +9779,12 @@ function sectionTraffic(D) {
 
   ${/* ══ WHAT THIS MEANS FOR ALGOLIA — always visible, outside accordion ══ */ ''}
   ${(t.search_audit_signals||[]).length ? `
-  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,#21243D 0%,#003DFF 100%);border-radius:10px;color:white;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
+  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,var(--ink-900) 0%,var(--blue) 100%);border-radius:10px;color:white;">
+    <div style="${T.statLabel12};color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
     ${(t.search_audit_signals||[]).map(sig => `
     <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
-      <div style="color:rgba(255,255,255,0.5);font-size:14px;flex-shrink:0;margin-top:1px;">→</div>
-      <div style="font-size:13px;line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
+      <div style="color:rgba(255,255,255,0.5);${T.cap14};flex-shrink:0;margin-top:1px;">→</div>
+      <div style="${T.cap13};line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
     </div>`).join('')}
   </div>` : ''}
 
@@ -9774,6 +9803,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -9804,40 +9835,75 @@ function sectionFinancials(D) {
     return neg ? -n : n; // returns raw number (B stays as B, % stays as %)
   }
 
+  // Money parser → normalizes ANY monetary string to a number in $B.
+  // Fixes two recurring scaling bugs that pv() cannot: (1) ranges like
+  // "~$9–10B" (pv concatenates "9"+"10" → 910) and (2) non-billion units
+  // like "$910M" / "$1.2T" (pv ignores the suffix → 1000× off). The chart
+  // axis, table, tooltips and YoY are all in $B, so every $ value must be
+  // normalized here. Keep in sync with scripts/tests/test-finance-parse.mjs.
+  function pvB(s) {
+    if (s == null) return null;
+    const str = String(s).trim();
+    if (!str || str === '—' || str === '—') return null;
+    const negative = /^\s*[-−]/.test(str); // leading minus only; mid hyphen = range
+    const nums = (str.match(/\d[\d,]*\.?\d*/g) || []).map(x => parseFloat(x.replace(/,/g, '')));
+    if (!nums.length) return null;
+    const isRange = nums.length >= 2 && /\d\s*(?:[-–—]|to)\s*\d/i.test(str);
+    const val = isRange ? (nums[0] + nums[1]) / 2 : nums[0];
+    const um = str.match(/\d\s*([tTbBmMkK])/);
+    const u = um ? um[1].toLowerCase() : '';
+    let mult;
+    if (u === 't') mult = 1000;
+    else if (u === 'b') mult = 1;
+    else if (u === 'm') mult = 0.001;
+    else if (u === 'k') mult = 1e-6;
+    else mult = val >= 1e6 ? 1e-9 : 1; // raw $ → B, else assume already-B
+    const out = val * mult;
+    return negative ? -out : out;
+  }
+
   function yoyStr(cur, prev) {
     const c = pv(cur), p = pv(prev);
     if (c === null || p === null || p === 0) return '';
     const pct = Math.round(((c - p) / Math.abs(p)) * 100);
     const up = pct > 0;
-    return `<span style="color:${up?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
+    return `<span style="color:${up?'var(--green)':'var(--red)'};${T.bold11};">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
   }
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
-  const rvVals = revChron.map(r => pv(r.revenue)          || 0);
-  const gpVals = revChron.map(r => pv(r.gross_profit)     || 0);
-  const ebVals = revChron.map(r => pv(r.ebitda)           || 0);
-  const opVals = revChron.map(r => pv(r.operating_income) || 0);
-  const niVals = revChron.map(r => pv(r.net_income)       || 0);
+  const rvVals = revChron.map(r => pvB(r.revenue)          || 0);
+  // Absent metrics stay null (render "—"); do NOT coerce to 0 (would show "$0.0B").
+  const gpVals = revChron.map(r => pvB(r.gross_profit));
+  const ebVals = revChron.map(r => pvB(r.ebitda));
+  const opVals = revChron.map(r => pvB(r.operating_income));
+  const niVals = revChron.map(r => pvB(r.net_income));
 
   // Margins derived (all valid — calculated from sourced numbers)
-  const gmVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
-  const emVals = revChron.map((r,i) => rvVals[i]>0 ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
+  const gmVals = revChron.map((r,i) => (rvVals[i]>0 && gpVals[i]!=null) ? Math.round((gpVals[i]/rvVals[i])*1000)/10 : null);
+  const emVals = revChron.map((r,i) => (rvVals[i]>0 && ebVals[i]!=null) ? Math.round((ebVals[i]/rvVals[i])*1000)/10 : null);
   const nmVals = revChron.map(r => pv(r.net_margin));
 
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  // Data-driven left-axis max ($B) — scale to the tallest bar (revenue) so large
-  // companies (e.g. Dell $113B) don't overflow the plot. Round up to a nice step.
-  const _rawMax = Math.max(...rvVals, ...gpVals, ...ebVals, 1);
-  const _targetStep = _rawMax / 5;
-  const _mag = Math.pow(10, Math.floor(Math.log10(_targetStep)));
-  const _norm = _targetStep / _mag;
-  const _niceStep = (_norm <= 1 ? 1 : _norm <= 2 ? 2 : _norm <= 2.5 ? 2.5 : _norm <= 5 ? 5 : 10) * _mag;
-  const maxBarVal = Math.max(Math.ceil(_rawMax / _niceStep) * _niceStep, _niceStep);
-  const _gridVals = [];
-  for (let _v = 0; _v <= maxBarVal + 1e-9; _v += _niceStep) _gridVals.push(Math.round(_v * 100) / 100);
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -9873,14 +9939,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = _gridVals.map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -9892,7 +9958,7 @@ function sectionFinancials(D) {
     const em = emVals[i];
     const rv = rvVals[i], gp = gpVals[i], eb = ebVals[i];
     const rvPri = i>0?rvVals[i-1]:null, gpPri = i>0?gpVals[i-1]:null, ebPri = i>0?ebVals[i-1]:null, emPri = i>0?emVals[i-1]:null;
-    const pct = (cur,pri) => pri&&pri!==0 ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
+    const pct = (cur,pri) => (cur!=null&&pri!=null&&pri!==0) ? Math.round(((cur-pri)/Math.abs(pri))*100) : null;
     const yoyFmt = (p) => p===null ? '' : (p>0?`↑${p}%`:`↓${Math.abs(p)}%`);
     const payload = JSON.stringify({
       year: r.year,
@@ -9972,9 +10038,9 @@ function sectionFinancials(D) {
     const yoy = (lat!==null&&pri!==null&&pri!==0) ? Math.round(((lat-pri)/Math.abs(pri))*100) : null;
     const isNeg = yoy!==null&&yoy<0;
     const bg = isNeg&&!isMargin ? 'background:var(--red-light);' : '';
-    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
-    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;font-size:12px;font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
-    return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
+    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};${T.bold11};">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
+    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;${T.cap12};font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
+    return `<tr style="${bg}"><td style="padding:5px 10px;${T.semi12};color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
   }
 
   const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
@@ -10008,11 +10074,11 @@ function sectionFinancials(D) {
   const execQuotes = (f.exec_quotes || []).slice(0, 2);
   const quotesHtml = execQuotes.map(q=>`
     <div style="padding:14px 16px;border-left:3px solid var(--blue-border);background:var(--blue-light);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
-      <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
+      <div style="${T.italic14};color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
         <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
-        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
+        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="${T.cap11};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
       </div>
     </div>`).join('');
 
@@ -10042,7 +10108,7 @@ function sectionFinancials(D) {
         </div>
         <div style="border-top:2px solid var(--border);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
           <span style="${T.title};color:var(--gray);">= Gross profit impact</span>
-          <span style="font-size:20px;font-weight:700;color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
+          <span style="${T.bold20};color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
         </div>
       </div>
     </div>` : '';
@@ -10061,9 +10127,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10083,9 +10151,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10172,7 +10241,7 @@ function sectionTechStack(D) {
 
     ${(ts.data_acquisitions||[]).length ? `
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
-      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Nike Press Releases</a>` : 'Nike Press Releases · digitalcommerce360.com'}</p>
+      <p class="section-desc" style="margin-bottom:12px;">Data &amp; AI Acquisitions · ${ts.acquisitions_source_url ? `<a href="${escHtml(ts.acquisitions_source_url)}" target="_blank" rel="noopener">Press Releases</a>` : 'Press Releases · digitalcommerce360.com'}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;">
         ${(ts.data_acquisitions).map(a => `
           <div style="display:inline-flex;flex-direction:column;padding:8px 14px;background:var(--violet-tint);border:1px solid var(--violet-border);border-radius:8px;">
@@ -10214,19 +10283,7 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
-
-  const hiring = (_hiringRoles && _hiringRoles.length)
-    ? _hiringRoles.map(r => ({
-        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
-        title: r.title,
-        text: r.title,
-        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
-        source_url: r.url,
-        source_name: 'Careers page',
-        relevance: r.location ? `Location: ${r.location}` : '',
-      }))
-    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10239,16 +10296,16 @@ function sectionHiring(D) {
     <p class="section-desc">ICP role detection — Economic Buyer, Technical Buyer, Champion signals</p>
 
     ${(D.hiring?.data_complete === false || D.hiring?.data_complete == null) ? `
-    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);font-size:13px;">
+    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);${T.cap13};">
       Hiring data collection incomplete — run the hiring module to populate signals.
     </div>` : `
     <div style="border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;padding:16px 18px;background:var(--amber-tint);">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
-      <div style="font-size:14px;font-weight:600;color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
+      <div style="${T.statLabel};color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
+      <div style="${T.semi14};color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
+      <div style="${T.cap13};color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
       <div class="algolia-angle-box">
         <div class="algolia-angle-label">Algolia Angle</div>
-        <p style="font-size:13px;color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
+        <p style="${T.cap13};color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
       </div>
     </div>`}
 
@@ -10806,20 +10863,24 @@ function sectionSignals(D) {
 
 
 
-  // Merge near-duplicate signals (e.g. 3 quotes from the same CEO) into one primary + nested extras
-  const _dedupKey = (s) => (s.badge_label || s.speaker || s.title || '').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,40);
-  const _byKey = new Map();
-  let _dupI = 0;
-  for (const s of signals) {
-    const k = _dedupKey(s) || ('u' + (_dupI++));
-    if (!_byKey.has(k)) _byKey.set(k, Object.assign({}, s, { _extras: [] }));
-    else _byKey.get(k)._extras.push(s);
-  }
-  const deduped = [..._byKey.values()];
+  const sorted = [...signals].sort((a,b) => {
 
-  const sorted = [...deduped].sort((a,b) => (URGENCY_TIER[a.type]||'5').localeCompare(URGENCY_TIER[b.type]||'5'));
+    const ta = URGENCY_TIER[a.type] || '5';
+
+    const tb = URGENCY_TIER[b.type] || '5';
+
+    return ta.localeCompare(tb);
+
+  });
+
+
+
+  // Group into tiers for visual hierarchy
+
   const tier1 = sorted.filter(s => URGENCY_TIER[s.type] === '1');
+
   const tier2 = sorted.filter(s => URGENCY_TIER[s.type] === '2');
+
   const tier3plus = sorted.filter(s => !['1','2'].includes(URGENCY_TIER[s.type]||'5'));
 
 
@@ -10846,73 +10907,77 @@ function sectionSignals(D) {
     return 'Use as outreach hook — timely context for first contact';
   };
 
-  const angleOf = (s) => s.relevance || s.algolia_angle || s.context || s.description || '';
-  // ── Table row renderer (angle column optional; AE action shown once per group) ──
-  const signalTableRow = (sig, showAngle) => {
-    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || (sig.text||'').slice(0,80) || '—';
-    const algAngle = angleOf(sig);
+  // ── Table row renderer ─────────────────────────────────────────────────────
+  const signalTableRow = (sig) => {
+    const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
     const hasUrl = resolvedUrl.startsWith('http');
     const dateStr = sig.source_date || sig.date || '';
-    const extraNote = (sig._extras && sig._extras.length)
-      ? `<div style="${T.compact};color:var(--mid);margin-top:3px;">+${sig._extras.length} more from same source</div>` : '';
+
     return `<tr style="border-bottom:1px solid var(--border);vertical-align:top;">
-      <td style="padding:10px 12px 10px 14px;${showAngle?'width:42%':'width:78%'};">
-        <div style="${T.title};line-height:1.4;margin-bottom:2px;">${escHtml(sigTitle.slice(0,110))}</div>
+      <td style="padding:10px 12px 10px 0;width:30%;">
+        <div style="${T.title};line-height:1.4;margin-bottom:2px;">${escHtml(sigTitle.slice(0,100))}</div>
         ${dateStr ? `<div style="${T.compact};">${escHtml(dateStr.slice(0,10))}</div>` : ''}
-        ${extraNote}
       </td>
-      ${showAngle ? `<td style="padding:10px 12px;width:42%;${T.bodySm};color:var(--gray);line-height:1.5;">${escHtml(algAngle.slice(0,180))}</td>` : ''}
-      <td style="padding:10px 14px 10px 12px;width:16%;text-align:right;">
+      <td style="padding:10px 12px;width:35%;${T.bodySm};color:var(--gray);line-height:1.5;">
+        ${escHtml(algAngle.slice(0,180))}
+      </td>
+      <td style="padding:10px 12px;width:25%;${T.bodySm};color:var(--gray);line-height:1.5;">
+        ${escHtml(aeAction.slice(0,160))}
+      </td>
+      <td style="padding:10px 0 10px 12px;width:10%;text-align:center;">
         ${hasUrl
-          ? `<a href="${resolvedUrl}" target="_blank" style="${T.labelBlue};text-decoration:none;white-space:nowrap;" onmouseenter="this.style.textDecoration='underline'" onmouseleave="this.style.textDecoration='none'">→ Source</a>`
-          : `<span style="${T.compact};">—</span>`}
+          ? `<a href="${resolvedUrl}" target="_blank"
+              style="${T.labelBlue};text-decoration:none;white-space:nowrap;"
+              onmouseenter="this.style.textDecoration='underline'"
+              onmouseleave="this.style.textDecoration='none'">→ Source</a>`
+          : '<span style="${T.compact};">—</span>'}
       </td>
     </tr>`;
   };
 
-  // ── Group renderer: colored left rail, drop empty angle col, shared AE action once in header ──
+  // ── Group table renderer ───────────────────────────────────────────────────
   const renderGroupTable = (emoji, label, items, headerBg, headerColor) => {
     if (!items.length) return '';
-    const showAngle = items.some(s => angleOf(s).trim());
-    const actions = [...new Set(items.map(deriveAeAction))];
-    const sharedAction = actions.length === 1 ? actions[0] : '';
     return `
-    <div style="margin-bottom:22px;border-left:3px solid ${headerColor};border-radius:0 8px 8px 0;overflow:hidden;">
-      <div style="background:${headerBg};padding:9px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+    <div style="margin-bottom:28px;">
+      <div style="background:${headerBg};border-radius:8px 8px 0 0;padding:9px 14px;display:flex;align-items:center;gap:8px;">
         <span style="${T.bodySm};">${emoji}</span>
         <span style="${T.eyebrowBlue};color:${headerColor};">${label} (${items.length})</span>
-        ${sharedAction?`<span style="${T.compact};color:var(--mid);margin-left:auto;">AE play — ${escHtml(sharedAction.slice(0,90))}</span>`:''}
       </div>
-      <table style="width:100%;border-collapse:collapse;background:white;">
+      <table style="width:100%;border-collapse:collapse;border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;">
         <thead>
           <tr style="background:rgba(0,0,0,0.02);">
-            <th style="padding:8px 12px 8px 14px;text-align:left;${T.eyebrowBlue};${showAngle?'width:42%':'width:78%'};border-bottom:1px solid var(--border);">SIGNAL</th>
-            ${showAngle?`<th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:42%;border-bottom:1px solid var(--border);">ALGOLIA ANGLE</th>`:''}
-            <th style="padding:8px 14px 8px 12px;text-align:right;${T.eyebrowBlue};width:16%;border-bottom:1px solid var(--border);">SOURCE</th>
+            <th style="padding:8px 12px 8px 0;text-align:left;${T.eyebrowBlue};width:30%;border-bottom:1px solid var(--border);">SIGNAL</th>
+            <th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:35%;border-bottom:1px solid var(--border);">ALGOLIA ANGLE</th>
+            <th style="padding:8px 12px;text-align:left;${T.eyebrowBlue};width:25%;border-bottom:1px solid var(--border);">AE ACTION</th>
+            <th style="padding:8px 0 8px 12px;text-align:center;${T.eyebrowBlue};width:10%;border-bottom:1px solid var(--border);">SOURCE</th>
           </tr>
         </thead>
-        <tbody>${items.map(s=>signalTableRow(s, showAngle)).join('')}</tbody>
+        <tbody>
+          ${items.map(signalTableRow).join('')}
+        </tbody>
       </table>
     </div>`;
   };
 
   return `<section id="section-signals" class="audit-section">
+
     <div class="section-eyebrow">Company Intelligence · Live Signals</div>
+
     <div class="section-title">Sales Signals</div>
-    <details class="signals-accordion" style="margin-top:6px;">
-      <summary style="cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;background:rgba(0,61,255,0.03);border:1px solid var(--border);border-radius:10px;user-select:none;">
-        <span style="${T.eyebrowBlue};">▸ ${deduped.length} synthesized signal${deduped.length!==1?'s':''} — prioritized</span>
-        <span style="${T.compact};color:var(--mid);margin-left:auto;">Click to expand the evidence</span>
-      </summary>
-      <div style="padding:18px 2px 2px;">
-        <p class="section-desc" style="margin-top:0;">Ranked by urgency; near-duplicate quotes grouped. Every signal links to its source.</p>
-        ${renderGroupTable('🔴', 'ASK FIRST', tier1, 'rgba(220,38,38,0.08)', 'var(--red)')}
-        ${renderGroupTable('🟡', 'THIS QUARTER', tier2, 'rgba(217,119,6,0.08)', 'var(--amber)')}
-        ${renderGroupTable('🟢', 'CONTEXT', tier3plus, 'rgba(5,150,105,0.08)', 'var(--green)')}
-      </div>
-    </details>
+
+    <p class="section-desc">${signals.length} signals · Sourced from LinkedIn Jobs, LinkedIn Posts, Twitter/X, Google News, and manual research. Every signal links to its source.</p>
+
+    ${renderGroupTable('🔴', 'ACT NOW', tier1, 'rgba(220,38,38,0.08)', 'var(--red)')}
+
+    ${renderGroupTable('🟡', 'THIS QUARTER', tier2, 'rgba(217,119,6,0.08)', 'var(--amber)')}
+
+    ${renderGroupTable('🟢', 'MONITOR', tier3plus, 'rgba(5,150,105,0.08)', 'var(--mid)')}
+
   </section>`;
 
 }
@@ -11394,24 +11459,6 @@ function sectionBattleCard(D) {
 
 
 
-        ${objections.length ? `
-
-        <div>
-
-          <div style="${T.eyebrow};margin-bottom:8px;">When They Push Back</div>
-
-          ${objections.slice(0,3).map(o=>`
-
-          <div style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
-
-            <div style="${T.labelRed};margin-bottom:6px;">"${escHtml(o.objection||'')}"</div>
-
-            <div style="${T.bodySm};">→ ${escHtml(o.counter||'')}</div>
-
-          </div>`).join('')}
-
-        </div>` : ''}
-
       </div>
 
 
@@ -11463,6 +11510,28 @@ function sectionBattleCard(D) {
 
 
     </div>
+
+    ${objections.length ? `
+
+    <div style="margin-top:24px;">
+
+      <div style="${T.eyebrow};margin-bottom:12px;">When They Push Back</div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+
+        ${objections.slice(0,3).map(o=>`
+
+        <div style="border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+
+          <div style="${T.labelRed};margin-bottom:8px;">"${escHtml(o.objection||'')}"</div>
+
+          <div style="${T.bodySm};line-height:1.5;">→ ${escHtml(o.counter||'')}</div>
+
+        </div>`).join('')}
+
+      </div>
+
+    </div>` : ''}
 
   </section>`;
 
@@ -11744,24 +11813,100 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = (() => {
-    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
-    const raw = String(f.total_digital_revenue || '');
-    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
-    if (!m) return 100000000;
-    let n = parseFloat(m[1]);
-    if (!n || isNaN(n)) return 100000000;
-    const unit = (m[2] || '').toUpperCase();
-    if (unit === 'B') n *= 1e9;
-    else if (unit === 'M') n *= 1e6;
-    else if (unit === 'K') n *= 1e3;
-    return n;
-  })();
-  
+  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
+  const rs = f.roi_scenarios || {};
+
+  const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
+  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'var(--teal-tint)', red:'var(--red-tint)', amber:'var(--amber-tint)', green:'var(--green-tint)' };
+
+  const activeComps = components.filter(c => c.status === 'active');
+  const condComps   = components.filter(c => c.status === 'conditional');
+  const totalCons   = activeComps.reduce((s,c) => s + (c.conservative_raw||0), 0);
+  const totalMod    = activeComps.reduce((s,c) => s + (c.moderate_raw||0), 0);
+  const fmtM = n => '$' + (n/1e6).toFixed(1) + 'M';
+
+  const componentBreakdown = components.length ? `
+    <div style="margin-bottom:32px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+        <div>
+          <div style="${T.eyebrow};margin-bottom:4px;">6-Component Revenue Model — Each gap mapped to a dollar line</div>
+          <div style="${T.bodySm};color:var(--mid);">Based on — monthly visits · ~the company's digital revenue · gross margin · AOV (estimate) placeholder — replace with the company's actual numbers</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-shrink:0;">
+          <div style="text-align:center;background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:8px;padding:10px 16px;">
+            <div style="${T.eyebrowSmCol('var(--blue)')};margin-bottom:2px;">Conservative</div>
+            <div style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</div>
+            <div style="${T.bodySmGray12};">excl. C5 latency</div>
+          </div>
+          <div style="text-align:center;background:var(--green-tint);border:1px solid var(--green-border);border-radius:8px;padding:10px 16px;">
+            <div style="${T.eyebrowSmCol('var(--green)')};margin-bottom:2px;">Moderate</div>
+            <div style="${T.h4};color:var(--green);">${fmtM(totalMod)}</div>
+            <div style="${T.bodySmGray12};">excl. C5 latency</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="background:var(--light);">
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);">Component · Search Gap</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:left;border-bottom:1px solid var(--border);width:30%;">What we found on the site</th>
+              <th style="${T.eyebrowSm};padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Conservative</th>
+              <th style="${T.eyebrowSm};padding:10px 16px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;">Moderate</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${components.map((c,i) => {
+              const col = colMap[c.color] || 'var(--blue)';
+              const bg  = bgMap[c.color]  || 'var(--blue-tint)';
+              const isCond = c.status === 'conditional';
+              return `<tr style="border-bottom:1px solid var(--border);${isCond?'opacity:0.65;':''}" title="${isCond?'Conditional — current latency acceptable; use as floor-preservation argument':''}">
+                <td style="padding:12px 16px;vertical-align:top;">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};${T.bold11};display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
+                    <span style="${T.title};color:${col};">${escHtml(c.label)}</span>
+                    ${isCond ? `<span style="${T.eyebrowSmCol(col)};background:${bg};border-radius:3px;padding:1px 6px;font-size:9px;">CONDITIONAL</span>` : ''}
+                  </div>
+                  <div style="${T.bodySmGray12};padding-left:32px;">${escHtml(c.gap)}</div>
+                </td>
+                <td style="padding:12px 16px;vertical-align:top;">
+                  <div style="${T.bodySm};line-height:1.5;color:var(--gray);">${escHtml(c.gap_detail)}</div>
+                </td>
+                <td style="padding:12px 12px;text-align:right;vertical-align:top;">
+                  <span style="${T.title};color:var(--blue);">${escHtml(c.conservative_fmt)}</span>
+                </td>
+                <td style="padding:12px 16px;text-align:right;vertical-align:top;">
+                  <span style="${T.title};color:var(--green);">${escHtml(c.moderate_fmt)}</span>
+                </td>
+              </tr>`;
+            }).join('')}
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--light);">
+              <td colspan="2" style="padding:12px 16px;">
+                <strong style="${T.title};">Total (C5 excluded — conditional)</strong>
+                <div style="${T.bodySmGray12};margin-top:2px;">Inputs: — visits, 15% search rate, $110 AOV placeholder, 2.5% conversion placeholder</div>
+              </td>
+              <td style="padding:12px 12px;text-align:right;"><strong style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</strong></td>
+              <td style="padding:12px 16px;text-align:right;"><strong style="${T.h4};color:var(--green);">${fmtM(totalMod)}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="${T.bodySmGray12};margin-top:8px;padding:0 4px;">
+        ⚠ All dollar figures use placeholder AOV ($110) and conversion rate (estimate) — industry estimates. Replace with the company's actual analytics before presenting to executive stakeholders. Monthly visits (—) and gross margin (42.7%) are verified facts from SimilarWeb and public filings.
+      </div>
+    </div>` : '';
+
   return `<section id="section-roi" class="audit-section">
     <div class="section-eyebrow">Business Case · Revenue</div>
-    <div class="section-title">Revenue & ROI Calculator</div>
-    
+    <div class="section-title">Revenue & ROI Model</div>
+
+    ${componentBreakdown}
+
+    <div style="${T.eyebrow};margin-bottom:16px;">Interactive Calculator — Adjust to Your Numbers</div>
     <div class="roi-container">
         <div class="roi-builder">
             <div style="${T.bodySm}color:var(--mid);margin-bottom:20px;">Adjust the baseline metrics to calculate potential revenue impact based on actual customer case studies.</div>
@@ -11798,7 +11943,7 @@ function sectionROI(D) {
                     <div class="lever-value">+<span id="val_conversion">15</span>%</div>
                 </div>
                 <div class="slider-container"><input type="range" id="lever_conversion" min="0" max="100" value="15"></div>
-                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Decathlon</strong> saw +50% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
+                <div class="proof-point"><span class="proof-badge">CASE STUDY</span><strong>Under Armour</strong> saw +35% lift. <strong>Harry Rosen</strong> saw +360% lift.</div>
             </div>
             <div class="lever-row">
                 <div class="lever-header">
@@ -12124,6 +12269,7 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
   const tiers = cs.competitor_tiers || [];
 
@@ -12190,7 +12336,7 @@ function sectionCompetitiveSynthesis(D) {
     <p class="section-desc">${escHtml(cs.scenario||'')} ${cs.scenario_note?'— '+escHtml(cs.scenario_note):''}</p>
 
     ${matrix.length ? `<div style="padding:14px 16px;background:var(--gray);border-radius:var(--radius);margin-bottom:20px;">
-      <div style="font-size:13px;font-weight:600;color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
+      <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
     ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
@@ -12308,7 +12454,7 @@ function sectionCompetitiveSynthesis(D) {
 
           // Dynamic competitor columns — read from matrix_col_labels or fall back to defaults
 
-          const colLabels = cs.matrix_col_labels || {nike_has:'Nike',asics_has:'Asics',on_running_has:'On Running',new_balance_has:'New Balance'};
+          const colLabels = cs.matrix_col_labels || {nike_has:'Competitor 1',asics_has:'Competitor 2',on_running_has:'Competitor 3',new_balance_has:'Competitor 4'};
 
           const compKeys = ['nike_has','asics_has','on_running_has','new_balance_has'];
 
@@ -12644,26 +12790,43 @@ function sectionWhyNow(D) {
 
   // Build timing triggers from intelligence_signals (funding, exec, hiring types) + fallback
 
-  const SIG_TRIGGER_TYPES = new Set([
-    'funding','exec','earnings_quote','media_quote',
-    'competitor','news_signal','sec_risk','industry-opp','leadership_change',
-  ]);
-  const sigTriggers = (D.intelligence_signals||[])
-    .filter(s => SIG_TRIGGER_TYPES.has(s.type))
-    .slice(0, 3)
-    .map(s => ({
-      icon: (s.type==='funding') ? '🏦'
-          : (s.type==='exec'||s.type==='earnings_quote'||s.type==='media_quote') ? '💬'
+  // Diverse deduplicated: 1 exec quote + 1 hiring signal + 1 other, no repeat person
+  const QUOTE_TYPES  = new Set(['funding','exec','earnings_quote','media_quote','leadership_change']);
+  const HIRING_TYPES = new Set(['hiring','hiring_signal']);
+  const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
+
+  const allSigs = D.intelligence_signals || [];
+  const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
+  const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
+  const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
+  const uniqueOther   = _uniqBy(allSigs.filter(s => OTHER_TYPES.has(s.type)));
+
+  const _gSeen = new Set();
+  const _pick = (arr, n) => arr.filter(s => { const k=s.badge_label||s.title||s.type; if(_gSeen.has(k)) return false; _gSeen.add(k); return true; }).slice(0, n);
+
+  const candidatePool = [
+    ..._pick(uniqueQuotes,  1),
+    ..._pick(uniqueHiring,  1),
+    ..._pick(uniqueOther,   1),
+    ..._pick(uniqueQuotes,  2),
+  ];
+
+  const _getDetail = s => { const raw = s.signal||s.body||s.text||''; return raw.slice(0,200)+(raw.length>200?'…':''); };
+
+  const sigTriggers = candidatePool.slice(0, 3).map(s => ({
+      icon: s.type==='funding' ? '🏦'
+          : QUOTE_TYPES.has(s.type) ? '💬'
+          : HIRING_TYPES.has(s.type) ? '👤'
           : (s.type==='competitor'||s.type==='sec_risk') ? '⚠️'
-          : (s.type==='leadership_change') ? '👤'
           : '📈',
       label: s.badge_label || s.title || s.type,
-      detail: (s.signal||s.body||s.text||'').slice(0, 200) + ((s.signal||s.body||s.text||'').length > 200 ? '…' : ''),
-      urgency: (s.type==='exec'||s.type==='earnings_quote'||s.type==='media_quote'||s.type==='funding'||s.type==='sec_risk') ? 'high'
+      detail: _getDetail(s),
+      urgency: (QUOTE_TYPES.has(s.type)||s.type==='sec_risk') ? 'high'
              : (s.type==='competitor'||s.type==='news_signal') ? 'medium'
              : 'positive',
-      url: s.source_url
-    }));
+      url: s.source_url,
+      linkLabel: HIRING_TYPES.has(s.type) ? 'View role' : 'View source',
+  }));
 
   const vacantTrigger = vacantRole
 
@@ -12719,7 +12882,7 @@ function sectionWhyNow(D) {
 
           <div class="fc-desc">${escHtml(t.detail)}</div>
 
-          ${t.url?`<div class="fc-source"><a href="${t.url}" target="_blank">View role →</a></div>`:''}
+          ${t.url?`<div class="fc-source"><a href="${t.url}" target="_blank">${t.linkLabel||'View source'} →</a></div>`:''}
 
         </div>`;
 
@@ -13107,8 +13270,6 @@ function sectionSalesPlays(D) {
 
     </div>
 
-    ${commonObjHTML}
-
   </section>`;
 
 }
@@ -13207,7 +13368,26 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
   const phases = hir.engagement_phases || [];
 
@@ -13410,21 +13590,9 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = (abx.contacts || []).map((c,i) => ({
-    ...c,
-    tier: c.tier || (i===0 ? 1 : 2),
-    role: c.role || (c.role_in_deal||'').split(' — ')[0] || c.title || '',
-    angle: c.angle || c.role_in_deal || '',
-    linkedin_url: c.linkedin_url || c.linkedin || null,
-  }));
+  const contacts = abx.contacts || [];
 
-  const touches  = (abx.touches || []).map(t => ({
-    ...t,
-    day: (t.day != null) ? t.day : (parseInt((t.timing||'').replace(/[^0-9]/g,''),10) || t.touch || 1),
-    channel: t.type || (t.channel||'').toLowerCase().split(' ')[0] || 'email',
-    target: t.target || 'all',
-    hook_type: t.hook_type || '',
-  }));
+  const touches  = abx.touches || [];
 
   const variants = abx.ab_variants || [];
 
@@ -13466,7 +13634,7 @@ function sectionOutreachPlan(D) {
 
     <div class="section-title">${escHtml(abx.sequence_type||'Outreach Sequence')}</div>
 
-    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels && abx.channels.length ? abx.channels : [...new Set(touches.map(t=>chLabel[t.channel]||t.channel))]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
+    <p class="section-desc">${escHtml(abx.total_touches||10)}-touch, ${escHtml(String(abx.duration_days||21))}-day sequence across ${(abx.channels||[]).join(', ')}. Based on: ${escHtml(abx.research_basis||'industry research')}.</p>
 
 
 
@@ -13488,29 +13656,11 @@ function sectionOutreachPlan(D) {
 
 
 
-    <!-- Contact Cards -->
+    <!-- Contact summary — compact, links back to Buying Committee section above -->
 
-    <div style="${T.eyebrow};margin-bottom:10px;">Buying Committee — ${contacts.length} Contacts</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
-
-      ${contacts.map(c=>`<div style="background:white;border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:0 1px 4px rgba(35,38,59,0.06);">
-
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-
-          <span style="${T.microCol(c.tier===1?'var(--blue)':'var(--green)')};padding:2px 7px;border-radius:20px;${c.tier===1?'background:var(--blue-tint);':'background:var(--green-tint);'}">T${c.tier} ${escHtml(c.role)}</span>
-
-        </div>
-
-        <div style="${T.title};margin-bottom:2px;">${escHtml(c.name)}</div>
-
-        <div style="${T.bodySm};margin-bottom:8px;">${escHtml(c.title)}</div>
-
-        <div style="${T.bodySm};line-height:1.5;margin-bottom:8px;">${escHtml(c.angle)}</div>
-
-        ${linkedinBtn(c.linkedin_url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(c.name)}`)}
-
-      </div>`).join('')}
+      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
 
     </div>
 
@@ -13571,6 +13721,24 @@ function sectionOutreachPlan(D) {
               <span>${escHtml(a)}</span>
 
             </div>`).join('')}
+
+          </div>` : ''}
+
+          ${isLinkedIn && !t.actions && (t.subject || t.body) ? `
+
+          <!-- LinkedIn connection note (no actions array) -->
+
+          <div style="background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:12px 14px;">
+
+            ${t.subject ? `<div style="margin-bottom:8px;">
+
+              <span style="${T.eyebrowSmCol('var(--linkedin)')};">Note: </span>
+
+              <span style="${T.bodySm};font-style:italic;">"${escHtml(t.subject)}"</span>
+
+            </div>` : ''}
+
+            ${t.body ? `<div style="background:white;border:1px solid var(--blue-200);border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
 
           </div>` : ''}
 
@@ -13760,6 +13928,7 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
   const signals = D.intelligence_signals || [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
@@ -14017,8 +14186,6 @@ function renderSections(D) {
 
     sectionCompanySnapshot(D),
 
-    sectionSignals(D),
-
     renderPortfolioPanel(D),
 
     sectionFinancials(D),
@@ -14028,6 +14195,8 @@ function renderSections(D) {
     sectionHiring(D),
 
     sectionPartnerIntel(D),
+
+    sectionSignals(D),
 
   ].join('');
 
@@ -14086,27 +14255,27 @@ function renderSections(D) {
       <p class="section-desc">Everything you need to open the conversation — synthesized from the full audit</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
         <!-- Left: The numbers -->
-        <div style="background:linear-gradient(135deg,#0D1240 0%,#003DFF 100%);border-radius:10px;padding:20px;color:white;">
+        <div style="background:linear-gradient(135deg,var(--navy-900) 0%,var(--blue) 100%);border-radius:10px;padding:20px;color:white;">
           <div style="${T.eyebrowSmCol('rgba(255,255,255,0.55)')};margin-bottom:16px;">The Situation</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <div>
-              <div style="font-size:32px;font-weight:700;color:white;line-height:1;">${sc.overall}/10</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
+              <div style="${T.bold32};color:white;line-height:1;">${sc.overall}/10</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
             </div>
             ${sa.google_outbound_pct ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#FCA5A5;">${escHtml(sa.google_outbound_pct)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:#FCA5A5;">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
+              <div style="${T.bold22};color:var(--red-300);">${escHtml(sa.google_outbound_pct)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:var(--red-300);">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
             </div>` : ''}
             ${roi.gross_profit_impact_est ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#6EE7B7;">${escHtml(roi.gross_profit_impact_est)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
+              <div style="${T.bold22};color:var(--green-300);">${escHtml(roi.gross_profit_impact_est)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
             </div>` : ''}
           </div>
         </div>
         <!-- Right: The narrative -->
         <div style="display:flex;flex-direction:column;gap:12px;">
           ${eq.quote ? `<div style="padding:14px 16px;background:var(--blue-light);border-left:3px solid var(--blue-border);border-radius:0 var(--radius) var(--radius) 0;">
-            <div style="font-size:13px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
+            <div style="${T.italic13};color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
             <div style="${T.eyebrowSm};color:var(--blue);">${escHtml(eq.speaker)}</div>
           </div>` : ''}
           ${topCs.length ? `<div style="padding:12px 14px;background:var(--green-tint);border:1px solid var(--green-border);border-radius:var(--radius);">
@@ -14139,13 +14308,13 @@ function renderSections(D) {
       return `<div style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-left:3px solid ${sevCol};border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;">
           <div style="${T.title};flex:1;">${escHtml(f.title)}</div>
-          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
+          <span style="${T.microLabel06};color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
         </div>
         ${f.tested_query ? `<div style="${T.compact};color:var(--mid);margin-bottom:6px;font-family:var(--font-mono,'SF Mono',monospace);">Query tested: "${escHtml(f.tested_query)}"</div>` : ''}
         ${f.actual_behavior ? `<div style="${T.compact};color:var(--mid);margin-bottom:8px;">${escHtml(f.actual_behavior)}</div>` : ''}
         ${f.impact_stat ? `<div style="display:flex;align-items:baseline;gap:6px;padding:8px 10px;background:${sevBg};border:1px solid ${sevBdr};border-radius:6px;">
-          <div style="font-size:13px;font-weight:600;color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
-          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="font-size:10px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
+          <div style="${T.semi13};color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
+          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="${T.cap10};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
         </div>` : ''}
       </div>`;
     }
@@ -14161,7 +14330,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (icp.priority_to_product || []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14178,16 +14354,16 @@ function renderSections(D) {
             <div style="${T.compact};">${escHtml(p.pain||'')}</div>
             ${p.evidence ? `<div style="${T.compact};color:var(--mid);font-style:italic;margin-top:6px;">${escHtml(p.evidence.slice(0,100))}${p.evidence.length>100?'…':''}</div>` : ''}
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--blue-tint);">
             <div style="${T.eyebrowSm};color:var(--blue);margin-bottom:6px;">Algolia Product</div>
             <div style="${T.compact};font-weight:600;">${escHtml(p.product||'')}</div>
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--green-tint);">
             <div style="${T.eyebrowSm};color:var(--green);margin-bottom:6px;">Proof</div>
             ${p.proof_company && p.proof_url
-              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
+              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="${T.bold13};color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
                  <div style="${T.compact};color:var(--gray);margin-top:4px;">${escHtml(p.proof_result||'')}</div>`
               : `<div style="${T.compact};color:var(--mid);">See case studies below</div>`
             }
@@ -14205,9 +14381,9 @@ function renderSections(D) {
           </tr></thead>
           <tbody>
           ${findings.map((f,i)=>`<tr style="border-bottom:1px solid var(--border);${i%2?'background:var(--near-white);':''}">
-            <td style="padding:9px 12px;font-size:12px;font-weight:600;color:var(--gray);">${escHtml(f.title)}</td>
-            <td style="padding:9px 12px;font-size:12px;color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
-            <td style="padding:9px 12px;font-size:12px;">
+            <td style="padding:9px 12px;${T.semi12};color:var(--gray);">${escHtml(f.title)}</td>
+            <td style="padding:9px 12px;${T.cap12};color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
+            <td style="padding:9px 12px;${T.cap12};">
               ${f.algolia_case_study_url ? `<a href="${escHtml(f.algolia_case_study_url)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:600;">${escHtml(f.algolia_case_study_company)}</a>` : escHtml(f.algolia_case_study_company||'')}
               ${f.algolia_case_study_result ? `<div style="${T.compact};color:var(--green);margin-top:2px;">${escHtml(f.algolia_case_study_result)}</div>` : ''}
             </td>
@@ -14238,8 +14414,6 @@ function renderSections(D) {
 
     sectionSolutionMap(D),         // 6. How Algolia fixes it
 
-    sectionCaseStudies(D),         // 7. Proof
-
     sectionWhyNow(D),              // 8. Why now
 
   ].join('');
@@ -14250,17 +14424,15 @@ function renderSections(D) {
 
   const playHTML = [
 
-    sectionPreCallBrief(D),         // 1. Pre-call brief
+    sectionBattleCard(D),           // 1. Battle card — quick reference, the hook
 
-    sectionDiscoveryObjections(D),  // 2. Discovery questions + objection handling
+    sectionSalesPlays(D),           // 2. Sales plays — accordion with discovery Qs + objections
 
-    sectionBattleCard(D),           // 3. Battle card
+    sectionPreCallBrief(D),         // 3. Pre-call brief — cheat sheet + talk track
 
-    sectionSalesPlays(D),           // 4. Sales plays
+    sectionBuyingCommittee(D),      // 4. Buying committee + engagement phases
 
-    sectionBuyingCommittee(D),      // 5. Buying committee
-
-    sectionOutreachPlan(D),         // 6. ABX / Outreach campaign
+    sectionOutreachPlan(D),         // 5. ABX / Outreach sequence
 
     sectionSources(D),
 
@@ -14376,10 +14548,9 @@ const SECTION_STRIP_CONFIG = {
     { id: 'section-why-now',      label: 'Why Act Now',       desc: 'Timing signals' },
   ],
   play: [
-    { id: 'section-precall',          label: 'Pre-Call',      desc: 'Open lines & cheat sheet' },
-    { id: 'section-discovery',        label: 'Discovery',     desc: 'Questions + objection handling' },
     { id: 'section-battlecard',       label: 'Battle Card',   desc: 'Algolia vs current vendor' },
-    { id: 'section-plays',            label: 'Sales Plays',   desc: 'Recommended plays & angles' },
+    { id: 'section-plays',            label: 'Sales Plays',   desc: 'Plays & discovery questions' },
+    { id: 'section-precall',          label: 'Pre-Call',      desc: 'Cheat sheet & talk track' },
     { id: 'section-buying-committee', label: 'Power Map',     desc: 'Who to call and when' },
     { id: 'section-outreach',         label: 'ABX Campaign',  desc: 'Outreach sequence & contacts' },
   ],
@@ -14441,10 +14612,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15472,10 +15639,7 @@ if (document.readyState === 'loading') {
 
 </script>
 
-<!-- Grounded "chat with this audit" widget — must ship on every published report page.
-     (Previously injected post-render, which meant re-renders silently dropped it.) -->
-<script src="/chat-widget.js" defer></script>
-
+  <script src="/chat-widget.js" defer></script>
 </body>
 
 </html>
