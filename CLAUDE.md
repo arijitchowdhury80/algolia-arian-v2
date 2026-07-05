@@ -8,6 +8,9 @@ audit report. NOT the old custom-SaaS/deterministic-module build (dead), NOT per
 Execution runs on the VPS (standalone). See memory `reference-prism-means-chowmes-prism` and
 `docs/workspace/hermes-prism-integration/`.
 
+## PRISM V2 MANIFESTO (started 2026-07-04)
+A major 3-phase re-architecture plan is in progress (executioner rearchitecture, plug-and-play modules, domain-agnostic productization). **HARD RULE: all V2 research/planning documentation lives ONLY under `docs/PRISM-V2/` — never the vault, never `~/.claude/prompt-library/`, nowhere else.** See memory `project-prism-v2-manifesto-started` and `docs/PRISM-V2/`.
+
 ## THE TWO REPOS (verify by CONTENT, names currently mislead)
 This system is TWO repos. Rename to PRISM/PIP is DECIDED but PENDING execution (see memory `reference-two-repos-prism-vs-pip`):
 - **This repo** (`~/Dropbox/AI-Development/PIP`, remote `prism.git`) = the **BACKEND** = **PIP** (Prospect Intelligence Platform): `prism_platform/` FastAPI (VPS 127.0.0.1:8000), generators, workspace. Carries a DEAD `frontend/` Next app (abandoned, not deployed).

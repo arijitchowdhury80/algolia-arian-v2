@@ -485,6 +485,17 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
     (popen_fn/sleep_fn/clock_fn) so tests never spawn a real subprocess or
     sleep real wall-clock time — same DI shape as prism_platform/pipeline/self_heal.py
     in this repo."""
+    # Build the command line from the REQUESTED phase/skill/skip BEFORE anything
+    # below overwrites job["phase"] for progress-tracking. job["phase"] is reused
+    # as both "the phase the caller asked to run" (input) and "which phase the
+    # job is currently at" (runtime status, written by detect_phase() polling) —
+    # building the cmd late read the clobbered status value instead of the
+    # request, so every real (non-dry) audit sent literally "--phase starting"
+    # to run-audit.sh and was rejected by its own arg validation. Found live via
+    # the Belk acceptance test, 2026-07-03 — the dry-run path never exercises
+    # this line, which is why testing this deploy with dry:true never caught it.
+    cmd = build_audit_cmd(job)
+
     job["status"] = "running"
     job["phase"] = "starting"
     write_job(job)
@@ -505,7 +516,7 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
             rc = 0
         else:
             with open(logfile, "w") as lf:
-                proc = popen_fn(build_audit_cmd(job), stdout=lf, stderr=subprocess.STDOUT,
+                proc = popen_fn(cmd, stdout=lf, stderr=subprocess.STDOUT,
                                  cwd=EXEC_DIR)
                 job["pid"] = proc.pid
                 write_job(job)
