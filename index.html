@@ -45,6 +45,9 @@
   --teal-border: #99F6E4;
 
   --navy-900:    #0D1240;
+  --sales-ink:   #11182F;
+  --sales-band:  #EDF3FF;
+  --sales-line:  rgba(0,61,255,0.10);
   --topbar-h:    52px;
   --radius:      14px;
   --shadow:      0 2px 8px rgba(33,36,61,0.08);
@@ -74,8 +77,19 @@ a { color: var(--blue); text-decoration: none; }
 .tb-name { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
 .tb-sub  { font-size: 13px; color: rgba(255,255,255,0.45); white-space: nowrap; }
 .tb-spacer { flex: 1; }
-.tb-link { color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 600; margin-right: 6px; transition: color 0.15s; }
-.tb-link:hover { color: #fff; }
+.tb-link {
+  color: rgba(255,255,255,0.72); font-size: 13px; font-weight: 600; margin-right: 6px;
+  padding: 6px 10px; border-radius: 999px; transition: color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.tb-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.tb-link.is-active {
+  color: #fff;
+  background: rgba(122,149,255,0.22);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.16);
+}
+.tb-link[data-chapter="cassandra"].is-active {
+  background: rgba(243,179,122,0.22);
+}
 .tb-gh {
   display: flex; align-items: center; gap: 7px; padding: 6px 14px;
   background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.20);
@@ -96,12 +110,60 @@ a { color: var(--blue); text-decoration: none; }
 /* ── Layout primitives ─────────────────────────── */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 48px; }
 section { position: relative; }
+#sales-floor, #cassandra { scroll-margin-top: calc(var(--topbar-h) + 18px); }
 .band { padding: 96px 0; }
 /* bands transparent so the shared animated grid shows through - matches the audit pages */
 .band--hero       { padding: 132px 0 104px; background: transparent; }
-.band--who        { background: transparent; }
-.band--produce    { background: transparent; }
-.band--how        { background: transparent; }
+.band--who,
+.band--produce,
+.band--how {
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.50) 0%, rgba(255,255,255,0.12) 36%, rgba(255,255,255,0.40) 100%),
+    linear-gradient(180deg, #F3F7FF 0%, #EAF1FF 52%, #F7FAFF 100%);
+}
+.band--who { padding-top: 112px; }
+.band--how { padding-bottom: 116px; }
+.band--who::before,
+.band--produce::before,
+.band--how::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--sales-line) 1px, transparent 1px),
+    linear-gradient(0deg, var(--sales-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  opacity: 0.42;
+}
+.band--who::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 54px;
+  width: min(1120px, calc(100% - 56px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(0,61,255,0.22), transparent);
+  pointer-events: none;
+}
+.band--how::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(1180px, calc(100% - 56px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(17,24,47,0.18), transparent);
+  pointer-events: none;
+}
+.band--who .wrap,
+.band--produce .wrap,
+.band--how .wrap { position: relative; z-index: 1; }
+.band--who .s-title,
+.band--produce .s-title,
+.band--how .s-title { color: var(--sales-ink); }
 .band--skills     { background: transparent; }
 .band--close      { background: transparent; padding: 88px 0; }
 .band--tour       { background: transparent; }
@@ -204,7 +266,7 @@ section { position: relative; }
 }
 .role-inner { position: relative; z-index: 1; height: 100%;
   background: #fff; border: 1px solid var(--border); border-radius: inherit;
-  padding: 32px 28px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow 0.2s; }
+  padding: 32px 28px; box-shadow: 0 18px 45px rgba(17,24,47,0.08); overflow: hidden; transition: box-shadow 0.2s, border-color 0.2s; }
 .role-card:hover .role-inner { box-shadow: var(--shadow-lg); }
 .role-inner > .role-ic, .role-inner > h3, .role-inner > p { position: relative; z-index: 3; }
 .role-card:hover .b-spot, .role-card:hover .b-glow { opacity: 1; }
@@ -234,7 +296,7 @@ section { position: relative; }
 .deliv:hover { transform: translateY(-6px); }
 .deliv::before {
   content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit;
-  background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); transition: box-shadow 0.2s;
+  background: #fff; border: 1px solid rgba(199,210,254,0.72); box-shadow: 0 18px 45px rgba(17,24,47,0.08); transition: box-shadow 0.2s;
 }
 .deliv:hover::before { box-shadow: var(--shadow-lg); }
 .deliv-grid > .deliv:first-child { grid-column: span 2; }
@@ -267,8 +329,8 @@ section { position: relative; }
 /* ── HOW - tools ───────────────────────────────── */
 .howbar {
   display: flex; align-items: center; gap: 14px; margin-top: 40px; margin-bottom: 6px;
-  background: #fff; border: 1px solid var(--green-border); border-radius: 12px;
-  padding: 18px 24px; box-shadow: var(--shadow);
+  background: rgba(255,255,255,0.88); border: 1px solid rgba(187,247,208,0.90); border-radius: 12px;
+  padding: 18px 24px; box-shadow: 0 18px 45px rgba(17,24,47,0.08);
 }
 .howbar .hb-ic { width: 40px; height: 40px; border-radius: 10px; background: var(--green-tint); color: var(--green);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -299,7 +361,7 @@ section { position: relative; }
 .kbadge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--green); background: var(--green-tint); border: 1px solid var(--green-border); border-radius: 5px; padding: 2px 8px; margin-left: 8px; vertical-align: middle; }
 .ops-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 38px; }
-.op-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 22px; box-shadow: var(--shadow); }
+.op-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(199,210,254,0.72); border-radius: var(--radius); padding: 24px 22px; box-shadow: 0 18px 45px rgba(17,24,47,0.08); }
 .op-card .op-step { font-size: 12px; font-weight: 800; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
 .op-card h3 { font-size: 20px; font-weight: 750; margin-bottom: 8px; color: var(--ink); }
 .op-card p { font-size: 14px; line-height: 1.55; color: var(--mid); font-weight: 300; }
@@ -375,6 +437,9 @@ section { position: relative; }
 .cass-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,0.16); }
 .cass-profile h3 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
 .cass-profile p { font-size: 15.5px; line-height: 1.68; color: rgba(255,255,255,0.74); font-weight: 300; }
+.cass-live-card .cass-portrait { aspect-ratio: 16 / 10; }
+.cass-live-card .cla-veil { border-top: 1px solid rgba(255,255,255,0.12); }
+.cass-live-card .cla-stage { min-height: 280px; }
 .cass-panel { display: flex; flex-direction: column; gap: 16px; }
 .hcard {
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
@@ -444,6 +509,10 @@ section { position: relative; }
   .ops-grid { grid-template-columns: 1fr; }
   .tool { grid-template-columns: 1fr; gap: 14px; }
   .tb-sub { display: none; }
+  .tb-div { display: none; }
+  .tb-logo svg { width: 66px; height: auto; }
+  .tb-link { font-size: 11px; padding: 5px 7px; margin-right: 0; }
+  .tb-link[href="/reports/"], .tb-auth { display: none; }
   .tb-gh { width: 44px; min-width: 44px; height: 38px; padding: 0; justify-content: center; gap: 0; font-size: 0; }
   .tb-gh svg { width: 17px; height: 17px; }
   .flow { flex-direction: column; }
@@ -468,6 +537,8 @@ section { position: relative; }
   <span class="tb-div"></span>
   <span class="tb-sub">AI Prospect Intelligence &amp; Search-Audit Engine</span>
   <span class="tb-spacer"></span>
+  <a class="tb-link" href="#sales-floor" data-chapter="sales">Sales floor</a>
+  <a class="tb-link" href="#cassandra" data-chapter="cassandra">Cassandra</a>
   <a class="tb-link" href="/reports/">Reports</a>
   <span id="prism-auth" class="tb-auth"><a class="tb-link" href="/sign-in">Sign in</a></span>
   <a class="tb-gh" href="https://github.com/arijitchowdhury80/prism" target="_blank" rel="noopener" aria-label="View PRISM on GitHub">
@@ -549,7 +620,7 @@ section { position: relative; }
 </section>
 
 <!-- ═══ WHO IT'S FOR ═══ -->
-<section class="band band--who">
+<section class="band band--who" id="sales-floor">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Who it's for</span>
@@ -720,7 +791,7 @@ section { position: relative; }
 </section>
 
 <!-- ═══ CASSANDRA ═══ -->
-<section class="cassandra">
+<section class="cassandra" id="cassandra">
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">The guide</span>
@@ -729,14 +800,21 @@ section { position: relative; }
     </div>
 
     <div class="cassandra-grid">
-      <div class="cass-profile reveal">
-        <div class="cass-portrait">
+      <div class="cass-profile cass-live-card reveal" data-cassandra-live data-avatar-slug="landing">
+        <div class="cass-portrait cla-stage">
           <img src="/assets/cass-candidates/cass-0.png" srcset="/assets/cassandra.png 256w, /assets/cass-candidates/cass-0.png 1024w" sizes="(max-width: 1080px) 100vw, 430px" alt="Cassandra, the operator behind PRISM" loading="lazy">
+          <div class="cla-iframe-slot" aria-live="polite"></div>
+          <div class="cla-veil"><b>Cassandra Live</b><span>LiveAvatar sandbox first. Audit-grounded answers remain the product path.</span></div>
         </div>
         <div class="cass-profile-copy">
-          <span class="cass-status">Live operator</span>
+          <span class="cass-status">Interactive operator</span>
           <h3>Cassandra</h3>
-          <p>The human access layer for PRISM: direct, grounded, and allergic to guesses.</p>
+          <p>Talk to the face of PRISM. The first loop uses an official LiveAvatar sample; the product loop keeps Cassandra grounded in the audit.</p>
+          <div class="cla-actions">
+            <button class="cla-start" type="button">Start live avatar</button>
+            <button class="cla-stop" type="button" hidden>Stop</button>
+            <span class="cla-status-text">LiveAvatar is enabled when the server key is configured.</span>
+          </div>
         </div>
       </div>
       <div class="cass-panel">
@@ -803,6 +881,48 @@ section { position: relative; }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+/* ── Topbar chapter map ── */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.tb-link[data-chapter]'));
+  if (!links.length) return;
+  var salesSections = Array.prototype.slice.call(document.querySelectorAll('.band--who, .band--produce, .band--how'));
+  var cassandra = document.getElementById('cassandra');
+  var sectionMap = salesSections.concat(cassandra ? [cassandra] : []);
+  var lockUntil = 0;
+  function setActive(chapter) {
+    links.forEach(function (link) {
+      link.classList.toggle('is-active', link.getAttribute('data-chapter') === chapter);
+    });
+  }
+  function updateActive() {
+    if (Date.now() < lockUntil) return;
+    var marker = window.innerHeight * 0.36;
+    var active = "";
+    sectionMap.forEach(function (section) {
+      if (!section) return;
+      var rect = section.getBoundingClientRect();
+      if (rect.top <= marker && rect.bottom >= marker) {
+        active = section.id === 'cassandra' ? 'cassandra' : 'sales';
+      }
+    });
+    setActive(active);
+  }
+  window.addEventListener('scroll', updateActive, { passive: true });
+  window.addEventListener('resize', updateActive);
+  window.addEventListener('hashchange', function () {
+    if (window.location.hash === '#sales-floor') setActive('sales');
+    else if (window.location.hash === '#cassandra') setActive('cassandra');
+    else updateActive();
+  });
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      lockUntil = Date.now() + 900;
+      setActive(link.getAttribute('data-chapter'));
+    });
+  });
+  updateActive();
 })();
 
 /* ── Reveal-on-scroll ── */
@@ -959,6 +1079,7 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
   start();
 })();
 </script>
+<script src="/cassandra-live.js" defer></script>
 
 <!-- Clerk auth control: "Sign in" when logged out, user menu + "Sign out" when logged in -->
 <script async crossorigin="anonymous"

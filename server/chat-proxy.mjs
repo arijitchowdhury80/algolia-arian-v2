@@ -19,6 +19,7 @@
 import http from "node:http";
 import path from "node:path";
 import { readFile, stat } from "node:fs/promises";
+import { createLiveAvatarEmbed } from "../api/avatar/_liveavatar.js";
 
 const HERMES_API_URL = process.env.HERMES_API_URL;
 const HERMES_API_KEY = process.env.HERMES_API_KEY;
@@ -251,6 +252,19 @@ async function handleChat(req, res) {
   res.end();
 }
 
+async function handleAvatarSession(req, res) {
+  const body = (await readBody(req)) || {};
+  const slug = typeof body.slug === "string" ? body.slug : "landing";
+  const payload = await createLiveAvatarEmbed({ env: process.env, slug });
+  res.setHeader("Cache-Control", "no-store");
+  return sendJson(res, 200, payload);
+}
+
+function handleAvatarStop(res) {
+  res.setHeader("Cache-Control", "no-store");
+  return sendJson(res, 200, { ok: true, mode: "embed" });
+}
+
 const server = http.createServer(async (req, res) => {
   const url = (req.url || "").split("?")[0];
   if (req.method === "GET" && url === "/healthz") {
@@ -279,6 +293,17 @@ const server = http.createServer(async (req, res) => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
       else res.end();
     });
+  }
+  if (req.method === "POST" && url === "/api/avatar/session") {
+    return handleAvatarSession(req, res).catch(() => sendJson(res, 200, {
+      configured: false,
+      reason: "liveavatar_unavailable",
+      mode: "embed",
+      sandbox: true,
+    }));
+  }
+  if (req.method === "POST" && url === "/api/avatar/stop") {
+    return handleAvatarStop(res);
   }
   if (req.method === "GET" && url === "/sign-in") {
     res.statusCode = 200;

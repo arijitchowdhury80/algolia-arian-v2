@@ -15,8 +15,9 @@
 (function () {
   "use strict";
 
-  var slug = (location.pathname.split("/").filter(Boolean)[0] || "").toLowerCase();
-  if (!slug || slug === "index.html") return;
+  var parts = location.pathname.split("/").filter(Boolean);
+  var slug = (parts[0] === "reports" ? parts[1] : parts[0] || "").toLowerCase();
+  if (!slug || slug === "index.html" || slug === "reports") return;
 
   var sid;
   try {
@@ -99,6 +100,11 @@
     '<div id="prism-chat-grip" title="Drag to resize"></div>' +
     '<div id="prism-chat-head"><img class="av" src="/assets/cassandra.png?v=20260701" alt="Cassandra" /><div><div class="t">Cassandra</div><div class="s">Grounded in the ' + escapeHtml(company) + " audit</div></div>" +
     '<div id="prism-chat-tools"><button id="prism-chat-dock" aria-label="dock side" title="Dock left/right">⇄</button><button id="prism-chat-exp" aria-label="expand" title="Expand">⤢</button><button id="prism-chat-x" aria-label="close" title="Close">×</button></div></div>' +
+    '<div id="prism-chat-live" class="cla-chat" data-cassandra-live data-avatar-slug="' + escapeHtml(slug) + '">' +
+      '<div class="cla-stage"><img src="/assets/cassandra.png?v=20260701" alt="Cassandra LiveAvatar fallback" />' +
+      '<div class="cla-iframe-slot" aria-live="polite"></div><div class="cla-veil"><b>Live Avatar</b><span>Talk to Cassandra in this audit context.</span></div></div>' +
+      '<div class="cla-actions"><button class="cla-start" type="button">Start live avatar</button><button class="cla-stop" type="button" hidden>Stop</button><span class="cla-status-text">LiveAvatar starts here when configured.</span></div>' +
+    '</div>' +
     '<div id="prism-chat-log"></div>' +
     '<form id="prism-chat-form"><textarea id="prism-chat-in" rows="1" placeholder="Ask anything about this audit…"></textarea><button id="prism-chat-send" type="submit">Send</button></form>';
   document.body.appendChild(btn);
@@ -130,6 +136,7 @@
     if (localStorage.getItem("prism_chat_side") === "left") panel.classList.add("pc-left");
   } catch (e) {}
   setWidth(normalW, false);
+  ensureLiveAvatarScript();
 
   btn.onclick = function () {
     panel.classList.add("pc-open");
@@ -154,6 +161,16 @@
     root.classList.toggle("pc-chat-left", left && panel.classList.contains("pc-open"));
     try { localStorage.setItem("prism_chat_side", left ? "left" : "right"); } catch (e) {}
   };
+
+  function ensureLiveAvatarScript() {
+    if (window.PrismCassandraLive) { window.PrismCassandraLive.mountAll(); return; }
+    if (document.querySelector('script[src="/cassandra-live.js"]')) return;
+    var script = document.createElement("script");
+    script.src = "/cassandra-live.js";
+    script.defer = true;
+    script.onload = function () { if (window.PrismCassandraLive) window.PrismCassandraLive.mountAll(); };
+    document.head.appendChild(script);
+  }
 
   // drag-to-resize via the inner-edge grip; content reflow follows the live width var
   grip.addEventListener("pointerdown", function (e) {
