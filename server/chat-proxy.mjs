@@ -281,7 +281,31 @@ async function serveStatic(res, urlPath) {
     const data = await readFile(file);
     res.statusCode = 200;
     res.setHeader("Content-Type", CONTENT_TYPES[path.extname(file).toLowerCase()] || "application/octet-stream");
-    res.end(data);
+    let out = data;
+    // DB-backed auto-render: inject fresh audit_data from Postgres into report shells so
+    // a DB update reflects live with no re-render. Fallback (try/catch) = serve static as-is.
+    const m = rel.match(/^\/?([a-z0-9][a-z0-9-]*)\/index\.html$/i);
+    if (m && file.endsWith("index.html") && data.includes("window.AUDIT_DATA")) {
+      try {
+        const r = await fetch(`http://127.0.0.1:8000/api/v1/audits/by-slug/${m[1]}/data`, { signal: AbortSignal.timeout(2500) });
+        if (r.ok) {
+          const j = await r.json();
+          if (j && j.audit_data) {
+            let html = data.toString("utf8");
+            const a = html.indexOf("window.AUDIT_DATA");
+            const end = a !== -1 ? html.indexOf("</script>", a) : -1;
+            if (end !== -1) {
+              const payload = JSON.stringify(j.audit_data).replace(/<\//g, "<\/");
+              const inj = `
+<script>/*DB-live*/window.AUDIT_DATA = ${payload};</script>`;
+              html = html.slice(0, end + 9) + inj + html.slice(end + 9);
+              out = Buffer.from(html, "utf8");
+            }
+          }
+        }
+      } catch { /* fallback: serve committed static as-is */ }
+    }
+    res.end(out);
   } catch {
     res.statusCode = 404;
     res.setHeader("Content-Type", "text/html; charset=utf-8");
