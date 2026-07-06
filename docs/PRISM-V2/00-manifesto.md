@@ -22,8 +22,8 @@ Three phases, each a re-architecture at a different level, for a different objec
 ## Phase 1 — Executioner re-architecture
 
 ### The problem
-- Hermes as executioner isn't working as needed. Root cause unknown even after investigation.
-- Hermes is 3rd-party, unchecked, self-hosted-agent code — blocks PRISM from ever running inside Algolia's VPN/corporate IT. Must be removed entirely.
+- Hermes as executioner isn't working as needed. ~~Root cause unknown even after investigation.~~ **CORRECTED 2026-07-05** — see `04-open-gaps-before-fable5-handoff.md` item #2: two functional bugs were in fact root-caused and patched 2026-07-01; the deeper issue is architectural (Hermes runs the whole audit as one monolithic headless-claude call, no per-skill entry points/gating/self-heal), not an undiagnosed mystery.
+- Hermes is 3rd-party, unchecked, self-hosted-agent code — blocks PRISM from ever running inside Algolia's VPN/corporate IT. Must be removed entirely. **Clarified 2026-07-05:** Hermes = Hermes Agent by Nous Research, a named third-party community agent runtime — the blocker tracks to being non-Anthropic vendor code, not to self-hosting per se. See `04-open-gaps-before-fable5-handoff.md` item #2 for the implication on remaining executioner candidates.
 
 ### What removing Hermes leaves open
 Three roles need a new home:
@@ -78,6 +78,15 @@ Nothing designed yet — architecture, module boundaries, and agent interfaces a
 Vision, captured verbatim:
 - Extends Phase 2's plug-and-play architecture to be organization-agnostic and domain-agnostic, making PRISM itself sellable.
 - Illustrative scenario: build "YourCMS-PRISM" for a CMS company — swap out the Algolia-search-audit module and Algolia-specific sales-signal angles for that company's own business logic; PRISM becomes theirs.
+
+### Restated + expanded, 2026-07-06 (Arijit, verbatim intent — record before further design)
+
+- **Product framing:** an Enterprise Prospect Intelligence Platform. Working name riff only, not a decision: "PIP" / "EPI." Core metaphor: "PRISM domain — intelligence comes in, intelligence comes out."
+- **Modularity restated:** modules brought in / taken out per business, business-specific domain logic is pluggable — Algolia gets a search-experience audit, a CMS company gets CMS-relevant logic, a commerce company gets commerce-relevant logic. Same shape as the existing "YourCMS-PRISM" example above, now with a second concrete example (commerce) and framed as the core product thesis, not a speculative furthest-out case.
+- **Role-based consumption, as stated this session: "three audiences" — marketers, account executives, business development reps.** ⚠️ **Conflicts with the already-locked IA decision** (`05-role-driven-ia.md`, SESSION.md 2026-07-06: "4 role-doors — AE/BDR/Sales Leader/Marketer"). Not silently reconciled — Arijit needs to confirm whether Sales Leader is dropped from V2 scope or was just an omission in speech. Open question, tracked in `04-open-gaps-before-fable5-handoff.md`.
+- **Chat is the operator, not just a Q&A layer** — "chat is the sort of guider and the operator, and then we will deliver the outputs as well." Reinforces the Chat agent design in `04-open-gaps...md` gap #8, but elevates its UX role: chat drives the interaction, execution, and status-check surface, not a bolt-on search box.
+- **Design-quality bar:** explicit instruction to reuse PRISM's own live VPS UI standards (prism-hub buttons, animations, templates already shipped) as the quality bar for any V2 screens — reuse-first, not a fresh design-system invention.
+- **The ask:** a full engineering/execution plan for a "V2" covering chat, interactions, execution, status checks, channels, and all role-based screens, intended to be handed to Fable 5 to build. Timeline stated: hopes for a built V2 by morning. **Flagged as unrealistic tonight given open state — see SESSION.md 2026-07-06 for the direct pushback and the gaps that block a responsible handoff.**
 - Business framing: this could become a new company/product for Arijit — PRISM repositioned as a **"Prospect Research Operating System,"** a category Arijit believes doesn't exist yet.
 
 Not designed — flagged as needing real thought/research/discussion once Phase 2 has more shape.
@@ -88,7 +97,7 @@ Not designed — flagged as needing real thought/research/discussion once Phase 
 
 - No fabricated feasibility conclusions. Where research is inconclusive, say so plainly.
 - Phase 2 and 3 stay at brainstorm/capture level until Phase 1's executioner question is resolved — don't design ahead of the foundation.
-- **HARD RULE (Arijit, 2026-07-04): all V2 research/planning documentation lives ONLY under `docs/PRISM-V2/` in this repo — never the vault, never `~/.claude/prompt-library/`, nowhere else.** An earlier draft mirrored a copy into the vault before this rule was given; that mirror has been removed. Findings that deserve durable cross-project reuse (e.g. Agent Studio capabilities, the Algolia API reference) still belong in the vault under their own topic (e.g. `Projects/algolia-central2/`) — but PRISM V2's own planning narrative does not duplicate there.
+- **RULE UPDATED (Arijit, 2026-07-05): this repo (`docs/PRISM-V2/`) stays canonical/live-edited. Vault mirror now ALSO required** at `Projects/PRISM/wiki/V2/` (Arijit's explicit call — "record everything in the vault so we don't lose our decisions") — re-copy there after each working session, never edit the vault copy directly. Supersedes the original 2026-07-04 PIP-only rule, kept here for provenance: ~~all V2 research/planning documentation lives ONLY under `docs/PRISM-V2/` in this repo — never the vault, never `~/.claude/prompt-library/`, nowhere else.~~ Findings with durable cross-project reuse value (Agent Studio capabilities, the Algolia API reference) still belong in the vault under their own topic too (e.g. `Projects/algolia-central2/`).
 
 ---
 

@@ -1,8 +1,13 @@
 # PRISM V2 — Status Pointer
 
-Read this first when resuming. Full plan: `00-manifesto.md`. Algolia-as-DB findings: `02-algolia-as-database.md`.
+Read this first when resuming. Full plan: `00-manifesto.md`. Algolia-as-DB findings: `02-algolia-as-database.md`. Claude Agent SDK executioner findings (live-probed 2026-07-05): `03-executioner-claude-agent-sdk-findings.md`.
 
-## Where things stand (2026-07-04)
+## Where things stand (2026-07-05)
+
+- **Executioner decision is now a live-evidence 5-way, not a 4-way guess.** `03-executioner-claude-agent-sdk-findings.md` live-probed the actual installed `claude-agent-sdk` package (v0.2.110, source-inspected, not recalled) against every non-negotiable executioner requirement from Phase 1. Verdict: real primitives exist for multi-step control, subagent dispatch, pluggable state persistence (`SessionStore`, Postgres-backable), status tracking, and mandatory gating (hooks with `decision: "block"`) — the one real gap is durable/automatic retry, which is Temporal's strength. Also surfaced a **5th candidate this session**: the Managed Agents API (`/v1/agents` + `/v1/sessions`), Anthropic-hosted rather than self-hosted, with native multiagent coordination + Outcomes (rubric-graded gate) + memory stores — found via docs only, NOT yet live-probed.
+- **Not yet done:** an actual end-to-end proof-of-concept (needs a real `ANTHROPIC_API_KEY`, not available this session), and the same live-probe treatment for the Managed Agents API. The ADR is still unwritten — this is evidence, not the decision.
+
+## Where things stood (2026-07-04, prior)
 
 - Manifesto written, all 3 phases captured. **HARD RULE: this lives ONLY here, under `docs/PRISM-V2/` — not the vault.** An earlier vault mirror (`Projects/PRISM/wiki/2026-07-04-v2-manifesto.md`) was created before this rule existed and has been removed; do not recreate it.
 - Phase 1 research:
