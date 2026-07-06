@@ -11,6 +11,8 @@ PRISM today runs on Hermes as the "executioner" (the process that runs audits, t
 
 So Hermes needs to come out entirely. That opens 3 questions this manifesto tracks: who runs the system (executioner), who provides the chat experience, and what holds the data. The proposed direction is to rebuild on Algolia's own tech for all of it — partly for technical fit, partly because a PRISM built on Algolia is a much easier internal sell to Algolia's own leadership.
 
+> **⚠️ DECISION UPDATE — 2026-07-06 (supersedes the "rebuild on Algolia tech" direction above).** Arijit chose **standalone product first**: V2 optimizes to become a sellable, domain-agnostic Prospect Research Operating System, with **Algolia as merely the first domain module**. Because the product is no longer built *for* Algolia's internal environment, the "easier internal sell" rationale no longer governs the architecture. The stack is now locked **best-of-breed: Postgres+pgvector (data/RAG) + Claude Agent SDK (executioner)** — NOT Algolia-as-DB, NOT Agent Studio-as-executioner. The Algolia-as-database and Agent-Studio-as-chat research below remains useful as *optional Algolia-domain-connector* context, but is no longer the core plan. See `_status.md` (2026-07-06 block) and `06-v2-execution-map.md`.
+
 Three phases, each a re-architecture at a different level, for a different objective:
 
 - **Phase 1** — replace the executioner/chat/data-backend stack (Hermes → Algolia tech + something for orchestration). Most concrete, most urgent, has open technical questions with real research attached.
