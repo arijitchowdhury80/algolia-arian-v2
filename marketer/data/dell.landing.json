@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "company": "Dell Technologies",
+    "slug": "dell",
+    "domain": "dell.com",
+    "title": "Algolia for Dell — Search that matches your scale",
+    "description": "A personalized look at what Algolia AI Search could do for Dell.com, grounded in PRISM's audit of dell.com search.",
+    "audit_path": "/reports/dell/"
+  },
+  "hero": {
+    "eyebrow": "Technology Hardware &middot; B2B/B2C Ecommerce",
+    "prefix": "A",
+    "amount": "$186M",
+    "suffix": "revenue opportunity inside dell.com",
+    "sub": "PRISM audited dell.com's live search experience. Here's what closing the gap with Algolia AI Search could be worth to Dell &mdash; and what's holding it back today.",
+    "primary_cta_label": "See the full audit",
+    "primary_cta_href": "/reports/dell/",
+    "secondary_cta_label": "Talk to your rep",
+    "rep_mailto": "mailto:sales@algolia.com?subject=Dell%20Search%20Opportunity",
+    "fact_rows": [
+      { "label": "Revenue (FY2025)", "value": "$95.6B total" },
+      { "label": "Direct online (dell.com)", "value": "~$3.2B" },
+      { "label": "Employees", "value": "~108,000" },
+      { "label": "Model", "value": "Direct + B2B Premier + Channel" }
+    ]
+  },
+  "proof": {
+    "eyebrow": "Proven at your scale",
+    "heading": "Three companies with Dell's exact problem, solved",
+    "subheading": "Large B2B catalogs, global reach, complex portals &mdash; already running on Algolia.",
+    "cards": [
+      {
+        "company": "Hager Group",
+        "vertical": "B2B electrical manufacturing",
+        "metric": "100+ countries",
+        "result": "Improved B2B product discovery at enterprise scale.",
+        "relevance": "Same use case as Dell's Premier B2B portal.",
+        "link_href": "https://resources.algolia.com/customer-stories/casestudy-hager",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Swedol",
+        "vertical": "B2B industrial tools",
+        "metric": "+22% conversion &middot; +26% time on site",
+        "result": "Personalized B2B search across the Nordic region.",
+        "relevance": "Custom catalog portal &mdash; mirrors Dell Premier.",
+        "link_href": "https://www.algolia.com/customers/swedol",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Damstahl",
+        "vertical": "B2B industrial commerce",
+        "metric": "18,000+ SKUs",
+        "result": "Reduced product-finding friction in a large B2B catalog.",
+        "relevance": "Large catalog &mdash; mirrors Dell's 50,000+ product range.",
+        "link_href": "https://resources.algolia.com/customer-stories/casestudy-damstahl",
+        "link_label": "Read their story"
+      }
+    ]
+  },
+  "roi": {
+    "eyebrow": "Sized for Dell",
+    "heading": "What closing the search gap is worth",
+    "subheading": "Three scenarios, built from Dell's own public revenue figures &mdash; not industry averages.",
+    "cards": [
+      {
+        "tier": "conservative",
+        "label": "Conservative",
+        "amount": "$64M",
+        "desc": "Conversion lift + bounce reduction on direct ecommerce only.",
+        "badge": null,
+        "is_placeholder": false
+      },
+      {
+        "tier": "moderate",
+        "label": "Moderate",
+        "amount": "$186M",
+        "desc": "Full suite: conversion + bounce + no-results recovery + long-tail discovery.",
+        "badge": "Most likely",
+        "is_placeholder": false
+      },
+      {
+        "tier": "aggressive",
+        "label": "Best case",
+        "amount": "$308M+",
+        "desc": "Full suite + AOV lift + personalization. Requires deal-team validation.",
+        "badge": null,
+        "is_placeholder": false
+      }
+    ],
+    "note": "Source: PRISM audit, Dell Technologies FY2025 investor relations (2026-02-27) + ecommercedb.com estimate (2026-03-26). Best-case scenario needs AE sizing before use in a proposal."
+  },
+  "findings": {
+    "eyebrow": "What PRISM found",
+    "heading": "Four gaps in dell.com search today",
+    "subheading": "Observed directly on dell.com, not inferred.",
+    "items": [
+      {
+        "reverse": false,
+        "visual_line1": "Personalization",
+        "visual_line2": "— Entirely Absent",
+        "tag": "Personalization",
+        "title": "Every visitor sees the same results",
+        "body": "No signal from browsing history, account tier, or B2B vs. B2C context shapes what dell.com search shows. Algolia AI Search personalizes ranking per shopper without extra engineering lift."
+      },
+      {
+        "reverse": true,
+        "visual_line1": "NLP / Conversational Search",
+        "visual_line2": "— Zero Semantic Resolution",
+        "tag": "Search understanding",
+        "title": "Natural-language queries don't resolve",
+        "body": "Shoppers searching in plain language (\"laptop for video editing under $1500\") get literal keyword matching, not intent. Algolia's Neural Search understands intent without a rules engine to maintain."
+      },
+      {
+        "reverse": false,
+        "visual_line1": "SAYT",
+        "visual_line2": "— Text-Only, No Images",
+        "tag": "Search-as-you-type",
+        "title": "Autocomplete has no visual guidance",
+        "body": "No product images, categories, or merchandised suggestions appear while typing &mdash; a missed moment to guide Dell's complex catalog. Rich SAYT cuts time-to-product materially in comparable B2B catalogs."
+      },
+      {
+        "reverse": true,
+        "visual_line1": "No-Results Page",
+        "visual_line2": "— Dead-End Recovery",
+        "tag": "Zero results",
+        "title": "A dead end, not a redirect",
+        "body": "Zero-result searches don't recover the shopper &mdash; no typo correction, no related-category fallback. Every dead-end is a shopper Dell already paid to acquire, walking away."
+      }
+    ]
+  },
+  "capabilities": {
+    "eyebrow": "Built for continuous optimization",
+    "heading": "The platform behind the fix",
+    "sub": "Not a one-time integration &mdash; a system Dell's team keeps improving."
+  },
+  "cta_band": {
+    "heading": "Let's size this properly for Dell",
+    "sub": "PRISM's audit is the starting point. Your Algolia rep can turn this into a scoped proposal.",
+    "button_label": "Talk to your rep"
+  },
+  "footer": {
+    "rep_initial": "?",
+    "rep_stub_text": "No rep assigned yet in PRISM"
+  }
+}

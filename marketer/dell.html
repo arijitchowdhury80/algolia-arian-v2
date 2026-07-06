@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algolia for Dell — Search that matches your scale</title>
+<meta name="description" content="A personalized look at what Algolia AI Search could do for Dell.com, grounded in PRISM's audit of dell.com search.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #003DFF;
+    --color-accent: #5468FF;
+    --color-text: #23263B;
+    --color-muted: #6B7280;
+    --color-bg: #F5F5F7;
+    --color-border: #E5E7EB;
+    --color-white: #FFFFFF;
+    --topbar-bg: #23263B;
+    --color-positive: #059669;
+    --color-positive-tint: #F0FDF4;
+    --color-positive-border: #BBF7D0;
+    --color-moderate: #D97706;
+    --color-moderate-tint: #FFFBEB;
+    --color-moderate-border: #FDE68A;
+    --color-teal: #0891B2;
+    --color-violet: #7C3AED;
+    --blue-tint: #EEF2FF;
+    --blue-border: #C7D2FE;
+    --blue-light: #F8F9FF;
+    --violet-tint: #F5F3FF;
+    --violet-border: #DDD6FE;
+    --font-family: 'Sora', sans-serif;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+    --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
+    --maxw: 1180px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-white);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-weight: 300; letter-spacing: -0.5px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--color-primary);
+  }
+  .eyebrow.on-dark { color: #9DB4FF; }
+
+  /* ── Utility / Nav ── */
+  .util-bar {
+    background: var(--topbar-bg); color: rgba(255,255,255,0.75);
+    font-size: 13px; padding: 8px 24px; text-align: center;
+  }
+  .util-bar a { color: #fff; font-weight: 600; }
+  nav.main-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: var(--maxw); margin: 0 auto;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; }
+  .brand svg { flex-shrink: 0; }
+  .nav-actions { display: flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 14px;
+    min-height: 44px; border: 2px solid transparent; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn:hover { opacity: 0.88; }
+  .btn-primary { background: var(--color-primary); color: #fff; }
+  .btn-outline { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .btn-outline.light { border-color: var(--color-border); color: var(--color-text); }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(135deg, #0D1240 0%, #21243D 45%, #001A8A 100%);
+    color: #fff; padding: 72px 24px 88px;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: 48px; line-height: 1.12; margin: 14px 0 18px; font-weight: 300; }
+  .hero h1 strong { font-weight: 600; color: #9DB4FF; }
+  .hero p.sub { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 480px; margin-bottom: 30px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-fact-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px; padding: 28px; backdrop-filter: blur(6px);
+  }
+  .hero-fact-card .fact-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+  .hero-fact-card .fact-row:last-child { border-bottom: none; }
+  .hero-fact-card .fact-row span:first-child { color: rgba(255,255,255,0.55); }
+  .hero-fact-card .fact-row span:last-child { font-weight: 600; }
+
+  /* ── Section shell ── */
+  section { padding: 88px 24px; }
+  section.tight { padding: 64px 24px; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: 34px; color: var(--color-text); margin-bottom: 12px; }
+  .section-head p { color: var(--color-muted); font-size: 16px; }
+  .bg-tint { background: var(--color-bg); }
+  .bg-dark { background: var(--topbar-bg); color: #fff; }
+  .bg-dark .section-head p { color: rgba(255,255,255,0.65); }
+
+  /* ── Proof cards (peer case studies) ── */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--maxw); margin: 0 auto; }
+  .proof-card {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 28px; box-shadow: var(--shadow);
+  }
+  .proof-card .company { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .proof-card .vertical { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
+  .proof-card .metric { font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 8px; }
+  .proof-card .result { font-size: 14px; color: var(--color-text); margin-bottom: 14px; }
+  .proof-card .relevance { font-size: 13px; color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 12px; }
+  .proof-card a.case-link { font-size: 13px; font-weight: 600; color: var(--color-primary); margin-top: 14px; display: inline-block; }
+
+  /* ── ROI scenario row ── */
+  .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--maxw); margin: 0 auto; }
+  .roi-card { border-radius: 16px; padding: 32px 28px; }
+  .roi-card.conservative { background: var(--blue-light); border: 1px solid var(--blue-border); }
+  .roi-card.moderate { background: var(--violet-tint); border: 2px solid var(--color-violet); box-shadow: var(--shadow-lg); position: relative; }
+  .roi-card.aggressive { background: var(--color-moderate-tint); border: 1px solid var(--color-moderate-border); }
+  .roi-card.placeholder { background: var(--color-bg); border: 1px dashed var(--color-border); }
+  .roi-card .label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); }
+  .roi-card.moderate .label { color: var(--color-violet); }
+  .roi-card .amount { font-size: 40px; font-weight: 600; margin: 10px 0; }
+  .roi-card.placeholder .amount { font-size: 22px; color: var(--color-muted); }
+  .roi-card .desc { font-size: 14px; color: var(--color-muted); }
+  .roi-card .badge {
+    position: absolute; top: -12px; right: 20px; background: var(--color-violet); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+  }
+  .roi-note { text-align: center; font-size: 13px; color: var(--color-muted); max-width: var(--maxw); margin: 24px auto 0; }
+
+  /* ── Alternating findings ── */
+  .finding-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
+  .finding-row.reverse .finding-visual { order: 2; }
+  .finding-visual {
+    background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 16px;
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    color: var(--color-muted); font-size: 13px; font-weight: 600; text-align: center; padding: 20px;
+  }
+  .finding-tag {
+    display: inline-block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    background: var(--color-moderate-tint); color: var(--color-moderate); border: 1px solid var(--color-moderate-border);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .finding-copy h3 { font-size: 26px; color: var(--color-text); margin-bottom: 12px; font-weight: 400; }
+  .finding-copy p { color: var(--color-muted); font-size: 15px; margin-bottom: 16px; }
+
+  /* ── Capability grid ── */
+  .cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--maxw); margin: 0 auto; }
+  .cap-item { text-align: center; }
+  .cap-icon {
+    width: 48px; height: 48px; border-radius: 12px; background: var(--blue-tint); color: var(--color-primary);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 20px;
+  }
+  .cap-item h4 { font-size: 16px; margin-bottom: 6px; font-weight: 600; }
+  .cap-item p { font-size: 13px; color: var(--color-muted); }
+
+  /* ── CTA band ── */
+  .cta-band { text-align: center; padding: 72px 24px; }
+  .cta-band h2 { font-size: 32px; margin-bottom: 12px; font-weight: 300; }
+  .cta-band p { color: rgba(255,255,255,0.7); margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* ── Footer ── */
+  footer { background: var(--topbar-bg); color: rgba(255,255,255,0.6); padding: 48px 24px 28px; font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer a:hover { color: #fff; }
+  .rep-stub {
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
+  }
+  .rep-stub .avatar {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #fff;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero h1 { font-size: 34px; }
+    .proof-grid, .roi-grid { grid-template-columns: 1fr; }
+    .finding-row, .finding-row.reverse { grid-template-columns: 1fr; padding: 32px 0; }
+    .finding-row.reverse .finding-visual { order: 0; }
+    section { padding: 56px 20px; }
+    nav.main-nav { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    footer .wrap { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="util-bar">Prepared for Dell Technologies by PRISM &middot; grounded in a live audit of dell.com search &middot; <a href="/reports/dell/">View the full audit &rarr;</a></div>
+
+<nav class="main-nav">
+  <div class="brand">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#003DFF"/><path d="M7 17V7h2.2v8.1H14V17H7z" fill="#fff"/></svg>
+    algolia
+  </div>
+  <div class="nav-actions">
+    <a href="#opportunity">Opportunity</a>
+    <a href="#proof">Proof</a>
+    <a href="#findings">Findings</a>
+    <a class="btn btn-outline light" href="mailto:sales@algolia.com?subject=Dell%20Search%20Opportunity">Talk to your rep</a>
+  </div>
+</nav>
+
+<header class="hero" id="opportunity">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow on-dark">Technology Hardware &middot; B2B/B2C Ecommerce</span>
+      <h1>A <strong>$186M</strong> revenue opportunity inside dell.com</h1>
+      <p class="sub">PRISM audited dell.com's live search experience. Here's what closing the gap with Algolia AI Search could be worth to Dell &mdash; and what's holding it back today.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/reports/dell/">See the full audit</a>
+        <a class="btn btn-outline" href="mailto:sales@algolia.com?subject=Dell%20Search%20Opportunity">Talk to your rep</a>
+      </div>
+    </div>
+    <div class="hero-fact-card">
+      
+      <div class="fact-row"><span>Revenue (FY2025)</span><span>$95.6B total</span></div>
+      
+      <div class="fact-row"><span>Direct online (dell.com)</span><span>~$3.2B</span></div>
+      
+      <div class="fact-row"><span>Employees</span><span>~108,000</span></div>
+      
+      <div class="fact-row"><span>Model</span><span>Direct + B2B Premier + Channel</span></div>
+      
+    </div>
+  </div>
+</header>
+
+<section id="proof" class="bg-tint">
+  <div class="section-head">
+    <span class="eyebrow">Proven at your scale</span>
+    <h2>Three companies with Dell's exact problem, solved</h2>
+    <p>Large B2B catalogs, global reach, complex portals &mdash; already running on Algolia.</p>
+  </div>
+  <div class="proof-grid">
+    
+    <div class="proof-card">
+      <div class="company">Hager Group</div>
+      <div class="vertical">B2B electrical manufacturing</div>
+      <div class="metric">100+ countries</div>
+      <div class="result">Improved B2B product discovery at enterprise scale.</div>
+      <div class="relevance">Same use case as Dell's Premier B2B portal.</div>
+      <a class="case-link" href="https://resources.algolia.com/customer-stories/casestudy-hager" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+    <div class="proof-card">
+      <div class="company">Swedol</div>
+      <div class="vertical">B2B industrial tools</div>
+      <div class="metric">+22% conversion &middot; +26% time on site</div>
+      <div class="result">Personalized B2B search across the Nordic region.</div>
+      <div class="relevance">Custom catalog portal &mdash; mirrors Dell Premier.</div>
+      <a class="case-link" href="https://www.algolia.com/customers/swedol" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+    <div class="proof-card">
+      <div class="company">Damstahl</div>
+      <div class="vertical">B2B industrial commerce</div>
+      <div class="metric">18,000+ SKUs</div>
+      <div class="result">Reduced product-finding friction in a large B2B catalog.</div>
+      <div class="relevance">Large catalog &mdash; mirrors Dell's 50,000+ product range.</div>
+      <a class="case-link" href="https://resources.algolia.com/customer-stories/casestudy-damstahl" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <span class="eyebrow">Sized for Dell</span>
+    <h2>What closing the search gap is worth</h2>
+    <p>Three scenarios, built from Dell's own public revenue figures &mdash; not industry averages.</p>
+  </div>
+  <div class="roi-grid">
+    
+    <div class="roi-card conservative">
+      
+      <div class="label">Conservative</div>
+      <div class="amount">$64M</div>
+      <div class="desc">Conversion lift + bounce reduction on direct ecommerce only.</div>
+    </div>
+    
+    <div class="roi-card moderate">
+      <span class="badge">Most likely</span>
+      <div class="label">Moderate</div>
+      <div class="amount">$186M</div>
+      <div class="desc">Full suite: conversion + bounce + no-results recovery + long-tail discovery.</div>
+    </div>
+    
+    <div class="roi-card aggressive">
+      
+      <div class="label">Best case</div>
+      <div class="amount">$308M+</div>
+      <div class="desc">Full suite + AOV lift + personalization. Requires deal-team validation.</div>
+    </div>
+    
+  </div>
+  <p class="roi-note">Source: PRISM audit, Dell Technologies FY2025 investor relations (2026-02-27) + ecommercedb.com estimate (2026-03-26). Best-case scenario needs AE sizing before use in a proposal.</p>
+</section>
+
+<section id="findings" class="bg-tint">
+  <div class="section-head">
+    <span class="eyebrow">What PRISM found</span>
+    <h2>Four gaps in dell.com search today</h2>
+    <p>Observed directly on dell.com, not inferred.</p>
+  </div>
+
+  
+  <div class="finding-row">
+    <div class="finding-visual">Personalization<br>— Entirely Absent</div>
+    <div class="finding-copy">
+      <span class="finding-tag">Personalization</span>
+      <h3>Every visitor sees the same results</h3>
+      <p>No signal from browsing history, account tier, or B2B vs. B2C context shapes what dell.com search shows. Algolia AI Search personalizes ranking per shopper without extra engineering lift.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row reverse">
+    <div class="finding-visual">NLP / Conversational Search<br>— Zero Semantic Resolution</div>
+    <div class="finding-copy">
+      <span class="finding-tag">Search understanding</span>
+      <h3>Natural-language queries don't resolve</h3>
+      <p>Shoppers searching in plain language ("laptop for video editing under $1500") get literal keyword matching, not intent. Algolia's Neural Search understands intent without a rules engine to maintain.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">SAYT<br>— Text-Only, No Images</div>
+    <div class="finding-copy">
+      <span class="finding-tag">Search-as-you-type</span>
+      <h3>Autocomplete has no visual guidance</h3>
+      <p>No product images, categories, or merchandised suggestions appear while typing &mdash; a missed moment to guide Dell's complex catalog. Rich SAYT cuts time-to-product materially in comparable B2B catalogs.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row reverse">
+    <div class="finding-visual">No-Results Page<br>— Dead-End Recovery</div>
+    <div class="finding-copy">
+      <span class="finding-tag">Zero results</span>
+      <h3>A dead end, not a redirect</h3>
+      <p>Zero-result searches don't recover the shopper &mdash; no typo correction, no related-category fallback. Every dead-end is a shopper Dell already paid to acquire, walking away.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="bg-dark tight">
+  <div class="section-head">
+    <span class="eyebrow on-dark">Built for continuous optimization</span>
+    <h2 style="color:#fff">The platform behind the fix</h2>
+    <p>Not a one-time integration &mdash; a system Dell's team keeps improving.</p>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-item"><div class="cap-icon">A/B</div><h4 style="color:#fff">Strategic A/B testing</h4><p style="color:rgba(255,255,255,0.6)">Design the best-performing relevance strategy.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#128269;</div><h4 style="color:#fff">Search &amp; merchandising analytics</h4><p style="color:rgba(255,255,255,0.6)">Understand shoppers to uncover opportunities.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#10024;</div><h4 style="color:#fff">AI-driven optimization</h4><p style="color:rgba(255,255,255,0.6)">Boost results dynamically to drive conversions.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#128279;</div><h4 style="color:#fff">Composable technology</h4><p style="color:rgba(255,255,255,0.6)">Flexible architecture, integrates with any stack.</p></div>
+  </div>
+</section>
+
+<section class="cta-band" style="background: linear-gradient(135deg, #0D1240 0%, #21243D 45%, #001A8A 100%); color:#fff;">
+  <h2>Let's size this properly for Dell</h2>
+  <p>PRISM's audit is the starting point. Your Algolia rep can turn this into a scoped proposal.</p>
+  <a class="btn btn-primary" href="mailto:sales@algolia.com?subject=Dell%20Search%20Opportunity">Talk to your rep</a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="rep-stub">
+      <div class="avatar">?</div>
+      <span>No rep assigned yet in PRISM &mdash; <a href="mailto:sales@algolia.com?subject=Dell%20Search%20Opportunity">contact Algolia sales</a></span>
+    </div>
+    <div>&copy; Algolia &middot; Prepared by PRISM &middot; <a href="/reports/dell/">Full audit</a> &middot; <a href="/">PRISM home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

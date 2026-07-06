@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "company": "DSW Designer Shoe Warehouse",
+    "slug": "dsw",
+    "domain": "dsw.com",
+    "audit_date": "2026-03-22",
+    "auditor": "Algolia Search Audit Pipeline",
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-03-23"
+  },
+  "score": {
+    "overall": 3.8,
+    "scale": 10,
+    "verdict": "Critical Gaps",
+    "verdict_class": "critical",
+    "critical_count": 5,
+    "moderate_count": 9
+  },
+  "stage_cockpit": {
+    "note": "Scope locked 2026-07-06: only PREP, SS1, SS2 are in scope for the AE door. SS3 (POC/Go-Live) and SS4 (Scoping/Proposal) are execution/negotiation stages with no AE-door role per the IA spec — they are not rendered, not stubbed, fully culled.",
+    "stages": [
+      { "id": "prep", "label": "PREP", "status": "complete" },
+      { "id": "ss1", "label": "SS1 — Intro", "status": "complete" },
+      { "id": "ss2", "label": "SS2 — Deep Discovery", "status": "active" }
+    ],
+    "current_stage": "ss2"
+  },
+  "call_plan": {
+    "eyebrow": "Discovery-OS single-page call plan",
+    "opening_move": {
+      "text": "Your direct competitor Shoe Carnival just 3.5x'd their search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
+      "source_label": "AE talk-track opener, rule-selected on detected competitor (Shoe Carnival — confirmed Algolia customer, direct off-price footwear rival)",
+      "source_url": "https://www.algolia.com/customers/shoe-carnival"
+    },
+    "hypotheses": [
+      {
+        "rank": 1,
+        "finding_id": "G01",
+        "title": "Zero NeuralSearch — NLP queries completely fail",
+        "evidence": "'gift for her under 100' returns 3,229 results led by an Under Armour backpack — price cap ignored, gender intent not understood.",
+        "tied_to": "CEO Doug Howe's stated mandate to “elevate our customers’ omnichannel experience” (FY2024 earnings release, Mar 2025) — this finding is the gap behind that mandate.",
+        "severity": "CRITICAL",
+        "confidence_risk_note": "EMPTY SLOT — this audit's data pipeline does not yet compute a Discovery-OS confidence / risk-if-wrong score per finding (that scoring layer is designed, not built — see PRISM-V2 Track G-schema). Severity shown above is the real field the pipeline does produce; it is not a substitute for confidence/risk and is labeled as such to avoid misrepresenting one field as another.",
+        "source_url": "/reports/dsw/screenshots/06-synonym-gift-for-her.png"
+      },
+      {
+        "rank": 2,
+        "finding_id": "G02",
+        "title": "No federated search — content & loyalty invisible",
+        "evidence": "Typing 'rewards' or searching mid-catalog surfaces 12 query completions and 10 product thumbnails only — no loyalty program page, no help content, no brand editorial.",
+        "tied_to": "CMO Sarah Crockett on app/loyalty engagement (“Our top customers shop both channels... they engage with our app very regularly,” Marketing Dive, Jan 2025) — loyalty is invisible in the exact channel she's describing.",
+        "severity": "CRITICAL",
+        "confidence_risk_note": "EMPTY SLOT — same pipeline gap as above; no confidence/risk score computed yet.",
+        "source_url": "/reports/dsw/screenshots/03-sayt-sneakers.png"
+      },
+      {
+        "rank": 3,
+        "finding_id": "G05",
+        "title": "No personalized search ranking",
+        "evidence": "6,519 sneaker results shown in identical generic rank order to every visitor — a VIP Insider Gold member with a known size/brand history sees the same list as a first-time guest.",
+        "tied_to": "Company priority “VIP loyalty program relaunch” (icp_mapping, sourced from CMO quote above) — personalization is the stated loyalty lever with zero implementation found.",
+        "severity": "CRITICAL",
+        "confidence_risk_note": "EMPTY SLOT — same pipeline gap as above; no confidence/risk score computed yet.",
+        "source_url": "/reports/dsw/screenshots/14-dynamic-facets.png"
+      }
+    ],
+    "competitive_objection": {
+      "objection": "“We have an internal search solution that works.”",
+      "response": "Network inspection confirmed zero enterprise search vendor — dsw.com runs a custom/proprietary backend. 'Gift for her under $100' returning an Under Armour backpack at position #1 is the gap that backend produces. Shoe Carnival ran a similar in-house setup before switching to Algolia and saw a 3.5x conversion increase.",
+      "source": "hiring.objection_counters[0], generate-audit-data.py synthesis grounded in tech_stack network inspection (builtwith.com/dsw.com) + Shoe Carnival case study"
+    },
+    "cost_of_inaction": {
+      "text": "$6.9M–$13.8M in annual revenue uplift is modeled on EXISTING dsw.com traffic (17x ROI at conservative $400K ACV, <30-day payback in the moderate scenario) — against a backdrop of 3 straight years of declining revenue (FY2023 $3.315B → FY2025 $3.009B) and a first positive comp in 9 quarters that opens a real budget window right now.",
+      "source": "financials.roi_scenarios + financials.revenue_3y (Yahoo Finance MCP, accessed 2026-03-24) + calculate-roi.py / Baymard Institute benchmark"
+    },
+    "stakeholder_to_add": {
+      "role": "User Buyer",
+      "name": "VP/Director, Digital Product (name TBD)",
+      "status": "not yet identified by name — EMPTY SLOT",
+      "note": "Hiring/org data confirms this role sits inside Mike Donk's org and would own the technical evaluation, but the audit pipeline has no name for it — that lookup (LinkedIn org chart or CRM contact) is a human task, not fabricated here.",
+      "source": "hiring.buying_committee[2] (“User Buyer” entry, status COLD)"
+    },
+    "next_meeting_hook": {
+      "text": "Share audit + book a 15-minute call with Mike Donk (SVP, Digital).",
+      "cta": "“Can we book 30 minutes with you and your VP of Digital Product to walk through what we found — live on your site?”",
+      "target_date": "2026-03-29",
+      "owner": "AE",
+      "source": "ae_fields.next_step_action / next_step_date / talk_track_cta"
+    }
+  },
+  "exit_gates": {
+    "ss2_label": "SS2 exit gate — Vision-to-Value delivered?",
+    "items": [
+      { "item": "Economic Buyer identified", "status": "done", "detail": "Sheamus Toal, CFO — WARM/hot. New CFO in 90-day review mode; ROI brief already framed at $6.9M–$13.8M uplift, 17x ROI.", "source": "hiring.buying_committee[0]" },
+      { "item": "Technical Buyer engaged", "status": "done", "detail": "Mike Donk, SVP Digital — WARM/hot. Owns dsw.com experience; primary AE contact.", "source": "hiring.buying_committee[1]" },
+      { "item": "User Buyer identified", "status": "open", "detail": "Role known (VP/Director Digital Product), name not yet found — EMPTY SLOT.", "source": "hiring.buying_committee[2]" },
+      { "item": "Internal champion secured", "status": "open", "detail": "EMPTY SLOT — no confirmed internal champion in the data. The 'Technical Champion' hiring entry is an open ML Engineer req, not a person who has committed to Algolia; do not conflate the two.", "source": "hiring.buying_committee[3] (open role, not a champion)" },
+      { "item": "Current vendor / competition confirmed", "status": "done", "detail": "Custom/proprietary backend, zero enterprise search vendor detected via network inspection.", "source": "tech_stack.current_search_vendor" },
+      { "item": "Decision criteria / paper process", "status": "open", "detail": "EMPTY SLOT — CRM/Salesforce-only data, not derivable from public audit research.", "source": null }
+    ]
+  },
+  "battle_card": {
+    "label": "Battle Card — Coveo displacement check (Famous Footwear/Caleres)",
+    "url": "/reports/dsw/battle-card.html",
+    "available": true,
+    "note": "DSW's own real competitive-vendor landscape has Coveo (used by Famous Footwear/Caleres), not Constructor.io — button copy reflects DSW's actual data rather than a generic competitor name."
+  },
+  "playbook": {
+    "label": "AE Playbook — MEDDPICC + SPIN (Sales Actions tab)",
+    "url": "/reports/dsw/index.html",
+    "available": true,
+    "note": "Deep-links to the existing 5-tab report SPA per the locked IA assumption (AE doors deep-link INTO the SPA, not rebuild it). The SPA restores its last-viewed tab via sessionStorage only — it has no URL hash/query param to force-open a specific tab, and that shared generated template is out of scope to modify here. Lands on the SPA's default Overview tab; click 'Sales Actions' to reach the Playbook content."
+  },
+  "business_case": {
+    "label": "Business Case — ROI model (Business Case tab)",
+    "url": "/reports/dsw/index.html",
+    "available": true,
+    "note": "Same deep-link/tab-restore limitation as the Playbook link above — click 'Business Case' once the SPA loads."
+  },
+  "active_sources": [
+    { "name": "Findings & Search Audit", "detail": "6 tested findings (5 critical, 1 positive) from live browser testing" },
+    { "name": "Hiring / buying committee", "detail": "419 open roles; Economic Buyer, Technical Buyer, User Buyer, Technical Champion mapped from careers + LinkedIn data" },
+    { "name": "Financials", "detail": "3-year revenue trend, ROI scenarios (Yahoo Finance MCP + calculate-roi.py)" },
+    { "name": "Competitors", "detail": "7 competitors mapped, including 3 confirmed Algolia customers (Golden Angle: Shoe Carnival)" },
+    { "name": "Executive quotes", "detail": "CEO + CMO quotes from FY2024 earnings release and Marketing Dive, tied directly to findings via gap_pairs" }
+  ],
+  "locked_sources": [
+    {
+      "name": "Salesforce / CRM",
+      "function": "Deal-Stage & MEDDPICC Sync",
+      "needs": "Read access to the DSW opportunity in Salesforce",
+      "value": "Auto-fills User Buyer name, Champion confirmation, Decision Criteria, and Paper Process — the exit-gate items above rendered as open/empty are exactly what this would close."
+    },
+    {
+      "name": "Gong call recordings",
+      "function": "Verbatim Objection & Signal Miner",
+      "needs": "Gong call transcripts for this account",
+      "value": "Real objections and competitor names Mike Donk or Sheamus Toal raise themselves, replacing the inferred objection_counters above with what was actually said in the room."
+    },
+    {
+      "name": "Account-history doc",
+      "function": "Account Memory",
+      "needs": "Informal rep notes on prior deals/contacts with Designer Brands / DSW",
+      "value": "Don't re-pitch a failed angle; continuity across attempts if DSW has been worked before."
+    }
+  ]
+}

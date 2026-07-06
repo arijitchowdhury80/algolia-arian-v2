@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "generated_note": "Queue built from the 10 published accounts with a full audit-data.json on disk (reports/data/*.json), 2026-07-06.",
+    "ranking_methodology": "signal_score = (total_open_roles × 0.05) + (count of volume-friendly intelligence_signals × 3), where volume-friendly = type in {hiring, hiring_signal, news_signal, social_signal} — deliberately excluding deep-financial/media-quote/exec-quote signal types per the BDR IA rule ('hiring/news/social, not deep financials'). Tiers: HIGH ≥ 30, MEDIUM 15–30, LOW < 15. This is a transparent, real-data formula, not a fabricated score — shown in full so it can be checked or challenged."
+  },
+  "queue": [
+    {
+      "rank": 1,
+      "slug": "labanquepostale",
+      "company": "La Banque Postale",
+      "domain": "labanquepostale.fr",
+      "score_numeric": 43.2,
+      "tier": "HIGH",
+      "open_roles": "265 open roles (1 ICP-relevant)",
+      "why_now": {
+        "text": "Audrey Pujalte appointed Head of Digital Retail Banking (June 2025) — ex-CDO Carrefour Banque & Assurance. Now 11 months in role, actively building her 2026 digital roadmap.",
+        "source_url": "https://www.vd-communication.fr/nomination-la-banque-postale-directeur-digital-de-la-banque-de-detail/",
+        "source_date": "2025-06-01"
+      },
+      "battle_card_url": "/reports/labanquepostale/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 2,
+      "slug": "homedepot-mexico",
+      "company": "The Home Depot México",
+      "domain": "homedepot.com.mx",
+      "score_numeric": 34.6,
+      "tier": "HIGH",
+      "open_roles": "33 open roles",
+      "why_now": {
+        "text": "The Home Depot committed US$1.3 billion to Mexico 2025–2030: 140 → 165 stores, e-commerce strengthening, new logistics hubs — announced alongside President Claudia Sheinbaum.",
+        "source_url": "https://mexiconewsdaily.com/business/home-depot-mexico-investment-us-1-3b/",
+        "source_date": "2025-02-28"
+      },
+      "battle_card_url": "/reports/homedepot-mexico/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 3,
+      "slug": "oriental-trading",
+      "company": "Oriental Trading Company",
+      "domain": "orientaltrading.com",
+      "score_numeric": 33.6,
+      "tier": "HIGH",
+      "open_roles": "12 open roles",
+      "why_now": {
+        "text": "OTC selected as one of only 3 beta retailers for Amazon's Retail Ad Service — using search queries and viewed categories as ad signals on their own site.",
+        "source_url": "https://www.marketingdive.com/news/amazon-launches-retail-ad-service-ecommerce-CES-2025/737028/",
+        "source_date": "2025-01-10"
+      },
+      "battle_card_url": null,
+      "battle_card_available": false,
+      "battle_card_note": "Not yet generated for this account — no battle-card.html on disk (index.html only)."
+    },
+    {
+      "rank": 4,
+      "slug": "dsw",
+      "company": "DSW Designer Shoe Warehouse",
+      "domain": "dsw.com",
+      "score_numeric": 24.0,
+      "tier": "MEDIUM",
+      "open_roles": "419 open roles",
+      "why_now": {
+        "text": "Designer Brands is actively hiring a Machine Learning Engineer (GCP/Azure OpenAI) despite January 2026 layoffs. 419 total open positions; dedicated ecommerce job category confirms digital team investment.",
+        "source_url": "https://www.zippia.com/designer-brands-careers-3576/jobs/",
+        "source_date": "2026-03-01"
+      },
+      "battle_card_url": "/reports/dsw/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 5,
+      "slug": "savage-x-fenty",
+      "company": "Savage X Fenty",
+      "domain": "savagex.com",
+      "score_numeric": 23.6,
+      "tier": "MEDIUM",
+      "open_roles": "53–58 active postings",
+      "why_now": {
+        "text": "CMO Vanessa Wallace departed March 2026 (joined GLD). The CMO seat is vacant. Kevin Reyes (VP Ecommerce) has interim discovery/personalization authority — accessible now, before a new CMO sets vendor preferences.",
+        "source_url": "https://wwd.com/fashion-news/fashion-scoops/vanessa-wallace-former-cmo-savage-x-fenty-joins-gld-cmo-1238663364/",
+        "source_date": "2026-03-01"
+      },
+      "battle_card_url": "/reports/savage-x-fenty/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 6,
+      "slug": "nike",
+      "company": "Nike",
+      "domain": "nike.com",
+      "score_numeric": 21.5,
+      "tier": "MEDIUM",
+      "open_roles": "10 open roles (7 senior digital/commerce vacancies flagged)",
+      "why_now": {
+        "text": "VACANCY — Sr Director, NDDC EMEA (req R-37068), one of 7 open senior digital/commerce leadership roles flagged this audit — signals an active digital-commerce reorg in progress.",
+        "source_url": "https://jobs.nike.com/job/R-37068",
+        "source_date": "2026-04-15"
+      },
+      "battle_card_url": null,
+      "battle_card_available": false,
+      "battle_card_note": "Not yet generated for this account — no battle-card.html on disk (index.html only)."
+    },
+    {
+      "rank": 7,
+      "slug": "llbean",
+      "company": "L.L.Bean",
+      "domain": "llbean.com",
+      "score_numeric": 18.9,
+      "tier": "MEDIUM",
+      "open_roles": "19 open roles total (9 ICP-relevant, Tier 1–3)",
+      "why_now": {
+        "text": "commercetools headless migration completed May 2024 — 100% uptime during peak, 28-month phased rollout, $10M+ incremental revenue during migration. Over $1B in annual online sales now runs on commercetools — a live re-platforming window for the search layer sitting on top of it.",
+        "source_url": "https://commercetools.com/customer-stories/llbean",
+        "source_date": "2024-05"
+      },
+      "battle_card_url": "/reports/llbean/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 8,
+      "slug": "brooks-running",
+      "company": "Brooks Running",
+      "domain": "brooksrunning.com",
+      "score_numeric": 15.9,
+      "tier": "MEDIUM",
+      "open_roles": "18 open roles",
+      "why_now": {
+        "text": "HIGH urgency per audit AE fields: a technical-buyer-adjacent engineering vacancy is open now — engage before the role is filled.",
+        "source_url": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419",
+        "source_date": "2026-03-07",
+        "note": "This account's intelligence_signals entries carry a source_url/date but an empty text/badge_label field in the underlying audit data — a real data gap, not filled in here. The why-now line above is sourced instead from this account's ae_fields.urgency_level, which does carry real text."
+      },
+      "battle_card_url": "/reports/brooks-running/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 9,
+      "slug": "petsmart",
+      "company": "PetSmart",
+      "domain": "petsmart.com",
+      "score_numeric": 3.0,
+      "tier": "LOW",
+      "open_roles": "not reported in this audit — EMPTY SLOT",
+      "why_now": {
+        "text": "PetSmart is hiring a VP, Digital Engineering (re-platforming owner), a Sr. Manager eCommerce Platform Architecture, an SFCC Platform Owner, and a 15–20 person React/SFCC web team — staffing the exact platform Algolia sits inside.",
+        "source_url": "https://careers.petsmart.com/jobs/7516?lang=en-us",
+        "source_date": "2026-06-19"
+      },
+      "battle_card_url": "/reports/petsmart/battle-card.html",
+      "battle_card_available": true
+    },
+    {
+      "rank": 10,
+      "slug": "british-airways",
+      "company": "British Airways",
+      "domain": "britishairways.com",
+      "score_numeric": 2.7,
+      "tier": "LOW",
+      "open_roles": "53 open roles",
+      "why_now": {
+        "text": "CEO publicly declared BA is 'behind the curve' on digital and described the transformation as a 'leapfrog opportunity.'",
+        "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+        "source_date": "2025-12-13"
+      },
+      "battle_card_url": "/reports/british-airways/battle-card.html",
+      "battle_card_available": true
+    }
+  ],
+  "hero": {
+    "slug": "labanquepostale",
+    "company": "La Banque Postale",
+    "domain": "labanquepostale.fr",
+    "tier": "HIGH",
+    "why_now": {
+      "text": "3 convergent signals: new digital leader 11 months into the role (Audrey Pujalte, ex-CDO Carrefour Banque), record FY2025 financial performance (net income €1.6B, +31.2% YoY — budget window open), and a post-DDoS resilience mandate (largest DDoS attack in French banking history, Dec 2025–Jan 2026).",
+      "source": "ae_fields.urgency_level, cross-referenced against news_signal + earnings_quote entries in intelligence_signals"
+    },
+    "champion_contact": {
+      "name": "Audrey Pujalte",
+      "title": "Director of Digital, Retail Banking",
+      "status": "WARM / hot",
+      "background": "Ex-CDO Carrefour Banque & Assurance — direct retail-search experience at scale before joining LBP in June 2025.",
+      "source_url": "https://www.vd-communication.fr/nomination-la-banque-postale-directeur-digital-de-la-banque-de-detail/"
+    },
+    "micro_exchange": {
+      "insight": {
+        "text": "17M monthly visitors get zero search-as-you-type guidance on labanquepostale.fr — typing 'livr' to find a Livret A savings account (the site's single most-visited product category) returns nothing but a clear-search button until the full word is typed and Enter is pressed.",
+        "finding_id": "F01",
+        "impact_stat": "+39% conversion rate when sites add real-time search",
+        "impact_stat_source": "https://www.algolia.com/customers/co-op/ (Co-op, Algolia customer)"
+      },
+      "calibrated_question": {
+        "text": "\"Your #1 strategic goal is customer preference. How are you measuring the digital search experience as a driver of satisfaction today?\"",
+        "source": "icp_mapping.priority_to_product[0].discovery_question — reused verbatim from the audit's own generated discovery question, not re-authored here, to avoid introducing new unsourced phrasing."
+      }
+    },
+    "battle_card_url": "/reports/labanquepostale/battle-card.html",
+    "battle_card_available": true,
+    "triage_note": "Ranked #1 of 10 published accounts on real hiring + news + social signal volume (see ranking_methodology above) — not a financial or deal-stage ranking, which is deliberately out of scope for this door."
+  }
+}
