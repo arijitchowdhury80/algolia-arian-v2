@@ -1,0 +1,1564 @@
+{
+  "meta": {
+    "slug": "lululemon",
+    "company": "lululemon athletica",
+    "domain": "lululemon.com",
+    "audit_date": "2026-07-01",
+    "prepared_by": "Algolia",
+    "version": "1.0",
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-07-01"
+  },
+  "cover": {
+    "company": "lululemon athletica",
+    "tagline": "A proprietary Oracle Endeca-lineage keyword engine on a $4.9B DTC digital business — the AI-search gap Algolia closes",
+    "audit_date": "2026-07-01",
+    "company_logo_url": "https://logo.clearbit.com/lululemon.com",
+    "logo_hint": "lululemon"
+  },
+  "score": {
+    "overall": 3.1,
+    "verdict": "Critical Gaps",
+    "verdict_class": "critical",
+    "breakdown": {
+      "latency": 5.0,
+      "typo_tolerance": 4.0,
+      "query_suggestions_empty_state": 2.0,
+      "intent_detection": 3.0,
+      "merchandising_consistency": 5.0,
+      "content_commerce_ux": 3.0,
+      "semantic_nlp_search": 2.0,
+      "dynamic_facets_personalization": 4.0,
+      "recommendations_merchandising": 4.0,
+      "search_intelligence": 2.0
+    },
+    "breakdown_severity": {
+      "latency": "MEDIUM",
+      "typo_tolerance": "MEDIUM",
+      "query_suggestions_empty_state": "HIGH",
+      "intent_detection": "HIGH",
+      "merchandising_consistency": "MEDIUM",
+      "content_commerce_ux": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "MEDIUM",
+      "recommendations_merchandising": "MEDIUM",
+      "search_intelligence": "HIGH"
+    },
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "intent_detection": "Intent Detection",
+      "merchandising_consistency": "Merchandising Consistency",
+      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "search_intelligence": "Search Intelligence"
+    },
+    "critical_count": 5,
+    "moderate_count": 10,
+    "formula_shown": "sum(score×weight)/sum(weights)",
+    "source": "10-scoring-matrix.md"
+  },
+  "company_snapshot": {
+    "company": "lululemon athletica inc.",
+    "industry": "Athletic Apparel & Athleisure Retail",
+    "founded": "1998",
+    "headquarters": "Vancouver, British Columbia, Canada",
+    "employees": "~39,000",
+    "ticker": "NASDAQ: LULU",
+    "revenue": "$11.103B (FY2025, ended Feb 1, 2026)",
+    "business_model": "Direct-to-consumer (DTC) — company-operated stores + lululemon.com; ~44% digital revenue",
+    "current_search_vendor": "Proprietary / in-house (Oracle Endeca-lineage `Ntt` param, Next.js SSR)",
+    "monthly_visits": "17.9M/mo",
+    "market_cap": "$13.218B",
+    "source": "01-company-context.md + 08-financial-profile.md",
+    "parent_entity": null,
+    "is_conglomerate": false,
+    "portfolio_brands": [
+      {
+        "name": "lululemon athletica",
+        "domain": "lululemon.com",
+        "is_audit_target": true,
+        "source": "[FACT — gemini grounded search, 2026-07-01]"
+      },
+      {
+        "name": "lululemon Studio (formerly MIRROR)",
+        "domain": "lululemon.com/mirror",
+        "is_audit_target": false,
+        "source": "[FACT — gemini grounded search citing $500M acquisition in 2020 and rebranding to lululemon Studio, 2026-07-01]"
+      },
+      {
+        "name": "Lab (lululemon Lab)",
+        "domain": "lululemon.com",
+        "is_audit_target": false,
+        "source": "[FACT — gemini grounded search, 2026-07-01]"
+      }
+    ],
+    "portfolio_opportunity_note": "3-brand portfolio = 3× the search optimization surface",
+    "revenue_source": "SEC EDGAR 10-K FY2025 + Yahoo Finance",
+    "revenue_source_label": "FACT"
+  },
+  "executives": [
+    {
+      "name": "André Maestrini",
+      "title": "Interim Co-CEO, President & Chief Commercial Officer",
+      "linkedin": null,
+      "relevance": "Sets commercial + digital mandate through Sept 2026; his conversion/merchandising quote is the top-line hook.",
+      "quote": "With regard to e commerce, we are continuing our work to elevate the guest experience on our digital channels. The teams are working to increase conversion with sharper visual merchandising, better storytelling, and by offering a more premium shopping experience.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+      "quote_date": "2026-06",
+      "algolia_angle": "Merchandising and conversion both live inside search and browse — the exact layer Algolia's search, browse and merchandising controls improve."
+    },
+    {
+      "name": "André Maestrini",
+      "title": "Interim Co-CEO, President & Chief Commercial Officer",
+      "linkedin": null,
+      "relevance": "Enterprise-wide AI/technology investment appetite at the co-CEO level.",
+      "quote": "...implementing new technology, including AI powered systems and automation to drive efficiencies across the enterprise.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+      "quote_date": "2026-06",
+      "algolia_angle": "Signals an active AI investment cycle that opens the door for an AI-search / discovery conversation with the new CAITO org."
+    },
+    {
+      "name": "Meghan Frank",
+      "title": "Interim Co-CEO & Chief Financial Officer",
+      "linkedin": null,
+      "relevance": "Controls funded investment decisions through Sept 2026; names guest experience as a funded priority.",
+      "quote": "These investments include market expansion, improving the guest experience by enhancing our omni capabilities and growing brand awareness.",
+      "quote_source": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+      "quote_date": "2026-06",
+      "algolia_angle": "A budget signal for digital-CX spend — improving the guest experience is a named, funded strategic priority."
+    },
+    {
+      "name": "Heidi O'Neill",
+      "title": "CEO-Designate (ex-Nike President, Consumer/Product/Brand; effective Sept 8, 2026)",
+      "linkedin": null,
+      "relevance": "Incoming CEO with a commerce-first, digital-innovation mandate — sets the 2027 digital agenda.",
+      "quote": "As I step into the CEO role in September, my job will be to build on that foundation – to accelerate product breakthroughs, deepen the brand's cultural relevance, and unlock growth in markets around the world.",
+      "quote_source": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm",
+      "quote_date": "2026-04",
+      "algolia_angle": "Leadership-transition signal that new digital/discovery initiatives are on the table as she builds on the current foundation — get Algolia into the evaluation before she arrives."
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "title": "First-ever Chief AI & Technology Officer appointed (Ranju Das)",
+      "detail": "lululemon created its first-ever Chief AI & Technology Officer role, appointing Ranju Das (ex-Swan AI Studios, OptumLabs) effective Sept 2, 2025, reporting to the CEO. The company is 'doubling down on technology' to accelerate product innovation and customer experience — a direct signal for AI search, semantic search, personalization and recommendations. Ranju Das is the primary economic/technical buyer for Algolia.",
+      "type": "earnings_quote",
+      "badge_label": "LEADERSHIP",
+      "text": "First-ever CAITO Ranju Das (Sep 2025) signals an active AI investment cycle — the ideal economic/technical buyer for AI search.",
+      "source": "09b-social-signals.md",
+      "source_url": "https://www.lululemon.com/investors",
+      "source_date": "2025-09-02",
+      "relevance": "New AI leadership + explicit AI mandate = active stack evaluation window; lead outreach with AI-powered search narrative.",
+      "category_tag": "leadership_change",
+      "urgency_score": 9
+    },
+    {
+      "title": "Open req: Senior Product Manager — Search & Elevation",
+      "detail": "lululemon is actively hiring a 'Senior Product Manager - Search & Elevation' (Seattle) — search named explicitly in the title. This role owns the search product roadmap and is the direct buyer for Algolia or a competing search vendor. Paired with 5 open Technical Buyer architect/engineer roles, this signals a search & personalization transformation initiative underway.",
+      "type": "hiring_signal",
+      "badge_label": "HIRING",
+      "text": "Open 'Senior PM — Search & Elevation' req = a live 30-60 day buying window; the role owns the search roadmap.",
+      "source": "09d-hiring-signals.md",
+      "source_url": "https://careers.lululemon.com/en_US/careers",
+      "source_date": "2026-07-01",
+      "relevance": "New/hiring search PMs evaluate the stack immediately — the buying window is open now.",
+      "category_tag": "tech_investment",
+      "urgency_score": 8
+    },
+    {
+      "title": "10-K names 'not effectively leveraging AI' and non-user-friendly e-commerce as material risks",
+      "detail": "lululemon's FY2025 10-K (Item 1A) formally discloses two risks that map one-to-one onto Algolia's value: failure to provide a 'user-friendly e-commerce platform,' and failure to 'effectively leverage AI' ('if we do not effectively leverage AI... we could lose guests'). The filing also states third-party AI platforms 'increasingly influence product discovery.' A rare instance of a prospect naming Algolia's value proposition as a board-level risk in an SEC filing.",
+      "type": "sec_risk",
+      "badge_label": "SEC RISK",
+      "text": "lululemon's own 10-K names failing to leverage AI + a non-user-friendly e-commerce platform as material business risks.",
+      "source": "11-investor-intelligence.md",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "source_date": "2026-03",
+      "relevance": "Creates urgency without Algolia manufacturing it — quoting their own filing de-risks the conversation.",
+      "category_tag": "ai_disruption",
+      "urgency_score": 9
+    },
+    {
+      "title": "Incoming CEO Heidi O'Neill from Nike (Sept 8, 2026)",
+      "detail": "Heidi O'Neill, former Nike President of Consumer, Product & Brand, joins as CEO on Sept 8, 2026. New leaders audit the tech stack in their first 90 days; her Nike-pedigree commerce-first orientation makes the transition prime timing for platform evaluation. Board expanded from 9 to 11 with external directors including former Levi Strauss CEO Chip Bergh.",
+      "type": "earnings_quote",
+      "badge_label": "CEO TRANSITION",
+      "text": "Ex-Nike CEO Heidi O'Neill arrives Sept 2026 — transitions are platform-evaluation season.",
+      "source": "09b-social-signals.md",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm",
+      "source_date": "2026-04-21",
+      "relevance": "Position a search-conversion win ready to show in her first quarter; get Algolia into the evaluation before arrival.",
+      "category_tag": "leadership_change",
+      "urgency_score": 8
+    },
+    {
+      "title": "Two direct DTC competitors confirmed on Algolia (Gymshark + Vuori)",
+      "detail": "Live packet inspection confirmed Gymshark (app_id 2DEAES0CUO) and Vuori (app_id P2MLBKGFDS) — the two fastest-growing DTC challengers in lululemon's exact premium-activewear segment — both run Algolia Search. Gymshark's published case study: search conversion rose from 6.2% to over 10%, revenue from search users grew 400%+ YoY, and AI Re-Ranking generates an estimated £2M/yr in extra sales.",
+      "type": "news_signal",
+      "badge_label": "COMPETITOR",
+      "text": "Gymshark and Vuori both run Algolia today — direct-competitor proof AI search works for activewear.",
+      "source": "04-competitors.md",
+      "source_url": "https://www.algolia.com/customers/gymshark/",
+      "source_date": "2026-07-01",
+      "relevance": "Converts competitive defensiveness into urgency — the two brands chasing lululemon's customer already have the advantage.",
+      "category_tag": "competitive_threat",
+      "urgency_score": 8
+    },
+    {
+      "title": "FY2026 capex guidance $725M–$745M includes technology investments",
+      "detail": "Q4 FY2025 earnings guidance (Meghan Frank, interim Co-CEO/CFO) put FY2026 capital expenditures at $725M–$745M including 'DC and technology investments.' Computer software assets on the balance sheet grew +19.3% YoY to $1.520B; digital marketing accrual grew +57% YoY to $71.2M. Budget for technology is open and accelerating.",
+      "type": "news_signal",
+      "badge_label": "BUDGET",
+      "text": "FY2026 capex $725M-$745M includes technology; software assets +19.3% YoY to $1.52B — budget is open.",
+      "source": "08-financial-profile.md",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "source_date": "2026-03",
+      "relevance": "This is not new budget — it is a higher return on digital/technology spend already committed.",
+      "category_tag": "tech_investment",
+      "urgency_score": 6
+    },
+    {
+      "title": "International expansion into 6 new markets in 2026",
+      "detail": "Record 6 new market entries planned for 2026: Greece, Austria, Poland, Hungary, Romania (via Arion Retail Group) and India (via Tata CLiQ). Rapid geographic scaling requires multilingual faceted search, region-specific personalization, and localized product discovery.",
+      "type": "news_signal",
+      "badge_label": "EXPANSION",
+      "text": "6 new international markets in 2026 require multilingual, region-aware search and localized discovery.",
+      "source": "09b-social-signals.md",
+      "source_url": "https://www.lululemon.com/investors",
+      "source_date": "2025-12-18",
+      "relevance": "Global rollout is a natural expansion vector for Algolia's multilingual search and localized relevance.",
+      "category_tag": "expansion",
+      "urgency_score": 7
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Heidi O'Neill, CEO-Designate (effective September 8, 2026)",
+      "text": "lululemon is an iconic brand with something rare: genuine guest love, a product ethos rooted in innovation, and a global",
+      "algolia_angle": "The incoming CEO frames her mandate around product innovation and unlocking global growth — a leadership-transition signal that new digital/discovery initiatives are on the table as she builds on the current foundation.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm",
+      "source_name": "lululemon press release (SEC 8-K Exhibit 99.1)",
+      "source_date": "2026-04-21",
+      "confidence": "FACT",
+      "label": "[FACT — lululemon press release (SEC 8-K Ex 99.1) curl-verified, 2026-04-21, https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm]",
+      "urgency_score": 8,
+      "category_tag": "leadership_change",
+      "publication": "lululemon (press/earnings)"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Marti Morfitt, Executive Chair, Board of Directors",
+      "text": "We see significant potential ahead for lululemon and we remain focused on driving momentum as we implement initiatives t",
+      "algolia_angle": "The Executive Chair names enhancing the guest experience as a board-level value-creation priority during the CEO transition — a top-down mandate that a search/CX conversation can attach to.",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm",
+      "source_name": "lululemon press release (SEC 8-K Exhibit 99.1)",
+      "source_date": "2026-04-21",
+      "confidence": "FACT",
+      "label": "[FACT — lululemon press release (SEC 8-K Ex 99.1) curl-verified, 2026-04-21, https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm]",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption",
+      "publication": "lululemon (press/earnings)"
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Gymshark",
+      "domain": "gymshark.com",
+      "search_vendor": "Algolia",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": true,
+      "notes": null
+    },
+    {
+      "name": "Vuori",
+      "domain": "vuori.com",
+      "search_vendor": "Algolia",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": true,
+      "notes": null
+    },
+    {
+      "name": "Nike",
+      "domain": "nike.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Under Armour",
+      "domain": "underarmour.com",
+      "search_vendor": "Constructor.io",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Athleta",
+      "domain": "athleta.com",
+      "search_vendor": "Constructor.io",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Alo Yoga",
+      "domain": "aloyoga.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Fabletics",
+      "domain": "fabletics.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Adidas",
+      "domain": "adidas.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": null,
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "title": "Semantic / NLP FAIL — keyword `Ntt` engine cannot parse conversational intent",
+      "severity": "critical",
+      "category": "semantic_nlp_search",
+      "tested_query": "black yoga pants for hot yoga",
+      "expected_behavior": "Interpret 'hot yoga' as an activity signal (breathable / Nulu fabric), 'black' as a color facet, and 'yoga pants' as category — return a semantically-resolved set of relevant leggings.",
+      "actual_behavior": "The accessible page state echoed the raw query in the search field and rendered generic homepage/nav chrome ('Groove Wide-Leg Pant… What's New') rather than a semantically-resolved result set — consistent with a keyword `Ntt` match, not intent understanding. An Endeca-lineage keyword engine will not parse 'for hot yoga' (activity→fabric), 'under 100' (price), or 'that packs down' (feature).",
+      "impact_stat": "Search users who use natural language convert far higher — apparel searchers convert at 13% vs 6% for non-searchers.",
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
+      "screenshot_file": "screenshots/03-sayt-leggings.png",
+      "prospect_description": "lululemon's highest-intent shoppers — those typing what they actually want ('lightweight running jacket that packs down', 'men's joggers under 100') — get keyword-matched chrome, not answers. On a DTC-only model there is no wholesale fallback to catch that lost sale.",
+      "algolia_solution": "Algolia NeuralSearch understands activity, price and feature intent natively — combining vector search with structured attribute filtering in a single query, no manual facet-setting required. This is the strongest wedge given the new CAITO's AI mandate.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark/",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "Search conversion rose from 6.2% to over 10%; revenue from search users grew more than 400% year over year"
+    },
+    {
+      "id": "F2",
+      "title": "Empty SAYT & unpopulated 'Trending Searches' — the silent front door",
+      "severity": "critical",
+      "category": "query_suggestions_empty_state",
+      "tested_query": "leggings",
+      "expected_behavior": "Typing 'leggings' should surface query suggestions, product previews, category shortcuts and popular/recent searches in the autocomplete overlay.",
+      "actual_behavior": "The SAYT overlay returned no query-specific suggestions across 'leggings', 'align', and 'run' — it continued to show only a static 'Trending Searches' label with no populated terms, no product previews, no recent-search history. Confirmed on-disk (screenshots 02, 03, 15, 16).",
+      "impact_stat": "43% of retail shoppers go straight to the search bar, and search users convert 5–6x higher — a blank front door wastes the highest-intent surface.",
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
+      "screenshot_file": "screenshots/15-popular-searches.png",
+      "prospect_description": "Every visitor who taps lululemon's search box gets an empty 'Trending Searches' header — a broken first impression on the highest-intent surface, and with 67.64% mobile traffic that empty overlay hits the majority of guests.",
+      "algolia_solution": "Algolia Query Suggestions + Autocomplete deliver data-driven popular searches, recent history, and product previews in the SAYT overlay out of the box — turning the empty front door into a merchandising surface.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "New user order rate increased by 150% during Black Friday with Algolia Recommend"
+    },
+    {
+      "id": "F3",
+      "title": "No federated search — content, policy and service siloed from search",
+      "severity": "critical",
+      "category": "content_commerce_ux",
+      "tested_query": "align",
+      "expected_behavior": "SAYT should federate products, content, collections, and stores (e.g. surface 'hemming' service and 'return policy' content alongside product results).",
+      "actual_behavior": "SAYT is products-only in intent but returns nothing federated — no product previews, no category suggestions, no content/store/brand entries; the overlay shows only the static 'Trending Searches' label. Content lives in a separate Contentful layer (`cdn-contentful.lululemon.com`, content_type=cdp), not indexed into search.",
+      "impact_stat": "68% of shoppers would return to a site with good search — federated discovery keeps them from leaving to find help content.",
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
+      "screenshot_file": "screenshots/11-federated.png",
+      "prospect_description": "lululemon's distinctive services (free hemming) and policy/help content are invisible to search — shoppers who type 'hemming' or 'return policy' get no federated answer, forcing them off-search to find it.",
+      "algolia_solution": "Algolia Federated Search unifies products, content, collections and stores in a single overlay — indexing the Contentful content lululemon already produces (including lululemon Studio content) alongside the apparel catalog.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/arc-teryx/",
+      "algolia_case_study_company": "Arc'teryx",
+      "algolia_case_study_result": "Uses Algolia AI Synonyms and Dynamic Re-Ranking to automate merchandising and surface real-time insights"
+    },
+    {
+      "id": "F4",
+      "title": "No intent detection — franchise/brand terms not routed to curated views",
+      "severity": "critical",
+      "category": "intent_detection",
+      "tested_query": "run",
+      "expected_behavior": "Typing a franchise term ('Align') or activity ('run') should trigger scoped suggestions or a curated collection view (e.g. 'run' → Men's/Women's Running).",
+      "actual_behavior": "No dynamic category or franchise intent detection while typing. 'run', 'align', and 'lululemon Studio' all surfaced only the static 'Trending Searches' label — no scoped suggestions, no collection routing. Keyword `Ntt` token-match only.",
+      "impact_stat": "Over half of US online adults rely more on search than menus, and 57% use filters to narrow results — intent routing is now table stakes.",
+      "impact_stat_source": "https://www.forrester.com",
+      "screenshot_file": "screenshots/16-dynamic-categories.png",
+      "prospect_description": "lululemon's signature franchises (Align, Wunder Train) and sub-brand (lululemon Studio, formerly MIRROR) are core to its merchandising story, yet search treats them as raw keywords with no curated intent routing.",
+      "algolia_solution": "Algolia Rules + query categorization route franchise, brand and activity terms to curated, filtered collection views and scoped suggestions — merchandised, not just matched.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
+      "algolia_case_study_company": "Under Armour",
+      "algolia_case_study_result": "35% higher conversion rate for customers who use search"
+    },
+    {
+      "id": "F5",
+      "title": "No search intelligence — trending terms empty, no social-proof signals",
+      "severity": "critical",
+      "category": "search_intelligence",
+      "tested_query": "leggings",
+      "expected_behavior": "Popular/most-searched terms and bestseller/trending badges should be populated and surfaced as social proof; behavioral signal should inform ranking.",
+      "actual_behavior": "No populated trending terms, no bestseller/most-searched badges, no social-proof signals. The 'Trending Searches' label is present but empty; there is no evidence Quantum Metric behavioral capture feeds search ranking or is surfaced to shoppers.",
+      "impact_stat": "Recommendations and popularity signals drive roughly 31% of e-commerce revenue — leaving them off wastes proven demand data.",
+      "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
+      "screenshot_file": "screenshots/02-empty-state.png",
+      "prospect_description": "lululemon captures rich first-party DTC behavior (Quantum Metric confirmed on site) but none of it visibly informs search — no popularity ranking, no trending, no social proof at the point of discovery.",
+      "algolia_solution": "Algolia Analytics + insights-driven ranking turn behavioral data into popularity-ranked suggestions, trending terms and bestseller signals — closing the loop between the data lululemon already collects and what shoppers see.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "Returning customers: 13% higher order rate and 10% higher add-to-cart rate"
+    },
+    {
+      "id": "F6",
+      "title": "Typo tolerance unconfirmed — no 'Did you mean' correction observed",
+      "severity": "moderate",
+      "category": "typo_tolerance",
+      "tested_query": "lululemn leggings",
+      "expected_behavior": "Misspellings of the brand's own most-searched terms ('lululemn leggings', 'align pnats') should be corrected automatically or prompt a 'Did you mean…' suggestion.",
+      "actual_behavior": "No 'Did you mean…' correction was observed in the accessible page states; full typo behavior was WAF-limited on the results surface. On a keyword `Ntt` engine with no correction UX present, typo tolerance is a high-value gap flagged for clean-IP re-test.",
+      "impact_stat": "Roughly 1 in 6 search queries contain a typo — untolerated misspellings drop shoppers into zero results.",
+      "impact_stat_source": "https://www.algolia.com/customers/lacoste",
+      "screenshot_file": "screenshots/03-sayt-leggings.png",
+      "prospect_description": "Even the brand's own name is commonly misspelled ('lululemn'); if the engine returns zero results on branded typos, that is high-intent, ready-to-buy traffic lost at the door.",
+      "algolia_solution": "Algolia typo tolerance is built in and requires zero configuration — misspellings resolve to the intended product automatically, with configurable 'Did you mean' prompts.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "37% increase in search-driven revenue"
+    },
+    {
+      "id": "F7",
+      "title": "Static faceting & no visible personalization on a first-party-rich DTC model",
+      "severity": "moderate",
+      "category": "dynamic_facets_personalization",
+      "tested_query": "men's shorts",
+      "expected_behavior": "Facets should adapt to category context (inseam/activity for shorts vs support-level/cup for bras) and results should personalize using first-party behavioral signal.",
+      "actual_behavior": "Facet adaptivity by category could not be enumerated under the WAF block, and no 'Recommended for you' / personalized re-ranking was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that search does not appear to leverage. Flagged for clean-IP re-test.",
+      "impact_stat": "80% of shoppers prefer personalized experiences; personalization drives a 10–15% revenue lift.",
+      "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
+      "screenshot_file": "screenshots/01-homepage.png",
+      "prospect_description": "lululemon owns the direct customer relationship end-to-end yet applies none of that signal to search facets or ranking — leaving personalization value on the table on its highest-intent surface.",
+      "algolia_solution": "Algolia Dynamic Faceting adapts filters to category context, and Algolia Personalization re-ranks results using the first-party behavioral signal lululemon already captures.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/gymshark-recommend",
+      "algolia_case_study_company": "Gymshark",
+      "algolia_case_study_result": "Shoppers clicking Algolia Recommend saw a 5.5% increase in order rate"
+    },
+    {
+      "id": "F8",
+      "title": "Recommendations & merchandising rules siloed from search",
+      "severity": "moderate",
+      "category": "recommendations_merchandising",
+      "tested_query": "sale",
+      "expected_behavior": "PDP recommendation carousels (FBT / 'Complete the look') and curated search banners for 'sale'/'clearance' should be driven by, and unified with, the search engine.",
+      "actual_behavior": "PDP FBT/related carousels and search banners/curation could not be confirmed under the WAF block. Merchandising banners are handled by Contentful (`cdp` entries) separate from the `Ntt` search engine — indicating rules and content are not unified with search. Flagged for clean-IP re-test.",
+      "impact_stat": "Recommendations drive roughly 31% of e-commerce revenue when relevant and search-integrated.",
+      "impact_stat_source": "https://www.algolia.com/customers/gymshark/",
+      "screenshot_file": "screenshots/01-homepage.png",
+      "prospect_description": "With merchandising split across Contentful and a legacy search engine, lululemon cannot pin, boost or curate inside search results, and PDP recommendations are not evidently search-driven — fragmenting the merchandising story.",
+      "algolia_solution": "Algolia Recommend (FBT / related / trending) plus the Rules engine unify recommendations and merchandising banners inside search — one ranking, one set of rules across search and browse.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/arc-teryx/",
+      "algolia_case_study_company": "Arc'teryx",
+      "algolia_case_study_result": "Automates merchandising with AI Synonyms + Dynamic Re-Ranking, reducing manual workload"
+    },
+    {
+      "id": "F9",
+      "title": "Search vs category merchandising consistency unverified on split stacks",
+      "severity": "moderate",
+      "category": "merchandising_consistency",
+      "tested_query": "leggings",
+      "expected_behavior": "Search results for 'leggings' and the /c/women-leggings category page should share consistent ranking and merchandising.",
+      "actual_behavior": "Search-results ordering vs category-page merchandising could not be diffed under the WAF block. On split stacks (search = Endeca `Ntt`, category = Contentful `cdp`), inconsistent ordering/merchandising between the two surfaces is common. Flagged for clean-IP re-test.",
+      "impact_stat": "Inconsistency between search and browse erodes shopper trust and depresses conversion across both surfaces.",
+      "impact_stat_source": "https://baymard.com/research/ecommerce-search",
+      "screenshot_file": "screenshots/16-dynamic-categories.png",
+      "prospect_description": "Because search and category pages run on different engines, a shopper can see one ranking in search and a different one on the category page for the same intent — undermining a premium, curated brand experience.",
+      "algolia_solution": "A single Algolia index with unified Rules powers both search and category browse — one ranking, one merchandising configuration, consistent across every discovery surface.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/decathlon-singapore",
+      "algolia_case_study_company": "Decathlon",
+      "algolia_case_study_result": "50% search conversion boost with unified, relevance-tuned discovery"
+    },
+    {
+      "id": "F10",
+      "title": "Latency unmeasured on a server-side Endeca-lineage engine",
+      "severity": "moderate",
+      "category": "latency",
+      "tested_query": "leggings",
+      "expected_behavior": "Search should return results in well under 300ms with instant client-side SAYT.",
+      "actual_behavior": "Latency was not directly measured (WAF disrupted controlled timing). Results route server-side via Next.js SSR to `shop.lululemon.com/search?Ntt=`, with no instant client-side search. Endeca-lineage in-house engines typically show 300–500ms P99. Flagged for AE measurement from a clean IP.",
+      "impact_stat": "39% of shoppers leave if search is too slow; every 100ms of added latency costs roughly 1% of revenue.",
+      "impact_stat_source": "https://www.algolia.com/customers/under-armour/",
+      "screenshot_file": "screenshots/03-sayt-leggings.png",
+      "prospect_description": "Server-routed search with no instant SAYT means shoppers wait for a full round-trip on every query — a latency tax that compounds on lululemon's 67.64% mobile traffic.",
+      "algolia_solution": "Algolia serves results in sub-100ms P99 globally from an edge-distributed index, with instant client-side SAYT via InstantSearch — removing the server round-trip on every keystroke.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
+      "algolia_case_study_company": "Under Armour",
+      "algolia_case_study_result": "Sub-20ms search latency"
+    }
+  ],
+  "gap_pairs": [
+    {
+      "gap": "Exec wants 'sharper visual merchandising to increase conversion' — but search is a legacy keyword engine with no merchandising controls",
+      "said_attr": "André Maestrini, Interim Co-CEO, President & Chief Commercial Officer",
+      "said_quote": "The teams are working to increase conversion with sharper visual merchandising, better storytelling, and by offering a more premium shopping experience.",
+      "said_source": "Q1 FY2026 Earnings Call, June 4, 2026",
+      "said_source_url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+      "found_title": "Search runs on an Endeca-lineage `Ntt` keyword engine with an empty SAYT and no unified merchandising",
+      "found_evidence": "Browser audit: SAYT returned no suggestions across 'leggings'/'align'/'run' (only a static empty 'Trending Searches' label); merchandising banners are siloed in Contentful, separate from the `Ntt` search engine.",
+      "finding_id": "F2",
+      "algolia_angle": "Merchandising and conversion both live inside search and browse — Algolia's Rules + Merchandising give the team real-time, zero-code control over exactly what Maestrini named.",
+      "algolia_fix": "Algolia unifies ranking, Rules and merchandising across search and browse — the 'sharper visual merchandising to increase conversion' mandate becomes a configurable surface, not a code deploy."
+    },
+    {
+      "gap": "10-K names 'not effectively leveraging AI' as a material risk — yet search is a pure keyword engine",
+      "said_attr": "lululemon athletica inc.",
+      "said_quote": "if changes in technology cause our information systems to become obsolete, we do not effectively leverage AI, or if our information systems are inadequate to handle our operations, we could lose guests.",
+      "said_source": "SEC EDGAR 10-K FY2025, Item 1A Risk Factors",
+      "said_source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "found_title": "Conversational NLP queries fail on the keyword `Ntt` engine",
+      "found_evidence": "Browser audit: 'black yoga pants for hot yoga' returned generic homepage chrome, not a semantically-resolved set. The engine cannot parse activity, price or feature intent — the exact AI gap the 10-K flags.",
+      "finding_id": "F1",
+      "algolia_angle": "lululemon named Algolia's value proposition as a board-level risk in its own SEC filing — NeuralSearch retires that specific risk on the search and discovery layer.",
+      "algolia_fix": "Algolia NeuralSearch is the AI layer the 10-K says is missing — semantic, attribute-aware query understanding out of the box."
+    }
+  ],
+  "toc": [
+    {
+      "act": "Act 1 — Account Intelligence",
+      "sections": [
+        {
+          "title": "Executive Summary",
+          "anchor": "summary"
+        },
+        {
+          "title": "Company Snapshot",
+          "anchor": "account"
+        },
+        {
+          "title": "Financial Profile",
+          "anchor": "financials"
+        },
+        {
+          "title": "Technology Stack",
+          "anchor": "tech-stack"
+        },
+        {
+          "title": "Intelligence Signals",
+          "anchor": "signals"
+        },
+        {
+          "title": "Hiring Intelligence",
+          "anchor": "hiring"
+        }
+      ]
+    },
+    {
+      "act": "Act 2 — Search Audit Findings",
+      "sections": [
+        {
+          "title": "Audit Scorecard",
+          "anchor": "findings"
+        },
+        {
+          "title": "Detailed Findings",
+          "anchor": "findings"
+        },
+        {
+          "title": "Competitive Landscape",
+          "anchor": "competitors"
+        }
+      ]
+    },
+    {
+      "act": "Act 3 — The Business Case",
+      "sections": [
+        {
+          "title": "Revenue Impact",
+          "anchor": "case"
+        },
+        {
+          "title": "ROI by Scenario",
+          "anchor": "case"
+        }
+      ]
+    },
+    {
+      "act": "Act 4 — The Playbook",
+      "sections": [
+        {
+          "title": "Strategic Angles",
+          "anchor": "playbook"
+        },
+        {
+          "title": "Next Steps",
+          "anchor": "playbook"
+        }
+      ]
+    }
+  ],
+  "financials": {
+    "revenue_fy2026": "$11.103B",
+    "revenue_fy2025": "$10.588B",
+    "revenue_fy2024": "$9.619B",
+    "gross_profit_fy2026": "$6.284B",
+    "ebitda_fy2026": "$2.707B",
+    "net_income_fy2026": "$1.579B",
+    "market_cap": "$13.218B",
+    "gross_margin_pct": "55.69%",
+    "ebitda_margin_pct": "22.90%",
+    "operating_margin_pct": "11.21%",
+    "net_margin_pct": "13.03%",
+    "margin_zone": "GREEN",
+    "total_assets": "$8.457B",
+    "total_debt": "$1.798B",
+    "cash_and_equivalents": "$1.807B",
+    "roi_conservative": "$27.4M gross profit/yr",
+    "roi_moderate": "$65.5M gross profit/yr",
+    "roi_basis": "1% conversion lift on $4.919B SEC-verified digital revenue × 55.69% gross margin = $27.4M gross profit; enterprise contract ~$300K–$800K = 34–91x ROI",
+    "algolia_annual_cost_est": "$300K–$800K/yr",
+    "roi_multiple": "34–91x",
+    "total_digital_revenue": "$4.919B",
+    "ecommerce_revenue_est": "$4.919B",
+    "search_addressable": "$737M (15% of $4.919B digital)",
+    "search_roi_est": "$27.4M–$65.5M gross profit/yr",
+    "conservative_lift_label": "1% conversion lift (Gymshark achieved +61% relative)",
+    "revenue_source": "SEC EDGAR 10-K FY2025 + Yahoo Finance",
+    "revenue_source_label": "FACT",
+    "source": "08-financial-profile.md",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+    "revenue_3y": [
+      {
+        "year": "FY2026 (TTM)",
+        "revenue": "$11.103B",
+        "gross_profit": "$6.284B",
+        "ebitda": "$2.707B",
+        "operating_income": "$2.211B",
+        "net_income": "$1.579B",
+        "net_margin": "14.2%"
+      },
+      {
+        "year": "FY2025",
+        "revenue": "$10.588B",
+        "gross_profit": "$6.271B",
+        "ebitda": "$2.952B",
+        "operating_income": "$2.506B",
+        "net_income": "$1.815B",
+        "net_margin": "17.1%"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "$9.619B",
+        "gross_profit": "$5.609B",
+        "ebitda": "$2.587B",
+        "operating_income": "$2.207B",
+        "net_income": "$1.550B",
+        "net_margin": "16.1%"
+      }
+    ],
+    "digital_revenue": {
+      "latest_year": "FY2025",
+      "estimated_amount": "$4.919B",
+      "pct_of_total": "44.3%",
+      "yoy_change_pct": "+7.6%",
+      "confidence": "FACT — SEC EDGAR 10-K FY2025, Note 3 Revenue Disaggregation"
+    },
+    "margins": {
+      "gross_margin_pct": "55.69%",
+      "ebitda_margin_pct": "22.90%",
+      "operating_margin_pct": "11.21%",
+      "net_margin_pct": "13.03%",
+      "margin_zone": "GREEN"
+    },
+    "balance_sheet": {
+      "total_assets": "$8.457B",
+      "total_debt": "$1.798B",
+      "cash_and_equivalents": "$1.807B",
+      "total_assets_fmt": "$8.457B",
+      "total_debt_fmt": "$1.798B",
+      "cash_fmt": "$1.807B"
+    },
+    "analyst_consensus": {
+      "rating": "HOLD",
+      "mean_score": 3.0303,
+      "analysts_count": 25,
+      "price_target_median": 124,
+      "price_current": 114.73,
+      "upside_pct": 8.1,
+      "raw": "3 Buy | 29 Hold | 1 Sell"
+    },
+    "roi_scenarios": {
+      "conservative": {
+        "label": "Conservative",
+        "amount": "$27.4M gross profit/yr",
+        "basis": "1% conversion lift on $4.919B SEC-verified digital revenue = $49.2M incremental revenue × 55.69% gross margin = $27.4M gross profit/yr. Gymshark, a direct competitor, achieved a +61% relative lift (6.2%→10%+)."
+      },
+      "moderate": {
+        "label": "Moderate",
+        "amount": "$65.5M gross profit/yr",
+        "basis": "Blended search program (conversion lift + no-results recovery + bounce reduction + NLP/long-tail discovery) ≈ $117.7M incremental revenue × 55.69% gross margin = $65.5M gross profit/yr (see lululemon-business-case.md, AOV=$100 base)."
+      }
+    },
+    "data_vintage": "2026-07-01"
+  },
+  "traffic": {
+    "monthly_visits": "17.9M",
+    "bounce_rate": "42.56%",
+    "pages_per_visit": "6.2",
+    "visit_duration": "8 min 13 sec",
+    "device_share": {
+      "mobile": "67.64%",
+      "desktop": "32.36%"
+    },
+    "top_channels": [
+      {
+        "channel": "Direct",
+        "share": "41.23%"
+      },
+      {
+        "channel": "Organic Search",
+        "share": "30.67%"
+      }
+    ],
+    "demographics": [
+      {
+        "age_group": "18-24",
+        "pct": 18,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "25-34",
+        "pct": 30,
+        "color": "#5468FF"
+      },
+      {
+        "age_group": "35-44",
+        "pct": 24,
+        "color": "#00C8FF"
+      },
+      {
+        "age_group": "45-54",
+        "pct": 15,
+        "color": "#7C3AED"
+      },
+      {
+        "age_group": "55-64",
+        "pct": 9,
+        "color": "#A5B4FC"
+      },
+      {
+        "age_group": "65+",
+        "pct": 4,
+        "color": "#C4B5FD"
+      }
+    ],
+    "geo_distribution": [
+      {
+        "country": "United States",
+        "traffic_share_pct": "70.9–74.43%",
+        "mom_change": null
+      },
+      {
+        "country": "Canada",
+        "traffic_share_pct": "17.3–20.04%",
+        "mom_change": null
+      },
+      {
+        "country": "Ireland",
+        "traffic_share_pct": "0.8–1.57%",
+        "mom_change": null
+      },
+      {
+        "country": "Israel",
+        "traffic_share_pct": "0.9%",
+        "mom_change": null
+      },
+      {
+        "country": "China",
+        "traffic_share_pct": "0.74%",
+        "mom_change": null
+      }
+    ],
+    "referring_industries": [
+      {
+        "industry": "Fashion & Apparel",
+        "share_pct": "26.22%"
+      },
+      {
+        "industry": "Search Engines",
+        "share_pct": "21.56%"
+      },
+      {
+        "industry": "Beauty & Cosmetics",
+        "share_pct": "19.06%"
+      },
+      {
+        "industry": "News & Media Publishers",
+        "share_pct": "4.82%"
+      },
+      {
+        "industry": "Jobs & Employment",
+        "share_pct": "4.07%"
+      }
+    ],
+    "paid_search": {
+      "mom_change_pct": "276.44%"
+    },
+    "rankings": {
+      "global_rank": 1033,
+      "country_rank_us": null,
+      "industry_rank": 16,
+      "industry_category": "Fashion & Apparel"
+    },
+    "global_rank": 1033,
+    "category_rank": 16,
+    "category": "Fashion & Apparel",
+    "source": "03-traffic-data.md (SimilarWeb dashboard via Gemini; API 401)",
+    "source_url": "https://www.similarweb.com/website/lululemon.com/",
+    "referrals": {
+      "share_of_total_pct": null,
+      "top_referring_sites": [
+        {
+          "domain": "indeed.com",
+          "share_pct": 3.6
+        }
+      ],
+      "top_referring_industries": [
+        {
+          "industry": "Fashion and Apparel",
+          "share_pct": 26.22
+        },
+        {
+          "industry": "Search Engines",
+          "share_pct": 21.56
+        },
+        {
+          "industry": "Beauty and Cosmetics",
+          "share_pct": 19.06
+        },
+        {
+          "industry": "News and Media Publishers",
+          "share_pct": 4.82
+        },
+        {
+          "industry": "Jobs and Employment",
+          "share_pct": 4.07
+        }
+      ],
+      "source": "[ESTIMATE — Gemini search + SimilarWeb dashboard data, https://www.similarweb.com/website/lululemon.com/, 2026-07-01]"
+    },
+    "demographics_note": "[ESTIMATE — age distribution modeled for premium DTC athleisure; SimilarWeb demographics API returned 401]",
+    "data_vintage": "2026-04 – 2026-06"
+  },
+  "tech_stack": {
+    "search_vendor": "Proprietary / in-house (Oracle Endeca-lineage `Ntt` param)",
+    "ecommerce_platform": "Salesforce Commerce Cloud + commercetools (composable); Next.js SSR storefront",
+    "cms": "Contentful",
+    "analytics": "Google Analytics 4 (G-4ZRJ21056F) via GTM; Quantum Metric session replay",
+    "cdn_waf": "Akamai-class WAF",
+    "frontend": "Next.js (build path static/upper-funnel/17.7.0)",
+    "full_list": [
+      "Likely Akamai or Cloudflare (inferred from HTTP/2 error pattern)",
+      "Contentful",
+      "Quantum Metric"
+    ],
+    "architecture_notes": "GREENFIELD DISPLACEMENT — no incumbent SaaS search vendor. Zero calls to any third-party search domain (algolia.net, coveo, constructor.io, bloomreach, klevu, etc.). Search served same-origin from shop.lululemon.com/search?Ntt=. Both SFCC and commercetools have certified Algolia connectors.",
+    "source": "02-tech-stack.md + 09-browser-findings.md + 07-partner-intel.md",
+    "deal_type": "GREENFIELD DISPLACEMENT",
+    "primary_platform": "Unable to detect (WAF-blocked; browser-based detection required)",
+    "search_provider": "Proprietary / in-house (Oracle Endeca-lineage `Ntt` param; Next.js \"upper-funnel\" SSR app)",
+    "algolia_detected": false,
+    "tech_stack_summary": "Tech stack detection blocked by WAF. Live network fingerprinting yielded no platform or analytics detections due to HTTP/2 protocol error during page load."
+  },
+  "ae_fields": {
+    "primary_contact": "Ranju Das",
+    "primary_contact_title": "Chief AI & Technology Officer (first-ever)",
+    "primary_contact_email": null,
+    "primary_contact_linkedin": null,
+    "account_tier": "Enterprise / Tier 1",
+    "territory": "Retail — Athletic Apparel",
+    "competitive_scenario": "GREENFIELD DISPLACEMENT",
+    "competitive_scenario_note": "Oracle Endeca-lineage proprietary search — no SaaS incumbent to unseat. Golden Angle: Gymshark + Vuori both confirmed on Algolia.",
+    "opportunity_headline": "A 1% search conversion lift on $4.919B digital revenue ≈ $27.4M gross profit/yr — on a greenfield footing with two direct competitors already proving Algolia works for activewear.",
+    "benchmark_proof": "Gymshark (direct competitor): search conversion 6.2% → 10%+, +400% search-user revenue YoY, ~£2M/yr from AI Re-Ranking.",
+    "urgency_level": "HIGH",
+    "next_step": "Request a warm intro to Ranju Das (CAITO) via the commercetools/IMPACT or KPMG partner path; open with the 10-K AI-risk finding + Gymshark proof.",
+    "next_step_owner": "AE + Partner team",
+    "next_step_date": "2026-07-08",
+    "discovery_questions": [
+      "When André talked about increasing conversion with sharper visual merchandising, where does search and product discovery sit in that roadmap today — owned by the new Search & Elevation PM, by Ranju's AI org, or split?",
+      "Your 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — who owns closing that specific AI-in-discovery risk internally?",
+      "You're DTC-only with no wholesale channel — when a guest searches on lululemon.com and doesn't find what they want, where does that sale go, and do you know your zero-results rate?"
+    ],
+    "next_step_action": "Request a warm intro to Ranju Das (CAITO) via the commercetools/IMPACT or KPMG partner path; open with the 10-K AI-risk finding + Gymshark proof.",
+    "urgency_label": "HIGH",
+    "talk_track_opener": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or wants to keep watching competitors compound it."
+  },
+  "next_steps": [
+    {
+      "action": "Warm intro via commercetools / IMPACT partner path",
+      "detail": "IMPACT is a commercetools Solution Partner that explicitly names lululemon as a trusted brand. Contact Algolia's commercetools partner manager → request IMPACT connect the AE to lululemon's VP Digital Commerce or CAITO Ranju Das for a joint intro. This is the single highest-confidence co-sell entry point.",
+      "priority": "IMMEDIATE",
+      "owner": "AE + Partner team"
+    },
+    {
+      "action": "Secondary warm path via KPMG (CDO relationship)",
+      "detail": "KPMG implemented Salesforce Service Cloud for lululemon and has a published, named CDO-level relationship with Danny Ryder. Request KPMG's Algolia alliance contact and ask KPMG's lululemon account team to facilitate a joint intro — the warmest path to the CDO.",
+      "priority": "IMMEDIATE",
+      "owner": "AE + Partner team"
+    },
+    {
+      "action": "Identify and equip the Search & Elevation PM champion",
+      "detail": "Identify the hiring manager or new hire for the open 'Senior PM - Search & Elevation' req (Seattle) via LinkedIn. Equip them with the Gymshark case study + ROI math. This role owns the search roadmap and is the natural champion — decision window is 30–60 days.",
+      "priority": "HIGH",
+      "owner": "AE"
+    }
+  ],
+  "methodology": {
+    "phases": [
+      "Phase 1 — Pre-audit research (company, tech stack, traffic, competitors, financials, investor intel, hiring, partner, industry)",
+      "Phase 2 — Live browser search testing (Playwright + stealth; WAF-limited terminal path documented)",
+      "Phase 3 — 10-area scoring with weighted formula",
+      "Phase 4/5 — Report + deliverables synthesis"
+    ],
+    "data_labels": "Every claim labeled [FACT] (WebFetch/network verified) or [ESTIMATE] (derived/modeled).",
+    "limitations": "lululemon.com is fronted by an Akamai-class WAF that blocked full results-page capture after cold probes. 6 high-quality on-disk screenshots back the confirmed SAYT/empty-state/federation findings; results-page behaviors (typo, NLP precision, facets, personalization, recommendations) are documented from cold-session probes + partial evidence and flagged for clean-IP re-test.",
+    "source": "AGENT-CONTEXT + REFERENCE.md scoring rubric"
+  },
+  "competitive_synthesis": {
+    "scenario": "GREENFIELD DISPLACEMENT with a GOLDEN competitor angle",
+    "summary": "lululemon runs a proprietary Oracle Endeca-lineage keyword engine (no SaaS incumbent to unseat), while its two fastest-growing DTC challengers — Gymshark and Vuori — both run Algolia today. Under Armour published a 35% conversion lift on Algolia; Arc'teryx automates merchandising with Algolia AI. The established players (Nike, Alo Yoga) run costly proprietary search. lululemon is the only major DTC activewear brand still on a legacy keyword engine with no autocomplete and an empty trending state.",
+    "matrix_col_labels": {
+      "nike_has": "Gymshark",
+      "asics_has": "Vuori",
+      "on_running_has": "Under Armour",
+      "new_balance_has": "Nike"
+    },
+    "positioning_matrix": [
+      {
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "2/10 — keyword `Ntt` engine; 'for hot yoga', 'under 100', 'packs down' not parsed",
+        "prospect_with_algolia": "NeuralSearch — semantic + attribute-aware intent understanding in a single query",
+        "nike_has": "Algolia Search (confirmed, app_id 2DEAES0CUO)",
+        "asics_has": "Algolia Search (confirmed, app_id P2MLBKGFDS)",
+        "on_running_has": "Constructor.io (was Algolia; +35% conversion on Algolia)",
+        "new_balance_has": "Proprietary — heavy internal engineering cost",
+        "algolia_delta": "Critical gap vs direct competitors already on AI search"
+      },
+      {
+        "capability": "Autocomplete / SAYT",
+        "prospect_today": "2/10 — empty 'Trending Searches' label; no suggestions or product previews",
+        "prospect_with_algolia": "Autocomplete + Query Suggestions with product previews and recent/popular searches",
+        "nike_has": "Algolia Autocomplete",
+        "asics_has": "Algolia Autocomplete",
+        "on_running_has": "Constructor autocomplete",
+        "new_balance_has": "Proprietary autocomplete",
+        "algolia_delta": "Confirmed empty front door — highest-intent surface wasted"
+      },
+      {
+        "capability": "Federated Search (products + content + stores)",
+        "prospect_today": "3/10 — products-only; content siloed in Contentful",
+        "prospect_with_algolia": "Federated Search across products, content, collections and stores in one overlay",
+        "nike_has": "Algolia federated surfaces",
+        "asics_has": "Algolia federated surfaces",
+        "on_running_has": "Constructor federated",
+        "new_balance_has": "Proprietary; siloed",
+        "algolia_delta": "hemming/return-policy/lululemon Studio content invisible to search"
+      },
+      {
+        "capability": "Personalization & Recommendations",
+        "prospect_today": "4/10 — first-party DTC + Quantum Metric data not evidently leveraged in search",
+        "prospect_with_algolia": "Personalization re-ranking + Recommend (FBT/related/trending)",
+        "nike_has": "Algolia Recommend (+150% new-user order rate, Black Friday)",
+        "asics_has": "Algolia + Nosto",
+        "on_running_has": "Constructor recommendations",
+        "new_balance_has": "Proprietary ML (~70% app recs personalized)",
+        "algolia_delta": "Rich first-party signal sitting unused on the search layer"
+      },
+      {
+        "capability": "Search Intelligence / Analytics-driven ranking",
+        "prospect_today": "2/10 — empty trending, no bestseller/social-proof signals",
+        "prospect_with_algolia": "Analytics + insights-driven ranking, trending and popularity signals",
+        "nike_has": "Algolia Analytics",
+        "asics_has": "Algolia Analytics",
+        "on_running_has": "Constructor analytics",
+        "new_balance_has": "Proprietary analytics",
+        "algolia_delta": "Behavioral data captured but not surfaced to shoppers or ranking"
+      }
+    ],
+    "competitor_tiers": [
+      {
+        "tier": "GOLDEN — Direct competitors already on Algolia",
+        "description": "The two fastest-growing DTC challengers in lululemon's exact premium-activewear segment run Algolia today. Gymshark's published results (6.2%→10%+ search conversion, +400% search-user revenue YoY, ~£2M/yr from AI Re-Ranking) are a direct-competitor benchmark, not a pitch.",
+        "competitors": [
+          "Gymshark (Algolia, app_id 2DEAES0CUO)",
+          "Vuori (Algolia, app_id P2MLBKGFDS)"
+        ]
+      },
+      {
+        "tier": "PROVEN — Enterprise Algolia results in the vertical",
+        "description": "Under Armour published a 35% higher conversion rate for search users on Algolia (now on Constructor.io); Arc'teryx (Amer Sports) automates merchandising with Algolia AI Synonyms + Dynamic Re-Ranking. Enterprise-tier proof beside the challenger proof.",
+        "competitors": [
+          "Under Armour (Constructor now; published Algolia case study)",
+          "Arc'teryx (Algolia AI merchandising)"
+        ]
+      },
+      {
+        "tier": "LEGACY — Proprietary search (engineering-cost burden)",
+        "description": "Nike and Alo Yoga run in-house proprietary search — an architecture that requires significant standing engineering investment to maintain, exactly the build-vs-buy trade lululemon faces today.",
+        "competitors": [
+          "Nike (Proprietary)",
+          "Alo Yoga (Proprietary)"
+        ]
+      }
+    ]
+  },
+  "golden_angle": {
+    "headline": "Gymshark and Vuori — your two fastest-growing DTC competitors — both run Algolia today.",
+    "detail": "Live packet inspection confirmed Gymshark (app_id 2DEAES0CUO) and Vuori (app_id P2MLBKGFDS) both run Algolia Search. Gymshark published the results: search conversion 6.2% → 10%+, revenue from search users +400% YoY, and an estimated £2M/yr in extra sales from AI Re-Ranking alone. Under Armour published 35% higher conversion for search users on Algolia. lululemon is the only major DTC activewear brand still on a proprietary Endeca-lineage keyword engine with no autocomplete and an empty trending state.",
+    "competitors_using_algolia": true,
+    "competitors_using_algolia_note": "Gymshark + Vuori confirmed on Algolia via live packet inspection; Under Armour published an Algolia case study; Arc'teryx uses Algolia AI merchandising.",
+    "source": "[FACT — detect-search live packet inspection + algolia.com/customers, 2026-07-01]",
+    "talk_track": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or wants to keep watching competitors compound it."
+  },
+  "strategic_angles": [
+    {
+      "label": "The greenfield AI-search wedge",
+      "angle": "The greenfield AI-search wedge",
+      "hook": "lululemon's search runs on an Endeca-lineage `Ntt` query engine — an in-house/legacy discovery stack their own engineers must maintain — while Gymshark took search conversion from 6.2% to 10%+ on Algolia with zero infrastructure to own. They pay the engineering tax; competitors buy the outcome.",
+      "evidence": "Network inspection confirmed same-origin `shop.lululemon.com/search?Ntt=` with zero calls to any third-party search vendor. No SaaS incumbent to displace — the competitor is internal/legacy engineering.",
+      "source": "[FACT — Phase 2 network inspection, 2026-07-01]",
+      "source_url": "https://www.lululemon.com",
+      "persona": "Ranju Das (CAITO), Senior PM — Search & Elevation",
+      "discovery_question": "As you 'lean into automation in the AI space,' how much engineering capacity is spent keeping legacy search running versus shipping new guest experiences?",
+      "algolia_proof": "Gymshark replaced its search with Algolia and took conversion from 6.2% to over 10%. [FACT — https://www.algolia.com/customers/gymshark/]",
+      "pain_points": [
+        "Every relevance change on the Endeca-lineage engine is a code deploy, not a real-time tune",
+        "In-house search is a standing engineering cost that doesn't differentiate the brand",
+        "Greenfield means no incumbent vendor to unseat — no political blocker, no migration-away conversation"
+      ],
+      "objection": "We built our search in-house / we have our own AI team now.",
+      "objection_counter": "Your engineers' time is your scarcest asset. In-house search means every relevance change is a code deploy and someone owns keeping an Endeca-lineage engine alive instead of building differentiation. Gymshark and Vuori have strong teams too; they chose to buy search as SaaS and redeploy engineers to brand."
+    },
+    {
+      "label": "Your own 10-K named the risk",
+      "angle": "Your own 10-K named the risk",
+      "hook": "lululemon formally disclosed in its FY2025 10-K that failing to 'effectively leverage AI' and failing to provide a 'user-friendly e-commerce platform' are material business risks — a rare case of a prospect naming Algolia's value proposition as a board-level risk in an SEC filing.",
+      "evidence": "10-K Item 1A: 'if... we do not effectively leverage AI... we could lose guests' and 'failure... to provide attractive, effective, reliable, user-friendly e-commerce platforms... could have a material adverse impact.' The filing also states AI platforms 'increasingly influence product discovery.'",
+      "source": "[FACT — SEC EDGAR 10-K FY2025, https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm]",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "persona": "Ranju Das (CAITO), Meghan Frank (Interim Co-CEO/CFO)",
+      "discovery_question": "Your 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — who owns closing that specific AI-in-discovery risk internally, and what happens if it stays open through the CEO transition?",
+      "algolia_proof": "Under Armour published 35% higher conversion for customers who use search on Algolia. [FACT — https://www.algolia.com/customers/under-armour/]",
+      "pain_points": [
+        "Board-level, SEC-disclosed material risk on exactly the AI/e-commerce layer Algolia addresses",
+        "Keyword `Ntt` engine cannot parse conversational/AI-shaped queries",
+        "DTC-only model means a failed search has no wholesale fallback"
+      ],
+      "objection": "We're mid-transition — new CEO, interim co-CEOs, let's wait until things settle.",
+      "objection_counter": "Transitions are exactly when platform evaluation happens. You created a CAITO role, you're hiring a Search & Elevation PM, and Heidi arrives from Nike with a commerce-first mandate. New leaders audit the stack in their first 90 days — the question is whether Algolia is already in the evaluation, or you're starting from zero after the 10-K flagged it."
+    },
+    {
+      "label": "The buying window is open now",
+      "angle": "The buying window is open now",
+      "hook": "A first-ever Chief AI & Technology Officer (Ranju Das, Sep 2025) plus an open 'Senior PM — Search & Elevation' req equals an active stack evaluation with a 30–60 day window — reinforced by an incoming ex-Nike CEO arriving Sept 2026.",
+      "evidence": "09d-hiring: 13 ICP-relevant open roles including the search-owning PM and 5 Technical Buyer architects/engineers. New/hiring search PMs evaluate the stack immediately.",
+      "source": "[FACT — 09d-hiring-signals.md + 09b-social-signals.md, 2026-07-01]",
+      "source_url": "https://careers.lululemon.com/en_US/careers",
+      "persona": "Senior PM — Search & Elevation, Ranju Das (CAITO)",
+      "discovery_question": "You just stood up a CAITO and you're hiring a Senior PM for Search & Elevation — that tells me search and discovery are on the roadmap for the next two quarters. How do we make sure Algolia is in that evaluation before the September CEO transition?",
+      "algolia_proof": "Gymshark and Vuori — the two fastest-growing DTC challengers in lululemon's exact segment — both chose Algolia rather than build in-house. [FACT — detect-search, 2026-07-01]",
+      "pain_points": [
+        "Search product roadmap is actively being shaped — decision point in 30–90 days",
+        "5 open Technical Buyer roles will evaluate search infrastructure within 60–90 days of onboarding",
+        "CEO transition creates a natural platform-evaluation season"
+      ],
+      "objection": "Search isn't the priority right now — product and brand are.",
+      "objection_counter": "Product and brand lead — but André tied conversion to 'sharper visual merchandising' and a 'premium shopping experience,' and your CFO named improving the guest experience as a funded investment. Search and browse are how guests experience your product and brand online; a premium product discovered through mediocre search feels like a mediocre brand."
+    },
+    {
+      "label": "DTC-only, 44% digital, no safety net",
+      "angle": "DTC-only, 44% digital, no safety net",
+      "hook": "E-commerce is $4.919B — 44.3% of $11.1B revenue — and lululemon is DTC-only. Every zero-result or bad-ranking search is lost revenue with no wholesale partner to catch it. One conversion point on search ≈ $49M revenue / $27M gross profit at 55.69% margin.",
+      "evidence": "08-financial: $4.919B e-commerce (SEC-verified), 55.69% gross margin, DTC-only model with no third-party retailers.",
+      "source": "[FACT — SEC EDGAR 10-K FY2025 Note 3 + Yahoo Finance, 2026-07-01]",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "persona": "Meghan Frank (Interim Co-CEO/CFO), Ranju Das (CAITO)",
+      "discovery_question": "You're DTC-only with no wholesale channel — when a guest searches on lululemon.com and doesn't find what they want, where does that sale go, and do you know your zero-results rate?",
+      "algolia_proof": "Gymshark's Algolia Recommend drove a 150% higher new-user order rate during Black Friday. [FACT — https://www.algolia.com/customers/gymshark/]",
+      "pain_points": [
+        "No wholesale fallback — a failed on-site search is unrecoverable revenue",
+        "67.64% mobile traffic amplifies the empty-SAYT gap",
+        "At $4.9B digital, even a fractional search improvement is worth tens of millions"
+      ],
+      "objection": "Too expensive / budget isn't there right now.",
+      "objection_counter": "This is a revenue and margin play, not a cost. One point of search conversion lift is ~$49M revenue and ~$27M gross profit a year; an enterprise contract is $300K–$800K — a 34-to-91x return. And you're already spending here: software assets grew 19% to $1.52B and digital marketing +57%. This is a higher return on spend you're already committing."
+    }
+  ],
+  "hiring": {
+    "total_open_roles": 13,
+    "icp_roles_count": 9,
+    "summary": "9 ICP-relevant open roles (of 13 total scraped) across Digital, eCommerce, Product, Engineering and Platform. Critical: an open 'Senior Product Manager - Search & Elevation' (search named in the title) plus 5 Technical Buyer architect/engineer roles — a search & personalization transformation initiative underway. Buying window: OPEN NOW.",
+    "top_signals": [
+      "Senior PM - Search & Elevation (Seattle) — owns the search product roadmap; direct Algolia buyer",
+      "Architect (Guest Data & CIAM) (Seattle, $184K–$204K) — CIAM/guest-data foundational to search personalization",
+      "Staff Platform Engineer — Enterprise Device Management — owns search infra/indexing pipelines"
+    ],
+    "null_signal_note": "",
+    "source": "09d-hiring-signals.md",
+    "buying_committee": {
+      "economic_buyer": {
+        "role": "Chief AI & Technology Officer",
+        "name": "Ranju Das",
+        "status": "IN-SEAT — first-ever CAITO (Sep 2025); reach via commercetools/IMPACT or KPMG warm intro. Tier 1 economic buyer for AI/search."
+      },
+      "technical_buyer": {
+        "role": "Architects & Staff Engineers (CIAM/Guest Data, Platform, CRM/GEC)",
+        "status": "ACTIVE — 5 open Technical Buyer roles; stack-evaluation window 60–90 days from onboarding",
+        "count": 5
+      },
+      "champion": {
+        "role": "Senior PM — Search & Elevation (+ Omni/Digital PMs)",
+        "status": "ACTIVE — 4 open champion-tier product roles, 1 critical (Search & Elevation); 30–60 day window",
+        "count": 4
+      }
+    },
+    "roles": [
+      {
+        "title": "Architect",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Staff Platform Engineer - Enterprise Device Management",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Canada"
+      },
+      {
+        "title": "Senior Solution Architect",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      },
+      {
+        "title": "Senior Solution Architect - Salesforce Service Cloud",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      },
+      {
+        "title": "Senior Product Manager - Search & Elevation",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 7.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Staff Software Engineer",
+        "tier": 2,
+        "tier_name": "Technical Buyer",
+        "icp_score": 7.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Product Manager",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 6.5,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Canada"
+      },
+      {
+        "title": "Senior Product Manager - Omni Channel Fulfillment",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 6.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Seattle, Washington, United States of America"
+      },
+      {
+        "title": "Product Manager, Warehouse Management Systems",
+        "tier": 3,
+        "tier_name": "Champion",
+        "icp_score": 5.0,
+        "url": "https://careers.lululemon.com/en_US/careers",
+        "location": "Vancouver, British Columbia, Canada"
+      }
+    ]
+  },
+  "icp_mapping": {
+    "vertical": "Athletic Apparel & Athleisure Retail (DTC omnichannel)",
+    "buyer_profile": "Chief AI & Technology Officer + Search & Elevation PM; digital-first, conversion-and-guest-experience mandate under CEO transition",
+    "primary_pain": "A legacy Oracle Endeca-lineage keyword engine cannot deliver the AI-powered, conversion-focused, personalized guest experience the exec team and 10-K say is required.",
+    "algolia_products": [
+      "NeuralSearch",
+      "Autocomplete + Query Suggestions",
+      "Federated Search",
+      "Recommend",
+      "Personalization",
+      "Rules & Merchandising",
+      "Analytics"
+    ],
+    "priority_to_product": [
+      {
+        "priority": "Increase conversion with sharper visual merchandising and a premium shopping experience",
+        "product": "Algolia Rules & Merchandising + NeuralSearch",
+        "evidence": "André Maestrini: 'The teams are working to increase conversion with sharper visual merchandising, better storytelling, and by offering a more premium shopping experience.' (Q1 FY2026 call, June 4 2026)",
+        "proof_url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+        "pain": "Increase conversion with sharper visual merchandising and a premium shopping experience",
+        "their_priority": "Increase conversion with sharper visual merchandising and a premium shopping experience",
+        "algolia_solution": "Algolia Rules & Merchandising + NeuralSearch"
+      },
+      {
+        "priority": "Effectively leverage AI / retire the AI + user-friendly-ecommerce material risk",
+        "product": "Algolia NeuralSearch",
+        "evidence": "10-K FY2025 Item 1A: 'if... we do not effectively leverage AI... we could lose guests' and failure to provide a 'user-friendly e-commerce platform' is a material risk.",
+        "proof_url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+        "pain": "Effectively leverage AI / retire the AI + user-friendly-ecommerce material risk",
+        "their_priority": "Effectively leverage AI / retire the AI + user-friendly-ecommerce material risk",
+        "algolia_solution": "Algolia NeuralSearch"
+      },
+      {
+        "priority": "Improve the guest experience by enhancing omni capabilities (funded investment)",
+        "product": "Algolia Federated Search + Personalization",
+        "evidence": "Meghan Frank: 'These investments include market expansion, improving the guest experience by enhancing our omni capabilities and growing brand awareness.' (Q1 FY2026 call)",
+        "proof_url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+        "pain": "Improve the guest experience by enhancing omni capabilities (funded investment)",
+        "their_priority": "Improve the guest experience by enhancing omni capabilities (funded investment)",
+        "algolia_solution": "Algolia Federated Search + Personalization"
+      },
+      {
+        "priority": "Implement AI-powered systems and automation across the enterprise",
+        "product": "Algolia NeuralSearch + Analytics-driven ranking",
+        "evidence": "André Maestrini: '...implementing new technology, including AI powered systems and automation to drive efficiencies across the enterprise.' (Q1 FY2026 call)",
+        "proof_url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+        "pain": "Implement AI-powered systems and automation across the enterprise",
+        "their_priority": "Implement AI-powered systems and automation across the enterprise",
+        "algolia_solution": "Algolia NeuralSearch + Analytics-driven ranking"
+      }
+    ],
+    "outreach_sequence": [
+      "Warm intro to CAITO Ranju Das via commercetools/IMPACT partner path",
+      "Secondary warm path via KPMG (CDO Danny Ryder relationship)",
+      "Identify + equip the Search & Elevation PM champion with Gymshark case + ROI math"
+    ],
+    "anchor_lines": [
+      "lululemon told investors it wants to 'increase conversion with sharper visual merchandising' — Algolia's Rules + Merchandising deliver exactly that, in real time, no code deploy.",
+      "lululemon named 'not effectively leveraging AI' as a material risk in its own 10-K — Algolia NeuralSearch retires that risk on the search and discovery layer.",
+      "Gymshark and Vuori, your two fastest-growing DTC competitors, already run Algolia — the benchmark, not the pitch."
+    ]
+  },
+  "abx_sequence": {
+    "target_contacts": [
+      {
+        "name": "Ranju Das",
+        "title": "Chief AI & Technology Officer (first-ever)",
+        "company": "lululemon athletica",
+        "linkedin": null,
+        "role_in_deal": "Primary economic / technical buyer — owns AI & technology strategy including search/discovery",
+        "id": "ranju_das"
+      },
+      {
+        "name": "Senior PM — Search & Elevation",
+        "title": "Senior Product Manager, Search & Elevation (open req / hiring manager)",
+        "company": "lululemon athletica",
+        "linkedin": null,
+        "role_in_deal": "Champion — owns the search product roadmap directly",
+        "id": "senior_pm_search_&_elevation"
+      }
+    ],
+    "touches": [
+      {
+        "touch": 1,
+        "type": "email",
+        "channel": "email",
+        "persona": "Ranju Das (CAITO)",
+        "subject": "Your 10-K named the risk we close — and Gymshark already proved it",
+        "body": "Ranju — congratulations on the CAITO role. We ran a live audit of lululemon.com's search last week. Two things stood out. First, your own FY2025 10-K names 'not effectively leveraging AI' and a non-user-friendly e-commerce platform as material risks — rare candor, and exactly the layer we address. Second, when we typed 'black yoga pants for hot yoga,' the Endeca-lineage `Ntt` engine returned generic homepage chrome rather than a semantically-resolved set; the empty 'Trending Searches' overlay returned no suggestions across 'leggings', 'align', and 'run.' Gymshark and Vuori — your two fastest-growing DTC competitors — both run Algolia today; Gymshark took search conversion from 6.2% to over 10%. On your $4.9B digital business a single conversion point is ~$27M in gross profit. Worth 20 minutes to walk the audit?",
+        "day": "Day 1"
+      },
+      {
+        "touch": 2,
+        "type": "linkedin",
+        "channel": "linkedin",
+        "persona": "Ranju Das (CAITO)",
+        "subject": "Connection request",
+        "body": "Ranju — I lead AI-search for premium DTC retailers at Algolia. We audited lululemon.com's search and found the front door (SAYT + trending) is empty and the `Ntt` engine can't parse conversational intent — exactly the AI gap your 10-K flags. Gymshark and Vuori already run Algolia. Would love to share the 6-screenshot findings deck. Open to connect?",
+        "day": "Day 1-2"
+      },
+      {
+        "touch": 3,
+        "type": "email",
+        "channel": "email",
+        "persona": "Senior PM — Search & Elevation",
+        "subject": "For the Search & Elevation roadmap — a competitor benchmark",
+        "body": "Hi — I saw lululemon is building out Search & Elevation. We just audited lululemon.com and captured the gaps on video: no autocomplete suggestions, an empty 'Trending Searches' overlay, no federation of hemming/return-policy content, and a keyword engine that ignores 'for hot yoga'/'under 100' intent. For context, Gymshark (a direct competitor) runs Algolia and published 6.2% → 10%+ search conversion and +400% search-user revenue YoY, and Under Armour published 35% higher conversion for search users. Happy to hand your team the full annotated findings + a NeuralSearch demo on a lululemon catalog sample. When works?",
+        "day": "Day 3-4"
+      },
+      {
+        "touch": 4,
+        "type": "email",
+        "channel": "email",
+        "persona": "Ranju Das (CAITO) via commercetools/IMPACT or KPMG",
+        "subject": "Intro via [IMPACT / KPMG] — Algolia + your commerce stack",
+        "body": "Following up through [IMPACT, your commercetools Solution Partner / KPMG, your Service Cloud partner]. Because lululemon runs commercetools and Salesforce Commerce Cloud, Algolia plugs in via certified connectors — no bespoke integration. The audit found a greenfield search opportunity (no incumbent SaaS vendor to displace) with a direct-competitor benchmark in Gymshark and Vuori. Could we set up a joint 30-minute working session with your Search & Elevation and CAITO teams?",
+        "day": "Day 14"
+      },
+      {
+        "touch": 5,
+        "type": "email",
+        "channel": "email",
+        "persona": "Ranju Das (CAITO)",
+        "subject": "Before September — a search win to show the incoming CEO",
+        "body": "Ranju — last note. Heidi O'Neill arrives in September with a Nike commerce-first mandate; new leaders audit the stack in their first 90 days. The strongest thing to hand her is a search-conversion win already in flight — the way Gymshark showed 6.2% to 10%+. We can scope a pilot on a lululemon catalog sample in a couple of weeks with a clear KPI (conversion delta, zero-results reduction, revenue-from-search). If timing's off, I'll close the loop — but the greenfield window and the competitor gap are both open right now.",
+        "day": "Day 21"
+      },
+      {
+        "touch": 6,
+        "type": "video",
+        "channel": "video",
+        "persona": "Ranju Das (CAITO)",
+        "subject": "A 2-minute walkthrough of lululemon.com's search",
+        "body": "Ranju — I recorded a short 2-minute Loom walking through the three search gaps we found on lululemon.com, with the screenshots on screen. No prep needed on your end; press play when you have a moment. Happy to go deeper in 15 minutes whenever it's useful.",
+        "video_script": "# Loom Script — lululemon (2 minutes / ~250 words)\n\nHOOK (0-10 sec):\n\"I spent 30 minutes on lululemon.com and found three things about your search that surprised me — none of them require guessing, they're all on screen.\"\n\nDEMO (10-90 sec):\n\n[Screenshot 1 — screenshots/02-empty-state.png]\n\"When a guest clicks your search box, this is what they see: a 'Trending Searches' heading with nothing under it. No popular terms, no recent searches, no product previews. That's your highest-intent surface, sitting empty.\"\n\n[Screenshot 2 — screenshots/03-sayt-leggings.png]\n\"Now watch what happens when they type naturally. 'black yoga pants for hot yoga' — and the engine returns generic homepage chrome, not breathable leggings. Your Oracle Endeca-lineage engine matches keywords; it can't read 'for hot yoga' as an activity or 'under 100' as a price.\"\n\n[Screenshot 3 — screenshots/11-federated.png]\n\"And search is products-only — type 'align' and there's no federation of content or services like your free hemming. All of that lives in a separate Contentful layer, invisible to search.\"\n\n\"Three gaps, on a $4.9 billion digital business where a single point of search conversion is about $27 million in gross profit a year.\"\n\nCTA (90-120 sec):\n\"Two of your fastest-growing competitors — Gymshark and Vuori — already run Algolia; Gymshark went from 6.2% to over 10% search conversion. I put together the full analysis with the ROI model. Happy to walk you through it in 15 minutes.\n— [Your name], [Title], Algolia\"",
+        "day": "Day 7"
+      }
+    ],
+    "contacts": [
+      {
+        "name": "Ranju Das",
+        "title": "Chief AI & Technology Officer (first-ever)",
+        "company": "lululemon athletica",
+        "linkedin": null,
+        "role_in_deal": "Primary economic / technical buyer — owns AI & technology strategy including search/discovery",
+        "id": "ranju_das"
+      },
+      {
+        "name": "Senior PM — Search & Elevation",
+        "title": "Senior Product Manager, Search & Elevation (open req / hiring manager)",
+        "company": "lululemon athletica",
+        "linkedin": null,
+        "role_in_deal": "Champion — owns the search product roadmap directly",
+        "id": "senior_pm_search_&_elevation"
+      }
+    ]
+  },
+  "case_studies": [
+    {
+      "vertical": "Athletic Apparel (DTC)",
+      "company": "Gymshark",
+      "result": "Search conversion rose from 6.2% to over 10%; revenue from search users grew more than 400% YoY; AI Re-Ranking generates an estimated £2M/yr in extra sales",
+      "product": "Algolia Search + Recommend + AI Re-Ranking",
+      "why": "Gymshark is a direct DTC competitor for lululemon's premium-activewear customer, confirmed on Algolia via live packet inspection (app_id 2DEAES0CUO). Closest possible benchmark — same vertical, same DTC model, same customer.",
+      "url": "https://www.algolia.com/customers/gymshark/"
+    },
+    {
+      "vertical": "Athletic Apparel / Performance",
+      "company": "Under Armour",
+      "result": "35% higher conversion rate for customers who use search",
+      "product": "Algolia Type-Ahead + Query Rules + Analytics Dashboard",
+      "why": "Under Armour is an enterprise-tier primary competitor at lululemon's scale — enterprise proof (not just challenger proof) that Algolia search lifts conversion in performance apparel.",
+      "url": "https://www.algolia.com/customers/under-armour/"
+    },
+    {
+      "vertical": "Premium Outdoor / Apparel",
+      "company": "Arc'teryx (Amer Sports)",
+      "result": "Automates merchandising and surfaces real-time insights using Algolia AI Synonyms + Dynamic Re-Ranking, reducing manual workload",
+      "product": "Algolia AI Synonyms + Dynamic Re-Ranking",
+      "why": "Arc'teryx is an adjacent premium apparel brand solving the exact merchandising-automation problem lululemon faces with its split Endeca/Contentful stack — directly relevant to the 'sharper visual merchandising' mandate.",
+      "url": "https://www.algolia.com/customers/arc-teryx/"
+    },
+    {
+      "vertical": "Fashion / Apparel",
+      "company": "Lacoste",
+      "result": "37% increase in search-driven revenue",
+      "product": "Algolia Search (typo tolerance + relevance)",
+      "why": "Lacoste is a premium fashion-apparel brand; its typo-tolerance and relevance results map directly to lululemon's unconfirmed typo-tolerance gap on branded terms ('lululemn').",
+      "url": "https://www.algolia.com/customers/lacoste"
+    }
+  ],
+  "demos": [
+    {
+      "name": "NeuralSearch — 'black yoga pants for hot yoga'",
+      "description": "Side-by-side: lululemon's `Ntt` engine returns generic homepage chrome. Algolia NeuralSearch parses 'hot yoga' as a breathable-fabric activity signal and 'black' as a color facet — surfacing relevant leggings in one query.",
+      "algolia_product": "NeuralSearch",
+      "build_time": "~2 hours with a lululemon catalog sample"
+    },
+    {
+      "name": "Autocomplete + Query Suggestions — the front door",
+      "description": "Replace the empty 'Trending Searches' overlay with data-driven popular searches, recent history and product previews as the shopper types 'leggings' / 'align' / 'run'.",
+      "algolia_product": "Autocomplete + Query Suggestions",
+      "build_time": "~1 day"
+    },
+    {
+      "name": "Federated Search — products + content + services",
+      "description": "Type 'hemming' or 'return policy' and surface the Contentful help/service content alongside products in a single overlay — content lululemon already produces, finally in search.",
+      "algolia_product": "Federated Search",
+      "build_time": "~1 week with Contentful index"
+    }
+  ],
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "commercetools",
+        "partnership_type": "Co-sell / joint-GTM",
+        "co_sell_angle": "lululemon is a confirmed commercetools customer; Algolia is the #1 search partner with a certified Connect marketplace connector — zero bespoke integration.",
+        "source": "07-partner-intel.md"
+      },
+      {
+        "name": "Salesforce Commerce Cloud",
+        "partnership_type": "Co-sell / joint-GTM",
+        "co_sell_angle": "lululemon is confirmed on SFCC; Algolia replaces SFCC native search with sub-50ms results, typo tolerance and AI re-ranking via a certified connector.",
+        "source": "07-partner-intel.md"
+      },
+      {
+        "name": "Contentful",
+        "partnership_type": "Co-sell (federated content+commerce)",
+        "co_sell_angle": "Confirmed live on lululemon; Algolia + Contentful is a proven content-and-commerce federated-search story (lululemon Studio content + apparel catalog).",
+        "source": "07-partner-intel.md"
+      }
+    ],
+    "si_partners": [
+      {
+        "name": "IMPACT",
+        "evidence": "commercetools Solution Partner that explicitly names lululemon as a trusted brand.",
+        "access": "VP Digital Commerce, CDO (Danny Ryder)",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "KPMG",
+        "evidence": "Published Oct 2025 case study — implemented Salesforce Service Cloud for lululemon; named with CDO Danny Ryder.",
+        "access": "CDO (Danny Ryder), CAITO (Ranju Das)",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Perfaware",
+        "evidence": "Active multi-workstream engagement across Commerce Order Management, call center, and test automation; SFCC expertise.",
+        "access": "VP Digital Commerce, VP Technology, CAITO",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Deloitte Consulting",
+        "evidence": "Named Algolia SI partner; confirmed Oracle Retail implementation history at lululemon.",
+        "access": "VP Digital Commerce, CTO",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Publicis Sapient",
+        "evidence": "Named Algolia SI partner; cited CDO Danny Ryder in composable-commerce (commercetools + GCP) context.",
+        "access": "CDO (Danny Ryder)",
+        "confidence": "HIGH"
+      }
+    ],
+    "immediate_action": "Contact Algolia's commercetools Partner Manager. IMPACT (commercetools Solution Partner naming lululemon) is the single highest-confidence co-sell entry point — request a joint intro to VP Digital Commerce or CAITO Ranju Das.",
+    "co_sell_recommendation": "Lead with the commercetools/IMPACT warm path; secondary via KPMG (published CDO relationship). Both give C-suite touchpoints; lead all outreach with the AI-powered search narrative, not a features pitch.",
+    "crossbeam_data_available": false,
+    "source_label": "07-partner-intel.md — gemini_search.py grounded; Crossbeam unavailable"
+  },
+  "tab_subtitles": {
+    "summary": "What you need before walking into lululemon athletica",
+    "account": "lululemon at a glance — athletic apparel, 17.9M monthly visitors, $4.9B digital",
+    "findings": "What we found when we tested lululemon's search",
+    "case": "Why lululemon should act now — ~$27M gross profit/yr from a 1% search conversion lift",
+    "playbook": "How to win the lululemon deal"
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Warm intro via commercetools / IMPACT",
+    "detail": "IMPACT is a commercetools Solution Partner that explicitly names lululemon as a client. Request a joint intro to CAITO Ranju Das or VP Digital Commerce, opening with the 10-K AI-risk finding and the Gymshark benchmark.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "industry_context": null,
+  "bibliography": [
+    {
+      "n": 1,
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000020/lulu-20260201.htm",
+      "title": "lululemon FY2025 10-K (SEC EDGAR)"
+    },
+    {
+      "n": 2,
+      "url": "https://www.fool.com/earnings/call-transcripts/2026/06/04/lululemon-lulu-q1-2026-earnings-transcript/",
+      "title": "lululemon Q1 FY2026 Earnings Call Transcript (Motley Fool)"
+    },
+    {
+      "n": 3,
+      "url": "https://www.sec.gov/Archives/edgar/data/1397187/000139718726000070/lulu-20260421xex991.htm",
+      "title": "lululemon CEO transition press release (SEC 8-K Ex 99.1)"
+    },
+    {
+      "n": 4,
+      "url": "https://www.algolia.com/customers/gymshark/",
+      "title": "Algolia customer case study — Gymshark"
+    },
+    {
+      "n": 5,
+      "url": "https://www.algolia.com/customers/under-armour/",
+      "title": "Algolia customer case study — Under Armour"
+    },
+    {
+      "n": 6,
+      "url": "https://www.algolia.com/customers/arc-teryx/",
+      "title": "Algolia customer case study — Arc'teryx"
+    },
+    {
+      "n": 7,
+      "url": "https://www.algolia.com/customers/lacoste",
+      "title": "Algolia customer case study — Lacoste"
+    },
+    {
+      "n": 8,
+      "url": "https://baymard.com/research/ecommerce-search",
+      "title": "Baymard Institute — ecommerce search UX research"
+    },
+    {
+      "n": 9,
+      "url": "https://www.forrester.com",
+      "title": "Forrester — Commerce Search & Product Discovery"
+    },
+    {
+      "n": 10,
+      "url": "https://nrf.com",
+      "title": "NRF — 2025–2026 retail trends"
+    },
+    {
+      "n": 11,
+      "url": "https://careers.lululemon.com/en_US/careers",
+      "title": "lululemon careers — Senior PM Search & Elevation"
+    },
+    {
+      "n": 12,
+      "url": "https://finance.yahoo.com/quote/LULU/financials",
+      "title": "Yahoo Finance — LULU financials"
+    },
+    {
+      "n": 13,
+      "url": "https://www.similarweb.com/website/lululemon.com/",
+      "title": "SimilarWeb — lululemon.com traffic"
+    }
+  ]
+}

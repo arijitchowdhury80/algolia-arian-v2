@@ -259,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2809,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5145,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5239,11 +5239,11 @@ a:hover {
   "cover": {
     "company": "Brooks Running",
     "tagline": "The #1 Performance Running Brand Running on 2018-Era Search",
-    "score": 4.4,
-    "verdict": "Functional but dated — 3 critical gaps costing ~$11.5M/year in search-addressable revenue",
+    "score": 4.3,
+    "verdict": "Functional but dated — 3 critical gaps costing ~$4.1M/year in search-addressable revenue",
     "hero_image": "screenshots/01-homepage.png",
     "logo_url": "https://www.brooksrunning.com/on/demandware.static/Sites-BrooksRunning-Site/default/dw1b7e0a4c/images/branding/brooks-logo.svg",
-    "company_logo_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAMFBMVEX///8AN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4nDhBLxAAAAD3RSTlMAYJDAgEAQUKDg8DDQsCBE3E+YAAAAAW9yTlQBz6J3mgAAAHVJREFUKM9jYBjMgFHZyDEMRYStYv7/xe4JyELcmv///3FFUSX5////FQXI2s4DRX66wbnhPv9B4A/EgJLL/yHgsxGQ+1AZypvrHgDk8vlAuWvlIJr9ofzrMNMg3F9+cNv0wXw3hPV8/UCBNhR/yJ66yjAEAABwYE0Tc7zLfAAAAABJRU5ErkJggg==",
+    "company_logo_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAMFBMVEUAAAAAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4kAN4m2Zq6BAAAAD3RSTlMAECAwQFBggJCgsMDQ4PB4UqzwAAAAdElEQVR42mMY1ICte0eZI4oIY+T9/69LBZCFmHv///9TgqIq9////y8DkLWdB4r8LYRzXWv+g8AfiAHhq/9DwO8dQK5aN5R3q9QByGWqgXJfJUE010P5S2GmQbj/iuC29YP5hQjrmeYDBSai+CPr3BKGIQAAoW5ReFVITGYAAAAASUVORK5CYII=",
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Brooks_Running_Logo.svg/1280px-Brooks_Running_Logo.svg.png"
   },
   "score": {
@@ -5307,8 +5307,8 @@ a:hover {
     "ecommerce_source": "https://ecdb.com/resources/sample-data/retailer/brooksrunning",
     "market_position": "#1 adult performance running footwear brand in U.S. national retail (11+ consecutive quarters through 2024)",
     "market_position_source": "https://www.brooksrunning.com/en_us/10-29-2024/",
-    "market_share": "~24% in U.S. performance running category",
-    "market_share_source": "https://www.news.market.us/running-shoes-statistics/",
+    "market_share": "#1 market share in U.S. adult performance running footwear at national retail (11+ consecutive quarters through 2024, Circana)",
+    "market_share_source": "https://www.brooksrunning.com/en_us/10-29-2024/",
     "growth_streak": "9 consecutive years of record revenue (13–14% CAGR)",
     "growth_source": "https://www.brooksrunning.com/en_us/02-05-2026/",
     "ecommerce_platform": "Salesforce Commerce Cloud (Demandware SFRA)",
@@ -5320,7 +5320,7 @@ a:hover {
     "ticker": null,
     "exchange": null,
     "employee_source": "https://www.zippia.com/brooks-sports-careers-1188800/history/",
-    "revenue_fy2025": "~.6B (ESTIMATE)",
+    "revenue_fy2025": "~$1.6B (ESTIMATE)",
     "current_search_vendor": "Salesforce Commerce Cloud SearchServices (platform-native)",
     "search_vendor_status": "NO external search vendor — SFCC native only",
     "search_vendor_source": "Network inspection March 17 2026 — zero calls to external search providers",
@@ -5334,13 +5334,13 @@ a:hover {
       "title": "CEO",
       "tenure": "27+ years at Brooks (joined 1998 as field sales 'Guru'; CEO since April 26, 2024)",
       "source": "https://www.brooksrunning.com/en_us/03-12-2024/",
-      "relevance": "Economic buyer context — publicly on record that search starts the purchase journey. CEO since April 2024 after 23-year predecessor Jim Weber.",
-      "quote": "Most runners start with a digital transaction — a search for a product or a brand.",
+      "relevance": "Economic buyer context — publicly on record that runners research, try, and buy brands across multiple channels. CEO since April 2024 after 23-year predecessor Jim Weber.",
+      "quote": "We know that runners research brands, they try brands and they buy brands in multiple channels.",
       "quote_source": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
-      "quote_date": "2022-01",
+      "quote_date": "2023-03",
       "source_name": "Modern Retail",
       "source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
-      "maps_to": "CEO validates search-first purchase journey — Algolia solves the problem he named directly",
+      "maps_to": "CEO acknowledges runners research and buy across multiple channels — strengthens the case that on-site discovery and search must work",
       "verified": true
     },
     {
@@ -5349,41 +5349,13 @@ a:hover {
       "tenure": "Appointed President & COO August 1, 2024; joined Brooks 2013 as Associate General Counsel",
       "source": "https://sgbonline.com/brooks-running-appoints-new-president-coo-and-emea-chief/",
       "relevance": "Operations owner — oversees e-commerce infrastructure and digital platforms post-CEO transition",
-      "quote": "We feel great about where Brooks is in the market right now, and the momentum is exciting going into 2025.",
-      "quote_source": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/",
-      "quote_date": "2024-12",
-      "source_name": "WWD / The Running Event",
-      "source_url": "https://wwd.com/footwear-news/shoe-industry-news/brooks-dan-sheridan-matt-dodge-interview-the-running-event-1237703218/",
+      "quote": "We believe we're set up to make a lot of people happy.",
+      "quote_source": "https://www.runninginsight.com/brooks-two-at-the-top",
+      "quote_date": "2025",
+      "source_name": "Running Insight",
+      "source_url": "https://www.runninginsight.com/brooks-two-at-the-top",
       "maps_to": "Operations owner for e-commerce infrastructure — key stakeholder for search platform decisions",
       "verified": true
-    },
-    {
-      "name": "Tom Ross",
-      "title": "CFO",
-      "tenure": "20+ years at Brooks Running",
-      "source": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
-      "relevance": "Budget approval — long tenure signals conservative financial decision-making aligned with Berkshire philosophy",
-      "quote": "Brooks Running CFO with 20+ years tenure — financial steward of the brand's 9 consecutive years of record growth.",
-      "quote_source": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
-      "quote_date": "2026-01",
-      "source_name": "RocketReach management profile",
-      "source_url": "https://rocketreach.co/brooks-running-management_b5c67184f42e0c87",
-      "maps_to": "Budget approver for technology investments — long tenure = Berkshire long-term investment mindset",
-      "verified": false
-    },
-    {
-      "name": "Jessica Brooks",
-      "title": "Director, eCommerce Technical Operations",
-      "tenure": "Unknown",
-      "source": "https://www.linkedin.com/in/jessicabrooks1/",
-      "relevance": "Technical champion — direct owner of SFCC platform and ecommerce technical decisions. Key Algolia contact.",
-      "quote": "Director of eCommerce Technical Operations — platform owner for brooksrunning.com on Salesforce Commerce Cloud.",
-      "quote_source": "https://www.linkedin.com/in/jessicabrooks1/",
-      "quote_date": "2026-03",
-      "source_name": "LinkedIn",
-      "source_url": "https://www.linkedin.com/in/jessicabrooks1/",
-      "maps_to": "Platform owner for SFCC — primary technical champion for Algolia conversation",
-      "verified": false
     }
   ],
   "intelligence_signals": [
@@ -5407,10 +5379,10 @@ a:hover {
     },
     {
       "type": "news_signal",
-      "title": "CEO's $4B Revenue Ambition — Search Conversion is a Direct Lever",
-      "body": "Dan Sheridan on record: 'Brooks could become a $4 billion brand.' Current ~$1.6B → $4B = 2.5x growth. At ~$115M search-addressable revenue, a 10% search conversion improvement = $11.5M/year — direct contribution toward the $4B goal.",
-      "source_url": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/",
-      "source_date": "2025-07-30",
+      "title": "Record Revenue Momentum (~$1.6B FY2025) — Search Conversion is a Direct Lever",
+      "body": "Brooks closed FY2025 at approximately $1.6 billion in revenue, up +16% YoY — its 9th consecutive year of record revenue. At ~$41M in search-addressable revenue, a 10% search conversion improvement = ~$4.1M/year (estimate), a direct lever on continued growth.",
+      "source_url": "https://www.businesswire.com/news/home/20260205023502/en/Brooks-Running-Delivers-Record-Breaking-Global-Growth-in-2025",
+      "source_date": "2026-02-05",
       "relevance": "Directly relevant to Algolia search investment decision",
       "signal_tier": 2
     },
@@ -5434,18 +5406,18 @@ a:hover {
     },
     {
       "type": "media_quote",
-      "title": "CEO: 'Most Runners Start With a Digital Search'",
-      "body": "Dan Sheridan (as COO): 'Most runners start with a digital transaction — a search for a product or a brand.' This is a direct executive acknowledgment of the search-first purchase journey — the problem Algolia solves is one the CEO has personally named.",
+      "title": "CEO: Runners Research and Buy Across Multiple Channels",
+      "body": "Dan Sheridan (as COO): 'We know that runners research brands, they try brands and they buy brands in multiple channels.' A direct executive acknowledgment that discovery spans channels — making on-site search and product discovery a core part of the runner's journey.",
       "source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
-      "source_date": "2022-01-01",
+      "source_date": "2023-03-07",
       "relevance": "Directly relevant to Algolia search investment decision",
       "signal_tier": 2,
       "publication": "Modern Retail"
     },
     {
       "type": "media_quote",
-      "title": "CEO on $4B Brand Vision",
-      "body": "Dan Sheridan, CEO: 'Brooks could become a $4 billion brand.' — Fortune interview, July 2025. Current estimated revenue ~$1.6B. Search conversion at scale is a proven lever toward that ambition.",
+      "title": "CEO on Brooks' Scale and Trajectory",
+      "body": "In a July 2025 Fortune interview, CEO Dan Sheridan noted Brooks will 'finish the year with about $1.6 billion' — up from roughly $50 million in global sales when he started. Sustained growth at scale makes search conversion a direct lever on the runner's on-site journey.",
       "source_url": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/",
       "source_date": "2025-07-30",
       "relevance": "Directly relevant to Algolia search investment decision",
@@ -5458,50 +5430,55 @@ a:hover {
       "name": "Hoka",
       "domain": "hoka.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "1",
-      "traffic_rank": null,
+      "monthly_traffic": "~11.7M/mo",
+      "traffic_source": "https://www.similarweb.com/website/hoka.com/",
+      "traffic_rank": 2,
       "uses_algolia": false,
-      "notes": null,
+      "notes": "SimilarWeb est., monthly avg Q3 2025 (Jul-Sep: 12.16M/12.56M/11.31M)",
       "search_stack": "Unknown"
     },
     {
       "name": "Newbalance",
       "domain": "newbalance.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "2",
-      "traffic_rank": null,
+      "monthly_traffic": "~13.4M/mo",
+      "traffic_source": "https://www.similarweb.com/website/newbalance.com/",
+      "traffic_rank": 1,
       "uses_algolia": false,
-      "notes": null,
+      "notes": "SimilarWeb est., Mar 2026 (Semrush corroborates ~11.9M)",
       "search_stack": "Unknown"
     },
     {
       "name": "Asics",
       "domain": "asics.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "3",
-      "traffic_rank": null,
+      "monthly_traffic": "~6.3M/mo",
+      "traffic_source": "https://www.similarweb.com/website/asics.com/",
+      "traffic_rank": 3,
       "uses_algolia": false,
-      "notes": null,
+      "notes": "SimilarWeb est., 3-month avg through May 2026 (18.8M/3)",
       "search_stack": "Unknown"
     },
     {
       "name": "Onrunning",
       "domain": "onrunning.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "4",
-      "traffic_rank": null,
+      "monthly_traffic": "~5.3M/mo",
+      "traffic_source": "https://www.similarweb.com/website/onrunning.com/",
+      "traffic_rank": 4,
       "uses_algolia": false,
-      "notes": null,
+      "notes": "SimilarWeb est. for on.com (On's primary site; onrunning.com redirects), 3-mo avg through May 2026 (16M/3)",
       "search_stack": "Unknown"
     },
     {
       "name": "Saucony",
       "domain": "saucony.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "5",
-      "traffic_rank": null,
+      "monthly_traffic": "~1.1M/mo",
+      "traffic_source": "https://www.similarweb.com/website/saucony.com/",
+      "traffic_rank": 5,
       "uses_algolia": false,
-      "notes": null,
+      "notes": "SimilarWeb est., 3-month avg through May 2026 (3.4M/3)",
       "search_stack": "Unknown"
     }
   ],
@@ -5513,7 +5490,7 @@ a:hover {
       "category": "semantic_nlp_search",
       "tested_query": "best shoes for marathon training",
       "expected_behavior": "Parse natural language intent → filter to cushioned road running shoes suitable for long distance (Glycerin, Ghost, Adrenaline GTS) with attributes: cushioning=high, surface=road, best_for=long_distance",
-      "actual_behavior": "Redirected to /en_us/featured/best-sellers/ — generic bestsellers page with no relevance to the query. Query completely ignored. Zero NLP parsing.",
+      "actual_behavior": "Redirected to /en_us/featured/best-sellers/ — generic bestsellers page with no relevance to the query. Query completely ignored. Zero NLP parsing. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "72% of shoppers use natural language queries — 0% are served by Brooks' current search",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/13-nlp-marathon-training.png",
@@ -5521,7 +5498,7 @@ a:hover {
       "algolia_solution": "Algolia NeuralSearch parses semantic intent — 'marathon training' maps to attributes: cushioning=high, surface=road, best_for=long_distance. Returns Ghost, Glycerin, Adrenaline GTS instead of random bestsellers. Works without pre-built synonym lists.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
-      "algolia_case_study_result": "+35% conversion rate"
+      "algolia_case_study_result": "35% higher conversion for shoppers who use search vs. those who don't (Under Armour, Algolia)"
     },
     {
       "id": "F2",
@@ -5530,7 +5507,7 @@ a:hover {
       "category": "dynamic_facets_personalization",
       "tested_query": "running shoes (after browsing Ghost 16 product page)",
       "expected_behavior": "Returning visitor who browsed Ghost 16 should see Ghost family boosted in results, preferred gender/cushioning surfaced higher, recently viewed product accessible",
-      "actual_behavior": "Search results for 'running shoes' after visiting Ghost 16 PDP are completely identical to a fresh session — 54 products, same sort order, no personalization signal used whatsoever",
+      "actual_behavior": "Search results for 'running shoes' after visiting Ghost 16 PDP are completely identical to a fresh session — 54 products, same sort order, no personalization signal used whatsoever (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "Personalized experiences drive 80% higher conversion rates vs non-personalized",
       "impact_stat_source": "https://baymard.com/blog/ecommerce-search-performance",
       "screenshot_file": "screenshots/17-personalization.png",
@@ -5547,7 +5524,7 @@ a:hover {
       "category": "recommendations_merchandising",
       "tested_query": "Ghost 16 Weatherized (PDP)",
       "expected_behavior": "PDP should show 'Frequently bought together' (socks, insoles, running accessories), 'You may also like' (Glycerin if user prefers soft cushioning), 'Trending' items",
-      "actual_behavior": "Ghost 16 PDP shows a 'Compare' section displaying the same shoe in different cushioning variants. No cross-sell, no upsell, no complementary products. Zero recommendation engine present.",
+      "actual_behavior": "Ghost 16 PDP shows a 'Compare' section displaying the same shoe in different cushioning variants. No cross-sell, no upsell, no complementary products. Zero recommendation engine present. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "35% of Amazon's revenue comes from recommendation engine — PDP is the highest-intent moment",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/18-recommendations.png",
@@ -5564,7 +5541,7 @@ a:hover {
       "category": "query_suggestions_empty_state",
       "tested_query": "[empty search bar — no input]",
       "expected_behavior": "Empty state should show trending searches (e.g., 'Ghost 17,' 'trail shoes,' 'marathon training'), recent searches for returning users, and popular categories",
-      "actual_behavior": "Empty state shows 'POPULAR PRODUCTS' section with product tiles only. No popular search queries, no trending searches, no recent searches. Users must know exactly what to type.",
+      "actual_behavior": "Empty state shows 'POPULAR PRODUCTS' section with product tiles only. No popular search queries, no trending searches, no recent searches. Users must know exactly what to type. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "Searching users convert at 2-3x the rate of non-searching users — empty state is the first missed conversion opportunity",
       "impact_stat_source": "https://baymard.com/blog/ecommerce-search-performance",
       "screenshot_file": "screenshots/02-empty-state.png",
@@ -5572,7 +5549,7 @@ a:hover {
       "algolia_solution": "Algolia Query Suggestions auto-generates trending searches from analytics data — updated daily. Empty state becomes a curated discovery surface showing top 8-10 searches, recent queries for logged-in users, and trending categories.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
-      "algolia_case_study_result": "+35% conversion rate"
+      "algolia_case_study_result": "35% higher conversion for shoppers who use search vs. those who don't (Under Armour, Algolia)"
     },
     {
       "id": "F5",
@@ -5581,7 +5558,7 @@ a:hover {
       "category": "merchandising_consistency",
       "tested_query": "sale, trail",
       "expected_behavior": "Query 'sale' should show a promotional banner within search results + filtered discounted products. Query 'trail' should show a Cascadia Elite launch banner + trail category results.",
-      "actual_behavior": "Query 'sale' redirects directly to /en_us/sale/ category page — exits search entirely. Query 'trail' returns 67 products with no promotional banner or featured content.",
+      "actual_behavior": "Query 'sale' redirects directly to /en_us/sale/ category page — exits search entirely. Query 'trail' returns 67 products with no promotional banner or featured content. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "Merchandising rules drive 15-25% higher click-through on targeted product categories",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/19-banners-sale.png",
@@ -5598,7 +5575,7 @@ a:hover {
       "category": "dynamic_facets_personalization",
       "tested_query": "women's shoes",
       "expected_behavior": "Women's-specific query should surface women's sizes first, hide men's size range, show width options (women's-specific fits), potentially surface 'best for' attributes relevant to women's running categories",
-      "actual_behavior": "108 products shown. Facet panel is identical to any other search — same Product Gender, Size, Product Type, Best For, Support Type ordering regardless of query. No query-aware facet adjustment.",
+      "actual_behavior": "108 products shown. Facet panel is identical to any other search — same Product Gender, Size, Product Type, Best For, Support Type ordering regardless of query. No query-aware facet adjustment. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "43% of shoppers abandon search when facets are irrelevant to their query",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/14-dynamic-facets.png",
@@ -5615,7 +5592,7 @@ a:hover {
       "category": "query_suggestions_empty_state",
       "tested_query": "asdfghjk",
       "expected_behavior": "Explicit 'No results for asdfghjk. Showing popular products instead.' message with clear recovery paths (popular searches, top categories, contact support)",
-      "actual_behavior": "20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query was not understood. User has no way to know their search failed — may assume these are the only products Brooks sells.",
+      "actual_behavior": "20 products returned (Hyperion Elite 5, Hyperion Max 3). No message indicating query was not understood. User has no way to know their search failed — may assume these are the only products Brooks sells. (Observed at time of testing, March 17 2026; catalog and on-site behavior may have changed since.)",
       "impact_stat": "No-results handling failures cause 68% of users to abandon the site entirely",
       "impact_stat_source": "https://baymard.com/research/ecommerce-search",
       "screenshot_file": "screenshots/07-no-results.png",
@@ -5623,18 +5600,18 @@ a:hover {
       "algolia_solution": "Algolia no-results UX: explicit message + Query Suggestions showing similar searchable terms + fallback to top categories. Configurable in no-code dashboard. Zero engineering required.",
       "algolia_case_study_url": "https://www.algolia.com/customers/under-armour/",
       "algolia_case_study_company": "Under Armour",
-      "algolia_case_study_result": "+35% conversion rate"
+      "algolia_case_study_result": "35% higher conversion for shoppers who use search vs. those who don't (Under Armour, Algolia)"
     }
   ],
   "gap_pairs": [
     {
-      "said_quote": "Most runners start with a digital transaction — a search for a product or a brand.",
-      "said_attr": "— Dan Sheridan, CEO, Modern Retail 2022",
+      "said_quote": "We know that runners research brands, they try brands and they buy brands in multiple channels.",
+      "said_attr": "— Dan Sheridan, President & COO, Modern Retail 2023",
       "said_source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
       "found_title": "Zero NLP: Natural Language Queries Redirect to Generic Bestsellers",
       "found_evidence": "Typed \"best shoes for marathon training\" — redirected to /en_us/featured/best-sellers/. Zero NLP parsing. Query completely ignored.",
       "finding_id": "F1",
-      "algolia_angle": "Algolia NeuralSearch parses semantic intent — \"marathon training\" → cushioned road shoes (Glycerin, Ghost, Adrenaline GTS). Under Armour saw +35% conversion after identical upgrade."
+      "algolia_angle": "Algolia NeuralSearch parses semantic intent — \"marathon training\" -> cushioned road shoes (Glycerin, Ghost, Adrenaline GTS). At Under Armour, shoppers who use search convert 35% higher than those who don't (Algolia case study)."
     },
     {
       "said_quote": "Sharp focus creates mass appeal.",
@@ -5655,8 +5632,8 @@ a:hover {
       "algolia_angle": "Algolia Recommend: Frequently bought together (socks, insoles), Similar items (Glycerin for plush preference), Trending items for social proof. Shoe Carnival saw +4.5% conversion Cyber Weekend."
     },
     {
-      "said_quote": "Most runners start with a digital transaction — a search for a product or a brand.",
-      "said_attr": "— Dan Sheridan, CEO, Modern Retail 2022",
+      "said_quote": "We know that runners research brands, they try brands and they buy brands in multiple channels.",
+      "said_attr": "— Dan Sheridan, President & COO, Modern Retail 2023",
       "said_source_url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/",
       "found_title": "Empty State Shows Products Only — No Trending Searches to Guide Users",
       "found_evidence": "Clicked search bar with no input — dropdown shows POPULAR PRODUCTS tiles only. Zero trending search queries. Zero recent searches. Users must know exact product names to search.",
@@ -5705,19 +5682,19 @@ a:hover {
     "ecommerce_year": "2024",
     "ecommerce_confidence": "LOW — ESTIMATE from ECDB sample data",
     "ecommerce_source": "https://ecdb.com/resources/sample-data/retailer/brooksrunning",
-    "search_addressable_revenue": "~$115M",
-    "search_addressable_note": "ESTIMATE: ~$640M digital/e-commerce est. × 18% search-driven sessions (Baymard benchmark)",
+    "search_addressable_revenue": "~$41M",
+    "search_addressable_note": "ESTIMATE: ~$226M brooksrunning.com e-commerce revenue (ECDB, 2024) x 18% search-driven sessions (Baymard benchmark)",
     "search_addressable_source": "https://baymard.com/research/ecommerce-search",
-    "roi_conservative": "$5.75M/year",
-    "roi_moderate": "$11.5M/year",
-    "roi_optimistic": "$17.25M/year",
-    "roi_note": "Conservative = 5% uplift, Moderate = 10% (Under Armour benchmark), Optimistic = 15% (Lacoste benchmark). All estimates.",
+    "roi_conservative": "$2.0M/year",
+    "roi_moderate": "$4.1M/year",
+    "roi_optimistic": "$6.1M/year",
+    "roi_note": "Conservative = 5% conversion uplift, Moderate = 10%, Optimistic = 15% — illustrative uplift assumptions applied to the ~$41M search-addressable base. All estimates.",
     "roi_source": "https://www.algolia.com/customers/under-armour/",
     "algolia_cost_est": "~$200K/year",
-    "payback_conservative": "~13 days",
-    "payback_moderate": "~6 days",
-    "ceo_growth_ambition": "$4 billion brand",
-    "ceo_growth_ambition_source": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/",
+    "payback_conservative": "~36 days",
+    "payback_moderate": "~18 days",
+    "ceo_growth_ambition": "9 consecutive years of record revenue (~$1.6B FY2025, +16% YoY)",
+    "ceo_growth_ambition_source": "https://www.businesswire.com/news/home/20260205023502/en/Brooks-Running-Delivers-Record-Breaking-Global-Growth-in-2025",
     "revenue_milestones": [
       {
         "date": "Sept 2024",
@@ -5745,28 +5722,28 @@ a:hover {
         "source": "https://www.businesswire.com/news/home/20260205023502/"
       }
     ],
-    "total_digital_revenue": "~M",
-    "total_digital_revenue_note": "ESTIMATE: ~.6B total × 40% digital/e-commerce share. Industry average for DTC athletic brands.",
+    "total_digital_revenue": "~$226M",
+    "total_digital_revenue_note": "brooksrunning.com e-commerce revenue (ECDB, 2024) — used as the search-addressable base. The prior digital estimate (40% of $1.6B total revenue) was removed as unsourced and inconsistent with this cited .com figure.",
     "roi_scenarios": {
       "conservative": {
-        "annual_impact": ".75M",
-        "scenario_desc": "~M search-addressable × 5% conversion uplift",
+        "annual_impact": "$2.0M",
+        "scenario_desc": "~$41M search-addressable x 5% conversion uplift",
         "source": "Baymard Institute benchmark — basic search improvements yield 3-7% uplift. https://baymard.com/blog/ecommerce-search-performance"
       },
       "moderate": {
-        "annual_impact": ".5M",
-        "scenario_desc": "~M search-addressable × 10% conversion uplift",
-        "source": "Under Armour benchmark — 35% higher conversion with Algolia. https://www.algolia.com/customers/under-armour/"
+        "annual_impact": "$4.1M",
+        "scenario_desc": "~$41M search-addressable x 10% conversion uplift",
+        "source": "Under Armour — shoppers who use search convert 35% higher than those who don't (Algolia). https://www.algolia.com/customers/under-armour/"
       },
       "optimistic": {
-        "annual_impact": ".25M",
-        "scenario_desc": "~M search-addressable × 15% conversion uplift",
+        "annual_impact": "$6.1M",
+        "scenario_desc": "~$41M search-addressable x 15% conversion uplift",
         "source": "Lacoste benchmark — +150% sales contribution from search. https://www.algolia.com/customers/lacoste"
       }
     },
-    "revenue_fy2025": "~.6B (ESTIMATE — Retail Dive, trade media)",
-    "revenue_fy2024": "~.46B (ESTIMATE — derived from confirmed +9% YoY)",
-    "revenue_fy2023": "~.26B (ESTIMATE — derived from CAGR)",
+    "revenue_fy2025": "~$1.6B (ESTIMATE — Retail Dive, trade media)",
+    "revenue_fy2024": "~$1.46B (ESTIMATE — derived from confirmed +9% YoY)",
+    "revenue_fy2023": "~$1.26B (ESTIMATE — derived from CAGR)",
     "revenue_cagr": "13-14% (FACT — Brooks press releases, 9-year streak)",
     "ebitda_fy2025": "Not disclosed — private company",
     "ebitda_margin": "Not disclosed — private company",
@@ -5872,18 +5849,18 @@ a:hover {
   },
   "ae_fields": {
     "account_tier": "Mid-Market to Enterprise",
-    "icp_fit": "HIGH — Performance DTC brand on SFCC, no search vendor, $115M search-addressable revenue, CEO publicly acknowledges search starts purchase journey",
+    "icp_fit": "HIGH — Performance DTC brand on SFCC, no search vendor, $41M search-addressable revenue, CEO publicly acknowledges runners research and buy across multiple channels",
     "deal_type": "Greenfield — no search vendor to displace",
     "competitive_scenario": "OFFENSIVE PLAY — leapfrog all competitors before any deploy AI search",
     "sales_motion": "Search Audit + ROI-led discovery → SFCC cartridge demo",
-    "recommended_approach": "Lead with CEO's own quote ('most runners start with a search') + show NLP gap (marathon training query) + present $11.5M/year moderate ROI scenario",
+    "recommended_approach": "Lead with CEO's own words (runners research, try, and buy brands across multiple channels) + show NLP gap (marathon training query) + present $4.1M/year moderate ROI scenario",
     "urgency_trigger": "Senior Engineer Digital Products VACANCY (posted 2026-03-07) — engage IT leadership before role filled",
     "build_vs_buy": "70% Buy signal — JD uses 'vendor RFP,' 'third-party integrations;' SFCC selection proves buy-for-non-core philosophy",
     "buyer_readiness": "MEDIUM — Technology investment culture, but no confirmed active search RFP. Urgency window: hiring signal.",
-    "champion_path": "Jessica Brooks (Director, eCommerce Technical Operations) → technical buyer via open Senior Engineer role → CFO Tom Ross for budget",
+    "champion_path": "Brooks has an OPEN 'Director, North America Ecommerce' role (ecommerce platform owner, currently a vacancy) -> engage the Technical Buyer via the open 'Senior Engineer, Digital Products' role -> route to IT / Finance leadership for budget",
     "discovery_questions": [
       "You grew EMEA 22% and China 245% in FY2025. How are you ensuring runners in Germany get results merchandised for their market — not just a US-first catalog?",
-      "With ~$115M in search-addressable revenue, a 10% conversion improvement is $11.5M/year. What would your team do with that headroom toward Dan's $4B vision?",
+      "With ~$41M in search-addressable revenue, a 10% conversion improvement is $4.1M/year. Where would that incremental revenue have the most impact on your growth targets?",
       "You launched lifestyle footwear at Paris Fashion Week. How does your search today differentiate between a runner looking for training shoes vs a sneaker buyer?",
       "You have 2M Run Club members with rich behavioral data. Does your search surface results based on a member's running history — or does everyone see the same 54 products?",
       "You partnered with Salesforce for commerce, Amperity for CDP, DashLX for loyalty. What's your philosophy on search — build in-house or best-in-class partner?"
@@ -5895,7 +5872,7 @@ a:hover {
       },
       {
         "objection": "No budget right now",
-        "response": "At ~$115M search-addressable revenue, 5% improvement = $5.75M/year. Algolia costs ~$200K. ROI in 13 days. The question isn't budget — it's opportunity cost of waiting."
+        "response": "At ~$41M search-addressable revenue, 5% improvement = $2.0M/year. Algolia costs ~$200K. ROI in 36 days. The question isn't budget — it's opportunity cost of waiting."
       },
       {
         "objection": "Integration is too complex",
@@ -5908,10 +5885,10 @@ a:hover {
     ],
     "urgency_level": "HIGH — technical buyer vacancy open, engage before role filled",
     "signal_tier": 1,
-    "challenger_insight": "Dan Sheridan has publicly said \"most runners start with a digital search\" — yet brooksrunning.com's search cannot parse a natural language running query. You are one conversation away from showing him the gap he named.",
-    "talk_track_opener": "We tested your search for \"best shoes for marathon training\" — a phrase your CEO used publicly to describe how runners start their journey. Here's what happened.",
-    "cta": "30-minute demo: live test of your search vs Algolia NeuralSearch on the exact query your CEO described",
-    "primary_contact": "Jessica Brooks, Director eCommerce Technical Operations — linkedin.com/in/jessicabrooks1/"
+    "challenger_insight": "Dan Sheridan has publicly said runners research, try, and buy brands across multiple channels — yet brooksrunning.com's own on-site search cannot parse a natural language running query. You are one conversation away from showing him that gap.",
+    "talk_track_opener": "We tested your search for \"best shoes for marathon training\" — exactly the kind of natural-language research your CEO says runners do across channels. Here's what happened.",
+    "cta": "30-minute demo: live test of your search vs Algolia NeuralSearch on a natural-language query your customers actually use",
+    "primary_contact": "No verified filled ecommerce champion is publicly identified for Brooks Running. Entry points: the hiring manager for the open 'Senior Engineer, Digital Products' role (LinkedIn job 4382335419) and the open 'Director, North America Ecommerce' role."
   },
   "next_steps": [
     {
@@ -5921,8 +5898,8 @@ a:hover {
       "owner": "AE"
     },
     {
-      "title": "Send Shoe Carnival + Under Armour case studies to Jessica Brooks (eCommerce Technical Operations)",
-      "description": "Shoe Carnival: footwear peer on Algolia + Amplience; Under Armour: athletic apparel, 35% higher conversion",
+      "title": "Send Shoe Carnival + Under Armour case studies to the eCommerce leadership seat (open Director, North America Ecommerce role)",
+      "description": "Shoe Carnival: footwear peer on Algolia + Amplience; Under Armour: athletic apparel — search users convert 35% higher than non-search users",
       "week": "Week 2",
       "owner": "AE + SE"
     },
@@ -5994,7 +5971,7 @@ a:hover {
     },
     {
       "id": 7,
-      "source": "Fortune: CEO Dan Sheridan '$4 billion brand'",
+      "source": "Fortune: Leadership Next — Brooks Running CEO Dan Sheridan (revenue ~$1.6B)",
       "url": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/"
     },
     {
@@ -6004,7 +5981,7 @@ a:hover {
     },
     {
       "id": 9,
-      "source": "Modern Retail: CEO on search-first purchase journey",
+      "source": "Modern Retail: CEO on runners researching and buying across multiple channels",
       "url": "https://www.modernretail.co/operations/chief-operating-officer-dan-sheridan-on-how-brooks-running-plans-to-continue-riding-the-resurgence-of-running/"
     },
     {
@@ -6054,7 +6031,7 @@ a:hover {
     },
     {
       "id": 19,
-      "source": "Algolia: Under Armour case study (+35% conversion)",
+      "source": "Algolia: Under Armour case study (search users convert 35% higher than non-users)",
       "url": "https://www.algolia.com/customers/under-armour/"
     },
     {
@@ -6079,8 +6056,8 @@ a:hover {
     },
     {
       "id": 24,
-      "source": "News.market.us: Running shoes statistics",
-      "url": "https://www.news.market.us/running-shoes-statistics/"
+      "source": "Running Insight: Brooks' Two at the Top (Sheridan & Dodge, TRE / 2025 outlook)",
+      "url": "https://www.runninginsight.com/brooks-two-at-the-top"
     },
     {
       "id": 25,
@@ -6188,6 +6165,10 @@ a:hover {
         "International inventory visibility (don't show US-only products to EU customers)"
       ],
       "algolia_proof": "Algolia's global edge network with multi-language NLP — same infrastructure serving Lacoste globally at sub-50ms",
+      "discovery_question": "As you scale EMEA, APLA, and China, how does your search handle regional terminology — for example a shopper searching 'trainers' in the UK versus 'sneakers' in the US — and geo-specific inventory?",
+      "objection": "Our SFCC setup already supports multiple locales and languages.",
+      "objection_counter": "Locale support handles translation, not intent. Algolia's multi-language NLP understands regional terminology and keeps geo-specific inventory correct in one index — the same global edge infrastructure that serves Lacoste at sub-50ms.",
+      "grounding": "Hook figures (EMEA/APLA/China growth) sourced to Brooks FY2025 results; objection-counter references only the angle's stated pain points and the Lacoste benchmark already cited in this report.",
       "source": "https://fortune.com/2025/06/10/brooks-runnings-ceo-advice-corner-office/",
       "label": "Scale Your International Success"
     },
@@ -6200,6 +6181,10 @@ a:hover {
         "DashLX personalization investment stops at loyalty layer — never reaches discovery"
       ],
       "algolia_proof": "Algolia AI Personalization API — use Run Club behavioral data as personalization signals",
+      "discovery_question": "You have 2M Run Club members with rich behavioral data. Does your search surface results based on a member's running history — or does every member see the same 54 products a first-time visitor sees?",
+      "objection": "We already personalize through DashLX for our loyalty program.",
+      "objection_counter": "DashLX personalization stops at the loyalty layer and never reaches search — we confirmed that a returning visitor who browsed Ghost 16 gets search results identical to a fresh session. Algolia AI Personalization ingests those same behavioral signals to re-rank search per user; Lacoste saw +37% conversion after adding personalization.",
+      "grounding": "Objection-counter references the report's own browser finding F2 (identical 54-result set, no lift after Ghost 16 browse) and the Lacoste +37% benchmark already cited in this report.",
       "source": "https://www.brooksrunning.com/en_us/02-05-2026/",
       "label": "Research Lab-Quality Personalization in Search"
     },
@@ -6212,7 +6197,11 @@ a:hover {
         "Search currently can't surface ReStart inventory without cannibalizing primary sales"
       ],
       "algolia_proof": "Algolia Federated Search + custom ranking by sustainability score",
-      "source": "https://www.brooksrunning.com/en_us/meet-brooks/running-responsibly/",
+      "discovery_question": "Brooks ReStart and your net-zero-by-2040 commitment are brand differentiators — can a shopper filter search results to eco-friendly or ReStart (used) products today, or do those options live outside the search experience?",
+      "objection": "Sustainable and ReStart products are a small slice of the catalog — not worth a search project.",
+      "objection_counter": "This isn't a separate project — it's faceting and federated search Algolia already provides. Custom ranking by a sustainability attribute lets ReStart and eco-friendly items surface inside the same search index without cannibalizing primary sales.",
+      "grounding": "Hook verified: Brooks ReStart recommerce program (launched 2023 with Trove) and Brooks' SBTi-verified net-zero-by-2040 target are real (WebSearch, July 2026). Objection-counter references only the angle's stated pain points and Algolia federated-search capability.",
+      "source": "https://www.brooksrunning.com/en_us/07-06-2023/",
       "label": "Make Sustainability Discoverable"
     },
     {
@@ -6224,6 +6213,10 @@ a:hover {
         "Search relevance is never 'done' — ongoing maintenance burden without AI layer"
       ],
       "algolia_proof": "Algolia SFCC cartridge: 2-3 week integration; no-code merchandising for non-technical team",
+      "discovery_question": "You build shoes in-house because biomechanics is your core competency, and you partner with Salesforce for commerce. What's your philosophy on search — build and maintain relevance in-house, or partner with a best-in-class provider?",
+      "objection": "We'd rather have our own engineers own search so we keep control of it.",
+      "objection_counter": "Owning the platform doesn't mean building the relevance engine. SFCC native search needs an engineering ticket for every relevance change, and relevance is never 'done.' Algolia's SFCC cartridge installs in an estimated 2-3 weeks and hands merchandising controls to non-engineers — the same buy-for-non-core pattern you already use with Salesforce Commerce Cloud.",
+      "grounding": "Objection-counter references only facts already in this report: the angle's stated pain points, the 2-3 week SFCC cartridge integration estimate (tech_stack.integration_complexity), and Brooks' confirmed use of Salesforce Commerce Cloud.",
       "source": "https://sgbonline.com/exec-qa-dan-sheridan-ceo-brooks-running/",
       "label": "Build-Quality Technology Without Building It"
     }
@@ -6236,7 +6229,7 @@ a:hover {
         "title": "VP Engineering / CTO (not publicly identified)",
         "status": "COLD",
         "signal": "low",
-        "message": "Route through Technical Buyer. ROI: .75M–.25M/year search improvement.",
+        "message": "Route through Technical Buyer. ROI: $2.0M–$6.1M/year search improvement.",
         "job_url": "",
         "salary_range": ""
       },
@@ -6248,16 +6241,16 @@ a:hover {
         "signal": "hot",
         "message": "SFCC cartridge, RFP-ready, 2-3 week integration. Engage IT leadership NOW before role is filled.",
         "job_url": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419",
-        "salary_range": ",670–,714/yr"
+        "salary_range": ""
       },
       {
         "role": "Champion — eCommerce",
-        "name": "Jessica Brooks",
-        "title": "Director, eCommerce Technical Operations",
+        "name": "OPEN VACANCY",
+        "title": "Director, North America Ecommerce",
         "status": "WARM",
         "signal": "medium",
-        "message": "Platform owner who experiences SFCC native search limits daily. Direct Algolia contact.",
-        "job_url": "https://www.linkedin.com/in/jessicabrooks1/",
+        "message": "eCommerce platform-owner seat. Brooks is actively hiring for this role — engage the incoming platform owner who will inherit SFCC native search limits day to day.",
+        "job_url": "https://careers.brooksrunning.com/",
         "salary_range": ""
       },
       {
@@ -6277,7 +6270,7 @@ a:hover {
   },
   "icp_mapping": {
     "overall_fit": "HIGH",
-    "fit_rationale": "DTC performance brand on SFCC with no search vendor, $115M search-addressable revenue, CEO on record valuing digital search, 2M member loyalty program creating personalization data reservoir, and critical technical buyer vacancy creating engagement window",
+    "fit_rationale": "DTC performance brand on SFCC with no search vendor, $41M search-addressable revenue, CEO on record that runners research and buy across multiple channels, 2M member loyalty program creating personalization data reservoir, and critical technical buyer vacancy creating engagement window",
     "priority_signals": [
       {
         "signal": "Senior Engineer Digital Products VACANCY",
@@ -6285,9 +6278,9 @@ a:hover {
         "source": "https://www.linkedin.com/jobs/view/senior-engineer-digital-products-at-brooks-running-4382335419"
       },
       {
-        "signal": "CEO $4B brand ambition — search conversion is a direct lever",
+        "signal": "Record revenue momentum (~$1.6B FY2025, +16% YoY) — search conversion is a direct lever",
         "urgency": "HIGH",
-        "source": "https://fortune.com/2025/07/30/leadership-next-brooks-running-ceo-dan-sheridan-fitness-health/"
+        "source": "https://www.businesswire.com/news/home/20260205023502/en/Brooks-Running-Delivers-Record-Breaking-Global-Growth-in-2025"
       },
       {
         "signal": "9th consecutive year of growth — SFCC native search not scaling to AI requirements",
@@ -6310,7 +6303,7 @@ a:hover {
         "role": "Economic Buyer",
         "name_status": "Not publicly identified (IT VP / CTO)",
         "action": "Route through Technical Buyer vacancy",
-        "message": "ROI: $5.75M–$17.25M/year search improvement"
+        "message": "ROI: $2.0M–$6.1M/year search improvement"
       },
       {
         "role": "Technical Buyer",
@@ -6320,9 +6313,9 @@ a:hover {
       },
       {
         "role": "Champion",
-        "name_status": "Jessica Brooks — Director, eCommerce Technical Operations",
-        "action": "HIGH priority direct outreach",
-        "message": "Platform owner who feels the SFCC search limitation daily"
+        "name_status": "Open 'Director, North America Ecommerce' role (no verified filled champion publicly identified)",
+        "action": "Engage the open ecommerce-leadership seat + the Senior Engineer hiring manager",
+        "message": "Incoming ecommerce platform owner will inherit the SFCC search limitation day to day"
       },
       {
         "role": "Champion",
@@ -6366,11 +6359,11 @@ a:hover {
       },
       {
         "id": "C02",
-        "name": "Jessica Brooks",
-        "title": "eCommerce Technical Operations",
+        "name": "eCommerce Platform Owner (open 'Director, North America Ecommerce' role)",
+        "title": "Director, North America Ecommerce (open role)",
         "tier": 2,
-        "role": "Champion",
-        "angle": "Owns day-to-day ecommerce experience. Feels the NLP and personalization gaps in conversion metrics."
+        "role": "Champion (role-based; no verified filled contact)",
+        "angle": "Owns the day-to-day ecommerce experience. The incoming platform owner inherits the NLP and personalization gaps that show up directly in conversion metrics."
       },
       {
         "id": "C03",
@@ -6394,10 +6387,10 @@ a:hover {
       {
         "touch": 2,
         "channel": "email",
-        "subject": "Under Armour got 35% higher conversion from search — we tested Brooks' search and found the same gaps",
+        "subject": "Under Armour: search users convert 35% higher — we tested Brooks' search and found the same gaps",
         "cta": "Review the audit findings at [audit URL]",
         "timing": "Week 2",
-        "body": "Jessica —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: +35% higher search conversion rate after Algolia deployment. The biggest driver? Natural language queries. 'Best shoes for marathon training' now returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability.",
+        "body": "Hi —\n\nTwo case studies from your vertical.\n\nShoe Carnival was on SFCC native search — same platform as Brooks. After switching to Algolia, they saw measurable conversion lift from NLP queries and their merchandising team could run search campaigns without engineering tickets.\n\nUnder Armour: on Algolia-powered search, shoppers who use the search feature convert 35% higher than those who don't. The biggest driver of that search experience? Natural language queries. 'Best shoes for marathon training' returns cushioned road shoes filtered by distance — not bestsellers.\n\nWe ran the same test on brooksrunning.com. 'Best shoes for marathon training' today: generic bestsellers, query intent ignored. The runner who typed that just left.\n\nThe full audit is 10 slides. Happy to walk you through it — 15 minutes max. I'll show you the exact gaps and how each one maps to a specific Algolia capability.",
         "day": "3"
       },
       {
@@ -6425,9 +6418,9 @@ a:hover {
     {
       "vertical": "Athletic Footwear & Apparel",
       "company": "Under Armour",
-      "result": "+35% conversion rate",
+      "result": "35% higher conversion for shoppers who use search vs. those who don't (Under Armour, Algolia)",
       "product": "InstantSearch + Query Rules + Analytics",
-      "why": "Direct athletic footwear/apparel peer. Under Armour had the same SFCC-adjacent keyword-search limitations. +35% conversion rate after Algolia deployment — the single most directly comparable benchmark for Brooks' search addressable revenue ROI calculation.",
+      "why": "Direct athletic footwear/apparel peer. Under Armour had the same SFCC-adjacent keyword-search limitations. On Algolia-powered search, shoppers who use search convert 35% higher than those who don't — the single most directly comparable benchmark for Brooks' search-addressable revenue framing.",
       "url": "https://www.algolia.com/customers/under-armour/"
     },
     {
@@ -6451,21 +6444,21 @@ a:hover {
     {
       "scenario": "NLP Gap Live Demo",
       "query": "best shoes for marathon training",
-      "today": "Redirects to /en_us/featured/best-sellers/ — zero relevance to query",
+      "today": "Redirects to /en_us/featured/best-sellers/ — zero relevance to query (as of March 2026 testing)",
       "with_algolia": "NeuralSearch returns: Glycerin 22 (max cushion), Ghost 17 (neutral road), Adrenaline GTS 24 (support) — all tagged for long-distance road running",
       "screenshot": "screenshots/13-nlp-marathon-training.png"
     },
     {
       "scenario": "Personalization Demo",
       "query": "running shoes (after browsing Ghost 16)",
-      "today": "54 identical results regardless of browsing history",
+      "today": "54 identical results regardless of browsing history (as of March 2026 testing)",
       "with_algolia": "Ghost family boosted based on Ghost 16 browse signal; preferred gender/cushioning surfaced first for logged-in Run Club member",
       "screenshot": "screenshots/17-personalization.png"
     },
     {
       "scenario": "Dynamic Facets Demo",
       "query": "women's shoes",
-      "today": "Same static facets as any query — Product Gender, Size, Product Type, Best For, Support Type, Surface",
+      "today": "Same static facets as any query — Product Gender, Size, Product Type, Best For, Support Type, Surface (as of March 2026 testing)",
       "with_algolia": "Dynamic Facets: width options appear first (women's-specific), men's sizes hidden, 'Best For' re-ordered for women's running categories",
       "screenshot": "screenshots/14-dynamic-facets.png"
     }
@@ -6496,8 +6489,8 @@ a:hover {
   "tab_subtitles": {
     "summary": "What you need to know before walking into Brooks Running",
     "account": "Brooks Running at a glance — #1 performance running brand, 1.2M monthly visitors, $1.6B in revenue, Berkshire Hathaway-backed",
-    "findings": "What we found when we tested brooksrunning.com's search across 20 live scenarios",
-    "case": "Why Brooks Running should act now — $11.5M/year moderate ROI scenario, critical Technical Buyer vacancy open",
+    "findings": "What we found when we tested brooksrunning.com's search across 20 scenarios (as of March 2026)",
+    "case": "Why Brooks Running should act now — $4.1M/year moderate ROI scenario, critical Technical Buyer vacancy open",
     "playbook": "How to win the Brooks Running deal — 4-week sequence, discovery questions, objection handling"
   },
   "recommended_first_play": {
@@ -6848,6 +6841,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -6961,7 +6960,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -7438,7 +7437,7 @@ function renderTopbar(D) {
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
     ${(()=>{
-      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      const assets=Array.isArray((D.abx_sequence&&D.abx_sequence.assets_library)) ? ((D.abx_sequence&&D.abx_sequence.assets_library)) : [];
       if(!assets.length) return '';
       const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -7484,9 +7483,9 @@ document.addEventListener('click', function(e){
 
 function buildSidebar(D) {
 
-  const findings    = D.findings || [];
+  const findings    = Array.isArray(D.findings) ? (D.findings) : [];
 
-  const signals     = D.intelligence_signals || [];
+  const signals     = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
 
   const signalTypes = [...new Set(signals.map(s => s.type))];
 
@@ -7898,7 +7897,7 @@ function sectionOverviewGrid(D) {
   const score = D.score || {};
   const fin   = D.financials || {};
   const ae    = D.ae_fields  || {};
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
@@ -7915,7 +7914,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -7942,7 +7941,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8208,7 +8207,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8216,7 +8215,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8306,7 +8305,7 @@ function sectionExecSummary(D) {
 
     ${(() => {
 
-      const allFindings = D.findings || [];
+      const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
       const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
@@ -8388,7 +8387,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8506,7 +8505,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8532,7 +8531,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8642,7 +8641,7 @@ function sectionCompanySnapshot(D) {
 
   const cs   = D.company_snapshot || {};
 
-  const execs = D.executives || [];
+  const execs = Array.isArray(D.executives) ? (D.executives) : [];
 
   const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
 
@@ -8902,7 +8901,7 @@ function sectionTraffic(D) {
 
   if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
-  const channels = t.top_channels || [];
+  const channels = Array.isArray(t.top_channels) ? (t.top_channels) : [];
 
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
 
@@ -8911,7 +8910,7 @@ function sectionTraffic(D) {
   const age = audience.age || {};
 
   // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
-  const demoArr = t.demographics || [];
+  const demoArr = Array.isArray(t.demographics) ? (t.demographics) : [];
   const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
   const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
   const genderFromDemo = (femaleEntry || maleEntry)
@@ -9099,8 +9098,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9278,7 +9277,7 @@ function sectionTraffic(D) {
     const branded    = parseFloat(os.branded_pct)     || 0;
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
-    const kws = os.top_non_branded_keywords || [];
+    const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
 
     // Mini SVG donut for branded/NB split
@@ -9345,7 +9344,7 @@ function sectionTraffic(D) {
     const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
-    const kws = ps.top_keywords || [];
+    const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
@@ -9379,8 +9378,8 @@ function sectionTraffic(D) {
 
   ${/* PANEL: Referrals */ ''}
   ${(() => {
-    const refs = t.top_referrers || t.referrals?.top_referring_sites || [];
-    const inds = t.referring_industries || t.referrals?.top_referring_industries || [];
+    const refs = Array.isArray(t.top_referrers || t.referrals?.top_referring_sites) ? (t.top_referrers || t.referrals?.top_referring_sites) : [];
+    const inds = Array.isArray(t.referring_industries || t.referrals?.top_referring_industries) ? (t.referring_industries || t.referrals?.top_referring_industries) : [];
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
@@ -9432,7 +9431,7 @@ function sectionTraffic(D) {
     const _cLabel = 'Competitor Traffic Scale';
     const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
-    const comps = t.competitor_traffic || [];
+    const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
     const parseVisits = v => {
       const s2 = String(v||'').replace(/,/g,'');
@@ -9560,6 +9559,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -9882,9 +9883,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -9904,9 +9907,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10035,7 +10039,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10205,7 +10221,7 @@ function sectionScoreHeatmap(D) {
 
   // Build category→finding map for TOC click targets
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const catToFinding = {};
 
@@ -10407,7 +10423,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -10467,7 +10483,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -10662,7 +10678,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -10839,7 +10855,7 @@ function sectionExecQuotes(D) {
 
 function sectionCompetitive(D) {
 
-  const comps = D.competitors || [];
+  const comps = Array.isArray(D.competitors) ? (D.competitors) : [];
 
   if (!comps.length) return '';
 
@@ -11033,7 +11049,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11127,17 +11143,17 @@ function sectionBattleCard(D) {
 
   const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
 
-  const gaps      = D.gap_pairs || [];
+  const gaps      = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
   const hir       = D.hiring || {};
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   // Use only critical findings for feature comparison
 
   const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
 
-  const allFindings = D.findings || [];
+  const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
   // Single strongest hook — first gap pair only
 
@@ -11245,7 +11261,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11299,7 +11315,7 @@ function sectionBattleCard(D) {
 
 function sectionSources(D) {
 
-  const bibs = D.bibliography || [];
+  const bibs = Array.isArray(D.bibliography) ? (D.bibliography) : [];
 
   return `<section id="section-sources" class="audit-section">
 
@@ -11405,7 +11421,7 @@ function sectionAppendixScoring(D) {
 
 function sectionAppendixQueries(D) {
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   return `<section id="appendix-queries" class="audit-section">
 
@@ -11425,7 +11441,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -11565,8 +11581,20 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  const components = f.roi_components || [];
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
@@ -11870,9 +11898,9 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
 
-  const gaps = D.gap_pairs || [];
+  const gaps = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   if (!gaps.length) return '';
 
@@ -12021,12 +12049,13 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
-  const tiers = cs.competitor_tiers || [];
+  const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
-  const matrix = cs.positioning_matrix || [];
+  const matrix = Array.isArray(cs.positioning_matrix) ? (cs.positioning_matrix) : [];
 
-  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+  if (!tiers.length && !matrix.length && !ga.talk_track && !((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length) return '';
 
   const cap = (v) => {
     if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
@@ -12050,7 +12079,7 @@ function sectionCompetitiveSynthesis(D) {
 
   const builtWithUrls = {};
 
-  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+  ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
 
 
 
@@ -12090,7 +12119,7 @@ function sectionCompetitiveSynthesis(D) {
       <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
@@ -12285,7 +12314,7 @@ function initCaseStudyCountUp() {
 function sectionCaseStudies(D) {
 
   // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
-  const topLevel = D.case_studies || [];
+  const topLevel = Array.isArray(D.case_studies) ? (D.case_studies) : [];
 
   if (!topLevel.length) {
     // Build from findings — deduplicate by company, derive stat from result string
@@ -12546,7 +12575,7 @@ function sectionWhyNow(D) {
   const HIRING_TYPES = new Set(['hiring','hiring_signal']);
   const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
-  const allSigs = D.intelligence_signals || [];
+  const allSigs = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
@@ -12649,7 +12678,7 @@ function sectionWhyNow(D) {
 
 function sectionStrategicAngles(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
@@ -12717,13 +12746,13 @@ function sectionStrategicAngles(D) {
 
 function sectionSalesPlays(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
   const hir = D.hiring || {};
 
-  const genericObjs = hir.objection_counters || [];
+  const genericObjs = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
 
@@ -13037,7 +13066,7 @@ function sectionPreCallBrief(D) {
 
   const icp = D.icp_mapping || {};
 
-  const anchors = icp.anchor_lines || [];
+  const anchors = Array.isArray(icp.anchor_lines) ? (icp.anchor_lines) : [];
 
   const fin = D.financials || {};
 
@@ -13119,9 +13148,28 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
-  const phases = hir.engagement_phases || [];
+  const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
   if (!committee.length) return '';
 
@@ -13264,9 +13312,9 @@ function sectionDiscoveryObjections(D) {
 
   const hir = D.hiring || {};
 
-  const ptops = icp.priority_to_product || [];
+  const ptops = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   return `<section id="section-discovery" class="audit-section">
 
@@ -13322,15 +13370,15 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = Array.isArray(abx.contacts) ? (abx.contacts) : [];
 
-  const touches  = abx.touches || [];
+  const touches  = Array.isArray(abx.touches) ? (abx.touches) : [];
 
-  const variants = abx.ab_variants || [];
+  const variants = Array.isArray(abx.ab_variants) ? (abx.ab_variants) : [];
 
-  const assets   = abx.assets_library || [];
+  const assets   = Array.isArray(abx.assets_library) ? (abx.assets_library) : [];
 
-  const triggers = abx.triggers || [];
+  const triggers = Array.isArray(abx.triggers) ? (abx.triggers) : [];
 
 
 
@@ -13660,7 +13708,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = D.intelligence_signals || [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -13680,7 +13729,7 @@ function sectionStatBar(D) {
   const roiVal = roi ? escHtml(roi) : '—';
 
   // Stat 3: Competitive signal
-  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compUsing = ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]))[0];
   const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
   const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
 
@@ -13808,8 +13857,8 @@ function sectionPartnerIntel(D) {
   const pi = D.partner_intel;
   if (!pi) return ''; // Graceful degradation — section hidden when no partner data
 
-  const techPartners = pi.tech_partners || [];
-  const siPartners = pi.si_partners || [];
+  const techPartners = Array.isArray(pi.tech_partners) ? (pi.tech_partners) : [];
+  const siPartners = Array.isArray(pi.si_partners) ? (pi.si_partners) : [];
   const action = pi.immediate_action || '';
   const coSell = pi.co_sell_recommendation || '';
 
@@ -13874,7 +13923,7 @@ function renderSections(D) {
 
   const content  = document.getElementById('content');
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const isSevCritical = s => s === 'critical' || s === 'HIGH';
   const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
@@ -13936,6 +13985,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -13951,11 +14023,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14061,7 +14136,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14288,7 +14370,7 @@ function initSectionStrips() {
 
   // Build a panel for each tab
   function buildPanel(tabId) {
-    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const config = Array.isArray(SECTION_STRIP_CONFIG[tabId]) ? (SECTION_STRIP_CONFIG[tabId]) : [];
     const panel = document.createElement('div');
     panel.className = 'section-sidebar__panel';
     panel.id = `sidebar-panel-${tabId}`;
@@ -14336,10 +14418,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15367,7 +15445,8 @@ if (document.readyState === 'loading') {
 
 </script>
 
-  <script src="/chat-widget.js" defer></script>
+<!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
+<script src="/chat-widget.js" defer></script>
 </body>
 
 </html>

@@ -98,6 +98,11 @@
   --partner:     #0D9488;   /* partner signal */
   --social-x:    #000000;   /* X/Twitter */
   --chart-other: #9CA3AF;   /* donut chart other */
+  --blue-200:    #BFDBFE;   /* blue-200 — tint card border */
+  --red-300:     #FCA5A5;   /* red-300  — dark-panel stat (Google exit) */
+  --green-300:   #6EE7B7;   /* green-300— dark-panel stat (ROI gain) */
+  --ink-900:     #21243D;   /* gradient stop — hero panel */
+  --navy-900:    #0D1240;   /* gradient stop — dark panel */
 
 
 
@@ -254,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2721,13 +2726,13 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
 #section-sidebar {
   position: fixed;
-  right: 24px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -2804,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5140,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5380,11 +5385,12 @@ a:hover {
       "linkedin": "",
       "email_guess": "",
       "notes": "Combined digital + IT role. Controls both the technology vision and digital transformation budget at HARMAN. The CDIO seat makes him the decision-maker for any enterprise digital infrastructure investment including search.",
-      "quote": "HARMAN targets premium and AI-driven products and expanding audio and automotive sales.",
-      "quote_source": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2025-results",
-      "quote_attribution": "Samsung Q2 2025 earnings summary — HARMAN strategic direction",
+      "quote": "At HARMAN Digital Transformation Solutions, we create cutting-edge technology solutions that drive exceptional outcomes for our customers.",
+      "quote_source": "https://news.harman.com/releases/harman-digital-transformation-solutions-demonstrates-latest-tech-innovations-during-harman-explore-2024",
+      "quote_attribution": "Nick Parrotta, President Digital Transformation Solutions & CDIO, HARMAN (HARMAN Newsroom, January 6, 2024)",
       "pitch_angle": "Lead with Agentic Commerce framing: HARMAN is hiring Director + Manager for Digital and Agentic Commerce simultaneously — Algolia NeuralSearch is the search foundation those AI buying journeys run on.",
-      "source": "[FACT — Gemini grounded search, 2026-07-01]"
+      "source": "[FACT — Gemini grounded search, 2026-07-01]",
+      "quote_source_note": "[FACT -- verbatim from HARMAN Newsroom press release, 2024-01-06; replaces a prior misattributed Samsung-earnings paraphrase]"
     },
     {
       "name": "Arthur Werner",
@@ -5394,13 +5400,12 @@ a:hover {
       "linkedin": "",
       "email_guess": "",
       "notes": "Named decision-maker on both the Contentsquare Project Facelift and Code and Theory GenAI engagement. Presented JBL/Contentsquare work at CX Circle Amsterdam 2026. Warm path exists via both Contentsquare and Code and Theory partner relationships.",
-      "quote": "JBL is trying to balance physical and digital in a way that reflects how people actually experience music, showing up where culture is actually happening rather than creating something separate and asking people to come to them.",
-      "quote_source": "https://www.marketingdive.com/",
-      "quote_attribution": "Chris Epple, VP Marketing Americas, HARMAN International — Marketing Dive, December 18, 2024",
+      "quote": "We definitely wanted this to be SaaS-based. We didn't want our internal IT capacities to hold us back or to be any barrier for growth when it came to speed and global access.",
+      "quote_source": "https://www.acquia.com/resources/customer-stories/harman",
+      "quote_attribution": "Arthur Werner, Director of Global E-Commerce & Operations, HARMAN (Acquia HARMAN customer story)",
       "pitch_angle": "Contentsquare surfaces where shoppers drop off in search; Algolia fixes it. Werner is already sold on behavioral analytics — Algolia is the natural complement.",
       "source": "[ESTIMATE — Gemini grounded search citing CX Circle Amsterdam 2026, 2026-07-01]",
-      "quote_speaker": "Chris Epple, VP Marketing Americas, HARMAN International",
-      "quote_source_note": "[ESTIMATE — Marketing Dive, December 2024; specific article URL unavailable, verify before prospect use]"
+      "quote_source_note": "[FACT -- verbatim Arthur Werner quote from Acquia HARMAN customer story; replaces a prior quote that was Chris Epple's misattributed words]"
     },
     {
       "name": "Christian Sobottka",
@@ -5410,9 +5415,9 @@ a:hover {
       "linkedin": "",
       "email_guess": "",
       "notes": "New CEO effective April 1, 2025. Publicly stated ambition to nearly double HARMAN's size in 5 years. New leadership creates technology platform audit cycle — prime window for challenger conversations.",
-      "quote": "He looks forward to working with HARMAN's talented teams to drive the next phase of growth and continue delivering exceptional value to customers and partners, building on the company's legacy of innovation and excellence.",
-      "quote_source": "https://www.businesswire.com/news/home/20250303247831/en/HARMAN-Announces-Leadership-Transition-Christian-Sobottka-Appointed-as-New-President-and-Chief-Executive-Officer",
-      "quote_attribution": "Business Wire, March 3, 2025 — HARMAN leadership transition announcement",
+      "quote": "I am honored to assume the role of President and CEO of HARMAN. Building on our legacy of innovation and excellence, I look forward to working with our talented teams to drive the next phase of growth and continue delivering exceptional value to our customers and partners.",
+      "quote_source": "https://news.harman.com/releases/harman-announces-leadership-transition-christian-sobottka-appointed-as-new-president-and-chief-executive-officer",
+      "quote_attribution": "Christian Sobottka, President & CEO, HARMAN (HARMAN Newsroom leadership transition release, March 3, 2025)",
       "pitch_angle": "CEO targeting near-doubling of HARMAN. JBL's 75+ global D2C storefronts are the leverage point — Algolia's multi-index global CDN scales exactly this way.",
       "source": "[ESTIMATE — Business Wire via Gemini grounded search, 2025-03-03]"
     },
@@ -5424,12 +5429,12 @@ a:hover {
       "linkedin": "",
       "email_guess": "",
       "notes": "Oversees JBL and all newly acquired Sound United brands (Bowers & Wilkins, Denon, Marantz, Polk Audio). Sound United brands run as independent storefronts — creating multi-brand catalog complexity that Algolia's federated search directly addresses.",
-      "quote": "The Sound United acquisition bolsters HARMAN's strategy to build on its unparalleled success story and scale to unprecedented heights as an audio leader, unlocking meaningful growth opportunities across brands and channels.",
-      "quote_source": "https://www.cepro.com/",
-      "quote_attribution": "HARMAN press release, Business Wire, September 23, 2025",
+      "quote": "The Sound United acquisition bolsters HARMAN's strategy to build on its unparalleled success story and scale to unprecedented heights as an audio leader, unlocking meaningful growth opportunities for everyone.",
+      "quote_source": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/",
+      "quote_attribution": "Paraphrase of HARMAN Sound United acquisition messaging (Business Wire / CE Pro, September 2025)",
       "pitch_angle": "9+ brand storefronts all with independent search. Federated Algolia across JBL + Sound United brands is the multi-brand discovery layer.",
       "source": "[ESTIMATE — Business Wire via Gemini grounded search, 2025-09-23]",
-      "quote_source_note": "[ESTIMATE — CE Pro, September 2025; specific article URL unavailable, verify before prospect use]"
+      "quote_source_note": "[PARAPHRASE — not a verbatim quotation; wording restored to match source paraphrase 'unlocking meaningful growth opportunities for everyone'; CE Pro, September 2025, specific article URL unavailable]"
     },
     {
       "name": "Carsten Olesen",
@@ -5439,9 +5444,9 @@ a:hover {
       "linkedin": "",
       "email_guess": "",
       "notes": "Oversees JBL consumer audio product and revenue. Direct beneficiary of improved search-driven D2C conversion.",
-      "quote": "JBL continues to expand its product portfolio with AI-driven features and premium audio experiences, targeting millennials and Gen Z in key global markets.",
-      "quote_source": "https://www.harman.com/about-us",
-      "quote_attribution": "",
+      "quote": "The JBL Sense PRO marks a major leap in open-ear audio. We've harnessed our deep audio expertise to deliver a full, bass-rich sound through air conduction, something previously unheard of in open-ear designs. Combined with all-day comfort, intelligent features, and a durable, refined design, it sets a new standard for the category.",
+      "quote_source": "https://news.harman.com/releases/jbl-introduces-sense-pro-headphones-open-ear-audio-reimagined",
+      "quote_attribution": "Carsten Olesen, President Consumer Audio, HARMAN (HARMAN Newsroom, August 20, 2025)",
       "pitch_angle": "Direct ROI narrative: JBL's $182M D2C revenue through search. Typo tolerance fix alone on top 3 branded keywords is measurable conversion recovery.",
       "source": "[FACT — Gemini grounded search, 2026-07-01]"
     }
@@ -5454,7 +5459,8 @@ a:hover {
       "category_tag": "digital_transformation",
       "urgency_score": 9,
       "label": "[FACT — harman.com/career-details, Gemini grounded search, 2026-07-01]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "hiring_signal"
     },
     {
       "title": "New CEO Christian Sobottka — Platform Audit Cycle Open (April 2025)",
@@ -5463,16 +5469,18 @@ a:hover {
       "category_tag": "leadership_change",
       "urgency_score": 9,
       "label": "[ESTIMATE — Business Wire via Gemini grounded search, 2025-03-03]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "news_signal"
     },
     {
       "title": "Sound United Acquisition — 9+ Brand DTC Catalog Explosion (September 2025)",
       "detail": "HARMAN completed the acquisition of Sound United (September 23, 2025), adding Bowers & Wilkins, Denon, Marantz, Polk Audio, Definitive Technology, HEOS, Classe, and Boston Acoustics. Dave Rogers confirmed brands will remain as independent storefronts for 'six months to a year.' This creates immediate multi-brand catalog complexity across 9+ DTC sites — all with search and discovery challenges. Multi-brand federated Algolia is a direct solution.",
-      "source_url": "https://www.cepro.com/audio/harman-sound-united-acquisition-dave-rogers-interview/",
+      "source_url": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/",
       "category_tag": "expansion",
       "urgency_score": 8,
       "label": "[ESTIMATE — CE Pro / Business Wire via Gemini grounded search, 2025-09-23]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "news_signal"
     },
     {
       "title": "JBL 80th Anniversary Product Surge — 10+ New SKUs in 60 Days",
@@ -5481,44 +5489,49 @@ a:hover {
       "category_tag": "tech_investment",
       "urgency_score": 8,
       "label": "[FACT — Google News RSS, 2026-07-01]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "news_signal"
     },
     {
-      "title": "Code and Theory 'Project Surround Sound' — GenAI Search Strategy Delivered (2025)",
-      "detail": "Code and Theory (Stagwell) delivered JBL's GenAI search/discovery strategy ('Project Surround Sound') — auditing JBL's SEO, rebuilding LLM-optimized content, achieving 2,434% YoY increase in LLM referrals BFCM 2024 vs 2025 (Ad Age A-List creditation). Code and Theory drove more users to jbl.com via LLM channels — but the on-site search experience hasn't been upgraded. Algolia NeuralSearch is the missing infrastructure layer for 'Project Surround Sound.'",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE73JAmAVicf4N5QsS9MAU8feOug73a6Qe0S_1A-Bb85BAzg3Jm1sdaBR72rzHWQv9UQFlyMvbt2q8Nyu4CqkorOjUvA38Yd5MOJ5bI1yC9b3fkcllGSvRSAsibvEI_HImu-ZtbRqRyq0Pp",
+      "title": "Code and Theory 'surround search' — GenAI Search Strategy Delivered (2025)",
+      "detail": "Code and Theory (Stagwell) delivered JBL's GenAI search/discovery strategy ('surround search') — auditing JBL's SEO, rebuilding LLM-optimized content, achieving 2,434% YoY increase in LLM referrals BFCM 2024 vs 2025. The agency was ranked No. 5 on the 2026 Ad Age A-List for its AI-first transformation work (adage.com/events-awards/a-list-creativity/aa-code-and-theory-2026). Code and Theory drove more users to jbl.com via LLM channels — but the on-site search experience hasn't been upgraded. Algolia NeuralSearch is the missing infrastructure layer for 'surround search.'",
+      "source_url": "https://www.codeandtheory.com/things-we-make/jbl",
       "category_tag": "ai_disruption",
       "urgency_score": 8,
       "label": "[ESTIMATE — Gemini grounded search (Ad Age / Code and Theory), 2026-07-01]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "news_signal"
     },
     {
       "title": "DTS Divestiture to Wipro — Budget Reallocated to Audio + Commerce (December 2025)",
-      "detail": "HARMAN sold its Digital Transformation Solutions (DTS) business to Wipro (closed December 1, 2025). Carolin Reichert, CSO, said this 'reflects HARMAN's disciplined approach to portfolio management and commitment to long-term growth, allowing the company to sharpen its focus on core strengths in automotive electronics and audio innovation.' IT services cost removed; budget now available for audio brand ecommerce infrastructure.",
-      "source_url": "https://www.businesswire.com/news/home/20251201",
+      "detail": "HARMAN completed the sale of its Digital Transformation Solutions (DTS) business to Wipro (closed December 1, 2025; deal valued at up to $375M, ~5,600 employees). Carolin Reichert, Chief Strategy Officer, said the milestone 'reflects our disciplined approach to portfolio management and our commitment to long-term growth.' HARMAN framed the divestiture as sharpening focus on its core Automotive and Lifestyle (audio) businesses. IT services cost removed; budget now available for audio brand ecommerce infrastructure.",
+      "source_url": "https://news.harman.com/releases/harman-confirms-completion-of-sale-of-digital-transformation-solutions-business-to-wipro",
       "category_tag": "strategic_signal",
       "urgency_score": 7,
-      "label": "[ESTIMATE — Business Wire via Gemini grounded search, 2025-12-01]",
+      "label": "[FACT -- HARMAN Newsroom (DTS sale completion) + Baker McKenzie deal note, 2025-12-01]",
       "badge_label": "",
-      "source_note": "[ESTIMATE — Business Wire, 2025-12-01; full URL slug unavailable]"
+      "source_note": "[FACT -- HARMAN Newsroom, DTS sale completion, 2025-12-01; resolved from truncated Business Wire link]",
+      "type": "news_signal"
     },
     {
-      "title": "AI-First Product Positioning — 'Premium and AI-Driven' Samsung Board Mandate",
-      "detail": "Samsung Q2 2025 earnings explicitly stated 'Harman targets premium and AI-driven products and expanding audio and automotive sales.' JBL announced AI-powered audio features at CES 2026 (AI Sound Boost, SmartEQ Mode, AirTouch gesture control). This board-level mandate for AI-driven products should logically extend to AI-driven customer experiences on jbl.com — currently missing.",
-      "source_url": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2025-results",
+      "title": "AI-First Product Positioning -- HARMAN Premium Audio + Automotive; Samsung AI Mandate",
+      "detail": "Samsung's Q4/FY2025 results outlook states HARMAN is prioritizing expansion of its automotive business and premium consumer audio, driven by a reinforced brand portfolio and continued product innovation, while Samsung group-wide is focused on leveraging AI across all business segments. JBL announced AI-powered audio features at CES 2026 (AI Sound Boost, SmartEQ Mode, AirTouch gesture control). This premium and AI-driven direction should logically extend to AI-driven customer experiences on jbl.com, which are currently missing.",
+      "source_url": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results",
       "category_tag": "ai_disruption",
       "urgency_score": 7,
-      "label": "[ESTIMATE — Samsung Q2 2025 earnings via Gemini grounded search, 2025-07-31]",
-      "badge_label": ""
+      "label": "[FACT -- Samsung Q4/FY2025 results outlook, Samsung Global Newsroom, 2026-01]",
+      "badge_label": "",
+      "type": "news_signal"
     },
     {
       "title": "Contentsquare Partnership — Arthur Werner Relationship Confirmed (CX Circle Amsterdam 2026)",
       "detail": "Arthur Werner (Sr. Director Global E-Commerce & CX, HARMAN) presented the JBL/Contentsquare work at CX Circle Amsterdam 2026. Contentsquare is actively analyzing behavioral UX friction on jbl.com. Algolia and Contentsquare are complementary: Contentsquare surfaces where shoppers drop off, Algolia fixes it in search. Werner is already invested in the behavioral analytics motion — Algolia is the natural next layer.",
-      "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0greFK9fs4wDCHzhrdWXJMUQ_FZaj4e9Ibmc5Cxism1LmiZmQAqKP9ngO77evDUed6V769MM2zegjFuG8Y6bW6dlYwKK3bz4RAzcHLtkXXw3qVrtUg0JWZq7Jf4qYp_5-HrOdNw==",
+      "source_url": "https://go.contentsquare.com/en/cxcircle-amsterdam",
       "category_tag": "strategic_signal",
       "urgency_score": 7,
       "label": "[ESTIMATE — Gemini grounded search citing CX Circle Amsterdam 2026, 2026-07-01]",
-      "badge_label": ""
+      "badge_label": "",
+      "type": "news_signal"
     }
   ],
   "competitors": [
@@ -5599,7 +5612,7 @@ a:hover {
     {
       "id": "F01",
       "title": "Zero Typo Tolerance on Top Branded Keywords",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "typo_tolerance",
       "tested_query": "jbl speker / haedphones / partybok",
       "expected_behavior": "Single-character edit distance correction with 'Did you mean?' prompt and full results set returned",
@@ -5616,7 +5629,7 @@ a:hover {
     {
       "id": "F02",
       "title": "No NLP / Semantic Search — Price and Intent Queries Fail",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "semantic_nlp_search",
       "tested_query": "waterproof bluetooth speaker under 100 / gift for dad who likes music",
       "expected_behavior": "Multi-attribute semantic parsing: 'under 100' parsed as a price filter, 'waterproof' matched to IP67 attribute, 'bluetooth' to connectivity type. 'gift for dad who likes music' surfaces curated gift bundle or JBL personalize category.",
@@ -5633,7 +5646,7 @@ a:hover {
     {
       "id": "F03",
       "title": "No Merchandising Rules Engine — Campaigns Invisible in Search",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "merchandising_consistency",
       "tested_query": "JBL PartyBox / sale / JBL",
       "expected_behavior": "80th anniversary campaign banner injected into PartyBox search results; high-margin SKUs (PartyBox 310/710) pinned at top; 'sale' query surfaces anniversary promotion; 'JBL' brand search returns curated brand landing.",
@@ -5650,7 +5663,7 @@ a:hover {
     {
       "id": "F04",
       "title": "Dead-End No-Results Pages — No Recovery Mechanism",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "query_suggestions_empty_state",
       "tested_query": "asdfqwerty / return policy / warranty registration",
       "expected_behavior": "Zero-results page shows: fallback popular products, category suggestions, 'Did you mean?' correction, related queries. 'Return policy' surfaces support/policy page from federated search index.",
@@ -5667,7 +5680,7 @@ a:hover {
     {
       "id": "F05",
       "title": "Blank Search Empty State — No Query Suggestions or Trending Searches",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "query_suggestions_empty_state",
       "tested_query": "(empty state — search bar focus)",
       "expected_behavior": "Search bar focus shows: trending searches, popular queries, recent searches, category shortcuts (e.g., 'Portable Speakers', 'Headphones', 'PartyBox'). SAYT surfaces product images in dropdown on partial input.",
@@ -5684,7 +5697,7 @@ a:hover {
     {
       "id": "F06",
       "title": "Federated Search Absent — Support Content Not Indexed",
-      "severity": "HIGH",
+      "severity": "critical",
       "category": "content_commerce_ux",
       "tested_query": "return policy / warranty registration",
       "expected_behavior": "Federated search returns policy pages, support articles, and FAQs alongside product results. 'Warranty registration' surfaces the product registration page. 'Return policy' surfaces the returns & exchanges page.",
@@ -5701,7 +5714,7 @@ a:hover {
     {
       "id": "F07",
       "title": "No Dynamic Facets — Generic Filters Regardless of Query Context",
-      "severity": "MEDIUM",
+      "severity": "moderate",
       "category": "dynamic_facets_personalization",
       "tested_query": "speakers / headphones",
       "expected_behavior": "'Speakers' query surfaces facets: Waterproof (IP67), Maximum Output (watts), Battery Life (hours), Connection Type (Bluetooth/Wi-Fi), Portability. 'Headphones' surfaces: ANC Type, Driver Size, Frequency Response, Ear Cup Style, Codec Support.",
@@ -5718,7 +5731,7 @@ a:hover {
     {
       "id": "F08",
       "title": "No Personalization — 6.83M Monthly Visits With Zero Behavioral Layer",
-      "severity": "MEDIUM",
+      "severity": "moderate",
       "category": "dynamic_facets_personalization",
       "tested_query": "speakers (after browsing headphones)",
       "expected_behavior": "After browsing the Headphones category, a 'speakers' search re-ranks results to surface speaker-only products (not headphones), personalized by prior session behavior. Returning visitor sees results influenced by purchase history.",
@@ -5735,7 +5748,7 @@ a:hover {
     {
       "id": "F09",
       "title": "No ML Recommendations — Rule-Based FBT Only",
-      "severity": "MEDIUM",
+      "severity": "moderate",
       "category": "recommendations_merchandising",
       "tested_query": "JBL Charge 5 (PDP)",
       "expected_behavior": "PDP shows: ML-driven Frequently Bought Together (speaker case + charging cable), Trending in Portable Speakers, You May Also Like (Charge 4 vs Charge 5 comparison), Related Accessories. Recommendations update based on real purchase co-occurrence data.",
@@ -5752,7 +5765,7 @@ a:hover {
     {
       "id": "F10",
       "title": "No Search Analytics — Black Box Operation",
-      "severity": "MEDIUM",
+      "severity": "moderate",
       "category": "search_intelligence",
       "tested_query": "N/A (analytics layer)",
       "expected_behavior": "Search dashboard shows: zero-results rate, click-through rate by query, no-click searches, conversion rate by search term, trending queries, popular products by search. Merchandising team can act on data within 24 hours.",
@@ -5769,10 +5782,10 @@ a:hover {
   ],
   "gap_pairs": [
     {
-      "said_quote": "Harman targets premium and AI-driven products and expanding audio and automotive sales.",
-      "said_attr": "Samsung Q2 2025 Earnings — HARMAN strategic direction",
-      "said_source": "Samsung Q2 2025 earnings summary, July 31 2025",
-      "said_source_url": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2025-results",
+      "said_quote": "HARMAN is prioritizing expansion of its automotive business and premium consumer audio, driven by a reinforced brand portfolio and continued product innovation, within a Samsung group strategy focused on leveraging AI across all business segments.",
+      "said_attr": "Samsung Electronics Q4 & FY2025 results -- HARMAN outlook (paraphrase, not a verbatim quotation)",
+      "said_source": "Samsung Electronics Q4 and FY2025 results, HARMAN outlook section (Samsung Global Newsroom)",
+      "said_source_url": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results",
       "found_title": "Search does not reflect the AI-driven brand mandate",
       "found_evidence": "Custom SFCC exact-match: zero typo tolerance (jbl speker = zero results), no NLP (waterproof bluetooth speaker under 100 fails), no merchandising rules. The search experience contradicts the Samsung board mandate for AI-driven products.",
       "finding_id": "F01",
@@ -5793,10 +5806,10 @@ a:hover {
       "discovery_question": "How does your current site search today support the Agentic Commerce investment you are staffing for at Director level?"
     },
     {
-      "said_quote": "The Sound United acquisition bolsters HARMAN strategy to scale to unprecedented heights as an audio leader, unlocking meaningful growth opportunities across brands and channels.",
-      "said_attr": "Dave Rogers, President Lifestyle Division, HARMAN International — Business Wire, September 23 2025",
+      "said_quote": "The Sound United acquisition bolsters HARMAN strategy to scale to unprecedented heights as an audio leader, unlocking meaningful growth opportunities for everyone.",
+      "said_attr": "Paraphrase of Dave Rogers / HARMAN Sound United acquisition messaging (Business Wire / CE Pro, September 2025) -- paraphrase, not verbatim",
       "said_source": "HARMAN press release, Business Wire, September 23 2025",
-      "said_source_url": "https://www.cepro.com/audio/harman-sound-united-acquisition-dave-rogers-interview/",
+      "said_source_url": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/",
       "found_title": "9+ brand storefronts with independent search — no unified discovery layer",
       "found_evidence": "Dave Rogers confirmed independent storefronts for Sound United brands for six months to a year. HARMAN added Bowers and Wilkins, Denon, Marantz, Polk Audio, Definitive Technology, HEOS, Classe, Boston Acoustics. Each runs independent SFCC search. This is a 9-brand federated search architecture problem.",
       "finding_id": "F06",
@@ -5810,7 +5823,7 @@ a:hover {
       "said_source": "Marketing Dive, December 18 2024",
       "said_source_url": "https://www.marketingdive.com/news/jbl-college-marketing-long-term-brand-value/736089/",
       "found_title": "Brand invests in driving Gen Z to jbl.com — then search fails them with a dead end",
-      "found_evidence": "Code and Theory Project Surround Sound drove 2,434% YoY LLM referral growth. Those AI-referred Gen Z shoppers land on jbl.com and search for waterproof bluetooth speaker under 100 or gift for dad who likes music — both return zero meaningful results under SFCC exact-match. Top 3 branded keyword typos also dead-end.",
+      "found_evidence": "Code and Theory surround search drove 2,434% YoY LLM referral growth. Those AI-referred Gen Z shoppers land on jbl.com and search for waterproof bluetooth speaker under 100 or gift for dad who likes music — both return zero meaningful results under SFCC exact-match. Top 3 branded keyword typos also dead-end.",
       "finding_id": "F02",
       "algolia_angle": "Algolia Typo Tolerance and NeuralSearch ensure every dollar spent on Gen Z acquisition converts on jbl.com — not dead-ends on a zero-tolerance exact-match engine.",
       "gap_title": "Gen Z acquisition investment is undermined by a broken search conversion layer",
@@ -5828,11 +5841,11 @@ a:hover {
     "operating_margin_pct": 9.2,
     "ebitda_margin_pct": 10.25,
     "operating_profit": "$1.3T KRW (~$902M USD, 2024 record)",
-    "fy2025_revenue": "15.78T KRW (~$10.1B USD, FY2025 record)",
-    "fy2025_op_profit": "1.53T KRW (~$1.04B USD, FY2025 record)",
+    "fy2025_revenue": "15.78T KRW (~$11.7B USD at ~1,350 KRW/USD, FY2025 record)",
+    "fy2025_op_profit": "1.53T KRW (~$1.13B USD at ~1,350 KRW/USD, FY2025 record)",
     "q2_2025_op_margin": "13.1% (record quarterly)",
     "acquisition_value": "$8B (Samsung acquisition of HARMAN, 2017)",
-    "automotive_backlog": "$45B (record, cited by CEO Mauser)",
+    "automotive_backlog": "$45B (record awarded automotive backlog, achieved under former President & CEO Michael Mauser; announced March 2025)",
     "public_private": "Private (Samsung subsidiary)",
     "source_label": "[ESTIMATE — Samsung annual report + CEO interviews + trade press, 2026-07-01]",
     "roi_conservative": "$18.4M/year",
@@ -5945,7 +5958,7 @@ a:hover {
       "chatgpt_mom": null,
       "gemini_pct": null,
       "total_ai_pct": null,
-      "narrative": "Code and Theory's 'Project Surround Sound' achieved 2,434% YoY increase in LLM referrals (BFCM 2024 vs 2025) — AI referral traffic is a growing and actively managed channel for JBL, but the destination experience (site search) has not been upgraded to match."
+      "narrative": "Code and Theory's 'surround search' achieved 2,434% YoY increase in LLM referrals (BFCM 2024 vs 2025) — AI referral traffic is a growing and actively managed channel for JBL, but the destination experience (site search) has not been upgraded to match."
     },
     "top_referrers": [
       {
@@ -6135,7 +6148,7 @@ a:hover {
     "champion_title": "Sr. Director, Global E-Commerce & CX",
     "champion_company": "HARMAN International",
     "primary_si": "Code and Theory (Stagwell)",
-    "si_project": "Project Surround Sound (GenAI search architecture, active 2024-2025)",
+    "si_project": "surround search (GenAI discovery approach, active 2024-2025)",
     "secondary_si": "Contentsquare (Project Facelift website redesign, active 2025-2026)",
     "platform": "Salesforce Commerce Cloud (SFCC B2C)",
     "algolia_sfcc_cartridge": true,
@@ -6156,7 +6169,7 @@ a:hover {
     {
       "step": 1,
       "action": "Engage Algolia's Stagwell/Code-and-Theory partner contact",
-      "detail": "Request warm introduction to Code and Theory's JBL account team. Code and Theory owns 'Project Surround Sound' and has direct relationships with Arthur Werner. Algolia NeuralSearch is the infrastructure upgrade for the GenAI-discoverability strategy they already sold to JBL.",
+      "detail": "Request warm introduction to Code and Theory's JBL account team. Code and Theory owns 'surround search' and has direct relationships with Arthur Werner. Algolia NeuralSearch is the infrastructure upgrade for the GenAI-discoverability strategy they already sold to JBL.",
       "owner": "AE + Algolia Partner Manager",
       "timeline": "Week 1",
       "priority": "IMMEDIATE"
@@ -6212,17 +6225,16 @@ a:hover {
     {
       "id": "B02",
       "title": "HARMAN Completes Sound United Acquisition",
-      "url": "https://www.businesswire.com/news/home/20250923",
+      "url": "https://news.harman.com/releases/harman-completes-sound-united-acquisition-to-expand-premium-audio-leadership",
       "date": "2025-09-23",
       "label": "[ESTIMATE — Business Wire via Gemini grounded search]"
     },
     {
       "id": "B03",
-      "title": "Samsung Electronics Q2 2025 Earnings Results",
-      "url": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2025-results",
-      "date": "2025-07-31",
-      "label": "[ESTIMATE — Samsung Electronics via Gemini grounded search]",
-      "note": "[Note: Samsung Newsroom page is live but HARMAN/JBL quotes may be from companion IR PDF — verify section content before prospect use]"
+      "title": "Samsung Electronics Q4 & FY2025 Results -- HARMAN Outlook",
+      "url": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results",
+      "date": "2026-01",
+      "label": "[FACT -- Samsung Global Newsroom, HARMAN outlook section]"
     },
     {
       "id": "B04",
@@ -6234,7 +6246,7 @@ a:hover {
     {
       "id": "B05",
       "title": "CE Pro — Dave Rogers Interview on Sound United Acquisition",
-      "url": "https://www.cepro.com/audio/harman-sound-united-acquisition-dave-rogers-interview/",
+      "url": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/",
       "date": "2025-09-23",
       "label": "[ESTIMATE — CE Pro via Gemini grounded search]"
     },
@@ -6255,7 +6267,7 @@ a:hover {
     {
       "id": "B08",
       "title": "Baymard Institute — Ecommerce Search UX",
-      "url": "https://baymard.com/blog/ecommerce-search-ux",
+      "url": "https://baymard.com/research/ecommerce-search",
       "date": "2024-09-12",
       "label": "[ESTIMATE — Baymard via Gemini grounded search]"
     },
@@ -6272,6 +6284,13 @@ a:hover {
       "url": "https://www.harman.com/career-details/R-51473-2026",
       "date": "2026-06",
       "label": "[FACT — harman.com/career-details, Gemini grounded search, 2026-07-01]"
+    },
+    {
+      "id": "B11",
+      "title": "Code and Theory Named No. 5 on the 2026 Ad Age A-List",
+      "url": "https://adage.com/events-awards/a-list-creativity/aa-code-and-theory-2026/",
+      "date": "2026",
+      "label": "[FACT — Ad Age A-List 2026, verified 2026-07-05]"
     }
   ],
   "competitive_synthesis": {
@@ -6356,7 +6375,7 @@ a:hover {
   "golden_angle": {
     "type": "offensive",
     "competitors_using_algolia": [],
-    "narrative": "No direct competitor uses Algolia. JBL has an open first-mover window to establish an AI-powered search moat in the consumer audio DTC segment. Adjacent proof is strong: Gémo (D2C ecommerce) achieved 160x ROI and doubled search conversion; Orange (consumer electronics) saw 63% order rate lift and 53% fewer zero-results. Best Buy (JBL's largest reseller) reportedly uses Algolia for My Best Buy loyalty personalization.",
+    "narrative": "No direct competitor uses Algolia. JBL has an open first-mover window to establish an AI-powered search moat in the consumer audio DTC segment. Adjacent proof is strong: Gémo (D2C ecommerce) achieved 160x ROI and doubled search conversion; Orange (consumer electronics) saw 63% order rate lift and 53% fewer zero-results. Best Buy (JBL's largest reseller) appears on Algolia's public customer roster; a dedicated Best Buy case study confirming the specific My Best Buy loyalty personalization use case was not located, so treat this as unconfirmed.",
     "headline": "Be the first audio brand with AI search — no competitor has moved yet",
     "proof_urls": [
       "https://www.algolia.com/customers/gemo/",
@@ -6389,7 +6408,7 @@ a:hover {
       "label": "Code and Theory Solved Acquisition — Algolia Closes Conversion",
       "title": "Code and Theory Solved Acquisition — Algolia Closes the Conversion Loop",
       "angle_type": "partner_signal",
-      "hook": "Code and Theory Project Surround Sound achieved 2,434% YoY LLM referral growth — driving more AI-referred shoppers to jbl.com than ever before. But the on-site search experience has not been upgraded. Every dollar spent on GenAI acquisition drives traffic to a search engine that fails on typos, NLP, and merchandising. Algolia NeuralSearch is the missing infrastructure layer.",
+      "hook": "Code and Theory surround search achieved 2,434% YoY LLM referral growth — driving more AI-referred shoppers to jbl.com than ever before. But the on-site search experience has not been upgraded. Every dollar spent on GenAI acquisition drives traffic to a search engine that fails on typos, NLP, and merchandising. Algolia NeuralSearch is the missing infrastructure layer.",
       "source": "[ESTIMATE — Gemini grounded search (Ad Age / Code and Theory), 2026-07-01]",
       "discovery_question": "When those AI-referred shoppers from ChatGPT or voice queries land on jbl.com and search for waterproof bluetooth speaker under 100 — what do they find today?",
       "algolia_proof": "Gemo (D2C ecommerce, same catalog model): 160x ROI, doubled search conversion, 2.3x conversions after Dynamic Re-ranking, ~1/3 of web revenue through search. Source: https://www.algolia.com/customers/gemo/",
@@ -6400,8 +6419,8 @@ a:hover {
       ],
       "objection": "Code and Theory already handles our search strategy.",
       "objection_counter": "Code and Theory solved the top-of-funnel acquisition problem — LLM referral growth is proof. The on-site search infrastructure is a separate layer. Code and Theory built the GenAI content strategy; Algolia is the search infrastructure those strategies route through. These are complementary, not competing — which is why a co-sell motion with Code and Theory is the fastest path to value.",
-      "evidence": "Code and Theory Ad Age A-List creditation for JBL GenAI transformation. Arthur Werner confirmed as key contact via Contentsquare CX Circle Amsterdam 2026.",
-      "proof_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE73JAmAVicf4N5QsS9MAU8feOug73a6Qe0S_1A-Bb85BAzg3Jm1sdaBR72rzHWQv9UQFlyMvbt2q8Nyu4CqkorOjUvA38Yd5MOJ5bI1yC9b3fkcllGSvRSAsibvEI_HImu-ZtbRqRyq0Pp"
+      "evidence": "Code and Theory was ranked No. 5 on the 2026 Ad Age A-List for its AI-first transformation work (adage.com/events-awards/a-list-creativity/aa-code-and-theory-2026); its JBL 'surround search' engagement drove 2,434% YoY LLM-referral growth (codeandtheory.com/things-we-make/jbl). Arthur Werner confirmed as key contact via Contentsquare CX Circle Amsterdam 2026.",
+      "proof_url": "https://www.codeandtheory.com/things-we-make/jbl"
     },
     {
       "id": "SA03",
@@ -6420,7 +6439,7 @@ a:hover {
       "objection": "We plan to keep the brands on separate platforms for the foreseeable future.",
       "objection_counter": "Dave Rogers confirmed separate storefronts — Algolia multi-index architecture is exactly designed for this. One Algolia implementation, one set of API credentials, one analytics dashboard — separate indexes per brand. The SFCC cartridge deploys per-brand but governed centrally. This is how Algolia scales to multi-brand portfolios without requiring unified storefronts.",
       "evidence": "Dave Rogers CE Pro interview Sept 2025; HARMAN Sound United acquisition press release Business Wire Sept 23 2025",
-      "proof_url": "https://www.cepro.com/audio/harman-sound-united-acquisition-dave-rogers-interview/"
+      "proof_url": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/"
     },
     {
       "id": "SA04",
@@ -6446,19 +6465,19 @@ a:hover {
       "label": "Samsung AI Mandate vs SFCC Exact-Match Reality",
       "title": "Samsung AI-Driven Mandate vs. SFCC Exact-Match Reality",
       "angle_type": "executive_alignment",
-      "hook": "Samsung earnings disclosures describe HARMAN as targeting premium and AI-driven products. This board-level mandate flows to every digital investment. JBL search experience — a custom SFCC exact-match engine with zero typo tolerance, no NLP, and no merchandising rules — does not reflect AI-driven. This is not a feature gap; it is a brand integrity gap that Nicholas Parrotta as CDIO owns.",
-      "source": "[ESTIMATE — Samsung Q2 2025 earnings via Gemini grounded search, 2025-07-31]",
+      "hook": "Samsung's FY2025 earnings outlook describes HARMAN prioritizing premium audio and automotive growth, within a Samsung group strategy centered on leveraging AI across all business segments. This board-level direction flows to every digital investment. JBL search experience — a custom SFCC exact-match engine with zero typo tolerance, no NLP, and no merchandising rules — does not reflect AI-driven. This is not a feature gap; it is a brand integrity gap that Nicholas Parrotta as CDIO owns.",
+      "source": "[FACT -- Samsung Q4/FY2025 results outlook (HARMAN section) via Samsung Global Newsroom, 2026-01]",
       "discovery_question": "When Samsung describes HARMAN as targeting premium and AI-driven products — does jbl.com search experience reflect that positioning today?",
       "algolia_proof": "Orange (consumer electronics retailer): 14% higher CTR with NeuralSearch; 63% increase in order rates. AI-driven search = measurable revenue. Source: https://www.algolia.com/customers/orange/",
       "pain_points": [
-        "Samsung board mandate: premium and AI-driven products — jbl.com search is SFCC exact-match with zero AI capabilities",
+        "Samsung FY2025 direction (premium audio, automotive growth, AI across segments) -- jbl.com search is SFCC exact-match with zero AI capabilities",
         "JBL CES 2026 AI product features (AI Sound Boost, SmartEQ, AirTouch) — AI in hardware, not in ecommerce",
         "CDIO Nicholas Parrotta owns digital transformation — the search experience gap is a direct accountability item"
       ],
       "objection": "AI in our products is different from AI in ecommerce search.",
       "objection_counter": "They are directly connected for a DTC brand. When Samsung mandates AI-driven experiences, investors and leadership measure that across the full customer journey — including the discovery and purchase experience on jbl.com. A Gen Z shopper who buys an AI-powered JBL speaker expects the jbl.com search to be equally intelligent. Right now, it is not. Algolia NeuralSearch closes that gap in weeks via the native SFCC cartridge — no separate platform, no migration.",
-      "evidence": "Samsung Q2 2025 earnings summary July 31 2025; JBL CES 2026 AI product announcements (09b-social-signals.md Signal 1)",
-      "proof_url": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2025-results"
+      "evidence": "Samsung Q4/FY2025 results outlook (HARMAN section: premium consumer audio + automotive expansion); JBL CES 2026 AI product announcements (09b-social-signals.md Signal 1)",
+      "proof_url": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results"
     }
   ],
   "hiring": {
@@ -6526,21 +6545,24 @@ a:hover {
         "product": "Algolia Analytics + Typo Tolerance",
         "why": "If zero-results rate is above 5%, typo tolerance is the highest-ROI fix. SFCC analytics will show the size of the gap. This question establishes the business case numerically.",
         "evidence": "Top 3 branded organic keywords all have common typo variants ('jbl speker', 'haedphones', 'partybok') confirmed to return zero results under SFCC exact-match architecture.",
-        "proof_url": "https://baymard.com/blog/ecommerce-search-ux"
+        "proof_url": "https://baymard.com/research/ecommerce-search",
+        "pain": "High zero-results rate and no typo tolerance on branded search"
       },
       {
         "question": "How does your current search support the 'Agentic Commerce' investment you're staffing at Director level?",
         "product": "Algolia AI Search API (NeuralSearch)",
         "why": "Autonomous shopping agents require a programmatic search API with semantic understanding, real-time relevance, and merchandising control. SFCC's server-side search doesn't expose these as APIs.",
         "evidence": "HARMAN simultaneously hired Director and Manager for 'Digital and Agentic Commerce' (June 2026) — both job descriptions reference AI-driven commercial strategies.",
-        "proof_url": "https://www.harman.com/career-details/R-51473-2026"
+        "proof_url": "https://www.harman.com/career-details/R-51473-2026",
+        "pain": "Agentic-commerce roadmap has no programmatic semantic search API to build on"
       },
       {
         "question": "How are the Sound United storefronts (B&W, Denon, Marantz) handling search and discovery across independent sites?",
         "product": "Algolia Multi-Index (Federated Search across brands)",
         "why": "9+ independent brand storefronts each with their own search = 9x the complexity, 9x the maintenance, 9x the gap. Algolia multi-index solves this at the platform level.",
         "evidence": "Dave Rogers confirmed independent storefronts for Sound United brands for 'six months to a year' — still active as of July 2026.",
-        "proof_url": "https://www.cepro.com/audio/harman-sound-united-acquisition-dave-rogers-interview/"
+        "proof_url": "https://www.cepro.com/news/harman-finalizes-sound-united-deal-brings-iconic-brands-under-its-roof/622339/",
+        "pain": "Fragmented search across 9+ Sound United brand storefronts (B&W, Denon, Marantz)"
       }
     ]
   },
@@ -6552,57 +6574,63 @@ a:hover {
     "touches": [
       {
         "touch": 1,
-        "channel": "Partner Activation",
+        "channel": "email",
         "from": "Algolia AE",
         "to": "Algolia Stagwell/Code-and-Theory Partner Manager",
         "subject": "JBL co-sell activation — Code and Theory warm intro request",
-        "body": "Hi [Partner Manager Name], I'm working the JBL / HARMAN International account and want to activate a co-sell motion through Code and Theory. From our research, Code and Theory's team delivered 'Project Surround Sound' for JBL — the GenAI search architecture that drove 2,434% YoY LLM referral growth BFCM 2024 vs 2025. That's a remarkable outcome. The gap we've identified is on the conversion side: jbl.com's SFCC search engine has zero typo tolerance and no NLP — meaning the Gen Z shoppers Code and Theory drove to the site via LLMs are hitting dead ends on search. Algolia NeuralSearch is the natural infrastructure upgrade that closes the loop on the strategy they already sold. I'd like to request a warm intro to the Code and Theory team managing the JBL engagement, and discuss a co-sell motion where we position Algolia as the search layer for their GenAI architecture. Can we get 20 minutes on the calendar this week? I'll bring the JBL audit findings.",
-        "timing": "Week 1"
+        "body": "Hi [Partner Manager Name], I'm working the JBL / HARMAN International account and want to activate a co-sell motion through Code and Theory. From our research, Code and Theory's team delivered 'surround search' for JBL — the GenAI search architecture that drove 2,434% YoY LLM referral growth BFCM 2024 vs 2025. That's a remarkable outcome. The gap we've identified is on the conversion side: jbl.com's SFCC search engine has zero typo tolerance and no NLP — meaning the Gen Z shoppers Code and Theory drove to the site via LLMs are hitting dead ends on search. Algolia NeuralSearch is the natural infrastructure upgrade that closes the loop on the strategy they already sold. I'd like to request a warm intro to the Code and Theory team managing the JBL engagement, and discuss a co-sell motion where we position Algolia as the search layer for their GenAI architecture. Can we get 20 minutes on the calendar this week? I'll bring the JBL audit findings.",
+        "timing": "Week 1",
+        "day": "Week 1"
       },
       {
         "touch": 2,
-        "channel": "Partner Activation",
+        "channel": "email",
         "from": "Algolia AE",
         "to": "Algolia Contentsquare Partner Manager",
         "subject": "JBL co-sell via Arthur Werner relationship — Contentsquare warm intro",
         "body": "Hi [Contentsquare Partner Manager], I'm working the JBL / HARMAN account and want to leverage the Contentsquare relationship to reach Arthur Werner (Sr. Director Global E-Commerce & CX, HARMAN). Arthur presented the JBL/Contentsquare work at CX Circle Amsterdam 2026 — he's a named active customer and clearly invested in behavioral analytics for jbl.com. The pitch I want to make is the natural complement to Contentsquare: Contentsquare surfaces where shoppers drop off; Algolia fixes it in search. We've done a full search audit of jbl.com and found critical gaps — zero typo tolerance, no NLP, no merchandising rules — all directly visible as friction in Contentsquare session recordings. Can you make an introduction to the Contentsquare team managing the JBL account? I'm looking for a warm path to Arthur Werner, ideally a 3-way intro call framed as a Contentsquare+Algolia joint value conversation.",
-        "timing": "Week 1"
+        "timing": "Week 1",
+        "day": "Week 1"
       },
       {
         "touch": 3,
-        "channel": "LinkedIn InMail",
+        "channel": "linkedin",
         "from": "Algolia AE",
         "to": "Arthur Werner (Sr. Director Global E-Commerce & CX, HARMAN)",
         "subject": "JBL's search experience — something you might want to see",
         "body": "Hi Arthur, I saw your presentation at CX Circle Amsterdam — the behavioral data you're getting from the JBL site redesign (Project Facelift) is genuinely impressive. I want to share something we found that's relevant to what Contentsquare is showing you. We ran a search audit of jbl.com. One finding: searching 'jbl speker' on your own site — a one-character typo of JBL's top branded organic keyword — returns zero results. No 'Did you mean?', no recovery. Given that 56.1% of jbl.com's traffic comes through organic search, and that 'jbl speaker' is the #1 branded keyword variant, the conversion loss on this single gap is quantifiable and significant. I'd love to share the full audit findings — 10 areas, 3 critical — with you in a 30-minute call. Contentsquare's session data will confirm exactly where the search friction is visible. Algolia's SFCC cartridge makes this a fast implementation path. Would Tuesday or Thursday work?",
-        "timing": "Week 2-3 (after partner warm-up)"
+        "timing": "Week 2-3 (after partner warm-up)",
+        "day": "Week 2-3 (after partner warm-up)"
       },
       {
         "touch": 4,
-        "channel": "Email",
+        "channel": "email",
         "from": "Algolia AE",
         "to": "Nicholas Parrotta (CDIO, HARMAN International)",
         "subject": "RE: Agentic Commerce and JBL's search foundation",
         "body": "Nicholas, I'll be direct about why I'm reaching out. HARMAN is simultaneously hiring a Director and Manager for 'Digital and Agentic Commerce' — two roles that will build the AI-driven commerce investment practice you're staffing right now. Both job descriptions reference autonomous commerce strategies. The challenge: agentic shopping journeys route through site search as their primary product discovery API. We ran a search audit of jbl.com and found that searching 'jbl speker' — a one-letter typo of JBL's #1 branded keyword — returns zero results. No correction. No recovery. This isn't a minor UX issue. It's a structural constraint that will limit what your Agentic Commerce team can build on top of the current search foundation. I'd like to share the full audit with you. We've built the Algolia SFCC cartridge specifically for brands like JBL — and the ROI model shows $18.4M/year in conservative recovered revenue. 30 minutes?",
-        "timing": "Week 3-4"
+        "timing": "Week 3-4",
+        "day": "Week 3-4"
       },
       {
         "touch": 5,
-        "channel": "LinkedIn / Email Follow-Up",
+        "channel": "linkedin",
         "from": "Algolia AE",
         "to": "Arthur Werner (follow-up)",
         "subject": "JBL audit — one thing Code and Theory should see",
-        "body": "Arthur, following up on my note from last week. I wanted to add one context point: Code and Theory's 'Project Surround Sound' drove 2,434% growth in LLM referrals to jbl.com in the last BFCM cycle. That's a remarkable top-of-funnel result. The question I keep coming back to: when those AI-referred shoppers land on jbl.com and search for 'waterproof bluetooth speaker under 100' or 'gift for music lover' — what do they find? Our audit shows they hit a search engine that can't parse natural language queries or price ranges. The acquisition funnel works. The conversion funnel has a critical gap. I'd like to share the full audit — 15 minutes would be enough. Would it make sense to include the Code and Theory team as well, so we can align on the search infrastructure layer for the GenAI strategy they built?",
-        "timing": "Week 4-5"
+        "body": "Arthur, following up on my note from last week. I wanted to add one context point: Code and Theory's 'surround search' drove 2,434% growth in LLM referrals to jbl.com in the last BFCM cycle. That's a remarkable top-of-funnel result. The question I keep coming back to: when those AI-referred shoppers land on jbl.com and search for 'waterproof bluetooth speaker under 100' or 'gift for music lover' — what do they find? Our audit shows they hit a search engine that can't parse natural language queries or price ranges. The acquisition funnel works. The conversion funnel has a critical gap. I'd like to share the full audit — 15 minutes would be enough. Would it make sense to include the Code and Theory team as well, so we can align on the search infrastructure layer for the GenAI strategy they built?",
+        "timing": "Week 4-5",
+        "day": "Week 4-5"
       },
       {
         "touch": 6,
-        "channel": "Email",
+        "channel": "email",
         "from": "Algolia AE",
         "to": "Nicholas Parrotta (CDIO)",
         "subject": "For your Agentic Commerce Director hire — the search foundation question",
         "body": "Nicholas, one more thought before you close the Agentic Commerce Director hire. The first question your new Director will ask is: 'What's the search API layer for our agentic commerce stack?' The answer right now is: SFCC server-side search with exact-match only, no vendor API, no typo tolerance, no NLP understanding. Autonomous shopping agents cannot reliably query a search engine that fails on one-letter typos and can't parse price constraints. Algolia's Search API is the standard infrastructure layer for autonomous commerce applications — real-time relevance, semantic understanding, and full programmatic merchandising control via API. I've attached a 1-page leave-behind that frames exactly this question. Happy to get on a 20-minute call with you and whoever you're hiring into the Director role to walk through what a modern search API foundation looks like for an Agentic Commerce build. What's your timeline for that hire?",
-        "timing": "Week 5-6"
+        "timing": "Week 5-6",
+        "day": "Week 5-6"
       }
     ],
     "contacts": [
@@ -6614,7 +6642,8 @@ a:hover {
         "linkedin": "",
         "email": "",
         "warm_intro_via": "Code and Theory (Stagwell) or Contentsquare",
-        "priority": "PRIMARY"
+        "priority": "PRIMARY",
+        "id": "arthur_werner"
       },
       {
         "name": "Nicholas Parrotta",
@@ -6624,7 +6653,8 @@ a:hover {
         "linkedin": "",
         "email": "",
         "warm_intro_via": "Salesforce SFCC co-sell or Code and Theory chain",
-        "priority": "SECONDARY"
+        "priority": "SECONDARY",
+        "id": "nicholas_parrotta"
       }
     ],
     "campaign_files": [
@@ -6653,7 +6683,7 @@ a:hover {
         "from": "Algolia AE",
         "to": "Arthur Werner, Sr. Director Global E-Commerce & CX, HARMAN",
         "subject": "\"jbl speker\" → zero results on jbl.com",
-        "body": "Arthur —\n\nCode and Theory's Project Surround Sound drove 2,434% growth in LLM referrals to jbl.com last BFCM. Those shoppers are arriving with real purchase intent.\n\nWhen they type \"jbl speker\" into your search bar — a one-letter transposition of your #1 branded organic keyword — jbl.com returns zero results. Same story for \"haedphones\" and \"partybok.\" Your current SFCC search engine uses exact-match tokenization: one typo kills the session.\n\nHARMAN is building an \"Agentic Commerce\" investment team right now (Director + Manager roles posted simultaneously in June). Agentic buying journeys route through site search. A zero-results foundation breaks them before they start.\n\nWorth 15 minutes to walk through what we found?\n\n— [AE Name], Algolia",
+        "body": "Arthur —\n\nCode and Theory's surround search drove 2,434% growth in LLM referrals to jbl.com last BFCM. Those shoppers are arriving with real purchase intent.\n\nWhen they type \"jbl speker\" into your search bar — a one-letter transposition of your #1 branded organic keyword — jbl.com returns zero results. Same story for \"haedphones\" and \"partybok.\" Your current SFCC search engine uses exact-match tokenization: one typo kills the session.\n\nHARMAN is building an \"Agentic Commerce\" investment team right now (Director + Manager roles posted simultaneously in June). Agentic buying journeys route through site search. A zero-results foundation breaks them before they start.\n\nWorth 15 minutes to walk through what we found?\n\n— [AE Name], Algolia",
         "timing": "Day 1"
       },
       {
@@ -6678,7 +6708,7 @@ a:hover {
         "from": "Algolia AE",
         "to": "Arthur Werner",
         "subject": "Beats runs Apple's search engine. Here's the gap that opens for JBL.",
-        "body": "Arthur —\n\nOur packet inspection of beatsbydre.com confirmed they run Apple Searchlight — Apple's proprietary search platform, built exclusively for Apple-owned properties. That platform is not available to JBL.\n\nBose, Sony, Ultimate Ears, Marshall, and Sennheiser are all running unidentified or legacy proprietary stacks. None of them have deployed a modern AI search platform on their DTC site.\n\nThat's the gap.\n\nJBL has the catalog to win here: 13+ new SKUs from CES 2026 alone, an 80th-anniversary product blitz across five categories, and a \"Personalize\" gifting experience front-and-center in navigation. No competitor has built that catalog depth on an AI-powered search foundation. The window is open — but not indefinitely.\n\nOrange (consumer electronics retailer, analogous vertical) deployed Algolia NeuralSearch and saw 63% higher order rates and 53% fewer zero-results. That's what the first mover in your competitive set gets.\n\nHappy to show you what the JBL version looks like.\n\n— [AE Name], Algolia",
+        "body": "Arthur —\n\nOur packet inspection of beatsbydre.com confirmed they run Apple Searchlight — Apple's proprietary search platform, built exclusively for Apple-owned properties. That platform is not available to JBL.\n\nBose, Sony, Ultimate Ears, Marshall, and Sennheiser show no confirmed modern AI search platform on their DTC sites -- our packet inspection returned unidentified or legacy proprietary stacks for each, with no modern AI search platform detected.\n\nThat's the gap.\n\nJBL has the catalog to win here: 13+ new SKUs from CES 2026 alone, an 80th-anniversary product blitz across five categories, and a \"Personalize\" gifting experience front-and-center in navigation. No competitor has built that catalog depth on an AI-powered search foundation. The window is open — but not indefinitely.\n\nOrange (consumer electronics retailer, analogous vertical) deployed Algolia NeuralSearch and saw 63% higher order rates and 53% fewer zero-results. That's what the first mover in your competitive set gets.\n\nHappy to show you what the JBL version looks like.\n\n— [AE Name], Algolia",
         "timing": "Day 3-4"
       },
       {
@@ -6790,9 +6820,9 @@ a:hover {
     {
       "vertical": "Electronics / Retail (Best Buy — JBL's Largest Reseller)",
       "company": "Best Buy",
-      "result": "Algolia used for My Best Buy loyalty personalization — offers, recommendations, and rewards by behavioral signals",
+      "result": "Reportedly listed on Algolia's public customer roster; no dedicated Best Buy case study confirms the specific My Best Buy loyalty personalization use case (unconfirmed)",
       "product": "Algolia Personalization + Recommend",
-      "why": "Best Buy is JBL's largest retail reseller and uses Algolia for personalized loyalty features. This creates a brand alignment argument: JBL's products are already being surfaced via Algolia-powered personalization on Best Buy's platform — but JBL's own D2C site has zero personalization. A customer who discovers a JBL product through AI-powered personalization on Best Buy and then visits jbl.com directly encounters a search experience that is significantly inferior.",
+      "why": "Best Buy is JBL's largest retail reseller and reportedly appears among Algolia's customers, though no dedicated case study confirms the My Best Buy loyalty personalization use case (unconfirmed). If verified, this supports a brand-alignment argument: JBL products may already be surfaced via Algolia-powered personalization on Best Buy's platform, while JBL's own D2C site has zero personalization. Frame as a hypothesis to validate, not an asserted fact.",
       "url": "https://www.algolia.com/customers/"
     }
   ],
@@ -6845,10 +6875,10 @@ a:hover {
         "name": "Code and Theory",
         "parent": "Stagwell",
         "confidence": "HIGH",
-        "evidence": "Delivered JBL's full digital transformation and 'Project Surround Sound' GenAI search strategy. Achieved 2,434% YoY increase in LLM referrals BFCM 2024 vs 2025. Credited by Ad Age A-List. Active engagement 2024-2025.",
+        "evidence": "Delivered JBL's full digital transformation and 'surround search' GenAI search strategy. Achieved 2,434% YoY increase in LLM referrals BFCM 2024 vs 2025. Code and Theory was separately ranked No. 5 on the 2026 Ad Age A-List for its AI-first transformation work (adage.com/events-awards/a-list-creativity/aa-code-and-theory-2026). Active engagement 2024-2025.",
         "named_contact_at_prospect": "Arthur Werner, Sr. Director Global E-Commerce & CX, HARMAN International",
         "sales_action": "Engage Algolia's Stagwell/Code-and-Theory partner contact for a warm intro to their JBL engagement team.",
-        "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE73JAmAVicf4N5QsS9MAU8feOug73a6Qe0S_1A-Bb85BAzg3Jm1sdaBR72rzHWQv9UQFlyMvbt2q8Nyu4CqkorOjUvA38Yd5MOJ5bI1yC9b3fkcllGSvRSAsibvEI_HImu-ZtbRqRyq0Pp",
+        "source_url": "https://www.codeandtheory.com/things-we-make/jbl",
         "date": "2026-07-01"
       },
       {
@@ -6858,7 +6888,7 @@ a:hover {
         "evidence": "Active partnership on 'Project Facelift' website redesign. Arthur Werner (Sr. Director Global E-Commerce & CX) presented at CX Circle Amsterdam 2026.",
         "named_contact_at_prospect": "Arthur Werner, Sr. Director Global E-Commerce & CX, HARMAN International",
         "sales_action": "Contact Algolia's Contentsquare partner team. Request warm intro to Arthur Werner via the CX Circle Amsterdam relationship.",
-        "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0greFK9fs4wDCHzhrdWQUod93JAmAVicf4N5QsS9MAU8",
+        "source_url": "https://go.contentsquare.com/en/cxcircle-amsterdam",
         "date": "2026-07-01"
       }
     ],
@@ -6921,7 +6951,7 @@ a:hover {
   "recommended_first_play": {
     "type": "partner_warm_intro",
     "headline": "Code and Theory warm intro",
-    "detail": "Code and Theory (Stagwell) owns JBL's GenAI search architecture ('Project Surround Sound') and has active trusted relationships with Arthur Werner (Sr. Director Global E-Commerce & CX). Engage Algolia's Stagwell partner manager for a warm introduction before any cold outreach. Cold outbound is a fallback only.",
+    "detail": "Code and Theory (Stagwell) owns JBL's GenAI search architecture ('surround search') and has active trusted relationships with Arthur Werner (Sr. Director Global E-Commerce & CX). Engage Algolia's Stagwell partner manager for a warm introduction before any cold outreach. Cold outbound is a fallback only.",
     "urgency": "high",
     "source": "partner_intel"
   },
@@ -6934,7 +6964,7 @@ a:hover {
         "value": "2–3x higher conversion rate",
         "context": "Shoppers who use on-site search convert at 2–3x the rate of those who do not, establishing site search as the single highest-ROI conversion lever for consumer electronics DTC brands where product specs and model comparisons drive purchase decisions.",
         "source_name": "Industry consensus (Baymard, Forrester)",
-        "source_url": "https://baymard.com/blog/ecommerce-search-ux",
+        "source_url": "https://baymard.com/research/ecommerce-search",
         "source_date": "2025-01-01",
         "confidence": "ESTIMATE",
         "label": "[ESTIMATE — Industry consensus via Gemini-grounded search, 2025, https://baymard.com]"
@@ -7199,6 +7229,35 @@ const T = {
   nodeLabel:    'font-size:13px;font-weight:700;color:var(--gray);margin-bottom:6px;text-align:center;line-height:1.3',
   nodeDomain:   'font-size:11px;font-weight:500;text-decoration:none',
 
+  /* ── Typography-only tokens (font-size + contiguous weight/transform/spacing) ──
+     Per-element color/margin/padding stay appended as literal props.
+     Each token expands to the EXACT same CSS substring it replaced. */
+  statLabel:    'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em',
+  statLabel06:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statLabel12:  'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em',
+  microLabel06: 'font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em',
+  statNum:      'font-size:2rem;font-weight:800',
+  cap10:        'font-size:10px',
+  cap11:        'font-size:11px',
+  cap12:        'font-size:12px',
+  cap13:        'font-size:13px',
+  cap14:        'font-size:14px',
+  cap16:        'font-size:16px',
+  bold11:       'font-size:11px;font-weight:700',
+  semi11:       'font-size:11px;font-weight:600',
+  bold12:       'font-size:12px;font-weight:700',
+  semi12:       'font-size:12px;font-weight:600',
+  bold13:       'font-size:13px;font-weight:700',
+  semi13:       'font-size:13px;font-weight:600',
+  bold14:       'font-size:14px;font-weight:700',
+  semi14:       'font-size:14px;font-weight:600',
+  bold15:       'font-size:15px;font-weight:700',
+  bold20:       'font-size:20px;font-weight:700',
+  bold22:       'font-size:22px;font-weight:700',
+  bold32:       'font-size:32px;font-weight:700',
+  italic13:     'font-size:13px;font-style:italic',
+  italic14:     'font-size:14px;font-style:italic',
+
 };
 
 
@@ -7275,6 +7334,12 @@ function escHtml(str) {
 
     .replace(/"/g, '&quot;');
 
+}
+
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
 }
 
 
@@ -7390,7 +7455,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = (Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]);
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -8344,7 +8409,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8371,7 +8436,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8637,7 +8702,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8645,7 +8710,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8817,7 +8882,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8935,7 +9000,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8961,7 +9026,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -9513,23 +9578,23 @@ function sectionTraffic(D) {
       const ai = t.ai_referral;
       return `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
         <div style="padding:16px 20px;background:var(--blue-tint);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--blue);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:6px;">Via Search</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--blue);line-height:1;">${searchPctNum}%</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of all traffic arrives via organic or paid search</div>
+          <div style="${T.statLabel};color:var(--blue);margin-bottom:6px;">Via Search</div>
+          <div style="${T.statNum};color:var(--blue);line-height:1;">${searchPctNum}%</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">of all traffic arrives via organic or paid search</div>
         </div>
         ${sa ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
+          <div style="${T.statNum};color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
           <div class="algolia-angle-box" style="margin-top:10px;">
             ${algoliaAngleBadge()}
             <p style="${T.compact};margin:0;">1 in ${Math.round(100/parseFloat(sa.google_outbound_pct))} visitors gives up on your search and goes back to Google. That's a revenue leak — not a UX problem. We fix that.</p>
           </div>
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="font-size:2rem;font-weight:800;color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="font-size:12px;color:var(--mid);margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9540,7 +9605,7 @@ function sectionTraffic(D) {
     <!-- PANEL: Traffic Sources & Device Split -->
     <div class="acc-panel">
       <button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">
-        <span style="font-size:14px;font-weight:700;color:var(--gray);">Traffic Sources & Device Split</span>
+        <span style="${T.bold14};color:var(--gray);">Traffic Sources & Device Split</span>
         <svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
       </button>
       <div class="acc-body" style="display:none;padding:14px;">
@@ -9640,15 +9705,15 @@ function sectionTraffic(D) {
         ${Object.keys(gender).length ? (() => {
           const f = parseFloat(gender.female || gender.Female || 0);
           const m = parseFloat(gender.male   || gender.Male   || 0);
-          return '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Gender</div>' +
+          return '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Gender</div>' +
             '<div style="height:28px;border-radius:5px;overflow:hidden;display:flex;margin-bottom:4px;">' +
-            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
-            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
+            '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9792; ' + f + '%</span></div>' +
+            '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;padding:0 4px;">&#9794; ' + m + '%</span></div>' +
             '</div>' +
-            '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
+            '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);margin-bottom:14px;"><span>Female</span><span>Male</span></div>';
         })() : ''}
         ${Object.keys(age).length ? (
-          '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
+          '<div style="${T.statLabel06};color:var(--mid);margin-bottom:6px;">Age Distribution</div>' +
           Object.entries(age).map(([bracket, pct]) => {
             const barW = Math.round((Number(pct) / maxAge) * 100);
             return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9669,17 +9734,17 @@ function sectionTraffic(D) {
     const m = parseFloat(gender.male   || gender.Male   || 0);
     const genderHtml = hasGender ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Gender Split</div>' +
       '<div style="height:32px;border-radius:6px;overflow:hidden;display:flex;margin-bottom:6px;">' +
-      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
-      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="font-size:11px;font-weight:700;color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
+      '<div style="width:' + f + '%;background:var(--purple);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9792; ' + f + '%</span></div>' +
+      '<div style="width:' + m + '%;background:var(--blue);display:flex;align-items:center;justify-content:center;"><span style="${T.bold11};color:white;white-space:nowrap;">&#9794; ' + m + '%</span></div>' +
       '</div>' +
-      '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
+      '<div style="display:flex;justify-content:space-between;${T.cap11};color:var(--mid);"><span>Female ' + f + '%</span><span>Male ' + m + '%</span></div>' +
       '</div>'
     ) : '';
     const ageHtml = hasAge ? (
       '<div class="card-3d" style="padding:16px;">' +
-      '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
+      '<div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Age Distribution</div>' +
       Object.entries(age).map(([bracket, pct]) => {
         const barW = Math.round((Number(pct) / maxAge) * 100);
         return '<div class="score-bar-row"><span class="score-bar-row__label">' + bracket + '</span><div class="score-bar-row__track"><div class="score-bar-row__fill" style="width:' + barW + '%;background:var(--blue);"></div></div><span class="score-bar-row__val" style="color:var(--gray)">' + pct + '%</span></div>';
@@ -9688,7 +9753,7 @@ function sectionTraffic(D) {
     ) : '';
     return '<div class="acc-panel">' +
       '<button class="acc-header" onclick="(function(btn){var body=btn.nextElementSibling;var open=body.style.display!==\'none\';body.style.display=open?\'none\':\'block\';btn.querySelector(\'.acc-chevron\').style.transform=open?\'rotate(0deg)\':\'rotate(180deg)\';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;">' +
-      '<span style="font-size:14px;font-weight:700;color:var(--gray);">Audience Profile</span>' +
+      '<span style="${T.bold14};color:var(--gray);">Audience Profile</span>' +
       '<svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>' +
       '</button>' +
       '<div class="acc-body" style="display:none;padding:14px;">' +
@@ -9700,7 +9765,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Organic Search */ ''}
   ${t.organic_search ? (() => {
     const _accLabel = `Organic Search${t.organic_search.share_of_total_pct ? ' — ' + t.organic_search.share_of_total_pct + '% of traffic' : ''}`;
-    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPrefix = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_accLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const _accSuffix = `</div></div>`;
     return _accPrefix + (() => {
     const os = t.organic_search;
@@ -9727,20 +9792,20 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Organic Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--green);">Organic search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div style="display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;">
 
       <!-- Branded vs NB mini donut -->
       <div class="card-3d" style="padding:16px;text-align:center;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:10px;">Branded vs Non-Branded</div>
         <svg width="88" height="88" viewBox="0 0 88 88" style="display:block;margin:0 auto 10px;">
           <path d="${miniArc(-90, bEnd, R, innerR2)}"  fill="var(--blue)"/>
           <path d="${miniArc(bEnd+0.5, nbEnd, R, innerR2)}" fill="var(--border)"/>
-          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="font-size:11px;font-weight:700;fill:var(--gray);">${branded}%</text>
+          <text x="${cx2}" y="${cy2+5}" text-anchor="middle" style="${T.bold11};fill:var(--gray);">${branded}%</text>
         </svg>
-        <div style="display:flex;justify-content:center;gap:16px;font-size:12px;">
+        <div style="display:flex;justify-content:center;gap:16px;${T.cap12};">
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--blue);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Branded <strong>${branded}%</strong></span>
           <span><span style="display:inline-block;width:10px;height:10px;background:var(--border);border-radius:2px;margin-right:4px;vertical-align:middle;"></span>Non-Brand <strong>${nonBranded}%</strong></span>
         </div>
@@ -9749,17 +9814,17 @@ function sectionTraffic(D) {
       <!-- Top non-branded keywords -->
       ${kws.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
         ${kws.map(k => {
           const pct = parseFloat(k.share_pct)||0;
           const barW = Math.round((pct/maxKwShare)*100);
           const mom  = String(k.mom_change||'—');
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--green);border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9771,7 +9836,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Paid Search */ ''}
   ${t.paid_search?.top_keywords?.length ? (() => {
     const _psLabel = `Paid Search${t.paid_search?.share_of_total_pct ? ' — ' + t.paid_search.share_of_total_pct + ' of traffic' : ''}`;
-    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
     const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
@@ -9780,25 +9845,25 @@ function sectionTraffic(D) {
     return `
   <div style="margin-top:20px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;border-top:2px solid var(--border);">
-      <div style="font-size:15px;font-weight:700;color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
-      ${sharePct ? `<div style="font-size:13px;font-weight:600;color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
+      <div style="${T.bold15};color:var(--gray);letter-spacing:-0.01em;">Paid Search</div>
+      ${sharePct ? `<div style="${T.semi13};color:var(--amber);">Paid search makes up <strong>${escHtml(sharePct)}</strong> of website traffic</div>` : ''}
     </div>
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
       ${kws.map(k => {
         const pct = parseFloat(k.share_pct)||0;
         const barW = Math.round((pct/maxKwShare)*100);
         const mom  = String(k.mom_change||'—');
         const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
         return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(k.keyword||'')}</div>
+          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
           <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--amber);border-radius:3px;"></div></div>
-          <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-          <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+          <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+          <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
         </div>`;
       }).join('')}
       ${ps.competitor_bidding ? `
-      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;font-size:13px;font-weight:600;color:var(--amber);">
+      <div style="margin-top:12px;padding:10px 14px;background:var(--amber-tint);border:1px solid var(--amber-border);border-radius:6px;${T.semi13};color:var(--amber);">
         ⚠ Competitor conquest bidding detected: ${escHtml(String(ps.competitor_bidding))}
       </div>` : ''}
     </div>
@@ -9813,7 +9878,7 @@ function sectionTraffic(D) {
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
-    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre3 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_refLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     const maxRefShare = Math.max(...refs.map(r => parseFloat(r.share_pct||r.share)||0), 1);
     const maxIndShare = Math.max(...inds.map(i => parseFloat(i.share_pct||i.traffic_share)||0), 1);
     return _accPre3 + `
@@ -9821,7 +9886,7 @@ function sectionTraffic(D) {
 
       ${refs.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Websites</div>
         ${refs.map(r => {
           const pct = parseFloat(r.share_pct||r.share)||0;
           const barW = Math.round((pct/maxRefShare)*100);
@@ -9829,25 +9894,25 @@ function sectionTraffic(D) {
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           const isChatGpt = (r.domain||'').includes('chatgpt');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
+            <div style="${T.cap13};font-weight:${isChatGpt?'700':'600'};color:${isChatGpt?'var(--blue)':'var(--gray)'};">${escHtml(r.domain||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isChatGpt?'var(--blue)':'var(--purple)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
-            <div style="font-size:12px;font-weight:600;color:${momColor};text-align:right;">${escHtml(mom)}</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
           </div>`;
         }).join('')}
       </div>` : ''}
 
       ${inds.length ? `
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Referring Industries</div>
         ${inds.map(ind => {
           const pct = parseFloat(ind.share_pct||ind.traffic_share||ind.share)||0;
           const barW = Math.round((pct/maxIndShare)*100);
           const isAI = (ind.industry||ind.category||'').toLowerCase().includes('ai') || (ind.industry||ind.category||'').toLowerCase().includes('chatbot');
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px;gap:6px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
+            <div style="${T.cap13};font-weight:${isAI?'700':'600'};color:${isAI?'var(--blue)':'var(--gray)'};">${escHtml(ind.industry||ind.category||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:${isAI?'var(--blue)':'var(--teal)'};border-radius:3px;"></div></div>
-            <div style="font-size:12px;font-weight:700;color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
+            <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
           </div>`;
         }).join('')}
       </div>` : ''}
@@ -9859,7 +9924,7 @@ function sectionTraffic(D) {
   ${/* PANEL: Competitor Traffic */ ''}
   ${(t.competitor_traffic||[]).length ? (() => {
     const _cLabel = 'Competitor Traffic Scale';
-    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
+    const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
     const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
@@ -9885,19 +9950,19 @@ function sectionTraffic(D) {
       });
     return `
     <div class="card-3d" style="padding:16px;">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
+      <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">3-Month Visits Comparison</div>
       ${sorted.map(c => {
         const v = c._v;
         const barW = Math.round((v/maxV)*100);
         const isProspect = (c.domain||'').toLowerCase().includes(prospectDomain.split('.')[0]);
         return `<div style="display:grid;grid-template-columns:200px 1fr 80px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
-          <div style="font-size:13px;font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
-            ${escHtml(c.domain||'')}${isProspect?' <span style="font-size:11px;background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
+          <div style="${T.cap13};font-weight:${isProspect?'800':'600'};color:${isProspect?'var(--blue)':'var(--gray)'};">
+            ${escHtml(c.domain||'')}${isProspect?' <span style="${T.cap11};background:var(--blue);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;">YOU</span>':''}
           </div>
           <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${barW}%;background:${isProspect?'var(--blue)':'var(--border)'};border-radius:4px;"></div>
           </div>
-          <div style="font-size:12px;font-weight:700;color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
+          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
         </div>`;
       }).join('')}
     </div>
@@ -9909,21 +9974,21 @@ function sectionTraffic(D) {
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
     const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
           const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
           return `<div style="display:grid;grid-template-columns:160px 1fr 60px 60px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:600;color:var(--gray);">${escHtml(g.country)}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(g.country)}</div>
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="font-size:13px;font-weight:700;color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
-            <div style="font-size:11px;font-weight:600;color:${momColor};text-align:right;">${escHtml(momStr)}</div>
+            <div style="${T.bold13};color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="${T.semi11};color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
         <div class="algolia-angle-box" style="margin-top:16px;">
@@ -9939,18 +10004,18 @@ function sectionTraffic(D) {
     const outgoing = t.outgoing_traffic;
     const sa = t.search_abandonment || {};
     const googleRow = outgoing.find(o => (o.domain||'').includes('google'));
-    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="font-size:14px;font-weight:700;color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
+    return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Outgoing Traffic</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
+        <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Where Users Go After Leaving This Site</div>
         ${outgoing.map(o => {
           const isGoogle = (o.domain||'').includes('google');
           const momVal = parseFloat((o.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = isGoogle ? 'var(--red)' : (momVal >= 0 ? 'var(--green)' : 'var(--red)');
           const rowBg = isGoogle ? 'background:var(--red-tint);border-radius:6px;padding:2px 6px;margin:-2px -6px;' : '';
           return `<div style="display:grid;grid-template-columns:1fr 80px 80px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
-            <div style="font-size:13px;font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="font-size:10px;background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
-            <div style="font-size:13px;font-weight:700;color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
-            <div style="font-size:11px;font-weight:700;color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
+            <div style="${T.cap13};font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="${T.cap10};background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
+            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
+            <div style="${T.bold11};color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
@@ -9965,12 +10030,12 @@ function sectionTraffic(D) {
 
   ${/* ══ WHAT THIS MEANS FOR ALGOLIA — always visible, outside accordion ══ */ ''}
   ${(t.search_audit_signals||[]).length ? `
-  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,#21243D 0%,#003DFF 100%);border-radius:10px;color:white;">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
+  <div style="margin-top:20px;padding:20px;background:linear-gradient(135deg,var(--ink-900) 0%,var(--blue) 100%);border-radius:10px;color:white;">
+    <div style="${T.statLabel12};color:rgba(255,255,255,0.6);margin-bottom:14px;">What This Means For Algolia</div>
     ${(t.search_audit_signals||[]).map(sig => `
     <div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1);">
-      <div style="color:rgba(255,255,255,0.5);font-size:14px;flex-shrink:0;margin-top:1px;">→</div>
-      <div style="font-size:13px;line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
+      <div style="color:rgba(255,255,255,0.5);${T.cap14};flex-shrink:0;margin-top:1px;">→</div>
+      <div style="${T.cap13};line-height:1.55;color:rgba(255,255,255,0.9);">${escHtml(sig)}</div>
     </div>`).join('')}
   </div>` : ''}
 
@@ -9989,6 +10054,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -10051,7 +10118,7 @@ function sectionFinancials(D) {
     if (c === null || p === null || p === 0) return '';
     const pct = Math.round(((c - p) / Math.abs(p)) * 100);
     const up = pct > 0;
-    return `<span style="color:${up?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
+    return `<span style="color:${up?'var(--green)':'var(--red)'};${T.bold11};">${up?'↑':'↓'} ${Math.abs(pct)}%</span>`;
   }
 
   // ── Per-year metric arrays ─────────────────────────────────────────────────
@@ -10070,8 +10137,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -10107,14 +10190,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10206,9 +10289,9 @@ function sectionFinancials(D) {
     const yoy = (lat!==null&&pri!==null&&pri!==0) ? Math.round(((lat-pri)/Math.abs(pri))*100) : null;
     const isNeg = yoy!==null&&yoy<0;
     const bg = isNeg&&!isMargin ? 'background:var(--red-light);' : '';
-    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};font-size:11px;font-weight:700;">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
-    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;font-size:12px;font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
-    return `<tr style="${bg}"><td style="padding:5px 10px;font-size:12px;font-weight:600;color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
+    const yoyHtml = yoy!==null ? `<span style="color:${yoy>0?'var(--green)':'var(--red)'};${T.bold11};">${yoy>0?'↑':'↓'} ${Math.abs(yoy)}%</span>` : '';
+    const cells = vals.map((v,i)=>`<td style="padding:5px 10px;text-align:right;${T.cap12};font-weight:${i===vals.length-1?700:400};color:${i===vals.length-1?'var(--gray)':'var(--mid)'};">${fmt(v)}</td>`).join('');
+    return `<tr style="${bg}"><td style="padding:5px 10px;${T.semi12};color:var(--gray);white-space:nowrap;">${escHtml(label)}</td>${cells}<td style="padding:5px 10px;">${spark(vals.map(v=>v||0))}</td><td style="padding:5px 10px;text-align:right;">${yoyHtml}</td></tr>`;
   }
 
   const fB  = v => v!==null ? `$${v.toFixed(1)}B` : '—';
@@ -10242,11 +10325,11 @@ function sectionFinancials(D) {
   const execQuotes = (f.exec_quotes || []).slice(0, 2);
   const quotesHtml = execQuotes.map(q=>`
     <div style="padding:14px 16px;border-left:3px solid var(--blue-border);background:var(--blue-light);border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
-      <div style="font-size:14px;font-style:italic;color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
+      <div style="${T.italic14};color:var(--gray);line-height:1.6;margin-bottom:8px;">&ldquo;${escHtml(q.quote)}&rdquo;</div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <span style="${T.eyebrowSm};color:var(--blue);">${escHtml(q.speaker)}</span>
         <span style="${T.bodySmGray12};">· ${escHtml(q.source)}</span>
-        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
+        ${q.source_url?`<a href="${escHtml(q.source_url)}" target="_blank" rel="noopener" style="${T.cap11};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 6px;">↗ Source</a>`:''}
       </div>
     </div>`).join('');
 
@@ -10276,7 +10359,7 @@ function sectionFinancials(D) {
         </div>
         <div style="border-top:2px solid var(--border);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
           <span style="${T.title};color:var(--gray);">= Gross profit impact</span>
-          <span style="font-size:20px;font-weight:700;color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
+          <span style="${T.bold20};color:var(--blue);">${escHtml(roi.gross_profit_impact_est)}</span>
         </div>
       </div>
     </div>` : '';
@@ -10295,9 +10378,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10317,9 +10402,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10473,16 +10559,16 @@ function sectionHiring(D) {
     <p class="section-desc">ICP role detection — Economic Buyer, Technical Buyer, Champion signals</p>
 
     ${(D.hiring?.data_complete === false || D.hiring?.data_complete == null) ? `
-    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);font-size:13px;">
+    <div style="padding:16px 18px;background:var(--amber-tint);border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;color:var(--mid);${T.cap13};">
       Hiring data collection incomplete — run the hiring module to populate signals.
     </div>` : `
     <div style="border:1px solid var(--amber-border);border-left:4px solid var(--amber);border-radius:8px;padding:16px 18px;background:var(--amber-tint);">
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
-      <div style="font-size:14px;font-weight:600;color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
-      <div style="font-size:13px;color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
+      <div style="${T.statLabel};color:var(--amber);margin-bottom:8px;">⚠ No ICP Roles Detected</div>
+      <div style="${T.semi14};color:var(--gray);margin-bottom:6px;">Zero search/discovery engineering roles open</div>
+      <div style="${T.cap13};color:var(--mid);line-height:1.6;margin-bottom:12px;">No Economic Buyer, Technical Buyer, or Champion roles found in current job postings. The team building or managing search infrastructure is not being expanded or replaced.</div>
       <div class="algolia-angle-box">
         <div class="algolia-angle-label">Algolia Angle</div>
-        <p style="font-size:13px;color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
+        <p style="${T.cap13};color:var(--gray);line-height:1.55;margin:0;">No search roles open means nobody is pushing to change the incumbent. The current solution goes unchallenged internally. That's your opening — bring the external pressure they're not generating themselves.</p>
       </div>
     </div>`}
 
@@ -10832,7 +10918,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -10892,7 +10978,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -11087,7 +11173,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -11458,7 +11544,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11670,7 +11756,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11850,7 +11936,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -12003,11 +12089,11 @@ function sectionROI(D) {
     else if (unit === 'K') n *= 1e3;
     return n;
   })();
-  const components = Array.isArray(f.roi_components) ? (f.roi_components) : [];
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
-  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'#f0fdfa', red:'var(--red-tint)', amber:'#fffbeb', green:'var(--green-tint)' };
+  const bgMap  = { blue:'var(--blue-tint)', violet:'var(--violet-tint)', teal:'var(--teal-tint)', red:'var(--red-tint)', amber:'var(--amber-tint)', green:'var(--green-tint)' };
 
   const activeComps = components.filter(c => c.status === 'active');
   const condComps   = components.filter(c => c.status === 'conditional');
@@ -12023,12 +12109,12 @@ function sectionROI(D) {
           <div style="${T.bodySm};color:var(--mid);">Based on — monthly visits · ~the company's digital revenue · gross margin · AOV (estimate) placeholder — replace with the company's actual numbers</div>
         </div>
         <div style="display:flex;gap:10px;flex-shrink:0;">
-          <div style="text-align:center;background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:8px;padding:10px 16px;">
+          <div style="text-align:center;background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:8px;padding:10px 16px;">
             <div style="${T.eyebrowSmCol('var(--blue)')};margin-bottom:2px;">Conservative</div>
             <div style="${T.h4};color:var(--blue);">${fmtM(totalCons)}</div>
             <div style="${T.bodySmGray12};">excl. C5 latency</div>
           </div>
-          <div style="text-align:center;background:var(--green-tint);border:1px solid #bbf7d0;border-radius:8px;padding:10px 16px;">
+          <div style="text-align:center;background:var(--green-tint);border:1px solid var(--green-border);border-radius:8px;padding:10px 16px;">
             <div style="${T.eyebrowSmCol('var(--green)')};margin-bottom:2px;">Moderate</div>
             <div style="${T.h4};color:var(--green);">${fmtM(totalMod)}</div>
             <div style="${T.bodySmGray12};">excl. C5 latency</div>
@@ -12054,7 +12140,7 @@ function sectionROI(D) {
               return `<tr style="border-bottom:1px solid var(--border);${isCond?'opacity:0.65;':''}" title="${isCond?'Conditional — current latency acceptable; use as floor-preservation argument':''}">
                 <td style="padding:12px 16px;vertical-align:top;">
                   <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
+                    <span style="width:24px;height:24px;border-radius:50%;background:${bg};color:${col};${T.bold11};display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">${c.id}</span>
                     <span style="${T.title};color:${col};">${escHtml(c.label)}</span>
                     ${isCond ? `<span style="${T.eyebrowSmCol(col)};background:${bg};border-radius:3px;padding:1px 6px;font-size:9px;">CONDITIONAL</span>` : ''}
                   </div>
@@ -12458,6 +12544,7 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
   const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
@@ -12524,7 +12611,7 @@ function sectionCompetitiveSynthesis(D) {
     <p class="section-desc">${escHtml(cs.scenario||'')} ${cs.scenario_note?'— '+escHtml(cs.scenario_note):''}</p>
 
     ${matrix.length ? `<div style="padding:14px 16px;background:var(--gray);border-radius:var(--radius);margin-bottom:20px;">
-      <div style="font-size:13px;font-weight:600;color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
+      <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
     ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
@@ -13556,7 +13643,26 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
   const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
@@ -13829,7 +13935,7 @@ function sectionOutreachPlan(D) {
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
 
-      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
+      ${contacts.map(c=>`<span style="${T.eyebrowSmCol('var(--blue)')};background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:5px 12px;">${escHtml(c.name)} · ${escHtml(c.role)}</span>`).join('')}
 
     </div>
 
@@ -13897,7 +14003,7 @@ function sectionOutreachPlan(D) {
 
           <!-- LinkedIn connection note (no actions array) -->
 
-          <div style="background:var(--blue-tint);border:1px solid #bfdbfe;border-radius:6px;padding:12px 14px;">
+          <div style="background:var(--blue-tint);border:1px solid var(--blue-200);border-radius:6px;padding:12px 14px;">
 
             ${t.subject ? `<div style="margin-bottom:8px;">
 
@@ -13907,7 +14013,7 @@ function sectionOutreachPlan(D) {
 
             </div>` : ''}
 
-            ${t.body ? `<div style="background:white;border:1px solid #bfdbfe;border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
+            ${t.body ? `<div style="background:white;border:1px solid var(--blue-200);border-radius:4px;padding:10px 12px;white-space:pre-wrap;${T.bodySm};line-height:1.7;">${escHtml(t.body)}</div>` : ''}
 
           </div>` : ''}
 
@@ -14097,7 +14203,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -14373,6 +14480,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14388,11 +14518,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14423,27 +14556,27 @@ function renderSections(D) {
       <p class="section-desc">Everything you need to open the conversation — synthesized from the full audit</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
         <!-- Left: The numbers -->
-        <div style="background:linear-gradient(135deg,#0D1240 0%,#003DFF 100%);border-radius:10px;padding:20px;color:white;">
+        <div style="background:linear-gradient(135deg,var(--navy-900) 0%,var(--blue) 100%);border-radius:10px;padding:20px;color:white;">
           <div style="${T.eyebrowSmCol('rgba(255,255,255,0.55)')};margin-bottom:16px;">The Situation</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <div>
-              <div style="font-size:32px;font-weight:700;color:white;line-height:1;">${sc.overall}/10</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
+              <div style="${T.bold32};color:white;line-height:1;">${sc.overall}/10</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);margin-top:2px;">Search audit score — ${escHtml(sc.verdict||'')}</div>
             </div>
             ${sa.google_outbound_pct ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#FCA5A5;">${escHtml(sa.google_outbound_pct)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:#FCA5A5;">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
+              <div style="${T.bold22};color:var(--red-300);">${escHtml(sa.google_outbound_pct)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">exit to Google ${sa.google_outbound_mom_change?`<strong style="color:var(--red-300);">${escHtml(sa.google_outbound_mom_change)} MoM</strong>`:''}</div>
             </div>` : ''}
             ${roi.gross_profit_impact_est ? `<div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;">
-              <div style="font-size:22px;font-weight:700;color:#6EE7B7;">${escHtml(roi.gross_profit_impact_est)}</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
+              <div style="${T.bold22};color:var(--green-300);">${escHtml(roi.gross_profit_impact_est)}</div>
+              <div style="${T.cap12};color:rgba(255,255,255,0.6);">gross profit impact at ${roi.lift_pct||1}% conversion lift</div>
             </div>` : ''}
           </div>
         </div>
         <!-- Right: The narrative -->
         <div style="display:flex;flex-direction:column;gap:12px;">
           ${eq.quote ? `<div style="padding:14px 16px;background:var(--blue-light);border-left:3px solid var(--blue-border);border-radius:0 var(--radius) var(--radius) 0;">
-            <div style="font-size:13px;font-style:italic;color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
+            <div style="${T.italic13};color:var(--gray);line-height:1.5;margin-bottom:6px;">&ldquo;${escHtml(eq.quote.slice(0,140))}...&rdquo;</div>
             <div style="${T.eyebrowSm};color:var(--blue);">${escHtml(eq.speaker)}</div>
           </div>` : ''}
           ${topCs.length ? `<div style="padding:12px 14px;background:var(--green-tint);border:1px solid var(--green-border);border-radius:var(--radius);">
@@ -14476,13 +14609,13 @@ function renderSections(D) {
       return `<div style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-left:3px solid ${sevCol};border-radius:0 var(--radius) var(--radius) 0;margin-bottom:10px;">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;">
           <div style="${T.title};flex:1;">${escHtml(f.title)}</div>
-          <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
+          <span style="${T.microLabel06};color:${sevCol};background:${sevBg};border:1px solid ${sevBdr};border-radius:3px;padding:2px 6px;white-space:nowrap;flex-shrink:0;">${(f.severity||'').toUpperCase()}</span>
         </div>
         ${f.tested_query ? `<div style="${T.compact};color:var(--mid);margin-bottom:6px;font-family:var(--font-mono,'SF Mono',monospace);">Query tested: "${escHtml(f.tested_query)}"</div>` : ''}
         ${f.actual_behavior ? `<div style="${T.compact};color:var(--mid);margin-bottom:8px;">${escHtml(f.actual_behavior)}</div>` : ''}
         ${f.impact_stat ? `<div style="display:flex;align-items:baseline;gap:6px;padding:8px 10px;background:${sevBg};border:1px solid ${sevBdr};border-radius:6px;">
-          <div style="font-size:13px;font-weight:600;color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
-          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="font-size:10px;color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
+          <div style="${T.semi13};color:${sevCol};flex:1;">${escHtml(f.impact_stat)}</div>
+          ${f.impact_stat_source ? `<a href="${escHtml(f.impact_stat_source)}" target="_blank" rel="noopener" style="${T.cap10};color:var(--blue);text-decoration:none;border:1px solid var(--blue-border);border-radius:3px;padding:1px 5px;flex-shrink:0;">↗ Source</a>` : ''}
         </div>` : ''}
       </div>`;
     }
@@ -14498,7 +14631,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14515,16 +14655,16 @@ function renderSections(D) {
             <div style="${T.compact};">${escHtml(p.pain||'')}</div>
             ${p.evidence ? `<div style="${T.compact};color:var(--mid);font-style:italic;margin-top:6px;">${escHtml(p.evidence.slice(0,100))}${p.evidence.length>100?'…':''}</div>` : ''}
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--blue-tint);">
             <div style="${T.eyebrowSm};color:var(--blue);margin-bottom:6px;">Algolia Product</div>
             <div style="${T.compact};font-weight:600;">${escHtml(p.product||'')}</div>
           </div>
-          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);font-size:16px;">→</div>
+          <div style="display:flex;align-items:center;padding:0 8px;background:var(--light);color:var(--mid);${T.cap16};">→</div>
           <div style="padding:12px 14px;background:var(--green-tint);">
             <div style="${T.eyebrowSm};color:var(--green);margin-bottom:6px;">Proof</div>
             ${p.proof_company && p.proof_url
-              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="font-size:13px;font-weight:700;color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
+              ? `<a href="${escHtml(p.proof_url)}" target="_blank" rel="noopener" style="${T.bold13};color:var(--green);text-decoration:none;">${escHtml(p.proof_company)} ↗</a>
                  <div style="${T.compact};color:var(--gray);margin-top:4px;">${escHtml(p.proof_result||'')}</div>`
               : `<div style="${T.compact};color:var(--mid);">See case studies below</div>`
             }
@@ -14542,9 +14682,9 @@ function renderSections(D) {
           </tr></thead>
           <tbody>
           ${findings.map((f,i)=>`<tr style="border-bottom:1px solid var(--border);${i%2?'background:var(--near-white);':''}">
-            <td style="padding:9px 12px;font-size:12px;font-weight:600;color:var(--gray);">${escHtml(f.title)}</td>
-            <td style="padding:9px 12px;font-size:12px;color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
-            <td style="padding:9px 12px;font-size:12px;">
+            <td style="padding:9px 12px;${T.semi12};color:var(--gray);">${escHtml(f.title)}</td>
+            <td style="padding:9px 12px;${T.cap12};color:var(--gray);">${escHtml((f.algolia_solution||'').slice(0,80))}${(f.algolia_solution||'').length>80?'…':''}</td>
+            <td style="padding:9px 12px;${T.cap12};">
               ${f.algolia_case_study_url ? `<a href="${escHtml(f.algolia_case_study_url)}" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;font-weight:600;">${escHtml(f.algolia_case_study_company)}</a>` : escHtml(f.algolia_case_study_company||'')}
               ${f.algolia_case_study_result ? `<div style="${T.compact};color:var(--green);margin-top:2px;">${escHtml(f.algolia_case_study_result)}</div>` : ''}
             </td>
@@ -14773,10 +14913,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15806,7 +15942,6 @@ if (document.readyState === 'loading') {
 
 <!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
 <script src="/chat-widget.js" defer></script>
-
 </body>
 
 </html>
