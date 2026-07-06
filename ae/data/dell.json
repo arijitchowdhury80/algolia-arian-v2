@@ -1,0 +1,218 @@
+{
+ "meta": {
+  "company": "Dell Technologies",
+  "domain": "dell.com"
+ },
+ "score": {
+  "overall": 3.7,
+  "scale": 5,
+  "verdict": "Critical Gaps Found",
+  "critical_count": 3,
+  "moderate_count": 4
+ },
+ "stage_cockpit": {
+  "stages": [
+   {
+    "label": "PREP",
+    "status": "active"
+   },
+   {
+    "label": "SS1",
+    "status": ""
+   },
+   {
+    "label": "SS2",
+    "status": ""
+   }
+  ],
+  "note": "3-stage scope (SS3 POC / SS4 proposal are out of PRISM's scope). Currently prepping: PREP. Stage state is not deal-tracked — this is the prep surface."
+ },
+ "call_plan": {
+  "eyebrow": "Discovery-OS single-page call plan",
+  "opening_move": {
+   "text": "Dell tells enterprises it's the best partner to bring them AI — we'd like to show your team what a customer types into dell.com search versus what they get back (376 results for 'lightweight business laptop with long battery life' — identical to a bare 'laptops' search).",
+   "source_label": "audit: ae_fields.talk_track_opener",
+   "source_url": ""
+  },
+  "hypotheses": [
+   {
+    "rank": 1,
+    "title": "Semantic / NLP search failure — qualifiers ignored, price constraints break recall",
+    "severity": "CRITICAL",
+    "evidence": "Returned 376 results — IDENTICAL to a bare 'laptops' search. Every qualifier (lightweight / business / long battery life) was ignored; the engine matched only the token 'laptop'. Separately, 'best laptop for gaming under $1500' collapsed to just 6 results — conversational syntax + the '$1500' price…",
+    "tied_to": "Tested query: “lightweight business laptop with long battery life”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": ""
+   },
+   {
+    "rank": 2,
+    "title": "Blank empty state + broken no-results recovery",
+    "severity": "CRITICAL",
+    "evidence": "Empty search box shows nothing on focus — no popular, trending, or recent. Gibberish 'qwzxplmn' returned 4 spurious products instead of a clean empty state — worse than a good empty state because it shows irrelevant products under a nonsense query. No 'did you mean', no recovery affordance.",
+    "tied_to": "Tested query: “qwzxplmn”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": ""
+   },
+   {
+    "rank": 3,
+    "title": "No search intelligence — zero analytics/behavioral signals in results",
+    "severity": "CRITICAL",
+    "evidence": "No Bestseller / Top-rated / Trending / Most-popular / New-arrival badges surfaced on any result cards (badge scan empty on laptops and desktop). Dell exposes zero behavioral or social-proof signal in the search UI, and the query stream is locked inside the home-grown engine.",
+    "tied_to": "Tested query: “desktop”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/20-analytics-signals.png"
+   }
+  ],
+  "competitive_objection": {
+   "objection": "“Why Algolia over our in-house / incumbent search engine?”",
+   "response": "None of Dell's direct competitors run Algolia — the field is open (HP is on mid-market HawkSearch; the rest are proprietary). Proof comes from adjacent B2B peers: Swedol/Alligo (+22% conversion, professional buyers), Hager Group (complex B2B catalog across 10 sites), and Zendesk (enterprise support-doc search + genera…",
+   "source": "audit: golden_angle"
+  },
+  "cost_of_inaction": {
+   "text": "Modeled search-addressable: 15% of dell.com direct-channel revenue (modeled); estimated upside Mid-eight-figures/yr (directional; requires Dell's dell.com conversion + traffic)",
+   "source": "audit: financials (modeled)"
+  },
+  "stakeholder_to_add": {
+   "role": "First-play path",
+   "name": "NTT DATA warm intro to CDO org",
+   "status": "inferred from partner_intel — confirm before citing",
+   "note": "NTT DATA is Dell's 2025 Global Alliances Partner of the Year and a known Algolia SI — the highest-confidence, most-recent C-suite relationship in the account. Request a warm intro to Dell's digital-commerce / CDO org before cold outreach.",
+   "source": "audit: recommended_first_play"
+  },
+  "next_meeting_hook": {
+   "text": "A relevance A/B pilot: Algolia NeuralSearch vs the in-house engine on dell.com's top conversational query set, measured on conversion, zero-results, and time-to-first-click.",
+   "cta": "Request NTT DATA alliance-team warm intro to Dell's digital-commerce / CDO org",
+   "source": "audit: ae_fields / next_steps",
+   "target_date": "2026-07-10",
+   "owner": "Algolia AE"
+  }
+ },
+ "exit_gates": {
+  "ss2_label": "SS2 exit gate — Vision-to-Value (methodology checklist, not deal-tracked)",
+  "items": [
+   {
+    "item": "Vision-to-Value delivered",
+    "detail": "Anxiety statement + ROI justification landed with the buyer.",
+    "status": "open"
+   },
+   {
+    "item": "Eval path confirmed",
+    "detail": "A relevance A/B or pilot path is agreed.",
+    "status": "open"
+   },
+   {
+    "item": "PIE buy-in secured",
+    "detail": "Product / Infra / Eng stakeholder is bought in.",
+    "status": "open"
+   },
+   {
+    "item": "Business case built",
+    "detail": "ROI model exists in full before negotiation — not deferred.",
+    "status": "open"
+   }
+  ]
+ },
+ "battle_card_data": {
+  "has_golden_angle": false,
+  "narrative": "No direct competitor is a confirmed Algolia customer (OFFENSIVE scenario). Proof comes from adjacent B2B / complex-catalog peers — Swedol (Alligo) professional-buyer B2B, Hager Group B2B industrial manufacturing, and Zendesk enterprise support/documentation search.",
+  "talk_track": "None of Dell's direct competitors run Algolia — the field is open (HP is on mid-market HawkSearch; the rest are proprietary). Proof comes from adjacent B2B peers: Swedol/Alligo (+22% conversion, professional buyers), Hager Group (complex B2B catalog across 10 sites), and Zendesk (enterprise support-doc search + generative AskAI).",
+  "benchmark_proof": "Swedol (Alligo): +22% conversion rate, +26% time on site, +7.5% searches after 1 year on Algolia — a B2B professional-buyer analog to Dell's commercial channel — https://www.algolia.com/customers/swedol/",
+  "case_study": {
+   "company": "Swedol (Alligo)",
+   "result": "+22% conversion rate; +26% time on site (B2B professional buyers)",
+   "url": "https://www.algolia.com/customers/swedol/"
+  },
+  "competitors": [
+   {
+    "name": "HP Inc.",
+    "vendor": "HawkSearch",
+    "uses_algolia": false
+   },
+   {
+    "name": "Lenovo",
+    "vendor": "Custom stack on `openapi.lenovo.com`; no third-party vendor",
+    "uses_algolia": false
+   },
+   {
+    "name": "HPE",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "IBM",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Microsoft",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Apple",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Supermicro",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   }
+  ],
+  "source": "audit: golden_angle + competitors + ae_fields.benchmark_proof"
+ },
+ "playbook": {
+  "available": false,
+  "label": "AE Playbook"
+ },
+ "business_case": {
+  "available": false,
+  "label": "Business Case / ROI"
+ },
+ "active_sources": [
+  {
+   "name": "Company & executive intel",
+   "detail": "company_snapshot / executives"
+  },
+  {
+   "name": "Financial profile",
+   "detail": "revenue, margins, modeled search ROI"
+  },
+  {
+   "name": "Competitor & search-tech scan",
+   "detail": "competitor set + detected search vendors"
+  },
+  {
+   "name": "Search audit findings",
+   "detail": "browser-tested search behavior + scoring"
+  },
+  {
+   "name": "Traffic & engagement",
+   "detail": "SimilarWeb capture (HITL-verified)"
+  },
+  {
+   "name": "Intelligence signals",
+   "detail": "news / hiring / partner signals"
+  }
+ ],
+ "locked_sources": [
+  {
+   "name": "Gong call recordings",
+   "function": "Verbatim objection & signal miner",
+   "value": "real objections + who said what in the room",
+   "needs": "Gong transcripts for the account"
+  },
+  {
+   "name": "Account-history notes",
+   "function": "Account memory",
+   "value": "don't re-pitch a failed angle; prior contacts & deals",
+   "needs": "rep's informal notes — no new system"
+  },
+  {
+   "name": "Event engagement feed",
+   "function": "Conference / booth touches",
+   "value": "warm signals from real-world engagement",
+   "needs": "event CRM / badge-scan export"
+  }
+ ]
+}
