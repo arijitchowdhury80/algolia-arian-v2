@@ -312,6 +312,93 @@ def test_run_job_wall_clock_timeout_kills_and_marks_needs_human(runner):
     assert any("timeout" in str(v) for v in saved["needs_human"].values())
 
 
+# ---------------------------------------------------------------- notify on completion
+
+def test_notify_job_finished_noop_when_unconfigured(runner, monkeypatch):
+    monkeypatch.delenv("PRISM_NOTIFY_BOT_TOKEN", raising=False)
+    monkeypatch.delenv("PRISM_NOTIFY_CHAT_ID", raising=False)
+    sent = []
+    result = runner.notify_job_finished(
+        {"status": "done", "slug": "dell"}, send_fn=lambda *a: sent.append(a) or True
+    )
+    assert result is False
+    assert sent == []
+
+
+def test_notify_job_finished_sends_on_done(runner, monkeypatch):
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "123")
+    sent = []
+
+    def fake_send(token, chat_id, text):
+        sent.append((token, chat_id, text))
+        return True
+
+    result = runner.notify_job_finished(
+        {"status": "done", "slug": "dell", "publish": "published dell (score=6.0)"},
+        send_fn=fake_send,
+    )
+    assert result is True
+    assert sent == [("tok", "123", "PRISM: dell audit done — published dell (score=6.0)")]
+
+
+def test_notify_job_finished_sends_on_failure_with_reason(runner, monkeypatch):
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "123")
+    sent = []
+    result = runner.notify_job_finished(
+        {"status": "failed", "slug": "dell", "error": "boom"},
+        send_fn=lambda t, c, x: sent.append(x) or True,
+    )
+    assert result is True
+    assert "dell" in sent[0] and "boom" in sent[0] and "FAILED" in sent[0]
+
+
+def test_notify_job_finished_ignores_non_terminal_status(runner, monkeypatch):
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "123")
+    sent = []
+    result = runner.notify_job_finished(
+        {"status": "running", "slug": "dell"}, send_fn=lambda *a: sent.append(a) or True
+    )
+    assert result is False
+    assert sent == []
+
+
+def test_notify_job_finished_swallows_send_exception(runner, monkeypatch):
+    """A Telegram outage must never propagate into the audit run itself."""
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "123")
+
+    def boom(*a):
+        raise RuntimeError("network down")
+
+    result = runner.notify_job_finished({"status": "done", "slug": "dell"}, send_fn=boom)
+    assert result is False
+
+
+def test_run_job_success_triggers_notify(runner, monkeypatch):
+    """Integration: run_job's real completion path actually calls notify."""
+    calls = []
+    monkeypatch.setattr(runner, "notify_job_finished", lambda job: calls.append(job["status"]))
+    _write_audit_data(runner, "dell")
+    job = {"job_id": "dell-notify", "domain": "dell.com", "slug": "dell"}
+    runner.run_job(job, popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
+                    sleep_fn=lambda s: None, clock_fn=lambda: 0.0)
+    assert calls == ["done"]
+
+
+def test_run_job_timeout_triggers_notify(runner, monkeypatch):
+    calls = []
+    monkeypatch.setattr(runner, "notify_job_finished", lambda job: calls.append(job["status"]))
+    proc = FakeProc(poll_sequence=(None, None, None, None))
+    clock = iter([0.0, 0.0, 5.0, 15.0, 25.0, 35.0])
+    job = {"job_id": "dell-hang-notify", "domain": "dell.com", "slug": "dell"}
+    runner.run_job(job, popen_fn=lambda *a, **k: proc, sleep_fn=lambda s: None,
+                    clock_fn=lambda: next(clock), poll_interval_s=0, timeout_s=20)
+    assert calls == ["needs_human"]
+
+
 def test_terminate_escalates_to_sigkill_if_still_alive_after_grace(runner):
     proc = FakeProc(poll_sequence=(None, None, None))  # poll() always "still running"
     runner._terminate(proc, sleep_fn=lambda s: None, grace_s=0.1)

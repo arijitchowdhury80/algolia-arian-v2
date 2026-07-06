@@ -479,6 +479,51 @@ def build_audit_cmd(job):
     return cmd
 
 
+def _telegram_send(token, chat_id, text):
+    """Raw Telegram Bot API send, isolated so tests can monkeypatch it without
+    a real token. Never called directly by run_job — always through
+    notify_job_finished's send_fn injection point."""
+    import urllib.request as _urlreq
+
+    req = _urlreq.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data=json.dumps({"chat_id": chat_id, "text": text}).encode(),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with _urlreq.urlopen(req, timeout=10) as r:
+        return r.status == 200
+
+
+def notify_job_finished(job, send_fn=_telegram_send):
+    """Best-effort proactive push when a job reaches a terminal state (done,
+    failed, published_failed, needs_human). Configured via
+    PRISM_NOTIFY_BOT_TOKEN + PRISM_NOTIFY_CHAT_ID; no-ops when either is
+    missing (same graceful-degradation pattern as LiveAvatar's
+    missing_api_key path — never fabricates a notification, never breaks a
+    real audit run). Fail-soft by design: any exception here is swallowed,
+    because a Telegram outage must never take down an audit."""
+    token = os.environ.get("PRISM_NOTIFY_BOT_TOKEN", "")
+    chat_id = os.environ.get("PRISM_NOTIFY_CHAT_ID", "")
+    if not token or not chat_id:
+        return False
+    status = job.get("status")
+    slug = job.get("slug") or job.get("domain") or "?"
+    if status == "done":
+        text = f"PRISM: {slug} audit done — {job.get('publish', 'published')}"
+    elif status in ("failed", "published_failed"):
+        reason = job.get("error") or job.get("publish") or "no reason given"
+        text = f"PRISM: {slug} audit FAILED ({status}) — {reason}"
+    elif status == "needs_human":
+        text = f"PRISM: {slug} audit needs a human — {job.get('needs_human')}"
+    else:
+        return False  # not a terminal state worth notifying on
+    try:
+        return bool(send_fn(token, chat_id, text))
+    except Exception:
+        return False
+
+
 def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.monotonic,
             poll_interval_s=POLL_INTERVAL_S, timeout_s=JOB_TIMEOUT_S):
     """Run one audit job to completion (or timeout/kill). Dependency-injected
@@ -539,6 +584,7 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
                     job["rc"] = rc
                     job["finished"] = _now()
                     write_job(job)
+                    notify_job_finished(job)
                     return
         job["rc"] = rc
         if rc == 0:
@@ -565,6 +611,7 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
         job["error"] = repr(e)
         job["finished"] = _now()
     write_job(job)
+    notify_job_finished(job)
 
 
 def _terminate(proc, sleep_fn=time.sleep, grace_s=KILL_GRACE_S):
