@@ -3,6 +3,8 @@
 ## STATUS (headline)
 PRISM V2 architecture is locked end-to-end (data store, executioner, agent design, verification pipeline). Session moved through role-driven UX design (mid-review, paused) into naming real gaps (#11-13: agent-to-agent orchestration, multi-tenancy, security) and then into real overnight building: **3 features shipped, staged and tested, nothing pushed to main or deployed to the live VPS.** Three real decisions are correctly blocked on Arijit, not guessed at. This SESSION.md was fully rewritten at persist time (~4:15am) to consolidate a long night into one resumable document — nothing from the night was dropped, see the chronological log below the summary sections.
 
+**Post-persist:** this file + `docs/PRISM-V2/00-manifesto.md`/`_status.md`/`03-...`/`04-...`/`05-...` + `docs/workspace/marketer-door/` committed to the PIP repo, `feat/prism-e2e-cycle` (`cd55bf7`). **Nothing has been pushed anywhere** — PIP repo is 6 commits ahead of origin, prism-hub's `feat/ia-ab-prototype` branch (`ded009c`, `10bb828`) hasn't been pushed either. All commits are local-only by design until Arijit reviews.
+
 ## RESUME ACTION — do this FIRST
 1. Read this file's "WHERE WE STOPPED" and "3 DECISIONS BLOCKED ON ARIJIT" sections below — these are the fastest way back in.
 2. If Arijit has answered any of the 3 blocked decisions, act on it before anything else (see each decision's exact question).
