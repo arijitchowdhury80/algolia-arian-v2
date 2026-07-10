@@ -15192,9 +15192,41 @@ function initChapterObserver() {
 
 // Guard with readyState check so init() always runs.
 
-function _boot() {
+async function _boot() {
 
   initAnimatedGrid(); // Always run — independent of AUDIT_DATA
+
+  try {
+
+    let resp = await fetch('/api/audit-data/belk', { credentials: 'same-origin' });
+
+    if (resp.status === 401) {
+
+      // Clerk's handshake refresh lands on the SAME response as a 401 (Set-Cookie only,
+
+      // no redirect a fetch can follow) — retry once now that the browser holds the fresh cookie.
+
+      resp = await fetch('/api/audit-data/belk', { credentials: 'same-origin' });
+
+    }
+
+    if (resp.ok) {
+
+      window.AUDIT_DATA = await resp.json();
+
+      console.log('[audit-data] loaded live from database');
+
+    } else {
+
+      console.warn('[audit-data] live fetch returned', resp.status, '— falling back to baked-in snapshot');
+
+    }
+
+  } catch (e) {
+
+    console.warn('[audit-data] live fetch failed — falling back to baked-in snapshot:', e.message);
+
+  }
 
   if (window.AUDIT_DATA) {
 
