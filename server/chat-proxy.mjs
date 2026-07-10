@@ -20,6 +20,24 @@
 import http from "node:http";
 import path from "node:path";
 import { readFile, stat } from "node:fs/promises";
+import pg from "pg";
+
+const pgPool = process.env.DATABASE_URL ? new pg.Pool({ connectionString: process.env.DATABASE_URL, max: 5 }) : null;
+
+async function fetchAuditData(slug) {
+  if (!pgPool) return null;
+  // slug (e.g. "lululemon") -> domain (e.g. "lululemon.com"). Most slugs are the
+  // domain's registrable name; this covers the common case without a lookup table.
+  const domainGuess = `${slug}.com`;
+  const { rows } = await pgPool.query(
+    `SELECT au.audit_data FROM audits au
+     JOIN accounts a ON a.id = au.account_id
+     WHERE a.domain = $1 AND au.status = 'completed'
+     ORDER BY au.completed_at DESC NULLS LAST LIMIT 1`,
+    [domainGuess]
+  );
+  return rows[0]?.audit_data ?? null;
+}
 
 const HERMES_API_URL = process.env.HERMES_API_URL;
 const HERMES_API_KEY = process.env.HERMES_API_KEY;
@@ -92,6 +110,14 @@ function isAssetPath(urlPath) {
   return ASSET_EXTS.has(q.slice(dot).toLowerCase());
 }
 
+// fetch()-driven JSON endpoints (audit-data, chat). Same problem as assets: the caller is
+// JS expecting JSON, not a browser that can follow a 302 to an HTML sign-in page. On auth
+// failure these must return 401 JSON so client code can react, never a redirect.
+function isApiPath(urlPath) {
+  const q = urlPath.split("?")[0];
+  return q.startsWith("/api/");
+}
+
 function appendHeader(res, name, value) {
   const existing = res.getHeader(name);
   if (!existing) {
@@ -146,6 +172,12 @@ async function requireAuth(req, res, urlPath) {
     if (/(?:^|;\s*)(__session|__client|__clerk)/i.test(cookie)) return true;
     res.statusCode = 401;
     res.end();
+    return false;
+  }
+  if (isApiPath(urlPath)) {
+    // fetch()-driven JSON call — never redirect, the caller can't parse an HTML sign-in
+    // page as JSON. Real auth failure, so a real 401, not a silent pass.
+    sendJson(res, 401, { error: "unauthorized", redirect: auth.redirect || "/sign-in" });
     return false;
   }
   res.statusCode = 302;
@@ -424,6 +456,18 @@ const server = http.createServer(async (req, res) => {
   }
   if (req.method === "POST" && url === "/api/feedback") {
     return sendJson(res, 200, { ok: true });
+  }
+  if (req.method === "GET" && url.startsWith("/api/audit-data/")) {
+    const slug = url.slice("/api/audit-data/".length).replace(/[^a-z0-9-]/gi, "");
+    if (!(await requireAuth(req, res, url))) return;
+    try {
+      const data = await fetchAuditData(slug);
+      if (!data) return sendJson(res, 404, { error: "not found" });
+      return sendJson(res, 200, data);
+    } catch (e) {
+      console.error("[audit-data] query failed:", e.message);
+      return sendJson(res, 500, { error: "internal" });
+    }
   }
   if (req.method === "POST" && url === "/api/chat") {
     return handleChat(req, res, url).catch(() => {

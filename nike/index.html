@@ -9374,7 +9374,7 @@ function sectionTraffic(D) {
   const genderFromDemo = (femaleEntry || maleEntry)
     ? { female: femaleEntry?.pct, male: maleEntry?.pct }
     : null;
-  const gender = genderFromDemo || audience.gender || {};
+  const gender = genderFromDemo || audience.gender || t.gender || {};
 
   const maxAge = Math.max(...Object.values(age).map(Number), 1);
 
@@ -9396,7 +9396,11 @@ function sectionTraffic(D) {
 
   channels.forEach(c => {
 
-    const nm = c.source || c.channel || '';
+    const CHANNEL_ALIASES = {'org. search':'Organic Search','organic search':'Organic Search','paid search':'Paid Search','org. social':'Social','organic social':'Social','paid social':'Social','social':'Social'};
+
+    const rawNm = (c.source || c.channel || '').trim();
+
+    const nm = CHANNEL_ALIASES[rawNm.toLowerCase()] || rawNm;
 
     const pct = parseFloat(c.share) || 0;
 
@@ -9545,7 +9549,7 @@ function sectionTraffic(D) {
           <div style="${T.statNum};color:var(--blue);line-height:1;">${searchPctNum}%</div>
           <div style="${T.bodySmGray12};margin-top:4px;">of all traffic arrives via organic or paid search</div>
         </div>
-        ${sa ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
+        ${(sa && sa.google_outbound_pct != null) ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
           <div style="${T.statLabel};color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
           <div style="${T.statNum};color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
           <div style="${T.bodySmGray12};margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
@@ -9556,7 +9560,7 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.gen_ai_channel_pct))}</div>
           <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
@@ -9736,7 +9740,7 @@ function sectionTraffic(D) {
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
     const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
-    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
+    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct||k.share)||0), 1);
 
     // Mini SVG donut for branded/NB split
     const R = 36, cx2 = 44, cy2 = 44, innerR2 = 22;
@@ -9779,12 +9783,12 @@ function sectionTraffic(D) {
       <div class="card-3d" style="padding:16px;">
         <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
         ${kws.map(k => {
-          const pct = parseFloat(k.share_pct)||0;
+          const pct = parseFloat(k.share_pct||k.share)||0;
           const barW = Math.round((pct/maxKwShare)*100);
           const mom  = String(k.mom_change||'—');
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||k.term||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--green);border-radius:3px;"></div></div>
             <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
             <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
@@ -9803,7 +9807,7 @@ function sectionTraffic(D) {
     return _accPre2 + (() => {
     const ps = t.paid_search;
     const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
-    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
+    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct||k.share)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
   <div style="margin-top:20px;">
@@ -9814,12 +9818,12 @@ function sectionTraffic(D) {
     <div class="card-3d" style="padding:16px;">
       <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
       ${kws.map(k => {
-        const pct = parseFloat(k.share_pct)||0;
+        const pct = parseFloat(k.share_pct||k.share)||0;
         const barW = Math.round((pct/maxKwShare)*100);
         const mom  = String(k.mom_change||'—');
         const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
         return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
+          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||k.term||'')}</div>
           <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--amber);border-radius:3px;"></div></div>
           <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
           <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
@@ -9900,7 +9904,7 @@ function sectionTraffic(D) {
       if (/K/i.test(s2)) return n / 1000;
       return n / 1000000;
     };
-    const vals = comps.map(c => parseVisits(c.visits_3mo||c.total_visits_3mo));
+    const vals = comps.map(c => parseVisits(c.visits_3mo||c.total_visits_3mo||c.visits_last_month));
     const maxV = Math.max(...vals, 1);
     // Sort: prospect first, then descending by visits
     const sorted = comps.map((c,i) => ({...c, _v: vals[i]}))
@@ -9925,7 +9929,7 @@ function sectionTraffic(D) {
           <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${barW}%;background:${isProspect?'var(--blue)':'var(--border)'};border-radius:4px;"></div>
           </div>
-          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
+          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||(c.visits_last_month?(c.visits_last_month/1e6).toFixed(2)+'M':'')))}</div>
         </div>`;
       }).join('')}
     </div>
@@ -9936,12 +9940,12 @@ function sectionTraffic(D) {
   ${/* PANEL: Geography */ ''}
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
-    const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
+    const maxGeo = Math.max(...geos.map(g => (parseFloat(g.traffic_share_pct||g.share)||0)), 1);
     return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
         <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
-          const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
+          const barW = Math.round(((parseFloat(g.traffic_share_pct||g.share)||0) / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
@@ -9950,7 +9954,7 @@ function sectionTraffic(D) {
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="${T.bold13};color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="${T.bold13};color:var(--gray);text-align:right;">${(parseFloat(g.traffic_share_pct||g.share)||0)}%</div>
             <div style="${T.semi11};color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
@@ -9977,13 +9981,13 @@ function sectionTraffic(D) {
           const rowBg = isGoogle ? 'background:var(--red-tint);border-radius:6px;padding:2px 6px;margin:-2px -6px;' : '';
           return `<div style="display:grid;grid-template-columns:1fr 80px 80px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
             <div style="${T.cap13};font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="${T.cap10};background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
-            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
+            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${(parseFloat(o.share_pct||o.share)||0)}%</div>
             <div style="${T.bold11};color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
           ${algoliaAngleBadge()}
-          <p style="${T.compact};margin:0;">1 in ${Math.round(100/googleRow.share_pct)} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
+          <p style="${T.compact};margin:0;">1 in ${Math.round(100/(parseFloat(googleRow.share_pct||googleRow.share)||0))} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
         </div>` : ''}
       </div>
     </div></div>`;
