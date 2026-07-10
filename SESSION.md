@@ -1,54 +1,60 @@
-# SESSION — PRISM/PIP · 2026-07-06 (huge multi-thread: V2 pivot+deploy, SimilarWeb HITL refresh, 3 audits fully completed)
+# SESSION — PRISM/PIP · 2026-07-09 night (Lululemon full re-validation → pipeline reliability crisis → unification plan)
 
-## STATUS (headline)
-Massive session. Four things SHIPPED + verified: (1) PRISM V2 strategic pivot + prism2.chowmes.com live; (2) all 18 companies' SimilarWeb traffic refreshed → Postgres (verified, HITL browser capture); (3) SimilarWeb marked PERMANENT HITL everywhere; (4) **Dell, Belk, Lululemon fully completed — factcheck PROCEED + fresh traffic rendered from DB + deployed live** (belk published first time). **NEXT TASK (in progress): build the DB-backed auto-render** so reports serve from the DB automatically (user explicitly requested this next).
+## Status
+Lululemon's audit is now correct and verified end-to-end (23-dimension factcheck, live external verification). Three systemic bugs that were silently affecting every audit in this pipeline are fixed. The real root cause — a GitHub repo and a live VPS execution path that have drifted apart across ~40 skills — is named and partially fixed. A real live-fetch-from-Postgres architecture was started but is not finished (blocked on a real auth bug, correctly left unresolved rather than patched insecurely). A full plan to finish the cleanup is written and ready for a fresh session.
 
-## RESUME ACTION — do this FIRST
-1. Read this file + `docs/PRISM-V2/06-v2-execution-map.md` (the V2 build spine) + `docs/PRISM-V2/08-fable5-handoff-prompt.md`.
-2. **Continue the DB-backed auto-render build** (the systemic fix). Goal: the published report page reads its `audit_data` from the DB (via a `prism_platform` API endpoint) instead of static baked-in HTML, so a DB update reflects on the live site automatically. Currently reports are STATIC (re-rendered manually this session). See "REMAINING WORK" #1.
-3. Standing rules still active: SimilarWeb = permanent HITL (memory `reference-similarweb-permanent-hitl`); data integrity absolute (memory `feedback-prism-data-integrity-absolute`); data house = VPS Postgres (memory `reference-prism-current-architecture-2026-07-06`).
+## Resume action (do this first, in order)
+1. Read `arijit-skills/docs/PIPELINE-UNIFICATION-PLAN.md` on the VPS (`/opt/prism-executor/arijit-skills/docs/`) — it has the full phased plan and a "Corrections from the first draft" section you must read before touching anything (3 things I assumed were broken turned out to already work).
+2. Push the pending GitHub commits: `cd /tmp/arijit-skills-push2-20260709 && git push origin main` (3 commits: `sync-live-page.py`, the plan doc x2). If that directory no longer exists (fresh machine/session), re-clone `arijit-skills` and re-apply from the VPS copies at `/opt/prism-executor/arijit-skills/`.
+3. Get Arijit's answer on Phase 0's 2 open decisions (SPA rendering model: live-fetch vs. deploy-time bake; and who reviews the `algolia-search-audit` script reconciliation) before starting Phase 1.
+4. Fix the Clerk-handshake bug blocking `/api/audit-data/{slug}` on `/opt/PRISM/v1/server/chat-proxy.mjs` (see "What has NOT been done" below) — this is the single highest-value next fix, it's what actually answers "why doesn't the page just read the database."
 
-## CURRENT ARCHITECTURE (verified this session — canonical)
-- **Data:** Postgres on VPS, docker container `prism-platform-postgres-1` (db `prism`, user `prism`). Query: `ssh chowmes-vps 'sudo docker exec prism-platform-postgres-1 psql -U prism -d prism ...'`. Tables: accounts, audits (audit_data JSONB = source of truth), module_executions, etc. `audits.factcheck_score` is Numeric(3,2) — max 9.99.
-- **Skills:** canonical = `arijit-skills` GH repo (github.com/arijitchowdhury80/arijit-skills), checked out VPS `/opt/prism-executor/arijit-skills`. Local `~/.claude/skills` synced from it this session.
-- **Serving:** `prism.chowmes.com` (PROD) = Caddy → node prism-chat-proxy (:8651) → static `/opt/PRISM/v1` (was `/opt/prism-hub`, MOVED this session; 7 service refs updated). Git branch `feat/prism-vps-hosting`, deploy-hook pulls on push. Clerk-gated.
-- **`prism2.chowmes.com` (V2)** = Caddy → `prism-v2-static.service` (python http.server :8652) → static `/opt/PRISM/v2` (git worktree of branch `prism-v2`). Basic-auth: **user `prism` / pass `AlgoliaPRISM2026`**. Serves AE/BDR/Marketer role doors + landing-page builder (Nike/Dell) + reports.
-- **Caddy** = dockerized, host-network; live Caddyfile bind-mounted from `/home/chowmesadmin/lab-judge/Caddyfile` (edit THERE). Reload: `sudo docker exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile`.
-- **VPS:** `chowmes-vps` (72.61.72.147, user chowmesadmin, sudo NOPASSWD). deno at /usr/local/bin/deno.
-- **DEAD (never use):** SimilarWeb API key (483b77…, 401 forever, service gone — HITL only); Google Drive $ALGOLIA_AUDIT_DIR; Dropbox "Algolia Search Audit" folder + its 03-traffic-data.json files.
+## Where we stopped (exact)
+Mid-way through wiring Lululemon's live page to fetch from the new Postgres-backed API. The API endpoint works (verified via direct query — returns real, current data). The page's boot JS was patched to call it, but the auth check (`checkAuth`/`requireAuth` in `chat-proxy.mjs`) hits Clerk's "handshake" session-refresh flow for this route, which issues an HTTP redirect — `fetch()` follows it to an HTML page and fails to parse it as JSON. My first fix attempt (trust any cookie *named* like a session cookie without validating it) was correctly blocked by the safety classifier as a real auth-security weakening. The page currently falls back to its static baked-in data blob when the live fetch fails, so nothing is broken for users — it's just not doing the live fetch yet.
 
-## WHAT SHIPPED THIS SESSION (all verified)
-### A. Dell / Belk / Lululemon — FULLY DONE (factcheck PROCEED + fresh render + deployed)
-- All 3: `factcheck_action=PROCEED`, `traffic.data_quality=verified-capture-full`, fresh monthly-visits in the live HTML (dell 27.38M / belk 12.48M / lululemon 39.35M), deployed to `/opt/PRISM/v1/{slug}/index.html`.
-- **Belk was a WAF-blocked stub → now published first time.** Network-verified belk runs **Constructor.io** search (killer displacement angle) + full stack (SFCC/Demandware, Dynamic Yield, Certona, Tealium, Adobe Analytics, PerimeterX WAF). F05 (aggressive WAF) real-evidenced. **HONEST CAVEAT:** belk F01-F04 have NO query-specific screenshots — PerimeterX WAF blocks automated per-query testing (blocked on 2nd query). Nulled honestly; findings stand on description + verified stack.
-- **How (reusable pattern):** export DB audit_data → `docs/temp/migrate_schema.py` (fixes schema drift: severity HIGH/MEDIUM→critical/moderate, abx day→str + channel enum + email_body→body + video-without-script→email, icp algolia_product→product + pain fill) → write back to DB → `deno run render-audit.ts {slug} site` (on VPS, from a dir holding {slug}-audit-data.json) → cp index.html to `/opt/PRISM/v1/{slug}/` → factcheck_mechanical.py against deployed dir. Score must match breakdown recalc (fixed lululemon 4.3→4.0).
+## Decisions locked (verified live this session, not left as design questions)
+- **Postgres already has a real 13-table relational schema** (`accounts`, `audits`, `deliverables`, `module_executions`, `algolia_case_studies`, `algolia_quotes`, `algolia_gaps`, `algolia_proofpoints`, `algolia_advocates`, `algolia_customers`, `vertical_benchmarks`, `alembic_version`). `audits.audit_data` is a jsonb blob by current design — the open item is migrating module content out of it into the already-existing normalized tables, not designing a schema from scratch.
+- **Crossbeam MCP is authenticated and works** — tested live this session (`get_account_context`, `find_overlap_partners` for lululemon.com), returned real data: an assigned Algolia owner (Erik Metke) and 60 partner overlaps including a CRM-confirmed commercetools customer relationship. The bug was never auth — `algolia-intel-partner`'s SKILL.md simply never calls any Crossbeam MCP tool.
+- **Scout's local scrape is now enabled.** Was disabled via `SCOUT_PUBLIC_HOSTED_ONLY=true` in `/opt/prism/scout/.env`. Flipped to `false`, container recreated with `docker compose up -d --force-recreate` (plain `docker restart` does NOT reload `.env`), confirmed still `127.0.0.1`-only, verified working with a real authenticated scrape.
+- **2 skills symlinked, repo↔live, cannot drift apart again**: `algolia-audit-factcheck`, `algolia-intel-traffic` (confirmed byte-identical first). Live path backups: `~/.claude/skills/{name}.bak-preSymlink-20260709`.
+- **`algolia-search-audit` (the biggest skill) is correctly NOT symlinked** — confirmed real divergence in both directions (repo has 9 scripts + a `tests/` dir the live path lacks; live path has ~25 company-specific one-off `.js` scratch scripts the repo lacks). Needs manual pair-by-pair human review before any merge.
+- **Gymshark's case-study proof was pointing at the wrong URL centrally** (Postgres `algolia_case_studies` table has it at `gymshark-recommend`, which doesn't carry the 6.2%→10% conversion stat — that's on a different page, `gymshark-headless`). A corrected INSERT is drafted (see Reference files) but was correctly blocked from running ad-hoc via SSH — needs a real migration, not a one-off write to a shared production table.
 
-### B. SimilarWeb traffic refresh — all 18 → Postgres (verified)
-- Full schema captured per company (visits/engagement/device/channels/geo/organic/paid keywords/referrers/industries/outgoing/display/social/demographics(age+gender)/competitor_traffic/category/ranks), sum-validated, source-labeled. `data_quality=verified-capture-full`. Reference impl: `docs/temp/sw-capture/{f,d,c}{1,2,3}.json` + `sw_upsert3.py`.
-- Duplicate audit rows cleaned (belk/dell/orientaltrading dupes deleted; 18 accounts/18 audits).
-- **SimilarWeb = PERMANENT HITL** (no API, key dead forever). Marked in: `algolia-intel-traffic/SKILL.md` (local + arijit-skills GH `cb77604` + VPS pull) + memory `reference-similarweb-permanent-hitl`. Method: log into pro.similarweb.com, extract from Highcharts chart-data + DOM, sum-validate, completeness-gate.
+## Remaining work
+- Fix the Clerk-handshake/fetch bug (highest priority — see "Where we stopped").
+- Once fixed, roll the live-fetch page wiring to belk/dell/jbl/nike (currently Lululemon only).
+- Run the Gymshark case-study migration properly.
+- Wire `algolia-intel-partner` to actually call Crossbeam MCP tools instead of Gemini-grounded search.
+- Investigate whether Scout can do interactive site-search (form fill + submit) — needed to verify specific job-posting claims on hiring; Scout's basic `/scrape` couldn't do it in this session's testing.
+- Execute `PIPELINE-UNIFICATION-PLAN.md` Phases 1 (finish skill symlinking) through 7 (full re-validation of every existing company).
+- `algolia-search-audit` manual script reconciliation (Phase 0.2 in the plan) — needs Arijit or a human reviewer, not something to automate blind.
 
-### C. PRISM V2 — pivot + prism2 live
-- Pivot: **standalone product first** (Algolia = first domain module), **best-of-breed stack** (Postgres+pgvector + Claude Agent SDK), 3 roles (AE/BDR/Marketer). Beta = Algolia Marketing+Sales leadership (their #1 ask = landing-page building). 2nd pitch = Spryker; domain-swap set = Spryker/Amplience/Contentful/Cloudinary. HeyGen+Telegram = Phase 2.
-- Built + deployed: 3 role doors + data-driven landing builder (Nike/Dell), `prism-v2` branch pushed, VPS reorg (/opt/PRISM/v1+v2), prism2.chowmes.com live (basic-auth).
-- Docs: `docs/PRISM-V2/06-v2-execution-map.md`, `07-design-system.md`, `08-fable5-handoff-prompt.md` (+ vault mirror `Projects/PRISM/wiki/V2/`).
+## Reference files
+- VPS: `arijit-skills/docs/PIPELINE-UNIFICATION-PLAN.md` — the full plan, read this first.
+- VPS: `algolia-search-audit/scripts/sync-live-page.py` — the interim data-sync tool (repo + live path, both have it).
+- VPS: `/opt/PRISM/v1/server/chat-proxy.mjs` — the live-fetch API route lives here (backup: `chat-proxy.mjs.bak-preLiveFetch-20260709`).
+- VPS: `/opt/prism-executor/audits/lululemon/deliverables/lululemon-factcheck-report.md`, `-correction-manifest.md`, `-skill-feedback.md`, `research/FACTCHECK_GATE.md` — the full 23-dimension re-validation writeup (score 9.8/10, PROCEED).
+- Local: `/tmp/arijit-skills-push2-20260709` — pending GitHub push (3 commits, not yet pushed at persist time).
+- Gymshark migration SQL (drafted, not run):
+  ```sql
+  INSERT INTO algolia_case_studies (customer_name, url, industry, sub_vertical, use_case, features_used, key_results, status)
+  VALUES ('Gymshark', 'https://www.algolia.com/customers/gymshark-headless', 'Retail', 'Athletic Apparel',
+  'Headless commerce migration; AI-based merchandising replacing manual process',
+  '["AI Synonyms", "AI-based Merchandising", "Dynamic Re-Ranking"]',
+  'Search conversion 6.2% to over 10% · revenue from search users up 400%+ YoY · search usage +20%', 'customer');
+  ```
+- Vault: `Projects/PRISM/index.md` (compiled truth, updated this session), `log.md` (full narrative entry), `tasks.md` (updated task ledger).
+- Memory: `project-prism-lululemon-fullrevalidation-2026-07-09`, `feedback-verify-before-assuming-infra-broken`, `two-copies-architecture-antipattern`.
 
-## REMAINING WORK (in order)
-1. **DB-backed auto-render (NEXT — in progress).** Reports currently STATIC (data baked at render). Build: a `prism_platform` API endpoint serving `audit_data` by slug (reads Postgres) + the report page fetches from it (or a render-on-DB-change trigger). So DB updates reflect on the live site automatically. This is the user's explicit next task.
-2. Reconcile schema drift at the SOURCE (so future renders don't need `migrate_schema.py`) — align the audit pipeline's output to the current renderer Pydantic schema.
-3. V2 backend (Fable-5 package): executioner POC (needs ANTHROPIC_API_KEY), Postgres schema, chat-as-operator, modular rearchitecture — per `06` §7 open research R1-R10.
-4. Belk deeper: query-specific screenshots blocked by PerimeterX WAF — needs a stealth/HITL workaround if wanted.
-5. Other 15 audits: only traffic refreshed; NOT re-rendered (live sites still show old traffic for the other 15). Same migrate→render→deploy pattern applies.
+## What has NOT been done (read this before claiming anything is finished)
+- The live-fetch API works at the query level but is NOT actually serving live data to any page yet — the auth bug blocks it, and every page (including Lululemon) is still running on its static baked-in data blob as a fallback.
+- Only Lululemon's data was fully re-validated this session. Belk/dell/jbl/nike got the earlier JS-rendering-bug fixes (from a prior thread this same night) but did NOT get the same deep citation/ROI/industry-context/Crossbeam-level re-validation Lululemon got.
+- The `algolia_case_studies` Gymshark fix is drafted, not applied to the database.
+- Crossbeam is verified working but NOT wired into the actual `algolia-intel-partner` skill instructions — the next real audit run will still show "Crossbeam unavailable" until that skill file is edited.
+- `~/.claude/skills` still has ~40 skills never diff-checked against the repo — only 2 are confirmed safe and symlinked.
+- No Pydantic schema enforcement exists anywhere in the pipeline yet (Phase 3 of the plan, not started).
+- No per-skill factcheck gate exists yet — `module_executions.validation_json` is identified as the right hook but is not populated by anything (Phase 5 of the plan, not started).
+- The pending GitHub push (`/tmp/arijit-skills-push2-20260709`, 3 commits) may or may not have been pushed by the time you read this — check `git log origin/main` before assuming either way.
 
-## WHAT HAS NOT BEEN DONE (explicit — prevent false-green)
-- The other 15 audits (autozone, british-airways, brooks-running, dsw, footlocker, homedepot-mexico, jbl, labanquepostale, llbean, michaelkors, nike, oriental-trading, petsmart, savage-x-fenty, thenorthface, torrid) have fresh DB traffic but are **NOT re-rendered/redeployed** — live pages show OLD traffic. Only Dell/Belk/Lululemon were re-rendered.
-- Belk F01-F04 have no query screenshots (WAF). Dell had 4 findings' screenshots nulled (WAF/missing).
-- DB-backed auto-render NOT built yet (next task).
-- V2 backend (executioner/chat/modular) NOT built — planning only.
-- Dead SimilarWeb key still sits in `.claude.json` MCP header + PIP `.env` (commented) — harmless but stale.
-
-## KEY FILES THIS SESSION
-- `docs/PRISM-V2/06,07,08*.md` — V2 execution map + design system + Fable-5 prompt
-- `docs/temp/migrate_schema.py`, `sw_upsert3.py`, `sw-capture/*` — audit migration + traffic capture reference impls
-- `~/.claude/skills/algolia-intel-traffic/SKILL.md` — HITL banner (also pushed to arijit-skills GH)
-- Memory: `reference-similarweb-permanent-hitl`, `reference-prism-current-architecture-2026-07-06`, `feedback-prism-data-integrity-absolute`, `project-prism-v2-standalone-pivot-2026-07-06`
+## Files written this session
+VPS: `algolia-audit-factcheck/scripts/factcheck_mechanical.py`, `algolia-search-audit/scripts/generate-audit-data.py`, `calculate-roi.py`, `sync-live-page.py` (new), `algolia-intel-traffic/README.md` (both repo+live), `algolia-intel-traffic/SKILL.md` (live path, deployed from repo's already-correct version), `/opt/prism-executor/audits/lululemon/{research,deliverables}/*` (traffic, tech_stack, executives, case studies, industry_context, partner_intel, solution map, factcheck report/manifest/gate/feedback), `/opt/PRISM/v1/lululemon/index.html` + `/opt/PRISM/v1/{belk,dell,jbl,nike}/index.html` (JS fixes + data resync), `/opt/PRISM/v1/server/chat-proxy.mjs` (new API route, WIP), `/opt/prism-chat-proxy/.env`, `/opt/prism/scout/.env`. Local: `docs/PIPELINE-UNIFICATION-PLAN.md`, this file, vault `Projects/PRISM/{index.md,log.md,tasks.md}`, memory files listed above.
