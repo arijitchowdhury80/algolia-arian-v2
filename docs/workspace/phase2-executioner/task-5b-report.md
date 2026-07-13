@@ -58,6 +58,18 @@ Rough, stated as an order-of-magnitude estimate, not false precision:
 - **Stage 3 (adversarial):** **N=3 calls per risky claim**, and (per patch #1, confirmed already implemented in `gate.py`) only fires for claims stage 2 flagged `WEBSEARCH`/`NO_SOURCE` evidence tier — i.e. a strict subset of stage 2's claims, likely a minority in a well-sourced audit. As a rough guess, if ~20% of stage 2's claims are risky, that's roughly **(80-320) × 0.2 × 3 ≈ 48-192 calls** per audit.
 - **Total estimate for one full 16-skill audit, first pass, no retries:** roughly **150-500 `claude -p` calls**. Retries (self-heal's `max_passes=3` on `RETRY_WORTHY` blocks) could multiply the mechanical/quality-stage share of this by up to 3× in the worst case, but do NOT re-run stages that already produced a fatal `UNFIXABLE` block (patch #3 short-circuits those to `NEEDS_HUMAN` on first occurrence). This is a rough sanity-check number for Arijit, not a bid — the real number depends entirely on the (currently unbuilt) claim-extraction step's actual claim density per skill.
 
+**UPDATE (Task 5c, `claims.py` built + run against 3 real audit workspaces) — the "5-20 claims per skill" guess above was too high, replace with real measured numbers:**
+
+`extract_claims` only finds a claim-bearing structure in **4 of the 16 skills** (`algolia-intel-company`, `algolia-intel-investor`, `algolia-intel-industry`, `algolia-audit-report`) — the other 12 (tech stack, traffic, competitors, financial-public/private, social, news, hiring, partner, queries, browser, factcheck) have no citable quote/benchmark array anywhere in `validate-json-schema.py`'s ground truth, so they correctly extract zero claims, not a guessed 5-20 each. Measured against real, complete audit workspaces (`~/prism-data/audits/{Dell,jbl,lululemon}/`):
+
+| Audit | company | investor | industry | report | **total (16 skills)** |
+|---|---|---|---|---|---|
+| Dell | 4 | 3 | 1 | 13 | **21** |
+| jbl | 10 | 0 | 6 | 16 | **32** |
+| lululemon | 3 | 2 | 7 | 11 | **23** |
+
+**Real stage-2 (factcheck) call count per audit: ~21-32, not 80-320.** Revised total estimate for one full 16-skill audit, first pass, no retries: **16 (quality) + ~21-32 (factcheck) + a small adversarial subset (N=3 × ~20% of ~21-32 ≈ 12-19) ≈ 50-70 `claude -p` calls**, roughly 3-6x cheaper than the original order-of-magnitude guess. Still a real-audit sample of 3, not a guaranteed ceiling — a company with an unusually quote-dense investor/industry file could exceed this, but the guess's original upper bound (500 calls) is now confirmed to be a substantial overestimate for typical audits.
+
 ## Test results (verbatim)
 
 ```
