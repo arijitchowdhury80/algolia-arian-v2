@@ -994,7 +994,7 @@ def handle_run(body):
         "created": _now(),
         "dry": bool(body.get("dry")),
     }
-    for k in ("phase", "skill", "skip"):
+    for k in ("phase", "skill", "skip", "engine"):
         v = body.get(k)
         if v:
             job[k] = str(v).strip()

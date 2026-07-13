@@ -143,6 +143,18 @@ def test_handle_run_threads_skill_and_skip_into_job(runner):
     assert job["skip"] == "similarweb-login"
 
 
+def test_handle_run_threads_engine_v3_into_job(runner, monkeypatch):
+    """A real POST /run caller asking for engine=v3 must actually get it --
+    before this fix, `engine` was silently dropped and every /run call ran
+    the legacy v1 path regardless of what the caller requested. Stubs
+    run_job_v3 (same pattern as test_run_job_engine_v3_delegates_to_run_job_v3)
+    so this test doesn't spawn a real background dispatch."""
+    monkeypatch.setattr(runner, "run_job_v3", lambda *a, **k: None)
+    _code, body = runner.handle_run({"domain": "dell.com", "engine": "v3"})
+    job = runner.read_job(body["job_id"])
+    assert job["engine"] == "v3"
+
+
 def test_build_audit_cmd_domain_only_is_v1_identical_argv(runner):
     job = {"domain": "dell.com"}
     cmd = runner.build_audit_cmd(job)
