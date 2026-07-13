@@ -42,7 +42,7 @@ def build_score(d):
     sc = d.get("score") or {}
     return {
         "overall": sc.get("overall", "—"),
-        "scale": 5,
+        "scale": 10,
         "verdict": sc.get("verdict", ""),
         "critical_count": sc.get("critical_count", sc.get("low_count", 0)),
         "moderate_count": sc.get("moderate_count", 0),

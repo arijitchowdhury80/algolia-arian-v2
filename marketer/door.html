@@ -241,7 +241,7 @@
       document.getElementById("account-chip").textContent = "account: " + (d.meta.company || account);
       document.getElementById("company-name").textContent = d.meta.company + " — " + d.meta.domain;
       document.getElementById("score-line").innerHTML =
-        "Score <b>" + d.score.overall + "/5</b> — " + escapeHtml(d.score.verdict);
+        "Score <b>" + d.score.overall + "/10</b> — " + escapeHtml(d.score.verdict);
 
       var hook = d.narrative_hook;
       if (hook && hook.text) {
