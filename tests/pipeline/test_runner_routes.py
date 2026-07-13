@@ -87,6 +87,7 @@ class FakeProc:
 
 # ---------------------------------------------------------------- slugify / job I/O (v1 unchanged)
 
+
 @pytest.mark.parametrize(
     "domain,expected",
     [
@@ -108,6 +109,7 @@ def test_write_and_read_job_roundtrip(runner):
 
 
 # ---------------------------------------------------------- POST /run — v1 compat + new fields
+
 
 def test_handle_run_domain_only_matches_v1_shape(runner):
     code, body = runner.handle_run({"domain": "dell.com"})
@@ -157,6 +159,7 @@ def test_build_audit_cmd_threads_phase_skill_skip_as_flags(runner):
 
 # ---------------------------------------------------------------- POST /rerun
 
+
 def test_handle_rerun_requires_slug(runner):
     code, _body = runner.handle_rerun({"phase": "traffic"})
     assert code == 400
@@ -186,15 +189,28 @@ def test_handle_rerun_finds_domain_from_job_history_and_starts_scoped_job(runner
 
 
 def test_handle_rerun_uses_most_recent_job_for_slug(runner):
-    runner.write_job({"job_id": "dell-1", "slug": "dell", "domain": "old-dell.com",
-                       "created": "2026-01-01T00:00:00Z"})
-    runner.write_job({"job_id": "dell-2", "slug": "dell", "domain": "dell.com",
-                       "created": "2026-07-01T00:00:00Z"})
+    runner.write_job(
+        {
+            "job_id": "dell-1",
+            "slug": "dell",
+            "domain": "old-dell.com",
+            "created": "2026-01-01T00:00:00Z",
+        }
+    )
+    runner.write_job(
+        {
+            "job_id": "dell-2",
+            "slug": "dell",
+            "domain": "dell.com",
+            "created": "2026-07-01T00:00:00Z",
+        }
+    )
     prior = runner.find_latest_job_for_slug("dell")
     assert prior["job_id"] == "dell-2"
 
 
 # ---------------------------------------------------- run_job — phase/skill DI, fake subprocess
+
 
 def test_run_job_dry_run_completes_without_subprocess(runner):
     job = {"job_id": "dry-1", "domain": "dell.com", "slug": "dell", "dry": True}
@@ -207,8 +223,12 @@ def test_run_job_dry_run_completes_without_subprocess(runner):
 def test_run_job_success_publishes_and_marks_done(runner):
     _write_audit_data(runner, "dell")
     job = {"job_id": "dell-ok", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
-                    sleep_fn=lambda s: None, clock_fn=lambda: 0.0)
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: 0.0,
+    )
     saved = runner.read_job("dell-ok")
     assert saved["status"] == "done"
     assert saved["rc"] == 0
@@ -217,8 +237,12 @@ def test_run_job_success_publishes_and_marks_done(runner):
 
 def test_run_job_nonzero_exit_marks_failed(runner):
     job = {"job_id": "dell-fail", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=lambda *a, **k: FakeProc(poll_sequence=(1,)),
-                    sleep_fn=lambda s: None, clock_fn=lambda: 0.0)
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: FakeProc(poll_sequence=(1,)),
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: 0.0,
+    )
     saved = runner.read_job("dell-fail")
     assert saved["status"] == "failed"
     assert saved["rc"] == 1
@@ -227,8 +251,12 @@ def test_run_job_nonzero_exit_marks_failed(runner):
 def test_run_job_missing_audit_data_marks_published_failed(runner):
     # rc==0 but no *-audit-data.json ever written -> publish_to_store fails.
     job = {"job_id": "dell-nopub", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
-                    sleep_fn=lambda s: None, clock_fn=lambda: 0.0)
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: 0.0,
+    )
     saved = runner.read_job("dell-nopub")
     assert saved["status"] == "published_failed"
 
@@ -256,6 +284,7 @@ def test_run_job_detects_needs_human_marker_and_continues(runner):
     """The SimilarWeb HITL mark-and-continue contract (plan §3.2): a
     NEEDS_HUMAN marker in the log does NOT fail the job — rc==0 still
     publishes, with the blocked module recorded in needs_human."""
+
     def fake_popen(cmd, stdout, stderr, cwd):
         stdout.write("NEEDS_HUMAN:similarweb:login required for traffic data\n")
         stdout.flush()
@@ -270,6 +299,7 @@ def test_run_job_detects_needs_human_marker_and_continues(runner):
 
 
 # ---------------------------------------------------------------- GET /status/<job_id>
+
 
 def test_handle_status_404_for_unknown_job(runner):
     code, _body = runner.handle_status("no-such-job")
@@ -293,6 +323,7 @@ def test_handle_status_includes_skills_and_needs_human_and_log_tail(runner):
 
 # ---------------------------------------------------------------- per-job wall-clock timeout
 
+
 def test_run_job_wall_clock_timeout_kills_and_marks_needs_human(runner):
     """A job whose subprocess never finishes must not hang the slot forever —
     it gets killed and marked needs_human with a timeout reason once the
@@ -304,8 +335,14 @@ def test_run_job_wall_clock_timeout_kills_and_marks_needs_human(runner):
         return proc
 
     job = {"job_id": "dell-hang", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=fake_popen, sleep_fn=lambda s: None,
-                    clock_fn=lambda: next(clock), poll_interval_s=0, timeout_s=20)
+    runner.run_job(
+        job,
+        popen_fn=fake_popen,
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: next(clock),
+        poll_interval_s=0,
+        timeout_s=20,
+    )
     saved = runner.read_job("dell-hang")
     assert saved["status"] == "needs_human"
     assert proc.terminated is True
@@ -313,6 +350,7 @@ def test_run_job_wall_clock_timeout_kills_and_marks_needs_human(runner):
 
 
 # ---------------------------------------------------------------- notify on completion
+
 
 def test_notify_job_finished_noop_when_unconfigured(runner, monkeypatch):
     monkeypatch.delenv("PRISM_NOTIFY_BOT_TOKEN", raising=False)
@@ -383,8 +421,12 @@ def test_run_job_success_triggers_notify(runner, monkeypatch):
     monkeypatch.setattr(runner, "notify_job_finished", lambda job: calls.append(job["status"]))
     _write_audit_data(runner, "dell")
     job = {"job_id": "dell-notify", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
-                    sleep_fn=lambda s: None, clock_fn=lambda: 0.0)
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: 0.0,
+    )
     assert calls == ["done"]
 
 
@@ -394,8 +436,14 @@ def test_run_job_timeout_triggers_notify(runner, monkeypatch):
     proc = FakeProc(poll_sequence=(None, None, None, None))
     clock = iter([0.0, 0.0, 5.0, 15.0, 25.0, 35.0])
     job = {"job_id": "dell-hang-notify", "domain": "dell.com", "slug": "dell"}
-    runner.run_job(job, popen_fn=lambda *a, **k: proc, sleep_fn=lambda s: None,
-                    clock_fn=lambda: next(clock), poll_interval_s=0, timeout_s=20)
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: proc,
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: next(clock),
+        poll_interval_s=0,
+        timeout_s=20,
+    )
     assert calls == ["needs_human"]
 
 
@@ -413,7 +461,127 @@ def test_terminate_does_not_sigkill_if_process_exits_during_grace(runner):
     assert proc.killed is False
 
 
+# ---------------------------------------------------------- run_job — v3 engine (Task 4a)
+# Feature-flagged, OFF by default: job.get("engine") == "v3" routes run_job
+# into run_job_v3 (per-skill dispatch -> gate -> retry via self_heal.SelfHealLoop)
+# instead of the single-claude-p-subprocess legacy path. All fakes here are
+# dependency-injected (v3_dispatch_fn/v3_gate_fn/v3_on_attempt) so these tests
+# never touch prism_platform.pipeline.executioner's real subprocess/LLM/DB
+# wiring, matching the DI pattern already used for popen_fn/sleep_fn above.
+
+
+def test_run_job_engine_v3_default_off_uses_legacy_path(runner, monkeypatch):
+    """A job with no `engine` key must NEVER reach run_job_v3 — the legacy
+    single-subprocess path is the untouched default."""
+    calls = []
+    monkeypatch.setattr(runner, "run_job_v3", lambda *a, **k: calls.append(1))
+    _write_audit_data(runner, "dell")
+    job = {"job_id": "dell-legacy", "domain": "dell.com", "slug": "dell"}
+    runner.run_job(
+        job,
+        popen_fn=lambda *a, **k: FakeProc(poll_sequence=(0,)),
+        sleep_fn=lambda s: None,
+        clock_fn=lambda: 0.0,
+    )
+    assert calls == []
+    saved = runner.read_job("dell-legacy")
+    assert saved["status"] == "done"  # legacy path still completes normally
+
+
+def test_run_job_engine_v3_delegates_to_run_job_v3(runner, monkeypatch):
+    calls = []
+    monkeypatch.setattr(
+        runner,
+        "run_job_v3",
+        lambda job, **kw: calls.append((job["job_id"], kw)),
+    )
+    job = {"job_id": "dell-v3", "domain": "dell.com", "slug": "dell", "engine": "v3"}
+    runner.run_job(job)
+    assert len(calls) == 1
+    assert calls[0][0] == "dell-v3"
+
+
+def test_run_job_v3_requires_prism_platform_available(runner):
+    """If prism_platform (self_heal/executioner) isn't importable on this
+    host, engine=v3 must fail loudly, not silently fall back to v1."""
+    runner._executioner = None
+    runner._self_heal = None
+    job = {"job_id": "dell-v3-unavail", "domain": "dell.com", "slug": "dell", "engine": "v3"}
+    runner.run_job_v3(job)
+    saved = runner.read_job("dell-v3-unavail")
+    assert saved["status"] == "failed"
+    assert "not importable" in saved["error"]
+
+
+def test_run_job_v3_all_skills_clean_marks_done_and_publishes(runner):
+    _write_audit_data(runner, "dell")
+    job = {"job_id": "dell-v3-clean", "domain": "dell.com", "slug": "dell", "dry": True}
+
+    def fake_dispatch(skill_name, attempt_number):
+        return True
+
+    def fake_gate(skill_name):
+        return runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN)
+
+    runner.run_job_v3(
+        job, dispatch_fn=fake_dispatch, gate_fn=fake_gate, on_attempt=lambda attempt: None
+    )
+    saved = runner.read_job("dell-v3-clean")
+    assert saved["status"] == "done"
+    assert len(saved["v3_reports"]) == len(runner._executioner.SKILL_NAMES)
+    assert all(r["outcome"] == "clean" for r in saved["v3_reports"])
+
+
+def test_run_job_v3_fatal_gate_marks_needs_human_without_publishing(runner):
+    """A fatal (UNFIXABLE) gate result on any skill must escalate the WHOLE
+    job to needs_human — this proves the v3 wiring reaches self_heal's
+    fatal early-exit path (patch #3), not just the CLEAN path."""
+    job = {"job_id": "dell-v3-fatal", "domain": "dell.com", "slug": "dell", "dry": True}
+    calls = {"n": 0}
+
+    def fake_dispatch(skill_name, attempt_number):
+        calls["n"] += 1
+        return True
+
+    def fake_gate(skill_name):
+        if skill_name == runner._executioner.SKILL_NAMES[0]:
+            return runner._self_heal.GateResult(
+                status=runner._self_heal.GateStatus.BLOCKED, fatal=True, findings=("contradicted",)
+            )
+        return runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN)
+
+    runner.run_job_v3(
+        job, dispatch_fn=fake_dispatch, gate_fn=fake_gate, on_attempt=lambda attempt: None
+    )
+    saved = runner.read_job("dell-v3-fatal")
+    assert saved["status"] == "needs_human"
+    assert runner._executioner.SKILL_NAMES[0] in saved["needs_human"]
+    # fatal short-circuits after 1 attempt, not max_passes(3) attempts
+    assert calls["n"] == 1
+    assert "publish" not in saved
+
+
+def test_run_job_v3_on_attempt_observer_is_called_per_skill(runner):
+    """The on_attempt observer must fire once per dispatch+gate cycle across
+    the whole pipeline, proving SelfHealLoop.run_pipeline is really being
+    driven (not stubbed out)."""
+    job = {"job_id": "dell-v3-observed", "domain": "dell.com", "slug": "dell", "dry": True}
+    seen = []
+
+    def fake_gate(skill_name):
+        return runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN)
+
+    runner.run_job_v3(
+        job,
+        dispatch_fn=lambda skill_name, attempt_number: True,
+        gate_fn=fake_gate,
+        on_attempt=lambda attempt: seen.append(attempt.phase),
+    )
+    assert seen == list(runner._executioner.SKILL_NAMES)
+
+
 # ---------------------------------------------------------------- POST /kill
+
 
 def test_handle_kill_requires_job_id(runner):
     code, _body = runner.handle_kill({})
@@ -434,8 +602,15 @@ def test_handle_kill_409_for_a_job_not_running(runner):
 def test_handle_kill_marks_job_killed(runner, monkeypatch):
     """kill_job signals via os.kill — patch it out so the test never sends a
     real signal to a real pid; assert only the job bookkeeping."""
-    runner.write_job({"job_id": "run-1", "slug": "dell", "domain": "dell.com",
-                       "status": "running", "pid": 99999999})
+    runner.write_job(
+        {
+            "job_id": "run-1",
+            "slug": "dell",
+            "domain": "dell.com",
+            "status": "running",
+            "pid": 99999999,
+        }
+    )
     calls = []
 
     def fake_kill(pid, sig):
@@ -453,11 +628,26 @@ def test_handle_kill_marks_job_killed(runner, monkeypatch):
 
 # ---------------------------------------------------------------- GET /needs_human
 
+
 def test_handle_needs_human_lists_only_jobs_with_blockers(runner):
-    runner.write_job({"job_id": "clean-1", "slug": "clean", "domain": "clean.com",
-                       "status": "done", "needs_human": {}})
-    runner.write_job({"job_id": "blocked-1", "slug": "belk", "domain": "belk.com", "status": "done",
-                       "needs_human": {"algolia-intel-traffic": "login required"}})
+    runner.write_job(
+        {
+            "job_id": "clean-1",
+            "slug": "clean",
+            "domain": "clean.com",
+            "status": "done",
+            "needs_human": {},
+        }
+    )
+    runner.write_job(
+        {
+            "job_id": "blocked-1",
+            "slug": "belk",
+            "domain": "belk.com",
+            "status": "done",
+            "needs_human": {"algolia-intel-traffic": "login required"},
+        }
+    )
     code, body = runner.handle_needs_human()
     assert code == 200
     slugs = [w["slug"] for w in body["waiting"]]
@@ -465,19 +655,35 @@ def test_handle_needs_human_lists_only_jobs_with_blockers(runner):
 
 
 def test_handle_needs_human_empty_when_nothing_blocked(runner):
-    runner.write_job({"job_id": "clean-1", "slug": "clean", "domain": "clean.com",
-                       "status": "done"})
+    runner.write_job(
+        {"job_id": "clean-1", "slug": "clean", "domain": "clean.com", "status": "done"}
+    )
     _code, body = runner.handle_needs_human()
     assert body["waiting"] == []
 
 
 # ---------------------------------------------------------------- GET /jobs (unchanged v1 route)
 
+
 def test_handle_jobs_returns_recent_jobs(runner):
-    runner.write_job({"job_id": "a", "slug": "a", "domain": "a.com", "status": "done",
-                       "created": "2026-01-01T00:00:00Z"})
-    runner.write_job({"job_id": "b", "slug": "b", "domain": "b.com", "status": "done",
-                       "created": "2026-01-02T00:00:00Z"})
+    runner.write_job(
+        {
+            "job_id": "a",
+            "slug": "a",
+            "domain": "a.com",
+            "status": "done",
+            "created": "2026-01-01T00:00:00Z",
+        }
+    )
+    runner.write_job(
+        {
+            "job_id": "b",
+            "slug": "b",
+            "domain": "b.com",
+            "status": "done",
+            "created": "2026-01-02T00:00:00Z",
+        }
+    )
     code, body = runner.handle_jobs()
     assert code == 200
     assert {j["job_id"] for j in body["jobs"]} == {"a", "b"}

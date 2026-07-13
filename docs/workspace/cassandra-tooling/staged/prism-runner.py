@@ -57,6 +57,7 @@ from v1).
 Runs as root (systemd). The audit itself is dropped to chowmesadmin (skills+auth env);
 the publish step writes the root-owned store.
 """
+
 import contextlib
 import glob
 import json
@@ -70,11 +71,31 @@ import time
 import uuid as _uuid
 from datetime import UTC, datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 
 try:
     import psycopg2
 except Exception:  # pragma: no cover — DB is optional/fail-soft by design
     psycopg2 = None
+
+# v3 engine (Task 4a, Track C.1): per-skill dispatch -> gate -> retry loop via
+# prism_platform.pipeline.self_heal.SelfHealLoop, instead of one long
+# `claude -p` subprocess running all 16 skills internally. OFF BY DEFAULT —
+# only reached when a job explicitly sets job["engine"] == "v3" (see
+# run_job()'s dispatch at its very top). This is a bare HOST script with no
+# guaranteed app install (see the psycopg2 guard above and this file's own
+# module docstring: "runs standalone on the host with no app install") — so
+# the whole prism_platform import is optional/fail-soft the same way, and
+# engine=v3 fails loudly (not silently falling back to the legacy path,
+# which would defeat the point of explicitly requesting it) if unavailable.
+try:
+    from prism_platform.pipeline import db_write as _db_write
+    from prism_platform.pipeline import executioner as _executioner
+    from prism_platform.pipeline import self_heal as _self_heal
+except Exception:  # pragma: no cover — prism_platform app not installed on this host
+    _db_write = None
+    _executioner = None
+    _self_heal = None
 
 # Overridable via env for tests/dev sandboxes where /opt and /root aren't
 # writable; production leaves these unset and gets the exact live paths.
@@ -175,12 +196,22 @@ PHASE_MARKERS = [
 # why detect_phase() above stays as the fallback. Skill names match the
 # algolia-intel-* / algolia-audit-* skill catalog.
 SKILL_NAMES = (
-    "algolia-intel-company", "algolia-intel-techstack", "algolia-intel-traffic",
-    "algolia-intel-competitors", "algolia-intel-financial-public",
-    "algolia-intel-financial-private", "algolia-intel-investor",
-    "algolia-intel-social", "algolia-intel-news", "algolia-intel-hiring",
-    "algolia-intel-partner", "algolia-intel-industry", "algolia-intel-queries",
-    "algolia-audit-browser", "algolia-audit-report", "algolia-audit-factcheck",
+    "algolia-intel-company",
+    "algolia-intel-techstack",
+    "algolia-intel-traffic",
+    "algolia-intel-competitors",
+    "algolia-intel-financial-public",
+    "algolia-intel-financial-private",
+    "algolia-intel-investor",
+    "algolia-intel-social",
+    "algolia-intel-news",
+    "algolia-intel-hiring",
+    "algolia-intel-partner",
+    "algolia-intel-industry",
+    "algolia-intel-queries",
+    "algolia-audit-browser",
+    "algolia-audit-report",
+    "algolia-audit-factcheck",
 )
 _SKILL_START_RE = re.compile(r">>>\s*SKILL START:\s*([a-z0-9-]+)", re.I)
 _SKILL_DONE_RE = re.compile(r">>>\s*SKILL DONE:\s*([a-z0-9-]+)", re.I)
@@ -257,9 +288,8 @@ def publish_to_store(slug):
     """Copy the produced audit-data.json into Cass's store + upsert index.json.
     Returns (ok, detail). UNCHANGED from live prism-runner.py:101-157 — this is
     the file-publish path and stays authoritative regardless of DB outcome."""
-    candidates = (
-        glob.glob(f"{AUDITS_DIR}/{slug}/**/*audit-data.json", recursive=True)
-        + glob.glob(f"{AUDITS_DIR}/{slug}/*audit-data.json")
+    candidates = glob.glob(f"{AUDITS_DIR}/{slug}/**/*audit-data.json", recursive=True) + glob.glob(
+        f"{AUDITS_DIR}/{slug}/*audit-data.json"
     )
     candidates = [c for c in candidates if os.path.getsize(c) > 500]
     if not candidates:
@@ -292,11 +322,15 @@ def publish_to_store(slug):
             with open(INDEX_JSON) as f:
                 idx = json.load(f)
         except FileNotFoundError:
-            idx = {"schema": "chowmes-prism report store v1",
-                   "store_root": STORE_DIR, "reports": []}
+            idx = {
+                "schema": "chowmes-prism report store v1",
+                "store_root": STORE_DIR,
+                "reports": [],
+            }
         with contextlib.suppress(FileNotFoundError):
-            os.replace(INDEX_JSON, INDEX_JSON + ".bak-" +
-                       datetime.now(UTC).strftime("%Y%m%d-%H%M%S"))
+            os.replace(
+                INDEX_JSON, INDEX_JSON + ".bak-" + datetime.now(UTC).strftime("%Y%m%d-%H%M%S")
+            )
         idx["reports"] = [r for r in idx.get("reports", []) if r.get("slug") != slug]
         idx["reports"].append(entry)
         tmp = INDEX_JSON + ".tmp"
@@ -430,8 +464,14 @@ def db_write_audit_publish(job, slug, audit_data, needs_human=None):
                         "INSERT INTO audits (id, account_id, user_id, status, score, "
                         "audit_data, started_at, completed_at) "
                         "VALUES (%s, %s, %s, %s, %s, %s, now(), now())",
-                        (audit_id, account_id, "cassandra", "completed", score,
-                         json.dumps(audit_data)),
+                        (
+                            audit_id,
+                            account_id,
+                            "cassandra",
+                            "completed",
+                            score,
+                            json.dumps(audit_data),
+                        ),
                     )
                 for module_name, section_key in MODULE_SECTION_MAP.items():
                     reason = needs_human.get(module_name)
@@ -445,8 +485,16 @@ def db_write_audit_publish(job, slug, audit_data, needs_human=None):
                         "ON CONFLICT (audit_id, module_name) DO UPDATE SET "
                         "status=EXCLUDED.status, output_json=EXCLUDED.output_json, "
                         "error_message=EXCLUDED.error_message, completed_at=now()",
-                        (str(_uuid.uuid4()), audit_id, domain, module_name, "v1", status,
-                         json.dumps(output) if output is not None else None, reason),
+                        (
+                            str(_uuid.uuid4()),
+                            audit_id,
+                            domain,
+                            module_name,
+                            "v1",
+                            status,
+                            json.dumps(output) if output is not None else None,
+                            reason,
+                        ),
                     )
         return {"ok": True, "audit_id": audit_id}
     except Exception as exc:
@@ -461,6 +509,7 @@ def db_write_audit_publish(job, slug, audit_data, needs_human=None):
 # ==========================================================================
 # Job execution
 # ==========================================================================
+
 
 def build_audit_cmd(job):
     """Build the run-audit.sh argv for this job. `domain`-only jobs (v1
@@ -524,12 +573,39 @@ def notify_job_finished(job, send_fn=_telegram_send):
         return False
 
 
-def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.monotonic,
-            poll_interval_s=POLL_INTERVAL_S, timeout_s=JOB_TIMEOUT_S):
+def run_job(
+    job,
+    popen_fn=subprocess.Popen,
+    sleep_fn=time.sleep,
+    clock_fn=time.monotonic,
+    poll_interval_s=POLL_INTERVAL_S,
+    timeout_s=JOB_TIMEOUT_S,
+    v3_dispatch_fn=None,
+    v3_gate_fn=None,
+    v3_on_attempt=None,
+    v3_max_passes=3,
+):
     """Run one audit job to completion (or timeout/kill). Dependency-injected
     (popen_fn/sleep_fn/clock_fn) so tests never spawn a real subprocess or
     sleep real wall-clock time — same DI shape as prism_platform/pipeline/self_heal.py
-    in this repo."""
+    in this repo.
+
+    `job["engine"] == "v3"` (opt-in, default unset) routes to `run_job_v3`
+    instead of the single-`claude -p`-subprocess path below — everything
+    from here down this function is the UNCHANGED v1/legacy path, the
+    default for every job that doesn't explicitly ask for v3.
+    `v3_dispatch_fn`/`v3_gate_fn`/`v3_on_attempt`/`v3_max_passes` are only
+    consulted when engine=="v3"; they are new trailing kwargs so no existing
+    call site (which never passes them) changes behaviour."""
+    if job.get("engine") == "v3":
+        return run_job_v3(
+            job,
+            dispatch_fn=v3_dispatch_fn,
+            gate_fn=v3_gate_fn,
+            on_attempt=v3_on_attempt,
+            max_passes=v3_max_passes,
+        )
+
     # Build the command line from the REQUESTED phase/skill/skip BEFORE anything
     # below overwrites job["phase"] for progress-tracking. job["phase"] is reused
     # as both "the phase the caller asked to run" (input) and "which phase the
@@ -561,8 +637,7 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
             rc = 0
         else:
             with open(logfile, "w") as lf:
-                proc = popen_fn(cmd, stdout=lf, stderr=subprocess.STDOUT,
-                                 cwd=EXEC_DIR)
+                proc = popen_fn(cmd, stdout=lf, stderr=subprocess.STDOUT, cwd=EXEC_DIR)
                 job["pid"] = proc.pid
                 write_job(job)
                 killed_for_timeout = False
@@ -579,8 +654,9 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
                 rc = proc.returncode if proc.returncode is not None else -9
                 if killed_for_timeout:
                     job["status"] = "needs_human"
-                    job["needs_human"] = dict(job.get("needs_human") or {},
-                                               _job=f"wall-clock timeout after {timeout_s}s")
+                    job["needs_human"] = dict(
+                        job.get("needs_human") or {}, _job=f"wall-clock timeout after {timeout_s}s"
+                    )
                     job["rc"] = rc
                     job["finished"] = _now()
                     write_job(job)
@@ -600,8 +676,9 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
             job["publish"] = detail
             job["phase"] = "done"
             if ok and not dry:
-                db_result = db_write_audit_publish(job, job["slug"], data,
-                                                    needs_human=job.get("needs_human"))
+                db_result = db_write_audit_publish(
+                    job, job["slug"], data, needs_human=job.get("needs_human")
+                )
                 job["db_publish"] = db_result
         else:
             job["status"] = "failed"
@@ -610,6 +687,146 @@ def run_job(job, popen_fn=subprocess.Popen, sleep_fn=time.sleep, clock_fn=time.m
         job["status"] = "failed"
         job["error"] = repr(e)
         job["finished"] = _now()
+    write_job(job)
+    notify_job_finished(job)
+
+
+def _v3_default_on_attempt(job, verdict_sink):
+    """Builds the real `on_attempt` observer for the v3 engine: persists
+    each dispatch+gate attempt to `module_executions` via
+    `db_write.write_module_execution_row`, using the richer `gate.Verdict`
+    stashed in `verdict_sink` by `executioner.make_gate_fn` (a bare
+    `self_heal.GateResult` doesn't carry the 5-stage sub-verdicts).
+    Fail-soft by construction: `SelfHealLoop._notify` already wraps every
+    `on_attempt` call in `contextlib.suppress(Exception)`, but this also logs
+    via `_log_db_error` (same pattern as every other DB write in this file)
+    so a failure is visible instead of silently vanishing."""
+
+    def _on_attempt(attempt):
+        if job.get("dry") or _db_write is None:
+            return
+        verdict = verdict_sink.get(attempt.phase)
+        try:
+            import asyncio
+
+            from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
+
+            async def _write():
+                dsn = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
+                engine = create_async_engine(dsn)
+                try:
+                    session_factory = async_sessionmaker(engine, expire_on_commit=False)
+                    async with session_factory() as session:
+                        await _db_write.write_module_execution_row(
+                            session,
+                            audit_id=job.get("_db_audit_id"),
+                            domain=job["domain"],
+                            verdict=verdict,
+                            attempt=attempt,
+                        )
+                finally:
+                    await engine.dispose()
+
+            asyncio.run(_write())
+        except Exception as exc:
+            _log_db_error("v3_on_attempt", exc)
+
+    return _on_attempt
+
+
+def run_job_v3(job, *, dispatch_fn=None, gate_fn=None, on_attempt=None, max_passes=3):
+    """v3 engine (Task 4a, Track C.1): per-skill dispatch -> gate -> retry
+    loop via `self_heal.SelfHealLoop`, instead of one long-running
+    `claude -p` subprocess running all 16 skills internally with only
+    log-marker progress tracking. ADDITIVE — only reached via `run_job`'s
+    `job.get("engine") == "v3"` branch; the legacy path is completely
+    untouched by this function's existence and remains the default.
+
+    Requires `prism_platform` (the FastAPI app package) to be importable —
+    NOT guaranteed on a bare host deploy (see the try/except import guard at
+    the top of this file). Fails loudly with `status="failed"` rather than
+    silently falling back to the legacy behaviour if unavailable, since a
+    caller explicitly asking for engine=v3 needs to know it didn't run, not
+    get a silent v1 run instead.
+    """
+    if _executioner is None or _self_heal is None:
+        job["status"] = "failed"
+        job["error"] = "engine=v3 requested but prism_platform is not importable on this host"
+        job["finished"] = _now()
+        write_job(job)
+        notify_job_finished(job)
+        return
+
+    job["status"] = "running"
+    job["phase"] = "starting"
+    write_job(job)
+
+    domain = job["domain"]
+    slug = job["slug"]
+    audit_dir = Path(AUDITS_DIR) / slug
+    company_name = job.get("company_name") or slug.replace("-", " ").title()
+
+    if not job.get("dry"):
+        job["_db_audit_id"] = db_write_audit_start(job)
+        write_job(job)
+
+    verdict_sink: dict = {}
+    _dispatch = dispatch_fn if dispatch_fn is not None else _executioner.make_dispatch_fn(domain)
+    _gate = (
+        gate_fn
+        if gate_fn is not None
+        else _executioner.make_gate_fn(domain, company_name, audit_dir, verdict_sink=verdict_sink)
+    )
+    _observer = on_attempt if on_attempt is not None else _v3_default_on_attempt(job, verdict_sink)
+
+    try:
+        loop = _self_heal.SelfHealLoop(
+            dispatch=_dispatch, gate=_gate, max_passes=max_passes, on_attempt=_observer
+        )
+        reports = loop.run_pipeline(_executioner.SKILL_NAMES)
+    except Exception as e:
+        job["status"] = "failed"
+        job["error"] = repr(e)
+        job["finished"] = _now()
+        write_job(job)
+        notify_job_finished(job)
+        return
+
+    job["v3_reports"] = [
+        {
+            "phase": r.phase,
+            "outcome": r.outcome.value,
+            "attempts": len(r.attempts),
+            "escalation_reason": r.escalation_reason,
+        }
+        for r in reports
+    ]
+    needs_human = {
+        r.phase: (r.escalation_reason or "gate escalation")
+        for r in reports
+        if r.outcome == _self_heal.PhaseOutcome.NEEDS_HUMAN
+    }
+    if needs_human:
+        job["status"] = "needs_human"
+        job["needs_human"] = dict(job.get("needs_human") or {}, **needs_human)
+        job["finished"] = _now()
+        write_job(job)
+        notify_job_finished(job)
+        return
+
+    if job.get("dry"):
+        ok, detail, data = True, "dry", {}
+    else:
+        published = publish_to_store(slug)
+        ok, detail = published[0], published[1]
+        data = published[2] if ok and len(published) > 2 else {}
+    job["status"] = "done" if ok else "published_failed"
+    job["publish"] = detail
+    job["phase"] = "done"
+    if ok and not job.get("dry"):
+        db_result = db_write_audit_publish(job, slug, data, needs_human=job.get("needs_human"))
+        job["db_publish"] = db_result
+    job["finished"] = _now()
     write_job(job)
     notify_job_finished(job)
 
@@ -675,6 +892,7 @@ def kill_job(job_id, sleep_fn=time.sleep):
 # testability without spinning a real server).
 # ==========================================================================
 
+
 def handle_run(body):
     """POST /run. `{domain}`-only body is byte-identical in behaviour to v1.
     `phase`/`skill`/`skip` are new, optional, and threaded into the job +
@@ -685,8 +903,12 @@ def handle_run(body):
     slug = slugify(domain)
     job_id = f"{slug}-{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}"
     job = {
-        "job_id": job_id, "domain": domain, "slug": slug,
-        "status": "queued", "created": _now(), "dry": bool(body.get("dry")),
+        "job_id": job_id,
+        "domain": domain,
+        "slug": slug,
+        "status": "queued",
+        "created": _now(),
+        "dry": bool(body.get("dry")),
     }
     for k in ("phase", "skill", "skip"):
         v = body.get(k)
@@ -694,8 +916,12 @@ def handle_run(body):
             job[k] = str(v).strip()
     write_job(job)
     threading.Thread(target=run_job, args=(job,), daemon=True).start()
-    return 202, {"job_id": job_id, "slug": slug, "status": "started",
-                 "note": "audit runs ~10-20 min; poll /status/<job_id>"}
+    return 202, {
+        "job_id": job_id,
+        "slug": slug,
+        "status": "started",
+        "note": "audit runs ~10-20 min; poll /status/<job_id>",
+    }
 
 
 def handle_rerun(body):
@@ -717,8 +943,12 @@ def handle_rerun(body):
     domain = prior["domain"]
     job_id = f"{slug}-rerun-{datetime.now(UTC).strftime('%Y%m%d-%H%M%S')}"
     job = {
-        "job_id": job_id, "domain": domain, "slug": slug,
-        "status": "queued", "created": _now(), "dry": bool(body.get("dry")),
+        "job_id": job_id,
+        "domain": domain,
+        "slug": slug,
+        "status": "queued",
+        "created": _now(),
+        "dry": bool(body.get("dry")),
         "rerun_of": prior.get("job_id"),
     }
     if phase:
@@ -727,9 +957,13 @@ def handle_rerun(body):
         job["skill"] = skill
     write_job(job)
     threading.Thread(target=run_job, args=(job,), daemon=True).start()
-    return 202, {"job_id": job_id, "slug": slug, "status": "started",
-                 "rerun_of": prior.get("job_id"),
-                 "note": f"re-running {'phase ' + phase if phase else 'skill ' + skill} for {slug}"}
+    return 202, {
+        "job_id": job_id,
+        "slug": slug,
+        "status": "started",
+        "rerun_of": prior.get("job_id"),
+        "note": f"re-running {'phase ' + phase if phase else 'skill ' + skill} for {slug}",
+    }
 
 
 def handle_status(job_id):
@@ -772,9 +1006,15 @@ def handle_needs_human():
             continue
         nh = job.get("needs_human") or {}
         if nh:
-            out.append({"job_id": job.get("job_id"), "slug": job.get("slug"),
-                        "domain": job.get("domain"), "status": job.get("status"),
-                        "needs_human": nh})
+            out.append(
+                {
+                    "job_id": job.get("job_id"),
+                    "slug": job.get("slug"),
+                    "domain": job.get("domain"),
+                    "status": job.get("status"),
+                    "needs_human": nh,
+                }
+            )
     return 200, {"waiting": out}
 
 
@@ -789,6 +1029,7 @@ def handle_jobs():
 # ==========================================================================
 # HTTP adapter (thin — delegates to the route functions above)
 # ==========================================================================
+
 
 class Handler(BaseHTTPRequestHandler):
     def _send(self, code, obj):
