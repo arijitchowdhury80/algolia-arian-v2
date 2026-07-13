@@ -6,6 +6,7 @@ import uuid
 from datetime import date, datetime
 from typing import Any
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     Boolean,
     Date,
@@ -19,6 +20,12 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+# all-MiniLM-L6-v2 output dimension -- see prism_platform/pipeline/embeddings.py.
+# Named once here so the ORM column and the embedding pipeline can never drift
+# out of sync silently (a dimension mismatch fails loudly at insert time
+# instead of at query time).
+REPORT_CHUNK_EMBEDDING_DIMS = 384
 
 
 class Base(DeclarativeBase):
@@ -130,6 +137,40 @@ class ModuleExecution(Base):
         Index("idx_module_exec_audit", "audit_id"),
         Index("idx_module_exec_status", "audit_id", "status"),
         Index("idx_module_exec_domain_module", "domain", "module_name"),
+    )
+
+
+class ReportChunk(Base):
+    """One retrievable chunk of an audit report, embedded for the chat agent.
+
+    Task 5 (Track C.3) grounding store. Chunking is by report section (one
+    row per top-level `Audit.audit_data` key per audit), not a fixed-token
+    sliding window -- see prism_platform/pipeline/chunking.py. Retrieval is
+    cosine similarity via pgvector's `<=>` operator, gated by
+    prism_platform.pipeline.retrieval.SIMILARITY_THRESHOLD.
+    """
+
+    __tablename__ = "report_chunks"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    audit_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("audits.id", ondelete="CASCADE"), nullable=False
+    )
+    domain: Mapped[str] = mapped_column(Text, nullable=False)
+    section_name: Mapped[str] = mapped_column(Text, nullable=False)
+    chunk_text: Mapped[str] = mapped_column(Text, nullable=False)
+    embedding: Mapped[list[float]] = mapped_column(
+        Vector(REPORT_CHUNK_EMBEDDING_DIMS), nullable=False
+    )
+    embedding_model: Mapped[str] = mapped_column(
+        Text, nullable=False, default="sentence-transformers/all-MiniLM-L6-v2"
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("audit_id", "section_name", name="uq_report_chunks_audit_section"),
+        Index("idx_report_chunks_audit", "audit_id"),
+        Index("idx_report_chunks_domain", "domain"),
     )
 
 

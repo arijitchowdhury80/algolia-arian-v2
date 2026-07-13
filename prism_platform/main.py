@@ -10,6 +10,7 @@ from prism_platform.api.routers import (
     audit_stream,
     audits,
     benchmarks,
+    chat,
     evidence,
     freshness,
     knowledge,
@@ -30,6 +31,7 @@ add_middleware(app)
 app.include_router(accounts.router, prefix="/api/v1/accounts", tags=["accounts"])
 app.include_router(audits.router, prefix="/api/v1/audits", tags=["audits"])
 app.include_router(audit_stream.router, prefix="/api/v1/audits", tags=["audit-stream"])
+app.include_router(chat.router, prefix="/api/v1/audits", tags=["chat"])
 app.include_router(modules.router, prefix="/api/v1/modules", tags=["modules"])
 app.include_router(benchmarks.router, prefix="/api/v1/benchmarks", tags=["benchmarks"])
 app.include_router(evidence.router, prefix="/api/v1/evidence", tags=["evidence"])
