@@ -283,13 +283,39 @@ def test_make_gate_fn_populates_verdict_sink(tmp_path: Path):
     assert sink["algolia-intel-traffic"].status == gate_module.VerdictStatus.PASS
 
 
-def test_make_gate_fn_default_mechanical_uses_gate_default_when_no_override(tmp_path: Path):
+def test_make_gate_fn_default_mechanical_uses_gate_default_when_no_override(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+):
     """No mechanical_cmd_fn override -> gate.gate() builds its own default
-    command (factcheck_mechanical.py against a real, if nonexistent, path);
-    since the path doesn't exist in this sandbox, subprocess_gate's OSError
-    handling maps that to a fail-closed ERROR->BLOCKED result, never a crash
-    and never a silent CLEAN."""
+    `--audit-data <path>` command (Task 6d fix #1) against a real
+    deliverables/*-audit-data.json under `audit_dir` -- `audit_dir` here
+    means the company's own dir, matching what claims.py/llm_stages.py
+    already assume. The fake `factcheck_mechanical.py` stand-in exits 2
+    (BLOCKED) deliberately, so this proves the default-cmd path is really
+    exercised (not skipped/short-circuited) and maps to a fail-closed
+    BLOCKED/non-fatal result, never a crash and never a silent CLEAN."""
+    deliverables = tmp_path / "deliverables"
+    deliverables.mkdir()
+    (deliverables / "dell-audit-data.json").write_text("{}")
+
+    fake_script = tmp_path / "fake_factcheck_mechanical.py"
+    fake_script.write_text("import sys; print('mechanical block'); sys.exit(2)\n")
+    monkeypatch.setattr(gate_module, "FACTCHECK_MECHANICAL_PATH", fake_script)
+
     gate_fn = executioner.make_gate_fn("dell.com", "Dell", tmp_path)
     result = gate_fn("algolia-intel-traffic")
     assert result.status == self_heal.GateStatus.BLOCKED
     assert result.fatal is False
+
+
+def test_make_gate_fn_default_mechanical_raises_clear_error_when_no_audit_data(
+    tmp_path: Path,
+):
+    """When `audit_dir` has no deliverables/*-audit-data.json yet (skill ran
+    before the report deliverable exists), gate.gate()'s default mechanical
+    command builder raises a clear FileNotFoundError rather than building a
+    command against a guessed/wrong path -- callers with a legitimate
+    early-skill use case must pass an explicit mechanical_cmd_fn."""
+    gate_fn = executioner.make_gate_fn("dell.com", "Dell", tmp_path)
+    with pytest.raises(FileNotFoundError, match="audit-data"):
+        gate_fn("algolia-intel-traffic")
