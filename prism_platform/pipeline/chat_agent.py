@@ -34,6 +34,15 @@ NO_CONTEXT_ANSWER = (
 
 _CITATION_PATTERN = re.compile(r"\(Source:\s*([A-Za-z0-9_\-]+)\)")
 
+# Task 5b's own live-proof measured 37.4s against a tiny synthetic fixture
+# (one thin markdown file). Real full-audit `gate()` calls (llm_stages.py's
+# quality prompt reads every output file the skill produced) reliably took
+# 130-206s and hit `TimeoutExpired` twice against the old 120s default in
+# Task 6-local's real-workspace testing (docs/workspace/phase2-executioner/
+# task-6-local-report.md Findings #2). 300s gives real headroom without
+# every caller having to remember to override it.
+DEFAULT_CLAUDE_CLI_TIMEOUT_S = 300
+
 _SYSTEM_INSTRUCTIONS = (
     "You are a grounded report-QA assistant for a PRISM Algolia search audit. "
     "You must answer ONLY using the CONTEXT sections below -- never from general "
@@ -95,7 +104,7 @@ RetrieveFn = Callable[..., Awaitable[list[RetrievedChunk]]]
 ClaudeCliFn = Callable[[str], str]
 
 
-def _default_claude_cli(prompt: str, *, timeout_s: int = 120) -> str:
+def _default_claude_cli(prompt: str, *, timeout_s: int = DEFAULT_CLAUDE_CLI_TIMEOUT_S) -> str:
     """Invoke `claude -p <prompt>` as a plain subprocess (no Agent SDK, no
     MCP) and return its stdout. WRITTEN BUT UNVERIFIED -- no `claude` CLI
     invocation was executed against a live report in this sandbox; see the

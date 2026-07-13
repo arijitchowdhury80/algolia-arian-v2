@@ -113,14 +113,52 @@ def _weak_evidence_tier(verdict: FactCheckVerdict) -> bool:
     return verdict.evidence_tier in ("WEBSEARCH", "NO_SOURCE")
 
 
+def find_audit_data_json(audit_dir: Path) -> Path | None:
+    """Locate `{slug}-audit-data.json` under `audit_dir/deliverables/`.
+
+    Shared by this module's default mechanical-command builder and
+    `claims.py`'s extractors -- both need the same real, drifted file-naming
+    convention resolved the same way (the slug is NOT a reliable
+    slugification of `company_name`; confirmed against real audits:
+    "British Airways" -> `british-airways-audit-data.json`, "Michael Kors"
+    -> `michaelkors-audit-data.json`, no hyphen). Glob for it instead of
+    computing a guessed slug. Returns None (not an error) if no
+    `deliverables/` directory or no match exists yet -- callers decide
+    whether that is fatal.
+    """
+    deliverables_dir = audit_dir / "deliverables"
+    if not deliverables_dir.is_dir():
+        return None
+    matches = sorted(deliverables_dir.glob("*-audit-data.json"))
+    return matches[0] if matches else None
+
+
 def _default_mechanical_cmd(skill_output: SkillOutput) -> Sequence[str]:
+    """Build the real `factcheck_mechanical.py --audit-data <path>` form.
+
+    `SkillOutput.audit_dir` means "the company's own directory" everywhere
+    else in this pipeline (`claims.py`'s extractors, `llm_stages.py`'s
+    prompts) -- the old `--audit-dir <parent> --company <name>` form
+    required `audit_dir` to be the PARENT of the company directory instead,
+    a real interface mismatch caught wiring these modules together for the
+    first time (docs/workspace/phase2-executioner/task-6-local-report.md
+    Findings #1). `--audit-data <path>` needs no parent/company split at
+    all, so it is consistent with the other 2 (majority) consumers.
+    """
+    audit_data_path = find_audit_data_json(skill_output.audit_dir)
+    if audit_data_path is None:
+        raise FileNotFoundError(
+            f"gate()'s default mechanical command needs a real "
+            f"deliverables/*-audit-data.json file under "
+            f"{skill_output.audit_dir} for skill {skill_output.skill_name!r} "
+            f"-- none found. Pass an explicit mechanical_cmd if this skill "
+            f"legitimately runs before the audit-report deliverable exists."
+        )
     return [
         sys.executable,
         str(FACTCHECK_MECHANICAL_PATH),
-        "--audit-dir",
-        str(skill_output.audit_dir),
-        "--company",
-        skill_output.company_name,
+        "--audit-data",
+        str(audit_data_path),
     ]
 
 

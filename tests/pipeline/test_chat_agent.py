@@ -14,8 +14,10 @@ import uuid
 import pytest
 
 from prism_platform.pipeline.chat_agent import (
+    DEFAULT_CLAUDE_CLI_TIMEOUT_S,
     NO_CONTEXT_ANSWER,
     ChatAgentResult,
+    _default_claude_cli,
     build_chat_prompt,
     extract_cited_sections,
     run_chat_agent,
@@ -79,6 +81,46 @@ def test_extract_cited_sections_finds_source_tags() -> None:
 
 def test_extract_cited_sections_empty_when_no_tags() -> None:
     assert extract_cited_sections("The vendor is Bloomreach.") == set()
+
+
+class TestDefaultClaudeCliTimeout:
+    """Task 6d fix #2: Task 5b's own live-proof measured 37.4s against a tiny
+    synthetic fixture; real full-audit `gate()` calls took 130-206s and hit
+    the old 120s default's `TimeoutExpired` twice (task-6-local-report.md
+    Findings #2). These are simple assertions on the new default, not a live
+    200s+ `claude -p` call -- keeps the suite fast."""
+
+    def test_module_level_constant_has_real_headroom(self) -> None:
+        assert DEFAULT_CLAUDE_CLI_TIMEOUT_S == 300
+
+    def test_default_claude_cli_uses_the_module_constant_as_its_default(self) -> None:
+        import inspect
+
+        sig = inspect.signature(_default_claude_cli)
+        assert sig.parameters["timeout_s"].default == DEFAULT_CLAUDE_CLI_TIMEOUT_S
+
+    def test_default_claude_cli_passes_timeout_s_through_to_subprocess_run(self) -> None:
+        captured: dict[str, object] = {}
+
+        class _FakeCompletedProcess:
+            returncode = 0
+            stdout = "ok"
+            stderr = ""
+
+        def fake_run(*args, **kwargs):  # type: ignore[no-untyped-def]
+            captured.update(kwargs)
+            return _FakeCompletedProcess()
+
+        import prism_platform.pipeline.chat_agent as chat_agent_module
+
+        original_run = chat_agent_module.subprocess.run
+        chat_agent_module.subprocess.run = fake_run  # type: ignore[assignment]
+        try:
+            _default_claude_cli("hello")
+        finally:
+            chat_agent_module.subprocess.run = original_run  # type: ignore[assignment]
+
+        assert captured["timeout"] == DEFAULT_CLAUDE_CLI_TIMEOUT_S
 
 
 @pytest.mark.asyncio

@@ -10,6 +10,7 @@ and tests.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
 
@@ -19,6 +20,7 @@ from prism_platform.pipeline.gate import (
     BlockClass,
     SkillOutput,
     VerdictStatus,
+    find_audit_data_json,
     gate,
 )
 from prism_platform.pipeline.self_heal import (
@@ -397,3 +399,108 @@ class TestPatchFourStageNotClaimScopedStrikeCounting:
         # identity, not exact claim/finding wording.
         distinct_findings = {a.gate.findings for a in report.attempts if a.gate is not None}
         assert len(distinct_findings) == 3  # all three attempts' findings differed
+
+
+class TestFindAuditDataJson:
+    """Task 6d fix #1 -- the shared glob helper both gate.py's default
+    mechanical command and claims.py's extractors now import, so the two
+    modules can't drift on how a real audit-data.json is located."""
+
+    def test_finds_the_real_slug_file_under_deliverables(self, tmp_path: Path) -> None:
+        company_dir = tmp_path / "Belk"
+        deliverables = company_dir / "deliverables"
+        deliverables.mkdir(parents=True)
+        target = deliverables / "belk-audit-data.json"
+        target.write_text("{}")
+
+        assert find_audit_data_json(company_dir) == target
+
+    def test_returns_none_when_no_deliverables_dir(self, tmp_path: Path) -> None:
+        assert find_audit_data_json(tmp_path / "NoSuchCompany") is None
+
+    def test_returns_none_when_deliverables_dir_has_no_audit_data_json(
+        self, tmp_path: Path
+    ) -> None:
+        deliverables = tmp_path / "Belk" / "deliverables"
+        deliverables.mkdir(parents=True)
+        (deliverables / "unrelated.json").write_text("{}")
+
+        assert find_audit_data_json(tmp_path / "Belk") is None
+
+
+class TestDefaultMechanicalCmdUsesAuditDataForm:
+    """Task 6d fix #1: `gate()`'s DEFAULT mechanical-command builder must use
+    the real `factcheck_mechanical.py --audit-data <path>` form, matching
+    what `claims.py`'s extractors and `llm_stages.py`'s prompts already
+    assume `SkillOutput.audit_dir` means (the company's own directory, not
+    its parent) -- see task-6-local-report.md Findings #1. Proven here
+    against a fixture matching the real shape, with NO explicit
+    `mechanical_cmd` override -- exercising the actual default path."""
+
+    @staticmethod
+    def _company_dir_with_audit_data(tmp_path: Path) -> Path:
+        company_dir = tmp_path / "Belk"
+        deliverables = company_dir / "deliverables"
+        deliverables.mkdir(parents=True)
+        (deliverables / "belk-audit-data.json").write_text("{}")
+        return company_dir
+
+    @staticmethod
+    def _argv_recording_script(tmp_path: Path, record_path: Path) -> Path:
+        """A throwaway script standing in for factcheck_mechanical.py: records
+        its own argv to `record_path`, then exits 0 (CLEAN) only if invoked
+        with the real `--audit-data` form and NOT the old `--audit-dir`/
+        `--company` form -- exits 1 (ERROR) otherwise, so a regression back
+        to the old form fails loudly rather than silently passing."""
+        script = tmp_path / "fake_factcheck_mechanical.py"
+        script.write_text(
+            "import sys, json\n"
+            f"open({str(record_path)!r}, 'w').write(json.dumps(sys.argv[1:]))\n"
+            "argv = sys.argv[1:]\n"
+            "sys.exit(0 if '--audit-data' in argv and '--audit-dir' not in argv "
+            "and '--company' not in argv else 1)\n"
+        )
+        return script
+
+    def test_default_mechanical_cmd_passes_real_audit_data_path(
+        self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        import prism_platform.pipeline.gate as gate_module
+
+        company_dir = self._company_dir_with_audit_data(tmp_path)
+        record_path = tmp_path / "argv.json"
+        fake_script = self._argv_recording_script(tmp_path, record_path)
+        monkeypatch.setattr(gate_module, "FACTCHECK_MECHANICAL_PATH", fake_script)
+
+        skill_output = SkillOutput(
+            skill_name="algolia-intel-techstack",
+            domain="belk.com",
+            audit_dir=company_dir,
+            company_name="Belk",
+        )
+
+        # No mechanical_cmd override -- exercises gate()'s real default path.
+        # No factcheck_fn injected either: if stage 1 had blocked/errored we'd
+        # get a BLOCK verdict, not a NotImplementedError from stage 2 -- so
+        # this exception is itself proof stage 1 passed CLEAN.
+        with pytest.raises(NotImplementedError, match="stage 2"):
+            gate(skill_output)
+
+        recorded_argv = json.loads(record_path.read_text())
+        assert "--audit-data" in recorded_argv
+        audit_data_arg = recorded_argv[recorded_argv.index("--audit-data") + 1]
+        assert audit_data_arg == str(company_dir / "deliverables" / "belk-audit-data.json")
+        assert "--audit-dir" not in recorded_argv
+        assert "--company" not in recorded_argv
+
+    def test_default_mechanical_cmd_raises_clear_error_when_no_audit_data_json(
+        self, tmp_path: Path
+    ) -> None:
+        skill_output = SkillOutput(
+            skill_name="algolia-intel-techstack",
+            domain="belk.com",
+            audit_dir=tmp_path / "Belk",  # no deliverables/ under here
+            company_name="Belk",
+        )
+        with pytest.raises(FileNotFoundError, match="audit-data"):
+            gate(skill_output)

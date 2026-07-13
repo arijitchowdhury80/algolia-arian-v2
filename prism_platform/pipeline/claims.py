@@ -93,17 +93,11 @@ def _first_existing(candidates: list[Path]) -> Path | None:
     return None
 
 
-def _find_audit_data_json(audit_dir: Path) -> Path | None:
-    """`algolia-audit-report`'s deliverable is named `{slug}-audit-data.json`,
-    but the slug is NOT a reliable slugification of `company_name` (confirmed
-    against real audits: "British Airways" -> `british-airways-audit-data.json`,
-    "Michael Kors" -> `michaelkors-audit-data.json` -- no hyphen). Glob for it
-    instead of computing a guessed slug."""
-    deliverables_dir = audit_dir / "deliverables"
-    if not deliverables_dir.is_dir():
-        return None
-    matches = sorted(deliverables_dir.glob("*-audit-data.json"))
-    return matches[0] if matches else None
+# `_find_audit_data_json` used to duplicate this glob logic locally. Task 6d
+# extracted it to `gate.find_audit_data_json` (gate.py's default mechanical
+# command builder needs the exact same resolution) so both modules share one
+# implementation instead of two that could drift.
+_find_audit_data_json = gate_module.find_audit_data_json
 
 
 # ---------------------------------------------------------------------------
