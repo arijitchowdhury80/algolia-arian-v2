@@ -94,9 +94,10 @@ def test_make_dispatch_fn_default_build_cmd_fn_reuses_real_build_audit_cmd():
     assert ok is True
     assert len(captured_cmds) == 1
     cmd = captured_cmds[0]
-    # Real build_audit_cmd shape: sudo -u <user> bash <run-audit.sh> <domain> --skill <skill>
-    assert cmd[0] == "sudo"
-    assert "bash" in cmd
+    # Real build_audit_cmd shape: bash <run-audit.sh> <domain> --skill <skill>
+    # (no sudo -u: the runner process itself runs as the unprivileged
+    # chowmesuser service account, not root, so no privilege-drop step is needed)
+    assert cmd[0] == "bash"
     assert "dell.com" in cmd
     assert "--skill" in cmd
     assert "algolia-intel-traffic" in cmd

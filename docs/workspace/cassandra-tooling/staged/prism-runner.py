@@ -105,7 +105,7 @@ AUDITS_DIR = os.path.join(EXEC_DIR, "audits")
 JOBS_DIR = os.path.join(EXEC_DIR, "jobs")
 STORE_DIR = os.environ.get("PRISM_STORE_DIR", "/root/.hermes-prism/reports")
 INDEX_JSON = os.path.join(STORE_DIR, "index.json")
-AUDIT_USER = "chowmesadmin"
+AUDIT_USER = "chowmesuser"  # dedicated unprivileged service account, not an admin account
 PORT = int(os.environ.get("PRISM_RUNNER_PORT", "8770"))
 TOKEN = os.environ.get("PRISM_RUNNER_TOKEN", "")
 
@@ -518,7 +518,11 @@ def build_audit_cmd(job):
     staged/run-audit.sh v2 parses; a legacy (v1) run-audit.sh on disk simply
     ignores trailing args it doesn't recognise... which is NOT safe to assume,
     so this runner only adds the flags when they're actually requested."""
-    cmd = ["sudo", "-u", AUDIT_USER, "bash", RUN_AUDIT, job["domain"]]
+    # No `sudo -u` here: prism-runner.py itself now runs as AUDIT_USER
+    # (systemd unit's User=chowmesuser) instead of running as root and
+    # stepping down per-dispatch. sudo is not installed for chowmesuser and
+    # is not needed -- least privilege end to end, not root-then-drop.
+    cmd = ["bash", RUN_AUDIT, job["domain"]]
     if job.get("phase"):
         cmd += ["--phase", job["phase"]]
     if job.get("skill"):

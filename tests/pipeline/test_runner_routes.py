@@ -146,7 +146,7 @@ def test_handle_run_threads_skill_and_skip_into_job(runner):
 def test_build_audit_cmd_domain_only_is_v1_identical_argv(runner):
     job = {"domain": "dell.com"}
     cmd = runner.build_audit_cmd(job)
-    assert cmd == ["sudo", "-u", runner.AUDIT_USER, "bash", runner.RUN_AUDIT, "dell.com"]
+    assert cmd == ["bash", runner.RUN_AUDIT, "dell.com"]
 
 
 def test_build_audit_cmd_threads_phase_skill_skip_as_flags(runner):
