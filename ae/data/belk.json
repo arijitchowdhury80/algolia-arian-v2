@@ -5,7 +5,7 @@
  },
  "score": {
   "overall": 5.3,
-  "scale": 5,
+  "scale": 10,
   "verdict": "Needs Significant Work",
   "critical_count": 0,
   "moderate_count": 10
@@ -39,10 +39,10 @@
     "rank": 1,
     "title": "Semantic / NLP gap vs AI-shipping peers",
     "severity": "MODERATE",
-    "evidence": "Not observable — belk.com WAF-blocked (HTTP 403 PerimeterX). Incumbent (Constructor) is not a NeuralSearch platform; conversational understanding could not be confirmed, while peers (Macy's/Nordstrom/Kohl's) shipped conversational AI discovery.",
+    "evidence": "Automated testing WAF-blocked (see F05). One manual human-passed capture exists (query \"black dress\", 2026-07-03, not on the official 16-query list) showing a functional results page (2,846 products, working facets) with a visible \"Ask Belk\" AI search icon in the search bar — indicating some conver…",
     "tied_to": "Tested query: “cocktail dress for a fall wedding”",
     "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
-    "source_url": ""
+    "source_url": "screenshots/01-black-dress.png"
    },
    {
     "rank": 2,
@@ -51,16 +51,16 @@
     "evidence": "Not observable (WAF-blocked). The CIO's gen-AI personalization investment sits in content (Vertex AI), not confirmed in the on-site search path.",
     "tied_to": "Tested query: “comfortable walking shoes for wide feet”",
     "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
-    "source_url": ""
+    "source_url": "screenshots/05-waf-perimeterx-block.png"
    },
    {
     "rank": 3,
     "title": "Merchandiser control gap",
     "severity": "MODERATE",
-    "evidence": "Not observable (WAF-blocked). Belk is hiring a Digital Merchandise manager; real-time rule-driven merchandising control on the current stack could not be confirmed.",
+    "evidence": "Not observable (WAF-blocked). Real-time rule-driven merchandising control on the current stack could not be confirmed. (No hiring signal is cited here — the prior reference to a Digital Merchandise manager vacancy was fabricated; corrected 2026-07-10, bug ledger #16.)",
     "tied_to": "Tested query: “shoes”",
     "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
-    "source_url": ""
+    "source_url": "screenshots/05-waf-perimeterx-block.png"
    }
   ],
   "competitive_objection": {
@@ -74,9 +74,9 @@
   },
   "stakeholder_to_add": {
    "role": "First-play path",
-   "name": "Displace Constructor with NeuralSearch",
-   "status": "inferred from competitors — confirm before citing",
-   "note": "Belk already changed search once and its CIO drives an AI agenda; lead with an Algolia-vs-Constructor relevance A/B against the peer AI-discovery benchmark.",
+   "name": "Loop in Matt Panning + Contentstack",
+   "status": "inferred from partner_intel — confirm before citing",
+   "note": "Crossbeam confirms an active named open deal on this account (\"Belk-2026-NOV-New Business-Elevate Ecomm v8.5\", owned by Matthew Panning) and a corroborated Contentstack customer relationship (Co-Sell + Referral Agreement tags). Sync with the deal owner and us…",
    "source": "audit: recommended_first_play"
   },
   "next_meeting_hook": {
