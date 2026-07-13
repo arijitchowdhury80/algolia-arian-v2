@@ -580,6 +580,135 @@ def test_run_job_v3_on_attempt_observer_is_called_per_skill(runner):
     assert seen == list(runner._executioner.SKILL_NAMES)
 
 
+# ------------------------------------------------- v3 live progress + notify
+
+
+def test_attempt_status_label_pass(runner):
+    attempt = runner._self_heal.Attempt(
+        phase="algolia-intel-company",
+        attempt_number=1,
+        dispatch_ok=True,
+        gate=runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN),
+        started_at=0.0,
+        finished_at=1.0,
+    )
+    assert runner.attempt_status_label(attempt) == "PASS"
+
+
+def test_attempt_status_label_dispatch_failed(runner):
+    attempt = runner._self_heal.Attempt(
+        phase="algolia-intel-company",
+        attempt_number=1,
+        dispatch_ok=False,
+        gate=None,
+        started_at=0.0,
+        finished_at=1.0,
+    )
+    assert runner.attempt_status_label(attempt) == "DISPATCH FAILED"
+
+
+def test_attempt_status_label_blocked_retry_worthy(runner):
+    attempt = runner._self_heal.Attempt(
+        phase="algolia-intel-company",
+        attempt_number=2,
+        dispatch_ok=True,
+        gate=runner._self_heal.GateResult(status=runner._self_heal.GateStatus.BLOCKED, fatal=False),
+        started_at=0.0,
+        finished_at=1.0,
+    )
+    label = runner.attempt_status_label(attempt)
+    assert "BLOCKED" in label and "retry" in label and "2" in label
+
+
+def test_attempt_status_label_blocked_fatal(runner):
+    attempt = runner._self_heal.Attempt(
+        phase="algolia-intel-company",
+        attempt_number=1,
+        dispatch_ok=True,
+        gate=runner._self_heal.GateResult(status=runner._self_heal.GateStatus.BLOCKED, fatal=True),
+        started_at=0.0,
+        finished_at=1.0,
+    )
+    label = runner.attempt_status_label(attempt)
+    assert "BLOCKED" in label and "escalating" in label
+
+
+def test_notify_v3_started_noop_without_token(runner, monkeypatch):
+    monkeypatch.delenv("PRISM_NOTIFY_BOT_TOKEN", raising=False)
+    monkeypatch.delenv("PRISM_NOTIFY_CHAT_ID", raising=False)
+    sent = []
+    assert runner.notify_v3_started({"slug": "dell"}, send_fn=lambda *a: sent.append(a)) is False
+    assert sent == []
+
+
+def test_notify_v3_started_sends_with_skill_count(runner, monkeypatch):
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "chat")
+    sent = []
+    job = {"slug": "dell", "job_id": "dell-1", "skills_total": 16}
+    assert runner.notify_v3_started(job, send_fn=lambda *a: sent.append(a) or True) is True
+    assert len(sent) == 1
+    _token, _chat, text = sent[0]
+    assert "dell" in text and "16" in text and "STARTED" in text
+
+
+def test_notify_skill_attempt_sends_status_label(runner, monkeypatch):
+    monkeypatch.setenv("PRISM_NOTIFY_BOT_TOKEN", "tok")
+    monkeypatch.setenv("PRISM_NOTIFY_CHAT_ID", "chat")
+    sent = []
+    attempt = runner._self_heal.Attempt(
+        phase="algolia-intel-company",
+        attempt_number=1,
+        dispatch_ok=True,
+        gate=runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN),
+        started_at=0.0,
+        finished_at=1.0,
+    )
+    job = {"slug": "dell"}
+    runner.notify_skill_attempt(job, attempt, send_fn=lambda *a: sent.append(a) or True)
+    assert len(sent) == 1
+    _token, _chat, text = sent[0]
+    assert "algolia-intel-company" in text and "PASS" in text
+
+
+def test_run_job_v3_default_on_attempt_updates_job_phase_live(runner, monkeypatch):
+    """Without overriding on_attempt (the real default path), job.json must
+    reflect the LAST skill processed, its status, and skills_total/completed
+    -- the exact fields /status needs to show real progress mid-run instead
+    of a frozen 'starting' for the whole 30-90+ minute run."""
+    monkeypatch.delenv("PRISM_NOTIFY_BOT_TOKEN", raising=False)
+    job = {"job_id": "dell-v3-progress", "domain": "dell.com", "slug": "dell", "dry": True}
+
+    def fake_gate(skill_name):
+        return runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN)
+
+    runner.run_job_v3(job, dispatch_fn=lambda skill_name, attempt_number: True, gate_fn=fake_gate)
+    saved = runner.read_job("dell-v3-progress")
+    assert saved["skills_total"] == len(runner._executioner.SKILL_NAMES)
+    assert saved["current_skill"] == runner._executioner.SKILL_NAMES[-1]
+    assert saved["current_skill_status"] == "PASS"
+    assert len(saved["skills_completed"]) == len(runner._executioner.SKILL_NAMES)
+    assert all(s["result"] == "PASS" for s in saved["skills_completed"])
+
+
+def test_run_job_v3_default_on_attempt_pushes_telegram_per_skill(runner, monkeypatch):
+    """The default on_attempt observer must call notify_skill_attempt for
+    every real attempt, not just at the job's terminal state -- proves the
+    per-skill push is actually wired into the real (non-test-overridden)
+    code path, not just independently testable in isolation."""
+    sent = []
+    monkeypatch.setattr(
+        runner, "notify_skill_attempt", lambda job, attempt, **kw: sent.append(attempt.phase)
+    )
+    job = {"job_id": "dell-v3-notify", "domain": "dell.com", "slug": "dell", "dry": True}
+
+    def fake_gate(skill_name):
+        return runner._self_heal.GateResult(status=runner._self_heal.GateStatus.CLEAN)
+
+    runner.run_job_v3(job, dispatch_fn=lambda skill_name, attempt_number: True, gate_fn=fake_gate)
+    assert sent == list(runner._executioner.SKILL_NAMES)
+
+
 # ---------------------------------------------------------------- POST /kill
 
 

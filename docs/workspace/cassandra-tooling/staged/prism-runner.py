@@ -577,6 +577,62 @@ def notify_job_finished(job, send_fn=_telegram_send):
         return False
 
 
+def attempt_status_label(attempt):
+    """Human-readable one-line status for a single self_heal.Attempt, shared
+    by the job.json live-progress writer and the per-skill Telegram push —
+    one source of truth for what 'attempt N of skill X' actually means."""
+    if not attempt.dispatch_ok:
+        return "DISPATCH FAILED"
+    if attempt.gate is None:
+        return "NO GATE RESULT"
+    status = attempt.gate.status.value.upper()
+    if status == "CLEAN":
+        return "PASS"
+    fatal = getattr(attempt.gate, "fatal", False)
+    if fatal:
+        return "BLOCKED (unfixable, escalating)"
+    return f"BLOCKED (retry, attempt {attempt.attempt_number})"
+
+
+def notify_v3_started(job, send_fn=_telegram_send):
+    """Best-effort proactive push the moment a real v3 run starts, so a
+    real full audit's beginning is never silent. Same graceful-degradation
+    pattern as the other notify_* functions."""
+    token = os.environ.get("PRISM_NOTIFY_BOT_TOKEN", "")
+    chat_id = os.environ.get("PRISM_NOTIFY_CHAT_ID", "")
+    if not token or not chat_id:
+        return False
+    slug = job.get("slug") or job.get("domain") or "?"
+    total = job.get("skills_total", "?")
+    text = f"PRISM [{slug}] v3 audit STARTED — {total} skills queued, job_id={job.get('job_id')}"
+    try:
+        return bool(send_fn(token, chat_id, text))
+    except Exception:
+        return False
+
+
+def notify_skill_attempt(job, attempt, send_fn=_telegram_send):
+    """Best-effort proactive push after EVERY v3 skill attempt, not just at
+    the job's terminal state. Closes the exact observability gap that made a
+    real full v3 run (16 skills, 30-90+ min) invisible for its whole
+    duration: run_job_v3 previously wrote job['phase']='starting' once and
+    never again until the entire run finished. Same graceful-degradation
+    pattern as notify_job_finished: no-ops silently when
+    PRISM_NOTIFY_BOT_TOKEN/CHAT_ID are unset, never raises into the caller,
+    a Telegram outage must never take down an audit."""
+    token = os.environ.get("PRISM_NOTIFY_BOT_TOKEN", "")
+    chat_id = os.environ.get("PRISM_NOTIFY_CHAT_ID", "")
+    if not token or not chat_id:
+        return False
+    slug = job.get("slug") or job.get("domain") or "?"
+    label = attempt_status_label(attempt)
+    text = f"PRISM [{slug}] {attempt.phase}: {label}"
+    try:
+        return bool(send_fn(token, chat_id, text))
+    except Exception:
+        return False
+
+
 def run_job(
     job,
     popen_fn=subprocess.Popen,
@@ -696,17 +752,38 @@ def run_job(
 
 
 def _v3_default_on_attempt(job, verdict_sink):
-    """Builds the real `on_attempt` observer for the v3 engine: persists
-    each dispatch+gate attempt to `module_executions` via
-    `db_write.write_module_execution_row`, using the richer `gate.Verdict`
-    stashed in `verdict_sink` by `executioner.make_gate_fn` (a bare
-    `self_heal.GateResult` doesn't carry the 5-stage sub-verdicts).
+    """Builds the real `on_attempt` observer for the v3 engine. Three
+    responsibilities, in order, and the first two ALWAYS run (progress
+    visibility must not depend on the DB write succeeding or on `dry` mode):
+
+    1. Live job.json progress -- job['phase']/job['current_skill'] update on
+       EVERY attempt, not just once at job start. Before this, a real v3 run
+       wrote job['phase']='starting' once and never again until the entire
+       16-skill pipeline finished (30-90+ min with zero visibility) --
+       `/status` was useless mid-run. Fixed here, not patched around.
+    2. Proactive Telegram push per attempt (`notify_skill_attempt`), same
+       fail-soft/no-op-if-unconfigured pattern as `notify_job_finished`.
+    3. Persists the attempt to `module_executions` via
+       `db_write.write_module_execution_row`, using the richer `gate.Verdict`
+       stashed in `verdict_sink` by `executioner.make_gate_fn` (a bare
+       `self_heal.GateResult` doesn't carry the 5-stage sub-verdicts).
+
     Fail-soft by construction: `SelfHealLoop._notify` already wraps every
-    `on_attempt` call in `contextlib.suppress(Exception)`, but this also logs
-    via `_log_db_error` (same pattern as every other DB write in this file)
-    so a failure is visible instead of silently vanishing."""
+    `on_attempt` call in `contextlib.suppress(Exception)`, but step 3 also
+    logs via `_log_db_error` (same pattern as every other DB write in this
+    file) so a failure is visible instead of silently vanishing."""
 
     def _on_attempt(attempt):
+        label = attempt_status_label(attempt)
+        job["phase"] = f"skill:{attempt.phase}"
+        job["current_skill"] = attempt.phase
+        job["current_skill_status"] = label
+        job["skills_completed"] = list(job.get("skills_completed") or [])
+        if label in ("PASS",) or "escalating" in label:
+            job["skills_completed"].append({"skill": attempt.phase, "result": label})
+        write_job(job)
+        notify_skill_attempt(job, attempt)
+
         if job.get("dry") or _db_write is None:
             return
         verdict = verdict_sink.get(attempt.phase)
@@ -763,7 +840,10 @@ def run_job_v3(job, *, dispatch_fn=None, gate_fn=None, on_attempt=None, max_pass
 
     job["status"] = "running"
     job["phase"] = "starting"
+    job["skills_total"] = len(_executioner.SKILL_NAMES)
+    job["skills_completed"] = []
     write_job(job)
+    notify_v3_started(job)
 
     domain = job["domain"]
     slug = job["slug"]
