@@ -1,0 +1,117 @@
+/**
+ * PRISM V2 — shared component CSS, single source of truth.
+ *
+ * Extracted 2026-07-13 from the AE/BDR/Marketer doors' own inline <style> blocks (see
+ * prism-tokens.css for the same note). This covers ONLY the pieces that were byte-for-byte
+ * (or near-identical) across all 3 doors: reset, body, topchrome, shared-core strip, the
+ * framed-for-you tag, the .btn system, and the data-source cards pattern ("Data sources
+ * powering this view" — ACTIVE / WOULD ADD VALUE). Role-specific sections (AE's stage
+ * cockpit, BDR's hero/queue table, Marketer's hook card) stay inline in each door — they
+ * are genuinely different per role, not drift.
+ *
+ * Real drift found and reconciled while extracting (each door had independently fixed or
+ * added something the others lacked):
+ *   - `overflow-wrap: anywhere` on body — AE and BDR both hit the same live bug
+ *     independently (a long citation string overflowing at 375px); BDR's fix comment cites
+ *     the exact measurement (scrollWidth 344 vs clientWidth 265) — kept here. Marketer never
+ *     had this fix at all.
+ *   - `.btn-ghost-white` — BDR-only addition (used on its hero card's dark background).
+ *     Promoted here so AE/Marketer can reuse it instead of re-inventing it if they ever need
+ *     a button on a dark surface.
+ *   - `--color-critical*` tokens — AE/BDR have them (used by BDR's tier badges), Marketer's
+ *     copy omitted them since it doesn't render severity badges. Harmless to include for all.
+ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-family); color: var(--color-text);
+  background: var(--color-bg); line-height: 1.6;
+  overflow-wrap: anywhere; /* real citation strings (e.g. "hiring.buying_committee[2]",
+    "icp_mapping.priority_to_product[0].discovery_question") contain long unbroken tokens with
+    no spaces — without this, one long field-path/URL string overflows its box and pushes
+    horizontal scroll onto the whole page at mobile widths (found live: hero-question-cite
+    scrollWidth 344 vs clientWidth 265 at 375px before this fix). Inherited, so this is the
+    root-level fix rather than patching every text class that might one day carry a long
+    source string. */
+}
+a { color: inherit; }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* ── Top chrome ── */
+.topchrome {
+  background: var(--topbar-bg); color: #fff; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.topchrome .brand { font-weight: 600; font-size: 15px; }
+.topchrome .meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.75); flex-wrap: wrap; }
+.role-chip, .account-chip {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px; padding: 4px 12px; font-weight: 600; color: #fff;
+}
+
+main { padding: 32px 0 64px; }
+
+/* ── Shared-core strip ── */
+.shared-core {
+  background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.shared-core .company-line { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.shared-core h1 { font-size: 20px; font-weight: 600; }
+.shared-core .score { font-size: 15px; color: var(--color-muted); }
+.shared-core .score b { color: var(--color-text); font-weight: 600; }
+.framed-tag {
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--color-primary); background: var(--blue-tint); border: 1px solid var(--blue-border);
+  padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+}
+
+/* ── Action row + button system (the :disabled state the old V1 template was missing —
+   already built here independently by all 3 doors before this extraction) ── */
+.action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;
+  min-height: 44px; border: 2px solid transparent; cursor: pointer; text-decoration: none;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.88; }
+.btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-outline { border-color: var(--color-border); background: #fff; color: var(--color-text); }
+.btn-disabled {
+  background: #fff; border-color: var(--color-border); color: var(--color-muted);
+  cursor: not-allowed; opacity: 0.65;
+}
+.btn-disabled:hover { opacity: 0.65; }
+.btn-ghost-white { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+/* ── Data source cards ("Data sources powering this view") ── */
+.sources-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.sources-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
+.sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.source-col h4 {
+  font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.source-col.active h4 { color: var(--color-positive); }
+.source-col.locked h4 { color: var(--color-muted); }
+.source-card {
+  background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 10px; font-size: 13px;
+}
+.source-col.locked .source-card { border-style: dashed; background: var(--color-bg); }
+.source-card .name { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.source-card .detail { color: var(--color-muted); font-size: 12.5px; }
+.source-card .needs { color: var(--color-muted); font-size: 12px; margin-top: 6px; }
+.lock-icon { font-size: 13px; }
+
+footer {
+  text-align: center; font-size: 12px; color: var(--color-muted); padding: 32px 20px 8px;
+}
+
+@media (max-width: 768px) {
+  .sources-grid { grid-template-columns: 1fr; }
+  .shared-core { flex-direction: column; align-items: flex-start; }
+}
