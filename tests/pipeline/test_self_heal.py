@@ -301,6 +301,77 @@ class TestDeterminism:
         assert [a.attempt_number for a in report.attempts] == [1, 2, 3]
 
 
+class TestFatalGateResultShortCircuitsRetry:
+    """`GateResult.fatal=True` (patch #3: UNFIXABLE blocks) must break to
+    NEEDS_HUMAN immediately, without consuming remaining max_passes attempts."""
+
+    def test_fatal_on_first_attempt_stops_immediately_even_with_high_max_passes(self) -> None:
+        gate = scripted_gate(
+            [GateResult(status=GateStatus.BLOCKED, findings=("unfixable",), fatal=True)]
+        )
+        loop = SelfHealLoop(
+            dispatch=always_dispatch_ok, gate=gate, max_passes=5, clock=make_clock()
+        )
+
+        report = loop.run_phase("factcheck")
+
+        assert report.outcome == PhaseOutcome.NEEDS_HUMAN
+        assert len(report.attempts) == 1  # not 5 -- fatal short-circuits the loop
+        assert report.escalation_reason is not None
+        assert "fatal" in report.escalation_reason.lower()
+
+    def test_fatal_on_a_later_attempt_stops_at_that_attempt(self) -> None:
+        gate = scripted_gate(
+            [
+                GateResult(status=GateStatus.BLOCKED, findings=("retry me",), fatal=False),
+                GateResult(status=GateStatus.BLOCKED, findings=("nope",), fatal=True),
+            ]
+        )
+        loop = SelfHealLoop(
+            dispatch=always_dispatch_ok, gate=gate, max_passes=5, clock=make_clock()
+        )
+
+        report = loop.run_phase("factcheck")
+
+        assert report.outcome == PhaseOutcome.NEEDS_HUMAN
+        assert len(report.attempts) == 2  # stopped on attempt 2, not exhausted to 5
+        assert report.attempts[-1].gate is not None
+        assert report.attempts[-1].gate.fatal is True
+
+    def test_fatal_true_but_status_clean_is_not_possible_but_defaults_stay_false(self) -> None:
+        # GateResult.fatal defaults to False -- proves the default preserves
+        # all pre-existing (non-fatal-aware) call sites unmodified.
+        result = GateResult(status=GateStatus.CLEAN)
+        assert result.fatal is False
+
+    def test_non_fatal_blocked_still_retries_up_to_max_passes(self) -> None:
+        # Regression guard: ordinary (non-fatal) BLOCKED must still behave
+        # exactly as before this extension -- exhausts max_passes.
+        gate = scripted_gate([GateResult(status=GateStatus.BLOCKED, findings=("x",), fatal=False)])
+        loop = SelfHealLoop(
+            dispatch=always_dispatch_ok, gate=gate, max_passes=3, clock=make_clock()
+        )
+
+        report = loop.run_phase("research")
+
+        assert report.outcome == PhaseOutcome.NEEDS_HUMAN
+        assert len(report.attempts) == 3
+
+    def test_fatal_dispatch_failure_attempt_has_no_gate_and_is_not_fatal(self) -> None:
+        # dispatch failure -> gate is None -> must not crash when checking .fatal
+        def failing_dispatch(phase: str, attempt_number: int) -> bool:
+            return False
+
+        gate = scripted_gate([GateResult(status=GateStatus.CLEAN)])
+        loop = SelfHealLoop(dispatch=failing_dispatch, gate=gate, max_passes=3, clock=make_clock())
+
+        report = loop.run_phase("research")
+
+        assert report.outcome == PhaseOutcome.NEEDS_HUMAN
+        assert len(report.attempts) == 3
+        assert all(a.gate is None for a in report.attempts)
+
+
 class TestSubprocessGate:
     def test_exit_code_zero_maps_to_clean(self) -> None:
         gate = subprocess_gate([sys.executable, "-c", "import sys; sys.exit(0)"])

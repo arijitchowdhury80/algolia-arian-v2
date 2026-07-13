@@ -33,11 +33,21 @@ class GateStatus(Enum):
 
 @dataclass(frozen=True)
 class GateResult:
-    """Result of running the quality gate once."""
+    """Result of running the quality gate once.
+
+    `fatal` (patch #3): set True when the gate has determined the failure is
+    UNFIXABLE by retrying the same phase/skill (e.g. data genuinely absent or
+    contradicted by source) -- retrying is not merely wasteful but actively
+    misleading, so the loop must escalate to NEEDS_HUMAN on the first fatal
+    result rather than burning the remaining max_passes attempts. Defaults to
+    False so every pre-existing call site (and all 20 original tests) is
+    unaffected.
+    """
 
     status: GateStatus
     findings: tuple[str, ...] = ()
     raw: str = ""
+    fatal: bool = False
 
 
 @dataclass(frozen=True)
@@ -130,6 +140,14 @@ class SelfHealLoop:
                     phase=phase, outcome=PhaseOutcome.CLEAN, attempts=tuple(attempts)
                 )
 
+            if gate_result is not None and gate_result.fatal:
+                return PhaseReport(
+                    phase=phase,
+                    outcome=PhaseOutcome.NEEDS_HUMAN,
+                    attempts=tuple(attempts),
+                    escalation_reason=self._escalation_reason(attempts[-1]),
+                )
+
         return PhaseReport(
             phase=phase,
             outcome=PhaseOutcome.NEEDS_HUMAN,
@@ -162,6 +180,10 @@ class SelfHealLoop:
         if last.gate is None:
             return f"no gate result recorded on attempt {last.attempt_number}"
         findings = "; ".join(last.gate.findings) or last.gate.raw
+        if last.gate.fatal:
+            return (
+                f"gate FATAL (unfixable) after {last.attempt_number} attempts: {findings}"
+            ).strip()
         if last.gate.status == GateStatus.ERROR:
             return f"gate ERROR after {last.attempt_number} attempts: {findings}".strip()
         return f"gate BLOCKED after {last.attempt_number} attempts: {findings}".strip()
