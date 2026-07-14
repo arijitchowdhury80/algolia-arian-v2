@@ -16,6 +16,7 @@ import pytest
 
 from prism_platform.pipeline import executioner, self_heal
 from prism_platform.pipeline import gate as gate_module
+from prism_platform.pipeline.modules import traffic as traffic_module
 from prism_platform.pipeline.verdicts import (
     AdversarialVerdict,
     AdversarialVoterVerdict,
@@ -320,3 +321,131 @@ def test_make_gate_fn_default_mechanical_raises_clear_error_when_no_audit_data(
     gate_fn = executioner.make_gate_fn("dell.com", "Dell", tmp_path)
     with pytest.raises(FileNotFoundError, match="audit-data"):
         gate_fn("algolia-intel-traffic")
+
+
+# ---------------------------------------------------- module-registry routing
+
+
+class _FakeModuleResult:
+    def __init__(self, status, reason=""):
+        self.status = status
+        self.reason = reason
+
+
+def test_routed_dispatch_uses_module_for_registered_skill(tmp_path: Path):
+    calls = []
+
+    def fake_module(domain, output_dir):
+        calls.append((domain, output_dir))
+        return _FakeModuleResult("success")
+
+    sink: dict[str, object] = {}
+    dispatch = executioner.make_routed_dispatch_fn(
+        "dsw.com",
+        tmp_path,
+        module_sink=sink,
+        module_registry={"fake-module-skill": fake_module},
+    )
+    ok = dispatch("fake-module-skill", 1)
+    assert ok is True
+    assert calls == [("dsw.com", tmp_path)]
+    assert sink["fake-module-skill"].status == "success"
+
+
+def test_routed_dispatch_falls_back_to_claude_p_path_for_unregistered_skill(tmp_path: Path):
+    """A skill NOT in module_registry must go through the exact same
+    run-audit.sh path as make_dispatch_fn -- proves the routing is additive,
+    not a replacement."""
+    captured = []
+
+    def fake_run_cmd(cmd):
+        captured.append(list(cmd))
+        return 0
+
+    sink: dict[str, object] = {}
+    dispatch = executioner.make_routed_dispatch_fn(
+        "dsw.com",
+        tmp_path,
+        module_sink=sink,
+        module_registry={},  # nothing registered
+        run_cmd_fn=fake_run_cmd,
+    )
+    ok = dispatch("algolia-intel-company", 1)
+    assert ok is True
+    assert len(captured) == 1  # real build_audit_cmd path was invoked
+    assert "algolia-intel-company" not in sink  # module path never touched
+
+
+def test_routed_gate_maps_success_to_clean(tmp_path: Path):
+    sink = {"fake-module-skill": _FakeModuleResult("success")}
+    gate_fn = executioner.make_routed_gate_fn(
+        "dsw.com", "DSW", tmp_path, module_sink=sink, module_registry={"fake-module-skill": None}
+    )
+    result = gate_fn("fake-module-skill")
+    assert result.status == self_heal.GateStatus.CLEAN
+    assert result.fatal is False
+
+
+def test_routed_gate_maps_degraded_to_blocked_not_fatal(tmp_path: Path):
+    sink = {"fake-module-skill": _FakeModuleResult("degraded", reason="10/15 endpoints ok")}
+    gate_fn = executioner.make_routed_gate_fn(
+        "dsw.com", "DSW", tmp_path, module_sink=sink, module_registry={"fake-module-skill": None}
+    )
+    result = gate_fn("fake-module-skill")
+    assert result.status == self_heal.GateStatus.BLOCKED
+    assert result.fatal is False
+    assert "10/15" in result.findings[0]
+
+
+def test_routed_gate_maps_needs_human_to_fatal_blocked():
+    """needs_human must escalate immediately (patch #3) -- retrying a
+    permanently-dead-API-key failure wastes the retry budget on something
+    that cannot change."""
+    sink = {"fake-module-skill": _FakeModuleResult("needs_human", reason="dead key")}
+    gate_fn = executioner.make_routed_gate_fn(
+        "dsw.com",
+        "DSW",
+        Path("/tmp/x"),
+        module_sink=sink,
+        module_registry={"fake-module-skill": None},
+    )
+    result = gate_fn("fake-module-skill")
+    assert result.status == self_heal.GateStatus.BLOCKED
+    assert result.fatal is True
+
+
+def test_routed_gate_missing_sink_entry_is_error_not_a_crash():
+    gate_fn = executioner.make_routed_gate_fn(
+        "dsw.com",
+        "DSW",
+        Path("/tmp/x"),
+        module_sink={},
+        module_registry={"fake-module-skill": None},
+    )
+    result = gate_fn("fake-module-skill")
+    assert result.status == self_heal.GateStatus.ERROR
+
+
+def test_routed_gate_falls_back_to_real_gate_for_unregistered_skill(tmp_path: Path):
+    """Proves the routed gate really calls the real 5-stage gate.gate() for
+    a non-module skill, not a stub -- reaching stage 2 with no factcheck_fn
+    override must still raise NotImplementedError, same as make_gate_fn's
+    own documented behavior."""
+    gate_fn = executioner.make_routed_gate_fn(
+        "dsw.com",
+        "DSW",
+        tmp_path,
+        module_sink={},
+        module_registry={},
+        mechanical_cmd_fn=_exit0_mechanical_cmd_fn,
+    )
+    with pytest.raises(NotImplementedError):
+        gate_fn("algolia-intel-company")
+
+
+def test_traffic_skill_is_registered_in_the_real_module_registry():
+    """The actual production registry, not a test fixture -- proves
+    algolia-intel-traffic really routes to the deterministic module by
+    default, not just in a hypothetical test."""
+    assert "algolia-intel-traffic" in executioner.MODULE_REGISTRY
+    assert executioner.MODULE_REGISTRY["algolia-intel-traffic"] is traffic_module.run_traffic_module

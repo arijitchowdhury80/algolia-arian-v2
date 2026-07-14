@@ -27,7 +27,21 @@ from pathlib import Path
 
 from prism_platform.pipeline import gate as gate_module
 from prism_platform.pipeline import self_heal
+from prism_platform.pipeline.modules import traffic as traffic_module
 from prism_platform.pipeline.verdicts import AdversarialVerdict, FactCheckVerdict, QualityScore
+
+# Skills with a deterministic module executor (docs/workspace/phase2-executioner
+# proof of concept, Arijit's call: the claude -p agentic wrapper -- not the
+# underlying collect-*.py scripts -- was the actual fabrication vector, since
+# it decided what to do on a failed/degraded script result. A module here
+# runs the real script and decides success/degraded/needs_human purely in
+# code, zero LLM calls. Skills not in this dict still dispatch via the
+# existing run-audit.sh --skill claude -p path. Port skills into this
+# registry one at a time -- ADDITIVE, not a rewrite.
+ModuleFn = Callable[[str, Path], object]
+MODULE_REGISTRY: dict[str, ModuleFn] = {
+    "algolia-intel-traffic": traffic_module.run_traffic_module,
+}
 
 # The 16 skills confirmed in Task 1 recon item 5. Kept as an independent copy
 # rather than imported from the staged runner: prism-runner.py is a
@@ -239,6 +253,107 @@ def make_gate_fn(
             findings=verdict.findings,
             raw=verdict.mechanical_raw,
             fatal=verdict.block_class == gate_module.BlockClass.UNFIXABLE,
+        )
+
+    return _gate
+
+
+def make_routed_dispatch_fn(
+    domain: str,
+    audit_dir: Path,
+    *,
+    module_sink: dict[str, object],
+    module_registry: dict[str, ModuleFn] = MODULE_REGISTRY,
+    build_cmd_fn: BuildCmdFn | None = None,
+    run_cmd_fn: RunCmdFn | None = None,
+) -> self_heal.DispatchFn:
+    """The real per-skill dispatch used by the executioner: for a skill with
+    a deterministic module (`module_registry`), run it directly -- no
+    claude -p, no LLM call anywhere in this path. For every other skill,
+    fall back to the existing `make_dispatch_fn`'s run-audit.sh path. This
+    is the actual wiring point: whichever skills get ported into
+    `MODULE_REGISTRY` next automatically stop going through claude -p, with
+    no change needed to `self_heal.SelfHealLoop` or the calling code.
+
+    `module_sink` is populated with the module's raw result object per
+    skill_name (mirrors `make_gate_fn`'s `verdict_sink` pattern) so the
+    paired `make_routed_gate_fn` can read it -- module skills decide
+    success/degraded/needs_human in ONE call, unlike the dispatch/gate split
+    used for claude -p-backed skills.
+    """
+    _fallback_dispatch = make_dispatch_fn(domain, build_cmd_fn=build_cmd_fn, run_cmd_fn=run_cmd_fn)
+
+    def _dispatch(skill_name: str, attempt_number: int) -> bool:
+        module_fn = module_registry.get(skill_name)
+        if module_fn is None:
+            return _fallback_dispatch(skill_name, attempt_number)
+        result = module_fn(domain, audit_dir)
+        module_sink[skill_name] = result
+        return True  # ran to completion -- make_routed_gate_fn judges the result
+
+    return _dispatch
+
+
+def make_routed_gate_fn(
+    domain: str,
+    company_name: str,
+    audit_dir: Path,
+    *,
+    module_sink: dict[str, object],
+    module_registry: dict[str, ModuleFn] = MODULE_REGISTRY,
+    mechanical_cmd_fn: Callable[[gate_module.SkillOutput], Sequence[str]] | None = None,
+    factcheck_fn: gate_module.FactCheckFn = _stub_factcheck_fn,
+    adversarial_fn: gate_module.AdversarialFn = _stub_adversarial_fn,
+    quality_fn: gate_module.QualityFn = _stub_quality_fn,
+    quality_pass_threshold: float = gate_module.DEFAULT_QUALITY_PASS_THRESHOLD,
+    verdict_sink: dict[str, gate_module.Verdict] | None = None,
+) -> self_heal.GateFn:
+    """Paired with `make_routed_dispatch_fn`. For a module-backed skill,
+    reads `module_sink` (populated by dispatch) and maps its status to
+    `self_heal.GateResult` deterministically -- no LLM judgment here either:
+      - "success"     -> CLEAN
+      - "degraded"     -> BLOCKED, fatal=False (a retry MIGHT get a better
+                          partial result -- unlike "needs_human", this is
+                          not known to be permanently unfixable)
+      - "needs_human" -> BLOCKED, fatal=True (patch #3 -- e.g. traffic's
+                          permanently-dead SimilarWeb key: retrying wastes
+                          the retry budget on a failure that cannot change)
+    Every other skill falls back to the existing `make_gate_fn`'s real
+    5-stage LLM-backed gate (same kwargs, passed straight through)."""
+    _fallback_gate = make_gate_fn(
+        domain,
+        company_name,
+        audit_dir,
+        mechanical_cmd_fn=mechanical_cmd_fn,
+        factcheck_fn=factcheck_fn,
+        adversarial_fn=adversarial_fn,
+        quality_fn=quality_fn,
+        quality_pass_threshold=quality_pass_threshold,
+        verdict_sink=verdict_sink,
+    )
+
+    def _gate(skill_name: str) -> self_heal.GateResult:
+        if skill_name not in module_registry:
+            return _fallback_gate(skill_name)
+
+        result = module_sink.get(skill_name)
+        if result is None:
+            return self_heal.GateResult(
+                status=self_heal.GateStatus.ERROR,
+                findings=(f"module dispatch for {skill_name!r} produced no result",),
+            )
+
+        status = getattr(result, "status", None)
+        reason = getattr(result, "reason", "")
+        if status == "success":
+            return self_heal.GateResult(status=self_heal.GateStatus.CLEAN, raw=reason)
+        if status == "degraded":
+            return self_heal.GateResult(
+                status=self_heal.GateStatus.BLOCKED, fatal=False, findings=(reason,)
+            )
+        # "needs_human" or any unrecognized status -- fail closed, escalate immediately
+        return self_heal.GateResult(
+            status=self_heal.GateStatus.BLOCKED, fatal=True, findings=(reason,)
         )
 
     return _gate
