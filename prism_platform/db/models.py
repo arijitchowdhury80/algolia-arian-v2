@@ -9,6 +9,7 @@ from typing import Any
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     Boolean,
+    CheckConstraint,
     Date,
     DateTime,
     ForeignKey,
@@ -107,7 +108,77 @@ class Audit(Base):
     __table_args__ = (
         Index("idx_audits_account", "account_id"),
         Index("idx_audits_status", "status"),
+        # ACL slice (run-2026-07-14-001, 04-spec.md §1) -- every ACL check
+        # and the /acl/visible lookup filters by user_id; no index existed
+        # on this column before this slice.
+        Index("idx_audits_user", "user_id"),
     )
+
+
+# =============================================================================
+# Per-user-to-company authorization (run-2026-07-14-001, 04-spec.md §1)
+# =============================================================================
+
+
+class User(Base):
+    """A real Clerk user -- `id` is the Clerk userId (e.g. "user_2abc...").
+
+    `org_id` is dormant until Clerk Orgs is explicitly turned on -- never
+    read by `prism_platform.auth.acl.can_user_see()` while off [C3]. See
+    that module's docstring for why the column exists but is structurally
+    unreferenced today.
+    """
+
+    __tablename__ = "users"
+
+    id: Mapped[str] = mapped_column(Text, primary_key=True)
+    email: Mapped[str] = mapped_column(Text, nullable=False)
+    name: Mapped[str | None] = mapped_column(Text, nullable=True)
+    org_id: Mapped[str | None] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+
+class AuditShare(Base):
+    """An explicit `view` grant of one audit to one user (04-spec.md §1,
+    §6). `permission` is locked to `'view'` only this slice -- the CHECK
+    constraint below rejects anything else at the DB layer, not just in
+    application code.
+    """
+
+    __tablename__ = "audit_shares"
+
+    audit_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("audits.id", ondelete="CASCADE"), primary_key=True
+    )
+    shared_with_user_id: Mapped[str] = mapped_column(
+        Text, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True
+    )
+    permission: Mapped[str] = mapped_column(Text, nullable=False, default="view")
+    # Must equal the audit's owner; enforced at write time by the shares
+    # endpoint (prism_platform/api/routers/audits.py::share_audit), not just
+    # by convention.
+    created_by: Mapped[str] = mapped_column(Text, ForeignKey("users.id"), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+    __table_args__ = (
+        # The PK's non-leading column -- /acl/visible's core query scans by
+        # this [I-3].
+        Index("idx_audit_shares_shared_with", "shared_with_user_id"),
+        CheckConstraint("permission = 'view'", name="ck_audit_shares_permission_view_only"),
+    )
+
+
+class SeenAssertion(Base):
+    """`jti` replay-defense store for the signed trust-assertion channel
+    (04-spec.md §4, 06-plan.md §4 design note). A table (not an in-memory
+    LRU) because it survives a FastAPI process restart and is correct if
+    this process is ever run with more than one uvicorn worker.
+    """
+
+    __tablename__ = "seen_assertions"
+
+    jti: Mapped[str] = mapped_column(Text, primary_key=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
 
 
 class ModuleExecution(Base):
