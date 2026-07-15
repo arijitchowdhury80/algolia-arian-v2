@@ -3,15 +3,18 @@
 from __future__ import annotations
 
 import uuid
-from typing import Any
+from typing import Annotated, Any
 
 import structlog
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import func, select
 from sqlalchemy.orm import aliased
 
 from prism_platform.api.deps import DbSession
+from prism_platform.auth.deps import resolve_user_id
+from prism_platform.auth.queries import latest_visible_audit_per_account, visible_audits_select
+from prism_platform.config import settings
 from prism_platform.db.models import Account, Audit, ModuleExecution
 from prism_platform.v2.domain_normalizer import normalize_domain
 
@@ -75,6 +78,7 @@ def _pick_best_account(
       3. Has a score.
       4. Has more data populated (legal_name present as heuristic).
     """
+
     def sort_key(item: tuple[Account, str, str | None, float | None]) -> tuple[int, str, int, int]:
         account, status, last_audit, score = item
         return (
@@ -101,11 +105,23 @@ def _pick_best_account(
 
 
 @router.get("/", response_model=list[AccountResponse])
-async def list_accounts(session: DbSession) -> list[AccountResponse]:
+async def list_accounts(
+    session: DbSession,
+    user_id: Annotated[str | None, Depends(resolve_user_id)],
+) -> list[AccountResponse]:
     """List all accounts, deduplicated by normalized domain.
 
     For each unique normalized domain, the account with the most recent
     completed audit (or the richest data) is returned.
+
+    Auth (04-spec.md §3 row 4, §2b, Arch Review I-1): while
+    `ACL_ENFORCEMENT_ENABLED=true`, each account's "latest audit" is
+    resolved via one joined query for ALL accounts
+    (`latest_visible_audit_per_account`), not a per-account
+    `can_user_see()` call inside this loop -- filtered to audits visible
+    to the requesting user. Accounts with zero visible audits still list
+    (status "none"), not omitted. While the flag is false (default), this
+    resolves exactly as before this slice -- ships dark (§10).
     """
     logger.info("list_accounts.start")
     try:
@@ -122,18 +138,26 @@ async def list_accounts(session: DbSession) -> list[AccountResponse]:
 
         logger.info("list_accounts.accounts_found", count=len(accounts))
 
+        visible_by_account: dict[uuid.UUID, Audit] = {}
+        if settings.acl_enforcement_enabled:
+            visible_by_account = await latest_visible_audit_per_account(user_id, session)
+
         # Build per-account metadata and group by normalized domain
         groups: dict[str, list[tuple[Account, str, str | None, float | None]]] = {}
 
         for account in accounts:
-            # Get the latest audit for this account
-            audit_result = await session.execute(
-                select(Audit)
-                .where(Audit.account_id == account.id)
-                .order_by(Audit.created_at.desc())
-                .limit(1)
-            )
-            latest_audit = audit_result.scalar_one_or_none()
+            if settings.acl_enforcement_enabled:
+                latest_audit = visible_by_account.get(account.id)
+            else:
+                # ACL_ENFORCEMENT_ENABLED=false (default): unchanged from
+                # pre-ACL behavior -- ships dark, 04-spec.md §10.
+                audit_result = await session.execute(
+                    select(Audit)
+                    .where(Audit.account_id == account.id)
+                    .order_by(Audit.created_at.desc())
+                    .limit(1)
+                )
+                latest_audit = audit_result.scalar_one_or_none()
 
             status = "none"
             last_audit_date: str | None = None
@@ -147,9 +171,7 @@ async def list_accounts(session: DbSession) -> list[AccountResponse]:
                     score = float(latest_audit.score)
 
             normalized = normalize_domain(account.domain)
-            groups.setdefault(normalized, []).append(
-                (account, status, last_audit_date, score)
-            )
+            groups.setdefault(normalized, []).append((account, status, last_audit_date, score))
 
         # Deduplicate: pick the best account per normalized domain
         responses: list[AccountResponse] = []
@@ -168,22 +190,32 @@ async def list_accounts(session: DbSession) -> list[AccountResponse]:
 
     except Exception as exc:
         logger.error("list_accounts.failed", error=str(exc))
-        raise HTTPException(
-            status_code=500, detail="Failed to list accounts."
-        ) from exc
+        raise HTTPException(status_code=500, detail="Failed to list accounts.") from exc
 
 
 @router.get("/{domain}/results", response_model=AccountResultsResponse)
-async def get_account_results(domain: str, session: DbSession) -> AccountResultsResponse:
+async def get_account_results(
+    domain: str,
+    session: DbSession,
+    user_id: Annotated[str | None, Depends(resolve_user_id)],
+) -> AccountResultsResponse:
     """Get all module results for a domain.
 
     Normalizes the domain, finds all matching accounts (covering domain
     variants like www.example.com and example.com), then returns the most
     recent successful or partial execution of each module.
 
+    Auth (04-spec.md §3 row 5, §2b): the "latest audit" used for
+    `audit_status`/`last_audit_date` is resolved from the caller's visible
+    set (same joined-query shape as list_accounts) while
+    `ACL_ENFORCEMENT_ENABLED=true` -- "latest visible, not latest
+    overall." While the flag is false (default), unchanged from pre-ACL
+    behavior (§10).
+
     Args:
         domain: Raw domain string (will be normalized).
         session: Injected async DB session.
+        user_id: Resolved caller identity (may be None if unauthenticated).
 
     Returns:
         AccountResultsResponse with module_name -> output_json mapping.
@@ -226,13 +258,24 @@ async def get_account_results(domain: str, session: DbSession) -> AccountResults
         # -----------------------------------------------------------------
         # 2. Get latest audit info
         # -----------------------------------------------------------------
-        audit_result = await session.execute(
-            select(Audit)
-            .where(Audit.account_id.in_(matching_account_ids))
-            .order_by(Audit.created_at.desc())
-            .limit(1)
-        )
-        latest_audit = audit_result.scalar_one_or_none()
+        if settings.acl_enforcement_enabled:
+            visible_stmt = (
+                visible_audits_select(user_id)
+                .where(Audit.account_id.in_(matching_account_ids))
+                .order_by(Audit.created_at.desc())
+                .limit(1)
+            )
+            latest_audit = (await session.execute(visible_stmt)).scalars().first()
+        else:
+            # ACL_ENFORCEMENT_ENABLED=false (default): unchanged from
+            # pre-ACL behavior -- ships dark, 04-spec.md §10.
+            audit_result = await session.execute(
+                select(Audit)
+                .where(Audit.account_id.in_(matching_account_ids))
+                .order_by(Audit.created_at.desc())
+                .limit(1)
+            )
+            latest_audit = audit_result.scalar_one_or_none()
 
         last_audit_date: str | None = None
         audit_status: str | None = None
@@ -250,7 +293,9 @@ async def get_account_results(domain: str, session: DbSession) -> AccountResults
         # -----------------------------------------------------------------
 
         # Build list of domain variants that normalize to the same value
-        domain_variants = [a.domain for a in all_accounts if normalize_domain(a.domain) == normalized]
+        domain_variants = [
+            a.domain for a in all_accounts if normalize_domain(a.domain) == normalized
+        ]
 
         # Subquery: latest completed_at per module_name
         latest_sub = (
