@@ -1,0 +1,10 @@
+<header class="hero hero-single" id="opportunity">
+  <span class="eyebrow on-dark">{{hero.eyebrow}}</span>
+  <h1>{{hero.prefix}} <strong>{{hero.amount}}</strong> {{hero.suffix}}</h1>
+  <p class="sub">{{hero.sub}}</p>
+  {{#if hero.primary_cta_label}}
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="{{hero.primary_cta_href}}">{{hero.primary_cta_label}}</a>
+  </div>
+  {{/if}}
+</header>

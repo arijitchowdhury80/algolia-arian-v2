@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "company": "lululemon athletica",
+    "slug": "lululemon",
+    "title": "Algolia for lululemon athletica",
+    "description": "",
+    "audit_path": "/reports/lululemon/"
+  },
+  "hero": {
+    "eyebrow": "Athletic Apparel \u00b7 B2C Ecommerce",
+    "prefix": "",
+    "amount": "",
+    "suffix": "Search that keeps up with lululemon's guests",
+    "sub": "PRISM audited lululemon.com search. Here is what closing the gap with Algolia AI Search could unlock.",
+    "primary_cta_label": "See the full audit",
+    "primary_cta_href": "/reports/lululemon/",
+    "secondary_cta_label": "Talk to your rep",
+    "rep_mailto": "mailto:sales@algolia.com",
+    "fact_rows": []
+  },
+  "findings": {
+    "eyebrow": "What PRISM found",
+    "heading": "Gaps in lululemon athletica search today",
+    "subheading": "Observed directly, not inferred.",
+    "items": [
+      {
+        "id": "finding-0",
+        "kind": "finding",
+        "source_field": "findings[0]",
+        "tag": "semantic_nlp_search",
+        "title": "Semantic / NLP FAIL: keyword `Ntt` engine cannot parse conversational intent",
+        "body": "Typing a natural-language, price-scoped query ('yoga pants under 100') returned a completely empty 'Top Suggestions' overlay: the heading rendered with zero results beneath it. The keyword `Ntt` engine tokenizes words and cannot read 'under 100' as a price constraint or 'for hot yoga' as an activity/fabric signal, so intent queries fall through to nothing. Note the contrast with plain keyword terms, which do autocomplete richly (see F2/F4). Algolia NeuralSearch understands activity, price and feature intent natively \u2014 combining vector search with structured attribute filtering in a single query, no manual facet-setting required. This is the strongest wedge given the new CAITO's AI mandate.",
+        "metric": "Search users who use natural language convert far higher: apparel searchers convert at 13% vs 6% for non-searchers.",
+        "link_href": "https://www.algolia.com/customers/gymshark/",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-1",
+        "kind": "finding",
+        "source_field": "findings[1]",
+        "tag": "query_suggestions_empty_state",
+        "title": "Query suggestions are a static curated list, not demand-ranked or personalized",
+        "body": "lululemon does populate the empty-state overlay: a 'Trending Searches' list renders (Belt Bag, Define Jacket, Align, Swiftly, Align Leggings) and returning guests also see a 'Recent Searches' block (screenshots 15 and 02). The gap is that this is a fixed, hand-curated list, not popularity ranked from real search demand, and it does not personalize to the individual shopper beyond simple recent history. So the highest-intent surface works, but it cannot flex to real-time demand, season or the specific guest. Algolia Query Suggestions ranks the overlay from live search analytics and refreshes automatically, and Personalization tailors it per shopper: the fixed curated list becomes a live, demand-ranked merchandising surface.",
+        "metric": "43% of retail shoppers go straight to the search bar; suggestions ranked from real demand outperform a fixed curated list on the highest-intent surface.",
+        "link_href": "https://www.algolia.com/customers/gymshark-recommend",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-2",
+        "kind": "finding",
+        "source_field": "findings[2]",
+        "tag": "content_commerce_ux",
+        "title": "No federated search: help, service and policy content siloed from search",
+        "body": "Search returns products but no service, help or policy content. Typing 'hemming' surfaces hem-named PRODUCTS (Nulu Cinch-Hem Pant, LuluLinen Adjustable-Hem Skirt, Cotton Jersey Bubble-Hem Tee, Notched-Hem Crop) plus a 'Curved Hem' suggestion, but never lululemon's free-hemming SERVICE or any policy/help page. That content lives in a separate Contentful layer (`cdn-contentful.lululemon.com`, content_type=cdp) and is not indexed into search, so the brand's signature service is invisible on the search surface. Algolia Federated Search unifies products, content, collections and stores in a single overlay, indexing the Contentful content lululemon already produces (including lululemon Studio content) alongside the apparel catalog.",
+        "metric": "68% of shoppers would return to a site with good search; federated discovery keeps them from leaving to find help content.",
+        "link_href": "https://www.algolia.com/customers/arc-teryx/",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-3",
+        "kind": "finding",
+        "source_field": "findings[3]",
+        "tag": "intent_detection",
+        "title": "Franchise terms autocomplete richly but do not route to curated, merchandised views",
+        "body": "Brand and franchise terms do autocomplete richly: typing 'align' returns four Align product cards plus scoped query suggestions (Align Leggings, Align Bra, Align 25, Align Dress, Align 6 Shorts, Camo Align Leggings). The gap is downstream, not in autocomplete: those terms resolve to a generic keyword results page with no curated collection routing or merchandised landing, so a signature franchise gets matched, not merchandised. There is no intent categorization that sends 'run' to a curated Running view. Algolia Rules + query categorization route franchise, brand and activity terms to curated, filtered collection views: merchandised, not just matched.",
+        "metric": "Over half of US online adults rely more on search than menus, and 57% use filters to narrow results: curated intent routing is now table stakes.",
+        "link_href": "https://www.algolia.com/customers/under-armour/",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-4",
+        "kind": "finding",
+        "source_field": "findings[4]",
+        "tag": "search_intelligence",
+        "title": "Behavioral signal not fed into ranking: no popularity-ranked results or social proof",
+        "body": "lululemon captures rich first-party behavior (Quantum Metric confirmed on site) and does surface recent searches and a trending list in the empty state (screenshot 02). What is missing is that this demand signal does not visibly rank what shoppers see: no bestseller or most-searched badges, no popularity-ranked result ordering, and no social-proof cues at the point of discovery. The signal is collected but not fed back into ranking. Algolia Analytics + insights-driven ranking turn behavioral data into popularity-ranked suggestions, trending terms and bestseller signals, closing the loop between the data lululemon already collects and what shoppers see.",
+        "metric": "Recommendations and popularity signals drive roughly 31% of e-commerce revenue: leaving them out of ranking wastes proven demand data.",
+        "link_href": "https://www.algolia.com/customers/gymshark-recommend",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-5",
+        "kind": "finding",
+        "source_field": "findings[5]",
+        "tag": "typo_tolerance",
+        "title": "Typo tolerance works: misspellings return correct results, but no explicit 'Did you mean' messaging",
+        "body": "The correctly-spelled query autocompletes normally (screenshot 03 shows a populated 'leggings' SAYT), but no 'Did you mean\u2026' correction UX was observed, and the misspelled variants ('lululemn leggings', 'align pnats') could not be captured on the results surface under the WAF block. Typo tolerance is therefore unconfirmed and flagged as a high-value gap for clean-IP re-test. Algolia typo tolerance is built in and requires zero configuration \u2014 misspellings resolve to the intended product automatically, with configurable 'Did you mean' prompts.",
+        "metric": "Roughly 1 in 6 search queries contain a typo \u2014 untolerated misspellings drop shoppers into zero results.",
+        "link_href": "https://www.algolia.com/customers/lacoste",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-6",
+        "kind": "finding",
+        "source_field": "findings[6]",
+        "tag": "dynamic_facets_personalization",
+        "title": "Static faceting & no visible personalization on a first-party-rich DTC model",
+        "body": "Autocomplete surfaces recent searches, so there is some lightweight personalization at the SAYT layer, but facet adaptivity by category could not be enumerated under the WAF block and no 'Recommended for you' / personalized re-ranking of results was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that the results surface does not appear to leverage. Flagged for clean-IP re-test. Algolia Dynamic Faceting adapts filters to category context, and Algolia Personalization re-ranks results using the first-party behavioral signal lululemon already captures.",
+        "metric": "80% of shoppers prefer personalized experiences; personalization drives a 10\u201315% revenue lift.",
+        "link_href": "https://www.algolia.com/customers/gymshark-recommend",
+        "link_label": "Read their story",
+        "accepted": true
+      },
+      {
+        "id": "finding-7",
+        "kind": "finding",
+        "source_field": "findings[7]",
+        "tag": "recommendations_merchandising",
+        "title": "Recommendations & merchandising rules siloed from search",
+        "body": "PDP FBT/related carousels and search banners/curation could not be confirmed under the WAF block. Merchandising banners are handled by Contentful (`cdp` entries) separate from the `Ntt` search engine \u2014 indicating rules and content are not unified with search. Flagged for clean-IP re-test. Algolia Recommend (FBT / related / trending) plus the Rules engine unify recommendations and merchandising banners inside search \u2014 one ranking, one set of rules across search and browse.",
+        "metric": "Recommendations drive roughly 31% of e-commerce revenue when relevant and search-integrated.",
+        "link_href": "https://www.algolia.com/customers/arc-teryx/",
+        "link_label": "Read their story",
+        "accepted": true
+      }
+    ]
+  },
+  "proof": {
+    "eyebrow": "Proven at your scale",
+    "heading": "Companies with a similar search problem, solved",
+    "subheading": "Already running on Algolia.",
+    "cards": [
+      {
+        "company": "Gymshark",
+        "vertical": "Athletic Apparel (DTC)",
+        "metric": "Search conversion rose from 6.2% to over 10%; revenue from search users grew more than 400% YoY; AI Re-Ranking generates an estimated \u00a32M/yr in extra sales",
+        "result": "Gymshark is a direct DTC competitor for lululemon's premium-activewear customer, confirmed on Algolia via live packet inspection (app_id 2DEAES0CUO). Closest possible benchmark \u2014 same vertical, same DTC model, same customer.",
+        "relevance": "",
+        "link_href": "https://www.algolia.com/customers/gymshark/",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Under Armour",
+        "vertical": "Athletic Apparel / Performance",
+        "metric": "35% higher conversion rate for customers who use search",
+        "result": "Under Armour is an enterprise-tier primary competitor at lululemon's scale \u2014 enterprise proof (not just challenger proof) that Algolia search lifts conversion in performance apparel.",
+        "relevance": "",
+        "link_href": "https://www.algolia.com/customers/under-armour/",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Arc'teryx (Amer Sports)",
+        "vertical": "Premium Outdoor / Apparel",
+        "metric": "Automates merchandising and surfaces real-time insights using Algolia AI Synonyms + Dynamic Re-Ranking, reducing manual workload",
+        "result": "Arc'teryx is an adjacent premium apparel brand solving the exact merchandising-automation problem lululemon faces with its split Endeca/Contentful stack \u2014 directly relevant to the 'sharper visual merchandising' mandate.",
+        "relevance": "",
+        "link_href": "https://www.algolia.com/customers/arc-teryx/",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Lacoste",
+        "vertical": "Fashion / Apparel",
+        "metric": "37% increase in search-driven revenue",
+        "result": "Lacoste is a premium fashion-apparel brand; its typo-tolerance and relevance results map directly to lululemon's unconfirmed typo-tolerance gap on branded terms ('lululemn').",
+        "relevance": "",
+        "link_href": "https://www.algolia.com/customers/lacoste",
+        "link_label": "Read their story"
+      }
+    ]
+  },
+  "cta_band": {
+    "heading": "Let's size this for lululemon",
+    "button": "Talk to your rep"
+  },
+  "sections": [
+    {
+      "slot": "hero",
+      "variant": "hero-image-2cta",
+      "source": "prism"
+    },
+    {
+      "slot": "body",
+      "variant": "body-proof-stats",
+      "source": "prism"
+    },
+    {
+      "slot": "body",
+      "variant": "body-left-right",
+      "source": "prism"
+    },
+    {
+      "slot": "body",
+      "variant": "body-grid",
+      "source": "prism"
+    },
+    {
+      "slot": "footer",
+      "variant": "footer-plain-cta",
+      "source": "manual"
+    }
+  ],
+  "footer": {}
+}

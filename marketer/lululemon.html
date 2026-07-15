@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algolia for lululemon athletica</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #003DFF;
+    --color-accent: #5468FF;
+    --color-text: #23263B;
+    --color-muted: #6B7280;
+    --color-bg: #F5F5F7;
+    --color-border: #E5E7EB;
+    --color-white: #FFFFFF;
+    --topbar-bg: #23263B;
+    --color-positive: #059669;
+    --color-positive-tint: #F0FDF4;
+    --color-positive-border: #BBF7D0;
+    --color-moderate: #D97706;
+    --color-moderate-tint: #FFFBEB;
+    --color-moderate-border: #FDE68A;
+    --color-teal: #0891B2;
+    --color-violet: #7C3AED;
+    --blue-tint: #EEF2FF;
+    --blue-border: #C7D2FE;
+    --blue-light: #F8F9FF;
+    --violet-tint: #F5F3FF;
+    --violet-border: #DDD6FE;
+    --font-family: 'Sora', sans-serif;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+    --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
+    --maxw: 1180px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-white);
+    line-height: 1.6;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, h4 { font-weight: 300; letter-spacing: -0.5px; }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--color-primary);
+  }
+  .eyebrow.on-dark { color: #9DB4FF; }
+
+  /* Utility / Nav */
+  .util-bar {
+    background: var(--topbar-bg); color: rgba(255,255,255,0.75);
+    font-size: 13px; padding: 8px 24px; text-align: center;
+  }
+  .util-bar a { color: #fff; font-weight: 600; }
+  nav.main-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: var(--maxw); margin: 0 auto;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; }
+  .brand svg { flex-shrink: 0; }
+  .nav-actions { display: flex; align-items: center; gap: 16px; font-size: 14px; font-weight: 600; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px; font-weight: 600; font-size: 14px;
+    min-height: 44px; border: 2px solid transparent; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .btn:hover { opacity: 0.88; }
+  .btn-primary { background: var(--color-primary); color: #fff; }
+  .btn-outline { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .btn-outline.light { border-color: var(--color-border); color: var(--color-text); }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0D1240 0%, #21243D 45%, #001A8A 100%);
+    color: #fff; padding: 72px 24px 88px;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .hero h1 { font-size: 48px; line-height: 1.12; margin: 14px 0 18px; font-weight: 300; }
+  .hero h1 strong { font-weight: 600; color: #9DB4FF; }
+  .hero p.sub { font-size: 17px; color: rgba(255,255,255,0.78); max-width: 480px; margin-bottom: 30px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-fact-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px; padding: 28px; backdrop-filter: blur(6px);
+  }
+  .hero-fact-card .fact-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
+  .hero-fact-card .fact-row:last-child { border-bottom: none; }
+  .hero-fact-card .fact-row span:first-child { color: rgba(255,255,255,0.55); }
+  .hero-fact-card .fact-row span:last-child { font-weight: 600; }
+
+  /* Hero -- single column variant */
+  .hero-single { text-align: center; padding: 96px 24px; }
+  .hero-single .sub { max-width: 640px; margin: 0 auto 30px; }
+  .hero-single .hero-ctas { justify-content: center; }
+
+  /* Hero -- solid personalized variant */
+  .hero-kelly { background: var(--color-primary); color: #fff; text-align: center; padding: 96px 24px; }
+  .hero-kelly .eyebrow.on-dark { color: rgba(255,255,255,0.75); }
+  .hero-kelly .sub { max-width: 640px; margin: 0 auto 30px; color: rgba(255,255,255,0.85); }
+  .hero-kelly .hero-ctas { justify-content: center; }
+
+  /* Section shell */
+  section { padding: 88px 24px; }
+  section.tight { padding: 64px 24px; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+  .section-head h2 { font-size: 34px; color: var(--color-text); margin-bottom: 12px; }
+  .section-head p { color: var(--color-muted); font-size: 16px; }
+  .bg-tint { background: var(--color-bg); }
+  .bg-dark { background: var(--topbar-bg); color: #fff; }
+  .bg-dark .section-head p { color: rgba(255,255,255,0.65); }
+
+  /* Proof cards */
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--maxw); margin: 0 auto; }
+  .proof-card {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 28px; box-shadow: var(--shadow);
+  }
+  .proof-card .company { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .proof-card .vertical { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
+  .proof-card .metric {
+    font-size: 26px; font-weight: 600; color: var(--color-primary); margin-bottom: 8px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .proof-card .result { font-size: 14px; color: var(--color-text); margin-bottom: 14px; }
+  .proof-card .relevance { font-size: 13px; color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 12px; }
+  .proof-card a.case-link { font-size: 13px; font-weight: 600; color: var(--color-primary); margin-top: 14px; display: inline-block; }
+
+  /* ROI scenario row */
+  .roi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--maxw); margin: 0 auto; }
+  .roi-card { border-radius: 16px; padding: 32px 28px; }
+  .roi-card.conservative { background: var(--blue-light); border: 1px solid var(--blue-border); }
+  .roi-card.moderate { background: var(--violet-tint); border: 2px solid var(--color-violet); box-shadow: var(--shadow-lg); position: relative; }
+  .roi-card.aggressive { background: var(--color-moderate-tint); border: 1px solid var(--color-moderate-border); }
+  .roi-card.placeholder { background: var(--color-bg); border: 1px dashed var(--color-border); }
+  .roi-card .label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); }
+  .roi-card.moderate .label { color: var(--color-violet); }
+  .roi-card .amount { font-size: 40px; font-weight: 600; margin: 10px 0; }
+  .roi-card.placeholder .amount { font-size: 22px; color: var(--color-muted); }
+  .roi-card .desc { font-size: 14px; color: var(--color-muted); }
+  .roi-card .badge {
+    position: absolute; top: -12px; right: 20px; background: var(--color-violet); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 999px;
+  }
+  .roi-note { text-align: center; font-size: 13px; color: var(--color-muted); max-width: var(--maxw); margin: 24px auto 0; }
+
+  /* Alternating findings */
+  .finding-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
+  .finding-row.reverse .finding-visual { order: 2; }
+  .finding-visual {
+    background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 16px;
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    color: var(--color-muted); font-size: 13px; font-weight: 600; text-align: center; padding: 20px;
+  }
+  .finding-tag {
+    display: inline-block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    background: var(--color-moderate-tint); color: var(--color-moderate); border: 1px solid var(--color-moderate-border);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+  }
+  .finding-copy h3 { font-size: 26px; color: var(--color-text); margin-bottom: 12px; font-weight: 400; }
+  .finding-copy p { color: var(--color-muted); font-size: 15px; margin-bottom: 16px; }
+
+  /* Capability grid */
+  .cap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: var(--maxw); margin: 0 auto; }
+  .cap-item { text-align: center; }
+  .cap-icon {
+    width: 48px; height: 48px; border-radius: 12px; background: var(--blue-tint); color: var(--color-primary);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 20px;
+  }
+  .cap-item h4 { font-size: 16px; margin-bottom: 6px; font-weight: 600; }
+  .cap-item p { font-size: 13px; color: var(--color-muted); }
+
+  /* Accordion */
+  .accordion { max-width: 780px; margin: 0 auto; }
+  .accordion details {
+    border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 18px 22px; margin-bottom: 12px;
+  }
+  .accordion summary { font-weight: 600; font-size: 16px; cursor: pointer; list-style: none; }
+  .accordion summary::-webkit-details-marker { display: none; }
+  .accordion summary::after { content: '+'; float: right; color: var(--color-primary); font-weight: 600; }
+  .accordion details[open] summary::after { content: '\2212'; }
+  .accordion p { color: var(--color-muted); font-size: 14px; margin-top: 12px; }
+
+  /* CTA band */
+  .cta-band { text-align: center; padding: 72px 24px; }
+  .cta-band h2 { font-size: 32px; margin-bottom: 12px; font-weight: 300; }
+  .cta-band p { color: rgba(255,255,255,0.7); margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* Footer */
+  footer { background: var(--topbar-bg); color: rgba(255,255,255,0.6); padding: 48px 24px 28px; font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  footer a:hover { color: #fff; }
+  .rep-stub { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .rep-stub .avatar {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--color-primary);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #fff;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero h1 { font-size: 34px; }
+    .proof-grid, .roi-grid { grid-template-columns: 1fr; }
+    .finding-row, .finding-row.reverse { grid-template-columns: 1fr; padding: 32px 0; }
+    .finding-row.reverse .finding-visual { order: 0; }
+    section { padding: 56px 20px; }
+    nav.main-nav { flex-direction: column; gap: 12px; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    footer .wrap { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="util-bar">Prepared for lululemon athletica by PRISM &middot; grounded in a live audit of  search &middot; <a href="/reports/lululemon/">View the full audit &rarr;</a></div>
+
+<nav class="main-nav">
+  <div class="brand">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#003DFF"/><path d="M7 17V7h2.2v8.1H14V17H7z" fill="#fff"/></svg>
+    algolia
+  </div>
+  <div class="nav-actions">
+    <a href="#opportunity">Opportunity</a>
+    <a href="#proof">Proof</a>
+    <a href="#findings">Findings</a>
+    <a class="btn btn-outline light" href="mailto:sales@algolia.com">Talk to your rep</a>
+  </div>
+</nav>
+
+<header class="hero" id="opportunity">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow on-dark">Athletic Apparel · B2C Ecommerce</span>
+      <h1> <strong></strong> Search that keeps up with lululemon's guests</h1>
+      <p class="sub">PRISM audited lululemon.com search. Here is what closing the gap with Algolia AI Search could unlock.</p>
+      
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/reports/lululemon/">See the full audit</a>
+        <a class="btn btn-outline" href="mailto:sales@algolia.com">Talk to your rep</a>
+      </div>
+      
+    </div>
+    
+  </div>
+</header>
+
+<section id="proof" class="bg-tint">
+  <div class="section-head">
+    <span class="eyebrow">Proven at your scale</span>
+    <h2>Companies with a similar search problem, solved</h2>
+    <p>Already running on Algolia.</p>
+  </div>
+  <div class="proof-grid">
+    
+    <div class="proof-card">
+      <div class="company">Gymshark</div>
+      <div class="vertical">Athletic Apparel (DTC)</div>
+      <div class="metric">Search conversion rose from 6.2% to over 10%; revenue from search users grew more than 400% YoY; AI Re-Ranking generates an estimated £2M/yr in extra sales</div>
+      <div class="result">Gymshark is a direct DTC competitor for lululemon's premium-activewear customer, confirmed on Algolia via live packet inspection (app_id 2DEAES0CUO). Closest possible benchmark — same vertical, same DTC model, same customer.</div>
+      <div class="relevance"></div>
+      <a class="case-link" href="https://www.algolia.com/customers/gymshark/" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+    <div class="proof-card">
+      <div class="company">Under Armour</div>
+      <div class="vertical">Athletic Apparel / Performance</div>
+      <div class="metric">35% higher conversion rate for customers who use search</div>
+      <div class="result">Under Armour is an enterprise-tier primary competitor at lululemon's scale — enterprise proof (not just challenger proof) that Algolia search lifts conversion in performance apparel.</div>
+      <div class="relevance"></div>
+      <a class="case-link" href="https://www.algolia.com/customers/under-armour/" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+    <div class="proof-card">
+      <div class="company">Arc'teryx (Amer Sports)</div>
+      <div class="vertical">Premium Outdoor / Apparel</div>
+      <div class="metric">Automates merchandising and surfaces real-time insights using Algolia AI Synonyms + Dynamic Re-Ranking, reducing manual workload</div>
+      <div class="result">Arc'teryx is an adjacent premium apparel brand solving the exact merchandising-automation problem lululemon faces with its split Endeca/Contentful stack — directly relevant to the 'sharper visual merchandising' mandate.</div>
+      <div class="relevance"></div>
+      <a class="case-link" href="https://www.algolia.com/customers/arc-teryx/" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+    <div class="proof-card">
+      <div class="company">Lacoste</div>
+      <div class="vertical">Fashion / Apparel</div>
+      <div class="metric">37% increase in search-driven revenue</div>
+      <div class="result">Lacoste is a premium fashion-apparel brand; its typo-tolerance and relevance results map directly to lululemon's unconfirmed typo-tolerance gap on branded terms ('lululemn').</div>
+      <div class="relevance"></div>
+      <a class="case-link" href="https://www.algolia.com/customers/lacoste" target="_blank" rel="noopener">Read their story &rarr;</a>
+    </div>
+    
+  </div>
+</section>
+
+<section id="findings" class="bg-tint">
+  <div class="section-head">
+    <span class="eyebrow">What PRISM found</span>
+    <h2>Gaps in lululemon athletica search today</h2>
+    <p>Observed directly, not inferred.</p>
+  </div>
+
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      semantic_nlp_search
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">semantic_nlp_search</span>
+      <h3>Semantic / NLP FAIL: keyword `Ntt` engine cannot parse conversational intent</h3>
+      <p>Typing a natural-language, price-scoped query ('yoga pants under 100') returned a completely empty 'Top Suggestions' overlay: the heading rendered with zero results beneath it. The keyword `Ntt` engine tokenizes words and cannot read 'under 100' as a price constraint or 'for hot yoga' as an activity/fabric signal, so intent queries fall through to nothing. Note the contrast with plain keyword terms, which do autocomplete richly (see F2/F4). Algolia NeuralSearch understands activity, price and feature intent natively — combining vector search with structured attribute filtering in a single query, no manual facet-setting required. This is the strongest wedge given the new CAITO's AI mandate.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      query_suggestions_empty_state
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">query_suggestions_empty_state</span>
+      <h3>Query suggestions are a static curated list, not demand-ranked or personalized</h3>
+      <p>lululemon does populate the empty-state overlay: a 'Trending Searches' list renders (Belt Bag, Define Jacket, Align, Swiftly, Align Leggings) and returning guests also see a 'Recent Searches' block (screenshots 15 and 02). The gap is that this is a fixed, hand-curated list, not popularity ranked from real search demand, and it does not personalize to the individual shopper beyond simple recent history. So the highest-intent surface works, but it cannot flex to real-time demand, season or the specific guest. Algolia Query Suggestions ranks the overlay from live search analytics and refreshes automatically, and Personalization tailors it per shopper: the fixed curated list becomes a live, demand-ranked merchandising surface.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      content_commerce_ux
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">content_commerce_ux</span>
+      <h3>No federated search: help, service and policy content siloed from search</h3>
+      <p>Search returns products but no service, help or policy content. Typing 'hemming' surfaces hem-named PRODUCTS (Nulu Cinch-Hem Pant, LuluLinen Adjustable-Hem Skirt, Cotton Jersey Bubble-Hem Tee, Notched-Hem Crop) plus a 'Curved Hem' suggestion, but never lululemon's free-hemming SERVICE or any policy/help page. That content lives in a separate Contentful layer (`cdn-contentful.lululemon.com`, content_type=cdp) and is not indexed into search, so the brand's signature service is invisible on the search surface. Algolia Federated Search unifies products, content, collections and stores in a single overlay, indexing the Contentful content lululemon already produces (including lululemon Studio content) alongside the apparel catalog.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      intent_detection
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">intent_detection</span>
+      <h3>Franchise terms autocomplete richly but do not route to curated, merchandised views</h3>
+      <p>Brand and franchise terms do autocomplete richly: typing 'align' returns four Align product cards plus scoped query suggestions (Align Leggings, Align Bra, Align 25, Align Dress, Align 6 Shorts, Camo Align Leggings). The gap is downstream, not in autocomplete: those terms resolve to a generic keyword results page with no curated collection routing or merchandised landing, so a signature franchise gets matched, not merchandised. There is no intent categorization that sends 'run' to a curated Running view. Algolia Rules + query categorization route franchise, brand and activity terms to curated, filtered collection views: merchandised, not just matched.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      search_intelligence
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">search_intelligence</span>
+      <h3>Behavioral signal not fed into ranking: no popularity-ranked results or social proof</h3>
+      <p>lululemon captures rich first-party behavior (Quantum Metric confirmed on site) and does surface recent searches and a trending list in the empty state (screenshot 02). What is missing is that this demand signal does not visibly rank what shoppers see: no bestseller or most-searched badges, no popularity-ranked result ordering, and no social-proof cues at the point of discovery. The signal is collected but not fed back into ranking. Algolia Analytics + insights-driven ranking turn behavioral data into popularity-ranked suggestions, trending terms and bestseller signals, closing the loop between the data lululemon already collects and what shoppers see.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      typo_tolerance
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">typo_tolerance</span>
+      <h3>Typo tolerance works: misspellings return correct results, but no explicit 'Did you mean' messaging</h3>
+      <p>The correctly-spelled query autocompletes normally (screenshot 03 shows a populated 'leggings' SAYT), but no 'Did you mean…' correction UX was observed, and the misspelled variants ('lululemn leggings', 'align pnats') could not be captured on the results surface under the WAF block. Typo tolerance is therefore unconfirmed and flagged as a high-value gap for clean-IP re-test. Algolia typo tolerance is built in and requires zero configuration — misspellings resolve to the intended product automatically, with configurable 'Did you mean' prompts.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      dynamic_facets_personalization
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">dynamic_facets_personalization</span>
+      <h3>Static faceting & no visible personalization on a first-party-rich DTC model</h3>
+      <p>Autocomplete surfaces recent searches, so there is some lightweight personalization at the SAYT layer, but facet adaptivity by category could not be enumerated under the WAF block and no 'Recommended for you' / personalized re-ranking of results was observed. lululemon's DTC first-party data + Quantum Metric behavioral capture are strong personalization inputs that the results surface does not appear to leverage. Flagged for clean-IP re-test. Algolia Dynamic Faceting adapts filters to category context, and Algolia Personalization re-ranks results using the first-party behavioral signal lululemon already captures.</p>
+    </div>
+  </div>
+  
+  <div class="finding-row">
+    <div class="finding-visual">
+      recommendations_merchandising
+    </div>
+    <div class="finding-copy">
+      <span class="finding-tag">recommendations_merchandising</span>
+      <h3>Recommendations & merchandising rules siloed from search</h3>
+      <p>PDP FBT/related carousels and search banners/curation could not be confirmed under the WAF block. Merchandising banners are handled by Contentful (`cdp` entries) separate from the `Ntt` search engine — indicating rules and content are not unified with search. Flagged for clean-IP re-test. Algolia Recommend (FBT / related / trending) plus the Rules engine unify recommendations and merchandising banners inside search — one ranking, one set of rules across search and browse.</p>
+    </div>
+  </div>
+  
+</section>
+
+<section class="bg-dark tight">
+  <div class="section-head">
+    <span class="eyebrow on-dark"></span>
+    <h2 style="color:#fff"></h2>
+    <p></p>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-item"><div class="cap-icon">A/B</div><h4 style="color:#fff">Strategic A/B testing</h4><p style="color:rgba(255,255,255,0.6)">Design the best-performing relevance strategy.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#128269;</div><h4 style="color:#fff">Search &amp; merchandising analytics</h4><p style="color:rgba(255,255,255,0.6)">Understand shoppers to uncover opportunities.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#10024;</div><h4 style="color:#fff">AI-driven optimization</h4><p style="color:rgba(255,255,255,0.6)">Boost results dynamically to drive conversions.</p></div>
+    <div class="cap-item"><div class="cap-icon">&#128279;</div><h4 style="color:#fff">Composable technology</h4><p style="color:rgba(255,255,255,0.6)">Flexible architecture, integrates with any stack.</p></div>
+  </div>
+</section>
+
+<section class="cta-band" style="background: linear-gradient(135deg, #0D1240 0%, #21243D 45%, #001A8A 100%); color:#fff;">
+  <h2>Let's size this for lululemon</h2>
+  <p></p>
+  <a class="btn btn-primary" href="mailto:sales@algolia.com"></a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="rep-stub">
+      <div class="avatar"></div>
+      <span> &mdash; <a href="mailto:sales@algolia.com">contact Algolia sales</a></span>
+    </div>
+    <div>&copy; Algolia &middot; Prepared by PRISM &middot; <a href="/reports/lululemon/">Full audit</a> &middot; <a href="/">PRISM home</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -36,11 +36,40 @@ if (!slug) {
 }
 
 const templatePath = path.join(__dirname, "landing-template.html");
+const partialsDir = path.join(__dirname, "partials");
 const dataPath = path.join(__dirname, "data", `${slug}.landing.json`);
 const outPath = path.join(__dirname, `${slug}.html`);
 
-const template = readFileSync(templatePath, "utf8");
 const data = JSON.parse(readFileSync(dataPath, "utf8"));
+
+// ---- variant-aware assembly ----
+//
+// `data.sections` is additive/optional (see schema/landing-page.schema.json).
+// Absent -> the original fixed template, byte-for-byte, so dell/nike (and
+// any file with no `sections` key) render exactly as before this change.
+// Present -> assemble shell + one partial per {slot, variant} entry, in
+// order. See docs/workspace/custom-landing-page/00-design-system.md
+// Section Inventory for the variant catalog these ids must match.
+function loadPartial(name) {
+  const p = path.join(partialsDir, `${name}.html`);
+  return readFileSync(p, "utf8");
+}
+
+function assembleTemplate(sections) {
+  const parts = [loadPartial("shell-open")];
+  for (const section of sections) {
+    // section.variant is already the full partial filename stem (e.g.
+    // "hero-image-2cta", "body-proof-stats") -- see 00-design-system.md
+    // Section Inventory, where variant ids double as partial filenames.
+    parts.push(loadPartial(section.variant));
+  }
+  parts.push(loadPartial("shell-close"));
+  return parts.join("\n");
+}
+
+const template = Array.isArray(data.sections) && data.sections.length > 0
+  ? assembleTemplate(data.sections)
+  : readFileSync(templatePath, "utf8");
 
 // ---- tiny mustache-like tokenizer/parser ----
 
@@ -162,7 +191,38 @@ function render(nodes, scopes) {
 }
 
 const tree = parse(tokenize(template));
-const html = render(tree, [data]);
+let html = render(tree, [data]);
+
+// ---- optional brand-token override ----
+//
+// `data.theme` is additive/optional. Absent/null -> no injection, page uses
+// the default Algolia tokens baked into the shell's <style> block (no
+// behavior change for dell/nike). Present -> a second :root block is
+// injected right before </head>; CSS cascade means later rules win, so this
+// overrides only the fields actually set, per-field.
+function buildThemeOverrideBlock(theme) {
+  const lines = [];
+  if (theme.primary_color) lines.push(`  --color-primary: ${theme.primary_color};`);
+  if (theme.accent_color) lines.push(`  --color-accent: ${theme.accent_color};`);
+  if (theme.font_family) lines.push(`  --font-family: '${theme.font_family}', sans-serif;`);
+  if (!lines.length) return "";
+  return `<style>\n:root {\n${lines.join("\n")}\n}\n</style>\n`;
+}
+
+if (data.theme && typeof data.theme === "object") {
+  const overrideBlock = buildThemeOverrideBlock(data.theme);
+  if (overrideBlock) {
+    html = html.replace("</head>", `${overrideBlock}</head>`);
+  }
+  if (data.theme.logo_url) {
+    // The shell's inline SVG mark is the only logo instance in this
+    // template; swap it for an <img> when a custom logo is supplied.
+    html = html.replace(
+      /<svg width="22" height="22"[\s\S]*?<\/svg>/,
+      `<img src="${data.theme.logo_url}" alt="logo" style="height:22px;width:22px;object-fit:contain">`
+    );
+  }
+}
 
 writeFileSync(outPath, html, "utf8");
 console.log(`Rendered ${outPath} (${html.length} bytes) from ${dataPath}`);

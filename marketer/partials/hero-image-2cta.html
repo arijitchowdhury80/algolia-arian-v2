@@ -1,0 +1,22 @@
+<header class="hero" id="opportunity">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow on-dark">{{hero.eyebrow}}</span>
+      <h1>{{hero.prefix}} <strong>{{hero.amount}}</strong> {{hero.suffix}}</h1>
+      <p class="sub">{{hero.sub}}</p>
+      {{#if hero.primary_cta_label}}
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="{{hero.primary_cta_href}}">{{hero.primary_cta_label}}</a>
+        {{#if hero.secondary_cta_label}}<a class="btn btn-outline" href="{{hero.rep_mailto}}">{{hero.secondary_cta_label}}</a>{{/if}}
+      </div>
+      {{/if}}
+    </div>
+    {{#if hero.fact_rows}}
+    <div class="hero-fact-card">
+      {{#each hero.fact_rows}}
+      <div class="fact-row"><span>{{label}}</span><span>{{value}}</span></div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
+</header>
