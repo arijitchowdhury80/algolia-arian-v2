@@ -140,6 +140,21 @@ class Settings(BaseSettings):
     voice_enabled: bool = False
     voice_wake_word: str = "Hey aRRIe, wake up"
 
+    # --- Per-user-to-company authorization (run-2026-07-14-001) ---
+
+    # Shared HMAC secret for the signed X-Prism-User-Assertion header minted
+    # by the prism-hub proxy and verified by resolve_user_id (04-spec.md
+    # §4). Empty by default -- a missing/empty secret means every assertion
+    # fails verification, which is the fail-closed state (deny), not a
+    # crash. Never sent to a browser, never logged.
+    prism_trust_secret: str = ""
+
+    # ACL_ENFORCEMENT_ENABLED (04-spec.md §10). While False (default in
+    # every environment): can_user_see()/require_audit_access still run
+    # and log every decision, but denial is not enforced -- ships dark,
+    # giving real production log data before enforcement flips on.
+    acl_enforcement_enabled: bool = False
+
     def get_enricher_provider(self) -> str:
         """Determine which LLM provider to use for enrichment.
 
