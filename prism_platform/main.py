@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from prism_platform.api.middleware import add_middleware
 from prism_platform.api.routers import (
     accounts,
+    acl,
     audit_stream,
     audits,
     benchmarks,
@@ -37,6 +38,7 @@ app.include_router(benchmarks.router, prefix="/api/v1/benchmarks", tags=["benchm
 app.include_router(evidence.router, prefix="/api/v1/evidence", tags=["evidence"])
 app.include_router(freshness.router, prefix="/api/v1/accounts", tags=["freshness"])
 app.include_router(knowledge.router, prefix="/api/v1/knowledge", tags=["knowledge"])
+app.include_router(acl.router, prefix="/api/v1/acl", tags=["acl"])
 
 
 @app.get("/health")
