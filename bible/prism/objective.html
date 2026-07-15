@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Objective — The Bible</title>
+<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
+<link rel="stylesheet" href="/bible/shared/bible.css">
+</head>
+<body>
+<header class="bible-header">
+  <a href="/bible/" class="bible-home">The Bible</a>
+  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+</header>
+<main class="bible-content">
+<h1>PRISM — Wiki Index</h1>
+<p><strong>Next spike (Arijit's directive, 2026-07-14, saved verbatim in PIP <code>SESSION.md</code>):</strong> build detailed client-facing, security-facing, and production-facing technical documentation, targeted at Algolia's Chief Security Officer, to justify running PRISM in-house in production. Goes into "The Bible" (<code>bible.chowmes.com</code>, Phase 3.5's existing goal-card). Process: plan mode first, execute after sign-off — not started.</p>
+<h2>Current state (compiled truth — 2026-07-14)</h2>
+<p><strong>Phase 2 built for real (not just planned) — 5-stage verification pipeline + per-skill dispatch, real VPS proof, plus a mid-session pivot away from <code>claude -p</code> as the executioner.</strong> Subagent-driven build produced <code>prism_platform/pipeline/{gate,verdicts,self_heal,executioner,llm_stages,claims,db_write,chat_agent}.py</code>: a real 5-stage gate (mechanical→factcheck→adversarial→quality→legal), schema-constrained per E2, wired to per-skill dispatch via <code>self_heal.SelfHealLoop</code>. Proven with real <code>claude -p</code> calls against real published audit data, not just fakes — caught 2 genuine previously-unknown data bugs (lululemon tech-stack self-contradiction; jbl's Crown-International misclassified as a JBL-owned brand when it's a sibling Harman brand) and correctly blocked a deliberately-injected fabricated claim. ~300 real tests, all passing. Found and root-fixed an unrelated, real production bug along the way: <code>prism-runner.service</code> ran as <code>User=root</code> stepping down via <code>sudo -u chowmesadmin</code> (an admin account) for every dispatch — this had silently broken ALL real audit dispatch (v1 and v2 alike) for 10 days via a file-permission regression nobody had hit. Fixed properly, not patched: new dedicated unprivileged <code>chowmesuser</code> account (no sudo group, <code>nologin</code>), ownership + systemd unit + dispatch code all updated, live-verified end-to-end with zero root/sudo in the chain. Two real observability gaps also fixed after Arijit caught them: <code>job.json</code>'s phase field never updated mid-run (a real v3 audit would've been invisible for 30-90+ min) and <code>POST /run</code>'s <code>engine</code> param was silently dropped (every real API caller would've quietly gotten the legacy path). One real process failure, owned directly: a renderer self-test used real skill names with fabricated PASS results — indistinguishable from a genuine report — fixed with a forced, no-default synthetic-data banner so it can't happen again. <strong>Biggest outcome of the session:</strong> Arijit's direct interrogation of each skill's real methodology (Scout usage, real network-packet inspection, SimilarWeb's permanent human-in-the-loop requirement) surfaced the actual root cause of PRISM's fabrication risk — not any skill's prompt wording, but that each skill's <code>claude -p</code> session decides BOTH "call the deterministic script" AND "what to do if it fails," and that second decision is where fabrication actually happens. Locked pivot: route each skill's dispatch through a deterministic Python module wherever one exists, never an LLM's call on failure — <code>gate()</code>/<code>self_heal</code>/<code>executioner.py</code> don't need to change, since they never cared what produces a skill's output. First one shipped for real: <code>algolia-intel-traffic</code> → <code>run_traffic_module()</code>, zero LLM calls, live-tested against the actual dead SimilarWeb key, correctly returns <code>NEEDS_HUMAN</code>, wired into <code>executioner.py</code>'s <code>MODULE_REGISTRY</code>. 15 skills still on the old <code>claude -p</code> path, next session's work. The planned DSW end-to-end audit did NOT run — first blocked ~2hrs by Arijit's home network dropping to a cellular hotspot (misdiagnosed initially as a VPS-side ban, corrected once the actual gateway IP was checked), then superseded by the deterministic-executioner pivot once it was clear a real audit through the still-partially-agentic pipeline wasn't the right next step. Full detail: PIP repo <code>SESSION.md</code>, <code>docs/workspace/phase2-executioner/</code>.</p>
+<h2>Prior state (2026-07-13)</h2>
+<p><strong>Finishing Build Plan written + phased execution decided, kicking off Phase 1.</strong> Live VPS/GitHub/local recon (not doc-derived) found the 2026-07-06 V2 handoff was only half-executed: role doors (AE/BDR/Marketer) + a real Dell/Nike landing-page builder DID ship 2026-07-06, but the architecture work (Hermes removal, executioner rebuild, chat-as-operator) never started — Hermes/Cassandra is still the live executioner, zero Claude Agent SDK code exists anywhere. Also found, unrelated: <code>POST /api/chat</code> on prism.chowmes.com is unauthenticated in prod today — a live security hole, being patched first regardless of the rest of this plan. Arijit locked 4 decisions: executioner = upgrade <code>prism-runner.py</code> (not an SDK rewrite — unproven, bigger lift, not needed until multi-tenancy/chat-as-operator demand it), full Hermes rip-and-replace (not staged, but cutover-sequenced to prove parity before removal), build the real Figma→Jahia landing-page integration (not just static-template reuse), and scope = full productization (Tracks A-H, sellable product not just internal tool). Execution model: <strong>6 phases, each its own Fable-5 goal, hard review gate between phases — not one autonomous run</strong> (the 07-06 "run the loop yourself" framing already produced a silently-half-finished result once). Phases: (1) Foundation — auth patch + re-verify the 3 role doors against current data + design-system reconciliation; (2) Executioner + anti-handwaving Verification Pipeline (5-stage gate: mechanical→factcheck→3-agent adversarial panel→quality→legal) + Hermes removal — highest-risk phase; (3) Landing pages — Belk/Lululemon + a Figma/Jahia integration spike; (4) Modular rearchitecture; (5) Multi-tenancy + domain-pack, gated on finally running the concurrency test open since 07-02; (6) Prod-readiness + GTM + pricing. Full plan: PIP repo <code>docs/plans/2026-07-12-prism-finishing-build-plan.md</code>. Decision record: [[wiki/decisions/2026-07-12-finishing-build-plan-phased-execution]].</p>
+<h2>Prior state (2026-07-10)</h2>
+<p><strong>Belk re-validation session, 2026-07-10 (post-midnight, picking up where 2026-07-09's crashed run left off).</strong> The SOP written the night before (<code>docs/sop/AUDIT-REVALIDATION-SOP.md</code>, PIP repo) got its first real test on a resumed company. Found the crashed session had left Belk in a dangerous half-state: research files were fixed but the deliverables (the actual audit-data.json, the live page, the PDF) were never regenerated from them — meaning fabricated hiring roles and a 3x-wrong competitor revenue number were still live on the served page. That page was pulled and replaced with a holding page the moment this was confirmed, before any further work. Root-caused and fixed 8 real defects across the night, several found only because Arijit kept pushing back on "done" claims rather than accepting them: a database-write agent that silently wrote from the wrong source file (caught via a nested-field check, not the top-level status columns that looked fine); a client-render field-name mismatch that flattened 6 partner relationships into identical fake-looking cards (pruned to the 1 actually-confirmed one, per Arijit's explicit "only validated stays" rule); a screenshot filename mismatch that made every finding image 404 silently; Arijit's own manually-captured, WAF-passed screenshot that existed on disk but was never wired into any finding; a signal mislabeled "Partnership" that was actually a competitive-threat entry; a self-admittedly weak signal that was still rendering as a HIGH-urgency red badge because the renderer hardcodes severity; a Solution Map with no real case-study proof; and — found only because the final gate was told to independently spot-check sections nobody had touched — a duplicated press quote mislabeled as a fabricated "leadership change." Final gate: v6, WARN, score 8.3, blocking_count 0. Belk is live again with the corrected data; the WARN label (not a clean PROCEED) is cosmetic-only, same class of carried warning Lululemon shipped PROCEED with. A real process lesson surfaced hard tonight: checking that a database write happened is not the same as checking the write happened <em>correctly</em> — every fix from here needs the field-level check, not the status-column check. Full detail: [[log|2026-07-10 entry]].</p>
+<h2>Prior state (2026-07-09)</h2>
+<p>PRISM V2 build is UNDERWAY, not just planned: the V2 manifesto (3-phase re-architecture: remove Hermes entirely, Postgres+pgvector + Claude Agent SDK, plug-and-play modules, domain-agnostic productization) kicked off 2026-07-04, and the <strong>first V2 vertical slice is LIVE</strong> — an AE-role cockpit on prism2.chowmes.com running off real Postgres audit data (dell/belk/lululemon), live-verified 2026-07-06. Next: BDR+Marketer cockpit fan-out, awaiting Arijit's go-ahead; chat-operator is backend-gated. Source: [[Projects/AI-OS/My-Projects|tracker log 2026-07-04→06]].</p>
+<p><strong>Reliability crisis surfaced and partially fixed, 2026-07-09.</strong> A routine "fix Lululemon's SimilarWeb data" request turned into a 6+ hour forensic pass that exposed the real reason audits keep shipping broken: there is no single source of truth for the pipeline's code, its data, or its output shape. Three bugs found this session affect every company audit ever run, not just Lululemon — a data-quality flag that never reached the factcheck gate, a ROI calculator formula that inflated dollar-impact estimates roughly 5x, and a filename typo that has silently zeroed out the industry-benchmarks section on every single audit. The deeper cause is that the GitHub repo of skill code and the actual code running on the VPS have quietly drifted apart across roughly forty skills — one skill's instructions were caught still telling agents to use a dead, five-days-fixed API. Two skills were fixed and locked together (via a symlink, so they literally cannot drift apart again); the rest still need the same treatment. A first real step toward "the live page should just read the database" was also started: a working API endpoint that pulls straight from Postgres, verified returning correct live data — but wiring the page to actually call it hit a genuine login-session bug that was deliberately left unfixed rather than patched insecurely. A full written plan for finishing this cleanup (unify the code, move all data into the database, delete the old file-based copies, and make every skill check its own work before handing off) is saved at <code>arijit-skills/docs/PIPELINE-UNIFICATION-PLAN.md</code> on the VPS repo, ready for a fresh session to execute. Full detail: [[log|2026-07-09 entry]].</p>
+<p>Read this file first. It maps the entire wiki.</p>
+<h2>Files</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+<th>Last Updated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wiki/overview.md</td>
+<td>What PRISM is, architecture, personas</td>
+<td>2026-06-29</td>
+</tr>
+<tr>
+<td>wiki/requirements.md</td>
+<td>Spec and acceptance criteria</td>
+<td>—</td>
+</tr>
+<tr>
+<td>wiki/decisions/</td>
+<td>Architectural decisions (ADRs)</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/dev-log.md</td>
+<td>Build chronicle</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/open-questions.md</td>
+<td>Open questions</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/sources/</td>
+<td>Research source summaries</td>
+<td>—</td>
+</tr>
+<tr>
+<td>wiki/concepts/</td>
+<td>Domain concept pages</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/entities/</td>
+<td>People, orgs, tools</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/syntheses/</td>
+<td>Cross-cutting analysis</td>
+<td>—</td>
+</tr>
+<tr>
+<td>wiki/IA-Redesign-Pending.md</td>
+<td>PAUSED status: report IA redesign A/B prototype (resume: "resume IA-Redesign-Pending")</td>
+<td>2026-06-30</td>
+</tr>
+<tr>
+<td>wiki/2026-07-04-v2-manifesto.md</td>
+<td><strong>PRISM V2</strong> — 3-phase re-architecture starting: (1) remove Hermes entirely, rebuild executioner/chat/data on Algolia tech, (2) plug-and-play modules, (3) domain-agnostic productization. Repo copy: <code>PIP/docs/PRISM-V2/00-manifesto.md</code> (canonical, keep in sync)</td>
+<td>2026-07-04</td>
+</tr>
+<tr>
+<td>wiki/research/2026-07-04-algolia-as-database-feasibility.md</td>
+<td>Fresh research: Algolia as PRISM's data backend — good fit for content/search layer, weak fit for executioner state-tracking (no transactions/joins)</td>
+<td>2026-07-04</td>
+</tr>
+</tbody>
+</table>
+<h2>Decision Records</h2>
+<table>
+<thead>
+<tr>
+<th>ADR</th>
+<th>Summary</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[2026-06-27-search-vendor-packet-detection]]</td>
+<td>Search-vendor detection via live network-packet inspection (replaces substring source-scan)</td>
+<td>2026-06-27</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-27-persona-journey-ui-architecture]]</td>
+<td>UI = three role-shaped doors (AE→BDR→Leader) over one intel engine; calm Claude-desktop language</td>
+<td>2026-06-27</td>
+<td>⚠️ Superseded (chat agent, not a web app)</td>
+</tr>
+<tr>
+<td>[[2026-06-27-prism-as-ai-sales-toolkit-stage-cockpit]]</td>
+<td>PRISM = AI Sales Toolkit + FY27 5-stage motion (still valid); built "stage cockpit" UI superseded</td>
+<td>2026-06-27</td>
+<td>⚠️ Partially superseded</td>
+</tr>
+<tr>
+<td>[[2026-06-28-prism-is-chowmes-prism-hermes-instance]]</td>
+<td>PRISM = Chowmes-PRISM, a dedicated Hermes instance on the VPS; Temporal dropped; Gemini control / Claude exec</td>
+<td>2026-06-28</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-28-grounded-report-qa-gate]]</td>
+<td>Grounded report-QA via Hermes plugin (pre_llm_call inject + transform_llm_output Gemini gate, no fork); facts grounded, coaching allowed</td>
+<td>2026-06-28</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-28-unified-chat-on-prism-hub]]</td>
+<td>Unified grounded chat: Hermes one-brain on the published reports hub + Telegram; LIVE/proven (PetSmart 15.98%)</td>
+<td>2026-06-28</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-about-splash-routing]]</td>
+<td>About is the splash at <code>/</code>; reports list moves to <code>/reports/</code>; <code>/about/</code> redirects</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-github-vps-auto-deploy]]</td>
+<td>GitHub webhook to VPS git pull; prism-hub auto-deploys on push, no manual scp</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-cassandra-naming-and-persona]]</td>
+<td>One name "Cassandra" (Cass removed); Imagen-4 portrait; session auto_prune 7d</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-detect-search-vendored]]</td>
+<td>detect-search vendored into arijit-skills, symlinked, runs on the VPS</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-no-em-dash-writing-standard]]</td>
+<td>No em dashes in reader-facing copy; rewrite grammar instead</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[2026-06-30-wave2-similarweb-screenshots]]</td>
+<td>Wave-2 traffic from manual SimilarWeb screenshots; Wave-2 now fully keyless</td>
+<td>2026-06-30</td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td>[[wiki/decisions/2026-07-12-finishing-build-plan-phased-execution]]</td>
+<td>Finishing Build Plan: executioner=prism-runner.py (not SDK), full Hermes rip-and-replace, real Figma→Jahia integration, Tracks A-H scope, 6-phase gated execution</td>
+<td>2026-07-12</td>
+<td>Accepted</td>
+</tr>
+</tbody>
+</table>
+<h2>Entities</h2>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Type</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[prism]]</td>
+<td>product</td>
+<td>Orchestrates the algolia-* skills; the whole engine</td>
+</tr>
+<tr>
+<td>[[hermes]]</td>
+<td>tool</td>
+<td>Runtime that runs the skills and serves the agent</td>
+</tr>
+<tr>
+<td>[[cassandra]]</td>
+<td>agent</td>
+<td>Grounded report-QA and sales-coach agent on Hermes</td>
+</tr>
+<tr>
+<td>[[scout]]</td>
+<td>tool</td>
+<td>Acquires the target's first-party data</td>
+</tr>
+<tr>
+<td>[[detect-search]]</td>
+<td>tool</td>
+<td>Keyless tech and search-vendor detection</td>
+</tr>
+<tr>
+<td>[[gemini-grounded-search]]</td>
+<td>tool</td>
+<td>Open-web research</td>
+</tr>
+<tr>
+<td>[[yfinance]]</td>
+<td>tool</td>
+<td>Public financials</td>
+</tr>
+<tr>
+<td>[[chrome-browser]]</td>
+<td>tool</td>
+<td>Live search testing</td>
+</tr>
+</tbody>
+</table>
+<h2>Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[right-tool-for-each-job]]</td>
+<td>Evidence-routing doctrine: each fact-job to its own tool, keyless, no fabrication</td>
+</tr>
+</tbody>
+</table>
+<h2>Sources</h2>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Slug</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(none yet)</em></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>Recent Activity</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06-28</td>
+<td>ADR: unified chat LIVE on prism-hub + Telegram (PetSmart 15.98% proven)</td>
+</tr>
+<tr>
+<td>2026-06-29</td>
+<td>Standardization Wave 1 complete; Cassandra persona built and dialed in</td>
+</tr>
+<tr>
+<td>2026-06-29</td>
+<td>Linked Scout as PRISM acquisition plane</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>About page becomes the splash at <code>/</code>; reports list to <code>/reports/</code> (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>GitHub to VPS auto-deploy webhook live (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>Cassandra rename, Imagen-4 portrait, session auto_prune (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>detect-search vendored and running on the VPS (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>No-em-dash writing standard (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>Wave-2 SimilarWeb blocker resolved via screenshots (ADR)</td>
+</tr>
+<tr>
+<td>2026-06-30</td>
+<td>Entities and concept pages added (Scout, Hermes, Cassandra, detect-search, and more)</td>
+</tr>
+<tr>
+<td>2026-07-04</td>
+<td>PRISM V2 manifesto started: Arijit wants Hermes removed entirely (security blocker for Algolia VPN adoption) and PRISM rebuilt on Algolia tech (Agent Studio for chat, Algolia itself for data, executioner TBD — Temporal vs Agent Studio). Found + surfaced a critical prior-decision nuance: Temporal was dropped 2026-06-28 specifically because it was redundant alongside Hermes, not because it's unsuitable — that objection no longer holds once Hermes is gone. Fresh research done on Algolia-as-database (mixed: good for content/search, weak for transactional state-tracking). Also found and closed a real vault-sync gap: Agent Studio native-capability findings and the full Algolia API reference existed only in the Algolia-Central2 repo, never committed here, until now.</td>
+</tr>
+<tr>
+<td>2026-07-10</td>
+<td>Belk audit re-validation resumed post-crash: fabricated live data caught and pulled (holding page), 8 real defects found and fixed (DB-write source bug, partner-intel field mismatch, screenshot filename mismatch, unwired manual screenshot, mislabeled signal badge, false-HIGH severity on a weak signal, missing Solution Map proof, duplicated/mislabeled press quote found by mandated spot-check). Final gate v6: WARN, score 8.3, blocking_count 0.</td>
+</tr>
+<tr>
+<td>2026-07-12</td>
+<td>Finishing Build Plan written after live recon exposed the 07-06 V2 handoff was half-executed (doors+landing builder shipped, architecture rebuild never started, Hermes still live). Found unrelated live security hole (<code>/api/chat</code> unauthenticated). 4 decisions locked (executioner=prism-runner.py upgrade not SDK; full Hermes rip-and-replace; real Figma→Jahia integration; scope=Tracks A-H). Execution model set to 6 phases with mandatory review gates, not one autonomous run. See [[wiki/decisions/2026-07-12-finishing-build-plan-phased-execution]].</td>
+</tr>
+</tbody>
+</table>
+<h2>Folder catalog (auto-added 2026-07-07 clean-brain — every note must be reachable from its index)</h2>
+<ul>
+<li>[[Projects/PRISM/CLAUDE|CLAUDE]]</li>
+<li>[[Projects/PRISM/log|log]]</li>
+<li>[[Projects/PRISM/wiki/V2/00-manifesto|00 manifesto]]</li>
+<li>[[Projects/PRISM/wiki/V2/02-algolia-as-database|02 algolia as database]]</li>
+<li>[[Projects/PRISM/wiki/V2/03-executioner-claude-agent-sdk-findings|03 executioner claude agent sdk findings]]</li>
+<li>[[Projects/PRISM/wiki/V2/04-open-gaps-before-fable5-handoff|04 open gaps before fable5 handoff]]</li>
+<li>[[Projects/PRISM/wiki/V2/05-role-driven-ia|05 role driven ia]]</li>
+<li>[[Projects/PRISM/wiki/V2/06-v2-execution-map|06 v2 execution map]]</li>
+<li>[[Projects/PRISM/wiki/V2/07-design-system|07 design system]]</li>
+<li>[[Projects/PRISM/wiki/V2/08-fable5-handoff-prompt|08 fable5 handoff prompt]]</li>
+<li>[[Projects/PRISM/wiki/V2/_status|_status]]</li>
+<li>[[Projects/PRISM/tasks|Task ledger]]</li>
+</ul>
+</main>
+<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+</body>
+</html>

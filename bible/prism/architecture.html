@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Architecture — The Bible</title>
+<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
+<link rel="stylesheet" href="/bible/shared/bible.css">
+</head>
+<body>
+<header class="bible-header">
+  <a href="/bible/" class="bible-home">The Bible</a>
+  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+</header>
+<main class="bible-content">
+<h1>PRISM V2 — Execution Map &amp; Fable-5 Handoff Spine</h1>
+<p><strong>Created 2026-07-06.</strong> This is the ordered build plan for PRISM V2 — the document you hand (in pieces) to Fable 5 for e2e execution. Read <code>_status.md</code> first, then <code>00-manifesto.md</code> for the why. Companion artifacts: <code>07-design-system.md</code> (the reusable design language), <code>08-fable5-handoff-prompt.md</code> (the copy-paste kickoff prompt).</p>
+<p>Sources feeding this map: the manifesto (all 3 phases), <code>04-open-gaps-before-fable5-handoff.md</code> (gaps #11–13), <code>05-role-driven-ia.md</code> (role IA), <code>docs/research/Discovery-OS-v1.md</code> (§9 PRISM Translation Ruleset), and two grounded sub-agent extractions run 2026-07-06 (per-role component inventory + design-system extraction).</p>
+<hr />
+<h2>0. The one-paragraph frame</h2>
+<p>PRISM V2 is being rebuilt as a <strong>standalone, domain-agnostic Prospect Research Operating System</strong> — a sellable product, not an Algolia-internal tool. Algolia is now just the <strong>first domain module</strong>. The stack is <strong>best-of-breed</strong>: Postgres + pgvector (data + grounded RAG), Claude Agent SDK (self-hosted executioner + agents), reusing PRISM's already-shipped premium design language. The near-term proof point is <strong>all three role doors (AE / BDR / Marketer) live on prism.chowmes.com</strong> — demoable to a real person — because they read already-published audit data and need none of the hard backend rebuild. The hard backend (executioner re-architecture, chat-as-operator, grounded RAG, modular lego rearchitecture, productization + pricing) is sequenced behind that first visible win.</p>
+<hr />
+<h2>1. Locked decisions (the ground truth Fable 5 builds against)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Decision</th>
+<th>Locked</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L1</td>
+<td><strong>North star = standalone sellable product.</strong> Algolia = first domain module, not the platform. Phase 3 productization is the thesis.</td>
+<td>2026-07-06</td>
+<td>this session</td>
+</tr>
+<tr>
+<td>L2</td>
+<td><strong>Internal-Algolia-adoption is NOT the design constraint.</strong> The "rebuild on Algolia tech for the internal sell" rationale is retired.</td>
+<td>2026-07-06</td>
+<td>this session</td>
+</tr>
+<tr>
+<td>L3</td>
+<td><strong>Data + RAG backend = Postgres + pgvector.</strong> One store for audits, research, state, and vector retrieval.</td>
+<td>2026-07-06</td>
+<td>this session (confirms SESSION.md)</td>
+</tr>
+<tr>
+<td>L4</td>
+<td><strong>Executioner + agents = Claude Agent SDK, self-hosted.</strong> Not Agent Studio, not Algolia-as-DB. (Agent Studio may later be an <em>optional Algolia-domain connector</em>, not core.)</td>
+<td>2026-07-06</td>
+<td>this session; <code>03-executioner-claude-agent-sdk-findings.md</code></td>
+</tr>
+<tr>
+<td>L5</td>
+<td><strong>6 agent roles:</strong> Orchestrator, Researcher, Auditor, Synthesizer, Chat (standing), + Verification Pipeline (5-stage: mechanical → fact-check → 3-agent adversarial → quality score → legal gate). Zero-tolerance-for-fabrication / full-tolerance-for-omission.</td>
+<td>prior</td>
+<td>SESSION 2026-07-06</td>
+</tr>
+<tr>
+<td>L6</td>
+<td><strong>3 roles in V2 scope: AE, BDR, Marketer.</strong> Sales Leader deferred (the IA doc still specs it — treat as designed-not-built, out of scope).</td>
+<td>2026-07-06</td>
+<td>this session</td>
+</tr>
+<tr>
+<td>L7</td>
+<td><strong>First visible milestone = all 3 role doors live (breadth-first).</strong> Chat/execution wired after.</td>
+<td>2026-07-06</td>
+<td>this session</td>
+</tr>
+<tr>
+<td>L8</td>
+<td><strong>Design system source of truth = the SPA template</strong> (<code>index-template.html</code> + <code>algolia-brand.css</code>), extracted into a reusable design language. Reuse-first, no fresh invention.</td>
+<td>2026-07-06</td>
+<td>this session; <code>07-design-system.md</code></td>
+</tr>
+<tr>
+<td>L9</td>
+<td><strong>Deprioritized to Phase 2:</strong> HeyGen/LiveAvatar embodied avatar + Telegram notify. Both built + staged, parked. Base functionality first.</td>
+<td>2026-07-06</td>
+<td>this session</td>
+</tr>
+<tr>
+<td>L10</td>
+<td><strong>Multi-tenant is the target from day one</strong> (shared tables + <code>tenant_id</code> + Postgres RLS, first-pass shape). Not yet built. Auth provider open.</td>
+<td>prior</td>
+<td><code>04-...gaps.md</code> #12</td>
+</tr>
+</tbody>
+</table>
+<p>| L11 | <strong>Beta target = Algolia Marketing + Sales leadership</strong> (internal-friendly-first). <strong>Marketing's #1 ask = landing-page building</strong> (Algolia+Jahia style) → the Marketer landing-page builder is a first-class MVP feature, not a stub. | 2026-07-06 | this session |
+| L12 | <strong>Same-day demo pressure:</strong> a live demoable slice is wanted TODAY — scoped to the 3 role doors + the Marketing landing-page capability (built in-session), NOT the backend rebuild (which stays multi-week). | 2026-07-06 | this session |
+| L13 | <strong>Second external pitch = Spryker.</strong> Domain-swap set to design the domain-pack interface toward: <strong>Spryker, Amplience, Contentful, Cloudinary</strong> (Algolia-adjacent commerce/DXP/CMS/DAM). | 2026-07-06 | this session |</p>
+<p><strong>Still OPEN (see §7):</strong> self-hosted SDK vs Managed Agents API, durable-retry approach, auth provider, the 3 IA working-assumptions, the Discovery-OS gating-rule ambiguity, pricing/metering model, Jarvis STT/TTS vendor, product name. <em>(Beta target + deadline now resolved — L11/L12.)</em></p>
+<hr />
+<h2>2. The build, sequenced — 8 tracks</h2>
+<p>Ordered by dependency and by "show results fast." Tracks A/B ship the first visible win with zero backend rebuild. C→D→E→F is the real product spine. G (Discovery OS) and H (commercial) run partly in parallel.</p>
+<pre><code>NOW ───────────────────────────────────────────────► PRODUCT
+ A. Role doors (breadth)  ─┐
+ B. Design system          ─┴─► first demo (3 doors live)
+ G-schema. Discovery OS data model ─┐
+ C. Executioner + Postgres/pgvector ─┴─► real backend
+ D. Chat-as-operator + grounded RAG ────► the operating system
+ E. Modular lego rearchitecture ────────► plug-and-play
+ F. Domain-agnostic productization + multi-tenancy ─┐
+ H. Prod-readiness + GTM + pricing/metering ────────┴─► sellable beta
+</code></pre>
+<h3>Track A — Role doors, breadth-first  ⟶ <em>the first visible result</em></h3>
+<p>Build <strong>AE door</strong> and <strong>BDR door</strong> to match the already-built <strong>Marketer door</strong> (<code>~/prism/marketer/door.html</code>), reading already-published <code>audit-data.json</code> per account. Deploy all 3 live to prism.chowmes.com. No executioner/VPS dependency — this is why it ships fast.
+- <strong>Reuses:</strong> the Marketer door pattern (proven), the design system (Track B), the per-role IA (<code>05-...</code> + §3 below).
+- <strong>AE door</strong> carries the Discovery-OS single-page call plan (from published data where present; explicit empty-slots where not — never fabricate).
+- <strong>Blocked on Arijit:</strong> re-confirm the 3 IA working assumptions (D4 in §7) before building AE/BDR — they change the door architecture.
+- <strong>Definition of done:</strong> 3 doors live, real data rendering, ui-validator pass, Playwright-verified at 1280/375px, deployed and demoable.</p>
+<h3>Track B — Design system as a reusable asset  <em>(parallel to A, feeds A)</em></h3>
+<p>Package the extracted design language (<code>07-design-system.md</code>) as: (1) a single source-of-truth tokens file (CSS custom properties) every V2 screen imports, (2) documented component specs, (3) the <strong>Claude Design prompt</strong> (seeded with real tokens) for future generation. This becomes Arijit's signature system.
+- <strong>Reuses:</strong> <code>index-template.html</code> + <code>algolia-brand.css</code> verbatim as the source.
+- <strong>Note:</strong> the source has real inconsistencies (two <code>--shadow</code> roundings, two content max-widths, JS gauge greens ≠ CSS <code>--green</code>, no <code>:disabled</code> states, sidebar position flips). Track B's job is to <em>reconcile these into one clean token system</em> — that reconciliation IS the value-add, documented in <code>07</code>.</p>
+<h3>Track G-schema — Discovery OS data model  <em>(design alongside C1, it defines the schema)</em></h3>
+<p>Turn Discovery-OS-v1 §9 into the finding/behavior/feedback/branch schema (see §4). This must be designed <strong>before</strong> the Postgres schema is frozen, because the Finding object (13 categories, confidence, risk, evidence, archetype, persona) is the atomic unit the whole store holds.</p>
+<h3>Track C — Executioner re-architecture  ⟶ <em>the hard backend, Phase 1 core</em></h3>
+<p>Remove Hermes entirely. Build the executioner on Claude Agent SDK + Postgres/pgvector.
+- <strong>C1 — Data backend:</strong> Postgres + pgvector schema for audits, research, state, and vector RAG. Migrate off the current <code>prism-runner</code> (127.0.0.1:8770) + <code>prism_platform</code> FastAPI. Finding-object schema from Track G-schema.
+- <strong>C2 — Executioner:</strong> Claude Agent SDK — multi-step control, subagent dispatch, <code>SessionStore</code> backed by Postgres, status tracking, and <strong>hooks-as-gates</strong> (<code>decision:"block"</code>) running mandatory fact-check + quality-check after <strong>every module run</strong> (not just once at the end — the confirmed pipeline gap, <code>00-manifesto.md</code> Phase-2 task list).
+- <strong>C3 — Durable retry:</strong> the one capability the SDK lacks vs Temporal. Decide (D2): SDK + external queue, or Temporal re-introduced (its original "redundant with Hermes" objection is void now that Hermes is gone).
+- <strong>Gate before C is trusted:</strong> an actual e2e POC (R1) — needs a real <code>ANTHROPIC_API_KEY</code>. The executioner ADR stays unwritten until the POC runs.</p>
+<h3>Track D — Chat-as-operator + grounded RAG  ⟶ <em>the "operating system" feel</em></h3>
+<p>The chat agent that <strong>guides, operates, executes, notifies, and checks status</strong> — not a bolt-on search box (Arijit: "chat is the guider and the operator"). Grounded RAG retrieval over pgvector powers every agent's knowledge — zero ungrounded claims.
+- <strong>Reuses:</strong> the already-designed &amp; live-verified <code>run_audit</code> / <code>live_status</code> tool mechanism (<code>L2-execution-orchestration-design.md</code>, 2026-06-29 — proven to work tonight). Do NOT redesign the agent-to-agent protocol from scratch; it exists.
+- Wires the 6 agents (L5) behind chat. Depends on C.</p>
+<h3>Track E — Modular lego rearchitecture  <em>(Phase 2)</em></h3>
+<p>Each module = independent, own version control, plug-and-play. A <strong>recipe cockpit</strong> lets the operator hand-pick which modules run; the executioner runs the recipe. Today's skill-groups become first-class agents (Researcher / Audit / Synthesizer). Per-module fact-check + QA gate on exit. Depends on C (executioner runs recipes).</p>
+<h3>Track F — Domain-agnostic productization  <em>(Phase 3 — now the thesis)</em></h3>
+<p>Abstract the Algolia-specific logic into a swappable <strong>domain pack</strong>. Define the domain-pack interface: what a "YourCMS-PRISM" or "Commerce-PRISM" plugs in to replace the algolia-search-audit module + Algolia sales angles. Multi-tenancy (L10: shared tables + <code>tenant_id</code> + RLS). This is what makes PRISM sellable.</p>
+<h3>Track H — Production readiness + GTM + pricing/metering  <em>(Phase 3 commercial)</em></h3>
+<p>E2E production-readiness (security gap #13 — no shape exists yet; multi-tenancy hardening; auth; observability; SLAs), GTM strategy (position as the "Prospect Research Operating System," a category Arijit believes is empty), pricing model, usage <strong>metering instrumentation</strong>, and a beta program. Research-heavy (R8/R9). Start research early in parallel; build after E/F.</p>
+<hr />
+<h2>3. Per-role IA — what's built, pending, and cullable</h2>
+<p>Full inventory in the sub-agent extraction; condensed for the plan. Status: <strong>BUILT</strong> (code exists) / <strong>DNB</strong> (designed-not-built) / <strong>PENDING</strong> (named, not specified).</p>
+<h3>Shared-across-roles (build once, reuse)</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Status</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top chrome: role switcher + account switcher + settings</td>
+<td>PARTIAL</td>
+<td>Marketer door has static chips, not the dropdown/search UI the IA specs. No "Run new via Jarvis" entry point.</td>
+</tr>
+<tr>
+<td>Shared-core strip (company + score + "framed-for-you" tag)</td>
+<td>BUILT (score) / PENDING (killer-finding)</td>
+<td><code>killer_finding</code> is not yet a shared primitive; Marketer repurposes <code>narrative_hook</code>.</td>
+</tr>
+<tr>
+<td>Verification made visible (citation marker + ✓/redacted badge)</td>
+<td>PARTIAL</td>
+<td>One hard-coded instance on Marketer; the general "render everywhere a Finding shows" rule + redacted-chip are not built. This is the front-end of the Discovery-OS evidence-grounding requirement (§4).</td>
+</tr>
+<tr>
+<td>Jarvis cockpit (voice/text overlay, recipe picker, live receipts)</td>
+<td>DNB</td>
+<td>Full ASCII spec exists, zero code. STT/TTS vendor open (D9).</td>
+</tr>
+<tr>
+<td>Data-source stub cards (✅ active vs 🔒 would-add-value)</td>
+<td>BUILT (Marketer)</td>
+<td>Proven pattern, flagged reusable — extend to AE/BDR.</td>
+</tr>
+</tbody>
+</table>
+<h3>AE door — all DNB (no code exists)</h3>
+<ul>
+<li>Stage cockpit <strong>corrected to 3 stages: PREP → SS1 → SS2</strong>. <strong>CULL: SS3 (POC/Go-Live) and SS4 (Scoping/Proposal) entirely</strong> — "neither of us has a role there."</li>
+<li>60-sec pre-call brief (= the Discovery-OS single-page call plan, §4), exit-gate checklists, Battle Card (<strong>MODIFIED</strong>: Golden-Angle/demo content that lived in the culled SS3 is dropped), AE Playbook (MEDDPICC gap map + SPIN), Business Case/ROI (<strong>moved SS4→SS2</strong> — must exist before negotiation).</li>
+<li>Deep-links INTO the existing 5-tab SPA rather than rebuilding it (PENDING — one of the 3 assumptions to confirm, D4).</li>
+<li><strong>Culled for AE:</strong> portfolio/aggregate views (Leader's job), BDR outreach mechanics.</li>
+</ul>
+<h3>BDR door — all DNB</h3>
+<ul>
+<li>Prioritized account queue ranked by signal strength (hiring/news/social — volume-friendly, not deep financials), hero card + one-click ABX outreach, "why now" signal line, triage chat mode.</li>
+<li>Outreach = <strong>micro-Exchange</strong> (one insight + one calibrated question — the "0.1-page" call plan, §4).</li>
+<li><strong>CULL (strongest in the doc):</strong> deep financials, MEDDPICC depth, and the entire stage cockpit — "BDR isn't running a deal, they're generating one."</li>
+</ul>
+<h3>Marketer door — the one BUILT role</h3>
+<ul>
+<li>BUILT: narrative-hook hero + verified badge + source citation, <code>[Preview landing page]</code>, data-source active/locked grid, per-account JSON fetch.</li>
+<li>DNB/stubbed: <code>[Review before Jahia push]</code>, <code>[Download leave-behind/ABX]</code> (hard-disabled), the <strong>ABM Brief</strong> artifact (fully specced two-zone auto-vs-Sales-input, no code), content co-pilot chat.</li>
+<li><strong>CULL for Marketer:</strong> deep financials, MEDDPICC/deal-stage mechanics, BDR queue — <strong>and no stage pipeline at all</strong> ("Marketer's work isn't gated to a deal stage").</li>
+</ul>
+<h3>3 working assumptions to re-confirm before AE/BDR build (→ D4)</h3>
+<ol>
+<li>Role switcher = a toggle anyone can flip (filter, not ACL / per-login).</li>
+<li>Marketer door = a <strong>review surface</strong> in front of the existing Figma→Jahia pipeline, NOT a second page-builder.</li>
+<li>Existing 5-tab SPA = the deep-link target for all roles (and Leader's drill-through), NOT rebuilt per role.</li>
+</ol>
+<hr />
+<h2>4. Discovery OS → PRISM build requirements (Track G)</h2>
+<p>From Discovery-OS-v1 §9 (PRISM Translation Ruleset). These define the schema and the AE experience.</p>
+<p><strong>Core data objects (every audit finding must carry these — not just a claim string):</strong>
+- <strong>Finding object:</strong> <code>category</code> (13 codes: SA/EC/TS/HS/FS/CA/BC/WB/TE/AC/BL/RG/CM), <code>evidence{type,payload,source_url,timestamp}</code>, <code>confidence{High/Med/Low}</code>, <code>freshness</code>, <code>archetype_fit</code>, <code>persona_fit{Merch/Product/Eng/Exec}</code>, <code>risk_if_wrong{Low/Mod/High}</code>.
+- <strong>Translation layer:</strong> <code>translate(finding, persona, deal_context, competitive_context, confidence_threshold)</code> → opening move + calibrated hypothesis + exchange sequence + question stack + objection pre-map + champion narrative + next-meeting hook + outbound-email angle + disclosure timing. (This is the "diagnosis-to-action engine" v1 lacks.)
+- <strong>Behavior object:</strong> content + type + confidence + evidence_tier{🟢🟡🔵} + archetype_fit + persona_fit + risk_if_wrong + best_use_stage + do_not_deploy_if + visual_proof + external_citation. <strong>Hard rule:</strong> <code>risk_if_wrong=High</code> → mandatorily attach M9 (Documented-Fallibility Disclosure).
+- <strong>Feedback object</strong> (rep writes post-call): hypothesis_id + buyer_reaction{confirms/amends/rejects/deflects/...} + verbatim reaction language + next_move + MEDDPICC fields updated. The write-side that lets PRISM learn.
+- <strong>Branch engine:</strong> <code>branch(reaction_type, role, stage, deal_state)</code> → next move + proof asset + stakeholder + MEDDPICC update + <code>escalation_flag</code> (true after 2 consecutive rejections; <strong>1</strong> for scaffolded/junior reps — make the threshold per-rep-tier configurable, not a constant).</p>
+<p><strong>The single-page call plan (AE PREP hero artifact) — exactly 7 elements, no more:</strong>
+1. Opening move (F1–F6, rule-selected by detected competitor). 2. Three ranked hypotheses, ranked <code>(Confidence × Business Impact) ÷ Risk</code>. 3. Branch tree per hypothesis. 4. One competitive objection + response. 5. One cost-of-inaction cue. 6. One stakeholder to add (must be one the buyer did NOT volunteer, from hiring/LinkedIn data). 7. One calendar-able next-meeting hook. <em>Compression is itself a spec: &gt;1 page = failed, not over-delivered.</em></p>
+<p><strong>THE gating rule (most-emphasized in the doc):</strong> Low-Confidence × High-Risk-if-Wrong findings must never reach a rep-facing surface. → But see the ambiguity below.</p>
+<p><strong>Role applicability:</strong> AE = full. BDR = micro-Exchange only (1 insight + 1 question outbound generator). Marketer = findings/confidence subset, no call-plan/branch (no discovery motion).</p>
+<p><strong>Also:</strong> codify a reusable <strong><code>/standards-discovery-os</code></strong> skill (like the other <code>/standards-*</code>) AND bake the call-plan output into the AE door.</p>
+<p><strong>⚠️ Two source-doc ambiguities Fable 5 must NOT resolve by invention — need Arijit (D5) / engineering:</strong>
+1. <strong>Gating rule conflict:</strong> the doc says both <em>hard-suppress</em> Low-Conf×High-Risk (L620/L1102) AND <em>surface-but-label-and-gate-behind-mandatory-M9</em> (call-plan example L975–977). Pick one.
+2. <strong>"Archetype" is overloaded:</strong> deal-context archetype (Greenfield / Incumbent-displacement / Platform-consolidation / Composable-migration) vs move-type archetype (Teach/Test/Triage/Acknowledge/Translate/Escalate). Two distinct schema fields — never merge.</p>
+<hr />
+<h2>5. Modular + productization design questions (Tracks E/F) — to brainstorm, not yet designed</h2>
+<ul>
+<li><strong>Module boundary contract:</strong> what's the interface every lego module implements (input schema, output schema, its own exit fact-check+QA gate)?</li>
+<li><strong>Recipe format:</strong> how the operator's module selection is expressed and how the executioner consumes it.</li>
+<li><strong>Agent grouping:</strong> confirm Researcher / Audit / Synthesizer boundaries against today's skill-groups.</li>
+<li><strong>Domain-pack interface (F):</strong> the swappable unit that replaces <code>algolia-search-audit</code> + Algolia sales angles for another company/vertical. This is the crux of "sellable."</li>
+<li><strong>Multi-tenancy (L10):</strong> shared tables + <code>tenant_id</code> + RLS — validate; pick auth provider (D3).</li>
+</ul>
+<hr />
+<h2>6. Production-readiness + GTM + pricing/metering (Track H) — the commercial gap</h2>
+<p>We have: a working audit engine, 18+ published reports, a premium UI, a methodology (Discovery OS). We do NOT have: multi-tenancy, auth, a security/deployment topology (gap #13, zero shape), usage metering, a pricing model, a GTM motion, or a beta cohort. Track H turns "a tool Arijit runs" into "a product others pay for."
+- <strong>Prod-readiness plan:</strong> security topology, tenant isolation, secrets management, observability, SLAs, cost/ops sizing (old gap #4).
+- <strong>GTM:</strong> category creation ("Prospect Research Operating System"), ICP, beta cohort, positioning vs. status quo (manual research / point tools).
+- <strong>Pricing + metering:</strong> decide the metering unit (per-audit? per-seat? per-domain-pack? per-account-researched?) and instrument it from day one — retrofitting metering is painful.</p>
+<hr />
+<h2>7. Open research (R) and blocked decisions (D)</h2>
+<p><strong>Research to run (each is a Fable-5 or sub-agent task):</strong>
+- <strong>R1</strong> Claude Agent SDK executioner e2e POC (needs <code>ANTHROPIC_API_KEY</code>) — prove multi-step control + per-module gating + Postgres SessionStore + retry. <em>Gates Track C.</em>
+- <strong>R2</strong> Managed Agents API live-probe (the 5th candidate, never probed) — self-hosted SDK vs Anthropic-managed. <em>Feeds D1.</em>
+- <strong>R3</strong> Postgres + pgvector as unified store — schema + RAG + migration path from current runner/<code>prism_platform</code>.
+- <strong>R4</strong> Durable-retry: SDK+queue vs Temporal re-eval. <em>Feeds D2.</em>
+- <strong>R5</strong> Multi-tenancy validation (shared tables + tenant_id + RLS) + auth-provider options.
+- <strong>R6</strong> Security/deployment topology (gap #13 — no first-pass shape exists).
+- <strong>R7</strong> Domain-pack interface design (Phase 3).
+- <strong>R8</strong> Pricing/metering benchmarks — comparable intelligence-platform pricing + the right metering unit.
+- <strong>R9</strong> GTM / category / beta-cohort research.
+- <strong>R10</strong> Cost/ops sizing for Agent SDK infra at scale.</p>
+<p><strong>Decisions blocked on Arijit:</strong>
+- <strong>D1</strong> Self-hosted Claude Agent SDK vs Managed Agents API (after R2).
+- <strong>D2</strong> Durable-retry approach (Temporal back in, or SDK + queue).
+- <strong>D3</strong> Auth provider for multi-tenant.
+- <strong>D4</strong> The 3 IA working assumptions (§3) — needed before AE/BDR build.
+- <strong>D5</strong> Discovery-OS gating-rule ambiguity (hard-suppress vs mandatory-M9).
+- <strong>D6</strong> Pricing model + metering unit.
+- <strong>D7</strong> Beta target — an external company (which?), or Algolia AEs as friendly-first even though not the north star?
+- <strong>D8</strong> Deadline / pressure driving "show results soon" (still unanswered — shapes MVP scope).
+- <strong>D9</strong> Jarvis STT/TTS vendor (separate from the deprioritized HeyGen visual layer).
+- <strong>D10</strong> Product name / category label (PIP / EPI / other — "Prospect Research Operating System").</p>
+<hr />
+<h2>8. Recommended immediate sequence (my call as your partner)</h2>
+<ol>
+<li><strong>This week — ship the visible win.</strong> Tracks A + B: confirm D4 (3 assumptions), finalize the design-system tokens, build AE + BDR doors to the Marketer pattern, deploy all 3 live. One demoable URL. Breaks the built-but-not-shipped pattern.</li>
+<li><strong>In parallel — de-risk the backend.</strong> Run R1 (executioner POC, needs the API key) and R3 (Postgres/pgvector schema, informed by the Track G-schema finding-object). These two decide whether the whole Phase-1 rebuild is sound before we pour weeks into it.</li>
+<li><strong>Then</strong> Track D (chat-as-operator on the proven executioner), then E (modular), then F+H (productization + commercial) — with pricing/metering research (R8) started early so metering is designed in, not bolted on.</li>
+</ol>
+<p>Fable 5 gets Tracks A/B/G-schema/C as the first executable package (see <code>08-fable5-handoff-prompt.md</code>). E/F/H stay in brainstorm until C's POC lands.</p>
+</main>
+<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+</body>
+</html>

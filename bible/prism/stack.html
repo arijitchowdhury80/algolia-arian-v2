@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Technology Stack — The Bible</title>
+<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
+<link rel="stylesheet" href="/bible/shared/bible.css">
+</head>
+<body>
+<header class="bible-header">
+  <a href="/bible/" class="bible-home">The Bible</a>
+  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+</header>
+<main class="bible-content">
+<h1>The Cognitive Stack: Architecture for an AI-Native Build Engine</h1>
+<p><strong>Date:</strong> 2026-04-13
+<strong>Status:</strong> Approved for implementation
+<strong>Authors:</strong> Arijit Chowdhury, Claude (Architect)
+<strong>Scope:</strong> Cross-project operating system for AI-assisted software development
+<strong>Provenance:</strong> Brainstorm session synthesizing 4 skill ecosystems: personal SOPs (Obsidian vault), Superpowers v5.0.7, pm-skills (Pawel Huryn), awesome-design-skills (bergside/typeui.sh)</p>
+<hr />
+<h2>1. Executive Summary</h2>
+<p>This document defines a six-layer cognitive stack that transforms how AI assistants build software. The stack composes four independent skill ecosystems into a unified system where every phase of work, from "I have an idea" to "it shipped and we learned from it," is covered by structured, enforceable, invocable skills.</p>
+<p>The core insight: most AI-assisted development has strong execution (write code, run tests) but weak thinking (decide what to build), weak standards enforcement (hope Claude remembers the rules), and no learning loop (ship and forget). The cognitive stack fills all three gaps.</p>
+<p>Three problems this architecture solves:</p>
+<ol>
+<li>
+<p><strong>CLAUDE.md is bloated.</strong> The PIP project's CLAUDE.md embeds ~400 lines of SOP content (error handling examples, Pydantic rules, logging standards). This duplicates vault content, wastes context window on every message, and drifts from the source of truth.</p>
+</li>
+<li>
+<p><strong>Skills don't know your standards.</strong> Superpowers enforces TDD discipline but doesn't know about YOUR 3-layer test strategy, YOUR mock adapter pattern, or YOUR "Definition of Done" checklist. Generic process without specific quality criteria.</p>
+</li>
+<li>
+<p><strong>No thinking layer.</strong> The gap between "I have an idea" and "I start coding" is filled by ad-hoc chat sessions. No structured frameworks for deciding WHAT to build, testing assumptions, or analyzing risk before committing to implementation.</p>
+</li>
+</ol>
+<hr />
+<h2>2. The Architecture</h2>
+<p>Six layers, each with a distinct cognitive function. Lower layers are always-on. Upper layers are invoked per-task.</p>
+<pre><code>+---------------------------------------------------+
+|  Layer 6: BUILD ENGINE (future)                   |
+|  Developer Agent + QA Agent + Dispatcher          |
+|  The machine that builds autonomously             |
++---------------------------------------------------+
+|  Layer 5: DOMAIN SKILLS                           |
+|  algolia-audit-*, algolia-intel-*                 |
+|  Domain-specific execution                        |
++---------------------------------------------------+
+|  Layer 4: PROCESS SKILLS (superpowers)            |
+|  TDD, debugging, verification, planning           |
+|  + design-review (to be created)                  |
+|  HOW you build. Discipline enforcement.           |
++---------------------------------------------------+
+|  Layer 3: STANDARDS SKILLS                        |
+|  coding, testing, writing, uiux                   |
+|  + aesthetics library (from awesome-design)       |
+|  WHAT good looks like. Quality gates.             |
++---------------------------------------------------+
+|  Layer 2: THINKING SKILLS                         |
+|  PRD, pre-mortem, assumptions, strategy, OST      |
+|  + design-thinking (to be created)                |
+|  WHAT to build and WHY. Decision frameworks.      |
++---------------------------------------------------+
+|  Layer 1: IDENTITY (CLAUDE.md, slim)              |
+|  Who I am, cardinal rules, pointers               |
+|  50 lines, not 400. Always loaded.                |
++---------------------------------------------------+
+</code></pre>
+<h3>The Cognitive Function of Each Layer</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Question It Answers</th>
+<th>When It Activates</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Identity</td>
+<td>"Who am I in this project?"</td>
+<td>Always loaded, every message</td>
+<td>CLAUDE.md (slimmed)</td>
+</tr>
+<tr>
+<td>2. Thinking</td>
+<td>"What should we build and why?"</td>
+<td>Before any new feature, module, or product decision</td>
+<td>Adapted from pm-skills</td>
+</tr>
+<tr>
+<td>3. Standards</td>
+<td>"Does this meet our quality bar?"</td>
+<td>At validation checkpoints during work</td>
+<td>Vault SOPs, wrapped as skills</td>
+</tr>
+<tr>
+<td>4. Process</td>
+<td>"Am I following the right workflow?"</td>
+<td>During implementation</td>
+<td>Superpowers (unmodified)</td>
+</tr>
+<tr>
+<td>5. Domain</td>
+<td>"How do I execute this specific task?"</td>
+<td>During domain-specific work</td>
+<td>Algolia/PRISM skills</td>
+</tr>
+<tr>
+<td>6. Build Engine</td>
+<td>"Can the machine build this autonomously?"</td>
+<td>When tasks are well-specified enough for agents</td>
+<td>Developer + QA + Dispatcher (future)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. Layer 1: Identity (CLAUDE.md)</h2>
+<h3>The Problem</h3>
+<p>The PIP CLAUDE.md is ~400 lines. Over half is SOP content: full code examples for error handling, logging standards with level guides, Pydantic rules with 5 sub-rules, naming conventions for 4 languages, security standards, performance standards, documentation standards. This content:</p>
+<ul>
+<li><strong>Wastes context.</strong> Loaded on every message whether relevant or not.</li>
+<li><strong>Duplicates the vault.</strong> CodingSOPs.md says "max 20 lines per function." CLAUDE.md says "max 50 lines." They've already diverged.</li>
+<li><strong>Doesn't enforce.</strong> Claude reads it at session start, then may or may not follow it. No checkpoints, no validation, no blocking.</li>
+</ul>
+<h3>The Design</h3>
+<p>CLAUDE.md becomes identity-only. ~50 lines. No code examples. No SOP content.</p>
+<p><strong>What stays:</strong>
+- Who you are (co-founder-level technical partner)
+- Cardinal rules (7 non-negotiable principles)
+- Project context (what is PRISM, what phase are we in)
+- Pointers to standards skills ("invoke standards:coding before writing code")
+- Pointers to thinking skills ("invoke thinking:prd before writing specs")</p>
+<p><strong>What moves out:</strong>
+- Error handling examples --&gt; standards:coding skill (reads CodingSOPs.md)
+- Logging standards --&gt; standards:coding skill
+- Pydantic rules --&gt; standards:coding skill
+- Naming conventions --&gt; standards:coding skill
+- Testing standards --&gt; standards:testing skill
+- Writing standards --&gt; standards:writing skill
+- Frontend standards --&gt; standards:uiux skill
+- Security, performance, documentation --&gt; standards:coding skill</p>
+<h3>Drift Prevention</h3>
+<p>The vault SOPs are the single source of truth. Standards skills READ the vault at invocation time. CLAUDE.md never contains SOP content. This eliminates the duplication that causes drift.</p>
+<hr />
+<h2>4. Layer 2: Thinking Skills</h2>
+<h3>The Problem</h3>
+<p>The gap between "I have an idea" and "I start building" is currently filled by ad-hoc Claude Chat sessions. No structured frameworks. No assumption testing. No risk analysis. The result: architecture redesigns (v1 to v2), wasted effort on wrong approaches, and decisions that aren't documented until after the fact.</p>
+<h3>The Design</h3>
+<p>Seven thinking skills adapted from Pawel Huryn's pm-skills (MIT license), plus one new skill for design thinking. Each encodes a proven framework and walks through it step by step.</p>
+<h4>4.1 Skills Adapted from pm-skills</h4>
+<table>
+<thead>
+<tr>
+<th>Skill Name</th>
+<th>Framework Source</th>
+<th>What It Does</th>
+<th>When to Invoke</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thinking:prd</code></td>
+<td>create-prd (Huryn)</td>
+<td>8-section PRD: Summary, Background, Objective, Segments, Value Props, Solution, Assumptions, Release</td>
+<td>Before any new module, feature, or product</td>
+</tr>
+<tr>
+<td><code>thinking:pre-mortem</code></td>
+<td>pre-mortem (Huryn, Meta/Instagram)</td>
+<td>Risk analysis: Tigers (real risks), Paper Tigers (overblown concerns), Elephants (unspoken worries). Classifies as launch-blocking, fast-follow, or track.</td>
+<td>Before committing to any architecture or implementation</td>
+</tr>
+<tr>
+<td><code>thinking:assumptions</code></td>
+<td>identify-assumptions-new + prioritize-assumptions (Teresa Torres, Dan Olsen)</td>
+<td>Identify assumptions across 8 risk categories (Value, Usability, Viability, Feasibility, Ethics, GTM, Strategy, Team). Prioritize via Impact x Risk matrix.</td>
+<td>During brainstorming, before building</td>
+</tr>
+<tr>
+<td><code>thinking:ost</code></td>
+<td>opportunity-solution-tree (Teresa Torres)</td>
+<td>Outcome --&gt; Opportunities --&gt; Solutions --&gt; Experiments. Prevents building the wrong thing by forcing opportunity mapping before solution selection.</td>
+<td>For product-level decisions, feature prioritization</td>
+</tr>
+<tr>
+<td><code>thinking:strategy</code></td>
+<td>product-strategy (Huryn, 9-section canvas)</td>
+<td>Vision, Segments, Costs, Value Props, Trade-offs, Metrics, Growth, Capabilities, Defensibility.</td>
+<td>For product-level strategy (PRISM itself, new products)</td>
+</tr>
+<tr>
+<td><code>thinking:value-prop</code></td>
+<td>value-proposition (Huryn, JTBD 6-part)</td>
+<td>Who, Why, What Before, How, What After, Alternatives.</td>
+<td>For any user-facing output, positioning, sales narrative</td>
+</tr>
+<tr>
+<td><code>thinking:lean-canvas</code></td>
+<td>lean-canvas (Ash Maurya)</td>
+<td>Problem, Solution, UVP, Unfair Advantage, Segments, Channels, Revenue, Costs, Metrics. Quick hypothesis testing.</td>
+<td>For new product ideas before committing resources</td>
+</tr>
+</tbody>
+</table>
+<h4>4.2 New Skill: thinking:design-thinking</h4>
+<p>This skill does not exist in any repo. It fills the frontend equivalent of PRD/pre-mortem.</p>
+<p><strong>Framework (6 questions before any UI work):</strong></p>
+<ol>
+<li>
+<p><strong>User Mental Model.</strong> How does the user think about this? What metaphor are they carrying? What do they expect to see? A user who thinks "dashboard" expects cards and metrics. A user who thinks "report" expects narrative flow.</p>
+</li>
+<li>
+<p><strong>Information Architecture.</strong> What is the hierarchy of information? What is most important? What is supporting? Map content to the emphasis tier framework (Hero / Primary / Secondary / Supporting) before selecting components.</p>
+</li>
+<li>
+<p><strong>Interaction Flow.</strong> What is the happy path? Where can the user get lost? What are the 3 most common actions? Design for those 3 actions to be effortless. Everything else can require effort.</p>
+</li>
+<li>
+<p><strong>Cognitive Load Budget.</strong> How many things can the user process at once in this view? Research says 4 plus or minus 1 chunks. Count the distinct information groups on the page. If you exceed 5, split or collapse.</p>
+</li>
+<li>
+<p><strong>Emotional Journey.</strong> What should the user FEEL at each step? An audit report should build from concern ("your search scores 3/10") to confidence ("here's what Algolia fixes") to urgency ("your competitors already moved"). Map the emotional arc before choosing components.</p>
+</li>
+<li>
+<p><strong>Design Pre-Mortem.</strong> What makes a user bounce in the first 5 seconds? What looks "generic AI"? What breaks on mobile? What fails in dark mode? What is inaccessible? Run the Tigers/Paper Tigers/Elephants analysis on the UI specifically.</p>
+</li>
+</ol>
+<h3>The Thinking Flow</h3>
+<p>When a new feature, module, or product arrives, the thinking skills activate in sequence:</p>
+<pre><code>Idea arrives
+  |
+  v
+thinking:strategy ---- &quot;Does this fit the product strategy?&quot;
+  |
+  v
+thinking:value-prop --- &quot;What's the JTBD? Who/Why/How/What after?&quot;
+  |
+  v
+thinking:assumptions -- &quot;What are we assuming? Which are riskiest?&quot;
+  |
+  v
+thinking:ost ---------- &quot;Outcome &gt; Opportunities &gt; Solutions &gt; Experiments&quot;
+  |
+  v
+thinking:prd ---------- &quot;Write the spec (8 sections)&quot;
+  |
+  v
+thinking:pre-mortem --- &quot;Tigers? Paper Tigers? Elephants?&quot;
+  |
+  v
+[If UI work] thinking:design-thinking --- &quot;Mental model? IA? Flow? Load? Emotion? Pre-mortem?&quot;
+  |
+  v
+Ready for implementation planning
+</code></pre>
+<p>Not every feature needs all 7 steps. A small bug fix skips straight to implementation. A new product needs all of them. The developer uses judgment.</p>
+<hr />
+<h2>5. Layer 3: Standards Skills</h2>
+<h3>The Problem</h3>
+<p>SOPs exist in the Obsidian vault. They're well-written and comprehensive. But they're passive. Claude has to be told "go read CodingSOPs.md" and then hope it follows every rule. No checkpoints. No validation. No blocking.</p>
+<p>Meanwhile, CLAUDE.md copies SOP content to get it "always loaded," but this creates duplication, context waste, and drift.</p>
+<h3>The Design</h3>
+<p>Standards skills are NOT copies of SOPs. They are thin wrappers that:
+1. READ the relevant vault SOP at invocation time (always current, single source of truth)
+2. Extract validation criteria from the SOP
+3. Check current work against those criteria
+4. Block or flag violations</p>
+<p>They are validation gates, not reference documents.</p>
+<h4>5.1 Standards Skills Catalog</h4>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Vault Source</th>
+<th>What It Validates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>standards:coding</code></td>
+<td>Standards/CodingSOPs.md</td>
+<td>Error handling (try/catch on all external calls), logging (structured, leveled, mandatory), SOLID principles, DRY, naming conventions, function rules (max 20 lines, max 3 params, type hints), comments (why not what), formatting (ruff, mypy), security (no secrets), git commits</td>
+</tr>
+<tr>
+<td><code>standards:testing</code></td>
+<td>Standards/TestingSOPs.md</td>
+<td>TDD (test first always), 3 test layers (unit/integration/contract), test file structure, test naming convention, what to test, what NOT to test, mock strategy (adapter injection), Definition of Done (6 checkboxes)</td>
+</tr>
+<tr>
+<td><code>standards:writing</code></td>
+<td>Standards/WritingSOPs.md</td>
+<td>No em-dashes (zero, universal), no AI tells (12 banned constructions), concrete over abstract, active voice, one idea per sentence, through-line, pyramid structure, named over generic, voice register, AI-assisted writing rules</td>
+</tr>
+<tr>
+<td><code>standards:uiux</code></td>
+<td>Standards/UIUXDesignSOP/ (10 files)</td>
+<td>Component rules (cards, tables, navigation, badges, data-viz, layout, animations, interactive), brand compliance (Algolia vs generic), emphasis tier framework, accessibility (WCAG 2.2 AA), responsive design, dark mode</td>
+</tr>
+</tbody>
+</table>
+<h4>5.2 Aesthetics Library (from awesome-design-skills)</h4>
+<p>In addition to the standards skills above, the stack includes a library of design language specifications cherry-picked from bergside/awesome-design-skills. These are NOT validation gates. They are aesthetic DNA: token sets, typography, colors, and component styling rules for specific visual directions.</p>
+<table>
+<thead>
+<tr>
+<th>Aesthetic</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aesthetic:dashboard</code></td>
+<td>PRISM dashboards, data-heavy views. Dark theme, IBM Plex Sans, glass panels, modular grids.</td>
+</tr>
+<tr>
+<td><code>aesthetic:enterprise</code></td>
+<td>Enterprise-facing UIs, AE/BDR tools. Clean, high-contrast, Ubuntu font, structured layouts.</td>
+</tr>
+<tr>
+<td><code>aesthetic:editorial</code></td>
+<td>Audit reports, leave-behinds. Magazine-quality presentation of findings.</td>
+</tr>
+<tr>
+<td><code>aesthetic:clean</code> or <code>aesthetic:minimal</code></td>
+<td>Simple tools, single-purpose views. Maximum signal, minimum noise.</td>
+</tr>
+<tr>
+<td><code>aesthetic:professional</code></td>
+<td>Default fallback when no specific aesthetic fits.</td>
+</tr>
+</tbody>
+</table>
+<p>These compose with the frontend-design skill: the frontend-design skill says WHICH component to use (via decision matrix). The aesthetic says HOW that component should look and feel.</p>
+<h4>5.3 How Standards Skills Work (Technical)</h4>
+<pre><code>Invocation: standards:coding
+  |
+  Step 1: Read ~/...Obsidian/.../Standards/CodingSOPs.md
+  |
+  Step 2: Extract validation criteria as checklist
+  |
+  Step 3: Review current work (files changed in this session)
+  |
+  Step 4: For each criterion:
+  |         - PASS: criterion met
+  |         - WARN: criterion partially met, flag for attention
+  |         - FAIL: criterion violated, block until fixed
+  |
+  Step 5: Report results with file:line references
+</code></pre>
+<p>The skill reads the vault SOP every time. If the SOP is updated (e.g., function max length changes from 20 to 30 lines), the next invocation picks up the change. No re-deployment. No sync. Single source of truth.</p>
+<hr />
+<h2>6. Layer 4: Process Skills (Superpowers)</h2>
+<h3>The Design</h3>
+<p>Superpowers skills remain <strong>unmodified and generic</strong>. They handle workflow discipline: TDD red-green-refactor, systematic debugging, verification-before-completion, writing plans, executing plans, brainstorming, code review, git worktrees.</p>
+<p>They are community-maintained (currently at v5.0.7) and will continue to evolve. The cognitive stack does NOT fork them. Instead, it composes them with standards skills at checkpoints.</p>
+<h4>6.1 Composition: The Double Superpower</h4>
+<p>This is where the multiplicative effect happens. Process skills invoke standards skills at natural checkpoint moments:</p>
+<p><strong>TDD Workflow (superpowers:test-driven-development):</strong></p>
+<pre><code>RED: Write failing test
+  +-- CHECKPOINT: standards:testing validates test structure
+      (3 layers? correct naming? mock adapter pattern?)
+
+GREEN: Write minimal code to pass
+  +-- CHECKPOINT: standards:coding validates implementation
+      (error handling? logging? types? function length?)
+
+REFACTOR: Clean up
+  +-- CHECKPOINT: standards:coding validates quality
+      (DRY? naming? SOLID?)
+</code></pre>
+<p><strong>Code Review (superpowers:requesting-code-review):</strong></p>
+<pre><code>Review pass:
+  +-- CHECKPOINT: standards:coding (full validation)
+  +-- CHECKPOINT: standards:testing (coverage, contract tests, Definition of Done)
+  +-- CHECKPOINT: standards:writing (docstrings, comments, no AI tells)
+  +-- CHECKPOINT: standards:uiux (if frontend changes)
+</code></pre>
+<p><strong>Brainstorming (superpowers:brainstorming):</strong></p>
+<pre><code>Before presenting design:
+  +-- CHECKPOINT: thinking:assumptions (what are we assuming?)
+  +-- CHECKPOINT: thinking:pre-mortem (what could go wrong?)
+</code></pre>
+<p><strong>Frontend Work (frontend-design + aesthetics):</strong></p>
+<pre><code>Before coding:
+  +-- CHECKPOINT: thinking:design-thinking (mental model, IA, flow, load, emotion)
+
+During coding:
+  +-- CHECKPOINT: standards:uiux (component rules, accessibility, dark mode)
+  +-- LOAD: aesthetic:dashboard (or whichever aesthetic applies)
+
+After coding:
+  +-- CHECKPOINT: process:design-review (visual quality, responsiveness, generic AI detection)
+</code></pre>
+<p><strong>Single Superpower:</strong> Process enforcement OR standards enforcement.
+<strong>Double Superpower:</strong> Process enforcement x Standards enforcement, composed at checkpoints. The process skill ensures you follow the right workflow. The standards skill ensures the output meets YOUR definition of quality. Neither alone gives you what both together give you.</p>
+<h4>6.2 New Process Skill: process:design-review</h4>
+<p>This skill does not exist in superpowers. It fills the frontend equivalent of code review.</p>
+<p><strong>Design Review Checklist:</strong>
+1. Does the UI match the intended aesthetic (by name, e.g., "dashboard" or "editorial")?
+2. Does the emphasis tier assignment hold? (Only 1 Hero per section? Primary content is actually primary?)
+3. Does the layout work at 375px, 768px, 1024px, 1280px?
+4. Does dark mode work without broken contrast or invisible elements?
+5. Does it pass WCAG 2.2 AA? (Keyboard navigation, focus states, color contrast, screen reader labels)
+6. Would a user recognize this as "designed" rather than "generated"? (The generic AI detection question)
+7. Does the interaction flow match the thinking:design-thinking analysis?</p>
+<hr />
+<h2>7. Layer 5: Domain Skills</h2>
+<p>Existing Algolia/PRISM skills. No changes needed from this architecture. They operate at the execution level, above the cognitive infrastructure.</p>
+<ul>
+<li><code>algolia-intel-*</code> (12 research modules)</li>
+<li><code>algolia-audit-*</code> (browser testing, scoring, reports, factcheck)</li>
+<li><code>algolia-synth-*</code> (business case, sales plays)</li>
+<li><code>algolia-campaign-*</code> (ABX outreach)</li>
+</ul>
+<p>These skills already follow the module-as-agent pattern defined in the PRISM unified architecture. The cognitive stack provides the infrastructure BENEATH them: thinking skills decide what to build, standards skills validate quality, process skills enforce discipline.</p>
+<hr />
+<h2>8. Layer 6: Build Engine (Future)</h2>
+<p>The machine that builds autonomously. Three agents:</p>
+<ul>
+<li><strong>Developer Agent.</strong> Receives a task specification. Follows the cognitive stack: reads standards skills, follows process skills, produces code that passes all validation gates.</li>
+<li><strong>QA Agent.</strong> Receives the developer's output. Validates against standards skills. Writes tests per standards:testing. Runs the verification-before-completion process.</li>
+<li><strong>Dispatcher Agent.</strong> Reads the TODO list. Assigns tasks to Developer/QA pairs. Tracks progress. Handles dependencies and sequencing.</li>
+</ul>
+<p>This layer is Phase 6 of the implementation plan. It requires Layers 1-4 to be solid before it can operate, because the agents need enforceable standards and processes to follow autonomously.</p>
+<hr />
+<h2>9. Backend/Frontend Parity</h2>
+<p>The cognitive stack maintains structural parity between backend and frontend at every layer. Every cognitive function exists for both:</p>
+<table>
+<thead>
+<tr>
+<th>Cognitive Function</th>
+<th>Backend</th>
+<th>Frontend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Thinking</strong></td>
+<td>PRD, pre-mortem, OST, assumptions, strategy, value-prop</td>
+<td>Design thinking (mental model, IA, interaction flow, cognitive load, emotional journey, design pre-mortem)</td>
+</tr>
+<tr>
+<td><strong>Standards</strong></td>
+<td>CodingSOPs, TestingSOPs, WritingSOPs</td>
+<td>UIUXDesignSOP + aesthetics library (design language specifications)</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>TDD, debugging, verification, code review</td>
+<td>Design review, visual regression, a11y audit, generic AI detection</td>
+</tr>
+<tr>
+<td><strong>Execution</strong></td>
+<td>Superpowers workflows</td>
+<td>frontend-design skill + ui-architect + aesthetic skins</td>
+</tr>
+</tbody>
+</table>
+<p>If a new cognitive function is added to one side, the other side must be evaluated for the equivalent.</p>
+<hr />
+<h2>10. Context Orchestration</h2>
+<h3>The Problem</h3>
+<p>Six layers of skills. If every task loads thinking skills + standards skills + process skills + domain skills + aesthetics library, the context window drowns in instructions.</p>
+<h3>The Loading Protocol</h3>
+<p><strong>Always loaded (Layer 1):</strong> CLAUDE.md (~50 lines). Identity, cardinal rules, pointers. Present in every message.</p>
+<p><strong>Loaded on task start (Layer 4):</strong> The relevant process skill. If you're coding, TDD loads. If you're debugging, systematic-debugging loads. One process skill at a time.</p>
+<p><strong>Loaded at checkpoints (Layer 3):</strong> Standards skills load when invoked by process skills at checkpoint moments. standards:coding loads during GREEN phase of TDD. standards:testing loads during RED phase. They don't persist; they validate and release.</p>
+<p><strong>Loaded on demand (Layer 2):</strong> Thinking skills load when starting a new feature or product decision. They run their framework, produce an artifact (PRD, pre-mortem analysis, OST), and release. The artifact persists on disk; the skill releases context.</p>
+<p><strong>Loaded on domain work (Layer 5):</strong> Domain skills load for specific audit/research tasks. One domain skill at a time.</p>
+<p><strong>Dormant (Layer 6):</strong> Build engine agents are separate processes. They don't share the main context window.</p>
+<h3>The Rule</h3>
+<p>No more than 2 skills loaded simultaneously: one process skill (Layer 4) and one standards/thinking skill (Layer 2-3) at the checkpoint. Everything else loads sequentially.</p>
+<h3>The Workspace: Working Memory for Complex Tasks</h3>
+<p>Skills produce artifacts. Thinking skills produce specs, risk analyses, assumption maps. Process skills produce test results, verification evidence. When a task involves multiple skills in sequence (PRD then pre-mortem then plan then TDD), the context window fills up and compaction erases intermediate state. The next skill loses the previous skill's output. The chain breaks.</p>
+<p><strong>The workspace solves this.</strong> It is a per-feature directory in the repo where every skill writes its output to disk as it completes. The next skill reads from disk, not from context. Compaction can't erase what's on disk.</p>
+<p><strong>Location:</strong> <code>docs/workspace/{feature-name}/</code> in the repo.</p>
+<p>Why the repo, not the vault:
+- Claude reads and writes rapidly during active work. No Google Drive sync latency.
+- Right next to the code being built. Zero path complexity.
+- Git-tracked, so you can see how thinking evolved across drafts.
+- Clearly temporary. Cleaned up when the feature ships.</p>
+<p><strong>Structure:</strong></p>
+<pre><code>docs/workspace/{feature-name}/
+  01-strategy.md           &lt;- thinking:strategy output
+  02-value-prop.md         &lt;- thinking:value-prop output
+  03-assumptions.md        &lt;- thinking:assumptions output
+  04-prd.md                &lt;- thinking:prd output
+  05-pre-mortem.md         &lt;- thinking:pre-mortem output
+  06-design-thinking.md    &lt;- thinking:design-thinking output (if frontend)
+  scratchpad.md            &lt;- free-form notes, partial decisions, open questions
+  _status.md               &lt;- current step, what's done, what's next, what to re-read
+</code></pre>
+<p><strong>How skills use the workspace:</strong></p>
+<ol>
+<li>Before running, read <code>_status.md</code> to understand where we are and what came before.</li>
+<li>Read any numbered outputs from previous steps that are relevant to the current step.</li>
+<li>Produce output. Write it to the next numbered file.</li>
+<li>Update <code>_status.md</code> with: what just completed, what's next, which files to read.</li>
+</ol>
+<p>If compaction happens between steps, Claude reads <code>_status.md</code> and reconstructs context from the workspace files. Nothing is lost.</p>
+<p><strong>The scratchpad.md file</strong> captures anything in-flight: partial ideas, questions to revisit, things Claude noticed but hasn't acted on, context that needs to survive compaction but doesn't fit in a structured output. This is the "whiteboard" of the workspace.</p>
+<p><strong>When the feature ships: selective archival.</strong></p>
+<p>Not everything in the workspace is worth keeping. Most of it produced a finished deliverable (spec, plan) that already lives in <code>docs/specs/</code>. The protocol:</p>
+<ol>
+<li>Final deliverables (spec, plan) are already in <code>docs/specs/</code>. Nothing to move.</li>
+<li>Review the workspace: any decisions or reasoning NOT captured in the deliverable?</li>
+<li>YES: Promote those specific files to the vault at <code>Projects/PRISM/Workspace-Archive/{feature-name}/</code>.</li>
+<li>NO: The deliverable has everything. Nothing to archive.</li>
+<li>Delete the workspace: <code>rm -rf docs/workspace/{feature-name}/</code></li>
+</ol>
+<p>The vault stays clean: curated knowledge, not scratchpad noise. The repo stays practical: active workspaces during development, cleaned up after.</p>
+<hr />
+<h2>11. The Learning Loop</h2>
+<h3>The Problem</h3>
+<p>The stack covers thinking (before building), process (during building), and verification (after building). But it has no retrospective. After something ships and runs, how does the system learn whether the thinking was right?</p>
+<h3>The Design</h3>
+<p>A lightweight post-implementation review that runs after major milestones. Not a separate skill. A protocol:</p>
+<ol>
+<li><strong>Revisit assumptions.</strong> Pull up the thinking:assumptions output from before building. Which assumptions held? Which broke? What did we learn?</li>
+<li><strong>Revisit the pre-mortem.</strong> Which Tigers materialized? Which were Paper Tigers in hindsight? Which Elephants became real problems?</li>
+<li><strong>Update the vault.</strong> If a pattern emerged (e.g., "Perplexity Agent API consistently underperforms on financial data"), add it to the relevant SOP or architecture doc.</li>
+<li><strong>Update memory.</strong> Save the lesson as a feedback memory so future sessions benefit.</li>
+</ol>
+<p>This loop closes the circuit: Thinking --&gt; Building --&gt; Shipping --&gt; Learning --&gt; Better Thinking.</p>
+<hr />
+<h2>12. Implementation Phases</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>What</th>
+<th>Effort</th>
+<th>Impact</th>
+<th>Depends On</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0</strong></td>
+<td>This design doc (you're reading it)</td>
+<td>Done</td>
+<td>Foundation. Everything references this.</td>
+<td>Nothing</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>Slim CLAUDE.md (400 --&gt; 50 lines)</td>
+<td>1 hour</td>
+<td>Immediate. Saves context every message. Eliminates SOP duplication.</td>
+<td>Phase 0</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Build 4 standards skills (coding, testing, writing, uiux)</td>
+<td>1 session</td>
+<td>Quality gates become invocable. Replace the SOP content removed from CLAUDE.md.</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Adapt 7 PM thinking skills</td>
+<td>1 session</td>
+<td>The "what to build and why" layer activates. Structured decision-making before building.</td>
+<td>Phase 0</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Build thinking:design-thinking + cherry-pick 5 aesthetic skins</td>
+<td>1 session</td>
+<td>Frontend parity. Design decisions get the same rigor as backend.</td>
+<td>Phase 3</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Wire composition (process skills invoke standards skills at checkpoints)</td>
+<td>1 session</td>
+<td>Double superpower activates. TDD invokes standards:testing. Code review invokes standards:coding.</td>
+<td>Phases 2 + 4</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Build engine (developer + QA + dispatcher agents)</td>
+<td>Multiple sessions</td>
+<td>The machine builds autonomously.</td>
+<td>Phases 1-5</td>
+</tr>
+</tbody>
+</table>
+<p>Phases 1-2 are the critical path. They deliver the highest-impact change (context savings + quality enforcement) with the lowest effort. Phases 3-4 can run in parallel with Phase 2.</p>
+<hr />
+<h2>13. Sources and Provenance</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What We Take</th>
+<th>License</th>
+<th>How We Use It</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Personal SOPs (Obsidian vault)</strong></td>
+<td>CodingSOPs.md, TestingSOPs.md, WritingSOPs.md, FolderStructure.md, UIUXDesignSOP/ (10 files), Architecture/Manifesto.md</td>
+<td>Private</td>
+<td>Standards skills read these at runtime. Single source of truth.</td>
+</tr>
+<tr>
+<td><strong>Superpowers v5.0.7</strong> (claude-plugins-official)</td>
+<td>TDD, debugging, verification, brainstorming, planning, code review, git worktrees</td>
+<td>License in plugin</td>
+<td>Used unmodified. Composed with standards skills at checkpoints. Not forked.</td>
+</tr>
+<tr>
+<td><strong>pm-skills</strong> (phuryn/pm-skills)</td>
+<td>7 of 65 skills: create-prd, pre-mortem, identify-assumptions-new, prioritize-assumptions, opportunity-solution-tree, product-strategy, value-proposition</td>
+<td>MIT</td>
+<td>Adapted to our context. Installed as thinking:* skills.</td>
+</tr>
+<tr>
+<td><strong>awesome-design-skills</strong> (bergside/awesome-design-skills)</td>
+<td>5 of 58 aesthetic skins: dashboard, enterprise, editorial, clean/minimal, professional</td>
+<td>MIT</td>
+<td>Cherry-picked. Installed as aesthetic:* references.</td>
+</tr>
+<tr>
+<td><strong>awesome-design-md</strong> (VoltAgent/awesome-design-md)</td>
+<td>Concept only (brand-quality benchmarks). Content moved to external URLs.</td>
+<td>MIT</td>
+<td>Reference, not installed. "Build this like Linear" as a meaningful instruction.</td>
+</tr>
+<tr>
+<td><strong>superdesign</strong> (superdesigndev/superdesign)</td>
+<td>Nothing. VS Code extension, not a knowledge resource.</td>
+<td>N/A</td>
+<td>Skipped.</td>
+</tr>
+<tr>
+<td><strong>frontend-design</strong> (claude-plugins-official)</td>
+<td>52-component design system with emphasis tiers, brand toggle, decision matrix</td>
+<td>License in plugin</td>
+<td>Used as-is. Composed with aesthetics library and standards:uiux.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>14. Decisions Log</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Decision</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Six-layer architecture (Identity, Thinking, Standards, Process, Domain, Build Engine)</td>
+<td>Each layer has a distinct cognitive function. Merging them loses the distinction. Composing them at checkpoints creates the multiplicative "double superpower" effect.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CLAUDE.md slim-down (400 --&gt; 50 lines)</td>
+<td>SOP content in CLAUDE.md duplicates the vault, wastes context, and drifts from the source of truth. Move to on-demand standards skills.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Standards skills read vault SOPs at runtime</td>
+<td>Single source of truth. No duplication. No sync. No drift. SOP updates are picked up on next invocation.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Superpowers used unmodified, not forked</td>
+<td>Superpowers is community-maintained and evolving (v5.0.7). Forking creates maintenance burden and drift. Composition via checkpoints preserves updatability.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>7 of 65 pm-skills adapted (not all)</td>
+<td>Most pm-skills target team PMs with sprints, retros, and stakeholder ceremonies. Solo builder-architect context needs only thinking frameworks, not team processes.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>5 of 58 design aesthetics cherry-picked</td>
+<td>Full library is noise. Selected aesthetics match actual use cases: dashboards, enterprise UIs, reports, minimal tools.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>thinking:design-thinking created new (not from any repo)</td>
+<td>No existing repo provides the frontend equivalent of PRD/pre-mortem. The 6-question framework (mental model, IA, interaction flow, cognitive load, emotional journey, design pre-mortem) fills this gap.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>process:design-review created new</td>
+<td>No existing repo provides the frontend equivalent of code review. The 7-point checklist (aesthetic match, emphasis tiers, responsive, dark mode, a11y, generic AI detection, flow match) fills this gap.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Max 2 skills loaded simultaneously</td>
+<td>Context window management. One process skill + one standards/thinking skill at checkpoints. Sequential loading for everything else.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Learning loop as protocol, not skill</td>
+<td>Lightweight post-implementation review. Revisit assumptions, revisit pre-mortem, update vault, update memory. Runs after major milestones, not every task.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Backend/frontend parity as architectural constraint</td>
+<td>Every cognitive function (thinking, standards, process, execution) must exist for both backend and frontend. If a new function is added to one side, evaluate the other.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Build engine requires Layers 1-4 solid first</td>
+<td>Autonomous agents need enforceable standards and processes. Building the engine before the standards exist produces agents that build fast but build wrong.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Workspace in repo, archive in vault</td>
+<td>Workspace needs fast read/write during active work (no Drive sync latency). Archive is curated knowledge worth keeping. Different lifecycles, different locations. Selective archival: only promote workspace files that contain reasoning not captured in the final deliverable.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>15. Open Questions</h2>
+<ol>
+<li>
+<p><strong>Standards skill invocation protocol.</strong> Should process skills invoke standards skills automatically (always), or should the developer choose when to invoke? Automatic is safer but heavier. On-demand is lighter but discipline-dependent.</p>
+</li>
+<li>
+<p><strong>Aesthetic composition with frontend-design.</strong> The frontend-design skill has its own theme system (algolia/generic/custom). How do the awesome-design-skills aesthetics layer on top? Override the theme? Supplement it? Replace it for specific projects?</p>
+</li>
+<li>
+<p><strong>Thinking skill depth calibration.</strong> Not every feature needs 7 thinking steps. A bug fix needs zero. A new product needs all 7. Where are the thresholds? Who decides?</p>
+</li>
+<li>
+<p><strong>Cross-project portability.</strong> This architecture is designed for PRISM but the layers are project-agnostic. Standards skills read project-specific SOPs. Thinking skills are universal. Can this be packaged for other developers?</p>
+</li>
+<li>
+<p><strong>Skill versioning.</strong> When Superpowers updates from 5.0.7 to 6.0, how do we verify that composition still works? When vault SOPs change, how do we verify standards skills still validate correctly?</p>
+</li>
+</ol>
+<hr />
+<h2>16. The Thesis</h2>
+<p>Most developers using AI assistants have one enforcement surface: either process workflows (how you work) or quality standards (what good looks like). Having both, composed at runtime checkpoints, creates a multiplicative effect. The process skill ensures discipline. The standards skill ensures YOUR definition of quality. Neither alone gives you what both together give you.</p>
+<p>Add a thinking layer before building and a learning loop after shipping, and you have a complete cognitive operating system: the machine that thinks before it builds, enforces quality while it builds, verifies after it builds, and learns from what it built.</p>
+<p>This is the cognitive stack. It's the machine that builds the machine.</p>
+</main>
+<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Execution Status — The Bible</title>
+<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
+<link rel="stylesheet" href="/bible/shared/bible.css">
+</head>
+<body>
+<header class="bible-header">
+  <a href="/bible/" class="bible-home">The Bible</a>
+  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+</header>
+<main class="bible-content">
+<h1>SESSION.md — PRISM Finishing Build Plan: Phase 1 closed, Phase 2 built+live-proven, architecture pivot locked and started</h1>
+<p><strong>Last updated: 2026-07-14 (post-plan-approval).</strong></p>
+<h2>BIBLE PLAN — APPROVED, not yet built (read this FIRST on resume)</h2>
+<p>Plan file: <code>~/.claude/plans/foamy-wishing-llama.md</code>. Corrected scope from Arijit mid-planning (do not re-derive the old PRISM-only framing):
+- <code>bible.chowmes.com</code> = portfolio-wide book. PRISM = one chapter at <code>/prism/</code>, sub-chapters below it (objective/design/architecture/security/stack/decisions/status).
+- Bible = a RENDER of the vault, never hand-authored duplicate prose. Vault stays sole source of truth. Mechanism: per-project <code>bible-manifest.yml</code> in the vault (maps vault files/sections → chapter, tagged safe|internal) + a generic render script → static HTML in <code>~/prism/bible/</code>. Reusable for future project chapters, not PRISM-specific.
+- Sync: on-demand render (manual or wired into <code>/persist</code>), not continuous auto-sync — continuous sync would auto-publish before classification is confirmed.
+- <strong>Track 0 (gates Security chapter + go-live):</strong> fix the real per-user-to-slug authorization gap FIRST (Arijit's explicit call — "fix it first, publish after"). Needs its own dedicated plan (recommend <code>development-loop</code>, security-critical). Non-security chapters can be built in parallel.
+- Immediate next step per plan: (a) scope Track 0 as its own build, (b) design the manifest format + render script contract — before any chapter content is drafted.
+- Mandate boundaries restated: Arijit's yes before DNS provisioning; Arijit's own outside-reviewer walkthrough before anything is linked/announced.</p>
+<h2>NEXT SPIKE — Arijit's directive, saved verbatim (read this FIRST on resume)</h2>
+<blockquote>
+<p>I hope that you are creating the detailed technical documentation also for the project. That is what should go in the Bible. You should upload it. Actually, you did persist. Please save all the decisions, updates, and knowledge into our vault, and then, in the Bible, start creating the technical documentation.
+What I'm going to do is run a persist and a handoff. After handoff, your next spike is going to be to create the very detailed, end-to-end, client-facing and IT security team-facing technical documentation. I can provide the documentation to my chief security officer and show him: "Look, this is everything this software does, and this is exactly how it does this. This is how this is secured. This is how it does not cause havoc in the network. This is how it is controlled." That will allow me to bring this application internally within the organization and run it in production for Algolia.
+The documentation will create:
+- the how-to guides
+- the README
+- how-to
+- education
+- enabling the users
+Your next spike is going to be going through the codebase in very detail, whatever we have done so far, and starting to build the documentation:
+- client-facing documentation
+- security-facing documentation
+- production-facing documentation
+- security-facing documentation
+I'm going to do a persist and handoff. Actually, persistent handoff has already been done, so I would not do persistent handoff anymore. What I would do is put you in plan mode to plan for this. Once you do the plan, then we will execute.</p>
+</blockquote>
+<p><strong>Action on resume:</strong> do NOT start writing docs immediately. Arijit's stated process: enter PLAN MODE first, produce a plan for this documentation effort, get his sign-off, THEN execute. Read this whole SESSION.md + <code>docs/workspace/phase2-executioner/</code> + the vault <code>Projects/PRISM/</code> wiki (all updated this persist) as the source material — the plan should be grounded in what's actually built (Phase 1 + Phase 2's real 5-stage gate/dispatch pipeline + the deterministic-module pivot + the <code>chowmesuser</code> security fix), not aspirational. Target audience: Algolia's CSO / IT security team, to justify bringing PRISM in-house to run in production internally. Deliverable shape (his words): client-facing docs, security-facing docs, production-facing docs, how-to guides, README, "education/enabling the users" — published to <code>bible.chowmes.com</code> (the existing external due-diligence site, per Phase 3.5 in the finishing-build-plan doc — that phase-card already exists, read it before reinventing scope). "The Bible" content is auto-synced from vault+docs with a safe/internal classification filter — raw vault is never exposed directly (standing rule from Phase 3.5's original design).</p>
+<p><strong>Status:</strong> Phase 1 CLOSED. Phase 2's verification pipeline + per-skill dispatch are BUILT and LIVE-PROVEN (not just planned) — real 5-stage gate, ~300 real tests, proven with live <code>claude -p</code> calls against real published audit data. A real, unrelated production security bug was found+fixed along the way (10-day silent dispatch outage). Mid-session, Arijit locked and started a real architecture pivot: route each skill's dispatch through deterministic Python modules instead of <code>claude -p</code>, since the LLM's decision on script-failure — not the script — is the actual fabrication vector. 1 of 16 skills is ported. No full audit has run end-to-end yet. Hermes removal untouched, correctly gated.</p>
+<h2>Resume action (numbered, concrete)</h2>
+<ol>
+<li>Read this file's "Where we stopped" and "Remaining work" sections below before doing anything — do not re-derive from the plan doc alone, real state has moved past what that doc describes.</li>
+<li><code>docs/plans/2026-07-12-prism-finishing-build-plan.md</code> is still the canonical PLAN, but its Phase 2 section describes the ORIGINAL design intent, not current build state — read <code>docs/workspace/phase2-executioner/</code> (12 task briefs + reports) for what's actually built.</li>
+<li><strong>Continue porting skills to deterministic modules</strong> — this is the active, explicit next work per Arijit's architecture pivot (see "Decisions locked"). Pattern is proven: <code>prism_platform/pipeline/modules/traffic.py</code> + its wiring in <code>executioner.py</code>'s <code>MODULE_REGISTRY</code>. Next candidates: <code>algolia-intel-techstack</code> (real <code>detect-search</code> network-fingerprint script, likely zero-LLM like traffic), <code>algolia-intel-competitors</code> (has a SimilarWeb browser-session dependency to scope first). Skills with <code>skill_enrichment: true</code> in their SKILL.md (company/investor/industry) need the module wrapper PLUS one narrow schema-constrained LLM call layered on top — not zero-LLM, E2-scoped.</li>
+<li><strong>Execution is sub-agent driven, always</strong>, with the controller (main loop) independently verifying every subagent's claim — DB rows queried directly, VPS files stat'd directly, tests re-run fresh. This was proven necessary again this session (a subagent's synthetic-test-data incident, caught only because the controller looked at the actual rendered output).</li>
+<li>Before running any real full audit: confirm which skills are ported vs. still on the <code>claude -p</code> path, and set real cost/time expectations accordingly — a full 16-skill run through the still-partially-agentic pipeline is a real, non-trivial spend, not a quick test.</li>
+<li>If asked "is Phase 2 done": no. The gate/dispatch pipeline is built and proven; the deterministic-module conversion (1 of 16) and the actual Hermes removal are not.</li>
+</ol>
+<h2>Where we stopped (exact)</h2>
+<p><strong>Phase 1</strong> (Foundation) closed 2026-07-12 — SEC0 auth check, Track A door re-verify, Track B design-token de-dup. Unchanged since last persist, not re-litigated here.</p>
+<p><strong>Phase 2, built this session (2026-07-13/14), subagent-driven, ~12 dispatched tasks:</strong>
+- <strong>Task 1 (recon):</strong> confirmed the per-skill dispatch loop didn't exist yet; found the merged gate was further along than the 07-03 plan assumed; corrected a wrong MCP assumption (3 skills need it, not 1); found stale "STAGED, NOT DEPLOYED" headers on live code; found 14/16 skills still not symlinked on the VPS.
+- <strong>Task 2 (interface contract):</strong> written directly (architecture judgment, not delegated). Key find: <code>prism_platform/pipeline/self_heal.py</code> already implemented the dispatch→gate→retry loop (tested, never wired in) and <code>run-audit.sh --skill</code> already supported single-skill dispatch — Track C/G became wiring existing pieces, not a from-scratch build.
+- <strong>Task 3 (gate() 5-stage pipeline):</strong> built, TDD, 186 tests. Extended <code>self_heal.GateResult</code> with a <code>fatal</code> field (patch #3, unfixable BLOCKs skip retry) without touching the 20 original tests.
+- <strong>Task 4a (executioner dispatch rewrite):</strong> <code>prism_platform/pipeline/executioner.py</code> — <code>make_dispatch_fn</code>/<code>make_gate_fn</code>, wraps <code>gate()</code> into <code>self_heal</code>'s retry loop. Legacy v1 path provably untouched (dedicated regression test).
+- <strong>Task 4b (MCP-strip):</strong> live on the VPS — per-skill <code>--mcp-config</code>/<code>--strict-mcp-config</code> scoping, verified against 3 real skills on the real <code>dell</code> workspace, zero MCP process spawned for MCP-free skills, all 4 unrelated VPS services confirmed unaffected.
+- <strong>Task 5 (chat agent):</strong> pgvector migration + local MiniLM embeddings + <code>claude -p</code> chat wrapper with forced citation discipline, live-proven end-to-end on a real Belk audit (model correctly cited sources AND refused to answer what it couldn't ground). <strong>Found the per-user-to-slug authorization gap</strong> (see below) — did not invent an authorization model unilaterally.
+- <strong>Task 5b (real LLM stages):</strong> <code>llm_stages.py</code> — real schema-constrained <code>claude -p</code> calls for factcheck/adversarial/quality, live-proven (2 real calls, real grounded answers, real citations to actual files).
+- <strong>Task 5c (claim extraction):</strong> <code>claims.py</code> — ground-truthed against <code>validate-json-schema.py</code> + 3 real audit workspaces; only 4 of 16 skills have extractable claims (company/investor/industry/audit-report) — the other 12 correctly return empty, not a guessed heuristic.
+- <strong>Task 6-local + Task 6 (VPS):</strong> real end-to-end proof, zero stubs. Caught 2 genuine previously-unknown data bugs (lululemon tech_stack self-contradiction; jbl's Crown-International misclassified as JBL-owned when it's a sibling Harman brand) and correctly blocked a deliberately-injected fabrication. Task 6 additionally found the <strong>critical production bug</strong> below.
+- <strong>Task 6d:</strong> fixed 2 real integration gaps Task 6-local surfaced (a <code>SkillOutput.audit_dir</code> path-semantics mismatch between <code>gate.py</code> and <code>claims.py</code>/<code>llm_stages.py</code>; a 120s <code>claude -p</code> timeout too short for real workspaces, hit twice live).</p>
+<p><strong>Critical production bug found+fixed:</strong> <code>prism-runner.service</code> ran as <code>User=root</code>, stepping down via <code>sudo -u chowmesadmin</code> (an admin account, not a service account) for every dispatch. Root cause of a real <code>run-audit.sh</code> permission regression (<code>root:root 0751</code>, no read bit for <code>chowmesadmin</code>) that had silently blocked ALL real audit dispatch (v1 and v2) for 10 days — undiscovered because nobody had triggered a real dispatch since 2026-07-03. Arijit's explicit correction when I proposed a <code>chmod</code> band-aid: "why do we need to be an admin user to run our code? that is not secured... it should not be chowmesadmin either." Fixed properly: new dedicated unprivileged <code>chowmesuser</code> account (uid 999, no sudo group, <code>nologin</code> shell), ownership of <code>/opt/prism-executor/*</code> + its own <code>~/.claude/skills/</code> copy, systemd unit <code>User=chowmesuser</code>, <code>build_audit_cmd()</code> no longer shells through <code>sudo -u</code> at all. Live-verified: real <code>--skill</code> dispatch spawned <code>claude -p</code> running as <code>chowmesuser</code>, zero root/sudo anywhere in the chain. <strong>All future VPS work by any agent should run PRISM audit-executor work as <code>chowmesuser</code>, never <code>chowmesadmin</code>/root</strong> — <code>chowmesadmin</code> stays reserved for SSH login + admin/deploy tasks only.</p>
+<p><strong>2 real observability gaps fixed, caught by Arijit's direct interrogation</strong> ("how do I know progress, how do I get notified"): <code>run_job_v3</code>'s <code>job.json</code> wrote <code>phase="starting"</code> once and never again for the entire run duration (30-90+ min invisible); <code>POST /run</code>'s <code>engine</code> parameter was silently dropped by <code>handle_run</code> (every real API caller asking for <code>engine=v3</code> would've silently gotten the legacy v1 path). Both fixed with tests; also added <code>notify_v3_started</code>/<code>notify_skill_attempt</code> (Telegram push per skill, reusing the existing <code>notify_job_finished</code> fail-soft pattern) and a <code>render_status_board.py</code> ASCII progress renderer.</p>
+<p><strong>One real process failure, owned directly:</strong> the status-board renderer's own self-test used real skill names (<code>algolia-intel-traffic</code>, etc.) with fabricated PASS results to prove it rendered — the output was indistinguishable from a real audit report and Arijit read it as one. Fixed: <code>render()</code> now requires an explicit <code>synthetic=True/False</code>, no default, forces an unmissable banner.</p>
+<p><strong>Architecture pivot, Arijit's explicit call, mid-session:</strong> direct interrogation of each skill's real methodology ("How is intel-company working? Are we using Scout?" / "are we correctly opening up the network packet?" / "these are pure scripts... how can that even fabricate?") surfaced the real root cause of PRISM's fabrication risk: each skill's <code>claude -p</code> session decides BOTH "run the deterministic collection script" AND "what to do if it fails" — the second decision, not the script, is where fabrication happens (documented precedent: <code>algolia-intel-traffic</code>'s own SKILL.md records a 2026-07-06 incident of exactly this). Locked: "the executioner needs to be code as well, that is deterministic, that is predictable and will call other module executions and code as deterministically as well and at all times." Shipped the first module for real: <code>prism_platform/pipeline/modules/traffic.py</code> — zero LLM calls, live-tested against the actual dead SimilarWeb API key, correctly returns <code>NEEDS_HUMAN</code>. Wired into <code>executioner.py</code>'s new <code>MODULE_REGISTRY</code> (additive — <code>gate()</code>/<code>self_heal</code> needed zero changes). 15 skills remain on the <code>claude -p</code> path.</p>
+<p><strong>What did NOT happen:</strong> the planned DSW end-to-end audit run. First blocked ~2hrs by Arijit's home network dropping to a cellular hotspot — I initially misdiagnosed this as a possible VPS-side connection-storm ban before checking the actual default-gateway IP, which was wrong (see memory <code>feedback-diagnose-network-path-before-blaming-remote-host</code>). Once SSH was back, the deterministic-executioner pivot correctly superseded running a real audit through the still-mostly-agentic pipeline.</p>
+<h2>Decisions locked</h2>
+<ul>
+<li><strong>(Carried, unchanged) Executioner = upgrade <code>prism-runner.py</code></strong>, not a Claude Agent SDK rewrite.</li>
+<li><strong>(Carried, unchanged) Full Hermes/Cassandra rip-and-replace</strong>, cutover-sequenced.</li>
+<li><strong>(Carried, unchanged) E2:</strong> LLM calls scoped to synthesis/judgment only, schema-constrained structured output always.</li>
+<li><strong>NEW, this session, Arijit's explicit call — the executioner must be deterministic code, always.</strong> Each skill's dispatch routes through a real Python module wherever one exists; the LLM never decides what to do when a deterministic script fails. <code>gate()</code>/<code>self_heal.SelfHealLoop</code>/<code>executioner.py</code> (all built Phase 2) don't need to change — they never cared what produces a skill's output file. <code>MODULE_REGISTRY</code> in <code>executioner.py</code> is the wiring point; porting a skill is additive, never a rewrite of the pipeline around it.</li>
+<li><strong>NEW, this session:</strong> PRISM audit-executor work on the VPS runs as the dedicated unprivileged <code>chowmesuser</code> account — never root, never <code>chowmesadmin</code> (admin account, reserved for SSH login/deploys).</li>
+<li><strong>NEW, this session:</strong> Hermes removal is now gated on TWO preconditions, not one — Arijit's explicit fresh yes at the <code>docker rm</code> step (standing), AND a real successful full v3 audit run existing (new — none exists yet, since dispatch was broken for most of this session and the pivot changed what "done" means for a skill).</li>
+</ul>
+<h2>Remaining work</h2>
+<ul>
+<li><strong>Port the remaining 15 skills to deterministic modules.</strong> <code>algolia-intel-techstack</code>/<code>algolia-intel-competitors</code> next (real scripts already exist). <code>algolia-intel-company</code>/<code>algolia-intel-investor</code>/<code>algolia-intel-industry</code> need a module wrapper PLUS a genuine narrow LLM-enrichment call (E2-scoped). <code>algolia-audit-browser</code> is real browser automation, different shape entirely — scope separately.</li>
+<li><strong>Deploy pgvector + the chat router to the VPS.</strong> Built and tested locally (Task 5); the VPS's Postgres image doesn't have the pgvector extension yet (<code>postgres:16-alpine</code>, needs <code>pgvector/pgvector:pg16</code> or a compiled extension), and the actual FastAPI chat router was never pushed there (Task 6 only deployed <code>pipeline/</code> + <code>db/models.py</code>).</li>
+<li><strong>Resolve the per-user-to-slug authorization gap</strong> — Arijit's decision, not a build task. No such model exists anywhere in the live stack today; any signed-in user can currently ask about any company's report/chat.</li>
+<li><strong>Run a real full audit end-to-end</strong> once enough skills are ported to make it worth the real cost/time. Never happened this session.</li>
+<li><strong>Hermes removal + cutover.</strong> Untouched. Gated on both preconditions above.</li>
+<li><strong>Phases 3-6</strong> (landing pages, modular rearchitecture, multi-tenancy, prod-readiness/GTM) — not started, unchanged from prior persist.</li>
+<li>Older, separate PRISM reliability track (unaffected this session): Belk's 3 cosmetic gate warnings, 4 hub-missing companies, the other 17 companies in the audit-revalidation SOP queue.</li>
+</ul>
+<h2>What has NOT been done (prevents false completion claims)</h2>
+<ul>
+<li>No full 16-skill audit has ever run end-to-end through <code>engine=v3</code> — every real test this session touched 1-2 skills deliberately, to control cost while the pipeline was still being debugged.</li>
+<li>15 of 16 skills are still on the <code>claude -p</code> agentic path, not the deterministic-module path.</li>
+<li>pgvector extension is not installed on the VPS's actual Postgres container; the chat router is not deployed there.</li>
+<li>The per-user-to-slug authorization model does not exist — this is a real, live data-exposure gap, not yet decided, not yet fixed.</li>
+<li>No independent verification that <code>chowmesuser</code> has its own valid <code>claude</code> CLI login separate from the shared <code>.claude-oauth.env</code> token it currently rides on (the token itself was proven to work — <code>AUTHOK</code> — but it's a bearer token, not scoped per-Linux-account; this is fine for now, flagged for completeness).</li>
+<li>Hermes/Cassandra containers are untouched — still running, still live, nothing about this session changes that.</li>
+<li>The DSW audit specifically requested by Arijit did not run.</li>
+</ul>
+<h2>Reference files</h2>
+<ul>
+<li><code>docs/plans/2026-07-12-prism-finishing-build-plan.md</code> — canonical plan (original design intent; read <code>docs/workspace/phase2-executioner/</code> for actual build state).</li>
+<li><code>docs/workspace/phase2-executioner/</code> — all 12 task briefs + reports, the interface contract, local + VPS proof harnesses, <code>render_status_board.py</code>.</li>
+<li>Vault <code>Projects/PRISM/index.md</code>, <code>log.md</code>, <code>tasks.md</code> — updated this persist.</li>
+<li>Memory: <code>session_pointer.md</code> (exact resume point), <code>project-prism-phase2-built-live-proven.md</code>, <code>feedback-executioner-decision-not-script-is-fabrication-vector.md</code>, <code>feedback-least-privilege-service-accounts-not-admin.md</code>, <code>feedback-diagnose-network-path-before-blaming-remote-host.md</code>, <code>feedback-synthetic-output-needs-unmissable-banner.md</code>.</li>
+</ul>
+<h2>Files written this session</h2>
+<ul>
+<li>PIP repo, branch <code>feat/prism-e2e-cycle</code>, commits <code>4f3f5d9</code>..<code>deac23a</code>: <code>prism_platform/pipeline/{gate,verdicts,self_heal,executioner,llm_stages,claims,db_write,chat_agent}.py</code> (new), <code>prism_platform/pipeline/modules/{__init__,traffic}.py</code> (new), <code>docs/workspace/cassandra-tooling/staged/prism-runner.py</code> (v3 dispatch, observability, engine-threading, sudo removal), <code>docs/workspace/phase2-executioner/*</code> (12 briefs+reports, <code>render_status_board.py</code>), <code>tests/pipeline/**</code> (~300 tests), <code>alembic/versions/010_add_report_chunks_pgvector.py</code>, <code>pyproject.toml</code> (pgvector/sentence-transformers deps).</li>
+<li>VPS <code>chowmes-vps</code>: new <code>chowmesuser</code> system account; <code>/opt/prism-executor/*</code> reowned; <code>prism-runner.service</code> systemd unit (<code>User=root</code>→<code>User=chowmesuser</code>); <code>.mcp-empty.json</code> + per-skill MCP scoping in <code>run-audit.sh</code>; <code>/opt/prism-platform/prism_platform/pipeline/*</code> + <code>db/models.py</code> deployed (pgvector NOT applied — VPS Postgres image lacks the extension).</li>
+<li>This Mac: local Postgres 17 + pgvector installed (<code>brew</code>) for offline pipeline proof, full schema migrated.</li>
+<li>Vault: <code>Projects/PRISM/index.md</code>, <code>log.md</code>, <code>tasks.md</code>; <code>Projects/AI-OS/My-Projects.md</code>; <code>wiki/log.md</code>, <code>wiki/hot.md</code>.</li>
+<li>Memory: 4 new feedback/project files (see Reference files above), <code>session_pointer.md</code> rewritten, <code>MEMORY.md</code> updated.</li>
+<li>This file.</li>
+</ul>
+</main>
+<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+</body>
+</html>

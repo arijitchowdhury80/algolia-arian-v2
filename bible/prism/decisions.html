@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Log — The Bible</title>
+<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
+<link rel="stylesheet" href="/bible/shared/bible.css">
+</head>
+<body>
+<header class="bible-header">
+  <a href="/bible/" class="bible-home">The Bible</a>
+  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+</header>
+<main class="bible-content">
+<h2>2026-06-27-persona-journey-ui-architecture</h2>
+<hr />
+<p>title: 2026 06 27 persona journey ui architecture
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Persona-Shaped UI, Three Doors Into One Intel Engine</h1>
+<blockquote>
+<p>⚠️ <strong>SUPERSEDED 2026-06-28</strong> by [[2026-06-28-prism-is-chowmes-prism-hermes-instance]]. This ADR
+designed a <strong>custom web app</strong> (three role-shaped UIs). PRISM is no longer a custom-built app, it
+is the Chowmes-PRISM Hermes instance, reached via <strong>Telegram</strong> (and a future in-SPA chat), not a
+bespoke dashboard. Kept for history; the persona insight (AE/BDR/Leader do different jobs) may
+still inform the chat UX, but the tabbed-dashboard/web-UI architecture here is not being built.</p>
+</blockquote>
+<p><strong>Date:</strong> 2026-06-27
+<strong>Status:</strong> Superseded (2026-06-28)</p>
+<h2>Context</h2>
+<p>The first PRISM frontend build put a 6-tab dashboard (Overview / Research / Search Audit / Business Case / Competitive / Sales Actions) in the center panel and crammed the aRRIe chat into a narrow right rail. On review, the founder rejected it: directionally "like" the right reference apps (Claude Desktop, Codex Desktop) but <strong>functionally wrong</strong>.</p>
+<p>The root problem: the build assumed <strong>one UI for all users</strong>. But PRISM's three target users do fundamentally different jobs, on different time horizons, with different hero surfaces. A single layout cannot serve all three. The AE wants depth on one account; the BDR wants volume triage across a list; the sales leader wants aggregate portfolio view. The tabbed dashboard that was wrong for the AE is actually <em>right</em> for the leader.</p>
+<h2>Decision</h2>
+<p>PRISM is <strong>three role-shaped entry surfaces over one shared intel/audit engine + artifact system.</strong> Build them in sequence: <strong>AE → BDR → Sales Leader.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Job (horizon)</th>
+<th>Hero surface</th>
+<th>Chat's role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AE</strong></td>
+<td>Walk into a call expert; leave with a quantified reason to buy (per-meeting/deal)</td>
+<td>60-sec pre-call brief + business-case artifact</td>
+<td>Drill co-pilot</td>
+</tr>
+<tr>
+<td><strong>BDR</strong></td>
+<td>Find sharpest hook across 100+ accounts and send outreach (per-day volume)</td>
+<td>Prioritized account queue + personalized outreach package</td>
+<td>Triage command line</td>
+</tr>
+<tr>
+<td><strong>Sales Leader</strong></td>
+<td>See total opportunity, allocate effort, coach, forecast (weekly/quarterly)</td>
+<td>Portfolio dashboard (heatmap, ranked accounts, $ opportunity)</td>
+<td>Analytical query</td>
+</tr>
+</tbody>
+</table>
+<p>Design language confirmed: <strong>Claude Desktop calm</strong> as the resting aesthetic (warm-neutral, low chrome, content-first, generous whitespace, artifact panel slides in on demand) + <strong>Codex Desktop working-state</strong> for the audit-running moment (streaming step receipts, collapsible). Conversation-as-hero; artifacts slide in beside it rather than living in always-on tabs.</p>
+<h2>Rationale</h2>
+<ul>
+<li><strong>AE first</strong>, the deepest journey; it proves the underlying intelligence is actually good before breadth or aggregation is layered on. If the single-account intel isn't compelling, nothing downstream matters.</li>
+<li><strong>BDR second</strong>, reuses the same intel engine, adding a queue (scoring/ranking) and an outreach package (ABX). Net-new surface, same brain.</li>
+<li><strong>Leader last</strong>, aggregates what the AE and BDR journeys already produce; nothing to aggregate until those exist.</li>
+<li>The 6-tab dashboard isn't deleted, it's <strong>relocated</strong> to the leader, where an aggregate dashboard is the correct hero.</li>
+</ul>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One universal UI for all roles</td>
+<td>The original build. Different jobs/horizons/hero surfaces; one layout serves none well.</td>
+</tr>
+<tr>
+<td>Dashboard-first (tabs as default center)</td>
+<td>Right for the leader only. For AE/BDR it buries the conversation and the deliverable behind navigation.</td>
+</tr>
+<tr>
+<td>Build BDR or Leader first</td>
+<td>Both depend on the intel engine being proven. AE is the depth test that de-risks the rest.</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>AE journey is the next design target: 60-sec pre-call brief + drill-to-artifact flow, in calm Claude-desktop language.</li>
+<li>The current <code>frontend/</code> center-panel tabbed dashboard is superseded for the AE surface (relocates to the future leader surface).</li>
+<li>Frontend predates the v2 backend refactor, rewiring tool calls to v2 module contracts is prerequisite to any live AE mockup with real data.</li>
+<li>Research the real AE pre-call workflow before rendering (research scope to be approved separately).</li>
+</ul>
+<hr />
+<h2>2026-06-27-prism-as-ai-sales-toolkit-stage-cockpit</h2>
+<hr />
+<p>title: 2026 06 27 prism as ai sales toolkit stage cockpit
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: PRISM = the AI Sales Toolkit, AE Surface = Stage Cockpit</h1>
+<blockquote>
+<p>⚠️ <strong>PARTIALLY SUPERSEDED 2026-06-28</strong> by [[2026-06-28-prism-is-chowmes-prism-hermes-instance]].
+STILL VALID: PRISM = "the AI Sales Toolkit"; the FY27 5-stage gated motion (PREP→SS1–SS4);
+Constructor.io as THE competitor; detect-search = Algospy. These are the coach's domain knowledge
+(feed W-C identity + W-E Discovery-OS). SUPERSEDED: the "stage cockpit" as a <strong>built web UI</strong> -
+PRISM is now a Hermes chat agent (Telegram + future SPA chat), not a bespoke cockpit app.</p>
+</blockquote>
+<p><strong>Date:</strong> 2026-06-27
+<strong>Status:</strong> Partially superseded (2026-06-28)
+<strong>Trigger:</strong> Reading the primary source <code>docs/Algolia/AE Sales Process - FY27 Field Guide.PDF</code> (see workspace <code>docs/workspace/ae-journey-research/05-algolia-ae-sales-process.md</code>).</p>
+<h2>Context</h2>
+<p>The FY27 AE Field Guide defines Algolia's real sales motion as a <strong>5-stage gated pipeline (PREP → SS1 → SS2 → SS3 → SS4)</strong>, where each stage has hard exit gates and "never skip a stage." Critically, the guide already names PRISM's capabilities as sanctioned prep tools: <em>"run a high-level search audit using the AI Sales Toolkit"</em> and <em>"check Algospy, is the C.io beacon present?"</em> PRISM's audit engine = the AI Sales Toolkit; PRISM's detect-search = Algospy. The guide also names a cluster of internal tools (Value Prompter, MegGPT, Implementation Explorer, Slackbot, PIE Playbook) the AE stitches together by hand.</p>
+<h2>Decision</h2>
+<p>Two decisions, both founder-confirmed 2026-06-27:</p>
+<ol>
+<li>
+<p><strong>PRISM absorbs the internal AE toolset.</strong> PRISM becomes THE "AI Sales Toolkit", one surface for: search audit + scoring, Algolia/<strong>C.io (Constructor.io)</strong> beacon detection (Algospy), customer-implementation matching (Implementation Explorer + Slackbot intel), competitive brief (C.io counter-narrative), and Value Prompter capture / "What We Heard." The hand-stitched tool cluster folds into PRISM.</p>
+</li>
+<li>
+<p><strong>The AE surface is organized around the deal STAGE (full stage cockpit).</strong> The UI mirrors PREP→SS1→SS2→SS3→SS4 with each stage's prep, framing scripts, and <strong>exit-gate checklist</strong> (green/amber/red) as the backbone, not a single static brief. The "60-second brief" is the PREP/SS1 <em>view</em> of this cockpit.</p>
+</li>
+</ol>
+<h2>Rationale</h2>
+<ul>
+<li><strong>Adoption tailwind:</strong> the process already tells AEs to use these tools. PRISM being the named toolkit means zero new-habit cost, it's the path of least resistance the field guide endorses. (Stream 4 research: tools embedded in the existing workflow hit ~94% adoption vs 72% for bolt-ons; pull-based tools get abandoned.)</li>
+<li><strong>The gates are the AE's real mental model.</strong> Organizing around stages + exit criteria matches how the AE actually runs a deal, which is what "functionally right" means.</li>
+<li><strong>C.io is the competitive spine</strong>, assumed in-deal for ICP-sized prospects; PRISM already detects it and must arm the rebuttal table.</li>
+</ul>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRISM orchestrates (links to existing tools)</td>
+<td>Leaves the hand-stitch friction in place; weaker product. Founder chose absorb.</td>
+</tr>
+<tr>
+<td>Just prep+intel layer (PREP/SS1 only)</td>
+<td>Caps PRISM at a research tool; misses the SS2-SS4 deliverable-building value.</td>
+</tr>
+<tr>
+<td>Single adaptive brief (no stages)</td>
+<td>The original "functionally wrong" framing, ignores the gated motion the AE actually runs.</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li><strong>Large scope.</strong> "Absorb all tools + full stage cockpit" is the biggest version of PRISM. Execution risk is real.</li>
+<li><strong>Mitigation (recommended, not yet locked):</strong> build the <em>full stage-cockpit architecture</em> but <em>fill it incrementally</em>, ship PREP/SS1 first (PRISM's existing modules map ~1:1: audit, detection, competitor, customer-impl, financial/news/social), then layer SS2 (Value Prompter capture, Vision-to-Value, Anxiety Statement), SS3 (Competitive Pitch, PIE, Impl Plan), SS4 (ROI model, C.io counter-narrative, proposal). Avoids a long no-ship gap while honoring the full vision.</li>
+<li>PRISM must speak Algolia vocabulary natively: C.io, Value Prompter, Vision-to-Value, Anxiety Statement/Question, PIE, Enterprise Foundation, T-shirt sizing, the green/yellow/red flags.</li>
+<li>Requires clarifying what each internal tool actually does (Value Prompter schema, MegGPT, PIE Playbook) before absorbing, open question logged.</li>
+<li>Frontend v2-backend rewiring still prerequisite to any live cockpit with real data.</li>
+</ul>
+<hr />
+<h2>2026-06-27-search-vendor-packet-detection</h2>
+<hr />
+<p>title: 2026 06 27 search vendor packet detection
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Search-Vendor Detection via Live Network-Packet Inspection</h1>
+<p><strong>Date:</strong> 2026-06-27
+<strong>Status:</strong> Accepted
+<strong>Module:</strong> <code>prism_platform/v2/detection/search_vendor.py</code> → <code>intel_competitors</code>
+<strong>Commit:</strong> a72aea6</p>
+<h2>Context</h2>
+<p>PRISM's <code>intel-competitors</code> module needs to know what search technology a prospect and
+its competitors run, the "Golden Angle" being a competitor already on Algolia (a citable
+case study). BuiltWith was removed (no budget), so detection must be in-app and free.</p>
+<p>The prior in-app approach was an <strong>HTML substring source-scan</strong>: fetch the rendered
+homepage, lowercase the HTML, and substring-match against ~12 hardcoded vendor signatures.
+It was faulty and non-deterministic:
+- <strong>False positive:</strong> algolia.com's homepage matched <code>magento</code> → reported "Adobe Commerce".
+- <strong>False negative:</strong> it failed to detect Algolia <em>on algolia.com</em>, the <code>algolia.net</code>
+  string only appears in the live API call (fired on query), never the static homepage.</p>
+<p>A challenge from Arijit drove the rethink: substring matching is a guess, not proof; a
+hardcoded vendor list is brittle (new vendors, domain changes); determination must be based
+on the actual API call, not suppositions. No LLM.</p>
+<h2>Decision</h2>
+<p>Detect the search vendor by <strong>inspecting the live network packet</strong>, not the page source.</p>
+<p>A real (stealth) browser loads the site, dismisses consent, and types a query with <strong>real
+keystrokes</strong>; all network traffic is captured. A request is a <strong>CONFIRMED search call only
+if</strong> it hits a search-endpoint PATH (<code>/search</code>, <code>/queries</code>, <code>/indexes/</code>, <code>/autocomplete</code>…)
+<strong>AND</strong> carries the exact query typed. This is <strong>zero false positives by construction</strong>, an
+ad/analytics host cannot carry the typed query to a search endpoint by accident.</p>
+<p>The <strong>vendor identity is the registrable host of the confirmed call</strong>, read live off the
+wire. A small <strong>packet-fingerprint</strong> layer (vendor-specific header keys / host / param
+tokens, e.g. <code>x-algolia-application-id</code>) unmasks vendors proxied behind a first-party host.
+Per-vendor extractors pull deep data from the packet (Algolia app_id / api_key / index).</p>
+<p><strong>Multi-vendor sites</strong> report ALL confirmed vendors and headline the search engine by
+precedence: <strong>fingerprinted vendor &gt; known third-party host &gt; unknown third-party &gt; first-party</strong>.</p>
+<h2>Rationale</h2>
+<ul>
+<li><strong>Real data, not inference.</strong> The browser physically connected to <code>{appid}-dsn.algolia.net</code>
+  and the app_id in the host matched the header, that is proof, not a pattern guess.</li>
+<li><strong>Vendor-list is no longer a gatekeeper.</strong> Detection works for any vendor (incl. unknown /
+  renamed / re-hosted) because identity = the live endpoint domain. The known-names map is
+  cosmetic (pretty labels) and the fingerprints only <em>unmask proxies</em>, absence degrades
+  gracefully to "first-party / proprietary", never a false call.</li>
+<li><strong>Deterministic.</strong> Confirmed-call rule + fingerprint precedence + retry-on-weak removes the
+  run-to-run flips seen when forcing a single "primary" vendor.</li>
+</ul>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTML substring source-scan (prior)</td>
+<td>Faulty: false positives (decathlon→Magento) + misses live-only vendors (Algolia on algolia.com). Not deterministic.</td>
+</tr>
+<tr>
+<td>Shell out to existing <code>detect-search.js</code> (Node)</td>
+<td>Adds a Node runtime to the Python deploy + two copies of the logic that drift. PRISM already has Playwright-Python.</td>
+</tr>
+<tr>
+<td>Hardcoded N-vendor registry as the detector</td>
+<td>Brittle, new vendors invisible, domain changes break silently. Kept only as cosmetic labels + proxy-unmask fingerprints.</td>
+</tr>
+<tr>
+<td>Literal "100% positive detection on every site"</td>
+<td>Physically impossible (bot-walls, no on-site search, backend engines). Adopted zero-FP + classified exceptions instead.</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li><strong>New dependency:</strong> <code>playwright-stealth&gt;=2.0</code> (Stealth.use_async wrapper + anti-automation
+  launch args; helps but does not beat headless Akamai → BOT_BLOCKED exception).</li>
+<li><strong>New API:</strong> <code>detect_search_vendor(domain, browser=None)</code> + batch <code>scan_search_vendors(domains)</code>
+  (one shared browser). <code>SearchVendorResult</code> schema gains app_id / api_key / index_name /
+  endpoint_host / all_vendors / proxied. Status taxonomy:
+  <code>DETECTED / NO_ONSITE_SEARCH / BOT_BLOCKED / ERROR / TIMEOUT</code>.</li>
+<li><strong>Robustness:</strong> real-keystroke typing (<code>press_sequentially</code>, not <code>el.fill()</code>), consent
+  dismissal, ⌘K/DocSearch triggers, <strong>per-site 55s <code>asyncio.wait_for</code> ceiling</strong> so one hung
+  page can't stall a batch, retry-on-weak.</li>
+<li><strong>Wired into</strong> <code>intel_competitors/collector.py</code>: one shared browser scans prospect +
+  competitors → Golden Angle. Fixes the prior <code>competitors_scanned=0</code> bug (now reads
+  <code>context.competitors</code>).</li>
+<li><strong>Documented exception classes</strong> (undetectable client-side, by design, never guessed):
+  backend/self-hosted engines (Elasticsearch, Solr, self-hosted Typesense); visual search
+  (Syte); proxied vendors that don't forward headers (dell→Coveo); bot-walled (Akamai/CF).</li>
+</ul>
+<h2>Validation</h2>
+<p>17 vendors, ~230 real customer sites (auto-sourced lists). <strong>59 confirmed detections, ZERO
+false positives.</strong> The detector repeatedly caught customer-list errors by naming the <em>real</em>
+vendor: moonmagic/thule = Klevu (not Searchspring), decathlon US = Shopify, twilio/alcltd/
+vuori = Algolia, docusign = Inbenta, castorama = Bloomreach, xxl.no = Apptus.</p>
+<p>Per-vendor confirmed: Algolia 15, Constructor 12, Cludo 7, Searchspring 5, Coveo 3, Unbxd 3,
+Klevu 2, Yext 2, Typesense 2, Nosto 2, HawkSearch 2, Bloomreach 2, Doofinder 1, AddSearch 1,
+Elastic 0<em>, Syte 0</em>, Loop54 0<em> (</em>exception classes above).</p>
+<p>Evidence: <code>docs/workspace/search-detector-validation/REPORT.md</code> + per-vendor <code>results/*.jsonl</code>.
+Verified: ruff clean; 433 non-browser v2 tests pass; 4 live browser tests pass; collector
+end-to-end proven (decathlon prospect first-party; gymshark/nuts → Algolia; Golden Angle =
+[gymshark.com, nuts.com]).</p>
+<hr />
+<h2>2026-06-28-grounded-report-qa-gate</h2>
+<hr />
+<p>title: 2026 06 28 grounded report qa gate
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Grounded report-QA via a Hermes plugin gate (facts grounded, coaching allowed)</h1>
+<p><strong>Date:</strong> 2026-06-28
+<strong>Status:</strong> Accepted (core verified)</p>
+<h2>Context</h2>
+<p>PRISM's defining promise: a rep chats with it and gets answers <strong>only from the audit report</strong>, never
+fabricated facts about the prospect. But it must also act as a sales <strong>coach</strong> (hypotheses, moves),
+which is reasoning beyond verbatim report text. These two goals conflict unless scoped.</p>
+<h2>Decision</h2>
+<p>Enforce grounding with a <strong>Hermes plugin</strong> (<code>prism-report-qa</code>) registering two hooks, <strong>no Hermes
+source fork</strong>:
+- <strong>L1 <code>pre_llm_call</code></strong>, injects the bound company's <code>audit-data.json</code> into the turn as the sole
+  fact source (report bound per session by detecting the company in-message vs the report-store index).
+- <strong>L4 <code>transform_llm_output</code></strong>, a <strong>Gemini grounding judge</strong> verifies the drafted answer's
+  <strong>factual claims</strong> against the report and rewrites unsupported ones (rewrite-on-fail; fail-closed
+  on judge error). This hook can rewrite the outgoing message, discovered by reading the image
+  source (the docs' hook table omitted it).</p>
+<p><strong>Scope (load-bearing):</strong> the gate polices <strong>factual claims about the prospect</strong> (numbers, vendor,
+scores, findings, financials), must be report-supported. It does <strong>NOT</strong> police <strong>coaching</strong>
+(calibrated hypotheses, F1–F6/M1–M10 moves, objection handling, call plans), allowed, as long as
+the facts they cite are supported. The judge is told this split explicitly.</p>
+<h2>Rationale</h2>
+<p>A read-receipt on the live image found <code>transform_llm_output</code>, which mutates output, so a plugin can
+hard-gate without forking Hermes (no derived-image/patch maintenance). The judge runs on <strong>Gemini</strong>
+(the working control model), not the <code>ai-judge</code> Claude skill, because Anthropic auth isn't on the box.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Injection + strict prompt only (L1+L3)</td>
+<td><strong>Proven insufficient</strong>, gemini fabricated "12.5%" (real 15.98%) labeled [FACT]</td>
+</tr>
+<tr>
+<td>Patch <code>agent/turn_finalizer.py</code> (source fork)</td>
+<td>Unnecessary once <code>transform_llm_output</code> hook found; fork = upstream-breakage maintenance</td>
+</tr>
+<tr>
+<td>Wrapper service in front of Hermes</td>
+<td>More infra; the plugin keeps the gate inside Hermes cleanly</td>
+</tr>
+<tr>
+<td>Strict verbatim-only (no coaching)</td>
+<td>Cripples the sales-coach role</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>Report-QA verified over the PetSmart report: grounded fact (15.98%, cited real field), absent fact
+  → "That's not in the audit report", coaching allowed + anchored to cited facts.</li>
+<li>Per-turn cost = 2 Gemini calls (answer + judge); needs a billed Gemini key (free tier 429s).</li>
+<li>Hardening TODO: force-a-fabrication stress test; QA-mode tool/delegation lockdown (L2); persist
+  report-binding to a file (currently in-memory).</li>
+<li>Plugin source tracked in repo <code>docs/workspace/hermes-prism-integration/chowmes-prism/plugins/</code>.
+  Related: [[2026-06-28-prism-is-chowmes-prism-hermes-instance]].</li>
+</ul>
+<hr />
+<h2>2026-06-28-prism-is-chowmes-prism-hermes-instance</h2>
+<hr />
+<p>title: 2026 06 28 prism is chowmes prism hermes instance
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: PRISM = Chowmes-PRISM (a dedicated Hermes instance), not a custom SaaS</h1>
+<p><strong>Date:</strong> 2026-06-28
+<strong>Status:</strong> Accepted</p>
+<h2>Context</h2>
+<p>PRISM was an idea for a custom-built prospect-intelligence platform; only Wave-1 intel modules were
+ever built and the pipeline never ran end-to-end. Meanwhile the manually-run <code>algolia-*</code> Claude
+skills already produce every deliverable (proven by the published PetSmart audit). The question:
+build PRISM as bespoke software, or orchestrate the existing skills?</p>
+<h2>Decision</h2>
+<p><strong>PRISM ≡ Chowmes-PRISM</strong>: a dedicated <strong>Hermes agent instance</strong> (Nous Research Hermes, the same
+runtime as the personal "Chowmes"/Athena agent) standing on the VPS, that (1) runs the algolia skills
+to generate audits and (2) answers grounded questions over the resulting report. <strong>"PRISM"/"prism"
+now means exclusively this instance</strong> (naming canon).</p>
+<p>Sub-decisions:
+- <strong>Separate Hermes instance</strong>, not a profile inside the personal Chowmes, own container
+  (<code>hermes-prism</code>), <code>/root/.hermes-prism</code> volume, dashboard :9120, own Telegram bot. Shares Scout +
+  Caddy on the same VPS.
+- <strong>Execution runs on the VPS</strong> (standalone, works when the laptop is off).
+- <strong>Temporal DROPPED</strong>, it belonged to the abandoned deterministic-module plan; Hermes-native
+  <code>kanban</code> + <code>cron</code> + durable subprocess cover queue/schedule/retry. The stale VPS Temporal stack was
+  deleted.
+- <strong>Two model planes:</strong> control plane (the Hermes chat/coach brain) = <strong>Gemini-direct</strong> (paid key,
+  cheap, high-frequency); execution plane (running the 22 skills) = <strong>headless Claude / Anthropic</strong>
+  (the skills are tuned for Claude Code; proven; lower-frequency, higher cost).</p>
+<h2>Rationale</h2>
+<p>The skills already produce every deliverable, so orchestrating them reaches a working product far
+faster than reimplementing 6 waves. A separate instance gives blast-radius isolation + independent
+lifecycle for a multi-rep product without polluting the personal agent. Splitting models keeps the
+cheap chat on Gemini while preserving Claude fidelity for the audit generation that is prospect-facing.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build PRISM as custom SaaS</td>
+<td>Far from done (Wave 1 only); skills already do the job</td>
+</tr>
+<tr>
+<td>A Hermes <em>profile</em> (not a separate instance)</td>
+<td>Shares the personal container's fate; wrong for a multi-rep product</td>
+</tr>
+<tr>
+<td>Keep Temporal for orchestration</td>
+<td>Second orchestrator alongside Hermes = duplicated state, no gain</td>
+</tr>
+<tr>
+<td>Run skills on Gemini too (no Anthropic)</td>
+<td>Skills tuned for Claude Code; quality unproven on Gemini</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>New VPS container <code>hermes-prism</code> + <code>/opt/chowmes-prism/docker-compose.yml</code>; data at <code>/root/.hermes-prism</code>.</li>
+<li>Generation needs an Anthropic key on the box (real per-audit cost).</li>
+<li>Multi-rep isolation handled inside the instance later (per-rep profiles or API+frontend).</li>
+<li>Project plan + workstreams (W-A..W-F) live at repo <code>docs/workspace/hermes-prism-integration/03-plan.md</code>
+  and the <code>prism</code> GitHub repo. Related: [[2026-06-28-grounded-report-qa-gate]],
+  [[2026-06-27-prism-as-ai-sales-toolkit-stage-cockpit]].</li>
+</ul>
+<hr />
+<h2>2026-06-28-unified-chat-on-prism-hub</h2>
+<hr />
+<p>title: 2026 06 28 unified chat on prism hub
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Unified grounded chat, Hermes one-brain on the published reports hub + Telegram</h1>
+<p><strong>Date:</strong> 2026-06-28
+<strong>Status:</strong> Accepted (LIVE, proven)</p>
+<h2>Context</h2>
+<p>PRISM needed the same conversational agent in two places: Telegram (already live as grounded report-QA) and the published audit-report SPA so prospects/AEs can "chat with this audit." The SPA in question is the <strong>published reports hub</strong> (<code>algolia-arian-v2.vercel.app</code>, now GH repo <code>prism-hub</code>), static per-company report pages from <code>render-audit.ts</code>, NOT the internal <code>PIP/frontend</code> aRRIe app (that was a wrong-target assumption early in the session).</p>
+<h2>Decision</h2>
+<p>One Hermes brain serves both channels. The hub embeds a vanilla <strong>chat widget</strong> (<code>chat-widget.js</code>) on each report page; a <strong>Vercel Node serverless proxy</strong> (<code>api/chat.js</code>) streams from the Hermes API (<code>/v1/responses</code>) with the bearer kept server-side. Each page binds its own company's report via an invisible <code>[Account: &lt;slug&gt;]</code> tag (the <code>prism-report-qa</code> plugin binds by message content per session). Grounding = the same <code>transform_llm_output</code> Gemini gate as Telegram.</p>
+<h2>Rationale</h2>
+<ul>
+<li>Same brain + same grounding gate across channels = consistency, no divergence.</li>
+<li>Server-side proxy → bearer never in the browser, no CORS surface.</li>
+<li>Report-QA needs NO tool registration (closed-book over the injected report), sidesteps the tool-name-contract risk; tools are a v2 for interactive module-running.</li>
+<li>Node serverless (not Edge): this Vercel project deploys <code>/api</code> as a Node λ and ignores the edge runtime config, an Edge handler returning a Web <code>Response</code> hangs (HTTP 000). Handler must be <code>(req,res)</code> + <code>res.end()</code>.</li>
+</ul>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Embed into <code>PIP/frontend</code> (internal aRRIe app)</td>
+<td>Wrong surface, the destination is the published reports hub.</td>
+</tr>
+<tr>
+<td>Browser-direct calls to the Hermes API</td>
+<td>Leaks the bearer + needs CORS.</td>
+</tr>
+<tr>
+<td>Edge function proxy</td>
+<td>This project won't honor edge runtime → hangs.</td>
+</tr>
+<tr>
+<td>Register 25 FastAPI tools first</td>
+<td>Not needed for report-QA; defer to v2.</td>
+</tr>
+<tr>
+<td>Deterministic session-key→report bind (plugin patch)</td>
+<td>Hermes doesn't thread <code>X-Hermes-Session-Key</code> into the hook; patch deployed but no-ops. Use the <code>[Account:]</code> message tag.</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>Live + proven: PetSmart page returned "no-results rate is 15.98% [FACT]" through the deployed proxy.</li>
+<li>Infra now live on the VPS: <code>prism_platform</code> FastAPI (R1, systemd) + Hermes API public at <code>judge.contentengagement.info/hermes-api</code> (bearer+TLS).</li>
+<li>New env on the Vercel <code>prism</code> project: <code>HERMES_API_URL</code>, <code>HERMES_API_KEY</code>.</li>
+<li>Open: rotate the free-tier grounding-gate Gemini key (intermittent 429); rename the Vercel project → <code>prism-hub</code> + domain (keep <code>algolia-arian-v2</code> alias); the 7 dataless report pages have the widget removed until re-audited.</li>
+<li>Reports must be in <code>/root/.hermes-prism/reports/</code> to ground (10 of 17 loaded).</li>
+</ul>
+<hr />
+<h2>2026-06-30-about-splash-routing</h2>
+<hr />
+<p>title: 2026 06 30 about splash routing
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: About page is the splash at <code>/</code>; reports list moves to <code>/reports/</code></h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted</p>
+<h2>Context</h2>
+<p><code>prism.chowmes.com/</code> previously opened straight into the reports grid (the list of company audits).
+There was a separate <code>/about/</code> explainer page built for the Friday demo. Opening cold on a wall of
+audit cards gives a visitor no idea what PRISM is or why it exists.</p>
+<h2>Decision</h2>
+<p>Make the About explainer the first page. <code>/</code> now serves the About splash. The reports grid moved to
+<code>/reports/</code>. The old <code>/about/</code> path 302-redirects to <code>/</code> so previously shared links still work.</p>
+<h2>Rationale</h2>
+<p>Splash-first is the logical IX: explain what PRISM is, then let the visitor step into the evidence by
+choice. The About page already existed and tells the story (what it is, who it is for, how it works,
+inside an audit, the skills, the engine), so promoting it to <code>/</code> cost almost nothing.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep reports at <code>/</code>, About at <code>/about/</code></td>
+<td>Cold open on raw audits, no context for a first-time viewer</td>
+</tr>
+<tr>
+<td><code>/</code> redirects to <code>/about/</code></td>
+<td>The URL would read <code>/about/</code>; the user wanted <code>/</code> to BE the splash</td>
+</tr>
+<tr>
+<td>One page combining both</td>
+<td>The reports grid is long; burying the explainer in it weakens both</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>New flow: About (<code>/</code>) then "Browse the audits" button (or topbar "Reports") then <code>/reports/</code> then <code>/{slug}/</code>.</li>
+<li>Reports-grid audit-card links were absolutized (<code>./slug/index.html</code> became <code>/slug/</code>) so they work from <code>/reports/</code>.</li>
+<li>Individual audit pages (<code>/{slug}/</code>) are unchanged. Their topbar logo still links to <code>/</code>, which is now the About splash (treated as "home"). Open option: point audit logos to <code>/reports/</code> instead so they return to the list. Left as-is for now.</li>
+<li>About page got a full redesign in the same window: premium prism hero, the Inside-the-audit tour, MagicBento deliverables, glowing-edge role cards, a shared animated background, and plain-English copy. See [[dev-log]] 2026-06-30.</li>
+<li>Served by the same on-VPS static proxy and auto-deploys via [[2026-06-30-github-vps-auto-deploy]].</li>
+</ul>
+<hr />
+<h2>2026-06-30-cassandra-naming-and-persona</h2>
+<hr />
+<p>title: 2026 06 30 cassandra naming and persona
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Cassandra is the only name; portrait + session hygiene</h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted</p>
+<h2>Context</h2>
+<p>The sales-coach agent had two names in use: the full "Cassandra" and the nickname "Cass". The user
+wants one name everywhere. The agent also needed a face for the web chat and Telegram, and the
+session store had accumulated dozens of throwaway test conversations.</p>
+<h2>Decision</h2>
+<ol>
+<li>Rename "Cass" to "Cassandra" everywhere, including <code>SOUL.md</code> and <code>AGENTS.md</code> (0 standalone "Cass" left).</li>
+<li>Give her a portrait: generated on the VPS with Imagen 4 on the paid Gemini key, candidate cass-2 picked. Deployed as the SPA chat avatar and prepared for Telegram.</li>
+<li>Turn on session auto-pruning: <code>sessions.auto_prune: true</code>, <code>retention_days: 7</code>, vacuum after prune.</li>
+</ol>
+<h2>Rationale</h2>
+<p>One name reads as a real person, not a system with aliases. Imagen 4 was already available on the box
+key, so the portrait needed no new service. auto_prune is Hermes' own built-in housekeeping, so no
+custom cron is needed. 7 days is short enough to keep test spam from piling up before a demo.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep "Cass" as a nickname</td>
+<td>User wants the name singular; nickname read as inconsistent</td>
+</tr>
+<tr>
+<td>Set Telegram avatar via Bot API</td>
+<td>Telegram has no Bot API method for a bot's own photo; must use @BotFather (manual)</td>
+</tr>
+<tr>
+<td>Custom cron to prune sessions</td>
+<td>Hermes ships <code>sessions.auto_prune</code>; use the built-in</td>
+</tr>
+<tr>
+<td>Leave old sessions</td>
+<td>They carried the old "Cass" baked prompt and cluttered the store</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li><code>SOUL.md</code> and <code>AGENTS.md</code> on the VPS rewritten to "Cassandra" (backed up first).</li>
+<li>Hermes snapshots <code>SOUL.md</code> into <code>sessions.system_prompt</code> at conversation creation, so live sessions keep the old name until the session is deleted. All existing sessions were wiped to apply the rename (and clear test spam); next message per channel starts fresh.</li>
+<li>Portrait: SPA avatar live (round 40px in the chat header, <code>/assets/cassandra.png</code>). Telegram is a manual one-time @BotFather upload (file prepared at 640x360). See memory <code>reference-vps-image-gen-imagen-telegram-avatar</code>.</li>
+<li>Persona design rule unchanged from 2026-06-29: pure traits in SOUL, no scripted lines. Grounding gate from [[2026-06-28-grounded-report-qa-gate]] still governs facts.</li>
+<li>Related entities: [[cassandra]], [[hermes]].</li>
+</ul>
+<hr />
+<h2>2026-06-30-detect-search-vendored</h2>
+<hr />
+<p>title: 2026 06 30 detect search vendored
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: detect-search vendored into arijit-skills and runs on the VPS</h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted (verified live)</p>
+<h2>Context</h2>
+<p>detect-search is PRISM's keyless tech and search-vendor detector (Playwright network-packet
+inspection). It lived as a standalone, unversioned directory under <code>~/.claude/skills/detect-search</code>,
+and it was not yet runnable on the VPS executor. The audit tech-stack module depends on it.</p>
+<h2>Decision</h2>
+<p>Vendor detect-search into the arijit-skills repo at <code>skills/detect-search/</code> and symlink
+<code>~/.claude/skills/detect-search</code> into the repo (matching the algolia-* skills pattern). Install its
+deps on the VPS so it runs there.</p>
+<h2>Rationale</h2>
+<p>One source of truth, edit then commit, no drift. The symlink keeps the working path while the repo
+holds the canonical copy. Vendoring also makes the "all of it is on GitHub" claim true for the tech
+detector, not just the audit skills.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git-init detect-search as its own repo</td>
+<td>A second repo to maintain; folding into arijit-skills keeps one</td>
+</tr>
+<tr>
+<td>Leave it standalone and unversioned</td>
+<td>The status quo we are fixing; drift risk, not on GitHub</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>Committed to arijit-skills, pushed to main. <code>node_modules</code> and the runtime workspace are gitignored. Backup of the old mac dir kept.</li>
+<li>Verified live on the VPS: <code>detect-search.js --full-tech</code> against petsmart.com detected Algolia (real endpoint, index, instantsearch agent), 14 categories, no bot block.</li>
+<li>This unblocks the audit tech-stack module on the executor. See [[detect-search]].</li>
+</ul>
+<hr />
+<h2>2026-06-30-github-vps-auto-deploy</h2>
+<hr />
+<p>title: 2026 06 30 github vps auto deploy
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: GitHub to VPS auto-deploy for prism-hub (webhook then git pull)</h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted (verified live)</p>
+<h2>Context</h2>
+<p>The published reports site (prism-hub) is served as static files from <code>/opt/prism-hub</code> on the VPS by
+the on-box static proxy. Earlier, deploying a change meant a manual <code>scp</code> of each edited file. Slow,
+error-prone, and easy to forget.</p>
+<h2>Decision</h2>
+<p>A GitHub webhook fires on push to <code>origin/feat/prism-vps-hosting</code>. It hits a small Node listener on
+the VPS (<code>prism-deploy-hook.service</code>, HMAC-gated) which runs <code>git pull</code> in <code>/opt/prism-hub</code>. The push
+goes live with no manual step.</p>
+<h2>Rationale</h2>
+<p>The webhook-pull model keeps VPS credentials off GitHub (no SSH key stored as a GH secret), unlike an
+Actions-push approach. <code>/opt/prism-hub</code> is already a git checkout of the repo, so the listener only
+needs a pull. It is the standard "Vercel-style on your own box" pattern.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub Actions SSH and push</td>
+<td>Stores a deploy private key as a GH secret; more surface</td>
+</tr>
+<tr>
+<td>Cron <code>git pull</code> every minute</td>
+<td>Works but chatty and adds 1 to 60s lag; webhook is instant</td>
+</tr>
+<tr>
+<td>Keep manual scp</td>
+<td>The thing we are removing; forgettable and error-prone</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>Verified end to end this session: a real push auto-pulled to the VPS within seconds, served live.</li>
+<li>Prod branch for the hub deploy is <code>feat/prism-vps-hosting</code> (it had the content; main was behind).</li>
+<li>Pieces on the VPS: <code>/opt/prism-deploy-hook/</code> (hook listener), <code>prism-deploy-hook.service</code> (systemd, enabled), Caddy route to the loopback listener. Deploy never runs <code>git clean</code>, so untracked files on the box are preserved.</li>
+<li>Full runbook in memory <code>reference-prism-hub-autodeploy</code>.</li>
+<li>This is why every About-page edit this session went live by push alone. See [[2026-06-30-about-splash-routing]].</li>
+</ul>
+<hr />
+<h2>2026-06-30-no-em-dash-writing-standard</h2>
+<hr />
+<p>title: 2026 06 30 no em dash writing standard
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: No em dashes in reader-facing copy</h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted</p>
+<h2>Context</h2>
+<p>The user considers the em dash (especially the spaced aside) a recognizable AI-writing tell that
+makes prose read machine-generated. They want it gone from all text a reader sees.</p>
+<h2>Decision</h2>
+<p>Never use em dashes in any user-facing text: web copy, docs, reports, UI strings, headings, alt and
+aria text. Rewrite the sentence so it does not need one, fixing grammar.</p>
+<h2>Rationale</h2>
+<p>It is a credibility signal. Clean prose that a human would write reads as authored, not generated.
+The fix is to restructure, not to leave a gap.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Replace every em dash with a hyphen</td>
+<td>Wrong punctuation; reads broken</td>
+</tr>
+<tr>
+<td>Just delete the dash</td>
+<td>Leaves a grammatically broken sentence</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>Rewrite patterns: period (two sentences), comma, colon (intro to a list or detail), parentheses (a true aside).</li>
+<li>Applied to <code>prism.chowmes.com/</code> (About) and <code>/reports/</code>: 0 em dashes in visible copy, verified live.</li>
+<li>Audit report pages (<code>/{slug}/</code>) deliberately left as-is: their copy comes from the audit data and the render template, a larger separate sweep, and the user said leave them.</li>
+<li>Applies on generation too: skills and templates that emit copy should not emit em dashes. Saved as memory <code>feedback-no-em-dashes</code>.</li>
+</ul>
+<hr />
+<h2>2026-06-30-wave2-similarweb-screenshots</h2>
+<hr />
+<p>title: 2026 06 30 wave2 similarweb screenshots
+type: project
+status: active
+created: 2026-07-07
+updated: 2026-07-07
+tags:</p>
+<hr />
+<h1>ADR: Wave-2 traffic comes from manual SimilarWeb screenshots</h1>
+<p><strong>Date:</strong> 2026-06-30
+<strong>Status:</strong> Accepted</p>
+<h2>Context</h2>
+<p>Wave-2 of the report standardization is 7 dataless companies (dell, footlocker, jbl, michaelkors,
+thenorthface, torrid, autozone) that need full re-audits. The traffic module needs SimilarWeb, but
+the SimilarWeb API key was revoked (401) and the browser-scraper session was expired. This was the
+one hard blocker stopping Wave-2.</p>
+<h2>Decision</h2>
+<p>Use manually captured, logged-in SimilarWeb screenshots as the traffic source for Wave-2. The user
+captured all 7 companies (10 tabs each: overview, performance, technologies, competitors, traffic and
+engagement, marketing channels, geography, demographics, audience interests, subdomains) at
+<code>PIP/docs/temp/similarweb-wave2/</code>. Traffic data is extracted from these screenshots by vision rather
+than from the dead API.</p>
+<h2>Rationale</h2>
+<p>The data exists and is real (verified, logged-in, no paywall blur). Reading it from screenshots
+removes the only dependency that needed a paid or live key. With this, every Wave-2 module is keyless:
+Scout, Gemini-grounded, detect-search on the VPS, yfinance, and these screenshots.</p>
+<h2>Alternatives Considered</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rotate the SimilarWeb key and re-run the API path</td>
+<td>Costs a paid key; the screenshots already exist</td>
+</tr>
+<tr>
+<td>Re-auth the browser scraper</td>
+<td>Same captured data, but the screenshots are already in hand</td>
+</tr>
+<tr>
+<td>Leave Wave-2 blocked</td>
+<td>No longer necessary; the blocker is gone</td>
+</tr>
+</tbody>
+</table>
+<h2>Consequences</h2>
+<ul>
+<li>The pipeline's <code>collect-traffic.py</code> expects the SimilarWeb API, so Wave-2 needs a small vision-extraction step (screenshots to <code>03-traffic-data.json</code>) instead of the API call.</li>
+<li>Wave-2 is now fully runnable and keyless. The earlier ledger (<code>spike-unify-audit/run/FINAL-REPORT.md</code>) that listed SimilarWeb as the blocker is superseded by this.</li>
+<li>Corrects memory <code>feedback-wave2-blocker-similarweb-mcp</code> (now marked resolved).</li>
+<li>Related: [[scout]], [[detect-search]], [[concepts/right-tool-for-each-job]].</li>
+</ul>
+<hr />
+<h2>2026-07-12-finishing-build-plan-phased-execution</h2>
+<hr />
+<p>title: PRISM Finishing Build Plan — decisions + phased execution
+type: decision
+date: 2026-07-12
+status: Accepted</p>
+<hr />
+<h1>PRISM Finishing Build Plan — decisions + phased execution</h1>
+<h2>Context</h2>
+<p>The 2026-07-06 V2 handoff package (<code>docs/PRISM-V2/06-v2-execution-map.md</code> + <code>08</code>/<code>09</code>) was never fully executed. Live VPS/GitHub/local recon this session (2026-07-12) found: role doors (AE/BDR/Marketer) + a real landing-page builder (Dell/Nike) DID ship same-day 2026-07-06, then all attention moved to the Belk/Lululemon audit-revalidation effort (07-09/07-10) and the architecture work (Hermes removal, executioner rebuild, chat-as-operator) never started. Hermes/Cassandra is still the live executioner; zero Claude Agent SDK code exists anywhere. Full ground truth recorded in PIP repo <code>docs/plans/2026-07-12-prism-finishing-build-plan.md</code> §0.</p>
+<p>Also found, unrelated: <strong><code>POST /api/chat</code> on prism.chowmes.com is unauthenticated in prod today</strong> — a live security hole, patched as the first step of this plan regardless of everything else.</p>
+<h2>Decisions</h2>
+<ol>
+<li><strong>Executioner = upgrade <code>prism-runner.py</code></strong> (plain Python, subprocess-dispatch of <code>claude -p</code> per skill), NOT a Claude Agent SDK rewrite. Built behind a clean <code>dispatch()/gate()</code> interface so an SDK migration later is additive, not a rewrite. Reasoning: the SDK's real benefits (native hooks, unified executioner+chat framework) only pay off once multi-tenancy/chat-as-operator actually need them; it was "decided" 2026-07-06 but never proof-of-concept'd — stacking an unproven framework onto a full Hermes removal + greenfield Figma/Jahia integration in one push is the overreach that causes stalls.</li>
+<li><strong>Full Hermes/Cassandra rip-and-replace</strong>, not staged — Arijit's explicit call, de-risked via a proven-on-non-prod-path-first cutover sequence (see plan §Track C step 5) and a rollback plan (archived containers/compose, not deleted).</li>
+<li><strong>Build the real Figma → Jahia integration</strong> for the Marketer landing-page builder, not just reuse of the existing static template — Arijit's explicit call. Real risk flagged: Jahia MCP isn't installed, prior research called Figma "wireframe-only" — scoped as its own research spike before the build commits to a shape.</li>
+<li><strong>Scope = Tracks A–H, full productization</strong> (multi-tenancy, domain-pack, GTM, pricing) — Arijit's explicit call, this is now a sellable-product build, not just an internal-tool finish.</li>
+<li><strong>Execution model: 6 phases, NOT one autonomous Fable-5 run.</strong> Each phase is issued as its own goal with its own definition of done; Fable 5 stops and reports at the phase boundary; Arijit reviews before the next phase's prompt is issued — never auto-chained. Reasoning: the 2026-07-06 "run this loop yourself, don't stop unless a Mandate Boundary" framing already produced a half-finished, silently-diverged result once (docs claimed things were unbuilt that were actually built, and vice versa — nobody caught it for 6 days). This plan also mixes irreversible steps (Hermes removal, prod cutover) with real unknown-unknowns (Figma/Jahia, an untested-since-07-02 concurrency ceiling) — a single unsupervised loop can't be course-corrected mid-run.</li>
+</ol>
+<h2>The 6 phases</h2>
+<ol>
+<li><strong>Foundation</strong> (SEC0 auth patch + Track A door re-verify + Track B design-system reconciliation) — merged into one phase: both halves are low-risk, non-irreversible, and don't depend on or block each other, so one review gate covers both.</li>
+<li><strong>Executioner + Verification Pipeline + Hermes removal</strong> (Tracks G+C) — highest-risk phase; the actual Hermes container removal needs Arijit's explicit yes even though the decision-in-principle is already made (§decision 2).</li>
+<li><strong>Landing pages</strong> (Track L) — Belk/Lululemon via existing builder first, then the Figma/Jahia spike as its own checkpoint before the integration build.</li>
+<li><strong>Modular rearchitecture</strong> (Track E).</li>
+<li><strong>Multi-tenancy + domain-pack</strong> (Track F) — gated on running the concurrency test that's been open since 2026-07-02 (does the Claude subscription sustain 3+ concurrent audits).</li>
+<li><strong>Production readiness + GTM + pricing/metering</strong> (Track H).</li>
+</ol>
+<h2>The anti-handwaving fix (Arijit's top concern this session)</h2>
+<p>A 5-stage Verification Pipeline (mechanical validator → fact-check agent → 3-agent adversarial panel → quality/completeness agent → legal gate), wired into the upgraded <code>prism-runner.py</code>'s <code>gate()</code> call so no module's output is accepted before the next module dispatches. This is code-enforced, not a skill Claude has to remember to invoke. Full design in the PIP plan doc §2.</p>
+<h2>Full detail</h2>
+<p>Canonical plan: PIP repo <code>docs/plans/2026-07-12-prism-finishing-build-plan.md</code> (supersedes <code>docs/PRISM-V2/06-v2-execution-map.md</code> / <code>08</code> / <code>09</code> on "what's built" — those retain design value, reused where accurate).</p>
+</main>
+<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+</body>
+</html>
