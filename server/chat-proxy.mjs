@@ -18,6 +18,7 @@
 
 import http from "node:http";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import { readFile, stat } from "node:fs/promises";
 import { createLiveAvatarEmbed } from "../api/avatar/_liveavatar.js";
 
@@ -69,16 +70,20 @@ function toWebRequest(req) {
   return new Request(`${proto}://${host}${req.url}`, { method: "GET", headers });
 }
 
-// { ok:true } signed-in (or auth disabled); { redirect, setCookies } otherwise.
-async function checkAuth(req) {
-  if (!clerk) return { ok: true };
+// { ok:true, userId, email } signed-in (or auth disabled); { redirect, setCookies } otherwise.
+// clerkClient is injectable (mirrors api/avatar/_liveavatar.js's env/fetchImpl DI style) so this
+// is testable without real Clerk credentials — see tests/chat-proxy-auth.test.mjs.
+export async function checkAuth(req, { clerkClient = clerk } = {}) {
+  if (!clerkClient) return { ok: true };
   try {
-    const state = await clerk.authenticateRequest(toWebRequest(req), {});
+    const state = await clerkClient.authenticateRequest(toWebRequest(req), {});
     if (state.status === "handshake") {
       return { redirect: state.headers.get("location"), setCookies: state.headers.getSetCookie?.() || [] };
     }
     const auth = state.toAuth();
-    return auth && auth.userId ? { ok: true } : { redirect: null };
+    if (!auth || !auth.userId) return { redirect: null };
+    const email = auth.sessionClaims?.email || auth.sessionClaims?.email_address || "";
+    return { ok: true, userId: auth.userId, email };
   } catch {
     return { redirect: null };
   }
@@ -175,8 +180,13 @@ async function readBody(req) {
   }
 }
 
-async function handleChat(req, res) {
-  if (!HERMES_API_URL || !HERMES_API_KEY) {
+export async function handleChat(req, res, deps = {}) {
+  const {
+    fetchImpl = fetch,
+    hermesApiUrl = HERMES_API_URL,
+    hermesApiKey = HERMES_API_KEY,
+  } = deps;
+  if (!hermesApiUrl || !hermesApiKey) {
     return sendJson(res, 500, { error: "chat not configured" });
   }
   const body = (await readBody(req)) || {};
@@ -197,10 +207,10 @@ async function handleChat(req, res) {
 
   let upstream;
   try {
-    upstream = await fetch(`${HERMES_API_URL}/v1/responses`, {
+    upstream = await fetchImpl(`${hermesApiUrl}/v1/responses`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${HERMES_API_KEY}`,
+        Authorization: `Bearer ${hermesApiKey}`,
         "Content-Type": "application/json",
         "X-Hermes-Session-Key": sessionKey,
       },
@@ -252,6 +262,17 @@ async function handleChat(req, res) {
   res.end();
 }
 
+// Auth-gated entry point for POST /api/chat (Risk §0.B — handleChat used to be dispatched
+// unconditionally, before checkAuth ever ran). Unauthenticated callers get 401, not the
+// 302-to-sign-in used for browser page loads — this is an API caller, not a navigation.
+export async function handleChatRequest(req, res, deps = {}) {
+  const auth = await checkAuth(req, deps);
+  if (!auth.ok) {
+    return sendJson(res, 401, { error: "unauthorized" });
+  }
+  return handleChat(req, res, { ...deps, userId: auth.userId, email: auth.email });
+}
+
 async function handleAvatarSession(req, res) {
   const body = (await readBody(req)) || {};
   const slug = typeof body.slug === "string" ? body.slug : "landing";
@@ -289,7 +310,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
   if (req.method === "POST" && url === "/api/chat") {
-    return handleChat(req, res).catch(() => {
+    return handleChatRequest(req, res).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
       else res.end();
     });
@@ -330,6 +351,12 @@ const server = http.createServer(async (req, res) => {
   sendJson(res, 404, { error: "not found" });
 });
 
-server.listen(PORT, "127.0.0.1", () => {
-  console.log(`prism web+chat server on 127.0.0.1:${PORT} (static=${STATIC_DIR})`);
-});
+// Only bind a real socket when this file is run directly (`node server/chat-proxy.mjs`), not
+// when it's imported for unit tests (tests/chat-proxy-auth.test.mjs) — importing must be a
+// pure module load with no side effects.
+const isMainModule = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+if (isMainModule) {
+  server.listen(PORT, "127.0.0.1", () => {
+    console.log(`prism web+chat server on 127.0.0.1:${PORT} (static=${STATIC_DIR})`);
+  });
+}
