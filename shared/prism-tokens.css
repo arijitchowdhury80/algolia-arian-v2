@@ -1,0 +1,44 @@
+/**
+ * PRISM V2 — design tokens, single source of truth.
+ *
+ * Extracted 2026-07-13 from the AE/BDR/Marketer doors' own inline <style> blocks — NOT from the
+ * old V1 SPA template (`~/.claude/skills/algolia-search-audit/templates/`). The 5 inconsistencies
+ * documented in docs/PRISM-V2/07-design-system.md (shadow rounding, two max-widths, missing
+ * :disabled, JS-gauge hex mismatch, sidebar left/right flip) all belong to that old V1 template
+ * and never propagated here — the 3 doors independently built their own clean, WCAG-AA-checked
+ * token set from scratch. This file is the union of all 3, taking the most complete version of
+ * each value (see prism-components.css's header for the same note on the shared component CSS).
+ *
+ * The real problem this file fixes: the 3 doors had byte-for-byte identical copies of this block
+ * pasted into 3 files, with small drift already visible between them (see prism-components.css).
+ * Import this + prism-components.css from every V2 door instead of inlining a 4th copy.
+ */
+:root {
+  --color-primary: #003DFF;
+  --color-accent: #5468FF;
+  --color-text: #23263B;
+  --color-muted: #545C68; /* darkened from the source #6B7280 — fails WCAG AA on --color-bg; this
+    passes 4.5:1 on both #fff and #F5F5F7 (verified independently by both the Marketer and BDR
+    doors against UIUXDesignSOP/00-principles.md §3.1). */
+  --color-bg: #F5F5F7;
+  --color-border: #E5E7EB;
+  --color-white: #FFFFFF;
+  --topbar-bg: #23263B;
+  --color-positive: #059669;
+  --color-positive-tint: #F0FDF4;
+  --color-positive-border: #BBF7D0;
+  --color-moderate: #D97706;
+  --color-moderate-tint: #FFFBEB;
+  --color-moderate-border: #FDE68A;
+  --color-critical: #DC2626;
+  --color-critical-tint: #FEF2F2;
+  --color-critical-border: #FECACA;
+  --blue-tint: #EEF2FF;
+  --blue-border: #C7D2FE;
+  --blue-light: #F8F9FF;
+  --font-family: 'Sora', sans-serif;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+  --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
+  --maxw: 980px;
+}

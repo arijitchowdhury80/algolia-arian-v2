@@ -1,0 +1,219 @@
+{
+ "meta": {
+  "company": "lululemon athletica",
+  "domain": "lululemon.com"
+ },
+ "score": {
+  "overall": 4.0,
+  "scale": 10,
+  "verdict": "Moderate Gaps",
+  "critical_count": 2,
+  "moderate_count": 8
+ },
+ "stage_cockpit": {
+  "stages": [
+   {
+    "label": "PREP",
+    "status": "active"
+   },
+   {
+    "label": "SS1",
+    "status": ""
+   },
+   {
+    "label": "SS2",
+    "status": ""
+   }
+  ],
+  "note": "3-stage scope (SS3 POC / SS4 proposal are out of PRISM's scope). Currently prepping: PREP. Stage state is not deal-tracked — this is the prep surface."
+ },
+ "call_plan": {
+  "eyebrow": "Discovery-OS single-page call plan",
+  "opening_move": {
+   "text": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or…",
+   "source_label": "audit: ae_fields.talk_track_opener",
+   "source_url": ""
+  },
+  "hypotheses": [
+   {
+    "rank": 1,
+    "title": "Semantic / NLP FAIL: keyword `Ntt` engine cannot parse conversational intent",
+    "severity": "CRITICAL",
+    "evidence": "Typing a natural-language, price-scoped query ('yoga pants under 100') returned a completely empty 'Top Suggestions' overlay: the heading rendered with zero results beneath it. The keyword `Ntt` engine tokenizes words and cannot read 'under 100' as a price constraint or 'for hot yoga' as an activit…",
+    "tied_to": "Tested query: “yoga pants under 100”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/intent-empty.png"
+   },
+   {
+    "rank": 2,
+    "title": "Query suggestions are a static curated list, not demand-ranked or personalized",
+    "severity": "CRITICAL",
+    "evidence": "lululemon does populate the empty-state overlay: a 'Trending Searches' list renders (Belt Bag, Define Jacket, Align, Swiftly, Align Leggings) and returning guests also see a 'Recent Searches' block (screenshots 15 and 02). The gap is that this is a fixed, hand-curated list, not popularity ranked fr…",
+    "tied_to": "Tested query: “(empty search box)”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/15-popular-searches.png"
+   },
+   {
+    "rank": 3,
+    "title": "No federated search: help, service and policy content siloed from search",
+    "severity": "CRITICAL",
+    "evidence": "Search returns products but no service, help or policy content. Typing 'hemming' surfaces hem-named PRODUCTS (Nulu Cinch-Hem Pant, LuluLinen Adjustable-Hem Skirt, Cotton Jersey Bubble-Hem Tee, Notched-Hem Crop) plus a 'Curved Hem' suggestion, but never lululemon's free-hemming SERVICE or any policy…",
+    "tied_to": "Tested query: “hemming”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/11-federated.png"
+   }
+  ],
+  "competitive_objection": {
+   "objection": "“Why Algolia over our in-house / incumbent search engine?”",
+   "response": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or…",
+   "source": "audit: golden_angle"
+  },
+  "cost_of_inaction": {
+   "text": "Modeled search-addressable: $737M (15% of $4.919B digital); estimated upside $27.4M–$65.5M gross profit/yr",
+   "source": "audit: financials (modeled)"
+  },
+  "stakeholder_to_add": {
+   "role": "First-play path",
+   "name": "Warm intro via commercetools / IMPACT",
+   "status": "inferred from partner_intel — confirm before citing",
+   "note": "IMPACT is a commercetools Solution Partner that explicitly names lululemon as a client. Request a joint intro to CAITO Ranju Das or VP Digital Commerce, opening with the 10-K AI-risk finding and the Gymshark benchmark.",
+   "source": "audit: recommended_first_play"
+  },
+  "next_meeting_hook": {
+   "text": "—",
+   "cta": "Request a warm intro to Ranju Das (CAITO) via the commercetools/IMPACT or KPMG partner path; open with the 10-K AI-risk finding + Gymshark proof.",
+   "source": "audit: ae_fields / next_steps",
+   "target_date": "2026-07-08",
+   "owner": "AE + Partner team"
+  }
+ },
+ "exit_gates": {
+  "ss2_label": "SS2 exit gate — Vision-to-Value (methodology checklist, not deal-tracked)",
+  "items": [
+   {
+    "item": "Vision-to-Value delivered",
+    "detail": "Anxiety statement + ROI justification landed with the buyer.",
+    "status": "open"
+   },
+   {
+    "item": "Eval path confirmed",
+    "detail": "A relevance A/B or pilot path is agreed.",
+    "status": "open"
+   },
+   {
+    "item": "PIE buy-in secured",
+    "detail": "Product / Infra / Eng stakeholder is bought in.",
+    "status": "open"
+   },
+   {
+    "item": "Business case built",
+    "detail": "ROI model exists in full before negotiation — not deferred.",
+    "status": "open"
+   }
+  ]
+ },
+ "battle_card_data": {
+  "has_golden_angle": false,
+  "narrative": "",
+  "talk_track": "Two of the fastest-growing brands hunting your customer — Gymshark and Vuori — both run Algolia. Gymshark's published numbers are 6.2% to over 10% search conversion and 400%-plus revenue growth from search users. The question isn't whether AI search works for activewear. It's whether lululemon wants that advantage or wants to keep watching competitors compound it.",
+  "benchmark_proof": "Gymshark (direct competitor): search conversion 6.2% → 10%+, +400% search-user revenue YoY, ~£2M/yr from AI Re-Ranking.",
+  "case_study": null,
+  "competitors": [
+   {
+    "name": "Gymshark",
+    "vendor": "Algolia",
+    "uses_algolia": true
+   },
+   {
+    "name": "Vuori",
+    "vendor": "Algolia",
+    "uses_algolia": true
+   },
+   {
+    "name": "Nike",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Under Armour",
+    "vendor": "Constructor.io",
+    "uses_algolia": false
+   },
+   {
+    "name": "Athleta",
+    "vendor": "Constructor.io",
+    "uses_algolia": false
+   },
+   {
+    "name": "Alo Yoga",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Fabletics",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   },
+   {
+    "name": "Adidas",
+    "vendor": "Unknown",
+    "uses_algolia": false
+   }
+  ],
+  "source": "audit: golden_angle + competitors + ae_fields.benchmark_proof"
+ },
+ "playbook": {
+  "available": false,
+  "label": "AE Playbook"
+ },
+ "business_case": {
+  "available": false,
+  "label": "Business Case / ROI"
+ },
+ "active_sources": [
+  {
+   "name": "Company & executive intel",
+   "detail": "company_snapshot / executives"
+  },
+  {
+   "name": "Financial profile",
+   "detail": "revenue, margins, modeled search ROI"
+  },
+  {
+   "name": "Competitor & search-tech scan",
+   "detail": "competitor set + detected search vendors"
+  },
+  {
+   "name": "Search audit findings",
+   "detail": "browser-tested search behavior + scoring"
+  },
+  {
+   "name": "Traffic & engagement",
+   "detail": "SimilarWeb capture (HITL-verified)"
+  },
+  {
+   "name": "Intelligence signals",
+   "detail": "news / hiring / partner signals"
+  }
+ ],
+ "locked_sources": [
+  {
+   "name": "Gong call recordings",
+   "function": "Verbatim objection & signal miner",
+   "value": "real objections + who said what in the room",
+   "needs": "Gong transcripts for the account"
+  },
+  {
+   "name": "Account-history notes",
+   "function": "Account memory",
+   "value": "don't re-pitch a failed angle; prior contacts & deals",
+   "needs": "rep's informal notes — no new system"
+  },
+  {
+   "name": "Event engagement feed",
+   "function": "Conference / booth touches",
+   "value": "warm signals from real-world engagement",
+   "needs": "event CRM / badge-scan export"
+  }
+ ]
+}

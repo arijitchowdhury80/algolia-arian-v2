@@ -1,0 +1,208 @@
+{
+ "meta": {
+  "company": "Belk",
+  "domain": "belk.com"
+ },
+ "score": {
+  "overall": 5.3,
+  "scale": 10,
+  "verdict": "Needs Significant Work",
+  "critical_count": 0,
+  "moderate_count": 10
+ },
+ "stage_cockpit": {
+  "stages": [
+   {
+    "label": "PREP",
+    "status": "active"
+   },
+   {
+    "label": "SS1",
+    "status": ""
+   },
+   {
+    "label": "SS2",
+    "status": ""
+   }
+  ],
+  "note": "3-stage scope (SS3 POC / SS4 proposal are out of PRISM's scope). Currently prepping: PREP. Stage state is not deal-tracked — this is the prep surface."
+ },
+ "call_plan": {
+  "eyebrow": "Discovery-OS single-page call plan",
+  "opening_move": {
+   "text": "You told the market it was 'time for a change' on search — we'd like to show you what the next change looks like against a modern AI benchmark your peers just set.",
+   "source_label": "audit: ae_fields.talk_track_opener",
+   "source_url": ""
+  },
+  "hypotheses": [
+   {
+    "rank": 1,
+    "title": "Semantic / NLP gap vs AI-shipping peers",
+    "severity": "MODERATE",
+    "evidence": "Automated testing WAF-blocked (see F05). One manual human-passed capture exists (query \"black dress\", 2026-07-03, not on the official 16-query list) showing a functional results page (2,846 products, working facets) with a visible \"Ask Belk\" AI search icon in the search bar — indicating some conver…",
+    "tied_to": "Tested query: “cocktail dress for a fall wedding”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/01-black-dress.png"
+   },
+   {
+    "rank": 2,
+    "title": "Personalization not confirmed in the discovery path",
+    "severity": "MODERATE",
+    "evidence": "Not observable (WAF-blocked). The CIO's gen-AI personalization investment sits in content (Vertex AI), not confirmed in the on-site search path.",
+    "tied_to": "Tested query: “comfortable walking shoes for wide feet”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/05-waf-perimeterx-block.png"
+   },
+   {
+    "rank": 3,
+    "title": "Merchandiser control gap",
+    "severity": "MODERATE",
+    "evidence": "Not observable (WAF-blocked). Real-time rule-driven merchandising control on the current stack could not be confirmed. (No hiring signal is cited here — the prior reference to a Digital Merchandise manager vacancy was fabricated; corrected 2026-07-10, bug ledger #16.)",
+    "tied_to": "Tested query: “shoes”",
+    "confidence_risk_note": "Discovery-OS confidence×risk scoring is not yet stored for audit findings — surfaced un-ranked rather than inventing a score.",
+    "source_url": "screenshots/05-waf-perimeterx-block.png"
+   }
+  ],
+  "competitive_objection": {
+   "objection": "“Why Algolia over our in-house / incumbent search engine?”",
+   "response": "None of Belk's direct competitors run Algolia — the field is open. Proof comes from adjacent retail peers: Shoe Carnival (+4.5% conversion, value footwear, Southern US), Lacoste (+37% conversion, fashion sold at Belk), Everlane (+5% conversion, -45% no-results), and PetSmart (+5-7% conversion vs prior provider, omnich…",
+   "source": "audit: golden_angle"
+  },
+  "cost_of_inaction": {
+   "text": "Modeled search-addressable: ~$62M (15% of e-commerce); estimated upside $25.7M/yr conservative — $47M/yr moderate",
+   "source": "audit: financials (modeled)"
+  },
+  "stakeholder_to_add": {
+   "role": "First-play path",
+   "name": "Loop in Matt Panning + Contentstack",
+   "status": "inferred from partner_intel — confirm before citing",
+   "note": "Crossbeam confirms an active named open deal on this account (\"Belk-2026-NOV-New Business-Elevate Ecomm v8.5\", owned by Matthew Panning) and a corroborated Contentstack customer relationship (Co-Sell + Referral Agreement tags). Sync with the deal owner and us…",
+   "source": "audit: recommended_first_play"
+  },
+  "next_meeting_hook": {
+   "text": "A relevance A/B pilot: Algolia NeuralSearch vs the incumbent on your top query set, measured on conversion, zero-results, and time-to-first-click.",
+   "cta": "Request Google Cloud partner-team warm intro to CIO Richard Spencer",
+   "source": "audit: ae_fields / next_steps",
+   "target_date": "2026-07-10",
+   "owner": "Algolia AE"
+  }
+ },
+ "exit_gates": {
+  "ss2_label": "SS2 exit gate — Vision-to-Value (methodology checklist, not deal-tracked)",
+  "items": [
+   {
+    "item": "Vision-to-Value delivered",
+    "detail": "Anxiety statement + ROI justification landed with the buyer.",
+    "status": "open"
+   },
+   {
+    "item": "Eval path confirmed",
+    "detail": "A relevance A/B or pilot path is agreed.",
+    "status": "open"
+   },
+   {
+    "item": "PIE buy-in secured",
+    "detail": "Product / Infra / Eng stakeholder is bought in.",
+    "status": "open"
+   },
+   {
+    "item": "Business case built",
+    "detail": "ROI model exists in full before negotiation — not deferred.",
+    "status": "open"
+   }
+  ]
+ },
+ "battle_card_data": {
+  "has_golden_angle": false,
+  "narrative": "No direct competitor is a confirmed Algolia customer (OFFENSIVE scenario). Proof comes from adjacent retail peers — Shoe Carnival (value footwear, Southern US), Lacoste (fashion sold at Belk), Everlane (DTC apparel), PetSmart (omnichannel scale).",
+  "talk_track": "None of Belk's direct competitors run Algolia — the field is open. Proof comes from adjacent retail peers: Shoe Carnival (+4.5% conversion, value footwear, Southern US), Lacoste (+37% conversion, fashion sold at Belk), Everlane (+5% conversion, -45% no-results), and PetSmart (+5-7% conversion vs prior provider, omnichannel scale).",
+  "benchmark_proof": "Shoe Carnival: +4.5% conversion rate during first Cyber Weekend after Algolia launch after deploying Algolia AI Search + Dynamic Re-ranking + Merchandising — https://www.algolia.com/customers/shoe-carnival/",
+  "case_study": {
+   "company": "Shoe Carnival",
+   "result": "+4.5% conversion during first Cyber Weekend",
+   "url": "https://www.algolia.com/customers/shoe-carnival/"
+  },
+  "competitors": [
+   {
+    "name": "Dillard's",
+    "vendor": "Unknown / Proprietary (WAF-blocked)",
+    "uses_algolia": false
+   },
+   {
+    "name": "Macy's",
+    "vendor": "Google Gemini AI overlay + undisclosed core",
+    "uses_algolia": false
+   },
+   {
+    "name": "Kohl's",
+    "vendor": "Google Cloud partner + proprietary",
+    "uses_algolia": false
+   },
+   {
+    "name": "JCPenney",
+    "vendor": "Unknown (scan failed)",
+    "uses_algolia": false
+   },
+   {
+    "name": "Nordstrom",
+    "vendor": "Proprietary / unidentified",
+    "uses_algolia": false
+   }
+  ],
+  "source": "audit: golden_angle + competitors + ae_fields.benchmark_proof"
+ },
+ "playbook": {
+  "available": false,
+  "label": "AE Playbook"
+ },
+ "business_case": {
+  "available": false,
+  "label": "Business Case / ROI"
+ },
+ "active_sources": [
+  {
+   "name": "Company & executive intel",
+   "detail": "company_snapshot / executives"
+  },
+  {
+   "name": "Financial profile",
+   "detail": "revenue, margins, modeled search ROI"
+  },
+  {
+   "name": "Competitor & search-tech scan",
+   "detail": "competitor set + detected search vendors"
+  },
+  {
+   "name": "Search audit findings",
+   "detail": "browser-tested search behavior + scoring"
+  },
+  {
+   "name": "Traffic & engagement",
+   "detail": "SimilarWeb capture (HITL-verified)"
+  },
+  {
+   "name": "Intelligence signals",
+   "detail": "news / hiring / partner signals"
+  }
+ ],
+ "locked_sources": [
+  {
+   "name": "Gong call recordings",
+   "function": "Verbatim objection & signal miner",
+   "value": "real objections + who said what in the room",
+   "needs": "Gong transcripts for the account"
+  },
+  {
+   "name": "Account-history notes",
+   "function": "Account memory",
+   "value": "don't re-pitch a failed angle; prior contacts & deals",
+   "needs": "rep's informal notes — no new system"
+  },
+  {
+   "name": "Event engagement feed",
+   "function": "Conference / booth touches",
+   "value": "warm signals from real-world engagement",
+   "needs": "event CRM / badge-scan export"
+  }
+ ]
+}

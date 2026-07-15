@@ -8,76 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/prism-tokens.css">
+<link rel="stylesheet" href="../shared/prism-components.css">
 <style>
-  :root {
-    --color-primary: #003DFF;
-    --color-accent: #5468FF;
-    --color-text: #23263B;
-    --color-muted: #545C68; /* darkened from the source #6B7280 — fails WCAG AA on --color-bg; this passes 4.5:1
-      on both #fff and #F5F5F7, per the Marketer door's fix (see its inline comment). Reused verbatim here. */
-    --color-bg: #F5F5F7;
-    --color-border: #E5E7EB;
-    --color-white: #FFFFFF;
-    --topbar-bg: #23263B;
-    --color-positive: #059669;
-    --color-positive-tint: #F0FDF4;
-    --color-positive-border: #BBF7D0;
-    --color-moderate: #D97706;
-    --color-moderate-tint: #FFFBEB;
-    --color-moderate-border: #FDE68A;
-    --color-critical: #DC2626;
-    --color-critical-tint: #FEF2F2;
-    --color-critical-border: #FECACA;
-    --blue-tint: #EEF2FF;
-    --blue-border: #C7D2FE;
-    --blue-light: #F8F9FF;
-    --font-family: 'Sora', sans-serif;
-    --radius: 8px;
-    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
-    --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
-    --maxw: 980px;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: var(--font-family); color: var(--color-text);
-    background: var(--color-bg); line-height: 1.6;
-    overflow-wrap: anywhere; /* real citation strings (e.g. "hiring.buying_committee[2]") contain long
-      unbroken tokens with no spaces — without this, one long field-path/URL string overflows its box
-      and pushes horizontal scroll onto the whole page at mobile widths. Inherited, so this is the fix
-      at the root rather than patching every text class that might one day carry a long source string. */
-  }
-  a { color: inherit; }
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
-
-  /* ── Top chrome ── */
-  .topchrome {
-    background: var(--topbar-bg); color: #fff; padding: 14px 20px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-  }
-  .topchrome .brand { font-weight: 600; font-size: 15px; }
-  .topchrome .meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.75); flex-wrap: wrap; }
-  .role-chip, .account-chip {
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 999px; padding: 4px 12px; font-weight: 600; color: #fff;
-  }
-
-  main { padding: 32px 0 64px; }
-
-  /* ── Shared-core strip ── */
-  .shared-core {
-    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 20px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  }
-  .shared-core .company-line { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .shared-core h1 { font-size: 20px; font-weight: 600; }
-  .shared-core .score { font-size: 15px; color: var(--color-muted); }
-  .shared-core .score b { color: var(--color-text); font-weight: 600; }
-  .framed-tag {
-    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
-    color: var(--color-primary); background: var(--blue-tint); border: 1px solid var(--blue-border);
-    padding: 4px 10px; border-radius: 999px; white-space: nowrap;
-  }
+  /* AE-specific only. Shared tokens/reset/topchrome/shared-core/btn/sources-cards
+     live in ../shared/prism-tokens.css + prism-components.css (extracted 2026-07-13). */
 
   /* ── Stage cockpit ── */
   .stage-cockpit {
@@ -141,51 +76,76 @@
   .gate-body .gate-name { font-weight: 600; font-size: 14px; }
   .gate-body .gate-detail { font-size: 13px; color: var(--color-muted); margin-top: 2px; }
 
-  /* ── Action row ── */
-  .action-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;
-    min-height: 44px; border: 2px solid transparent; cursor: pointer; text-decoration: none;
-    transition: opacity 0.15s;
-  }
-  .btn:hover { opacity: 0.88; }
-  .btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
-  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
-  .btn-primary { background: var(--color-primary); color: #fff; }
-  .btn-outline { border-color: var(--color-border); background: #fff; color: var(--color-text); }
-  .btn-disabled {
-    background: #fff; border-color: var(--color-border); color: var(--color-muted);
-    cursor: not-allowed; opacity: 0.65;
-  }
-  .btn-disabled:hover { opacity: 0.65; }
   .action-note { font-size: 12px; color: var(--color-muted); margin: -10px 0 20px; }
 
-  /* ── Data source cards ── */
-  .sources-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .sources-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
-  .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .source-col h4 {
-    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
-    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+  /* ── Account switcher ── */
+  .acct-switch { display: inline-flex; align-items: center; gap: 8px; }
+  .acct-label { font-size: 13px; color: rgba(255,255,255,0.65); }
+  #account-select {
+    font-family: var(--font-family); font-size: 13px; font-weight: 600; color: #fff;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px; padding: 5px 12px; cursor: pointer; min-height: 32px;
   }
-  .source-col.active h4 { color: var(--color-positive); }
-  .source-col.locked h4 { color: var(--color-muted); }
-  .source-card {
-    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
-    padding: 14px 16px; margin-bottom: 10px; font-size: 13px;
-  }
-  .source-col.locked .source-card { border-style: dashed; background: var(--color-bg); }
-  .source-card .name { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-  .source-card .detail { color: var(--color-muted); font-size: 12.5px; }
-  .source-card .needs { color: var(--color-muted); font-size: 12px; margin-top: 6px; }
-  .lock-icon { font-size: 13px; }
+  #account-select:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  #account-select option { color: #23263B; }
 
-  footer { text-align: center; font-size: 12px; color: var(--color-muted); padding: 32px 20px 8px; }
+  /* ── Battle Card drawer (V2-native, replaces the old V1 deep-link) ── */
+  .drawer-overlay {
+    position: fixed; inset: 0; background: rgba(20,22,38,0.45); z-index: 40;
+    opacity: 0; transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .drawer-overlay.show { opacity: 1; }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100%; width: min(480px, 100vw);
+    background: #fff; z-index: 50; box-shadow: -12px 0 40px rgba(35,38,59,0.22);
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .drawer.show { transform: translateX(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .drawer, .drawer-overlay { transition: none; }
+  }
+  .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; border-bottom: 1px solid var(--color-border); flex-shrink: 0;
+  }
+  .drawer-head h3 { font-size: 18px; font-weight: 600; }
+  .drawer-close {
+    background: none; border: none; font-size: 18px; color: var(--color-muted);
+    cursor: pointer; line-height: 1; padding: 6px; border-radius: 8px; min-height: 36px; min-width: 36px;
+  }
+  .drawer-close:hover { background: var(--color-bg); }
+  .drawer-close:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .drawer-body { padding: 24px; overflow-y: auto; }
+  .bc-eyebrow {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-primary); margin-bottom: 6px;
+  }
+  .bc-open-tag {
+    display: inline-block; font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 16px; background: var(--color-positive-tint); border: 1px solid var(--color-positive-border); color: var(--color-positive);
+  }
+  .bc-open-tag.closed { background: var(--blue-tint); border-color: var(--blue-border); color: var(--color-primary); }
+  .bc-block { margin-bottom: 20px; }
+  .bc-block h4 { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .bc-block p { font-size: 14px; color: var(--color-text); line-height: 1.55; }
+  .bc-proof {
+    background: var(--color-positive-tint); border: 1px solid var(--color-positive-border);
+    border-radius: 10px; padding: 12px 14px; font-size: 13.5px;
+  }
+  .bc-proof a { text-decoration: underline; color: var(--color-primary); }
+  .bc-comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .bc-comp-table th {
+    text-align: left; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.06em;
+    color: var(--color-muted); padding: 6px 8px; border-bottom: 1px solid var(--color-border);
+  }
+  .bc-comp-table td { padding: 7px 8px; border-bottom: 1px solid var(--color-border); }
+  .bc-comp-table .yes { color: var(--color-critical); font-weight: 600; }
+  .bc-comp-table .no  { color: var(--color-positive); font-weight: 600; }
+  .bc-src { font-size: 12px; color: var(--color-muted); margin-top: 4px; }
+  .bc-empty { font-size: 13px; color: var(--color-muted); font-style: italic; }
 
   @media (max-width: 768px) {
-    .sources-grid { grid-template-columns: 1fr; }
-    .shared-core { flex-direction: column; align-items: flex-start; }
     .callplan-card { padding: 24px 18px; }
     .stage-pills { gap: 6px; }
     .stage-pill { padding: 6px 12px; font-size: 12px; }
@@ -198,7 +158,9 @@
   <div class="brand">PRISM</div>
   <div class="meta">
     <span class="role-chip" id="role-chip">role: AE</span>
-    <span class="account-chip" id="account-chip">account: —</span>
+    <label class="acct-switch"><span class="acct-label">account</span>
+      <select id="account-select" aria-label="Switch account"></select>
+    </label>
   </div>
 </div>
 
@@ -264,11 +226,11 @@
     </section>
 
     <div class="action-row">
-      <a class="btn btn-outline" id="btn-battlecard" href="#" target="_blank" rel="noopener">Battle Card</a>
-      <a class="btn btn-outline" id="btn-playbook" href="#" target="_blank" rel="noopener">Open AE Playbook</a>
-      <a class="btn btn-outline" id="btn-businesscase" href="#" target="_blank" rel="noopener">Open Business Case</a>
+      <button class="btn btn-primary" id="btn-battlecard" type="button">⚔ Battle Card</button>
+      <button class="btn btn-disabled" id="btn-playbook" type="button" aria-disabled="true" disabled>AE Playbook — building next</button>
+      <button class="btn btn-disabled" id="btn-businesscase" type="button" aria-disabled="true" disabled>Business Case / ROI — building next</button>
     </div>
-    <p class="action-note" id="action-note">Playbook and Business Case deep-link into the existing 5-tab report — click the matching tab once it loads (see note in source data; this generated SPA has no URL param to force a tab open, and it's out of scope to modify here).</p>
+    <p class="action-note" id="action-note">Battle Card opens here as a native V2 panel — no bounce back to the old report. Playbook &amp; Business Case are the next V2 artifacts, built from this same live audit data, not links into V1.</p>
 
     <section class="sources-section">
       <h3>Data sources powering this view</h3>
@@ -288,7 +250,16 @@
   </div>
 </main>
 
-<footer>PRISM — Algolia Search Audit Pipeline. Data sourced from the published audit; every empty slot above marks data this pipeline genuinely doesn't have yet — nothing is inferred beyond what's cited.</footer>
+<footer>PRISM — Algolia Search Audit Pipeline. Data sourced live from the audit database; every empty slot above marks data this pipeline genuinely doesn't have yet — nothing is inferred beyond what's cited.</footer>
+
+<div class="drawer-overlay" id="bc-overlay" hidden></div>
+<aside class="drawer" id="bc-drawer" hidden role="dialog" aria-modal="true" aria-label="Battle Card">
+  <div class="drawer-head">
+    <h3>⚔ Battle Card</h3>
+    <button class="drawer-close" id="bc-close" type="button" aria-label="Close battle card">✕</button>
+  </div>
+  <div class="drawer-body" id="bc-body"></div>
+</aside>
 
 <script>
 (function () {
@@ -299,7 +270,28 @@
     return m || fallback;
   }
 
-  var account = qs("account", "dsw");
+  var ACCOUNTS = [
+    { slug: "dell", label: "Dell Technologies" },
+    { slug: "belk", label: "Belk" },
+    { slug: "lululemon", label: "lululemon athletica" }
+  ];
+  var account = qs("account", "dell");
+
+  (function setupSwitcher() {
+    var sel = document.getElementById("account-select");
+    if (!sel) return;
+    ACCOUNTS.forEach(function (a) {
+      var opt = document.createElement("option");
+      opt.value = a.slug; opt.textContent = a.label;
+      if (a.slug === account) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener("change", function () {
+      var u = new URL(location.href);
+      u.searchParams.set("account", sel.value);
+      location.href = u.toString();
+    });
+  })();
 
   function escapeHtml(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -331,20 +323,54 @@
     return el;
   }
 
-  function setBtn(btnEl, urlObj, defaultLabel) {
-    if (urlObj && urlObj.available && urlObj.url) {
-      btnEl.href = urlObj.url;
-      btnEl.textContent = urlObj.label || defaultLabel;
-      btnEl.classList.remove("btn-disabled");
-      btnEl.classList.add("btn-outline");
-    } else {
-      btnEl.removeAttribute("href");
-      btnEl.removeAttribute("target");
-      btnEl.setAttribute("aria-disabled", "true");
-      btnEl.textContent = (urlObj && urlObj.label ? urlObj.label + " — " : "") + "not available for this account";
-      btnEl.classList.remove("btn-outline");
-      btnEl.classList.add("btn-disabled");
+  // ── Battle Card drawer (V2-native — replaces the old V1 deep-link) ──
+  var bcOverlay = document.getElementById("bc-overlay");
+  var bcDrawer = document.getElementById("bc-drawer");
+  function openDrawer() {
+    bcOverlay.hidden = false; bcDrawer.hidden = false;
+    requestAnimationFrame(function () { bcOverlay.classList.add("show"); bcDrawer.classList.add("show"); });
+    document.getElementById("bc-close").focus();
+  }
+  function closeDrawer() {
+    bcOverlay.classList.remove("show"); bcDrawer.classList.remove("show");
+    setTimeout(function () { bcOverlay.hidden = true; bcDrawer.hidden = true; }, 320);
+    var b = document.getElementById("btn-battlecard"); if (b) b.focus();
+  }
+  document.getElementById("bc-close").addEventListener("click", closeDrawer);
+  bcOverlay.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !bcDrawer.hidden) closeDrawer(); });
+  document.getElementById("btn-battlecard").addEventListener("click", openDrawer);
+
+  function renderBattleCard(bc) {
+    var body = document.getElementById("bc-body");
+    var open = bc.has_golden_angle;
+    var html = '<div class="bc-eyebrow">Competitive positioning</div>';
+    html += '<span class="bc-open-tag' + (open ? '' : ' closed') + '">' +
+      (open ? '⚑ Golden angle: a competitor already runs Algolia'
+            : '◇ Field is open — no direct competitor confirmed on Algolia') + '</span>';
+    if (bc.narrative) html += '<div class="bc-block"><h4>The angle</h4><p>' + escapeHtml(bc.narrative) + '</p></div>';
+    if (bc.talk_track) html += '<div class="bc-block"><h4>Talk track</h4><p>' + escapeHtml(bc.talk_track) + '</p></div>';
+    if (bc.case_study && bc.case_study.company) {
+      var cs = bc.case_study;
+      html += '<div class="bc-block"><h4>Proof point</h4><div class="bc-proof"><b>' + escapeHtml(cs.company) + '</b> — ' +
+        escapeHtml(cs.result) + (cs.url ? ' <a href="' + escapeHtml(cs.url) + '" target="_blank" rel="noopener">case study ↗</a>' : '') + '</div></div>';
+    } else if (bc.benchmark_proof) {
+      html += '<div class="bc-block"><h4>Proof point</h4><div class="bc-proof">' + escapeHtml(bc.benchmark_proof) + '</div></div>';
     }
+    if (bc.competitors && bc.competitors.length) {
+      html += '<div class="bc-block"><h4>Competitor search stack</h4><table class="bc-comp-table"><thead><tr>' +
+        '<th>Competitor</th><th>Search vendor</th><th>Algolia?</th></tr></thead><tbody>';
+      bc.competitors.forEach(function (c) {
+        html += '<tr><td>' + escapeHtml(c.name) + '</td><td>' + escapeHtml(c.vendor) + '</td>' +
+          '<td class="' + (c.uses_algolia ? 'yes' : 'no') + '">' + (c.uses_algolia ? 'YES' : 'no') + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+    if (!bc.narrative && !bc.talk_track && !(bc.competitors && bc.competitors.length)) {
+      html += '<p class="bc-empty">No competitive-angle data in this audit yet — nothing inferred.</p>';
+    }
+    if (bc.source) html += '<div class="bc-src">Source: ' + escapeHtml(bc.source) + '</div>';
+    body.innerHTML = html;
   }
 
   fetch("data/" + encodeURIComponent(account) + ".json")
@@ -353,7 +379,6 @@
       return r.json();
     })
     .then(function (d) {
-      document.getElementById("account-chip").textContent = "account: " + (d.meta.company || account);
       document.getElementById("company-name").textContent = d.meta.company + " — " + d.meta.domain;
       var scale = d.score.scale ? ("/" + d.score.scale) : "";
       document.getElementById("score-line").innerHTML =
@@ -430,10 +455,9 @@
         gateWrap.appendChild(el);
       });
 
-      // Action buttons
-      setBtn(document.getElementById("btn-battlecard"), d.battle_card, "Battle Card");
-      setBtn(document.getElementById("btn-playbook"), d.playbook, "Open AE Playbook");
-      setBtn(document.getElementById("btn-businesscase"), d.business_case, "Open Business Case");
+      // Battle Card renders into a native V2 drawer (no V1 bounce).
+      // Playbook / Business Case remain honest-disabled (next V2 artifacts).
+      renderBattleCard(d.battle_card_data || {});
 
       // Sources
       var activeWrap = document.getElementById("active-sources");
