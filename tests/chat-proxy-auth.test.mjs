@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { checkAuth, handleChatRequest } from "../server/chat-proxy.mjs";
+import { checkAuth, handleChat, handleChatRequest } from "../server/chat-proxy.mjs";
 
 /*
 Scenario list (P1 — Clerk-gate POST /api/chat, closes Risk §0.B):
@@ -105,4 +105,90 @@ test("post_chat_with_valid_session_reaches_existing_handleChat_logic", async () 
 
   assert.equal(res.statusCode, 400);
   assert.deepEqual(JSON.parse(res.body), { error: "empty message" });
+});
+
+// ── P3: gate handleChat on FastAPI visibility before forwarding to Hermes ──
+
+test("handle_chat_denies_when_fastapi_returns_404", async () => {
+  const req = makeReq({ body: { message: "what did you find", slug: "acme", sid: "s1" } });
+  const res = makeRes();
+  const calls = [];
+
+  const fetchImpl = async (url) => {
+    calls.push(String(url));
+    return new Response("not found", { status: 404 });
+  };
+
+  await handleChat(req, res, {
+    fetchImpl,
+    userId: "user_abc123",
+    email: "person@example.com",
+    trustSecret: "test-trust-secret",
+    apiBase: "https://fastapi.test",
+    hermesApiUrl: "http://127.0.0.1:9999",
+    hermesApiKey: "test-key",
+  });
+
+  assert.equal(res.statusCode, 403);
+  assert.deepEqual(JSON.parse(res.body), { error: "forbidden" });
+  assert.equal(calls.length, 1, "Hermes must never be called once FastAPI denies visibility");
+  assert.match(calls[0], /^https:\/\/fastapi\.test\/api\/v1\/audits\/by-slug\/acme\/data$/);
+});
+
+test("handle_chat_returns_503_when_fastapi_unreachable_no_fail_open_to_hermes", async () => {
+  const req = makeReq({ body: { message: "what did you find", slug: "acme", sid: "s1" } });
+  const res = makeRes();
+  let hermesWasCalled = false;
+
+  const fetchImpl = async (url) => {
+    if (String(url).includes("/by-slug/")) throw new Error("connect ECONNREFUSED");
+    hermesWasCalled = true;
+    throw new Error("test bug: hermes should never be reached");
+  };
+
+  await handleChat(req, res, {
+    fetchImpl,
+    userId: "user_abc123",
+    email: "person@example.com",
+    trustSecret: "test-trust-secret",
+    apiBase: "https://fastapi.test",
+    hermesApiUrl: "http://127.0.0.1:9999",
+    hermesApiKey: "test-key",
+  });
+
+  assert.equal(res.statusCode, 503);
+  assert.equal(hermesWasCalled, false);
+});
+
+test("handle_chat_mints_and_sends_trust_assertion_and_proceeds_to_hermes_on_200", async () => {
+  const req = makeReq({ body: { message: "what did you find", slug: "acme", sid: "s1" } });
+  const res = makeRes();
+  const calls = [];
+
+  const fetchImpl = async (url, init) => {
+    calls.push({ url: String(url), init });
+    if (String(url).includes("/by-slug/")) {
+      assert.ok(init.headers["X-Prism-User-Assertion"], "ACL check must carry the signed assertion header");
+      return new Response(JSON.stringify({ audit_data: {} }), { status: 200 });
+    }
+    // Hermes SSE stream, minimal valid frame.
+    const sse = 'event: response.output_text.delta\ndata: {"delta":"hi there"}\n\n';
+    return new Response(sse, { status: 200 });
+  };
+
+  await handleChat(req, res, {
+    fetchImpl,
+    userId: "user_abc123",
+    email: "person@example.com",
+    trustSecret: "test-trust-secret",
+    apiBase: "https://fastapi.test",
+    hermesApiUrl: "http://127.0.0.1:9999",
+    hermesApiKey: "test-key",
+  });
+
+  assert.equal(res.statusCode, 200);
+  assert.equal(calls.length, 2, "must call FastAPI's by-slug check, then Hermes");
+  assert.match(calls[0].url, /by-slug\/acme\/data/);
+  assert.match(calls[1].url, /\/v1\/responses$/);
+  assert.equal(res.body, "hi there");
 });

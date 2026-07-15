@@ -11,9 +11,11 @@
  * so nothing routes through judge.contentengagement.info.
  *
  * Env (server-side only):
- *   HERMES_API_URL  http://127.0.0.1:8642   (loopback to the Hermes brain)
- *   HERMES_API_KEY  the bearer (Hermes API_SERVER_KEY)
- *   PORT            listen port (default 8651, bind 127.0.0.1 — Caddy fronts it)
+ *   HERMES_API_URL      http://127.0.0.1:8642   (loopback to the Hermes brain)
+ *   HERMES_API_KEY      the bearer (Hermes API_SERVER_KEY)
+ *   PORT                listen port (default 8651, bind 127.0.0.1 — Caddy fronts it)
+ *   PRISM_TRUST_SECRET  HMAC secret shared with FastAPI's resolve_user_id (04-spec.md §4)
+ *   PRISM_API_BASE_URL  base URL for the PIP FastAPI service (e.g. http://127.0.0.1:8000)
  */
 
 import http from "node:http";
@@ -21,12 +23,15 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { readFile, stat } from "node:fs/promises";
 import { createLiveAvatarEmbed } from "../api/avatar/_liveavatar.js";
+import { mintAssertion } from "./_trust_assertion.mjs";
 
 const HERMES_API_URL = process.env.HERMES_API_URL;
 const HERMES_API_KEY = process.env.HERMES_API_KEY;
 const PORT = Number(process.env.PORT || 8651);
 const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism-hub";
 const MAX_MESSAGE_CHARS = 2000;
+const PRISM_TRUST_SECRET = process.env.PRISM_TRUST_SECRET || "";
+const PRISM_API_BASE_URL = process.env.PRISM_API_BASE_URL || "";
 
 // ── Auth gate (Clerk) ───────────────────────────────────────────────────────
 // The landing ("/") + marketing pages stay public. The audit reports (/reports
@@ -185,6 +190,11 @@ export async function handleChat(req, res, deps = {}) {
     fetchImpl = fetch,
     hermesApiUrl = HERMES_API_URL,
     hermesApiKey = HERMES_API_KEY,
+    userId,
+    email,
+    trustSecret = PRISM_TRUST_SECRET,
+    apiBase = PRISM_API_BASE_URL,
+    mintAssertionFn = mintAssertion,
   } = deps;
   if (!hermesApiUrl || !hermesApiKey) {
     return sendJson(res, 500, { error: "chat not configured" });
@@ -199,6 +209,33 @@ export async function handleChat(req, res, deps = {}) {
   if (!slug) return sendJson(res, 400, { error: "missing slug" });
 
   const reportSlug = SLUG_ALIASES[slug] || slug;
+
+  // §3/§4 [C1, C2]: this authenticated caller must be verified as able to SEE this slug's
+  // audit in FastAPI before we ever forward to Hermes. Fail-closed per spec §4's explicit
+  // clause — an unreachable or misconfigured ACL check is 503, never a silent fall-through
+  // to the old Hermes-only path (that fall-through is exactly the Risk §0.B gap this closes).
+  if (!trustSecret || !apiBase) {
+    return sendJson(res, 503, { error: "acl check unavailable" });
+  }
+  let aclResponse;
+  try {
+    const assertion = mintAssertionFn({ userId, email, secret: trustSecret });
+    aclResponse = await fetchImpl(
+      `${apiBase}/api/v1/audits/by-slug/${encodeURIComponent(reportSlug)}/data`,
+      { headers: { "X-Prism-User-Assertion": assertion } }
+    );
+  } catch {
+    return sendJson(res, 503, { error: "acl check unavailable" });
+  }
+  if (aclResponse.status === 404) {
+    // Translate FastAPI's 404 to 403 — never leak "this slug/audit doesn't exist" vs
+    // "exists but you can't see it" to an unauthorized caller (04-spec.md §3 [C2]).
+    return sendJson(res, 403, { error: "forbidden" });
+  }
+  if (!aclResponse.ok) {
+    return sendJson(res, 503, { error: "acl check failed" });
+  }
+
   const sessionKey = `agent:main:prism:web:${sid}:acct:${reportSlug}`.replace(/[\r\n\x00]/g, "");
   const conversation = `prism:web:${sid}:${reportSlug}`;
   const input = message.toLowerCase().includes(reportSlug.split("-")[0])
