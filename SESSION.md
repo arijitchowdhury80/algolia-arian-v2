@@ -75,4 +75,4 @@ Arijit was mid-demo on `localhost:8123` when the session ended. The last code ch
 
 ## UNRELATED, STILL-PENDING THREAD (not touched this session)
 
-Bible doc effort + `feat/audit-acl` auth-fix merge — both exactly where 2026-07-14 left them. See vault `Projects/PRISM/index.md`'s "Next resume action" block for both options. Do not restart the development-loop ceremony for either.
+Notebook doc effort + `feat/audit-acl` auth-fix merge — both exactly where 2026-07-14 left them. See vault `Projects/PRISM/index.md`'s "Next resume action" block for both options. Do not restart the development-loop ceremony for either.
