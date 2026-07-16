@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Landing Page — Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #003DFF;
+    --color-accent: #5468FF;
+    --color-text: #23263B;
+    --color-muted: #6B7280;
+    --color-bg: #F5F5F7;
+    --color-border: #E5E7EB;
+    --color-white: #FFFFFF;
+    --topbar-bg: #23263B;
+    --color-positive: #059669;
+    --color-positive-tint: #F0FDF4;
+    --color-positive-border: #BBF7D0;
+    --color-moderate: #D97706;
+    --color-moderate-tint: #FFFBEB;
+    --font-family: 'Sora', sans-serif;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+    --maxw: 920px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px 80px; }
+
+  /* Topbar */
+  #topbar {
+    height: 52px;
+    background: var(--topbar-bg);
+    display: flex; align-items: center;
+    padding: 0 24px; gap: 12px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  #topbar img { height: 20px; filter: brightness(0) invert(1); }
+  #topbar .tb-title { color: #fff; font-weight: 600; font-size: 15px; }
+  #topbar .tb-sub { color: rgba(255,255,255,0.55); font-size: 13px; }
+
+  /* Stepper */
+  #stepper {
+    display: flex; gap: 4px; margin: 32px 0 28px;
+    background: var(--color-white); border: 1px solid var(--color-border);
+    border-radius: 100px; padding: 4px;
+  }
+  .step-btn {
+    flex: 1; text-align: center; padding: 10px 8px;
+    border-radius: 100px; font-size: 14px; font-weight: 600;
+    color: var(--color-muted); cursor: pointer; border: none;
+    background: none; font-family: inherit; transition: all .15s;
+  }
+  .step-btn.active { background: var(--color-text); color: #fff; }
+  .step-btn.done { color: var(--color-positive); }
+  .step-btn:disabled { cursor: not-allowed; opacity: .5; }
+
+  /* Section chrome */
+  .eyebrow {
+    font-size: 13px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.10em; color: var(--color-primary); margin-bottom: 4px;
+  }
+  h2.section-title { font-size: 28px; font-weight: 300; margin: 0 0 6px; letter-spacing: -0.5px; }
+  p.section-desc { color: var(--color-muted); margin: 0 0 24px; font-size: 15px; }
+  hr.section-divider { border: none; border-top: 1px solid var(--color-border); margin-bottom: 28px; }
+
+  /* Cards / grid */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pick-card {
+    border: 1.5px solid var(--color-border); border-radius: var(--radius);
+    padding: 14px; cursor: pointer; background: var(--color-white);
+    transition: border-color .12s, background .12s;
+  }
+  .pick-card:hover { border-color: var(--color-accent); background: #EEF2FF; }
+  .pick-card.selected { border-color: var(--color-primary); background: #EEF2FF; }
+  .pick-card .pc-label { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .pick-card .pc-note { font-size: 12px; color: var(--color-muted); }
+  .pick-card .pc-check { float: right; color: var(--color-primary); font-weight: 700; visibility: hidden; }
+  .pick-card.selected .pc-check { visibility: visible; }
+
+  .slot-label { font-size: 14px; font-weight: 600; margin: 20px 0 8px; }
+  .slot-label .req { color: var(--color-primary); font-size: 12px; font-weight: 600; margin-left: 6px; }
+
+  /* Ordered section-instance list (Step 1) */
+  .section-instance-row {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    border: 1px solid var(--color-border); border-radius: 6px; margin-bottom: 6px; background: #fff;
+  }
+  .sir-index { font-weight: 600; color: var(--color-muted); width: 20px; flex-shrink: 0; }
+  .sir-label { flex: 1; font-weight: 600; font-size: 14px; }
+
+  .recommend-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #EEF2FF; border: 1px solid #C7D2FE; border-radius: var(--radius);
+    padding: 12px 16px; margin-bottom: 20px; font-size: 14px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 18px; border-radius: 100px; font-weight: 600; font-size: 14px;
+    cursor: pointer; border: none; font-family: inherit; transition: opacity .12s;
+  }
+  .btn-primary { background: var(--color-primary); color: #fff; }
+  .btn-outline { background: #fff; border: 1.5px solid var(--color-border); color: var(--color-text); }
+  .btn:hover { opacity: .88; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+
+  /* Brand override panel */
+  details.override-panel {
+    margin-top: 28px; border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 14px 16px; background: var(--color-white);
+  }
+  details.override-panel summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+  .override-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
+  .field input[type=text], .field input[type=url] {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--color-border);
+    border-radius: 6px; font-family: inherit; font-size: 14px;
+  }
+  .field input[type=color] { width: 44px; height: 32px; border-radius: 6px; border: 1px solid var(--color-border); }
+  .field-inline { display: flex; align-items: center; gap: 10px; }
+
+  /* Step 2: audit picker + candidates */
+  .audit-picker { display: flex; gap: 10px; margin-bottom: 24px; align-items: center; }
+  .audit-picker select {
+    flex: 1; padding: 9px 12px; border: 1px solid var(--color-border);
+    border-radius: 6px; font-family: inherit; font-size: 14px; background: #fff;
+  }
+  .manual-note { font-size: 13px; color: var(--color-muted); margin-bottom: 20px; }
+
+  .content-section { border: 1px solid var(--color-border); border-radius: var(--radius); padding: 18px; margin-bottom: 18px; background: #fff; }
+  .content-section h3 { font-size: 16px; margin: 0 0 12px; }
+  .candidate-row {
+    display: flex; gap: 10px; align-items: flex-start; padding: 10px;
+    border: 1px solid var(--color-border); border-radius: 6px; margin-bottom: 8px; background: var(--color-bg);
+  }
+  .candidate-row.rejected { opacity: .45; }
+  .candidate-row input[type=checkbox] { margin-top: 3px; }
+  .remove-btn {
+    background: none; border: none; cursor: pointer; color: #7F1D1D;
+    font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 4px;
+    flex-shrink: 0; margin-left: auto;
+  }
+  .remove-btn:hover { background: #FEF2F2; }
+  .candidate-fields { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .candidate-fields input, .candidate-fields textarea {
+    width: 100%; padding: 6px 8px; border: 1px solid var(--color-border);
+    border-radius: 5px; font-family: inherit; font-size: 13px; resize: vertical;
+  }
+  .candidate-tag {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--color-primary);
+  }
+  .add-manual-btn { font-size: 13px; margin-top: 4px; }
+
+  /* Step 3: preview */
+  #preview-banner {
+    background: var(--color-moderate-tint); border: 1px solid #FDE68A;
+    color: #92400E; padding: 10px 16px; border-radius: var(--radius);
+    font-size: 13px; font-weight: 600; margin-bottom: 20px; text-align: center;
+  }
+  #preview-frame {
+    border: 1px solid var(--color-border); border-radius: var(--radius);
+    overflow: hidden; background: #fff;
+  }
+
+  /* Nav footer */
+  #nav-footer { display: flex; justify-content: space-between; margin-top: 32px; }
+
+  #build-result {
+    margin-top: 20px; padding: 16px; border-radius: var(--radius);
+    background: var(--color-positive-tint); border: 1px solid var(--color-positive-border);
+    font-size: 14px; display: none;
+  }
+  #build-result.show { display: block; }
+  #build-error {
+    margin-top: 20px; padding: 16px; border-radius: var(--radius);
+    background: #FEF2F2; border: 1px solid #FECACA; color: #7F1D1D;
+    font-size: 14px; display: none;
+  }
+  #build-error.show { display: block; }
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <img src="assets/algolia-mark-blue.svg" alt="Algolia">
+  <span class="tb-title">Custom Landing Page</span>
+  <span class="tb-sub">— intake wizard</span>
+</header>
+
+<div class="wrap">
+
+  <div id="stepper"></div>
+
+  <!-- ============ STEP 1: SECTION SELECTION ============ -->
+  <section id="step-1" class="step-pane">
+    <p class="eyebrow">Step 1 of 4</p>
+    <h2 class="section-title">Choose your sections</h2>
+    <p class="section-desc">Pick one hero and one footer. Build the body by adding sections one at a time — the same type can be added more than once, each with its own independent content, and you can remove any of them.</p>
+    <hr class="section-divider">
+
+    <div class="recommend-bar">
+      <span>Recommended: Hero (image + 2 CTAs), Proof stats, Findings, Capabilities, Plain CTA footer</span>
+      <button class="btn btn-outline" onclick="applyRecommended()">Use recommended</button>
+    </div>
+
+    <div class="slot-label">Hero <span class="req">choose 1</span></div>
+    <div class="grid-3" id="hero-picker"></div>
+
+    <div class="slot-label">Body sections <span class="req">click to add — any type, any number of times</span></div>
+    <div class="grid-3" id="body-palette"></div>
+    <div id="sections-list" style="margin-top:14px"></div>
+
+    <div class="slot-label">Footer <span class="req">choose 1</span></div>
+    <div class="grid-3" id="footer-picker"></div>
+
+    <details class="override-panel">
+      <summary>Brand override (optional) — leave blank to use default Algolia tokens</summary>
+      <div class="override-grid">
+        <div class="field field-inline">
+          <div><label for="ov-primary">Primary color</label><input type="color" id="ov-primary" value="#003DFF"></div>
+        </div>
+        <div class="field field-inline">
+          <div><label for="ov-accent">Accent color</label><input type="color" id="ov-accent" value="#5468FF"></div>
+        </div>
+        <div class="field">
+          <label for="ov-font">Font family</label>
+          <input type="text" id="ov-font" placeholder="Sora (default)">
+        </div>
+        <div class="field">
+          <label for="ov-logo">Logo URL</label>
+          <input type="url" id="ov-logo" placeholder="https://... (default Algolia mark)">
+        </div>
+      </div>
+    </details>
+
+    <div id="nav-footer">
+      <span></span>
+      <button class="btn btn-primary" onclick="goToStep(2)">Next: Content →</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2: PER-SECTION CONTENT ============ -->
+  <section id="step-2" class="step-pane" style="display:none">
+    <p class="eyebrow">Step 2 of 4</p>
+    <h2 class="section-title">Add content for each section</h2>
+    <p class="section-desc">Optionally pull candidates from a PRISM audit — you approve, edit, or reject each one. Everything also accepts free-typed content with no audit at all.</p>
+    <hr class="section-divider">
+
+    <div class="audit-picker">
+      <select id="audit-select">
+        <option value="">— No PRISM audit (fully manual) —</option>
+      </select>
+      <button class="btn btn-outline" onclick="loadCandidates()">Load candidates</button>
+    </div>
+    <p class="manual-note">Loads into the first matching section below (Findings/Accordion, and Proof stats) — it never auto-includes anything, and skipping this entirely is a fully supported path.</p>
+
+    <details class="override-panel" style="margin-top:0;margin-bottom:20px">
+      <summary>Import from an external source (optional) — paste audit-data JSON from anywhere else</summary>
+      <div style="margin-top:12px">
+        <textarea id="external-json" rows="4" style="width:100%;padding:8px;border:1px solid var(--color-border);border-radius:6px;font-family:monospace;font-size:12px" placeholder='{"findings": [...], "case_studies": [...]}'></textarea>
+        <button class="btn btn-outline" style="margin-top:8px" onclick="extractFromExternalJson()">Extract candidates from pasted JSON</button>
+        <p class="manual-note" id="external-json-status" style="margin-top:8px"></p>
+      </div>
+    </details>
+
+    <div id="company-fields" class="content-section">
+      <h3>Company</h3>
+      <div class="field"><label>Company name</label><input type="text" id="company-name" placeholder="e.g. Dell Technologies"></div>
+      <div class="field" style="margin-top:10px"><label>Slug (used in the page URL)</label><input type="text" id="company-slug" placeholder="e.g. dell"></div>
+    </div>
+
+    <div id="hero-content" class="content-section">
+      <h3>Hero</h3>
+      <div class="field"><label>Eyebrow (vertical tag)</label><input type="text" id="hero-eyebrow" placeholder="e.g. Technology Hardware"></div>
+      <div class="field" style="margin-top:10px"><label>Headline</label><input type="text" id="hero-headline" placeholder="e.g. A $186M revenue opportunity inside dell.com"></div>
+      <div class="field" style="margin-top:10px"><label>Subhead</label><textarea id="hero-sub" rows="2" placeholder="One or two sentences of context"></textarea></div>
+    </div>
+
+    <div id="sections-content-container"></div>
+
+    <div id="cta-content" class="content-section">
+      <h3>Call to action (footer)</h3>
+      <div class="field"><label>CTA heading</label><input type="text" id="cta-heading" placeholder="e.g. Let's size this properly"></div>
+      <div class="field" style="margin-top:10px"><label>Button label</label><input type="text" id="cta-button" placeholder="e.g. Talk to your rep"></div>
+    </div>
+
+    <div id="nav-footer">
+      <button class="btn btn-outline" onclick="goToStep(1)">← Back</button>
+      <button class="btn btn-primary" onclick="goToStep(3)">Next: Preview →</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3: APPROXIMATE PREVIEW ============ -->
+  <section id="step-3" class="step-pane" style="display:none">
+    <p class="eyebrow">Step 3 of 4</p>
+    <h2 class="section-title">Preview</h2>
+    <p class="section-desc">Rendered through the real production pipeline — same partials, same renderer a build uses. The only difference from a real build: nothing here is saved or published.</p>
+    <hr class="section-divider">
+
+    <div id="preview-banner">PREVIEW — NOT PUBLISHED. This is the real render, just not saved anywhere yet.</div>
+    <div id="preview-frame"></div>
+
+    <div id="nav-footer">
+      <button class="btn btn-outline" onclick="goToStep(2)">← Back</button>
+      <button class="btn btn-primary" onclick="goToStep(4)">Next: Build →</button>
+    </div>
+  </section>
+
+  <!-- ============ STEP 4: BUILD ============ -->
+  <section id="step-4" class="step-pane" style="display:none">
+    <p class="eyebrow">Step 4 of 4</p>
+    <h2 class="section-title">Review and build</h2>
+    <p class="section-desc">This submits the page for the real render. You can still go back and change anything first.</p>
+    <hr class="section-divider">
+
+    <div id="review-summary" class="content-section"></div>
+
+    <div id="nav-footer">
+      <button class="btn btn-outline" onclick="goToStep(3)">← Back</button>
+      <button class="btn btn-primary" id="build-btn" onclick="submitBuild()">Build page</button>
+    </div>
+    <div id="build-result"></div>
+    <div id="build-error"></div>
+  </section>
+
+</div>
+
+<script>
+// ---------------------------------------------------------------------------
+// Section catalog — mirrors docs/workspace/custom-landing-page/00-design-system.md
+// "Ship in this spike" rows. Edit that doc first, then this list, if a
+// deferred variant is promoted.
+// ---------------------------------------------------------------------------
+const HERO_VARIANTS = [
+  { id: 'hero-image-2cta', label: 'Hero + image, 2 CTAs', note: 'Nav optional' },
+  { id: 'hero-single-column', label: 'Single-column title/subtitle', note: 'CTAs optional' },
+  { id: 'hero-kelly-personalized', label: 'Solid blue, personalized', note: '"...FOR {Company}"' },
+];
+const BODY_VARIANTS = [
+  { id: 'body-proof-stats', label: 'Proof stats (3-up)', note: 'Case studies' },
+  { id: 'body-roi', label: 'ROI tiers', note: 'Conservative/moderate/aggressive' },
+  { id: 'body-left-right', label: 'Left/right findings', note: 'Alternating image+copy' },
+  { id: 'body-grid', label: 'Icon grid (capabilities)', note: '2/3/4-column' },
+  { id: 'body-accordion', label: 'Accordion', note: 'Plain, click to expand' },
+  { id: 'body-custom', label: 'Custom', note: 'Your own raw HTML/text block' },
+];
+const FOOTER_VARIANTS = [
+  { id: 'footer-plain-cta', label: 'Plain CTA footer', note: 'Blue band + dark footer' },
+  { id: 'footer-alt-gradient', label: 'Alt gradient CTA footer', note: 'Hero-gradient band' },
+];
+const RECOMMENDED = {
+  hero: 'hero-image-2cta',
+  body: ['body-proof-stats', 'body-left-right', 'body-grid'],
+  footer: 'footer-plain-cta',
+};
+function variantLabel(id) {
+  return BODY_VARIANTS.find(v => v.id === id)?.label || id;
+}
+
+// ---------------------------------------------------------------------------
+// State
+// ---------------------------------------------------------------------------
+// state.sections is an ORDERED, independently addable/removable list of body
+// section INSTANCES -- {id, variant, content}. Two instances of the same
+// variant are fully independent: adding a second "ROI tiers" section does
+// not share or split content with the first. Hero and footer stay
+// single-instance (a page has exactly one of each), so they're separate
+// state.hero / state.footer fields, not part of this list.
+let sectionIdSeq = 0;
+function defaultContentForVariant(variantId) {
+  switch (variantId) {
+    case 'body-proof-stats':
+      return {
+        eyebrow: 'Proven at your scale',
+        heading: 'Companies with a similar search problem, solved',
+        subheading: 'Already running on Algolia.',
+        candidates: [], manual: [],
+      };
+    case 'body-left-right':
+      return { eyebrow: 'What PRISM found', heading: '', subheading: 'Observed directly, not inferred.', candidates: [], manual: [] };
+    case 'body-accordion':
+      return { eyebrow: 'What PRISM found', heading: '', subheading: 'Observed directly, not inferred.', candidates: [], manual: [] };
+    case 'body-roi':
+      return {
+        conservative: { amount: '', desc: '' },
+        moderate: { amount: '', desc: '' },
+        aggressive: { amount: '', desc: '' },
+      };
+    case 'body-grid':
+      return {
+        eyebrow: 'Built for continuous optimization',
+        heading: 'The platform behind the fix',
+        sub: 'Not a one-time integration — a system your team keeps improving.',
+        items: [],
+      };
+    case 'body-custom':
+      return { html: '' };
+    default:
+      return {};
+  }
+}
+
+const state = {
+  step: 1,
+  maxStepReached: 1,
+  hero: null,
+  footer: null,
+  sections: [],
+  theme: {},
+  audit_id: null,
+  company: {},
+  hero_content: {},
+  cta: {},
+};
+function getSection(id) {
+  return state.sections.find(s => s.id === id);
+}
+
+// ---------------------------------------------------------------------------
+// Stepper
+// ---------------------------------------------------------------------------
+const STEP_LABELS = ['1. Sections', '2. Content', '3. Preview', '4. Build'];
+function renderStepper() {
+  const el = document.getElementById('stepper');
+  el.innerHTML = STEP_LABELS.map((label, i) => {
+    const n = i + 1;
+    const cls = n === state.step ? 'active' : (n < state.maxStepReached ? 'done' : '');
+    const disabled = n > state.step && !canJumpTo(n) ? 'disabled' : '';
+    return `<button class="step-btn ${cls}" ${disabled} onclick="goToStep(${n})">${label}</button>`;
+  }).join('');
+}
+function canJumpTo(n) {
+  // Only allow jumping forward to a step already visited. Uses
+  // maxStepReached (furthest-ever), not step (currently-visible) --
+  // otherwise going back would re-lock steps you'd already unlocked.
+  return n <= state.maxStepReached;
+}
+function goToStep(n) {
+  if (n === 2 && !validateStep1()) return;
+  document.querySelectorAll('.step-pane').forEach((el, i) => {
+    el.style.display = (i === n - 1) ? '' : 'none';
+  });
+  state.step = n;
+  state.maxStepReached = Math.max(state.maxStepReached, n);
+  renderStepper();
+  if (n === 2) renderSectionsContent();
+  if (n === 3) renderPreview();
+  if (n === 4) renderReview();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function validateStep1() {
+  if (!state.hero) { alert('Choose a hero variant first.'); return false; }
+  if (state.sections.length === 0) { alert('Add at least one body section.'); return false; }
+  if (!state.footer) { alert('Choose a footer variant.'); return false; }
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// Step 1: hero/footer pickers + body section add/remove list
+// ---------------------------------------------------------------------------
+function renderPickers() {
+  renderRadioGroup('hero-picker', HERO_VARIANTS, 'hero');
+  renderBodyPalette();
+  renderSectionsList();
+  renderRadioGroup('footer-picker', FOOTER_VARIANTS, 'footer');
+}
+function renderRadioGroup(containerId, variants, key) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = variants.map(v => `
+    <div class="pick-card ${state[key] === v.id ? 'selected' : ''}" onclick="selectRadio('${key}','${v.id}')">
+      <span class="pc-check">✓</span>
+      <div class="pc-label">${escapeHtml(v.label)}</div>
+      <div class="pc-note">${escapeHtml(v.note)}</div>
+    </div>`).join('');
+}
+function renderBodyPalette() {
+  const el = document.getElementById('body-palette');
+  el.innerHTML = BODY_VARIANTS.map(v => `
+    <div class="pick-card" onclick="addSection('${v.id}')">
+      <div class="pc-label">+ ${escapeHtml(v.label)}</div>
+      <div class="pc-note">${escapeHtml(v.note)}</div>
+    </div>`).join('');
+}
+function selectRadio(key, id) { state[key] = id; renderPickers(); }
+
+function addSection(variantId) {
+  state.sections.push({ id: `sec-${++sectionIdSeq}`, variant: variantId, content: defaultContentForVariant(variantId) });
+  renderSectionsList();
+}
+function removeSection(id) {
+  state.sections = state.sections.filter(s => s.id !== id);
+  renderSectionsList();
+}
+function renderSectionsList() {
+  const el = document.getElementById('sections-list');
+  if (!state.sections.length) {
+    el.innerHTML = '<p class="manual-note" style="margin:0">No sections added yet — click a card above to add one. The same type can be added more than once.</p>';
+    return;
+  }
+  el.innerHTML = state.sections.map((s, i) => `
+    <div class="section-instance-row">
+      <span class="sir-index">${i + 1}</span>
+      <span class="sir-label">${escapeHtml(variantLabel(s.variant))}</span>
+      <button class="remove-btn" title="Remove this section" onclick="removeSection('${s.id}')">&times;</button>
+    </div>`).join('');
+}
+function applyRecommended() {
+  state.hero = RECOMMENDED.hero;
+  state.footer = RECOMMENDED.footer;
+  state.sections = RECOMMENDED.body.map(v => ({ id: `sec-${++sectionIdSeq}`, variant: v, content: defaultContentForVariant(v) }));
+  renderPickers();
+}
+
+// ---------------------------------------------------------------------------
+// Step 2: audit picker + external import (target the first matching section)
+// ---------------------------------------------------------------------------
+function findFirstSectionByVariants(variantIds) {
+  return state.sections.find(s => variantIds.includes(s.variant)) || null;
+}
+async function loadAuditList() {
+  try {
+    const res = await fetch('/api/v1/landing-pages/audits');
+    if (!res.ok) return;
+    const audits = await res.json();
+    const sel = document.getElementById('audit-select');
+    audits.forEach(a => {
+      const opt = document.createElement('option');
+      opt.value = a.id;
+      opt.textContent = `${a.company_name} (${a.domain})`;
+      sel.appendChild(opt);
+    });
+  } catch (e) {
+    console.warn('Could not load audit list — manual-only intake still fully works.', e);
+  }
+}
+
+async function loadCandidates() {
+  const auditId = document.getElementById('audit-select').value;
+  state.audit_id = auditId || null;
+  if (!auditId) return;
+  try {
+    const res = await fetch(`/api/v1/landing-pages/audits/${auditId}/candidates`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const pool = await res.json();
+    const findingsTarget = findFirstSectionByVariants(['body-left-right', 'body-accordion']);
+    const proofTarget = findFirstSectionByVariants(['body-proof-stats']);
+    if (findingsTarget) {
+      findingsTarget.content.candidates = pool.candidates.filter(c => c.kind === 'finding').map(c => ({ ...c, accepted: true }));
+    }
+    if (proofTarget) {
+      proofTarget.content.candidates = pool.candidates.filter(c => c.kind === 'case_study').map(c => ({ ...c, accepted: true }));
+    }
+    if (!findingsTarget && !proofTarget) {
+      alert('No Findings/Accordion or Proof stats section added yet in Step 1 — add one first, then load candidates again.');
+    }
+    if (!document.getElementById('company-name').value) {
+      document.getElementById('company-name').value = pool.company_name || '';
+    }
+    renderSectionsContent();
+  } catch (e) {
+    alert('Could not load candidates from that audit. You can still add content manually below.');
+    console.error(e);
+  }
+}
+
+async function extractFromExternalJson() {
+  const statusEl = document.getElementById('external-json-status');
+  const raw = document.getElementById('external-json').value.trim();
+  if (!raw) {
+    statusEl.textContent = 'Paste some JSON first.';
+    return;
+  }
+  let auditData;
+  try {
+    auditData = JSON.parse(raw);
+  } catch (e) {
+    statusEl.textContent = `Invalid JSON: ${e.message}`;
+    return;
+  }
+  statusEl.textContent = 'Extracting…';
+  try {
+    const res = await fetch('/api/v1/landing-pages/extract-from-json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        company_name: document.getElementById('company-name').value || 'External source',
+        audit_data: auditData,
+      }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const pool = await res.json();
+    const findingsTarget = findFirstSectionByVariants(['body-left-right', 'body-accordion']);
+    const proofTarget = findFirstSectionByVariants(['body-proof-stats']);
+    // Additive: external candidates join whatever's already there (e.g.
+    // from a PRISM audit), tagged for traceability, never replacing.
+    const extFindings = pool.candidates.filter(c => c.kind === 'finding').map(c => ({ ...c, accepted: true, origin: 'external' }));
+    const extProof = pool.candidates.filter(c => c.kind === 'case_study').map(c => ({ ...c, accepted: true, origin: 'external' }));
+    if (findingsTarget) findingsTarget.content.candidates.push(...extFindings);
+    if (proofTarget) proofTarget.content.candidates.push(...extProof);
+    renderSectionsContent();
+    const targetNote = (!findingsTarget && extFindings.length) || (!proofTarget && extProof.length)
+      ? ' Some extracted items had no matching section to land in — add that section type in Step 1 first.'
+      : '';
+    statusEl.textContent = `Added ${extFindings.length} finding(s) and ${extProof.length} proof point(s) from the pasted JSON.${targetNote} ${pool.skipped_fields.length ? `Skipped: ${pool.skipped_fields.join(', ')}.` : ''}`;
+  } catch (e) {
+    statusEl.textContent = `Extraction failed: ${e.message}`;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Step 2: per-section-instance content editing
+// ---------------------------------------------------------------------------
+function renderSectionsContent() {
+  const container = document.getElementById('sections-content-container');
+  if (!state.sections.length) {
+    container.innerHTML = '<p class="manual-note">No body sections added — go back to Step 1 to add some.</p>';
+    return;
+  }
+  container.innerHTML = state.sections.map((s, i) => `
+    <div class="content-section">
+      <h3>${i + 1}. ${escapeHtml(variantLabel(s.variant))}</h3>
+      <div id="section-body-${s.id}"></div>
+    </div>`).join('');
+  state.sections.forEach(s => renderSectionFields(s));
+}
+function renderSectionFields(section) {
+  const el = document.getElementById(`section-body-${section.id}`);
+  if (!el) return;
+  if (section.variant === 'body-proof-stats') el.innerHTML = renderProofFields(section);
+  else if (section.variant === 'body-left-right' || section.variant === 'body-accordion') el.innerHTML = renderFindingsFields(section);
+  else if (section.variant === 'body-roi') el.innerHTML = renderRoiFields(section);
+  else if (section.variant === 'body-grid') el.innerHTML = renderCapabilitiesFields(section);
+  else if (section.variant === 'body-custom') el.innerHTML = renderCustomFields(section);
+}
+
+function renderCandidateRows(section) {
+  return section.content.candidates.map((c, i) => `
+    <div class="candidate-row ${c.accepted ? '' : 'rejected'}">
+      <input type="checkbox" ${c.accepted ? 'checked' : ''} onchange="toggleSectionCandidate('${section.id}',${i})">
+      <div class="candidate-fields">
+        <span class="candidate-tag">${escapeHtml(c.tag || c.kind)} · from ${escapeHtml(c.source_field)}${c.origin === 'external' ? ' · external' : ''}</span>
+        <input type="text" value="${escapeAttr(c.title)}" oninput="editSectionCandidate('${section.id}',${i},'title',this.value)">
+        <textarea rows="2" oninput="editSectionCandidate('${section.id}',${i},'body',this.value)">${escapeHtml(c.body || '')}</textarea>
+        <input type="text" placeholder="metric" value="${escapeAttr(c.metric || '')}" oninput="editSectionCandidate('${section.id}',${i},'metric',this.value)">
+      </div>
+      <button class="remove-btn" title="Remove" onclick="removeSectionCandidate('${section.id}',${i})">&times;</button>
+    </div>`).join('');
+}
+function toggleSectionCandidate(id, i) { getSection(id).content.candidates[i].accepted = !getSection(id).content.candidates[i].accepted; renderSectionFields(getSection(id)); }
+function removeSectionCandidate(id, i) { getSection(id).content.candidates.splice(i, 1); renderSectionFields(getSection(id)); }
+function editSectionCandidate(id, i, field, value) { getSection(id).content.candidates[i][field] = value; }
+
+function renderManualRows(section) {
+  return section.content.manual.map((item, i) => `
+    <div class="candidate-row">
+      <div class="candidate-fields">
+        <span class="candidate-tag">Manual entry</span>
+        <input type="text" placeholder="Title" value="${escapeAttr(item.title)}" oninput="editSectionManual('${section.id}',${i},'title',this.value)">
+        <textarea rows="2" placeholder="Body" oninput="editSectionManual('${section.id}',${i},'body',this.value)">${escapeHtml(item.body)}</textarea>
+        <input type="text" placeholder="metric (optional)" value="${escapeAttr(item.metric)}" oninput="editSectionManual('${section.id}',${i},'metric',this.value)">
+      </div>
+      <button class="remove-btn" title="Remove" onclick="removeSectionManual('${section.id}',${i})">&times;</button>
+    </div>`).join('');
+}
+function addSectionManual(id) { getSection(id).content.manual.push({ title: '', body: '', metric: '' }); renderSectionFields(getSection(id)); }
+function removeSectionManual(id, i) { getSection(id).content.manual.splice(i, 1); renderSectionFields(getSection(id)); }
+function editSectionManual(id, i, field, value) { getSection(id).content.manual[i][field] = value; }
+
+function renderProofFields(section) {
+  return `${renderCandidateRows(section)}${renderManualRows(section)}
+    <button class="btn btn-outline add-manual-btn" onclick="addSectionManual('${section.id}')">+ Add proof point manually</button>`;
+}
+function renderFindingsFields(section) {
+  return `${renderCandidateRows(section)}${renderManualRows(section)}
+    <button class="btn btn-outline add-manual-btn" onclick="addSectionManual('${section.id}')">+ Add finding manually</button>`;
+}
+
+const ROI_TIER_DEFS = [
+  { key: 'conservative', label: 'Conservative', badge: null },
+  { key: 'moderate', label: 'Moderate (shown with "Most likely" badge)', badge: 'Most likely' },
+  { key: 'aggressive', label: 'Best case', badge: null },
+];
+function renderRoiFields(section) {
+  return `<p class="manual-note" style="margin-bottom:12px">Leave a tier's amount blank to omit it — no placeholder numbers are ever shown.</p>` +
+    ROI_TIER_DEFS.map(t => `
+      <div class="candidate-row">
+        <div class="candidate-fields">
+          <span class="candidate-tag">${escapeHtml(t.label)}</span>
+          <input type="text" placeholder="Amount, e.g. $64M" value="${escapeAttr(section.content[t.key].amount)}" oninput="editSectionRoi('${section.id}','${t.key}','amount',this.value)">
+          <textarea rows="2" placeholder="Description" oninput="editSectionRoi('${section.id}','${t.key}','desc',this.value)">${escapeHtml(section.content[t.key].desc)}</textarea>
+        </div>
+      </div>`).join('');
+}
+function editSectionRoi(id, tier, field, value) { getSection(id).content[tier][field] = value; }
+
+function renderCapabilitiesFields(section) {
+  return `<p class="manual-note" style="margin-bottom:12px">Leave blank to use Algolia's default 4-capability set. Add your own to replace it entirely.</p>` +
+    section.content.items.map((item, i) => `
+      <div class="candidate-row">
+        <div class="candidate-fields">
+          <span class="candidate-tag">Capability ${i + 1}</span>
+          <input type="text" placeholder="Icon (emoji or short text, e.g. A/B)" value="${escapeAttr(item.icon)}" oninput="editSectionCapability('${section.id}',${i},'icon',this.value)">
+          <input type="text" placeholder="Title" value="${escapeAttr(item.title)}" oninput="editSectionCapability('${section.id}',${i},'title',this.value)">
+          <textarea rows="2" placeholder="Description" oninput="editSectionCapability('${section.id}',${i},'desc',this.value)">${escapeHtml(item.desc)}</textarea>
+        </div>
+        <button class="remove-btn" title="Remove" onclick="removeSectionCapability('${section.id}',${i})">&times;</button>
+      </div>`).join('') +
+    `<button class="btn btn-outline add-manual-btn" onclick="addSectionCapability('${section.id}')">+ Add capability</button>`;
+}
+function addSectionCapability(id) { getSection(id).content.items.push({ icon: '', title: '', desc: '' }); renderSectionFields(getSection(id)); }
+function removeSectionCapability(id, i) { getSection(id).content.items.splice(i, 1); renderSectionFields(getSection(id)); }
+function editSectionCapability(id, i, field, value) { getSection(id).content.items[i][field] = value; }
+
+function renderCustomFields(section) {
+  return `<div class="field"><label>Raw HTML / text block</label>
+    <textarea rows="6" oninput="editCustomHtml('${section.id}',this.value)" placeholder="Anything you paste here renders as-is inside the page.">${escapeHtml(section.content.html || '')}</textarea>
+  </div>`;
+}
+function editCustomHtml(id, value) { getSection(id).content.html = value; }
+
+// ---------------------------------------------------------------------------
+// Brand override detection
+// ---------------------------------------------------------------------------
+const DEFAULT_PRIMARY_COLOR = '#003DFF';
+function hasThemeOverride() {
+  const primaryChanged = (state.theme.primary_color || '').toLowerCase() !== DEFAULT_PRIMARY_COLOR.toLowerCase();
+  const accentChanged = !!state.theme.accent_color && state.theme.accent_color.toLowerCase() !== '#5468ff';
+  return primaryChanged || accentChanged || !!state.theme.font_family || !!state.theme.logo_url;
+}
+
+function readFormFieldsIntoState() {
+  state.company.name = document.getElementById('company-name').value;
+  state.company.slug = document.getElementById('company-slug').value;
+  state.hero_content.eyebrow = document.getElementById('hero-eyebrow').value;
+  state.hero_content.headline = document.getElementById('hero-headline').value;
+  state.hero_content.sub = document.getElementById('hero-sub').value;
+  state.cta.heading = document.getElementById('cta-heading').value;
+  state.cta.button = document.getElementById('cta-button').value;
+  state.theme.primary_color = document.getElementById('ov-primary').value;
+  state.theme.accent_color = document.getElementById('ov-accent').value;
+  state.theme.font_family = document.getElementById('ov-font').value || null;
+  state.theme.logo_url = document.getElementById('ov-logo').value || null;
+}
+
+// ---------------------------------------------------------------------------
+// Build the per-section content payload -- this is what makes each section
+// instance's data independent: every instance gets its OWN {eyebrow, cards,
+// items, ...} object, never a shared global key. See render-landing.mjs and
+// docs/workspace/custom-landing-page/00-design-system.md for the render-side
+// half of this contract (each instance's content is pushed as its own scope).
+// ---------------------------------------------------------------------------
+function buildSectionContentPayload(section) {
+  if (section.variant === 'body-proof-stats') {
+    const accepted = section.content.candidates.filter(c => c.accepted);
+    const items = [...accepted, ...section.content.manual].filter(x => x.title);
+    return {
+      eyebrow: section.content.eyebrow,
+      heading: section.content.heading,
+      subheading: section.content.subheading,
+      cards: items.map(p => ({
+        company: p.title, vertical: p.tag || '', metric: p.metric || '', result: p.body || '',
+        relevance: '', link_href: p.link_href || '', link_label: p.link_label || 'Read their story',
+      })),
+    };
+  }
+  if (section.variant === 'body-left-right' || section.variant === 'body-accordion') {
+    const accepted = section.content.candidates.filter(c => c.accepted);
+    const items = [...accepted, ...section.content.manual].filter(x => x.title);
+    return {
+      eyebrow: section.content.eyebrow,
+      heading: section.content.heading || `Gaps in ${state.company.name || 'this'} search today`,
+      subheading: section.content.subheading,
+      items,
+    };
+  }
+  if (section.variant === 'body-roi') {
+    const cards = ROI_TIER_DEFS
+      .filter(t => section.content[t.key].amount)
+      .map(t => ({
+        tier: t.key, label: t.label, amount: section.content[t.key].amount,
+        desc: section.content[t.key].desc || '', badge: t.badge, is_placeholder: false,
+      }));
+    return {
+      eyebrow: 'Sized for ' + (state.company.name || 'you'),
+      heading: 'What closing the search gap is worth',
+      subheading: 'Scenarios built from your own numbers, not industry averages.',
+      cards, note: '',
+    };
+  }
+  if (section.variant === 'body-grid') {
+    return {
+      eyebrow: section.content.eyebrow,
+      heading: section.content.heading,
+      sub: section.content.sub,
+      items: section.content.items.filter(c => c.title),
+    };
+  }
+  if (section.variant === 'body-custom') {
+    return { html: section.content.html || '' };
+  }
+  return {};
+}
+
+function sectionHasPrismContent(section) {
+  return (section.content.candidates || []).some(c => c.accepted && c.origin !== 'external');
+}
+
+// Single source of truth for what gets sent to the backend, used by BOTH
+// the preview and the real build -- one function, two callers, so preview
+// can never silently diverge from what actually gets built.
+function buildPayload() {
+  return {
+    slug: state.company.slug,
+    company_name: state.company.name,
+    audit_id: state.audit_id,
+    sections: [
+      { slot: 'hero', variant: state.hero, source: state.audit_id ? 'prism' : 'manual' },
+      ...state.sections.map(s => ({
+        slot: 'body',
+        variant: s.variant,
+        source: sectionHasPrismContent(s) ? 'prism' : 'manual',
+        content: buildSectionContentPayload(s),
+      })),
+      { slot: 'footer', variant: state.footer, source: 'manual' },
+    ],
+    theme: hasThemeOverride() ? state.theme : null,
+    content: {
+      meta: { company: state.company.name, slug: state.company.slug, title: `Algolia for ${state.company.name}` },
+      hero: {
+        eyebrow: state.hero_content.eyebrow || '',
+        prefix: '',
+        amount: '',
+        suffix: state.hero_content.headline || '',
+        sub: state.hero_content.sub || '',
+        primary_cta_label: state.audit_id ? 'See the full audit' : '',
+        primary_cta_href: state.audit_id ? `/reports/${state.company.slug}/` : '',
+        secondary_cta_label: state.cta.button || 'Talk to your rep',
+        rep_mailto: 'mailto:sales@algolia.com',
+        fact_rows: [],
+      },
+      cta_band: state.cta,
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Step 3: real preview (renders through the actual production pipeline)
+// ---------------------------------------------------------------------------
+async function renderPreview() {
+  readFormFieldsIntoState();
+  const frame = document.getElementById('preview-frame');
+  frame.innerHTML = '<p style="padding:40px;text-align:center;color:var(--color-muted)">Rendering real preview…</p>';
+
+  const payload = buildPayload();
+  try {
+    const res = await fetch('/api/v1/landing-pages/preview', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if (!res.ok || data.error || !data.html) {
+      frame.innerHTML = `<p style="padding:40px;text-align:center;color:#7F1D1D">Preview failed: ${escapeHtml(data.error || `HTTP ${res.status}`)}</p>`;
+      return;
+    }
+    const iframe = document.createElement('iframe');
+    iframe.style.width = '100%';
+    iframe.style.height = '900px';
+    iframe.style.border = 'none';
+    iframe.srcdoc = data.html;
+    frame.innerHTML = '';
+    frame.appendChild(iframe);
+  } catch (e) {
+    frame.innerHTML = `<p style="padding:40px;text-align:center;color:#7F1D1D">Preview failed: ${escapeHtml(e.message)}</p>`;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Step 4: review + build
+// ---------------------------------------------------------------------------
+function renderReview() {
+  readFormFieldsIntoState();
+  const el = document.getElementById('review-summary');
+  const sectionsSummary = state.sections.map((s, i) => `${i + 1}. ${variantLabel(s.variant)}`).join(', ') || '(none)';
+  el.innerHTML = `
+    <div><strong>Company:</strong> ${escapeHtml(state.company.name || '(not set)')} (${escapeHtml(state.company.slug || '(no slug)')})</div>
+    <div><strong>Source:</strong> ${state.audit_id ? 'PRISM audit ' + escapeHtml(state.audit_id) : 'Fully manual — no PRISM audit'}</div>
+    <div><strong>Hero:</strong> ${escapeHtml(variantLabel(state.hero))}</div>
+    <div><strong>Body sections (in order):</strong> ${escapeHtml(sectionsSummary)}</div>
+    <div><strong>Footer:</strong> ${escapeHtml(variantLabel(state.footer))}</div>
+    <div><strong>Brand override:</strong> ${hasThemeOverride() ? 'Yes' : 'No (using defaults)'}</div>
+  `;
+}
+
+async function submitBuild() {
+  readFormFieldsIntoState();
+  const payload = buildPayload();
+
+  const btn = document.getElementById('build-btn');
+  const resultEl = document.getElementById('build-result');
+  const errorEl = document.getElementById('build-error');
+  resultEl.classList.remove('show');
+  errorEl.classList.remove('show');
+  btn.disabled = true;
+  btn.textContent = 'Building…';
+
+  try {
+    const res = await fetch('/api/v1/landing-pages/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      const detail = await res.text();
+      throw new Error(`HTTP ${res.status}: ${detail}`);
+    }
+    const data = await res.json();
+    resultEl.innerHTML = `Built — slug <strong>${escapeHtml(data.slug)}</strong>, status <strong>${escapeHtml(data.status)}</strong>.`;
+    resultEl.classList.add('show');
+  } catch (e) {
+    errorEl.textContent = `Build failed: ${e.message}`;
+    errorEl.classList.add('show');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Build page';
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = String(str ?? '');
+  return d.innerHTML;
+}
+function escapeAttr(str) {
+  return escapeHtml(str).replace(/"/g, '&quot;');
+}
+
+// ---------------------------------------------------------------------------
+// Init
+// ---------------------------------------------------------------------------
+renderStepper();
+renderPickers();
+loadAuditList();
+</script>
+</body>
+</html>

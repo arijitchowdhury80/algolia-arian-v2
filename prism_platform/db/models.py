@@ -188,6 +188,40 @@ class VerticalBenchmark(Base):
     __table_args__ = (Index("idx_vertical_benchmarks_vertical", "vertical"),)
 
 
+class LandingPage(Base):
+    """A generated custom landing page (Marketer persona deliverable).
+
+    audit_id is nullable by design: PRISM audit data is an optional pre-fill
+    convenience for the intake wizard, never a prerequisite. A row with
+    audit_id = NULL (fully manual/external content) is first-class, not an
+    edge case -- see docs/workspace/custom-landing-page/00-design-system.md.
+    """
+
+    __tablename__ = "landing_pages"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    slug: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    company_name: Mapped[str] = mapped_column(Text, nullable=False)
+    audit_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("audits.id", ondelete="SET NULL"), nullable=True
+    )
+    # Full landing.json content model (8-key schema + sections[] + theme{}).
+    content_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+    # Chosen section/variant composition -- [{slot, variant, source}], see
+    # docs/workspace/custom-landing-page/00-design-system.md Section Inventory.
+    sections_json: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False, default=list)
+    # Optional brand-token overrides (primary_color, accent_color, font_family,
+    # logo_url). Null/absent means render with the default Algolia tokens.
+    theme_json: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="draft")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    __table_args__ = (Index("idx_landing_pages_audit", "audit_id"),)
+
+
 class Deliverable(Base):
     __tablename__ = "deliverables"
 
