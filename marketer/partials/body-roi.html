@@ -1,11 +1,11 @@
 <section>
   <div class="section-head">
-    <span class="eyebrow">{{roi.eyebrow}}</span>
-    <h2>{{roi.heading}}</h2>
-    <p>{{roi.subheading}}</p>
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2>{{heading}}</h2>
+    <p>{{subheading}}</p>
   </div>
   <div class="roi-grid">
-    {{#each roi.cards}}
+    {{#each cards}}
     <div class="roi-card {{tier}}{{#if is_placeholder}} placeholder{{/if}}">
       {{#if badge}}<span class="badge">{{badge}}</span>{{/if}}
       <div class="label">{{label}}</div>
@@ -14,5 +14,5 @@
     </div>
     {{/each}}
   </div>
-  <p class="roi-note">{{roi.note}}</p>
+  <p class="roi-note">{{note}}</p>
 </section>

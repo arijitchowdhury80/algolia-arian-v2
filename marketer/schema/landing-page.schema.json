@@ -25,6 +25,11 @@
     "capabilities": { "type": "object" },
     "cta_band": { "type": "object" },
     "footer": { "type": "object" },
+    "custom": {
+      "type": "object",
+      "description": "Free-form user-authored content for the body-custom section variant. `html` is rendered as-is, unescaped -- the user owns this content entirely.",
+      "properties": { "html": { "type": "string" } }
+    },
     "sections": {
       "type": "array",
       "description": "Chosen section/variant composition, in render order. Optional -- absent means the original fixed flow (hero, proof, roi, findings, capabilities, cta_band, footer), preserving dell/nike as-is. See docs/workspace/custom-landing-page/00-design-system.md Section Inventory for the variant catalog.",

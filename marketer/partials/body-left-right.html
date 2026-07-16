@@ -1,11 +1,11 @@
 <section id="findings" class="bg-tint">
   <div class="section-head">
-    <span class="eyebrow">{{findings.eyebrow}}</span>
-    <h2>{{findings.heading}}</h2>
-    <p>{{findings.subheading}}</p>
+    <span class="eyebrow">{{eyebrow}}</span>
+    <h2>{{heading}}</h2>
+    <p>{{subheading}}</p>
   </div>
 
-  {{#each findings.items}}
+  {{#each items}}
   <div class="finding-row{{#if reverse}} reverse{{/if}}">
     <div class="finding-visual">
       {{#if visual_line1}}{{visual_line1}}<br>{{visual_line2}}{{else}}{{tag}}{{/if}}

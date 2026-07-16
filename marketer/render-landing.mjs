@@ -55,22 +55,6 @@ function loadPartial(name) {
   return readFileSync(p, "utf8");
 }
 
-function assembleTemplate(sections) {
-  const parts = [loadPartial("shell-open")];
-  for (const section of sections) {
-    // section.variant is already the full partial filename stem (e.g.
-    // "hero-image-2cta", "body-proof-stats") -- see 00-design-system.md
-    // Section Inventory, where variant ids double as partial filenames.
-    parts.push(loadPartial(section.variant));
-  }
-  parts.push(loadPartial("shell-close"));
-  return parts.join("\n");
-}
-
-const template = Array.isArray(data.sections) && data.sections.length > 0
-  ? assembleTemplate(data.sections)
-  : readFileSync(templatePath, "utf8");
-
 // ---- tiny mustache-like tokenizer/parser ----
 
 const TAG_RE = /\{\{(#each|#if|#unless|\/each|\/if|\/unless|else)?\s*([^}]*?)\s*\}\}/g;
@@ -190,8 +174,32 @@ function render(nodes, scopes) {
   return out;
 }
 
-const tree = parse(tokenize(template));
-let html = render(tree, [data]);
+// ---- render: sectioned (each body instance gets its own data scope) ----
+//
+// Hero/footer are always single-instance and read the shared top-level
+// data (content.hero, content.cta_band, etc), same as before. Body section
+// instances are repeatable -- see docs/workspace/custom-landing-page/
+// 00-design-system.md -- so each one's `content` object is pushed as an
+// EXTRA innermost scope ahead of the global data. lookup() already walks
+// scopes innermost-first, so a key present in section.content (e.g. `cards`)
+// resolves to that instance's own data, never a shared global key; anything
+// absent from section.content still falls through to the global data.
+function renderTemplate(str, scopes) {
+  return render(parse(tokenize(str)), scopes);
+}
+
+let html;
+if (Array.isArray(data.sections) && data.sections.length > 0) {
+  const parts = [renderTemplate(loadPartial("shell-open"), [data])];
+  for (const section of data.sections) {
+    const scopes = section.slot === "body" ? [data, section.content || {}] : [data];
+    parts.push(renderTemplate(loadPartial(section.variant), scopes));
+  }
+  parts.push(renderTemplate(loadPartial("shell-close"), [data]));
+  html = parts.join("\n");
+} else {
+  html = renderTemplate(readFileSync(templatePath, "utf8"), [data]);
+}
 
 // ---- optional brand-token override ----
 //
