@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Objective — The Bible</title>
-<link rel="stylesheet" href="/bible/shared/brand-tokens.css">
-<link rel="stylesheet" href="/bible/shared/bible.css">
+<title>Objective — The Notebook</title>
+<link rel="stylesheet" href="/notebook/shared/brand-tokens.css">
+<link rel="stylesheet" href="/notebook/shared/notebook.css">
 </head>
 <body>
-<header class="bible-header">
-  <a href="/bible/" class="bible-home">The Bible</a>
-  <nav class="bible-nav"><a href="/bible/prism/objective.html">Objective</a> <a href="/bible/prism/architecture.html">Architecture</a> <a href="/bible/prism/stack.html">Technology Stack</a> <a href="/bible/prism/decisions.html">Decision Log</a> <a href="/bible/prism/status.html">Execution Status</a></nav>
+<header class="notebook-header">
+  <a href="/notebook/" class="notebook-home">The Notebook</a>
+  <nav class="notebook-nav"><a href="/notebook/prism/objective.html">Objective</a> <a href="/notebook/prism/architecture.html">Architecture</a> <a href="/notebook/prism/stack.html">Technology Stack</a> <a href="/notebook/prism/decisions.html">Decision Log</a> <a href="/notebook/prism/status.html">Execution Status</a></nav>
 </header>
-<main class="bible-content">
+<main class="notebook-content">
 <h1>PRISM — Wiki Index</h1>
-<p><strong>Next spike (Arijit's directive, 2026-07-14, saved verbatim in PIP <code>SESSION.md</code>):</strong> build detailed client-facing, security-facing, and production-facing technical documentation, targeted at Algolia's Chief Security Officer, to justify running PRISM in-house in production. Goes into "The Bible" (<code>bible.chowmes.com</code>, Phase 3.5's existing goal-card). Process: plan mode first, execute after sign-off — not started.</p>
+<p><strong>Next spike (Arijit's directive, 2026-07-14, saved verbatim in PIP <code>SESSION.md</code>):</strong> build detailed client-facing, security-facing, and production-facing technical documentation, targeted at Algolia's Chief Security Officer, to justify running PRISM in-house in production. Goes into "The Notebook" (<code>notebook.chowmes.com</code>, Phase 3.5's existing goal-card). Process: plan mode first, execute after sign-off — not started.</p>
 <h2>Current state (compiled truth — 2026-07-14)</h2>
 <p><strong>Phase 2 built for real (not just planned) — 5-stage verification pipeline + per-skill dispatch, real VPS proof, plus a mid-session pivot away from <code>claude -p</code> as the executioner.</strong> Subagent-driven build produced <code>prism_platform/pipeline/{gate,verdicts,self_heal,executioner,llm_stages,claims,db_write,chat_agent}.py</code>: a real 5-stage gate (mechanical→factcheck→adversarial→quality→legal), schema-constrained per E2, wired to per-skill dispatch via <code>self_heal.SelfHealLoop</code>. Proven with real <code>claude -p</code> calls against real published audit data, not just fakes — caught 2 genuine previously-unknown data bugs (lululemon tech-stack self-contradiction; jbl's Crown-International misclassified as a JBL-owned brand when it's a sibling Harman brand) and correctly blocked a deliberately-injected fabricated claim. ~300 real tests, all passing. Found and root-fixed an unrelated, real production bug along the way: <code>prism-runner.service</code> ran as <code>User=root</code> stepping down via <code>sudo -u chowmesadmin</code> (an admin account) for every dispatch — this had silently broken ALL real audit dispatch (v1 and v2 alike) for 10 days via a file-permission regression nobody had hit. Fixed properly, not patched: new dedicated unprivileged <code>chowmesuser</code> account (no sudo group, <code>nologin</code>), ownership + systemd unit + dispatch code all updated, live-verified end-to-end with zero root/sudo in the chain. Two real observability gaps also fixed after Arijit caught them: <code>job.json</code>'s phase field never updated mid-run (a real v3 audit would've been invisible for 30-90+ min) and <code>POST /run</code>'s <code>engine</code> param was silently dropped (every real API caller would've quietly gotten the legacy path). One real process failure, owned directly: a renderer self-test used real skill names with fabricated PASS results — indistinguishable from a genuine report — fixed with a forced, no-default synthetic-data banner so it can't happen again. <strong>Biggest outcome of the session:</strong> Arijit's direct interrogation of each skill's real methodology (Scout usage, real network-packet inspection, SimilarWeb's permanent human-in-the-loop requirement) surfaced the actual root cause of PRISM's fabrication risk — not any skill's prompt wording, but that each skill's <code>claude -p</code> session decides BOTH "call the deterministic script" AND "what to do if it fails," and that second decision is where fabrication actually happens. Locked pivot: route each skill's dispatch through a deterministic Python module wherever one exists, never an LLM's call on failure — <code>gate()</code>/<code>self_heal</code>/<code>executioner.py</code> don't need to change, since they never cared what produces a skill's output. First one shipped for real: <code>algolia-intel-traffic</code> → <code>run_traffic_module()</code>, zero LLM calls, live-tested against the actual dead SimilarWeb key, correctly returns <code>NEEDS_HUMAN</code>, wired into <code>executioner.py</code>'s <code>MODULE_REGISTRY</code>. 15 skills still on the old <code>claude -p</code> path, next session's work. The planned DSW end-to-end audit did NOT run — first blocked ~2hrs by Arijit's home network dropping to a cellular hotspot (misdiagnosed initially as a VPS-side ban, corrected once the actual gateway IP was checked), then superseded by the deterministic-executioner pivot once it was clear a real audit through the still-partially-agentic pipeline wasn't the right next step. Full detail: PIP repo <code>SESSION.md</code>, <code>docs/workspace/phase2-executioner/</code>.</p>
 <h2>Prior state (2026-07-13)</h2>
@@ -350,6 +350,6 @@
 <li>[[Projects/PRISM/tasks|Task ledger]]</li>
 </ul>
 </main>
-<footer class="bible-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
+<footer class="notebook-footer">Rendered from the internal vault. Source-traced, not freshly authored.</footer>
 </body>
 </html>
