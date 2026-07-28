@@ -443,9 +443,6 @@ section { position: relative; }
 .cass-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; box-shadow: 0 0 0 4px rgba(34,197,94,0.16); }
 .cass-profile h3 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
 .cass-profile p { font-size: 15.5px; line-height: 1.68; color: rgba(255,255,255,0.74); font-weight: 300; }
-.cass-live-card .cass-portrait { aspect-ratio: 16 / 10; }
-.cass-live-card .cla-veil { border-top: 1px solid rgba(255,255,255,0.12); }
-.cass-live-card .cla-stage { min-height: 280px; }
 .cass-panel { display: flex; flex-direction: column; gap: 16px; }
 .hcard {
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
@@ -808,21 +805,14 @@ section { position: relative; }
     </div>
 
     <div class="cassandra-grid">
-      <div class="cass-profile cass-live-card reveal" data-cassandra-live data-avatar-slug="landing">
-        <div class="cass-portrait cla-stage">
-          <img src="/assets/cass-candidates/cass-0.png" srcset="/assets/cassandra.png 256w, /assets/cass-candidates/cass-0.png 1024w" sizes="(max-width: 1080px) 100vw, 430px" alt="Cassandra, the operator behind PRISM" loading="lazy">
-          <div class="cla-iframe-slot" aria-live="polite"></div>
-          <div class="cla-veil"><b>Cassandra Live</b><span>LiveAvatar sandbox first. Audit-grounded answers remain the product path.</span></div>
+      <div class="cass-profile reveal">
+        <div class="cass-portrait">
+          <img src="/assets/cassandra.png" alt="Cassandra, the operator behind PRISM" loading="lazy">
         </div>
         <div class="cass-profile-copy">
-          <span class="cass-status">Interactive operator</span>
+          <span class="cass-status">Grounded guide</span>
           <h3>Cassandra</h3>
-          <p>Talk to the face of PRISM. The first loop uses an official LiveAvatar sample; the product loop keeps Cassandra grounded in the audit.</p>
-          <div class="cla-actions">
-            <button class="cla-start" type="button">Start live avatar</button>
-            <button class="cla-stop" type="button" hidden>Stop</button>
-            <span class="cla-status-text">LiveAvatar is enabled when the server key is configured.</span>
-          </div>
+          <p>Ask Cassandra anything about a finished report and she answers from it, never inventing what isn&rsquo;t there. She stays with the seller on the web and on Telegram.</p>
         </div>
       </div>
       <div class="cass-panel">
@@ -1088,6 +1078,5 @@ if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)')
 })();
 </script>
 <script src="/auth.js" defer></script>
-<script src="/cassandra-live.js" defer></script>
 </body>
 </html>

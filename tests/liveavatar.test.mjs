@@ -7,7 +7,7 @@ Scenario list:
 - Happy path: backend creates a sandbox LiveAvatar embed with API key + context ID and returns only browser-safe fields.
 - Empty configuration: missing API key returns an unconfigured payload and never calls LiveAvatar.
 - Context fallback: missing context ID creates a Cassandra context before creating the embed.
-- Contract: landing page exposes a Cassandra Live mount and loads the browser module.
+- Contract: landing page shows Cassandra's photo and exposes NO live-avatar mount.
 - Contract: chat widget exposes a Live Avatar affordance inside the existing Cassandra drawer.
 - Failure mode: LiveAvatar upstream errors return a controlled unavailable payload.
 */
@@ -128,12 +128,17 @@ test("buildCassandraContextPrompt_keeps_avatar_grounded_in_prism", () => {
   assert.match(prompt, /Do not invent/);
 });
 
-test("landing_page_mounts_cassandra_live_avatar_panel", () => {
-  assert.match(html, /<script src="\/cassandra-live\.js" defer><\/script>/);
-  assert.match(html, /data-cassandra-live/);
-  assert.match(html, /data-avatar-slug="landing"/);
-  assert.match(html, /Start live avatar/);
-  assert.match(html, /LiveAvatar/);
+// The landing page deliberately does NOT present a live avatar. Cassandra is the
+// grounded report guide, not the LiveAvatar sandbox, so labelling her portrait
+// "Cassandra Live" misrepresented what she is. The landing page shows her
+// established photo; the live-avatar experiment stays confined to the report chat
+// drawer (see chat_widget_offers_live_avatar_inside_cassandra_drawer below).
+test("landing_page_shows_cassandra_photo_and_no_live_avatar", () => {
+  assert.match(html, /<img src="\/assets\/cassandra\.png"/);
+  assert.doesNotMatch(html, /cassandra-live\.js/);
+  assert.doesNotMatch(html, /data-cassandra-live/);
+  assert.doesNotMatch(html, /Start live avatar/);
+  assert.doesNotMatch(html, /LiveAvatar/);
 });
 
 test("chat_widget_offers_live_avatar_inside_cassandra_drawer", () => {

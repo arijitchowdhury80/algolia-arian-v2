@@ -15,7 +15,9 @@ test("landing page presents Cassandra as a supporting operator, not the product 
   const section = sectionByClass("cassandra");
 
   assert.match(section, /<h2 class="s-title">Cassandra keeps the audit alive<\/h2>/);
-  assert.match(section, /src="\/assets\/cass-candidates\/cass-0\.png"/);
+  // Her established portrait, not a live-avatar still. Cassandra is the grounded
+  // report guide, so the landing page must not dress her up as the LiveAvatar demo.
+  assert.match(section, /src="\/assets\/cassandra\.png"/);
   assert.match(section, /alt="Cassandra, the operator behind PRISM"/);
   assert.match(section, /Ask Cassandra/);
   assert.match(section, /Telegram/);
