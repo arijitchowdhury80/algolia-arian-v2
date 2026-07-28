@@ -21,6 +21,7 @@ import http from "node:http";
 import path from "node:path";
 import { readFile, stat } from "node:fs/promises";
 import pg from "pg";
+import { createLiveAvatarEmbed } from "../api/avatar/_liveavatar.js";
 
 const pgPool = process.env.DATABASE_URL ? new pg.Pool({ connectionString: process.env.DATABASE_URL, max: 5 }) : null;
 
@@ -45,6 +46,11 @@ const PORT = Number(process.env.PORT || 8651);
 const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism-hub";
 const MAX_MESSAGE_CHARS = 2000;
 
+// ── Auth gate (Clerk) ───────────────────────────────────────────────────────
+// The landing ("/") + marketing pages stay public. Audit reports (/reports and
+// every report slug dir) require a signed-in Clerk session. Secure-by-default:
+// anything NOT in the public allowlist below is gated, and if Clerk is missing
+// or misconfigured the gate fails CLOSED (see checkAuth) rather than open.
 let createClerkClient = null;
 try {
   ({ createClerkClient } = await import("@clerk/backend"));
@@ -93,6 +99,36 @@ const CONTENT_TYPES = {
   ".txt": "text/plain; charset=utf-8",
   ".pdf": "application/pdf",
 };
+
+// ── Legacy flat audit URLs → reports/ ───────────────────────────────────────
+// Audits used to sit at the repo root (/dell/, /belk/) and were unified under
+// reports/ for one consistent layout. Prospects hold links to the old flat URLs,
+// so those must never 404: they 301 to the reports/ equivalent.
+// Driven off what actually exists on disk rather than a hardcoded slug list, so
+// it cannot drift as audits are added or removed.
+const _reportDirCache = new Map();
+async function isReportSlug(slug) {
+  if (_reportDirCache.has(slug)) return _reportDirCache.get(slug);
+  let exists = false;
+  try {
+    exists = (await stat(path.join(STATIC_DIR, "reports", slug))).isDirectory();
+  } catch {
+    exists = false;
+  }
+  _reportDirCache.set(slug, exists);
+  return exists;
+}
+
+// Returns the reports/ target for a legacy flat audit URL, or null if not one.
+async function legacyFlatRedirect(urlPath) {
+  const m = urlPath.match(/^\/([a-z0-9][a-z0-9-]*)(\/.*)?$/i);
+  if (!m) return null;
+  const slug = m[1].toLowerCase();
+  if (slug === "reports" || slug === "api") return null;
+  if (PUBLIC_EXACT.has(urlPath) || PUBLIC_PREFIXES.includes(`/${slug}`)) return null;
+  if (!(await isReportSlug(slug))) return null;
+  return `/reports/${slug}${m[2] || "/"}`;
+}
 
 function isPublicStaticPath(urlPath) {
   if (PUBLIC_EXACT.has(urlPath)) return true;
@@ -316,7 +352,9 @@ async function serveStatic(res, urlPath) {
     let out = data;
     // DB-backed auto-render: inject fresh audit_data from Postgres into report shells so
     // a DB update reflects live with no re-render. Fallback (try/catch) = serve static as-is.
-    const m = rel.match(/^\/?([a-z0-9][a-z0-9-]*)\/index\.html$/i);
+    // Audits live under reports/<slug>/ since the layout was unified. The legacy flat
+    // form (/<slug>/index.html) is still matched so a direct STATIC_DIR hit keeps working.
+    const m = rel.match(/^\/?(?:reports\/)?([a-z0-9][a-z0-9-]*)\/index\.html$/i);
     if (m && file.endsWith("index.html") && data.includes("window.AUDIT_DATA")) {
       try {
         const r = await fetch(`http://127.0.0.1:8000/api/v1/audits/by-slug/${m[1]}/data`, { signal: AbortSignal.timeout(2500) });
@@ -443,6 +481,19 @@ async function handleChat(req, res, urlPath) {
   res.end();
 }
 
+async function handleAvatarSession(req, res) {
+  const body = (await readBody(req)) || {};
+  const slug = typeof body.slug === "string" ? body.slug : "landing";
+  const payload = await createLiveAvatarEmbed({ env: process.env, slug });
+  res.setHeader("Cache-Control", "no-store");
+  return sendJson(res, 200, payload);
+}
+
+function handleAvatarStop(res) {
+  res.setHeader("Cache-Control", "no-store");
+  return sendJson(res, 200, { ok: true, mode: "embed" });
+}
+
 const server = http.createServer(async (req, res) => {
   const url = (req.url || "").split("?")[0];
   if (req.method === "GET" && url === "/healthz") {
@@ -475,7 +526,26 @@ const server = http.createServer(async (req, res) => {
       else res.end();
     });
   }
+  if (req.method === "POST" && url === "/api/avatar/session") {
+    return handleAvatarSession(req, res).catch(() => sendJson(res, 200, {
+      configured: false,
+      reason: "liveavatar_unavailable",
+      mode: "embed",
+      sandbox: true,
+    }));
+  }
+  if (req.method === "POST" && url === "/api/avatar/stop") {
+    return handleAvatarStop(res);
+  }
   if (req.method === "GET" || req.method === "HEAD") {
+    // Legacy flat audit URL: 301 to reports/ before the gate, so the redirect is
+    // cacheable and the auth check then happens once, at the canonical path.
+    const legacy = await legacyFlatRedirect(url);
+    if (legacy) {
+      res.statusCode = 301;
+      res.setHeader("Location", legacy);
+      return res.end();
+    }
     if (!isPublicStaticPath(url) && !(await requireAuth(req, res, url))) {
       return;
     }

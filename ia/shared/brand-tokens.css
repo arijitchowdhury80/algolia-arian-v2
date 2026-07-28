@@ -1,0 +1,1143 @@
+/**
+ * Algolia Brand CSS  -  Single source of truth for typography and brand tokens
+ * Applied to ALL audit deliverables by render-audit.ts (injected before </head>)
+ *
+ * Source: https://algolia.frontify.com/document/1?#/basics/typography
+ *
+ * Font:    Sora (Google Fonts)  -  3 weights only: 300 / 400 / 600
+ * Colors:  #23263B (text), #003DFF (blue), #5468FF (purple), #6B7280 (mid)
+ * Scale:   H1=56px/300, H2=36px/300, H3=28px/400, H4=22px/600, body=16px/400, label=14px/600
+ *
+ * CHANGE THIS FILE  -  all reports update on next render.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap');
+
+/* ─── Brand Tokens ───────────────────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --brand-blue:        #003DFF;
+  --brand-purple:      #5468FF;
+  --brand-navy:        #23263B;   /* Primary text */
+  --brand-mid:         #6B7280;   /* Secondary text */
+  --brand-light:       #F5F5F7;
+  --brand-border:      #E5E7EB;
+  --brand-white:       #FFFFFF;
+  --brand-red:         #DC2626;
+  --brand-amber:       #D97706;
+  --brand-green:       #059669;
+  --brand-teal:        #0891B2;
+  --brand-violet:      #7C3AED;
+
+  /* Typography */
+  --font-family:       'Sora', sans-serif;
+  --font-body:         16px;
+  --font-label:        14px;
+  --font-h1:           56px;
+  --font-h2:           36px;
+  --font-h3:           28px;
+  --font-h4:           22px;
+  --font-h5:           18px;
+  --weight-light:      300;
+  --weight-regular:    400;
+  --weight-semibold:   600;
+
+  /* Spacing & Shape */
+  --radius:            8px;
+  --shadow:            0 2px 8px rgba(35,38,59,0.10);
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  font-weight: var(--weight-regular);
+  color: var(--brand-navy);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Type Scale ─────────────────────────────────────────────────────────── */
+h1, .h1 {
+  font-size: var(--font-h1);
+  font-weight: var(--weight-light);
+  line-height: 1.10;
+  letter-spacing: -2px;
+  color: var(--brand-navy);
+}
+h2, .h2 {
+  font-size: var(--font-h2);
+  font-weight: var(--weight-light);
+  line-height: 1.40;
+  letter-spacing: -2px;
+  color: var(--brand-navy);
+}
+h3, .h3 {
+  font-size: var(--font-h3);
+  font-weight: var(--weight-regular);
+  line-height: 1.40;
+  letter-spacing: -1px;
+  color: var(--brand-navy);
+}
+h4, .h4 {
+  font-size: var(--font-h4);
+  font-weight: var(--weight-semibold);
+  line-height: 1.40;
+  color: var(--brand-navy);
+}
+h5, .h5 {
+  font-size: var(--font-h5);
+  font-weight: var(--weight-semibold);
+  line-height: 1.40;
+  color: var(--brand-navy);
+}
+
+p, li, td, th {
+  font-size: var(--font-body);
+  font-weight: var(--weight-regular);
+  color: var(--brand-navy);
+  line-height: 1.6;
+}
+
+/* Labels, eyebrows, badges, metadata */
+.label, .eyebrow, small, caption {
+  font-size: var(--font-label);
+  font-weight: var(--weight-semibold);
+  color: var(--brand-mid);
+}
+
+a {
+  color: var(--brand-blue);
+  text-decoration: none;
+}
+/* ══════════════════════════════════════════════════════════════════════════════
+   ⚡ TRANSPARENCY DIRECTIVE  -  NON-NEGOTIABLE SYSTEM RULE
+   ══════════════════════════════════════════════════════════════════════════════
+   Every data point that is a fact, estimate, claim, or statistic MUST have
+   an inline source link. No unlinked data. No claim without a URL.
+
+   This applies to ALL deliverables: SPA, AE report, battle card, leave-behind.
+
+   REQUIRED for every:
+   - Revenue figure → link to press release or trade publication
+   - Traffic metric → link to SimilarWeb
+   - Technology claim → link to BuiltWith
+   - ROI/financial estimate → link to Baymard/benchmark source
+   - Executive quote → link to source article/SEC filing
+   - Case study metric → link to algolia.com/customers/{company}
+   - Hiring signal → link to LinkedIn job posting URL
+   - Competitive claim (uses Algolia) → link to BuiltWith domain lookup
+   - Build vs Buy assessment → link to job description source
+   - News signal → link to article URL
+   - Industry statistic → link to Baymard/Forrester/primary source
+
+   When a source is unavailable: mark as [ESTIMATE - LOW CONFIDENCE] visually.
+   When a source is broken: fix the link or remove the claim.
+   NEVER present unverified data as fact.
+══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Global link style  -  DESIGN DIRECTIVE ────────────────────────────────────
+   All links across the entire system:
+   - Default: colored (blue) text, no underline, no icons, no arrows
+   - Hover: underline only  -  no color change, no icons
+   - Never use ↗ → or any arrow/icon on links
+   - This applies everywhere: signal cards, exec cards, nav, source badges, etc.
+─────────────────────────────────────────────────────────────────────────────── */
+a {
+  color: var(--brand-blue);
+  text-decoration: none;
+  transition: text-decoration 0.1s;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--brand-blue);
+}
+
+/* ─── Digital Presence Tile  -  groups Tech Stack + Traffic as one chapter ─────
+   Matches the exec block pattern: .card with padding, inner sections transparent.
+   .dp-tile suppresses .audit-section margin-bottom so spacing is tile-controlled.
+────────────────────────────────────────────────────────────────────────────── */
+.dp-tile {
+  /* Very light blue gradient  -  white at top-left fading to faint sky-blue at bottom-right */
+  background: linear-gradient(135deg, #ffffff 0%, #EFF6FF 50%, #DBEAFE 100%);
+  border: 1px solid rgba(59,130,246,0.12);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(35,38,59,0.08), 0 4px 16px rgba(59,130,246,0.05);
+  overflow: hidden;
+  margin-bottom: 96px;
+  transition: box-shadow 0.25s ease;
+}
+.dp-tile:hover {
+  box-shadow: 0 4px 16px rgba(35,38,59,0.10), 0 8px 32px rgba(59,130,246,0.08);
+}
+/* Inner sections: same padding as leadership card (28px all sides), no divider */
+.dp-tile .audit-section {
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  padding: 28px !important;
+}
+
+/* card-3d without lift  -  keeps shadow on hover but no translateY */
+.card-3d--no-lift {
+  transition: box-shadow 0.3s ease;
+}
+.card-3d--no-lift:hover {
+  transform: none !important;
+  box-shadow:
+    0 2px 4px rgba(35,38,59,0.06),
+    0 8px 16px rgba(35,38,59,0.10),
+    0 20px 40px rgba(35,38,59,0.10),
+    0 40px 64px rgba(35,38,59,0.06);
+}
+
+/* ─── 3D Shadow Card  -  floating bevel, no glow border ───────────────────────
+   Use on content-heavy cards with internal interactivity (donut charts, bars).
+   The glow border competes with internal hover states  -  3D shadow instead.
+────────────────────────────────────────────────────────────────────────────── */
+.card-3d {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--brand-border);
+  box-shadow:
+    0 1px 2px rgba(35,38,59,0.04),
+    0 4px 8px rgba(35,38,59,0.06),
+    0 12px 24px rgba(35,38,59,0.06),
+    0 24px 48px rgba(35,38,59,0.04);
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
+}
+.card-3d:hover {
+  box-shadow:
+    0 2px 4px rgba(35,38,59,0.06),
+    0 8px 16px rgba(35,38,59,0.10),
+    0 20px 40px rgba(35,38,59,0.10),
+    0 40px 64px rgba(35,38,59,0.06);
+  transform: translateY(-2px);
+}
+
+/* ─── Glowing Effect  -  mouse-tracking conic-gradient border glow ─────────────
+   Vanilla CSS + JS replication of Aceternity glowing-effect.
+   Usage: add class="glow-card" to any card element.
+   JS: call initGlowEffect(containerEl) after DOM insertion.
+   The glow tracks mouse position and activates when near the card border.
+────────────────────────────────────────────────────────────────────────────── */
+.glow-card {
+  position: relative;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid var(--brand-border);
+  isolation: isolate;
+}
+/* Gradient border layer  -  sits behind the card */
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--glow-angle, 0deg),
+    transparent 0%,
+    #dd7bbb 8%,
+    #d79f1e 22%,
+    #5a922c 42%,
+    #4c7894 62%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+/* White fill to cover gradient except the border */
+.glow-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(12px - 1px);
+  background: white;
+  z-index: -1;
+}
+.glow-card.glow-active::before {
+  opacity: 1;
+}
+.glow-card.glow-active {
+  border-color: transparent;
+}
+
+/* ─── Bounce Card  -  shrink + rotate on hover with gradient reveal ────────────
+   Vanilla CSS replication of uniquesonu/bounce-card-features.
+   Usage:
+     <div class="bounce-card bounce-card--red|amber|green">
+       <div class="bounce-card__content">
+         eyebrow, description, source
+       </div>
+       <div class="bounce-card__gradient">
+         big dollar amount + play badge
+       </div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.bounce-card {
+  background: #F8F9FB;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: default;
+  transition: transform 250ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+.bounce-card:hover {
+  transform: scale(0.95) rotate(-1deg);
+}
+.bounce-card__content {
+  padding: 24px 22px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bounce-card__gradient {
+  margin: 0 8px 8px;
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 250ms ease, box-shadow 250ms ease;
+}
+.bounce-card:hover .bounce-card__gradient {
+  transform: translateY(-6px) rotate(2deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+/* Amount text inside gradient */
+.bounce-card__amount {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+  text-align: center;
+}
+.bounce-card__amount-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+}
+/* Color variants  -  deep-to-light single-hue gradients (premium, not aggressive) */
+.bounce-card--red   .bounce-card__gradient {
+  background: linear-gradient(150deg, #C53030 0%, #FC8181 100%);
+}
+.bounce-card--amber .bounce-card__gradient {
+  background: linear-gradient(150deg, #B7791F 0%, #F6AD55 100%);
+}
+.bounce-card--green .bounce-card__gradient {
+  background: linear-gradient(150deg, #276749 0%, #48BB78 100%);
+}
+
+/* ─── Feature Section with Hover Effects (Aceternity style) ─────────────────
+   Grid of feature cards with: gradient overlay, accent bar growth, text shift.
+   Usage: <div class="feature-grid"> <div class="feature-card">...</div> </div>
+   Card structure:
+     <div class="feature-card">
+       <div class="fc-icon">...</div>
+       <div class="fc-accent-bar"></div>
+       <div class="fc-title">Signal Title</div>
+       <div class="fc-desc">Signal text</div>
+       <div class="fc-source">Source · date</div>
+     </div>
+────────────────────────────────────────────────────────────────────────────── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.feature-card {
+  position: relative;
+  padding: 28px 24px;
+  border-right: 1px solid var(--brand-border);
+  border-bottom: 1px solid var(--brand-border);
+  overflow: hidden;
+  cursor: default;
+  transition: background 0.2s;
+}
+.feature-card:nth-child(3n) { border-right: none; }
+.feature-card:nth-last-child(-n+3) { border-bottom: none; }
+
+/* Gradient overlay  -  appears on hover */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,61,255,0.06) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.feature-card:hover::before { opacity: 1; }
+
+/* All content above the gradient */
+.feature-card > * { position: relative; z-index: 1; }
+
+/* Icon area */
+.fc-icon {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Title row  -  accent bar on left, title beside it (matching Aceternity layout) */
+.fc-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.fc-accent-bar {
+  width: 4px;
+  min-height: 20px;
+  align-self: stretch;
+  border-radius: 2px;
+  background: var(--brand-border);
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-top: 2px;
+}
+.feature-card:hover .fc-accent-bar {
+  background: var(--brand-blue);
+  transform: scaleY(1.1);
+}
+.fc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  transition: transform 0.2s ease;
+  line-height: 1.3;
+  flex: 1;
+}
+.feature-card:hover .fc-title { transform: translateX(4px); }
+
+/* Description */
+.fc-desc {
+  font-size: 14px;
+  color: var(--brand-mid);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Source line */
+.fc-source {
+  font-size: 12px;
+  color: var(--brand-mid);
+  opacity: 0.7;
+}
+.fc-source a {
+  color: var(--brand-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+.fc-source a:hover { text-decoration: underline; }
+
+/* Urgency variants  -  accent bar color on hover */
+.feature-card--high:hover .fc-accent-bar   { background: #DC2626; }
+.feature-card--high::before                { background: linear-gradient(to bottom, rgba(220,38,38,0.05) 0%, transparent 100%); }
+.feature-card--medium:hover .fc-accent-bar { background: #D97706; }
+.feature-card--medium::before              { background: linear-gradient(to bottom, rgba(217,119,6,0.05) 0%, transparent 100%); }
+.feature-card--positive:hover .fc-accent-bar { background: #059669; }
+.feature-card--positive::before            { background: linear-gradient(to bottom, rgba(5,150,105,0.05) 0%, transparent 100%); }
+
+/* ─── Animated Background  -  sliding hover highlight for card grids ───────────
+   Vanilla CSS + JS replication of motion-primitives AnimatedBackground.
+   Spring-like cubic-bezier gives the "bounce to settle" motion.
+
+   Usage in HTML:
+     <div class="ab-container" style="grid-template-columns:repeat(4,1fr)">
+       <div class="ab-item" data-ab-id="tab1">...</div>
+       <div class="ab-item" data-ab-id="tab2">...</div>
+     </div>
+
+   Usage in JS: call initAnimatedBg('.ab-container') after DOM insertion.
+   The function is defined in index-template.html and can be called anywhere.
+────────────────────────────────────────────────────────────────────────────── */
+.ab-container {
+  position: relative;
+  display: grid;
+  gap: 8px;
+}
+.ab-highlight {
+  position: absolute;
+  border-radius: 10px;
+  background: var(--brand-blue);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Spring-like cubic-bezier: accelerate fast, overshoot slightly, settle */
+  transition: left 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+              top 0.45s cubic-bezier(0.34, 1.3, 0.64, 1),
+              width 0.35s cubic-bezier(0.34, 1.3, 0.64, 1),
+              height 0.35s cubic-bezier(0.34, 1.3, 0.64, 1),
+              opacity 0.2s ease;
+}
+.ab-container.ab-active .ab-highlight {
+  opacity: 1;
+}
+.ab-item {
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+/* No color override  -  cards have opaque white background so highlight slides behind them */
+
+/* ─── Proof Pill  -  hero-pill style case study badge ─────────────────────────
+   Usage: proofPill(url, company, result) function in index-template.html
+   CSS classes for the two variants (light bg, dark/gradient bg)
+   [Company badge] Result text →
+────────────────────────────────────────────────────────────────────────────── */
+.proof-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+.proof-pill__badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+  color: white;
+}
+.proof-pill__label {
+  padding: 5px 10px 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+/* Green variant (default  -  case study in search findings) */
+.proof-pill--green {
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.25);
+}
+.proof-pill--green .proof-pill__badge { background: var(--green); }
+.proof-pill--green .proof-pill__label { color: var(--green); }
+/* Blue variant (case study section, strategic references) */
+.proof-pill--blue {
+  background: rgba(0,61,255,0.08);
+  border: 1px solid rgba(0,61,255,0.20);
+}
+.proof-pill--blue .proof-pill__badge { background: var(--blue); }
+.proof-pill--blue .proof-pill__label { color: var(--blue); }
+/* White variant (on dark/gradient backgrounds like golden angle card) */
+.proof-pill--white {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.proof-pill--white .proof-pill__badge { background: rgba(255,255,255,0.25); color: white; }
+.proof-pill--white .proof-pill__label { color: white; }
+.proof-pill:hover { opacity: 0.85; }
+
+/* ─── Utility aliases for templates ─────────────────────────────────────── */
+/* Templates can use these var() aliases to stay in sync */
+:root {
+  --blue:   var(--brand-blue);
+  --purple: var(--brand-purple);
+  --gray:   var(--brand-navy);
+  --mid:    var(--brand-mid);
+  --light:  var(--brand-light);
+  --border: var(--brand-border);
+  --white:  var(--brand-white);
+  --red:    var(--brand-red);
+  --amber:  var(--brand-amber);
+  --green:  var(--brand-green);
+  --teal:   var(--brand-teal);
+  --violet: var(--brand-violet);
+}
+
+/* ── Unverified source warning  -  web search only, not URL-confirmed ──────────
+   Apply to any data point where source_url could not be WebFetched and confirmed.
+   Renders a red warning badge + amber border to flag it for the AE.
+────────────────────────────────────────────────────────────────────────────── */
+.unverified-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--red-tint);
+  border: 1px solid var(--red-border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+}
+.unverified-wrapper {
+  border: 1px solid var(--amber-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: var(--amber-tint);
+  position: relative;
+}
+.unverified-wrapper::before {
+  content: '⚠ Web search only - verify before using';
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+/* ─── Navigation System v2 (2026-03-23 IA rethink, fixed 2026-03-23) ─────── */
+
+/* Tab subtitle  -  fixed below the floating pill nav, legible size */
+.tab-subtitle {
+  position: fixed;
+  top: calc(var(--topbar-h, 52px) + 10px + 54px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--brand-mid);
+  opacity: 0.85;
+  white-space: nowrap;
+  z-index: 189;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* ── Stat Bar  -  4-column editorial KPI row ──────────────────────────────── */
+.stat-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(35,38,59,0.06);
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.stat-bar__item {
+  padding: 22px 20px;
+  border-right: 1px solid var(--brand-border);
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+.stat-bar__item:last-child { border-right: none; }
+.stat-bar__item:hover { background: var(--brand-light); }
+.stat-bar__item:hover .stat-bar__value { color: var(--brand-blue); }
+
+.stat-bar__label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 8px;
+}
+
+.stat-bar__value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  transition: color 0.15s;
+}
+
+.stat-bar__sub {
+  font-size: 12px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+}
+
+.stat-bar__arrow {
+  position: absolute;
+  top: 22px;
+  right: 16px;
+  font-size: 14px;
+  color: var(--brand-mid);
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.stat-bar__item:hover .stat-bar__arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@media (max-width: 700px) {
+  .stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-bar__item:nth-child(2) { border-right: none; }
+  .stat-bar__item:nth-child(1),
+  .stat-bar__item:nth-child(2) { border-bottom: 1px solid var(--brand-border); }
+}
+
+/* ── Section Sidebar  -  fixed right, vertically centered in viewport ────────── */
+#section-sidebar {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  z-index: 150;
+}
+
+.section-sidebar__inner {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 16px 0 10px;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 1px 4px rgba(35,38,59,0.06);
+}
+.section-sidebar__inner::-webkit-scrollbar { display: none; }
+
+.section-sidebar__heading {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-mid);
+  padding: 0 14px 10px;
+  opacity: 0.55;
+}
+
+.section-sidebar__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+  text-decoration: none;
+}
+.section-sidebar__item:hover {
+  background: var(--brand-light);
+  text-decoration: none;
+}
+.section-sidebar__item--active {
+  border-left-color: var(--brand-blue);
+  background: rgba(0,61,255,0.04);
+}
+
+.section-sidebar__num {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--brand-light);
+  color: var(--brand-mid);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: background 0.12s, color 0.12s;
+}
+.section-sidebar__item--active .section-sidebar__num {
+  background: var(--brand-blue);
+  color: white;
+}
+
+.section-sidebar__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.3;
+  margin-bottom: 1px;
+  transition: color 0.12s;
+}
+.section-sidebar__desc {
+  font-size: 10px;
+  color: var(--brand-mid);
+  line-height: 1.4;
+  opacity: 0.7;
+}
+.section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
+.section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
+
+/* Hide sidebar on narrow screens */
+@media (max-width: 1200px) {
+  #section-sidebar { display: none; }
+}
+
+/* No-op legacy strip classes */
+.section-strip, .section-toc { display: none !important; }
+.section-strip__pill, .section-strip__pill--active,
+.section-toc__link, .section-toc__link--active { display: none !important; }
+
+/* No-op legacy highlight card classes */
+.highlights-grid, .highlight-card,
+.highlight-card__icon, .highlight-card__stat, .highlight-card__label { display: none !important; }
+
+/* Section subtitle  -  personalized one-liner under every section title */
+.section-subtitle {
+  font-size: 14px;
+  color: var(--brand-mid);
+  font-style: italic;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* ─── Floating Card  -  Summary stat bar wrapper ──────────────────────────── */
+.floating-card-wrap {
+  perspective: 1400px;
+  margin-bottom: 32px;
+  cursor: default;
+}
+
+.floating-card-inner {
+  transform-style: preserve-3d;
+  animation: float-bob 7s ease-in-out infinite;
+  transition: transform 0.12s ease-out, box-shadow 0.2s ease;
+  will-change: transform;
+  border-radius: 12px;
+}
+
+@keyframes float-bob {
+  0%,  100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  33%        { transform: translateY(-6px) rotateX(0.8deg) rotateY(0.4deg); }
+  66%        { transform: translateY(-3px) rotateX(-0.4deg) rotateY(-0.6deg); }
+}
+
+.floating-card-inner:hover {
+  animation-play-state: paused;
+  box-shadow: 0 20px 60px rgba(0,61,255,0.14), 0 6px 20px rgba(35,38,59,0.12);
+}
+
+/* ─── Case Studies  -  ruixenui vertical timeline, alternating 2/3+1/3 grid ──
+   Each row: portrait+quote (2/3) | animated metric (1/3)
+   Alternating rows reverse the order (metric on left, portrait+quote on right)
+────────────────────────────────────────────────────────────────────────────── */
+.cs-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-timeline-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  border-bottom: 1px solid var(--brand-border);
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+.cs-timeline-row:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cs-timeline-row--reversed {
+  grid-template-columns: 1fr 2fr;
+}
+.cs-timeline-row--reversed .cs-left { order: 2; }
+.cs-timeline-row--reversed .cs-metric { order: 1; }
+
+/* Left block: portrait + quote */
+.cs-left {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: flex-start;
+  border-right: 1px solid var(--brand-border);
+  padding-right: 2.5rem;
+}
+.cs-left--reversed {
+  border-right: none;
+  border-left: 1px solid var(--brand-border);
+  padding-right: 0;
+  padding-left: 2.5rem;
+}
+
+/* Portrait  -  company monogram, aspect ratio 29/35 */
+.cs-portrait {
+  width: 120px;
+  aspect-ratio: 29 / 35;
+  flex-shrink: 0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.cs-portrait:hover { transform: scale(1.05); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.cs-portrait__initials {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.cs-portrait__label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Quote block */
+.cs-quote {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cs-quote__text { margin: 0; }
+.cs-quote__headline {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--brand-navy);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+.cs-quote__sub {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.cs-quote__company {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+.cs-quote__why {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+}
+.cs-quote__link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  margin-top: 4px;
+}
+.cs-quote__link:hover { text-decoration: underline; }
+
+/* Metric block */
+.cs-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+.cs-metric--reversed { text-align: right; }
+.cs-metric__num {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--brand-navy);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin: 0;
+}
+.cs-metric__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-navy);
+  margin: 0;
+}
+.cs-metric__sub {
+  font-size: 13px;
+  color: var(--brand-mid);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .cs-timeline-row,
+  .cs-timeline-row--reversed { grid-template-columns: 1fr; }
+  .cs-left, .cs-left--reversed { border: none; padding: 0; }
+  .cs-timeline-row--reversed .cs-left { order: unset; }
+  .cs-timeline-row--reversed .cs-metric { order: unset; }
+  .cs-portrait { width: 80px; }
+}
+
+/* Keep old drawer classes as no-ops */
+.cs-row, .cs-card, .cs-header, .cs-body { display: none !important; }
+
+.cs-card {
+  background: white;
+  border: 1px solid var(--brand-border);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.cs-card:hover { box-shadow: 0 4px 16px rgba(35,38,59,0.10); }
+.cs-card--open {
+  border-color: var(--brand-blue);
+  box-shadow: 0 4px 20px rgba(0,61,255,0.10);
+}
+
+/* Header  -  always visible */
+.cs-header {
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.cs-vertical {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.7;
+}
+
+.cs-company {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--brand-navy);
+  line-height: 1.2;
+}
+
+.cs-metric-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(5,150,105,0.08);
+  border: 1px solid rgba(5,150,105,0.22);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-green);
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.cs-chevron {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--brand-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, background 0.15s;
+  flex-shrink: 0;
+}
+.cs-card--open .cs-chevron {
+  transform: rotate(90deg);
+  background: rgba(0,61,255,0.08);
+}
+.cs-chevron svg { transition: stroke 0.15s; }
+.cs-card--open .cs-chevron svg { stroke: var(--brand-blue); }
+
+/* Expandable body */
+.cs-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              padding 0.25s ease;
+  opacity: 0;
+  padding: 0 20px;
+  border-top: 0px solid var(--brand-border);
+}
+.cs-card--open .cs-body {
+  max-height: 400px;
+  opacity: 1;
+  padding: 16px 20px 20px;
+  border-top-width: 1px;
+}
+
+.cs-body-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--brand-mid);
+  opacity: 0.6;
+  margin-bottom: 5px;
+}
+
+.cs-body-text {
+  font-size: 13px;
+  color: var(--brand-navy);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.cs-big-stat {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-green);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin: 0 0 4px;
+}
+
+.cs-stat-label {
+  font-size: 11px;
+  color: var(--brand-mid);
+  margin-bottom: 16px;
+}
+
+.cs-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(0,61,255,0.25);
+  border-radius: 8px;
+  background: rgba(0,61,255,0.04);
+  transition: background 0.15s, border-color 0.15s;
+}
+.cs-read-link:hover {
+  background: rgba(0,61,255,0.08);
+  border-color: var(--brand-blue);
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .cs-row { grid-template-columns: 1fr; }
+}

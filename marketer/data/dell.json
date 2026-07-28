@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "company": "Dell Technologies",
+    "slug": "dell",
+    "domain": "dell.com",
+    "audit_date": "2026-03-26",
+    "auditor": "Algolia Search Audit Pipeline",
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-03-29"
+  },
+  "score": {
+    "overall": 3.6,
+    "verdict": "Significant Gaps \u2014 9 findings across NLP, personalization, empty state, no-results, and recommendations"
+  },
+  "narrative_hook": {
+    "text": "Dell.com greets first-time visitors with a blank search panel \u2014 no trending searches, no popular categories \u2014 while carrying an estimated 34.7M monthly visits.",
+    "source_finding_id": "F1",
+    "source_finding_title": "Blank Empty State \u2014 Zero Search Guidance",
+    "source_stat": "34.7M monthly visitors; first-time visitors (est. 26%) receive zero discovery guidance",
+    "source_stat_source": "[ESTIMATE \u2014 SimilarWeb public, 2026-03-26]"
+  },
+  "active_sources": [
+    {
+      "name": "Traffic",
+      "detail": "SimilarWeb-derived visits, channels, device split"
+    },
+    {
+      "name": "Industry",
+      "detail": "Vertical benchmarks (Baymard, etc.)"
+    },
+    {
+      "name": "Competitors",
+      "detail": "4 competitors mapped"
+    },
+    {
+      "name": "Financials",
+      "detail": "Public financial profile"
+    },
+    {
+      "name": "Hiring",
+      "detail": "ICP-relevant open roles"
+    }
+  ],
+  "locked_sources": [
+    {
+      "name": "Gong call recordings",
+      "function": "Verbatim Objection & Signal Miner",
+      "needs": "Gong call transcripts for the account",
+      "value": "Real objections + competitor names the prospect raised themselves"
+    },
+    {
+      "name": "Account-history doc",
+      "function": "Account Memory",
+      "needs": "Informal rep notes on prior deals/contacts",
+      "value": "Don't re-pitch a failed angle; continuity across attempts"
+    },
+    {
+      "name": "Event engagement feed",
+      "function": "Conference/booth touch tracking",
+      "needs": "Event attendance/engagement data",
+      "value": "Surfaces in-person signal no web research can see"
+    }
+  ],
+  "existing_page": "marketer/dell.html"
+}

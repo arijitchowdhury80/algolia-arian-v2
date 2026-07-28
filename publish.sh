@@ -13,6 +13,8 @@ else
   AUDIT_BASE="$(pwd)"
 fi
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPORTS_DIR="$REPO_DIR/reports"
+DATA_DIR="$REPORTS_DIR/data"
 SCRIPTS=~/.claude/skills/algolia-search-audit/scripts
 DELIV="$AUDIT_BASE/$(echo "$SLUG" | tr '[:lower:]' '[:upper:]')/deliverables"
 
@@ -32,9 +34,14 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Copy rendered files to server
-echo "Publishing to $REPO_DIR/$SLUG/..."
-cp "$DELIV/$SLUG/index.html" "$REPO_DIR/$SLUG/index.html"
-cp "$DELIV/$SLUG-audit-data.json" "$REPO_DIR/$SLUG-audit-data.json" 2>/dev/null || true
+# Copy rendered files to the reports IA tree.
+mkdir -p "$REPORTS_DIR/$SLUG" "$DATA_DIR"
+echo "Publishing to $REPORTS_DIR/$SLUG/..."
+cp "$DELIV/$SLUG/index.html" "$REPORTS_DIR/$SLUG/index.html"
+cp "$DELIV/$SLUG/ae-report.html" "$REPORTS_DIR/$SLUG/ae-report.html" 2>/dev/null || true
+cp "$DELIV/$SLUG/battle-card.html" "$REPORTS_DIR/$SLUG/battle-card.html" 2>/dev/null || true
+cp "$DELIV/$SLUG/leave-behind.html" "$REPORTS_DIR/$SLUG/leave-behind.html" 2>/dev/null || true
+cp -R "$DELIV/$SLUG/screenshots" "$REPORTS_DIR/$SLUG/screenshots" 2>/dev/null || true
+cp "$DELIV/$SLUG-audit-data.json" "$DATA_DIR/$SLUG-audit-data.json" 2>/dev/null || true
 
-echo "Done. Open: http://localhost:8766/$SLUG/index.html"
+echo "Done. Open: http://localhost:8766/reports/$SLUG/index.html"
