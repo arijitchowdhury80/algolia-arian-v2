@@ -538,16 +538,18 @@ const server = http.createServer(async (req, res) => {
     return handleAvatarStop(res);
   }
   if (req.method === "GET" || req.method === "HEAD") {
-    // Legacy flat audit URL: 301 to reports/ before the gate, so the redirect is
-    // cacheable and the auth check then happens once, at the canonical path.
+    if (!isPublicStaticPath(url) && !(await requireAuth(req, res, url))) {
+      return;
+    }
+    // Legacy flat audit URL -> canonical reports/ path. Deliberately AFTER the auth
+    // gate: redirecting first would confirm to an anonymous visitor which company
+    // slugs exist on the box, and the slug list is prospect-confidential. Signed-in
+    // users get the 301; anonymous users get the sign-in redirect, then the 301.
     const legacy = await legacyFlatRedirect(url);
     if (legacy) {
       res.statusCode = 301;
       res.setHeader("Location", legacy);
       return res.end();
-    }
-    if (!isPublicStaticPath(url) && !(await requireAuth(req, res, url))) {
-      return;
     }
     return serveStatic(res, url).catch(() => {
       if (!res.headersSent) sendJson(res, 500, { error: "internal" });
