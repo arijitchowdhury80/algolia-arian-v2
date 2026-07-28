@@ -259,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2726,13 +2726,13 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
 #section-sidebar {
   position: fixed;
-  right: 24px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -2809,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5145,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5635,16 +5635,17 @@ a:hover {
   },
   "financials": {
     "analyst_consensus": {
-      "raw": "BUY — 33 analysts: 5 Strong Buy, 18 Buy, 14 Hold, 1 Sell, 1 Strong Sell; mean score 2.18/5; median price target $57.00 vs current $44.20 (~29% implied upside) [FACT — Yahoo Finance MCP recommendations, 2026-04-14, https://finance.yahoo.com/quote/NKE]",
+      "raw": "BUY - 34 analyst opinions; consensus recommendation 2.49/5 (Buy). Yahoo recommendation-trend (current month): 1 Strong Buy, 11 Buy, 25 Hold, 1 Sell, 1 Strong Sell (39 rating actions). Median 12-month price target $47.05 (mean $51.46) vs current $44.09 - ~7% implied upside to median. [FACT - Yahoo Finance MCP, live 2026-07-04, https://finance.yahoo.com/quote/NKE]",
       "rating": "BUY",
-      "mean_score": 2.18,
-      "price_target_median": 57,
-      "price_current": 44.2,
-      "upside_pct": 29,
-      "analysts_count": 33
+      "mean_score": 2.49,
+      "price_target_median": 47.05,
+      "price_current": 44.09,
+      "upside_pct": 6.7,
+      "analysts_count": 34,
+      "price_target_mean": 51.46
     },
     "margins": {
-      "gross_margin_pct": 40.92,
+      "gross_margin_pct": 42.7,
       "ebitda_margin_pct": 8.31,
       "operating_margin_pct": 6.94,
       "net_margin_pct": 4.84,
@@ -5672,11 +5673,13 @@ a:hover {
       }
     },
     "revenue_fy2025": 46309000000,
+    "total_digital_revenue": "~$9.6B (Nike Brand Digital, FY2025 — derived from FY2025 10-K: NIKE Direct $18.8B with the digital segment down ~20% YoY; matches the ~$9.6B baseline used in this report's roi_scenarios and ABX business case)",
+    "total_digital_revenue_source": "[FACT — Nike FY2025 10-K (NIKE Direct $18.8B, digital -20% YoY) → ~$9.6B; corroborated by roi_scenarios baseline in this report]",
     "revenue_fy2024": 51362000000,
     "revenue_fy2023": 51217000000,
     "gross_margin": "42.7%",
     "margin_zone": "GREEN",
-    "analyst_count": 33,
+    "analyst_count": 34,
     "ticker": "NKE",
     "revenue_source": "Yahoo Finance MCP + SEC EDGAR 10-K",
     "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-04-14]",
@@ -5742,14 +5745,14 @@ a:hover {
       }
     ],
     "roi_calc": {
-      "revenue_basis": "$46.3B",
-      "revenue_basis_source": "Nike FY2025 10-K, Yahoo Finance MCP, 2026-04-14",
-      "gross_margin_pct": 40.9,
-      "gross_margin_source": "Yahoo Finance TTM, 2026-04-14",
+      "revenue_basis": "~$9.6B (NIKE Brand Digital, FY2025)",
+      "revenue_basis_source": "Nike FY2025 10-K (NIKE Direct $18.8B, digital -20% YoY -> ~$9.6B); same baseline as roi_scenarios/ABX",
+      "gross_margin_pct": 42.7,
+      "gross_margin_source": "Nike FY2025 gross margin 42.7% (Q4 FY2025 8-K); Yahoo Finance TTM 42.9%, 2026-07-04",
       "lift_pct": 1,
-      "lift_basis": "Conservative benchmark — Algolia customers report 10-30% search conversion improvement; 1% applied to total revenue is deliberately conservative",
-      "incremental_revenue_est": "$463M",
-      "gross_profit_impact_est": "$189M"
+      "lift_basis": "Conservative benchmark - Algolia customers report 10-30% search conversion improvement; 1% applied to the ~$9.6B NIKE Digital baseline (not total revenue) is deliberately conservative and consistent with this report's roi_scenarios and ABX business case",
+      "incremental_revenue_est": "$96M",
+      "gross_profit_impact_est": "$41M"
     },
     "search_roi_est": "$96M–$288M/year"
   },
@@ -5792,27 +5795,27 @@ a:hover {
     {
       "type": "media_quote",
       "badge_label": "Elliott Hill, President & Chief Executive Officer",
-      "signal": "This new formation and ways of working will align our three brands, Nike Jordan and Converse into more nimble focused te",
+      "signal": "This new formation and ways of working will align our 3 brands, NIKE, Jordan and Converse, into more nimble, focused teams by sport.",
       "algolia_angle": "Hill's sport-first restructuring generates category-level consumer data that feeds personalization engines — Algolia's sport-category merchandising and dynamic filtering capabilities are a natural fit.",
-      "source_url": "https://investors.nike.com/investors/news-events-and-reports/investor-news/investor-news-details/2025/NIKE-Inc--Reports-Fiscal-2026-First-Quarter-Results/default.aspx",
+      "source_url": "https://s1.q4cdn.com/806093406/files/doc_financials/2026/q1/NIKE-Inc-Q1FY26-OFFICIAL-Transcript_-FINAL.pdf",
       "source_name": "Nike Investor Relations Press Release (Q1 FY2026)",
       "source_date": "2025-09-30",
       "confidence": "FACT",
-      "label": "[FACT — Nike Q1 FY2026 investor press release via WebSearch, 2025-09-30]",
+      "label": "[FACT - Nike Q1 FY2026 earnings call transcript, 2025-09-30]",
       "urgency_score": 6,
       "category_tag": "leadership_change",
       "publication": "Nike Investor Relations Press Release (Q1 FY2026)"
     },
     {
       "type": "media_quote",
-      "badge_label": "Elliott Hill, President & Chief Executive Officer",
-      "signal": "Nike.com posted its best Black Friday ever this year, partially driven by strong sell-through of the Jordan Black Cat la",
+      "badge_label": "Matthew Friend, Executive Vice President & Chief Financial Officer",
+      "signal": "NIKE.com posted its best Black Friday ever this year, partially driven by strong sell-through of the Jordan Black Cat launch.",
       "algolia_angle": "Nike.com's best-ever Black Friday performance validates the premium DTC digital channel and demonstrates that launch-moment search and discovery at scale are critical.",
-      "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nike-beats-q2-2026-expectations-stock-rises-93CH-4416358",
-      "source_name": "Investing.com (Q2 FY2026 earnings call transcript)",
+      "source_url": "https://s1.q4cdn.com/806093406/files/doc_financials/2026/q2/NIKE-Inc-Q2FY26-OFFICIAL-Transcript_-FINAL.pdf",
+      "source_name": "Nike Q2 FY2026 earnings call transcript",
       "source_date": "2025-12-18",
       "confidence": "FACT",
-      "label": "[FACT — Investing.com Q2 FY2026 earnings call transcript WebFetch, 2025-12-18]",
+      "label": "[FACT - Nike Q2 FY2026 earnings call transcript, 2025-12-18]",
       "urgency_score": 6,
       "category_tag": "leadership_change",
       "publication": "Investing.com (Q2 FY2026 earnings call transcript)"
@@ -5820,13 +5823,13 @@ a:hover {
     {
       "type": "media_quote",
       "badge_label": "Elliott Hill, President & Chief Executive Officer",
-      "signal": "ensure technology is fully integrated across the company and how we create, plan, make, deliver, and sell our world-clas",
+      "signal": "He and his team will look end-to-end to ensure technology is fully integrated across the company in how we create, plan, make, deliver and sell our world-class innovations.",
       "algolia_angle": "Hill's explicit mandate to integrate technology end-to-end across the commerce lifecycle positions Algolia's search infrastructure as a platform-level decision.",
-      "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-nike-beats-q2-2026-expectations-stock-rises-93CH-4416358",
+      "source_url": "https://s1.q4cdn.com/806093406/files/doc_financials/2026/q2/NIKE-Inc-Q2FY26-OFFICIAL-Transcript_-FINAL.pdf",
       "source_name": "Investing.com (Q2 FY2026 earnings call transcript)",
       "source_date": "2025-12-18",
       "confidence": "FACT",
-      "label": "[FACT — Investing.com Q2 FY2026 earnings call transcript WebFetch, 2025-12-18]",
+      "label": "[FACT - Nike Q2 FY2026 earnings call transcript, 2025-12-18]",
       "urgency_score": 6,
       "category_tag": "leadership_change",
       "publication": "Investing.com (Q2 FY2026 earnings call transcript)"
@@ -5834,13 +5837,13 @@ a:hover {
     {
       "type": "media_quote",
       "badge_label": "Elliott Hill, President & Chief Executive Officer",
-      "signal": "This move is about growth and offense — giving Sales and Nike Direct an even stronger voice in how we set strategy and i",
+      "signal": "This move is about growth and offense - giving Sales and Nike Direct an even stronger voice in how we set strategy and invest.",
       "algolia_angle": "Hill's 'growth and offense' framing around Nike Direct — with CFO Friend now owning Nike Direct strategy — positions search investment as a direct revenue line item within the CFO's purview.",
       "source_url": "https://www.digitalcommerce360.com/2025/12/03/nike-c-suite-coo-leadership-team-changes/",
       "source_name": "Digital Commerce 360",
       "source_date": "2025-12-03",
       "confidence": "FACT",
-      "label": "[FACT — Digital Commerce 360 WebFetch, 2025-12-03]",
+      "label": "[FACT - Digital Commerce 360, 2025-12-03]",
       "urgency_score": 6,
       "category_tag": "leadership_change",
       "publication": "Digital Commerce 360"
@@ -5848,7 +5851,7 @@ a:hover {
     {
       "type": "media_quote",
       "badge_label": "Elliott Hill, President & Chief Executive Officer",
-      "signal": "I'm so tired, and I know you are too, of talking about fixing this business. I want to move to inspiring and driving gro",
+      "signal": "I'm so tired, and I know you are too, of talking about fixing this business. I want to move to inspiring and driving growth and having fun.",
       "algolia_angle": "Hill's public pivot from 'fixing' to 'growth' signals the transition from cost-cutting to investment mode. Growth-mode budgets are where search infrastructure upgrades get approved.",
       "source_url": "https://fortune.com/article/nike-ceo-elliott-hill-remarks-turnaround-tired/",
       "source_name": "Fortune",
@@ -5902,15 +5905,15 @@ a:hover {
       "publication": "Globe and Mail / Motley Fool (Q3 FY2026 transcript)"
     },
     {
-      "type": "media_quote",
-      "badge_label": "Venkatesh (Venky) Alagirisamy, Executive Vice President & Chief Operating Officer",
-      "signal": "Nike has eliminated its Chief Technology Officer role and put a newly appointed Chief Operating Officer in charge of tec",
+      "type": "news_signal",
+      "badge_label": "The Stack - reporting: Nike eliminates CTO role; COO to lead technology",
+      "signal": "The Stack reported that Nike eliminated its Chief Technology Officer role and put newly appointed Chief Operating Officer Venkatesh (Venky) Alagirisamy in charge of technology transformation. (Reporting by The Stack, not a direct quote from Alagirisamy.)",
       "algolia_angle": "Alagirisamy's COO role absorbs technology — search infrastructure decisions now route through operations, not a siloed tech org. Algolia's pitch should frame search as an operational capability.",
       "source_url": "https://www.thestack.technology/get-rid-of-the-cto-just-do-it-says-nike/",
       "source_name": "The Stack",
-      "source_date": "2025-12-03",
+      "source_date": "2026-01-04",
       "confidence": "FACT",
-      "label": "[FACT — The Stack WebFetch, 2026-04-15]",
+      "label": "[FACT - The Stack (Edward Targett), reporting, 2026-01-04]",
       "urgency_score": 8,
       "category_tag": "leadership_change",
       "publication": "The Stack"
@@ -6146,7 +6149,7 @@ a:hover {
         "title": "Chief Information Officer",
         "status": "WARM",
         "signal": "hot",
-        "message": "Former Salesforce executive (hired August 2025). Fluent in Algolia's SFCC AppExchange integration. First call target — she knows the Algolia-SFCC co-sell story cold. Entry via Algolia's Salesforce partner team.",
+        "message": "Former Salesforce executive (hired July 2024 into a newly-created CIO role under then-CEO John Donahoe). Fluent in Algolia's SFCC AppExchange integration. First call target - he knows the Algolia-SFCC co-sell story cold. Entry via Algolia's Salesforce partner team.",
         "linkedin_url": "https://www.linkedin.com/company/nike/",
         "job_url": null
       },
@@ -6192,7 +6195,7 @@ a:hover {
       {
         "phase": 2,
         "label": "Parallel — Cognizant SI Warm Intro",
-        "target": "Cognizant Retail Account Team (Sushant Warikoo) → Nike Engineering",
+        "target": "Cognizant Retail team (Sushant Warikoo, Head of Cognizant's Retail Industry Business Unit - publicly led the 2023 Nike expansion) -> Nike Engineering",
         "message": "Cognizant holds a 5-year IT services contract with Nike (signed April 2023). Their scope includes nike.com application support — they touch Nike's search infrastructure daily. Pitch: 'Algolia reduces your Elasticsearch support burden at Nike. Fewer custom tickets, faster SLA.'",
         "timing": "Within 2 weeks"
       },
@@ -6243,7 +6246,7 @@ a:hover {
       {
         "name": "Cognizant",
         "confidence": "HIGH",
-        "evidence": "5-year contract April 2023 managing Nike global technology operations across 230+ locations. Scope includes Nike.com and mobile apps (L1/L2 support).",
+        "evidence": "5-year contract April 2023 managing Nike global technology operations across 230+ locations. Scope includes Nike.com and mobile apps (L1/L2 support). Sushant Warikoo (Head of Cognizant Retail Industry BU) publicly announced the Nike expansion (LinkedIn, 2023); Cognizant press release 2023-04-25.",
         "c_suite_access": "COO (Venky Alagirisamy) / VP Engineering",
         "sales_action": "Request warm intro via Cognizant retail account team. They provide L1/L2 support for Nike.com search infrastructure.",
         "source_url": "https://news.cognizant.com/2023-04-25-Nike-Expands-Relationship-with-Cognizant-to-Manage-its-Global-Technology-Operations"
@@ -6265,7 +6268,7 @@ a:hover {
         "source_url": "https://fashionunited.com/executive/report/senior-deloitte-executive-cathleen-benko-joins-nike-s-board-of-directors/2018072322492"
       }
     ],
-    "immediate_action": "Contact Algolia SFCC partner team. CIO Cheryan Jacob (hired August 2025, former Salesforce exec) is the warm entry. She knows Algolia from the Salesforce AppExchange ecosystem.",
+    "immediate_action": "Contact Algolia SFCC partner team. CIO Cheryan Jacob (hired July 2024, former Salesforce exec) is the warm entry. He knows Algolia from the Salesforce AppExchange ecosystem.",
     "co_sell_recommendation": "Lead with SFCC co-sell motion — Nike runs SFCC and Algolia has a purpose-built AppExchange integration. Secondary: leverage Cognizant active Nike.com managed services for search infrastructure evaluation influence.",
     "crossbeam_data_available": false,
     "source_label": "partner-intel.md — WebSearch + WebFetch (Crossbeam MCP unavailable), 2026-04-15",
@@ -6374,7 +6377,7 @@ a:hover {
   "recommended_first_play": {
     "type": "partner_warm_intro",
     "headline": "SFCC co-sell via new Nike CIO",
-    "detail": "Nike’s new CIO Cheryan Jacob (hired August 2025) is a former Salesforce executive. Algolia has a purpose-built SFCC AppExchange integration. Trigger the SFCC co-sell motion immediately — Jacob will recognize the Algolia-SFCC value proposition and this creates a direct entry to the commerce/search engineering team without cold outreach.",
+    "detail": "Nike's CIO Cheryan Jacob (hired July 2024 into a newly-created role) is a former Salesforce executive. Algolia has a purpose-built SFCC AppExchange integration. Trigger the SFCC co-sell motion immediately - Jacob will recognize the Algolia-SFCC value proposition and this creates a direct entry to the commerce/search engineering team without cold outreach.",
     "urgency": "high",
     "source": "partner_intel"
   },
@@ -6393,35 +6396,35 @@ a:hover {
     {
       "name": "Adidas",
       "domain": "adidas.com",
-      "search_vendor": "Salesforce Einstein (SFCC built-in)",
+      "search_vendor": "Custom in-house cloud-native commerce platform (Reaktor-built)",
       "search_vendor_confirmed": false,
       "uses_algolia": false,
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "SFCC Einstein search. No confirmed third-party search vendor. Lacks NLP depth and Algolia-grade merchandising control."
+      "strategic_angle": "Runs a custom, in-house cloud-native commerce platform (rebuilt with Reaktor; Kubernetes/microservices, in-house engineering hubs) - not Salesforce Commerce Cloud. Third-party site-search vendor not independently confirmed. [Adidas digital-platform reporting: IT Revolution / Reaktor case studies]"
     },
     {
       "name": "Puma",
       "domain": "puma.com",
       "search_vendor": "Bloomreach Discovery",
-      "search_vendor_confirmed": false,
+      "search_vendor_confirmed": true,
       "uses_algolia": false,
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Bloomreach on SFCC. More advanced than plain SFCC search but below Algolia’s speed and NLP quality."
+      "strategic_angle": "Uses Bloomreach Discovery for site search and personalization (confirmed via Bloomreach customer references and third-party analyses). An established AI-search vendor - position on Algolia's speed, relevance tuning, and merchandising workflow rather than a capability gap."
     },
     {
       "name": "Asics",
       "domain": "asics.com",
-      "search_vendor": "SFCC built-in + Contentsquare",
-      "search_vendor_confirmed": false,
+      "search_vendor": "Salesforce Commerce Cloud (native search)",
+      "search_vendor_confirmed": true,
       "uses_algolia": false,
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Migrated to SFCC in 2019. Contentsquare is experience analytics, not a search vendor."
+      "strategic_angle": "Migrated global ecommerce to Salesforce Commerce Cloud in 2019 (confirmed - Digital Commerce 360, Salesforce). Uses SFCC native search; Contentsquare is experience analytics, not a search vendor. No confirmed third-party search vendor."
     },
     {
       "name": "New Balance",
@@ -6515,7 +6518,7 @@ a:hover {
       "discovery_question": "With the CTO role eliminated and technology now under the COO, how does a search platform evaluation get initiated at Nike — and who makes the final call: the CIO, COO, or CFO?",
       "algolia_proof": "Algolia ROI maps to both buyer frames: COO (eliminate Elasticsearch maintenance, reduce Cognizant support tickets) + CFO (1pp search conversion = $41M gross profit on Nike Direct). [FACT — 08-financial-profile.md; partner-intel.md]",
       "objection": "We're focused on finishing the Win Now restructure first.",
-      "objection_counter": "Finishing Win Now by May 2026 is exactly the window. Technology budget is actively being reallocated. A search platform decision inside the Win Now timeline gets FY2026 funding — after May it becomes a FY2027 procurement process.",
+      "objection_counter": "As of the April 2026 audit, Nike's 'Win Now' window (through the May 31 FY2026 close) was the active funding window - a decision inside it could get FY2026 funding. If engaging after the FY2026 close, position for the FY2027 budget cycle (planning runs Sept-Nov 2026). Either way, technology budget is actively being reallocated.",
       "source": "[FACT — 01-company-context.md (Dec 2025 restructure); 09d-hiring-signals.md (NDDC vacancies); 11-investor-intelligence.md (COO quote — 'fully integrated across the company')]"
     }
   ],
@@ -6556,9 +6559,9 @@ a:hover {
         "prospect_today": "DIY Elasticsearch — keyword-only, partial attribute stacking",
         "prospect_with_algolia": "NeuralSearch — understands intent, auto-applies price/attribute filters",
         "nike_has": "Under Armour: Algolia NeuralSearch (confirmed)",
-        "asics_has": "Adidas: SFCC Einstein (vendor-dependent)",
-        "on_running_has": "Puma: Bloomreach Discovery (partial NLP)",
-        "new_balance_has": "Asics: SFCC built-in (keyword only)",
+        "asics_has": "Adidas: custom in-house cloud-native commerce platform (Reaktor-built); third-party search vendor not independently confirmed",
+        "on_running_has": "Puma: Bloomreach Discovery (confirmed vendor)",
+        "new_balance_has": "Asics: Salesforce Commerce Cloud native search (confirmed platform)",
         "algolia_delta": "Critical gap"
       },
       {
@@ -6566,9 +6569,9 @@ a:hover {
         "prospect_today": "Zero personalization detected. Browsing history ignored in search results.",
         "prospect_with_algolia": "Per-user re-ranking based on purchase history + browsing preferences",
         "nike_has": "Under Armour: Algolia Personalization (confirmed)",
-        "asics_has": "Adidas: limited (SFCC)",
-        "on_running_has": "Puma: Bloomreach personalization (partial)",
-        "new_balance_has": "Asics: unknown",
+        "asics_has": "Adidas: custom platform; personalization not independently confirmed",
+        "on_running_has": "Puma: Bloomreach personalization (confirmed vendor)",
+        "new_balance_has": "Asics: not independently confirmed",
         "algolia_delta": "Critical gap"
       },
       {
@@ -6576,9 +6579,9 @@ a:hover {
         "prospect_today": "Static facets. “Cushioning Type” shown for apparel queries.",
         "prospect_with_algolia": "Context-aware filter panels that adapt to product type and query intent",
         "nike_has": "Under Armour: Algolia Dynamic Faceting",
-        "asics_has": "Adidas: static SFCC facets",
-        "on_running_has": "Puma: Bloomreach dynamic facets (partial)",
-        "new_balance_has": "Asics: static SFCC facets",
+        "asics_has": "Adidas: custom platform; not independently confirmed",
+        "on_running_has": "Puma: Bloomreach faceting (confirmed vendor)",
+        "new_balance_has": "Asics: SFCC facets (confirmed platform)",
         "algolia_delta": "High gap"
       },
       {
@@ -6586,9 +6589,9 @@ a:hover {
         "prospect_today": "Engineering-dependent. No banners on “sale.” No brand landing for “Jordan.”",
         "prospect_with_algolia": "Visual Merchandising Studio — no-code, instant campaign control",
         "nike_has": "Under Armour: Algolia Rules Engine",
-        "asics_has": "Adidas: SFCC-dependent",
-        "on_running_has": "Puma: Bloomreach merchandising",
-        "new_balance_has": "Asics: SFCC-dependent",
+        "asics_has": "Adidas: custom platform; not independently confirmed",
+        "on_running_has": "Puma: Bloomreach merchandising (confirmed vendor)",
+        "new_balance_has": "Asics: SFCC merchandising (confirmed platform)",
         "algolia_delta": "High gap"
       }
     ],
@@ -6603,21 +6606,21 @@ a:hover {
       {
         "name": "Adidas",
         "domain": "adidas.com",
-        "search_vendor": "Salesforce Einstein (SFCC)",
+        "search_vendor": "Custom in-house cloud-native commerce platform (search vendor unconfirmed)",
         "uses_algolia": false,
         "tier": "Direct"
       },
       {
         "name": "Puma",
         "domain": "puma.com",
-        "search_vendor": "Bloomreach Discovery",
+        "search_vendor": "Bloomreach Discovery (confirmed)",
         "uses_algolia": false,
         "tier": "Adjacent"
       },
       {
         "name": "Asics",
         "domain": "asics.com",
-        "search_vendor": "SFCC built-in + Contentsquare",
+        "search_vendor": "Salesforce Commerce Cloud native search (confirmed)",
         "uses_algolia": false,
         "tier": "Adjacent"
       },
@@ -6786,8 +6789,8 @@ a:hover {
     },
     {
       "priority": 4,
-      "action": "Target POC agreement by June 2026 — ahead of Nike Investor Day Fall 2026",
-      "timeline": "June 2026"
+      "action": "Target a POC agreement within ~one quarter of first contact, ahead of Nike Investor Day (Fall 2026). [As of the April 2026 audit this was framed as 'by June 2026'; that date has passed - set a fresh target at outreach.]",
+      "timeline": "~1 quarter from first contact (original audit target: June 2026, now expired)"
     }
   ],
   "abx_sequence": {
@@ -6883,7 +6886,7 @@ a:hover {
         "tier": 1,
         "role": "Warm Entry / Technical Economic Buyer",
         "linkedin_url": "https://www.linkedin.com/company/nike/",
-        "angle": "Former Salesforce exec — SFCC co-sell warm entry. She knows Algolia from the AppExchange ecosystem. First call target."
+        "angle": "Former Salesforce exec — SFCC co-sell warm entry. He knows Algolia from the AppExchange ecosystem. First call target."
       },
       {
         "id": "contact-2",
@@ -7296,6 +7299,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -7409,7 +7418,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -7886,7 +7895,7 @@ function renderTopbar(D) {
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
     ${(()=>{
-      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      const assets=Array.isArray((D.abx_sequence&&D.abx_sequence.assets_library)) ? ((D.abx_sequence&&D.abx_sequence.assets_library)) : [];
       if(!assets.length) return '';
       const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -7932,9 +7941,9 @@ document.addEventListener('click', function(e){
 
 function buildSidebar(D) {
 
-  const findings    = D.findings || [];
+  const findings    = Array.isArray(D.findings) ? (D.findings) : [];
 
-  const signals     = D.intelligence_signals || [];
+  const signals     = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
 
   const signalTypes = [...new Set(signals.map(s => s.type))];
 
@@ -8346,7 +8355,7 @@ function sectionOverviewGrid(D) {
   const score = D.score || {};
   const fin   = D.financials || {};
   const ae    = D.ae_fields  || {};
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
@@ -8363,7 +8372,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8390,7 +8399,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8656,7 +8665,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8664,7 +8673,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8754,7 +8763,7 @@ function sectionExecSummary(D) {
 
     ${(() => {
 
-      const allFindings = D.findings || [];
+      const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
       const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
@@ -8836,7 +8845,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8954,7 +8963,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8980,7 +8989,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -9090,7 +9099,7 @@ function sectionCompanySnapshot(D) {
 
   const cs   = D.company_snapshot || {};
 
-  const execs = D.executives || [];
+  const execs = Array.isArray(D.executives) ? (D.executives) : [];
 
   const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
 
@@ -9350,7 +9359,7 @@ function sectionTraffic(D) {
 
   if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
-  const channels = t.top_channels || [];
+  const channels = Array.isArray(t.top_channels) ? (t.top_channels) : [];
 
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
 
@@ -9359,13 +9368,13 @@ function sectionTraffic(D) {
   const age = audience.age || {};
 
   // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
-  const demoArr = t.demographics || [];
+  const demoArr = Array.isArray(t.demographics) ? (t.demographics) : [];
   const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
   const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
   const genderFromDemo = (femaleEntry || maleEntry)
     ? { female: femaleEntry?.pct, male: maleEntry?.pct }
     : null;
-  const gender = genderFromDemo || audience.gender || {};
+  const gender = genderFromDemo || audience.gender || t.gender || {};
 
   const maxAge = Math.max(...Object.values(age).map(Number), 1);
 
@@ -9387,7 +9396,11 @@ function sectionTraffic(D) {
 
   channels.forEach(c => {
 
-    const nm = c.source || c.channel || '';
+    const CHANNEL_ALIASES = {'org. search':'Organic Search','organic search':'Organic Search','paid search':'Paid Search','org. social':'Social','organic social':'Social','paid social':'Social','social':'Social'};
+
+    const rawNm = (c.source || c.channel || '').trim();
+
+    const nm = CHANNEL_ALIASES[rawNm.toLowerCase()] || rawNm;
 
     const pct = parseFloat(c.share) || 0;
 
@@ -9536,7 +9549,7 @@ function sectionTraffic(D) {
           <div style="${T.statNum};color:var(--blue);line-height:1;">${searchPctNum}%</div>
           <div style="${T.bodySmGray12};margin-top:4px;">of all traffic arrives via organic or paid search</div>
         </div>
-        ${sa ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
+        ${(sa && sa.google_outbound_pct != null) ? `<div style="padding:16px 20px;background:var(--red-tint);border:1px solid var(--red-border);border-radius:8px;border-top:3px solid var(--red);">
           <div style="${T.statLabel};color:var(--red);margin-bottom:6px;">⚠ Search Abandonment</div>
           <div style="${T.statNum};color:var(--red);line-height:1;">${escHtml(s(sa.google_outbound_pct))}</div>
           <div style="${T.bodySmGray12};margin-top:4px;">exit to google.com ${sa.google_outbound_mom_change?`<strong style="color:var(--red);">${escHtml(s(sa.google_outbound_mom_change))} MoM</strong>`:''}</div>
@@ -9547,8 +9560,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.gen_ai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9726,8 +9739,8 @@ function sectionTraffic(D) {
     const branded    = parseFloat(os.branded_pct)     || 0;
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
-    const kws = os.top_non_branded_keywords || [];
-    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
+    const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
+    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct||k.share)||0), 1);
 
     // Mini SVG donut for branded/NB split
     const R = 36, cx2 = 44, cy2 = 44, innerR2 = 22;
@@ -9770,12 +9783,12 @@ function sectionTraffic(D) {
       <div class="card-3d" style="padding:16px;">
         <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Organic Non-Branded Keywords</div>
         ${kws.map(k => {
-          const pct = parseFloat(k.share_pct)||0;
+          const pct = parseFloat(k.share_pct||k.share)||0;
           const barW = Math.round((pct/maxKwShare)*100);
           const mom  = String(k.mom_change||'—');
           const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
           return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
+            <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||k.term||'')}</div>
             <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--green);border-radius:3px;"></div></div>
             <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
             <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
@@ -9793,8 +9806,8 @@ function sectionTraffic(D) {
     const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
-    const kws = ps.top_keywords || [];
-    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
+    const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
+    const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct||k.share)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
   <div style="margin-top:20px;">
@@ -9805,12 +9818,12 @@ function sectionTraffic(D) {
     <div class="card-3d" style="padding:16px;">
       <div style="${T.statLabel};color:var(--mid);margin-bottom:12px;">Top Paid Non-Branded Keywords</div>
       ${kws.map(k => {
-        const pct = parseFloat(k.share_pct)||0;
+        const pct = parseFloat(k.share_pct||k.share)||0;
         const barW = Math.round((pct/maxKwShare)*100);
         const mom  = String(k.mom_change||'—');
         const momColor = mom.includes('-') ? 'var(--red)' : mom === '—' ? 'var(--mid)' : 'var(--green)';
         return `<div style="display:grid;grid-template-columns:1fr 60px 50px 60px;gap:8px;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);">
-          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||'')}</div>
+          <div style="${T.semi13};color:var(--gray);">${escHtml(k.keyword||k.term||'')}</div>
           <div style="height:6px;background:var(--light);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${barW}%;background:var(--amber);border-radius:3px;"></div></div>
           <div style="${T.bold12};color:var(--gray);text-align:right;">${escHtml(String(pct))}%</div>
           <div style="${T.semi12};color:${momColor};text-align:right;">${escHtml(mom)}</div>
@@ -9827,8 +9840,8 @@ function sectionTraffic(D) {
 
   ${/* PANEL: Referrals */ ''}
   ${(() => {
-    const refs = t.top_referrers || t.referrals?.top_referring_sites || [];
-    const inds = t.referring_industries || t.referrals?.top_referring_industries || [];
+    const refs = Array.isArray(t.top_referrers || t.referrals?.top_referring_sites) ? (t.top_referrers || t.referrals?.top_referring_sites) : [];
+    const inds = Array.isArray(t.referring_industries || t.referrals?.top_referring_industries) ? (t.referring_industries || t.referrals?.top_referring_industries) : [];
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
@@ -9880,7 +9893,7 @@ function sectionTraffic(D) {
     const _cLabel = 'Competitor Traffic Scale';
     const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
-    const comps = t.competitor_traffic || [];
+    const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
     const parseVisits = v => {
       const s2 = String(v||'').replace(/,/g,'');
@@ -9891,7 +9904,7 @@ function sectionTraffic(D) {
       if (/K/i.test(s2)) return n / 1000;
       return n / 1000000;
     };
-    const vals = comps.map(c => parseVisits(c.visits_3mo||c.total_visits_3mo));
+    const vals = comps.map(c => parseVisits(c.visits_3mo||c.total_visits_3mo||c.visits_last_month));
     const maxV = Math.max(...vals, 1);
     // Sort: prospect first, then descending by visits
     const sorted = comps.map((c,i) => ({...c, _v: vals[i]}))
@@ -9916,7 +9929,7 @@ function sectionTraffic(D) {
           <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${barW}%;background:${isProspect?'var(--blue)':'var(--border)'};border-radius:4px;"></div>
           </div>
-          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||''))}</div>
+          <div style="${T.bold12};color:${isProspect?'var(--blue)':'var(--gray)'};text-align:right;">${escHtml(String(c.visits_3mo||c.total_visits_3mo||(c.visits_last_month?(c.visits_last_month/1e6).toFixed(2)+'M':'')))}</div>
         </div>`;
       }).join('')}
     </div>
@@ -9927,12 +9940,12 @@ function sectionTraffic(D) {
   ${/* PANEL: Geography */ ''}
   ${(t.geo_distribution||[]).length ? (() => {
     const geos = t.geo_distribution;
-    const maxGeo = Math.max(...geos.map(g => g.traffic_share_pct || 0), 1);
+    const maxGeo = Math.max(...geos.map(g => (parseFloat(g.traffic_share_pct||g.share)||0)), 1);
     return `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">Geographic Distribution</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:16px;">
       <div class="card-3d" style="padding:16px;">
         <div style="${T.statLabel};color:var(--mid);margin-bottom:14px;">Top Countries by Traffic Share</div>
         ${geos.map(g => {
-          const barW = Math.round((g.traffic_share_pct / maxGeo) * 100);
+          const barW = Math.round(((parseFloat(g.traffic_share_pct||g.share)||0) / maxGeo) * 100);
           const momVal = parseFloat((g.mom_change||'0').replace(/[^0-9.\-]/g,'')) || 0;
           const momColor = momVal >= 0 ? 'var(--green)' : 'var(--red)';
           const momStr = g.mom_change || '';
@@ -9941,7 +9954,7 @@ function sectionTraffic(D) {
             <div style="height:8px;background:var(--light);border-radius:4px;overflow:hidden;">
               <div style="height:100%;width:${barW}%;background:var(--blue);border-radius:4px;"></div>
             </div>
-            <div style="${T.bold13};color:var(--gray);text-align:right;">${g.traffic_share_pct}%</div>
+            <div style="${T.bold13};color:var(--gray);text-align:right;">${(parseFloat(g.traffic_share_pct||g.share)||0)}%</div>
             <div style="${T.semi11};color:${momColor};text-align:right;">${escHtml(momStr)}</div>
           </div>`;
         }).join('')}
@@ -9968,13 +9981,13 @@ function sectionTraffic(D) {
           const rowBg = isGoogle ? 'background:var(--red-tint);border-radius:6px;padding:2px 6px;margin:-2px -6px;' : '';
           return `<div style="display:grid;grid-template-columns:1fr 80px 80px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
             <div style="${T.cap13};font-weight:${isGoogle?'800':'600'};color:${isGoogle?'var(--red)':'var(--gray)'};${rowBg}">${escHtml(o.domain)}${isGoogle?' <span style="${T.cap10};background:var(--red);color:white;border-radius:3px;padding:1px 5px;margin-left:4px;font-weight:700;">SIGNAL</span>':''}</div>
-            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${o.share_pct}%</div>
+            <div style="${T.bold13};color:${isGoogle?'var(--red)':'var(--gray)'};text-align:right;">${(parseFloat(o.share_pct||o.share)||0)}%</div>
             <div style="${T.bold11};color:${momColor};text-align:right;">${escHtml(o.mom_change||'')}</div>
           </div>`;
         }).join('')}
         ${googleRow ? `<div class="algolia-angle-box" style="margin-top:16px;">
           ${algoliaAngleBadge()}
-          <p style="${T.compact};margin:0;">1 in ${Math.round(100/googleRow.share_pct)} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
+          <p style="${T.compact};margin:0;">1 in ${Math.round(100/(parseFloat(googleRow.share_pct||googleRow.share)||0))} visitors abandons to Google${sa.google_outbound_mom_change ? ` — and that number grew <strong>${escHtml(sa.google_outbound_mom_change)}</strong> last month` : ''}. That's not a UX problem. That's a revenue leak from failed search. We fix that.</p>
         </div>` : ''}
       </div>
     </div></div>`;
@@ -10008,6 +10021,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -10089,8 +10104,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -10126,14 +10157,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10314,9 +10345,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10336,9 +10369,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10467,7 +10501,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10637,7 +10683,7 @@ function sectionScoreHeatmap(D) {
 
   // Build category→finding map for TOC click targets
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const catToFinding = {};
 
@@ -10839,7 +10885,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -10899,7 +10945,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -11094,7 +11140,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -11271,7 +11317,7 @@ function sectionExecQuotes(D) {
 
 function sectionCompetitive(D) {
 
-  const comps = D.competitors || [];
+  const comps = Array.isArray(D.competitors) ? (D.competitors) : [];
 
   if (!comps.length) return '';
 
@@ -11465,7 +11511,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11559,17 +11605,17 @@ function sectionBattleCard(D) {
 
   const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
 
-  const gaps      = D.gap_pairs || [];
+  const gaps      = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
   const hir       = D.hiring || {};
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   // Use only critical findings for feature comparison
 
   const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
 
-  const allFindings = D.findings || [];
+  const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
   // Single strongest hook — first gap pair only
 
@@ -11677,7 +11723,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11731,7 +11777,7 @@ function sectionBattleCard(D) {
 
 function sectionSources(D) {
 
-  const bibs = D.bibliography || [];
+  const bibs = Array.isArray(D.bibliography) ? (D.bibliography) : [];
 
   return `<section id="section-sources" class="audit-section">
 
@@ -11837,7 +11883,7 @@ function sectionAppendixScoring(D) {
 
 function sectionAppendixQueries(D) {
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   return `<section id="appendix-queries" class="audit-section">
 
@@ -11857,7 +11903,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -11997,8 +12043,20 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  const components = f.roi_components || [];
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
@@ -12302,9 +12360,9 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
 
-  const gaps = D.gap_pairs || [];
+  const gaps = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   if (!gaps.length) return '';
 
@@ -12453,12 +12511,13 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
-  const tiers = cs.competitor_tiers || [];
+  const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
-  const matrix = cs.positioning_matrix || [];
+  const matrix = Array.isArray(cs.positioning_matrix) ? (cs.positioning_matrix) : [];
 
-  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+  if (!tiers.length && !matrix.length && !ga.talk_track && !((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length) return '';
 
   const cap = (v) => {
     if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
@@ -12482,7 +12541,7 @@ function sectionCompetitiveSynthesis(D) {
 
   const builtWithUrls = {};
 
-  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+  ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
 
 
 
@@ -12522,7 +12581,7 @@ function sectionCompetitiveSynthesis(D) {
       <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
@@ -12717,7 +12776,7 @@ function initCaseStudyCountUp() {
 function sectionCaseStudies(D) {
 
   // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
-  const topLevel = D.case_studies || [];
+  const topLevel = Array.isArray(D.case_studies) ? (D.case_studies) : [];
 
   if (!topLevel.length) {
     // Build from findings — deduplicate by company, derive stat from result string
@@ -12978,7 +13037,7 @@ function sectionWhyNow(D) {
   const HIRING_TYPES = new Set(['hiring','hiring_signal']);
   const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
-  const allSigs = D.intelligence_signals || [];
+  const allSigs = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
@@ -13081,7 +13140,7 @@ function sectionWhyNow(D) {
 
 function sectionStrategicAngles(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
@@ -13149,13 +13208,13 @@ function sectionStrategicAngles(D) {
 
 function sectionSalesPlays(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
   const hir = D.hiring || {};
 
-  const genericObjs = hir.objection_counters || [];
+  const genericObjs = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
 
@@ -13469,7 +13528,7 @@ function sectionPreCallBrief(D) {
 
   const icp = D.icp_mapping || {};
 
-  const anchors = icp.anchor_lines || [];
+  const anchors = Array.isArray(icp.anchor_lines) ? (icp.anchor_lines) : [];
 
   const fin = D.financials || {};
 
@@ -13551,9 +13610,28 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
-  const phases = hir.engagement_phases || [];
+  const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
   if (!committee.length) return '';
 
@@ -13696,9 +13774,9 @@ function sectionDiscoveryObjections(D) {
 
   const hir = D.hiring || {};
 
-  const ptops = icp.priority_to_product || [];
+  const ptops = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   return `<section id="section-discovery" class="audit-section">
 
@@ -13754,15 +13832,15 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = Array.isArray(abx.contacts) ? (abx.contacts) : [];
 
-  const touches  = abx.touches || [];
+  const touches  = Array.isArray(abx.touches) ? (abx.touches) : [];
 
-  const variants = abx.ab_variants || [];
+  const variants = Array.isArray(abx.ab_variants) ? (abx.ab_variants) : [];
 
-  const assets   = abx.assets_library || [];
+  const assets   = Array.isArray(abx.assets_library) ? (abx.assets_library) : [];
 
-  const triggers = abx.triggers || [];
+  const triggers = Array.isArray(abx.triggers) ? (abx.triggers) : [];
 
 
 
@@ -14092,7 +14170,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = D.intelligence_signals || [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -14112,7 +14191,7 @@ function sectionStatBar(D) {
   const roiVal = roi ? escHtml(roi) : '—';
 
   // Stat 3: Competitive signal
-  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compUsing = ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]))[0];
   const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
   const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
 
@@ -14240,8 +14319,8 @@ function sectionPartnerIntel(D) {
   const pi = D.partner_intel;
   if (!pi) return ''; // Graceful degradation — section hidden when no partner data
 
-  const techPartners = pi.tech_partners || [];
-  const siPartners = pi.si_partners || [];
+  const techPartners = Array.isArray(pi.tech_partners) ? (pi.tech_partners) : [];
+  const siPartners = Array.isArray(pi.si_partners) ? (pi.si_partners) : [];
   const action = pi.immediate_action || '';
   const coSell = pi.co_sell_recommendation || '';
 
@@ -14306,7 +14385,7 @@ function renderSections(D) {
 
   const content  = document.getElementById('content');
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const isSevCritical = s => s === 'critical' || s === 'HIGH';
   const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
@@ -14368,6 +14447,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14383,11 +14485,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14493,7 +14598,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14720,7 +14832,7 @@ function initSectionStrips() {
 
   // Build a panel for each tab
   function buildPanel(tabId) {
-    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const config = Array.isArray(SECTION_STRIP_CONFIG[tabId]) ? (SECTION_STRIP_CONFIG[tabId]) : [];
     const panel = document.createElement('div');
     panel.className = 'section-sidebar__panel';
     panel.id = `sidebar-panel-${tabId}`;
@@ -14768,10 +14880,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15799,7 +15907,8 @@ if (document.readyState === 'loading') {
 
 </script>
 
-  <script src="/chat-widget.js" defer></script>
+<!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
+<script src="/chat-widget.js" defer></script>
 </body>
 
 </html>

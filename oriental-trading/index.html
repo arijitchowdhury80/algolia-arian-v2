@@ -259,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2726,13 +2726,13 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
 #section-sidebar {
   position: fixed;
-  right: 24px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -2809,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5145,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5293,8 +5293,8 @@ a:hover {
     "hq": "Omaha, Nebraska, USA",
     "employees": "~2,000",
     "revenue": "$766M [ESTIMATE]",
-    "revenue_source": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
-    "revenue_source_label": "ZoomInfo / RocketReach / ecdb.com",
+    "revenue_source": "https://rocketreach.co/oriental-trading-company-a-berkshire-hathaway-company-profile_b5c65016f42e0cb2",
+    "revenue_source_label": "RocketReach / ZoomInfo (company-wide estimate)",
     "founded": "1932",
     "ticker": null,
     "current_search_vendor": "None detected — Proprietary redirect-mapping + server-side keyword search (GREENFIELD)",
@@ -5359,7 +5359,7 @@ a:hover {
     {
       "name": "Brian Moen",
       "title": "Chief Marketing and Merchandising Officer",
-      "quote": "Fun365 is for anyone looking for easy inspiration to add more fun into everyday life. From party ideas and recipes to DIY crafts for adults and kids, our talented team of influencers provide the inspiration, and we give you the tools and supplies to make it a reality. Our unique experience was designed to help our customers save time and money by providing inspirational content in one easy-to-shop place.",
+      "quote": "Our unique experience was designed to help our customers save time and money by providing inspirational content in one easy-to-shop place.",
       "quote_source": "https://www.prweb.com/releases/2017/12/prweb14978087.htm",
       "quote_source_label": "PRWeb — Fun365 Launch",
       "quote_date": "2017-12",
@@ -5394,18 +5394,18 @@ a:hover {
       "source_date": "2025-01-10",
       "relevance": "OTC is monetizing search signals via Amazon ads — if underlying search is poor, ad relevance suffers. Algolia fixes the foundation.",
       "urgency_score": 5,
-      "category_tag": "ai_disruption"
+      "category_tag": "digital_transformation"
     },
     {
       "type": "news_signal",
       "badge_label": "News Signal",
-      "text": "Fun Express named to Inc. 5000 for 2nd consecutive year with 991% revenue growth, serving 40,000+ companies.",
-      "source_name": "PRWeb / Inc. 5000",
-      "source_url": "https://www.prweb.com/releases/fun-express-announces-exciting-pricing-updates-and-enhanced-savings-302217550.html",
-      "source_date": "2025-08-18",
-      "relevance": "Fun Express growing 10x needs dedicated B2B search — 60,000+ SKUs with seasonal allocation and bulk pricing.",
+      "text": "Fun Express, OTC's B2B wholesale arm, is a leading wholesale supplier of party supplies, toys, and novelties to party retailers, family entertainment centers, and amusement parks, with an estimated ~$371M in revenue.",
+      "source_name": "ZoomInfo - Fun Express, LLC (OTC B2B arm)",
+      "source_url": "https://www.zoominfo.com/c/fun-express-llc/48057202",
+      "source_date": "2026-07-05",
+      "relevance": "Fun Express's growing B2B wholesale channel needs dedicated B2B search across a large seasonal catalog with bulk pricing - a second Algolia beachhead beyond orientaltrading.com.",
       "urgency_score": 5,
-      "category_tag": "cost_pressure"
+      "category_tag": "digital_transformation"
     },
     {
       "type": "earnings_quote",
@@ -5416,7 +5416,7 @@ a:hover {
       "source_date": "2024-05-03",
       "relevance": "Price-sensitive consumers abandon on poor search. Algolia's conversion lift directly addresses the pinch.",
       "urgency_score": 10,
-      "category_tag": "leadership_change"
+      "category_tag": "cost_pressure"
     },
     {
       "type": "social_signal",
@@ -5454,13 +5454,13 @@ a:hover {
     {
       "type": "news_signal",
       "badge_label": "News Signal",
-      "text": "Argano has active, ongoing managed services relationship at OTC post-Oracle Cloud ERP/SCM migration. Direct access to CIO Charles Hunsinger.",
+      "text": "Argano has an active managed services relationship at OTC following its Oracle Cloud ERP/SCM migration (Argano Managed Services, including automated quarterly testing). Use Argano as a warm-intro path into OTC's IT/CIO leadership.",
       "source_name": "Argano Case Study",
       "source_url": "https://argano.com/insights/client-stories/oriental-trading-company.html",
       "source_date": "2026-04-15",
-      "relevance": "Warm introduction path via Argano — request intro to CIO Hunsinger via Argano account team.",
+      "relevance": "Warm introduction path via Argano - request an intro to OTC's IT/CIO leadership via the Argano account team. Verify the current CIO before outreach: Charles Hunsinger left OTC to become CIO of Savers | Value Village in fall 2022.",
       "urgency_score": 7,
-      "category_tag": "leadership_change"
+      "category_tag": "digital_transformation"
     },
     {
       "type": "news_signal",
@@ -5560,7 +5560,7 @@ a:hover {
       "name": "Party City",
       "domain": "partycity.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "1",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -5568,17 +5568,17 @@ a:hover {
     {
       "name": "Shindigz",
       "domain": "shindigz.com",
-      "search_vendor": "Kibo/Solr (native)",
-      "monthly_traffic": "2",
+      "search_vendor": "N/A - ceased operations Dec 2021",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
-      "notes": null
+      "notes": "Shindigz suspended operations 15 Dec 2021 and permanently closed 31 Dec 2021 (BBB: out of business). No longer a live competitor."
     },
     {
       "name": "Dollar Tree",
       "domain": "dollartree.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "3",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -5587,7 +5587,7 @@ a:hover {
       "name": "Michaels",
       "domain": "michaels.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "4",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -5596,7 +5596,7 @@ a:hover {
       "name": "School Specialty",
       "domain": "schoolspecialty.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "5",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -5605,7 +5605,7 @@ a:hover {
       "name": "Amazon",
       "domain": "amazon.com",
       "search_vendor": "Unknown",
-      "monthly_traffic": "6",
+      "monthly_traffic": null,
       "traffic_rank": null,
       "uses_algolia": false,
       "notes": null
@@ -5881,8 +5881,8 @@ a:hover {
     "search_roi_est": "$8.9M–$21.4M/year",
     "search_addressable": "$29.6M",
     "conservative_lift_label": "$1.5M/yr",
-    "revenue_source": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
-    "revenue_source_label": "ecdb.com (e-commerce only)",
+    "revenue_source": "https://ecommercedb.com/store/orientaltrading.com",
+    "revenue_source_label": "ECDB (ecommercedb.com) - orientaltrading.com online-store revenue, third-party estimate [ILLUSTRATIVE]",
     "margin_zone": "Yellow",
     "roi_scenarios": {
       "conservative": {
@@ -5921,7 +5921,7 @@ a:hover {
     "roi_calc": {
       "revenue_basis": "$197M",
       "revenue_basis_scope": "orientaltrading.com e-commerce channel only (ecdb.com, 2025)",
-      "revenue_basis_source": "ecdb.com — orientaltrading.com online store revenue, 2025 [ESTIMATE]",
+      "revenue_basis_source": "ECDB (ecommercedb.com) - orientaltrading.com online-store revenue, 2025 [ESTIMATE, third-party illustrative]",
       "conversion_rate_current": "3.5–4.0%",
       "lift_pct": 0.5,
       "lift_basis": "Conservative 0.5 pp lift — Algolia customers typically achieve 10–30% search conversion improvement; applied at 0.5 pp on a 3.75% baseline",
@@ -6012,7 +6012,7 @@ a:hover {
   },
   "traffic": {
     "monthly_visits": "3.776M/mo",
-    "visit_duration": "[FACT — SimilarWeb web UI, 2026-04-14]",
+    "visit_duration": "4:40",
     "bounce_rate": "45.12%",
     "pages_per_visit": "**4.44**",
     "top_channels": [
@@ -6081,11 +6081,6 @@ a:hover {
         "color": "#C5D0FF"
       }
     ],
-    "search_abandonment": {
-      "google_outbound_pct": "3.22%",
-      "google_outbound_mom_change": "↑61.85%",
-      "narrative": "3.22% of outbound traffic goes to Google (↑61.85% MoM) — users abandoning on-site search and returning to Google to find products"
-    },
     "ai_referral": {
       "chatgpt_pct": "50.49%",
       "chatgpt_mom": "↓75.11%",
@@ -6350,9 +6345,9 @@ a:hover {
   },
   "tech_stack": {
     "ecommerce_platform": "Custom/Proprietary Java + Mirakl Marketplace",
-    "primary_platform": "| Field | Value | Confidence |",
+    "primary_platform": "Custom/Proprietary Java + Mirakl Marketplace",
     "cms": null,
-    "search_provider": "Status | UNDETECTED |",
+    "search_provider": "UNDETECTED / None",
     "personalization": "None detected",
     "analytics": "GA4 + Quantum Metric + FullStory + Datadog RUM",
     "tag_manager": "Google Tag Manager",
@@ -6394,10 +6389,10 @@ a:hover {
     "buying_committee": [
       {
         "role": "Economic Buyer",
-        "name": "Steve Mendlik (CEO) / Charles Hunsinger (CIO)",
-        "status": "IN-SEAT",
+        "name": "Steve Mendlik (CEO) / CIO (seat holder unconfirmed)",
+        "status": "UNCONFIRMED",
         "signal": "cold",
-        "message": "CIO is budget holder for search infrastructure.",
+        "message": "CIO is the budget holder for search infrastructure. Verify the current CIO before outreach - Charles Hunsinger left OTC for Savers | Value Village in 2022.",
         "job_url": null,
         "salary_range": null
       },
@@ -6416,7 +6411,7 @@ a:hover {
         "status": "WARM",
         "signal": "warm",
         "message": "Role active Q3 2025. Primary outreach target when filled.",
-        "job_url": "https://career.com/job/oriental-trading-company/e-commerce-product-manager/j202201270530112423479",
+        "job_url": "https://jobsearcher.com/j/ecommerce-product-manager-at-oriental-trading-company-in-omaha-ne-BjDgWk4",
         "salary_range": "$113,406–$138,126"
       },
       {
@@ -6447,7 +6442,7 @@ a:hover {
       {
         "phase": 3,
         "label": "Executive Engagement",
-        "target": "CIO Charles Hunsinger (via Argano)",
+        "target": "OTC CIO (via Argano) - verify current seat holder (Hunsinger departed 2022)",
         "message": "Algolia completes your Oracle Cloud modernization by modernizing search.",
         "timing": "Month 2"
       }
@@ -6500,17 +6495,17 @@ a:hover {
     },
     {
       "label": "The B2B Arm Is OTC's Growth Engine — and It Has No Search",
-      "hook": "Your B2B arm is growing 10x. Is its search experience scaling with it? Fun Express's 60,000-SKU catalog running without purpose-built B2B search is the fastest-growing untapped Algolia beachhead in this account.",
+      "hook": "Your B2B arm is a major growth engine. Fun Express's large wholesale catalog running without purpose-built B2B search is the most underdeveloped untapped Algolia beachhead in this account.",
       "pain_points": [
-        "Fun Express: Inc. 5000 for second consecutive year with 991% revenue growth",
+        "Fun Express: OTC's B2B wholesale arm (~$371M [ESTIMATE] revenue), a leading wholesale supplier to party retailers and family entertainment centers",
         "60,000+ SKUs; B2B buyers search by SKU code, quantity threshold, price band — none supported by generic Java platform",
         "257K monthly visits vs. orientaltrading.com's 3.8M — severely underdeveloped"
       ],
-      "discovery_question": "Fun Express is growing 10x year-over-year. Is the search experience on funexpress.com built for B2B bulk ordering workflows, or does it share the same B2C stack as orientaltrading.com?",
+      "discovery_question": "Fun Express is a fast-growing B2B channel. Is the search experience on funexpress.com built for B2B bulk ordering workflows, or does it share the same B2C stack as orientaltrading.com?",
       "algolia_proof": "Dawn Foods (Algolia B2B customer): 10,000+ SKU catalog, time-to-order fell 30% in four years, sales doubled year-over-year for three consecutive years. Fun Express maps directly. [FACT — 04-competitors.md; algolia.com/customers/dawnfoods, 2026-04-14]",
       "objection": "We already have analytics tools.",
       "objection_counter": "Those tell you what happened after search. Algolia Analytics tells you which queries failed, which convert, and which are returning zero results — then you act on it in real time. That is what you need to scale Fun Express search.",
-      "source": "[FACT — 09b-social-signals.md (Fun Express Inc. 5000, Signal 2, score 8/10, PRWeb 2025-08-18); FACT — 04-competitors.md (Dawn Foods case study, algolia.com/customers/dawnfoods 2026-04-14)]"
+      "source": "[FACT - ZoomInfo Fun Express, LLC ($371.1M, OTC B2B arm), 2026-07-05; FACT - 04-competitors.md (Dawn Foods case study, algolia.com/customers/dawnfoods 2026-04-14)]"
     },
     {
       "label": "50%+ of Exclusive SKUs Are Invisible Everywhere Except OTC's Own Search",
@@ -6557,7 +6552,7 @@ a:hover {
         "question": "What is your search conversion rate and zero-results rate?",
         "pain": "Conversion under margin pressure",
         "discovery_question": "What is your search conversion rate and zero-results rate?",
-        "evidence": "3.22% of outbound traffic goes to Google (↑61.85% MoM) — users abandoning on-site search and returning to Google to find products. Bounce rate: 45.12%. E-commerce revenue estimated at $197M at a 3.5–4.0% conversion rate. (SimilarWeb Jan–Mar 2026; ecdb.com 2026-04-14)"
+        "evidence": "Bounce rate 45.12% on 3.776M monthly visits. E-commerce revenue estimated at $197M at a 3.5-4.0% conversion rate. (SimilarWeb Jan-Mar 2026; ECDB 2026-04-14)"
       },
       {
         "priority": "Seasonal merchandising agility",
@@ -6586,7 +6581,7 @@ a:hover {
     "anchor_lines": [
       "Your CEO said customers should 'easily get everything in one place' — NLP queries return 10,631 unfiltered results.",
       "You're investing in Amazon Retail Ad Service — but the search underneath has zero typo tolerance and zero NLP.",
-      "Fun Express is growing 991% — Dawn Foods (B2B, 10K+ SKUs) doubled sales 3 years running on Algolia."
+      "Fun Express is OTC's fast-growing B2B arm (~$371M) - Dawn Foods (B2B, 10K+ SKUs) doubled sales 3 years running on Algolia."
     ]
   },
   "competitive_synthesis": {
@@ -6595,21 +6590,21 @@ a:hover {
       {
         "tier": "Direct Competitors",
         "companies": [
-          "Party City (SFCC Einstein)",
-          "Shindigz (Kibo/Solr)"
+          "Party City (former - filed Chapter 11, U.S. corporate stores closed 2025)",
+          "Shindigz (ceased operations - permanently closed December 2021)"
         ]
       },
       {
         "tier": "Indirect Competitors",
         "companies": [
-          "Dollar Tree (Oracle native)",
-          "Michaels (Unknown)"
+          "Dollar Tree (search vendor undetected)",
+          "Michaels (search vendor undetected)"
         ]
       },
       {
         "tier": "Benchmark",
         "companies": [
-          "Amazon (A9/proprietary)"
+          "Amazon"
         ]
       }
     ],
@@ -6625,75 +6620,75 @@ a:hover {
         "capability": "NLP / Semantic Search",
         "prospect_today": "1/10 — pure keyword",
         "prospect_with_algolia": "NeuralSearch",
-        "nike_has": "SFCC Einstein (limited NLP)",
-        "asics_has": "Kibo/Solr (no semantic)",
-        "on_running_has": "Oracle native (legacy)",
-        "new_balance_has": "Unknown",
-        "algolia_delta": "First-mover in vertical"
+        "algolia_delta": "First-mover in vertical",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "Autocomplete / SAYT",
         "prospect_today": "2/10 — zero autocomplete",
         "prospect_with_algolia": "InstantSearch (<50ms)",
-        "nike_has": "Basic autocomplete",
-        "asics_has": "Basic autocomplete",
-        "on_running_has": "Basic autocomplete",
-        "new_balance_has": "Autocomplete present",
-        "algolia_delta": "Only major player without SAYT"
+        "algolia_delta": "Only major player without SAYT",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "Typo Tolerance",
         "prospect_today": "1/10 — zero correction",
         "prospect_with_algolia": "Built-in typo tolerance",
-        "nike_has": "Partial (SFCC native)",
-        "asics_has": "Partial (Solr fuzzy)",
-        "on_running_has": "Partial (Endeca fuzzy)",
-        "new_balance_has": "Unknown",
-        "algolia_delta": "Brand name misspelling dumps catalog"
+        "algolia_delta": "Brand name misspelling dumps catalog",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "Personalization",
         "prospect_today": "2/10 — zero behavioral",
         "prospect_with_algolia": "AI Personalization + Dynamic Faceting",
-        "nike_has": "SFCC Einstein Personalization",
-        "asics_has": "None detected",
-        "on_running_has": "None detected",
-        "new_balance_has": "Unknown",
-        "algolia_delta": "76% frustrated without personalization"
+        "algolia_delta": "76% frustrated without personalization",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "Federated Search",
         "prospect_today": "3/10 — redirect-based only",
         "prospect_with_algolia": "Federated search (products + content + brands)",
-        "nike_has": "Limited federation",
-        "asics_has": "None",
-        "on_running_has": "None",
-        "new_balance_has": "Limited",
-        "algolia_delta": "Critical for Mirakl marketplace"
+        "algolia_delta": "Critical for Mirakl marketplace",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "Recommendations",
         "prospect_today": "5/10 — 5 PDP widgets (proprietary)",
         "prospect_with_algolia": "Algolia Recommend (ML-driven)",
-        "nike_has": "Basic recs",
-        "asics_has": "Basic",
-        "on_running_has": "Basic",
-        "new_balance_has": "Present",
-        "algolia_delta": "Consolidate 5 widgets into one engine"
+        "algolia_delta": "Consolidate 5 widgets into one engine",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       },
       {
         "capability": "B2B Search",
         "prospect_today": "N/A — shares B2C stack",
         "prospect_with_algolia": "B2B Commerce Search",
-        "nike_has": "No B2B",
-        "asics_has": "Limited B2B",
-        "on_running_has": "No B2B",
-        "new_balance_has": "Limited (MakerPlace)",
-        "algolia_delta": "Fun Express ($371M) is standalone opportunity"
+        "algolia_delta": "Fun Express ($371M) is standalone opportunity",
+        "col1_has": "Not detected",
+        "col2_has": "Not detected",
+        "col3_has": "Not detected",
+        "col4_has": "Not detected"
       }
     ],
     "positioning_statements": {
-      "offensive": "While Party City runs SFCC native search and Shindigz runs 2010-era Solr, Algolia gives OTC the same infrastructure as Staples Canada (200K SKUs, double-digit conversion lift).",
+      "offensive": "No competitor in Oriental Trading's vertical is confirmed on a dedicated AI search platform. Party City filed Chapter 11 and closed its U.S. corporate stores in 2025; Shindigz permanently closed in December 2021; other competitors' search vendors were undetected, and none runs Algolia. Algolia gives OTC the same infrastructure as Staples Canada (200K SKUs, double-digit conversion lift).",
       "timing": "AWS migration active through July 2026 + post-Easter peak + Amazon Retail Ad Service beta = ideal timing for search modernization."
     },
     "the_ask": "30-day POC on Party Supplies category: measure conversion lift, zero-results reduction, and latency improvement. 14-day free trial.",
@@ -6703,16 +6698,16 @@ a:hover {
       "aggressive": "$4M–$12M/yr (full suite, all 5 brands)"
     },
     "matrix_col_labels": {
-      "nike_has": "Party City",
-      "asics_has": "Shindigz",
-      "on_running_has": "Dollar Tree",
-      "new_balance_has": "Michaels"
+      "col1_has": "Party City (former)",
+      "col2_has": "Shindigz (closed 2021)",
+      "col3_has": "Dollar Tree",
+      "col4_has": "Michaels"
     }
   },
   "golden_angle": {
     "status": "OFFENSIVE",
     "detail": "No competitor confirmed on Algolia. First-mover advantage in AI-powered search for party/craft/value specialty retail.",
-    "talk_track": "While Party City runs SFCC native search and Shindigz runs 2010-era Solr, Algolia gives OTC the same search infrastructure as Staples Canada (200K SKUs, double-digit conversion lift) and Walgreens (one of the fastest Algolia implementations in enterprise retail).",
+    "talk_track": "With Party City post-Chapter 11 (U.S. corporate stores closed 2025) and Shindigz permanently closed (December 2021), and no competitor in the vertical confirmed on a dedicated AI search platform, Algolia gives OTC the same search infrastructure as Staples Canada (200K SKUs, double-digit conversion lift) and Walgreens (one of the fastest Algolia implementations in enterprise retail).",
     "competitors_using_algolia": [],
     "proof_points": [
       "BIG W: +7% conversion, +4.7% basket size",
@@ -6725,7 +6720,7 @@ a:hover {
   "ae_fields": {
     "ae_name": null,
     "ae_email": null,
-    "next_step_action": "Request Argano warm introduction to CIO Charles Hunsinger",
+    "next_step_action": "Request Argano warm introduction to OTC's CIO office (verify current seat holder first)",
     "next_step_owner": "AE / Partner Manager",
     "next_step_date": "2026-04-22",
     "urgency_level": "high",
@@ -6738,7 +6733,7 @@ a:hover {
     {
       "step_num": 1,
       "title": "Argano Warm Introduction",
-      "description": "Contact Algolia Oracle ecosystem team for warm intro to CIO Charles Hunsinger via Argano (active managed services relationship)."
+      "description": "Contact Algolia Oracle ecosystem team for a warm intro to OTC's CIO office via Argano (active managed services relationship). Verify the current CIO before outreach - Charles Hunsinger left OTC for Savers | Value Village in 2022."
     },
     {
       "step_num": 2,
@@ -6761,8 +6756,8 @@ a:hover {
     },
     {
       "n": 2,
-      "label": "ecdb.com — OTC revenue",
-      "url": "https://ecdb.com/resources/sample-data/retailer/orientaltrading",
+      "label": "ECDB - orientaltrading.com online-store revenue estimate",
+      "url": "https://ecommercedb.com/store/orientaltrading.com",
       "accessed": "2026-04-14"
     },
     {
@@ -6992,7 +6987,7 @@ a:hover {
   "recommended_first_play": {
     "type": "partner_warm_intro",
     "headline": "Argano warm intro to CIO",
-    "detail": "Argano has active managed services relationship at OTC. Request warm introduction to CIO Charles Hunsinger via Algolia Oracle ecosystem partner team.",
+    "detail": "Argano has an active managed services relationship at OTC. Request a warm introduction to OTC's CIO office via the Algolia Oracle ecosystem partner team. Verify the current CIO before outreach - Charles Hunsinger left OTC for Savers | Value Village in 2022.",
     "urgency": "high",
     "source": "partner_intel"
   },
@@ -7010,7 +7005,7 @@ a:hover {
         "partner": "Argano",
         "evidence": "Led Oracle Cloud ERP+SCM migration. 50+ OIC integrations. Ongoing managed services.",
         "confidence": "HIGH",
-        "c_suite_access": "CIO Charles Hunsinger",
+        "c_suite_access": "OTC CIO office (current holder unconfirmed - Charles Hunsinger departed to Savers | Value Village in 2022; verify before outreach)",
         "action": "Request warm intro via Algolia Oracle partner channel"
       },
       {
@@ -7075,7 +7070,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Connection Request",
-        "body": "# LinkedIn — Connection Request\n\n**Target personas (use persona-specific version below):**\n\n---\n\n## Version A — For CIO / Technical Buyer (Charles Hunsinger or successor)\n\nHi [Name] — I audited orientaltrading.com's search last week and found that \"Morris Costumes\" (an OTC brand) returns zero results. Happy to share the full technical findings.\n\n**Character count: 172** ✓ (under 300 limit)\n\n---\n\n## Version B — For CMO / Marketing Buyer (Brian Moen)\n\nHi Brian — I audited orientaltrading.com's search and found that \"fun activities for kids birthday party under 50\" returns 10,631 unfiltered results. Happy to share what that means for seasonal conversion.\n\n**Character count: 190** ✓ (under 300 limit)\n\n---\n\n## Version C — For E-Commerce PM / Champion (when role is filled)\n\nHi [Name] — I audited orientaltrading.com's search and found zero SAYT on a 40K+ SKU catalog. Typing \"party\" in the search bar returns nothing until submit. Happy to share the full findings.\n\n**Character count: 185** ✓ (under 300 limit)\n\n---",
+        "body": "# LinkedIn — Connection Request\n\n**Target personas (use persona-specific version below):**\n\n---\n\n## Version A — For CIO / Technical Buyer (current CIO - verify seat holder)\n\nHi [Name] — I audited orientaltrading.com's search last week and found that \"Morris Costumes\" (an OTC brand) returns zero results. Happy to share the full technical findings.\n\n**Character count: 172** ✓ (under 300 limit)\n\n---\n\n## Version B — For CMO / Marketing Buyer (Brian Moen)\n\nHi Brian — I audited orientaltrading.com's search and found that \"fun activities for kids birthday party under 50\" returns 10,631 unfiltered results. Happy to share what that means for seasonal conversion.\n\n**Character count: 190** ✓ (under 300 limit)\n\n---\n\n## Version C — For E-Commerce PM / Champion (when role is filled)\n\nHi [Name] — I audited orientaltrading.com's search and found zero SAYT on a 40K+ SKU catalog. Typing \"party\" in the search bar returns nothing until submit. Happy to share the full findings.\n\n**Character count: 185** ✓ (under 300 limit)\n\n---",
         "message": "# LinkedIn — Connection Request\n\n**Target personas (use persona-specific version below):**\n\n---\n\n## Version A — For CIO"
       },
       {
@@ -7083,8 +7078,8 @@ a:hover {
         "day": "Day 3-4",
         "channel": "email",
         "target": "all",
-        "subject": "Email 2 — Competitor",
-        "body": "# Email 2 — Competitor\n\n**To:** [Name], [Title] — Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 3–4\n\n---\n\n**Subject:** While Party City runs SFCC's native search, here's the gap OTC could own\n\n---\n\n**Body:**\n\n[First name] —\n\nParty City — your most direct competitor — runs Salesforce Einstein Search, which is bundled into their Commerce Cloud platform. It's constrained, non-semantic, and limited by the platform it lives inside. They also filed Chapter 11 in January 2024, which means their search investment is frozen.\n\nShindigz, your second major competitor in personalized party supplies, runs Apache Solr — infrastructure from 2010. No AI ranking, no NLP, no personalization.\n\nNeither of them has deployed a dedicated search platform.\n\nThat's the window. Staples Canada — a B2B+B2C hybrid with 200,000 SKUs (five times OTC's core catalog) — deployed Algolia and saw a double-digit increase in conversions. Their catalog complexity is analogous to OTC's. Their implementation took 6 months.\n\nFirst-mover in AI-powered search within party and craft specialty retail is still available. Happy to show you what that looks like for your specific catalog and your Fun Express B2B channel.\n\n[Your name]\n[Title], Algolia\n\n---",
+        "subject": "With Party City's stores closed, here's the search gap OTC could own",
+        "body": "# Email 2 - Competitor\n\n**To:** [Name], [Title] - Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 3-4\n\n---\n\n**Subject:** With Party City's stores closed, here's the search gap OTC could own\n\n---\n\n**Body:**\n\n[First name] -\n\nParty City - historically your most direct competitor - filed for Chapter 11 bankruptcy and closed its U.S. corporate stores in early 2025. Its corporate search investment is effectively frozen, and its search vendor was not detectable in our audit.\n\nShindigz, another party-supplies competitor, shut down and permanently closed its business in December 2021 - removing another rival from the category.\n\nNone of your tracked competitors is confirmed on a dedicated AI search platform, and none runs Algolia.\n\nThat's the window. Staples Canada - a B2B+B2C hybrid with 200,000 SKUs (five times OTC's core catalog) - deployed Algolia and saw a double-digit increase in conversions. Their catalog complexity is analogous to OTC's. Their implementation took 6 months.\n\nFirst-mover in AI-powered search within party and craft specialty retail is still available. Happy to show you what that looks like for your specific catalog and your Fun Express B2B channel.\n\n[Your name]\n[Title], Algolia\n\n---\n",
         "message": "# Email 2 — Competitor\n\n**To:** [Name], [Title] — Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 3–4"
       },
       {
@@ -7121,7 +7116,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Follow-Up 2",
-        "body": "# LinkedIn — Follow-Up 2\n\n**Timing:** 1 week after Follow-Up 1, no reply\n**Goal:** Move toward a meeting with a soft ask.\n\n---\n\n## Message (Competitor angle — for CIO / Technical Buyer)\n\nOne more data point worth sharing.\n\nStaples Canada — B2B+B2C hybrid, 200,000 SKUs, two buyer channels — deployed Algolia and saw a double-digit increase in conversions. Catalog complexity similar to OTC's core + Fun Express combined.\n\nNeither Party City (SFCC Einstein) nor Shindigz (Apache Solr) has a dedicated search platform. The first-mover window in your vertical is still open.\n\nWould a 15-minute conversation make sense? Happy to walk through what a Party Supplies pilot would look like at OTC's scale.\n\n**Character count: 438** ✓ (under 500 limit)\n\n---\n\n## Message (Business case angle — for CMO / Marketing Buyer)\n\nLast thought, then I'll leave you alone.\n\norientaltrading.com: $197M e-commerce, 3.5% conversion. A 0.5 percentage-point improvement from better search = $1.4M per year. Algolia's cost for a catalog at OTC's scale: $120K–$800K depending on scope.\n\nSteve Mendlik's vision — \"customers can easily get everything they need, at the prices they want and in one place\" — requires search that actually understands what they're looking for.\n\nWould it make sense to spend 15 minutes on what that looks like?\n\n**Character count: 431** ✓ (under 500 limit)\n\n---",
+        "body": "# LinkedIn — Follow-Up 2\n\n**Timing:** 1 week after Follow-Up 1, no reply\n**Goal:** Move toward a meeting with a soft ask.\n\n---\n\n## Message (Competitor angle — for CIO / Technical Buyer)\n\nOne more data point worth sharing.\n\nStaples Canada — B2B+B2C hybrid, 200,000 SKUs, two buyer channels — deployed Algolia and saw a double-digit increase in conversions. Catalog complexity similar to OTC's core + Fun Express combined.\n\nNeither Party City (now post-Chapter 11, U.S. corporate stores closed) nor Shindigz (which permanently closed in December 2021) is confirmed on a dedicated AI search platform, and none of your competitors runs Algolia. The first-mover window in your vertical is still open.\n\nWould a 15-minute conversation make sense? Happy to walk through what a Party Supplies pilot would look like at OTC's scale.\n\n**Character count: 438** ✓ (under 500 limit)\n\n---\n\n## Message (Business case angle — for CMO / Marketing Buyer)\n\nLast thought, then I'll leave you alone.\n\norientaltrading.com: $197M e-commerce, 3.5% conversion. A 0.5 percentage-point improvement from better search = $1.4M per year. Algolia's cost for a catalog at OTC's scale: $120K–$800K depending on scope.\n\nSteve Mendlik's vision — \"customers can easily get everything they need, at the prices they want and in one place\" — requires search that actually understands what they're looking for.\n\nWould it make sense to spend 15 minutes on what that looks like?\n\n**Character count: 431** ✓ (under 500 limit)\n\n---",
         "message": "# LinkedIn — Follow-Up 2\n\n**Timing:** 1 week after Follow-Up 1, no reply\n**Goal:** Move toward a meeting with a soft ask"
       },
       {
@@ -7139,19 +7134,19 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 5 — Break-Up",
-        "body": "# Email 5 — Break-Up\n\n**To:** [Name], [Title] — Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 21\n\n---\n\n**Subject:** Closing the loop on Oriental Trading\n\n---\n\n**Body:**\n\n[First name] —\n\nI know this landed during a busy stretch — AWS migration, post-Easter recovery, Amazon Retail Ad Service rollout. Timing isn't always right.\n\nI'm going to stop following up, but I wanted to leave one thing behind: a full audit of orientaltrading.com's search experience — what we found, what the gaps mean, and what the revenue math looks like at your scale.\n\nYou can find it here: https://algolia-arian-v2.vercel.app/oriental-trading/index.html\n\nIf search makes it onto your radar in Q3 or Q4, I'm an easy person to reach. This work will still be here.\n\n[Your name]\n[Title], Algolia\n[Email] | [Phone]\n\n---",
+        "body": "# Email 5 — Break-Up\n\n**To:** [Name], [Title] — Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 21\n\n---\n\n**Subject:** Closing the loop on Oriental Trading\n\n---\n\n**Body:**\n\n[First name] —\n\nI know this landed during a busy stretch — AWS migration, post-Easter recovery, Amazon Retail Ad Service rollout. Timing isn't always right.\n\nI'm going to stop following up, but I wanted to leave one thing behind: a full audit of orientaltrading.com's search experience — what we found, what the gaps mean, and what the revenue math looks like at your scale.\n\nYou can find it here: https://prism.chowmes.com/oriental-trading/index.html\n\nIf search makes it onto your radar in Q3 or Q4, I'm an easy person to reach. This work will still be here.\n\n[Your name]\n[Title], Algolia\n[Email] | [Phone]\n\n---",
         "message": "# Email 5 — Break-Up\n\n**To:** [Name], [Title] — Oriental Trading Company\n**From:** [AE Name], Algolia\n**Day:** Day 21\n\n-"
       }
     ],
     "contacts": [
       {
-        "name": "Charles Hunsinger",
-        "title": "CIO",
-        "role": "Economic Buyer / CIO",
+        "name": "OTC CIO (TBD)",
+        "title": "Chief Information Officer",
+        "role": "Economic Buyer / CIO - seat holder unconfirmed",
         "channel": "LinkedIn + Argano warm intro",
         "tier": 1,
-        "linkedin_url": "https://www.linkedin.com/search/results/people/?keywords=Charles+Hunsinger+Oriental+Trading",
-        "id": "charles_hunsinger"
+        "linkedin_url": "https://www.linkedin.com/company/oriental-trading-company/people/",
+        "id": "otc_cio_tbd"
       },
       {
         "name": "E-Commerce PM (TBD)",
@@ -7533,6 +7528,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -7646,7 +7647,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -8123,7 +8124,7 @@ function renderTopbar(D) {
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
     ${(()=>{
-      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      const assets=Array.isArray((D.abx_sequence&&D.abx_sequence.assets_library)) ? ((D.abx_sequence&&D.abx_sequence.assets_library)) : [];
       if(!assets.length) return '';
       const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -8169,9 +8170,9 @@ document.addEventListener('click', function(e){
 
 function buildSidebar(D) {
 
-  const findings    = D.findings || [];
+  const findings    = Array.isArray(D.findings) ? (D.findings) : [];
 
-  const signals     = D.intelligence_signals || [];
+  const signals     = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
 
   const signalTypes = [...new Set(signals.map(s => s.type))];
 
@@ -8583,7 +8584,7 @@ function sectionOverviewGrid(D) {
   const score = D.score || {};
   const fin   = D.financials || {};
   const ae    = D.ae_fields  || {};
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
@@ -8600,7 +8601,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8627,7 +8628,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8893,7 +8894,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8901,7 +8902,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8991,7 +8992,7 @@ function sectionExecSummary(D) {
 
     ${(() => {
 
-      const allFindings = D.findings || [];
+      const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
       const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
@@ -9073,7 +9074,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -9191,7 +9192,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -9217,7 +9218,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -9327,7 +9328,7 @@ function sectionCompanySnapshot(D) {
 
   const cs   = D.company_snapshot || {};
 
-  const execs = D.executives || [];
+  const execs = Array.isArray(D.executives) ? (D.executives) : [];
 
   const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
 
@@ -9587,7 +9588,7 @@ function sectionTraffic(D) {
 
   if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
-  const channels = t.top_channels || [];
+  const channels = Array.isArray(t.top_channels) ? (t.top_channels) : [];
 
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
 
@@ -9596,7 +9597,7 @@ function sectionTraffic(D) {
   const age = audience.age || {};
 
   // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
-  const demoArr = t.demographics || [];
+  const demoArr = Array.isArray(t.demographics) ? (t.demographics) : [];
   const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
   const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
   const genderFromDemo = (femaleEntry || maleEntry)
@@ -9784,8 +9785,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9963,7 +9964,7 @@ function sectionTraffic(D) {
     const branded    = parseFloat(os.branded_pct)     || 0;
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
-    const kws = os.top_non_branded_keywords || [];
+    const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
 
     // Mini SVG donut for branded/NB split
@@ -10030,7 +10031,7 @@ function sectionTraffic(D) {
     const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
-    const kws = ps.top_keywords || [];
+    const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
@@ -10064,8 +10065,8 @@ function sectionTraffic(D) {
 
   ${/* PANEL: Referrals */ ''}
   ${(() => {
-    const refs = t.top_referrers || t.referrals?.top_referring_sites || [];
-    const inds = t.referring_industries || t.referrals?.top_referring_industries || [];
+    const refs = Array.isArray(t.top_referrers || t.referrals?.top_referring_sites) ? (t.top_referrers || t.referrals?.top_referring_sites) : [];
+    const inds = Array.isArray(t.referring_industries || t.referrals?.top_referring_industries) ? (t.referring_industries || t.referrals?.top_referring_industries) : [];
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
@@ -10117,7 +10118,7 @@ function sectionTraffic(D) {
     const _cLabel = 'Competitor Traffic Scale';
     const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
-    const comps = t.competitor_traffic || [];
+    const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
     const parseVisits = v => {
       const s2 = String(v||'').replace(/,/g,'');
@@ -10245,6 +10246,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -10326,8 +10329,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -10363,14 +10382,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10551,9 +10570,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10573,9 +10594,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10704,7 +10726,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10874,7 +10908,7 @@ function sectionScoreHeatmap(D) {
 
   // Build category→finding map for TOC click targets
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const catToFinding = {};
 
@@ -11076,7 +11110,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -11136,7 +11170,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -11331,7 +11365,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -11508,7 +11542,7 @@ function sectionExecQuotes(D) {
 
 function sectionCompetitive(D) {
 
-  const comps = D.competitors || [];
+  const comps = Array.isArray(D.competitors) ? (D.competitors) : [];
 
   if (!comps.length) return '';
 
@@ -11702,7 +11736,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11796,17 +11830,17 @@ function sectionBattleCard(D) {
 
   const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
 
-  const gaps      = D.gap_pairs || [];
+  const gaps      = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
   const hir       = D.hiring || {};
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   // Use only critical findings for feature comparison
 
   const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
 
-  const allFindings = D.findings || [];
+  const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
   // Single strongest hook — first gap pair only
 
@@ -11914,7 +11948,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11968,7 +12002,7 @@ function sectionBattleCard(D) {
 
 function sectionSources(D) {
 
-  const bibs = D.bibliography || [];
+  const bibs = Array.isArray(D.bibliography) ? (D.bibliography) : [];
 
   return `<section id="section-sources" class="audit-section">
 
@@ -12074,7 +12108,7 @@ function sectionAppendixScoring(D) {
 
 function sectionAppendixQueries(D) {
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   return `<section id="appendix-queries" class="audit-section">
 
@@ -12094,7 +12128,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -12234,8 +12268,20 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  const components = f.roi_components || [];
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
@@ -12539,9 +12585,9 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
 
-  const gaps = D.gap_pairs || [];
+  const gaps = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   if (!gaps.length) return '';
 
@@ -12690,12 +12736,13 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
-  const tiers = cs.competitor_tiers || [];
+  const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
-  const matrix = cs.positioning_matrix || [];
+  const matrix = Array.isArray(cs.positioning_matrix) ? (cs.positioning_matrix) : [];
 
-  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+  if (!tiers.length && !matrix.length && !ga.talk_track && !((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length) return '';
 
   const cap = (v) => {
     if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
@@ -12719,7 +12766,7 @@ function sectionCompetitiveSynthesis(D) {
 
   const builtWithUrls = {};
 
-  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+  ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
 
 
 
@@ -12759,7 +12806,7 @@ function sectionCompetitiveSynthesis(D) {
       <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
@@ -12954,7 +13001,7 @@ function initCaseStudyCountUp() {
 function sectionCaseStudies(D) {
 
   // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
-  const topLevel = D.case_studies || [];
+  const topLevel = Array.isArray(D.case_studies) ? (D.case_studies) : [];
 
   if (!topLevel.length) {
     // Build from findings — deduplicate by company, derive stat from result string
@@ -13215,7 +13262,7 @@ function sectionWhyNow(D) {
   const HIRING_TYPES = new Set(['hiring','hiring_signal']);
   const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
-  const allSigs = D.intelligence_signals || [];
+  const allSigs = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
@@ -13318,7 +13365,7 @@ function sectionWhyNow(D) {
 
 function sectionStrategicAngles(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
@@ -13386,13 +13433,13 @@ function sectionStrategicAngles(D) {
 
 function sectionSalesPlays(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
   const hir = D.hiring || {};
 
-  const genericObjs = hir.objection_counters || [];
+  const genericObjs = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
 
@@ -13706,7 +13753,7 @@ function sectionPreCallBrief(D) {
 
   const icp = D.icp_mapping || {};
 
-  const anchors = icp.anchor_lines || [];
+  const anchors = Array.isArray(icp.anchor_lines) ? (icp.anchor_lines) : [];
 
   const fin = D.financials || {};
 
@@ -13788,9 +13835,28 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
-  const phases = hir.engagement_phases || [];
+  const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
   if (!committee.length) return '';
 
@@ -13933,9 +13999,9 @@ function sectionDiscoveryObjections(D) {
 
   const hir = D.hiring || {};
 
-  const ptops = icp.priority_to_product || [];
+  const ptops = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   return `<section id="section-discovery" class="audit-section">
 
@@ -13991,15 +14057,15 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = Array.isArray(abx.contacts) ? (abx.contacts) : [];
 
-  const touches  = abx.touches || [];
+  const touches  = Array.isArray(abx.touches) ? (abx.touches) : [];
 
-  const variants = abx.ab_variants || [];
+  const variants = Array.isArray(abx.ab_variants) ? (abx.ab_variants) : [];
 
-  const assets   = abx.assets_library || [];
+  const assets   = Array.isArray(abx.assets_library) ? (abx.assets_library) : [];
 
-  const triggers = abx.triggers || [];
+  const triggers = Array.isArray(abx.triggers) ? (abx.triggers) : [];
 
 
 
@@ -14329,7 +14395,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = D.intelligence_signals || [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -14349,7 +14416,7 @@ function sectionStatBar(D) {
   const roiVal = roi ? escHtml(roi) : '—';
 
   // Stat 3: Competitive signal
-  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compUsing = ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]))[0];
   const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
   const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
 
@@ -14477,8 +14544,8 @@ function sectionPartnerIntel(D) {
   const pi = D.partner_intel;
   if (!pi) return ''; // Graceful degradation — section hidden when no partner data
 
-  const techPartners = pi.tech_partners || [];
-  const siPartners = pi.si_partners || [];
+  const techPartners = Array.isArray(pi.tech_partners) ? (pi.tech_partners) : [];
+  const siPartners = Array.isArray(pi.si_partners) ? (pi.si_partners) : [];
   const action = pi.immediate_action || '';
   const coSell = pi.co_sell_recommendation || '';
 
@@ -14543,7 +14610,7 @@ function renderSections(D) {
 
   const content  = document.getElementById('content');
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const isSevCritical = s => s === 'critical' || s === 'HIGH';
   const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
@@ -14605,6 +14672,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14620,11 +14710,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14730,7 +14823,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14957,7 +15057,7 @@ function initSectionStrips() {
 
   // Build a panel for each tab
   function buildPanel(tabId) {
-    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const config = Array.isArray(SECTION_STRIP_CONFIG[tabId]) ? (SECTION_STRIP_CONFIG[tabId]) : [];
     const panel = document.createElement('div');
     panel.className = 'section-sidebar__panel';
     panel.id = `sidebar-panel-${tabId}`;
@@ -15005,10 +15105,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -16036,7 +16132,8 @@ if (document.readyState === 'loading') {
 
 </script>
 
-  <script src="/chat-widget.js" defer></script>
+<!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
+<script src="/chat-widget.js" defer></script>
 </body>
 
 </html>

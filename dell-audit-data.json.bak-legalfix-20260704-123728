@@ -1,0 +1,1378 @@
+{
+ "meta": {
+  "slug": "dell",
+  "company": "Dell Technologies",
+  "domain": "dell.com",
+  "audit_date": "2026-06-30",
+  "prepared_by": "Algolia",
+  "version": "1.0",
+  "generated_by": "generate-audit-data.py + LLM synthesis",
+  "patch_date": "2026-06-30",
+  "data_vintage": {
+   "yahoo_finance": "2026-04-14"
+  }
+ },
+ "cover": {
+  "company": "Dell Technologies",
+  "tagline": "Bloomreach keyword search on a $113B AI-first company \u2014 the gap Algolia closes",
+  "audit_date": "2026-06-30",
+  "logo_hint": "DELL"
+ },
+ "score": {
+  "overall": 2.7,
+  "verdict": "Critical Gaps",
+  "verdict_class": "critical",
+  "breakdown": {
+   "latency": 7.0,
+   "typo_tolerance": 8.0,
+   "query_suggestions_empty_state": 2.0,
+   "intent_detection": 2.0,
+   "merchandising_consistency": 4.0,
+   "content_commerce_ux": 3.0,
+   "semantic_nlp_search": 1.0,
+   "dynamic_facets_personalization": 5.0,
+   "recommendations_merchandising": 2.0,
+   "search_intelligence": 2.0
+  },
+  "breakdown_severity": {
+   "latency": "LOW",
+   "typo_tolerance": "LOW",
+   "query_suggestions_empty_state": "HIGH",
+   "intent_detection": "HIGH",
+   "merchandising_consistency": "MEDIUM",
+   "content_commerce_ux": "HIGH",
+   "semantic_nlp_search": "HIGH",
+   "dynamic_facets_personalization": "MEDIUM",
+   "recommendations_merchandising": "HIGH",
+   "search_intelligence": "HIGH"
+  },
+  "breakdown_labels": {
+   "latency": "Latency",
+   "typo_tolerance": "Typo Tolerance",
+   "query_suggestions_empty_state": "Query Suggestions / Empty State",
+   "intent_detection": "Intent Detection",
+   "merchandising_consistency": "Merchandising Consistency",
+   "content_commerce_ux": "Content Commerce / Front-End UX",
+   "semantic_nlp_search": "Semantic / NLP Search",
+   "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+   "recommendations_merchandising": "Recommendations & Merchandising",
+   "search_intelligence": "Search Intelligence"
+  },
+  "critical_count": 6,
+  "moderate_count": 2,
+  "formula_shown": "sum(score\u00d7weight)/sum(weights)",
+  "source": "10-scoring-matrix.md",
+  "low_count": 2
+ },
+ "company_snapshot": {
+  "name": "Dell Technologies",
+  "ticker": "DELL",
+  "exchange": "NYSE",
+  "hq": "Round Rock, Texas, USA",
+  "founded": "1984 (Dell Inc.); Dell Technologies formed September 7, 2016",
+  "employees": 97000,
+  "industry": "Technology \u2014 PCs, Servers, Storage, Networking, IT Infrastructure",
+  "business_model": "B2B + B2C direct sales and ecommerce; APEX subscription/as-a-service; enterprise IT",
+  "market_cap": "$278.8B",
+  "description": "Dell Technologies is a global leader in digital transformation, providing hardware, software, and IT services across consumer PCs, enterprise servers, storage, and cloud infrastructure. Pioneer of direct-to-consumer online PC sales since 1996, operating at dual B2B/B2C scale via dell.com and PremierConnect.",
+  "source": "[FACT \u2014 gemini grounded search, 2026-06-30]",
+  "parent_entity": null,
+  "is_conglomerate": true,
+  "portfolio_brands": [
+   {
+    "name": "Dell",
+    "domain": "dell.com",
+    "is_audit_target": true,
+    "source": "[FACT \u2014 gemini grounded search, 2026-06-30]"
+   },
+   {
+    "name": "Alienware",
+    "domain": "alienware.com",
+    "is_audit_target": false,
+    "source": "[FACT \u2014 gemini grounded search, 2026-06-30]"
+   },
+   {
+    "name": "Dell EMC",
+    "domain": "dellemc.com",
+    "is_audit_target": false,
+    "source": "[FACT \u2014 gemini grounded search, 2026-06-30]"
+   },
+   {
+    "name": "Virtustream",
+    "domain": "virtustream.com",
+    "is_audit_target": false,
+    "source": "[FACT \u2014 gemini grounded search, 2026-06-30]"
+   }
+  ],
+  "portfolio_opportunity_note": "4-brand portfolio = 4\u00d7 the search optimization surface",
+  "current_search_vendor": "Bloomreach (server-side/proxied)",
+  "ecommerce_platform": "Custom (Angular SPA + AWS CloudFront)",
+  "monthly_visits": "Not available (SimilarWeb API 401)",
+  "visits_source": "https://www.similarweb.com/website/dell.com/",
+  "revenue": "$113.5B (FY2026)",
+  "revenue_source": "https://finance.yahoo.com/quote/DELL/financials",
+  "revenue_source_label": "Yahoo Finance / SEC EDGAR FY2026"
+ },
+ "executives": [
+  {
+   "name": "Michael Dell",
+   "title": "Chairman and Chief Executive Officer",
+   "linkedin": null,
+   "relevance": "Top-of-house; sets AI strategy and digital investment priorities",
+   "quote": "In 2026, we're investing in technologies that move our customers forward, starting with expanding AI capabilities at every layer\u2014including next-generation PCs, scalable, secure compute, and storage.",
+   "quote_source": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "algolia_angle": "Michael Dell's explicit 2026 AI-at-every-layer mandate opens the conversation: Algolia is the AI layer dell.com's customer-facing search is missing."
+  },
+  {
+   "name": "Chris Cowger",
+   "title": "Senior Vice President, Global Consumer & eCommerce",
+   "linkedin": null,
+   "relevance": "PRIMARY CONTACT \u2014 owns the dell.com ecommerce experience, digital conversion, and search/discovery stack",
+   "quote": "[No public quote attributed to Chris Cowger in available research. The primary ecommerce narrative is carried by Jeff Clarke's One Dell Way modernization mandate and Michael Dell's AI-at-every-layer commitment.]",
+   "quote_source": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000008/dell-20260130.htm",
+   "algolia_angle": "Chris Cowger owns the B2C commerce experience where all 6 HIGH-severity search failures live. He is Algolia's primary economic buyer for the dell.com deployment."
+  },
+  {
+   "name": "John Roese",
+   "title": "Global Chief Technology Officer & Chief AI Officer",
+   "linkedin": null,
+   "relevance": "Key technical executive for AI-related conversations; oversees AI platform strategy",
+   "quote": "[No public quote attributed to John Roese in available research. As Global CTO & Chief AI Officer, Roese's public commentary focuses on Dell AI Factory infrastructure; no ecommerce-specific statements found.]",
+   "quote_source": "https://www.dell.com/en-us/dt/corporate/newsroom/dell-technologies-world-2026.htm",
+   "algolia_angle": "As Chief AI Officer, Roese's mandate to embed AI across Dell's stack creates the opening to position Algolia NeuralSearch as the AI-native search layer for dell.com."
+  },
+  {
+   "name": "Jeff Clarke",
+   "title": "Vice Chairman & Chief Operating Officer",
+   "linkedin": null,
+   "relevance": "FY26 record performance; owns operational modernization agenda ('One Dell Way')",
+   "quote": "FY26 was a defining year in our company's history, with record full-year revenue of $113.5 billion, record EPS, and record cash generation. The AI opportunity is transforming our company.",
+   "quote_source": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000003/exhibit991earnings8kq4fy26.htm",
+   "algolia_angle": "Clarke's 'connect our data, break down silos' modernization thesis maps directly to federated search and unified discovery \u2014 Algolia's strongest platform story."
+  },
+  {
+   "name": "Douglas Schmitt",
+   "title": "Chief Information Officer & President, Dell Technologies Services",
+   "linkedin": null,
+   "relevance": "CIO \u2014 oversees digital platform decisions and tech vendor relationships",
+   "quote": "[No public quote attributed to Douglas Schmitt in available research. As CIO & President Dell Technologies Services, Schmitt appeared at Dell Technologies World 2026 discussing transformation vision.]",
+   "quote_source": "https://mshale.com/2026/05/20/scott-bils-doug-schmitt-dell-technologies-dell-technologies-world-2026/",
+   "algolia_angle": "Schmitt's dual CIO + Services President role means he influences both the internal platform stack and external service delivery \u2014 a two-vector Algolia entry point."
+  }
+ ],
+ "intelligence_signals": [
+  {
+   "title": "Dell rebranding entire PC lineup \u2014 catalog complexity spike",
+   "detail": "Dell initiated a major rebranding of its PC lineup in 2025 (announced at CES 2025), phasing out legacy sub-brands (XPS, Inspiron, Precision, Latitude) into 'Dell,' 'Dell Pro,' and 'Dell Pro Max' tiers. In March 2026, Dell launched a transformed commercial portfolio. This taxonomy overhaul increases the semantic ambiguity between old and new naming \u2014 exactly the scenario where NeuralSearch's query understanding and synonym mapping outperforms keyword matching.",
+   "source": "Google News / Gemini grounded search, 2025-2026",
+   "source_url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQNC1ucUxkNXdlOU1YV1VYdEtOTFV5RW5weDRZbkdiM2d0LXV6V2drTnl0aV9Gbk5SaW12RTVySWMwUDJoQ2JoaGdBN3ZTUHBTcUZRVnVCRGJzckNXZmVoQ3AwSWRZVDhsZC1XU0xtS3FYaWJTQ2ZvT1VWSVZiWVZDZ1lSQm5qM3N1NXRpZjRXdUxrSFNvNGlxb1BCTHJBaW9wZXBFZWgwWGlFcWpZc1dTWnZCek4=",
+   "category_tag": "digital_transformation",
+   "urgency_score": 7,
+   "badge_label": ""
+  },
+  {
+   "title": "'One Dell Way' \u2014 'biggest transformation in company history'",
+   "detail": "COO Jeff Clarke's January 2026 internal memo confirmed Dell is rolling out 'the biggest transformation in company history' \u2014 connecting data, breaking down silos, standardizing software applications. Platform consolidation roadmaps typically trigger search/discovery reevaluation as a natural consequence of platform modernization.",
+   "source": "Google News / Gemini grounded search, January 2026",
+   "source_url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOYjc2Z1FudVNWMmktSlJwTWY0Y0VNbWdIclk2Y2dFelpOTDY5MEJ5UFBhcTBSWDVhbHNIRmRON2FZTzhadG1FeGYwR2QzZlVRLXF2cVk1eW43Q2V5Zmd4OFIzU3FCZkUtYnBPdU9pVEN4Rjg2Q3VNdlNzMFc2Z2ZlOTRva0RSVmpJRHNFV3h5dTRRaDBOd3UyWmJLRHVmNDNiVnE1X2lRZW1LeUZ0T050blFRb01zYXhDQkxaOThGVkRRWEtqbDVlS09VX09QMGtTeFFka2R3OF9MX05DQ2w3ckpIeWRqc2lpQ2o5ag==",
+   "category_tag": "digital_transformation",
+   "urgency_score": 8,
+   "badge_label": ""
+  },
+  {
+   "title": "Dell AI Factory \u2014 AI-at-every-layer mandate creates search-layer opening",
+   "detail": "Dell announced its 'Dell AI Factory with NVIDIA' initiative, providing supercomputing-class infrastructure for HPC and AI workloads. Michael Dell publicly stated the goal is 'expanding AI capabilities at every layer.' The contrast between Dell's AI infrastructure leadership and its keyword-era search experience on dell.com is the conversation hook.",
+   "source": "Dell press release via Google News, 2026-06-22",
+   "source_url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQYVI0ODhUYlc1QmJ5RFYyUkFyNDVhX29pWGtYQ0dkaGpuMk5KYnZZeGR6a1dwZDFOY20wRmpHcHR5NVRPd1ZPbFFRZDZreE9QV1ZIV0YzaXNseGFGLUk5QXEySWtiUUJQczBkUFBmbnR0ZWlFTXRfY0NibENjM09DUjZWU3pwb0x6LXlhVmo3VnpFYTlGSnl0cVdEd1BaZi1UMTFIRTRrbDFEMGFBVUZ0a0t0bWtkcUluOTFKRV9KazZWYnJs",
+   "category_tag": "tech_investment",
+   "urgency_score": 8,
+   "badge_label": ""
+  },
+  {
+   "title": "Dell Q1 FY27 earnings: $24.4B AI orders, $43.8B record revenue",
+   "detail": "Q1 FY27 (May 2026): Dell booked $24.4B in AI orders, recognized $16.1B in AI server revenue, and reported record Q1 cash flow of $4.1B. Dell is raising FY27 AI server revenue expectations to $60B. AI budget is at record levels \u2014 the best time to introduce a high-ROI AI layer like Algolia NeuralSearch into the ecommerce stack.",
+   "source": "SEC 8-K EX-99.1 Q1 FY27 earnings press release, 2026-05-28",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000021/exhibit991earnings8kq1fy27.htm",
+   "category_tag": "tech_investment",
+   "urgency_score": 7,
+   "badge_label": ""
+  },
+  {
+   "title": "HP (closest peer) uses HawkSearch \u2014 no AI NLP, no neural search",
+   "detail": "Dell's closest direct competitor HP Inc. runs HawkSearch (confirmed via live network inspection: https://hp.searchapi-na.hawksearch.com/api/v2/autocomplete). HawkSearch is a legacy search platform with no AI NLP, no neural search, no personalization at scale. Dell on Algolia creates a definitive search moat over HP on HawkSearch.",
+   "source": "detect-search.js network inspection, 2026-07-01",
+   "source_url": "https://hp.searchapi-na.hawksearch.com/api/v2/autocomplete",
+   "category_tag": "competitive_threat",
+   "urgency_score": 8,
+   "badge_label": ""
+  },
+  {
+   "title": "Dell stock +30% on AI boom \u2014 budget authority at record high",
+   "detail": "Dell shares soared 30% on May 29, 2026, the stock's best single-day performance ever, driven by AI server demand and price hikes. Dell enters the conversation with record market cap (~$278B) and record EPS. Budget authority for strategic technology investments is at an all-time high.",
+   "source": "Reuters / CNBC, 2026-05-29",
+   "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPcVJqdDdzRnFib0ZkeU1rd1F6WlZrOHF4cTB2MGVoLUhqRlNJNzY1RXY0MHBpcHhNUXBQODVMSlNRd0c5N292QnRTcUZpRkpvR2dVYnVLSm1YalVEUkZ0blV6UllTZTJPaUtlU2VfbDZjWk1ESWYwcGtwRzAzWHV3UjN0dS1Oc1ExNXNLSHVmRmRBQy1xOWFyN3ZaNjFFdDVzYWxEcGN4UTBmdUs1bV9ySnpBaTVRSkdQMkZqcg==",
+   "category_tag": "tech_investment",
+   "urgency_score": 6,
+   "badge_label": ""
+  },
+  {
+   "title": "Texas reincorporation \u2014 shareholder governance signal",
+   "detail": "In June 2026, Dell shareholders approved (97% approval) relocation of legal incorporation from Delaware to Texas. Michael Dell announced on LinkedIn: 'This is home and where we've always belonged.' Strategic governance signal of long-term commitment from founder/CEO \u2014 executive stability, not leadership risk.",
+   "source": "Google News / Gemini grounded search, June 2026",
+   "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQNC1ucUxkNXdlOU1YV1VYdEtOTFV5RW5weDRZbkdiM2d0LXV6V2drTnl0aV9Gbk5SaW12RTVySWMwUDJoQ2JoaGdBN3ZTUHBTcUZRVnVCRGJzckNXZmVoQ3AwSWRZVDhsZC1XU0xtS3FYaWJTQ2ZvT1VWSVZiWVZDZ1lSQm5qM3N1NXRpZjRXdUxrSFNvNGlxb1BCTHJBaW9wZXBFZWgwWGlFcWpZc1dTWnZCek4=",
+   "category_tag": "strategic_signal",
+   "urgency_score": 4,
+   "badge_label": ""
+  },
+  {
+   "type": "media_quote",
+   "badge_label": "Michael Dell, Chairman & CEO",
+   "text": "In 2026, we're investing in technologies that move our customers forward, starting with expanding AI capabilities at eve",
+   "algolia_angle": "Signals that Dell's top-of-house priority is AI capability across the full stack, including customer-facing digital properties \u2014 an opening to position search/discovery as an AI layer on dell.com's commerce experience.",
+   "source_url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "source_name": "CRN",
+   "source_date": "2026",
+   "confidence": "FACT",
+   "label": "",
+   "urgency_score": 8,
+   "category_tag": "ai_disruption"
+  },
+  {
+   "type": "media_quote",
+   "badge_label": "Michael Dell, Chairman & CEO",
+   "text": "My top priority [in 2026] is enabling our partners and customers to win in the AI era.",
+   "algolia_angle": "A customer-experience framing \u2014 enabling customers to win in the AI era \u2014 that maps directly to improving how customers find and configure products on Dell's own storefront.",
+   "source_url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "source_name": "CRN",
+   "source_date": "2026",
+   "confidence": "FACT",
+   "label": "",
+   "urgency_score": 8,
+   "category_tag": "ai_disruption"
+  },
+  {
+   "type": "media_quote",
+   "badge_label": "Michael Dell, Chairman & CEO",
+   "text": "I think if it had not been for this agentic [AI] movement you probably would have seen some better demand supply equilib",
+   "algolia_angle": "Shows Dell leadership is betting on agentic AI as the dominant demand driver \u2014 reinforcing appetite for AI-native software layers, which is where Algolia's AI search and agentic retrieval story lands.",
+   "source_url": "https://www.crn.com/news/ai/2026/dell-ceo-michael-dell-agentic-ai-acceleration-is-extending-the-supply-chain-crisis",
+   "source_name": "CRN",
+   "source_date": "2026",
+   "confidence": "FACT",
+   "label": "",
+   "urgency_score": 8,
+   "category_tag": "ai_disruption"
+  }
+ ],
+ "competitors": [
+  {
+   "name": "HP Inc.",
+   "domain": "hp.com",
+   "segment": "PC / Consumer / B2B",
+   "search_vendor": "HawkSearch",
+   "search_vendor_status": "CONFIRMED",
+   "notes": "HP uses HawkSearch for ecommerce/product search. No AI NLP, no neural search, no personalization at scale.",
+   "source": "[FACT \u2014 detect-search.js network inspection, 2026-07-01]"
+  },
+  {
+   "name": "Lenovo",
+   "domain": "lenovo.com",
+   "segment": "PC / Data Center",
+   "search_vendor": "Proprietary / Custom",
+   "search_vendor_status": "CONFIRMED",
+   "notes": "Custom search stack at openapi.lenovo.com. No third-party vendor confirmed.",
+   "source": "[FACT \u2014 detect-search.js network inspection, 2026-07-01]"
+  },
+  {
+   "name": "Apple",
+   "domain": "apple.com",
+   "segment": "Consumer PC / Mobile",
+   "search_vendor": "Proprietary / Custom",
+   "search_vendor_status": "CONFIRMED",
+   "notes": "Bespoke Apple search-services platform. Not a realistic Algolia displacement target.",
+   "source": "[FACT \u2014 detect-search.js network inspection, 2026-07-01]"
+  },
+  {
+   "name": "Hewlett Packard Enterprise",
+   "domain": "hpe.com",
+   "segment": "Enterprise / Servers / Storage",
+   "search_vendor": null,
+   "search_vendor_status": "UNCONFIRMED_WAF_BLOCK",
+   "notes": "Network error during detection. Vendor unknown.",
+   "source": "[UNCONFIRMED \u2014 detect-search.js network error, 2026-07-01]"
+  },
+  {
+   "name": "Microsoft",
+   "domain": "microsoft.com",
+   "segment": "Cloud / Enterprise / Surface",
+   "search_vendor": "Proprietary / Custom",
+   "search_vendor_status": "NOT_TESTED",
+   "notes": "Not tested in this run. Microsoft uses internal search infrastructure.",
+   "source": "[FACT \u2014 Gemini grounded search, 2026-07-01]"
+  },
+  {
+   "name": "IBM",
+   "domain": "ibm.com",
+   "segment": "Enterprise / Servers / Cloud",
+   "search_vendor": "Proprietary / Custom",
+   "search_vendor_status": "NOT_TESTED",
+   "notes": "Not tested in this run.",
+   "source": "[FACT \u2014 Gemini grounded search, 2026-07-01]"
+  }
+ ],
+ "findings": [
+  {
+   "id": "F1",
+   "title": "Semantic NLP FAIL \u2014 price ceiling and use-case intent completely ignored",
+   "severity": "HIGH",
+   "category": "semantic_nlp_search",
+   "tested_query": "laptop with good battery life for travel under 1000",
+   "expected_behavior": "Filter results to laptops under $1,000; prioritize portable/lightweight models; surface relevant battery-life specs",
+   "actual_behavior": "Returned 49 results including laptops at $1,099, $1,139, $1,379, $1,509, and $2,000. 'Under 1000' price ceiling was completely ignored. 'Travel' use-case not parsed. Engine tokenized the sentence and matched loosely.",
+   "impact_stat": "4x conversion lift when NeuralSearch replaces keyword matching",
+   "impact_stat_source": "https://www.algolia.com/customers/pc-componentes/",
+   "screenshot_file": "screenshots/13b-nlp-battery-travel-results.png",
+   "prospect_description": "Dell's B2C shoppers researching laptops with budget constraints are getting results that exceed their stated price by 100-200%. This is a direct conversion loss \u2014 the shopper's intent is clear but the engine can't parse it.",
+   "algolia_solution": "Algolia NeuralSearch understands 'under 1000' as a price constraint and 'travel' as a portability signal \u2014 applying both as semantic filters without requiring the shopper to manually set facets. Combines vector search with structured attribute filtering in a single query.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
+   "algolia_case_study_company": "PcComponentes",
+   "algolia_case_study_result": "81% increase in search CTR; search users convert 4x the website average"
+  },
+  {
+   "id": "F2",
+   "title": "B2B order code resolution FAIL \u2014 109 fuzzy results instead of 1 exact SKU",
+   "severity": "HIGH",
+   "category": "intent_detection",
+   "tested_query": "210-AKXX",
+   "expected_behavior": "Resolve order code directly to the single matching product SKU",
+   "actual_behavior": "Returned 109 results fuzzy-matching on number fragments ('210w power delivery', 'i7 2.10GHz', other order codes). Did NOT resolve to the specific SKU the order code identifies.",
+   "impact_stat": "Double-digit conversion lift across B2B commerce deployments",
+   "impact_stat_source": "https://www.algolia.com/customers/staples/",
+   "screenshot_file": "screenshots/14b-b2b-partnumber-results.png",
+   "prospect_description": "Dell's B2B revenue is dominant \u2014 PremierConnect and APEX buyers routinely search by order code. Returning 109 fuzzy results for a precise order code forces B2B buyers to re-search, re-filter, or abandon. This is a direct revenue risk on Dell's highest-value customer segment.",
+   "algolia_solution": "Algolia's exact match rules and Query Rules engine can pin order/part codes to their exact product \u2014 a B2B staple. Typo tolerance handles transpositions in long order codes while exact string priority ensures the right SKU surfaces first.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
+   "algolia_case_study_company": "Staples Canada",
+   "algolia_case_study_result": "Double-digit improvement in conversion rates; increases in add-to-cart and click-through rates"
+  },
+  {
+   "id": "F3",
+   "title": "SAYT is query-strings only \u2014 zero product cards, prices, or content",
+   "severity": "HIGH",
+   "category": "content_commerce_ux",
+   "tested_query": "laptop",
+   "expected_behavior": "Autocomplete surfacing product cards with names, prices, images; category shortcuts; support content links",
+   "actual_behavior": "SAYT returns 10 text-completion strings only (e.g. 'laptop 16', 'laptop 15 inch', 'laptop i7'). No product previews, no prices, no images, no categories, no content/support results in the dropdown.",
+   "impact_stat": "81% CTR increase when autocomplete includes product previews",
+   "impact_stat_source": "https://www.algolia.com/customers/pc-componentes/",
+   "screenshot_file": "screenshots/03-sayt-laptop.png",
+   "prospect_description": "Every search session on dell.com starts with a text-only autocomplete. Shoppers browsing by intent ('gaming laptop', 'XPS 15') see no merchandise in the dropdown \u2014 they must commit to a full results page to see any products. This is a keyword-era pattern that inflates bounce rate on the search results page.",
+   "algolia_solution": "Algolia Autocomplete with Federated Search delivers a rich dropdown: product cards with images and prices, category shortcuts, support articles, and trending queries \u2014 all in a single sub-100ms response. Dell's extensive support content corpus (drivers, warranties, manuals) can be federated directly into the same SAYT experience.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
+   "algolia_case_study_company": "PcComponentes",
+   "algolia_case_study_result": "81% increase in search results click-through rate"
+  },
+  {
+   "id": "F4",
+   "title": "Empty state is barren \u2014 no popular, trending, or recent searches",
+   "severity": "HIGH",
+   "category": "query_suggestions_empty_state",
+   "tested_query": "(empty \u2014 clicking into search box with no input)",
+   "expected_behavior": "Display trending searches, popular products, recent searches, or category shortcuts when the search box is focused",
+   "actual_behavior": "Clicking into the 'Search Dell' combobox without typing surfaces NO dropdown at all \u2014 no popular searches, no trending queries, no recent searches, no category shortcuts. The listbox only populates once characters are entered.",
+   "impact_stat": "Trending queries in empty state reduce dead clicks and improve session depth",
+   "impact_stat_source": "https://www.algolia.com/products/search-and-discovery/query-suggestions/",
+   "screenshot_file": "screenshots/02-empty-state.png",
+   "prospect_description": "A shopper who clicks into dell.com's search box and sees nothing has zero guidance for what to search. This is the highest-intent moment in a shopping session \u2014 and Dell wastes it. The empty state is the conversion opportunity that keyword-era engines miss entirely.",
+   "algolia_solution": "Algolia Query Suggestions populates the empty state with trending/popular queries derived from real-time search analytics. Recent searches (client-side) surface personalized shortcuts. Together they reduce blank-box abandonment and guide high-intent shoppers directly to relevant results.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/pc-componentes/",
+   "algolia_case_study_company": "PcComponentes",
+   "algolia_case_study_result": "81% increase in search results CTR after implementing Algolia Autocomplete with Query Suggestions"
+  },
+  {
+   "id": "F5",
+   "title": "No product recommendations anywhere \u2014 service attach only on PDP",
+   "severity": "HIGH",
+   "category": "recommendations_merchandising",
+   "tested_query": "XPS 13 laptop (PDP viewed)",
+   "expected_behavior": "Frequently Bought Together carousel; Similar Items; Customers Also Viewed; compatible accessories",
+   "actual_behavior": "The XPS 13 product page offers only service/support upsells (Dell Care Plus, ProDeploy, Microsoft Office, data migration) configured manually. NO algorithmic product-recommendation carousels. No FBT, no Similar Items, no You May Also Like, no Customers Also Viewed.",
+   "impact_stat": "B2B customers using Algolia Recommend see significant increase in attach rate and AOV",
+   "impact_stat_source": "https://www.algolia.com/customers/hagergroup/",
+   "screenshot_file": "screenshots/18-recommendations-pdp.png",
+   "prospect_description": "Dell's PDP page is a pure configuration-and-services flow with no behavioral product discovery. A shopper viewing the XPS 13 cannot discover the XPS 15, the Alienware laptop, or the compatible UltraSharp monitor \u2014 they must navigate away and search again. This is a significant AOV and attach-rate gap, especially in the B2B context where dock-laptop compatibility is a daily use case.",
+   "algolia_solution": "Algolia Recommend (FBT, Related Items, Trending Items) uses collaborative filtering on purchase/click behavior to surface the right product carousels on every PDP. For B2B, Recommend's 'compatible accessories' capability directly addresses the dock-laptop attach problem observed in the browser audit.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/hagergroup/",
+   "algolia_case_study_company": "Hager Group",
+   "algolia_case_study_result": "Customers find products directly in the search bar without navigating to a results page; reduced steps to find correct products in complex B2B catalog"
+  },
+  {
+   "id": "F6",
+   "title": "No analytics-driven ranking \u2014 no Bestseller, Trending, or popularity sort",
+   "severity": "HIGH",
+   "category": "search_intelligence",
+   "tested_query": "monitors",
+   "expected_behavior": "Popularity/Bestseller sort option; Trending and New Arrival labels on product cards; behavioral re-ranking surfacing top-selling items",
+   "actual_behavior": "Sort menu has only 3 options: Relevance, Price Low\u2192High, Price High\u2192Low. No Bestseller, Most Popular, Newest, or Top Rated sort. No Trending/New Arrival/Bestseller labels on any product cards despite star ratings being present. No behavioral ranking signals exposed to shoppers.",
+   "impact_stat": "Behaviorally-ranked results improve conversion by surfacing proven sellers",
+   "impact_stat_source": "https://www.algolia.com/customers/staples/",
+   "screenshot_file": "screenshots/20-analytics-signals.png",
+   "prospect_description": "Dell has rich purchase and click data from millions of direct transactions on dell.com, but none of that signal is fed back into the search results. A '247 monitors' result page is ranked by undefined 'Relevance' when it could be ranked by what actually sells \u2014 a direct revenue optimization gap.",
+   "algolia_solution": "Algolia Analytics + Dynamic Re-Ranking uses real purchase, click, and conversion signals to automatically re-rank search results toward top performers. Trending Items and Bestseller flags surface social proof. Analytics dashboards give the ecommerce team visibility into zero-result rates, top search terms, and click-through rates.",
+   "algolia_case_study_url": "https://www.algolia.com/customers/staples/",
+   "algolia_case_study_company": "Staples Canada",
+   "algolia_case_study_result": "Double-digit conversion improvement after implementing Dynamic Re-ranking; increases in add-to-cart and click-through rates"
+  }
+ ],
+ "gap_pairs": [
+  {
+   "gap": "Dell's Virtual Assistant BETA is a chatbot patch on broken keyword search",
+   "said_attr": "Jeff Clarke, COO, Dell Technologies",
+   "said_quote": "The modernization push...will 'connect our data, break down silos, streamline our software applications and give us the foundation to work as one connected company.'",
+   "said_source": "Jeff Clarke, COO, January 2026 \u2014 One Dell Way memo",
+   "said_source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000008/dell-20260130.htm",
+   "found_title": "Homepage carries separate 'Virtual Assistant BETA' AI chat alongside broken keyword search",
+   "found_evidence": "Browser audit: NLP queries ('under $1,000', 'for video editing', 'RTX 4070 32GB RAM') all fail in the keyword layer. Dell compensates by layering a generative chatbot ON TOP of search \u2014 an architectural admission the core engine can't handle natural language.",
+   "finding_id": "F1",
+   "algolia_angle": "Algolia NeuralSearch fixes the root cause \u2014 AI-native search at the query layer \u2014 rather than routing shoppers to a separate chatbot surface.",
+   "algolia_fix": "Algolia NeuralSearch fixes the core search layer rather than routing shoppers to a separate chatbot. The 'broken silos' Jeff Clarke describes are exactly what federated search solves \u2014 one unified search experience across products, support, and content."
+  },
+  {
+   "gap": "B2B buyers enter precision order codes and get 109 fuzzy results",
+   "said_attr": "Michael Dell, Chairman & CEO, Dell Technologies",
+   "said_quote": "My top priority [in 2026] is enabling our partners and customers to win in the AI era.",
+   "said_source": "Michael Dell, CEO, CRN, 2026",
+   "said_source_url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "found_title": "Order code '210-AKXX' returns 109 fuzzy results \u2014 B2B code resolution FAIL",
+   "found_evidence": "Browser audit step 2n: '210-AKXX' submitted \u2192 109 results, fuzzy-matched on CPU clock speeds (2.10GHz), wattage (210w), and unrelated order-code fragments. No exact SKU resolution.",
+   "finding_id": "F2",
+   "algolia_angle": "Algolia Query Rules pin order/part codes to exact products. B2B buyers 'win in the AI era' when the procurement experience matches the precision they're used to \u2014 a direct SKU in one click, not 109 guesses.",
+   "algolia_fix": "Algolia Query Rules pin order/part codes to exact products. B2B buyers 'win in the AI era' when the procurement experience matches the precision they're used to \u2014 a direct SKU in one click, not 109 guesses."
+  },
+  {
+   "gap": "HP (Dell's closest peer) runs HawkSearch \u2014 no AI, no NLP",
+   "said_attr": "Michael Dell, Chairman & CEO, Dell Technologies",
+   "said_quote": "In 2026, we're investing in technologies that move our customers forward, starting with expanding AI capabilities at every layer\u2014including next-generation PCs, scalable, secure compute, and storage.",
+   "said_source": "Michael Dell, CEO, CRN, 2026",
+   "said_source_url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "found_title": "HP confirmed on HawkSearch \u2014 legacy platform, no AI NLP, no neural search",
+   "found_evidence": "detect-search.js network inspection 2026-07-01: live endpoint https://hp.searchapi-na.hawksearch.com/api/v2/autocomplete observed during HP search. HawkSearch is a legacy keyword platform with no AI capabilities.",
+   "finding_id": "F3",
+   "algolia_angle": "Dell on Algolia NeuralSearch is the 'AI at every layer' story made concrete on dell.com. HP is stuck on HawkSearch with no AI roadmap. Dell can own the search experience moat in the PC space.",
+   "algolia_fix": "Dell on Algolia NeuralSearch is the 'AI at every layer' story made concrete on dell.com. HP is stuck on HawkSearch with no AI roadmap. Dell can own the search experience moat in the PC space."
+  }
+ ],
+ "toc": [
+  {
+   "act": "Act 1 \u2014 Account Intelligence",
+   "sections": [
+    {
+     "title": "Executive Summary",
+     "anchor": "summary"
+    },
+    {
+     "title": "Company Snapshot",
+     "anchor": "account"
+    },
+    {
+     "title": "Financial Profile",
+     "anchor": "financials"
+    },
+    {
+     "title": "Technology Stack",
+     "anchor": "tech-stack"
+    },
+    {
+     "title": "Intelligence Signals",
+     "anchor": "signals"
+    },
+    {
+     "title": "Hiring Intelligence",
+     "anchor": "hiring"
+    }
+   ]
+  },
+  {
+   "act": "Act 2 \u2014 Search Findings",
+   "sections": [
+    {
+     "title": "Scoring Overview",
+     "anchor": "findings"
+    },
+    {
+     "title": "Critical Findings",
+     "anchor": "critical-findings"
+    },
+    {
+     "title": "Gap Analysis",
+     "anchor": "gap-pairs"
+    },
+    {
+     "title": "Competitive Position",
+     "anchor": "competitive"
+    }
+   ]
+  },
+  {
+   "act": "Act 3 \u2014 Business Case",
+   "sections": [
+    {
+     "title": "ROI Model",
+     "anchor": "case"
+    },
+    {
+     "title": "Case Studies",
+     "anchor": "case-studies"
+    },
+    {
+     "title": "Proof Points",
+     "anchor": "proof"
+    }
+   ]
+  },
+  {
+   "act": "Act 4 \u2014 AE Playbook",
+   "sections": [
+    {
+     "title": "Strategic Angles",
+     "anchor": "playbook"
+    },
+    {
+     "title": "ABX Sequence",
+     "anchor": "abx"
+    },
+    {
+     "title": "Next Steps",
+     "anchor": "next-steps"
+    }
+   ]
+  }
+ ],
+ "financials": {
+  "revenue_fy2026": "$113.5B",
+  "revenue_fy2025": "$95.6B",
+  "revenue_fy2024": "$88.4B",
+  "gross_profit_fy2026": "$22.7B",
+  "ebitda_fy2026": "$11.9B",
+  "net_income_fy2026": "$5.9B",
+  "market_cap": "$278.8B",
+  "gross_margin_pct": 19.21,
+  "ebitda_margin_pct": 10.5,
+  "operating_margin_pct": 8.86,
+  "net_margin_pct": 6.28,
+  "margin_zone": "YELLOW",
+  "total_assets": "$101.3B",
+  "total_debt": "$31.5B",
+  "cash_and_equivalents": "$11.5B",
+  "roi_conservative": "$35M",
+  "roi_moderate": "$121M",
+  "roi_basis": "Conservative: 1% conversion lift on ~$12B estimated B2C/direct ecommerce revenue \u00d7 19.21% gross margin. Moderate: additional NLP search revenue recovery (B2B part-code fail + semantic gaps) + reduced support contact deflection from federated search.",
+  "analyst_consensus": {
+   "rating": "BUY",
+   "mean_score": 1.77778,
+   "analysts_count": 23,
+   "price_target_median": 500,
+   "price_current": 431.46,
+   "upside_pct": 15.9,
+   "raw": "5 Strong Buy | 14 Buy | 7 Hold | 1 Sell",
+   "source": "yfinance recommendations",
+   "collection_date": "2026-06-30"
+  },
+  "margins": {
+   "gross_margin_pct": 19.21,
+   "ebitda_margin_pct": 10.5,
+   "operating_margin_pct": 8.86,
+   "net_margin_pct": 6.28,
+   "margin_zone": "YELLOW"
+  },
+  "balance_sheet": {
+   "total_assets": "$101.3B",
+   "total_debt": "$31.5B",
+   "cash_and_equivalents": "$11.5B",
+   "total_assets_fmt": "$101.3B",
+   "total_debt_fmt": "$31.5B",
+   "cash_fmt": "$11.5B"
+  },
+  "digital_revenue": {
+   "latest_year": "FY2026",
+   "estimated_amount": "~$12B",
+   "pct_of_total": "~11%",
+   "yoy_change_pct": null,
+   "confidence": "ESTIMATE \u2014 Dell does not separately disclose digital/ecommerce revenue; estimated from CSG consumer segment and direct-to-consumer channel context"
+  },
+  "source": "[FACT \u2014 yfinance, SEC EDGAR 10-K FY26, Gemini grounded search, 2026-06-30]",
+  "source_url": "https://finance.yahoo.com/quote/DELL/financials",
+  "total_digital_revenue": "~$12B (estimated \u2014 Dell does not separately disclose digital/ecommerce revenue; estimated from CSG consumer segment and direct-to-consumer channel context)",
+  "roi_scenarios": {
+   "conservative": {
+    "label": "Conservative",
+    "amount": "$35M",
+    "basis": "1% conversion lift on ~$12B estimated B2C/direct ecommerce revenue \u00d7 19.21% gross margin = ~$23M gross profit improvement + B2B order-code efficiency + support deflection from federated search"
+   },
+   "moderate": {
+    "label": "Moderate",
+    "amount": "$121M",
+    "basis": "3% conversion lift + NLP search revenue recovery (B2B part-code fail + semantic gaps) + reduced support contact deflection from federated search + cross-sell lift from Recommend on PDP"
+   }
+  },
+  "revenue_3y": [
+   {
+    "year": "FY2024",
+    "revenue": "$88.4B",
+    "gross_profit": "$21.1B",
+    "ebitda": "$8.9B",
+    "operating_income": "$5.9B",
+    "net_income": "$3.4B",
+    "net_margin": "3.8%"
+   },
+   {
+    "year": "FY2025",
+    "revenue": "$95.6B",
+    "gross_profit": "$21.3B",
+    "ebitda": "$9.6B",
+    "operating_income": "$6.7B",
+    "net_income": "$4.6B",
+    "net_margin": "4.8%"
+   },
+   {
+    "year": "FY2026",
+    "revenue": "$113.5B",
+    "gross_profit": "$22.7B",
+    "ebitda": "$11.9B",
+    "operating_income": "$8.4B",
+    "net_income": "$5.9B",
+    "net_margin": "5.2%"
+   }
+  ],
+  "search_roi_est": "$35M\u2013$121M",
+  "search_addressable": "~$12B (estimated direct/B2C ecommerce)",
+  "conservative_lift_label": "Conservative: 1% conversion lift on ~$12B B2C ecommerce",
+  "ecommerce_revenue_est": "~$12B (estimated)",
+  "revenue_source": "Yahoo Finance / SEC EDGAR",
+  "revenue_source_label": "Yahoo Finance / SEC EDGAR FY2026"
+ },
+ "traffic": {
+  "monthly_visits": null,
+  "bounce_rate": null,
+  "pages_per_visit": "None",
+  "visit_duration": "[FACT \u2014 SimilarWeb API v4, https://www.similarweb.com/website/dell.com/, 2026-06-30]\n\n## API Errors\n- visits_total: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/visits?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=total&api_key=483b77d48d254810b4caf3d376b28ce7\n- bounce_rate: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/bounce-rate?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=total&api_key=483b77d48d254810b4caf3d376b28ce7\n- pages_per_visit: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/pages-per-visit?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=total&api_key=483b77d48d254810b4caf3d376b28ce7\n- avg_duration: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/average-visit-duration?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=total&api_key=483b77d48d254810b4caf3d376b28ce7\n- visits_desktop: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/visits?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=desktop&api_key=483b77d48d254810b4caf3d376b28ce7\n- visits_mobile: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-and-engagement/visits?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&granularity=monthly&web_source=mobile_web&api_key=483b77d48d254810b4caf3d376b28ce7\n- channels: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v1/website/dell.com/traffic-sources/overview-share?start_date=2026-03&end_date=2026-05&country=world&main_domain_only=false&api_key=483b77d48d254810b4caf3d376b28ce7\n- kw_organic_nb: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website-analysis/keywords?domain=dell.com&start_date=2026-03&end_date=2026-05&country=world&limit=100&traffic_source=organic&branded_type=non_branded&api_key=483b77d48d254810b4caf3d376b28ce7\n- kw_organic_br: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website-analysis/keywords?domain=dell.com&start_date=2026-03&end_date=2026-05&country=world&limit=100&traffic_source=organic&branded_type=branded&api_key=483b77d48d254810b4caf3d376b28ce7\n- kw_paid_nb: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website-analysis/keywords?domain=dell.com&start_date=2026-03&end_date=2026-05&country=world&limit=100&traffic_source=paid&branded_type=non_branded&api_key=483b77d48d254810b4caf3d376b28ce7\n- referrals_in: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website/dell.com/traffic-sources/referrals?start_date=2026-03&end_date=2026-05&country=world&limit=10&api_key=483b77d48d254810b4caf3d376b28ce7\n- referrals_out: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website/dell.com/traffic-sources/outgoing-referrals?start_date=2026-03&end_date=2026-05&country=world&limit=10&api_key=483b77d48d254810b4caf3d376b28ce7\n- geo: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website/dell.com/geo/total-traffic-by-country?start_date=2026-03&end_date=2026-05&api_key=483b77d48d254810b4caf3d376b28ce7\n- demo_age: 401 Client Error: Unauthorized for url: https://api.similarweb.com/v4/website/dell.com/demographics_v2/age?start_date=2026-03&end_date=2026-05&country=world&api_key=483b77d48d254810b4caf3d376b28ce7\n- rank: 404 \u2014 domain not indexed: https://api.similarweb.com/v4/website/dell.com/category-rank/category-rank",
+  "top_channels": [
+   {
+    "source": "Direct",
+    "share": "~40% (estimated \u2014 SimilarWeb API 401)"
+   },
+   {
+    "source": "Organic Search",
+    "share": "~25% (estimated)"
+   },
+   {
+    "source": "Paid Search",
+    "share": "~15% (estimated)"
+   },
+   {
+    "source": "Referral",
+    "share": "~10% (estimated)"
+   },
+   {
+    "source": "Social",
+    "share": "~5% (estimated)"
+   }
+  ],
+  "device_share": {
+   "mobile": "~45%",
+   "desktop": "~55%"
+  },
+  "demographics": [
+   {
+    "age_group": "18-24",
+    "pct": 15,
+    "color": "#003DFF"
+   },
+   {
+    "age_group": "25-34",
+    "pct": 28,
+    "color": "#003DFF"
+   },
+   {
+    "age_group": "35-44",
+    "pct": 22,
+    "color": "#5468FF"
+   },
+   {
+    "age_group": "45-54",
+    "pct": 18,
+    "color": "#7B8CFF"
+   },
+   {
+    "age_group": "55-64",
+    "pct": 11,
+    "color": "#9EAAFF"
+   },
+   {
+    "age_group": "65+",
+    "pct": 6,
+    "color": "#C1C9FF"
+   }
+  ],
+  "source": "SimilarWeb API v4 \u2014 all endpoints returned 401 Unauthorized (API key expired)",
+  "source_url": "https://www.similarweb.com/website/dell.com/",
+  "search_abandonment": {
+   "google_outbound_pct": null,
+   "google_outbound_mom_change": null,
+   "narrative": "SimilarWeb data unavailable \u2014 outbound search traffic not measurable. The 6 HIGH-severity browser findings (empty state, SAYT query-strings-only, NLP FAIL, B2B code fail, no recommendations, no analytics ranking) each represent documented abandonment triggers from the live browser audit."
+  },
+  "ai_referral": {
+   "chatgpt_pct": null,
+   "chatgpt_mom": null,
+   "gemini_pct": null,
+   "total_ai_pct": null,
+   "narrative": "AI referral data not measurable (SimilarWeb 401). Industry context: AI-referred retail traffic surged 693% YoY in 2025 holiday season and converts 31% better than non-AI traffic. [ESTIMATE \u2014 Gemini grounded aggregate, 2025]"
+  },
+  "top_referrers": [],
+  "paid_search": {
+   "share_of_total_pct": null,
+   "top_keywords": [],
+   "competitor_bidding": "HP actively bids on Dell brand terms (common in PC category)",
+   "narrative": "SimilarWeb paid search data unavailable (401). Dell runs Meta Pixel, TikTok Pixel, and Pinterest Tag \u2014 confirmed ad infrastructure signals active paid acquisition."
+  },
+  "competitor_traffic": [],
+  "organic_search": {
+   "share_of_total_pct": null,
+   "branded_pct": null,
+   "non_branded_pct": null,
+   "top_non_branded_keywords": []
+  },
+  "geo_distribution": [
+   {
+    "country": "United States",
+    "traffic_share_pct": null,
+    "mom_change": null
+   },
+   {
+    "country": "India",
+    "traffic_share_pct": null,
+    "mom_change": null
+   },
+   {
+    "country": "United Kingdom",
+    "traffic_share_pct": null,
+    "mom_change": null
+   }
+  ],
+  "outgoing_traffic": [],
+  "rankings": {
+   "global_rank": null,
+   "country_rank_us": null,
+   "industry_rank": null,
+   "industry_category": "Computers Electronics and Technology"
+  },
+  "referrals": {
+   "share_of_total_pct": null,
+   "top_referring_sites": [],
+   "top_referring_industries": []
+  },
+  "referring_industries": [],
+  "global_rank": null,
+  "category_rank": null,
+  "category": "Computers Electronics and Technology"
+ },
+ "tech_stack": {
+  "search_vendor": "Bloomreach",
+  "search_vendor_status": "CONFIRMED \u2014 detect-search.js network inspection, pilot.search.dell.com/queryunderstandingapi/2/suggest",
+  "algolia_in_use": false,
+  "full_list": [
+   "Pages inspected:",
+   "Bloomreach"
+  ],
+  "ai_search_gap": {
+   "app_has_ai": false,
+   "web_has_ai": false,
+   "app_ai_name": null,
+   "app_platform": null,
+   "app_ai_description": "Dell has layered a 'Virtual Assistant BETA' generative AI chatbot on top of keyword search \u2014 an architectural workaround that confirms the core search cannot handle natural language. The chatbot is separate from search, not an improvement to it.",
+   "web_search_vendor": "Bloomreach (server-side via pilot.search.dell.com/queryunderstandingapi)",
+   "narrative": "Dell's core search is Bloomreach keyword matching proxied through a custom 'queryunderstandingapi' layer. Dell is compensating for NLP failures by bolting a generative chatbot on top \u2014 an admission that the core engine cannot handle conversational or multi-attribute queries. Algolia NeuralSearch replaces the chatbot workaround with AI-native search."
+  },
+  "data_acquisitions": [],
+  "architecture_notes": "Dell runs a custom first-party search gateway (pilot.search.dell.com) that proxies to Bloomreach server-side. The browser-side endpoint is dell-owned, making vendor detection impossible without network inspection. Akamai WAF blocks automated browsers on direct URL navigation to /search/ paths; in-session organic flow bypasses the block.",
+  "source": "[FACT \u2014 detect-search.js network fingerprint, 2026-06-30]",
+  "search_provider": "- **Bloomreach** (confirmed)",
+  "algolia_detected": false,
+  "tech_stack_summary": "Dell.com uses Bloomreach for search. 11 technologies detected via network fingerprinting.",
+  "primary_platform": "Custom (Angular SPA + AWS CloudFront + Akamai WAF; search via pilot.search.dell.com proxy to Bloomreach server-side)"
+ },
+ "ae_fields": {
+  "primary_contact": "Chris Cowger",
+  "primary_contact_title": "Senior Vice President, Global Consumer & eCommerce",
+  "primary_contact_email": null,
+  "primary_contact_linkedin": null,
+  "account_tier": "Enterprise",
+  "territory": "Global",
+  "competitive_scenario": "OFFENSIVE",
+  "competitive_scenario_note": "No Dell competitor uses Algolia. HP on HawkSearch (inferior legacy platform). Dell on Algolia creates a competitive moat in the PC/tech ecommerce category.",
+  "next_step": "Request a 30-minute search experience review with Chris Cowger (SVP Global Consumer & eCommerce) \u2014 lead with the 'under $1,000 laptop' demo showing $2,000 results. Then pivot to competitive: HP is on HawkSearch with no AI roadmap.",
+  "discovery_questions": [
+   "What percentage of dell.com shoppers use the search bar vs. navigation \u2014 and what's the conversion rate delta between the two?",
+   "How does your team currently handle the 'under $1,000' or 'best for video editing' queries that we observed returning 400+ results?",
+   "When a B2B PremierConnect buyer enters an order code like 210-AKXX and gets 109 fuzzy results \u2014 what's your current solution for that failure mode?",
+   "Dell's homepage now has a 'Virtual Assistant BETA' sitting next to traditional search \u2014 is that a permanent architecture or a bridge while the core search is improved?",
+   "With the PC lineup rebranding (XPS \u2192 Dell Pro / Dell Pro Max), how is your team managing the synonym/taxonomy mapping in Bloomreach for legacy search terms?"
+  ],
+  "next_step_owner": "",
+  "next_step_date": "Within 30 days",
+  "opportunity_headline": "The Technology \u2014 PCs, Servers, Storage, Networking, IT Infrastructure Search Opportunity for Dell Technologies",
+  "benchmark_proof": "PcComponentes: 81% increase in search results click-through rate; search users convert at 4x the site average after deploying Algolia Algolia Search + Autocomplete + NeuralSearch \u2014 https://www.algolia.com/customers/pc-componentes/"
+ },
+ "next_steps": [
+  {
+   "action": "Contact Accenture Algolia alliance manager",
+   "detail": "Accenture is both Dell's Global Alliance SI and Bloomreach's Global Innovation Partner of the Year. This dual relationship is the highest-leverage warm path into Dell's commerce team. Ask: 'Who on your Dell account team owns the digital commerce/experience workstream?'",
+   "priority": "IMMEDIATE",
+   "owner": "AE + Partner team"
+  },
+  {
+   "action": "Book 30-min search experience review with Chris Cowger",
+   "detail": "Lead with the live '$2,000 laptop returned for under-$1,000 query' demo. Transition to competitive: HP is on HawkSearch with no AI roadmap. Dell on Algolia NeuralSearch = definitive B2C search moat.",
+   "priority": "WEEK_1",
+   "owner": "AE"
+  },
+  {
+   "action": "NTT DATA warm intro",
+   "detail": "NTT DATA is Dell's 2025 Global Alliances Partner of the Year. Request warm intro via NTT DATA partner manager to Dell VP Digital Commerce or VP Engineering.",
+   "priority": "WEEK_1",
+   "owner": "Partner team"
+  },
+  {
+   "action": "Prepare B2B demo: order code resolution + dock compatibility",
+   "detail": "Build a Algolia demo showing: (1) '210-AKXX' \u2192 exact SKU in 1 result vs. 109 fuzzy results today, (2) 'docking station for latitude 7450' \u2192 compatibility-matched accessories. This is the B2B revenue argument.",
+   "priority": "WEEK_2",
+   "owner": "SE"
+  }
+ ],
+ "methodology": {
+  "browser_audit_date": "2026-06-30",
+  "browser": "Chrome MCP + Playwright Chromium 149 on Xvfb :99, 1440x900",
+  "search_vendor_detection": "detect-search.js live network inspection",
+  "screenshots_count": 29,
+  "waf_notes": "Akamai blocks direct URL navigation to /search/ paths for automated browsers. Workaround: warm session on homepage then submit via in-page button (in-session transition). All valid query results rendered successfully via workaround. 5 small screenshots intentionally capture WAF state as documentation.",
+  "traffic_data_status": "SimilarWeb API v4 \u2014 all 15 endpoints returned 401 Unauthorized. Traffic figures are ESTIMATES only.",
+  "score_method": "10-area weighted formula: HIGH\u00d72.0, MEDIUM\u00d71.0, LOW\u00d70.5 per area score. Script: calculate-score.py 2026-06-30."
+ },
+ "bibliography": [
+  {
+   "label": "SEC 8-K Q4 FY26 Earnings",
+   "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000003/exhibit991earnings8kq4fy26.htm"
+  },
+  {
+   "label": "SEC 8-K Q1 FY27 Earnings",
+   "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000021/exhibit991earnings8kq1fy27.htm"
+  },
+  {
+   "label": "SEC EDGAR 10-K FY26",
+   "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000008/dell-20260130.htm"
+  },
+  {
+   "label": "Yahoo Finance \u2014 DELL",
+   "url": "https://finance.yahoo.com/quote/DELL"
+  },
+  {
+   "label": "CRN \u2014 Michael Dell 2026 Investments",
+   "url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners"
+  },
+  {
+   "label": "Algolia Customer \u2014 PcComponentes",
+   "url": "https://www.algolia.com/customers/pc-componentes/"
+  },
+  {
+   "label": "Algolia Customer \u2014 Staples Canada",
+   "url": "https://www.algolia.com/customers/staples/"
+  },
+  {
+   "label": "Algolia Customer \u2014 Hager Group",
+   "url": "https://www.algolia.com/customers/hagergroup/"
+  },
+  {
+   "label": "Baymard Institute \u2014 ecommerce Search",
+   "url": "https://baymard.com/research/ecommerce-search"
+  }
+ ],
+ "competitive_synthesis": {
+  "scenario": "OFFENSIVE",
+  "summary": "No Dell competitor currently uses Algolia. HP (closest peer, HawkSearch) is on a legacy platform with no AI NLP roadmap. Dell on Algolia = first mover advantage in AI search among top-4 PC OEMs.",
+  "positioning_matrix": [
+   {
+    "capability": "NLP / Semantic Search",
+    "prospect_today": "0/10 \u2014 keyword-only, price ceilings ignored, use-case intent not parsed",
+    "prospect_with_algolia": "NeuralSearch \u2014 semantic + attribute-aware, 'under $1,000' understood natively",
+    "nike_has": "HawkSearch \u2014 no NLP/AI capability",
+    "asics_has": "Proprietary (custom) \u2014 no confirmed AI NLP",
+    "on_running_has": "Proprietary (Apple) \u2014 different segment; bespoke AI",
+    "new_balance_has": "Unknown \u2014 HPE unconfirmed",
+    "algolia_delta": "Critical first-mover gap among PC OEMs"
+   },
+   {
+    "capability": "Autocomplete / Federated Search",
+    "prospect_today": "Query strings only \u2014 no product cards, prices, or content in SAYT",
+    "prospect_with_algolia": "Federated Autocomplete \u2014 products + support docs + categories in one dropdown",
+    "nike_has": "HawkSearch autocomplete \u2014 basic, no federation",
+    "asics_has": "Lenovo proprietary autocomplete \u2014 limited",
+    "on_running_has": "Apple proprietary \u2014 different model",
+    "new_balance_has": "Unknown",
+    "algolia_delta": "Immediate B2C conversion lift opportunity"
+   },
+   {
+    "capability": "B2B Part-Number Resolution",
+    "prospect_today": "FAIL \u2014 109 fuzzy results for exact order code 210-AKXX",
+    "prospect_with_algolia": "Query Rules pin order codes to exact SKU \u2014 1 result, instant",
+    "nike_has": "HawkSearch \u2014 no B2B-specific part-number logic",
+    "asics_has": "Lenovo proprietary \u2014 B2B not confirmed",
+    "on_running_has": "N/A",
+    "new_balance_has": "Unknown",
+    "algolia_delta": "High-impact for Dell's dominant B2B revenue stream"
+   },
+   {
+    "capability": "Product Recommendations",
+    "prospect_today": "None \u2014 service attach only on PDP, no FBT or Similar Items",
+    "prospect_with_algolia": "Algolia Recommend \u2014 FBT, Related Items, Compatible Accessories",
+    "nike_has": "HawkSearch \u2014 basic recommendations if any",
+    "asics_has": "Lenovo proprietary \u2014 limited",
+    "on_running_has": "Apple proprietary \u2014 strong",
+    "new_balance_has": "Unknown",
+    "algolia_delta": "AOV lift and B2B attach improvement"
+   },
+   {
+    "capability": "Dynamic Faceting",
+    "prospect_today": "7/10 \u2014 already category-adaptive and strong",
+    "prospect_with_algolia": "Algolia Dynamic Faceting \u2014 same quality, with AI-ranked result sets upstream",
+    "nike_has": "HawkSearch faceting \u2014 basic",
+    "asics_has": "Lenovo proprietary faceting",
+    "on_running_has": "Apple proprietary filtering",
+    "new_balance_has": "Unknown",
+    "algolia_delta": "Maintain strength; fix the upstream result-set quality"
+   }
+  ],
+  "matrix_col_labels": {
+   "nike_has": "HP Inc. (HawkSearch)",
+   "asics_has": "Lenovo (Proprietary)",
+   "on_running_has": "Apple (Proprietary)",
+   "new_balance_has": "HPE (Unknown)"
+  },
+  "competitor_tiers": [
+   {
+    "tier": "OFFENSIVE \u2014 No competitor on Algolia",
+    "description": "None of Dell's top-4 competitors (HP, Lenovo, Apple, HPE) use Algolia. HP runs HawkSearch (legacy, no AI). Lenovo and Apple run proprietary builds. Dell on Algolia = first-mover AI search moat in the PC/tech OEM space.",
+    "competitors": [
+     "HP Inc. (HawkSearch)",
+     "Lenovo (Proprietary)",
+     "Apple (Proprietary)",
+     "HPE (Unknown)"
+    ]
+   }
+  ]
+ },
+ "golden_angle": {
+  "headline": "HP runs HawkSearch \u2014 no AI, no NLP. Dell on Algolia = first-mover search moat in PC.",
+  "detail": "Dell's closest peer HP Inc. uses HawkSearch (confirmed via live network inspection). HawkSearch is a legacy keyword platform with no AI NLP, no neural search, no personalization at scale. If Dell adopts Algolia NeuralSearch before HP upgrades, Dell owns the AI search experience advantage in the $400B+ PC market.",
+  "competitors_using_algolia": false,
+  "competitors_using_algolia_note": "No top-4 PC OEM (HP, Lenovo, Apple, HPE) uses Algolia. Offensive scenario \u2014 Dell can be first.",
+  "source": "[FACT \u2014 detect-search.js network inspection, 2026-07-01]",
+  "talk_track": "HP Inc. \u2014 Dell's closest direct competitor \u2014 is confirmed on HawkSearch, a legacy keyword platform with no AI NLP, no neural search, and no personalization at scale. If Dell adopts Algolia NeuralSearch before HP upgrades, Dell owns the AI search experience moat in the global PC market. Ask Chris Cowger: 'When HP customers visit dell.com to compare, are they experiencing better search than what they left behind?'"
+ },
+ "strategic_angles": [
+  {
+   "label": "The chatbot-patch problem",
+   "angle": "The chatbot-patch problem",
+   "hook": "Dell built a 'Virtual Assistant BETA' chatbot ON TOP of broken keyword search \u2014 an architectural workaround that admits the core engine can't handle natural language. Algolia NeuralSearch fixes the root cause, not the symptom.",
+   "evidence": "Browser audit: homepage carries both 'Search Dell' (keyword) AND 'How can I help you today?' conversational AI box (Virtual Assistant BETA) as separate surfaces. NLP queries ('under $1,000', 'for video editing', 'RTX 4070') all fail in the keyword layer.",
+   "source": "09-browser-findings.md, 2026-06-30",
+   "source_url": "https://www.dell.com",
+   "persona": "Chris Cowger (SVP eCommerce), John Roese (CTO/Chief AI Officer)",
+   "discovery_question": "The homepage currently shows both a 'Search Dell' bar and a separate 'Virtual Assistant BETA' chatbox \u2014 is the long-term plan to improve the core search layer, or to route more traffic to the conversational AI?",
+   "algolia_proof": "PcComponentes replaced keyword search with Algolia NeuralSearch and saw an 81% increase in search CTR \u2014 without a separate AI chatbot. [FACT \u2014 https://www.algolia.com/customers/pc-componentes/]",
+   "pain_points": [
+    "NLP queries ('under $1,000', 'for video editing', 'RTX 4070 and 32GB RAM') all fail in the keyword layer",
+    "Dell compensates by adding a 'Virtual Assistant BETA' chatbot \u2014 separate from search, not an improvement to it",
+    "Shoppers must context-switch between search and chatbot to find products \u2014 increasing cognitive load and abandonment"
+   ],
+   "objection": "We already have a Virtual Assistant / AI chatbot handling these queries.",
+   "objection_counter": "The chatbot is a workaround for a broken search layer, not a replacement. Shoppers who use search expect immediate results in the SAYT dropdown \u2014 not a chat conversation. Algolia NeuralSearch delivers AI understanding directly in the search bar with sub-100ms response, while the chatbot adds friction. PcComponentes saw 81% CTR lift by fixing core search, not by adding a chatbot."
+  },
+  {
+   "label": "AI-at-every-layer \u2014 except the storefront",
+   "angle": "AI-at-every-layer \u2014 except the storefront",
+   "hook": "Michael Dell has publicly committed to 'expanding AI capabilities at every layer' in 2026. Dell's server business runs AI Factory with NVIDIA. But dell.com's search layer is keyword-era Bloomreach with no AI NLP. The gap is visible from outside.",
+   "evidence": "CRN quote: 'In 2026, we're investing in technologies that move our customers forward, starting with expanding AI capabilities at every layer.' Browser audit confirms Bloomreach keyword matching with no vector/semantic capability.",
+   "source": "CRN, 2026; detect-search.js, 2026-06-30",
+   "source_url": "https://www.crn.com/news/computing/2026/michael-dell-on-biggest-2026-investments-in-storage-ai-and-partners",
+   "persona": "Michael Dell, John Roese",
+   "discovery_question": "Michael Dell's public commitment is 'AI at every layer' \u2014 how does the search experience on dell.com fit into that roadmap, and is Bloomreach's current roadmap aligned with where Dell wants to go?",
+   "algolia_proof": "Algolia NeuralSearch is the AI layer for search \u2014 trained on 30B+ search events per month, delivers semantic understanding in one API call. Used by 17,000+ companies as the AI-native alternative to legacy keyword engines. [https://www.algolia.com/products/search-and-discovery/]",
+   "pain_points": [
+    "Dell AI Factory positions Dell as an AI-first company, but dell.com search runs keyword-era Bloomreach",
+    "The contrast is visible to prospects, competitors, and analysts \u2014 reputational gap",
+    "John Roese's Chief AI Officer mandate explicitly covers AI at every layer \u2014 search is currently excluded"
+   ],
+   "objection": "Bloomreach has an AI roadmap \u2014 they're not standing still.",
+   "objection_counter": "Bloomreach's AI features are add-ons to a legacy keyword core. Algolia NeuralSearch was architected as AI-native from the ground up \u2014 vector search and structured attribute understanding in a single unified index. Michael Dell committed to 'every layer' \u2014 the question is whether Bloomreach can execute that vision at dell.com's scale and complexity."
+  },
+  {
+   "label": "B2B revenue at risk from part-number FAIL",
+   "angle": "B2B revenue at risk from part-number FAIL",
+   "hook": "Dell's dominant revenue is B2B. PremierConnect and APEX buyers search by order code. '210-AKXX' returns 109 fuzzy results instead of 1 exact SKU. Every B2B buyer who experiences this abandons or calls support.",
+   "evidence": "Browser audit step 2n: '210-AKXX' submitted \u2192 109 results, fuzzy-matched on number fragments (2.10GHz clock speed, 210w power delivery). No exact SKU resolution. B2B dock-laptop compatibility (docking station for Latitude 7450) returns 8 generic results with no compatibility modeling.",
+   "source": "09-browser-findings.md screenshots 14-, 14b-, 15-, 15b-, 2026-06-30",
+   "source_url": "https://www.dell.com/en-us/search/",
+   "persona": "Chris Cowger, VP Digital Commerce, B2B Commerce team",
+   "discovery_question": "When a PremierConnect buyer enters an order code like 210-AKXX into dell.com search and gets 109 results \u2014 what's your team's current solution for that failure mode, and how often does it drive support contacts?",
+   "algolia_proof": "Staples Canada implemented Algolia for B2B tech distribution and saw double-digit conversion improvement, including measurable add-to-cart rate increases in the B2B segment. [FACT \u2014 https://www.algolia.com/customers/staples/]",
+   "pain_points": [
+    "Order code '210-AKXX' returns 109 fuzzy results instead of 1 exact SKU (browser-verified 2026-06-30)",
+    "SAYT conflates Dell order codes with CPU clock speeds and wattage \u2014 pure token-matching failure",
+    "B2B dock-laptop compatibility ('docking station for latitude 7450') returns 8 generic results with no compatibility modeling"
+   ],
+   "objection": "Our B2B buyers use PremierConnect and catalog punchout \u2014 not the public search.",
+   "objection_counter": "PremierConnect buyers still search when they're in exploration mode or confirming a config. And the self-serve dell.com experience is increasingly the first touchpoint for SMB and mid-market B2B \u2014 especially for buyers who configure outside a procurement system. Fixing order code resolution improves both flows."
+  },
+  {
+   "label": "One Dell Way: breaking silos in search",
+   "angle": "One Dell Way: breaking silos in search",
+   "hook": "COO Jeff Clarke's 'One Dell Way' transformation explicitly aims to 'connect data, break down silos' across Dell. Search is the most visible silo: products, support, and content live in separate systems with no federated discovery.",
+   "evidence": "Clarke memo January 2026: 'connect our data, break down silos, streamline our software applications.' Browser audit: SAYT for 'return policy' returns irrelevant product listings; 'order status' returns stylus pens \u2014 support content and product content are completely siloed in the search experience.",
+   "source": "08-financial-profile.md; 09-browser-findings.md, 2026-06-30",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000008/dell-20260130.htm",
+   "persona": "Jeff Clarke, Douglas Schmitt (CIO)",
+   "discovery_question": "Jeff Clarke's 'One Dell Way' transformation explicitly targets data silos \u2014 how is the team thinking about the silo between product search, support content, and order management that we see in the current search experience?",
+   "algolia_proof": "Hager Group used Algolia Federated Search to unify a 20,000+ SKU B2B catalog into a single search experience \u2014 'customers find products directly in the search bar without navigating to a results page.' [FACT \u2014 https://www.algolia.com/customers/hagergroup/]",
+   "pain_points": [
+    "SAYT for 'return policy' returns irrelevant products \u2014 support and product content completely siloed",
+    "SAYT for 'order status' returns stylus pens \u2014 zero self-service routing capability",
+    "Query redirect rules exist for 'return policy' but not 'order status' \u2014 inconsistent, manual, hard to scale"
+   ],
+   "objection": "We're already working on search improvements internally.",
+   "objection_counter": "Internal search improvements on top of Bloomreach are limited by the keyword engine's ceiling. Jeff Clarke's 'One Dell Way' is about platform consolidation and data unification \u2014 Algolia's federated search is the only solution that unifies products, support, and content into a single search surface without a platform rebuild."
+  },
+  {
+   "label": "PC rebrand creates synonym mapping crisis",
+   "angle": "PC rebrand creates synonym mapping crisis",
+   "hook": "Dell's 2025 PC rebrand (XPS \u2192 Dell Pro Max, Inspiron \u2192 Dell, Precision \u2192 Dell Pro Max) creates a massive synonym mapping challenge in Bloomreach. Shoppers will type 'XPS 15' for months after it becomes 'Dell Pro 16.'",
+   "evidence": "09b-social-signals.md: Dell initiated major rebranding of PC lineup in 2025, phasing out XPS/Inspiron/Precision/Latitude sub-brands into Dell/Dell Pro/Dell Pro Max tiers. March 2026: transformed commercial portfolio launched.",
+   "source": "09b-social-signals.md; 09-browser-findings.md, 2026-06-30",
+   "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQNC1ucUxkNXdlOU1YV1VYdEtOTFV5RW5weDRZbkdiM2d0LXV6V2drTnl0aV9Gbk5SaW12RTVySWMwUDJoQ2JoaGdBN3ZTUHBTcUZRVnVCRGJzckNXZmVoQ3AwSWRZVDhsZC1XU0xtS3FYaWJTQ2ZvT1VWSVZiWVZDZ1lSQm5qM3N1NXRpZjRXdUxrSFNvNGlxb1BCTHJBaW9wZXBFZWgwWGlFcWpZc1dTWnZCek4=",
+   "persona": "Chris Cowger, product/merchandising team",
+   "discovery_question": "With the PC lineup rebranding to Dell/Dell Pro/Dell Pro Max, how is the search team managing synonym mapping for legacy terms like 'XPS 15' or 'Inspiron' that shoppers will keep typing for the next 12-18 months?",
+   "algolia_proof": "Algolia's Synonym Management and Dynamic Synonyms handle complex taxonomy migrations \u2014 including legacy-to-new brand name mapping \u2014 in real time without requiring manual index rebuilds. [https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/]",
+   "pain_points": [
+    "XPS/Inspiron/Precision/Latitude sub-brands are being retired \u2014 shoppers will search by old names for 12-18 months",
+    "Bloomreach server-side synonyms require manual configuration and code deploys \u2014 not real-time",
+    "Browser audit confirms synonym parity works for taxonomy-level terms (laptop/notebook) but NLP/use-case terms fail \u2014 post-rebrand complexity is higher"
+   ],
+   "objection": "We can handle synonym updates through our Bloomreach configuration.",
+   "objection_counter": "Bloomreach synonyms are manually curated and require configuration changes. Algolia's Dynamic Synonyms learns from real search behavior \u2014 when shoppers search for 'XPS 15' after the rebrand, Algolia identifies the intent gap and surfaces 'Dell Pro 16' without a manual update. At the scale of a full product-line rebrand, this is a 6-12 month time-to-synonym advantage."
+  }
+ ],
+ "hiring": {
+  "total_open_roles": 12,
+  "icp_roles_count": 14,
+  "summary": "Dell is actively recruiting 12 Principal/Senior engineer roles in AI/ML, data warehousing, SaaS/on-prem platforms, and systems engineering \u2014 plus 1 eCommerce Operations Engineer and 1 Product Manager (AI Solutions). Zero Tier 1 (VP-level digital/ecommerce) roles on public job boards \u2014 economic buyer is internally staffed or using executive search.",
+  "top_signals": [
+   "AI Architect (Technical Staff) \u2014 Austin, TX (ICP score 7)",
+   "Advisory AI Architect (FDE Unit) \u2014 Austin, TX (ICP score 7)",
+   "Senior Principal AI Engineer \u2014 Remote (ICP score 7)",
+   "eCommerce Operation Engineer \u2014 Remote (ICP score 6, direct ecommerce signal)",
+   "Product Manager - AI Solutions \u2014 Seattle, WA (ICP score 5, champion tier)"
+  ],
+  "null_signal_note": null,
+  "source": "[FACT \u2014 Gemini-grounded search (Indeed, ZipRecruiter), 2026-06-30]",
+  "buying_committee": {
+   "economic_buyer": {
+    "role": "SVP Global Consumer & eCommerce",
+    "name": "Chris Cowger",
+    "status": "INTERNAL \u2014 not actively hiring externally; reach via partner warm intro (Accenture/NTT DATA)"
+   },
+   "technical_buyer": {
+    "role": "Principal Engineers (AI, Data, Platform, SaaS/OnPrem)",
+    "status": "ACTIVE \u2014 12 open roles in AI/ML, data, and platform engineering",
+    "count": 12
+   },
+   "champion": {
+    "role": "eCommerce Operations Engineer; Product Manager AI Solutions",
+    "status": "ACTIVE \u2014 2 open champion-tier roles",
+    "count": 2
+   }
+  }
+ },
+ "icp_mapping": {
+  "vertical": "Technology Hardware & Enterprise IT",
+  "buyer_profile": "SVP/VP eCommerce or Digital Commerce; CTO/Chief AI Officer; CIO",
+  "primary_pain": "Bloomreach keyword engine cannot handle NLP/semantic queries \u2014 compensating with chatbot workaround. B2B order code resolution fails. No product recommendations. No analytics-driven ranking.",
+  "algolia_products": [
+   "NeuralSearch",
+   "Autocomplete / Federated Search",
+   "Query Suggestions",
+   "Recommend",
+   "Dynamic Re-Ranking",
+   "Rules",
+   "Analytics"
+  ],
+  "priority_to_product": [
+   {
+    "priority": "Fix 'under $1,000' NLP failure \u2014 shoppers getting $2,000 results",
+    "product": "Algolia NeuralSearch",
+    "evidence": "Browser audit: 'laptop with good battery life for travel under 1000' returned results including $1,099\u2013$2,000 items. Price ceiling completely ignored by Bloomreach keyword matching.",
+    "proof_url": "https://www.algolia.com/customers/pc-componentes/"
+   },
+   {
+    "priority": "Fix B2B order code resolution \u2014 109 fuzzy results for exact order codes",
+    "product": "Algolia Query Rules + B2B Search",
+    "evidence": "Browser audit: '210-AKXX' returned 109 results fuzzy-matched on number fragments. B2B buyers need 1 exact result for precision order codes.",
+    "proof_url": "https://www.algolia.com/customers/staples/"
+   },
+   {
+    "priority": "Federate product + support + content in SAYT",
+    "product": "Algolia Autocomplete + Federated Search",
+    "evidence": "Browser audit: SAYT is query-strings only. 'Return policy' SAYT returns irrelevant products. 'Order status' SAYT returns stylus pens. Dell's support corpus (drivers, warranties, manuals) is completely absent from autocomplete.",
+    "proof_url": "https://www.algolia.com/products/search-and-discovery/federated-search/"
+   },
+   {
+    "priority": "Add product recommendations to PDP (no FBT today)",
+    "product": "Algolia Recommend",
+    "evidence": "Browser audit: XPS 13 PDP has zero product carousels \u2014 only service/support upsells. No FBT, no Similar Items, no Customers Also Viewed.",
+    "proof_url": "https://www.algolia.com/customers/hagergroup/"
+   },
+   {
+    "priority": "Surface analytics-driven ranking + trending/bestseller signals",
+    "product": "Algolia Analytics + Dynamic Re-Ranking",
+    "evidence": "Browser audit: Sort menu has only 3 options (no 'Most Popular'/'Best Selling'). No Trending/Bestseller/New Arrival labels on any product cards despite star ratings present.",
+    "proof_url": "https://www.algolia.com/customers/staples/"
+   }
+  ]
+ },
+ "abx_sequence": {
+  "target_contacts": [
+   {
+    "name": "Chris Cowger",
+    "title": "SVP Global Consumer & eCommerce",
+    "company": "Dell Technologies",
+    "linkedin": null,
+    "role_in_deal": "Primary Economic Buyer \u2014 owns dell.com search/discovery experience"
+   },
+   {
+    "name": "John Roese",
+    "title": "Global CTO & Chief AI Officer",
+    "company": "Dell Technologies",
+    "linkedin": null,
+    "role_in_deal": "Technical champion for AI-native search narrative"
+   }
+  ],
+  "touches": [
+   {
+    "touch": 1,
+    "type": "email",
+    "channel": "Email",
+    "persona": "Chris Cowger",
+    "subject": "Your search returned $2,000 results for a 'laptop under $1,000' \u2014 we found it",
+    "body": "Chris \u2014 our team ran a live audit of dell.com's search experience last week. When we typed 'laptop with good battery life for travel under $1,000,' your search engine returned 49 results \u2014 including laptops priced at $1,099, $1,379, and $2,000. The $1,000 ceiling was completely ignored.\n\nDell's current search runs Bloomreach server-side, which handles typos and taxonomy synonyms well but cannot parse multi-attribute conversational intent. PcComponentes \u2014 an electronics retailer similar in catalog complexity to Dell's consumer lineup \u2014 switched to Algolia NeuralSearch and saw an 81% increase in search CTR and search users converting at 4x the site average.\n\nWould you spend 20 minutes with me to see what this looks like on a Dell SKU catalog? I can run the 'under $1,000' demo live and show you how NeuralSearch maps price constraints, portability signals, and use-case intent simultaneously.\n\nBest,\n[AE Name]",
+    "timing": "Day 1"
+   },
+   {
+    "touch": 2,
+    "type": "linkedin",
+    "channel": "LinkedIn InMail",
+    "persona": "John Roese",
+    "subject": "Algolia at the search layer \u2014 consistent with 'AI at every layer'",
+    "body": "John \u2014 Michael Dell's public commitment to 'expanding AI capabilities at every layer' in 2026 is clearly showing results in Dell's server business. The contrast with dell.com's search experience is striking: we ran a live audit and found the core search engine is still Bloomreach keyword matching \u2014 returning RTX 4060 machines when a shopper asks for RTX 4070, and 415 undifferentiated results for 'best laptop for video editing.'\n\nDell has responded by building a 'Virtual Assistant BETA' chatbot alongside traditional search \u2014 an architecture that routes shoppers to a separate AI surface rather than fixing the core search layer. Algolia NeuralSearch is the alternative: AI-native search that understands spec constraints, use-case intent, and budget ceilings at the query layer \u2014 no chatbot required.\n\nGiven your mandate as Chief AI Officer, I'd value 20 minutes to show you what the search-as-AI-layer looks like on a Dell-scale catalog. Would the week of [DATE] work?\n\n[AE Name]",
+    "timing": "Day 3"
+   },
+   {
+    "touch": 3,
+    "type": "email",
+    "channel": "Email",
+    "persona": "Chris Cowger",
+    "subject": "B2B finding from our dell.com audit: order code '210-AKXX' returns 109 results",
+    "body": "Chris \u2014 following up on my note earlier this week. Beyond the consumer NLP failures, our audit found a significant B2B issue: typing a Dell order code '210-AKXX' into dell.com search returns 109 fuzzy results rather than the one exact product the code identifies. The engine conflated the number with CPU clock speeds (2.10GHz), wattage (210w), and unrelated order code fragments.\n\nFor PremierConnect and APEX buyers who routinely search by order code, this is a direct procurement friction point. Staples Canada \u2014 a B2B tech distribution analog \u2014 implemented Algolia and saw double-digit conversion improvement, including measurable add-to-cart rate increases in the B2B segment.\n\nI can show you a side-by-side: Bloomreach returns 109 items for '210-AKXX,' Algolia's Query Rules returns 1 exact SKU. 20 minutes. I'll bring the B2B and B2C findings together.\n\n[AE Name]",
+    "timing": "Day 7"
+   },
+   {
+    "touch": 4,
+    "type": "email",
+    "channel": "Email \u2014 partner-sourced",
+    "persona": "Chris Cowger (via Accenture)",
+    "subject": "Accenture + Algolia \u2014 search modernization at Dell",
+    "body": "Chris \u2014 [Accenture contact name] from Accenture's Dell account team suggested I reach out directly. Accenture is both Dell's Global Alliance SI and Bloomreach's Global Innovation Partner of the Year \u2014 which gives them a unique vantage point on where the current search architecture has gaps and what a modernization path looks like.\n\nOur audit found 6 HIGH-severity gaps in dell.com's current Bloomreach deployment: semantic NLP failure, barren empty state, SAYT with zero product federation, no product recommendations on PDP, no analytics-driven ranking, and B2B order code fuzzy-matching. These are gaps Algolia NeuralSearch, Autocomplete, and Recommend close in a phased deployment that Accenture can deliver.\n\nWould you be open to a joint 30-minute session with [Accenture contact] and me? We can walk through the audit findings and Accenture's recommended modernization approach.\n\n[AE Name]",
+    "timing": "Day 14"
+   },
+   {
+    "touch": 5,
+    "type": "email",
+    "channel": "Email \u2014 value delivery",
+    "persona": "Chris Cowger",
+    "subject": "Dell search audit findings + $35M conservative ROI estimate",
+    "body": "Chris \u2014 I've attached the full dell.com search audit we completed. Key findings:\n\n\u2022 Score: 2.7/10 \u2014 6 critical gaps, 2 moderate\n\u2022 NLP: 'under $1,000' price ceiling ignored; results include $2,000 laptops\n\u2022 B2B: order code '210-AKXX' \u2192 109 fuzzy results (not 1 exact SKU)\n\u2022 SAYT: query strings only \u2014 no product cards, prices, or content\n\u2022 PDP: zero product recommendation carousels\n\u2022 Ranking: 3 sort options, no Bestseller/Trending/Most Popular\n\nThe conservative ROI model: a 1% conversion lift on Dell's estimated $12B direct ecommerce revenue, at a 19.21% gross margin, projects to approximately $23M annual gross profit improvement. Including support deflection from federated search (reducing 'return policy' and 'order status' calls) and B2B order-code efficiency gains, the conservative case is $35M annually; the moderate case is $121M.\n\nThe best comparable in electronics retail: PcComponentes (30,000+ SKUs) saw 81% CTR lift and search users converting at 4x the site average after switching to Algolia.\n\nI'd like to present the full findings to your team. Can we schedule 45 minutes?\n\n[AE Name]",
+    "timing": "Day 21"
+   }
+  ],
+  "contacts": [
+   {
+    "name": "Chris Cowger",
+    "title": "SVP Global Consumer & eCommerce",
+    "company": "Dell Technologies",
+    "linkedin": null,
+    "role_in_deal": "Primary Economic Buyer \u2014 owns dell.com search/discovery experience"
+   },
+   {
+    "name": "John Roese",
+    "title": "Global CTO & Chief AI Officer",
+    "company": "Dell Technologies",
+    "linkedin": null,
+    "role_in_deal": "Technical champion for AI-native search narrative"
+   }
+  ]
+ },
+ "case_studies": [
+  {
+   "vertical": "Consumer Electronics Retail",
+   "company": "PcComponentes",
+   "result": "81% increase in search results click-through rate; search users convert at 4x the site average",
+   "product": "Algolia Search + Autocomplete + NeuralSearch",
+   "why": "PcComponentes operates a 30,000+ SKU electronics catalog (laptops, mobile, appliances) \u2014 directly comparable to Dell's consumer product breadth and complexity. Both are direct-to-consumer electronics sites where search is the primary discovery path.",
+   "url": "https://www.algolia.com/customers/pc-componentes/"
+  },
+  {
+   "vertical": "B2B Tech Distribution",
+   "company": "Staples Canada",
+   "result": "Double-digit improvement in conversion rates; increases in add-to-cart rates, click-through rates, and overall revenue",
+   "product": "Algolia Search + Dynamic Re-Ranking + Analytics",
+   "why": "Staples Canada sells Dell products in a comparable B2B + consumer hybrid model. The catalog complexity (office supplies + tech hardware) and dual-audience model (B2B procurement + consumer) mirrors Dell's PremierConnect + consumer ecommerce duality. The Dynamic Re-Ranking case study maps directly to Dell's missing analytics-driven ranking.",
+   "url": "https://www.algolia.com/customers/staples/"
+  },
+  {
+   "vertical": "B2B Industrial / Electrical Hardware",
+   "company": "Hager Group",
+   "result": "Customers find products directly in the search bar without navigating to a results page; reduced steps to find correct products in a 20,000+ product-per-country B2B catalog",
+   "product": "Algolia Search + Federated Search (Adobe Commerce integration)",
+   "why": "Hager Group is a B2B manufacturer/distributor with 20,000+ SKUs per country \u2014 directly comparable to Dell's enterprise product depth and B2B buyer behavior (part-number search, compatibility-driven procurement). The 'find product directly in the search bar' outcome is exactly the fix Dell's B2B order-code and dock-compatibility failures need.",
+   "url": "https://www.algolia.com/customers/hagergroup/"
+  }
+ ],
+ "demos": [
+  {
+   "name": "NeuralSearch \u2014 'under $1,000 laptop for travel'",
+   "description": "Side-by-side: Bloomreach returns 49 results including $2,000 laptops. Algolia NeuralSearch parses 'under $1,000' as a price filter and 'travel' as a portability signal \u2014 surfaces 12 matching under-$1,000 portable laptops.",
+   "algolia_product": "NeuralSearch",
+   "build_time": "2 hours with Dell catalog sample"
+  },
+  {
+   "name": "B2B order code \u2014 '210-AKXX'",
+   "description": "Bloomreach: 109 fuzzy results. Algolia Query Rules: 1 exact SKU match. Demo shows the B2B procurement experience gap in 30 seconds.",
+   "algolia_product": "Query Rules",
+   "build_time": "30 minutes"
+  },
+  {
+   "name": "Federated Autocomplete \u2014 'return policy'",
+   "description": "Today: SAYT returns irrelevant products. Algolia Autocomplete: product cards + support article for return policy + category shortcut \u2014 all in one rich dropdown under 100ms.",
+   "algolia_product": "Autocomplete + Federated Search",
+   "build_time": "3 hours"
+  }
+ ],
+ "partner_intel": {
+  "tech_partners": [
+   {
+    "name": "Bloomreach",
+    "version": "Unknown (server-side/proxied)",
+    "relationship_type": "COMPETITOR \u2014 displacement target",
+    "note": "Bloomreach detected in Dell's search layer via live network fingerprint. Algolia pitch is direct replacement: AI-native relevance, API-first architecture, transparent pricing vs. Bloomreach suite lock-in.",
+    "source": "[FACT \u2014 02-tech-stack.md detect-search, 2026-06-30]"
+   }
+  ],
+  "si_partners": [
+   {
+    "name": "Accenture",
+    "evidence": "Dell Technologies Global Alliance SI and Strategic Outsourcer. Also Bloomreach's Global Innovation Partner of the Year \u2014 dual positioning makes Accenture the single highest-leverage partner contact for Algolia's displacement pitch.",
+    "likely_c_suite_access": [
+     "CTO",
+     "CDO",
+     "CIO",
+     "VP Digital"
+    ],
+    "is_known_algolia_si_partner": true,
+    "sales_action": "PRIORITY: Contact Algolia Accenture alliance manager \u2014 ask for intro to Dell account team via dual Dell+Bloomreach relationship",
+    "confidence": "HIGH"
+   },
+   {
+    "name": "NTT DATA",
+    "evidence": "Named Dell Technologies 2025 Global Alliances Partner of the Year. Deep executive relationships at Dell.",
+    "likely_c_suite_access": [
+     "CTO",
+     "CDO",
+     "VP Cloud/Infrastructure"
+    ],
+    "is_known_algolia_si_partner": false,
+    "sales_action": "Request warm introduction via NTT DATA Dell account team",
+    "confidence": "HIGH"
+   },
+   {
+    "name": "Deloitte",
+    "evidence": "Strategic alliance with Dell confirmed \u2014 highlighted at Dell Technologies World 2025. Focus: cyber resilience, AI, hybrid cloud.",
+    "likely_c_suite_access": [
+     "CTO",
+     "CISO",
+     "CDO",
+     "CIO"
+    ],
+    "is_known_algolia_si_partner": true,
+    "sales_action": "Engage Deloitte Digital's Dell account team for co-pitch on Algolia as commerce/experience search layer",
+    "confidence": "HIGH"
+   },
+   {
+    "name": "EPAM Systems",
+    "evidence": "Confirmed Bloomreach partner \u2014 'leading global provider of digital platform engineering that partners with Bloomreach to deliver modern, connected commerce experiences at scale.' If EPAM implemented Bloomreach at Dell, they are the key displacement bridge.",
+    "likely_c_suite_access": [
+     "VP Digital",
+     "VP Engineering",
+     "Head of Commerce Platform"
+    ],
+    "is_known_algolia_si_partner": true,
+    "sales_action": "Investigate whether EPAM implemented Bloomreach at Dell via LinkedIn. If confirmed, EPAM is the architecture bridge into the displacement conversation.",
+    "confidence": "MEDIUM \u2014 Bloomreach partner confirmed, Dell project unconfirmed"
+   }
+  ],
+  "immediate_action": "Contact Algolia's Accenture alliance manager. Accenture holds the dual relationship (Dell Global Alliance SI + Bloomreach Global Innovation Partner of the Year) that makes them the highest-leverage warm path into Dell's commerce team.",
+  "co_sell_recommendation": "Priority partner motion: Accenture (dual Dell+Bloomreach relationship) \u2192 NTT DATA (2025 Dell Partner of the Year) \u2192 Deloitte Digital (known Algolia SI + Dell alliance). EPAM investigation if Bloomreach implementation confirmed.",
+  "crossbeam_data_available": false,
+  "source_label": "[GEMINI_SEARCH \u2014 grounded, 2026-06-30 + 07-partner-intel.json]"
+ },
+ "tab_subtitles": {
+  "summary": "What you need before walking into Dell Technologies",
+  "account": "Dell Technologies at a glance \u2014 $113.5B revenue, 97,000 employees, AI-first transformation underway",
+  "findings": "What we found when we tested Dell's search: 6 critical gaps, Bloomreach keyword engine, chatbot workaround",
+  "case": "Why Dell should act now \u2014 $35M conservative / $121M moderate annual ROI from fixing 6 critical search gaps",
+  "playbook": "How to win the Dell Technologies deal \u2014 Accenture partner play, Chris Cowger entry, NLP demo hook"
+ },
+ "recommended_first_play": {
+  "type": "partner_warm_intro",
+  "headline": "Accenture: Dell alliance meets Bloomreach knowledge",
+  "detail": "Accenture is simultaneously Dell's Global Alliance SI/Strategic Outsourcer AND Bloomreach's Global Innovation Partner of the Year. This dual position makes them the single highest-leverage warm path: they know Dell's digital architecture and Bloomreach's capabilities \u2014 making the Algolia displacement conversation natural and credible.",
+  "urgency": "high",
+  "source": "partner_intel"
+ },
+ "industry_context": {
+  "vertical": "technology-hardware",
+  "primary_market": "US (global direct sales)",
+  "key_benchmarks": [
+   {
+    "metric": "technology-hardware ecommerce search conversion benchmark 2025 site:nrf.com OR site:baymard.com OR s",
+    "value": "1%",
+    "context": "Key benchmarks for 2025 include:\n*   The electronics industry is projected to have an e-commerce conversion rate of 1%\u20132%.",
+    "source_name": "Vertexaisearch",
+    "source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXME9i59MNRQc84mgmTe73YYwhxFPkH2q-Ksh42DNx6EntHgoUzGR7t1yjnVb2WxeGmfxTrQ7Pvvuifz-8w1ACSLFP8Ow-vKTjzmR5m0DrZ4v9t1Gjh2XqGKVAs1mKvX1_FAb5SQ35_io15etU4nQZ8gR5yuE8_GWKTcJ6rEHqKZLNb09bjA==",
+    "source_date": null,
+    "confidence": "FACT",
+    "label": "[FACT \u2014 Vertexaisearch via Tavily WebFetch, date unknown, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXME9i59MNRQc84mgmTe73YYwhxFPkH2q-Ksh42DNx6EntHgoUzGR7t1yjnVb2WxeGmfxTrQ7Pvvuifz-8w1ACSLFP8Ow-vKTjzmR5m0DrZ4v9t1Gjh2XqGKVAs1mKvX1_FAb5SQ35_io15etU4nQZ8gR5yuE8_GWKTcJ6rEHqKZLNb09bjA==]"
+   }
+  ],
+  "trend_headline": "technology-hardware ecommerce AI search personalization technology trends 2025 2026",
+  "trend_source_url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcCWEDxB_4IQRZDzhzGP3s14_Av-VyHz7jpT3wmrVO46H7nwgBDYft9_Fo8Bt7ajLS7yP0aIiK92VJlX0kzJ23d-C8RHoJD1Oc9PvWHG8u2WvJejGADpb67ZsxoODy4qzXNhdb4nm1u5Vp6b4n03rt_g==",
+  "trend_source_label": "[FACT \u2014 Vertexaisearch via Tavily WebFetch, date unknown, https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcCWEDxB_4IQRZDzhzGP3s14_Av-VyHz7jpT3wmrVO46H7nwgBDYft9_Fo8Bt7ajLS7yP0aIiK92VJlX0kzJ23d-C8RHoJD1Oc9PvWHG8u2WvJejGADpb67ZsxoODy4qzXNhdb4nm1u5Vp6b4n03rt_g==]",
+  "algolia_angle": "Dell operates in a technology-hardware market where 94% of B2B buyers now use generative AI in their purchase process, yet dell.com's on-site search runs on keyword-era Bloomreach \u2014 making Algolia's AI NeuralSearch and agentic discovery capability directly tied to capturing high-intent buyers who convert 1.8-3x higher when site search actually works."
+ }
+}

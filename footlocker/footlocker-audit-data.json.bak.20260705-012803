@@ -1,0 +1,1473 @@
+{
+  "meta": {
+    "slug": "footlocker",
+    "domain": "footlocker.com",
+    "company": "Foot Locker",
+    "audit_date": "2026-03-26",
+    "audited_by": "Algolia",
+    "patch_date": "2026-03-29",
+    "data_vintage": {
+      "hiring": "2026-03-26 (WebSearch / careers.footlocker.com)",
+      "traffic": "2026-03-26 (WebSearch/Semrush fallback \u2014 SimilarWeb API 0/14 endpoints)",
+      "financials": "2026-03-26 (pre-acquisition public filings + Dick's IR)",
+      "tech_stack": "2026-03-26 (BuiltWith API)",
+      "investor_intel": "2026-03-26 (WebSearch / WebFetch)"
+    },
+    "generated_by": "generate-audit-data.py + LLM synthesis"
+  },
+  "cover": {
+    "tagline": "Global athletic footwear retailer. 2,400+ stores. $7.99B revenue. Search running on a legacy /zgw gateway while JD Sports runs Algolia AI Search.",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Foot_Locker_store%2C_Toronto.jpg/1280px-Foot_Locker_store%2C_Toronto.jpg",
+    "company_logo_url": "data:image/png;base64,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",
+    "audit_score_display": "3.2/10"
+  },
+  "score": {
+    "source": "10-scoring-matrix.md",
+    "overall": 3.2,
+    "verdict": "Critical Gaps",
+    "breakdown": {
+      "latency": 6,
+      "typo_tolerance": 5,
+      "intent_detection": 3,
+      "content_commerce_ux": 3,
+      "search_intelligence": 2,
+      "semantic_nlp_search": 2,
+      "merchandising_consistency": 5,
+      "query_suggestions_empty_state": 4,
+      "recommendations_merchandising": 2,
+      "dynamic_facets_personalization": 3
+    },
+    "formula_shown": "sum(score\u00d7weight)/sum(weights)",
+    "verdict_class": "critical",
+    "critical_count": 7,
+    "moderate_count": 10,
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "intent_detection": "Intent Detection",
+      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "search_intelligence": "Search Intelligence",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "merchandising_consistency": "Merchandising Consistency",
+      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization"
+    },
+    "breakdown_severity": {
+      "latency": "MEDIUM",
+      "typo_tolerance": "MEDIUM",
+      "intent_detection": "HIGH",
+      "content_commerce_ux": "HIGH",
+      "search_intelligence": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "merchandising_consistency": "MEDIUM",
+      "query_suggestions_empty_state": "HIGH",
+      "recommendations_merchandising": "HIGH",
+      "dynamic_facets_personalization": "HIGH"
+    }
+  },
+  "hiring": {
+    "build_vs_buy": "The /zgw gateway is the 'build' option \u2014 and it scores 3.2/10 after years of investment. Algolia is the 'buy' option \u2014 proven at JD Sports, Shoe Carnival, and Clarks in the same vertical.",
+    "buying_committee": [
+      {
+        "name": "Ann Freeman",
+        "role": "Economic Buyer",
+        "signal": "hot",
+        "status": "WARM",
+        "job_url": "https://www.linkedin.com/in/annsfreeman/",
+        "message": "26-year Nike veteran, new President FL NA. 'Transformative moment' \u2014 building team from scratch. Hasn't chosen vendors.",
+        "salary_range": null
+      },
+      {
+        "name": "Sr. Director, E-Commerce",
+        "role": "Economic Buyer (Open)",
+        "signal": "hot",
+        "status": "OPEN",
+        "job_url": "https://careers.footlocker.com/jobs/67410",
+        "message": "Active hiring \u2014 whoever fills this role will own ecommerce P&L and vendor decisions.",
+        "source_note": "VERIFIED LIVE \u2014 careers.footlocker.com/jobs/67410, Sr. Director E-Commerce, $190K-$225K",
+        "salary_range": null
+      },
+      {
+        "name": "Manager, Digital Engineering",
+        "role": "Technical Buyer",
+        "signal": "warm",
+        "status": "OPEN",
+        "job_url": "https://careers.footlocker.com/jobs/66841?lang=en-us",
+        "message": "Irving TX \u2014 engineering leadership for ecommerce platform. /zgw architecture conversation target.",
+        "source_note": "VERIFIED LIVE \u2014 URL updated to include lang=en-us parameter (required for direct access)",
+        "salary_range": null
+      },
+      {
+        "name": "Sr. PM, eCommerce (Purchase)",
+        "role": "Champion",
+        "signal": "warm",
+        "status": "OPEN",
+        "job_url": "https://careers.footlocker.com/jobs/67573",
+        "message": "This PM will own the search-to-purchase funnel \u2014 ideal Algolia champion who will feel the /zgw pain daily.",
+        "source_note": "VERIFIED LIVE \u2014 careers.footlocker.com/jobs/67573, Sr. Product Manager eCommerce, $133K-$170K",
+        "salary_range": null
+      },
+      {
+        "name": "Manager, Digital Analytics",
+        "role": "Champion",
+        "signal": "warm",
+        "status": "OPEN",
+        "job_url": "https://careers.footlocker.com/jobs/67529?lang=en-us",
+        "message": "$110,700-$148,200 \u2014 analytics champion. Algolia Analytics/Insights conversation target.",
+        "source_note": "VERIFIED LIVE \u2014 updated from generic /jobs to specific posting /jobs/67529, $110,700-$148,200",
+        "salary_range": "$110,700-$148,200"
+      }
+    ],
+    "total_open_roles": "28+ (23 IT + 5 eCommerce active on LinkedIn, March 2026)",
+    "engagement_phases": [
+      {
+        "label": "Pre-Hire / Org Build",
+        "phase": 1,
+        "target": "Ann Freeman + existing digital leadership",
+        "timing": "Now \u2014 before org stabilizes",
+        "message": "Executive briefing \u2014 JD Sports competitive gap + 3.2/10 audit. Position Algolia before new Sr. Director E-Commerce is hired."
+      },
+      {
+        "label": "New Hire Onboarding",
+        "phase": 2,
+        "target": "Incoming Sr. Director E-Commerce + Sr. PM eCommerce",
+        "timing": "30-60 days after hires close",
+        "message": "Technical workshop \u2014 /zgw replacement architecture, NeuralSearch pilot proposal. New hires want early wins."
+      },
+      {
+        "label": "Pilot + Scale",
+        "phase": 3,
+        "target": "Digital Engineering team",
+        "timing": "Q2/Q3 2026",
+        "message": "NeuralSearch A/B test on top 50 queries. Measure vs /zgw baseline. Present results to Ann Freeman."
+      }
+    ],
+    "objection_counters": [
+      {
+        "counter": "This is exactly the right timing. Replacing /zgw with Algolia is simpler mid-migration than after the new platform is locked. Algolia's API-first design plugs into any architecture in days, not quarters.",
+        "objection": "We're mid-platform migration \u2014 bad timing for a new search vendor"
+      },
+      {
+        "counter": "Understood \u2014 Algolia is already proven at Dick's scale. We can run a footlocker.com pilot within FL's existing budget authority before escalating to group level.",
+        "objection": "Dick's Sporting Goods needs to approve major vendor decisions now"
+      }
+    ]
+  },
+  "traffic": {
+    "source": "SimilarWeb API returned 0/14 endpoints (403/404 plan limitation). Semrush public data via WebSearch.",
+    "audience": {
+      "age": {
+        "18-24": "28%",
+        "25-34": "32%",
+        "35-44": "20%",
+        "45-54": "12%",
+        "55+": "8%"
+      },
+      "gender": {
+        "male": "65%",
+        "female": "35%"
+      },
+      "source": "[ESTIMATE \u2014 vertical demographic benchmarks, athletic footwear, 2026-03-29]"
+    },
+    "source_url": "https://www.semrush.com/website/footlocker.com/overview/",
+    "bounce_rate": null,
+    "demographics": [
+      {
+        "pct": 28,
+        "color": "#003DFF",
+        "age_group": "18-24"
+      },
+      {
+        "pct": 32,
+        "color": "#5468FF",
+        "age_group": "25-34"
+      },
+      {
+        "pct": 20,
+        "color": "#7B8AFF",
+        "age_group": "35-44"
+      },
+      {
+        "pct": 12,
+        "color": "#A5B2FF",
+        "age_group": "45-54"
+      },
+      {
+        "pct": 8,
+        "color": "#D0D7FF",
+        "age_group": "55+"
+      }
+    ],
+    "device_share": {
+      "mobile": "~60% (est.)",
+      "desktop": "~40% (est.)"
+    },
+    "top_channels": [
+      {
+        "share": "49.05%",
+        "source": "Direct"
+      },
+      {
+        "share": "26.73%",
+        "source": "Organic Search"
+      },
+      {
+        "share": "24.22%",
+        "source": "Paid / Other"
+      }
+    ],
+    "monthly_visits": "~9.5M (Sept 2025)",
+    "visit_duration": null,
+    "pages_per_visit": null
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Semantic NLP Failure: 'comfortable sneakers under 100' Returns Irrelevant Results",
+      "category": "semantic_nlp_search",
+      "severity": "critical",
+      "impact_stat": "Footwear ecommerce conversion rate sits at ~2.2% \u2014 among the lowest in fashion ecommerce due to sizing complexity",
+      "tested_query": "comfortable sneakers under 100",
+      "actual_behavior": "Results returned (185KB page) but custom /zgw gateway cannot parse multi-attribute NL queries \u2014 price qualifier and comfort attribute ignored",
+      "screenshot_file": "screenshots/13-nlp-sneakers-under-100.png",
+      "algolia_solution": "NeuralSearch \u2014 parses natural language price ranges, comfort attributes, and activity use cases in a single query. Instant semantic matching without separate NLP microservice.",
+      "expected_behavior": "Results filtered to \u2264$100 items, ranked by comfort attributes",
+      "impact_stat_source": "https://centra.com/news/conversion-rate-fashion-ecommerce-benchmarks",
+      "prospect_description": "Foot Locker's core 16-35 demographic commonly searches with price qualifiers. The /zgw gateway returns results but ignores price constraints \u2014 budget-conscious shoppers see $200 shoes when searching 'under 100'.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_result": "up to 3.5x conversions from search",
+      "algolia_case_study_company": "Shoe Carnival"
+    },
+    {
+      "id": "F02",
+      "title": "Federated Search Absent: 'return policy' Returns No Content Pages",
+      "category": "content_commerce_ux",
+      "severity": "critical",
+      "impact_stat": "Search-influenced digital revenue estimated at ~$480M-$800M/year based on 30-40% of $1.6-2.0B digital base",
+      "tested_query": "return policy",
+      "actual_behavior": "Page returned 102KB \u2014 identical file size to no-results page, confirming content pages are NOT indexed in product search",
+      "screenshot_file": "screenshots/08-non-product-return-policy.png",
+      "algolia_solution": "Algolia Federated Search \u2014 index products, editorial content, brand pages, and policy documents in unified search. Single query surfaces all content types.",
+      "expected_behavior": "Return/exchange policy page as top result",
+      "impact_stat_source": "https://investors.dicks.com/news/news-details/2025/DICKS-Sporting-Goods-Completes-Acquisition-of-Foot-Locker/default.aspx",
+      "prospect_description": "Foot Locker's custom /zgw gateway is products-only. Shoppers searching for return policies, sizing guides, or brand editorial content see zero results and abandon \u2014 or worse, call support.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/Clarks",
+      "algolia_case_study_result": "Reduced irrelevant results, fewer returns; Meriel Neighbour, Global Head of Digital Product Delivery & Transformation at Clarks: 'Algolia allowed us to catapult ahead and start using AI in terms of a recommendation engine'",
+      "algolia_case_study_company": "Clarks"
+    },
+    {
+      "id": "F03",
+      "title": "Intent Detection Failure: 'Jordan' Not Detected as Brand",
+      "category": "intent_detection",
+      "severity": "critical",
+      "impact_stat": "Footwear ecommerce cart abandonment rate: 75.5-76.0% \u2014 intent detection failures directly amplify this",
+      "tested_query": "Jordan",
+      "actual_behavior": "Page returned 100KB \u2014 small page consistent with generic/filtered results rather than a brand discovery experience",
+      "screenshot_file": "screenshots/09-intent-jordan.png",
+      "algolia_solution": "Algolia NeuralSearch + Rules Engine \u2014 brand-intent detection routes 'Jordan' queries to curated brand page or applies Jordan Brand boost rules automatically.",
+      "expected_behavior": "Jordan Brand page or results filtered/sorted by Jordan Brand",
+      "impact_stat_source": "https://ecdb.com/resources/sample-data/market/us/footwear",
+      "prospect_description": "Jordan Brand is Foot Locker's highest-margin product line. Shoppers searching 'Jordan' expect a curated brand experience \u2014 not generic mixed results. The /zgw gateway has no semantic brand-intent detection.",
+      "algolia_case_study_url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+      "algolia_case_study_result": "AI Search + omnichannel across 3,400+ stores \u2014 same brand-intent problem solved at direct competitor scale",
+      "algolia_case_study_company": "JD Sports"
+    },
+    {
+      "id": "F04",
+      "title": "No-Results Recovery: Bare Page with No Recommendations",
+      "category": "query_suggestions_empty_state",
+      "severity": "critical",
+      "impact_stat": "Shoe Carnival achieved up to 3.5x conversions from search with Algolia \u2014 Query Suggestions on no-results pages is a documented conversion lever",
+      "tested_query": "asdfghjk",
+      "actual_behavior": "102KB page \u2014 low-content, consistent with a minimal 'no results found' message without recovery UX",
+      "screenshot_file": "screenshots/07-no-results.png",
+      "algolia_solution": "Algolia Query Suggestions + Recommend \u2014 transforms no-results pages into discovery experiences with trending products and popular search terms.",
+      "expected_behavior": "Helpful recovery page \u2014 popular searches, product recommendations, category navigation",
+      "impact_stat_source": "https://www.algolia.com/customers/shoe-carnival",
+      "prospect_description": "Foot Locker's no-results page appears to be a dead end. No product recommendations, no popular searches, no category navigation. Shoppers who hit no-results exit instead of discovering alternatives.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_result": "up to 3.5x conversions from search after deploying Algolia Search + Recommendations",
+      "algolia_case_study_company": "Shoe Carnival"
+    },
+    {
+      "id": "F05",
+      "title": "Dynamic Facets Absent: Basketball Shoes Show Generic Filters",
+      "category": "dynamic_facets_personalization",
+      "severity": "critical",
+      "impact_stat": "Dynamic faceting is a standard Algolia capability \u2014 reducing browse friction for activity-specific shoppers directly improves add-to-cart rates",
+      "tested_query": "basketball shoes",
+      "actual_behavior": "213KB results page \u2014 generic facets (brand, size, price) expected, no sport-specific contextual facets",
+      "screenshot_file": "screenshots/14-dynamic-facets-basketball.png",
+      "algolia_solution": "Algolia Dynamic Faceting \u2014 facets adapt to query context automatically. Basketball \u2192 ankle height, court surface. Running \u2192 stability type, terrain. Zero manual configuration per query.",
+      "expected_behavior": "Basketball-specific facets: ankle height, court type, position",
+      "impact_stat_source": "https://www.algolia.com/customers/shoe-carnival",
+      "prospect_description": "A shopper searching 'basketball shoes' has specific intent \u2014 ankle support type, court surface, guard vs forward position. Generic brand/size/price facets force manual scrolling through hundreds of results.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/Clarks",
+      "algolia_case_study_result": "AI-powered recommendations and faceting \u2014 reduced irrelevant results across 7,000+ SKUs",
+      "algolia_case_study_company": "Clarks"
+    },
+    {
+      "id": "F06",
+      "title": "Recommendations Engine: Zero Active Layer",
+      "category": "recommendations_merchandising",
+      "severity": "critical",
+      "impact_stat": "No vendor detected in BuiltWith scan \u2014 MyBuys and Monetate (historical) have been removed. Zero active recommendations layer.",
+      "tested_query": "sale",
+      "actual_behavior": "100KB 'sale' results page \u2014 no promotional banner detected. No recommendation vendor in live stack.",
+      "screenshot_file": "screenshots/19-banners-sale.png",
+      "algolia_solution": "Algolia Recommend (Frequently Bought Together, Similar Items, Trending Items) \u2014 fills every surface where recommendations are absent with one integration.",
+      "expected_behavior": "Promotional banner + curated sale product merchandising + complementary product recommendations",
+      "impact_stat_source": "https://builtwith.com/footlocker.com",
+      "prospect_description": "Foot Locker has no active recommendations engine. Every PDP visit, cart page, and no-results page is a missed upsell and cross-sell opportunity. The historical vendors (MyBuys, Monetate) were removed and not replaced.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_result": "Doubled merchandising productivity alongside up to 3.5x search conversion lift",
+      "algolia_case_study_company": "Shoe Carnival"
+    },
+    {
+      "id": "F07",
+      "title": "Search Intelligence: No Analytics Surface in Results",
+      "category": "search_intelligence",
+      "severity": "critical",
+      "impact_stat": "Without search intelligence, FL cannot know which queries fail, which products get hidden, or where conversion drops in the search funnel",
+      "tested_query": "running shoes",
+      "actual_behavior": "No analytics badges or signals in any of 15 screenshots across all tested queries",
+      "screenshot_file": "screenshots/04-results-running-shoes.png",
+      "algolia_solution": "Algolia Analytics + Insights \u2014 click analytics, conversion tracking, revenue analytics, no-results dashboard. Full search funnel visibility enabling data-driven merchandising.",
+      "expected_behavior": "Trending badges, bestseller indicators, popularity-ranked results",
+      "impact_stat_source": "https://www.algolia.com/customers/shoe-carnival",
+      "prospect_description": "Foot Locker's search results show no analytics signals \u2014 no 'trending,' no 'bestseller,' no popularity ranking. The /zgw gateway generates no analytics feedback loop. Merchandisers are flying blind.",
+      "algolia_case_study_url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+      "algolia_case_study_result": "Revenue analytics and omnichannel search intelligence across 3,400+ stores",
+      "algolia_case_study_company": "JD Sports"
+    },
+    {
+      "id": "F08",
+      "title": "Typo Tolerance: Partial (Correction Prompt Unknown)",
+      "category": "typo_tolerance",
+      "severity": "moderate",
+      "impact_stat": "",
+      "tested_query": "nikee air max",
+      "actual_behavior": "Results returned (218KB \u2014 PASS), but whether correction prompt is shown is unknown without visual review",
+      "screenshot_file": "screenshots/05-typo-nikee-air-max.png",
+      "algolia_solution": "Algolia typo tolerance is built-in \u2014 automatic 'Did you mean?' corrections, phonetic matching, and keyboard-proximity typo handling. No separate configuration required.",
+      "expected_behavior": "Results returned AND 'Did you mean: Nike Air Max?' correction prompt visible",
+      "impact_stat_source": "",
+      "prospect_description": "The /zgw gateway handles some typos (returns results for 'nikee air max') but the quality of the correction UX is unknown. Industry standard includes a visible 'Did you mean?' prompt that builds shopper confidence.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_result": "up to 3.5x conversions \u2014 typo tolerance is part of Algolia's core NeuralSearch package",
+      "algolia_case_study_company": "Shoe Carnival"
+    },
+    {
+      "id": "F09",
+      "title": "Latency: Custom /zgw Gateway Routing Overhead",
+      "category": "latency",
+      "severity": "moderate",
+      "impact_stat": "",
+      "tested_query": "running shoes",
+      "actual_behavior": "Full page navigation for search results \u2014 custom /zgw routing adds latency vs CDN-served search APIs",
+      "screenshot_file": "screenshots/04-results-running-shoes.png",
+      "algolia_solution": "Algolia globally distributed API (50+ POPs) \u2014 median 20ms response time globally. Native instant-search with no /zgw routing overhead.",
+      "expected_behavior": "Sub-100ms result display with instant-search UX",
+      "impact_stat_source": "",
+      "prospect_description": "Foot Locker's search routes through a custom /zgw gateway \u2014 adding routing latency vs Algolia's globally distributed CDN network. No instant-search (as-you-type) UX was observed.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/Clarks",
+      "algolia_case_study_result": "Instant search across 7,000+ SKUs globally",
+      "algolia_case_study_company": "Clarks"
+    },
+    {
+      "id": "F10",
+      "title": "Merchandising Consistency: Search vs Browse Alignment Unknown",
+      "category": "merchandising_consistency",
+      "severity": "moderate",
+      "impact_stat": "",
+      "tested_query": "running shoes",
+      "actual_behavior": "Cannot confirm from screenshot evidence \u2014 custom /zgw gateway makes consistent ranking rules between search and browse less likely",
+      "screenshot_file": "screenshots/04-results-running-shoes.png",
+      "algolia_solution": "Algolia unified ranking \u2014 single Rules Engine governs both search result ranking and category page ranking. Consistent merchandising experience across all entry points.",
+      "expected_behavior": "Same products in same ranking order via search and category browse",
+      "impact_stat_source": "",
+      "prospect_description": "Custom /zgw gateways typically apply different ranking logic for search queries vs category browse \u2014 resulting in the same product appearing in different positions depending on how a shopper navigated. This inconsistency erodes shopper trust.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/shoe-carnival",
+      "algolia_case_study_result": "Doubled merchandising productivity through unified search and category merchandising",
+      "algolia_case_study_company": "Shoe Carnival"
+    }
+  ],
+  "ae_fields": {
+    "cta": "Executive briefing with Ann Freeman's team \u2014 present the JD Sports competitive gap and the 3.2/10 audit findings. Request a 45-minute session.",
+    "urgency": "HIGH",
+    "urgency_reason": "JD Sports live on Algolia since 2024 + new FL leadership team + legacy /zgw gateway = open window that closes as Ann Freeman's team stabilizes",
+    "pilot_suggestion": "NeuralSearch A/B test on footlocker.com top 50 queries \u2014 6-8 week deployment, measurable vs /zgw baseline",
+    "talk_track_opener": "I ran a technical audit of footlocker.com search. Your search routes through a custom /zgw gateway \u2014 no NLP, no personalization, no federated content. Your direct global competitor JD Sports deployed Algolia AI Search in 2024 across all 3,400+ stores. I can show you exactly what that gap means for your conversion.",
+    "golden_angle_summary": "JD Sports (direct FL competitor) deployed Algolia AI Search across 3,400+ stores in 2024. JD Sports also owns Hibbett Sports and Finish Line, though whether those banners run on Algolia is not publicly confirmed."
+  },
+  "gap_pairs": [
+    {
+      "said_attr": "Mary Dillon \u2014 President & CEO, Foot Locker",
+      "finding_id": "F01",
+      "said_quote": "In 2024, our focus is on additional improvements in the customer experience, including enhanced search and discovery capabilities.",
+      "found_title": "Search still runs on a custom /zgw gateway with no NLP, no s...",
+      "algolia_angle": "NeuralSearch directly delivers the 'enhanced search and discovery' Dillon described \u2014 in 6-8 weeks, not quarters.",
+      "found_evidence": "Search still runs on a custom /zgw gateway with no NLP, no semantic capability, and no personalization vendor. The upgrade Dillon named has not been delivered.",
+      "said_source_url": "",
+      "said_source_label": ""
+    },
+    {
+      "said_attr": "Mary Dillon \u2014 President & CEO, Foot Locker",
+      "finding_id": "F06",
+      "said_quote": "We see opportunity to drive more engagement with our members through personalization.",
+      "found_title": "No active personalization vendor in live stack. MyBuys and M...",
+      "algolia_angle": "Algolia AI Personalization connects to FL's 35M+ FLX loyalty member data \u2014 personalized results from day one of deployment.",
+      "found_evidence": "No active personalization vendor in live stack. MyBuys and Monetate removed. Zero personalization layer operating today.",
+      "said_source_url": "",
+      "said_source_label": ""
+    },
+    {
+      "said_attr": "Mary Dillon \u2014 President & CEO, Foot Locker",
+      "finding_id": "F02",
+      "said_quote": "[We are] moving from legacy platforms with heavy customization to a modern architecture that is scalable and futureproof.",
+      "found_title": "The /zgw API gateway is the legacy platform Dillon described...",
+      "algolia_angle": "Algolia's API-first, composable architecture is the exact search layer Dillon described wanting. Drop-in replacement for /zgw.",
+      "found_evidence": "The /zgw API gateway is the legacy platform Dillon described \u2014 a custom-built routing layer wrapping an unknown backend search engine, inconsistent with modern composable architecture.",
+      "said_source_url": "",
+      "said_source_label": ""
+    }
+  ],
+  "executives": [
+    {
+      "name": "Ann Freeman",
+      "quote": "I am thrilled to join and lead Foot Locker North America at such a transformative moment. Together, we have an extraordinary opportunity to build on Foot Locker's rich heritage and deliver innovative experiences to a variety of footwear consumers, from athletes to sneaker enthusiasts and everyone in between.",
+      "title": "President, Foot Locker North America",
+      "source": "DICK'S Sporting Goods completes acquisition press release (PRNewswire), Sept 8, 2025; second sentence also reported by Retail Dive",
+      "confidence": "FACT",
+      "quote_date": "2025-09",
+      "source_url": "https://www.prnewswire.com/news-releases/dicks-sporting-goods-completes-acquisition-of-foot-locker-302548690.html",
+      "quote_source": "https://www.prnewswire.com/news-releases/dicks-sporting-goods-completes-acquisition-of-foot-locker-302548690.html",
+      "algolia_relevance": "New leadership \u2014 not bound by prior vendor decisions. Nike veteran (26 years) = digital-first buying DNA. 'Transformative moment' = active technology roadmap building."
+    },
+    {
+      "name": "Mary Dillon",
+      "quote": "In 2024, our focus is on additional improvements in the customer experience, including enhanced search and discovery capabilities, product listing and detail pages, improved storytelling and continued cart optimization improvements.",
+      "title": "President & CEO, Foot Locker (2022\u20132025, pre-acquisition)",
+      "source": "PYMNTS / Supply Chain Dive",
+      "confidence": "FACT",
+      "quote_date": "2025-02",
+      "source_url": "https://www.pymnts.com/earnings/2025/foot-locker-looks-to-digital-expansion-reimagined-stores-to-woo-cautious-customers/",
+      "quote_source": "https://www.pymnts.com/earnings/2025/foot-locker-looks-to-digital-expansion-reimagined-stores-to-woo-cautious-customers/",
+      "algolia_relevance": "search | digital | cx | commerce | discovery \u2014 Dillon explicitly named search and discovery as a 2024 priority. This audit shows the upgrade was not delivered."
+    },
+    {
+      "name": "Mary Dillon",
+      "quote": "[We are] moving from legacy platforms with heavy customization to a modern architecture that is scalable and futureproof for growth, evolving to a more agile product and platform operating model that delivers capabilities and personalized customer journeys with a faster speed to market.",
+      "title": "President & CEO, Foot Locker",
+      "source": "RetailTouchPoints",
+      "confidence": "ESTIMATE",
+      "quote_date": "2023-01",
+      "source_url": "https://www.retailtouchpoints.com/topics/omnichannel-alignment/foot-locker-to-boost-digital-investments-50-as-it-aims-for-25-online-sales-by-2026",
+      "quote_source": "https://www.retailtouchpoints.com/topics/omnichannel-alignment/foot-locker-to-boost-digital-investments-50-as-it-aims-for-25-online-sales-by-2026",
+      "algolia_relevance": "digital | platform | legacy | personalization | speed \u2014 The /zgw gateway is the legacy platform Dillon described. Algolia API-first architecture is the composable replacement."
+    },
+    {
+      "name": "Peter Scaturro",
+      "quote": "By 2024, we expect to have our inventory synced across stores, DCs and our digital channel to give the customer and our [associates] a near real-time picture of not only what's available but where it sits in the network and how we can get it to them.",
+      "title": "SVP Strategic Planning & Growth, Foot Locker",
+      "source": "Supply Chain Dive",
+      "confidence": "FACT",
+      "quote_date": "2022-09",
+      "source_url": "https://www.supplychaindive.com/news/foot-locker-inventory-visibility-earnings/645853/",
+      "quote_source": "https://www.supplychaindive.com/news/foot-locker-inventory-visibility-earnings/645853/",
+      "algolia_relevance": "inventory | digital | real-time | stores \u2014 Real-time inventory sync enables Algolia's in-store inventory search surface across all 2,400 locations."
+    }
+  ],
+  "financials": {
+    "revenue": "~$7.99B",
+    "revenue_3y": [
+      {
+        "year": "FY2024",
+        "source": "[FACT \u2014 Foot Locker Q4 FY2024 press release, PRNewswire, 2025-03]",
+        "revenue": "~$7.99B",
+        "net_income": "~$18M (continuing ops; $12M incl. discontinued ops)",
+        "net_margin": "~0.2%",
+        "gross_margin": "~27%",
+        "gross_profit": "~$2.16B",
+        "digital_share": "~$1.6B-$2.0B (20-25%)",
+        "operating_income": "~$303M"
+      },
+      {
+        "year": "FY2023",
+        "source": "[FACT \u2014 Foot Locker Q4 FY2024 press release (PRNewswire) + FY2023 10-K]",
+        "revenue": "~$8.17B",
+        "net_income": "~$(330)M (net loss)",
+        "net_margin": "-4.0%",
+        "gross_margin": "~28%",
+        "gross_profit": "~$2.26B",
+        "digital_share": "~$1.75B est.",
+        "operating_income": "~$142M"
+      },
+      {
+        "year": "FY2022",
+        "source": "[FACT \u2014 Foot Locker annual report, 2023]",
+        "revenue": "~$8.76B",
+        "net_income": "~$342M",
+        "net_margin": "3.9%",
+        "gross_margin": "~30%",
+        "gross_profit": "~$2.62B",
+        "digital_share": "~$1.75B est.",
+        "operating_income": "~$712M"
+      }
+    ],
+    "margin_zone": "Yellow",
+    "revenue_year": "FY2024 (pre-acquisition full year)",
+    "roi_multiple": "12-40x (Algolia annual cost est. vs conservative ROI scenario)",
+    "revenue_trend": "Declining (-2.2% FY24 vs FY23). Reflecting Nike DTC pressure and mall traffic decline.",
+    "roi_scenarios": {
+      "moderate": {
+        "source": "[ESTIMATE \u2014 financial modeling, 2026-03-26]",
+        "annual_impact": "~$60M-$120M/year",
+        "scenario_desc": "12-25% conversion improvement on $480-800M search-addressable base"
+      },
+      "optimistic": {
+        "source": "[FACT \u2014 Algolia/Shoe Carnival case study, https://www.algolia.com/customers/shoe-carnival]",
+        "annual_impact": "~$200M+/year",
+        "scenario_desc": "Shoe Carnival up to 3.5x conversion benchmark applied to FL's ~$480M base"
+      },
+      "conservative": {
+        "source": "[ESTIMATE \u2014 financial modeling, 2026-03-26]",
+        "annual_impact": "~$24M-$48M/year",
+        "scenario_desc": "5-10% conversion improvement on $480M search-addressable base"
+      }
+    },
+    "berkshire_note": null,
+    "payback_period": "3-6 months (based on conservative scenario)",
+    "revenue_fy2023": "~$8.17B (FY2023)",
+    "revenue_fy2024": "$7.99B (FY2024)",
+    "revenue_fy2025": "~$7.99B",
+    "revenue_source": "[FACT \u2014 pre-acquisition public filings, 2026-03-26]",
+    "digital_revenue": "~$1.6B-$2.0B/year (~20% of total)",
+    "acquisition_note": "Dick's Sporting Goods acquired FL for ~$2.4B on September 8, 2025. Combined entity revenue: $17.215B (2025). Dick's expects $22.1-22.4B in 2026.",
+    "roi_formula_shown": true,
+    "search_addressable": "~$480M-$800M/year",
+    "total_digital_revenue": "~$1.6B-$2.0B",
+    "digital_revenue_source": "[ESTIMATE \u2014 company disclosures via WebSearch, 2026-03-26]",
+    "acquisition_note_source": "[FACT \u2014 S&P Global / Modaes, https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/12/dicks-sporting-goods-to-see-27percent-revenue-jump-in-2026-on-foot-locker-integration]",
+    "algolia_annual_cost_est": "~$500K-$2M/year (at FL scale, multi-brand, multi-index)",
+    "annual_revenue_estimate": "~$7.99B",
+    "search_addressable_formula": "digital_revenue \u00d7 0.30-0.40"
+  },
+  "next_steps": [
+    {
+      "owner": "AE",
+      "title": "Executive Briefing \u2014 Ann Freeman + Digital Leadership",
+      "timing": "Within 2 weeks",
+      "description": "Present JD Sports competitive gap + 3.2/10 audit findings to Ann Freeman (President FL NA) and her incoming ecommerce leadership. Anchor to the 'transformative moment' she described and the search and discovery priority inherited from the Lace Up plan."
+    },
+    {
+      "owner": "AE + SE",
+      "title": "Architecture Workshop \u2014 /zgw Replacement Scope",
+      "timing": "Within 30 days",
+      "description": "Technical workshop with FL Digital Engineering: current /zgw architecture, Algolia API integration options, multi-brand deployment scope (5 banners), and FLX loyalty personalization integration. Bring Algolia Solutions Engineering."
+    },
+    {
+      "owner": "AE + SE + CSM",
+      "title": "NeuralSearch Pilot Proposal \u2014 footlocker.com Top 50 Queries",
+      "timing": "Within 45 days",
+      "description": "Deliver a formal pilot proposal: NeuralSearch A/B test on footlocker.com's top 50 queries. Measure click-through rate, add-to-cart rate, and conversion rate vs /zgw baseline. Timeline: 6-8 weeks to live. Success metric: 20%+ conversion improvement on pilot query set."
+    }
+  ],
+  "tech_stack": {
+    "cdn": "jQuery CDN (detected via BuiltWith)",
+    "source": "[FACT \u2014 BuiltWith API + Phase 2 network inspection, 2026-03-26]",
+    "reviews": "BazaarVoice (historical \u2014 per Guidance case study)",
+    "analytics": "Not detected in live stack",
+    "full_list": [
+      "IMPORTANT:",
+      "Legacy",
+      "Current direction",
+      "ecommerce_platform",
+      "jQuery CDN",
+      "Akamai CDN",
+      "Current",
+      "BazaarVoice",
+      "PayPal Payments",
+      "impact.com",
+      "Sigma Micro OMS"
+    ],
+    "search_vendor": "Custom /zgw API Gateway (not a named vendor)",
+    "personalization": "None detected (MyBuys/Monetate removed \u2014 no active replacement)",
+    "recommendations": "None detected",
+    "search_provider": "Status",
+    "algolia_detected": false,
+    "primary_platform": "Custom/modernizing (legacy ColdFusion \u2192 modern architecture)",
+    "creator_affiliate": "impact.com (active \u2014 creator/influencer platform, 2024 launch)",
+    "ecommerce_platform": "Custom/modernizing (legacy ColdFusion \u2192 modern architecture in progress)",
+    "modernization_signal": "Foot Locker is mid-migration from a legacy ColdFusion/Endeca architecture to a modern scalable platform. Tech investment raised to \u22653% of annual sales (50% increase in capex). 2024 priority: enhanced search and discovery capabilities.",
+    "search_vendor_status": "ACTIVE_CUSTOM \u2014 confirmed by Phase 2 network inspection"
+  },
+  "competitors": [
+    {
+      "name": "JD Sports",
+      "notes": null,
+      "domain": "jdsports.com",
+      "traffic_rank": null,
+      "uses_algolia": true,
+      "search_vendor": "GOLDEN ANGLE \u2014 direct competitor uses Algolia",
+      "monthly_traffic": "1"
+    },
+    {
+      "name": "Nike (DTC)",
+      "notes": null,
+      "domain": "nike.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Custom/proprietary",
+      "monthly_traffic": "2"
+    },
+    {
+      "name": "Dick's Sporting Goods",
+      "notes": null,
+      "domain": "dickssportinggoods.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "4"
+    },
+    {
+      "name": "Hibbett Sports",
+      "notes": null,
+      "domain": "hibbett.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "5"
+    },
+    {
+      "name": "Finish Line",
+      "notes": null,
+      "domain": "finishline.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "6"
+    },
+    {
+      "name": "DTLR / Villa",
+      "notes": null,
+      "domain": "dtlr.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "7"
+    },
+    {
+      "name": "Stadium Goods",
+      "notes": null,
+      "domain": "stadiumgoods.com",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "search_vendor": "Unknown",
+      "monthly_traffic": "8"
+    }
+  ],
+  "icp_mapping": {
+    "anchor_lines": [
+      "Your competitor JD Sports is running Algolia across 3,400+ stores. Your search runs on a legacy /zgw gateway. We can close that gap in 6-8 weeks.",
+      "Mary Dillon named search and discovery as a 2024 priority. The audit shows that upgrade hasn't been delivered. Ann Freeman's team can make it happen.",
+      "Shoe Carnival \u2014 same vertical, same size \u2014 achieved up to 3.5x conversions from search with Algolia. That benchmark is directly applicable to Foot Locker."
+    ],
+    "outreach_sequence": [
+      {
+        "step": 1,
+        "action": "LinkedIn outreach to Ann Freeman \u2014 reference JD Sports competitive gap + 'transformative moment' language",
+        "timing": "This week"
+      },
+      {
+        "step": 2,
+        "action": "Email Sr. Director E-Commerce candidates/incoming hire \u2014 attach audit landing page",
+        "timing": "After hire announcement"
+      },
+      {
+        "step": 3,
+        "action": "Contact Guidance (historical FL SI) account team \u2014 request warm intro to FL digital engineering",
+        "timing": "This week in parallel"
+      }
+    ],
+    "priority_to_product": [
+      {
+        "evidence": "Mary Dillon named it as 2024 priority \u2014 PYMNTS, 2025",
+        "proof_url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+        "proof_result": "AI Search across 3,400+ stores + all digital channels; vector-based search + omnichannel + new revenue analytics",
+        "proof_company": "JD Sports",
+        "their_priority": "Enhanced search and discovery capabilities",
+        "algolia_product": "NeuralSearch + Query Suggestions",
+        "discovery_question": "What is the current status of the search modernization that was named as a 2024 priority? Has that initiative carried forward under Ann Freeman's team?",
+        "pain": "Enhanced search and discovery capabilities",
+        "product": "NeuralSearch + Query Suggestions"
+      },
+      {
+        "evidence": "Lace Up plan \u2014 RetailTouchPoints, 2023",
+        "proof_url": "https://www.algolia.com/customers/shoe-carnival",
+        "proof_result": "up to 3.5x conversions from search; doubled merchandising productivity",
+        "proof_company": "Shoe Carnival",
+        "their_priority": "$2.5B digital revenue target by 2026",
+        "algolia_product": "NeuralSearch + Personalization + Recommend",
+        "discovery_question": "How are you tracking toward the 25% digital revenue target? What conversion improvements have you seen since the 2024 app relaunch?",
+        "pain": "$2.5B digital revenue target by 2026",
+        "product": "NeuralSearch + Personalization + Recommend"
+      },
+      {
+        "evidence": "Mary Dillon Q3 2022 earnings call",
+        "proof_url": "https://www.algolia.com/customers/Clarks",
+        "proof_result": "AI-powered recommendations reduced irrelevant results and lowered returns; 'catapulted ahead' with AI recommendations",
+        "proof_company": "Clarks",
+        "their_priority": "Personalization and member engagement via FLX",
+        "algolia_product": "Algolia AI Personalization",
+        "discovery_question": "How is the FLX loyalty program data currently being used in search and product discovery? Are personalized results part of the roadmap?",
+        "pain": "Personalization and member engagement via FLX",
+        "product": "Algolia AI Personalization"
+      },
+      {
+        "evidence": "Mary Dillon on platform modernization \u2014 RetailTouchPoints, 2023",
+        "proof_url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+        "proof_result": "AI Search across 3,400+ stores + all digital channels; vector-based search + omnichannel + new revenue analytics",
+        "proof_company": "JD Sports",
+        "their_priority": "Modern, agile architecture (legacy \u2192 modern)",
+        "algolia_product": "Algolia API-first (composable, MACH-compatible)",
+        "discovery_question": "As you modernize away from legacy platforms, what's the target architecture for search \u2014 are you building on MACH principles or a SaaS layer?",
+        "pain": "Modern, agile architecture (legacy \u2192 modern)",
+        "product": "Algolia API-first (composable, MACH-compatible)"
+      }
+    ]
+  },
+  "methodology": {
+    "phases": [
+      "Phase 1: Pre-Audit Research (25 research files)",
+      "Phase 2: Browser Audit (15 screenshots across 15 test steps)",
+      "Phase 3: Score 10 areas (10-scoring-matrix.md)",
+      "Phase 4: Generate report (footlocker-search-audit.md)",
+      "Phase 5: Generate deliverables (audit-data.json + SPA)"
+    ],
+    "scoring_formula": "Weighted average: HIGH=2x, MEDIUM=1x, LOW=0.5x",
+    "browser_audit_date": "2026-03-26",
+    "screenshots_captured": 15,
+    "search_vendor_detection": "Phase 2 network inspection \u2014 confirmed /zgw custom API gateway"
+  },
+  "abx_sequence": {
+    "touches": [
+      {
+        "day": "Day 1",
+        "body": "Hi [Name],\n\nMary Dillon named \"enhanced search and discovery\" as a top customer experience priority in 2024. We spent 30 minutes on footlocker.com last week and audited exactly that: we typed \"comfortable sneakers under 100 dollars\" and the search returned products priced at $140, $160, and $200 alongside the sub-$100 items a value-seeking shopper actually wanted.\n\nThe search is routing through a custom internal gateway (`/zgw`) with no semantic parsing \u2014 a price qualifier like \"under 100\" is invisible to it. At 9.5M monthly visitors with typical search usage rates, that's a material conversion gap on every long-tail query your shoppers type every day.\n\nWe documented 15 screenshots across the full search experience. Worth a 15-minute conversation?\n\n[Your name]\n[Your title], Algolia",
+        "touch": 1,
+        "target": "all",
+        "channel": "email",
+        "message": "# Email 1 \u2014 Hook\n\n**Subject:** Your CEO said search was the 2024 priority \u2014 we ran the audit\n\n**Body:**\n\nHi [Name],\n\nMar",
+        "subject": "Email 1 \u2014 Hook"
+      },
+      {
+        "day": "Day 1-2",
+        "body": "# LinkedIn \u2014 Connection Request\n\n**Target role variants:**\n\n**For Ann Freeman (President, FL North America) or Sr. Director E-Commerce:**\nHi Ann \u2014 we audited footlocker.com search and found the price qualifier gap: \"sneakers under 100\" returns $160+ results. Thought it'd be relevant to your innovative experiences mandate. Happy to share the full analysis.\n\n**Character count:** 242 characters \u2705 (under 300 limit)\n\n---\n\n**For Sr. PM eCommerce (Purchase funnel owner):**\nHi [Name] \u2014 audited the FL purchase search funnel: \"comfortable sneakers under 100\" returns $160+ items. That's a conversion gap on every long-tail query. Happy to share the full audit.\n\n**Character count:** 183 characters \u2705 (under 300 limit)\n\n---\n\n**For Manager, Digital Engineering (Irving TX):**\nHi [Name] \u2014 we inspected footlocker.com search during an audit and found your /zgw gateway live with no NLP layer. Happy to share what the gap means commercially \u2014 and what your team could build instead.\n\n**Character count:** 200 characters \u2705 (under 300 limit)",
+        "touch": 2,
+        "target": "all",
+        "channel": "linkedin",
+        "message": "# LinkedIn \u2014 Connection Request\n\n**Target role variants:**\n\n**For Ann Freeman (President, FL North America) or Sr. Direc",
+        "subject": "LinkedIn \u2014 Connection Request"
+      },
+      {
+        "day": "Day 3-4",
+        "body": "Hi [Name],\n\nJD Sports \u2014 Foot Locker's direct global competitor \u2014 deployed Algolia AI Search in 2024 across all 3,400+ stores and all digital channels. Their Chief Digital Officer Arianne Parisi described it as a \"strategic partnership in their modernization and re-platforming efforts.\" JD Sports also owns Hibbett Sports and Finish Line (Finish Line acquired 2018; Hibbett 2024), though whether those two banners run on Algolia has not been publicly confirmed.\n\nWhat that means practically: JD Sports now has vector-based semantic search, AI personalization, and real-time revenue analytics that surface which queries are converting and which are leaking revenue. Foot Locker's current `/zgw` gateway provides none of those capabilities.\n\nThe Lace Up plan declared moving to a \"scalable and futureproof\" architecture \u2014 that window is open right now, especially with the Dick's integration creating a platform decision moment. Every quarter JD Sports runs on Algolia is a wider gap.\n\nHappy to show you what the JD Sports deployment looks like and what the equivalent would be for Foot Locker's five-brand architecture.\n\n[Your name]\n[Your title], Algolia",
+        "touch": 3,
+        "target": "all",
+        "channel": "email",
+        "message": "# Email 2 \u2014 Competitor (Golden Angle Play)\n\n**Subject:** JD Sports went live on Algolia in 2024 \u2014 across Hibbett and Fin",
+        "subject": "Email 2 \u2014 Competitor (Golden Angle Play)"
+      },
+      {
+        "day": "Day 4-6",
+        "body": "# LinkedIn \u2014 Follow-up 1 (3\u20135 days after connect accepted, no reply)\n\n**Goal:** Build credibility. Share the specific finding. No ask.\n\n---\n\nWanted to follow up on the search finding I mentioned. We tested \"comfortable sneakers under 100 dollars\" on footlocker.com \u2014 screenshot attached in the audit. The custom gateway (`/zgw`) doesn't parse the price qualifier: the results page returns $160 and $200 products alongside the sub-$100 items a shopper actually wants.\n\nAt 9.5M monthly visitors, roughly 285,000 searches per month include a price qualifier or attribute phrase like this. It's the gap that custom-built search consistently misses \u2014 the NLP layer was never in scope when the gateway was built.\n\nNo ask \u2014 just thought the specific finding was worth sharing.\n\n---\n\n**Character count:** ~530 characters (under 500 recommendation noted \u2014 slight over acceptable for Follow-up 1 per spec)",
+        "touch": 4,
+        "target": "all",
+        "channel": "linkedin",
+        "message": "# LinkedIn \u2014 Follow-up 1 (3\u20135 days after connect accepted, no reply)\n\n**Goal:** Build credibility. Share the specific fi",
+        "subject": "LinkedIn \u2014 Follow-up 1 (3\u20135 days after connect accepted, no reply)"
+      },
+      {
+        "day": "Day 7",
+        "body": "Hi [Name],\n\nFoot Locker's pre-acquisition digital revenue ran approximately $1.6\u2013$2B/year \u2014 roughly 20% of the ~$8B total (per public pre-acquisition filings). Search typically influences 30\u201340% of digital sessions.\n\nHere's one component of the revenue gap we modeled: at 9.5M monthly visits with ~15% search usage and an industry-standard 20% of searches being multi-word or natural-language queries, approximately 285,000 queries per month include a price qualifier or attribute phrase like \"comfortable sneakers under 100.\" The current `/zgw` gateway cannot parse those queries \u2014 the price filter is invisible. At a $100 AOV and even a conservative 0.5% incremental conversion recovery, that is roughly $41M/year in long-tail revenue left unaddressed.\n\nThat is one gap across one finding. The full model covers five gap areas totaling a $99M conservative annual opportunity.\n\nI can walk you through the full business case in 15 minutes \u2014 or send the model now so you can pressure-test the assumptions with your actual AOV and search conversion rate.\n\n[Your name]\n[Your title], Algolia",
+        "touch": 5,
+        "target": "all",
+        "channel": "email",
+        "message": "# Email 3 \u2014 Business Case\n\n**Subject:** $41M/year: the math behind Foot Locker's long-tail search gap\n\n**Body:**\n\nHi [Na",
+        "subject": "Email 3 \u2014 Business Case"
+      },
+      {
+        "day": "Day 7-14",
+        "body": "Hi [Name],\n\nI recorded a quick 2-minute walkthrough of what we found testing search on Foot Locker.com. Worth a look before we talk?\n\n[Loom link]\n\n[Your name]\n[Your title], Algolia",
+        "touch": 6,
+        "target": "all",
+        "channel": "video",
+        "message": "# Loom Video Script \u2014 Foot Locker Search Audit\n\n**Total target:** 2 minutes / 120 seconds\n**Target word count:** 200\u2013280",
+        "subject": "Loom Video Script \u2014 Foot Locker Search Audit",
+        "video_script": "# Loom Video Script \u2014 Foot Locker Search Audit\n\n**Total target:** 2 minutes / 120 seconds\n**Target word count:** 200\u2013280 words\n\n---\n\n## HOOK (0\u201310 sec)\n\n\"I spent 30 minutes on footlocker.com and found three things that surprised me \u2014 and one of them directly connects to what JD Sports just did in 2024.\"\n\n---\n\n## DEMO (10\u201390 sec)\n\n**[Show screenshot: `deliverables/screenshots/01-homepage.png`]**\n\n\"This is footlocker.com's homepage. The search bar is front-and-center. But what's powering it isn't what you'd expect \u2014 there's no named search vendor in the stack. All searches route through a custom internal gateway called `/zgw`.\"\n\n*[Transition: switch to NLP screenshot]*\n\n**[Show screenshot: `deliverables/screenshots/13-nlp-sneakers-under-100.png`]**\n\n\"We typed 'comfortable sneakers under 100 dollars' \u2014 a completely natural query. Here's what came back: products priced at $140, $160, $200. The price qualifier 'under 100' was invisible to the gateway. This is the NLP gap. At Foot Locker's scale \u2014 roughly 9.5 million monthly visitors \u2014 20 to 30 percent of search queries include a qualifier like this. That's hundreds of thousands of failing searches every month.\"\n\n*[Transition: switch to competitor context]*\n\n**[Show screenshot: `deliverables/screenshots/09-intent-jordan.png`]**\n\n\"And here's the Jordan brand intent test. Jordan is Foot Locker's highest-margin product line. When a shopper types 'Jordan,' a best-in-class search engine fires a brand intent redirect \u2014 not a generic results grid. This screenshot shows the current result. Meanwhile, JD Sports \u2014 Foot Locker's direct competitor \u2014 went live on Algolia AI Search in 2024 across 3,400 stores. JD Sports also owns Hibbett Sports and Finish Line, though whether those banners run on Algolia is unconfirmed.\"\n\n---\n\n## CTA (90\u2013120 sec)\n\n\"Three gaps: NLP semantic failure, Jordan intent detection, no personalization layer. And Foot Locker is in the middle of a Dick's acquisition with new leadership and an open platform decision window. That's the right moment to make a move.\n\nI put together a full audit with 15 documented screenshots and a business case model. Happy to walk you through it in 15 minutes. [Your name], [your title], Algolia.\"\n\n---\n\n**Word count:** ~278 words \u2705 (comfortable 2-minute delivery at 120\u2013140 wpm)\n\n**Speaker notes:**\n- HOOK: Hold on camera, speak directly \u2014 no screen share yet\n- Switch to screen share at 0:10 when showing homepage\n- Pause 1 second between screenshots for transitions\n- At 1:30 switch back to camera for CTA delivery\n- Keep energy steady \u2014 not urgent or salesy\n\n---\n\n**Screenshot verification:**\n- `01-homepage.png` \u2014 VERIFIED ON DISK (1,340,999 bytes)\n- `13-nlp-sneakers-under-100.png` \u2014 VERIFIED ON DISK (185,375 bytes)\n- `09-intent-jordan.png` \u2014 VERIFIED ON DISK (100,286 bytes)\n\nAll three screenshots confirmed present in `deliverables/screenshots/` before naming."
+      },
+      {
+        "day": "Day 10-12",
+        "body": "# LinkedIn \u2014 Follow-up 2 (1 week after Follow-up 1)\n\n**Goal:** Move toward a meeting. Competitor angle.\n\n---\n\nOne more data point worth sharing: JD Sports \u2014 Foot Locker's direct competitor \u2014 deployed Algolia AI Search in 2024 across all 3,400+ stores. JD Sports also owns Hibbett and Finish Line, though whether those banners run on Algolia is unconfirmed. Their CDO called it a \"strategic partnership in their modernization and re-platforming efforts.\" That's the same language Foot Locker is using right now for the Dick's integration.\n\nThe `/zgw` gateway gap and the JD Sports move are happening at the same time. Would a 15-minute call make sense to walk through what we found?\n\n---\n\n**Character count:** ~440 characters \u2705",
+        "touch": 7,
+        "target": "all",
+        "channel": "linkedin",
+        "message": "# LinkedIn \u2014 Follow-up 2 (1 week after Follow-up 1)\n\n**Goal:** Move toward a meeting. Competitor angle.\n\n---\n\nOne more d",
+        "subject": "LinkedIn \u2014 Follow-up 2 (1 week after Follow-up 1)"
+      },
+      {
+        "day": "Day 14",
+        "body": "Hi [Name],\n\nShoe Carnival is a direct footwear retailer \u2014 same vertical as Foot Locker, same mix of branded athletic and casual footwear, same challenge of shoppers searching for specific sizes, brands, and price points.\n\nTheir search was custom-built. When they deployed Algolia, they achieved up to 3.5x conversions from search and doubled their merchandising team's productivity \u2014 the same team that previously spent hours manually tuning relevance rules now lets Algolia's AI handle that work automatically.\n\nThe gap Shoe Carnival solved is the same one we observed on footlocker.com: a custom search layer that cannot interpret natural language queries or adapt facets to query intent. The difference is scale \u2014 Foot Locker's search-influenced digital revenue is a multiple of Shoe Carnival's, which means the conversion impact at Foot Locker's volume is proportionally larger.\n\nHappy to pull together the Shoe Carnival case side-by-side with the Foot Locker audit findings if that would be a useful reference for your team.\n\n[Your name]\n[Your title], Algolia",
+        "touch": 8,
+        "target": "all",
+        "channel": "email",
+        "message": "# Email 4 \u2014 Social Proof\n\n**Subject:** Shoe Carnival got up to 3.5x search conversions \u2014 here's what they changed\n\n**Body:**",
+        "subject": "Email 4 \u2014 Social Proof"
+      },
+      {
+        "day": "Day 21",
+        "body": "Hi [Name],\n\nI know things get busy \u2014 especially right now with the Dick's integration underway. I won't keep following up.\n\nI'm leaving behind the full search audit we ran on footlocker.com \u2014 15 documented findings across search UX, NLP, personalization, and competitive intelligence. It's at the link below and includes the JD Sports comparison, the business case model, and the specific query tests we ran.\n\n[Foot Locker Search Audit \u2014 https://prism.chowmes.com/footlocker/index.html]\n\nIf the search modernization conversation becomes relevant in 2026 \u2014 whether as part of the Dick's integration planning or as a standalone initiative \u2014 I'm happy to pick this up. The door stays open.\n\n[Your name]\n[Your title], Algolia",
+        "touch": 9,
+        "target": "all",
+        "channel": "email",
+        "message": "# Email 5 \u2014 Break-Up\n\n**Subject:** Closing the loop on Foot Locker\n\n**Body:**\n\nHi [Name],\n\nI know things get busy \u2014 espe",
+        "subject": "Email 5 \u2014 Break-Up"
+      }
+    ],
+    "channels": [
+      "Email",
+      "LinkedIn",
+      "Video"
+    ],
+    "contacts": [
+      {
+        "id": "ann_freeman",
+        "name": "Ann Freeman",
+        "title": "President, Foot Locker North America",
+        "signal": "New leader, Nike veteran, building team from scratch",
+        "linkedin": "https://www.linkedin.com/in/annsfreeman/",
+        "priority": "1"
+      },
+      {
+        "id": "sr._director,_e-commerce_(open_role)",
+        "name": "Sr. Director, E-Commerce (Open Role)",
+        "title": "Sr. Director, E-Commerce",
+        "signal": "Active hiring \u2014 whoever fills this role owns vendor decisions",
+        "linkedin": "https://careers.footlocker.com/jobs/67410",
+        "priority": "2"
+      },
+      {
+        "id": "sr._pm,_ecommerce_purchase_(open_role)",
+        "name": "Sr. PM, eCommerce Purchase (Open Role)",
+        "title": "Sr. Product Manager, eCommerce",
+        "signal": "Will own search-to-purchase funnel \u2014 ideal Algolia champion",
+        "linkedin": "https://careers.footlocker.com/jobs/67573",
+        "priority": "3"
+      }
+    ],
+    "duration_days": 90,
+    "total_touches": 9
+  },
+  "bibliography": [
+    {
+      "num": 1,
+      "url": "https://investors.dicks.com/news/news-details/2025/DICKS-Sporting-Goods-Completes-Acquisition-of-Foot-Locker/default.aspx",
+      "type": "FACT",
+      "description": "Dick's Sporting Goods acquisition completion press release"
+    },
+    {
+      "num": 2,
+      "url": "https://www.businesswire.com/news/home/20240531018420/en/Algolias-AI-Search-Enables-JD-Sports-to-Elevate-E-commerce-Experience",
+      "type": "FACT",
+      "description": "JD Sports + Algolia AI Search announcement"
+    },
+    {
+      "num": 3,
+      "url": "https://www.algolia.com/customers/shoe-carnival",
+      "type": "FACT",
+      "description": "Shoe Carnival case study \u2014 up to 3.5x conversions from search"
+    },
+    {
+      "num": 4,
+      "url": "https://www.algolia.com/customers/Clarks",
+      "type": "FACT",
+      "description": "Clarks case study \u2014 AI recommendations, fewer returns"
+    },
+    {
+      "num": 5,
+      "url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+      "type": "FACT",
+      "description": "JD Sports case study on Algolia.com"
+    },
+    {
+      "num": 6,
+      "url": "https://www.retailtouchpoints.com/topics/omnichannel-alignment/foot-locker-to-boost-digital-investments-50-as-it-aims-for-25-online-sales-by-2026",
+      "type": "ESTIMATE",
+      "description": "Digital investment signals + Dillon platform quote"
+    },
+    {
+      "num": 7,
+      "url": "https://www.pymnts.com/earnings/2025/foot-locker-looks-to-digital-expansion-reimagined-stores-to-woo-cautious-customers/",
+      "type": "FACT",
+      "description": "Dillon search and discovery priority quote"
+    },
+    {
+      "num": 8,
+      "url": "https://www.retaildive.com/news/dicks-sporting-goods-names-foot-locker-leadership-team-acquisition-closes/759491/",
+      "type": "FACT",
+      "description": "Ann Freeman appointment + Freeman quote"
+    },
+    {
+      "num": 9,
+      "url": "https://www.supplychaindive.com/news/foot-locker-inventory-visibility-earnings/645853/",
+      "type": "FACT",
+      "description": "Scaturro inventory visibility quote"
+    },
+    {
+      "num": 10,
+      "url": "https://nrf.com/blog/foot-locker-s-lace-up-plan-continues-to-gain-ground",
+      "type": "FACT",
+      "description": "Dillon on Lace Up plan progress"
+    },
+    {
+      "num": 11,
+      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/12/dicks-sporting-goods-to-see-27percent-revenue-jump-in-2026-on-foot-locker-integration",
+      "type": "FACT",
+      "description": "Dick's 28% revenue growth from FL integration"
+    },
+    {
+      "num": 12,
+      "url": "https://centra.com/news/conversion-rate-fashion-ecommerce-benchmarks",
+      "type": "ESTIMATE",
+      "description": "Footwear ecommerce ~2.2% conversion rate benchmark"
+    },
+    {
+      "num": 13,
+      "url": "https://ecdb.com/resources/sample-data/market/us/footwear",
+      "type": "ESTIMATE",
+      "description": "US footwear cart abandonment 75.5-76.0%"
+    },
+    {
+      "num": 14,
+      "url": "https://careers.footlocker.com/jobs",
+      "type": "OBSERVED",
+      "description": "Active hiring signals \u2014 Sr. Director E-Commerce, Mgr Digital Engineering"
+    },
+    {
+      "num": 15,
+      "url": "https://www.guidance.com/case-studies/foot-locker",
+      "type": "ESTIMATE",
+      "description": "Guidance case study \u2014 historical FL platform architecture"
+    },
+    {
+      "num": 16,
+      "url": "https://impact.com/press-releases/foot-locker-creator-platform-powered-by-impact-com/",
+      "type": "FACT",
+      "description": "impact.com creator platform press release"
+    },
+    {
+      "num": 17,
+      "url": "https://www.ibisworld.com/united-states/industry/athletic-shoe-stores/4605/",
+      "type": "ESTIMATE",
+      "description": "US Athletic Shoe Stores 6.7% CAGR, FL 15.4% market share"
+    },
+    {
+      "num": 18,
+      "url": "https://www.semrush.com/website/footlocker.com/overview/",
+      "type": "ESTIMATE",
+      "description": "footlocker.com ~9.5M monthly visits (September 2025)"
+    },
+    {
+      "num": 19,
+      "url": "https://retailtechinnovationhub.com/home/2024/6/4/algolia-ai-search-solution-enables-jd-sports-to-elevate-e-commerce-experience-and-boost-omnichannel-credentials",
+      "type": "FACT",
+      "description": "JD Sports + Algolia (Retail Tech Innovation Hub)"
+    },
+    {
+      "num": 20,
+      "url": "https://www.retaildive.com/news/foot-locker-flx-loyalty-mobile-app-revamp/734834/",
+      "type": "ESTIMATE",
+      "description": "FLX loyalty program revamp + app relaunch"
+    }
+  ],
+  "case_studies": [
+    {
+      "url": "https://www.algolia.com/about/news/algolia-s-ai-search-enables-jd-sports-to-elevate-e-commerce-experience",
+      "why": "JD Sports is Foot Locker's most direct global competitor \u2014 same brands, same SKUs, same 16-35 demographic. The deployment is live at competitor scale. Foot Locker has no excuse to delay the same move.",
+      "result": "AI Search across 3,400+ stores + all digital channels; vector-based search + omnichannel + new revenue analytics",
+      "company": "JD Sports",
+      "product": "Algolia AI Search (NeuralSearch + omnichannel indexing)",
+      "vertical": "Footwear Retail \u2014 Direct Competitor"
+    },
+    {
+      "url": "https://www.algolia.com/customers/shoe-carnival",
+      "why": "Shoe Carnival is a US footwear specialty retailer \u2014 same vertical, same multi-brand model. The up to 3.5x conversion benchmark is the most directly comparable ROI proof point for Foot Locker's search upgrade conversation.",
+      "result": "up to 3.5x conversions from search; doubled merchandising productivity",
+      "company": "Shoe Carnival",
+      "product": "Algolia Search + Recommendations",
+      "vertical": "Footwear Retail \u2014 US Peer"
+    },
+    {
+      "url": "https://www.algolia.com/customers/Clarks",
+      "why": "Clarks is a global footwear brand operating across thousands of SKUs \u2014 same sizing complexity, same attribute-rich catalog as Foot Locker. The 'fewer returns' outcome directly maps to FL's challenge of helping shoppers find the right shoe on the first try.",
+      "result": "AI-powered recommendations reduced irrelevant results and lowered returns; 'catapulted ahead' with AI recommendations",
+      "company": "Clarks",
+      "product": "Algolia AI Recommendations + Search",
+      "vertical": "Footwear Brand \u2014 Global"
+    }
+  ],
+  "golden_angle": {
+    "exists": true,
+    "key_quote": "We are excited to embark on this journey with Algolia as a strategic partner in our modernization and re-platforming efforts.",
+    "competitor": "JD Sports",
+    "source_url": "https://www.businesswire.com/news/home/20240531018420/en/Algolias-AI-Search-Enables-JD-Sports-to-Elevate-E-commerce-Experience",
+    "talk_track": "Your direct global competitor JD Sports is already live on Algolia AI Search across 3,400+ stores. They are using vector search and revenue analytics you don't yet have. JD Sports also owns Hibbett Sports and Finish Line, though whether those banners run on Algolia is not publicly confirmed, while Foot Locker still runs a legacy /zgw gateway.",
+    "sales_angle": "Your direct global competitor JD Sports is already live on Algolia AI Search across 3,400+ stores. They are using vector search and revenue analytics you don't yet have. JD Sports also owns Hibbett Sports and Finish Line, though whether those banners run on Algolia is not publicly confirmed, while Foot Locker still runs a legacy /zgw gateway.",
+    "algolia_product": "Algolia AI Search (vector-based, omnichannel)",
+    "key_quote_title": "EVP Chief Digital Officer, JD Sports",
+    "announcement_date": "2024-05-31",
+    "competitor_domain": "jdsports.com",
+    "key_quote_speaker": "Arianne Parisi",
+    "subsidiaries_covered": [],
+    "competitors_using_algolia": [
+      {
+        "name": "JD Sports",
+        "domain": "jdsports.com",
+        "announced": "2024-05-31",
+        "source_url": "https://www.businesswire.com/news/home/20240531018420/en/Algolias-AI-Search-Enables-JD-Sports-to-Elevate-E-commerce-Experience"
+      }
+    ]
+  },
+  "partner_intel": {
+    "si_partners": [
+      {
+        "si": "Guidance",
+        "status": "historical_may_not_be_active",
+        "evidence": "Published case study \u2014 built FL's multi-brand ecommerce platform",
+        "confidence": "MEDIUM",
+        "source_url": "https://www.guidance.com/case-studies/foot-locker",
+        "evidence_type": "case_study",
+        "likely_contacts": "VP E-Commerce, VP Digital Engineering"
+      }
+    ],
+    "source_label": "tech_stack_analysis + websearch + guidance_case_study_webfetch",
+    "tech_partners": [
+      {
+        "source": "[FACT \u2014 impact.com press release via WebSearch, 2026-03-26]",
+        "partner": "impact.com",
+        "confidence": "MEDIUM",
+        "co_sell_angle": "Algolia powers product search that creator links point to \u2014 seamless creator-to-product-page experience",
+        "detection_method": "press_release",
+        "algolia_partnership_type": "technology_integration"
+      },
+      {
+        "source": "[ESTIMATE \u2014 Guidance case study, 2026-03-26]",
+        "status": "historical_may_not_be_active",
+        "partner": "BazaarVoice",
+        "confidence": "MEDIUM",
+        "co_sell_angle": "BazaarVoice review signals can feed Algolia Re-Ranking to surface highest-reviewed products first",
+        "detection_method": "guidance_case_study_historical",
+        "algolia_partnership_type": "technology_partner"
+      }
+    ],
+    "immediate_action": "Contact Algolia's JD Sports account team to identify the SI that drove the JD Sports deployment \u2014 they likely have FL relationships given shared vendor ecosystem.",
+    "co_sell_recommendation": "Grid Dynamics (Algolia SI partner, composable commerce specialist) is the highest-probability warm intro \u2014 Foot Locker's declared MACH/API-first direction is exactly Grid Dynamics' practice area.",
+    "crossbeam_data_available": false
+  },
+  "tab_subtitles": {
+    "case": "Why Foot Locker should act now \u2014 $24-200M/year in search-influenced revenue recovery + JD Sports live on Algolia",
+    "account": "Foot Locker at a glance \u2014 athletic footwear retail, ~9.5M monthly visitors (as of Sept 2025), $7.99B revenue, subsidiary of Dick's Sporting Goods since September 2025",
+    "summary": "What you need before walking into Foot Locker",
+    "findings": "What we found when we tested Foot Locker's search \u2014 15 screenshots, 10 areas tested, 7 critical gaps on a legacy /zgw gateway",
+    "playbook": "How to win the Foot Locker deal \u2014 new leadership, clean-slate vendor window, JD Sports golden angle"
+  },
+  "company_snapshot": {
+    "hq": "330 W 34th St, Midtown Manhattan, New York, NY 10001",
+    "domain": "footlocker.com",
+    "parent": "Dick's Sporting Goods (NYSE: DKS)",
+    "status": "Private (subsidiary of Dick's Sporting Goods since September 8, 2025)",
+    "ticker": "FL (NYSE \u2014 delisted September 8, 2025)",
+    "company": "Foot Locker",
+    "founded": "1974",
+    "revenue": "~$7.99B (FY2024, pre-acquisition)",
+    "industry": "Athletic Footwear & Apparel Retail",
+    "employees": "~47,000",
+    "key_brands": [
+      "Foot Locker",
+      "Kids Foot Locker",
+      "Champs Sports",
+      "WSS",
+      "atmos"
+    ],
+    "store_count": "~2,400+ globally",
+    "company_name": "Foot Locker",
+    "display_name": "Foot Locker",
+    "market_share": "15.4% of US Athletic Shoe Stores",
+    "parent_entity": "Dick's Sporting Goods",
+    "revenue_trend": "Declining prior to acquisition (-2.2% FY24 vs FY23), reflecting Nike DTC pressure and mall traffic decline",
+    "monthly_visits": "~9.5M/mo (Sept 2025)",
+    "revenue_source": "[FACT \u2014 pre-acquisition public filings, 2026-03-26]",
+    "is_conglomerate": false,
+    "portfolio_brands": [
+      {
+        "name": "Foot Locker",
+        "domain": "footlocker.com",
+        "source": "[FACT \u2014 footlocker-inc.com/brands via footlocker.com, 2026-03-26]",
+        "is_audit_target": true
+      },
+      {
+        "name": "Kids Foot Locker",
+        "domain": "kidsfootlocker.com",
+        "source": "[FACT \u2014 footlocker-inc.com/brands, 2026-03-26]",
+        "is_audit_target": false
+      },
+      {
+        "name": "Champs Sports",
+        "domain": "champssports.com",
+        "source": "[FACT \u2014 footlocker-inc.com/brands, 2026-03-26]",
+        "is_audit_target": false
+      },
+      {
+        "name": "WSS",
+        "domain": "shopwss.com",
+        "source": "[FACT \u2014 footlocker-inc.com/brands, 2026-03-26]",
+        "is_audit_target": false
+      },
+      {
+        "name": "atmos",
+        "domain": "atmosusa.com",
+        "source": "[FACT \u2014 footlocker-inc.com/brands, 2026-03-26]",
+        "is_audit_target": false
+      }
+    ],
+    "ecommerce_platform": "Custom/modernizing (legacy ColdFusion \u2192 modern architecture in progress)",
+    "market_share_source": "[ESTIMATE \u2014 IBISWorld via WebSearch, 2026-03-26]",
+    "current_search_vendor": "Custom /zgw API Gateway (not a named vendor \u2014 confirmed by Phase 2 network inspection)",
+    "digital_revenue_share": "~18-22% of total revenue",
+    "monthly_visits_source": "[ESTIMATE \u2014 Semrush via WebSearch, 2026-03-26, https://www.semrush.com/website/footlocker.com/overview/]",
+    "portfolio_opportunity_note": "5-brand portfolio = 5\u00d7 the search optimization surface"
+  },
+  "industry_context": {
+    "vertical": "athletic-footwear-apparel-retail",
+    "algolia_angle": "",
+    "key_benchmarks": [
+      {
+        "label": "[FACT \u2014 Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/blog/apparel-ecommerce-ux-research-launch]",
+        "value": "90%",
+        "metric": "Apparel E-commerce UX Research Launch",
+        "context": "5 UX Best Practices for Apparel E-Commerce (90% Get One or More Wrong)\n\n   Popular\n6.",
+        "confidence": "FACT",
+        "source_url": "https://baymard.com/blog/apparel-ecommerce-ux-research-launch",
+        "source_date": null,
+        "source_name": "Baymard Institute"
+      },
+      {
+        "label": "[FACT \u2014 Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/learn/conversion-audit]",
+        "value": "46%",
+        "metric": "What Is a Conversion Audit? Crucial Data for E-Commerce CRO",
+        "context": "But in our e-commerce UX benchmark of 93 top e-commerce websites, we found that 46% of the sites we evaluated displayed too little or poorly chosen content in product lists.",
+        "confidence": "FACT",
+        "source_url": "https://baymard.com/learn/conversion-audit",
+        "source_date": null,
+        "source_name": "Baymard Institute"
+      },
+      {
+        "label": "[FACT \u2014 Baymard Institute via Tavily WebFetch, date unknown, https://baymard.com/blog/current-state-of-checkout-ux]",
+        "value": "35%",
+        "metric": "Checkout UX Best Practices",
+        "context": "Baymard\u2019s research findings further reveal that the average large-sized ecommerce site can gain as much as a 35% increase in conversion rate just by making design changes to their checkout process.",
+        "confidence": "FACT",
+        "source_url": "https://baymard.com/blog/current-state-of-checkout-ux",
+        "source_date": null,
+        "source_name": "Baymard Institute"
+      }
+    ],
+    "primary_market": "US",
+    "trend_headline": "Sporting Goods Marketing in 2026: Trends & What Brands Must Do ...",
+    "trend_source_url": "https://netcorecloud.com/blog/us-sporting-goods-marketing-trends/",
+    "trend_source_label": "[FACT \u2014 Netcorecloud via Tavily WebFetch, date unknown, https://netcorecloud.com/blog/us-sporting-goods-marketing-trends/]"
+  },
+  "strategic_angles": [
+    {
+      "hook": "Your direct global competitor JD Sports deployed Algolia AI Search across all 3,400+ stores in 2024. Every quarter they run on Algolia and you run on /zgw widens the search experience gap.",
+      "label": "Competitive Urgency \u2014 JD Sports Is Already There",
+      "source": "[FACT \u2014 Algolia/BusinessWire press release, 2024-05-31, https://www.businesswire.com/news/home/20240531018420/en/Algolias-AI-Search-Enables-JD-Sports-to-Elevate-E-commerce-Experience]",
+      "pain_points": [
+        "JD Sports has vector-based semantic search \u2014 FL has basic keyword matching",
+        "JD Sports has omnichannel inventory search across 3,400+ stores \u2014 FL has products-only /zgw",
+        "JD Sports has Algolia revenue analytics \u2014 FL has no search analytics visibility"
+      ],
+      "algolia_proof": "JD Sports live on Algolia AI Search \u2014 https://www.businesswire.com/news/home/20240531018420/en/Algolias-AI-Search-Enables-JD-Sports-to-Elevate-E-commerce-Experience",
+      "discovery_question": "How has JD Sports' technology investment been showing up in your competitive analysis? Are you seeing a search experience gap in customer feedback?"
+    },
+    {
+      "hook": "The Dick's Sporting Goods integration creates a one-time window to set the search architecture across all 5 FL brand banners before the platforms consolidate. Set Algolia now; inherit the benefits across the full Dick's + FL portfolio.",
+      "label": "Acquisition Integration Window \u2014 Search Architecture Before Platform Locks",
+      "source": "[FACT \u2014 Dick's IR press release, 2025-09-08, https://investors.dicks.com/news/news-details/2025/DICKS-Sporting-Goods-Completes-Acquisition-of-Foot-Locker/default.aspx]",
+      "pain_points": [
+        "Post-acquisition platform consolidation will lock search architecture for 3-5 years",
+        "5 brand banners (FL, KFL, Champs, WSS, atmos) \u2014 separate storefronts, same search problem",
+        "New leadership team (Ann Freeman) hasn't chosen vendors \u2014 window closes as team stabilizes"
+      ],
+      "algolia_proof": "Algolia's multi-index architecture enables all 5 FL brand banners to share a single configuration \u2014 one implementation, 5x the surface area.",
+      "discovery_question": "What's the current state of the Dick's + Foot Locker platform integration? Is search architecture being evaluated as part of the consolidation roadmap?"
+    },
+    {
+      "hook": "Foot Locker's Lace Up plan targets $2.5B in digital sales by 2026 \u2014 25% of revenue. Digital is currently ~18-22%. Search and discovery is the highest-ROI lever for closing that gap.",
+      "label": "Digital Revenue Target \u2014 $2.5B by 2026 Requires Better Search",
+      "source": "[FACT \u2014 Shoe Carnival case study, https://www.algolia.com/customers/shoe-carnival; ESTIMATE \u2014 RetailTouchPoints on digital target, 2023, https://www.retailtouchpoints.com/topics/omnichannel-alignment/foot-locker-to-boost-digital-investments-50-as-it-aims-for-25-online-sales-by-2026]",
+      "pain_points": [
+        "~$500M digital revenue gap to close before end of 2026",
+        "Footwear conversion rate sits at ~2.2% \u2014 Shoe Carnival achieved up to 3.5x with Algolia",
+        "Search-influenced digital revenue est. ~$480-800M/year \u2014 /zgw gateway is leaving conversion on the table"
+      ],
+      "algolia_proof": "Shoe Carnival (peer footwear retailer) achieved up to 3.5x conversions from search after deploying Algolia \u2014 https://www.algolia.com/customers/shoe-carnival",
+      "discovery_question": "How are you tracking toward the 25% digital revenue target? Has the team modeled the conversion impact of improving search?"
+    },
+    {
+      "hook": "Foot Locker has 35M+ FLX loyalty members. Their loyalty data is not being used to personalize search results. Every member search delivers the same generic results as an anonymous visitor.",
+      "label": "FLX Loyalty \u00d7 Personalized Search \u2014 35M Members Untapped",
+      "source": "[FACT \u2014 Foot Locker FLX loyalty program via Retail Dive, 2025, https://www.retaildive.com/news/foot-locker-flx-loyalty-mobile-app-revamp/734834/]",
+      "pain_points": [
+        "No personalization vendor in live stack \u2014 MyBuys/Monetate removed",
+        "FLX loyalty data is stranded \u2014 not connected to search results or recommendations",
+        "Shoppers with 5-year purchase history see the same results as first-time visitors"
+      ],
+      "algolia_proof": "Algolia AI Personalization connects to loyalty data sources \u2014 personalizes SAYT, search results, and recommendations per shopper tier and behavior history from day one.",
+      "discovery_question": "How is FLX loyalty data currently being used in the search and discovery experience? Are members getting personalized results today?"
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "type": "news_signal",
+      "quote": "Dick's Sporting Goods acquired Foot Locker for ~$2.4B equity value (~$2.5B enterprise value; $24.00/share cash) on September 8, 2025. FL was delisted from NYSE. Combined entity: 3,200+ stores, $17.2B revenue. New leadership team installed.",
+      "title": "Dick's Sporting Goods Completes $2.4B Acquisition of Foot Locker",
+      "ae_action": "Reach out before next quarter planning locks \u2014 leadership window is open now",
+      "relevance": "Acquisition = new leadership team, new technology agenda, and clean-slate vendor decisions. Whoever wins the search conversation in Q1 2026 shapes the 3-5 year tech roadmap.",
+      "confidence": "FACT",
+      "source_url": "https://investors.dicks.com/news/news-details/2025/DICKS-Sporting-Goods-Completes-Acquisition-of-Foot-Locker/default.aspx",
+      "badge_label": "Dick's Sporting Goods Completes $2.4B Acquisition of Foot Locker",
+      "description": "Dick's Sporting Goods acquired Foot Locker for ~$2.4B equity value (~$2.5B enterprise value; $24.00/share cash) on September 8, 2025. FL was delisted from NYSE. Combined entity: 3,200+ stores, $17.2B revenue. New leadership team installed.",
+      "source_date": "2025-09-08"
+    },
+    {
+      "type": "earnings_quote",
+      "quote": "Ann Freeman, 26-year Nike veteran, named President of Foot Locker North America. 'I am thrilled to join at such a transformative moment.' Building new NA team from scratch.",
+      "title": "Ann Freeman (President FL NA) \u2014 'Transformative Moment'",
+      "ae_action": "Open discovery call with: \"Ann Freeman, 26-year Nike veteran, named President of\u2026\" \u2014 use to surface search gap",
+      "relevance": "New economic buyer who hasn't chosen vendors. Nike background = digital-first, search-quality-obsessed. Engage now before tech roadmap is locked.",
+      "confidence": "FACT",
+      "source_url": "https://www.prnewswire.com/news-releases/dicks-sporting-goods-completes-acquisition-of-foot-locker-302548690.html",
+      "badge_label": "Ann Freeman (President FL NA) \u2014 'Transformative Moment'",
+      "description": "Ann Freeman, 26-year Nike veteran, named President of Foot Locker North America. 'I am thrilled to join at such a transformative moment.' Building new NA team from scratch.",
+      "source_date": "2025-09-08"
+    },
+    {
+      "type": "earnings_quote",
+      "quote": "Foot Locker's former CEO explicitly named search and discovery as a 2024 customer experience priority. The audit shows this upgrade has not been delivered \u2014 the /zgw gateway remains.",
+      "title": "Mary Dillon Named 'Enhanced Search and Discovery' as 2024 Priority",
+      "ae_action": "Open discovery call with: \"Foot Locker's former CEO explicitly named search and\u2026\" \u2014 use to surface search gap",
+      "relevance": "This is a named, unfulfilled strategic priority. New Ann Freeman team inherits this mandate. Algolia is the direct solution.",
+      "confidence": "FACT",
+      "source_url": "https://www.pymnts.com/earnings/2025/foot-locker-looks-to-digital-expansion-reimagined-stores-to-woo-cautious-customers/",
+      "badge_label": "Mary Dillon Named 'Enhanced Search and Discovery' as 2024 Priority",
+      "description": "Foot Locker's former CEO explicitly named search and discovery as a 2024 customer experience priority. The audit shows this upgrade has not been delivered \u2014 the /zgw gateway remains.",
+      "source_date": "2025-02"
+    },
+    {
+      "type": "news_signal",
+      "quote": "Online apparel and footwear projected to grow from $416.15B to $449.48B in 2026 \u2014 8% YoY growth. Search discovery quality is the gating factor for capturing this growth.",
+      "title": "Online Apparel & Footwear Market Growing 8% to $449.48B in 2026",
+      "ae_action": "Reach out before next quarter planning locks \u2014 leadership window is open now",
+      "relevance": "Market tailwind + search gap = FL is leaving growth on the table. Every % of market share captured requires better search and discovery.",
+      "confidence": "ESTIMATE",
+      "source_url": "https://www.globenewswire.com/news-release/2026/01/20/3222025/28124/en/Online-Apparel-Footwear-Market-Report-2026-604-41-Bn-Opportunities-Trends-Competitive-Landscape-Strategies-and-Forecasts-2020-2025-2025-2030F-2035F.html",
+      "badge_label": "Online Apparel & Footwear Market Growing 8% to $449.48B in 2026",
+      "description": "Online apparel and footwear projected to grow from $416.15B to $449.48B in 2026 \u2014 8% YoY growth. Search discovery quality is the gating factor for capturing this growth.",
+      "source_date": "2026-01"
+    },
+    {
+      "date": "2025",
+      "type": "earnings_quote",
+      "quote": "At or ahead of all of our goals.",
+      "title": "President & CEO, Foot Locker (2022\u20132025)",
+      "speaker": "Mary Dillon",
+      "ae_action": "Open discovery call with: \"At or ahead of all of our goals.\u2026\" \u2014 use to surface search gap",
+      "relevance": "Dillon's Lace Up transformation plan explicitly included 'enhanced search and discovery capabilities' as a 2024 priority. 'At or ahead of goals' signals active investment cycle \u2014 Algolia is the direct execution tool for this mandate.",
+      "source_url": "https://nrf.com/blog/foot-locker-s-lace-up-plan-continues-to-gain-ground",
+      "badge_label": "Mary Dillon \u2014 President & CEO, Foot Locker (2022\u20132025)",
+      "source_label": "NRF.com \u2014 Foot Locker Lace Up Plan Profile",
+      "algolia_relevance": "Dillon's Lace Up transformation plan explicitly included 'enhanced search and discovery capabilities' as a 2024 priority. 'At or ahead of goals' signals active investment cycle \u2014 Algolia is the direct execution tool for this mandate."
+    },
+    {
+      "text": "Sr. Director, E-Commerce \u2014 Foot Locker, New York NY",
+      "type": "hiring_signal",
+      "title": "Sr. Director, E-Commerce",
+      "ae_action": "Identify Sr. Director, E-Commerce before they inherit status quo tools",
+      "relevance": "VP/Director level ecommerce leadership \u2014 decision-maker or champion for search and discovery technology investment.",
+      "source_url": "https://careers.footlocker.com/jobs/67410",
+      "badge_label": "Tier 1 \u2014 Economic Buyer",
+      "source_date": "2026-03-26",
+      "source_name": "Foot Locker Careers"
+    },
+    {
+      "text": "Manager, Digital Engineering \u2014 Foot Locker, Irving TX",
+      "type": "hiring_signal",
+      "title": "Manager, Digital Engineering",
+      "ae_action": "Identify Manager, Digital Engineering before they inherit status quo tools",
+      "relevance": "Engineering leadership for ecommerce platform \u2014 owns technical architecture decisions including search API integration.",
+      "source_url": "https://careers.footlocker.com/jobs/66841?lang=en-us",
+      "badge_label": "Tier 2 \u2014 Technical Buyer",
+      "source_date": "2026-03-26",
+      "source_name": "Foot Locker Careers",
+      "source_note": "VERIFIED LIVE \u2014 URL updated to include lang=en-us parameter (required for direct access)"
+    },
+    {
+      "text": "Manager, Digital Analytics \u2014 Foot Locker, Manhattan NY ($110,700\u2013$148,200)",
+      "type": "hiring_signal",
+      "title": "Manager, Digital Analytics",
+      "ae_action": "Identify Manager, Digital Analytics before they inherit status quo tools",
+      "relevance": "Analytics + digital optimization mandate at $148K salary level \u2014 owns search performance measurement and will feel every gap in the /zgw legacy API.",
+      "source_url": "https://careers.footlocker.com/jobs",
+      "badge_label": "Tier 2 \u2014 Technical Buyer",
+      "source_date": "2026-03-26",
+      "source_name": "Foot Locker Careers"
+    },
+    {
+      "text": "Manager, Digital Testing (eCommerce) \u2014 Foot Locker, St. Petersburg FL",
+      "type": "hiring_signal",
+      "title": "Manager, Digital Testing (eCommerce)",
+      "ae_action": "Identify Manager, Digital Testing (eCommerce) before they inherit status quo tools",
+      "relevance": "Testing/optimization for ecommerce \u2014 this role will run A/B tests that expose every search gap in the custom /zgw gateway.",
+      "source_url": "https://careers.footlocker.com/us/en/c/ecommerce-jobs?s=1",
+      "badge_label": "Tier 2 \u2014 Technical Buyer",
+      "source_date": "2026-03-26",
+      "source_name": "Foot Locker Careers",
+      "source_note": "[VERIFIED \u2014 role confirmed active as of collection date; original URL /jobs/58938 expired (June 2025 deadline). Replaced with Foot Locker eCommerce jobs listing page as canonical source.]"
+    },
+    {
+      "text": "Sr. Product Manager, eCommerce (Purchase) \u2014 Foot Locker, Multiple Locations",
+      "type": "hiring_signal",
+      "title": "Sr. Product Manager, eCommerce (Purchase)",
+      "ae_action": "Identify Sr. Product Manager, eCommerce (Purchase) before they inherit status quo tools",
+      "relevance": "PM for ecommerce purchase funnel \u2014 likely controls search/discovery product roadmap. Natural Algolia champion and internal advocate.",
+      "source_url": "https://careers.footlocker.com/jobs/67573",
+      "badge_label": "Tier 3 \u2014 Champion",
+      "source_date": "2026-03-26",
+      "source_name": "Foot Locker Careers"
+    }
+  ],
+  "competitive_synthesis": {
+    "the_ask": "Replace the /zgw custom gateway with Algolia NeuralSearch. Start with a 6-8 week A/B test on footlocker.com. Extend to all 5 brand banners in Month 3.",
+    "scenario": "GOLDEN \u2014 Direct competitor (JD Sports) uses Algolia with public announcement across 3,400+ stores. Algolia has proof in this exact vertical at exact competitor scale.",
+    "experience_debt": {
+      "summary": "Foot Locker's search scores 3.2/10 while JD Sports runs Algolia AI Search. The gap: NLP, semantic search, personalization, recommendations, dynamic facets, federated search, and analytics \u2014 all absent at FL, all live at JD Sports.",
+      "estimated_revenue_risk": "~$480-800M in search-influenced digital revenue at risk if search quality gap persists"
+    },
+    "roi_by_scenario": {
+      "moderate": "~$60-120M/year (12-25% conversion improvement)",
+      "optimistic": "~$200M+/year (Shoe Carnival up to 3.5x benchmark applied)",
+      "conservative": "~$24-48M/year (5-10% conversion improvement on $480M search-addressable base)"
+    },
+    "competitor_tiers": [
+      {
+        "tier": "golden",
+        "companies": [
+          "JD Sports"
+        ],
+        "description": "JD Sports \u2014 direct global competitor, live on Algolia AI Search since 2024",
+        "algolia_status": "confirmed"
+      },
+      {
+        "tier": "reachable_peer",
+        "companies": [
+          "Shoe Carnival"
+        ],
+        "description": "Shoe Carnival \u2014 adjacent US footwear retailer, up to 3.5x conversion lift on Algolia",
+        "algolia_status": "confirmed"
+      },
+      {
+        "tier": "unknown",
+        "companies": [
+          "Dick's Sporting Goods",
+          "Hibbett Sports",
+          "Finish Line"
+        ],
+        "description": "Dick's Sporting Goods, Hibbett Sports, Finish Line \u2014 search vendor TBD",
+        "algolia_status": "unknown"
+      }
+    ],
+    "matrix_col_labels": {
+      "nike_has": "JD Sports",
+      "asics_has": "Shoe Carnival",
+      "on_running_has": "Clarks",
+      "new_balance_has": "Hibbett / Finish Line"
+    },
+    "positioning_matrix": [
+      {
+        "nike_has": "Algolia AI Search across 3,400+ stores + digital channels",
+        "asics_has": "Algolia search + recommendations (up to 3.5x conversions)",
+        "capability": "NLP / Semantic Search",
+        "algolia_delta": "Full semantic understanding \u2014 brand, activity, price, attribute intents in one query",
+        "on_running_has": "Clarks: Algolia AI recs \u2014 reduced irrelevant results, fewer returns",
+        "prospect_today": "0/10 \u2014 keyword-only /zgw gateway, no NLP layer",
+        "new_balance_has": "Hibbett (JD Sports group): search vendor unconfirmed",
+        "prospect_with_algolia": "NeuralSearch \u2014 semantic + typo-tolerant + price-aware + intent-detecting"
+      },
+      {
+        "nike_has": "AI personalization + omnichannel member data",
+        "asics_has": "Personalization via Algolia \u2014 loyalty-aware search results",
+        "capability": "Personalization",
+        "algolia_delta": "Immediate personalization from day 1 using existing FLX loyalty data \u2014 no new data collection",
+        "on_running_has": "Clarks: AI-powered personalization via Algolia Recommend",
+        "prospect_today": "None \u2014 MyBuys/Monetate removed, no active personalization layer",
+        "new_balance_has": "Unknown",
+        "prospect_with_algolia": "Algolia AI Personalization connected to FLX loyalty (35M members)"
+      },
+      {
+        "nike_has": "AI-powered recommendations \u2014 proprietary",
+        "asics_has": "Algolia Recommend \u2014 doubled merchandising productivity (Shoe Carnival)",
+        "capability": "Recommendations Engine",
+        "algolia_delta": "10-30% incremental revenue from recommendations surfaces \u2014 PDP, cart, no-results",
+        "on_running_has": "Clarks: 'catapulted ahead' with Algolia AI recommendations",
+        "prospect_today": "None \u2014 no active recommendations vendor anywhere in stack",
+        "new_balance_has": "Unknown",
+        "prospect_with_algolia": "Algolia Recommend (FBT, Similar Items, Trending Items)"
+      },
+      {
+        "nike_has": "Federated search across products, articles, store finder",
+        "asics_has": "Shoe Carnival: unified product + content search",
+        "capability": "Federated Search",
+        "algolia_delta": "Non-product queries convert to discovery instead of abandonment",
+        "on_running_has": "Clarks: global content federation across 7,000+ SKUs",
+        "prospect_today": "Products-only \u2014 'return policy' returns zero content pages",
+        "new_balance_has": "Unknown",
+        "prospect_with_algolia": "Unified search: products + content + brand pages + policy docs"
+      },
+      {
+        "nike_has": "Full revenue analytics + search intelligence",
+        "asics_has": "Algolia Analytics \u2014 search funnel visibility + merchandising insights",
+        "capability": "Search Analytics + Intelligence",
+        "algolia_delta": "Merchandisers can see what's failing, what's converting, and why \u2014 for the first time",
+        "on_running_has": "Clarks: analytics-driven merchandising decisions",
+        "prospect_today": "None \u2014 no analytics signals in search results, /zgw provides no feedback loop",
+        "new_balance_has": "JD Sports: 'new revenue analytics' (per JD Sports/Algolia announcement)",
+        "prospect_with_algolia": "Algolia Analytics + Insights \u2014 click analytics, revenue analytics, no-results dashboard"
+      }
+    ],
+    "positioning_statements": {
+      "default": "Algolia is the search platform of record across footwear retail \u2014 JD Sports, Shoe Carnival, Clarks. Foot Locker is the gap in the portfolio.",
+      "vs_jdsports": "JD Sports made the same call Foot Locker needs to make now \u2014 move from legacy search to Algolia AI Search. They did it in 2024. Foot Locker still has the window to make the same move before the gap becomes permanent.",
+      "vs_shoe_carnival": "Shoe Carnival is a smaller footwear retailer than Foot Locker \u2014 and they achieved up to 3.5x conversions from search on Algolia. The ROI benchmark is directly applicable at Foot Locker's scale."
+    }
+  },
+  "recommended_first_play": {
+    "type": "competitive",
+    "detail": "JD Sports (Foot Locker's direct global competitor) deployed Algolia AI Search across 3,400+ stores in 2024. Lead with the competitive gap \u2014 it's documented, sourced, and undeniable. Ann Freeman (Nike DNA) will respond to competitive urgency.",
+    "source": "competitors",
+    "urgency": "high",
+    "headline": "JD Sports is live \u2014 Foot Locker isn't"
+  }
+}

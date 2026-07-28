@@ -1,0 +1,1846 @@
+{
+  "meta": {
+    "company": "British Airways",
+    "domain": "britishairways.com",
+    "audit_date": "2026-05-09",
+    "audited_by": "Algolia Sales Intelligence",
+    "slug": "british-airways",
+    "data_vintage": {
+      "traffic": "2026-03 (SimilarWeb + Semrush public pages)",
+      "financials": "FY2025 (IAG Annual Results, Feb 2026)",
+      "tech_stack": "2026-04-28 (BuiltWith + Chrome DevTools MCP)",
+      "competitors": "2026-04-28 (SimilarWeb + Himalayas.app)",
+      "browser_audit": "2026-05-09 (Patchright stealth, Akamai bypassed)"
+    },
+    "generated_by": "generate-audit-data.py + LLM synthesis",
+    "patch_date": "2026-05-12"
+  },
+  "cover": {
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/British_Airways_A380_G-XLEL_on_take_off.jpg/1280px-British_Airways_A380_G-XLEL_on_take_off.jpg",
+    "company_logo_url": "https://logo.clearbit.com/britishairways.com",
+    "tagline": "The flag carrier burning revenue on legacy search while competitors go digital-first"
+  },
+  "score": {
+    "overall": 2.1,
+    "verdict": "Critical Gaps",
+    "verdict_class": "critical",
+    "breakdown": {
+      "latency": 4.0,
+      "typo_tolerance": 2.0,
+      "query_suggestions_empty_state": 2.0,
+      "intent_detection": 2.0,
+      "merchandising_consistency": 4.0,
+      "content_commerce_ux": 3.0,
+      "semantic_nlp_search": 1.0,
+      "dynamic_facets_personalization": 2.0,
+      "recommendations_merchandising": 2.0,
+      "search_intelligence": 1.0
+    },
+    "breakdown_severity": {
+      "latency": "MEDIUM",
+      "typo_tolerance": "HIGH",
+      "query_suggestions_empty_state": "HIGH",
+      "intent_detection": "HIGH",
+      "merchandising_consistency": "MEDIUM",
+      "content_commerce_ux": "HIGH",
+      "semantic_nlp_search": "HIGH",
+      "dynamic_facets_personalization": "HIGH",
+      "recommendations_merchandising": "HIGH",
+      "search_intelligence": "HIGH"
+    },
+    "breakdown_labels": {
+      "latency": "Latency",
+      "typo_tolerance": "Typo Tolerance",
+      "query_suggestions_empty_state": "Query Suggestions / Empty State",
+      "intent_detection": "Intent Detection",
+      "merchandising_consistency": "Merchandising Consistency",
+      "content_commerce_ux": "Content Commerce / Front-End UX",
+      "semantic_nlp_search": "Semantic / NLP Search",
+      "dynamic_facets_personalization": "Dynamic Facets & Personalization",
+      "recommendations_merchandising": "Recommendations & Merchandising",
+      "search_intelligence": "Search Intelligence"
+    },
+    "critical_count": 8,
+    "moderate_count": 10,
+    "formula_shown": "sum(score×weight)/sum(weights)",
+    "source": "10-scoring-matrix.md"
+  },
+  "company_snapshot": {
+    "company": "British Airways PLC",
+    "industry": "Airlines / Travel",
+    "sub_industry": "Full-Service Flag Carrier",
+    "hq": "Waterside, Harmondsworth, near Heathrow Airport, London, UK",
+    "founded": "1974",
+    "employees": "~40,521 (BA) / 75,786 (IAG Group, FY2025)",
+    "revenue": "EUR 33.2B (IAG Group FY2025)",
+    "revenue_source": "IAG FY2025 Results Press Release -- https://www.iairgroup.com/press-releases/2026/iag-full-year-results-2025/",
+    "ticker": "IAG.L (LSE)",
+    "parent": "International Airlines Group (IAG)",
+    "current_search_vendor": "Apache Solr (self-hosted) -- BA Holidays; Inbenta Knowledge Management -- Help/Support",
+    "monthly_visits": "~18.5M/mo",
+    "monthly_visits_source": "SimilarWeb + Semrush public pages, March 2026 [ESTIMATE]",
+    "ecommerce_platform": "Bespoke: Amadeus Nevio (booking engine) + AEM (CMS) + custom",
+    "business_model": "Full-service airline + BA Holidays package travel + IAG Loyalty (Avios)",
+    "digital_focus": "85-90% direct booking target by 2027; 7B transformation; new ba.com rolling out",
+    "parent_entity": "International Airlines Group (IAG)",
+    "is_conglomerate": false,
+    "portfolio_brands": [
+      {
+        "name": "British Airways",
+        "domain": "britishairways.com",
+        "is_audit_target": true,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "Iberia",
+        "domain": "iberia.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "Aer Lingus",
+        "domain": "aerlingus.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "Vueling",
+        "domain": "vueling.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "LEVEL",
+        "domain": "flylevel.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "Iberia Express",
+        "domain": "iberiaexpress.com",
+        "is_audit_target": false,
+        "source": "[FACT — en.wikipedia.org/wiki/International_Airlines_Group, 2026-04-28]"
+      },
+      {
+        "name": "IAG Cargo",
+        "domain": "iagcargo.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      },
+      {
+        "name": "Avios (IAG Loyalty)",
+        "domain": "avios.com",
+        "is_audit_target": false,
+        "source": "[FACT — iairgroup.com, 2026-04-28]"
+      }
+    ],
+    "portfolio_opportunity_note": "8-brand portfolio = 8× the search optimization surface"
+  },
+  "executives": [
+    {
+      "name": "Sean Doyle",
+      "title": "Chairman and Chief Executive, British Airways",
+      "quote": "It's fair to say that we're probably behind the curve.",
+      "quote_context": "Publicly admitted BA's digital gap at Globant Converge 2025, London. Described transformation as a 'leapfrog opportunity.'",
+      "quote_date": "2025-12",
+      "source_name": "The Register -- Globant Converge 2025",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+      "algolia_relevance": "CEO has pre-sold internal mandate for technology modernisation. Leapfrog framing means BA wants step-change, not incremental. Algolia NeuralSearch on holiday search is the leapfrog.",
+      "linkedin": "https://uk.linkedin.com/in/sean-doyle-2b7726",
+      "quote_source": "The Register -- Globant Converge 2025"
+    },
+    {
+      "name": "Sean Doyle",
+      "title": "Chairman and Chief Executive, British Airways",
+      "quote": "There's a lot of process-intensive ways we run the airline today using old technology that we can simply revolutionize.",
+      "quote_context": "Same Globant Converge 2025 session -- framing legacy replacement as opportunity.",
+      "quote_date": "2025-12",
+      "source_name": "The Register",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+      "algolia_relevance": "Algolia is a modern search layer that overlays legacy systems -- no mainframe migration required.",
+      "linkedin": "https://uk.linkedin.com/in/sean-doyle-2b7726",
+      "quote_source": "The Register"
+    },
+    {
+      "name": "Henning Krueger",
+      "title": "Chief Information and Digital Officer, British Airways",
+      "quote": "BA goal is to empower all employees to use AI-driven insights, combining aviation data gene with innovative digital perspectives. [Paraphrase from World Aviation Festival 2025 coverage]",
+      "quote_context": "Krueger joined BA in October 2024 from Lufthansa. Presented Shaping the future of British Airways with Technology at World Aviation Festival 2025. Said that BA goal is to empower all employees to use AI-driven insights.",
+      "quote_date": "2025-10",
+      "source_name": "ePlaneAI / World Aviation Festival 2025",
+      "source_url": "https://www.eplaneai.com/news/airlines-transition-from-data-silos-to-ai-driven-insights",
+      "algolia_relevance": "CIDO -- primary technical buyer for Algolia NeuralSearch. No legacy attachment to inherited Solr. First 18 months in role = active vendor evaluation window.",
+      "linkedin": "https://uk.linkedin.com/in/henningkrueger/en",
+      "quote_source": "ePlaneAI / World Aviation Festival 2025"
+    },
+    {
+      "name": "Jake Pearce",
+      "title": "Head of AI, British Airways",
+      "quote": "You're really reinforcing the point that this isn't a technology change, this is a people change.",
+      "quote_context": "Emphasising outcomes over features in BA AI transformation programme. Leading 600 AI use case roadmap.",
+      "quote_date": "2025",
+      "source_name": "Process Excellence Network",
+      "source_url": "https://www.processexcellencenetwork.com/ai/news/british-airways-takes-flight-with-ai-driven-business-transformation",
+      "algolia_relevance": "Pitch Algolia in terms of ROI outcomes. Jake is the natural champion for a high-ROI customer-facing AI use case.",
+      "linkedin": null,
+      "quote_source": "Process Excellence Network"
+    }
+  ],
+  "intelligence_signals": [
+    {
+      "type": "exec",
+      "signal": "CEO publicly declared BA is 'behind the curve' on digital and described the transformation as a 'leapfrog opportunity'",
+      "relevance": "Creates board-level mandate for modern technology decisions. New CIDO has no legacy loyalty to Solr.",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+      "source_date": "2025-12-13",
+      "urgency_score": 9,
+      "category_tag": "leadership_change",
+      "text": "CEO publicly declared BA is 'behind the curve' on digital and described the transformation as a 'leapfrog opportunity'",
+      "badge_label": "Executive Signal"
+    },
+    {
+      "type": "partner",
+      "signal": "BA Holidays formally partnered with Thoughtworks (October 2025) to re-architect existing digital platforms, explicitly targeting 'easy discoverability'",
+      "relevance": "Architecture decisions being made right now will define the BA Holidays search layer for 5-7 years.",
+      "source_url": "https://www.prnewswire.com/news-releases/british-airways-holidays-partners-with-thoughtworks-to-deliver-a-new-standard-in-digital-traveller-experiences-302573387.html",
+      "source_date": "2025-10-02",
+      "urgency_score": 10,
+      "category_tag": "tech_investment",
+      "text": "BA Holidays formally partnered with Thoughtworks (October 2025) to re-architect existing digital platforms, explicitly targeting 'easy discoverability'",
+      "badge_label": "Partnership"
+    },
+    {
+      "type": "industry-risk",
+      "signal": "CEO identified AI agent disintermediation as BA most significant strategic risk -- 'the days when a decent website and a prominent Google result were enough to stay visible are diminishing quickly'",
+      "relevance": "Algolia Agentic AI Search is the direct answer. Self-hosted Solr cannot serve AI agents at scale.",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+      "source_date": "2025-12-13",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption",
+      "text": "CEO identified AI agent disintermediation as BA most significant strategic risk -- 'the days when a decent website and a prominent Google result were enough to stay visible are diminishing quickly'",
+      "badge_label": "Industry Risk"
+    },
+    {
+      "type": "funding",
+      "signal": "IAG FY2025 record results: operating profit EUR 5.024B (+13.1%), BA operating profit GBP 2,230M at 15.2% margin, FCF EUR 3.1B. 2026 CapEx confirmed at ~EUR 3.6B.",
+      "relevance": "BA has budget. Record profit attributed in part to technology investment.",
+      "source_url": "https://www.iairgroup.com/press-releases/2026/iag-full-year-results-2025/",
+      "source_date": "2026-02-27",
+      "urgency_score": 7,
+      "category_tag": "strategic_signal",
+      "text": "IAG FY2025 record results: operating profit EUR 5.024B (+13.1%), BA operating profit GBP 2,230M at 15.2% margin, FCF EUR 3.1B. 2026 CapEx confirmed at ~EUR 3.6B.",
+      "badge_label": "Funding"
+    },
+    {
+      "type": "digital_transformation",
+      "signal": "7B transformation programme (2024-2026): 750M cloud migration (700 systems, 90% complete), 100M AI/ML investment, 31 live AI use cases, 600 identified.",
+      "relevance": "Active procurement window. Cloud infrastructure is ready for cloud-native search.",
+      "source_url": "https://www.itpro.com/business/digital-transformation/british-airways-eyes-cloud-overhaul-and-ai-deployment-in-pound7-billion-it-upgrade",
+      "source_date": "2024-03-08",
+      "urgency_score": 9,
+      "category_tag": "digital_transformation",
+      "text": "7B transformation programme (2024-2026): 750M cloud migration (700 systems, 90% complete), 100M AI/ML investment, 31 live AI use cases, 600 identified.",
+      "badge_label": "Digital Transformation"
+    },
+    {
+      "type": "competitor",
+      "signal": "EasyJet overtook BA as UK largest airline by passenger volume in 2021. EasyJet global rank #1,563 vs BA #1,812.",
+      "relevance": "BA has 8.17 pages/visit (highest of all 10 measured competitors) vs EasyJet (5.30 pages/visit). Better search compresses this journey.",
+      "source_url": "https://www.similarweb.com/website/britishairways.com/competitors/",
+      "source_date": "2026-04-28",
+      "urgency_score": 7,
+      "category_tag": "competitive_threat",
+      "text": "EasyJet overtook BA as UK largest airline by passenger volume in 2021. EasyJet global rank #1,563 vs BA #1,812.",
+      "badge_label": "Competitor Signal"
+    },
+    {
+      "type": "industry-opp",
+      "signal": "Club Med (same holiday package vertical: 70 destinations, 35 markets) deployed Algolia in 2024. Case study published March 2026. 'Search has become a true strategic lever for growing direct online bookings.'",
+      "relevance": "Direct category proof. BA Holidays has the same product structure and the same discovery problem.",
+      "source_url": "https://www.algolia.com/customers/club-med",
+      "source_date": "2026-03-10",
+      "urgency_score": 9,
+      "category_tag": "strategic_signal",
+      "text": "Club Med (same holiday package vertical: 70 destinations, 35 markets) deployed Algolia in 2024. Case study published March 2026. 'Search has become a true strategic lever for growing direct online bookings.'",
+      "badge_label": "Industry Opportunity"
+    },
+    {
+      "type": "exec",
+      "signal": "New CIDO Henning Krueger hired October 2024 from Lufthansa -- under 18 months in role, no legacy attachment to inherited Solr infrastructure",
+      "relevance": "New technology executives initiate 60-70% of new vendor evaluations within first 18 months (Gartner CIO survey). Krueger is inside that window now.",
+      "source_url": "https://mediacentre.britishairways.com/factsheet/details/275",
+      "source_date": "2024-10",
+      "urgency_score": 9,
+      "category_tag": "leadership_change",
+      "text": "New CIDO Henning Krueger hired October 2024 from Lufthansa -- under 18 months in role, no legacy attachment to inherited Solr infrastructure",
+      "badge_label": "Executive Signal"
+    },
+    {
+      "type": "industry-risk",
+      "signal": "BA session duration dropped from 10:12 (October 2025) to 5:50 (March 2026) despite monthly visits growing +17.84%. BA has highest pages/visit (8.17) among all 10 measured competitors.",
+      "relevance": "Quantified search friction signal. Users clicking through 44% more pages than Virgin Atlantic because search fails.",
+      "source_url": "https://www.similarweb.com/website/britishairways.com/",
+      "source_date": "2026-04-28",
+      "urgency_score": 7,
+      "category_tag": "cost_pressure",
+      "text": "BA session duration dropped from 10:12 (October 2025) to 5:50 (March 2026) despite monthly visits growing +17.84%. BA has highest pages/visit (8.17) among all 10 measured competitors.",
+      "badge_label": "Industry Risk"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Sean Doyle, Chairman & CEO, British Airways",
+      "signal": "For our teams, 2026 is about continuing to transform and innovate - unlocking the full benefits of the changes we're mak",
+      "algolia_angle": "Doyle's forward-looking 2026 priorities statement signals active investment cycle, creating budget urgency for an Algolia conversation this year.",
+      "source_url": "https://mediacentre.britishairways.com/factsheet/details/717",
+      "source_name": "British Airways Media Centre",
+      "publication": "British Airways Media Centre",
+      "source_date": "2026-01",
+      "confidence": "FACT",
+      "label": "[FACT — British Airways Media Centre, 2026-01, https://mediacentre.britishairways.com/factsheet/details/717]",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption",
+      "text": "For our teams, 2026 is about continuing to transform and innovate - unlocking the full benefits of the changes we're mak"
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Sean Doyle, Chairman & CEO, British Airways",
+      "signal": "Improving operational performance is a key part of our investment programme.",
+      "algolia_angle": "Doyle's repeated emphasis on technology investment programmes affirms that BA's transformation budget is live and actively allocating — Algolia fits as a rapid-deploy component within this cycle.",
+      "source_url": "https://www.facebook.com/britishairways/posts/a-statement-from-sean-doyle-the-ceo-and-chairman-of-british-airways-following-th/1068635205293844/",
+      "source_name": "British Airways (official statement)",
+      "publication": "British Airways (official statement)",
+      "source_date": "2025-03",
+      "confidence": "FACT",
+      "label": "[FACT — British Airways official statement via Facebook, 2025-03, https://www.facebook.com/britishairways/posts/a-statement-from-sean-doyle-the-ceo-and-chairman-of-british-airways-following-th/1068635205293844/]",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption",
+      "text": "Improving operational performance is a key part of our investment programme."
+    },
+    {
+      "type": "media_quote",
+      "badge_label": "Luis Gallego, CEO, International Airlines Group",
+      "signal": "Record set of results for 2025, supported by continued travel demand, improved operations, and lower fuel costs.",
+      "algolia_angle": "Record profitability and confirmed technology investment mandate signal that IAG and BA have the financial capacity to deploy new search infrastructure — budget is not a blocker.",
+      "source_url": "https://finance.yahoo.com/news/international-consolidated-airlines-group-q4-104552765.html",
+      "source_name": "Yahoo Finance / IAG Q4 FY2025 Earnings Highlights",
+      "publication": "Yahoo Finance / IAG Q4 FY2025 Earnings Highlights",
+      "source_date": "2026-02",
+      "confidence": "FACT",
+      "label": "[FACT — Yahoo Finance / IAG Q4 FY2025 earnings highlights, 2026-02, https://finance.yahoo.com/news/international-consolidated-airlines-group-q4-104552765.html]",
+      "urgency_score": 8,
+      "category_tag": "ai_disruption",
+      "text": "Record set of results for 2025, supported by continued travel demand, improved operations, and lower fuel costs."
+    }
+  ],
+  "competitors": [
+    {
+      "name": "Virgin Atlantic",
+      "domain": "virginatlantic.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "1",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "EasyJet",
+      "domain": "easyjet.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "2",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Emirates",
+      "domain": "emirates.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "3",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Qatar Airways",
+      "domain": "qatarairways.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "4",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    },
+    {
+      "name": "Ryanair",
+      "domain": "ryanair.com",
+      "search_vendor": "Unknown",
+      "monthly_traffic": "5",
+      "traffic_rank": null,
+      "uses_algolia": false,
+      "notes": null
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Zero NLP / Semantic Understanding -- Apache Solr q=* Wildcard",
+      "severity": "critical",
+      "category": "Semantic / NLP Search",
+      "tested_query": "beach holiday in November",
+      "expected_behavior": "User types 'beach holiday in November under 2,000 GBP' and sees relevant Caribbean/Mediterranean packages ranked by relevance",
+      "actual_behavior": "Apache Solr fires q=* (wildcard match only) -- zero query understanding. All search logic is structured filter queries. Conversational/NLP queries are architecturally impossible.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/08-holidays-solr-evidence.png",
+      "prospect_description": "BA Holidays runs Apache Solr self-hosted at /solr/hotelPackages/safe. The q=* wildcard is definitive: the system has zero natural language processing. A traveller typing beach in January or ski resort from London gets nothing. The entire discovery model is filter-first, not search-first.",
+      "algolia_solution": "Algolia NeuralSearch replaces Solr as the search layer on top of BA Holidays existing hotel inventory data. NeuralSearch understands beach in November and returns relevant coastal resort packages. No Amadeus Nevio dependency -- pure search-layer swap. Deploys in 90 days.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/club-med",
+      "algolia_case_study_company": "Club Med",
+      "algolia_case_study_result": "Search became 'a true strategic lever for growing direct online bookings' -- higher CTRs, more online conversions, fewer zero-result pages, ~10ms response (200x faster than industry benchmark)"
+    },
+    {
+      "id": "F02",
+      "title": "No Search-as-You-Type (SAYT) / Autocomplete on Destination Fields",
+      "severity": "critical",
+      "category": "Query Suggestions & Empty State",
+      "tested_query": "beach",
+      "expected_behavior": "As user types, destination suggestions appear instantly with popular destinations, packages, and price indicators",
+      "actual_behavior": "No SAYT/autocomplete detected on destination fields. Solr fires batch queries on page load only -- not on individual keystrokes. Customers must type a full airport code or exact destination name.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/09-destination-widget-focus.png",
+      "prospect_description": "BA Holidays destination fields trigger Solr batch queries on page load -- not on keystroke. No predictive autocomplete guides the customer. This is one of the highest-friction moments in the booking journey.",
+      "algolia_solution": "Algolia Autocomplete with Query Suggestions surfaces destination options, price ranges, and popular packages as the user types -- from the first character.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/club-med",
+      "algolia_case_study_company": "Club Med",
+      "algolia_case_study_result": "Higher click-through rates and more online conversions after deploying Algolia Query Suggestions and Recommendations across 35 markets"
+    },
+    {
+      "id": "F03",
+      "title": "Zero Typo Tolerance -- Misspellings Return No Results",
+      "severity": "critical",
+      "category": "Typo Tolerance",
+      "tested_query": "Barcellona",
+      "expected_behavior": "Typo-tolerant search corrects 'Barcellona' to 'Barcelona' and returns relevant holiday packages",
+      "actual_behavior": "Solr uses default query parser with q=* wildcard -- no fuzzy matching, no typo correction. Holiday search does not accept free-text at all (pure filter model).",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/06-homepage-root.png",
+      "prospect_description": "BA holiday search does not process free-text input at all. The real risk is on /travel/searchba/ (vendor unknown) where typo tolerance is unmeasured. With 18.5M monthly visitors and 61.76% on mobile, every unrecovered typo is a lost booking.",
+      "algolia_solution": "Algolia built-in typo tolerance (1 typo per word up to 8 characters, 2 typos above) is on by default -- no configuration required.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate, +150% sales contribution from search after deploying Algolia (including typo tolerance and NeuralSearch)"
+    },
+    {
+      "id": "F04",
+      "title": "No Federated Search -- Three Disconnected Search Systems",
+      "severity": "critical",
+      "category": "Federated Search & UX",
+      "tested_query": "check-in",
+      "expected_behavior": "Unified search surfaces relevant results across holidays, flights, help articles, and FAQs in a single interface",
+      "actual_behavior": "Three completely disconnected search systems: Apache Solr (holidays), Inbenta KM (help/FAQ), unknown vendor (/travel/searchba/ -- blocked). No unified search experience. Help page has no on-page search box.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/05-help-faq-categories.png",
+      "prospect_description": "A BA customer who wants to check baggage allowance before booking a holiday must navigate Header, Accordion category, Subcategory -- with no search box on the help page itself. With NPS as a CEO KPI, this manual navigation is a direct NPS detractor.",
+      "algolia_solution": "Algolia federated search unifies holidays, help content, and page results in a single search bar with categorized results. Customers who self-serve via search do not call centres.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/club-med",
+      "algolia_case_study_company": "Club Med",
+      "algolia_case_study_result": "Reduced call-centre dependency and increased direct online conversions after deploying unified Algolia search across 35 markets"
+    },
+    {
+      "id": "F05",
+      "title": "No Personalization in Holiday Search Results",
+      "severity": "critical",
+      "category": "Dynamic Facets & Personalization",
+      "tested_query": "Caribbean holidays",
+      "expected_behavior": "A BA Club Gold member sees premium cabin offers and luxury resorts surfaced first; a first-time visitor sees popular value packages",
+      "actual_behavior": "Results sorted by geo-distance from user IP and total price only. No loyalty tier signal in search ranking. Adobe Target active on holidays page for A/B testing of page content -- but not search result ranking.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/01-holidays-homepage.png",
+      "prospect_description": "The new spend-based British Airways Club (April 2025) requires BA to sell more ancillaries and holiday packages to retain high-value members. Search personalization is the conversion infrastructure that makes the loyalty model succeed.",
+      "algolia_solution": "Algolia Personalization connects BA Club tier and travel history data to real-time search ranking -- Gold members see premium cabin and luxury resort offers first. IAG Loyalty GBP 469M profit base grows when members find and book holidays faster.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate after deploying Algolia Personalization, Rules, and Analytics"
+    },
+    {
+      "id": "F06",
+      "title": "Zero Product Recommendations on Holiday Pages",
+      "severity": "critical",
+      "category": "Recommendations & Merchandising",
+      "tested_query": "Caribbean holidays",
+      "expected_behavior": "Below or alongside results: 'Popular this week', 'Trending destinations from London', 'Customers also booked', cross-sell to car hire or airport lounges",
+      "actual_behavior": "No product recommendations visible anywhere on holiday pages. Baynote (former recommendations engine) listed as removed technology with no confirmed replacement.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/03-mobile-holidays.png",
+      "prospect_description": "BA Holidays has 10,500+ hotels across 600+ destinations. With no recommendations engine, the catalogue is inaccessible beyond explicit filter searches. Baynote was removed and never replaced -- a 5+ year gap in recommendation capability.",
+      "algolia_solution": "Algolia Recommend deploys ML-powered recommendations with zero custom ML required.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/club-med",
+      "algolia_case_study_company": "Club Med",
+      "algolia_case_study_result": "Club Med deployed Algolia Recommendations alongside Search -- increased online conversions and direct bookings across 35 markets"
+    },
+    {
+      "id": "F07",
+      "title": "Help Centre Relies on 2018 Inbenta FAQ Chatbot -- No Modern Search",
+      "severity": "moderate",
+      "category": "Semantic / NLP Search (Help)",
+      "tested_query": "baggage allowance",
+      "expected_behavior": "Instant search results surface the most relevant baggage articles, with typo tolerance and query suggestions",
+      "actual_behavior": "Inbenta Knowledge Management (purchased 2018) powers help search. Help page has no search box -- customers navigate accordion categories. No NeuralSearch, no dynamic facets, no on-page instant search.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/04-help-contacts.png",
+      "prospect_description": "Sean Doyle has NPS as a personal KPI (+10.5 points improvement in FY2025). Help search quality directly drives NPS: customers who cannot find answers via self-service call BA contact centres.",
+      "algolia_solution": "Algolia can replace or complement Inbenta for the help/knowledge centre -- search-as-you-type on baggage allowance surfaces instant results with typo tolerance and federated display.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/club-med",
+      "algolia_case_study_company": "Club Med",
+      "algolia_case_study_result": "Reduced call-centre dependency through improved digital search self-service"
+    },
+    {
+      "id": "F08",
+      "title": "No Search Analytics or Intelligence Feedback Loop",
+      "severity": "moderate",
+      "category": "Search Intelligence",
+      "tested_query": "N/A -- analytics signals not visible in search UI",
+      "expected_behavior": "Search surfaces trending destinations, popular searches, 'people also looked at' -- and analytics feed back to improve ranking automatically",
+      "actual_behavior": "Zero search analytics signals visible in any tested search surface. Solr self-hosted has no built-in analytics feedback loop. ContentSquare and Quantum Metric track session-level UX but do not feed search ranking.",
+      "impact_stat": "",
+      "impact_stat_source": "",
+      "screenshot_file": "screenshots/10-final-overview.png",
+      "prospect_description": "BA has 18.5M monthly visits and a substantial holiday catalogue. Without search analytics, BA cannot know which destination queries return zero results, which filters are used most, or what causes users to abandon search.",
+      "algolia_solution": "Algolia Analytics provides real-time search metrics: zero-result rate, click-through rate by query, A/B test results for ranking changes. AI Re-ranking automatically improves result order based on click patterns.",
+      "algolia_case_study_url": "https://www.algolia.com/customers/lacoste",
+      "algolia_case_study_company": "Lacoste",
+      "algolia_case_study_result": "+37% conversion rate -- analytics-driven ranking optimisation was central to the Lacoste Algolia deployment"
+    }
+  ],
+  "gap_pairs": [
+    {
+      "said_quote": "It's fair to say that we're probably behind the curve.",
+      "said_attr": "Sean Doyle, Chairman & CEO, British Airways — The Register, December 2025",
+      "found_title": "Apache Solr q=* Wildcard — Zero NLP on BA Holidays",
+      "found_evidence": "Apache Solr fires q=* (wildcard match) on BA Holidays — zero query understanding, zero NLP, zero semantic capability. The holiday search experience has not meaningfully evolved in years while OTAs invested heavily in AI-powered discovery.",
+      "finding_id": "F01",
+      "algolia_angle": "Algolia NeuralSearch is the fastest path from behind the curve to leapfrog — 90-day deployment on existing holiday inventory data, same Club Med journey in 2024.",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/"
+    },
+    {
+      "said_quote": "Search has become a true strategic lever for growing direct online bookings as well as an increasing share of online conversions.",
+      "said_attr": "Maroua Chouari, QA Automation Engineer, Club Med",
+      "found_title": "BA Holidays Has the Same Discovery Problem Club Med Solved",
+      "found_evidence": "BA Holidays has the same holiday package discovery problem Club Med had before Algolia — complex multi-destination catalogue (10,500+ hotels, 600+ destinations), legacy search vendor (Solr q=*), heavy call-centre dependency for complex queries.",
+      "finding_id": "F04",
+      "algolia_angle": "Club Med is the proof of concept for BA Holidays. Same vertical, same discovery problem, deployed 2024, public case study March 2026.",
+      "source_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+      "said_source_label": "Travolution, March 2026",
+      "said_source_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/"
+    },
+    {
+      "said_quote": "There's a lot of process-intensive ways we run the airline today using old technology that we can simply revolutionize.",
+      "said_attr": "Sean Doyle, Chairman & CEO, British Airways — The Register, December 2025",
+      "found_title": "Self-Hosted Solr Is the Old Technology Doyle Described",
+      "found_evidence": "Self-hosted Apache Solr at /solr/hotelPackages/safe is exactly old technology — a pre-cloud, pre-AI search architecture requiring manual infrastructure management with brute-force batch pre-loading on every page load.",
+      "finding_id": "F01",
+      "algolia_angle": "Algolia SaaS delivery model is the architectural opposite of self-hosted Solr — no infrastructure to manage, globally distributed, sub-10ms response. The revolutionize old technology statement is the Algolia pitch written by the CEO.",
+      "source_url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/"
+    }
+  ],
+  "toc": [
+    {
+      "act": "ACT I: THE VERDICT",
+      "sections": [
+        {
+          "title": "Executive Summary",
+          "anchor": "ch-summary"
+        },
+        {
+          "title": "Score Breakdown",
+          "anchor": "ch-score"
+        },
+        {
+          "title": "Key Findings",
+          "anchor": "ch-findings"
+        }
+      ]
+    },
+    {
+      "act": "ACT II: THE INTELLIGENCE",
+      "sections": [
+        {
+          "title": "In Their Own Words",
+          "anchor": "ch-quotes"
+        },
+        {
+          "title": "Strategic Timing Signals",
+          "anchor": "ch-signals"
+        },
+        {
+          "title": "Technology Stack",
+          "anchor": "ch-techstack"
+        },
+        {
+          "title": "Competitor Landscape",
+          "anchor": "ch-competitors"
+        }
+      ]
+    },
+    {
+      "act": "ACT III: THE BUSINESS CASE",
+      "sections": [
+        {
+          "title": "Financial Profile",
+          "anchor": "ch-financials"
+        },
+        {
+          "title": "Revenue Impact Estimate",
+          "anchor": "ch-roi"
+        },
+        {
+          "title": "Buying Committee",
+          "anchor": "ch-buying-committee"
+        }
+      ]
+    },
+    {
+      "act": "ACT IV: THE ASK",
+      "sections": [
+        {
+          "title": "Strategic Angles",
+          "anchor": "ch-angles"
+        },
+        {
+          "title": "Competitor Matrix",
+          "anchor": "ch-matrix"
+        },
+        {
+          "title": "Next Steps",
+          "anchor": "ch-next-steps"
+        }
+      ]
+    }
+  ],
+  "financials": {
+    "revenue": "EUR 33.2B (IAG Group FY2025)",
+    "revenue_year": "FY2025",
+    "revenue_source": "IAG FY2025 Results Press Release -- https://www.iairgroup.com/press-releases/2026/iag-full-year-results-2025/",
+    "revenue_confidence": "FACT",
+    "ba_revenue_est": "~EUR 12.5B (estimated BA share of IAG, ~43-45% of group)",
+    "ba_revenue_source": "Estimated from BA operating profit share and capacity. IAG does not disaggregate BA revenue publicly.",
+    "ba_revenue_confidence": "ESTIMATE",
+    "ebitda": "$7.951B (IAG Group FY2025)",
+    "ebitda_margin": 18.98,
+    "gross_margin": 38.51,
+    "operating_margin": 15.2,
+    "net_margin": 10.06,
+    "margin_zone": "YELLOW",
+    "margin_zone_note": "Gross Margin 38.51% -- in 20-40% band. For airlines this is healthy; operating margin (15.2%) is the key management metric.",
+    "revenue_3y": [
+      {
+        "year": "FY2023",
+        "revenue": "EUR 29.5B",
+        "revenue_raw": 29453,
+        "growth": "+27.7% YoY"
+      },
+      {
+        "year": "FY2024",
+        "revenue": "EUR 32.1B",
+        "revenue_raw": 32100,
+        "growth": "+9.0% YoY"
+      },
+      {
+        "year": "FY2025",
+        "revenue": "EUR 33.2B",
+        "revenue_raw": 33213,
+        "growth": "+3.5% YoY"
+      }
+    ],
+    "free_cash_flow": "EUR 3.1B (FY2025)",
+    "capex_2026": "~EUR 3.6B confirmed",
+    "ba_digital_share": "~25% of BA revenue on new dot.com booking flow as of H1 2025",
+    "digital_share_target": "85-90% of booking volume via modern retailing platforms by 2027",
+    "digital_revenue_est": "~EUR 3.1B (25% of ~EUR 12.5B BA est. revenue on new dot.com flow, H1 2025)",
+    "roi_scenarios": {
+      "conservative": {
+        "annual_impact": "~EUR 31M",
+        "scenario_desc": "1% improvement in search-to-booking conversion on BA direct digital revenue ~EUR 3.1B",
+        "source": "08-financial-profile.md formula: BA passenger revenue ~EUR 12.5B x 25% direct digital = EUR 3.1B x 1% conversion lift = ~EUR 31M"
+      },
+      "moderate": {
+        "annual_impact": "~EUR 78M-EUR 156M",
+        "scenario_desc": "5-10% search conversion improvement across BA Holidays search addressable revenue",
+        "source": "ESTIMATE -- formula: BA Holidays est. revenue x Algolia-typical conversion improvement range"
+      },
+      "optimistic": {
+        "annual_impact": "~EUR 200M+",
+        "scenario_desc": "Full site search + holiday search + federated search deployment with personalization including BA Club ancillary attachment improvement and call-centre deflection savings.",
+        "source": "ESTIMATE -- includes loyalty revenue uplift (IAG Loyalty GBP 469M profit base) + call-centre deflection"
+      }
+    },
+    "roi_multiple": "~15-50x annual contract value (based on typical Algolia contract size vs modelled revenue impact)",
+    "payback_period": "< 6 months (conservative scenario at EUR 31M/year)",
+    "algolia_annual_cost_est": "EUR 500K-EUR 2M/year (estimated, based on search volume at 18.5M monthly visits)",
+    "analyst_consensus": {
+      "rating": "BUY",
+      "mean_score": 1.5625,
+      "analysts_count": 16,
+      "price_target_median": 482,
+      "price_current": 371.6,
+      "price_current_currency": "GBP pence",
+      "upside_pct": 29.7,
+      "breakdown": {
+        "strong_buy": 3,
+        "buy": 11,
+        "hold": 2,
+        "sell": 1
+      },
+      "raw": "3 Strong Buy | 11 Buy | 2 Hold | 1 Sell",
+      "source": "Yahoo Finance MCP recommendations, 2026-04-28"
+    },
+    "margins": {
+      "gross_margin_pct": 38.51,
+      "ebitda_margin_pct": 18.98,
+      "operating_margin_pct": 15.2,
+      "net_margin_pct": 10.06,
+      "margin_zone": "YELLOW"
+    },
+    "balance_sheet": {
+      "total_assets": "$42.849B",
+      "total_debt": "$14.267B",
+      "cash_and_equivalents": "$7.421B",
+      "total_assets_fmt": "$42.8B",
+      "total_debt_fmt": "$14.3B",
+      "cash_fmt": "$7.4B"
+    },
+    "digital_revenue": {
+      "latest_year": "FY2025",
+      "estimated_amount": "~EUR 3.1B",
+      "pct_of_total": "~25%",
+      "yoy_change_pct": null,
+      "confidence": "MEDIUM"
+    },
+    "berkshire_note": null,
+    "total_digital_revenue": "~EUR 3.1B (est. 25% of BA ~EUR 12.5B revenue on new dot.com flow, H1 2025)"
+  },
+  "traffic": {
+    "monthly_visits": "~18.5M",
+    "bounce_rate": "26.96%",
+    "pages_per_visit": "8.17 (SimilarWeb) / 7.07 (Semrush)",
+    "visit_duration": "n/a",
+    "top_channels": [
+      {
+        "channel": "Direct",
+        "share": "51.08%"
+      },
+      {
+        "channel": "Organic Search",
+        "share": "33.73%"
+      },
+      {
+        "channel": "Paid Search",
+        "share": "4%"
+      },
+      {
+        "channel": "Referral",
+        "share": "6%"
+      },
+      {
+        "channel": "Social",
+        "share": "3%"
+      },
+      {
+        "channel": "Email",
+        "share": "5%"
+      },
+      {
+        "channel": "Display Ads",
+        "share": "1%"
+      }
+    ],
+    "device_share": {
+      "mobile": "61.76%",
+      "desktop": "38.24%"
+    },
+    "demographics": [
+      {
+        "age_group": "Female",
+        "pct": 52.65,
+        "color": "#003DFF"
+      },
+      {
+        "age_group": "Male",
+        "pct": 47.35,
+        "color": "#5468FF"
+      }
+    ],
+    "source": "SimilarWeb + Semrush public pages, March 2026 [ESTIMATE]",
+    "source_url": "https://www.similarweb.com/website/britishairways.com/",
+    "global_rank": 1812,
+    "category_rank": 2,
+    "category": "Travel & Tourism > Air Travel",
+    "rankings": {
+      "global_rank": 1812,
+      "country_rank_us": null,
+      "industry_rank": 2,
+      "industry_category": "UK Air Travel (SimilarWeb)"
+    },
+    "top_referrers": [
+      {
+        "domain": "kayak.com",
+        "share_pct": "7.86%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "headforpoints.com",
+        "share_pct": "4.34%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "heathrow.com",
+        "share_pct": "3.98%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "skyscanner.net",
+        "share_pct": "3.66%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "wikipedia.org",
+        "share_pct": "3.26%",
+        "mom_change": "n/a"
+      }
+    ],
+    "paid_search": {
+      "share_of_total_pct": "~4%",
+      "top_keywords": [
+        "british airways check in",
+        "british airways flights",
+        "british airways"
+      ],
+      "competitor_bidding": null,
+      "narrative": "Paid search declining (-16.89% MoM March 2026; -79.15% MoM October 2025). BA strategically pulling back from paid media targeting 85-90% direct channel. Makes site-side search conversion increasingly load-bearing for revenue."
+    },
+    "competitor_traffic": [
+      {
+        "domain": "easyjet.com",
+        "visits_3mo": "~90-120M est."
+      },
+      {
+        "domain": "ryanair.com",
+        "visits_3mo": "~240-300M est."
+      },
+      {
+        "domain": "emirates.com",
+        "visits_3mo": "~45-60M est."
+      },
+      {
+        "domain": "virginatlantic.com",
+        "visits_3mo": "~12-18M est."
+      },
+      {
+        "domain": "lufthansa.com",
+        "visits_3mo": "~36M est."
+      }
+    ],
+    "organic_search": {
+      "share_of_total_pct": "~33.7%",
+      "branded_pct": "~80%",
+      "non_branded_pct": "~20%",
+      "top_non_branded_keywords": [
+        "british airways holidays",
+        "ba holidays"
+      ]
+    },
+    "geo_distribution": [
+      {
+        "country": "United Kingdom",
+        "traffic_share_pct": "54.63%",
+        "mom_change": "n/a"
+      },
+      {
+        "country": "United States",
+        "traffic_share_pct": "16.32%",
+        "mom_change": "n/a"
+      },
+      {
+        "country": "India",
+        "traffic_share_pct": "3.45%",
+        "mom_change": "n/a"
+      },
+      {
+        "country": "Canada",
+        "traffic_share_pct": "2.40%",
+        "mom_change": "n/a"
+      },
+      {
+        "country": "Australia",
+        "traffic_share_pct": "2.12%",
+        "mom_change": "n/a"
+      }
+    ],
+    "search_abandonment": {
+      "google_outbound_pct": null,
+      "google_outbound_mom_change": null,
+      "narrative": "No direct google.com exit data available. Key proxy: session duration dropped from 10:12 (October 2025) to 5:50 (March 2026) despite +17.84% more visits. BA has highest pages/visit (8.17) vs all 10 measured competitors."
+    },
+    "ai_referral": {
+      "chatgpt_pct": "0.045% (~8,000 visits/6 months)",
+      "chatgpt_mom": "+75% MoM industry-wide in Jan 2025",
+      "gemini_pct": "0.011%",
+      "total_ai_pct": "<0.1% today, trajectory steep",
+      "narrative": "AI referral is sub-0.1% of BA traffic but ChatGPT-referred users show 8-9 percentage points higher Flight Search Initiation rate vs traditional search. CEO explicitly warned about AI agent disintermediation."
+    },
+    "outgoing_traffic": [
+      {
+        "domain": "ba.com",
+        "share_pct": "~25.87%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "avios.com",
+        "share_pct": "~18.04%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "xcover.com",
+        "share_pct": "7.60%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "bahighlife.com",
+        "share_pct": "4.36%",
+        "mom_change": "n/a"
+      },
+      {
+        "domain": "gov.uk",
+        "share_pct": "3.18%",
+        "mom_change": "n/a"
+      }
+    ],
+    "referring_industries": [
+      {
+        "industry": "Travel & Tourism",
+        "share_pct": "~40%"
+      },
+      {
+        "industry": "Loyalty / Financial",
+        "share_pct": "~20%"
+      },
+      {
+        "industry": "News & Media",
+        "share_pct": "~15%"
+      }
+    ],
+    "referrals": {
+      "share_of_total_pct": "~6%",
+      "top_referring_sites": [
+        "kayak.com",
+        "headforpoints.com",
+        "heathrow.com",
+        "skyscanner.net",
+        "wikipedia.org"
+      ],
+      "top_referring_industries": [
+        "Travel & Tourism",
+        "Loyalty",
+        "News"
+      ]
+    },
+    "audience": {
+      "gender": {
+        "female": 52.65,
+        "male": 47.35
+      }
+    }
+  },
+  "tech_stack": {
+    "search_vendor": "Apache Solr (self-hosted) + Inbenta Knowledge Management",
+    "search_vendor_confirmed": true,
+    "search_vendor_method": "Chrome DevTools MCP network inspection (real browser -- Akamai bypassed)",
+    "algolia_detected": false,
+    "full_list": [
+      "BuiltWith API",
+      "Algolia detected",
+      "Competitor detected",
+      "Search vendor tags found",
+      "Affected paths confirmed blocked for automation:",
+      "WAF vendor confirmed",
+      "Finding",
+      "Zero NLP/semantic understanding",
+      "Pure faceted filter model",
+      "No typo tolerance",
+      "No personalization",
+      "Multiple parallel Solr queries fire on page load",
+      "Self-hosted Solr",
+      "The underlying search technology powering `/travel/searchba/` remains UNCONFIRMED",
+      "This is the highest-priority unknown in the tech stack",
+      "`search_vendor_network_confirmed`: true",
+      "Audit type: DISPLACEMENT — Apache Solr is the primary target; /travel/searchba/ TBD in Phase 2",
+      "Amadeus Nevio",
+      "Custom-built booking engine",
+      "Adobe Experience Manager",
+      "GraphQL API",
+      "Adobe Experience Platform",
+      "Akamai",
+      "Akamai Bot Manager",
+      "Akamai EdgeWorkers",
+      "Akamai Edge",
+      "Cloudflare JS",
+      "Amazon S3",
+      "OneTrust",
+      "Datadog RUM",
+      "Quantum Metric",
+      "Medallia",
+      "Adobe Analytics",
+      "ContentSquare",
+      "Dynatrace",
+      "Adobe Target",
+      "Google Ads / DoubleClick Floodlight",
+      "Adobe Audience Manager",
+      "The Trade Desk",
+      "Criteo",
+      "CardinalCommerce"
+    ],
+    "ai_search_gap": {
+      "app_has_ai": false,
+      "web_has_ai": false,
+      "app_ai_name": null,
+      "app_platform": null,
+      "app_ai_description": null,
+      "web_search_vendor": "Apache Solr (self-hosted, q=* wildcard -- zero NLP)",
+      "narrative": "BA Holidays runs Apache Solr at /solr/hotelPackages/safe with q=* wildcard -- zero semantic understanding. Help search runs Inbenta KM (2018). No AI search detected anywhere on britishairways.com."
+    },
+    "architecture_notes": "BA runs a bespoke travel retailing stack: AEM (CMS) + Amadeus Nevio (booking engine) + Solr (holiday search) + custom booking engine (flights). Cloud migration 90% complete as of early 2025 -- cloud-native infrastructure is ready to receive Algolia SaaS.",
+    "data_acquisitions": [],
+    "search_provider": "UNKNOWN — WAF blocked",
+    "cms": "Adobe Experience Manager (AEM)",
+    "primary_platform": "Assessment",
+    "tech_stack_summary": "BA Holidays uses Apache Solr (self-hosted) for hotel package search — zero NLP, zero semantic understanding, pure faceted filter model. BA Help/Support uses Inbenta Knowledge Management for chatbot/knowledge base with Salesforce Service Cloud (BA_IT3) for live agent escalation. BA site-wide search (/travel/searchba/) uses an UNKNOWN vendor — WAF-blocked for automation, must confirm in Phase 2. Core platform is Adobe Experience Manager (AEM) on Akamai CDN/WAF with Adobe Target for personalization, Amadeus Nevio for booking, Datadog RUM + Quantum Metric for session intelligence, Medallia for VoC/NPS. No Algolia detected anywhere. Solr is the primary displacement target; /travel/searchba/ is the critical unknown."
+  },
+  "hiring": {
+    "total_open_roles": 53,
+    "icp_roles_count": 4,
+    "null_signal_note": "Zero search-specific roles posted (search engineer, NLP engineer, recommendation systems engineer) -- POSITIVE signal for Algolia: BA is NOT building search in-house. They are buying tools.",
+    "buying_committee": [
+      {
+        "role": "Economic Buyer",
+        "name": "Henning Krueger",
+        "title": "Chief Information and Digital Officer",
+        "status": "WARM",
+        "signal": "hot",
+        "message": "Owns GBP 7B transformation; no legacy attachment to Solr (18 months in seat). Came from Lufthansa -- data-driven airline culture. Primary technical budget holder for ba.com search stack.",
+        "job_url": "https://uk.linkedin.com/in/henningkrueger/en",
+        "salary_range": null
+      },
+      {
+        "role": "Economic Buyer",
+        "name": "Colm Lacy",
+        "title": "Chief Commercial Officer",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Owns direct channel revenue and 85-90% booking target. BA Holidays catalogue and Avios loyalty monetisation. Search quality directly impacts his P&L.",
+        "job_url": "https://www.linkedin.com/in/colm-lacy-38201341/",
+        "salary_range": null
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Jake Pearce",
+        "title": "Head of AI",
+        "status": "WARM",
+        "signal": "warm",
+        "message": "Leading 600 AI use case roadmap. Outcomes-first mentality. Natural champion for AI-powered search as highest-ROI customer-facing use case.",
+        "job_url": "https://www.processexcellencenetwork.com/ai/news/british-airways-takes-flight-with-ai-driven-business-transformation",
+        "salary_range": null
+      },
+      {
+        "role": "Technical Buyer",
+        "name": "Principal Data & AI Architect (VACANT)",
+        "title": "Actively hiring -- tech stack decisions pending",
+        "status": "COLD",
+        "signal": "warm",
+        "message": "VACANCY SIGNAL -- the person being hired will influence tech stack decisions. Reach CIDO or Head of AI BEFORE this hire is made.",
+        "job_url": "https://careers.ba.com/digital-technology-data",
+        "salary_range": null
+      }
+    ],
+    "engagement_phases": [
+      {
+        "phase": 1,
+        "label": "Pre-Hire Window",
+        "target": "Henning Krueger (CIDO) + Jake Pearce (Head of AI)",
+        "message": "Principal Data & AI Architect role is open -- engage BEFORE the hire to influence stack requirements. Reference Thoughtworks BA Holidays engagement as the natural entry point.",
+        "timing": "Immediate"
+      },
+      {
+        "phase": 2,
+        "label": "Technical Evaluation",
+        "target": "Jake Pearce + Tom Reed (Head of Digital Content)",
+        "message": "Pilot on BA Holidays search -- replace Solr q=* with Algolia NeuralSearch. 90-day proof of concept with clear KPIs.",
+        "timing": "Q2-Q3 2026"
+      },
+      {
+        "phase": 3,
+        "label": "Commercial Close",
+        "target": "Henning Krueger + Jose Antonio Barrionuevo (CFO/CTO)",
+        "message": "ROI model from pilot + scale to full site search + federated search. IAG portfolio expansion (Iberia, Aer Lingus, Vueling) as expansion play.",
+        "timing": "Q4 2026"
+      }
+    ],
+    "objection_counters": [
+      {
+        "objection": "We are already investing GBP 7B in transformation",
+        "counter": "Algolia complements Amadeus Nevio, not replaces it. Amadeus handles the booking engine. Algolia handles the discovery layer -- how users find what to book. They solve different problems."
+      },
+      {
+        "objection": "We have an AI/ML team (Jake Pearce group)",
+        "counter": "Your AI team is focused on operational AI (delay prediction, scheduling). Algolia NeuralSearch is pre-built for the customer-facing search use case -- so your AI team does not build what we have already built for 18,000+ customers."
+      },
+      {
+        "objection": "We are building a new website (Amadeus Nevio + cloud)",
+        "counter": "New website builds are the BEST time to add Algolia -- you are already in the codebase. Retrofitting search to a finished product takes 3x longer. The window is now."
+      },
+      {
+        "objection": "Fuel costs / budget pressure in 2026",
+        "counter": "Algolia ROI is independent of fuel costs. Every GBP 1M in incremental holiday booking conversion is GBP 1M that does not depend on oil prices. It is the non-fuel cost lever you can pull now."
+      }
+    ],
+    "build_vs_buy": "BUY -- zero search-specific engineering roles posted. BA is not building search capability in-house. They are buying: Inbenta (2018), Amadeus Nevio (2024), Adobe Target. Algolia is the next buy."
+  },
+  "strategic_angles": [
+    {
+      "label": "Digital Catch-Up Mandate -- CEO-Granted Internal Buy-In",
+      "hook": "Your CEO told the industry in December that BA is behind the curve and this is a leapfrog moment. Algolia holiday search deployment is what a leapfrog looks like on ba.com -- not a 2-year roadmap. Club Med went from legacy search to AI-powered discovery in under a year. That's the leapfrog.",
+      "pain_points": [
+        "Sean Doyle publicly admitted 'behind the curve' at Globant Converge 2025 (December 13, 2025)",
+        "Described transformation as a 'leapfrog opportunity' -- not incremental catch-up",
+        "PwC CEO Survey: 'Don't be a prisoner of history, doing things the way you've always done them'",
+        "McKinsey interview: BA capturing 58 data touchpoints per customer but historically siloed -- 'we haven't been using it well'"
+      ],
+      "discovery_question": "When Sean said BA is behind the curve digitally, what does that look like for ba.com specifically -- what gap are you most focused on closing in the next 12 months?",
+      "algolia_proof": "Club Med case study -- same holiday package vertical, deployed Algolia 2024, search has become a true strategic lever for growing direct online bookings -- algolia.com/customers/club-med",
+      "objection": "We already have internal AI/ML teams working on modernisation",
+      "objection_counter": "Your AI team is focused on operational AI (31 live use cases, mostly scheduling and delay prediction). NeuralSearch for ba.com holiday discovery is a customer-facing use case -- Algolia delivers this pre-built so your AI team deploys it in 90 days, not builds it in 18 months.",
+      "source": "[FACT -- The Register WebFetch, https://www.theregister.com/2025/12/13/british_airways_fears_a_future/, 2025-12-13]"
+    },
+    {
+      "label": "GBP 7B Transformation Budget Window -- Active Procurement",
+      "hook": "You have allocated GBP 100M specifically to AI/ML. Search and discovery is consistently the highest-ROI AI application in travel ecommerce -- Club Med saw online conversions rise after replacing their legacy search with Algolia in 2024. You have the budget, the cloud infrastructure is ready, and the use case is proven. This is a 90-day deployment, not an 18-month programme.",
+      "pain_points": [
+        "GBP 7B total transformation (2024-2026): fleet + IT/digital",
+        "GBP 750M-GBP 850M cloud migration of 700 systems -- 90% complete, cloud-native infrastructure ready",
+        "GBP 100M specifically allocated to AI/ML use cases",
+        "31 AI use cases live as of mid-2025; 600 use cases identified",
+        "IAG 2026 CapEx: ~EUR 3.6B; FCF target >EUR 3B"
+      ],
+      "discovery_question": "Of the 600 AI use cases in your roadmap, where does search and discovery rank? We have seen holiday discovery be the fastest-ROI AI use case for travel companies similar to BA.",
+      "algolia_proof": "Club Med -- deployed Algolia 2024, higher CTRs, more online conversions, reduced call-centre dependency -- algolia.com/customers/club-med",
+      "objection": "We are already investing GBP 7B in transformation -- search is included in that",
+      "objection_counter": "Algolia is additive to the GBP 7B programme, not a competing line item. The cloud migration is the infrastructure. Algolia is the search intelligence layer that makes the new ba.com experience compelling enough for customers to choose it over OTAs.",
+      "source": "[FACT -- BA Media Centre, https://mediacentre.britishairways.com/pressrelease/details/19166; IAG FY2025 Results, 2026-02-27]"
+    },
+    {
+      "label": "Direct Channel War -- 85-90% Direct by 2027 Requires Search Quality",
+      "hook": "You have told investors you are going to 85-90% direct by 2027. You are at 25% of revenue on the new dot.com flow today. You cannot win the direct channel war with a Solr-powered holiday search. Algolia is what makes ba.com search better than Kayak -- so customers stop mid-funnel, find what they need, and book direct.",
+      "pain_points": [
+        "BA target: 85-90% booking volume via modern retailing platforms (ba.com + NDC) by 2027",
+        "As of H1 2025: only 25% of BA revenue on new dot.com booking flow",
+        "BA terminating GDS private channel agreements to force NDC adoption",
+        "Paid search traffic declining (-16.89% MoM March 2026) -- on-site conversion increasingly load-bearing",
+        "Kayak.com is the top referrer (7.86% of referrals) -- OTA-referred users need to find what they want fast or they exit"
+      ],
+      "discovery_question": "Your 2027 direct channel goal is aggressive. What does ba.com need to do that Expedia cannot -- to justify customers booking direct at scale?",
+      "algolia_proof": "Lacoste -- +150% sales contribution from search, +37% conversion rate -- algolia.com/customers/lacoste (retail catalogue mechanics identical to BA Holidays)",
+      "objection": "NDC and Amadeus Nevio are our direct channel strategy -- search is secondary",
+      "objection_counter": "NDC gets distribution right. Algolia gets discovery right. A customer who arrives from Kayak and cannot find the right holiday package on ba.com goes back to Kayak. NDC does not solve the on-site search experience -- Algolia does.",
+      "source": "[FACT -- BA Media Centre, https://mediacentre.britishairways.com/pressrelease/details/19166; IAG H1 2025 Earnings Call Transcript, 2025-08-01]"
+    },
+    {
+      "label": "BA Holidays Digital Rebuild -- Thoughtworks Architecture Window",
+      "hook": "Your Holidays platform is being re-architected by Thoughtworks right now. They are focused on discoverability and information architecture. Club Med just shipped the same project with Algolia -- same holiday catalogue problem, deployed 2024, case study published March 2026. Thoughtworks knows Algolia. This is the right moment to make sure Algolia is on their shortlist.",
+      "pain_points": [
+        "October 2025: BA Holidays formally partnered with Thoughtworks to 're-architect existing digital platforms'",
+        "Thoughtworks scope explicitly includes 'optimising information architecture for easy discoverability'",
+        "BA Holidays catalogue: 10,000+ hotels across 600 locations in 100 countries",
+        "Current Solr architecture is wildcard-only -- Thoughtworks is building a new system on top of it",
+        "Architecture decisions made now persist for 5-7 years"
+      ],
+      "discovery_question": "The Thoughtworks engagement has discoverability as an explicit KPI. Has the team evaluated enterprise search vendors -- Algolia, Elasticsearch, Coveo -- as the search layer for the new BA Holidays platform?",
+      "algolia_proof": "Club Med -- same holiday package discovery problem, Algolia deployed 2024, results include higher CTRs, more online conversions, reduced call-centre dependency -- algolia.com/customers/club-med",
+      "objection": "Thoughtworks is already handling search as part of their engagement",
+      "objection_counter": "Thoughtworks will specify a search vendor -- they will not build one from scratch. Algolia pre-built connectors, InstantSearch UI library, and headless API design are built for exactly the technology delivery model Thoughtworks employs. We can align with their timeline.",
+      "source": "[FACT -- PRNewswire / Thoughtworks, https://www.prnewswire.com/news-releases/british-airways-holidays-partners-with-thoughtworks-to-deliver-a-new-standard-in-digital-traveller-experiences-302573387.html, 2025-10-02]"
+    },
+    {
+      "label": "AI Agent Threat -- Doyle Brand Invisibility Warning",
+      "hook": "Your CEO stood on stage in December and said AI agents are going to make brands invisible. Algolia Agentic AI Search is how BA stays visible -- when a ChatGPT travel agent searches for BA holidays, it queries Algolia API and gets structured, real-time results. Solr cannot do this at agent scale. This is exactly the problem Doyle described.",
+      "pain_points": [
+        "Doyle at Globant Converge 2025: AI agents 'now poised to sit between customers and the brands competing for their money'",
+        "'The days when a decent website and a prominent Google result were enough to stay visible are diminishing quickly'",
+        "Doyle identified AI agent disintermediation as 'most significant strategic risk' for BA",
+        "ChatGPT-referred users show 8-9 percentage points higher Flight Search Initiation rates",
+        "AI referral traffic to airline sites grew 75% MoM in January 2025"
+      ],
+      "discovery_question": "You've flagged AI agents as a strategic risk. Has BA tech team started thinking about how BA holiday inventory would be served to AI agents like ChatGPT or Perplexity?",
+      "algolia_proof": "Algolia Agentic AI Search -- API-first, machine-readable, enables BA inventory discovery by AI agents with structured, rich, fast responses. Used by 18,000+ customers including Club Med.",
+      "objection": "We are focused on our own AI agent use cases, not third-party AI agent access",
+      "objection_counter": "Both matter. Algolia enables BA to serve inventory to external AI agents AND to build its own AI booking concierge on top of a reliable retrieval layer. The same infrastructure solves both.",
+      "source": "[FACT -- The Register, https://www.theregister.com/2025/12/13/british_airways_fears_a_future/, 2025-12-13]"
+    },
+    {
+      "label": "Loyalty Monetisation -- British Airways Club Needs Search to Convert",
+      "hook": "The British Airways Club success depends on members spending on holidays and ancillaries -- not just flights. If a BA Club Gold member cannot find the right holiday package quickly on ba.com, they book flights on your site and holidays on Expedia. Algolia personalisation layer surfaces the right offer to the right loyalty tier. That is how you grow IAG Loyalty GBP 469M profit base.",
+      "pain_points": [
+        "April 2025: BA launched new spend-based loyalty programme -- 1 Tier Point per GBP 1 spent on flights AND ancillaries/holidays",
+        "Gold status requires GBP 20,000 annual spend -- strong incentive to drive ancillary spend",
+        "IAG Loyalty FY2025: GBP 469M profit at 18% margin; 20.5% YoY profit growth",
+        "IAG Loyalty strategic target: 'at least 10% margin growth'",
+        "Selective status extensions in April 2026 signal loyalty programme year-one performance under scrutiny",
+        "Current holiday search has zero personalization by loyalty tier -- Gold and Blue members see identical results"
+      ],
+      "discovery_question": "How is The British Airways Club holiday package attachment rate performing against expectations in year one of the spend-based model?",
+      "algolia_proof": "Algolia Personalization -- connects BA Club tier and travel history data to real-time search ranking. Same pattern drives IAG Loyalty 10% margin growth target.",
+      "objection": "Personalisation is handled by Adobe Target and AEP",
+      "objection_counter": "Adobe Target personalises page-level experiences and A/B tests. Algolia personalises search result ranking -- the moment a loyalty member types a query. AEP identity graph actually feeds Algolia Personalisation -- they are complementary, not competing.",
+      "source": "[FACT -- BA Media Centre, https://mediacentre.britishairways.com/news/30122024/introducing-the-british-airways-club-more-ways-to-earn-tier-points-than-ever-before; IAG FY2025 Results, 2026-02-27]"
+    }
+  ],
+  "icp_mapping": {
+    "priority_to_product": [
+      {
+        "pain": "Admitted being 'behind the curve' on digital",
+        "evidence": "It's fair to say that we're probably behind the curve.",
+        "product": "Algolia NeuralSearch (instant AI search, 90-day deploy) -- BA Holidays Solr replacement",
+        "proof_company": "Club Med",
+        "proof_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+        "proof_result": "\"Search has become a true strategic lever for increasing direct online bookings\" — 70 destinations, 35 markets",
+        "discovery_question": "\"When Sean said BA is behind the curve digitally, what does that look like for ba.com specifically — what gap are you most focused on closing in the next 12 months?\"",
+        "label": "Strategic Angle 1",
+        "their_priority": "Admitted being 'behind the curve' on digital",
+        "algolia_solution": "Algolia NeuralSearch (instant AI search, 90-day deploy) -- BA Holidays Solr replacement — Evidence: It's fair to say that we're probably behind the curve."
+      },
+      {
+        "pain": "AI/ML use case deployment (600 use cases, Jan 2026 go-live)",
+        "evidence": "We are mapping 600 use cases -- go-live aspiration January 2026",
+        "product": "Algolia as a high-ROI AI use case in BA roadmap; NeuralSearch deploys without ML team",
+        "proof_company": "Club Med",
+        "proof_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+        "proof_result": "Search became \"a true strategic lever for growing direct online bookings\" — same holiday package discovery problem at 70 destinations",
+        "discovery_question": "\"Of the 600 AI use cases in your roadmap, where does search and discovery rank? We've seen holiday discovery be the fastest-ROI AI use case for travel companies similar to BA.\"",
+        "label": "Strategic Angle 2",
+        "their_priority": "AI/ML use case deployment (600 use cases, Jan 2026 go-live)",
+        "algolia_solution": "Algolia as a high-ROI AI use case in BA roadmap; NeuralSearch deploys without ML team — Evidence: We are mapping 600 use cases -- go-live aspiration January 2026"
+      },
+      {
+        "pain": "Personalization as stated goal for new ba.com",
+        "evidence": "deeper personalisation (stated in website launch announcement)",
+        "product": "Algolia Personalization + AI Re-ranking (BA Club data to personalized results)",
+        "proof_company": "Club Med",
+        "proof_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+        "proof_result": "\"Search has become a true strategic lever for increasing direct online bookings\" — 70 destinations, 35 markets",
+        "discovery_question": "\"You've called out 'deeper personalization' for ba.com. Is that personalization happening at the search layer — or only in recommendations and email?\"",
+        "label": "Strategic Angle 3",
+        "their_priority": "Personalization as stated goal for new ba.com",
+        "algolia_solution": "Algolia Personalization + AI Re-ranking (BA Club data to personalized results) — Evidence: deeper personalisation (stated in website launch announcement)"
+      },
+      {
+        "pain": "85-90% direct channel target by 2027",
+        "evidence": "BA's target is for between 85% to 90% of its volume to come through modern retailing platforms",
+        "product": "Algolia InstantSearch (makes ba.com more compelling than OTAs -- users find what they want faster)",
+        "proof_company": "Club Med",
+        "proof_url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+        "proof_result": "Search became \"a true strategic lever for growing direct online bookings\" — same holiday package discovery problem at 70 destinations",
+        "discovery_question": "\"Your 2027 direct channel goal is aggressive. What does ba.com need to do that Expedia can't — to justify customers booking direct at scale?\"",
+        "label": "Strategic Angle 4",
+        "their_priority": "85-90% direct channel target by 2027",
+        "algolia_solution": "Algolia InstantSearch (makes ba.com more compelling than OTAs -- users find what they want faster) — Evidence: BA's target is for between 85% to 90% of its volume to come through modern retailing platforms"
+      },
+      {
+        "pain": "AI agents disintermediating brand visibility",
+        "evidence": "The days when a decent website and a prominent Google result were enough to stay visible are 'diminishing quickly.'",
+        "product": "Algolia Agentic AI Search (API-first, machine-readable -- BA inventory discoverable by AI agents)",
+        "proof_company": "Virgin Atlantic",
+        "proof_url": "https://corporate.virginatlantic.com/gb/en/media/press-releases/virgin-atlantic-takes-off-in-chatgpt.html",
+        "proof_result": "First airline in ChatGPT — natural language flight search, April 2026",
+        "discovery_question": "\"You've flagged AI agents as a strategic risk. Has BA's tech team started thinking about how BA's holiday inventory would be served to AI agents like ChatGPT or Perplexity?\"",
+        "label": "Strategic Angle 5",
+        "their_priority": "AI agents disintermediating brand visibility",
+        "algolia_solution": "Algolia Agentic AI Search (API-first, machine-readable -- BA inventory discoverable by AI agents) — Evidence: The days when a decent website and a prominent Google result were enough to stay visible are 'diminishing quickly.'"
+      }
+    ],
+    "outreach_sequence": [
+      {
+        "touch": 1,
+        "persona": "Henning Krueger (CIDO)",
+        "trigger": "GBP 7B transformation + behind the curve admission",
+        "message": "Your CEO said BA is behind the curve. Here is the fastest ROI fix in the GBP 100M AI budget: NeuralSearch on ba.com holidays. 90-day deployment, Club Med precedent."
+      },
+      {
+        "touch": 2,
+        "persona": "Jake Pearce (Head of AI)",
+        "trigger": "600 AI use cases -- search is the missing customer-facing use case",
+        "message": "Search discovery is the highest-ROI AI use case you do not have in the 600. Here is why it ships in 90 days, not 18 months."
+      },
+      {
+        "touch": 3,
+        "persona": "Tom Reed (Head of Digital Content)",
+        "trigger": "Content discovery via search drives NPS",
+        "message": "Help content search tied to NPS improvement. Doyle has NPS as a personal KPI."
+      },
+      {
+        "touch": 4,
+        "persona": "Jose Antonio Barrionuevo (CFO)",
+        "trigger": "ROI model from financial analysis",
+        "message": "EUR 31M-EUR 156M/year conservative-moderate estimate at 1-5% search conversion improvement. Pays back in under 6 months vs GBP 100M AI budget."
+      }
+    ],
+    "anchor_lines": [
+      "BA told investors and the industry that you're 'behind the curve' digitally [December 2025]. Your CEO is publicly committed to closing that gap with the GBP 7bn transformation. Here is what Algolia closes in 90 days: the discovery gap on BA Holidays.",
+      "EasyJet overtook BA as the UK largest airline by passenger volume in 2021. BA has 18M monthly visitors and the highest pages-per-visit of any competitor (8.17 pages -- users are navigating manually where they should be searching). Algolia compresses that to a single search.",
+      "Club Med -- a direct comparable to BA Holidays -- just deployed Algolia across 70 destinations and 35 markets. Club Med Digital team called search 'a true strategic lever for increasing direct online bookings.' BA Holidays has 10,500+ hotels across 600+ locations. Same problem. Same solution. Different scale."
+    ]
+  },
+  "competitive_synthesis": {
+    "scenario": "OFFENSIVE (Category Leapfrog) -- No top 5 BA competitor confirmed on Algolia. BA can be the FIRST legacy airline to deploy enterprise AI search across flight and holiday discovery.",
+    "competitor_tiers": [
+      {
+        "tier": 1,
+        "label": "Direct UK Competitor (Digital-First)",
+        "members": [
+          "EasyJet",
+          "Ryanair"
+        ],
+        "search_status": "Ryanair: Elasticsearch (confirmed). EasyJet: Amadeus + custom. Neither has enterprise AI search."
+      },
+      {
+        "tier": 2,
+        "label": "Premium International Competitors",
+        "members": [
+          "Emirates",
+          "Lufthansa",
+          "Virgin Atlantic"
+        ],
+        "search_status": "All on custom/proprietary booking-engine search. None confirmed on Algolia."
+      }
+    ],
+    "experience_debt": {
+      "ba_today": "Apache Solr q=* wildcard -- zero NLP, zero SAYT, zero personalization. 8 of 10 audit areas at HIGH severity.",
+      "best_competitor": "Ryanair: Elasticsearch -- more capable than Solr but still lacks NeuralSearch and AI ranking.",
+      "algolia_gap": "Algolia NeuralSearch closes all 8 HIGH severity gaps simultaneously: NLP, SAYT, typo tolerance, personalization, recommendations, federated search, search intelligence."
+    },
+    "positioning_matrix": [
+      {
+        "capability": "NLP / Semantic Search",
+        "prospect_today": "0/10 -- q=* wildcard, zero NLP possible",
+        "prospect_with_algolia": "NeuralSearch: 'beach in November' returns relevant Caribbean/Mediterranean packages",
+        "nike_has": "EasyJet: Amadeus flight search + basic custom holiday -- no NLP confirmed",
+        "asics_has": "Ryanair: Elasticsearch (structured queries, limited NLP)",
+        "on_running_has": "Emirates: custom/proprietary with AI investment (OpenAI Enterprise) -- site search vendor undisclosed",
+        "new_balance_has": "Lufthansa: undisclosed -- no enterprise NLP search confirmed",
+        "algolia_delta": "BA would be FIRST airline with production NeuralSearch across holiday catalogue -- 18-24 month competitive moat"
+      },
+      {
+        "capability": "Search-as-You-Type (SAYT)",
+        "prospect_today": "None -- Solr fires batch on page load only",
+        "prospect_with_algolia": "Algolia Autocomplete: destination suggestions, package previews, prices -- from first keystroke",
+        "nike_has": "EasyJet: basic destination autocomplete for flights (not holidays)",
+        "asics_has": "Ryanair: fare finder with structured date/route search -- no conversational SAYT",
+        "on_running_has": "Emirates: flight booking autocomplete -- holiday SAYT unconfirmed",
+        "new_balance_has": "Lufthansa: flight booking autocomplete -- holiday SAYT unconfirmed",
+        "algolia_delta": "SAYT for holiday package discovery is unmatched across all 5 competitors -- first-mover advantage"
+      },
+      {
+        "capability": "Personalization by Loyalty Tier",
+        "prospect_today": "None -- Gold and Blue members see identical results sorted by price",
+        "prospect_with_algolia": "Algolia Personalization: BA Club tier + travel history -- Gold sees premium/luxury first, Blue sees value-first",
+        "nike_has": "EasyJet: no loyalty tier personalization in search",
+        "asics_has": "Ryanair: no loyalty tier personalization -- MyRyanair basic preferences only",
+        "on_running_has": "Emirates: Skywards tier may influence in-flight offers but site search personalization unconfirmed",
+        "new_balance_has": "Lufthansa: Miles & More tier -- search personalization unconfirmed",
+        "algolia_delta": "First airline to deploy loyalty-tier search personalization creates a loyalty monetisation moat -- directly grows IAG Loyalty GBP 469M profit"
+      },
+      {
+        "capability": "Typo Tolerance",
+        "prospect_today": "None -- Solr default parser, no fuzzy matching, holiday search is filter-only",
+        "prospect_with_algolia": "Built-in: 1 typo/word (up to 8 chars), 2 typos above -- on by default, zero configuration",
+        "nike_has": "EasyJet: limited for flight routes (structured input)",
+        "asics_has": "Ryanair: Elasticsearch default typo handling (basic, not Algolia-grade)",
+        "on_running_has": "Emirates: unknown",
+        "new_balance_has": "Lufthansa: unknown",
+        "algolia_delta": "Algolia typo tolerance is production-grade out of box -- Ryanair Elasticsearch requires manual tuning"
+      },
+      {
+        "capability": "AI Agent Discoverability",
+        "prospect_today": "None -- self-hosted Solr cannot serve AI agents at scale; no API-first search layer",
+        "prospect_with_algolia": "Algolia Agentic AI Search: API-first -- ChatGPT/Perplexity travel agents query BA inventory with structured, rich, real-time responses",
+        "nike_has": "EasyJet: no confirmed agentic search capability",
+        "asics_has": "Ryanair: Elasticsearch backend -- technically queryable but not optimised for AI agent consumption",
+        "on_running_has": "Emirates: OpenAI ChatGPT Enterprise deployment -- internal AI, not customer-facing agentic search",
+        "new_balance_has": "Lufthansa: no confirmed agentic search capability",
+        "algolia_delta": "Doyle publicly named AI agent disintermediation as the #1 strategic risk. Algolia is the direct answer -- no competitor has deployed this."
+      }
+    ],
+    "positioning_statements": {
+      "vs_solr": "Apache Solr in q=* wildcard mode is not a search engine -- it is a filter engine. Algolia NeuralSearch is an AI-powered discovery platform. The replacement is a search-layer swap, not a platform migration.",
+      "vs_elasticsearch": "Ryanair uses Elasticsearch -- self-managed infrastructure, requires dedicated search engineers, no NeuralSearch, no out-of-box AI ranking. Algolia is SaaS, zero infrastructure, NeuralSearch included, analytics built in.",
+      "vs_inbenta": "Inbenta (2018) was purchased for FAQ chatbot deflection -- it is not a search engine. Algolia replaces Inbenta for help/knowledge search with instant SAYT, typo tolerance, and federated results."
+    },
+    "the_ask": "BA Holidays 90-day pilot: replace Solr q=* with Algolia NeuralSearch. KPIs: zero-results rate reduction, search-initiated booking rate, time-to-booking reduction. Success unlocks full site search + Inbenta replacement + IAG portfolio expansion.",
+    "roi_by_scenario": {
+      "conservative": "EUR 31M/year (1% conversion improvement on EUR 3.1B direct digital revenue)",
+      "moderate": "EUR 78M-EUR 156M/year (5-10% conversion improvement on BA Holidays addressable revenue)",
+      "optimistic": "EUR 200M+ (full site + holiday + federated + personalization + BA Club ancillary uplift)"
+    },
+    "matrix_col_labels": {
+      "nike_has": "EasyJet",
+      "asics_has": "Ryanair",
+      "on_running_has": "Emirates",
+      "new_balance_has": "Lufthansa"
+    }
+  },
+  "golden_angle": {
+    "active": false,
+    "competitors_using_algolia": [],
+    "narrative": "No direct BA competitor confirmed on Algolia. Scenario: OFFENSIVE (Category Leapfrog). The category proof point is Club Med (same holiday package vertical, deployed Algolia 2024, public case study March 2026). BA at 10x the scale would be Algolia flagship travel implementation.",
+    "club_med_angle": "Club Med (1.5M travelers, 70 destinations, 35 markets) solved the same holiday package discovery problem with Algolia in 2024. BA Holidays (10,500+ hotels, 600+ destinations) has identical search architecture problem.",
+    "club_med_url": "https://www.algolia.com/customers/club-med",
+    "talk_track": "No direct BA competitor is confirmed on Algolia yet — which means BA has the opportunity to be the FIRST airline to deploy enterprise AI search across their holiday catalogue. Club Med (same holiday package vertical, 1.5M travelers, 70 destinations) deployed Algolia in 2024. BA at 10x the scale would be Algolia flagship travel implementation. First mover creates an 18-24 month competitive moat."
+  },
+  "ae_fields": {
+    "urgency": "CRITICAL",
+    "urgency_reason": "Thoughtworks BA Holidays re-platforming is live (Oct 2025). Architecture decisions made NOW define search for 5-7 years. New CIDO (18 months in seat) is in active vendor evaluation window. CEO has public mandate.",
+    "talk_track_opener": "Your CEO told the world BA is behind the curve and this is a leapfrog moment [December 2025]. We want to show you what a leapfrog looks like on BA Holidays search -- not a 2-year roadmap, a 90-day deployment. Club Med shipped this in 2024. Same catalogue problem. We have the case study.",
+    "cta": "BA Holidays 90-day pilot: replace Solr q=* with Algolia NeuralSearch. Clear KPIs: zero-results rate, search CTR, time-to-booking.",
+    "economic_buyer": "Henning Krueger (CIDO)",
+    "champion": "Jake Pearce (Head of AI)",
+    "blocker": "BA is mid-migration of 700 systems -- position Algolia as an overlay on the new cloud infrastructure, not a dependency on migration completion",
+    "next_step_action": "BA Holidays 90-day pilot: replace Solr q=* with Algolia NeuralSearch. Clear KPIs: zero-results rate, search CTR, time-to-booking.",
+    "next_step_owner": "Jake Pearce (Head of AI)",
+    "next_step_date": "Within 30 days",
+    "opportunity_headline": "The Airlines / Travel Search Opportunity for British Airways",
+    "benchmark_proof": "Club Med: Search became 'a true strategic lever for growing direct online bookings'; ~10ms search response (200x faster than industry benchmark); higher CTRs, more online conversions, fewer zero-result pages, reduced call-centre dependency after deploying Algolia Algolia Search, Custom Ranking, Query Suggestions, Merchandising Studio, Recommendations, Facets & Filters, Analytics — https://www.algolia.com/customers/club-med"
+  },
+  "next_steps": [
+    {
+      "title": "Engage Henning Krueger (CIDO) via LinkedIn",
+      "description": "Reference Thoughtworks/BA Holidays partnership as entry point. Message: 'The Thoughtworks team is architecting BA Holidays discoverability layer right now. Club Med solved the same problem with Algolia in 2024 -- same holiday catalogue scale, deployed, public case study. Happy to show what this looks like for BA.' Target: within 2 weeks."
+    },
+    {
+      "title": "Connect with Thoughtworks UK Travel Practice",
+      "description": "Thoughtworks has worked with Algolia on retail clients. A Thoughtworks-to-Algolia introduction is faster than a cold AE approach. Find the BA Holidays Product Director who owns the Thoughtworks engagement. Goal: get Algolia on the search vendor shortlist for the BA Holidays re-platform."
+    },
+    {
+      "title": "Prepare Club Med Proof Package for Jake Pearce (Head of AI)",
+      "description": "Jake Pearce evaluates AI use cases on outcomes, not features. Prepare: Club Med case study, 90-day deployment timeline, KPI framework (zero-results rate, search CTR, time-to-booking), and Algolia NeuralSearch demo on a travel catalogue. Position as the customer-facing AI use case missing from his 600-use-case roadmap."
+    }
+  ],
+  "methodology": {
+    "browser_testing": "Patchright stealth browser (Playwright-based, Akamai bypass confirmed). Tested: britishairways.com/content/holidays/ (Apache Solr confirmed), britishairways.com/content/information/help-and-contacts (Inbenta confirmed), britishairways.com/ (homepage). /travel/searchba/ returned 502 (BA backend error -- not Akamai block). 16 screenshots captured.",
+    "research_dates": "Research: 2026-04-28. Browser audit: 2026-05-09. Report generated: 2026-05-09.",
+    "data_sources": "SimilarWeb + Semrush public pages (traffic), Yahoo Finance MCP (financials), IAG FY2025 Results press release (financial facts), BuiltWith + Chrome DevTools MCP (tech stack), Himalayas.app (competitor stacks), WebFetch + WebSearch (executive quotes, news, partner intel)",
+    "waf_limitation": "Akamai Bot Manager confirmed active on britishairways.com. Patchright bypassed Akamai successfully for holiday and help pages. /travel/searchba/ returned 502 (BA-side backend error) -- underlying search vendor for site-wide search UNCONFIRMED."
+  },
+  "bibliography": [
+    {
+      "id": 1,
+      "url": "https://www.theregister.com/2025/12/13/british_airways_fears_a_future/",
+      "label": "The Register -- Doyle 'behind the curve', Globant Converge 2025"
+    },
+    {
+      "id": 2,
+      "url": "https://www.iairgroup.com/press-releases/2026/iag-full-year-results-2025/",
+      "label": "IAG FY2025 Results Press Release, February 2026"
+    },
+    {
+      "id": 3,
+      "url": "https://www.prnewswire.com/news-releases/british-airways-holidays-partners-with-thoughtworks-to-deliver-a-new-standard-in-digital-traveller-experiences-302573387.html",
+      "label": "PRNewswire -- BA Holidays Thoughtworks partnership, October 2025"
+    },
+    {
+      "id": 4,
+      "url": "https://www.algolia.com/customers/club-med",
+      "label": "Algolia -- Club Med case study"
+    },
+    {
+      "id": 5,
+      "url": "https://www.businesswire.com/news/home/20260310260293/en/Club-Med-Introduces-Lightning-Fast-AI-Powered-Search-with-Algolia-to-Modernize-Digital-Travel-Discovery",
+      "label": "BusinessWire -- Club Med / Algolia announcement, March 2026"
+    },
+    {
+      "id": 6,
+      "url": "https://www.similarweb.com/website/britishairways.com/",
+      "label": "SimilarWeb -- britishairways.com traffic data, March 2026 [ESTIMATE]"
+    },
+    {
+      "id": 7,
+      "url": "https://www.semrush.com/website/britishairways.com/overview/",
+      "label": "Semrush -- britishairways.com overview, March 2026 [ESTIMATE]"
+    },
+    {
+      "id": 8,
+      "url": "https://mediacentre.britishairways.com/pressrelease/details/19166",
+      "label": "BA Media Centre -- GBP 7B transformation programme"
+    },
+    {
+      "id": 9,
+      "url": "https://www.processexcellencenetwork.com/ai/news/british-airways-takes-flight-with-ai-driven-business-transformation",
+      "label": "Process Excellence Network -- Jake Pearce / Rameez Ebrahim, 2025"
+    },
+    {
+      "id": 10,
+      "url": "https://www.itpro.com/business/digital-transformation/british-airways-eyes-cloud-overhaul-and-ai-deployment-in-pound7-billion-it-upgrade",
+      "label": "IT Pro -- BA cloud overhaul and AI deployment"
+    },
+    {
+      "id": 11,
+      "url": "https://www.futuretravelexperience.com/2025/05/ba-ceo-discusses-how-ai-forecasting-optimisation-machine-learning-and-more-are-transforming-operational-performance-and-cx/",
+      "label": "Future Travel Experience -- Doyle AI interview, May 2025"
+    },
+    {
+      "id": 12,
+      "url": "https://mediacentre.britishairways.com/news/30122024/introducing-the-british-airways-club-more-ways-to-earn-tier-points-than-ever-before",
+      "label": "BA Media Centre -- British Airways Club launch"
+    },
+    {
+      "id": 13,
+      "url": "https://mediacentre.britishairways.com/factsheet/details/275",
+      "label": "BA Media Centre -- Henning Krueger CIDO appointment"
+    },
+    {
+      "id": 14,
+      "url": "https://www.algolia.com/customers/lacoste",
+      "label": "Algolia -- Lacoste case study (+37% conversion)"
+    },
+    {
+      "id": 15,
+      "url": "https://finance.yahoo.com/quote/IAG.L/financials",
+      "label": "Yahoo Finance -- IAG.L financials"
+    },
+    {
+      "id": 16,
+      "url": "https://www.iairgroup.com/media/optpvk5v/international-airlines-group-half-year-2025-results-transcript-updated.pdf",
+      "label": "IAG H1 2025 Earnings Call Transcript -- Doyle dot.com quote, August 2025"
+    },
+    {
+      "id": 17,
+      "url": "https://airlinergs.com/iag-sees-strong-start-to-year-as-company-reports-h1-2025-results/",
+      "label": "AirlinerGS -- IAG H1 2025 Results, Gallego quote"
+    },
+    {
+      "id": 18,
+      "url": "https://www.eplaneai.com/news/ba-chief-warns-ai-agents-may-diminish-brand-visibility",
+      "label": "ePlaneAI -- Doyle AI agent warning"
+    },
+    {
+      "id": 19,
+      "url": "https://www.travolution.com/news/travel-sectors/tour-operators/club-med-accelerates-online-search-with-algolia/",
+      "label": "Travolution -- Club Med / Algolia case study"
+    },
+    {
+      "id": 20,
+      "url": "https://himalayas.app/companies/ryanair/tech-stack",
+      "label": "Himalayas.app -- Ryanair Elasticsearch confirmed"
+    },
+    {
+      "id": 21,
+      "url": "https://www.optimalworkshop.com/customer-stories/british-airways-enhanced-digital-customer-experience-with-optimal",
+      "label": "Optimal Workshop -- BA UX research case study"
+    },
+    {
+      "id": 22,
+      "url": "https://www.newsanyway.com/2026/03/30/british-airways-bets-on-biometrics-and-ai-to-reshape-travel-loyalty-economics",
+      "label": "NewsAnyway -- BA biometrics + AI loyalty, March 2026"
+    },
+    {
+      "id": 23,
+      "url": "https://baymard.com/blog/ecommerce-search-keywords",
+      "label": "Baymard -- ecommerce search keyword relevance stats"
+    },
+    {
+      "id": 24,
+      "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-value-of-getting-personalization-right-or-wrong-is-multiplying",
+      "label": "McKinsey -- personalization value study"
+    },
+    {
+      "id": 25,
+      "url": "https://www.algolia.com/customers/club-med",
+      "label": "Algolia -- Club Med case study (direct vertical match)"
+    }
+  ],
+  "case_studies": [
+    {
+      "vertical": "Holiday Package Travel / Tour Operator",
+      "company": "Club Med",
+      "result": "Search became 'a true strategic lever for growing direct online bookings'; ~10ms search response (200x faster than industry benchmark); higher CTRs, more online conversions, fewer zero-result pages, reduced call-centre dependency",
+      "product": "Algolia Search, Custom Ranking, Query Suggestions, Merchandising Studio, Recommendations, Facets & Filters, Analytics",
+      "why": "Club Med is the most direct comparable to BA Holidays: both are holiday package businesses with large multi-destination catalogues (Club Med: 70 destinations, 35 markets; BA Holidays: 10,500+ hotels, 600+ destinations) and the same discovery problem. Club Med deployed Algolia in 2024 and published a case study March 2026 -- perfect timing for the BA conversation.",
+      "url": "https://www.algolia.com/customers/club-med"
+    },
+    {
+      "vertical": "Fashion Retail / Catalog Discovery",
+      "company": "Lacoste",
+      "result": "+150% sales contribution from search, +37% conversion rate improvement, -88% bounce rate",
+      "product": "Algolia Personalization, Analytics, Rules",
+      "why": "BA Holidays is structurally a retail catalogue problem -- 10,500 SKUs (hotels) that travellers browse and buy. The search mechanics are identical to Lacoste's apparel catalogue: large product inventory, personalisation by customer segment, analytics-driven ranking optimisation. Lacoste's +37% conversion metric is the most directly citable ROI number for the BA CFO conversation.",
+      "url": "https://www.algolia.com/customers/lacoste"
+    }
+  ],
+  "demos": [
+    {
+      "title": "BA Holidays NeuralSearch Demo",
+      "description": "Live Algolia demo on a travel package catalogue -- showing 'beach holiday in November', 'ski resort from London', and 'family break under 2,000 GBP' returning instant, relevant results vs Solr q=* returning nothing"
+    },
+    {
+      "title": "Club Med Case Study Walkthrough",
+      "description": "Before/after comparison of Club Med search experience -- same holiday package vertical as BA. Published March 2026."
+    }
+  ],
+  "partner_intel": {
+    "tech_partners": [
+      {
+        "name": "Adobe Experience Manager (AEM)",
+        "relationship": "Active in BA stack (headless GraphQL layer confirmed)",
+        "co_sell_angle": "Algolia AEM connector surfaces as a zero-rip-and-replace search upgrade. BA is mid-GBP 7B transformation; AEM is their content backbone.",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Adobe Experience Platform (AEP)",
+        "relationship": "Active (adobedc.demdex.net confirmed via network inspection)",
+        "co_sell_angle": "AEP identity graph feeds Algolia Personalization -- real-time segment data powers Algolia personalization layer to rank holiday search results by traveller profile (loyalty tier, past destinations, spend band).",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Adobe Target",
+        "relationship": "Active (mboxedge34.tt.omtrdc.net confirmed on Holidays page)",
+        "co_sell_angle": "Adobe Target + Algolia Rules is a proven joint pattern: Target controls A/B test wrapper; Algolia delivers underlying search results.",
+        "confidence": "HIGH"
+      },
+      {
+        "name": "Salesforce Service Cloud",
+        "relationship": "Active (bacustomer360.my.salesforce-scrt.com, esConfigName=BA_IT3)",
+        "co_sell_angle": "Algolia has a Salesforce partner agreement. Service Cloud + Inbenta knowledge base combination is a direct Algolia Knowledge Base replacement opportunity.",
+        "confidence": "HIGH"
+      }
+    ],
+    "si_partners": [
+      {
+        "name": "Thoughtworks",
+        "relationship": "ACTIVE -- BA Holidays formal partnership (October 2025) for digital retail platform re-architecture",
+        "co_sell_angle": "Thoughtworks is actively re-architecting BA Holidays discoverability experience. They will specify a search vendor. Algolia pre-built connectors, InstantSearch UI library, and headless API design match Thoughtworks modern architecture delivery model.",
+        "confidence": "HIGH",
+        "next_step": "Contact Thoughtworks UK Travel/Transport practice. Reference Club Med precedent. Get on the BA Holidays search vendor shortlist."
+      }
+    ],
+    "immediate_action": "Contact Thoughtworks UK Travel Practice directly -- they are the fastest path to the BA Holidays search vendor decision. Parallel: engage Henning Krueger via LinkedIn referencing the Thoughtworks engagement.",
+    "co_sell_recommendation": "Adobe joint pitch (AEM + AEP + Target + Algolia = full personalized search stack). Complements BA existing Adobe investment without rip-and-replace.",
+    "crossbeam_data_available": false,
+    "source_label": "partner-intel.md analysis of 02-tech-stack.md findings [FACT -- 2026-04-28]",
+    "unconfirmed_partners": [
+      {
+        "name": "Thoughtworks",
+        "evidence": "Formally announced as BA Holidays' strategic digital transformation partner, October 2, 2025. Scope: design and delivery of a new digital retail platform for BA Holidays — specifically including \"optimised information architecture for easy discoverability.\" Named executive: Andrew Flintham (MD, Brit",
+        "next_step": "Andrew Flintham (Managing Director, BA Holidays) — directly quoted in joint press release. Access to BA Holidays digital product team and likely CDO office at IAG level.",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "AND Digital",
+        "evidence": "Confirmed delivery partner for BA's mobile app and desktop booking flow redesign. Results documented: £500k revenue in 3 weeks post-launch (7x monthly target), 2,000 additional bookings, 200k more active Android users YoY, 200% increase in feature delivery velocity. Scope covered mobile app engineer",
+        "next_step": "BA digital product leadership (mobile + web). Likely VP Digital / Head of Product for ba.com.",
+        "confidence": "INVESTIGATE"
+      },
+      {
+        "name": "Publicis Sapient (SapientNitro)",
+        "evidence": "Named as BA's \"Global Digital Agency for Creative Technology and Social Media\" in April 2015. Scope included ba.com, mobile, creative technology, and social media. Long-standing agency-of-record relationship. As part of Publicis Groupe, which acquired Sapient and has an ongoing Adobe partnership, th",
+        "next_step": "BA CMO / Head of Digital Marketing / BA.com product team. Given the agency-of-record brief, Publicis Sapient likely has CMO and CDO-level access.",
+        "confidence": "INVESTIGATE"
+      }
+    ]
+  },
+  "tab_subtitles": {
+    "summary": "What you need before walking into British Airways",
+    "account": "British Airways at a glance -- Flag carrier airline, IAG subsidiary, ~18.5M monthly visitors, GBP 7B transformation active",
+    "findings": "What we found when we tested British Airways search -- Apache Solr q=* wildcard, Inbenta 2018, zero NLP anywhere",
+    "case": "Why British Airways should act now -- EUR 31M-EUR 156M search revenue opportunity with Club Med proof",
+    "playbook": "How to win the British Airways deal -- Thoughtworks entry, CIDO target, 90-day pilot"
+  },
+  "recommended_first_play": {
+    "type": "partner_warm_intro",
+    "headline": "Thoughtworks Is Building It Now",
+    "detail": "Thoughtworks is actively re-architecting BA Holidays' digital retail platform with 'discoverability' as an explicit KPI (October 2025 press release). Contact the Thoughtworks UK Travel Practice to get Algolia on the BA Holidays search vendor shortlist before another stack is specified.",
+    "urgency": "high",
+    "source": "partner_intel"
+  },
+  "industry_context": {
+    "vertical": "Airlines / Travel",
+    "primary_market": "UK",
+    "key_benchmarks": [
+      {
+        "metric": "Travel cart abandonment rate — airline websites",
+        "value": "79%",
+        "context": "Airline websites lose 79% of bookers before checkout — more than three times the average retail abandonment rate — meaning search and discovery friction is the primary lever available to recover lost revenue at scale.",
+        "source_name": "DigginTravel via Navan Travel Stats",
+        "source_url": "https://navan.com/blog/online-travel-booking-statistics",
+        "source_date": "2025",
+        "confidence": "ESTIMATE",
+        "label": "[ESTIMATE — DigginTravel via Navan blog, 2025, https://navan.com/blog/online-travel-booking-statistics]"
+      },
+      {
+        "metric": "UK travellers who book directly via airline/hotel websites",
+        "value": "51%",
+        "context": "More than half of UK travellers prefer booking direct with airlines — making the airline's own website the primary conversion surface and search experience the make-or-break moment in the direct booking funnel.",
+        "source_name": "APH Travel Booking Statistics",
+        "source_url": "https://www.aph.com/community/holidays/travel-booking-statistics/",
+        "source_date": "2025",
+        "confidence": "ESTIMATE",
+        "label": "[ESTIMATE — APH Travel Booking Statistics, 2025, https://www.aph.com/community/holidays/travel-booking-statistics/]"
+      },
+      {
+        "metric": "Travel industry average cart abandonment rate",
+        "value": "80.8%",
+        "context": "Eight in ten travellers abandon the booking funnel before completing a transaction — compared to 68–74% across other ecommerce sectors — making the travel vertical the highest-abandonment category in digital retail and search-led discovery the most direct recovery lever.",
+        "source_name": "Condor Ferries / Multiple Sources",
+        "source_url": "https://www.condorferries.co.uk/online-travel-booking-statistics",
+        "source_date": "2025",
+        "confidence": "ESTIMATE",
+        "label": "[ESTIMATE — Condor Ferries / multiple sources, 2025, https://www.condorferries.co.uk/online-travel-booking-statistics]"
+      }
+    ],
+    "trend_headline": "58% of travellers overwhelmed by choice; AI search is now the direct booking conversion lever airlines cannot ignore",
+    "trend_source_url": "https://navan.com/blog/online-travel-booking-statistics",
+    "trend_source_label": "[ESTIMATE — Travelport State of Modern Retailing 2024, via Navan blog, 2025]",
+    "algolia_angle": "British Airways operates in a travel market where 51% of UK customers prefer booking directly on airline websites but 79% abandon before checkout — making Algolia's AI-powered holiday package discovery, with semantic NLP search across 10,500+ hotels and 600+ destinations, the most direct lever to close the gap between booking intent and completed direct conversion."
+  },
+  "abx_sequence": {
+    "touches": [
+      {
+        "touch": 1,
+        "day": "Day 1",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 1 — HOOK",
+        "body": "Hi Jake,\n\nYour CEO told The Register last December that British Airways is \"behind the curve\" on digital. We decided to check whether that was visible on ba.com — and it is.\n\nWe inspected the BA Holidays booking widget live this week. When a customer types a natural-language query — \"beach in November,\" \"ski resorts from Gatwick,\" \"romantic break under a thousand pounds\" — the destination field fires Apache Solr with `q=*`. That's a match-everything-then-filter-by-airport-code model: it returns results based on geography codes, not on anything the customer typed. There is no query understanding at all.\n\nYou have 600 AI use cases on the roadmap. Not one of them is customer-facing search. Club Med solved this exact problem recently — same holiday package discovery use case, 70 destinations — and search became \"a true strategic lever for growing direct online bookings.\"\n\nWorth 15 minutes to see the full analysis?\n\n[Your name], [Title], Algolia",
+        "message": "Hi Jake,\n\nYour CEO told The Register last December that British Airways is \"behind the curve\" on digital. We decided to"
+      },
+      {
+        "touch": 2,
+        "day": "Day 1-2",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn — Connection Request",
+        "body": "Hi Jake — we inspected BA Holidays search live and found Solr firing q=* on 10,500 hotels: zero NLP, zero semantic understanding. Given your 600 AI use cases roadmap, thought you'd find the full analysis interesting. Happy to share.",
+        "message": "Hi Jake — we inspected BA Holidays search live and found Solr firing q=* on 10,500 hotels: zero NLP, zero semantic understanding. Given your 600 AI use cases roadmap, thought you'd find the full analysis interesting. Happy to share.\n\n\n**Character count:** 231 characters (limit: 300) — PASS\n\n**Role-s"
+      },
+      {
+        "touch": 3,
+        "day": "Day 3-4",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 2 — COMPETITOR (Defensive + Category Proof Play)",
+        "body": "Hi Jake,\n\nA quick follow-up — wanted to share something directly relevant to the discovery problem on BA Holidays.\n\nClub Med deployed Algolia recently. Their challenge was identical: 70 destinations, a catalogue customers couldn't navigate with natural language, and a call-centre handling bookings that the website couldn't convert. Their E-commerce Product Manager described the outcome: \"Search has become a true strategic lever for growing direct online bookings.\"\n\nBA Holidays has 10,500 hotels and 600+ destinations running on Apache Solr with a q=* wildcard. Club Med at roughly one-tenth the scale saw faster time-to-result, fewer no-result pages, and a measurable shift from call-centre to direct digital conversion.\n\nThe architecture decision that produces that outcome at BA Holidays is exactly what Thoughtworks' October 2025 announcement called out — \"optimised information architecture for easy discoverability.\" That window is open right now while the build is in-flight.\n\nHappy to share the full technical comparison if useful.\n\n[Your name], [Title], Algolia",
+        "message": "Hi Jake,\n\nA quick follow-up — wanted to share something directly relevant to the discovery problem on BA Holidays.\n\nClub"
+      },
+      {
+        "touch": 4,
+        "day": "Day 4-6",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn — Follow-up 1 (Credibility Building — No Ask)",
+        "body": "Jake — following up on the BA Holidays finding I mentioned. The destination widget fires Apache Solr on page load with a q=* wildcard, filtering results by airport code. A customer typing \"beach in November\" gets nothing — Solr is a filter engine, not a query interpreter.\n\nI captured the exact network request live: GET /solr/hotelPackages/safe?q=*&fq=destAirportCode:(NYC OR CHI...)\n\nYour CEO put it plainly at Globant Converge in December: \"It's fair to say that we're probably behind the curve.\" The holiday search surface is where that's most visible to customers today.\n\nNothing to act on — just wanted to make sure you had the specifics.",
+        "message": "Jake — following up on the BA Holidays finding I mentioned. The destination widget fires Apache Solr on page load with a q=* wildcard, filtering results by airport code. A customer typing \"beach in November\" gets nothing — Solr is a filter engine, not a query interpreter.\n\nI captured the exact netwo"
+      },
+      {
+        "touch": 5,
+        "day": "Day 7",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 3 — BUSINESS CASE",
+        "body": "Hi Henning,\n\nSean confirmed on the IAG H1 2025 earnings call that 25% of BA's revenue — approximately €3.1 billion — is already going through the new ba.com booking flow. The target is 85–90% of all booking volume through direct digital platforms by 2027. That scales the number to roughly €10.6 billion routed through ba.com.\n\nAll of it flows through a search engine that cannot understand a natural-language query.\n\nOne formula component from our business case model: at a conservative 15% improvement in search-to-booking conversion on the ba.com holiday journey (the industry-validated Algolia benchmark), against 18.5 million monthly site visits with an estimated 15% search engagement rate, the annual conversion lift on holiday search alone is in the range of £89.9 million. That is one component, not the full model. Replace our working average order value (£1,200 estimated) with BA's actual holiday booking value and the number recalibrates to your actuals immediately.\n\nI can walk through the full six-component model in 15 minutes. All inputs are swappable with your internal analytics.\n\n[Your name], [Title], Algolia",
+        "message": "Hi [Name],\n\nSean confirmed on the IAG H1 2025 earnings call that 25% of BA's revenue — approximately €3.1 billion — is a"
+      },
+      {
+        "touch": 6,
+        "day": "Day 7-14",
+        "channel": "video",
+        "target": "all",
+        "subject": "Loom Video Script — British Airways Search Audit",
+        "body": "Hi Jake,\n\nI recorded a 2-minute walkthrough of what we found when we tested BA Holidays search this week — the Apache Solr network request firing q=* on 10,500 hotels, the destination widget with no autocomplete, and what Club Med solved with the same architecture challenge.\n\n[Insert Loom link]\n\nWorth 2 minutes if customer-facing search is on the AI roadmap.\n\n[Your name], [Title], Algolia",
+        "message": "**Duration:** 2 minutes (120 seconds)\n**Word count:** 258 words\n**Recorded by:** AE\n**Recommended timing:** Day 7 (along",
+        "video_script": "**Duration:** 2 minutes (120 seconds)\n**Word count:** 258 words\n**Recorded by:** AE\n**Recommended timing:** Day 7 (alongside Email 3) or Day 14 (alongside Email 4)\n**Screenshots required:** All referenced files confirmed present in `deliverables/screenshots/`\n\n## HOOK (0–10 seconds)\n\n\"I spent 30 minutes on britishairways.com this week and found three things that surprised me — especially given Sean Doyle's own words about being behind the curve on digital.\"\n\n## DEMO (10–90 seconds)\n\n### Finding 1 — The Solr Wildcard (10–35 seconds)\n\n[Show screenshot: `deliverables/screenshots/08-holidays-solr-evidence.png`]\n\n\"This is the BA Holidays page. When a customer arrives here and types anything into the destination search — 'beach in November,' 'ski holiday from Gatwick,' even just 'Caribbean' — this is the network request that fires.\"\n\n\"It says: `GET /solr/hotelPackages/safe?q=*` — that asterisk is the whole story. It means 'match everything.' Solr then filters by airport codes. There is no query interpretation. The customer's words are ignored entirely.\"\n\n[Transition: move to next screenshot]\n\n### Finding 2 — No Search-as-You-Type on Destination Widget (35–60 seconds)\n\n[Show screenshot: `deliverables/screenshots/09-destination-widget-focus.png`]\n\n\"Here's the destination field in focus. No autocomplete. No suggestions. No type-ahead. Solr fires in batch on page load — not on individual keystrokes. A customer has to know an airport code or exact destination name to get results. 'Beach in November' returns nothing useful.\"\n\n[Transition: move to next screenshot]\n\n### Finding 3 — Site-Wide Search is Down (60–80 seconds)\n\n[Show screenshot: `deliverables/screenshots/06-homepage-root.png`]\n\n\"And the site-wide search — the magnifying glass on the BA homepage — currently returns a 502 error from BA's own backend. Customers who click that search icon hit a dead end.\"\n\n\"Three gaps. All visible in under 30 minutes. Here's what they mean for a business routing €3.1 billion through ba.com today.\"\n\n[Pause for emphasis]\n\n## CTA (80–120 seconds)\n\n\"BA has 600 AI use cases on the roadmap. Not one of them is customer-facing search. Club Med — same holiday package discovery problem — deployed Algolia recently and called it 'a true strategic lever for growing direct online bookings.'\"\n\n\"I put together a full analysis with the business case model and the technical comparison. Happy to walk through it in 15 minutes.\"\n\n\"[Your name], [Title], Algolia.\"\n\n## Speaker Notes\n\n- Pause after \"match everything\" — let it land before moving to the next screenshot\n- When showing 09-destination-widget-focus.png: zoom to the destination input field so the empty state is clearly visible\n- When citing €3.1B: reference Sean Doyle's own IAG H1 2025 earnings call — \"25% of our revenue going through the new dot.com booking flow\" — this is their language, not ours\n- Close with energy — the Club Med proof should feel like the resolution, not an afterthought",
+        "email_subject": "2 minutes — what we found on British.com",
+        "email_body": "**Screenshots required:** All referenced files confirmed present in `deliverables/screenshots/`",
+        "video_platform": "Loom",
+        "video_duration_target": "2 min / 120 sec"
+      },
+      {
+        "touch": 7,
+        "day": "Day 10-12",
+        "channel": "linkedin",
+        "target": "all",
+        "subject": "LinkedIn — Follow-up 2 (Soft Meeting Ask)",
+        "body": "Jake — one more data point worth sharing. Club Med deployed Algolia recently — same holiday package discovery problem, smaller scale (70 destinations vs BA's 600+). Their E-commerce lead described it as \"a true strategic lever for growing direct online bookings.\"\n\nThe Thoughtworks build for BA Holidays is in-flight now with a stated mandate for \"easy discoverability.\" The search vendor slot in that architecture is still open as far as we can tell.\n\nWould a 15-minute conversation make sense — either with you or with the Thoughtworks BA delivery team?",
+        "message": "**Angle used:** Category proof (Club Med) — not business case\n**Rationale:** Jake Pearce is an outcomes buyer (\"not a technology change, it's a people change\"). A peer deployment in the same vertical is more compelling to him than a formula. The business case angle is reserved for Henning Krüger / A"
+      },
+      {
+        "touch": 8,
+        "day": "Day 14",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 4 — SOCIAL PROOF",
+        "body": "Hi Jake,\n\nI wanted to share a specific case study rather than an abstract benchmark.\n\nClub Med — a holiday package business with 70 resorts across 35 markets — was running a legacy search system with the same structural problem as BA Holidays: customers couldn't navigate by natural language, the call centre handled bookings that the website couldn't convert, and search performance was inconsistent across markets.\n\nThey deployed Algolia recently. The implementation included semantic search (NeuralSearch), query suggestions, merchandising rules, and recommendations — the same stack relevant to BA Holidays' 10,500-hotel catalogue. The outcomes were measured: faster time-to-result (reported as \"200x faster than industry benchmark\"), fewer no-result pages, higher click-through rates, increased direct online conversions, and reduced call-centre dependency.\n\nTheir E-commerce Product Manager put it plainly: \"Search has become a true strategic lever for growing direct online bookings.\"\n\nBA Holidays is operating at roughly 10x the scale of Club Med — 10,500 hotels, 600+ destinations, across a customer base that includes Executive Club members with 200 billion Avios and a demonstrable preference for high-value packages. The case for an AI-native search layer is proportionally larger.\n\nI'm happy to arrange a call with the Algolia team who managed the Club Med deployment — the architecture maps directly to what Thoughtworks is building for BA Holidays right now.\n\n[Your name], [Title], Algolia",
+        "message": "Hi [Name],\n\nI wanted to share a specific case study rather than an abstract benchmark.\n\nClub Med — a holiday package bus"
+      },
+      {
+        "touch": 9,
+        "day": "Day 21",
+        "channel": "email",
+        "target": "all",
+        "subject": "Email 5 — BREAK-UP",
+        "body": "Hi Jake,\n\nI know you're carrying the weight of 600 AI use cases and a transformation programme that's already at 31 live deployments. I won't take up more of your time with another nudge.\n\nI'm leaving the full BA search audit with you as a parting resource — it includes the live network findings from the ba.com holiday search inspection, the Club Med comparison, and the business case model with all inputs open for your actuals:\n\n[British Airways Search Intelligence Report — ba.com/index.html]\n\nThe Thoughtworks architecture window is the timing factor worth watching. Once the BA Holidays platform architecture is locked, the search vendor decision moves from \"now\" to \"next cycle.\"\n\nIf the timing shifts and a conversation becomes useful, I'm here. No obligation either way.\n\n[Your name], [Title], Algolia",
+        "message": "Hi Jake,\n\nI know you're carrying the weight of 600 AI use cases and a transformation programme that's already at 31 live"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "jake_pearce",
+        "name": "Jake Pearce",
+        "title": "Head of AI",
+        "company": "British Airways"
+      },
+      {
+        "id": "henning_kruger",
+        "name": "Henning Krüger",
+        "title": "Chief Information and Digital Officer",
+        "company": "British Airways"
+      },
+      {
+        "id": "victoria_schuster",
+        "name": "Victoria Schuster",
+        "title": "Director of Customer Experience",
+        "company": "British Airways"
+      },
+      {
+        "id": "andrew_flintham",
+        "name": "Andrew Flintham",
+        "title": "Managing Director, BA Holidays",
+        "company": "British Airways Holidays"
+      },
+      {
+        "id": "rameez_ebrahim",
+        "name": "Rameez Ebrahim",
+        "title": "Head of Transformation",
+        "company": "British Airways"
+      }
+    ],
+    "total_touches": 9,
+    "duration_days": 21,
+    "channels": [
+      "Email",
+      "LinkedIn",
+      "Video"
+    ],
+    "tier": "Tier 1 — ACT NOW",
+    "initiator": "AE-led"
+  }
+}

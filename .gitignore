@@ -1,4 +1,11 @@
 .vercel
 .DS_Store
+node_modules/
+.env
+.env.*
 *.bak
 *-audit-data.json.bak
+
+# session artifacts
+*.prebak
+assets/cass-candidates/

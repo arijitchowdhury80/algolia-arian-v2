@@ -2,7 +2,7 @@
 
 Interactive sales intelligence platform for Algolia Account Executives. Each company audit is a 5-tab SPA with competitive analysis, financial modelling, browser findings, hiring signals, and a complete sales play.
 
-**Live:** https://algolia-arian-v2.vercel.app/
+**Live:** https://prism.chowmes.com/
 
 ---
 
@@ -10,14 +10,14 @@ Interactive sales intelligence platform for Algolia Account Executives. Each com
 
 | Company | Vertical | Score | Factcheck | Vercel URL |
 |---------|---------|-------|-----------|------------|
-| **La Banque Postale** | French Retail Banking | 2.1/10 | PROCEED 9.1/10 | [/labanquepostale/](https://algolia-arian-v2.vercel.app/labanquepostale/index.html) |
-| **British Airways** | Airline / Travel | 2.1/10 | Corrections applied | [/british-airways/](https://algolia-arian-v2.vercel.app/british-airways/index.html) |
-| **Brooks Running** | Performance Footwear | — | — | [/brooks-running/](https://algolia-arian-v2.vercel.app/brooks-running/index.html) |
-| **DSW** | Footwear Retail | — | — | [/dsw/](https://algolia-arian-v2.vercel.app/dsw/index.html) |
-| **L.L.Bean** | Outdoor Retail | — | — | [/llbean/](https://algolia-arian-v2.vercel.app/llbean/index.html) |
-| **Savage X Fenty** | DTC Lingerie | — | — | [/savage-x-fenty/](https://algolia-arian-v2.vercel.app/savage-x-fenty/index.html) |
-| **Nike** | Athletic Apparel | — | — | [/nike/](https://algolia-arian-v2.vercel.app/nike/index.html) |
-| **Oriental Trading** | Party & Craft Retail | — | — | [/orientaltrading/](https://algolia-arian-v2.vercel.app/orientaltrading/index.html) |
+| **La Banque Postale** | French Retail Banking | 2.1/10 | PROCEED 9.1/10 | [/labanquepostale/](https://prism.chowmes.com/labanquepostale/index.html) |
+| **British Airways** | Airline / Travel | 2.1/10 | Corrections applied | [/british-airways/](https://prism.chowmes.com/british-airways/index.html) |
+| **Brooks Running** | Performance Footwear | — | — | [/brooks-running/](https://prism.chowmes.com/brooks-running/index.html) |
+| **DSW** | Footwear Retail | — | — | [/dsw/](https://prism.chowmes.com/dsw/index.html) |
+| **L.L.Bean** | Outdoor Retail | — | — | [/llbean/](https://prism.chowmes.com/llbean/index.html) |
+| **Savage X Fenty** | DTC Lingerie | — | — | [/savage-x-fenty/](https://prism.chowmes.com/savage-x-fenty/index.html) |
+| **Nike** | Athletic Apparel | — | — | [/nike/](https://prism.chowmes.com/nike/index.html) |
+| **Oriental Trading** | Party & Craft Retail | — | — | [/orientaltrading/](https://prism.chowmes.com/orientaltrading/index.html) |
 
 ---
 

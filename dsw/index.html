@@ -259,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2726,13 +2726,13 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
 #section-sidebar {
   position: fixed;
-  right: 24px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -2809,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5145,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5291,10 +5291,10 @@ a:hover {
   "company_snapshot": {
     "industry": "Footwear & Accessories Retail (Off-Price / Multi-Brand)",
     "hq": "Columbus, Ohio",
-    "employees": "14,000",
-    "revenue": "$3.009B",
+    "employees": "13,000",
+    "revenue": "$2.893B",
     "revenue_source": "https://finance.yahoo.com/quote/DBI/financials",
-    "revenue_source_label": "Yahoo Finance (FY2025)",
+    "revenue_source_label": "Yahoo Finance (FY2026, ended 2026-01-31)",
     "founded": "1969",
     "ticker": "NYSE: DBI",
     "current_search_vendor": "Custom / Proprietary (Greenfield — no enterprise search vendor detected)",
@@ -5365,10 +5365,10 @@ a:hover {
       "relevance": "CEO executive mandate directly covers site search — creates internal justification for Algolia investment."
     },
     {
-      "type": "funding",
+      "type": "leadership",
       "badge_label": "Leadership Change",
       "text": "New CFO Sheamus Toal (ex-Children's Place) joined Feb 16, 2026. New COO Andrea O'Donnell joined Feb 8, 2026. Dual C-suite change opens a 90-day budget review window.",
-      "source_name": null,
+      "source_name": "PR Newswire",
       "source_url": "https://www.prnewswire.com/news-releases/designer-brands-inc-appoints-sheamus-toal-as-chief-financial-officer-302684350.html",
       "source_date": "2026-02-16",
       "relevance": "New CFO in 90-day review mode = ideal timing for ROI-focused pitch. New COO evaluating operations = receptive to new solutions."
@@ -5376,10 +5376,10 @@ a:hover {
     {
       "type": "industry-risk",
       "badge_label": "Industry Risk",
-      "text": "DBI in net loss ($10.5M) for FY2025. Revenue declining 3-year trend: $3.315B → $3.075B → $3.009B. Negative comparable sales for 8 of 9 quarters. Q4 FY2025 was first positive comp in 9 quarters (+0.5%).",
+      "text": "DBI in net loss (−$8.37M) for FY2026 (ended Jan 2026). Revenue declining 3-year trend: $3.075B → $3.009B → $2.893B. Negative comparable sales for 8 of 9 quarters. Q4 FY2025 was first positive comp in 9 quarters (+0.5%).",
       "source_name": null,
       "source_url": "https://finance.yahoo.com/quote/DBI/financials",
-      "source_date": "2026-03-21",
+      "source_date": "2026-07-04",
       "relevance": "Revenue erosion creates urgency for proven-ROI tech investments. Algolia's $6.9M conservative ROI is material at DSW's scale — equivalent to 2.6% of market cap."
     },
     {
@@ -5439,183 +5439,43 @@ a:hover {
     {
       "type": "media_quote",
       "speaker": "Doug Howe",
-      "title": "Executive",
+      "title": "President, DSW Designer Shoe Warehouse",
       "quote": "I'm privileged to join DSW as we evolve retail to the next level, with a determined focus on customers, offering the best owned and national brands and delivering products with incredible speed,\" said Howe.",
       "context": null,
-      "publication": "Prnewswire",
+      "publication": "PR Newswire",
       "source_url": "https://www.prnewswire.com/news-releases/designer-brands-inc-names-doug-howe-as-president-of-dsw-designer-shoe-warehouse-301551676.html",
-      "source_date": "2026-03-24",
+      "source_date": "2022-05-20",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT — Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-names-doug-howe-as-president-of-dsw-designer-shoe-warehouse-301551676.html]",
+      "label": "[FACT — PR Newswire, 2022-05-20, https://www.prnewswire.com/news-releases/designer-brands-inc-names-doug-howe-as-president-of-dsw-designer-shoe-warehouse-301551676.html]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
       "speaker": "Doug Howe",
-      "title": "Executive",
-      "quote": "In case you missed it, DSW recently launched brand re-positioning, unveiling a new tagline, “Let Us Surprise You,” marking a pivotal step in re-invigorating the DSW brand identity and leaning back int",
-      "context": null,
-      "publication": "Linkedin",
-      "source_url": "https://www.linkedin.com/posts/doug-howe-324b6b9_proud-and-grateful-to-our-teams-to-be-able-activity-7371187333511122944-PAYu",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "ESTIMATE",
-      "label": "[ESTIMATE — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/doug-howe-324b6b9_proud-and-grateful-to-our-teams-to-be-able-activity-7371187333511122944-PAYu]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Doug Howe",
-      "title": "Executive",
-      "quote": "On the company’s earnings call on Tuesday, chief executive officer Doug Howe told analysts that the team is “prioritizing value, optimizing its assortment and diversifying its sourcing” given the uncertainty in the market.",
-      "context": null,
-      "publication": "Linkedin",
-      "source_url": "https://www.linkedin.com/posts/footwear-news_designer-brands-is-reviewing-pricing-and-activity-7338585064626118656-Olf3",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/posts/footwear-news_designer-brands-is-reviewing-pricing-and-activity-7338585064626118656-Olf3]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Doug Howe",
-      "title": "Executive",
-      "quote": "CEO Doug Howe stated during a third-quarter earnings call that the company is focused on both its customer and product.",
+      "title": "CEO",
+      "quote": "Our customer remains at the center of everything we do and we remain focused on delivering an expansive assortment of relevant products to exceed expectations across footwear categories.",
       "context": null,
       "publication": "Retail Dive",
       "source_url": "https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/",
-      "source_date": "2026-03-24",
+      "source_date": "2026-02-05",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT — Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
+      "label": "[FACT — Retail Dive, 2026-02-05, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
       "algolia_relevance": null
     },
     {
       "type": "media_quote",
-      "speaker": "Jared Poff",
-      "title": "Executive",
-      "quote": "Poff - Designer Brands Inc.",
+      "speaker": "Doug Howe",
+      "title": "CEO",
+      "quote": "As an organization, our efforts will remain focused on execution of our strategic initiatives to build a business rooted in the strength of our brand, centered on the customer, and positioned for long-term value creation.",
       "context": null,
-      "publication": "Filecache",
-      "source_url": "https://filecache.investorroom.com/ir1_dswinc/614/DBI-USQ_Transcript_2022-04-08.pdf",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Filecache via Tavily WebFetch, 2026-03-24, https://filecache.investorroom.com/ir1_dswinc/614/DBI-USQ_Transcript_2022-04-08.pdf]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Jared Poff",
-      "title": "Executive",
-      "quote": "“Our customer remains at the center of everything we do and we remain focused on delivering an expansive assortment of relevant products to exceed expectations across footwear categories.”\n\nThis fall, Chief Financial Officer and Chief Administrative Officer Jared Poff announced his departure from Designer Brands after a decade with the company.",
-      "context": null,
-      "publication": "Retail Dive",
-      "source_url": "https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Retail Dive via Tavily WebFetch, 2026-03-24, https://www.retaildive.com/news/designer-brands-dsw-confirms-layoffs/811413/]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Jared Poff",
-      "title": "Executive",
-      "quote": "As an organization, our efforts will remain focused on execution of our strategic initiatives to build a business rooted in the strength of our brand, centered on the customer, and positioned for long-term value creation.” [...] Quantcast\n\nan image, when javascript is unavailable\n\n# Jared Poff Steps Down as Designer Brands CFO After 10 Years\n\nMark Haley has been named interim principal financial officer, effective Nov.",
-      "context": null,
-      "publication": "WWD",
-      "source_url": "https://wwd.com/footwear-news/shoe-industry-news/jared-poff-designer-brands-cfo-exits-1238292559/",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — WWD via Tavily WebFetch, 2026-03-24, https://wwd.com/footwear-news/shoe-industry-news/jared-poff-designer-brands-cfo-exits-1238292559/]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Jared Poff",
-      "title": "Executive",
-      "quote": "(NYSE: DBI) (the \"Company,\" \"we,\" \"us,\" \"our,\" and \"Designer Brands\"), today announced that Jared Poff has decided to resign as Executive Vice President, Chief Financial Officer and Chief Administrative Officer to pursue a new professional opportunity, effective October 31, 2025.",
-      "context": null,
-      "publication": "Prnewswire",
+      "publication": "PR Newswire",
       "source_url": "https://www.prnewswire.com/news-releases/designer-brands-inc-announces-cfo-transition-process-302578815.html",
-      "source_date": "2026-03-24",
+      "source_date": "2025-10-08",
       "source_type": "media_interview",
       "confidence": "FACT",
-      "label": "[FACT — Prnewswire via Tavily WebFetch, 2026-03-24, https://www.prnewswire.com/news-releases/designer-brands-inc-announces-cfo-transition-process-302578815.html]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Michele Love",
-      "title": "Executive",
-      "quote": "We also believe empowerment and wellness in our communities is essential,\" says DSW Chief Operating Officer Michele Love.",
-      "context": null,
-      "publication": "Investors",
-      "source_url": "https://investors.designerbrands.com/2018-08-30-DSW-Forms-DSW-Gives-to-Shine-a-Light-on-Empowerment-Wellness-and-Local-Community",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Investors via Tavily WebFetch, 2026-03-24, https://investors.designerbrands.com/2018-08-30-DSW-Forms-DSW-Gives-to-Shine-a-Light-on-Empowerment-Wellness-and-Local-Community]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Michele Love",
-      "title": "Executive",
-      "quote": "The footwear retailer announced Thursday the appointment of Michele Love as executive vice president and chief operating officer for DSW.",
-      "context": null,
-      "publication": "Sourcingjournal",
-      "source_url": "https://sourcingjournal.com/footwear/footwear-trends/dsw-99328/",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Sourcingjournal via Tavily WebFetch, 2026-03-24, https://sourcingjournal.com/footwear/footwear-trends/dsw-99328/]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Michele Love",
-      "title": "Executive",
-      "quote": "In a press release DSW said Love, the former Nordstrom executive, will be in charge of driving demand and providing multi-point fulfillment.",
-      "context": null,
-      "publication": "PYMNTS",
-      "source_url": "https://www.pymnts.com/news/2017/dsw-appoints-long-time-nordstrom-exec-as-coo/",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — PYMNTS via Tavily WebFetch, 2026-03-24, https://www.pymnts.com/news/2017/dsw-appoints-long-time-nordstrom-exec-as-coo/]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Michele Love",
-      "title": "Executive",
-      "quote": "# Shoe-In\n\nShoe-In\n\nThe footwear industry's podcast\n\n## #332 Nothing but Michele Love for the Shoe Industry\n\nMichele Love, CEO, Sunsrise Brands - Footwear & Accessories Division\n\n## Michele Love, CEO, Sunrise Brands – Footwear & Accessories Division\n\nFrom Nordstrom to DSW to Sunrise Brands, Michele Love’s shoe story is like none other.",
-      "context": null,
-      "publication": "Shoeinshow",
-      "source_url": "https://shoeinshow.com/episode/332-michele-love/",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Shoeinshow via Tavily WebFetch, 2026-03-24, https://shoeinshow.com/episode/332-michele-love/]",
-      "algolia_relevance": null
-    },
-    {
-      "type": "media_quote",
-      "speaker": "Michele Love",
-      "title": "Executive",
-      "quote": "We set up tables for shoe…  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- As we continue to prioritize the growth and momentum of our Nordstrom Rack business, Nordstrom is pleased to announce that lori marten has been…  \nLiked by Michele Love  \nView Post  \nActivity Image\n\n- Awarding Customer Service All Star is always my favorite morning.",
-      "context": null,
-      "publication": "Linkedin",
-      "source_url": "https://www.linkedin.com/in/michelelove",
-      "source_date": "2026-03-24",
-      "source_type": "media_interview",
-      "confidence": "FACT",
-      "label": "[FACT — Linkedin via Tavily WebFetch, 2026-03-24, https://www.linkedin.com/in/michelelove]",
+      "label": "[FACT — PR Newswire, 2025-10-08, https://www.prnewswire.com/news-releases/designer-brands-inc-announces-cfo-transition-process-302578815.html]",
       "algolia_relevance": null
     }
   ],
@@ -5634,7 +5494,7 @@ a:hover {
         "productivity": "Doubled merchandising team productivity",
         "additional": "Immediate reduction in bounce rates; AOV and basket size growth after enabling Recommend; Black Friday conversion +4.5%"
       },
-      "strategic_angle": "DSW's closest direct competitor by store count and customer profile. Shoe Carnival's 3.5x conversion lift is a benchmark DSW's digital team cannot ignore. The Amplience + Algolia composable architecture is a proven blueprint for footwear mid-market digital transformation.",
+      "strategic_angle": "DSW's closest direct competitor by store count and customer profile. Shoe Carnival's up to 3.5x conversion lift is a benchmark DSW's digital team cannot ignore. The Amplience + Algolia composable architecture is a proven blueprint for footwear mid-market digital transformation.",
       "search_stack": "Algolia",
       "source_url": "https://www.algolia.com/customers/shoe-carnival"
     },
@@ -5648,7 +5508,7 @@ a:hover {
       "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Famous Footwear chose Coveo for AI-powered ecommerce transformation. Coveo is a higher-complexity, higher-cost alternative to Algolia. If Famous Footwear evaluates alternatives, Algolia's footwear vertical proof set (Shoe Carnival, JD Sports, Steve Madden) is stronger. Coveo also lacks Algolia's Merchandising Studio no-code autonomy.",
+      "strategic_angle": "Famous Footwear chose Coveo for AI-powered ecommerce transformation. Coveo is a higher-complexity, higher-cost alternative to Algolia. If Famous Footwear evaluates alternatives, Algolia's footwear vertical proof set (Shoe Carnival, JD Sports) is stronger. Coveo also lacks Algolia's Merchandising Studio no-code autonomy.",
       "search_stack": "Coveo",
       "source_url": "https://www.coveo.com/en/resources/webinars/how-caleres-transformed-their-ecommerce-experience-with-coveo"
     },
@@ -5669,16 +5529,16 @@ a:hover {
     {
       "name": "Steve Madden",
       "domain": "stevemadden.com",
-      "search_vendor": "Algolia",
+      "search_vendor": "Fast Simon",
       "search_vendor_confirmed": true,
-      "search_vendor_source_url": "https://www.algolia.com/resources/asset/webinar-merchandisingartscience",
-      "uses_algolia": true,
-      "golden_angle": true,
+      "search_vendor_source_url": "https://www.fastsimon.com/success_story/steve-madden/",
+      "uses_algolia": false,
+      "golden_angle": false,
       "algolia_case_study_url": "",
       "algolia_case_study_metrics": "",
-      "strategic_angle": "Steve Madden is both a DSW vendor (brand sold in DSW stores/online) and a DTC competitor. Their active Algolia Advisory Board participation and AI merchandising use case creates a natural 'your brand partners are already using this' conversation for the Algolia AE with DSW digital leadership.",
-      "search_stack": "Algolia",
-      "source_url": "https://www.algolia.com/resources/asset/webinar-merchandisingartscience"
+      "strategic_angle": "Steve Madden is both a DSW vendor (brand sold in DSW stores/online) and a DTC competitor. Their site search runs on Fast Simon, confirmed via live network detection of stevemadden.com on 2026-07-04 (65 requests to fastsimon.com, zero Algolia calls detected), so they are a modern AI-search adopter but not an Algolia reference. Frame as 'your brand partners are already investing in AI search' rather than as an Algolia customer proof point.",
+      "search_stack": "Fast Simon",
+      "source_url": "https://www.fastsimon.com/success_story/steve-madden/"
     },
     {
       "name": "Rack Room Shoes",
@@ -5837,7 +5697,7 @@ a:hover {
       "found_title": "Site search is a custom proprietary backend — no federated content, no personalized ranking, no NeuralSearch",
       "found_evidence": "'gift for her under 100' returns Under Armour backpacks. Help content invisible in SAYT. Zero enterprise search vendor detected via network inspection.",
       "finding_id": "F01",
-      "algolia_angle": "Algolia NeuralSearch resolves conversational queries — 'gift for her under 100', 'comfortable shoes for standing all day' — with semantic understanding of gender, price, and occasion intent. Shoe Carnival saw 3.5x conversion with this exact capability."
+      "algolia_angle": "Algolia NeuralSearch resolves conversational queries — 'gift for her under 100', 'comfortable shoes for standing all day' — with semantic understanding of gender, price, and occasion intent. Shoe Carnival saw up to 3.5x conversion with this exact capability."
     },
     {
       "said_quote": "customer-first and product obsessed through a data-driven approach",
@@ -5958,17 +5818,6 @@ a:hover {
     "market_cap": "",
     "revenue_3y": [
       {
-        "year": "FY2023",
-        "revenue": "$3.315B",
-        "gross_profit": "$1.455B",
-        "operating_income": "$182.8M",
-        "net_income": "$162.7M",
-        "net_margin": "4.9%",
-        "ebitda": "$255.9M",
-        "note": "",
-        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
-      },
-      {
         "year": "FY2024",
         "revenue": "$3.075B",
         "gross_profit": "$1.324B",
@@ -5977,7 +5826,7 @@ a:hover {
         "net_margin": "0.9%",
         "ebitda": "$139.3M",
         "note": "",
-        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
+        "label": "[FACT — Yahoo Finance MCP, 2026-07-04]"
       },
       {
         "year": "FY2025",
@@ -5987,15 +5836,26 @@ a:hover {
         "net_income": "−$10.5M",
         "net_margin": "−0.35%",
         "ebitda": "$99.5M",
+        "note": "",
+        "label": "[FACT — Yahoo Finance MCP, 2026-07-04]"
+      },
+      {
+        "year": "FY2026",
+        "revenue": "$2.893B",
+        "gross_profit": "$1.260B",
+        "operating_income": "$41.2M",
+        "net_income": "−$8.37M",
+        "net_margin": "−0.29%",
+        "ebitda": "$106.7M",
         "digital_share": "$921M",
         "note": "Latest FY",
-        "label": "[FACT — Yahoo Finance MCP, 2026-03-24]"
+        "label": "[FACT — Yahoo Finance MCP, 2026-07-04]"
       }
     ],
-    "revenue_cagr": "-4.8%",
+    "revenue_cagr": "-3.0%",
     "revenue_trend": "DECLINING",
-    "ebitda_margin": "3.12%",
-    "gross_margin": "42.88%",
+    "ebitda_margin": "3.69%",
+    "gross_margin": "43.57%",
     "margin_zone": "GREEN",
     "analyst_consensus": "HOLD",
     "analyst_count": 2,
@@ -6024,7 +5884,7 @@ a:hover {
     "algolia_annual_cost_est": "$400K–$800K ACV",
     "conservative_lift_label": "$6.9M/yr (5% improvement)",
     "revenue_source": "Yahoo Finance / DBI SEC filings",
-    "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-03-24]",
+    "revenue_source_label": "[FACT — Yahoo Finance MCP, 2026-07-04]",
     "source_url": "https://finance.yahoo.com/quote/DBI/financials",
     "executive_quotes": []
   },
@@ -6121,7 +5981,7 @@ a:hover {
         "name": "Mike Donk",
         "status": "WARM",
         "signal": "hot",
-        "message": "SVP, Digital owns dsw.com experience. Primary AE outreach contact. Shoe Carnival 3.5x opener.",
+        "message": "SVP, Digital owns dsw.com experience. Primary AE outreach contact. Shoe Carnival up to 3.5x opener.",
         "job_url": null,
         "salary_range": null
       },
@@ -6149,7 +6009,7 @@ a:hover {
         "phase": 1,
         "label": "Outreach",
         "target": "Mike Donk (SVP, Digital)",
-        "message": "Shoe Carnival — your direct off-price competitor — just 3.5x'd search conversions with Algolia. Worth 15 minutes to see what we found on dsw.com?",
+        "message": "Shoe Carnival — your direct off-price competitor — saw up to 3.5x more search conversions with Algolia. Worth 15 minutes to see what we found on dsw.com?",
         "timing": "Week 1–2 (March 2026)"
       },
       {
@@ -6170,7 +6030,7 @@ a:hover {
     "objection_counters": [
       {
         "objection": "We have an internal search solution that works",
-        "counter": "Network inspection confirmed zero enterprise search vendor. 'Gift for her under $100' returns an Under Armour backpack at position #1 — that's the gap. Shoe Carnival had a similar setup before Algolia and saw 3.5x conversion uplift."
+        "counter": "Network inspection confirmed zero enterprise search vendor. 'Gift for her under $100' returns an Under Armour backpack at position #1 — that's the gap. Shoe Carnival had a similar setup before Algolia and saw up to 3.5x conversion uplift."
       },
       {
         "objection": "We're in cost-reduction mode after the layoffs",
@@ -6193,9 +6053,11 @@ a:hover {
         "No personalization engine detected on DSW — Braze CRM data unused in search"
       ],
       "discovery_question": "When a VIP Insider Gold member searches 'boots,' is she seeing her size, her brands, and her price range first — or the same 6,519 results as a first-time visitor?",
-      "algolia_proof": "Algolia AI Personalization uses loyalty data, browse history, and purchase patterns to re-rank results for each user. Shoe Carnival deployed this as part of their 3.5x conversion improvement.",
+      "algolia_proof": "Algolia AI Personalization uses loyalty data, browse history, and purchase patterns to re-rank results for each user. Shoe Carnival deployed this as part of their up to 3.5x conversion improvement.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis",
-      "angle": "Personalization-Led Growth"
+      "angle": "Personalization-Led Growth",
+      "objection": "We already personalize the customer experience — email through Movable Ink, in-store through Sizeo. Our shoppers are covered.",
+      "objection_counter": "Email and in-store are personalized, but on-site search still isn't: a VIP Insider member and a first-time visitor see the same 6,519 results for 'boots.' The audit detected no personalization engine on DSW, and the Braze CRM data that powers your email is not wired into search. Algolia AI Personalization re-ranks results per user from that same loyalty, browse, and purchase data — the exact signal Shoe Carnival used as part of its up-to-up to 3.5x conversion increase."
     },
     {
       "label": "VIP Loyalty Relaunch",
@@ -6208,11 +6070,13 @@ a:hover {
       "discovery_question": "How is the VIP relaunch team thinking about connecting loyalty tier to the on-site search experience?",
       "algolia_proof": "Algolia AI Personalization connects to existing CRM identity data (Braze is supported) — no new infrastructure required to personalize search for loyalty segments.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis",
-      "angle": "VIP Loyalty Relaunch"
+      "angle": "VIP Loyalty Relaunch",
+      "objection": "The VIP relaunch is already a major program. We can't bolt a search project onto it right now.",
+      "objection_counter": "The relaunch is precisely why search is low-lift, not extra work: Algolia AI Personalization connects to your existing Braze identity data, so there's no new infrastructure to stand up. The loyalty signals you're rebuilding around — size, brand preference, purchase history — already sit in Braze but aren't used in search today. Wiring them into on-site ranking makes the relaunch's personalization visible at the single highest-intent moment: when a Gold member searches."
     },
     {
       "label": "Competitive Urgency",
-      "hook": "Shoe Carnival is winning on digital search. They have your same model — off-price footwear, B&M + ecommerce — and they 3.5x'd search conversions with Algolia. DSW has more stores and more traffic.",
+      "hook": "Shoe Carnival is winning on digital search. They have your same model — off-price footwear, B&M + ecommerce — and they saw up to 3.5x more search conversions with Algolia. DSW has more stores and more traffic.",
       "pain_points": [
         "Shoe Carnival (direct competitor) is an Algolia customer — first mover in off-price footwear search",
         "Zappos (Amazon) raises the bar every year — DSW needs enterprise search to compete",
@@ -6221,7 +6085,9 @@ a:hover {
       "discovery_question": "How does DSW benchmark its digital search experience against Shoe Carnival and Zappos today?",
       "algolia_proof": "Shoe Carnival: up to 3.5x conversions from search. Same industry, same model, same competitor.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis",
-      "angle": "Competitive Urgency"
+      "angle": "Competitive Urgency",
+      "objection": "Our search works fine. We built it in-house and it does the job for our shoppers.",
+      "objection_counter": "The audit's network inspection found no enterprise search vendor — a custom backend that is a technical liability, not an asset, against a competitor already on a modern platform. Shoe Carnival, your direct off-price footwear peer with the same B&M-plus-ecommerce model, reported up to a up to 3.5x conversion increase after moving to Algolia. DSW carries more stores and more traffic; the question isn't whether in-house 'works,' it's whether it converts like Shoe Carnival's does."
     },
     {
       "label": "Revenue Recovery via Search",
@@ -6231,10 +6097,12 @@ a:hover {
         "Q4 FY2025 is the first positive comp in 9 quarters — management needs to invest to accelerate the turn",
         "Search is the highest-leverage digital revenue levers — Baymard: 15% of digital revenue is search-addressable"
       ],
-      "discovery_question": "What's the internal benchmark for search conversion on dsw.com, and how does it compare to Shoe Carnival's 3.5x post-Algolia metric?",
+      "discovery_question": "What's the internal benchmark for search conversion on dsw.com, and how does it compare to Shoe Carnival's up to 3.5x post-Algolia metric?",
       "algolia_proof": "Conservative: $6.9M/year (5% lift). Moderate: $13.8M/year (10% lift). 17x ROI on $400K ACV. Payback under 30 days.",
       "source": "DSW Investor Day 2024 / SimilarWeb Traffic Analysis",
-      "angle": "Revenue Recovery via Search"
+      "angle": "Revenue Recovery via Search",
+      "objection": "We posted a net loss last year and we're in the middle of a turnaround. This isn't the time to add new spend.",
+      "objection_counter": "The declining trend ($3.315B → $3.009B, net loss in FY2025) is the argument for search, not against it: with roughly 31% of revenue flowing through dsw.com, search is the highest-leverage digital lever left. A 5% conversion lift on the $138.2M search-addressable revenue is $6.9M/year from existing traffic; 10% is $13.8M — a 17x return on a $400K ACV with payback under 30 days. Q4 FY2025 was the first positive comp in nine quarters; funding the lever that accelerates the turn is the low-risk move."
     }
   ],
   "icp_mapping": {
@@ -6261,7 +6129,7 @@ a:hover {
         "discovery_question": "How is the loyalty team thinking about surfacing personalized product rankings for different VIP tiers?",
         "pain": "VIP loyalty program relaunch",
         "product": "Algolia AI Personalization",
-        "evidence": "Sarah Crockett, CMO (FY2024 Earnings, Mar 2025): “Our top customers shop both channels, digital and physical, and they engage with our app very regularly, and that’s something that we’re continuously innovating upon.”"
+        "evidence": "Sarah Crockett, CMO (Marketing Dive, Feb 2025): “Our top customers shop both channels, digital and physical, and they engage with our app very regularly, and that’s something that we’re continuously innovating upon.”"
       },
       {
         "their_priority": "Digital revenue recovery + margin improvement",
@@ -6277,11 +6145,11 @@ a:hover {
         "week": "1–2",
         "target": "Mike Donk (SVP, Digital)",
         "channel": "LinkedIn + Email",
-        "message": "Shoe Carnival — your direct competitor — 3.5x'd search conversions with Algolia. We audited dsw.com and found 5 critical gaps. Worth 15 minutes?"
+        "message": "Shoe Carnival — your direct competitor — saw up to 3.5x more search conversions with Algolia. We audited dsw.com and found 5 critical gaps. Worth 15 minutes?"
       },
       {
         "week": "3–4",
-        "target": "Laura Davis org (VP/Dir Digital Product)",
+        "target": "VP/Dir Digital Product (in Mike Donk's digital org)",
         "channel": "LinkedIn",
         "message": "CEO mandate: 'customer-first through data-driven approach.' Your search has no analytics layer. Here's what we found."
       },
@@ -6293,14 +6161,14 @@ a:hover {
       }
     ],
     "anchor_lines": [
-      "Your competitor Shoe Carnival just 3.5x'd search conversions with Algolia — DSW has more stores and more traffic. The gap shouldn't exist.",
+      "Your competitor Shoe Carnival saw up to 3.5x more search conversions with Algolia — DSW has more stores and more traffic. The gap shouldn't exist.",
       "31% of your revenue flows through dsw.com with no enterprise search vendor. That's $138M in search-addressable revenue with a custom backend from the early 2010s.",
       "New CFO. New COO. First positive comp in 9 quarters. The window to invest in the turn is open right now."
     ]
   },
   "competitive_synthesis": {
     "scenario": "GOLDEN",
-    "scenario_note": "3 confirmed Algolia customers in DSW's direct competitive set (Shoe Carnival, Steve Madden, JD Sports)",
+    "scenario_note": "2 confirmed Algolia customers in DSW's direct competitive set (Shoe Carnival, JD Sports)",
     "competitor_tiers": [
       {
         "tier": "GOLDEN",
@@ -6309,7 +6177,7 @@ a:hover {
         ],
         "search_stack": "Algolia",
         "source_url": "https://www.algolia.com/customers/shoe-carnival",
-        "strategic_implication": "DSW's closest direct competitor by store count and customer profile. Shoe Carnival's 3.5x conversion lift is a benchmark DSW's digital team cannot ignore. The Amplience + Algolia composable architecture is a proven blueprint for footwear mid-market digital transformation."
+        "strategic_implication": "DSW's closest direct competitor by store count and customer profile. Shoe Carnival's up to 3.5x conversion lift is a benchmark DSW's digital team cannot ignore. The Amplience + Algolia composable architecture is a proven blueprint for footwear mid-market digital transformation."
       },
       {
         "tier": "DISRUPTOR",
@@ -6318,7 +6186,7 @@ a:hover {
         ],
         "search_stack": "Coveo",
         "source_url": "https://www.coveo.com/en/resources/webinars/how-caleres-transformed-their-ecommerce-experience-with-coveo",
-        "strategic_implication": "Famous Footwear chose Coveo for AI-powered ecommerce transformation. Coveo is a higher-complexity, higher-cost alternative to Algolia. If Famous Footwear evaluates alternatives, Algolia's footwear vertical proof set (Shoe Carnival, JD Sports, Steve Madden) is stronger. Coveo also lacks Algolia's Mer"
+        "strategic_implication": "Famous Footwear chose Coveo for AI-powered ecommerce transformation. Coveo is a higher-complexity, higher-cost alternative to Algolia. If Famous Footwear evaluates alternatives, Algolia's footwear vertical proof set (Shoe Carnival, JD Sports) is stronger. Coveo also lacks Algolia's Mer"
       },
       {
         "tier": "AHEAD",
@@ -6330,13 +6198,13 @@ a:hover {
         "strategic_implication": "Zappos built custom in-house search with ~20 ML engineers on Amazon SageMaker and EMR, using genetic algorithms for real-time keyword recognition. They deliberately chose to build rather than buy. Not a displacement target — but their model illustrates the AI capability DSW lacks. DSW cannot build t"
       },
       {
-        "tier": "GOLDEN",
+        "tier": "AHEAD",
         "competitors": [
           "Steve Madden"
         ],
-        "search_stack": "Algolia",
-        "source_url": "https://www.algolia.com/resources/asset/webinar-merchandisingartscience",
-        "strategic_implication": "Steve Madden is both a DSW vendor (brand sold in DSW stores/online) and a DTC competitor. Their active Algolia Advisory Board participation and AI merchandising use case creates a natural 'your brand partners are already using this' conversation for the Algolia AE with DSW digital leadership."
+        "search_stack": "Fast Simon",
+        "source_url": "https://www.fastsimon.com/success_story/steve-madden/",
+        "strategic_implication": "Steve Madden (a DSW vendor brand and DTC competitor) runs its site search on Fast Simon, confirmed via live network detection of stevemadden.com on 2026-07-04 (no Algolia calls detected). They are a modern AI-search adopter but not an Algolia reference; frame as 'brand partners are already investing in AI search.'"
       },
       {
         "tier": "PARITY",
@@ -6370,57 +6238,31 @@ a:hover {
       {
         "capability": "NLP / Semantic Search",
         "prospect_today": "0/10 — keyword-only",
-        "prospect_with_algolia": true,
-        "nike_has": true,
-        "asics_has": true,
-        "on_running_has": null,
-        "new_balance_has": true
+        "prospect_with_algolia": true
       },
       {
         "capability": "AI Personalization",
         "prospect_today": false,
-        "prospect_with_algolia": true,
-        "nike_has": true,
-        "asics_has": true,
-        "on_running_has": false,
-        "new_balance_has": true
+        "prospect_with_algolia": true
       },
       {
         "capability": "Cross-Category Recommendations",
         "prospect_today": "partial (brand-siloed PDP only)",
-        "prospect_with_algolia": true,
-        "nike_has": null,
-        "asics_has": true,
-        "on_running_has": null,
-        "new_balance_has": true
+        "prospect_with_algolia": true
       },
       {
         "capability": "Federated Search",
         "prospect_today": false,
-        "prospect_with_algolia": true,
-        "nike_has": null,
-        "asics_has": true,
-        "on_running_has": false,
-        "new_balance_has": true
+        "prospect_with_algolia": true
       },
       {
         "capability": "Visual Search",
         "prospect_today": false,
-        "prospect_with_algolia": true,
-        "nike_has": false,
-        "asics_has": true,
-        "on_running_has": false,
-        "new_balance_has": true
+        "prospect_with_algolia": true
       }
     ],
-    "matrix_col_labels": {
-      "nike_has": "Famous Footwear (Caleres)",
-      "asics_has": "Zappos",
-      "on_running_has": "Rack Room Shoes",
-      "new_balance_has": "Nordstrom"
-    },
     "experience_debt": {
-      "dsw_vs_competitors": "DSW's search capabilities are unconfirmed pending Phase 2 browser testing. However, competitive context shows that 3 of 7 identified competitors have deployed Algolia AI (Shoe Carnival, Steve Madden, JD Sports), 1 uses Coveo AI (Famous Footwear), 1 uses custom ML (Zappos), and 2 use internal/proprietary AI (Nordstrom, Rack Room unknown). DSW is the only major footwear retailer in this set with no confirmed modern AI search deployment.",
+      "dsw_vs_competitors": "DSW's search capabilities are unconfirmed pending Phase 2 browser testing. However, competitive context shows that 2 of 7 identified competitors have deployed Algolia AI (Shoe Carnival, JD Sports), 1 uses Coveo AI (Famous Footwear), 1 uses Fast Simon AI search (Steve Madden), 1 uses custom ML (Zappos), and 2 use internal/proprietary AI (Nordstrom, Rack Room unknown). DSW is the only major footwear retailer in this set with no confirmed modern AI search deployment.",
       "highest_priority_gaps_to_test_in_phase2": [
         "NLP / semantic search (competitor Shoe Carnival, JD Sports both confirmed)",
         "AI recommendations / Algolia Recommend equivalent",
@@ -6430,7 +6272,13 @@ a:hover {
       ]
     },
     "positioning_statements": "",
-    "the_ask": "DSW is the outlier in its own competitive set. 3 confirmed Algolia customers surround it."
+    "the_ask": "DSW is the outlier in its own competitive set. 2 confirmed Algolia customers surround it.",
+    "matrix_col_labels": {
+      "nike_has": "Shoe Carnival",
+      "asics_has": "Famous Footwear",
+      "on_running_has": "Zappos",
+      "new_balance_has": "Steve Madden"
+    }
   },
   "golden_angle": {
     "competitor_name": "Shoe Carnival",
@@ -6438,7 +6286,7 @@ a:hover {
     "relationship": "direct_competitor",
     "algolia_metric": "Up to 3.5x conversion increase from search",
     "quote": "I probably sleep better with Algolia than I did with any of the technologies we either purchased or built ourselves. — Ned Moore, Director eCommerce Product & Technology",
-    "quote_source": "",
+    "quote_source": "https://www.algolia.com/customers/shoe-carnival",
     "case_study_url": "https://www.algolia.com/customers/shoe-carnival",
     "talk_track": "",
     "competitors_using_algolia": [
@@ -6446,11 +6294,6 @@ a:hover {
         "name": "Shoe Carnival",
         "domain": "shoecarnival.com",
         "source_url": "https://www.algolia.com/customers/shoe-carnival"
-      },
-      {
-        "name": "Steve Madden",
-        "domain": "stevemadden.com",
-        "source_url": "https://www.algolia.com/resources/asset/webinar-merchandisingartscience"
       },
       {
         "name": "JD Sports",
@@ -6474,16 +6317,16 @@ a:hover {
     "urgency_level": "high",
     "urgency_label": "High Urgency — Act Now",
     "urgency_color": "#DC2626",
-    "talk_track_opener": "Your direct competitor Shoe Carnival just 3.5x'd their search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
+    "talk_track_opener": "Your direct competitor Shoe Carnival saw up to 3.5x more search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
     "talk_track_cta": "Can we book 30 minutes with you and your VP of Digital Product to walk through what we found — live on your site?",
-    "urgency_trigger": "Your direct competitor Shoe Carnival just 3.5x'd their search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
+    "urgency_trigger": "Your direct competitor Shoe Carnival saw up to 3.5x more search conversions with Algolia. We audited dsw.com and found the same gaps they had. Worth 15 minutes?",
     "recommended_approach": "Share audit + book 15-min call with Mike Donk (SVP, Digital)"
   },
   "next_steps": [
     {
       "step_num": 1,
       "title": "Share Audit with Mike Donk",
-      "description": "Send this audit to Mike Donk (SVP, Digital). Subject: 'Shoe Carnival 3.5x search conversions — here's what we found on dsw.com.' Timing: this week (optimal CFO 90-day window is open)."
+      "description": "Send this audit to Mike Donk (SVP, Digital). Subject: 'Shoe Carnival up to 3.5x search conversions — here's what we found on dsw.com.' Timing: this week (optimal CFO 90-day window is open)."
     },
     {
       "step_num": 2,
@@ -6657,8 +6500,8 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "\"gift for her under 100\" on DSW — what I found",
-        "body": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 1 (within 48 hours)\n\n---\n\n**Subject:** \"gift for her under 100\" on DSW — what I found\n\n**Body:**\n\nHi Mike,\n\nI spent time on dsw.com this week and ran one search that stopped me: \"gift for her under 100.\" The top result was an Under Armour backpack — because the system matched \"her\" to the phrase \"Adore Her Slip-On\" and ignored the price intent entirely. 3,229 results, price filter not applied, gender not inferred. The gifting intent was completely invisible to the search engine.\n\nFor a category that peaks at 21.7M monthly visits during holiday season, a $6.9M annual search opportunity, and a VIP loyalty relaunch already in motion — that's the kind of gap that compounds quietly.\n\nI put together a 15-minute walkthrough of five findings like this one across dsw.com.\n\nWorth a quick call?\n\n[Your name]\n[Title], Algolia\n\n---",
-        "message": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:"
+        "body": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 1 (within 48 hours)\n\n---\n\n**Subject:** \"gift for her under 100\" on DSW — what I found\n\n**Body:**\n\nHi Mike,\n\nI spent time on dsw.com this week and ran one search that stopped me: \"gift for her under 100.\" The top result was an Under Armour backpack — because the system matched \"her\" to the phrase \"Adore Her Slip-On\" and ignored the price intent entirely. 3,229 results, price filter not applied, gender not inferred. The gifting intent was completely invisible to the search engine.\n\nFor a category that peaks at 21.7M monthly visits during holiday season, a $6.9M annual search opportunity, and a VIP loyalty relaunch already in motion — that's the kind of gap that compounds quietly.\n\nI put together a 15-minute walkthrough of five findings like this one across dsw.com.\n\nWorth a quick call?\n\n[Your name]\n[Title], Algolia\n\n---",
+        "message": "# Email 1 — Hook\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:"
       },
       {
         "touch": 2,
@@ -6666,8 +6509,8 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Connection Request",
-        "body": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1–2 (parallel to Email 1)\n\n---\n\n**Message:**\n\nHi Mike — searched \"gift for her under 100\" on dsw.com and the top result was an Under Armour backpack. Thought you'd find the full analysis interesting. Happy to share it.\n\n---\n\n**Character count:** 158 characters (limit: 300 ✅)",
-        "message": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Send:** Day 1–2 (paralle"
+        "body": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP Digital, DSW\n**Send:** Day 1–2 (parallel to Email 1)\n\n---\n\n**Message:**\n\nHi Mike — searched \"gift for her under 100\" on dsw.com and the top result was an Under Armour backpack. Thought you'd find the full analysis interesting. Happy to share it.\n\n---\n\n**Character count:** 158 characters (limit: 300 ✅)",
+        "message": "# LinkedIn — Connection Request\n\n**To:** Mike Donk, SVP Digital, DSW\n**Send:** Day 1–2 (paralle"
       },
       {
         "touch": 3,
@@ -6675,8 +6518,8 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 2 — Competitor (Golden Angle)",
-        "body": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 3–4\n**Play:** Golden Angle — Shoe Carnival confirmed Algolia customer (verified: algolia.com/customers/shoe-carnival/)\n\n---\n\n**Subject:** Shoe Carnival's search conversion after their Algolia deployment\n\n**Body:**\n\nHi Mike,\n\nOne detail I thought you'd want to know: Shoe Carnival — off-price footwear, brick-and-mortar plus ecommerce, same customer base as DSW — deployed Algolia and documented up to 3.5x search conversions from search.\n\nDSW has more stores (494 vs. approximately 400), more digital revenue ($921M vs. Shoe Carnival's scale), and higher peak traffic. The search quality gap shouldn't exist.\n\nThe one difference: Shoe Carnival replaced their proprietary search with a modern stack. DSW is still running a custom backend — confirmed via network inspection of dsw.com last week, with zero API calls to any enterprise search vendor detected.\n\nHappy to show you the side-by-side in 15 minutes.\n\n[Your name]\n[Title], Algolia\n\n---",
-        "message": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tie"
+        "body": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 3–4\n**Play:** Golden Angle — Shoe Carnival confirmed Algolia customer (verified: algolia.com/customers/shoe-carnival/)\n\n---\n\n**Subject:** Shoe Carnival's search conversion after their Algolia deployment\n\n**Body:**\n\nHi Mike,\n\nOne detail I thought you'd want to know: Shoe Carnival — off-price footwear, brick-and-mortar plus ecommerce, same customer base as DSW — deployed Algolia and documented up to 3.5x search conversions from search.\n\nDSW has more stores (494 vs. approximately 400), more digital revenue ($921M vs. Shoe Carnival's scale), and higher peak traffic. The search quality gap shouldn't exist.\n\nThe one difference: Shoe Carnival replaced their proprietary search with a modern stack. DSW is still running a custom backend — confirmed via network inspection of dsw.com last week, with zero API calls to any enterprise search vendor detected.\n\nHappy to show you the side-by-side in 15 minutes.\n\n[Your name]\n[Title], Algolia\n\n---",
+        "message": "# Email 2 — Competitor (Golden Angle)\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tie"
       },
       {
         "touch": 4,
@@ -6693,8 +6536,8 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 3 — Business Case",
-        "body": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 7\n\n---\n\n**Subject:** The $6.9M math on DSW's search gap\n\n**Body:**\n\nHi Mike,\n\nA quick number: DSW generated approximately $921M in digital revenue last year. Search directly influences roughly 15% of that — call it $138M in search-addressable revenue.\n\nIf better search moves even 5% of that from \"I couldn't find it\" to \"I bought it,\" that's $6.9M annually. And the gap we found — customers typing \"comfortable shoes for standing all day\" and getting 49 results instead of the 6,500+ comfort sneakers and orthopedic styles in your catalog — is exactly the kind of invisible leakage that compounds over millions of sessions.\n\nI can walk through the full model in 15 minutes. Happy to send it ahead of the call if that's useful.\n\n[Your name]\n[Title], Algolia\n\n---",
-        "message": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NO"
+        "body": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 7\n\n---\n\n**Subject:** The $6.9M math on DSW's search gap\n\n**Body:**\n\nHi Mike,\n\nA quick number: DSW generated approximately $921M in digital revenue last year. Search directly influences roughly 15% of that — call it $138M in search-addressable revenue.\n\nIf better search moves even 5% of that from \"I couldn't find it\" to \"I bought it,\" that's $6.9M annually. And the gap we found — customers typing \"comfortable shoes for standing all day\" and getting 49 results instead of the 6,500+ comfort sneakers and orthopedic styles in your catalog — is exactly the kind of invisible leakage that compounds over millions of sessions.\n\nI can walk through the full model in 15 minutes. Happy to send it ahead of the call if that's useful.\n\n[Your name]\n[Title], Algolia\n\n---",
+        "message": "# Email 3 — Business Case\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NO"
       },
       {
         "touch": 6,
@@ -6712,7 +6555,7 @@ a:hover {
         "channel": "linkedin",
         "target": "all",
         "subject": "LinkedIn — Follow-up 2",
-        "body": "# LinkedIn — Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 — Day 10–12)\n**Goal:** Move toward a meeting. Soft ask.\n**Angle used:** Competitor (Shoe Carnival Golden Angle)\n\n---\n\n**Message:**\n\nOne more data point worth sharing: Shoe Carnival — off-price footwear, similar model to DSW — is an Algolia customer and documented 3.5x search conversions. DSW has more stores and more traffic. Would a 15-minute call make sense to compare the approaches?\n\n---\n\n**Character count:** 258 characters (limit: 300 ✅)",
+        "body": "# LinkedIn — Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 — Day 10–12)\n**Goal:** Move toward a meeting. Soft ask.\n**Angle used:** Competitor (Shoe Carnival Golden Angle)\n\n---\n\n**Message:**\n\nOne more data point worth sharing: Shoe Carnival — off-price footwear, similar model to DSW — is an Algolia customer and documented up to 3.5x search conversions. DSW has more stores and more traffic. Would a 15-minute call make sense to compare the approaches?\n\n---\n\n**Character count:** 258 characters (limit: 300 ✅)",
         "message": "# LinkedIn — Follow-up 2\n\n**To:** Mike Donk (send 1 week after Follow-up 1 — Day 10–12)\n**Goal:** Move toward a meeting."
       },
       {
@@ -6721,8 +6564,8 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 4 — Social Proof",
-        "body": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 14\n\n---\n\n**Subject:** What Shoe Carnival measured after their search overhaul\n\n**Body:**\n\nHi Mike,\n\nSharing one reference that feels directly relevant: Shoe Carnival — off-price footwear, physical stores plus ecommerce, same customer profile as DSW — documented up to 3.5x search conversions after deploying Algolia's NeuralSearch and AI-powered ranking.\n\nThe gap they closed is the same one we found on dsw.com: customers searching with natural language (\"something comfortable for nurses,\" \"gifts under $50\") and getting irrelevant keyword-matched results instead. Algolia maps those intents to the right products automatically.\n\nThe Shoe Carnival case study is publicly available if it's useful context for an internal conversation: https://www.algolia.com/customers/shoe-carnival/\n\nHappy to connect you with someone from their team if that would help move the conversation forward.\n\n[Your name]\n[Title], Algolia\n\n---",
-        "message": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW"
+        "body": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 14\n\n---\n\n**Subject:** What Shoe Carnival measured after their search overhaul\n\n**Body:**\n\nHi Mike,\n\nSharing one reference that feels directly relevant: Shoe Carnival — off-price footwear, physical stores plus ecommerce, same customer profile as DSW — documented up to 3.5x search conversions after deploying Algolia's NeuralSearch and AI-powered ranking.\n\nThe gap they closed is the same one we found on dsw.com: customers searching with natural language (\"something comfortable for nurses,\" \"gifts under $50\") and getting irrelevant keyword-matched results instead. Algolia maps those intents to the right products automatically.\n\nThe Shoe Carnival case study is publicly available if it's useful context for an internal conversation: https://www.algolia.com/customers/shoe-carnival/\n\nHappy to connect you with someone from their team if that would help move the conversation forward.\n\n[Your name]\n[Title], Algolia\n\n---",
+        "message": "# Email 4 — Social Proof\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW"
       },
       {
         "touch": 9,
@@ -6730,8 +6573,8 @@ a:hover {
         "channel": "email",
         "target": "all",
         "subject": "Email 5 — Break-Up",
-        "body": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 21\n\n---\n\n**Subject:** Closing the loop on DSW\n\n**Body:**\n\nHi Mike,\n\nI've reached out a few times over the past few weeks — I know this time of year is relentless, and I don't want to be noise in your inbox.\n\nI'll leave you with the full audit we ran on dsw.com. It covers five specific gaps with screenshots, the revenue math, and a comparison to how Shoe Carnival is positioned after deploying Algolia. No obligations — just useful context whenever the search roadmap comes back up.\n\nThe audit is here: [link to deliverables/dsw-ae-report.html when available, or ask AE to share the PDF]\n\nIf timing changes and it makes sense to revisit, I'm easy to find.\n\n[Your name]\n[Title], Algolia\n\n---",
-        "message": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP e-Commerce & Customer Operations, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**S"
+        "body": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**Send:** Day 21\n\n---\n\n**Subject:** Closing the loop on DSW\n\n**Body:**\n\nHi Mike,\n\nI've reached out a few times over the past few weeks — I know this time of year is relentless, and I don't want to be noise in your inbox.\n\nI'll leave you with the full audit we ran on dsw.com. It covers five specific gaps with screenshots, the revenue math, and a comparison to how Shoe Carnival is positioned after deploying Algolia. No obligations — just useful context whenever the search roadmap comes back up.\n\nThe audit is here: [link to deliverables/dsw-ae-report.html when available, or ask AE to share the PDF]\n\nIf timing changes and it makes sense to revisit, I'm easy to find.\n\n[Your name]\n[Title], Algolia\n\n---",
+        "message": "# Email 5 — Break-Up\n\n**To:** Mike Donk, SVP Digital, DSW\n**Signal Tier:** Tier 1 — ACT NOW\n**S"
       }
     ],
     "contacts": [
@@ -6834,21 +6677,21 @@ a:hover {
     {
       "scenario": "NeuralSearch for Occasion-Based Queries",
       "query": "gift for her under 100",
-      "today": "Returns 'Gift for Her' category pages with 0 relevant product matches. NLP query fails completely — DSW's Einstein Search treats this as a keyword match and finds no indexed category called 'gift for her under 100'.",
-      "with_algolia": "Algolia NeuralSearch parses occasion (gifting), recipient (women), and price ceiling ($100) from free-form text. Returns curated women's sandals, flats, and accessories under $100 with gift-eligible tagging. AOV lift estimated at 15–23% for occasion queries (Algolia Retail Benchmark, 2024).",
+      "today": "Returns 'Gift for Her' category pages with 0 relevant product matches. NLP query fails completely — DSW's proprietary keyword search treats this as a keyword match and finds no indexed category called 'gift for her under 100'.",
+      "with_algolia": "Algolia NeuralSearch parses occasion (gifting), recipient (women), and price ceiling ($100) from free-form text. Returns curated women's sandals, flats, and accessories under $100 with gift-eligible tagging. Parsing occasion intent this way is the kind of query understanding that lifts add-to-cart and average order value on gifting searches (directional expectation, not a DSW-measured or benchmarked figure).",
       "screenshot": "screenshots/06-synonym-gift-for-her.png"
     },
     {
       "scenario": "Search-As-You-Type for Partial Queries",
       "query": "sneak",
       "today": "SAYT panel shows only product results — no loyalty content, no DSW Rewards earning info, no store events. 26M Rewards members have no search discovery path to loyalty features.",
-      "with_algolia": "Federated SAYT surfaces a 'DSW Rewards' panel alongside sneaker results — member earning rate, upcoming bonus events, and account balance link. Measured 8–14% loyalty re-engagement lift when loyalty content surfaces in search (Algolia case study: Foot Locker, 2023).",
+      "with_algolia": "Federated SAYT surfaces a 'DSW Rewards' panel alongside sneaker results — member earning rate, upcoming bonus events, and account balance link. Surfacing loyalty content directly in search gives DSW's Rewards members a discovery path to member value that a product-only SAYT hides (capability illustration, not a DSW-measured figure).",
       "screenshot": "screenshots/03-sayt-sneakers.png"
     },
     {
       "scenario": "Auto-Correct Typo Tolerance Demo",
       "query": "sneackers",
-      "today": "DSW returns a 'Did you mean sneakers?' prompt requiring a manual click. Shoppers on mobile who don't notice the prompt see 0 results and bounce. Typo-triggered bounces cost DSW an estimated $2.3M/year (Baymard: 8% of sessions contain a typo, avg session value $47).",
+      "today": "DSW returns a 'Did you mean sneakers?' prompt requiring a manual click. Shoppers on mobile who don't notice the prompt see 0 results and bounce. Baymard Institute finds roughly 20% of search queries contain at least one typo (higher on mobile) and 34% of ecommerce sites have no typo tolerance at all, so every missed correction is a bounced, non-converting session.",
       "with_algolia": "Algolia auto-corrects 'sneackers' → 'sneakers' silently at query time. No click required, no 0-result state shown. Full sneaker catalog surfaces immediately. Eliminates the typo-bounce funnel entirely.",
       "screenshot": "screenshots/05-typo-sneackers.png"
     }
@@ -6859,6 +6702,13 @@ a:hover {
     "detail": "Slalom built DSW's entire loyalty platform (90% of transactions, 26M VIP members) on Google Cloud — published case study, August 2024. Named contacts: Rich Clum (Manager Marketing Applications, Designer Brands) and Benjamin Mokotoff (Managing Director, Slalom). Contact Algolia's Slalom alliance team and request a warm introduction to Rich Clum via Benjamin Mokotoff. The loyalty platform Slalom built is the digital heartbeat of DSW — it's the warmest entry point in the account.",
     "urgency": "high",
     "source": "partner_intel"
+  },
+  "tab_subtitles": {
+    "overview": "DSW's search scored 3.8/10 — Critical Gaps. What to know before the call: a greenfield account with no enterprise search vendor, whose direct competitor is already on Algolia.",
+    "intel": "Everything we know about DSW Designer Shoe Warehouse — off-price multi-brand footwear, 3.1M monthly visitors, $2.893B revenue (FY2026, declining), a $921M digital business, NYSE: DBI.",
+    "audit": "What we found testing dsw.com's search across 6 live scenarios — semantic/NLP search scored 1/10 and content-commerce UX 2/10, the two weakest areas of the audit.",
+    "case": "The financial case for acting now — $6.9M/year conservative to $13.8M moderate ROI, a 17x return on a $400K ACV, payback under 30 days.",
+    "play": "How to win the DSW deal — personalization and VIP-loyalty-relaunch angles, discovery questions, and objection handling grounded in DSW's own Investor Day language."
   }
 };</script>
 
@@ -7201,6 +7051,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -7314,7 +7170,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -7791,7 +7647,7 @@ function renderTopbar(D) {
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
     ${(()=>{
-      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      const assets=Array.isArray((D.abx_sequence&&D.abx_sequence.assets_library)) ? ((D.abx_sequence&&D.abx_sequence.assets_library)) : [];
       if(!assets.length) return '';
       const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -7837,9 +7693,9 @@ document.addEventListener('click', function(e){
 
 function buildSidebar(D) {
 
-  const findings    = D.findings || [];
+  const findings    = Array.isArray(D.findings) ? (D.findings) : [];
 
-  const signals     = D.intelligence_signals || [];
+  const signals     = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
 
   const signalTypes = [...new Set(signals.map(s => s.type))];
 
@@ -8251,7 +8107,7 @@ function sectionOverviewGrid(D) {
   const score = D.score || {};
   const fin   = D.financials || {};
   const ae    = D.ae_fields  || {};
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
@@ -8268,7 +8124,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8295,7 +8151,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8561,7 +8417,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8569,7 +8425,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8659,7 +8515,7 @@ function sectionExecSummary(D) {
 
     ${(() => {
 
-      const allFindings = D.findings || [];
+      const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
       const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
@@ -8741,7 +8597,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8859,7 +8715,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8885,7 +8741,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8995,7 +8851,7 @@ function sectionCompanySnapshot(D) {
 
   const cs   = D.company_snapshot || {};
 
-  const execs = D.executives || [];
+  const execs = Array.isArray(D.executives) ? (D.executives) : [];
 
   const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
 
@@ -9255,7 +9111,7 @@ function sectionTraffic(D) {
 
   if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
-  const channels = t.top_channels || [];
+  const channels = Array.isArray(t.top_channels) ? (t.top_channels) : [];
 
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
 
@@ -9264,7 +9120,7 @@ function sectionTraffic(D) {
   const age = audience.age || {};
 
   // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
-  const demoArr = t.demographics || [];
+  const demoArr = Array.isArray(t.demographics) ? (t.demographics) : [];
   const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
   const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
   const genderFromDemo = (femaleEntry || maleEntry)
@@ -9452,8 +9308,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9631,7 +9487,7 @@ function sectionTraffic(D) {
     const branded    = parseFloat(os.branded_pct)     || 0;
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
-    const kws = os.top_non_branded_keywords || [];
+    const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
 
     // Mini SVG donut for branded/NB split
@@ -9698,7 +9554,7 @@ function sectionTraffic(D) {
     const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
-    const kws = ps.top_keywords || [];
+    const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
@@ -9732,8 +9588,8 @@ function sectionTraffic(D) {
 
   ${/* PANEL: Referrals */ ''}
   ${(() => {
-    const refs = t.top_referrers || t.referrals?.top_referring_sites || [];
-    const inds = t.referring_industries || t.referrals?.top_referring_industries || [];
+    const refs = Array.isArray(t.top_referrers || t.referrals?.top_referring_sites) ? (t.top_referrers || t.referrals?.top_referring_sites) : [];
+    const inds = Array.isArray(t.referring_industries || t.referrals?.top_referring_industries) ? (t.referring_industries || t.referrals?.top_referring_industries) : [];
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
@@ -9785,7 +9641,7 @@ function sectionTraffic(D) {
     const _cLabel = 'Competitor Traffic Scale';
     const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
-    const comps = t.competitor_traffic || [];
+    const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
     const parseVisits = v => {
       const s2 = String(v||'').replace(/,/g,'');
@@ -9913,6 +9769,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -9994,8 +9852,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -10031,14 +9905,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10219,9 +10093,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10241,9 +10117,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10372,7 +10249,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10542,7 +10431,7 @@ function sectionScoreHeatmap(D) {
 
   // Build category→finding map for TOC click targets
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const catToFinding = {};
 
@@ -10744,7 +10633,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -10804,7 +10693,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -10999,7 +10888,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -11176,7 +11065,7 @@ function sectionExecQuotes(D) {
 
 function sectionCompetitive(D) {
 
-  const comps = D.competitors || [];
+  const comps = Array.isArray(D.competitors) ? (D.competitors) : [];
 
   if (!comps.length) return '';
 
@@ -11370,7 +11259,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11464,17 +11353,17 @@ function sectionBattleCard(D) {
 
   const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
 
-  const gaps      = D.gap_pairs || [];
+  const gaps      = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
   const hir       = D.hiring || {};
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   // Use only critical findings for feature comparison
 
   const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
 
-  const allFindings = D.findings || [];
+  const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
   // Single strongest hook — first gap pair only
 
@@ -11582,7 +11471,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11636,7 +11525,7 @@ function sectionBattleCard(D) {
 
 function sectionSources(D) {
 
-  const bibs = D.bibliography || [];
+  const bibs = Array.isArray(D.bibliography) ? (D.bibliography) : [];
 
   return `<section id="section-sources" class="audit-section">
 
@@ -11742,7 +11631,7 @@ function sectionAppendixScoring(D) {
 
 function sectionAppendixQueries(D) {
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   return `<section id="appendix-queries" class="audit-section">
 
@@ -11762,7 +11651,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -11902,8 +11791,20 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  const components = f.roi_components || [];
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
@@ -12207,9 +12108,9 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
 
-  const gaps = D.gap_pairs || [];
+  const gaps = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   if (!gaps.length) return '';
 
@@ -12358,12 +12259,13 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
-  const tiers = cs.competitor_tiers || [];
+  const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
-  const matrix = cs.positioning_matrix || [];
+  const matrix = Array.isArray(cs.positioning_matrix) ? (cs.positioning_matrix) : [];
 
-  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+  if (!tiers.length && !matrix.length && !ga.talk_track && !((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length) return '';
 
   const cap = (v) => {
     if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
@@ -12387,7 +12289,7 @@ function sectionCompetitiveSynthesis(D) {
 
   const builtWithUrls = {};
 
-  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+  ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
 
 
 
@@ -12427,7 +12329,7 @@ function sectionCompetitiveSynthesis(D) {
       <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
@@ -12622,7 +12524,7 @@ function initCaseStudyCountUp() {
 function sectionCaseStudies(D) {
 
   // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
-  const topLevel = D.case_studies || [];
+  const topLevel = Array.isArray(D.case_studies) ? (D.case_studies) : [];
 
   if (!topLevel.length) {
     // Build from findings — deduplicate by company, derive stat from result string
@@ -12883,7 +12785,7 @@ function sectionWhyNow(D) {
   const HIRING_TYPES = new Set(['hiring','hiring_signal']);
   const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
-  const allSigs = D.intelligence_signals || [];
+  const allSigs = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
@@ -12986,7 +12888,7 @@ function sectionWhyNow(D) {
 
 function sectionStrategicAngles(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
@@ -13054,13 +12956,13 @@ function sectionStrategicAngles(D) {
 
 function sectionSalesPlays(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
   const hir = D.hiring || {};
 
-  const genericObjs = hir.objection_counters || [];
+  const genericObjs = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
 
@@ -13374,7 +13276,7 @@ function sectionPreCallBrief(D) {
 
   const icp = D.icp_mapping || {};
 
-  const anchors = icp.anchor_lines || [];
+  const anchors = Array.isArray(icp.anchor_lines) ? (icp.anchor_lines) : [];
 
   const fin = D.financials || {};
 
@@ -13456,9 +13358,28 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
-  const phases = hir.engagement_phases || [];
+  const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
   if (!committee.length) return '';
 
@@ -13601,9 +13522,9 @@ function sectionDiscoveryObjections(D) {
 
   const hir = D.hiring || {};
 
-  const ptops = icp.priority_to_product || [];
+  const ptops = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   return `<section id="section-discovery" class="audit-section">
 
@@ -13659,15 +13580,15 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = Array.isArray(abx.contacts) ? (abx.contacts) : [];
 
-  const touches  = abx.touches || [];
+  const touches  = Array.isArray(abx.touches) ? (abx.touches) : [];
 
-  const variants = abx.ab_variants || [];
+  const variants = Array.isArray(abx.ab_variants) ? (abx.ab_variants) : [];
 
-  const assets   = abx.assets_library || [];
+  const assets   = Array.isArray(abx.assets_library) ? (abx.assets_library) : [];
 
-  const triggers = abx.triggers || [];
+  const triggers = Array.isArray(abx.triggers) ? (abx.triggers) : [];
 
 
 
@@ -13997,7 +13918,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = D.intelligence_signals || [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -14017,7 +13939,7 @@ function sectionStatBar(D) {
   const roiVal = roi ? escHtml(roi) : '—';
 
   // Stat 3: Competitive signal
-  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compUsing = ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]))[0];
   const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
   const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
 
@@ -14145,8 +14067,8 @@ function sectionPartnerIntel(D) {
   const pi = D.partner_intel;
   if (!pi) return ''; // Graceful degradation — section hidden when no partner data
 
-  const techPartners = pi.tech_partners || [];
-  const siPartners = pi.si_partners || [];
+  const techPartners = Array.isArray(pi.tech_partners) ? (pi.tech_partners) : [];
+  const siPartners = Array.isArray(pi.si_partners) ? (pi.si_partners) : [];
   const action = pi.immediate_action || '';
   const coSell = pi.co_sell_recommendation || '';
 
@@ -14211,7 +14133,7 @@ function renderSections(D) {
 
   const content  = document.getElementById('content');
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const isSevCritical = s => s === 'critical' || s === 'HIGH';
   const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
@@ -14273,6 +14195,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14288,11 +14233,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14398,7 +14346,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14625,7 +14580,7 @@ function initSectionStrips() {
 
   // Build a panel for each tab
   function buildPanel(tabId) {
-    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const config = Array.isArray(SECTION_STRIP_CONFIG[tabId]) ? (SECTION_STRIP_CONFIG[tabId]) : [];
     const panel = document.createElement('div');
     panel.className = 'section-sidebar__panel';
     panel.id = `sidebar-panel-${tabId}`;
@@ -14673,10 +14628,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15704,7 +15655,8 @@ if (document.readyState === 'loading') {
 
 </script>
 
-  <script src="/chat-widget.js" defer></script>
+<!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
+<script src="/chat-widget.js" defer></script>
 </body>
 
 </html>

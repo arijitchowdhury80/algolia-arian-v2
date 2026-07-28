@@ -259,7 +259,7 @@ img { max-width: 100%; display: block; }
 
   position: absolute; top: 50%; transform: translateY(-50%);
 
-  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF4444;
+  white-space: nowrap; font-size: 15px; font-weight: 700; color: #FF0000;
 
   animation: tb-ticker 120s linear infinite;
 
@@ -2726,13 +2726,13 @@ a:hover .src-tag { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
 
-   RIGHT SIDEBAR — Scroll-aware section TOC
+   LEFT SIDEBAR — Scroll-aware section TOC (STANDARD: TOC is ALWAYS left, chat is ALWAYS right)
 
 ═══════════════════════════════════════════════════════ */
 
 #section-sidebar {
   position: fixed;
-  right: 24px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
   width: 200px;
@@ -2809,7 +2809,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-@media (max-width: 1200px) { #section-sidebar { display: none; } }
+
 
 
 
@@ -5145,7 +5145,7 @@ a:hover {
 
       <p>Run the renderer to inject data:</p>
 
-      <code>deno run render-audit.ts {company-slug} site</code>
+      <code>deno run --allow-read --allow-write --allow-net --allow-run=python3 render-audit.ts {company-slug} site</code>
 
     </div>
 
@@ -5236,7 +5236,8 @@ a:hover {
       "yahoo_finance": "N/A (private company)"
     },
     "generated_by": "generate-audit-data.py + LLM synthesis",
-    "patch_date": "2026-03-25"
+    "patch_date": "2026-03-25",
+    "as_of_note": "Research current as of March 2026. CEO-tenure framing, hiring signals, traffic figures and the BuiltWith competitor scan reflect that date; the REI Algolia usage was re-verified via BuiltWith on 2026-07-05 (last detected 2026-06-25)."
   },
   "cover": {
     "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg/1280px-L.L._Bean_%28Store%29%2C_Freeport%2C_ME_-_May_2014.jpg",
@@ -5314,7 +5315,7 @@ a:hover {
       "name": "Greg Elder",
       "title": "President & CEO",
       "tenure": "Feb 2026–Present",
-      "linkedin_url": "https://www.linkedin.com/in/greg-elder-llbean/",
+      "linkedin_url": "https://www.linkedin.com/in/greg-elder-2bb8314",
       "quote": "I'm excited to unlock sustainable growth through an 'evolve and amplify' strategy that strengthens our assortment and deepens our connection with customers for generations to come.",
       "quote_context": "CEO appointment announcement — strategic mandate",
       "quote_date": "2026-01",
@@ -5322,13 +5323,13 @@ a:hover {
       "source_name": "SGB Online — CEO Appointment",
       "algolia_angle": "Search is the #1 way customers 'connect' with product — modernizing search directly enables the 'deepen connection' mandate",
       "urgency": "high",
-      "quote_source": "Company earnings call / investor materials"
+      "quote_source": "SGB Online: CEO Appointment (sgbonline.com)"
     },
     {
-      "name": "JJ Rouhana",
+      "name": "Joseph 'JJ' Rouhana",
       "title": "Chief Information Officer",
       "tenure": "Current",
-      "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+      "linkedin_url": "https://www.linkedin.com/in/josephrouhana/",
       "quote": "Headless ultimately allows us to have speed to market and be more nimble and more agile.",
       "quote_context": "Discussing L.L.Bean's commercetools headless commerce migration",
       "quote_date": "2024-06",
@@ -5336,13 +5337,13 @@ a:hover {
       "source_name": "Consumer Goods Technology — CIO Interview",
       "algolia_angle": "Headless architecture is complete — search is the logical next microservice. Algolia is API-first and has a pre-built commercetools connector",
       "urgency": "high",
-      "quote_source": "Company earnings call / investor materials"
+      "quote_source": "Consumer Goods Technology: CIO Interview (consumergoods.com)"
     },
     {
-      "name": "JJ Rouhana",
+      "name": "Joseph 'JJ' Rouhana",
       "title": "Chief Information Officer",
       "tenure": "Current",
-      "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+      "linkedin_url": "https://www.linkedin.com/in/josephrouhana/",
       "quote": "We knew we needed to move to shared services to support all our channels — website, call center and stores — to offer a consistent customer experience.",
       "quote_context": "Omnichannel technology strategy",
       "quote_date": "2024-06",
@@ -5350,13 +5351,13 @@ a:hover {
       "source_name": "Chain Store Age — Digital Transformation",
       "algolia_angle": "Search is the ultimate 'shared service' — one Algolia API powers web, mobile, in-store kiosks, call center with unified relevance",
       "urgency": "high",
-      "quote_source": "Company earnings call / investor materials"
+      "quote_source": "Chain Store Age: Digital Transformation (chainstoreage.com)"
     },
     {
       "name": "Randy Dyer",
-      "title": "Enterprise Architect",
-      "tenure": "Current",
-      "linkedin_url": "https://www.linkedin.com/in/randy-dyer-llbean/",
+      "title": "Enterprise Architect (2020, now retired)",
+      "tenure": "Former (retired); quote is from a 2020 Google Cloud case study. Current Enterprise Architect is Sundar Sivashunmugam.",
+      "linkedin_url": "https://www.linkedin.com/in/randy-dyer/",
       "quote": "We didn't want customer experience to be limited to a specific channel. We wanted them to experience L.L.Bean as a dynamic, innovative brand, regardless of the channel.",
       "quote_context": "Google Cloud migration strategy — omnichannel vision",
       "quote_date": "2020-09",
@@ -5364,28 +5365,28 @@ a:hover {
       "source_name": "Google Cloud Customer Case Study",
       "algolia_angle": "Search on web, mobile, and in-store kiosks should return the same relevance and speed. Algolia Unified Search API enables this 'regardless of channel' promise",
       "urgency": "medium",
-      "quote_source": "Company earnings call / investor materials"
+      "quote_source": "Google Cloud Customer Case Study (cloud.google.com)"
     },
     {
       "name": "Emily Elting",
       "title": "Director of Insights & Analytics",
       "tenure": "Current",
-      "linkedin_url": "https://www.linkedin.com/in/emily-elting/",
-      "quote": "Better understand its consumers and respond in real time with targeted, personalized experiences.",
-      "quote_context": "Analytics platform investment for multichannel hyper-personalization",
+      "linkedin_url": "https://www.linkedin.com/in/emilyhanleyelting",
+      "quote": "Analytics investment helps L.L.Bean better understand its consumers and respond in real time with targeted, personalized experiences.",
+      "quote_context": "Analytics platform investment. Paraphrased by Consumer Goods Technology (2023), attributed to Emily Elting; not a verbatim quote.",
       "quote_date": "2023-11",
       "source_url": "https://consumergoods.com/ll-bean-invests-analytics-platform-multichannel-hyper-personalization",
       "source_name": "Consumer Goods Technology — Analytics Platform",
       "algolia_angle": "Search is the highest-intent personalization moment. Algolia feeds behavioral signals (searches, clicks) into real-time re-ranking per user — completing the personalization stack",
       "urgency": "medium",
-      "quote_source": "Company earnings call / investor materials"
+      "quote_source": "Consumer Goods Technology: Analytics Platform (consumergoods.com)"
     }
   ],
   "intelligence_signals": [
     {
       "type": "earnings_quote",
       "badge_label": "Leadership",
-      "text": "CEO Greg Elder (Jan 2026): 'evolve and amplify' digital strategy mandate — first 100 days, new CEO seeking quick wins",
+      "text": "CEO Greg Elder (took office late Feb 2026): 'evolve and amplify' digital strategy mandate — first 100 days, new CEO seeking quick wins",
       "source_name": "SGB Online",
       "source_url": "https://sgbonline.com/l-l-bean-names-chief-retail-officer-greg-elder-as-next-company-president-ceo/",
       "source_date": "2026-01",
@@ -5454,7 +5455,7 @@ a:hover {
       "search_vendor_method": "BuiltWith confirmed",
       "monthly_traffic": "~30M/mo avg [SimilarWeb]",
       "bounce_rate": "38.2%",
-      "notes": "GOLDEN ANGLE — Direct competitor using Algolia. 15% multi-channel engagement lift, 22% search-to-purchase conversion improvement reported.",
+      "notes": "GOLDEN ANGLE — Direct competitor using Algolia (confirmed via BuiltWith live detection). No independently verified Algolia performance metrics are publicly available for REI.",
       "uses_algolia": true,
       "search_stack": "Algolia"
     },
@@ -5614,7 +5615,7 @@ a:hover {
     },
     {
       "said_quote": "We didn't want customer experience to be limited to a specific channel. We wanted them to experience L.L.Bean as a dynamic, innovative brand, regardless of the channel.",
-      "said_attr": "Randy Dyer, Enterprise Architect",
+      "said_attr": "Randy Dyer, Enterprise Architect (2020, now retired)",
       "said_source_url": "https://cloud.google.com/customers/l-l-bean",
       "said_source_label": "Google Cloud Case Study, 2020",
       "found_title": "Zero NLP — semantic queries return irrelevant or no results",
@@ -5623,14 +5624,14 @@ a:hover {
       "algolia_angle": "Algolia NeuralSearch understands semantic intent ('camping in cold weather' → insulated + waterproof jackets). Same API across web, mobile, in-store kiosks delivers Randy's 'consistent regardless of channel' promise."
     },
     {
-      "said_quote": "Better understand its consumers and respond in real time with targeted, personalized experiences.",
-      "said_attr": "Emily Elting, Director of Insights & Analytics",
+      "said_quote": "Analytics investment helps L.L.Bean better understand its consumers and respond in real time with targeted, personalized experiences.",
+      "said_attr": "Emily Elting, Director of Insights & Analytics (paraphrased by Consumer Goods Technology, 2023; not a verbatim quote)",
       "said_source_url": "https://consumergoods.com/ll-bean-invests-analytics-platform-multichannel-hyper-personalization",
       "said_source_label": "Consumer Goods Technology, 2023",
       "found_title": "No search personalization — gift buyers and enthusiasts see identical results",
-      "found_evidence": "Tested: 'jacket' — same results for all users regardless of browsing history, purchase behavior, or demographic. Gift buyers searching 'jacket for dad' receive the same ranking as technical outdoor enthusiasts. Patagonia (Algolia) delivers per-user re-ranking in real time.",
+      "found_evidence": "Tested: 'jacket' — same results for all users regardless of browsing history, purchase behavior, or demographic. Gift buyers searching 'jacket for dad' receive the same ranking as technical outdoor enthusiasts. A confirmed Algolia customer like REI would deliver per-user re-ranking in real time; L.L.Bean's current search does not.",
       "finding_id": "F03",
-      "algolia_angle": "Algolia Personalization uses Emily's analytics signals to re-rank results per user in real time. Behavioral signals (searches, clicks, purchases) directly influence ranking. Patagonia saw +15% repeat purchases with same approach."
+      "algolia_angle": "Algolia Personalization uses Emily's analytics signals to re-rank results per user in real time. Behavioral signals (searches, clicks, purchases) directly influence ranking."
     }
   ],
   "financials": {
@@ -5642,9 +5643,9 @@ a:hover {
     "ecommerce_revenue": "$1.105B",
     "search_driven_share": "~18% of e-commerce",
     "search_addressable": "$198.9M",
-    "roi_conservative": "$8.4M/yr",
-    "roi_moderate": "$16.8M/yr",
-    "roi_aggressive": "$25.2M/yr",
+    "roi_conservative": "$9.9M/yr",
+    "roi_moderate": "$19.9M/yr",
+    "roi_aggressive": "$29.8M/yr",
     "algolia_annual_cost_est": "~$500K/yr",
     "roi_multiple": "19.8x",
     "payback_period": "18 days",
@@ -5662,14 +5663,14 @@ a:hover {
         "lift_pct": 10,
         "annual_impact": "$19.9M/yr",
         "scenario_desc": "NLP/semantic search ('best jacket for camping in cold weather'), federated search, personalization",
-        "source": "Patagonia (+10% search conversion, +12% AOV)",
-        "source_url": "https://www.algolia.com/customers/patagonia"
+        "source": "Lacoste apparel search benchmark (+37% CVR, +62% on mobile)",
+        "source_url": "https://www.algolia.com/customers/lacoste"
       },
       "optimistic": {
         "lift_pct": 15,
         "annual_impact": "$29.8M/yr",
         "scenario_desc": "Full AI merchandising, recommendations, A/B testing, in-store kiosk search",
-        "source": "Decathlon Singapore (+50% search-driven conversions)",
+        "source": "Decathlon Singapore (+50% conversion rate with personalization)",
         "source_url": "https://www.algolia.com/customers/decathlon-singapore"
       }
     },
@@ -5702,9 +5703,9 @@ a:hover {
     "ecommerce_source": "https://www.mainebiz.biz/article/ll-bean-ceo-says-new-wholesale-partnerships-off-to-a-strong-start",
     "search_driven_pct": 18,
     "search_roi_est": "$9.9M/yr",
-    "search_roi_note": "Moderate scenario (10% lift on $198.9M search-driven revenue); conservative $5.0M/yr",
-    "roi_multiple_note": "Conservative: $5.0M / $300K mid-point = 16.5x in year one",
-    "payback_note": "Conservative $5.0M lift / $500K license cost × 365 = 36 days; mid-point estimate 22 days",
+    "search_roi_note": "Moderate scenario: 10% lift on $198.9M search-driven revenue = $19.9M/yr; conservative 5% lift = $9.9M/yr",
+    "roi_multiple_note": "Conservative $9.9M lift / $500K annual license = 19.8x in year one",
+    "payback_note": "$500K annual license against $9.9M conservative annual lift = ~18-day payback",
     "margin_zone_note": "Estimated 45% gross margin, 8% operating — industry benchmarks for outdoor apparel DTC (Columbia Sportswear comparable)",
     "gross_margin_est": "~45%",
     "investor_note": "Private, family-owned since 1912 — Berkshire Hathaway NOT applicable",
@@ -5860,38 +5861,22 @@ a:hover {
     "source_url": "https://api.builtwith.com/",
     "source_label": "BuiltWith Domain Lookup (live technologies) — 2026-03-17",
     "full_list": [
-      "MAJOR DISPLACEMENT OPPORTUNITY",
-      "Duplicate tag managers",
-      "LaunchDarkly detected 6 times",
-      "Comprehensive ad tracking",
-      "Apollo GraphQL detected 6x",
-      "Akamai-heavy",
-      "Feature flag infrastructure",
-      "25-year domain history",
-      "129 premium technologies",
-      "$44,588/month tech spend",
-      "Direct sales model",
-      "1,810 related domains",
-      "eddiebauer.com overlap",
-      "NOT indicative of corporate relationships",
-      "commercetools detected 7 times",
-      "Apollo GraphQL detected 6 times",
-      "Google Analytics 4",
-      "IT Leadership:",
-      "Marketing:",
-      "E-Commerce:",
-      "Report Generated:"
+      "commercetools (detected 7x)",
+      "Apollo GraphQL (detected 6x)",
+      "LaunchDarkly (feature flags, detected 6x)",
+      "Akamai (CDN / WAF)",
+      "Google Analytics 4"
     ],
-    "search_provider": "detected** - search functionality appears to be handled by native platform capabilities",
+    "search_provider": "Native commercetools platform search (no dedicated third-party search vendor detected)",
     "algolia_detected": false,
-    "current_search_vendor": "detected** - search functionality appears to be handled by native platform capabilities"
+    "current_search_vendor": "Native commercetools platform search (no dedicated third-party search vendor detected)"
   },
   "hiring": {
     "total_open_roles": "19 total (9 ICP-relevant Tier 1–3)",
     "search_specific_roles": 0,
     "search_specific_note": "No Search Engineer, Relevance Engineer, or Discovery PM roles — 'search team in a box' opportunity",
     "source_url": "https://www.glassdoor.com/Job/l-l-bean-co-me-software-engineer-developer-jobs-SRCH_IL.0,14_IC1160258_KO15,42.htm",
-    "build_vs_buy": "Strong BUY case. Engineering Manager role is 70% hands-on (lean team structure). 18+ software engineers filling non-search roles. No search-specific hires. L.L.Bean's peers (REI, Patagonia, Dick's Sporting Goods) all buy Algolia despite having 2–10x larger engineering teams. Tech stack is GCP + Node.js — direct alignment with Algolia infrastructure. Messaging: 'Your engineers should build L.L.Bean differentiators, not search infrastructure.'",
+    "build_vs_buy": "Strong BUY case. Engineering Manager role is 70% hands-on (lean team structure). 18+ software engineers filling non-search roles. No search-specific hires. L.L.Bean's closest peer REI (confirmed Algolia via BuiltWith, last detected June 2026) buys rather than builds search despite a far larger engineering team. Patagonia and Dick's run custom/unknown stacks and are not confirmed Algolia customers. Tech stack is GCP + Node.js — direct alignment with Algolia infrastructure. Messaging: 'Your engineers should build L.L.Bean differentiators, not search infrastructure.'",
     "buying_committee": [
       {
         "role": "Economic Buyer — CEO",
@@ -5900,18 +5885,18 @@ a:hover {
         "signal": "warm",
         "status": "100-day window — new CEO Feb 2026",
         "message": "Greg Elder comes from Chief Retail Officer. He owns the 'evolve and amplify' mandate. New CEOs drive tech modernization in first 100 days — this is the window.",
-        "linkedin_url": "https://www.linkedin.com/in/greg-elder-llbean/",
+        "linkedin_url": "https://www.linkedin.com/in/greg-elder-2bb8314",
         "source_url": "https://sgbonline.com/l-l-bean-names-chief-retail-officer-greg-elder-as-next-company-president-ceo/",
         "job_url": null
       },
       {
         "role": "Technical Buyer — CIO",
-        "name": "JJ Rouhana",
+        "name": "Joseph 'JJ' Rouhana",
         "title": "Chief Information Officer",
         "signal": "hot",
         "status": "HOT — architect of commercetools migration",
         "message": "JJ led the May 2024 commercetools migration. He is a headless/composable believer and will immediately understand search-as-microservice. He's the primary technical decision-maker.",
-        "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+        "linkedin_url": "https://www.linkedin.com/in/josephrouhana/",
         "source_url": "https://consumergoods.com/ll-bean-cio-headless-commerce-keeps-us-nimble",
         "job_url": null
       },
@@ -5954,7 +5939,7 @@ a:hover {
         "phase": 1,
         "label": "Champion Building",
         "target": "Nick Wilkoff (CMO)",
-        "message": "Forrester analyst to Forrester analyst: 'You know what best-in-class looks like. REI, Patagonia, Dick's all chose Algolia. Let me show you a side-by-side: REI search vs. L.L.Bean search.'",
+        "message": "Forrester analyst to Forrester analyst: 'You know what best-in-class looks like. REI (confirmed via BuiltWith) is on Algolia. Let me show you a side-by-side: REI search vs. L.L.Bean search.'",
         "timing": "Week 1-2"
       },
       {
@@ -5968,7 +5953,7 @@ a:hover {
         "phase": 3,
         "label": "Executive Close",
         "target": "Greg Elder (CEO)",
-        "message": "You're 90 days into your CEO tenure. Search is your fastest quick win: $16M+ annual revenue opportunity, 2-week integration. REI and Patagonia trust Algolia — L.L.Bean should be on that list.",
+        "message": "You're in your first year as CEO (took office late Feb 2026). Search is your fastest quick win: $16M+ annual revenue opportunity, 2-week integration. REI trusts Algolia — L.L.Bean should be on that list.",
         "timing": "Week 5-6"
       }
     ],
@@ -5983,7 +5968,7 @@ a:hover {
       },
       {
         "objection": "We don't have budget this fiscal year",
-        "counter": "Algolia pays for itself in 60-90 days. At ~$168M search-addressable revenue [ESTIMATE], a 5% lift = $8.4M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
+        "counter": "Algolia pays for itself in 60-90 days. At ~$198.9M search-addressable revenue (18% of $1.105B e-commerce), a 5% lift = $9.9M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
       },
       {
         "objection": "Search isn't a priority vs. physical store expansion",
@@ -6002,19 +5987,23 @@ a:hover {
       ],
       "discovery_question": "JJ, you completed commercetools for speed to market. How quickly can your merchandising team update search rules or promote seasonal products today — hours, days, or weeks?",
       "algolia_proof": "commercetools pre-built Algolia connector. Merchandising rules go live in minutes via business dashboard. Zero dev cycles for promotions.",
+      "objection": "We just completed our headless migration to commercetools — search already works inside that composable stack, so there's no gap to fill.",
+      "objection_counter": "The commercetools migration is exactly why search is the next move, not a reason to wait: commercetools ships a pre-built Algolia connector, so search drops into the composable stack you already built. Today merchandising changes require dev cycles — the same connector lets the merchandising team manage search rules through a business dashboard instead of the dev backlog.",
       "source": "L.L.Bean Press Release 2024 / SimilarWeb Traffic Analysis",
       "angle": "Composable Commerce: Search Is the Missing Microservice"
     },
     {
       "label": "100-Day CEO Window: Search Is the Fastest ROI",
-      "hook": "Greg Elder is 60 days into his CEO tenure with an 'evolve and amplify' mandate. New CEOs need quick wins with measurable ROI. Algolia delivers in 2 weeks, not 2 quarters.",
+      "hook": "Greg Elder took over as CEO in late February 2026 with an 'evolve and amplify' mandate. New CEOs need quick wins with measurable ROI. Algolia delivers in 2 weeks, not 2 quarters.",
       "pain_points": [
         "CEO has 100-day window to establish digital innovation credentials",
         "Current search not aligned with 'evolving and amplifying' brand positioning",
-        "Board (RILA membership) — peer CEOs at REI and Dick's already use Algolia"
+        "Board (RILA membership) — peer retailer REI already uses Algolia (confirmed via BuiltWith)"
       ],
       "discovery_question": "Greg, your 'evolve and amplify' strategy is focused on deepening customer connections. How many customers search on llbean.com but don't find what they're looking for today — do you have visibility into your zero-results rate?",
       "algolia_proof": "Typical Algolia customers go live in 2-4 weeks. Measurable conversion lift in first 30 days. Lacoste: +37% search conversion rate.",
+      "objection": "A new CEO early in his tenure won't want to sign a new vendor in his first months — the focus is stabilizing, not adding platforms.",
+      "objection_counter": "That's exactly why search fits the window: it's the one layer a new CEO can improve without re-architecting the stack, so it reads as a fast, measurable quick win rather than a multi-quarter platform bet. The impact shows up in the zero-results and conversion metrics he's already accountable for, inside the 100-day window.",
       "source": "L.L.Bean Press Release 2024 / SimilarWeb Traffic Analysis",
       "angle": "100-Day CEO Window: Search Is the Fastest ROI"
     },
@@ -6027,13 +6016,15 @@ a:hover {
         "REI personalizes search for REI Co-op members vs. non-members; L.L.Bean has no personalization"
       ],
       "discovery_question": "Have you done a side-by-side comparison of your search vs. REI's search? I'd like to show you 3 specific queries where REI's experience is measurably better — and how Algolia is the reason why.",
-      "algolia_proof": "REI saw 15% multi-channel engagement lift and 22% search-to-purchase conversion improvement. Source: Algolia customers case study. Same capabilities available to L.L.Bean.",
+      "algolia_proof": "REI is confirmed on Algolia via BuiltWith live detection. No public Algolia case study or independently verified metrics exist for REI. The same search capabilities are available to L.L.Bean.",
+      "objection": "REI is a member co-op with a different model — their search edge isn't necessarily Algolia, and copying them won't move our numbers.",
+      "objection_counter": "REI's search advantage is capability, not co-op status: instant autocomplete with images, federated search, and member personalization — the three specific gaps where L.L.Bean has zero SAYT, product-only results, and no personalization. Those are Algolia capabilities available to L.L.Bean, so the gap is closable with the same technology rather than being a structural disadvantage of business model.",
       "source": "L.L.Bean Press Release 2024 / SimilarWeb Traffic Analysis",
       "angle": "REI Is Already Winning With Algolia: The Golden Angle"
     },
     {
       "label": "Omnichannel Expansion Needs Unified Search",
-      "hook": "L.L.Bean is opening 23 new stores over 3 years. Randy Dyer said customers should experience L.L.Bean 'regardless of channel.' Unified search is the connective tissue — same relevance on web, mobile, new stores, 36 wholesale e-commerce partners.",
+      "hook": "L.L.Bean is opening 23 new stores over 3 years. Former Enterprise Architect Randy Dyer said in 2020 that customers should experience L.L.Bean 'regardless of channel.' Unified search is the connective tissue — same relevance on web, mobile, new stores, 36 wholesale e-commerce partners.",
       "pain_points": [
         "No evidence of unified search API across web, mobile, and in-store",
         "36 wholesale e-commerce partners (Chewy, Von Maur) have no search consistency with llbean.com",
@@ -6041,6 +6032,8 @@ a:hover {
       ],
       "discovery_question": "With 23 new stores opening over 3 years, how are you thinking about unified inventory search — can customers search on llbean.com, see in-store availability at your new Huntsville, Alabama store, and reserve items?",
       "algolia_proof": "Algolia Unified Search API powers web + mobile + kiosk + partner sites via one integration. REI uses same API for all channels.",
+      "objection": "In-store search kiosks aren't in scope for the store expansion or the flagship renovation yet — this is a store-build program, not a search project.",
+      "objection_counter": "Unified search doesn't need a separate kiosk project — it scales with the rollout from one integration. Algolia's Unified Search API powers web, mobile, kiosk, and partner sites through a single integration, so the 23 new stores and 36 wholesale e-commerce partners get consistent relevance without a per-channel build.",
       "source": "L.L.Bean Press Release 2024 / SimilarWeb Traffic Analysis",
       "angle": "Omnichannel Expansion Needs Unified Search"
     }
@@ -6116,7 +6109,7 @@ a:hover {
     ],
     "anchor_lines": [
       "JJ, you completed the commercetools migration and emphasized 'speed to market and agility.' From what we've seen, most companies that go headless realize search is the next logical microservice to modernize. Algolia has a pre-built commercetools connector — it plugs in in days, not months.",
-      "Greg, I saw your 'evolve and amplify' CEO mandate. REI and Patagonia — two of your direct competitors — are already using Algolia. REI saw 15% multi-channel engagement lift. L.L.Bean's 100% satisfaction guarantee and outdoor guides deserve the same findability treatment.",
+      "Greg, I saw your 'evolve and amplify' CEO mandate. REI — your direct competitor — is already using Algolia. L.L.Bean's 100% satisfaction guarantee and outdoor guides deserve the same findability treatment.",
       "Randy, you talked about customers experiencing L.L.Bean 'as a dynamic, innovative brand, regardless of the channel.' Does your search experience feel consistent today — same relevance, same speed — between web, mobile, and in-store kiosks?",
       "Emily, you're investing in real-time personalization. Search is the highest-intent personalization moment. Someone searching 'gift for dad under $100' is literally telling you their intent. How is your search using those behavioral signals today to adapt results in real time?",
       "With 8 new stores opening in 2026 and a $50M flagship renovation in Freeport, unified search becomes table stakes — not nice-to-have. Customers should be able to search on llbean.com, check in-store availability at your new Huntsville location, and reserve items for pickup."
@@ -6132,7 +6125,7 @@ a:hover {
       },
       {
         "objection": "We don't have budget this fiscal year",
-        "counter": "Algolia pays for itself in 60-90 days. At ~$168M search-addressable revenue [ESTIMATE], a 5% lift = $8.4M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
+        "counter": "Algolia pays for itself in 60-90 days. At ~$198.9M search-addressable revenue (18% of $1.105B e-commerce), a 5% lift = $9.9M annual — 10x ROI on Algolia's cost. This isn't an expense; it's a revenue accelerator."
       },
       {
         "objection": "Search isn't a priority vs. physical store expansion",
@@ -6152,7 +6145,7 @@ a:hover {
         "description": "REI confirmed using Algolia via BuiltWith. Highest traffic of all outdoor competitors at ~30M/mo avg [SimilarWeb]. Lower bounce rate (38.2%) vs L.L.Bean (41.3%). Golden Angle: direct peer comparison is most compelling sales tool.",
         "threat_level": "HIGH",
         "search_stack": "Algolia (confirmed BuiltWith) + WordPress + Dirxion",
-        "strategic_implication": "REI already uses Algolia — confirmed by BuiltWith. They see 15% multi-channel engagement lift with federated search. This is the most powerful proof point for L.L.Bean: your largest competitor has already made this investment. The question is how long L.L.Bean waits.",
+        "strategic_implication": "REI already uses Algolia — confirmed by BuiltWith. This is the most powerful proof point for L.L.Bean: your largest competitor has already made this investment. The question is how long L.L.Bean waits.",
         "source_url": "https://builtwith.com/rei.com"
       },
       {
@@ -6163,8 +6156,8 @@ a:hover {
         ],
         "description": "The North Face uses Dirxion enterprise search — a less capable platform than Algolia but still dedicated search investment. VF Corporation ownership provides technology resources.",
         "threat_level": "MEDIUM",
-        "search_stack": "Dirxion (custom) + Vue.js + RichRelevance",
-        "strategic_implication": "The North Face uses Dirxion (custom search) and saw 25% zero-results reduction. They've invested in dedicated search. L.L.Bean's native commercetools OOTB search falls behind both REI and TNF on search maturity.",
+        "search_stack": "Dirxion (custom search)",
+        "strategic_implication": "The North Face uses Dirxion (custom search) and has invested in dedicated search, though not a modern search platform. L.L.Bean's native commercetools OOTB search falls behind both REI and TNF on search maturity.",
         "source_url": "https://builtwith.com/thenorthface.com"
       },
       {
@@ -6177,7 +6170,7 @@ a:hover {
         "description": "Patagonia and Columbia use custom or unknown search implementations. Custom solutions require ongoing engineering investment but may be tailored to specific catalog needs. Columbia's 44.6% bounce rate suggests search underperformance.",
         "threat_level": "LOW",
         "search_stack": "Custom search (likely Algolia) + Next.js + React + Optimizely",
-        "strategic_implication": "Patagonia's Next.js stack and Optimizely A/B testing signal sophisticated search investment. Likely custom Algolia integration. They saw +10% search conversion and +12% AOV — directly comparable to L.L.Bean's outdoor apparel challenge.",
+        "strategic_implication": "Patagonia's Next.js stack and Optimizely A/B testing signal sophisticated search investment, but BuiltWith detection shows no recognized search vendor (custom/unknown) — Patagonia is NOT a confirmed Algolia customer. Do not cite performance figures for Patagonia.",
         "source_url": "https://builtwith.com/patagonia.com"
       },
       {
@@ -6209,7 +6202,7 @@ a:hover {
         "new_balance_has": false,
         "prospect_today": false,
         "prospect_with_algolia": true,
-        "strategic_play": "REI and Patagonia both use semantic NLP. L.L.Bean falls behind both top competitors."
+        "strategic_play": "REI uses semantic NLP (confirmed Algolia). L.L.Bean falls behind on this front."
       },
       {
         "capability": "Federated Search (content + products)",
@@ -6239,7 +6232,7 @@ a:hover {
         "new_balance_has": false,
         "prospect_today": false,
         "prospect_with_algolia": true,
-        "strategic_play": "Patagonia (Algolia Personalization): +15% repeat purchase. Gift buyers vs. enthusiasts see different rankings."
+        "strategic_play": "A confirmed Algolia deployment with Personalization drives repeat-purchase lift by distinguishing gift buyers from enthusiasts in ranking — REI is the confirmed reference point, not Patagonia."
       },
       {
         "capability": "AI Merchandising Rules",
@@ -6256,11 +6249,11 @@ a:hover {
     "roi_by_scenario": {
       "pilot_30_day": "Prove search conversion lift with A/B test on 20% traffic. Expected: 10-15% conversion improvement, zero results reduction from ~8% to ~4%.",
       "phase_1_90_day": "Full NeuralSearch + InstantSearch deployment. Expected: $2.5-3.5M incremental revenue (annualized at conservative rate).",
-      "phase_2_180_day": "Add Personalization + Recommend. Expected: $16.8M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
+      "phase_2_180_day": "Add Personalization + Recommend. Expected: $19.9M/yr at moderate scenario. Dynamic Yield integration unlocks existing personalization investment."
     },
     "matrix_col_labels": {
       "nike_has": "REI",
-      "asics_has": "Patagonia",
+      "asics_has": "Decathlon",
       "on_running_has": "The North Face",
       "new_balance_has": "Eddie Bauer"
     }
@@ -6269,55 +6262,45 @@ a:hover {
     "confirmed": true,
     "competitor_name": "REI",
     "competitor_domain": "rei.com",
-    "confirmation_method": "BuiltWith domain analysis — Algolia detected in live technology scan",
-    "confirmation_date": "2026-03-17",
+    "confirmation_method": "BuiltWith domain analysis - Algolia detected as premium technology, last detected 2026-06-25; re-verified 2026-07-05",
+    "confirmation_date": "2026-07-05 (re-verified)",
     "source_url": "https://builtwith.com/rei.com",
-    "talking_point": "Your biggest competitor — REI — already uses Algolia. REI's ~30M/mo avg [SimilarWeb] vs. your 26.7M reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
+    "talking_point": "Your biggest competitor — REI — already uses Algolia. REI's ~30M/mo average [SimilarWeb] vs. L.L.Bean's ~20.3M average (Oct 2024-Jan 2025; 16.6M in Jan 2025, peaking 26.7M in December) reflects in part a superior search and discovery experience. Your customers comparison-shop between llbean.com and rei.com. Every time REI's search finds what they need and yours doesn't, that's a lost sale.",
     "case_study_note": "REI case study on algolia.com may contain specific lift metrics — verify before citing in prospect materials",
-    "additional_users": [
-      {
-        "company": "Dick's Sporting Goods",
-        "confirmation": "Referenced in 07-hiring-signals.md — not BuiltWith-verified",
-        "confidence": "ESTIMATE"
-      },
-      {
-        "company": "Patagonia",
-        "confirmation": "Referenced in 12-icp-priority-mapping.md — not BuiltWith-verified for this audit",
-        "confidence": "ESTIMATE"
-      }
-    ],
+    "additional_users": [],
     "competitors_using_algolia": [
       {
         "name": "REI",
         "domain": "rei.com",
         "source_url": "https://builtwith.com/rei.com",
-        "confirmation_method": "BuiltWith live domain scan (2026-03-17)",
-        "confirmation_date": "2026-03-17"
+        "confirmation_method": "BuiltWith live domain scan; Algolia last detected 2026-06-25",
+        "confirmation_date": "2026-07-05"
       }
     ],
-    "talk_track": "REI — your biggest direct competitor — confirmed using Algolia as of March 2026. REI sees 15% multi-channel engagement lift with federated search. L.L.Bean faces the same product discovery challenges. You're not evaluating an unproven technology — you're evaluating whether to join the category leader or remain the outlier.",
-    "positioning": "REI confirmed Algolia via BuiltWith. Patagonia likely Algolia (Next.js stack). Zero of L.L.Bean's competitors use native-only search — all have invested in modern product discovery.",
+    "talk_track": "REI — your biggest direct competitor — confirmed using Algolia as of June 2026 (BuiltWith live detection, last seen 2026-06-25). L.L.Bean faces the same product discovery challenges. You're not evaluating an unproven technology — you're evaluating whether to join the category leader or remain the outlier.",
+    "positioning": "REI confirmed Algolia via BuiltWith. Patagonia's stack is custom/unknown (not a confirmed Algolia customer). Multiple of L.L.Bean's competitors have invested in modern product discovery.",
     "footwear_case_study": {
       "company": "REI",
-      "result": "+15% multi-channel engagement",
-      "source_url": "https://www.algolia.com/customers/rei"
-    }
+      "result": "Confirmed Algolia customer (BuiltWith live detection); no public Algolia case study or verified performance metric available",
+      "source_url": "https://builtwith.com/rei.com"
+    },
+    "additional_users_note": "No competitor other than REI is a BuiltWith-verified Algolia customer. Dick's Sporting Goods shows no Algolia in a 2026-07-05 BuiltWith scan; Patagonia runs a custom/unknown stack. Neither is claimed as an Algolia customer."
   },
   "ae_fields": {
     "urgency_level": "high",
     "deal_size_est": "$500K–$750K/yr",
     "champion": "Nick Wilkoff (CMO) — former Forrester analyst, data-driven, Algolia is Forrester Wave Leader",
-    "economic_buyer": "Greg Elder (CEO) — new in role Jan 2026, 100-day window",
+    "economic_buyer": "Greg Elder (CEO) — took office late Feb 2026, 100-day window",
     "technical_buyer": "Joseph Rouhana (CIO) — GCP + Node.js champion, launched llbean.com in 1996",
     "user_buyer": "Rob Harpool (Director, CX & Technology) — owns CX metrics, UX-certified",
     "timing": "Q2 2026 — new CEO 100-day window + commercetools migration complete + 8 new stores opening + pre-Q4 holiday prep",
-    "talk_track_opener": "JJ, congratulations on zero outages during Cyber Monday on commercetools — that's genuinely impressive. I work with a number of commercetools customers, and the pattern we see is consistent: headless commerce is step one, and search modernization is the logical next microservice. REI did exactly this — same stack, saw 15% multi-channel engagement. Given your 'shared services for all channels' vision, I think there's a very natural conversation to have. Would you have 20 minutes?",
+    "talk_track_opener": "JJ, congratulations on zero outages during Cyber Monday on commercetools — that's genuinely impressive. I work with a number of commercetools customers, and the pattern we see is consistent: headless commerce is step one, and search modernization is the logical next microservice. REI did exactly this — same stack, on Algolia today (confirmed via BuiltWith). Given your 'shared services for all channels' vision, I think there's a very natural conversation to have. Would you have 20 minutes?",
     "urgency_reason": "New CEO 100-day window (Feb 2026) + Engineering Manager search/discovery vacancy + commercetools complete = search is next on roadmap",
     "next_step_action": "Schedule 20-min call with JJ Rouhana (CIO) this week — frame as: 'commercetools complete, search is the next microservice, here's what REI did.' Use Eng. Manager vacancy as urgency trigger.",
     "next_step_owner": "AE",
     "next_step_date": "Within 10 business days",
     "talk_track_cta": "A 30-day proof-of-concept — we index your catalog alongside commercetools, run NLP + federated search for 4 weeks, measure the delta vs. current search. No disruption to your live site. You get data before any license decision.",
-    "urgency_trigger": "JJ, congratulations on zero outages during Cyber Monday on commercetools — that's genuinely impressive. I work with a number of commercetools customers, and the pattern we see is consistent: headless commerce is step one, and search modernization is the logical next microservice. REI did exactly this — same stack, saw 15% multi-channel engagement. Given your 'shared services for all channels' vision, I think there's a very natural conversation to have. Would you have 20 minutes?",
+    "urgency_trigger": "JJ, congratulations on zero outages during Cyber Monday on commercetools — that's genuinely impressive. I work with a number of commercetools customers, and the pattern we see is consistent: headless commerce is step one, and search modernization is the logical next microservice. REI did exactly this — same stack, on Algolia today (confirmed via BuiltWith). Given your 'shared services for all channels' vision, I think there's a very natural conversation to have. Would you have 20 minutes?",
     "recommended_approach": "Schedule 20-min call with JJ Rouhana (CIO) this week — frame as: 'commercetools complete, search is the next microservice, here's what REI did.' Use Eng. Manager vacancy as urgency trigger."
   },
   "next_steps": [
@@ -6327,11 +6310,11 @@ a:hover {
     },
     {
       "title": "Connect: Nick Wilkoff (CMO) via Forrester Angle",
-      "description": "Email to Nick Wilkoff: 'Former Forrester analyst to former Forrester analyst — REI, Patagonia, Dick's chose Algolia. Algolia is a Forrester Wave Leader. Can I show you what they're getting?' CC Rob Harpool (Director CX)."
+      "description": "Email to Nick Wilkoff: 'Former Forrester analyst to former Forrester analyst — REI (confirmed via BuiltWith) chose Algolia. Algolia is a Forrester Wave Leader. Can I show you what they're getting?' CC Rob Harpool (Director CX)."
     },
     {
       "title": "Prepare: ROI Model + commercetools Integration Brief",
-      "description": "Prepare 1-pager: $107M search-addressable revenue × 5-15% lift = $8.4M–$25.2M [ESTIMATE]. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
+      "description": "Prepare 1-pager: $198.9M search-addressable revenue (18% of $1.105B e-commerce) × 5-15% lift = $9.9M-$29.8M [ESTIMATE]. Include commercetools pre-built connector timeline (2 weeks to live). For Joseph Rouhana: GCP deployment diagram + Node.js SDK integration guide."
     }
   ],
   "bibliography": [
@@ -6488,30 +6471,21 @@ a:hover {
   ],
   "case_studies": [
     {
-      "company": "Patagonia",
-      "vertical": "Outdoor Apparel — Direct Competitor",
-      "result": "+10% search conversion rate",
-      "product": "Algolia NeuralSearch + Personalization",
-      "why": "Patagonia's technical outdoor catalog (base layers, insulation ratings, activity-specific gear) mirrors L.L.Bean. Same challenge: semantic queries like 'best waterproof jacket for backpacking' failing on keyword-only search. Patagonia solved this with Algolia + achieved 12% AOV lift and 15% repeat purchase lift.",
-      "url": "https://www.algolia.com/customers/patagonia",
-      "source_verified": "Referenced in L.L.Bean 08-financial-profile.md scratchpad"
-    },
-    {
       "company": "Decathlon",
       "vertical": "Sporting Goods — Omnichannel",
-      "result": "+50% search-driven conversions",
+      "result": "+50% conversion rate (with personalization)",
       "product": "Algolia NeuralSearch + Federated Search",
-      "why": "Decathlon's omnichannel strategy (retail + e-commerce across 60+ countries, 85,000+ SKUs) mirrors L.L.Bean's 95 stores + 36 e-commerce partners. Same challenge: activity-based search ('boots for winter hiking') across massive catalog. 50% zero results reduction and 60% mobile search share post-Algolia.",
+      "why": "Decathlon's omnichannel strategy (retail + e-commerce across 60+ countries, 85,000+ SKUs) mirrors L.L.Bean's 95 stores + 36 e-commerce partners. Same challenge: activity-based search ('boots for winter hiking') across massive catalog. Post-Algolia, Decathlon Singapore cut its no-results rate from 5% to 1.8% and serves 80% mobile traffic (source: algolia.com/customers/decathlon-singapore).",
       "url": "https://www.algolia.com/customers/decathlon-singapore",
       "source_verified": "Referenced in 08-financial-profile.md; URL variant confirmed in Brooks Running session"
     },
     {
       "company": "REI",
       "vertical": "Outdoor Retail — Direct Competitor",
-      "result": "+15% multi-channel engagement",
+      "result": "Confirmed Algolia customer (BuiltWith live detection); no public Algolia case study or verified performance metric available",
       "product": "Algolia Federated Search",
       "why": "REI is L.L.Bean's most direct comparable — outdoor specialty retailer, omnichannel focus, same customer demographics (outdoor enthusiasts). REI uses Algolia federated search to surface classes, events, store locator, and return policies alongside products. Same opportunity for L.L.Bean's 95 stores + outdoor programs.",
-      "url": "https://www.algolia.com/customers/rei",
+      "url": "https://builtwith.com/rei.com",
       "source_verified": "Referenced in 12-icp-priority-mapping.md scratchpad"
     }
   ],
@@ -6524,7 +6498,7 @@ a:hover {
       "LinkedIn",
       "Video"
     ],
-    "research_basis": "commercetools migration completed May 2024; Greg Elder new CEO (Feb 2026); Engineering Manager vacancy; REI + Patagonia confirmed Algolia customers; 8 new stores in 2026",
+    "research_basis": "commercetools migration completed May 2024; Greg Elder new CEO (Feb 2026); Engineering Manager vacancy; REI confirmed Algolia customer; Patagonia unconfirmed (custom/unknown stack); 8 new stores in 2026",
     "triggers": [
       {
         "label": "New CEO (Greg Elder)",
@@ -6559,11 +6533,11 @@ a:hover {
       },
       {
         "id": "jj_rouhana",
-        "name": "JJ Rouhana",
+        "name": "Joseph 'JJ' Rouhana",
         "title": "Chief Information Officer",
         "tier": 1,
         "role": "Technical Budget Holder — Owns technology vendor decisions. Led commercetools migration. Search is next logical microservice.",
-        "linkedin_url": "https://www.linkedin.com/in/jj-rouhana/",
+        "linkedin_url": "https://www.linkedin.com/in/josephrouhana/",
         "angle": "commercetools migration complete → search modernization is the logical next step. Use Rob's internal advocacy before approaching JJ."
       },
       {
@@ -6572,7 +6546,7 @@ a:hover {
         "title": "Director of Insights & Analytics",
         "tier": 2,
         "role": "Champion — Owns personalization analytics platform. Search is the highest-intent personalization moment.",
-        "linkedin_url": "https://www.linkedin.com/in/emily-elting/",
+        "linkedin_url": "https://www.linkedin.com/in/emilyhanleyelting",
         "angle": "Personalization investment without search integration has a ceiling. Algolia feeds behavioral signals directly into real-time re-ranking."
       }
     ],
@@ -6735,13 +6709,13 @@ a:hover {
     "summary": "What you need before walking into L.L.Bean",
     "account": "L.L.Bean at a glance — outdoor apparel retail, 26.7M monthly peak visitors",
     "findings": "What we found when we tested L.L.Bean's search",
-    "case": "Why L.L.Bean should act now — $8.4M conservative ROI with 55% e-com share",
+    "case": "Why L.L.Bean should act now — $9.9M conservative ROI with 65% e-com share",
     "playbook": "How to win the L.L.Bean deal"
   },
   "recommended_first_play": {
     "type": "competitive",
     "headline": "REI already uses Algolia",
-    "detail": "REI — L.L.Bean's largest direct competitor — uses Algolia for search and discovery across their 30M monthly visits. Lead with this: your biggest competitor trusts Algolia to power their outdoor search experience. L.L.Bean's current native/HCL search has none of the capabilities REI's customers now expect.",
+    "detail": "REI — L.L.Bean's largest direct competitor — uses Algolia for search and discovery across their 30M monthly visits. Lead with this: your biggest competitor trusts Algolia to power their outdoor search experience. L.L.Bean's current native commercetools search has none of the capabilities REI's customers now expect.",
     "urgency": "high",
     "source": "competitors"
   },
@@ -7185,6 +7159,12 @@ function escHtml(str) {
 
 }
 
+function humanizeArea(s){
+  if(!s || typeof s!=='string') return '';
+  const ACR={nlp:'NLP',ux:'UX',ui:'UI',roi:'ROI',ai:'AI',api:'API',seo:'SEO',pdp:'PDP',plp:'PLP',aov:'AOV',cx:'CX',sku:'SKU'};
+  return s.split(/[_\s]+/).filter(Boolean).map(w=>ACR[w.toLowerCase()]||(w.charAt(0).toUpperCase()+w.slice(1))).join(' ');
+}
+
 
 
 /* ═══════════════════════════════════════════════════
@@ -7298,7 +7278,7 @@ function renderGoldenAngleCard(ga) {
 
   if (!ga) return '';
 
-  const gaComps = ga.competitors_using_algolia || [];
+  const gaComps = Array.isArray(ga.competitors_using_algolia) ? ga.competitors_using_algolia : [];
 
   if (!gaComps.length && !ga.talk_track) return '';
 
@@ -7775,7 +7755,7 @@ function renderTopbar(D) {
     <span class="tb-vintage no-print">Audit: ${s(D.meta?.audit_date)}</span>
 
     ${(()=>{
-      const assets=(D.abx_sequence&&D.abx_sequence.assets_library)||[];
+      const assets=Array.isArray((D.abx_sequence&&D.abx_sequence.assets_library)) ? ((D.abx_sequence&&D.abx_sequence.assets_library)) : [];
       if(!assets.length) return '';
       const icoDoc=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       const icoStar=`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
@@ -7821,9 +7801,9 @@ document.addEventListener('click', function(e){
 
 function buildSidebar(D) {
 
-  const findings    = D.findings || [];
+  const findings    = Array.isArray(D.findings) ? (D.findings) : [];
 
-  const signals     = D.intelligence_signals || [];
+  const signals     = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
 
   const signalTypes = [...new Set(signals.map(s => s.type))];
 
@@ -8235,7 +8215,7 @@ function sectionOverviewGrid(D) {
   const score = D.score || {};
   const fin   = D.financials || {};
   const ae    = D.ae_fields  || {};
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const criticals = findings.filter(function(f){ return f.severity === 'critical' || f.severity === 'HIGH'; }).slice(0, 3);
   const overall   = parseFloat(score.overall) || 0;
@@ -8252,7 +8232,7 @@ function sectionOverviewGrid(D) {
   const gapPills = criticals.length
     ? criticals.map(function(f){ return `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(220,38,38,0.12);">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></span>
-        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||f.category||'')}</span>
+        <span style="${T.bodySm};color:var(--gray);line-height:1.4;">${escHtml(f.title||humanizeArea(f.category)||'')}</span>
       </div>`; }).join('')
     : `<div style="${T.bodySm};color:var(--mid);">No critical gaps found — solid baseline.</div>`;
 
@@ -8279,7 +8259,7 @@ function sectionOverviewGrid(D) {
       <div style="width:10px;height:10px;border-radius:50%;background:${urgC};box-shadow:0 0 0 3px ${urgC}30;flex-shrink:0;"></div>
       <div style="${T.urgLabel(urgC)}">${escHtml(ae.urgency_label||'')}</div>
     </div>
-    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||'—')}</div>
+    <div style="${T.body};color:var(--gray);line-height:1.6;margin-bottom:16px;">${escHtml(ae.next_step_action||ae.next_step||'—')}</div>
     <div style="margin-top:auto;border-top:1px solid rgba(0,0,0,0.06);padding-top:12px;display:flex;flex-direction:column;gap:4px;">
       <div style="display:flex;align-items:center;gap:8px;">
         <span style="${T.eyebrow};">Owner</span>
@@ -8545,7 +8525,7 @@ function sectionOverviewGrid(D) {
       const SIG_DOT_COLOR = { '1':'var(--red)', '2':'var(--amber)', '3':'var(--mid)' };
       const SIG_LABEL = { '1':'ACT NOW', '2':'THIS QUARTER', '3':'MONITOR' };
       const topSignals = [...(D.intelligence_signals||[])]
-        .filter(s => s.title || s.badge_label || s.text || s.signal)
+        .filter(s => s.title || s.badge_label || s.text || s.signal || s.body)
         .sort((a,b) => (SIG_URGENCY[a.type]||'5').localeCompare(SIG_URGENCY[b.type]||'5'))
         .slice(0, 3);
       if (!topSignals.length) return '';
@@ -8553,7 +8533,7 @@ function sectionOverviewGrid(D) {
         const tier = SIG_URGENCY[s.type] || '5';
         const dotColor = SIG_DOT_COLOR[tier] || 'var(--mid)';
         const urgLabel = SIG_LABEL[tier] || '';
-        const sigTitle = s.badge_label || s.title || s.signal || '—';
+        const sigTitle = s.badge_label || s.title || s.text || s.body || s.signal || '—';
         const aeAct = s.ae_action || '';
         return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};flex-shrink:0;"></span>
@@ -8643,7 +8623,7 @@ function sectionExecSummary(D) {
 
     ${(() => {
 
-      const allFindings = D.findings || [];
+      const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
       const criticalFindings = allFindings.filter(f => f.severity === 'critical' || f.severity === 'HIGH').slice(0, 3);
 
@@ -8725,7 +8705,7 @@ function sectionExecSummary(D) {
 
       const gapRowsHtml = criticalFindings.map((f, idx) => {
 
-        const shortTitle = f.category || f.title;
+        const shortTitle = humanizeArea(f.category) || f.title;
 
         return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
 
@@ -8843,7 +8823,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">G${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8869,7 +8849,7 @@ function sectionExecSummary(D) {
 
                       <span style="width:24px;height:24px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;${T.eyebrowSmCol('white')};flex-shrink:0;">M${i+1}</span>
 
-                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(f.category||f.title)}</span>
+                      <span class="gap-label" style="${T.labelGray};line-height:1.3;transition:color 0.12s;">${escHtml(humanizeArea(f.category)||f.title)}</span>
 
                     </div>`;
 
@@ -8979,7 +8959,7 @@ function sectionCompanySnapshot(D) {
 
   const cs   = D.company_snapshot || {};
 
-  const execs = D.executives || [];
+  const execs = Array.isArray(D.executives) ? (D.executives) : [];
 
   const ownership = cs.ticker ? `Public · ${cs.ticker}` : 'Private Company';
 
@@ -9239,7 +9219,7 @@ function sectionTraffic(D) {
 
   if (!t.monthly_visits && !(t.top_channels||[]).length) return '';
 
-  const channels = t.top_channels || [];
+  const channels = Array.isArray(t.top_channels) ? (t.top_channels) : [];
 
   const maxShare = Math.max(...channels.map(c => parseFloat(c.share) || 0), 1);
 
@@ -9248,7 +9228,7 @@ function sectionTraffic(D) {
   const age = audience.age || {};
 
   // Normalize gender — support both object {female, male} and demographics array [{age_group:"Female", pct:76}]
-  const demoArr = t.demographics || [];
+  const demoArr = Array.isArray(t.demographics) ? (t.demographics) : [];
   const femaleEntry = demoArr.find(d => /^female$/i.test(d.age_group));
   const maleEntry   = demoArr.find(d => /^male$/i.test(d.age_group));
   const genderFromDemo = (femaleEntry || maleEntry)
@@ -9436,8 +9416,8 @@ function sectionTraffic(D) {
         </div>` : '<div></div>'}
         ${ai ? `<div style="padding:16px 20px;background:var(--blue-light);border:1px solid var(--blue-border);border-radius:8px;border-top:3px solid var(--purple);">
           <div style="${T.statLabel};color:var(--purple);margin-bottom:6px;">🤖 AI Discovery</div>
-          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct))}</div>
-          <div style="${T.bodySmGray12};margin-top:4px;">of referrals from ChatGPT ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
+          <div style="${T.statNum};color:var(--purple);line-height:1;">${escHtml(s(ai.chatgpt_pct || ai.genai_channel_pct))}</div>
+          <div style="${T.bodySmGray12};margin-top:4px;">${ai.chatgpt_pct ? 'of referrals from ChatGPT' : 'of traffic via Gen AI channels'} ${ai.chatgpt_mom?`<strong style="color:var(--green);">${escHtml(s(ai.chatgpt_mom))} MoM</strong>`:''}</div>
         </div>` : '<div></div>'}
       </div>`;
     })()}
@@ -9615,7 +9595,7 @@ function sectionTraffic(D) {
     const branded    = parseFloat(os.branded_pct)     || 0;
     const nonBranded = parseFloat(os.non_branded_pct) || 0;
     const sharePct   = os.share_of_total_pct ? String(os.share_of_total_pct) + '%' : '';
-    const kws = os.top_non_branded_keywords || [];
+    const kws = Array.isArray(os.top_non_branded_keywords) ? (os.top_non_branded_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
 
     // Mini SVG donut for branded/NB split
@@ -9682,7 +9662,7 @@ function sectionTraffic(D) {
     const _accPre2 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;border-bottom:1px solid var(--border);cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_psLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre2 + (() => {
     const ps = t.paid_search;
-    const kws = ps.top_keywords || [];
+    const kws = Array.isArray(ps.top_keywords) ? (ps.top_keywords) : [];
     const maxKwShare = Math.max(...kws.map(k => parseFloat(k.share_pct)||0), 1);
     const sharePct = ps.share_of_total_pct ? String(ps.share_of_total_pct) : '';
     return `
@@ -9716,8 +9696,8 @@ function sectionTraffic(D) {
 
   ${/* PANEL: Referrals */ ''}
   ${(() => {
-    const refs = t.top_referrers || t.referrals?.top_referring_sites || [];
-    const inds = t.referring_industries || t.referrals?.top_referring_industries || [];
+    const refs = Array.isArray(t.top_referrers || t.referrals?.top_referring_sites) ? (t.top_referrers || t.referrals?.top_referring_sites) : [];
+    const inds = Array.isArray(t.referring_industries || t.referrals?.top_referring_industries) ? (t.referring_industries || t.referrals?.top_referring_industries) : [];
     const refShare = t.referrals?.share_of_total_pct;
     if (!refs.length && !inds.length) return '';
     const _refLabel = `Referrals${refShare ? ' — ' + refShare + '% of traffic' : ''}`;
@@ -9769,7 +9749,7 @@ function sectionTraffic(D) {
     const _cLabel = 'Competitor Traffic Scale';
     const _accPre4 = `<div class="acc-panel"><button class="acc-header" onclick="(function(btn){const body=btn.nextElementSibling;const open=body.style.display!=='none';body.style.display=open?'none':'block';btn.querySelector('.acc-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--near-white);border:none;cursor:pointer;font-family:inherit;text-align:left;"><span style="${T.bold14};color:var(--gray);">${_cLabel}</span><svg class="acc-chevron" width="16" height="16" viewBox="0 0 16 16" style="transition:transform 0.2s;flex-shrink:0;"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button><div class="acc-body" style="display:none;padding:14px;">`;
     return _accPre4 + (() => {
-    const comps = t.competitor_traffic || [];
+    const comps = Array.isArray(t.competitor_traffic) ? (t.competitor_traffic) : [];
     const prospectDomain = (D.meta?.domain || '').toLowerCase().trim();
     const parseVisits = v => {
       const s2 = String(v||'').replace(/,/g,'');
@@ -9897,6 +9877,8 @@ function sectionTraffic(D) {
 function sectionFinancials(D) {
 
   const f  = D.financials       || {};
+  const csTicker = D.company_snapshot?.ticker;
+  const isPrivate = !csTicker || /private/i.test(csTicker);
 
   // ── Build revenue_3y — prefer full array, fall back to individual year fields ──
   let _rev3y = f.revenue_3y;
@@ -9978,8 +9960,24 @@ function sectionFinancials(D) {
   // ── SVG Composite Chart ────────────────────────────────────────────────────
   const cW=580, cH=200, padL=46, padR=44, padT=24, padB=34;
   const plotW=cW-padL-padR, plotH=cH-padT-padB;
-  const maxBarVal=56; // $B scale left axis
-  const maxPctVal=20; // % scale right axis
+  // Data-driven axes — NEVER hardcode the max. A fixed $56B axis overflowed for
+  // large-caps (Home Depot ~$165B revenue rendered ~3x off the chart). niceStep
+  // rounds to a clean gridline interval; we add one step of headroom so the tallest
+  // bar never touches the top. Works for $2B and $400B companies alike.
+  function niceStep(range){ if(!(range>0))return 1; const e=Math.floor(Math.log10(range)), f=range/Math.pow(10,e); const nf=f<1.5?1:f<3?2:f<7?5:10; return nf*Math.pow(10,e); }
+  function axisMax(vals, floor){
+    const d=vals.filter(v=>typeof v==='number'&&v>0);
+    const m=Math.max(d.length?Math.max(...d):0, floor||0);
+    const step=niceStep(m/4);
+    let max=Math.max(Math.ceil(m/step)*step, step);
+    if(max<=m+1e-9) max+=step; // headroom so the top bar/point isn't clipped
+    const ticks=[]; for(let v=0; v<=max+1e-9; v+=step) ticks.push(Math.round(v*100)/100);
+    return {max, step, ticks};
+  }
+  const _bar = axisMax([...rvVals, ...gpVals, ...ebVals], 0);
+  const _pct = axisMax(emVals, 20); // keep at least a 0-20% frame for margins
+  const maxBarVal = _bar.max; // $B scale left axis (dynamic)
+  const maxPctVal = _pct.max; // % scale right axis (dynamic)
 
   function bY(v){ return padT + plotH - Math.round((v/maxBarVal)*plotH); }
   function bH(v){ return Math.max(Math.round((v/maxBarVal)*plotH), 2); }
@@ -10015,14 +10013,14 @@ function sectionFinancials(D) {
   const lineDots = linePts.map(pt=>`<circle cx="${pt.x}" cy="${pt.y}" r="3.5" style="fill:var(--gray)" stroke="white" stroke-width="1.5"/><text x="${pt.x}" y="${pt.y-7}" text-anchor="middle" font-family="'Sora',sans-serif" font-size="9" font-weight="700" style="fill:var(--gray)">${pt.p}%</text>`).join('');
 
   // Grid lines + left axis
-  const gridLines = [0,10,20,30,40,50].map(v=>{
+  const gridLines = _bar.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxBarVal)*plotH);
     return `<line x1="${padL}" y1="${y}" x2="${padL+plotW}" y2="${y}" style="stroke:var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>
             <text x="${padL-4}" y="${y+4}" text-anchor="end" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">$${v}B</text>`;
   }).join('');
 
   // Right axis (%)
-  const rightAxis = [0,5,10,15,20].map(v=>{
+  const rightAxis = _pct.ticks.map(v=>{
     const y = padT+plotH-Math.round((v/maxPctVal)*plotH);
     return `<text x="${padL+plotW+4}" y="${y+4}" text-anchor="start" font-family="'Sora',sans-serif" font-size="9" style="fill:var(--mid)">${v}%</text>`;
   }).join('');
@@ -10203,9 +10201,11 @@ function sectionFinancials(D) {
     </div>` : '';
 
   return `<section id="section-financials" class="audit-section">
-    <div class="section-eyebrow">Company Intelligence · Financials ${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}</div>
+    <div class="section-eyebrow">Company Intelligence · Financials ${isPrivate ? srcTag('est', f.revenue_source_label || 'Private — Estimate') : `${srcTag('yf','Yahoo Finance')} ${srcTag('sec','SEC')}`}</div>
     <div class="section-title">Financial Profile</div>
-    <p class="section-desc">4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}</p>
+    <p class="section-desc">${isPrivate
+      ? `Revenue trend · private company, no SEC filings · Data as of ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance)}`
+      : `4-year trajectory · Revenue, Gross Profit, EBITDA bars + EBITDA Margin % trend · Data as of ${s(D.meta?.data_vintage?.yahoo_finance || f.data_vintage)}`}</p>
 
     <!-- B: Composite SVG chart -->
     <div class="card-3d" style="padding:20px 16px 12px;margin-bottom:16px;">
@@ -10225,9 +10225,10 @@ function sectionFinancials(D) {
     <div style="margin-top:10px;">
       <span class="tl-confidence">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="6" stroke="var(--chart-other)" stroke-width="1"/><path d="M6.5 5.5v4M6.5 4.5v.5" stroke="var(--chart-other)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · 2026-04-14.
-        Margins calculated from sourced figures.
-        ${f.source_url ? lnk(f.source_url,'Yahoo Finance','') : ''}
+        ${isPrivate
+          ? `Revenue: ${s(f.revenue_source_label || f.revenue_source || 'private-company estimate')}. Gross Profit, EBITDA, Op. Income, and Net Income are not disclosed — ${escHtml(D.meta?.company || 'this company')} has no SEC filings.`
+          : `Revenue, Gross Profit, EBITDA, Op. Income, Net Income: Yahoo Finance MCP (income_stmt) · ${s(f.data_vintage || D.meta?.data_vintage?.yahoo_finance || '')}. Margins calculated from sourced figures.`}
+        ${f.source_url ? lnk(f.source_url, isPrivate ? (f.revenue_source_label||'Source') : 'Yahoo Finance','') : ''}
       </span>
     </div>
   </section>`;
@@ -10356,7 +10357,19 @@ function sectionTechStack(D) {
 
 function sectionHiring(D) {
 
-  const hiring = (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
+  const _hiringRoles = (D.hiring && Array.isArray(D.hiring.roles)) ? D.hiring.roles : null;
+
+  const hiring = (_hiringRoles && _hiringRoles.length)
+    ? _hiringRoles.map(r => ({
+        type: (r.tier && r.tier <= 2) ? 'hiring' : 'hiring_signal',
+        title: r.title,
+        text: r.title,
+        badge_label: `Tier ${r.tier != null ? r.tier : '?'} · ${r.tier_name || 'Hiring Signal'}`,
+        source_url: r.url,
+        source_name: 'Careers page',
+        relevance: r.location ? `Location: ${r.location}` : '',
+      }))
+    : (D.intelligence_signals || []).filter(s => s.type === 'hiring' || s.type === 'hiring_signal');
 
 
 
@@ -10526,7 +10539,7 @@ function sectionScoreHeatmap(D) {
 
   // Build category→finding map for TOC click targets
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const catToFinding = {};
 
@@ -10728,7 +10741,7 @@ function sectionFinding(f, displayId) {
 
         <span class="chapter-number">${escHtml(displayId)} · ${typeLabel}</span>
 
-        <span class="chapter-area">${escHtml(f.category)}</span>
+        <span class="chapter-area">${escHtml(humanizeArea(f.category))}</span>
 
         <span class="chapter-sev-dot chapter-sev-dot--${sevClass}" title="${f.severity}"></span>
 
@@ -10788,7 +10801,7 @@ function sectionFinding(f, displayId) {
 
     <div class="finding-screenshot" title="Click to zoom" style="margin-bottom:14px;">
 
-      <img src="${escHtml(f.screenshot_file)}"
+      <img src="${escHtml(/^(https?:|screenshots\/)/.test(f.screenshot_file) ? f.screenshot_file : 'screenshots/' + f.screenshot_file)}"
 
            alt="${escHtml(f.title)}"
 
@@ -10983,7 +10996,7 @@ function sectionSignals(D) {
   // ── Table row renderer ─────────────────────────────────────────────────────
   const signalTableRow = (sig) => {
     const sigTitle = sig.badge_label || sig.title || (sig.signal||'').slice(0,80) || sig.text?.slice(0,80) || '—';
-    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || '';
+    const algAngle = sig.relevance || sig.algolia_angle || sig.context || sig.description || sig.detail || sig.body || '';
     const aeAction = deriveAeAction(sig);
     const srcStr   = typeof sig.source === 'string' ? sig.source : '';
     const resolvedUrl = sig.source_url || srcStr.match(/https?:\/\/[^\s]+/)?.[0] || '';
@@ -11160,7 +11173,7 @@ function sectionExecQuotes(D) {
 
 function sectionCompetitive(D) {
 
-  const comps = D.competitors || [];
+  const comps = Array.isArray(D.competitors) ? (D.competitors) : [];
 
   if (!comps.length) return '';
 
@@ -11354,7 +11367,7 @@ function sectionAEBrief(D) {
 
         <div class="card" style="margin-bottom:10px;border-left:4px solid ${f.severity==='critical'?'var(--red)':'var(--amber)'};">
 
-          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(f.category)}</div>
+          <div style="${T.labelMid};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">${i+1}. ${escHtml(humanizeArea(f.category))}</div>
 
           <div style="${T.labelGray};margin-bottom:6px;">${escHtml(f.title)}</div>
 
@@ -11448,17 +11461,17 @@ function sectionBattleCard(D) {
 
   const vendor    = D.company_snapshot?.current_search_vendor || 'Current Vendor';
 
-  const gaps      = D.gap_pairs || [];
+  const gaps      = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
   const hir       = D.hiring || {};
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   // Use only critical findings for feature comparison
 
   const criticalFindings = (D.findings || []).filter(f => f.severity === 'critical');
 
-  const allFindings = D.findings || [];
+  const allFindings = Array.isArray(D.findings) ? (D.findings) : [];
 
   // Single strongest hook — first gap pair only
 
@@ -11566,7 +11579,7 @@ function sectionBattleCard(D) {
 
             ${allFindings.map(f => `<tr>
 
-              <td>${escHtml(f.category)}</td>
+              <td>${escHtml(humanizeArea(f.category))}</td>
 
               <td style="text-align:center;">${f.severity === 'positive' ? '<span class="cap-part">~</span>' : '<span class="cap-no">✗</span>'}</td>
 
@@ -11620,7 +11633,7 @@ function sectionBattleCard(D) {
 
 function sectionSources(D) {
 
-  const bibs = D.bibliography || [];
+  const bibs = Array.isArray(D.bibliography) ? (D.bibliography) : [];
 
   return `<section id="section-sources" class="audit-section">
 
@@ -11726,7 +11739,7 @@ function sectionAppendixScoring(D) {
 
 function sectionAppendixQueries(D) {
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   return `<section id="appendix-queries" class="audit-section">
 
@@ -11746,7 +11759,7 @@ function sectionAppendixQueries(D) {
 
           <td><code style="background:var(--light);padding:2px 6px;border-radius:3px;${T.bodySm};">${escHtml(f.tested_query)}</code></td>
 
-          <td>${escHtml(f.category)}</td>
+          <td>${escHtml(humanizeArea(f.category))}</td>
 
           <td><span class="sev-badge sev-${f.severity}">${f.severity}</span></td>
 
@@ -11886,8 +11899,20 @@ function renderBerkshire(f) {
 
 function sectionROI(D) {
   const f = D.financials || {};
-  const revBase = parseFloat(String(f.total_digital_revenue || '100000000').replace(/[^0-9.-]+/g,"")) || 100000000;
-  const components = f.roi_components || [];
+  const revBase = (() => {
+    // Unit-aware parse: "~$12B" must become 12000000000, not 12 (strip-then-parseFloat is unit-blind).
+    const raw = String(f.total_digital_revenue || '');
+    const m = raw.match(/([\d.]+)\s*([BMK])?/i);
+    if (!m) return 100000000;
+    let n = parseFloat(m[1]);
+    if (!n || isNaN(n)) return 100000000;
+    const unit = (m[2] || '').toUpperCase();
+    if (unit === 'B') n *= 1e9;
+    else if (unit === 'M') n *= 1e6;
+    else if (unit === 'K') n *= 1e3;
+    return n;
+  })();
+  const components = Array.isArray(f.roi_components) ? f.roi_components : [];
   const rs = f.roi_scenarios || {};
 
   const colMap = { blue:'var(--blue)', violet:'var(--violet)', teal:'var(--teal)', red:'var(--red)', amber:'var(--amber)', green:'var(--green)' };
@@ -12191,9 +12216,9 @@ function sectionRevenueAtRisk(D) {
 
 function sectionBusinessCaseHook(D) {
 
-  const gaps = D.gap_pairs || [];
+  const gaps = Array.isArray(D.gap_pairs) ? (D.gap_pairs) : [];
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   if (!gaps.length) return '';
 
@@ -12342,12 +12367,13 @@ function sectionCompetitiveSynthesis(D) {
   const cs = D.competitive_synthesis || {};
 
   const ga = D.golden_angle || {};
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
 
-  const tiers = cs.competitor_tiers || [];
+  const tiers = Array.isArray(cs.competitor_tiers) ? (cs.competitor_tiers) : [];
 
-  const matrix = cs.positioning_matrix || [];
+  const matrix = Array.isArray(cs.positioning_matrix) ? (cs.positioning_matrix) : [];
 
-  if (!tiers.length && !matrix.length && !ga.talk_track && !(ga.competitors_using_algolia||[]).length) return '';
+  if (!tiers.length && !matrix.length && !ga.talk_track && !((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length) return '';
 
   const cap = (v) => {
     if (v === true)  return '<span class="cap-yes" title="Confirmed">✓</span>';
@@ -12371,7 +12397,7 @@ function sectionCompetitiveSynthesis(D) {
 
   const builtWithUrls = {};
 
-  (ga.competitors_using_algolia||[]).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
+  ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).forEach(c => { builtWithUrls[c.name] = c.source_url || `https://builtwith.com/${c.domain||''}`; });
 
 
 
@@ -12411,7 +12437,7 @@ function sectionCompetitiveSynthesis(D) {
       <div style="${T.semi13};color:white;line-height:1.5;">${escHtml(D.meta?.company||'This company')} is the only major player in its vertical without AI-native search. Every direct competitor has at least partial capability. The gap is quantified below.</div>
     </div>` : ''}
 
-    ${ga.talk_track || (ga.competitors_using_algolia||[]).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
+    ${ga.talk_track || ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[])).length ? `<div style="margin-bottom:20px;">${renderGoldenAngleCard(ga)}</div>` : ''}
 
 
 
@@ -12606,7 +12632,7 @@ function initCaseStudyCountUp() {
 function sectionCaseStudies(D) {
 
   // Prefer top-level case_studies[]; fall back to deduplicating from findings[]
-  const topLevel = D.case_studies || [];
+  const topLevel = Array.isArray(D.case_studies) ? (D.case_studies) : [];
 
   if (!topLevel.length) {
     // Build from findings — deduplicate by company, derive stat from result string
@@ -12867,7 +12893,7 @@ function sectionWhyNow(D) {
   const HIRING_TYPES = new Set(['hiring','hiring_signal']);
   const OTHER_TYPES  = new Set(['competitor','news_signal','sec_risk','industry-opp']);
 
-  const allSigs = D.intelligence_signals || [];
+  const allSigs = Array.isArray(D.intelligence_signals) ? (D.intelligence_signals) : [];
   const _uniqBy = arr => { const s=new Set(); return arr.filter(x => { const k=x.badge_label||x.title||x.type; if(s.has(k)) return false; s.add(k); return true; }); };
   const uniqueQuotes  = _uniqBy(allSigs.filter(s => QUOTE_TYPES.has(s.type)));
   const uniqueHiring  = _uniqBy(allSigs.filter(s => HIRING_TYPES.has(s.type)));
@@ -12970,7 +12996,7 @@ function sectionWhyNow(D) {
 
 function sectionStrategicAngles(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
@@ -13038,13 +13064,13 @@ function sectionStrategicAngles(D) {
 
 function sectionSalesPlays(D) {
 
-  const angles = D.strategic_angles || [];
+  const angles = Array.isArray(D.strategic_angles) ? (D.strategic_angles) : [];
 
   if (!angles.length) return '';
 
   const hir = D.hiring || {};
 
-  const genericObjs = hir.objection_counters || [];
+  const genericObjs = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   const accentColors = ['var(--blue)','var(--green)','var(--violet)','var(--teal)'];
 
@@ -13358,7 +13384,7 @@ function sectionPreCallBrief(D) {
 
   const icp = D.icp_mapping || {};
 
-  const anchors = icp.anchor_lines || [];
+  const anchors = Array.isArray(icp.anchor_lines) ? (icp.anchor_lines) : [];
 
   const fin = D.financials || {};
 
@@ -13440,9 +13466,28 @@ function sectionBuyingCommittee(D) {
 
   const hir = D.hiring || {};
 
-  const committee = Array.isArray(hir.buying_committee) ? hir.buying_committee : [];
+  // Some producer runs wrote buying_committee as a role-keyed object
+  // ({economic_buyer:{...}, technical_buyer:{...}, champion:{...}}) instead of
+  // the array of {role,name,title,message,signal} cards this section renders.
+  // Normalize both shapes instead of silently dropping the whole section.
+  function normalizeBuyingCommittee(bc) {
+    if (Array.isArray(bc)) return bc;
+    if (!bc || typeof bc !== 'object') return [];
+    const TIER_LABEL  = { economic_buyer: 'Economic Buyer', technical_buyer: 'Technical Buyer', champion: 'Champion' };
+    const TIER_SIGNAL = { economic_buyer: 'hot', technical_buyer: 'warm', champion: 'hot' };
+    return Object.entries(bc).map(([key, v]) => ({
+      role: (v && v.role) || TIER_LABEL[key] || key,
+      name: v && v.name,
+      title: TIER_LABEL[key],
+      message: v && v.status,
+      signal: TIER_SIGNAL[key] || 'warm',
+      job_url: v && v.job_url,
+      linkedin_url: v && v.linkedin_url,
+    }));
+  }
+  const committee = normalizeBuyingCommittee(hir.buying_committee);
 
-  const phases = hir.engagement_phases || [];
+  const phases = Array.isArray(hir.engagement_phases) ? (hir.engagement_phases) : [];
 
   if (!committee.length) return '';
 
@@ -13585,9 +13630,9 @@ function sectionDiscoveryObjections(D) {
 
   const hir = D.hiring || {};
 
-  const ptops = icp.priority_to_product || [];
+  const ptops = Array.isArray(icp.priority_to_product) ? (icp.priority_to_product) : [];
 
-  const objections = hir.objection_counters || [];
+  const objections = Array.isArray(hir.objection_counters) ? (hir.objection_counters) : [];
 
   return `<section id="section-discovery" class="audit-section">
 
@@ -13643,15 +13688,15 @@ function sectionOutreachPlan(D) {
 
 
 
-  const contacts = abx.contacts || [];
+  const contacts = Array.isArray(abx.contacts) ? (abx.contacts) : [];
 
-  const touches  = abx.touches || [];
+  const touches  = Array.isArray(abx.touches) ? (abx.touches) : [];
 
-  const variants = abx.ab_variants || [];
+  const variants = Array.isArray(abx.ab_variants) ? (abx.ab_variants) : [];
 
-  const assets   = abx.assets_library || [];
+  const assets   = Array.isArray(abx.assets_library) ? (abx.assets_library) : [];
 
-  const triggers = abx.triggers || [];
+  const triggers = Array.isArray(abx.triggers) ? (abx.triggers) : [];
 
 
 
@@ -13981,7 +14026,8 @@ function sectionStatBar(D) {
   const sc = D.score || {};
   const fin = D.financials || {};
   const ga = D.golden_angle || {};
-  const signals = D.intelligence_signals || [];
+  if (!Array.isArray(ga.competitors_using_algolia)) ga.competitors_using_algolia = [];
+  const signals = Array.isArray(D.intelligence_signals) ? D.intelligence_signals : [];
   const criticals = (D.findings || []).filter(f => f.severity === 'critical');
 
   const navTo = (tab, anchor) =>
@@ -14001,7 +14047,7 @@ function sectionStatBar(D) {
   const roiVal = roi ? escHtml(roi) : '—';
 
   // Stat 3: Competitive signal
-  const compUsing = (ga.competitors_using_algolia || [])[0];
+  const compUsing = ((Array.isArray(ga.competitors_using_algolia)?ga.competitors_using_algolia:[]))[0];
   const compVal = compUsing ? escHtml(compUsing.name) : (ga.talk_track ? 'See analysis' : '—');
   const compDesc = compUsing ? 'Direct competitor uses Algolia' : (ga.talk_track ? 'Competitive advantage' : 'No confirmed golden angle');
 
@@ -14129,8 +14175,8 @@ function sectionPartnerIntel(D) {
   const pi = D.partner_intel;
   if (!pi) return ''; // Graceful degradation — section hidden when no partner data
 
-  const techPartners = pi.tech_partners || [];
-  const siPartners = pi.si_partners || [];
+  const techPartners = Array.isArray(pi.tech_partners) ? (pi.tech_partners) : [];
+  const siPartners = Array.isArray(pi.si_partners) ? (pi.si_partners) : [];
   const action = pi.immediate_action || '';
   const coSell = pi.co_sell_recommendation || '';
 
@@ -14195,7 +14241,7 @@ function renderSections(D) {
 
   const content  = document.getElementById('content');
 
-  const findings = D.findings || [];
+  const findings = Array.isArray(D.findings) ? (D.findings) : [];
 
   const isSevCritical = s => s === 'critical' || s === 'HIGH';
   const isSevModerate = s => s === 'moderate' || s === 'MEDIUM';
@@ -14257,6 +14303,29 @@ function renderSections(D) {
   /* ── TAB 3: SEARCH AUDIT ─────────────────────── */
 
   // Gaps (critical + moderate) → G01, G02…  Strengths (positive) → S01, S02…
+  // displayId MUST be derived from the SAME source + sort as sectionScoreHeatmap's
+  // "10 Areas Evaluated" table (D.score.breakdown), not re-derived from D.findings —
+  // otherwise the two G0x numbering sequences drift out of sync whenever a category's
+  // severity/score ranks differently in each list (findings array order != breakdown
+  // sort order), and a finding page shows a different topic than its own G-number in
+  // the scorecard. See: Dell G02/G03/G04 all pointing at the wrong category, 2026-07-03.
+  const categoryToDisplayId = (() => {
+    const bd = (D.score || {}).breakdown || {};
+    const sevs = (D.score || {}).breakdown_severity || {};
+    const order = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    const sorted = Object.entries(bd).sort((a, b) => {
+      const sa = sevs[a[0]] || 'LOW', sb = sevs[b[0]] || 'LOW';
+      if (order[sa] !== order[sb]) return order[sa] - order[sb];
+      return a[1] - b[1];
+    });
+    const map = {};
+    let g = 0, s = 0;
+    sorted.forEach(([cat, , ]) => {
+      const isStrength = (sevs[cat] || 'LOW') === 'LOW';
+      map[cat] = isStrength ? `S${String(++s).padStart(2,'0')}` : `G${String(++g).padStart(2,'0')}`;
+    });
+    return map;
+  })();
 
   const allFindingsOrdered = [...criticalFindings, ...moderateFindings, ...positiveFindings];
 
@@ -14272,11 +14341,14 @@ function renderSections(D) {
 
       const isStrength = f.severity === 'positive';
 
-      const displayId = isStrength
+      // Prefer the canonical category-derived id; fall back to the old sequential
+      // scheme only if this finding's category isn't in score.breakdown at all
+      // (keeps older/malformed audit_data from silently losing its numbering).
+      const displayId = categoryToDisplayId[f.category] || (isStrength
 
         ? `S${String(++sNum).padStart(2,'0')}`
 
-        : `G${String(++gNum).padStart(2,'0')}`;
+        : `G${String(++gNum).padStart(2,'0')}`);
 
       return sectionFinding(f, displayId);
 
@@ -14382,7 +14454,14 @@ function renderSections(D) {
   // ── Solution Map ────────────────────────────────────────────────────────
   function sectionSolutionMap(D) {
     const icp = D.icp_mapping || {};
-    const ptp = icp.priority_to_product || [];
+    // Producer schema has drifted across audits — normalize field-name variants
+    // (pain/priority/their_priority, product/algolia_product/algolia_solution)
+    // instead of showing blank cells when the "canonical" key isn't the one present.
+    const ptp = (Array.isArray(icp.priority_to_product) ? icp.priority_to_product : []).map(p => ({
+      ...p,
+      pain: p.pain || p.priority || p.their_priority || p.why || '',
+      product: p.product || p.algolia_product || p.algolia_solution || '',
+    }));
     const findings = (D.findings || []).filter(f => f.algolia_solution && f.algolia_case_study_company);
     if (!ptp.length && !findings.length) return '';
     return `<section id="section-solution-map" class="audit-section">
@@ -14609,7 +14688,7 @@ function initSectionStrips() {
 
   // Build a panel for each tab
   function buildPanel(tabId) {
-    const config = SECTION_STRIP_CONFIG[tabId] || [];
+    const config = Array.isArray(SECTION_STRIP_CONFIG[tabId]) ? (SECTION_STRIP_CONFIG[tabId]) : [];
     const panel = document.createElement('div');
     panel.className = 'section-sidebar__panel';
     panel.id = `sidebar-panel-${tabId}`;
@@ -14657,10 +14736,6 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
-    if (activeTabId === 'overview') {
-      if (sidebar) sidebar.style.display = 'none';
-      return;
-    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';
@@ -15688,7 +15763,8 @@ if (document.readyState === 'loading') {
 
 </script>
 
-  <script src="/chat-widget.js" defer></script>
+<!-- Grounded "chat with this audit" widget - must ship on every published report page. -->
+<script src="/chat-widget.js" defer></script>
 </body>
 
 </html>
