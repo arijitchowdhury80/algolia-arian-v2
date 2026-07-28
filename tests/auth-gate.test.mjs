@@ -100,20 +100,46 @@ test("auth client script is public and does not expose secrets when Clerk config
   assert.doesNotMatch(js, /pk_(test|live)_/);
 });
 
-test("anonymous report routes and legacy report slugs fail closed without Clerk config", async (t) => {
+// Page requests get a 302 to the sign-in page. Sub-resources (images/css/js) and
+// JSON endpoints deliberately do NOT: an <img> cannot follow Clerk's handshake
+// redirect and a fetch() caller cannot parse an HTML sign-in page as JSON, so both
+// return a bare 401 instead. See requireAuth in server/chat-proxy.mjs.
+test("anonymous report pages fail closed with a sign-in redirect", async (t) => {
+  const baseUrl = await withServer(t);
+
+  for (const pathName of ["/reports/", "/reports/dell/", "/dell/"]) {
+    const res = await request(baseUrl, pathName);
+    assert.notEqual(res.status, 200, `${pathName} must not serve anonymously`);
+    assert.equal(res.status, 302, `${pathName} is a page, expected a redirect`);
+    assert.match(res.headers.get("location") || "", /^\/sign-in\?/);
+  }
+});
+
+test("anonymous report sub-resources and JSON fail closed with 401, not a redirect", async (t) => {
   const baseUrl = await withServer(t);
 
   for (const pathName of [
-    "/reports/",
-    "/reports/dell/",
     "/reports/dell/screenshots/overview.png",
-    "/dell/",
-    "/dell/dell-audit-data.json",
     "/dell/screenshots/overview.png",
+    "/dell/dell-audit-data.json",
   ]) {
     const res = await request(baseUrl, pathName);
-    assert.notEqual(res.status, 200, `${pathName} must not serve anonymously`);
-    assert.match(res.headers.get("location") || "", /^\/sign-in\?/);
+    assert.equal(res.status, 401, `${pathName} must be 401, not a redirect`);
+  }
+});
+
+// The set of audited company slugs is prospect-confidential. A legacy flat URL must
+// therefore be gated BEFORE it is redirected: a 301 to /reports/<slug>/ for an
+// anonymous caller would confirm that the company exists on the box.
+test("legacy flat audit URLs do not leak which slugs exist to anonymous callers", async (t) => {
+  const baseUrl = await withServer(t);
+
+  for (const pathName of ["/dell/", "/lululemon/", "/belk/"]) {
+    const res = await request(baseUrl, pathName);
+    const location = res.headers.get("location") || "";
+    assert.notEqual(res.status, 301, `${pathName} must not 301 before auth`);
+    assert.doesNotMatch(location, /^\/reports\//, `${pathName} must not reveal the reports path`);
+    assert.match(location, /^\/sign-in\?/);
   }
 });
 
@@ -125,9 +151,8 @@ test("anonymous report chat is gated before Hermes is called", async (t) => {
     body: JSON.stringify({ slug: "dell", message: "summarize this audit" }),
   });
 
-  assert.notEqual(res.status, 200);
-  assert.equal(res.status, 302);
-  assert.match(res.headers.get("location") || "", /^\/sign-in\?/);
+  // A fetch() caller needs a parseable status, not an HTML sign-in page.
+  assert.equal(res.status, 401);
 });
 
 test("landing page links to sign-in without hardcoded Clerk keys", async () => {
