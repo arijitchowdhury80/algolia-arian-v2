@@ -2804,7 +2804,7 @@ a:hover .src-tag { opacity: 1; }
 .section-sidebar__item--active .section-sidebar__title { color: var(--blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-
+@media (max-width: 1200px) { #section-sidebar { display: none; } }
 
 
 
@@ -4719,7 +4719,10 @@ a:hover {
 .section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-
+/* Hide sidebar on narrow screens */
+@media (max-width: 1200px) {
+  #section-sidebar { display: none; }
+}
 
 /* No-op legacy strip classes */
 .section-strip, .section-toc { display: none !important; }
@@ -13489,6 +13492,10 @@ function initSectionStrips() {
   // Show the panel that matches the active tab
   function showPanel(activeTabId) {
     const sidebar = document.getElementById('section-sidebar');
+    if (activeTabId === 'overview') {
+      if (sidebar) sidebar.style.display = 'none';
+      return;
+    }
     if (sidebar) sidebar.style.display = '';
     document.querySelectorAll('.section-sidebar__panel').forEach(p => {
       p.style.display = p.id === `sidebar-panel-${activeTabId}` ? 'block' : 'none';

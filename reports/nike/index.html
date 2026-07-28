@@ -4726,7 +4726,10 @@ a:hover {
 .section-sidebar__item--active .section-sidebar__title { color: var(--brand-blue); }
 .section-sidebar__item--active .section-sidebar__desc { opacity: 1; }
 
-
+/* Hide sidebar on narrow screens */
+@media (max-width: 1200px) {
+  #section-sidebar { display: none; }
+}
 
 /* No-op legacy strip classes */
 .section-strip, .section-toc { display: none !important; }
