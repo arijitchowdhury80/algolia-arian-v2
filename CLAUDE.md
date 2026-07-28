@@ -1,6 +1,15 @@
 # CLAUDE.md -- PRISM Project
 # Read at session start. Identity, rules, and pointers. Standards live in vault SOPs.
 
+## ▶ READ FIRST, EVERY SESSION
+**`SESSION.md`** (repo root) — current state, resume actions, exact stop point. It is the single
+required read; everything else here is background. Memory index: `~/.claude/projects/-Users-arijitchowdhury-Dropbox-AI-Development-PIP/memory/MEMORY.md`.
+
+**Repo hygiene (as of 2026-07-28):** both repos' `main` were dead since 28–29 June with eight
+unmerged feature branches; production serves an unmerged one. Before starting work, check which
+branch you are on and whether it is the one you think. Do not create a new branch without saying so
+out loud — unsurfaced branch creation is what caused the sprawl.
+
 ## NAMING CANON (set 2026-06-28)
 **"PRISM" / "prism" now means EXCLUSIVELY Chowmes-PRISM** — the dedicated Hermes agent instance on
 the VPS that runs the algolia-* skill suite and answers questions grounded ONLY in the resulting
