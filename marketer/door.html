@@ -259,7 +259,8 @@
 
       var previewBtn = document.getElementById("btn-preview");
       if (d.existing_page) {
-        previewBtn.href = d.existing_page;
+        // root-relative so the link resolves correctly regardless of the door's own path
+        previewBtn.href = d.existing_page.charAt(0) === "/" ? d.existing_page : "/" + d.existing_page;
       } else {
         previewBtn.classList.remove("btn-primary");
         previewBtn.classList.add("btn-disabled");

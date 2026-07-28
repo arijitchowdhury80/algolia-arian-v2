@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "company": "Nike",
+    "slug": "nike",
+    "domain": "nike.com",
+    "title": "Algolia for Nike — Search that matches your scale",
+    "description": "A personalized look at what Algolia AI Search could do for Nike.com, grounded in PRISM's audit of nike.com search.",
+    "audit_path": "/reports/nike/"
+  },
+  "hero": {
+    "eyebrow": "Sporting Goods &amp; Athletic Apparel &middot; Global Ecommerce",
+    "prefix": "A",
+    "amount": "$288M",
+    "suffix": "revenue opportunity inside nike.com",
+    "sub": "PRISM audited nike.com's live search experience. Here's what closing the gap with Algolia AI Search could be worth to Nike &mdash; and what's holding it back today.",
+    "primary_cta_label": "See the full audit",
+    "primary_cta_href": "/reports/nike/",
+    "secondary_cta_label": "Talk to your rep",
+    "rep_mailto": "mailto:sales@algolia.com?subject=Nike%20Search%20Opportunity",
+    "fact_rows": [
+      { "label": "Revenue (FY2025)", "value": "$46.3B" },
+      { "label": "Monthly visits (nike.com)", "value": "107.6M" },
+      { "label": "Ticker", "value": "PUBLIC: NKE" },
+      { "label": "Portfolio", "value": "Nike + Jordan Brand + Converse" }
+    ]
+  },
+  "proof": {
+    "eyebrow": "Proven at your scale",
+    "heading": "Three companies with Nike's exact problem, solved",
+    "subheading": "Athletic apparel and footwear catalogs, DIY search stacks replaced &mdash; already running on Algolia.",
+    "cards": [
+      {
+        "company": "Under Armour",
+        "vertical": "Athletic Apparel &amp; Footwear",
+        "metric": "+35% conversion rate on search",
+        "result": "Replaced an in-house search stack for a +35% lift in search conversion.",
+        "relevance": "Nike's #3 direct competitor &mdash; ran the same DIY Elasticsearch stack Nike runs today.",
+        "link_href": "https://www.algolia.com/customers/under-armour",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Shoe Carnival",
+        "vertical": "Footwear Retail",
+        "metric": "Up to 3.5x conversions from search",
+        "result": "Specialist footwear retailer scaling conversion through search-driven merchandising.",
+        "relevance": "Same footwear-retail category Nike competes in for direct digital revenue.",
+        "link_href": "https://www.algolia.com/customers/shoe-carnival",
+        "link_label": "Read their story"
+      },
+      {
+        "company": "Lacoste",
+        "vertical": "Sport &amp; Lifestyle Apparel",
+        "metric": "+210% search usage &middot; +37% conversion rate",
+        "result": "Federated SAYT and relevance tuning drove both usage and conversion gains.",
+        "relevance": "Sport-lifestyle apparel brand &mdash; same category as Nike's multi-category catalog.",
+        "link_href": "https://www.algolia.com/customers/lacoste",
+        "link_label": "Read their story"
+      }
+    ]
+  },
+  "roi": {
+    "eyebrow": "Sized for Nike",
+    "heading": "What closing the search gap is worth",
+    "subheading": "Two scenarios, built from Nike's own public revenue figures &mdash; not industry averages.",
+    "cards": [
+      {
+        "tier": "conservative",
+        "label": "Conservative",
+        "amount": "$96M",
+        "desc": "1% conversion improvement on Nike's digital baseline &mdash; Algolia's most conservative benchmark.",
+        "badge": null,
+        "is_placeholder": false
+      },
+      {
+        "tier": "moderate",
+        "label": "Moderate",
+        "amount": "$288M",
+        "desc": "3% conversion improvement &mdash; Algolia's documented customer benchmark range.",
+        "badge": "Most likely",
+        "is_placeholder": false
+      },
+      {
+        "tier": "aggressive",
+        "label": "Best case",
+        "amount": "Not yet sized",
+        "desc": "No aggressive/best-case scenario is modeled in PRISM's Nike audit data. Requires AE deal-team sizing before use in a proposal.",
+        "badge": null,
+        "is_placeholder": true
+      }
+    ],
+    "note": "Source: PRISM audit, Nike FY2025 10-K + Yahoo Finance MCP (2026-04-14), Baymard Institute benchmark. Best-case scenario intentionally left unsized &mdash; not present in the source audit data."
+  },
+  "findings": {
+    "eyebrow": "What PRISM found",
+    "heading": "Four gaps in nike.com search today",
+    "subheading": "Observed directly on nike.com, not inferred.",
+    "items": [
+      {
+        "reverse": false,
+        "visual_line1": "Personalization",
+        "visual_line2": "&mdash; Browsing History Ignored",
+        "tag": "Personalization",
+        "title": "Every visitor sees the same results",
+        "body": "After browsing running shoes on nike.com, searching \"shoes\" surfaces Jordan 1 Retro High OG first &mdash; zero personalization. Algolia re-ranks results in real time using user affinity signals, integrating with Nike's existing Adobe Analytics event stream."
+      },
+      {
+        "reverse": true,
+        "visual_line1": "NLP / Conversational Search",
+        "visual_line2": "&mdash; Price Filters Ignored",
+        "tag": "Search understanding",
+        "title": "Natural-language queries don't fully resolve",
+        "body": "Shoppers searching \"best shoes for trail running under 150\" still see $159&ndash;$160 products &mdash; the price constraint is heard but not enforced. Algolia NeuralSearch parses multi-attribute natural language and auto-applies filters as pre-applied chips."
+      },
+      {
+        "reverse": false,
+        "visual_line1": "SAYT",
+        "visual_line2": "&mdash; Products Only, No Categories",
+        "tag": "Search-as-you-type",
+        "title": "Autocomplete has no category or content guidance",
+        "body": "Typing \"running\" in SAYT shows text suggestions and 5 product thumbnails only &mdash; no \"Running &gt; Trail Shoes\" category route, forcing shoppers through 152 generic results. Algolia Federated Search surfaces products, categories, content, and help articles in one ranked panel."
+      },
+      {
+        "reverse": true,
+        "visual_line1": "No-Results Page",
+        "visual_line2": "&mdash; Competitor Queries Treated as Gibberish",
+        "tag": "Zero results",
+        "title": "A dead end, not a redirect",
+        "body": "Searching \"Yeezy Boost 350\" on nike.com returns the exact same zero-results page as a random keyboard smash &mdash; no competitive redirect, no cross-sell logic. Algolia's Rules Engine detects competitor-brand queries and triggers targeted merchandising instead."
+      }
+    ]
+  },
+  "capabilities": {
+    "eyebrow": "Built for continuous optimization",
+    "heading": "The platform behind the fix",
+    "sub": "Not a one-time integration &mdash; a system Nike's team keeps improving."
+  },
+  "cta_band": {
+    "heading": "Let's size this properly for Nike",
+    "sub": "PRISM's audit is the starting point. Your Algolia rep can turn this into a scoped proposal.",
+    "button_label": "Talk to your rep"
+  },
+  "footer": {
+    "rep_initial": "?",
+    "rep_stub_text": "No rep assigned yet in PRISM"
+  }
+}

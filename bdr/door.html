@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRISM — BDR view</title>
+<meta name="description" content="PRISM's BDR role-door: the prioritized account queue ranked by real signal strength, plus a ready-to-send micro-Exchange outreach for the top account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #003DFF;
+    --color-accent: #5468FF;
+    --color-text: #23263B;
+    --color-muted: #545C68; /* darkened from the source #6B7280 — fails WCAG AA on --color-bg; this passes 4.5:1
+      on both #fff and #F5F5F7, per the Marketer door's fix (see its inline comment). Reused verbatim here. */
+    --color-bg: #F5F5F7;
+    --color-border: #E5E7EB;
+    --color-white: #FFFFFF;
+    --topbar-bg: #23263B;
+    --color-positive: #059669;
+    --color-positive-tint: #F0FDF4;
+    --color-positive-border: #BBF7D0;
+    --color-moderate: #D97706;
+    --color-moderate-tint: #FFFBEB;
+    --color-moderate-border: #FDE68A;
+    --color-critical: #DC2626;
+    --color-critical-tint: #FEF2F2;
+    --color-critical-border: #FECACA;
+    --blue-tint: #EEF2FF;
+    --blue-border: #C7D2FE;
+    --blue-light: #F8F9FF;
+    --font-family: 'Sora', sans-serif;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+    --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
+    --maxw: 980px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family); color: var(--color-text);
+    background: var(--color-bg); line-height: 1.6;
+    overflow-wrap: anywhere; /* real citation strings (e.g. "icp_mapping.priority_to_product[0].discovery_question")
+      contain long unbroken tokens with no spaces — without this, one long field-path/URL string overflows its
+      box and pushes horizontal scroll onto the whole page at mobile widths (found live: hero-question-cite
+      scrollWidth 344 vs clientWidth 265 at 375px before this fix). Inherited, so this is the root-level fix
+      rather than patching every text class that might one day carry a long source string. */
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+  /* ── Top chrome ── */
+  .topchrome {
+    background: var(--topbar-bg); color: #fff; padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  .topchrome .brand { font-weight: 600; font-size: 15px; }
+  .topchrome .meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.75); flex-wrap: wrap; }
+  .role-chip, .account-chip {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 4px 12px; font-weight: 600; color: #fff;
+  }
+
+  main { padding: 32px 0 64px; }
+
+  /* ── Shared-core strip ── */
+  .shared-core {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .shared-core .company-line { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .shared-core h1 { font-size: 20px; font-weight: 600; }
+  .shared-core .score { font-size: 15px; color: var(--color-muted); }
+  .framed-tag {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--color-primary); background: var(--blue-tint); border: 1px solid var(--blue-border);
+    padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* ── Hero card (top of queue) ── */
+  .hero-card {
+    background: linear-gradient(135deg, var(--topbar-bg), #2E3358); color: #fff;
+    border-radius: 16px; padding: 32px; margin-bottom: 20px; box-shadow: var(--shadow-lg);
+  }
+  .hero-card .eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9DB4FF; margin-bottom: 6px; }
+  .hero-card h2 { font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+  .hero-domain { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 18px; }
+  .why-now-line {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 10px;
+    padding: 14px 16px; margin-bottom: 18px; font-size: 14.5px; line-height: 1.55;
+  }
+  .why-now-line b { color: #9DB4FF; }
+  .hero-block { margin-bottom: 18px; }
+  .hero-block:last-child { margin-bottom: 0; }
+  .hero-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #9DB4FF; margin-bottom: 8px; }
+  .exchange-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px; }
+  .exchange-row { margin-bottom: 12px; }
+  .exchange-row:last-child { margin-bottom: 0; }
+  .exchange-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #9DB4FF; margin-bottom: 4px; }
+  .exchange-text { font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+  .cp-cite { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 6px; overflow-wrap: anywhere; }
+  .cp-cite a { text-decoration: underline; color: rgba(255,255,255,0.75); }
+  .champion-line { font-size: 14px; overflow-wrap: anywhere; }
+  .champion-line b { color: #fff; }
+
+  /* ── Queue table ── */
+  .queue-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .queue-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 14px; }
+  .table-scroll { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 20px; }
+  table.queue-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 13.5px; min-width: 640px; }
+  table.queue-table th {
+    background: var(--topbar-bg); color: #fff; padding: 10px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+  }
+  table.queue-table td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  table.queue-table tr:last-child td { border-bottom: none; }
+  table.queue-table tr:hover td { background: #FAFBFF; }
+  table.queue-table tr.rank-1 td { background: var(--blue-light); }
+  .tier-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+  .tier-HIGH { background: var(--color-critical-tint); border: 1px solid var(--color-critical-border); color: var(--color-critical); }
+  .tier-MEDIUM { background: var(--color-moderate-tint); border: 1px solid var(--color-moderate-border); color: var(--color-moderate); }
+  .tier-LOW { background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-muted); }
+  .queue-company { font-weight: 600; }
+  .queue-domain { font-size: 12px; color: var(--color-muted); }
+  .queue-whynow { max-width: 340px; font-size: 13px; color: var(--color-text); }
+  .queue-whynow a { color: var(--color-primary); text-decoration: underline; font-size: 12px; }
+  .methodology-note { font-size: 12px; color: var(--color-muted); margin-bottom: 24px; }
+
+  /* ── Action row ── */
+  .action-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 18px 0 20px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;
+    min-height: 44px; border: 2px solid transparent; cursor: pointer; text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .btn:hover { opacity: 0.88; }
+  .btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  .btn-primary { background: var(--color-primary); color: #fff; }
+  .btn-outline { border-color: var(--color-border); background: #fff; color: var(--color-text); }
+  .btn-disabled {
+    background: #fff; border-color: var(--color-border); color: var(--color-muted);
+    cursor: not-allowed; opacity: 0.65;
+  }
+  .btn-disabled:hover { opacity: 0.65; }
+  .btn-ghost-white { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+  /* ── Data source cards ── */
+  .sources-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .sources-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
+  .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .source-col h4 {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+  }
+  .source-col.active h4 { color: var(--color-positive); }
+  .source-col.locked h4 { color: var(--color-muted); }
+  .source-card {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 14px 16px; margin-bottom: 10px; font-size: 13px;
+  }
+  .source-col.locked .source-card { border-style: dashed; background: var(--color-bg); }
+  .source-card .name { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .source-card .detail { color: var(--color-muted); font-size: 12.5px; }
+  .source-card .needs { color: var(--color-muted); font-size: 12px; margin-top: 6px; }
+  .lock-icon { font-size: 13px; }
+
+  footer { text-align: center; font-size: 12px; color: var(--color-muted); padding: 32px 20px 8px; }
+
+  @media (max-width: 768px) {
+    .sources-grid { grid-template-columns: 1fr; }
+    .shared-core { flex-direction: column; align-items: flex-start; }
+    .hero-card { padding: 24px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topchrome">
+  <div class="brand">PRISM</div>
+  <div class="meta">
+    <span class="role-chip" id="role-chip">role: BDR</span>
+    <span class="account-chip" id="account-chip">top of queue: —</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="load-state" style="padding: 40px 0; color: var(--color-muted); font-size: 14px;">Loading queue data…</div>
+  <div id="content" hidden>
+
+    <section class="shared-core">
+      <div class="company-line">
+        <h1 id="company-name">—</h1>
+        <span class="score" id="score-line">—</span>
+      </div>
+      <span class="framed-tag">framed for you: BDR</span>
+    </section>
+
+    <section class="hero-card">
+      <div class="eyebrow">Top of queue — micro-Exchange outreach</div>
+      <h2 id="hero-company">—</h2>
+      <div class="hero-domain" id="hero-domain">—</div>
+
+      <div class="why-now-line">
+        <b>Why now:</b> <span id="hero-whynow-text">—</span>
+        <div class="cp-cite" id="hero-whynow-cite"></div>
+      </div>
+
+      <div class="hero-block">
+        <div class="hero-label">Champion contact</div>
+        <div class="champion-line" id="hero-champion">—</div>
+      </div>
+
+      <div class="hero-block">
+        <div class="hero-label">Micro-Exchange (one insight + one calibrated question)</div>
+        <div class="exchange-box">
+          <div class="exchange-row">
+            <span class="exchange-tag">Insight</span>
+            <div class="exchange-text" id="hero-insight-text">—</div>
+            <div class="cp-cite" id="hero-insight-cite"></div>
+          </div>
+          <div class="exchange-row">
+            <span class="exchange-tag">Calibrated question</span>
+            <div class="exchange-text" id="hero-question-text">—</div>
+            <div class="cp-cite" id="hero-question-cite"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-row" style="margin-bottom:0;">
+        <a class="btn btn-ghost-white" id="btn-battlecard" href="#" target="_blank" rel="noopener">Battle Card</a>
+        <button class="btn btn-disabled" id="btn-triage" disabled title="Triage chat mode not built yet — will answer 'which 5 accounts today, why'">💬 Triage chat (stub)</button>
+      </div>
+    </section>
+
+    <section class="queue-section">
+      <h3>Prioritized account queue</h3>
+      <p class="sub">Ranked by signal strength — hiring, news, and social signals (the volume-friendly ones), not deep financials or deal-stage mechanics.</p>
+      <div class="table-scroll">
+        <table class="queue-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Account</th>
+              <th>Tier</th>
+              <th>Open roles</th>
+              <th>Why now</th>
+              <th>Battle card</th>
+            </tr>
+          </thead>
+          <tbody id="queue-body"></tbody>
+        </table>
+      </div>
+      <p class="methodology-note" id="methodology-note"></p>
+    </section>
+
+    <section class="sources-section">
+      <h3>Data sources powering this queue</h3>
+      <p class="sub">Every locked card names the function it unlocks, the data it needs, and the specific gain — not a vague "more data would help."</p>
+      <div class="sources-grid">
+        <div class="source-col active">
+          <h4>✅ Active</h4>
+          <div id="active-sources"></div>
+        </div>
+        <div class="source-col locked">
+          <h4>🔒 Would add value if available</h4>
+          <div id="locked-sources"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>PRISM — Algolia Search Audit Pipeline. Data sourced from the published audit; nothing on this page is inferred beyond what's cited above.</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function citeLine(label, url, date) {
+    if (!label && !url) return "";
+    var out = "<b>Source:</b> " + escapeHtml(label || url);
+    if (date) out += " (" + escapeHtml(date) + ")";
+    if (url) out += " — <a href='" + escapeHtml(url) + "' target='_blank' rel='noopener'>link</a>";
+    return out;
+  }
+
+  function renderSourceCard(s, locked) {
+    var el = document.createElement("div");
+    el.className = "source-card";
+    if (locked) {
+      el.innerHTML =
+        '<div class="name"><span class="lock-icon">🔒</span>' + escapeHtml(s.name) + '</div>' +
+        '<div class="detail">' + escapeHtml(s.function) + ' — ' + escapeHtml(s.value) + '</div>' +
+        '<div class="needs">Needs: ' + escapeHtml(s.needs) + '</div>';
+    } else {
+      el.innerHTML =
+        '<div class="name">' + escapeHtml(s.name) + '</div>' +
+        '<div class="detail">' + escapeHtml(s.detail) + '</div>';
+    }
+    return el;
+  }
+
+  var ACTIVE_SOURCES = [
+    { name: "Hiring signals", detail: "Open-role volume + ICP-relevant roles per account, from careers pages / job boards" },
+    { name: "News signals", detail: "Investment, leadership, and platform-migration news per account (Google News RSS + company newsrooms)" },
+    { name: "Social / exec signals", detail: "LinkedIn/press exec quotes and social posts scored for relevance" },
+    { name: "Findings & competitors", detail: "Live browser-test findings and competitor search-vendor mapping per account" }
+  ];
+  var LOCKED_SOURCES = [
+    {
+      name: "Gong call recordings",
+      function: "Verbatim Objection & Signal Miner",
+      needs: "Gong call transcripts for the account",
+      value: "Real objections and competitor names a prospect raises themselves — sharper than inferred talk tracks."
+    },
+    {
+      name: "Account-history doc",
+      function: "Account Memory",
+      needs: "Informal rep notes on prior deals/contacts",
+      value: "Don't re-pitch a failed angle; continuity across attempts."
+    },
+    {
+      name: "Event engagement feed",
+      function: "Conference/booth touch tracking",
+      needs: "Event attendance/engagement data",
+      value: "Surfaces in-person signal no web research can see."
+    }
+  ];
+
+  fetch("data/queue.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("couldn't load queue data");
+      return r.json();
+    })
+    .then(function (d) {
+      var hero = d.hero;
+      document.getElementById("account-chip").textContent = "top of queue: " + hero.company;
+      document.getElementById("company-name").textContent = hero.company + " — " + hero.domain;
+      document.getElementById("score-line").innerHTML = "Signal tier <b>" + escapeHtml(hero.tier) + "</b> — #1 of " + d.queue.length + " ranked accounts";
+
+      document.getElementById("hero-company").textContent = hero.company;
+      document.getElementById("hero-domain").textContent = hero.domain;
+      document.getElementById("hero-whynow-text").textContent = hero.why_now.text;
+      document.getElementById("hero-whynow-cite").innerHTML = citeLine(hero.why_now.source, null, null);
+
+      var champ = hero.champion_contact;
+      document.getElementById("hero-champion").innerHTML =
+        "<b>" + escapeHtml(champ.name) + "</b>, " + escapeHtml(champ.title) + " — " + escapeHtml(champ.status) +
+        "<br><span style='font-size:13px;color:rgba(255,255,255,0.75)'>" + escapeHtml(champ.background) + "</span>";
+
+      var ex = hero.micro_exchange;
+      document.getElementById("hero-insight-text").textContent = ex.insight.text;
+      document.getElementById("hero-insight-cite").innerHTML = citeLine(
+        ex.insight.impact_stat ? (ex.insight.impact_stat + " — " + ex.insight.impact_stat_source) : ex.insight.finding_id,
+        null, null
+      );
+      document.getElementById("hero-question-text").textContent = ex.calibrated_question.text;
+      document.getElementById("hero-question-cite").innerHTML = citeLine(ex.calibrated_question.source, null, null);
+
+      var heroBattle = document.getElementById("btn-battlecard");
+      if (hero.battle_card_available && hero.battle_card_url) {
+        heroBattle.href = hero.battle_card_url;
+      } else {
+        heroBattle.removeAttribute("href");
+        heroBattle.setAttribute("aria-disabled", "true");
+        heroBattle.textContent = "Battle Card — not available";
+        heroBattle.classList.remove("btn-ghost-white");
+        heroBattle.classList.add("btn-disabled");
+      }
+
+      var tbody = document.getElementById("queue-body");
+      d.queue.forEach(function (row) {
+        var tr = document.createElement("tr");
+        if (row.rank === 1) tr.className = "rank-1";
+        var battleCell = row.battle_card_available
+          ? '<a href="' + escapeHtml(row.battle_card_url) + '" target="_blank" rel="noopener">Open →</a>'
+          : '<span style="color:var(--color-muted)">' + escapeHtml(row.battle_card_note || "not available") + '</span>';
+        tr.innerHTML =
+          "<td style='white-space:nowrap'>" + row.rank + "</td>" +
+          "<td><div class='queue-company'>" + escapeHtml(row.company) + "</div><div class='queue-domain'>" + escapeHtml(row.domain) + "</div></td>" +
+          "<td><span class='tier-badge tier-" + escapeHtml(row.tier) + "'>" + escapeHtml(row.tier) + "</span></td>" +
+          "<td>" + escapeHtml(row.open_roles) + "</td>" +
+          "<td class='queue-whynow'>" + escapeHtml(row.why_now.text) +
+            (row.why_now.source_url ? " <a href='" + escapeHtml(row.why_now.source_url) + "' target='_blank' rel='noopener'>source ↗</a>" : "") + "</td>" +
+          "<td>" + battleCell + "</td>";
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("methodology-note").textContent = d.meta.ranking_methodology;
+
+      var activeWrap = document.getElementById("active-sources");
+      ACTIVE_SOURCES.forEach(function (s) { activeWrap.appendChild(renderSourceCard(s, false)); });
+      var lockedWrap = document.getElementById("locked-sources");
+      LOCKED_SOURCES.forEach(function (s) { lockedWrap.appendChild(renderSourceCard(s, true)); });
+
+      document.getElementById("load-state").hidden = true;
+      document.getElementById("content").hidden = false;
+    })
+    .catch(function (err) {
+      var loadEl = document.getElementById("load-state");
+      loadEl.textContent = "";
+      var msg = document.createElement("span");
+      msg.textContent = "Couldn't load the BDR queue (" + err.message + "). ";
+      var retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "btn btn-outline";
+      retry.style.marginLeft = "8px";
+      retry.textContent = "Retry";
+      retry.addEventListener("click", function () { location.reload(); });
+      loadEl.appendChild(msg);
+      loadEl.appendChild(retry);
+    });
+})();
+</script>
+</body>
+</html>
