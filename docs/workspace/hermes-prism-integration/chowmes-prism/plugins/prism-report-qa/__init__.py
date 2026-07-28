@@ -18,6 +18,7 @@ Report binding is detected from the conversation and held per session_id.
 
 import json
 import os
+import re
 import unicodedata
 
 try:
@@ -344,33 +345,233 @@ def _gemini_judge(source_report, source_knowledge, answer):
     return json.loads(text)
 
 
+# The final message reaches Telegram (and any non-streaming client), whose Markdown parser mangles
+# rich Markdown — backticks become huge monospace blocks, ** shows literally. The SPA does NOT use
+# this output (it renders the pre-transform stream itself), so we make the final message clean PLAIN
+# text here: remove internal markers AND neutralize Markdown so it reads cleanly on every channel.
+_ACCT_RE = re.compile(r"\[Account:[^\]]*\]\s*", re.IGNORECASE)
+_CONT_RE = re.compile(r"[ \t]*\[CONTINUATION\b[^\]]*\]", re.IGNORECASE)
+_CITE_RE = re.compile(r"[ \t]*\[(?:FACT|ESTIMATE)\b([^\]]*)\]", re.IGNORECASE)
+_LINK_RE = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
+REPORT_BASE = os.environ.get("PRISM_REPORT_BASE", "https://prism.chowmes.com")
+
+# Citation text (source name or JSON path) -> the report section that holds its evidence.
+_CITE_MAP = [
+    ("section-traffic", re.compile(r"similarweb|traffic|visit|bounce|engagement|session", re.I)),
+    ("section-financials", re.compile(r"financ|revenue|ebitda|margin|conversion|aov|gmv", re.I)),
+    ("section-techstack", re.compile(r"tech.?stack|search vendor|neuralsearch|search platform|\bibm\b|\bwcs\b|app.?id|constructor|coveo", re.I)),
+    ("section-competitive", re.compile(r"competitor|competitive|chewy|amazon|leroy|adeo", re.I)),
+    ("section-hiring", re.compile(r"hiring|\bjob\b|\brole\b|headcount|recruit", re.I)),
+    ("section-roi", re.compile(r"\broi\b|business case|uplift|payback|opportunity", re.I)),
+    ("section-quotes", re.compile(r"quote|earnings", re.I)),
+    ("section-signals", re.compile(r"signal|strategic_angle|intelligence_signal|news|leadership|\bcto\b|\bcio\b|\bceo\b|president|hot sale|priorit|mandate", re.I)),
+]
+_SECTION_LABEL = {
+    "section-traffic": "Traffic", "section-financials": "Financials", "section-techstack": "Tech Stack",
+    "section-competitive": "Competitors", "section-hiring": "Hiring", "section-roi": "Business Case",
+    "section-quotes": "Exec Quotes", "section-signals": "Signals",
+}
+
+
+def _cite_section(body):
+    for sid, rx in _CITE_MAP:
+        if rx.search(body):
+            return sid
+    return None
+
+
+def _clean_for_send(text, slug=None):
+    """Flatten Markdown to Telegram-safe text; turn citations into a clickable Evidence footer."""
+    if not isinstance(text, str):
+        return text
+    t = _CONT_RE.sub("", text)
+    t = _ACCT_RE.sub("", t)
+    t = _CITE_RE.sub("", t)            # drop any inline [FACT]/[ESTIMATE] tags she did emit
+    t = re.sub(r"[ \t]{2,}", " ", t)   # tidy double spaces left where a tag was removed
+    # code fences + inline code -> keep inner text
+    t = re.sub(r"```[a-zA-Z0-9]*\n", "", t)
+    t = re.sub(r"```([\s\S]*?)```", r"\1", t)
+    t = t.replace("```", "")
+    t = re.sub(r"`([^`]*)`", r"\1", t).replace("`", "")
+    # links [text](url) -> text (url)
+    t = _LINK_RE.sub(r"\1 (\2)", t)
+    # bold / italic markers -> plain
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    t = re.sub(r"__([^_]+)__", r"\1", t)
+    t = re.sub(r"(?<!\*)\*([^*\n]+)\*(?!\*)", r"\1", t)
+    # headings -> plain
+    t = re.sub(r"(?m)^[ \t]{0,3}#{1,6}[ \t]*", "", t)
+    t = t.replace("**", "")
+    # Clickable Evidence footer: the report sections this answer actually discusses (topic match, not
+    # dependent on her emitting [FACT]). Bare URLs — Telegram autolinks them. Capped to keep it tight.
+    if slug:
+        cited = []
+        for sid, rx in _CITE_MAP:
+            if sid not in cited and rx.search(t):
+                cited.append(sid)
+        cited = cited[:4]
+        if cited:
+            links = "\n".join(f"↗ {_SECTION_LABEL.get(sid, sid)}: {REPORT_BASE}/{slug}/#{sid}" for sid in cited)
+            t = t.rstrip() + "\n\nEvidence in the report:\n" + links
+        # Suggested follow-ups (Telegram can't render tappable buttons from this hook; text prompts).
+        if cited or len(t) > 180:
+            t = t.rstrip() + ("\n\nTry asking: What are the biggest gaps? · What's the ROI opportunity? · "
+                              "Who are their competitors? · How should I open the call?")
+    return t
+
+
 def grounding_gate(response_text=None, session_id=None, **kwargs):
     if not response_text:
         return None
     slug = _BINDINGS.get(session_id)
     if not slug:
-        return None                          # not report-QA mode; leave unchanged
+        # not report-QA mode; no report to cite, just neutralize any markers/markdown
+        cleaned = _clean_for_send(response_text)
+        return cleaned if cleaned != response_text else None
     try:
         source_report = _load_report(slug)
     except Exception:
-        return None
+        cleaned = _clean_for_send(response_text, slug)
+        return cleaned if cleaned != response_text else None
     source_knowledge = _KNOWLEDGE_CACHE.get(session_id, "")
     try:
         verdict = _gemini_judge(source_report, source_knowledge, response_text)
     except Exception:
         # fail-closed: never silently pass unverified facts
-        return (response_text +
+        return (_clean_for_send(response_text, slug) +
                 "\n\n_(⚠ Could not verify these details against the audit report — "
                 "treat factual specifics with caution.)_")
     if not isinstance(verdict, dict) or verdict.get("verdict") == "PASS":
-        return None                          # supported -> unchanged
+        cleaned = _clean_for_send(response_text, slug)   # supported -> citations become evidence links
+        return cleaned if cleaned != response_text else None
     corrected = verdict.get("corrected")
     if isinstance(corrected, str) and corrected.strip():
-        return corrected
+        return _clean_for_send(corrected, slug)
     return ("Some details in my draft weren't supported by the audit report, so I held them back. "
             "Ask about specific fields in the report and I'll answer only from it.")
+
+
+# ---------------------------------------------------------------- L2: executor arm
+# Cassandra as executioner. Her container has no claude-cli/skills, so she cannot run
+# the audit herself. She calls the host-side prism-runner (loopback, reachable because
+# hermes-prism is network_mode:host) which runs run-audit.sh and publishes the result
+# into this same report store — so a finished audit auto-appears via _load_index()'s
+# mtime cache and she can chat it immediately.
+import urllib.request as _urlreq
+
+RUNNER_URL = os.environ.get("PRISM_RUNNER_URL", "http://127.0.0.1:8770")
+
+
+def _runner_token():
+    tok = os.environ.get("PRISM_RUNNER_TOKEN")
+    if tok:
+        return tok.strip()
+    for p in ("/opt/data/.runner-token", "/opt/prism-executor/.runner-token"):
+        try:
+            with open(p) as f:
+                return f.read().strip()
+        except Exception:
+            pass
+    return ""
+
+
+def _runner_call(method, path, payload=None, timeout=15):
+    req = _urlreq.Request(RUNNER_URL + path,
+                          data=json.dumps(payload).encode() if payload is not None else None,
+                          method=method)
+    req.add_header("Content-Type", "application/json")
+    tok = _runner_token()
+    if tok:
+        req.add_header("Authorization", "Bearer " + tok)
+    with _urlreq.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read().decode())
+
+
+RUN_AUDIT_SCHEMA = {
+    "name": "run_audit",
+    "description": (
+        "Kick off a NEW Algolia search audit for a prospect domain on the VPS executor. Use when the "
+        "user asks to run / generate / create / start an audit for a company or domain (e.g. 'run an "
+        "audit on dell.com', 'audit footlocker.com', 'can you audit Torrid?'). Returns immediately with "
+        "a job id; the audit itself takes ~10-20 minutes (research, live search testing, scoring, "
+        "factcheck, publish). Do NOT use to answer questions about an existing report."),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "domain": {"type": "string",
+                       "description": "Prospect domain or company website, e.g. 'dell.com'."},
+        },
+        "required": ["domain"],
+    },
+}
+
+AUDIT_STATUS_SCHEMA = {
+    "name": "audit_status",
+    "description": (
+        "Check the progress of an audit started with run_audit. Pass the job_id you were given, or omit "
+        "it to see the most recent job. Use when the user asks 'is the audit done/ready?' or 'how's the "
+        "<company> audit going?'."),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "job_id": {"type": "string",
+                       "description": "The job id returned by run_audit. Optional; omit for the latest."},
+        },
+    },
+}
+
+
+def _handle_run_audit(args: dict, **kw) -> str:
+    domain = str(args.get("domain") or "").strip()
+    if not domain:
+        return "I need a domain to audit (for example dell.com)."
+    try:
+        resp = _runner_call("POST", "/run", {"domain": domain})
+    except Exception as e:
+        return (f"I couldn't reach the audit runner ({type(e).__name__}). The executor service may be "
+                "down; that needs a look before I can start a run.")
+    slug = resp.get("slug", "")
+    return (
+        f"Started the audit for {domain} (job {resp.get('job_id')}). It runs end to end on the box: "
+        "research, live search testing, scoring, then a factcheck gate, then publish. Give it about 10 "
+        f"to 20 minutes. Ask me whether the {slug} audit is ready and I'll check. The moment it passes "
+        "factcheck it lands in the report store and I can walk you through the findings.")
+
+
+def _handle_audit_status(args: dict, **kw) -> str:
+    job_id = str(args.get("job_id") or "").strip()
+    try:
+        if job_id:
+            j = _runner_call("GET", "/status/" + job_id)
+        else:
+            jobs = _runner_call("GET", "/jobs").get("jobs", [])
+            if not jobs:
+                return "No audit jobs have run yet."
+            j = jobs[-1]
+    except Exception as e:
+        return f"I couldn't reach the audit runner ({type(e).__name__})."
+    st, slug, phase = j.get("status"), j.get("slug"), j.get("phase")
+    if st == "done":
+        return (f"The {slug} audit is done and published to the report store. Ask me anything about it, "
+                f"or say 'tell me about the {slug} audit' and I'll dig in.")
+    if st in ("failed", "published_failed"):
+        return (f"The {slug} audit did not finish cleanly (status: {st}). Want me to retry it?")
+    return (f"The {slug} audit is still running (phase: {phase or 'starting'}). "
+            "Check back in a few minutes.")
+
+
+_EXEC_TOOLS = (
+    ("run_audit", RUN_AUDIT_SCHEMA, _handle_run_audit, "🛰️"),
+    ("audit_status", AUDIT_STATUS_SCHEMA, _handle_audit_status, "⏱️"),
+)
 
 
 def register(ctx):
     ctx.register_hook("pre_llm_call", inject_report)
     ctx.register_hook("transform_llm_output", grounding_gate)
+    for _name, _schema, _handler, _emoji in _EXEC_TOOLS:
+        try:
+            ctx.register_tool(name=_name, toolset="prism_audit", schema=_schema,
+                              handler=_handler, emoji=_emoji)
+        except Exception:
+            pass

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://prism.chowmes.com/schema/landing-page.schema.json",
+  "title": "Custom Landing Page content model",
+  "description": "Canonical schema for landing.json. This is the shared source of truth for both PIP (prism_platform/v2/modules/landing_page_intake, writes this) and prism-hub (~/prism/marketer/render-landing.mjs, reads this). Backward compatible with the original 8-key dell.landing.json / nike.landing.json -- `sections` and `theme` are additive and optional; existing files validate unchanged.",
+  "type": "object",
+  "required": ["meta", "hero", "footer"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["company", "slug", "title"],
+      "properties": {
+        "company": { "type": "string" },
+        "slug": { "type": "string" },
+        "domain": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "audit_path": { "type": ["string", "null"] }
+      }
+    },
+    "hero": { "type": "object" },
+    "proof": { "type": "object" },
+    "roi": { "type": "object" },
+    "findings": { "type": "object" },
+    "capabilities": { "type": "object" },
+    "cta_band": { "type": "object" },
+    "footer": { "type": "object" },
+    "custom": {
+      "type": "object",
+      "description": "Free-form user-authored content for the body-custom section variant. `html` is rendered as-is, unescaped -- the user owns this content entirely.",
+      "properties": { "html": { "type": "string" } }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Chosen section/variant composition, in render order. Optional -- absent means the original fixed flow (hero, proof, roi, findings, capabilities, cta_band, footer), preserving dell/nike as-is. See docs/workspace/custom-landing-page/00-design-system.md Section Inventory for the variant catalog.",
+      "items": {
+        "type": "object",
+        "required": ["slot", "variant"],
+        "properties": {
+          "slot": { "type": "string", "enum": ["hero", "body", "footer"] },
+          "variant": { "type": "string" },
+          "source": { "type": "string", "enum": ["prism", "manual"] }
+        }
+      }
+    },
+    "theme": {
+      "type": ["object", "null"],
+      "description": "Optional brand-token overrides. Null/absent means render with the default Algolia tokens from 00-design-system.md -- this key existing at all is an escape hatch, never a requirement.",
+      "properties": {
+        "primary_color": { "type": ["string", "null"] },
+        "accent_color": { "type": ["string", "null"] },
+        "font_family": { "type": ["string", "null"] },
+        "logo_url": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

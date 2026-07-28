@@ -6,6 +6,7 @@ import uuid
 from datetime import date, datetime
 from typing import Any
 
+from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     Boolean,
     Date,
@@ -19,6 +20,12 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+
+# all-MiniLM-L6-v2 output dimension -- see prism_platform/pipeline/embeddings.py.
+# Named once here so the ORM column and the embedding pipeline can never drift
+# out of sync silently (a dimension mismatch fails loudly at insert time
+# instead of at query time).
+REPORT_CHUNK_EMBEDDING_DIMS = 384
 
 
 class Base(DeclarativeBase):
@@ -86,10 +93,13 @@ class Audit(Base):
     )
     user_id: Mapped[str] = mapped_column(Text, nullable=False, default="system")
     status: Mapped[str] = mapped_column(Text, default="pending")
-    score: Mapped[float | None] = mapped_column(Numeric(3, 1), nullable=True)
-    factcheck_score: Mapped[float | None] = mapped_column(Numeric(3, 1), nullable=True)
+    score: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
+    factcheck_score: Mapped[float | None] = mapped_column(Numeric(3, 2), nullable=True)
     factcheck_action: Mapped[str | None] = mapped_column(Text, nullable=True)
     config: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+    # Full audit-data JSON blob — Postgres as source of truth for the whole audit
+    # (airtight plan §1.4). config stays for run-config; audit_data holds the report.
+    audit_data: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
@@ -130,6 +140,40 @@ class ModuleExecution(Base):
     )
 
 
+class ReportChunk(Base):
+    """One retrievable chunk of an audit report, embedded for the chat agent.
+
+    Task 5 (Track C.3) grounding store. Chunking is by report section (one
+    row per top-level `Audit.audit_data` key per audit), not a fixed-token
+    sliding window -- see prism_platform/pipeline/chunking.py. Retrieval is
+    cosine similarity via pgvector's `<=>` operator, gated by
+    prism_platform.pipeline.retrieval.SIMILARITY_THRESHOLD.
+    """
+
+    __tablename__ = "report_chunks"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    audit_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("audits.id", ondelete="CASCADE"), nullable=False
+    )
+    domain: Mapped[str] = mapped_column(Text, nullable=False)
+    section_name: Mapped[str] = mapped_column(Text, nullable=False)
+    chunk_text: Mapped[str] = mapped_column(Text, nullable=False)
+    embedding: Mapped[list[float]] = mapped_column(
+        Vector(REPORT_CHUNK_EMBEDDING_DIMS), nullable=False
+    )
+    embedding_model: Mapped[str] = mapped_column(
+        Text, nullable=False, default="sentence-transformers/all-MiniLM-L6-v2"
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+
+    __table_args__ = (
+        UniqueConstraint("audit_id", "section_name", name="uq_report_chunks_audit_section"),
+        Index("idx_report_chunks_audit", "audit_id"),
+        Index("idx_report_chunks_domain", "domain"),
+    )
+
+
 class VerticalBenchmark(Base):
     __tablename__ = "vertical_benchmarks"
 
@@ -142,6 +186,40 @@ class VerticalBenchmark(Base):
     audit_ids: Mapped[dict[str, Any]] = mapped_column(JSONB, default=list)
 
     __table_args__ = (Index("idx_vertical_benchmarks_vertical", "vertical"),)
+
+
+class LandingPage(Base):
+    """A generated custom landing page (Marketer persona deliverable).
+
+    audit_id is nullable by design: PRISM audit data is an optional pre-fill
+    convenience for the intake wizard, never a prerequisite. A row with
+    audit_id = NULL (fully manual/external content) is first-class, not an
+    edge case -- see docs/workspace/custom-landing-page/00-design-system.md.
+    """
+
+    __tablename__ = "landing_pages"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    slug: Mapped[str] = mapped_column(Text, unique=True, nullable=False)
+    company_name: Mapped[str] = mapped_column(Text, nullable=False)
+    audit_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("audits.id", ondelete="SET NULL"), nullable=True
+    )
+    # Full landing.json content model (8-key schema + sections[] + theme{}).
+    content_json: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False, default=dict)
+    # Chosen section/variant composition -- [{slot, variant, source}], see
+    # docs/workspace/custom-landing-page/00-design-system.md Section Inventory.
+    sections_json: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False, default=list)
+    # Optional brand-token overrides (primary_color, accent_color, font_family,
+    # logo_url). Null/absent means render with the default Algolia tokens.
+    theme_json: Mapped[dict[str, Any] | None] = mapped_column(JSONB, nullable=True)
+    status: Mapped[str] = mapped_column(Text, nullable=False, default="draft")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow
+    )
+
+    __table_args__ = (Index("idx_landing_pages_audit", "audit_id"),)
 
 
 class Deliverable(Base):

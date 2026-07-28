@@ -2,7 +2,7 @@ STAGED PUBLISH STEPS — run after sync-all.sh, when you're ready to make the
 standardized reports live. Two reviewed actions:
 
 # 1) Push rendered pages to the published hub (Vercel). From the hub repo:
-cd ~/prism-hub && vercel --prod
+cd ~/prism && vercel --prod
 #    (or: git push  — if the Vercel git-integration is confirmed, push auto-deploys.
 #     The loop holds push by design; you decide when pages go live.)
 

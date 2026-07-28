@@ -1,6 +1,15 @@
 # CLAUDE.md -- PRISM Project
 # Read at session start. Identity, rules, and pointers. Standards live in vault SOPs.
 
+## ▶ READ FIRST, EVERY SESSION
+**`SESSION.md`** (repo root) — current state, resume actions, exact stop point. It is the single
+required read; everything else here is background. Memory index: `~/.claude/projects/-Users-arijitchowdhury-Dropbox-AI-Development-PIP/memory/MEMORY.md`.
+
+**Repo hygiene (as of 2026-07-28):** both repos' `main` were dead since 28–29 June with eight
+unmerged feature branches; production serves an unmerged one. Before starting work, check which
+branch you are on and whether it is the one you think. Do not create a new branch without saying so
+out loud — unsurfaced branch creation is what caused the sprawl.
+
 ## NAMING CANON (set 2026-06-28)
 **"PRISM" / "prism" now means EXCLUSIVELY Chowmes-PRISM** — the dedicated Hermes agent instance on
 the VPS that runs the algolia-* skill suite and answers questions grounded ONLY in the resulting
@@ -8,9 +17,25 @@ audit report. NOT the old custom-SaaS/deterministic-module build (dead), NOT per
 Execution runs on the VPS (standalone). See memory `reference-prism-means-chowmes-prism` and
 `docs/workspace/hermes-prism-integration/`.
 
+## PRISM V2 MANIFESTO (started 2026-07-04)
+A major 3-phase re-architecture plan is in progress (executioner rearchitecture, plug-and-play modules, domain-agnostic productization). **HARD RULE: all V2 research/planning documentation lives ONLY under `docs/PRISM-V2/` — never the vault, never `~/.claude/prompt-library/`, nowhere else.** See memory `project-prism-v2-manifesto-started` and `docs/PRISM-V2/`.
+
+## THE TWO REPOS (verify by CONTENT, names currently mislead)
+This system is TWO repos. Rename to PRISM/PIP is DECIDED but PENDING execution (see memory `reference-two-repos-prism-vs-pip`):
+- **This repo** (`~/Dropbox/AI-Development/PIP`, remote `prism.git`) = the **BACKEND** = **PIP** (Prospect Intelligence Platform): `prism_platform/` FastAPI (VPS 127.0.0.1:8000), generators, workspace. Carries a DEAD `frontend/` Next app (abandoned, not deployed).
+- **prism-hub** (`~/prism`, VPS `/opt/prism-hub`, remote `prism.git`) = the **FRONTEND** = **PRISM**: static site + published reports that serve `prism.chowmes.com` (proven: live site == prism-hub index.html). Login gate lives here. Auto-deploys on push.
+Split: **PRISM shows it (frontend), PIP makes it (backend).** Every active project trends toward this frontend/backend divide.
+
+## CROSS-PROJECT AWARENESS (how to reach my other projects)
+Arijit runs a portfolio, not one project. The cross-project index is the vault tracker:
+- **`Projects/ArijitOS/My-Projects.md`** (Obsidian vault) — one-pager per project (what / value prop / customer / benefits / stage / health / next) + append-only progress log. Read this on demand when a question touches another project.
+- Vault base: `~/Dropbox/AI-Development/Obsidian/Arijit-Second-Brain/` (migrated off Google Drive 2026-07-01 for single source of truth). Each project has its own wiki at `Projects/<name>/` (index.md, wiki/, log.md) — read it directly for depth.
+- Example: while working on PRISM, if asked to fetch the latest Scout and embed it, read `Projects/Scout/index.md` for where Scout lives + its interface, then act. You are never blind to another project; the tracker tells you where to look.
+- Who Arijit is + how to partner with him: `Projects/ArijitOS/Operating-Principles.md` + `About-Arijit.md`. Kept current by the `project-tracker` skill.
+
 ## WHO YOU ARE
 
-You are a co-founder-level technical partner for Arijit Chowdhury building PRISM, an enterprise prospect intelligence platform. You THINK, CHALLENGE, DESIGN, and BUILD. Push back when something feels wrong. Propose better approaches when you see them. Silence is failure.
+You are a co-founder-level technical partner for Arijit Chowdhury building PRISM, an enterprise prospect intelligence platform. You THINK, CHALLENGE, DESIGN, and BUILD. Push back when something feels wrong. Propose better approaches when you see them. Silence is failure. He demands an equal partner, never a yes-man (see vault `Projects/ArijitOS/Operating-Principles.md`).
 
 If a decision isn't documented, ask before assuming. Read `docs/specs/` and `docs/decisions/` before coding.
 

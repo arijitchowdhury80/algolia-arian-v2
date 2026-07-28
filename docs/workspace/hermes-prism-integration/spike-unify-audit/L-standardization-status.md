@@ -36,14 +36,14 @@ All reports pass `audit_data_schema.py` + `template_contract.py`; render with ze
 **Decisions locked:** run depth-completion on the LAPTOP (this machine — MCP + residential IP configured); scope = ALL 17. Two waves: Wave 1 = 10 with-data reports (render 4 clean + synthesis-fill the 6 gaps); Wave 2 = 7 dataless full re-audits.
 
 **What's DONE:**
-- `migrate-audit-data.py` BUILT (scripts dir) + APPLIED to all 10 with-data reports. Working tree of `~/prism-hub` is DIRTY/UNCOMMITTED: 7 `*-audit-data.json` modified (brooks, dsw, homedepot, llbean, nike, oriental-trading, savage) + `.bak` backups present. british-airways/labanquepostale/petsmart unchanged (were already clean).
+- `migrate-audit-data.py` BUILT (scripts dir) + APPLIED to all 10 with-data reports. Working tree of `~/prism` is DIRTY/UNCOMMITTED: 7 `*-audit-data.json` modified (brooks, dsw, homedepot, llbean, nike, oriental-trading, savage) + `.bak` backups present. british-airways/labanquepostale/petsmart unchanged (were already clean).
 - Validator result after migration: **4 PASS** (british-airways, labanquepostale, brooks-running, petsmart). **6 still fail** on GENUINE content gaps only:
   - homedepot-mexico: exec[5] missing `quote` (it's in `key_signal` "Stated: …" — extractable).
   - nike, savage-x-fenty: case_studies missing `why`/`product` (company+stat+url present; fetch product/why from the algolia.com/customers URL already in the JSON).
   - oriental-trading, llbean, dsw: icp `priority_to_product[]` discovery questions missing `evidence`/`exact_quote` (derive from findings/quotes already in the JSON).
   - savage: a strategic_angle (`FableticsOS Platform Deal`) missing `algolia_proof`.
 
-**⚠️ RENDER-INVOCATION BUG to fix on resume:** `deno run -A render-audit.ts <slug> site` from `~/prism-hub` wrote to ROOT `index.html` (clobbered the hub homepage — restored via `git checkout index.html`), NOT `<slug>/index.html`. Resolve the correct workdir/arg before batch-rendering (the script may expect a workspace where `<slug>/` is the output, or a different cwd). DO NOT batch-render until this is fixed.
+**⚠️ RENDER-INVOCATION BUG to fix on resume:** `deno run -A render-audit.ts <slug> site` from `~/prism` wrote to ROOT `index.html` (clobbered the hub homepage — restored via `git checkout index.html`), NOT `<slug>/index.html`. Resolve the correct workdir/arg before batch-rendering (the script may expect a workspace where `<slug>/` is the output, or a different cwd). DO NOT batch-render until this is fixed.
 
 **RESUME STEPS (Wave 1):**
 1. Fix the render-invocation (find how it derives the output path; likely run from a per-company workspace or pass an out dir).
@@ -54,4 +54,4 @@ All reports pass `audit_data_schema.py` + `template_contract.py`; render with ze
 
 **RESUME STEPS (Wave 2 — the 7 dataless full re-audits):** dell, footlocker, jbl, michaelkors, thenorthface, torrid, autozone. Run `algolia-search-audit` orchestrator per company on the laptop (MCP + browser). Big batch — sequence/manage. autozone has no index.html either (fully from scratch).
 
-**Tools/paths:** migrate=`…/algolia-search-audit/scripts/migrate-audit-data.py`; validate=`audit_data_schema.py`+`template_contract.py`; render=`render-audit.ts <slug> site`; hub=`generate-index.ts`. Reports live in `~/prism-hub/<slug>-audit-data.json` (root) — some also have a stray `<slug>/<slug>-audit-data.json` (untracked, ignore/clean).
+**Tools/paths:** migrate=`…/algolia-search-audit/scripts/migrate-audit-data.py`; validate=`audit_data_schema.py`+`template_contract.py`; render=`render-audit.ts <slug> site`; hub=`generate-index.ts`. Reports live in `~/prism/<slug>-audit-data.json` (root) — some also have a stray `<slug>/<slug>-audit-data.json` (untracked, ignore/clean).

@@ -29,7 +29,7 @@
     },
     "GITIGNORE_BAK": {
       "status": "DONE",
-      "note": "~/prism-hub/.gitignore already contains *.bak + .DS_Store (verified 2026-06-28). homedepot JSON also moved nested\u2192root this tick."
+      "note": "~/prism/.gitignore already contains *.bak + .DS_Store (verified 2026-06-28). homedepot JSON also moved nested\u2192root this tick."
     }
   },
   "steps_order": [
@@ -51,10 +51,10 @@
     "COMMIT": "git commit LOCAL only, current branch, NO push (both prism-hub + arijit-skills when skills patched)",
     "DEPLOY": "GLOBAL final, staged in run/DEPLOY.txt \u2014 user runs `! vercel --prod` (or git push if integrated). Loop never deploys."
   },
-  "homedepot_path_fix": "DONE 2026-06-28 \u2014 moved homedepot-mexico JSON nested\u2192root ~/prism-hub/homedepot-mexico-audit-data.json.",
-  "render_harness": "cd ~/prism-hub && deno run --allow-read --allow-write --allow-net ~/.claude/skills/algolia-search-audit/scripts/render-audit.ts <slug> site \u2192 writes <slug>/index.html (path fix verified render-audit.ts:1403). Gates inside: check-style-tokens.py + validate-json-schema.py. RENDER gate: assert <slug>/index.html exists AND hub-root index.html md5 == HUB_ROOT_INDEX_MD5_BASELINE below (SPA step is the only legit changer of hub-root index.html).",
+  "homedepot_path_fix": "DONE 2026-06-28 \u2014 moved homedepot-mexico JSON nested\u2192root ~/prism/homedepot-mexico-audit-data.json.",
+  "render_harness": "cd ~/prism && deno run --allow-read --allow-write --allow-net ~/.claude/skills/algolia-search-audit/scripts/render-audit.ts <slug> site \u2192 writes <slug>/index.html (path fix verified render-audit.ts:1403). Gates inside: check-style-tokens.py + validate-json-schema.py. RENDER gate: assert <slug>/index.html exists AND hub-root index.html md5 == HUB_ROOT_INDEX_MD5_BASELINE below (SPA step is the only legit changer of hub-root index.html).",
   "HUB_ROOT_INDEX_MD5_BASELINE": "7d51b356d0857b1434356c5de66b5225",
-  "schema_gate_cmd": "python3 ~/.claude/skills/algolia-search-audit/scripts/audit_data_schema.py <slug>-audit-data.json  (run from ~/prism-hub; EXIT 0 + '\u2705 Schema validation passed')",
+  "schema_gate_cmd": "python3 ~/.claude/skills/algolia-search-audit/scripts/audit_data_schema.py <slug>-audit-data.json  (run from ~/prism; EXIT 0 + '\u2705 Schema validation passed')",
   "companies": {
     "british-airways": {
       "bucket": "with-data",
@@ -368,7 +368,7 @@
     "2026-06-28 tick2: confirmed SimilarWeb path = browser scraper not API. Session EXPIRED \u2014 needs user interactive --setup (SSO+MFA+device code). Wave-2 stays BLOCKED pending that one user step; everything else (BuiltWith MCP, render harness) ready.",
     "2026-06-28 tick2: Wave-2 traffic method DECIDED = Claude-browser-agent on Brave (logged-in) \u2192 screenshots to /tmp/sw-wave2. Prompt delivered to user. Awaiting 'screenshots done' + /loop re-trigger."
   ],
-  "companies_homepage": "10 cards live in ~/prism-hub/index.html (15.5KB): all with-data incl hyphenated oriental-trading + homedepot-mexico. Old orientaltrading/ dir orphaned (harmless).",
+  "companies_homepage": "10 cards live in ~/prism/index.html (15.5KB): all with-data incl hyphenated oriental-trading + homedepot-mexico. Old orientaltrading/ dir orphaned (harmless).",
   "wave2_unblock_path": {
     "traffic_source": "SimilarWeb via browser (collect-similarweb-browser.js), NOT the dead API key (401).",
     "blocker_now": "browser session EXPIRED (last setup May 13). Canary dell scrape fell to login \u2192 device-verification email code \u2192 needs user interactive login. API key separately dead (401).",

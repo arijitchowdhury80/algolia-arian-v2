@@ -166,6 +166,43 @@ async def get_audit(audit_id: uuid.UUID, session: DbSession) -> AuditResponse:
         raise HTTPException(status_code=500, detail="Failed to fetch audit.") from exc
 
 
+@router.get("/by-slug/{slug}/data")
+async def get_audit_data_by_slug(slug: str, session: DbSession) -> dict:
+    """Return the completed audit's full audit_data JSON for a report slug.
+
+    Powers DB-backed report serving: the static report shell fetches this at
+    request time so a DB update reflects on the live page with no re-render.
+    Resolves by audit_data.meta.slug, then falls back to domain == slug(.com).
+    """
+    # Primary: match the slug baked into audit_data.meta.slug
+    stmt = (
+        select(Audit.audit_data)
+        .where(
+            Audit.status == "completed",
+            Audit.audit_data["meta"]["slug"].astext == slug,
+        )
+        .order_by(Audit.completed_at.desc().nullslast())
+        .limit(1)
+    )
+    row = (await session.execute(stmt)).scalar_one_or_none()
+    if row is None:
+        # Fallback: treat slug as a domain stem (dell -> dell.com)
+        stmt2 = (
+            select(Audit.audit_data)
+            .join(Account, Account.id == Audit.account_id)
+            .where(
+                Audit.status == "completed",
+                (Account.domain == slug) | (Account.domain == f"{slug}.com"),
+            )
+            .order_by(Audit.completed_at.desc().nullslast())
+            .limit(1)
+        )
+        row = (await session.execute(stmt2)).scalar_one_or_none()
+    if row is None:
+        raise HTTPException(status_code=404, detail=f"no completed audit for slug '{slug}'")
+    return {"slug": slug, "audit_data": row}
+
+
 @router.post("/{audit_id}/run", response_model=RunAuditResponse)
 async def run_audit(
     audit_id: uuid.UUID,

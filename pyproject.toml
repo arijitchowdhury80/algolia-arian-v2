@@ -24,6 +24,9 @@ dependencies = [
     "playwright>=1.49",
     "playwright-stealth>=2.0",
     "scout",
+    "pgvector>=0.5",
+    "sentence-transformers>=5.0",
+    "jsonschema>=4.23",
 ]
 
 [project.optional-dependencies]
@@ -32,6 +35,9 @@ dev = [
     "pytest-asyncio>=0.24",
     "ruff>=0.8",
     "mypy>=1.13",
+    # sync psycopg2 driver -- used by scripts/migration/* (dryrun_migrate.py,
+    # run_local_migration.py, serve_local.py); the app itself uses async asyncpg.
+    "psycopg2-binary>=2.9",
 ]
 
 [tool.ruff]
