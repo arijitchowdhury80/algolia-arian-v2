@@ -5,16 +5,17 @@ from __future__ import annotations
 import asyncio
 import json
 import uuid
-from datetime import datetime, timezone
-from typing import Any
+from datetime import UTC, datetime
+from typing import Annotated, Any
 
 import structlog
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends
 from fastapi.responses import StreamingResponse
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 from sqlalchemy import select
 
 from prism_platform.api.deps import DbSession
+from prism_platform.auth.deps import require_audit_access
 from prism_platform.db.models import Audit, ModuleExecution
 from prism_platform.orchestrator.workflows import ALL_WAVES, MODULE_WAVE_MAP
 
@@ -62,7 +63,7 @@ class ModuleEvent(BaseModel):
 
 def _now_iso() -> str:
     """Return the current UTC time as an ISO-8601 string."""
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def _sse_event(event_type: str, data: dict[str, Any]) -> str:
@@ -124,40 +125,31 @@ def _wave_modules(wave_number: int) -> list[str]:
 
 
 @router.get("/{audit_id}/stream")
-async def stream_audit_progress(audit_id: uuid.UUID, session: DbSession) -> StreamingResponse:
+async def stream_audit_progress(
+    session: DbSession,
+    audit: Annotated[Audit, Depends(require_audit_access)],
+) -> StreamingResponse:
     """Stream real-time audit progress via Server-Sent Events.
 
     Polls the ``module_executions`` table every 2 seconds and emits events
     as modules transition through their lifecycle.  The stream terminates
     when the audit reaches a terminal status or after 45 minutes.
 
+    Auth (04-spec.md §3 row 6): access is gated by ``require_audit_access``
+    -- denial (404, identical for missing-or-denied) happens BEFORE this
+    function returns a ``StreamingResponse`` at all, i.e. before the SSE
+    stream ever opens, not mid-stream.
+
     Args:
-        audit_id: UUID of the audit to stream.
         session: Injected async database session.
+        audit: The authorized ``Audit`` row (fetched + ACL-checked by
+            ``require_audit_access``).
 
     Returns:
         A ``StreamingResponse`` with ``text/event-stream`` media type.
-
-    Raises:
-        HTTPException: 404 if the audit does not exist.
     """
+    audit_id = audit.id
     logger.info("stream_audit_progress.start", audit_id=str(audit_id))
-
-    try:
-        result = await session.execute(select(Audit).where(Audit.id == audit_id))
-        audit = result.scalar_one_or_none()
-    except Exception as exc:
-        logger.error(
-            "stream_audit_progress.db_error",
-            audit_id=str(audit_id),
-            error=str(exc),
-        )
-        raise HTTPException(status_code=500, detail="Failed to verify audit.") from exc
-
-    if audit is None:
-        logger.warning("stream_audit_progress.not_found", audit_id=str(audit_id))
-        raise HTTPException(status_code=404, detail="Audit not found.")
-
     logger.info(
         "stream_audit_progress.audit_found",
         audit_id=str(audit_id),
@@ -243,28 +235,35 @@ async def _event_generator(
             for exc_row in executions:
                 module_name: str = exc_row.module_name
                 status: str = exc_row.status
-                wave: int = exc_row.wave if exc_row.wave is not None else MODULE_WAVE_MAP.get(module_name, 0)
+                wave: int = (
+                    exc_row.wave
+                    if exc_row.wave is not None
+                    else MODULE_WAVE_MAP.get(module_name, 0)
+                )
 
                 # --- wave_started ---
-                if wave > 0 and wave not in waves_started:
-                    if status in ("running", "success", "failed", "partial"):
-                        waves_started.add(wave)
-                        wave_mods = _wave_modules(wave)
-                        logger.info(
-                            "stream.wave_started",
-                            audit_id=str(audit_id),
+                if (
+                    wave > 0
+                    and wave not in waves_started
+                    and status in ("running", "success", "failed", "partial")
+                ):
+                    waves_started.add(wave)
+                    wave_mods = _wave_modules(wave)
+                    logger.info(
+                        "stream.wave_started",
+                        audit_id=str(audit_id),
+                        wave=wave,
+                        modules_in_wave=wave_mods,
+                    )
+                    yield _sse_event(
+                        "wave_started",
+                        ModuleEvent(
+                            event_type="wave_started",
+                            timestamp=_now_iso(),
                             wave=wave,
                             modules_in_wave=wave_mods,
-                        )
-                        yield _sse_event(
-                            "wave_started",
-                            ModuleEvent(
-                                event_type="wave_started",
-                                timestamp=_now_iso(),
-                                wave=wave,
-                                modules_in_wave=wave_mods,
-                            ).model_dump(exclude_none=True),
-                        )
+                        ).model_dump(exclude_none=True),
+                    )
 
                 # --- module_started ---
                 if status == "running" and module_name not in seen_running:
@@ -338,9 +337,7 @@ async def _event_generator(
                 if not wave_mods:
                     continue
 
-                done_in_wave = [
-                    m for m in wave_mods if m in seen_completed or m in seen_failed
-                ]
+                done_in_wave = [m for m in wave_mods if m in seen_completed or m in seen_failed]
                 if len(done_in_wave) == len(wave_mods):
                     waves_completed.add(wave_num)
                     succeeded_count = sum(1 for m in wave_mods if m in seen_completed)

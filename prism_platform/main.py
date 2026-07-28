@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from prism_platform.api.middleware import add_middleware
 from prism_platform.api.routers import (
     accounts,
+    acl,
     audit_stream,
     audits,
     benchmarks,
@@ -43,6 +44,7 @@ app.include_router(evidence.router, prefix="/api/v1/evidence", tags=["evidence"]
 app.include_router(freshness.router, prefix="/api/v1/accounts", tags=["freshness"])
 app.include_router(knowledge.router, prefix="/api/v1/knowledge", tags=["knowledge"])
 app.include_router(landing_pages.router, prefix="/api/v1/landing-pages", tags=["landing-pages"])
+app.include_router(acl.router, prefix="/api/v1/acl", tags=["acl"])
 
 # Internal-only intake wizard (Marketer persona deliverable). Not the public
 # marketing site -- see docs/workspace/custom-landing-page/00-design-system.md.
