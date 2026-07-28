@@ -36,6 +36,21 @@ OAUTH_ENV="${EXEC_DIR}/.claude-oauth.env"          # CLAUDE_CODE_OAUTH_TOKEN
 RUN_ENV="${EXEC_DIR}/.run.env"                      # GEMINI_API_KEY + SCOUT_API_KEY/URL
 MCP_CONFIG="${EXEC_DIR}/.mcp.json"
 MCP_ENV="${EXEC_DIR}/.mcp.env"
+MCP_EMPTY_CONFIG="${EXEC_DIR}/.mcp-empty.json"      # per-skill strip target (Task 4b, 2026-07-13)
+
+# Skills confirmed (task-4b-report.md) to actually need an MCP server: browser
+# (chrome-devtools-mcp), social (apify), partner (crossbeam). All other skills
+# in the pipeline, including news (its collect-news.py hits the Apify REST API
+# directly with APIFY_TOKEN, never through mcp__apify__*), use zero MCP tools.
+MCP_SKILLS=("algolia-audit-browser" "algolia-intel-social" "algolia-intel-partner")
+
+skill_needs_mcp() {
+  local s="$1"
+  for m in "${MCP_SKILLS[@]}"; do
+    [[ "${s}" == "${m}" ]] && return 0
+  done
+  return 1
+}
 
 DOMAIN="${1:-}"
 if [[ -z "${DOMAIN}" ]]; then
@@ -97,12 +112,21 @@ export ALGOLIA_AUDIT_DIR="${EXEC_DIR}/audits"
 # (false-success). Wait indefinitely instead.
 export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
 
-# --- MCP: chrome (browser test) + apify (Google-News scraper) ONLY. ---
+# --- MCP: chrome (browser test) + apify (social scrape) + crossbeam (partner overlap). ---
 # No BuiltWith (removed — tech/vendor detection = detect-search network oracle + Scout
 # source-scan). No Algolia MCP (no role in a prospect audit). No Yahoo MCP (yfinance is
-# public — collect-financials.py uses it directly). APIFY_TOKEN (if set) feeds collect-news.
+# public — collect-financials.py uses it directly). collect-news.py hits the Apify REST
+# API directly (APIFY_TOKEN), never mcp__apify__*, so news does NOT need the apify server.
+#
+# Task 4b (2026-07-13): scoped per --skill invocation. A standalone `--skill <name>` run
+# for one of the 13 skills in MCP_SKILLS' complement loads an EMPTY --strict-mcp-config so
+# no chrome/apify/crossbeam MCP process spawns for it. Full runs and --phase runs (which
+# still bundle multiple skills into one process per the current one-process dispatch model)
+# and standalone runs of the 3 MCP-needing skills keep the real global config, unchanged.
 MCP_ARGS=()
-if [[ -f "${MCP_CONFIG}" ]]; then
+if [[ -n "${SKILL}" ]] && ! skill_needs_mcp "${SKILL}"; then
+  MCP_ARGS=(--mcp-config "${MCP_EMPTY_CONFIG}" --strict-mcp-config)
+elif [[ -f "${MCP_CONFIG}" ]]; then
   MCP_ARGS=(--mcp-config "${MCP_CONFIG}" --strict-mcp-config)
   [[ -f "${MCP_ENV}" ]] && { set -a; source "${MCP_ENV}"; set +a; }
 fi

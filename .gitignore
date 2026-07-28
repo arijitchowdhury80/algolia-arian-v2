@@ -52,9 +52,20 @@ TEMP/
 *.bak
 *.orig
 *~
+# timestamped hand-edit backups: foo.html.bak-20260703091738 / foo.html.bak.20260705-002217
+*.bak-*
+*.bak.*
 
 # Ruff
 .ruff_cache/
 
 # ephemeral scratch — Wave2 screenshots etc.
 docs/temp/
+
+# agent/tool scratch dirs — session state, not source
+.playwright-mcp/
+.ship-loop/
+.development-loop/
+
+# loose screenshots dropped in the repo root
+/prism-*.png
