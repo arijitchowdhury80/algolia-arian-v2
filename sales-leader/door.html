@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRISM — Sales Leader view</title>
+<meta name="description" content="PRISM's Sales Leader role-door: the portfolio heatmap across the whole book of audited accounts, ranked by real $ opportunity and score, with drill-through into each account's AE door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #003DFF;
+    --color-accent: #5468FF;
+    --color-text: #23263B;
+    --color-muted: #545C68; /* darkened from the source #6B7280 — fails WCAG AA on --color-bg; this passes 4.5:1
+      on both #fff and #F5F5F7. Reused verbatim from AE/BDR/Marketer doors. */
+    --color-bg: #F5F5F7;
+    --color-border: #E5E7EB;
+    --color-white: #FFFFFF;
+    --topbar-bg: #23263B;
+    --color-positive: #059669;
+    --color-positive-tint: #F0FDF4;
+    --color-positive-border: #BBF7D0;
+    --color-moderate: #D97706;
+    --color-moderate-tint: #FFFBEB;
+    --color-moderate-border: #FDE68A;
+    --color-critical: #DC2626;
+    --color-critical-tint: #FEF2F2;
+    --color-critical-border: #FECACA;
+    --blue-tint: #EEF2FF;
+    --blue-border: #C7D2FE;
+    --blue-light: #F8F9FF;
+    --font-family: 'Sora', sans-serif;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(35, 38, 59, 0.10);
+    --shadow-lg: 0 24px 60px rgba(35, 38, 59, 0.16);
+    --maxw: 1080px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-family); color: var(--color-text);
+    background: var(--color-bg); line-height: 1.6;
+    overflow-wrap: anywhere; /* real citation strings (e.g. field-path source labels) contain long
+      unbroken tokens with no spaces — root-level fix, consistent with the other 3 doors. */
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+  /* ── Top chrome ── */
+  .topchrome {
+    background: var(--topbar-bg); color: #fff; padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  .topchrome .brand { font-weight: 600; font-size: 15px; }
+  .topchrome .meta { display: flex; align-items: center; gap: 14px; font-size: 13px; color: rgba(255,255,255,0.75); flex-wrap: wrap; }
+  .role-chip {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 4px 12px; font-weight: 600; color: #fff;
+  }
+
+  main { padding: 32px 0 64px; }
+
+  /* ── Aggregate banner (Leader has NO shared-core single-account header — this replaces it) ── */
+  .aggregate-banner {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px 24px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .aggregate-banner h1 { font-size: 20px; font-weight: 600; }
+  .aggregate-banner .sub { font-size: 13.5px; color: var(--color-muted); margin-top: 4px; }
+  .exception-tag {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--color-primary); background: var(--blue-tint); border: 1px solid var(--blue-border);
+    padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* ── Rollup hero ── */
+  .rollup-card {
+    background: linear-gradient(135deg, var(--topbar-bg), #2E3358); color: #fff;
+    border-radius: 16px; padding: 28px 32px; margin-bottom: 20px; box-shadow: var(--shadow-lg);
+  }
+  .rollup-card .eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #9DB4FF; margin-bottom: 12px; }
+  .rollup-stats { display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 14px; }
+  .rollup-stat { min-width: 140px; }
+  .rollup-stat .num { font-size: 32px; font-weight: 600; line-height: 1.1; }
+  .rollup-stat .label { font-size: 12.5px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+  .rollup-names { font-size: 13.5px; color: rgba(255,255,255,0.82); line-height: 1.6; }
+  .rollup-names b { color: #fff; }
+  .rollup-note { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 12px; }
+
+  /* ── Heatmap table ── */
+  .heatmap-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .heatmap-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 14px; }
+  .table-scroll { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 8px; }
+  table.heatmap-table { width: 100%; border-collapse: collapse; background: #fff; font-size: 13.5px; min-width: 760px; }
+  table.heatmap-table th {
+    background: var(--topbar-bg); color: #fff; padding: 10px 14px; text-align: left;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+  }
+  table.heatmap-table td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  table.heatmap-table tr:last-child td { border-bottom: none; }
+  table.heatmap-table tr.drillable { cursor: pointer; }
+  table.heatmap-table tr.drillable:hover td { background: #FAFBFF; }
+  table.heatmap-table tr.drillable:focus-within td { background: #FAFBFF; }
+  .heatmap-company { font-weight: 600; }
+  .heatmap-company a { text-decoration: none; }
+  .heatmap-company a:hover, .heatmap-company a:focus-visible { text-decoration: underline; }
+  .heatmap-domain { font-size: 12px; color: var(--color-muted); }
+  .score-bar-wrap { display: flex; align-items: center; gap: 8px; min-width: 140px; }
+  .score-bar { flex: 1; height: 10px; border-radius: 999px; background: var(--color-border); overflow: hidden; min-width: 60px; }
+  .score-bar-fill { height: 100%; border-radius: 999px; }
+  .score-bar-fill.critical { background: var(--color-critical); }
+  .score-bar-fill.moderate { background: var(--color-moderate); }
+  .score-bar-fill.positive { background: var(--color-positive); }
+  .score-num { font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .empty-chip {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600;
+    color: var(--color-muted); background: var(--color-bg); border: 1px dashed var(--color-border);
+    padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+  }
+  .opp-num { font-weight: 600; }
+  .opp-source { display: block; font-size: 11px; color: var(--color-muted); margin-top: 2px; }
+  .stage-pill { font-size: 11.5px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--color-border); color: var(--color-muted); background: var(--color-bg); white-space: nowrap; }
+  .stage-pill.active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  .drill-link {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 6px 4px;
+    font-size: 12.5px; color: var(--color-primary); text-decoration: none; font-weight: 600; white-space: nowrap;
+  }
+  .drill-link:hover, .drill-link:focus-visible { text-decoration: underline; }
+  .heatmap-company a { display: inline-flex; align-items: center; min-height: 44px; }
+  .methodology-note { font-size: 12px; color: var(--color-muted); margin: 10px 0 24px; }
+
+  /* ── Data source cards ── */
+  .sources-section h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .sources-section .sub { font-size: 13px; color: var(--color-muted); margin-bottom: 16px; }
+  .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .source-col h4 {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+  }
+  .source-col.active h4 { color: var(--color-positive); }
+  .source-col.locked h4 { color: var(--color-muted); }
+  .source-card {
+    background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius);
+    padding: 14px 16px; margin-bottom: 10px; font-size: 13px;
+  }
+  .source-col.locked .source-card { border-style: dashed; background: var(--color-bg); }
+  .source-card .name { font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .source-card .detail { color: var(--color-muted); font-size: 12.5px; }
+  .source-card .needs { color: var(--color-muted); font-size: 12px; margin-top: 6px; }
+  .lock-icon { font-size: 13px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;
+    min-height: 44px; border: 2px solid transparent; cursor: pointer; text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  .btn:hover { opacity: 0.88; }
+  .btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+  .btn-outline { border-color: var(--color-border); background: #fff; color: var(--color-text); }
+
+  footer { text-align: center; font-size: 12px; color: var(--color-muted); padding: 32px 20px 8px; }
+
+  @media (max-width: 768px) {
+    .sources-grid { grid-template-columns: 1fr; }
+    .aggregate-banner { flex-direction: column; align-items: flex-start; }
+    .rollup-card { padding: 22px 18px; }
+    .rollup-stats { gap: 20px; }
+    .rollup-stat .num { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topchrome">
+  <div class="brand">PRISM</div>
+  <div class="meta">
+    <span class="role-chip" id="role-chip">role: Leader</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="load-state" style="padding: 40px 0; color: var(--color-muted); font-size: 14px;">Loading portfolio…</div>
+  <div id="content" hidden>
+
+    <section class="aggregate-banner">
+      <div>
+        <h1>Portfolio — whole book of accounts</h1>
+        <div class="sub" id="row-count-line">—</div>
+      </div>
+      <span class="exception-tag">aggregate view — no single-account header</span>
+    </section>
+
+    <section class="rollup-card">
+      <div class="eyebrow">Rollup — computed from the accounts below, not a fabricated insight</div>
+      <div class="rollup-stats">
+        <div class="rollup-stat">
+          <div class="num" id="rollup-below-count">—</div>
+          <div class="label">accounts scored below 3.5</div>
+        </div>
+        <div class="rollup-stat">
+          <div class="num" id="rollup-critical-count">—</div>
+          <div class="label">total critical findings across the book</div>
+        </div>
+        <div class="rollup-stat">
+          <div class="num" id="rollup-stage-count">—</div>
+          <div class="label">accounts with real AE-stage data</div>
+        </div>
+      </div>
+      <div class="rollup-names"><b>Below 3.5:</b> <span id="rollup-names-text">—</span></div>
+      <div class="rollup-note" id="rollup-note"></div>
+    </section>
+
+    <section class="heatmap-section">
+      <h3>Portfolio heatmap</h3>
+      <p class="sub">Ranked weakest-score-first (the sharpest opportunity). Click any account to open its AE door.</p>
+      <div class="table-scroll">
+        <table class="heatmap-table">
+          <thead>
+            <tr>
+              <th>Account</th>
+              <th>Score</th>
+              <th>Stage</th>
+              <th>$ opportunity (conservative)</th>
+              <th>AE door</th>
+            </tr>
+          </thead>
+          <tbody id="heatmap-body"></tbody>
+        </table>
+      </div>
+      <p class="methodology-note" id="methodology-note"></p>
+    </section>
+
+    <section class="sources-section">
+      <h3>Data sources powering this view</h3>
+      <p class="sub">Every locked card names the function it unlocks, the data it needs, and the specific gain — not a vague "more data would help."</p>
+      <div class="sources-grid">
+        <div class="source-col active">
+          <h4>✅ Active</h4>
+          <div id="active-sources"></div>
+        </div>
+        <div class="source-col locked">
+          <h4>🔒 Would add value if available</h4>
+          <div id="locked-sources"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>PRISM — Algolia Search Audit Pipeline. Data sourced from the published audits; every empty slot above marks data this pipeline genuinely doesn't have yet — nothing is inferred beyond what's cited.</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function renderSourceCard(s, locked) {
+    var el = document.createElement("div");
+    el.className = "source-card";
+    if (locked) {
+      el.innerHTML =
+        '<div class="name"><span class="lock-icon">🔒</span>' + escapeHtml(s.name) + '</div>' +
+        '<div class="detail">' + escapeHtml(s.function) + ' — ' + escapeHtml(s.value) + '</div>' +
+        '<div class="needs">Needs: ' + escapeHtml(s.needs) + '</div>';
+    } else {
+      el.innerHTML =
+        '<div class="name">' + escapeHtml(s.name) + '</div>' +
+        '<div class="detail">' + escapeHtml(s.detail) + '</div>';
+    }
+    return el;
+  }
+
+  var ACTIVE_SOURCES = [
+    { name: "Published audit scores", detail: "score.overall / critical_count / moderate_count from each account's audit-data.json (reports/data/*.json) — same 10-account source BDR's queue already uses" },
+    { name: "ROI / business-case model", detail: "financials.roi_scenarios.conservative.annual_impact per account — the audit pipeline's own sourced $-opportunity estimate, not invented here" },
+    { name: "AE cockpit stage", detail: "stage_cockpit.current_stage from ae/data/*.json, where that file exists (currently 1 of 10 accounts: dsw)" }
+  ];
+  var LOCKED_SOURCES = [
+    {
+      name: "CRM/Salesforce deal stage + $ (real, per-account)",
+      function: "Live Stage + Pipeline $ Rollup",
+      needs: "CRM integration — explicitly out of scope per the IA spec (Salesforce dropped, not deprioritized)",
+      value: "Real SS1–SS4 stage and committed pipeline $ for all 10 accounts, not just the 1 with AE-cockpit data."
+    },
+    {
+      name: "Rep-level assignment",
+      function: "\"Which reps are stalled at SS2, why\" rollup",
+      needs: "A rep↔account mapping (not present in any audit-data.json)",
+      value: "Powers the Leader's rollup-query chat mode from the IA spec — not buildable without this mapping."
+    },
+    {
+      name: "Win/loss history",
+      function: "Aggregate win-rate signal",
+      needs: "Closed-deal outcomes per account over time",
+      value: "The IA spec's 'aggregate win-rate signal' hero metric — no historical outcome data exists yet."
+    }
+  ];
+
+  fetch("data/portfolio.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("couldn't load portfolio data");
+      return r.json();
+    })
+    .then(function (d) {
+      document.getElementById("row-count-line").textContent =
+        d.meta.row_count + " real audited accounts (reports/data/*.json) — ranked weakest score first.";
+
+      var roll = d.rollup;
+      document.getElementById("rollup-below-count").textContent = roll.accounts_below_3_5;
+      document.getElementById("rollup-critical-count").textContent = roll.total_critical_findings;
+      document.getElementById("rollup-stage-count").textContent = roll.accounts_with_real_ae_stage_data + " / " + d.meta.row_count;
+      document.getElementById("rollup-names-text").textContent = roll.accounts_below_3_5_names.join(", ") || "none";
+      document.getElementById("rollup-note").textContent = roll.note;
+
+      var tbody = document.getElementById("heatmap-body");
+      d.portfolio.forEach(function (row) {
+        var tr = document.createElement("tr");
+        tr.className = "drillable";
+
+        var scoreCell = "—";
+        if (typeof row.score === "number") {
+          var pct = Math.max(0, Math.min(100, (row.score / (row.score_scale || 5)) * 100));
+          var barClass = row.score < 3.5 ? "critical" : (row.score < 4.2 ? "moderate" : "positive");
+          scoreCell =
+            '<div class="score-bar-wrap"><span class="score-num">' + row.score + (row.score_scale ? "/" + row.score_scale : "") + '</span>' +
+            '<span class="score-bar"><span class="score-bar-fill ' + barClass + '" style="width:' + pct + '%"></span></span></div>' +
+            '<div style="font-size:11px;color:var(--color-muted);margin-top:3px;">' + row.critical_count + ' critical · ' + row.moderate_count + ' moderate</div>';
+        }
+
+        var stageCell = row.stage
+          ? '<span class="stage-pill active">' + escapeHtml(row.stage.toUpperCase()) + '</span>'
+          : '<span class="empty-chip">⊘ no AE-stage data yet</span>';
+
+        var oppCell = row.opportunity_conservative
+          ? '<span class="opp-num">' + escapeHtml(row.opportunity_conservative) + '</span>' +
+            (row.opportunity_moderate ? '<span class="opp-source">moderate: ' + escapeHtml(row.opportunity_moderate) + '</span>' : "") +
+            '<span class="opp-source">src: ' + escapeHtml(row.opportunity_conservative_source || "") + '</span>'
+          : '<span class="empty-chip">⊘ no $ model in this audit</span>';
+
+        var drillCell = '<a class="drill-link" href="' + escapeHtml(row.ae_door_url) + '">Open AE door →</a>';
+
+        tr.innerHTML =
+          "<td><div class='heatmap-company'><a href='" + escapeHtml(row.ae_door_url) + "'>" + escapeHtml(row.company || row.slug) + "</a></div>" +
+            "<div class='heatmap-domain'>" + escapeHtml(row.domain || "") + "</div></td>" +
+          "<td>" + scoreCell + "</td>" +
+          "<td>" + stageCell + "</td>" +
+          "<td>" + oppCell + "</td>" +
+          "<td>" + drillCell + "</td>";
+
+        tr.addEventListener("click", function (ev) {
+          if (ev.target.closest("a")) return; // let the real links behave normally, don't double-navigate
+          window.location.href = row.ae_door_url;
+        });
+
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("methodology-note").textContent =
+        "Ranked by score ascending (weakest first). " + d.meta.generated_note;
+
+      var activeWrap = document.getElementById("active-sources");
+      ACTIVE_SOURCES.forEach(function (s) { activeWrap.appendChild(renderSourceCard(s, false)); });
+      var lockedWrap = document.getElementById("locked-sources");
+      LOCKED_SOURCES.forEach(function (s) { lockedWrap.appendChild(renderSourceCard(s, true)); });
+
+      document.getElementById("load-state").hidden = true;
+      document.getElementById("content").hidden = false;
+    })
+    .catch(function (err) {
+      var loadEl = document.getElementById("load-state");
+      loadEl.textContent = "";
+      var msg = document.createElement("span");
+      msg.textContent = "Couldn't load the portfolio (" + err.message + "). ";
+      var retry = document.createElement("button");
+      retry.type = "button";
+      retry.className = "btn btn-outline";
+      retry.style.marginLeft = "8px";
+      retry.textContent = "Retry";
+      retry.addEventListener("click", function () { location.reload(); });
+      loadEl.appendChild(msg);
+      loadEl.appendChild(retry);
+    });
+})();
+</script>
+</body>
+</html>
