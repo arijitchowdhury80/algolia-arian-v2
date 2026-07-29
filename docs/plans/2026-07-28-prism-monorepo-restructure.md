@@ -139,9 +139,18 @@ flagged for a later decision.
 - **Merge `ia/`, `ia1/`, `ia2/` and establish why there are three.** Kept as-is at Arijit's
   instruction. No link from the live nav, but an unlinked page may still be a URL shared
   directly with a prospect, so they were not deleted.
-- **Relocate Scout out of `/opt/prism`.** That path already contained Scout's source and backups
-  (598 MB) before the restructure, so the app now sits beside it. Scout runs in Docker on 8421;
-  moving it during a production cutover was declined. `/opt/scout` is the tidier home.
+- ~~Relocate Scout out of `/opt/prism`~~ **DONE 2026-07-28.** Scout was never embedded: it is its
+  own clone of `github.com/arijitchowdhury80/scout.git`, was never tracked in this repo, and PRISM
+  reaches it over HTTP on `SCOUT_BASE_URL=http://127.0.0.1:8421`. It merely occupied the path.
+  Moved to `/opt/scout`, with its backups to `/opt/scout-backups`, `/opt/scout-deploy-backups`,
+  `/opt/scout-load-tests`. Zero downtime during the move (the container binds no host source);
+  the Compose project name stays `docker` because it derives from the `docker/` subdirectory, so
+  the `docker_scout-data` volume reattached with no migration - verified `scout.db`,
+  `hosted_accounts.sqlite` and 600 run directories intact. `/opt/prism` now holds only
+  `frontend/`, `backend/`, `docs/`.
+- **Scout runs an unmerged branch in production.** That checkout is on
+  `fix/launch-readiness-fx1-fx7`, not `main` - the same branch-sprawl pattern this plan fixed for
+  PRISM. Different application, so tracked here rather than acted on.
 - **Generated report HTML in git.** ~600 KB per audit of generator output, but carrying hand-edits
   made on the live server, so it is no longer reproducible from the generator. Open question.
 
