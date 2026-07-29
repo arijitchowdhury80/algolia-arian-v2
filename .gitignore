@@ -1,20 +1,47 @@
-.vercel
-.DS_Store
-node_modules/
+# ── Secrets ──────────────────────────────────────────────────────────────────
 .env
 .env.*
-*.bak
-*-audit-data.json.bak
+!.env.example
 
-# session artifacts
-*.prebak
-assets/cass-candidates/
-docs/workspace/
+# ── Node (frontend) ──────────────────────────────────────────────────────────
+node_modules/
+.vercel
 
-# Hand-edit backups must never be committed (193 of them were, removed 2026-07-28).
+# ── Python (backend) ─────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.venv/
+dist/
+build/
+wheels/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ── Editors / OS ─────────────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Hand-edit backups: never commit these ────────────────────────────────────
+# 193 of them had been committed and were removed 2026-07-28. The patterns below
+# cover every variant found in the wild, including .bak2, which an earlier cleanup
+# pass missed because it does not match *.bak-*.
 *.bak
 *.bak-*
 *.bak.*
 *.bak[0-9]*
+*.prebak
 *.prelegalfix*
 *.orig
+
+# ── Working scratch, not deliverables ────────────────────────────────────────
+docs/workspace/
+frontend/assets/cass-candidates/
+.playwright-mcp/
+.ship-loop/
+.development-loop/
