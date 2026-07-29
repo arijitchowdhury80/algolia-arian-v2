@@ -65,7 +65,8 @@ from pathlib import Path
 
 from playwright.async_api import async_playwright
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
+REPO_ROOT = Path(__file__).resolve().parents[3]
 DRYRUN_DIR = REPO_ROOT / "docs" / "workspace" / "migration-dryrun"
 PUBLISHED_DIR = DRYRUN_DIR / "published"
 REPORT_PATH = DRYRUN_DIR / "REGRESSION-REPORT.md"

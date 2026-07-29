@@ -27,7 +27,10 @@ from pathlib import Path
 import psycopg2
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# Two roots since the 2026-07-28 restructure: docs/ is at the repo root, while
+# alembic.ini and the importable package live inside backend/.
+REPO_ROOT = Path(__file__).resolve().parents[3]
+BACKEND_ROOT = Path(__file__).resolve().parents[2]
 STAGED_RUNNER = REPO_ROOT / "docs/workspace/cassandra-tooling/staged/prism-runner.py"
 
 CONTAINER_NAME = "prism-test-pg-dbwrite"
@@ -78,12 +81,12 @@ def _run_real_migrations(dsn_async: str) -> None:
     """Run the actual alembic 001-009 migrations against the test DB so the
     schema (including every server_side column default) matches production
     exactly — not a hand-approximated CREATE TABLE."""
-    sys.path.insert(0, str(REPO_ROOT))
+    sys.path.insert(0, str(BACKEND_ROOT))
     from alembic.config import Config
 
     from alembic import command
 
-    cfg = Config(str(REPO_ROOT / "alembic.ini"))
+    cfg = Config(str(BACKEND_ROOT / "alembic.ini"))
     cfg.set_main_option("sqlalchemy.url", dsn_async)
     cfg.set_main_option("script_location", str(REPO_ROOT / "alembic"))
     command.upgrade(cfg, "head")

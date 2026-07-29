@@ -26,7 +26,10 @@ from psycopg2.extras import execute_values
 # Config
 # ---------------------------------------------------------------------------
 
-EXCEL_PATH = Path(__file__).parent.parent / "docs" / "data" / "CustomerEvidence-Algolia.xlsx"
+# docs/ moved to the repo root in the 2026-07-28 restructure.
+EXCEL_PATH = (
+    Path(__file__).resolve().parents[2] / "docs" / "data" / "CustomerEvidence-Algolia.xlsx"
+)
 DB_URL = os.environ.get("DATABASE_URL_SYNC", "postgresql://prism:prism_dev_password@localhost:5432/prism")
 
 # ---------------------------------------------------------------------------

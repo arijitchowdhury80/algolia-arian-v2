@@ -69,7 +69,8 @@ SKILL_NAMES: tuple[str, ...] = (
     "algolia-audit-factcheck",
 )
 
-_REPO_ROOT = Path(__file__).resolve().parents[2]
+# docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
+_REPO_ROOT = Path(__file__).resolve().parents[3]
 _STAGED_RUNNER = _REPO_ROOT / "docs/workspace/cassandra-tooling/staged/prism-runner.py"
 
 BuildCmdFn = Callable[[dict[str, str]], Sequence[str]]

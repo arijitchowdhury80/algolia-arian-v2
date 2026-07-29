@@ -31,7 +31,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _etl
 from sqlalchemy import create_engine
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
+REPO_ROOT = Path(__file__).resolve().parents[3]
 PUBLISHED_DIR = REPO_ROOT / "docs" / "workspace" / "migration-dryrun" / "published"
 GROUNDING_DIR = Path("/Users/arijitchowdhury/prism-data/hermes-prism/reports")
 REPORT_PATH = REPO_ROOT / "docs" / "workspace" / "migration-dryrun" / "LOCAL-INSTANCE.md"

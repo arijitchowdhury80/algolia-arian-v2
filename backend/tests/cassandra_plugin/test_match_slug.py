@@ -22,8 +22,11 @@ from pathlib import Path
 
 import pytest
 
+# docs/ sits at the repo root, not under backend/, since the 2026-07-28 restructure:
+# it spans both halves. parents[3] is the repo root (tests/cassandra_plugin -> tests
+# -> backend -> repo).
 MODULE_PATH = (
-    Path(__file__).resolve().parents[2]
+    Path(__file__).resolve().parents[3]
     / "docs"
     / "workspace"
     / "cassandra-tooling"

@@ -45,7 +45,9 @@ from typing import Any
 # Paths
 # ---------------------------------------------------------------------------
 # Resolves from prism_platform/scripts/ up two levels to PIP/
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# parents[2] was backend/ when docs/ lived inside it; docs/ is now at the repo
+# root (2026-07-28 restructure), so resolve one level higher.
+REPO_ROOT = Path(__file__).resolve().parents[3]
 SOURCE_MD = (
     REPO_ROOT
     / "docs"

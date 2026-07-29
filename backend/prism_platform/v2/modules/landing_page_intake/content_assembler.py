@@ -19,7 +19,9 @@ from typing import Any
 import jsonschema
 
 _SCHEMA_PATH = (
-    Path(__file__).resolve().parents[4]
+    # docs/ is at the repo root since the 2026-07-28 restructure, one level above
+    # backend/, so this walks up one more than before.
+    Path(__file__).resolve().parents[5]
     / "docs"
     / "workspace"
     / "custom-landing-page"

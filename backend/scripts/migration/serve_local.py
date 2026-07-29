@@ -27,7 +27,8 @@ import _etl
 import psycopg2
 import psycopg2.extras
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
+REPO_ROOT = Path(__file__).resolve().parents[3]
 PUBLISHED_DIR = REPO_ROOT / "docs" / "workspace" / "migration-dryrun" / "published"
 
 HOST = "127.0.0.1"

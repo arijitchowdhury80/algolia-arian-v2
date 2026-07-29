@@ -19,7 +19,8 @@ from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
+# docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
+REPO_ROOT = Path(__file__).resolve().parents[3]
 STAGED_RUNNER = REPO_ROOT / "docs/workspace/cassandra-tooling/staged/prism-runner.py"
 
 
