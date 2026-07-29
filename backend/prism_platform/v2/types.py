@@ -149,6 +149,16 @@ class ModuleConfig(BaseModel):
         default_factory=list,
         description="Upstream modules whose cached output this module reads",
     )
+    requires_citations: bool = Field(
+        default=True,
+        description=(
+            "Whether this module's output must carry source citations. True for any "
+            "module making factual claims: a zero-citation result is retried once and "
+            "then downgraded to 'partial', because search grounding is non-deterministic "
+            "and unsourced claims must never look evidenced. Set False only where there "
+            "is nothing to cite (e.g. query generation)."
+        ),
+    )
 
 
 class ExecutionContextV2(BaseModel):

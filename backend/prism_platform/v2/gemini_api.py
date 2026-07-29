@@ -152,12 +152,18 @@ class GeminiResearchClient:
         resp = await self._http.post(url, json=payload)
         resp.raise_for_status()
 
-        parsed = self._parse_response(resp.json())
+        data = resp.json()
+        parsed = self._parse_response(data)
+        # finish_reason is the only clue when Gemini returns 200 with no content
+        # (observed: finishReason=STOP with zero parts). Log it or the next person
+        # debugging an empty answer has to write a probe script, as I did.
+        candidate = (data.get("candidates") or [{}])[0]
         logger.info(
             "GeminiResearch response",
             model=resolved,
             content_len=len(parsed.content),
             citation_count=len(parsed.citations),
+            finish_reason=candidate.get("finishReason"),
         )
         return parsed
 

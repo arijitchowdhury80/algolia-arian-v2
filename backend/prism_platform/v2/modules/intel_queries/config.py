@@ -21,4 +21,6 @@ INTEL_QUERIES_CONFIG = ModuleConfig(
     cache_ttl_days=30,
     api_clients=[],  # no external APIs — collector is pure Python
     composes=["intel-company", "intel-traffic"],
+    # Output is generated test queries, not factual claims — there is nothing to cite.
+    requires_citations=False,
 )

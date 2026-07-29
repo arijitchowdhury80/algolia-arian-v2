@@ -30,6 +30,7 @@ from typing import Any, TypeVar
 import structlog
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from prism_platform.v2.agent_api import AgentAPIResponse
 from prism_platform.v2.playbook import PlaybookLoader
 from prism_platform.v2.research_client import ResearchClient
 from prism_platform.v2.types import ClaimRegistryEntry, ExecutionContextV2, ModuleConfig
@@ -81,6 +82,63 @@ class ModuleExecutor:
         self._api = agent_api
         self._playbook_loader = PlaybookLoader()
 
+    @staticmethod
+    def _usability(response: AgentAPIResponse, requires_citations: bool) -> int:
+        """Rank a response so the better of two attempts can be picked.
+
+        2 = parseable and sourced, 1 = parseable but unsourced, 0 = unusable
+        (no content, or content that is not valid JSON). When citations are not
+        required, any parseable content ranks as fully usable.
+
+        Unparseable JSON counts as unusable because it is just as intermittent as
+        an empty answer: across three live runs a different set of modules failed
+        with mid-document JSON errors each time, and the same prompts parsed
+        cleanly on a later call.
+        """
+        if not response.content.strip():
+            return 0
+        try:
+            _loads_tolerant(response.content)
+        except json.JSONDecodeError:
+            return 0
+        if not requires_citations or response.citations:
+            return 2
+        return 1
+
+    async def _research_with_retry(
+        self,
+        config: ModuleConfig,
+        context: ExecutionContextV2,
+        system_prompt: str,
+        user_prompt: str,
+    ) -> tuple[AgentAPIResponse, int]:
+        """Call the backend, retrying once if the first answer is not fully usable.
+
+        Returns the better of the attempts and the number of calls made. Picking
+        the better one matters: an empty or unsourced first attempt must not be
+        kept over a usable retry.
+        """
+        model = self._model_for_tier(config.cost_tier)
+        first = await self._api.research(
+            system_prompt=system_prompt, user_prompt=user_prompt, model=model
+        )
+        first_rank = self._usability(first, config.requires_citations)
+        if first_rank == 2:
+            return first, 1
+
+        logger.warning(
+            "research answer not fully usable — retrying once",
+            module=config.name,
+            domain=context.account_domain,
+            had_content=bool(first.content.strip()),
+            citation_count=len(first.citations),
+        )
+        retry = await self._api.research(
+            system_prompt=system_prompt, user_prompt=user_prompt, model=model
+        )
+        best = retry if self._usability(retry, config.requires_citations) > first_rank else first
+        return best, 2
+
     async def execute(
         self,
         config: ModuleConfig,
@@ -116,12 +174,30 @@ class ModuleExecutor:
             # Step 2: Build system prompt from config
             system_prompt = self._build_system_prompt(config, output_schema)
 
-            # Step 3: Call Agent API
-            response = await self._api.research(
+            # Step 3: Call the research backend, retrying once if the first answer
+            # is unusable. Two intermittent failure modes justify this, both seen
+            # live: a provider can return HTTP 200 with no content at all, and
+            # search grounding is non-deterministic, so the same module comes back
+            # sourced on one call and unsourced on the next.
+            response, llm_calls = await self._research_with_retry(
+                config=config,
+                context=context,
                 system_prompt=system_prompt,
                 user_prompt=resolved_prompt,
-                model=self._model_for_tier(config.cost_tier),
             )
+
+            if not response.content.strip():
+                return self._fail_result(
+                    config,
+                    start_ns,
+                    errors=[
+                        "provider returned an empty response twice — no content to "
+                        "parse (this is a provider fault, not malformed JSON)"
+                    ],
+                    llm_calls=llm_calls,
+                    input_tokens=response.usage_input_tokens,
+                    output_tokens=response.usage_output_tokens,
+                )
 
             # Step 4: Parse JSON
             try:
@@ -131,7 +207,7 @@ class ModuleExecutor:
                     config,
                     start_ns,
                     errors=[f"JSON parse failed: {e}"],
-                    llm_calls=1,
+                    llm_calls=llm_calls,
                     input_tokens=response.usage_input_tokens,
                     output_tokens=response.usage_output_tokens,
                 )
@@ -148,7 +224,7 @@ class ModuleExecutor:
                     config,
                     start_ns,
                     errors=[f"Schema validation failed: {err}" for err in field_errors],
-                    llm_calls=1,
+                    llm_calls=llm_calls,
                     input_tokens=response.usage_input_tokens,
                     output_tokens=response.usage_output_tokens,
                 )
@@ -158,26 +234,43 @@ class ModuleExecutor:
             # Step 6: Generate claim registry
             claims = self._build_claims(output_dict, config.name, response.citations)
 
+            # Step 7: Evidence gate. The output is kept either way — it may well be
+            # correct — but unsourced claims must not be reported as clean success,
+            # or nothing downstream can tell evidenced data from asserted data.
+            unsourced = config.requires_citations and not response.citations
+            status = "partial" if unsourced else "success"
+            errors = (
+                [
+                    "no sources returned after a retry — output is unverified and "
+                    "must not be presented as evidenced"
+                ]
+                if unsourced
+                else []
+            )
+
             duration_ms = (time.monotonic_ns() - start_ns) // 1_000_000
 
-            logger.info(
+            log = logger.warning if unsourced else logger.info
+            log(
                 "ModuleExecutor.execute completed",
                 module=config.name,
                 domain=context.account_domain,
-                status="success",
+                status=status,
                 duration_ms=duration_ms,
                 claim_count=len(claims),
+                citation_count=len(response.citations),
             )
 
             return ModuleExecutorResult(
                 module_name=config.name,
                 module_version=config.version,
-                status="success",
+                status=status,
                 output=output_dict,
                 claims=claims,
                 citations=response.citations,
+                errors=errors,
                 duration_ms=duration_ms,
-                llm_calls=1,
+                llm_calls=llm_calls,
                 input_tokens=response.usage_input_tokens,
                 output_tokens=response.usage_output_tokens,
             )
