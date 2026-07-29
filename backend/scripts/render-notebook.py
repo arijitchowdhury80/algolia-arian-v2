@@ -18,8 +18,11 @@ import markdown
 import yaml
 
 VAULT = Path.home() / "Dropbox/AI-Development/Obsidian/Arijit-Second-Brain"
-PIP_REPO = Path.home() / "Dropbox/AI-Development/PIP"
-NOTEBOOK_OUT = Path.home() / "prism/notebook"
+# Resolved from this file rather than hardcoded: frontend/ and backend/ are siblings
+# in one repo now, so the same paths work on the laptop and on the VPS (/opt/prism).
+REPO_ROOT = Path(__file__).resolve().parents[2]
+BACKEND_REPO = REPO_ROOT / "backend"
+NOTEBOOK_OUT = REPO_ROOT / "frontend" / "notebook"
 
 SHELL = """<!DOCTYPE html>
 <html lang="en">
@@ -44,8 +47,13 @@ SHELL = """<!DOCTYPE html>
 
 
 def resolve_source(source: str) -> Path:
+    # Manifest sources are either repo-relative or vault-relative. "backend/" is the
+    # current prefix; "PIP/" is still accepted so existing manifests keep working
+    # after the repo was renamed from PIP to prism.
+    if source.startswith("backend/"):
+        return BACKEND_REPO / source[len("backend/") :]
     if source.startswith("PIP/"):
-        return PIP_REPO / source[len("PIP/") :]
+        return BACKEND_REPO / source[len("PIP/") :]
     return VAULT / source
 
 

@@ -3,28 +3,42 @@
 
 ## ▶ READ FIRST, EVERY SESSION
 **`SESSION.md`** (repo root) — current state, resume actions, exact stop point. It is the single
-required read; everything else here is background. Memory index: `~/.claude/projects/-Users-arijitchowdhury-Dropbox-AI-Development-PIP/memory/MEMORY.md`.
+required read; everything else here is background. Memory index:
+`~/.claude/projects/-Users-arijitchowdhury-Dropbox-AI-Development-prism/memory/MEMORY.md`.
 
-**Repo hygiene (as of 2026-07-28):** both repos' `main` were dead since 28–29 June with eight
-unmerged feature branches; production serves an unmerged one. Before starting work, check which
-branch you are on and whether it is the one you think. Do not create a new branch without saying so
-out loud — unsurfaced branch creation is what caused the sprawl.
+## NAMING CANON (restructured 2026-07-28)
+**PRISM is the name of the application.** There is no "PIP" any more — that name only ever came
+from a local folder name and is retired. One repo, one name, everywhere.
 
-## NAMING CANON (set 2026-06-28)
-**"PRISM" / "prism" now means EXCLUSIVELY Chowmes-PRISM** — the dedicated Hermes agent instance on
-the VPS that runs the algolia-* skill suite and answers questions grounded ONLY in the resulting
-audit report. NOT the old custom-SaaS/deterministic-module build (dead), NOT personal Chowmes/Athena.
-Execution runs on the VPS (standalone). See memory `reference-prism-means-chowmes-prism` and
-`docs/workspace/hermes-prism-integration/`.
+## ONE REPO, TWO HALVES (restructured 2026-07-28)
+```
+prism/
+├── frontend/   what the customer sees — landing page, published reports under reports/,
+│               the Node web+chat server (server/chat-proxy.mjs), role pages, IA prototypes
+├── backend/    what makes it — prism_platform/ FastAPI (127.0.0.1:8000), alembic, generators,
+│               v2 modules
+└── docs/       specs, decisions, plans — spans both halves
+```
+
+| environment | path | role |
+|---|---|---|
+| laptop | `~/Dropbox/AI-Development/prism` | development |
+| VPS | `/opt/prism` | production |
+| GitHub | `arijitchowdhury80/prism` | backup |
+
+All three hold the same structure. `main` is production and **auto-deploys on push** via the
+deploy hook (`/opt/prism-deploy-hook`, watches `main`, `REPO_DIR=/opt/prism`). `v2` is the
+next-version branch. `pip.git` is retired.
+
+Cross-half paths resolve from the repo root, never from `$HOME` — see `_REPO_ROOT` in
+`backend/prism_platform/api/routers/landing_pages.py`. That is what makes laptop and VPS identical.
+
+**Branch discipline:** eight unmerged branches accumulated by 28 July and production ran one of
+them. All are now merged and deleted. Check which branch you are on before working, and never
+create one without saying so out loud — unsurfaced branch creation caused that sprawl.
 
 ## PRISM V2 MANIFESTO (started 2026-07-04)
 A major 3-phase re-architecture plan is in progress (executioner rearchitecture, plug-and-play modules, domain-agnostic productization). **HARD RULE: all V2 research/planning documentation lives ONLY under `docs/PRISM-V2/` — never the vault, never `~/.claude/prompt-library/`, nowhere else.** See memory `project-prism-v2-manifesto-started` and `docs/PRISM-V2/`.
-
-## THE TWO REPOS (verify by CONTENT, names currently mislead)
-This system is TWO repos. Rename to PRISM/PIP is DECIDED but PENDING execution (see memory `reference-two-repos-prism-vs-pip`):
-- **This repo** (`~/Dropbox/AI-Development/PIP`, remote `prism.git`) = the **BACKEND** = **PIP** (Prospect Intelligence Platform): `prism_platform/` FastAPI (VPS 127.0.0.1:8000), generators, workspace. Carries a DEAD `frontend/` Next app (abandoned, not deployed).
-- **prism-hub** (`~/prism`, VPS `/opt/prism-hub`, remote `prism.git`) = the **FRONTEND** = **PRISM**: static site + published reports that serve `prism.chowmes.com` (proven: live site == prism-hub index.html). Login gate lives here. Auto-deploys on push.
-Split: **PRISM shows it (frontend), PIP makes it (backend).** Every active project trends toward this frontend/backend divide.
 
 ## CROSS-PROJECT AWARENESS (how to reach my other projects)
 Arijit runs a portfolio, not one project. The cross-project index is the vault tracker:

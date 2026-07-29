@@ -10,6 +10,7 @@ prism_platform/v2/modules/landing_page_intake/config.py for why.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import uuid
 from pathlib import Path
@@ -33,11 +34,16 @@ logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
 
 router = APIRouter()
 
-# Where prism-hub's renderer reads landing.json from + writes rendered HTML.
-# Cross-repo path by design (PIP assembles, prism-hub renders/serves) -- see
-# docs/workspace/custom-landing-page/00-design-system.md Architecture.
-_MARKETER_DATA_DIR = Path.home() / "prism" / "marketer" / "data"
-_MARKETER_RENDER_SCRIPT = Path.home() / "prism" / "marketer" / "render-landing.mjs"
+# Where the frontend's renderer reads landing.json from + writes rendered HTML.
+# The backend assembles, the frontend renders and serves. These used to be two
+# repos, so this was a hardcoded ~/prism path; frontend/ and backend/ are now
+# siblings in one repo, so it resolves relative to the repo root instead and works
+# unchanged on the laptop and on the VPS (/opt/prism). PRISM_FRONTEND_DIR overrides
+# it for anything that relocates one half independently.
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+_FRONTEND_DIR = Path(os.environ.get("PRISM_FRONTEND_DIR") or _REPO_ROOT / "frontend")
+_MARKETER_DATA_DIR = _FRONTEND_DIR / "marketer" / "data"
+_MARKETER_RENDER_SCRIPT = _FRONTEND_DIR / "marketer" / "render-landing.mjs"
 
 
 class AuditSummary(BaseModel):

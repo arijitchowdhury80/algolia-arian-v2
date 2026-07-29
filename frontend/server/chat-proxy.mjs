@@ -47,7 +47,7 @@ async function fetchAuditData(slug) {
 const HERMES_API_URL = process.env.HERMES_API_URL;
 const HERMES_API_KEY = process.env.HERMES_API_KEY;
 const PORT = Number(process.env.PORT || 8651);
-const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism-hub";
+const STATIC_DIR = process.env.STATIC_DIR || "/opt/prism/frontend";
 const MAX_MESSAGE_CHARS = 2000;
 const PRISM_TRUST_SECRET = process.env.PRISM_TRUST_SECRET || "";
 const PRISM_API_BASE_URL = process.env.PRISM_API_BASE_URL || "";

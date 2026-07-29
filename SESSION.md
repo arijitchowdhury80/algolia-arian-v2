@@ -2,7 +2,7 @@
 
 **Last updated: 2026-07-28 early hours (handoff).**
 **Session ran from the Algolia-Central-Spectrum working dir, not PIP** — all PRISM work, wrong CWD.
-Launch `claude` from `~/Dropbox/AI-Development/PIP` next time so SESSION.md + the memory slug resolve here.
+Launch `claude` from `~/Dropbox/AI-Development/prism` (the repo was restructured and renamed on 2026-07-28; `PIP` no longer exists) so SESSION.md + the memory slug resolve here.
 
 ## STATUS (one line)
 
