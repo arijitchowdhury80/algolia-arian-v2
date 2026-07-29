@@ -2,11 +2,16 @@
 
 Uses the v2 module registry (V2_MODULE_REGISTRY). Each module is a ModuleHandle
 (config + output schema + playbook path). The generic ModuleExecutor handles
-the actual Perplexity call and schema validation.
+the actual research call and schema validation.
+
+The research backend is never chosen here — every site builds it with
+``make_research_client()``, which resolves ``RESEARCH_PROVIDER`` (Gemini or
+Perplexity). Hardcoding a provider at the call site is what left the pipeline
+unable to run when the Perplexity key died.
 
 intel-company is the only module with a bespoke 3-track pipeline:
   Track 1: WebFetch — live page scrape (leadership + IR + newsroom)
-  Track 2: Perplexity sonar-pro — web research with citations
+  Track 2: grounded web research with citations
   Track 3: Synthesis LLM — reconciles T1 + T2 into verified output
 
 All other modules use the generic single-track executor path.
@@ -23,14 +28,13 @@ import structlog
 from pydantic import ValidationError
 from temporalio import activity
 
-from prism_platform.config import settings
 from prism_platform.db.cache import get_cached_result, persist_result
 from prism_platform.orchestrator.workflows import RunModuleInput
-from prism_platform.v2.agent_api import AgentAPIClient
 from prism_platform.v2.executor import ModuleExecutor, ModuleExecutorResult
 from prism_platform.v2.modules.intel_hiring.fetcher import fetch_careers_page
 from prism_platform.v2.pipeline_health import PipelineHealthLog
 from prism_platform.v2.registry import V2_MODULE_REGISTRY, ModuleHandle
+from prism_platform.v2.research_client import make_research_client
 from prism_platform.v2.types import (
     CompetitorRef,
     ExecutionContextV2,
@@ -257,10 +261,7 @@ async def run_module(input: RunModuleInput) -> dict[str, Any]:
             start_time=start_time,
         )
     else:
-        api = AgentAPIClient(
-            api_key=settings.perplexity_api_key,
-            timeout=float(handle.config.timeout_seconds),
-        )
+        api = make_research_client(timeout=float(handle.config.timeout_seconds))
         executor = ModuleExecutor(agent_api=api)
         result = await executor.execute(
             config=handle.config,
@@ -365,11 +366,12 @@ async def _run_intel_company_pipeline(
     # Inject Track 1 content into context for playbook resolution
     v2_context.upstream_results.update(track1_pages)
 
-    # ── Track 2: Perplexity ────────────────────────────────────────────────
-    health.info("track2_perplexity", "Calling Perplexity sonar-pro", domain=input.domain)
-    api = AgentAPIClient(
-        api_key=settings.perplexity_api_key,
-        timeout=float(handle.config.timeout_seconds),
+    # ── Track 2: grounded web research (provider from RESEARCH_PROVIDER) ───
+    api = make_research_client(timeout=float(handle.config.timeout_seconds))
+    health.info(
+        "track2_perplexity",
+        f"Calling {getattr(api, 'provider', 'unknown')} for grounded research",
+        domain=input.domain,
     )
     executor = ModuleExecutor(agent_api=api)
 
@@ -552,11 +554,12 @@ async def _run_intel_hiring_pipeline(
     # Inject careers content into context so PlaybookLoader resolves {upstream_careers_page}
     v2_context.upstream_results["careers_page"] = hiring_fetch.careers_page_content
 
-    # ── Track 2: Perplexity with injected career page content ─────────────
-    health.info("track2_perplexity", "Running Perplexity research", domain=input.domain)
-    api = AgentAPIClient(
-        api_key=settings.perplexity_api_key,
-        timeout=float(handle.config.timeout_seconds),
+    # ── Track 2: grounded research with injected career page content ──────
+    api = make_research_client(timeout=float(handle.config.timeout_seconds))
+    health.info(
+        "track2_perplexity",
+        f"Running {getattr(api, 'provider', 'unknown')} research",
+        domain=input.domain,
     )
     executor = ModuleExecutor(agent_api=api)
     result = await executor.execute(

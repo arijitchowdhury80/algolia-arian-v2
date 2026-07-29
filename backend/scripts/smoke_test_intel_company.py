@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from prism_platform.config import settings
-from prism_platform.v2.agent_api import AgentAPIClient
+from prism_platform.v2.research_client import make_research_client
 from prism_platform.v2.executor import ModuleExecutor
 from prism_platform.db.cache import get_cached_result, persist_result
 from prism_platform.v2.modules.intel_company.fetcher import fetch_all_company_pages
@@ -292,7 +292,7 @@ async def run(domain: str, force_refresh: bool = False) -> None:
     print(f"{'─' * 50}")
     print("(This takes 10-30 seconds)\n")
 
-    api = AgentAPIClient(api_key=api_key, timeout=120.0)
+    api = make_research_client(timeout=120.0)
     executor = ModuleExecutor(agent_api=api)
 
     track2_result = await executor.execute(

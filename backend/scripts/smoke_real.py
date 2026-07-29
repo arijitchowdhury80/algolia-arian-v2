@@ -68,7 +68,7 @@ async def main(domain: str) -> None:
     else:
         print(f"     API key: {perplexity_key[:8]}...")
         try:
-            from prism_platform.v2.agent_api import AgentAPIClient
+            from prism_platform.v2.research_client import make_research_client
             from prism_platform.v2.executor import ModuleExecutor
             from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
             from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
@@ -79,7 +79,7 @@ async def main(domain: str) -> None:
 
             register_all_v2_modules()
             handle = V2_MODULE_REGISTRY["intel-company"]
-            api = AgentAPIClient(api_key=perplexity_key, timeout=120.0)
+            api = make_research_client(timeout=120.0)
             executor = ModuleExecutor(agent_api=api)
             result = await executor.execute(
                 config=INTEL_COMPANY_CONFIG,

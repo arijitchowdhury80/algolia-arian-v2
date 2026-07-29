@@ -30,13 +30,24 @@ from typing import Any, TypeVar
 import structlog
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from prism_platform.v2.agent_api import AgentAPIClient
 from prism_platform.v2.playbook import PlaybookLoader
+from prism_platform.v2.research_client import ResearchClient
 from prism_platform.v2.types import ClaimRegistryEntry, ExecutionContextV2, ModuleConfig
 
 logger = structlog.get_logger(__name__)
 
 T = TypeVar("T", bound=BaseModel)
+
+
+def _loads_tolerant(content: str) -> Any:
+    """Parse model-produced JSON, allowing raw control characters in strings.
+
+    LLMs routinely emit literal newlines and tabs inside string values. Strict
+    ``json.loads`` rejects those even though the payload is otherwise valid, and
+    which provider escapes them is an implementation detail we do not control.
+    ``strict=False`` accepts them; genuine syntax errors still raise.
+    """
+    return json.loads(content, strict=False)
 
 
 class ModuleExecutorResult(BaseModel):
@@ -61,10 +72,12 @@ class ModuleExecutor:
     """Generic harness that runs any v2 module.
 
     Args:
-        agent_api: AgentAPIClient instance for making research calls.
+        agent_api: Any research backend satisfying the ResearchClient contract
+            (Gemini or Perplexity). Build it with ``make_research_client()``
+            rather than constructing a provider directly.
     """
 
-    def __init__(self, agent_api: AgentAPIClient) -> None:
+    def __init__(self, agent_api: ResearchClient) -> None:
         self._api = agent_api
         self._playbook_loader = PlaybookLoader()
 
@@ -112,7 +125,7 @@ class ModuleExecutor:
 
             # Step 4: Parse JSON
             try:
-                raw_data = json.loads(response.content)
+                raw_data = _loads_tolerant(response.content)
             except json.JSONDecodeError as e:
                 return self._fail_result(
                     config,

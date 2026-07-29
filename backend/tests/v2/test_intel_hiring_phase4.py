@@ -347,7 +347,7 @@ class TestHiringPipeline:
             ),
             patch("prism_platform.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
             patch(
-                "prism_platform.orchestrator.activities.AgentAPIClient",
+                "prism_platform.orchestrator.activities.make_research_client",
                 return_value=MagicMock(),
             ),
         ):
@@ -406,7 +406,7 @@ class TestHiringPipeline:
             ),
             patch("prism_platform.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
             patch(
-                "prism_platform.orchestrator.activities.AgentAPIClient",
+                "prism_platform.orchestrator.activities.make_research_client",
                 return_value=MagicMock(),
             ),
         ):

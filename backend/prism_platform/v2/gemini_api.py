@@ -45,6 +45,10 @@ class GeminiResearchClient:
         timeout: Request timeout in seconds.
     """
 
+    #: Provider label, matching AgentAPIClient.provider so either backend can be
+    #: logged without re-deriving the choice from settings.
+    provider = "gemini"
+
     def __init__(
         self, api_key: str, model: str = DEFAULT_GEMINI_MODEL, timeout: float = 120.0
     ) -> None:

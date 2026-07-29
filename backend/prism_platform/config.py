@@ -61,8 +61,19 @@ class Settings(BaseSettings):
     # Google Gemini
     gemini_api_key: str = ""
 
+    # Gemini model used for grounded research (Google-Search grounding).
+    gemini_model: str = "gemini-2.5-flash"
+
     # OpenRouter (access any model via unified API)
     openrouter_api_key: str = ""
+
+    # --- Research Provider (grounded web research: search + citations) ---
+
+    # Which backend serves module research calls: "gemini" or "perplexity".
+    # Deliberately separate from enricher_provider — a synthesis-only provider
+    # such as "anthropic" must never silently route research to Perplexity.
+    # Empty means auto-detect from the available keys, preferring Gemini.
+    research_provider: str = ""
 
     # --- Enricher LLM Configuration ---
 

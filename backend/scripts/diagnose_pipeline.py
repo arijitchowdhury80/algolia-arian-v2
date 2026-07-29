@@ -1,8 +1,15 @@
 """Diagnostic script — tests every registered v2 module in wave order, bypassing Temporal.
 
+The research provider comes from settings (``RESEARCH_PROVIDER``, or auto-detected
+from the available keys), exactly as it does in the real pipeline — so this script
+exercises the same provider production would use.
+
+Exits non-zero when any module fails, so a wrapper or CI job cannot read a total
+failure as green.
+
 Usage:
-    PERPLEXITY_API_KEY=your-key uv run python scripts/diagnose_pipeline.py nike.com Nike
-    PERPLEXITY_API_KEY=your-key uv run python scripts/diagnose_pipeline.py dell.com Dell
+    uv run python scripts/diagnose_pipeline.py nike.com Nike
+    uv run python scripts/diagnose_pipeline.py dell.com Dell
 """
 
 from __future__ import annotations
@@ -12,28 +19,41 @@ import os
 import sys
 import time
 import traceback
+from pathlib import Path
 from typing import Any
+
+# Run the repo's code, not whatever the venv's editable-install map was frozen
+# with at install time — that map does not include modules added since, so a
+# stale copy would be silently diagnosed instead of the working tree.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 os.environ.setdefault(
     "DATABASE_URL", "postgresql+asyncpg://prism:prism_dev_password@localhost:5432/prism"
 )
 
 
-async def run_diagnostic(domain: str, company_name: str) -> None:
+async def run_diagnostic(domain: str, company_name: str) -> bool:
+    """Run every Wave-1 module. Returns True only if nothing failed or crashed."""
     from prism_platform.orchestrator.workflows import WAVE_1_INTEL
-    from prism_platform.v2.agent_api import AgentAPIClient
     from prism_platform.v2.executor import ModuleExecutor
     from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+    from prism_platform.v2.research_client import (
+        ResearchProviderError,
+        make_research_client,
+        resolve_research_provider,
+    )
     from prism_platform.v2.types import ExecutionContextV2
 
     register_all_v2_modules()
 
-    api_key = os.environ.get("PERPLEXITY_API_KEY", "")
-    if not api_key:
-        print("ERROR: PERPLEXITY_API_KEY not set")
+    try:
+        provider = resolve_research_provider()
+        api = make_research_client(timeout=120.0)
+    except ResearchProviderError as exc:
+        print(f"ERROR: {exc}")
         sys.exit(1)
 
-    api = AgentAPIClient(api_key=api_key, timeout=120.0)
+    print(f"Research provider: {provider}")
     executor = ModuleExecutor(agent_api=api)
 
     context = ExecutionContextV2(
@@ -42,10 +62,10 @@ async def run_diagnostic(domain: str, company_name: str) -> None:
         company_name=company_name,
     )
 
-    print(f"\n{'='*70}")
+    print(f"\n{'=' * 70}")
     print(f"PRISM v2 Pipeline Diagnostic — {domain} ({company_name})")
     print(f"Registered modules: {len(V2_MODULE_REGISTRY)}")
-    print(f"{'='*70}\n")
+    print(f"{'=' * 70}\n")
 
     # Run Wave 1 modules (the only wave with v2 implementations so far)
     waves = [(1, "INTEL", WAVE_1_INTEL)]
@@ -53,9 +73,9 @@ async def run_diagnostic(domain: str, company_name: str) -> None:
     all_results: dict[str, dict[str, Any]] = {}
 
     for wave_num, wave_name, wave_modules in waves:
-        print(f"\n{'='*70}")
+        print(f"\n{'=' * 70}")
         print(f"WAVE {wave_num}: {wave_name} ({len(wave_modules)} modules)")
-        print(f"{'='*70}")
+        print(f"{'=' * 70}")
 
         wave_pass = True
 
@@ -83,7 +103,11 @@ async def run_diagnostic(domain: str, company_name: str) -> None:
                 )
                 elapsed_ms = int((time.monotonic() - start) * 1000)
 
-                icon = "✓" if result.status == "success" else ("⚠" if result.status == "partial" else "✗")
+                icon = (
+                    "✓"
+                    if result.status == "success"
+                    else ("⚠" if result.status == "partial" else "✗")
+                )
                 print(
                     f"\n  [{mod_name}] {icon} status={result.status} "
                     f"duration={elapsed_ms}ms llm_calls={result.llm_calls} "
@@ -96,7 +120,10 @@ async def run_diagnostic(domain: str, company_name: str) -> None:
                 if isinstance(result.output, dict):
                     keys = list(result.output.keys())
                     non_empty = sum(1 for v in result.output.values() if v)
-                    print(f"    Output: {non_empty}/{len(keys)} fields populated — {keys[:8]}{'...' if len(keys) > 8 else ''}")
+                    more = "..." if len(keys) > 8 else ""
+                    print(
+                        f"    Output: {non_empty}/{len(keys)} fields populated — {keys[:8]}{more}"
+                    )
 
                 all_results[mod_name] = {
                     "status": result.status,
@@ -125,27 +152,45 @@ async def run_diagnostic(domain: str, company_name: str) -> None:
                 print(f"\n  *** GATE FAIL: intel-company={ic} — aborting ***")
                 break
 
-    print(f"\n\n{'='*70}")
+    print(f"\n\n{'=' * 70}")
     print("SUMMARY")
-    print(f"{'='*70}")
+    print(f"{'=' * 70}")
     for mod_name, res in all_results.items():
         status = res.get("status", "unknown")
-        icon = {"success": "✓", "partial": "⚠", "failed": "✗", "crashed": "💥",
-                "not_registered": "–", "health_fail": "⚕"}.get(status, "?")
+        icon = {
+            "success": "✓",
+            "partial": "⚠",
+            "failed": "✗",
+            "crashed": "💥",
+            "not_registered": "–",
+            "health_fail": "⚕",
+        }.get(status, "?")
         extra = ""
         if "error" in res:
             extra = f" — {res['error'][:80]}"
         elif "duration_ms" in res:
-            extra = f" — {res['duration_ms']}ms, {res['llm_calls']} LLM calls, {res['citations']} citations"
+            extra = (
+                f" — {res['duration_ms']}ms, {res['llm_calls']} LLM calls, "
+                f"{res['citations']} citations"
+            )
         print(f"  {icon} {mod_name}: {status}{extra}")
 
     success = sum(1 for r in all_results.values() if r["status"] in ("success", "partial"))
     failed = sum(1 for r in all_results.values() if r["status"] in ("failed", "crashed"))
-    skipped = sum(1 for r in all_results.values() if r["status"] in ("not_registered", "health_fail"))
-    print(f"\nTotal: {success} passed, {failed} failed, {skipped} skipped / {len(all_results)} attempted")
+    skipped = sum(
+        1 for r in all_results.values() if r["status"] in ("not_registered", "health_fail")
+    )
+    print(
+        f"\nTotal: {success} passed, {failed} failed, {skipped} skipped "
+        f"/ {len(all_results)} attempted"
+    )
+
+    await api.close()
+    return failed == 0 and success > 0
 
 
 if __name__ == "__main__":
     domain = sys.argv[1] if len(sys.argv) > 1 else "nike.com"
     company = sys.argv[2] if len(sys.argv) > 2 else "Nike"
-    asyncio.run(run_diagnostic(domain, company))
+    ok = asyncio.run(run_diagnostic(domain, company))
+    sys.exit(0 if ok else 1)

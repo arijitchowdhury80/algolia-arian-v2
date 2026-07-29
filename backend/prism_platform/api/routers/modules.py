@@ -9,12 +9,11 @@ import structlog
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, ConfigDict
 
-from prism_platform.config import settings
 from prism_platform.db.cache import get_cached_result, persist_result
-from prism_platform.v2.agent_api import AgentAPIClient
 from prism_platform.v2.domain_normalizer import normalize_domain
 from prism_platform.v2.executor import ModuleExecutor
 from prism_platform.v2.registry import V2_MODULE_REGISTRY
+from prism_platform.v2.research_client import make_research_client
 from prism_platform.v2.types import ExecutionContextV2
 
 logger: structlog.stdlib.BoundLogger = structlog.get_logger(__name__)
@@ -103,10 +102,7 @@ async def execute_module(module_name: str, body: ExecuteModuleRequest) -> dict[s
             company_name=body.company_name or domain.split(".")[0].title(),
         )
 
-        api = AgentAPIClient(
-            api_key=settings.perplexity_api_key,
-            timeout=float(handle.config.timeout_seconds),
-        )
+        api = make_research_client(timeout=float(handle.config.timeout_seconds))
         executor = ModuleExecutor(agent_api=api)
 
         result = await executor.execute(

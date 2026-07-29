@@ -42,6 +42,10 @@ class AgentAPIClient:
         timeout: Request timeout in seconds.
     """
 
+    #: Provider label, so callers can log which backend actually ran without
+    #: re-deriving it from settings (which can raise).
+    provider = "perplexity"
+
     def __init__(self, api_key: str, timeout: float = 120.0) -> None:
         self._api_key = api_key
         self._http = httpx.AsyncClient(
