@@ -4,8 +4,10 @@ The research provider comes from settings (``RESEARCH_PROVIDER``, or auto-detect
 from the available keys), exactly as it does in the real pipeline — so this script
 exercises the same provider production would use.
 
-Exits non-zero when any module fails, so a wrapper or CI job cannot read a total
-failure as green.
+Exit codes, so a wrapper or CI job cannot read a bad run as green:
+  0 = every module produced sourced output
+  2 = ran, but some modules returned unsourced (partial) output
+  1 = something failed or crashed
 
 Usage:
     uv run python scripts/diagnose_pipeline.py nike.com Nike
@@ -32,8 +34,12 @@ os.environ.setdefault(
 )
 
 
-async def run_diagnostic(domain: str, company_name: str) -> bool:
-    """Run every Wave-1 module. Returns True only if nothing failed or crashed."""
+async def run_diagnostic(domain: str, company_name: str) -> int:
+    """Run every Wave-1 module. Returns the process exit code.
+
+    0 = every module produced sourced output, 2 = ran but some output is
+    unsourced, 1 = something failed, crashed, or nothing ran.
+    """
     from prism_platform.orchestrator.workflows import WAVE_1_INTEL
     from prism_platform.v2.executor import ModuleExecutor
     from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
@@ -175,22 +181,33 @@ async def run_diagnostic(domain: str, company_name: str) -> bool:
             )
         print(f"  {icon} {mod_name}: {status}{extra}")
 
-    success = sum(1 for r in all_results.values() if r["status"] in ("success", "partial"))
+    # Count "partial" separately. It used to be lumped in with success, which
+    # reported "13 passed" for a run where 4 modules produced unsourced output —
+    # the same false-green this pipeline is supposed to prevent.
+    sourced = sum(1 for r in all_results.values() if r["status"] == "success")
+    unsourced = sum(1 for r in all_results.values() if r["status"] == "partial")
     failed = sum(1 for r in all_results.values() if r["status"] in ("failed", "crashed"))
     skipped = sum(
         1 for r in all_results.values() if r["status"] in ("not_registered", "health_fail")
     )
     print(
-        f"\nTotal: {success} passed, {failed} failed, {skipped} skipped "
-        f"/ {len(all_results)} attempted"
+        f"\nTotal {len(all_results)} attempted: {sourced} sourced, "
+        f"{unsourced} UNSOURCED (partial), {failed} failed, {skipped} skipped"
     )
+    if unsourced:
+        print(
+            f"  ⚠ {unsourced} module(s) returned no sources after a retry. Their output is "
+            "unverified and must not be presented as evidenced."
+        )
 
     await api.close()
-    return failed == 0 and success > 0
+    if failed or sourced == 0:
+        return 1
+    return 2 if unsourced else 0
 
 
 if __name__ == "__main__":
     domain = sys.argv[1] if len(sys.argv) > 1 else "nike.com"
     company = sys.argv[2] if len(sys.argv) > 2 else "Nike"
-    ok = asyncio.run(run_diagnostic(domain, company))
-    sys.exit(0 if ok else 1)
+    # 0 = every module sourced, 2 = ran but some output unsourced, 1 = something failed.
+    sys.exit(asyncio.run(run_diagnostic(domain, company)))
