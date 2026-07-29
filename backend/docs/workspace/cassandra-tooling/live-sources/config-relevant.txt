@@ -1,0 +1,40 @@
+1:model:
+6:  max_tokens: 512
+11:toolsets:
+30:  disabled_toolsets: []
+174:    model: google/gemini-2.5-flash
+182:    model: medium
+189:    model: medium
+196:    model: medium
+203:    model: deepseek/deepseek-v4-pro
+210:    model: deepseek/deepseek-v4-flash
+217:    model: deepseek/deepseek-v4-flash
+224:    model: ''
+231:    model: deepseek/deepseek-v4-pro
+238:    model: deepseek/deepseek-v4-pro
+245:    model: deepseek/deepseek-v4-pro
+252:    model: anthropic/claude-sonnet-4.6
+259:    model: deepseek/deepseek-v4-flash
+341:    model: gpt-4o-mini-tts
+344:    model: gemini-2.5-flash-preview-tts
+354:    model: voxtral-mini-tts-2603
+359:    model: neuphonic/neutts-air-q4-gguf
+367:    model: base
+370:    model: whisper-1
+372:    model: voxtral-mini-latest
+400:delegation:
+401:  model: gemini-2.5-flash
+406:  inherit_mcp_toolsets: true
+411:  max_spawn_depth: 1
+412:  orchestrator_enabled: false
+583:  model: grok-4.20-reasoning
+604:platform_toolsets:
+607:  - prism_audit
+619:  - prism_audit
+645:known_plugin_toolsets:
+651:    model: deepseek/deepseek-v4-flash
+654:    model: deepseek/deepseek-v4-flash
+657:    model: deepseek/deepseek-v4-pro
+660:    model: deepseek/deepseek-v4-pro
+663:    model: anthropic/claude-sonnet-4.6
+666:    model: anthropic/claude-sonnet-4.6

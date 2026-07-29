@@ -1,0 +1,130 @@
+"""Tests for the ACL-gated chat router (run-2026-07-14-001, 04-spec.md §3
+[C-1]). `chat_with_audit` depends on the shared `require_audit_access` --
+no second wrapper. The old `authorize_audit_access`/`check_slug_authorization`
+pair is deleted from chat.py entirely (not skipped, not left dead).
+"""
+
+from __future__ import annotations
+
+import uuid
+from unittest.mock import AsyncMock, patch
+
+import pytest
+from fastapi.testclient import TestClient
+
+from prism_platform.api.deps import db_session
+from prism_platform.auth.deps import require_audit_access, resolve_user_id
+from prism_platform.config import settings
+from prism_platform.db.models import Audit
+from prism_platform.main import app
+from prism_platform.pipeline.chat_agent import ChatAgentResult
+
+# ---------------------------------------------------------------------------
+# Contract: the legacy authorization wrapper is deleted, not dead code
+# ---------------------------------------------------------------------------
+
+
+def test_chat_router_has_no_legacy_authorization_wrapper() -> None:
+    import prism_platform.api.routers.chat as chat_module
+
+    assert not hasattr(chat_module, "authorize_audit_access")
+    assert not hasattr(chat_module, "check_slug_authorization")
+    assert not hasattr(chat_module, "AUTHORIZED_SLUGS_HEADER")
+
+
+def test_chat_with_audit_depends_on_require_audit_access() -> None:
+    """chat_with_audit's FastAPI dependency graph includes require_audit_access
+    directly -- the one call site every gated endpoint depends on."""
+    matching_route = next(r for r in app.routes if getattr(r, "name", "") == "chat_with_audit")
+    dep_callables = {d.call for d in matching_route.dependant.dependencies}
+    assert require_audit_access in dep_callables
+
+
+# ---------------------------------------------------------------------------
+# Full endpoint -- FastAPI TestClient, DB session faked, resolve_user_id
+# overridden directly (no real assertion header needed for these tests)
+# ---------------------------------------------------------------------------
+
+
+class _FakeScalarResult:
+    def __init__(self, value: object) -> None:
+        self._value = value
+
+    def scalar_one_or_none(self) -> object:
+        return self._value
+
+
+class _FakeSession:
+    """Returns queued results in call order -- the audit fetch inside
+    require_audit_access, then (if the caller isn't the owner) the
+    audit_shares lookup inside can_user_see."""
+
+    def __init__(self, results: list[object]) -> None:
+        self._results = list(results)
+
+    async def execute(self, stmt: object) -> _FakeScalarResult:
+        return _FakeScalarResult(self._results.pop(0))
+
+
+@pytest.fixture
+def client_with_fake_audit():
+    audit_id = uuid.uuid4()
+    account_id = uuid.uuid4()
+    audit = Audit(id=audit_id, account_id=account_id, user_id="user_owner")
+
+    async def fake_db_session():
+        yield _FakeSession(results=[audit])
+
+    app.dependency_overrides[db_session] = fake_db_session
+    app.dependency_overrides[resolve_user_id] = lambda: "user_owner"
+    try:
+        yield TestClient(app), audit_id
+    finally:
+        app.dependency_overrides.pop(db_session, None)
+        app.dependency_overrides.pop(resolve_user_id, None)
+
+
+@pytest.fixture
+def client_with_fake_audit_denied():
+    audit_id = uuid.uuid4()
+    account_id = uuid.uuid4()
+    audit = Audit(id=audit_id, account_id=account_id, user_id="user_owner")
+
+    async def fake_db_session():
+        # audit fetch, then audit_shares lookup (no share) inside can_user_see
+        yield _FakeSession(results=[audit, None])
+
+    app.dependency_overrides[db_session] = fake_db_session
+    app.dependency_overrides[resolve_user_id] = lambda: "user_stranger"
+    original_flag = settings.acl_enforcement_enabled
+    settings.acl_enforcement_enabled = True
+    try:
+        yield TestClient(app), audit_id
+    finally:
+        app.dependency_overrides.pop(db_session, None)
+        app.dependency_overrides.pop(resolve_user_id, None)
+        settings.acl_enforcement_enabled = original_flag
+
+
+def test_chat_endpoint_returns_grounded_answer(client_with_fake_audit) -> None:
+    client, audit_id = client_with_fake_audit
+    fake_result = ChatAgentResult(
+        answer="Belk uses Constructor.io (Source: tech_stack).",
+        cited_sections={"tech_stack"},
+        retrieved_sections=("tech_stack",),
+    )
+    with patch(
+        "prism_platform.api.routers.chat.run_chat_agent", AsyncMock(return_value=fake_result)
+    ):
+        resp = client.post(f"/api/v1/audits/{audit_id}/chat", json={"question": "what vendor?"})
+    assert resp.status_code == 200
+    body = resp.json()
+    assert body["answer"] == "Belk uses Constructor.io (Source: tech_stack)."
+    assert body["cited_sections"] == ["tech_stack"]
+    assert body["retrieved_sections"] == ["tech_stack"]
+
+
+def test_chat_endpoint_denies_caller_without_access(client_with_fake_audit_denied) -> None:
+    client, audit_id = client_with_fake_audit_denied
+    resp = client.post(f"/api/v1/audits/{audit_id}/chat", json={"question": "what vendor?"})
+    assert resp.status_code == 404

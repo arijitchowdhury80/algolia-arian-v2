@@ -1,0 +1,14 @@
+[Unit]
+Description=PRISM audit runner (host muscle for Cassandra executioner)
+After=network.target docker.service
+
+[Service]
+Type=simple
+Environment=PRISM_RUNNER_PORT=8770
+Environment=PRISM_RUNNER_TOKEN=e1b568f9dc87bdb556ff3fe4b45a59da
+ExecStart=/usr/bin/python3 /opt/prism-executor/prism-runner.py
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+wheels/
+.venv/
+*.egg
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+
+# mypy
+.mypy_cache/
+
+# Docker volumes
+pgdata/
+
+# Worktrees
+.worktrees/
+
+# Node / Next.js (frontend)
+node_modules/
+.next/
+.turbo/
+*.tsbuildinfo
+.clerk/
+
+# Claude Code local config
+.claude/
+
+# Scratch / temp
+TEMP/
+*.bak
+*.orig
+*~
+# timestamped hand-edit backups: foo.html.bak-20260703091738 / foo.html.bak.20260705-002217
+*.bak-*
+*.bak.*
+
+# Ruff
+.ruff_cache/
+
+# ephemeral scratch — Wave2 screenshots etc.
+docs/temp/
+
+# agent/tool scratch dirs — session state, not source
+.playwright-mcp/
+.ship-loop/
+.development-loop/
+
+# loose screenshots dropped in the repo root
+/prism-*.png

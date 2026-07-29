@@ -1,0 +1,6 @@
+name: prism-report-qa
+version: "0.1"
+description: Binds a chat to ONE audit report and injects it as the sole source of facts (grounded report-QA). Facts must come from the report; coaching is allowed but anchored to cited report facts.
+provides_tools:
+  - run_audit
+  - audit_status
