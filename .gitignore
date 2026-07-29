@@ -10,3 +10,10 @@ node_modules/
 *.prebak
 assets/cass-candidates/
 docs/workspace/
+
+# Hand-edit backups must never be committed (193 of them were, removed 2026-07-28).
+*.bak
+*.bak-*
+*.bak.*
+*.prelegalfix*
+*.orig
