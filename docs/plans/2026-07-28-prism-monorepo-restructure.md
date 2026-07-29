@@ -133,3 +133,25 @@ flagged for a later decision.
 | History lost merging repos | subtree merge, verify `git log --follow`; archive `pip.git` |
 | Old branches conflict after restructure | delete merged branches in Phase 0; recreate `v2` in Phase 5 |
 | Deleting the dead Next app loses work | recoverable from history; confirm with Arijit first |
+
+## Deferred (Arijit, 2026-07-28)
+
+- **Merge `ia/`, `ia1/`, `ia2/` and establish why there are three.** Kept as-is at Arijit's
+  instruction. No link from the live nav, but an unlinked page may still be a URL shared
+  directly with a prospect, so they were not deleted.
+- **Relocate Scout out of `/opt/prism`.** That path already contained Scout's source and backups
+  (598 MB) before the restructure, so the app now sits beside it. Scout runs in Docker on 8421;
+  moving it during a production cutover was declined. `/opt/scout` is the tidier home.
+- **Generated report HTML in git.** ~600 KB per audit of generator output, but carrying hand-edits
+  made on the live server, so it is no longer reproducible from the generator. Open question.
+
+## Lessons from execution
+
+Two directory nestings happened for the same reason: `mv`/`git mv` into a destination that
+already existed silently nests instead of replacing.
+- `mv /opt/prism.new /opt/prism` nested at `/opt/prism/prism.new` because `/opt/prism` already
+  held Scout.
+- `git mv backend/docs docs` nested at `docs/docs` because an untracked local `docs/workspace`
+  already existed.
+**Heuristic:** before any move, test the destination for existence explicitly. Do not infer that
+a path is free because it was not in a listing that had been filtered.
