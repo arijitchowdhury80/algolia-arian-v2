@@ -1,5 +1,8 @@
 # SESSION.md — Monorepo restructure, then: the v2 pipeline was dead (2026-07-28 → 29)
 
+**Persist run 2026-07-29 (evening): resume state below is unchanged since the ~03:45–05:00 write
+below — nothing further executed after that block, this is a verification/persist pass only.**
+
 ## ⏭ LATEST SESSION (2026-07-29, ~03:45–05:00) — read this block first
 
 **Headline: the v2 backend module pipeline could not execute a single module, and had not been
