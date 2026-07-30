@@ -15,13 +15,13 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_techstack.config import INTEL_TECHSTACK_CONFIG
 from prism_platform.v2.modules.intel_techstack.schemas import (
     SearchVendorV2,
     TechStackV2Output,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent / "prism_platform/v2/modules/intel_techstack/playbook.md"

@@ -13,9 +13,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-from prism_platform.pipeline.claims import extract_claims
-from prism_platform.pipeline.gate import SkillOutput
-from prism_platform.pipeline.llm_stages import make_batch_factcheck_fn
+from server.pipeline.claims import extract_claims
+from server.pipeline.gate import SkillOutput
+from server.pipeline.llm_stages import make_batch_factcheck_fn
 
 
 def _skill_output(skill_name: str, audit_dir: Path) -> SkillOutput:

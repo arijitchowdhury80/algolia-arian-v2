@@ -1,6 +1,6 @@
 """Tests for the content-based screenshot quality gate.
 
-See prism_platform/pipeline/screenshot_gate.py and
+See server/pipeline/screenshot_gate.py and
 docs/plans/2026-07-02-cassandra-airtight-pipeline-goal.md §3.1b/§3.1c for design intent.
 
 Two shipped bugs drive this module:
@@ -16,7 +16,7 @@ import io
 import pytest
 from PIL import Image, ImageDraw
 
-from prism_platform.pipeline.screenshot_gate import (
+from server.pipeline.screenshot_gate import (
     DEFAULT_OVERLAY_MARKERS,
     ShotReport,
     ShotVerdict,
@@ -148,7 +148,7 @@ class TestCheckImage:
 
 class TestCheckImagePillowUnavailable:
     def test_pillow_unavailable_skips_image_checks(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        import prism_platform.pipeline.screenshot_gate as gate_module
+        import server.pipeline.screenshot_gate as gate_module
 
         monkeypatch.setattr(gate_module, "_PILLOW_AVAILABLE", False)
         failed, checks_run = gate_module.check_image(solid_black_png())
@@ -156,7 +156,7 @@ class TestCheckImagePillowUnavailable:
         assert checks_run == ["image:pillow_unavailable"]
 
     def test_pillow_unavailable_dom_checks_still_run(self, monkeypatch: pytest.MonkeyPatch) -> None:
-        import prism_platform.pipeline.screenshot_gate as gate_module
+        import server.pipeline.screenshot_gate as gate_module
 
         monkeypatch.setattr(gate_module, "_PILLOW_AVAILABLE", False)
         report = gate_module.gate_screenshot(

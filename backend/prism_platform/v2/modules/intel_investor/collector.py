@@ -15,7 +15,6 @@ so the playbook can reference it as ``{upstream_investor_yahoo}``.
 
 from __future__ import annotations
 
-import datetime
 from typing import Any
 
 import structlog
@@ -25,7 +24,7 @@ try:
 except ImportError:  # yfinance may not be installed in lightweight envs
     yf = None  # type: ignore[assignment]
 
-from prism_platform.v2.types import ExecutionContextV2
+from core.types import ExecutionContextV2
 
 logger = structlog.get_logger(__name__)
 

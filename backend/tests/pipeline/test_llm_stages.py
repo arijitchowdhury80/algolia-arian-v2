@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from prism_platform.pipeline import gate as gate_module
-from prism_platform.pipeline.gate import SkillOutput
-from prism_platform.pipeline.llm_stages import (
+from server.pipeline import gate as gate_module
+from server.pipeline.gate import SkillOutput
+from server.pipeline.llm_stages import (
     adversarial_fn,
     adversarial_voter_fn,
     build_adversarial_voter_prompt,
@@ -22,7 +22,7 @@ from prism_platform.pipeline.llm_stages import (
     make_batch_factcheck_fn,
     quality_fn,
 )
-from prism_platform.pipeline.verdicts import (
+from server.pipeline.verdicts import (
     AdversarialVerdict,
     AdversarialVoterVerdict,
     FactCheckVerdict,
@@ -354,7 +354,7 @@ def test_make_batch_adversarial_fn_empty_risky_claims_makes_zero_cli_calls() -> 
 def test_real_functions_wire_into_gate_end_to_end_with_fake_cli() -> None:
     import sys
 
-    from prism_platform.pipeline.gate import gate
+    from server.pipeline.gate import gate
 
     so = _skill_output()
 

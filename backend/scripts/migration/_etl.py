@@ -27,7 +27,7 @@ from sqlalchemy import func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import Session
 
-from prism_platform.db.models import Account, Audit, Deliverable, ModuleExecution
+from core.db.models import Account, Audit, Deliverable, ModuleExecution
 
 AUDIT_DATA_RE = re.compile(r"window\.AUDIT_DATA\s*=\s*(\{.*?\})\s*;?\s*</script>", re.S)
 
@@ -387,7 +387,7 @@ def run_migration(
     published_dir: Path,
     grounding_dir: Path | None,
 ) -> tuple[list[SlugResult], dict[str, int]]:
-    from prism_platform.db.models import Base
+    from core.db.models import Base
 
     Base.metadata.create_all(engine)
 

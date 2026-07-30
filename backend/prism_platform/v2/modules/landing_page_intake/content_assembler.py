@@ -13,20 +13,14 @@ structural: does the submission produce a schema-valid landing.json.
 from __future__ import annotations
 
 import json
-from pathlib import Path
 from typing import Any
 
 import jsonschema
 
+from core.paths import DOCS_DIR
+
 _SCHEMA_PATH = (
-    # docs/ is at the repo root since the 2026-07-28 restructure, one level above
-    # backend/, so this walks up one more than before.
-    Path(__file__).resolve().parents[5]
-    / "docs"
-    / "workspace"
-    / "custom-landing-page"
-    / "schema"
-    / "landing-page.schema.json"
+    DOCS_DIR / "workspace" / "custom-landing-page" / "schema" / "landing-page.schema.json"
 )
 
 

@@ -40,15 +40,15 @@ async def run_diagnostic(domain: str, company_name: str) -> int:
     0 = every module produced sourced output, 2 = ran but some output is
     unsourced, 1 = something failed, crashed, or nothing ran.
     """
-    from prism_platform.orchestrator.workflows import WAVE_1_INTEL
-    from prism_platform.v2.executor import ModuleExecutor
-    from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
-    from prism_platform.v2.research_client import (
+    from core.executor import ModuleExecutor
+    from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+    from core.research_client import (
         ResearchProviderError,
         make_research_client,
         resolve_research_provider,
     )
-    from prism_platform.v2.types import ExecutionContextV2
+    from core.types import ExecutionContextV2
+    from server.orchestrator.workflows import WAVE_1_INTEL
 
     register_all_v2_modules()
 

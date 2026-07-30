@@ -9,11 +9,11 @@ import uuid
 import pytest
 from fastapi.testclient import TestClient
 
-from prism_platform.api.deps import db_session
-from prism_platform.auth.deps import require_audit_access, resolve_user_id
-from prism_platform.config import settings
-from prism_platform.db.models import Audit
-from prism_platform.main import app
+from core.auth.deps import require_audit_access, resolve_user_id
+from core.config import settings
+from core.db.models import Audit
+from server.api.deps import db_session
+from server.main import app
 from tests.api.conftest import FakeQueueSession
 
 
@@ -73,7 +73,7 @@ async def test_stream_allows_owner_to_open_the_stream() -> None:
     test_stream_denies_before_first_frame above (that path 404s before a
     StreamingResponse is ever constructed, so there is no body to drain).
     """
-    from prism_platform.api.routers.audit_stream import stream_audit_progress
+    from server.api.routers.audit_stream import stream_audit_progress
 
     audit = Audit(id=uuid.uuid4(), account_id=uuid.uuid4(), user_id="user_owner", status="running")
     session = FakeQueueSession(results=[])

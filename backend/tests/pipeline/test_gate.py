@@ -1,7 +1,7 @@
 """Tests for the Track G 5-stage `gate()` verification pipeline.
 
 Stages 2-4 are LLM-backed but dependency-injected (no live LLM access in
-this test environment) -- see prism_platform/pipeline/gate.py's module
+this test environment) -- see server/pipeline/gate.py's module
 docstring. Stage 1 (mechanical) is exercised against a real subprocess
 (a throwaway python -c script standing in for factcheck_mechanical.py) using
 the exact exit-code contract self_heal.subprocess_gate already implements
@@ -16,20 +16,20 @@ from pathlib import Path
 
 import pytest
 
-from prism_platform.pipeline.gate import (
+from server.pipeline.gate import (
     BlockClass,
     SkillOutput,
     VerdictStatus,
     find_audit_data_json,
     gate,
 )
-from prism_platform.pipeline.self_heal import (
+from server.pipeline.self_heal import (
     GateResult,
     GateStatus,
     PhaseOutcome,
     SelfHealLoop,
 )
-from prism_platform.pipeline.verdicts import (
+from server.pipeline.verdicts import (
     AdversarialVerdict,
     AdversarialVoterVerdict,
     FactCheckVerdict,
@@ -465,7 +465,7 @@ class TestDefaultMechanicalCmdUsesAuditDataForm:
     def test_default_mechanical_cmd_passes_real_audit_data_path(
         self, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        import prism_platform.pipeline.gate as gate_module
+        import server.pipeline.gate as gate_module
 
         company_dir = self._company_dir_with_audit_data(tmp_path)
         record_path = tmp_path / "argv.json"

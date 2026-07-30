@@ -8,9 +8,9 @@ from unittest.mock import AsyncMock
 import pytest
 from pydantic import BaseModel, ConfigDict, Field
 
-from prism_platform.v2.agent_api import AgentAPIResponse
-from prism_platform.v2.executor import ModuleExecutor, ModuleExecutorResult
-from prism_platform.v2.types import ExecutionContextV2, ModuleConfig
+from core.agent_api import AgentAPIResponse
+from core.executor import ModuleExecutor, ModuleExecutorResult
+from core.types import ExecutionContextV2, ModuleConfig
 
 
 class FakeOutput(BaseModel):

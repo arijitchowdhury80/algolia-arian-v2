@@ -12,8 +12,8 @@ Read receipt (Google docs, 2026-06-29 — generate-content/google-search):
 
 from __future__ import annotations
 
-from prism_platform.v2.agent_api import AgentAPIResponse
-from prism_platform.v2.gemini_api import GeminiResearchClient
+from core.agent_api import AgentAPIResponse
+from core.gemini_api import GeminiResearchClient
 
 # ---------------------------------------------------------------------------
 # _build_payload — request shape

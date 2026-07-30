@@ -12,9 +12,9 @@ from __future__ import annotations
 
 import pytest
 
-from prism_platform.v2.agent_api import AgentAPIClient
-from prism_platform.v2.gemini_api import GeminiResearchClient
-from prism_platform.v2.research_client import (
+from core.agent_api import AgentAPIClient
+from core.gemini_api import GeminiResearchClient
+from core.research_client import (
     ResearchProviderError,
     make_research_client,
     resolve_research_provider,

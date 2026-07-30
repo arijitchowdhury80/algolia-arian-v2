@@ -23,10 +23,10 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_social.config import INTEL_SOCIAL_CONFIG
 from prism_platform.v2.modules.intel_social.schemas import SocialIntelOutput, SocialPost
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent / "prism_platform/v2/modules/intel_social/playbook.md"
@@ -487,27 +487,27 @@ class TestIntelSocialCollector:
 
 class TestIntelSocialRegistration:
     def test_registered_in_v2_registry(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         assert "intel-social" in V2_MODULE_REGISTRY
 
     def test_registry_handle_has_collector(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-social"]
         assert handle.collector is not None
 
     def test_registry_handle_output_schema(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-social"]
         assert handle.output_schema is SocialIntelOutput
 
     def test_registry_handle_playbook_exists(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-social"]

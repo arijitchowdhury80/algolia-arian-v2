@@ -2,7 +2,7 @@
 
 No ModuleConfig/registry entry here on purpose: this is not a pipeline-DAG
 module (no cost_tier, no composes, no LLM playbook -- see schemas.py
-docstring). It is exposed via prism_platform/api/routers/landing_pages.py,
+docstring). It is exposed via server/api/routers/landing_pages.py,
 following the audits.py CRUD-router pattern, not modules.py's execute-module
 pattern (that route is wired to the Perplexity-backed research pipeline).
 

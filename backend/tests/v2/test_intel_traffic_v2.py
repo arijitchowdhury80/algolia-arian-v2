@@ -7,14 +7,14 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import CompetitorRef, ExecutionContextV2
 from prism_platform.v2.modules.intel_traffic.config import INTEL_TRAFFIC_CONFIG
 from prism_platform.v2.modules.intel_traffic.schemas import (
     CompetitorTrafficSummary,
     TrafficSourceV2,
     TrafficV2Output,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import CompetitorRef, ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent / "prism_platform/v2/modules/intel_traffic/playbook.md"

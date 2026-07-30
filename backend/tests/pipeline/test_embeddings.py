@@ -12,10 +12,10 @@ from __future__ import annotations
 
 import pytest
 
-from prism_platform.pipeline.embeddings import EMBEDDING_DIMS, EMBEDDING_MODEL_NAME, embed_texts
+from server.pipeline.embeddings import EMBEDDING_DIMS, EMBEDDING_MODEL_NAME, embed_texts
 
 try:
-    from prism_platform.pipeline.embeddings import _load_model
+    from server.pipeline.embeddings import _load_model
 
     _load_model()
     _MODEL_AVAILABLE = True

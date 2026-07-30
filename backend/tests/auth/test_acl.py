@@ -1,4 +1,4 @@
-"""Unit tests for prism_platform.auth.acl -- the ACL seam (04-spec.md §2).
+"""Unit tests for core.auth.acl -- the ACL seam (04-spec.md §2).
 
 No live Postgres needed: can_user_see's only I/O is one `audit_shares`
 lookup, faked below the same way tests/pipeline/test_chat_router.py fakes
@@ -13,8 +13,8 @@ from pathlib import Path
 import pytest
 import structlog
 
-from prism_platform.auth.acl import can_user_see, is_owner
-from prism_platform.db.models import Audit, AuditShare
+from core.auth.acl import can_user_see, is_owner
+from core.db.models import Audit, AuditShare
 
 
 class _FakeScalarResult:
@@ -114,7 +114,7 @@ async def test_two_null_org_id_users_cannot_see_each_other() -> None:
 
 
 def test_org_id_not_referenced_in_source() -> None:
-    import prism_platform.auth.acl as acl_module
+    import core.auth.acl as acl_module
 
     source = Path(acl_module.__file__).read_text()
     assert ".org_id" not in source

@@ -9,7 +9,7 @@ from __future__ import annotations
 import uuid
 from datetime import UTC, datetime
 
-from prism_platform.db.models import Audit
+from core.db.models import Audit
 
 
 class FakeScalars:

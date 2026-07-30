@@ -12,15 +12,13 @@ Idempotent — safe to run multiple times.
 
 from __future__ import annotations
 
-import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import openpyxl
 import psycopg2
-from psycopg2.extras import execute_values
 
 # ---------------------------------------------------------------------------
 # Config
@@ -220,7 +218,7 @@ def enrich_from_vertical_tabs(conn, wb: openpyxl.Workbook) -> int:
             params.append(tab_name)
 
             updates.append("updated_at = %s")
-            params.append(datetime.now(timezone.utc))
+            params.append(datetime.now(UTC))
 
             if not updates:
                 continue
@@ -264,7 +262,7 @@ def load_adobe_partners(conn, wb: openpyxl.Workbook) -> int:
             END,
             updated_at = %s
             WHERE LOWER(company_name) = LOWER(%s)
-        """, (datetime.now(timezone.utc), name))
+        """, (datetime.now(UTC), name))
         if cur.rowcount > 0:
             updated += cur.rowcount
 
@@ -304,7 +302,7 @@ def merge_recommend_quotes(conn, wb: openpyxl.Workbook) -> int:
         cur.execute("""
             INSERT INTO algolia_quotes (id, customer_name, person_name, person_title, industry, country, quote_text, evidence_type, source, created_at)
             VALUES (gen_random_uuid(), %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, (customer, name, title, industry, country, quote, "Recommend Quote", "CustomerEvidence Excel", datetime.now(timezone.utc)))
+        """, (customer, name, title, industry, country, quote, "Recommend Quote", "CustomerEvidence Excel", datetime.now(UTC)))
         inserted += 1
 
     conn.commit()
@@ -337,7 +335,7 @@ def merge_neural_search_cx(conn, wb: openpyxl.Workbook) -> int:
             END,
             updated_at = %s
             WHERE LOWER(company_name) = LOWER(%s)
-        """, (datetime.now(timezone.utc), name))
+        """, (datetime.now(UTC), name))
         if cur.rowcount > 0:
             updated += cur.rowcount
 
@@ -368,13 +366,13 @@ def print_summary(conn):
     print("\n=== INDUSTRY DISTRIBUTION (top 15) ===")
     cur.execute("SELECT industry, count(*) FROM algolia_customers GROUP BY industry ORDER BY count DESC LIMIT 15")
     for row in cur.fetchall():
-        print(f"  {str(row[0]):30s} {row[1]:>5d}")
+        print(f"  {row[0]!s:30s} {row[1]:>5d}")
 
     # ARR tier distribution
     print("\n=== ARR TIER DISTRIBUTION ===")
     cur.execute("SELECT arr_range, count(*) FROM algolia_customers WHERE arr_range IS NOT NULL GROUP BY arr_range ORDER BY count DESC")
     for row in cur.fetchall():
-        print(f"  {str(row[0]):30s} {row[1]:>5d}")
+        print(f"  {row[0]!s:30s} {row[1]:>5d}")
 
     # Partner ecosystem
     print("\n=== PARTNER TAGS ===")

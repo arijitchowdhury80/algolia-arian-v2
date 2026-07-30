@@ -7,7 +7,7 @@ dimension scores are estimated from techstack + traffic (is_estimated=True).
 
 from __future__ import annotations
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 AUDIT_REPORT_CONFIG = ModuleConfig(
     name="audit-report",

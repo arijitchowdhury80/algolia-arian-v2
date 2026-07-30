@@ -19,18 +19,16 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from prism_platform.browser.client import BrowserClient
-from prism_platform.browser.types import FetchOptions, FetchResult, FetchTier
-from prism_platform.orchestrator.activities import _run_intel_company_pipeline
-from prism_platform.orchestrator.workflows import RunModuleInput
-from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-from prism_platform.v2.pipeline_health import (
-    EventCategory,
-    EventSeverity,
+from core.browser.client import BrowserClient
+from core.browser.types import FetchOptions, FetchResult, FetchTier
+from core.pipeline_health import (
     PipelineHealthLog,
 )
-from prism_platform.v2.synthesis import SynthesisClient, SynthesisResult
-from prism_platform.v2.types import ExecutionContextV2
+from core.synthesis import SynthesisClient, SynthesisResult
+from core.types import ExecutionContextV2
+from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
+from server.orchestrator.activities import _run_intel_company_pipeline
+from server.orchestrator.workflows import RunModuleInput
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -127,11 +125,11 @@ class TestBrowserClientTierEscalation:
 
         with (
             patch(
-                "prism_platform.browser.client.fetch_direct",
+                "core.browser.client.fetch_direct",
                 new=AsyncMock(return_value=success_result),
             ) as mock_httpx,
             patch(
-                "prism_platform.browser.client.fetch_jina",
+                "core.browser.client.fetch_jina",
                 new=AsyncMock(),
             ) as mock_jina,
         ):
@@ -151,11 +149,11 @@ class TestBrowserClientTierEscalation:
 
         with (
             patch(
-                "prism_platform.browser.client.fetch_direct",
+                "core.browser.client.fetch_direct",
                 new=AsyncMock(return_value=httpx_fail),
             ),
             patch(
-                "prism_platform.browser.client.fetch_jina",
+                "core.browser.client.fetch_jina",
                 new=AsyncMock(return_value=jina_success),
             ) as mock_jina,
         ):
@@ -175,15 +173,15 @@ class TestBrowserClientTierEscalation:
 
         with (
             patch(
-                "prism_platform.browser.client.fetch_direct",
+                "core.browser.client.fetch_direct",
                 new=AsyncMock(return_value=httpx_fail),
             ),
             patch(
-                "prism_platform.browser.client.fetch_jina",
+                "core.browser.client.fetch_jina",
                 new=AsyncMock(return_value=jina_fail),
             ),
             patch(
-                "prism_platform.browser.client.fetch_stealth",
+                "core.browser.client.fetch_stealth",
                 new=AsyncMock(return_value=playwright_success),
             ) as mock_t2,
         ):
@@ -202,15 +200,15 @@ class TestBrowserClientTierEscalation:
 
         with (
             patch(
-                "prism_platform.browser.client.fetch_direct",
+                "core.browser.client.fetch_direct",
                 new=AsyncMock(return_value=httpx_fail),
             ),
             patch(
-                "prism_platform.browser.client.fetch_jina",
+                "core.browser.client.fetch_jina",
                 new=AsyncMock(return_value=jina_fail),
             ),
             patch(
-                "prism_platform.browser.client.fetch_stealth",
+                "core.browser.client.fetch_stealth",
                 new=AsyncMock(),
             ) as mock_t2,
         ):
@@ -238,7 +236,7 @@ class TestBrowserClientTierEscalation:
         ]
 
         with patch(
-            "prism_platform.browser.client.fetch_direct",
+            "core.browser.client.fetch_direct",
             new=AsyncMock(side_effect=results_in_order),
         ):
             client = BrowserClient()
@@ -389,8 +387,8 @@ class TestSynthesisClient:
         so we must patch at the google package level, not the synthesis module level.
         """
         return (
-            patch("prism_platform.v2.synthesis.settings") ,
-            patch("prism_platform.v2.synthesis.genai", mock_genai_module),
+            patch("core.synthesis.settings") ,
+            patch("core.synthesis.genai", mock_genai_module),
         )
 
     @pytest.mark.asyncio
@@ -400,8 +398,8 @@ class TestSynthesisClient:
         mock_genai_module, _ = self._make_gemini_mock(json.dumps(valid_output))
 
         with (
-            patch("prism_platform.v2.synthesis.settings") as mock_settings,
-            patch("prism_platform.v2.synthesis.genai", mock_genai_module),
+            patch("core.synthesis.settings") as mock_settings,
+            patch("core.synthesis.genai", mock_genai_module),
         ):
             mock_settings.get_enricher_provider.return_value = "gemini"
             mock_settings.get_enricher_model.return_value = "gemini-3.1-flash-lite-preview"
@@ -436,8 +434,8 @@ class TestSynthesisClient:
         mock_genai_module, _ = self._make_gemini_mock(fenced_response)
 
         with (
-            patch("prism_platform.v2.synthesis.settings") as mock_settings,
-            patch("prism_platform.v2.synthesis.genai", mock_genai_module),
+            patch("core.synthesis.settings") as mock_settings,
+            patch("core.synthesis.genai", mock_genai_module),
         ):
             mock_settings.get_enricher_provider.return_value = "gemini"
             mock_settings.get_enricher_model.return_value = "gemini-3.1-flash-lite-preview"
@@ -462,8 +460,8 @@ class TestSynthesisClient:
         mock_genai_module, _ = self._make_gemini_mock("Sorry, I cannot help with that.")
 
         with (
-            patch("prism_platform.v2.synthesis.settings") as mock_settings,
-            patch("prism_platform.v2.synthesis.genai", mock_genai_module),
+            patch("core.synthesis.settings") as mock_settings,
+            patch("core.synthesis.genai", mock_genai_module),
         ):
             mock_settings.get_enricher_provider.return_value = "gemini"
             mock_settings.get_enricher_model.return_value = "gemini-3.1-flash-lite-preview"
@@ -502,8 +500,8 @@ class TestSynthesisClient:
         mock_genai_module.Client.return_value = mock_gemini_client
 
         with (
-            patch("prism_platform.v2.synthesis.settings") as mock_settings,
-            patch("prism_platform.v2.synthesis.genai", mock_genai_module),
+            patch("core.synthesis.settings") as mock_settings,
+            patch("core.synthesis.genai", mock_genai_module),
         ):
             mock_settings.get_enricher_provider.return_value = "gemini"
             mock_settings.get_enricher_model.return_value = "gemini-3.1-flash-lite-preview"
@@ -551,8 +549,8 @@ def _make_run_module_input(domain: str = _DOMAIN) -> RunModuleInput:
 
 def _make_executor_result(status: str = "success", output: dict | None = None) -> Any:
     """Build a ModuleExecutorResult-like mock for the executor."""
-    from prism_platform.v2.executor import ModuleExecutorResult
-    from prism_platform.v2.types import ClaimRegistryEntry
+    from core.executor import ModuleExecutorResult
+    from core.types import ClaimRegistryEntry
 
     if output is None:
         output = _make_company_output()
@@ -587,7 +585,7 @@ class TestFullPipelineIntegration:
     @pytest.mark.asyncio
     async def test_happy_path_uses_synthesis_output(self) -> None:
         """When all 3 tracks succeed, the final result uses Track 3 synthesis output."""
-        from prism_platform.v2.registry import ModuleHandle, V2_MODULE_REGISTRY
+        from core.registry import V2_MODULE_REGISTRY, ModuleHandle
         from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
         from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
@@ -626,11 +624,11 @@ class TestFullPipelineIntegration:
                 new=AsyncMock(return_value=t1_pages),
             ),
             patch(
-                "prism_platform.v2.executor.ModuleExecutor.execute",
+                "core.executor.ModuleExecutor.execute",
                 new=AsyncMock(return_value=t2_result),
             ),
             patch(
-                "prism_platform.v2.synthesis.SynthesisClient.synthesize",
+                "core.synthesis.SynthesisClient.synthesize",
                 new=AsyncMock(return_value=t3_result),
             ),
         ):
@@ -652,7 +650,7 @@ class TestFullPipelineIntegration:
     @pytest.mark.asyncio
     async def test_track2_failure_skips_synthesis_returns_failed(self) -> None:
         """When Track 2 (Perplexity) fails, synthesis is skipped and failed status returned."""
-        from prism_platform.v2.registry import ModuleHandle, V2_MODULE_REGISTRY
+        from core.registry import V2_MODULE_REGISTRY, ModuleHandle
         from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
         from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
@@ -677,11 +675,11 @@ class TestFullPipelineIntegration:
                 new=AsyncMock(return_value={"leadership_page": "", "ir_page": "", "newsroom_page": ""}),
             ),
             patch(
-                "prism_platform.v2.executor.ModuleExecutor.execute",
+                "core.executor.ModuleExecutor.execute",
                 new=AsyncMock(return_value=t2_failed),
             ),
             patch(
-                "prism_platform.v2.synthesis.SynthesisClient.synthesize",
+                "core.synthesis.SynthesisClient.synthesize",
                 new=AsyncMock(),
             ) as mock_synth,
         ):
@@ -700,7 +698,7 @@ class TestFullPipelineIntegration:
     @pytest.mark.asyncio
     async def test_track3_failure_falls_back_to_track2_output(self) -> None:
         """When Track 3 synthesis fails, module falls back to Track 2 output with DEGRADED health."""
-        from prism_platform.v2.registry import ModuleHandle, V2_MODULE_REGISTRY
+        from core.registry import V2_MODULE_REGISTRY, ModuleHandle
         from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
         from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
@@ -732,11 +730,11 @@ class TestFullPipelineIntegration:
                 new=AsyncMock(return_value={"leadership_page": "some content", "ir_page": "", "newsroom_page": ""}),
             ),
             patch(
-                "prism_platform.v2.executor.ModuleExecutor.execute",
+                "core.executor.ModuleExecutor.execute",
                 new=AsyncMock(return_value=t2_result),
             ),
             patch(
-                "prism_platform.v2.synthesis.SynthesisClient.synthesize",
+                "core.synthesis.SynthesisClient.synthesize",
                 new=AsyncMock(return_value=t3_failed),
             ),
         ):
@@ -757,7 +755,7 @@ class TestFullPipelineIntegration:
     @pytest.mark.asyncio
     async def test_track1_exception_does_not_abort_pipeline(self) -> None:
         """Even if Track 1 WebFetch raises an exception, the pipeline continues with T2+T3."""
-        from prism_platform.v2.registry import ModuleHandle, V2_MODULE_REGISTRY
+        from core.registry import V2_MODULE_REGISTRY, ModuleHandle
         from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
         from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
@@ -788,11 +786,11 @@ class TestFullPipelineIntegration:
                 new=AsyncMock(side_effect=ConnectionError("DNS resolution failed")),
             ),
             patch(
-                "prism_platform.v2.executor.ModuleExecutor.execute",
+                "core.executor.ModuleExecutor.execute",
                 new=AsyncMock(return_value=t2_result),
             ),
             patch(
-                "prism_platform.v2.synthesis.SynthesisClient.synthesize",
+                "core.synthesis.SynthesisClient.synthesize",
                 new=AsyncMock(return_value=t3_result),
             ),
         ):
@@ -810,7 +808,7 @@ class TestFullPipelineIntegration:
     @pytest.mark.asyncio
     async def test_pipeline_health_included_in_all_outcomes(self) -> None:
         """pipeline_health key appears in result_dict regardless of success or failure."""
-        from prism_platform.v2.registry import ModuleHandle
+        from core.registry import ModuleHandle
         from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
         from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
@@ -836,7 +834,7 @@ class TestFullPipelineIntegration:
                 new=AsyncMock(return_value={"leadership_page": "", "ir_page": "", "newsroom_page": ""}),
             ),
             patch(
-                "prism_platform.v2.executor.ModuleExecutor.execute",
+                "core.executor.ModuleExecutor.execute",
                 new=AsyncMock(return_value=t2_failed),
             ),
         ):

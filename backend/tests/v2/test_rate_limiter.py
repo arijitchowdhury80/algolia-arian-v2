@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 import pytest
 
-from prism_platform.v2.rate_limiter import AgentAPIRateLimiter
+from core.rate_limiter import AgentAPIRateLimiter
 
 # ---------------------------------------------------------------------------
 # Fixture helpers

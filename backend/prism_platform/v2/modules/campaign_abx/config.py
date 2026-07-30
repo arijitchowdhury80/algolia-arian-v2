@@ -7,7 +7,7 @@ W5 sub-wave ordering so their cache is populated before this runs.
 
 from __future__ import annotations
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 CAMPAIGN_ABX_CONFIG = ModuleConfig(
     name="campaign-abx",

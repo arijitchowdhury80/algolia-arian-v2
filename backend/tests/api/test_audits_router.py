@@ -12,11 +12,11 @@ from datetime import UTC, datetime
 import pytest
 from fastapi.testclient import TestClient
 
-from prism_platform.api.deps import db_session
-from prism_platform.auth.deps import resolve_user_id
-from prism_platform.config import settings
-from prism_platform.db.models import Account, Audit
-from prism_platform.main import app
+from core.auth.deps import resolve_user_id
+from core.config import settings
+from core.db.models import Account, Audit
+from server.api.deps import db_session
+from server.main import app
 from tests.api.conftest import FakeQueueSession
 
 # ---------------------------------------------------------------------------
@@ -241,7 +241,7 @@ def test_shares_endpoint_calls_is_owner_not_inline_check() -> None:
     as a second inline `.user_id ==` outside acl.py (Arch Review I-4)."""
     from pathlib import Path
 
-    import prism_platform.api.routers.audits as audits_module
+    import server.api.routers.audits as audits_module
 
     source = Path(audits_module.__file__).read_text()
     assert "is_owner(user_id, audit)" in source
@@ -256,7 +256,7 @@ def test_shares_endpoint_calls_is_owner_not_inline_check() -> None:
 def test_residual_risk_comment_present_above_run_audit_functions() -> None:
     from pathlib import Path
 
-    import prism_platform.api.routers.audits as audits_module
+    import server.api.routers.audits as audits_module
 
     source = Path(audits_module.__file__).read_text()
     assert source.count("ACL slice (run-2026-07-14-001): NOT gated") == 2

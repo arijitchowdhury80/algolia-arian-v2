@@ -6,7 +6,7 @@ generic executor injects each as `{upstream_<name>}` into the playbook. No exter
 
 from __future__ import annotations
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 SYNTH_BUSINESS_CASE_CONFIG = ModuleConfig(
     name="synth-business-case",

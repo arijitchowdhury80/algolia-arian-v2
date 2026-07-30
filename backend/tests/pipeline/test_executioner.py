@@ -1,4 +1,4 @@
-"""Tests for prism_platform/pipeline/executioner.py (Task 4a — Track C.1).
+"""Tests for server/pipeline/executioner.py (Task 4a — Track C.1).
 
 Dependency-injected throughout: no real subprocess, no real VPS, no real
 LLM call, no real DB. `make_dispatch_fn`'s default `build_cmd_fn` (the real
@@ -14,10 +14,10 @@ from pathlib import Path
 
 import pytest
 
-from prism_platform.pipeline import executioner, self_heal
-from prism_platform.pipeline import gate as gate_module
-from prism_platform.pipeline.modules import traffic as traffic_module
-from prism_platform.pipeline.verdicts import (
+from server.pipeline import executioner, self_heal
+from server.pipeline import gate as gate_module
+from server.pipeline.modules import traffic as traffic_module
+from server.pipeline.verdicts import (
     AdversarialVerdict,
     AdversarialVoterVerdict,
     FactCheckVerdict,

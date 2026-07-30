@@ -12,7 +12,6 @@ Defaults to nike.com if no domain given.
 from __future__ import annotations
 
 import asyncio
-import json
 import sys
 from pathlib import Path
 
@@ -21,10 +20,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import structlog
 
-from prism_platform.config import settings
+from core.config import settings
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_company.fetcher import fetch_all_company_pages
-from prism_platform.v2.modules.intel_competitors.collector import collect as intel_competitors_collect
-from prism_platform.v2.types import ExecutionContextV2
+from prism_platform.v2.modules.intel_competitors.collector import (
+    collect as intel_competitors_collect,
+)
 
 log = structlog.get_logger("smoke")
 
@@ -68,14 +69,14 @@ async def main(domain: str) -> None:
     else:
         print(f"     API key: {perplexity_key[:8]}...")
         try:
-            from prism_platform.v2.research_client import make_research_client
-            from prism_platform.v2.executor import ModuleExecutor
-            from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
-            from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-            from prism_platform.v2.registry import (
+            from core.executor import ModuleExecutor
+            from core.registry import (
                 V2_MODULE_REGISTRY,
                 register_all_v2_modules,
             )
+            from core.research_client import make_research_client
+            from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
+            from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
 
             register_all_v2_modules()
             handle = V2_MODULE_REGISTRY["intel-company"]

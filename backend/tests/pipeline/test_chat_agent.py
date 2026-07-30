@@ -13,7 +13,7 @@ import uuid
 
 import pytest
 
-from prism_platform.pipeline.chat_agent import (
+from server.pipeline.chat_agent import (
     DEFAULT_CLAUDE_CLI_TIMEOUT_S,
     NO_CONTEXT_ANSWER,
     ChatAgentResult,
@@ -22,7 +22,7 @@ from prism_platform.pipeline.chat_agent import (
     extract_cited_sections,
     run_chat_agent,
 )
-from prism_platform.pipeline.retrieval import RetrievedChunk
+from server.pipeline.retrieval import RetrievedChunk
 
 
 def _chunks() -> list[RetrievedChunk]:
@@ -111,7 +111,7 @@ class TestDefaultClaudeCliTimeout:
             captured.update(kwargs)
             return _FakeCompletedProcess()
 
-        import prism_platform.pipeline.chat_agent as chat_agent_module
+        import server.pipeline.chat_agent as chat_agent_module
 
         original_run = chat_agent_module.subprocess.run
         chat_agent_module.subprocess.run = fake_run  # type: ignore[assignment]

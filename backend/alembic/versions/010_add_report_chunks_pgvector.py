@@ -4,11 +4,11 @@ Task 5 (Track C.3, plan 2026-07-12) -- grounding store for the plain
 `claude -p` chat agent. Per patch #9 (locked in the task-5 brief), the
 mechanism is:
   - embedding model: sentence-transformers/all-MiniLM-L6-v2 (384 dims, local,
-    keyless -- see prism_platform/pipeline/embeddings.py)
+    keyless -- see server/pipeline/embeddings.py)
   - chunking: by report section (one row per top-level audit_data key per
-    audit -- see prism_platform/pipeline/chunking.py), not a token window
+    audit -- see server/pipeline/chunking.py), not a token window
   - similarity: cosine via pgvector's `<=>` operator, threshold >= 0.35
-    (prism_platform/pipeline/retrieval.py's SIMILARITY_THRESHOLD)
+    (server/pipeline/retrieval.py's SIMILARITY_THRESHOLD)
 
 Revision ID: 010
 Revises: 009

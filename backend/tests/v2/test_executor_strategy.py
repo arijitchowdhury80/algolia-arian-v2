@@ -15,9 +15,9 @@ from unittest.mock import AsyncMock, MagicMock
 import pytest
 from pydantic import BaseModel, ConfigDict
 
-from prism_platform.v2.agent_api import AgentAPIClient, AgentAPIResponse
-from prism_platform.v2.executor import ModuleExecutor
-from prism_platform.v2.types import (
+from core.agent_api import AgentAPIClient, AgentAPIResponse
+from core.executor import ModuleExecutor
+from core.types import (
     CompetitorRef,
     ExecutionContextV2,
     ModuleConfig,

@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column("email", sa.Text, nullable=False),
         sa.Column("name", sa.Text, nullable=True),
         # Dormant until Clerk Orgs is explicitly turned on -- never read by
-        # prism_platform.auth.acl.can_user_see() while off [C3].
+        # core.auth.acl.can_user_see() while off [C3].
         sa.Column("org_id", sa.Text, nullable=True),
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
     )

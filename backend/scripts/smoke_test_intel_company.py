@@ -26,16 +26,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from prism_platform.config import settings
-from prism_platform.v2.research_client import make_research_client
-from prism_platform.v2.executor import ModuleExecutor
-from prism_platform.db.cache import get_cached_result, persist_result
+from core.config import settings
+from core.db.cache import get_cached_result, persist_result
+from core.executor import ModuleExecutor
+from core.pipeline_health import PipelineHealthLog
+from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+from core.research_client import make_research_client
+from core.synthesis import SynthesisClient
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_company.fetcher import fetch_all_company_pages
 from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-from prism_platform.v2.pipeline_health import PipelineHealthLog
-from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
-from prism_platform.v2.synthesis import SynthesisClient
-from prism_platform.v2.types import ExecutionContextV2
 
 BANNER = "=" * 70
 
@@ -181,8 +181,8 @@ async def _try_persist_to_db(result, context: ExecutionContextV2, handle, health
     try:
         from sqlalchemy import select
 
-        from prism_platform.db.models import Account
-        from prism_platform.db.session import async_session_factory
+        from core.db.models import Account
+        from core.db.session import async_session_factory
 
         async with async_session_factory() as session:
             existing = await session.execute(
@@ -244,7 +244,7 @@ async def run(domain: str, force_refresh: bool = False) -> None:
         output = CompanySeedOutput.model_validate(cached["output"])
         citations = cached.get("sources", [])
         # Write outputs from cached data
-        health.info("cache", f"Cache hit — served from module_executions", executed_at=cached.get("executed_at"))
+        health.info("cache", "Cache hit — served from module_executions", executed_at=cached.get("executed_at"))
         md_path = _write_markdown(domain, output, citations, "cached", health)
         json_path = _write_json(domain, output, {"citations": citations, "track1_pages_found": 0, "track2_duration_ms": 0, "track3_duration_ms": 0, "track3_model": "cached"}, health)
         print(f"Markdown out  : {md_path.relative_to(ROOT)}")
@@ -253,9 +253,9 @@ async def run(domain: str, force_refresh: bool = False) -> None:
         print(f"Competitors  ({len(output.competitors)}): {', '.join(c.company_name for c in output.competitors[:3])}...")
         return
     elif cached and force_refresh:
-        print(f"Cache exists but --refresh requested — running full pipeline")
+        print("Cache exists but --refresh requested — running full pipeline")
     else:
-        print(f"Cache miss — running full 3-track pipeline")
+        print("Cache miss — running full 3-track pipeline")
 
     # =========================================================================
     # TRACK 1: WebFetch
@@ -322,7 +322,7 @@ async def run(domain: str, force_refresh: bool = False) -> None:
     # TRACK 3: Synthesis
     # =========================================================================
     print(f"\n{'─' * 50}")
-    print(f"TRACK 3: Synthesis — reconciling Track 1 + Track 2")
+    print("TRACK 3: Synthesis — reconciling Track 1 + Track 2")
     print(f"{'─' * 50}")
 
     synthesis_client = SynthesisClient()
@@ -426,8 +426,8 @@ async def run(domain: str, force_refresh: bool = False) -> None:
             result_dict=final_result_dict,
             audit_id=None,  # Smoke test runs outside Temporal — no audits table row
         )
-        health.info("cache", f"Synthesized result persisted to module_executions — future runs will use cache")
-        print(f"Cache persist : written to module_executions")
+        health.info("cache", "Synthesized result persisted to module_executions — future runs will use cache")
+        print("Cache persist : written to module_executions")
     except Exception as exc:
         health.warning("cache", f"module_executions persist failed — {exc}", error=str(exc))
         print(f"Cache persist : skipped ({exc.__class__.__name__}: {exc})")

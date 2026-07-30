@@ -20,7 +20,7 @@ from __future__ import annotations
 import httpx
 import pytest
 
-from prism_platform.integrations.scout import (
+from core.integrations.scout import (
     ScoutClient,
     ScoutRun,
     ScoutScrapeResult,
@@ -244,7 +244,7 @@ async def test_http_error_raises():
 @pytest.mark.scout_live
 @pytest.mark.asyncio
 async def test_live_scout_health_and_scrape():
-    from prism_platform.integrations.scout import scout_client_from_settings
+    from core.integrations.scout import scout_client_from_settings
 
     client = scout_client_from_settings()
     try:

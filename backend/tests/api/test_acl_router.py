@@ -6,9 +6,9 @@ import uuid
 
 from fastapi.testclient import TestClient
 
-from prism_platform.api.deps import db_session
-from prism_platform.auth.deps import resolve_user_id
-from prism_platform.main import app
+from core.auth.deps import resolve_user_id
+from server.api.deps import db_session
+from server.main import app
 from tests.api.conftest import FakeQueueSession
 
 

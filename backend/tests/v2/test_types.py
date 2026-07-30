@@ -7,7 +7,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from prism_platform.v2.types import (
+from core.types import (
     ClaimRegistryEntry,
     ExecutionContextV2,
     Finding,

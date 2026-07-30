@@ -16,8 +16,8 @@ from typing import Any
 
 import structlog
 
-from prism_platform.v2.detection import SearchVendorResult, scan_search_vendors
-from prism_platform.v2.types import ExecutionContextV2
+from core.detection import SearchVendorResult, scan_search_vendors
+from core.types import ExecutionContextV2
 
 logger = structlog.get_logger(__name__)
 

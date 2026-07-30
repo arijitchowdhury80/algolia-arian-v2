@@ -9,19 +9,19 @@ from __future__ import annotations
 
 import pytest
 
-from prism_platform.orchestrator.pipeline import (
+from server.orchestrator.pipeline import (
     compute_overall_status,
     resolve_waves,
     run_pipeline,
 )
-from prism_platform.orchestrator.workflows import (
+from server.orchestrator.workflows import (
     QUICK_MODULES,
     RunModuleInput,
 )
 
 
 def _input(mode: str = "full", **kw):
-    from prism_platform.orchestrator.workflows import AuditInput
+    from server.orchestrator.workflows import AuditInput
 
     return AuditInput(
         audit_id="aud-1",

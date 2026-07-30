@@ -7,10 +7,10 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_news.config import INTEL_NEWS_CONFIG
 from prism_platform.v2.modules.intel_news.schemas import NewsArticleV2, NewsV2Output
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent / "prism_platform/v2/modules/intel_news/playbook.md"
@@ -104,7 +104,7 @@ class TestIntelNewsPlaybook:
         assert meta.execution_strategy == "prospect-only"
 
     def test_playbook_resolves_executives(self) -> None:
-        from prism_platform.v2.types import ExecutiveRef
+        from core.types import ExecutiveRef
 
         loader = PlaybookLoader()
         context = ExecutionContextV2(

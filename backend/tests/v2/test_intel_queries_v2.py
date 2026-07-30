@@ -14,30 +14,29 @@ Integration tests against real company data are a separate concern.
 
 from __future__ import annotations
 
-import asyncio
-from pathlib import Path
 from collections import Counter
+from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
 
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_queries.collector import (
+    _generate_brand_subbrand,
+    _generate_broad_category,
+    _generate_keyword_queries,
+    _generate_nlp_conversational,
+    _generate_non_product_content,
+    _generate_specific_product,
+    _generate_synonym_colloquial,
+    _generate_typo_variants,
+    _generate_zero_results_gibberish,
     _inject_typo,
     _typo_for_phrase,
-    _generate_broad_category,
-    _generate_specific_product,
-    _generate_nlp_conversational,
-    _generate_typo_variants,
-    _generate_synonym_colloquial,
-    _generate_non_product_content,
-    _generate_brand_subbrand,
-    _generate_zero_results_gibberish,
-    _generate_keyword_queries,
     collect,
 )
 from prism_platform.v2.modules.intel_queries.config import INTEL_QUERIES_CONFIG
-from prism_platform.v2.modules.intel_queries.schemas import QueryItem, QueryIntelOutput
-from prism_platform.v2.types import ExecutionContextV2
+from prism_platform.v2.modules.intel_queries.schemas import QueryIntelOutput, QueryItem
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent
@@ -535,14 +534,14 @@ class TestIntelQueriesPlaybook:
         assert PLAYBOOK_PATH.exists()
 
     def test_execution_strategy_is_prospect_only(self) -> None:
-        from prism_platform.v2.playbook import PlaybookLoader
+        from core.playbook import PlaybookLoader
 
         loader = PlaybookLoader()
         meta, _ = loader.load(PLAYBOOK_PATH)
         assert meta.execution_strategy == "prospect-only"
 
     def test_playbook_resolves_domain(self) -> None:
-        from prism_platform.v2.playbook import PlaybookLoader
+        from core.playbook import PlaybookLoader
 
         loader = PlaybookLoader()
         context = ExecutionContextV2(
@@ -563,24 +562,26 @@ class TestRegistration:
     def test_module_importable(self) -> None:
         """Registry block imports must succeed."""
         from prism_platform.v2.modules.intel_queries.collector import collect  # noqa: F401
-        from prism_platform.v2.modules.intel_queries.config import INTEL_QUERIES_CONFIG  # noqa: F401
+        from prism_platform.v2.modules.intel_queries.config import (
+            INTEL_QUERIES_CONFIG,  # noqa: F401
+        )
         from prism_platform.v2.modules.intel_queries.schemas import QueryIntelOutput  # noqa: F401
 
     def test_registered_in_registry(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         assert "intel-queries" in V2_MODULE_REGISTRY
 
     def test_handle_has_collector(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-queries"]
         assert handle.collector is not None
 
     def test_handle_playbook_path_exists(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-queries"]

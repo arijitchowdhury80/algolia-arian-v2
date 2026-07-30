@@ -88,14 +88,24 @@ except Exception:  # pragma: no cover — DB is optional/fail-soft by design
 # the whole prism_platform import is optional/fail-soft the same way, and
 # engine=v3 fails loudly (not silently falling back to the legacy path,
 # which would defeat the point of explicitly requesting it) if unavailable.
+# Two layouts are accepted. `server.pipeline` is the current one (the backend was
+# split into core/ + modules/ + server/ on 2026-07-30). `prism_platform.pipeline`
+# is the pre-split layout, still what production runs. This file is deployed to
+# hosts that may be on either, so it tries the new name first and falls back,
+# rather than being flipped in place and breaking whichever host is behind.
 try:
-    from prism_platform.pipeline import db_write as _db_write
-    from prism_platform.pipeline import executioner as _executioner
-    from prism_platform.pipeline import self_heal as _self_heal
-except Exception:  # pragma: no cover — prism_platform app not installed on this host
-    _db_write = None
-    _executioner = None
-    _self_heal = None
+    from server.pipeline import db_write as _db_write
+    from server.pipeline import executioner as _executioner
+    from server.pipeline import self_heal as _self_heal
+except Exception:  # pragma: no cover
+    try:
+        from prism_platform.pipeline import db_write as _db_write
+        from prism_platform.pipeline import executioner as _executioner
+        from prism_platform.pipeline import self_heal as _self_heal
+    except Exception:  # pragma: no cover — backend app not installed on this host
+        _db_write = None
+        _executioner = None
+        _self_heal = None
 
 # Overridable via env for tests/dev sandboxes where /opt and /root aren't
 # writable; production leaves these unset and gets the exact live paths.

@@ -13,11 +13,11 @@ from uuid import uuid4
 
 import pytest
 
-from prism_platform.v2.agent_api import AgentAPIClient, AgentAPIResponse
-from prism_platform.v2.executor import ModuleExecutor
+from core.agent_api import AgentAPIClient, AgentAPIResponse
+from core.executor import ModuleExecutor
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
 from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).resolve().parents[2]

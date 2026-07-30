@@ -19,16 +19,16 @@ from uuid import uuid4
 
 import pytest
 
-from prism_platform.browser.types import FetchOptions, FetchTier
-from prism_platform.v2.executor import ModuleExecutorResult
+from core.browser.types import FetchOptions, FetchTier
+from core.executor import ModuleExecutorResult
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_hiring.fetcher import (
     HiringFetchResult,
     _is_linkedin_url,
     _truncate,
     fetch_careers_page,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 HIRING_PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent
@@ -75,7 +75,7 @@ class TestTier2Stealth:
     @pytest.mark.asyncio
     async def test_success_returns_playwright_tier(self) -> None:
         """AC-1: Success response → tier_used=PLAYWRIGHT."""
-        from prism_platform.browser.tier2_stealth import fetch_stealth
+        from core.browser.tier2_stealth import fetch_stealth
 
         resp = _scout_response(markdown="x" * 500, url="https://example.com/careers")
         mock_crawler = AsyncMock()
@@ -94,7 +94,7 @@ class TestTier2Stealth:
     @pytest.mark.asyncio
     async def test_exception_returns_error_result(self) -> None:
         """AC-2: ScoutCrawler raises → FetchResult with error set."""
-        from prism_platform.browser.tier2_stealth import fetch_stealth
+        from core.browser.tier2_stealth import fetch_stealth
 
         mock_crawler = AsyncMock()
         mock_crawler.scrape.side_effect = RuntimeError("playwright crash")
@@ -110,7 +110,7 @@ class TestTier2Stealth:
     @pytest.mark.asyncio
     async def test_short_content_sets_bot_blocked(self) -> None:
         """AC-3: Content shorter than min_content_length → is_bot_blocked=True."""
-        from prism_platform.browser.tier2_stealth import fetch_stealth
+        from core.browser.tier2_stealth import fetch_stealth
 
         resp = _scout_response(markdown="hi", url="https://example.com/careers")
         mock_crawler = AsyncMock()
@@ -128,7 +128,7 @@ class TestTier2Stealth:
     @pytest.mark.asyncio
     async def test_final_url_from_metadata(self) -> None:
         """AC-4: FetchResult.url comes from resp.metadata.url (redirect tracking)."""
-        from prism_platform.browser.tier2_stealth import fetch_stealth
+        from core.browser.tier2_stealth import fetch_stealth
 
         redirect_target = "https://example.com/careers/en-us"
         resp = _scout_response(markdown="x" * 500, url=redirect_target)
@@ -305,8 +305,8 @@ class TestHiringPipeline:
     @pytest.mark.asyncio
     async def test_track1_result_injected_into_context(self) -> None:
         """AC-8: fetch_careers_page result injected as upstream_results['careers_page']."""
-        from prism_platform.orchestrator.activities import _run_intel_hiring_pipeline
-        from prism_platform.orchestrator.workflows import RunModuleInput
+        from server.orchestrator.activities import _run_intel_hiring_pipeline
+        from server.orchestrator.workflows import RunModuleInput
 
         careers_content = "Senior Search Engineer - Open"
         fetch_result = HiringFetchResult(
@@ -341,13 +341,13 @@ class TestHiringPipeline:
 
         with (
             patch(
-                "prism_platform.orchestrator.activities.fetch_careers_page",
+                "server.orchestrator.activities.fetch_careers_page",
                 new_callable=AsyncMock,
                 return_value=fetch_result,
             ),
-            patch("prism_platform.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
+            patch("server.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
             patch(
-                "prism_platform.orchestrator.activities.make_research_client",
+                "server.orchestrator.activities.make_research_client",
                 return_value=MagicMock(),
             ),
         ):
@@ -368,8 +368,8 @@ class TestHiringPipeline:
     @pytest.mark.asyncio
     async def test_track2_runs_when_track1_empty(self) -> None:
         """AC-9: Track 2 runs even when Track 1 returns empty HiringFetchResult."""
-        from prism_platform.orchestrator.activities import _run_intel_hiring_pipeline
-        from prism_platform.orchestrator.workflows import RunModuleInput
+        from server.orchestrator.activities import _run_intel_hiring_pipeline
+        from server.orchestrator.workflows import RunModuleInput
 
         empty_fetch = HiringFetchResult()  # Track 1 found nothing
 
@@ -400,13 +400,13 @@ class TestHiringPipeline:
 
         with (
             patch(
-                "prism_platform.orchestrator.activities.fetch_careers_page",
+                "server.orchestrator.activities.fetch_careers_page",
                 new_callable=AsyncMock,
                 return_value=empty_fetch,
             ),
-            patch("prism_platform.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
+            patch("server.orchestrator.activities.ModuleExecutor") as mock_executor_cls,
             patch(
-                "prism_platform.orchestrator.activities.make_research_client",
+                "server.orchestrator.activities.make_research_client",
                 return_value=MagicMock(),
             ),
         ):
@@ -427,8 +427,8 @@ class TestHiringPipeline:
     @pytest.mark.asyncio
     async def test_routing_calls_hiring_pipeline(self) -> None:
         """run_module() routes intel-hiring to _run_intel_hiring_pipeline, not generic path."""
-        from prism_platform.orchestrator.activities import run_module
-        from prism_platform.orchestrator.workflows import RunModuleInput
+        from server.orchestrator.activities import run_module
+        from server.orchestrator.workflows import RunModuleInput
 
         run_input = RunModuleInput(
             module_name="intel-hiring",
@@ -444,18 +444,18 @@ class TestHiringPipeline:
         )
         with (
             patch(
-                "prism_platform.orchestrator.activities._run_intel_hiring_pipeline",
+                "server.orchestrator.activities._run_intel_hiring_pipeline",
                 new_callable=AsyncMock,
                 return_value=pipeline_return,
             ) as mock_pipeline,
             patch(
-                "prism_platform.orchestrator.activities.get_cached_result",
+                "server.orchestrator.activities.get_cached_result",
                 new_callable=AsyncMock,
                 return_value=None,
             ),
-            patch("prism_platform.orchestrator.activities.persist_result", new_callable=AsyncMock),
+            patch("server.orchestrator.activities.persist_result", new_callable=AsyncMock),
             patch(
-                "prism_platform.orchestrator.activities.V2_MODULE_REGISTRY",
+                "server.orchestrator.activities.V2_MODULE_REGISTRY",
                 {"intel-hiring": MagicMock()},
             ),
         ):

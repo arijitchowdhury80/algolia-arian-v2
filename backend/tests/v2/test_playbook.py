@@ -7,8 +7,8 @@ from uuid import uuid4
 
 import pytest
 
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 
 SAMPLE_PLAYBOOK = """---
 name: intel-company

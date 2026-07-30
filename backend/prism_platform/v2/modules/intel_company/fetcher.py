@@ -16,8 +16,8 @@ import re
 
 import structlog
 
-from prism_platform.browser import BrowserClient, FetchOptions, FetchResult
-from prism_platform.config import settings
+from core.browser import BrowserClient, FetchOptions, FetchResult
+from core.config import settings
 
 logger = structlog.get_logger(__name__)
 
@@ -145,7 +145,7 @@ async def _try_url(
 
 async def _try_httpx_only(url: str, timeout: float = 10.0) -> FetchResult:
     """Quick httpx-only fetch — no Jina fallback, no escalation."""
-    from prism_platform.browser.tier1_direct import fetch_direct
+    from core.browser.tier1_direct import fetch_direct
 
     return await fetch_direct(url, FetchOptions(timeout=timeout, min_content_length=300))
 

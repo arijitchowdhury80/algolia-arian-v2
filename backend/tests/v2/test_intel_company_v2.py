@@ -7,14 +7,14 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_company.config import INTEL_COMPANY_CONFIG
 from prism_platform.v2.modules.intel_company.schemas import (
     CompanySeedOutput,
     CompetitorSeed,
     ExecutiveSeed,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).resolve().parents[2]

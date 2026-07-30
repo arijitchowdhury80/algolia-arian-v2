@@ -18,7 +18,7 @@ import hashlib
 
 import pytest
 
-from prism_platform.api.routers.knowledge import (
+from server.api.routers.knowledge import (
     GapResponse,
     KnowledgeResult,
     KnowledgeUpsertResponse,
@@ -187,14 +187,14 @@ async def test_knowledge_upsert_created() -> None:
     """Insert a new knowledge entry — created=True, updated=False."""
     from sqlalchemy import delete
 
-    from prism_platform.api.routers.knowledge import KnowledgeUpsertRequest, upsert_knowledge
-    from prism_platform.db.models import AlgoliaKnowledge
-    from prism_platform.db.session import get_session
+    from core.db.models import AlgoliaKnowledge
+    from core.db.session import get_session
+    from server.api.routers.knowledge import KnowledgeUpsertRequest, upsert_knowledge
 
     question = "Integration test: what is Algolia? (test_knowledge_upsert_created)"
     async for session in get_session():
         # Clean up any leftover from a previous test run
-        from prism_platform.api.routers.knowledge import _hash_question as hq
+        from server.api.routers.knowledge import _hash_question as hq
 
         await session.execute(
             delete(AlgoliaKnowledge).where(AlgoliaKnowledge.question_hash == hq(question))
@@ -216,7 +216,7 @@ async def test_knowledge_upsert_created() -> None:
 
     # Cleanup
     async for session in get_session():
-        from prism_platform.api.routers.knowledge import _hash_question as hq
+        from server.api.routers.knowledge import _hash_question as hq
 
         await session.execute(
             delete(AlgoliaKnowledge).where(AlgoliaKnowledge.question_hash == hq(question))
@@ -230,10 +230,10 @@ async def test_knowledge_upsert_updated() -> None:
     """Insert then re-insert the same question — second call must return updated=True."""
     from sqlalchemy import delete
 
-    from prism_platform.api.routers.knowledge import KnowledgeUpsertRequest, upsert_knowledge
-    from prism_platform.api.routers.knowledge import _hash_question as hq
-    from prism_platform.db.models import AlgoliaKnowledge
-    from prism_platform.db.session import get_session
+    from core.db.models import AlgoliaKnowledge
+    from core.db.session import get_session
+    from server.api.routers.knowledge import KnowledgeUpsertRequest, upsert_knowledge
+    from server.api.routers.knowledge import _hash_question as hq
 
     question = "Integration test: upsert update check (test_knowledge_upsert_updated)"
     q_hash = hq(question)
@@ -276,10 +276,10 @@ async def test_gap_dedup() -> None:
     """Recording the same question twice must return deduped=True on the second call."""
     from sqlalchemy import delete
 
-    from prism_platform.api.routers.knowledge import GapRequest, create_gap
-    from prism_platform.api.routers.knowledge import _hash_question as hq
-    from prism_platform.db.models import AlgoliaGap
-    from prism_platform.db.session import get_session
+    from core.db.models import AlgoliaGap
+    from core.db.session import get_session
+    from server.api.routers.knowledge import GapRequest, create_gap
+    from server.api.routers.knowledge import _hash_question as hq
 
     question = "Integration test: gap dedup check (test_gap_dedup)"
     q_hash = hq(question)
@@ -318,8 +318,8 @@ async def test_gap_dedup() -> None:
 @pytest.mark.asyncio
 async def test_retrieve_response_shape() -> None:
     """Retrieve from empty tables returns a well-shaped RetrieveResponse."""
-    from prism_platform.api.routers.knowledge import RetrieveRequest, retrieve_knowledge
-    from prism_platform.db.session import get_session
+    from core.db.session import get_session
+    from server.api.routers.knowledge import RetrieveRequest, retrieve_knowledge
 
     async for session in get_session():
         resp = await retrieve_knowledge(RetrieveRequest(query="algolia search", k=5), session)

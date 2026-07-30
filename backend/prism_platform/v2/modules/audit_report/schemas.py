@@ -8,7 +8,7 @@ fields) + LLM synthesis (prose). Re-exported here as `AuditReportOutput` for the
 
 from __future__ import annotations
 
-from prism_platform.v2.audit_data_schema import AuditData, validate_audit_data
+from core.audit_data_schema import AuditData, validate_audit_data
 
 # The module's output schema is the canonical AuditData contract.
 AuditReportOutput = AuditData

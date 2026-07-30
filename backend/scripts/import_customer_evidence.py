@@ -29,7 +29,7 @@ from sqlalchemy.orm import Session
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from prism_platform.config import settings  # noqa: E402
+from core.config import settings  # noqa: E402
 
 logger = structlog.get_logger(__name__)
 

@@ -30,7 +30,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-from playwright.async_api import Request, Response, async_playwright
+from playwright.async_api import Request, async_playwright
 from playwright_stealth import Stealth
 
 _STEALTH = Stealth()
@@ -505,16 +505,14 @@ async def run(targets: list[tuple[str, str, str]]) -> list[Row]:
                         last = await asyncio.wait_for(
                             detect(browser, name, site, exp), timeout=55
                         )
-                    except (asyncio.TimeoutError, Exception) as exc:
+                    except (TimeoutError, Exception) as exc:
                         kind = "TIMEOUT" if isinstance(exc, asyncio.TimeoutError) else "ERROR"
                         last = Row(name=name, site=site, expected=exp, status=kind,
                                    note=f"{type(exc).__name__}: {str(exc)[:60]}")
                     if last.status == "DETECTED" and last.strong:
                         result = last
                         break
-                    if last.status == "DETECTED" and best.status != "DETECTED":
-                        best = last
-                    elif best.status not in ("DETECTED",) and last.status != "NO_ONSITE_SEARCH":
+                    if (last.status == "DETECTED" and best.status != "DETECTED") or (best.status not in ("DETECTED",) and last.status != "NO_ONSITE_SEARCH"):
                         best = last
                     result = best if best.status != "NO_ONSITE_SEARCH" else last
                 stream(result)

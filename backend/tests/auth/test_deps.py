@@ -1,4 +1,4 @@
-"""Tests for prism_platform.auth.deps -- the trust-signal channel and the
+"""Tests for core.auth.deps -- the trust-signal channel and the
 `require_audit_access` dependency (04-spec.md §4).
 
 Unit tests (signature/exp/jti/fail-closed) need no DB. The user-upsert
@@ -20,9 +20,9 @@ import pytest
 import structlog
 from fastapi import HTTPException
 
-from prism_platform.auth.deps import require_audit_access, resolve_user_id
-from prism_platform.config import settings
-from prism_platform.db.models import Audit
+from core.auth.deps import require_audit_access, resolve_user_id
+from core.config import settings
+from core.db.models import Audit
 from tests.auth.conftest import skip_if_no_docker
 
 TEST_SECRET = "test-secret-do-not-use-in-prod"

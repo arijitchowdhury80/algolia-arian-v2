@@ -7,6 +7,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_financial_private.config import (
     INTEL_FINANCIAL_PRIVATE_CONFIG,
 )
@@ -14,8 +16,6 @@ from prism_platform.v2.modules.intel_financial_private.schemas import (
     FinancialPrivateV2Output,
     RevenueEstimateV2,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent

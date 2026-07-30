@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 INTEL_COMPETITORS_CONFIG = ModuleConfig(
     name="intel-competitors",

@@ -14,12 +14,12 @@ from __future__ import annotations
 
 import pytest
 
-from prism_platform.v2.detection import (
+from core.detection import (
     SearchVendorResult,
     detect_search_vendor,
     scan_search_vendors,
 )
-from prism_platform.v2.detection.search_vendor import _VALID_STATUS
+from core.detection.search_vendor import _VALID_STATUS
 
 pytestmark = pytest.mark.browser
 

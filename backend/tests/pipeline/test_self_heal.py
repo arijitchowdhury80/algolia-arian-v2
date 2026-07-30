@@ -1,6 +1,6 @@
 """Tests for the deterministic scripted self-heal loop.
 
-See prism_platform/pipeline/self_heal.py and
+See server/pipeline/self_heal.py and
 docs/plans/2026-07-02-cassandra-airtight-pipeline-goal.md §1.3 for design intent.
 """
 
@@ -11,7 +11,7 @@ from collections.abc import Callable
 
 import pytest
 
-from prism_platform.pipeline.self_heal import (
+from server.pipeline.self_heal import (
     Attempt,
     GateResult,
     GateStatus,

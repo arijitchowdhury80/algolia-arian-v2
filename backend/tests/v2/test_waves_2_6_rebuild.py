@@ -10,8 +10,8 @@ from __future__ import annotations
 import pytest
 from pydantic import BaseModel
 
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+from core.playbook import PlaybookLoader
+from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
 register_all_v2_modules()
 

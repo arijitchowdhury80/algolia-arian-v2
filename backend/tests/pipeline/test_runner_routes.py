@@ -479,7 +479,7 @@ def test_terminate_does_not_sigkill_if_process_exits_during_grace(runner):
 # into run_job_v3 (per-skill dispatch -> gate -> retry via self_heal.SelfHealLoop)
 # instead of the single-claude-p-subprocess legacy path. All fakes here are
 # dependency-injected (v3_dispatch_fn/v3_gate_fn/v3_on_attempt) so these tests
-# never touch prism_platform.pipeline.executioner's real subprocess/LLM/DB
+# never touch server.pipeline.executioner's real subprocess/LLM/DB
 # wiring, matching the DI pattern already used for popen_fn/sleep_fn above.
 
 

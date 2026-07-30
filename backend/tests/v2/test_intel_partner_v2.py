@@ -13,6 +13,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_partner.collector import (
     _match_partners,
     _normalise,
@@ -24,13 +26,10 @@ from prism_platform.v2.modules.intel_partner.partner_table import (
     PARTNER_LOOKUP_KEYS,
 )
 from prism_platform.v2.modules.intel_partner.schemas import (
-    IntegrationType,
     PartnerV2Output,
     SIRelationship,
     TechPartner,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent / "prism_platform/v2/modules/intel_partner/playbook.md"

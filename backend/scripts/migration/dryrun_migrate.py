@@ -26,7 +26,7 @@ from sqlalchemy import create_engine, func, select
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.orm import Session
 
-from prism_platform.db.models import Account, Audit, Base, Deliverable, ModuleExecution
+from core.db.models import Account, Audit, Base, Deliverable, ModuleExecution
 
 # docs/ sits at the repo root, one level above backend/, since the 2026-07-28 restructure.
 REPO_ROOT = Path(__file__).resolve().parents[3]

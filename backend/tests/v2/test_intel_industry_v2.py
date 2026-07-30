@@ -11,13 +11,13 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
 from prism_platform.v2.modules.intel_industry.config import INTEL_INDUSTRY_CONFIG
 from prism_platform.v2.modules.intel_industry.schemas import (
     AnalystQuote,
     IndustryIntelOutput,
     VerticalBenchmarkStat,
 )
-from prism_platform.v2.playbook import PlaybookLoader
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent
@@ -247,7 +247,7 @@ class TestIntelIndustryPlaybook:
             "company_name": "Nordstrom",
             "industry": "B2C Fashion & Apparel",
         }
-        from prism_platform.v2.types import ExecutionContextV2
+        from core.types import ExecutionContextV2
 
         context = ExecutionContextV2(**context_kwargs)
         _, body = loader.load(PLAYBOOK_PATH)

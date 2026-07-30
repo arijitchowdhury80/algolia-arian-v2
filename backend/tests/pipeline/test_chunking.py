@@ -13,7 +13,7 @@ from pathlib import Path
 
 import pytest
 
-from prism_platform.pipeline.chunking import Chunk, chunk_audit_data
+from server.pipeline.chunking import Chunk, chunk_audit_data
 
 FIXTURE_PATH = Path(__file__).parent.parent.parent / "docs/temp/fc/belk-audit-data.json"
 

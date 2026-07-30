@@ -1,4 +1,4 @@
-"""Tests for the DB-write helper (prism_platform/pipeline/db_write.py).
+"""Tests for the DB-write helper (server/pipeline/db_write.py).
 
 Split the same way tests/test_knowledge.py already does:
   - Pure-logic tests (status mapping, JSONB shape, duration math) -- run
@@ -20,15 +20,15 @@ from pathlib import Path
 
 import pytest
 
-from prism_platform.pipeline.db_write import (
+from server.pipeline.db_write import (
     attempt_duration_ms,
     verdict_to_status,
     verdict_to_validation_json,
     write_module_execution_row,
 )
-from prism_platform.pipeline.gate import BlockClass, SkillOutput, Verdict, VerdictStatus
-from prism_platform.pipeline.self_heal import Attempt
-from prism_platform.pipeline.verdicts import FactCheckVerdict, LegalVerdict, QualityScore
+from server.pipeline.gate import BlockClass, SkillOutput, Verdict, VerdictStatus
+from server.pipeline.self_heal import Attempt
+from server.pipeline.verdicts import FactCheckVerdict, LegalVerdict, QualityScore
 
 
 def _skill_output() -> SkillOutput:
@@ -298,7 +298,7 @@ async def account_and_audit_id(async_session):
 async def test_write_module_execution_row_inserts_a_new_row(async_session, account_and_audit_id):
     from sqlalchemy import select
 
-    from prism_platform.db.models import ModuleExecution
+    from core.db.models import ModuleExecution
 
     audit_id = account_and_audit_id
     row = await write_module_execution_row(
@@ -327,7 +327,7 @@ async def test_write_module_execution_row_upserts_on_retry_not_duplicate(
 ):
     from sqlalchemy import select
 
-    from prism_platform.db.models import ModuleExecution
+    from core.db.models import ModuleExecution
 
     audit_id = account_and_audit_id
     await write_module_execution_row(

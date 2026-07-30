@@ -6,7 +6,7 @@ from uuid import uuid4
 
 import pytest
 
-from prism_platform.v2.types import ExecutionContextV2, ModuleConfig
+from core.types import ExecutionContextV2, ModuleConfig
 
 
 @pytest.fixture

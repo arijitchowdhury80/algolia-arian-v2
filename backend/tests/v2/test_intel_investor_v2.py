@@ -24,6 +24,8 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
+from core.playbook import PlaybookLoader
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_investor.collector import (
     _resolve_public_status,
     collect,
@@ -34,8 +36,6 @@ from prism_platform.v2.modules.intel_investor.schemas import (
     InvestorIntelOutput,
     RevenueDataPoint,
 )
-from prism_platform.v2.playbook import PlaybookLoader
-from prism_platform.v2.types import ExecutionContextV2
 
 PLAYBOOK_PATH = (
     Path(__file__).parent.parent.parent
@@ -438,27 +438,27 @@ class TestCollectorPublicCompany:
 
 class TestRegistryIntegration:
     def test_intel_investor_is_registered(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         assert "intel-investor" in V2_MODULE_REGISTRY
 
     def test_registered_handle_has_collector(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-investor"]
         assert handle.collector is not None
 
     def test_registered_handle_has_playbook(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-investor"]
         assert handle.playbook_path.exists()
 
     def test_output_schema_is_investor_intel_output(self) -> None:
-        from prism_platform.v2.registry import V2_MODULE_REGISTRY, register_all_v2_modules
+        from core.registry import V2_MODULE_REGISTRY, register_all_v2_modules
 
         register_all_v2_modules()
         handle = V2_MODULE_REGISTRY["intel-investor"]

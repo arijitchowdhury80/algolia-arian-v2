@@ -23,7 +23,7 @@ from typing import Any
 
 import structlog
 
-from prism_platform.v2.audit_data_schema import CaseStudy, Finding
+from core.audit_data_schema import CaseStudy, Finding
 from prism_platform.v2.modules.landing_page_intake.config import (
     MAX_CASE_STUDY_CANDIDATES,
     MAX_FINDING_CANDIDATES,

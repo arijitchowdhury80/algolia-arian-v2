@@ -1,0 +1,13 @@
+"""PRISM in-app technology detection — the BuiltWith replacement.
+
+Deterministic, Scout-based detection of a website's search vendor and commerce
+platform. No paid third-party API (BuiltWith is out — no budget).
+"""
+
+from core.detection.search_vendor import (
+    SearchVendorResult,
+    detect_search_vendor,
+    scan_search_vendors,
+)
+
+__all__ = ["SearchVendorResult", "detect_search_vendor", "scan_search_vendors"]

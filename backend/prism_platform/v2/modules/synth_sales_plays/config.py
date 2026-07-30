@@ -7,7 +7,7 @@ ordering (5A business-case → 5B sales-plays) so the cache is populated before 
 
 from __future__ import annotations
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 SYNTH_SALES_PLAYS_CONFIG = ModuleConfig(
     name="synth-sales-plays",

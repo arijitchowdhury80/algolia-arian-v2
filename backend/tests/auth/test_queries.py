@@ -1,4 +1,4 @@
-"""Integration tests for prism_platform.auth.queries (04-spec.md §2b).
+"""Integration tests for core.auth.queries (04-spec.md §2b).
 
 @pytest.mark.db -- ephemeral docker Postgres, see tests/auth/conftest.py.
 NOT executed in this sandbox (no docker daemon here) -- see
@@ -12,7 +12,7 @@ import uuid
 import pytest
 from sqlalchemy import event, text
 
-from prism_platform.auth.queries import (
+from core.auth.queries import (
     latest_visible_audit_for_account,
     latest_visible_audit_per_account,
     visible_audit_ids_for_user,

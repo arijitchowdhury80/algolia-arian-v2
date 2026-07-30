@@ -8,10 +8,10 @@ import structlog
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from prism_platform.config import settings
-from prism_platform.v2.registry import register_all_v2_modules
-from prism_platform.orchestrator.activities import run_module
-from prism_platform.orchestrator.workflows import AuditWorkflow
+from core.config import settings
+from core.registry import register_all_v2_modules
+from server.orchestrator.activities import run_module
+from server.orchestrator.workflows import AuditWorkflow
 
 logger = structlog.get_logger(__name__)
 

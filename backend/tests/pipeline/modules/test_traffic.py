@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 
-from prism_platform.pipeline.modules.traffic import (
+from server.pipeline.modules.traffic import (
     DEFAULT_SCRIPT_PATH,
     TrafficStatus,
     run_traffic_module,

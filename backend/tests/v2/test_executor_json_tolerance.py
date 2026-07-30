@@ -13,7 +13,7 @@ import json
 
 import pytest
 
-from prism_platform.v2.executor import _loads_tolerant
+from core.executor import _loads_tolerant
 
 
 def test_plain_json_still_parses() -> None:

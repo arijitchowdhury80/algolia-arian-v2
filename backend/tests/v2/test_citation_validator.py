@@ -14,7 +14,7 @@ import httpx
 import pytest
 from pydantic import ValidationError
 
-from prism_platform.v2.citation_validator import (
+from core.citation_validator import (
     CitationValidationResult,
     validate_citations_tier1,
 )

@@ -6,7 +6,7 @@ import dataclasses
 
 import pytest
 
-from prism_platform.pipeline.block_detector import (
+from server.pipeline.block_detector import (
     BlockVerdict,
     PageEvidence,
     detect_block,

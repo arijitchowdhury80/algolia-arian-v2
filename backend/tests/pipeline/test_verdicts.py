@@ -1,4 +1,4 @@
-"""Tests for the Pydantic verdict schemas (prism_platform/pipeline/verdicts.py).
+"""Tests for the Pydantic verdict schemas (server/pipeline/verdicts.py).
 
 These schemas are the E2-compliant, schema-constrained shapes an LLM's
 tool-use output must validate against -- no free-form prose parsed after.
@@ -10,7 +10,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from prism_platform.pipeline.verdicts import (
+from server.pipeline.verdicts import (
     AdversarialVerdict,
     AdversarialVoterVerdict,
     FactCheckVerdict,

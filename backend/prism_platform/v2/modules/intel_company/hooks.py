@@ -18,10 +18,10 @@ from typing import Any
 import structlog
 from sqlalchemy import select, update
 
-from prism_platform.db.models import Account
-from prism_platform.db.session import async_session_factory
+from core.db.models import Account
+from core.db.session import async_session_factory
+from core.types import ExecutionContextV2
 from prism_platform.v2.modules.intel_company.schemas import CompanySeedOutput
-from prism_platform.v2.types import ExecutionContextV2
 
 logger = structlog.get_logger(__name__)
 

@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, patch
 import httpx
 import pytest
 
-from prism_platform.v2.agent_api import AgentAPIClient, AgentAPIResponse
+from core.agent_api import AgentAPIClient, AgentAPIResponse
 
 FAKE_REQUEST = httpx.Request("POST", "https://api.perplexity.ai/chat/completions")
 

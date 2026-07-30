@@ -12,12 +12,12 @@ from unittest.mock import AsyncMock, patch
 import pytest
 from fastapi.testclient import TestClient
 
-from prism_platform.api.deps import db_session
-from prism_platform.auth.deps import require_audit_access, resolve_user_id
-from prism_platform.config import settings
-from prism_platform.db.models import Audit
-from prism_platform.main import app
-from prism_platform.pipeline.chat_agent import ChatAgentResult
+from core.auth.deps import require_audit_access, resolve_user_id
+from core.config import settings
+from core.db.models import Audit
+from server.api.deps import db_session
+from server.main import app
+from server.pipeline.chat_agent import ChatAgentResult
 
 # ---------------------------------------------------------------------------
 # Contract: the legacy authorization wrapper is deleted, not dead code
@@ -25,7 +25,7 @@ from prism_platform.pipeline.chat_agent import ChatAgentResult
 
 
 def test_chat_router_has_no_legacy_authorization_wrapper() -> None:
-    import prism_platform.api.routers.chat as chat_module
+    import server.api.routers.chat as chat_module
 
     assert not hasattr(chat_module, "authorize_audit_access")
     assert not hasattr(chat_module, "check_slug_authorization")
@@ -114,7 +114,7 @@ def test_chat_endpoint_returns_grounded_answer(client_with_fake_audit) -> None:
         retrieved_sections=("tech_stack",),
     )
     with patch(
-        "prism_platform.api.routers.chat.run_chat_agent", AsyncMock(return_value=fake_result)
+        "server.api.routers.chat.run_chat_agent", AsyncMock(return_value=fake_result)
     ):
         resp = client.post(f"/api/v1/audits/{audit_id}/chat", json={"question": "what vendor?"})
     assert resp.status_code == 200

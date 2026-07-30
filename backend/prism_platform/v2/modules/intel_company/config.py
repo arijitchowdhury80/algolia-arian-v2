@@ -5,7 +5,7 @@ Perplexity pro-search call to produce the company identity card that
 every downstream module reads.
 """
 
-from prism_platform.v2.types import ModuleConfig
+from core.types import ModuleConfig
 
 INTEL_COMPANY_CONFIG = ModuleConfig(
     name="intel-company",

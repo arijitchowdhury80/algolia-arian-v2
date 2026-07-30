@@ -25,7 +25,7 @@ from typing import Any
 
 import pytest
 
-from prism_platform.pipeline.retrieval import (
+from server.pipeline.retrieval import (
     SIMILARITY_THRESHOLD,
     RetrievedChunk,
     _passes_threshold,

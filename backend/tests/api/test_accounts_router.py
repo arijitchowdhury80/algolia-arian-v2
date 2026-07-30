@@ -12,11 +12,11 @@ from datetime import UTC, datetime
 import pytest
 from fastapi.testclient import TestClient
 
-from prism_platform.api.deps import db_session
-from prism_platform.auth.deps import resolve_user_id
-from prism_platform.config import settings
-from prism_platform.db.models import Account, Audit
-from prism_platform.main import app
+from core.auth.deps import resolve_user_id
+from core.config import settings
+from core.db.models import Account, Audit
+from server.api.deps import db_session
+from server.main import app
 from tests.api.conftest import FakeQueueSession
 
 

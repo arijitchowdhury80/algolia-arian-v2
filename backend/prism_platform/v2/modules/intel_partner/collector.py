@@ -19,7 +19,7 @@ from typing import Any
 
 import structlog
 
-from prism_platform.v2.types import ExecutionContextV2
+from core.types import ExecutionContextV2
 
 from .partner_table import ALGOLIA_PARTNER_TABLE, PARTNER_LOOKUP_KEYS
 

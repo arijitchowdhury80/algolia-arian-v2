@@ -4,7 +4,7 @@ install:
 	uv sync --all-extras
 
 dev:
-	uvicorn prism_platform.main:app --reload --host 0.0.0.0 --port 8000
+	uvicorn server.main:app --reload --host 0.0.0.0 --port 8000
 
 # Frontend dev server — uses node -e workaround because the directory path
 # contains ":" characters (COE:PIP) which break pnpm/npm PATH resolution.
@@ -22,7 +22,7 @@ dev-frontend:
 # Start both backend and frontend together (backend in background)
 dev-all:
 	@echo "Starting backend on :8000 and frontend on :3000..."
-	@uvicorn prism_platform.main:app --reload --host 0.0.0.0 --port 8000 & \
+	@uvicorn server.main:app --reload --host 0.0.0.0 --port 8000 & \
 	sleep 2 && $(MAKE) dev-frontend
 
 worker:
@@ -47,6 +47,6 @@ format:
 	ruff format .
 
 typecheck:
-	mypy prism_platform/
+	mypy core/ modules/ server/ prism_platform/
 
 check: lint typecheck test
