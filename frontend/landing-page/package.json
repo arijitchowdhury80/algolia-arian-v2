@@ -1,0 +1,28 @@
+{
+  "name": "whale-builder",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Standalone Whale/Avail one-to-one landing-page builder. Reads component library from Jahia over API, assembles the page, previews, and (later) publishes back to Jahia. Not coupled to Prism yet.",
+  "scripts": {
+    "dev": "vite",
+    "server": "node server/index.mjs",
+    "dev:all": "node server/index.mjs & vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.3"
+  }
+}

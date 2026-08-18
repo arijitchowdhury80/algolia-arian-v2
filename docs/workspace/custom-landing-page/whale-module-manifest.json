@@ -1,0 +1,83 @@
+{
+  "$comment": "Whale/Avail one-to-one landing-page Module Manifest (SSOT). Maps Nicole's 9 modules to the confirmed Jahia aant: components on /sites/www/home/lp/ralph-lauren-algolia. fill: fixed|auto|pick|manual. source: account_plan|brief|gong|asset_library. Draft 2026-08-17; component types verified live, slot lists to be confirmed per-component property schema.",
+  "template": {
+    "source_page": "/sites/www/home/lp/ralph-lauren-algolia",
+    "module_module": "algolia-partner-templates@1.1.31",
+    "component_module": "algolia-base-components@2.0.13",
+    "build_note": "Compose copyNode(template) + mutateProperties(all) + publish as ONE batched GraphQL mutation (single JCR session) — separate requests suffer read-after-write inconsistency."
+  },
+  "modules": [
+    {
+      "id": "hero", "order": 1, "name": "Hero", "changeability": "change",
+      "jahia": { "section": "banner", "container": "aant:algoliaBannerContainer", "component": "aant:algoliaBanner" },
+      "slots": [
+        { "key": "background_video", "type": "asset", "fill": "manual", "source": "asset_library", "required": true },
+        { "key": "logo_lockup", "type": "asset", "fill": "manual", "source": "asset_library", "required": true },
+        { "key": "headline", "type": "text", "fill": "auto", "source": "brief", "required": true },
+        { "key": "subhead", "type": "text", "fill": "auto", "source": "brief", "required": true }
+      ]
+    },
+    {
+      "id": "proven_impact", "order": 2, "name": "Proven Impact", "changeability": "change",
+      "jahia": { "container": "aant:algoliaTeaserContainer", "component": "aant:statisticCardTeaser" },
+      "pick_list": { "source": "proof_point_library", "min": null, "max": null, "defaults_on": ["forrester_tei"] },
+      "slots": [
+        { "key": "cards", "type": "list", "fill": "pick", "source": "account_plan",
+          "item": [ { "key": "metric" }, { "key": "label" }, { "key": "logo", "type": "asset" } ] }
+      ]
+    },
+    {
+      "id": "customer_quotes", "order": 3, "name": "Customer Quotes", "changeability": "change",
+      "jahia": { "container": "aant:algoliaTeaserContainer", "component": "aant:algoliaTeaser" },
+      "pick_list": { "source": "quote_library" },
+      "slots": [
+        { "key": "quotes", "type": "list", "fill": "pick", "source": "account_plan",
+          "item": [ { "key": "quote" }, { "key": "attribution" }, { "key": "logo", "type": "asset" } ] }
+      ]
+    },
+    {
+      "id": "features", "order": 4, "name": "Features / Solutions", "changeability": "change",
+      "jahia": { "container": "aant:algoliaFeatureCardContainer", "component": "adnt:featureCard", "cta": "aant:algoliaCta" },
+      "pick_list": { "source": "feature_catalog", "min": 8, "max": 10 },
+      "slots": [
+        { "key": "features", "type": "list", "fill": "pick", "source": "account_plan", "min": 8, "max": 10,
+          "item": [ { "key": "title" }, { "key": "description" }, { "key": "icon" } ] }
+      ]
+    },
+    {
+      "id": "priorities", "order": 5, "name": "Built Around Your Priorities", "changeability": "change",
+      "jahia": { "container": "aant:algoliaTeaserContainer", "component": "aant:algoliaTeaser" },
+      "pick_list": { "source": "priority_catalog", "min": 1, "max": 7, "grouped_by": "category" },
+      "slots": [
+        { "key": "priorities", "type": "list", "fill": "pick", "source": "gong", "max": 7,
+          "item": [ { "key": "title" }, { "key": "description" }, { "key": "image", "type": "asset" }, { "key": "category" } ] }
+      ]
+    },
+    {
+      "id": "search_that_delivers", "order": 6, "name": "Search That Delivers / Integrations", "changeability": "standard",
+      "jahia": { "container": "aant:algoliaContainer" }, "slots": []
+    },
+    {
+      "id": "recommended_resources", "order": 7, "name": "Recommended Resources", "changeability": "change", "optional": true,
+      "jahia": { "container": "aant:algoliaTeaserContainer", "component": "aant:algoliaTeaser" },
+      "pick_list": { "source": "resource_library" },
+      "slots": [
+        { "key": "resources", "type": "list", "fill": "pick", "source": "asset_library",
+          "item": [ { "key": "title" }, { "key": "link" }, { "key": "thumbnail", "type": "asset" } ] }
+      ]
+    },
+    {
+      "id": "awards", "order": 8, "name": "Award-Winning Search & Product Discovery", "changeability": "standard",
+      "jahia": { "container": "aant:algoliaContainer" }, "slots": []
+    },
+    {
+      "id": "parting_shot", "order": 9, "name": "Parting Shot / Final CTA", "changeability": "change",
+      "jahia": { "section": "footerbanner", "container": "aant:algoliaCtaContainer", "component": "aant:algoliaTeaser" },
+      "slots": [
+        { "key": "message", "type": "text", "fill": "manual", "source": "brief", "required": true },
+        { "key": "cta_text", "type": "text", "fill": "manual", "source": "brief", "required": true },
+        { "key": "ae_name", "type": "text", "fill": "manual", "source": "account_plan", "required": true }
+      ]
+    }
+  ]
+}
