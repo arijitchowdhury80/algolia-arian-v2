@@ -146,6 +146,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);bo
 .pv-btns{display:flex;gap:8px}.pv-btn{font-size:11px;font-weight:600;padding:7px 14px;border-radius:var(--r-md)}
 .pv-btn.p{background:var(--blue);color:#fff}.pv-hero.solid .pv-btn.p{background:#fff;color:var(--blue)}.pv-btn.s{background:rgba(255,255,255,.14);color:#fff}
 .pv-video{margin-top:12px;height:56px;border-radius:var(--r-md);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#9fb4ff;font-size:12px;border:1px dashed rgba(255,255,255,.25)}
+/* asset chips — show a picked video/image/logo in the preview (updates on browse-pick) */
+.pv-assets{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pv-assets span{font-size:11px;font-weight:600;padding:5px 11px;border-radius:var(--pill);background:var(--blue-050);color:var(--blue);border:1px solid var(--blue-100)}
+.pv-hero .pv-assets span,.pv-cta .pv-assets span{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.30)}
 .pv-h{font-size:15px;color:var(--fg1);margin:0 0 12px}
 .empty-note{font-size:12px;color:var(--fg4);font-style:italic}
 .stats3{display:flex;gap:10px;flex-wrap:wrap}.stats3.scroll{flex-wrap:nowrap;overflow-x:auto}.stats3.scroll .sc{flex:0 0 130px}.stats3.grid2{display:grid;grid-template-columns:1fr 1fr}

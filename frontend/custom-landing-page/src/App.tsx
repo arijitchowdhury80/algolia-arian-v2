@@ -35,7 +35,9 @@ function bodyLayoutHTML(m: Module, heading: string): string {
   const items = bodyItems(m);
   const label = (m.variants && m.variants[m.variant!]) || "";
   if (!items.length) return `<p class="pv-h">${heading}</p><p class="empty-note">Pick items to show…</p>`;
-  const head = `<p class="pv-h">${heading} <span class="empty-note">· ${esc(label)}</span></p>`;
+  const assetVal = m.fields && m.fields[0] && m.fields[0].v ? m.fields[0].v : "";
+  const assetBar = assetVal ? `<div class="pv-assets"><span>🖼 ${esc(assetVal)}</span></div>` : "";
+  const head = `<p class="pv-h">${heading} <span class="empty-note">· ${esc(label)}</span></p>` + assetBar;
   switch (m.variant) {
     case 0: return head + `<div class="bl-beside"><div class="bl-img">▧</div><div style="flex:1">${items.map((i) => `<div class="bl-row">${esc(i.title)}</div>`).join("")}</div></div>`;
     case 1: return head + items.map((i, n) => `<div class="lr ${n % 2 ? "r" : "l"}"><div class="lrimg">▧</div><div class="ptile" style="flex:1;margin:0">${i.meta ? `<small>${esc(i.meta)}</small>` : ""}${esc(i.title)}</div></div>`).join("");
@@ -52,15 +54,17 @@ function previewInner(m: Module, brand: string): string {
   if (m.id === "hero") {
     // 5 Figma variants: 0 image+2CTAs · 1 single-col · 2 form single · 3 form two-col · 4 kelly-blue
     const solid = m.variant === 4, single = m.variant === 1, form = m.variant === 2 || m.variant === 3, twoCol = m.variant === 3;
-    const media = field(m, "media");
+    const media = field(m, "media"), lockup = field(m, "lockup");
     const head = field(m, "headline") ? esc(field(m, "headline")) : '<span class="empty-note">Add a headline…</span>';
     const sub = esc(field(m, "subhead"));
     const ctas = `<div class="pv-btns"><span class="pv-btn p">Get started</span><span class="pv-btn s">Talk to sales</span></div>`;
     const formBlk = `<div class="pv-form"><div class="pv-fi"></div><div class="pv-fi"></div><span class="pv-btn p" style="margin-top:2px">Submit</span></div>`;
+    // asset chips show on EVERY variant so a browse-pick is always visible in the preview
+    const assets = (media || lockup) ? `<div class="pv-assets">${media ? `<span>🎬 ${esc(media)}</span>` : ""}${lockup ? `<span>🔖 ${esc(lockup)}</span>` : ""}</div>` : "";
     let inner: string;
-    if (form) inner = `<div class="pv-herorow${twoCol ? " two" : ""}"><div style="flex:1"><h3>${head}</h3><p>${sub}</p></div>${formBlk}</div>`;
+    if (form) inner = `<div class="pv-herorow${twoCol ? " two" : ""}"><div style="flex:1"><h3>${head}</h3><p>${sub}</p></div>${formBlk}</div>${assets}`;
     else inner = `<h3${single ? ' style="text-align:center"' : ""}>${head}</h3><p${single ? ' style="text-align:center"' : ""}>${sub}</p>`
-      + (single ? "" : ctas) + (m.variant === 0 && media ? `<div class="pv-video">▶ ${esc(media)}</div>` : "");
+      + (single ? "" : ctas) + assets;
     return `<div class="pv-hero${solid ? " solid" : ""}"><span class="eyebrow eyb">${esc(brand)} + Algolia</span>${inner}</div>`;
   }
   if (m.id === "proven") {
@@ -97,10 +101,13 @@ function previewInner(m: Module, brand: string): string {
   if (m.id === "awards") return `<div class="pv-std">Award-winning search & product discovery &nbsp;<b>(standard)</b></div>`;
   if (m.id === "parting") {
     const plain = m.variant === 0; // 0 = Plain CTA footer, 1 = Alt (gradient) footer
+    const bg = field(m, "bg");
     return `<div class="pv-cta${plain ? " plain" : ""}"><h3>${esc(brand)} + Algolia</h3>`
       + `<p style="color:#c3cdf5;font-size:12.5px">${field(m, "message") ? esc(field(m, "message")) : '<span class="empty-note" style="color:#9fb4ff">Add a parting message…</span>'}</p>`
       + (field(m, "cta") ? `<span class="pv-btn p" style="display:inline-block;margin-top:12px">${esc(field(m, "cta"))}</span>` : "")
-      + `<div class="ae">${field(m, "ae") ? "Your AE: " + esc(field(m, "ae")) : ""}</div></div>`;
+      + `<div class="ae">${field(m, "ae") ? "Your AE: " + esc(field(m, "ae")) : ""}</div>`
+      + (bg ? `<div class="pv-assets" style="justify-content:center">🖼 ${esc(bg)}</div>` : "")
+      + `</div>`;
   }
   return "";
 }
