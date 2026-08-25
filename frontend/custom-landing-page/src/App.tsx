@@ -68,52 +68,23 @@ function previewInner(m: Module, brand: string): string {
     const head = field(m, "headline") ? esc(field(m, "headline")) : '<span class="empty-note">Add a headline…</span>';
     const sub = esc(field(m, "subhead"));
     const mPath = fieldAsset(m, "media"), mName = field(m, "media");
-    const lPath = fieldAsset(m, "lockup"), lName = field(m, "lockup");
-    // real Jahia media when a browse-pick set a path; otherwise a labelled placeholder
+    const bgPath = fieldAsset(m, "background");
+    // real Jahia video when browsed; otherwise a labelled placeholder
     const media = mPath ? mediaHTML(mPath)
-      : `<div class="pv-mediaph">${mName ? `🎬 ${esc(mName)}` : "▧ pick a hero image / video"}</div>`;
-    const logo = lPath ? `<img class="pv-logo" src="${FILEAPI}${encodeURIComponent(lPath)}" alt="" />`
-      : (lName ? `<span class="pv-logotxt">🔖 ${esc(lName)}</span>` : "");
+      : `<div class="pv-mediaph">${mName ? `🎬 ${esc(mName)}` : "▧ pick a hero video"}</div>`;
+    // real background image → cover behind the hero (dark overlay for legible text)
+    const heroStyle = bgPath ? ` style="background-image:linear-gradient(rgba(2,16,70,.58),rgba(2,16,70,.58)),url('${FILEAPI}${encodeURIComponent(bgPath)}');background-size:cover;background-position:center"` : "";
     const eyebrow = `<span class="eyebrow eyb">${esc(brand)} + Algolia</span>`;
     const formSingle = `<div class="pv-form">${["First name", "Last name", "Email", "Company"].map((l) => `<label>${l}</label><div class="pv-fi"></div>`).join("")}<span class="pv-btn p" style="margin-top:6px">Get the report</span></div>`;
     const formTwo = `<div class="pv-formcard"><p class="pv-fh">Download the report</p><div class="pv-fgrid">${["First name", "Last name", "Email", "Company"].map((l) => `<div><label>${l}</label><div class="pv-fi d"></div></div>`).join("")}</div><span class="pv-btn p" style="margin-top:10px">Get the report</span></div>`;
-    if (v === 4) return `<div class="pv-hero solid center">${logo}${eyebrow}<h3 class="big">${head}</h3><p>${sub}</p><div class="pv-btns center"><span class="pv-btn p">Request demo</span></div></div>`;
-    if (v === 1) return `<div class="pv-hero center">${logo}${eyebrow}<h3>${head}</h3><p>${sub}</p>${(mPath || mName) ? `<div class="pv-mediawrap">${media}</div>` : ""}</div>`;
-    if (v === 2) return `<div class="pv-hero split"><div class="pv-hcol">${logo}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formSingle}</div></div>`;
-    if (v === 3) return `<div class="pv-hero split"><div class="pv-hcol">${logo}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formTwo}</div></div>`;
-    return `<div class="pv-hero split"><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p><div class="pv-btns"><span class="pv-btn p">Request demo</span><span class="pv-btn s">Get started</span></div></div><div class="pv-hcol media">${media}</div></div>`;
+    if (v === 4) return `<div class="pv-hero solid center"${heroStyle}>${eyebrow}<h3 class="big">${head}</h3><p>${sub}</p><div class="pv-btns center"><span class="pv-btn p">Request demo</span></div></div>`;
+    if (v === 1) return `<div class="pv-hero center"${heroStyle}>${eyebrow}<h3>${head}</h3><p>${sub}</p>${(mPath || mName) ? `<div class="pv-mediawrap">${media}</div>` : ""}</div>`;
+    if (v === 2) return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formSingle}</div></div>`;
+    if (v === 3) return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formTwo}</div></div>`;
+    return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p><div class="pv-btns"><span class="pv-btn p">Request demo</span><span class="pv-btn s">Get started</span></div></div><div class="pv-hcol media">${media}</div></div>`;
   }
-  if (m.id === "proven") {
-    const c = chosen(m) as string[]; if (!c.length) return `<p class="pv-h">Proven impact</p><p class="empty-note">Pick proof points to show…</p>`;
-    const cards = c.map((x) => { const mm = x.match(/[+<][^\s]+|✓|↓/); return `<div class="sc"><div class="n">${mm ? mm[0] : "✓"}</div><div class="l">${esc(x.replace(/[+<][^\s]+|✓|↓/, "").trim())}</div></div>`; }).join("");
-    const cls = m.variant === 1 ? "stats3 scroll" : m.variant === 2 ? "stats3 grid2" : "stats3";
-    const hint = m.variant === 1 ? ' <span class="empty-note">· ← scroll →</span>' : m.variant === 2 ? ' <span class="empty-note">· grouped</span>' : "";
-    return `<p class="pv-h">Proven impact${hint}</p><div class="${cls}">${cards}</div>`;
-  }
-  if (m.id === "quotes") {
-    const c = chosen(m) as string[]; if (!c.length) return `<p class="pv-h">What customers say</p><p class="empty-note">Pick quotes…</p>`;
-    let body: string, hint: string;
-    if (m.variant === 1) { hint = " · grid"; body = `<div class="qgrid">${c.map((q) => `<div class="quote">${esc(q)}</div>`).join("")}</div>`; }
-    else if (m.variant === 2) { hint = " · ← slide →"; body = `<div class="qslider">${c.map((q) => `<div class="quote">${esc(q)}</div>`).join("")}</div>`; }
-    else { hint = " · carousel"; body = `<div class="quote">${esc(c[0])}</div><div class="dots">${c.map((_, i) => `<i class="${i === 0 ? "on" : ""}"></i>`).join("")}</div>`; }
-    return `<p class="pv-h">What customers say <span class="empty-note">${hint}</span></p>${body}`;
-  }
-  if (m.id === "features") {
-    const c = chosen(m) as string[]; if (!c.length) return `<p class="pv-h">Continuous optimization</p><p class="empty-note">Pick features…</p>`;
-    return `<p class="pv-h">Continuous optimization</p><div class="fgrid${m.variant === 1 ? " list" : ""}">${c.map((x) => `<div class="fc"><span class="i">◆</span>${esc(x)}</div>`).join("")}</div>`;
-  }
-  if (m.id === "priorities") {
-    const c = chosen(m) as PickItem[]; if (!c.length) return `<p class="pv-h">Built around your priorities</p><p class="empty-note">Pick priorities…</p>`;
-    const body = m.variant === 1
-      ? c.map((x, i) => `<div class="lr ${i % 2 ? "r" : "l"}"><div class="lrimg">▧</div><div class="ptile" style="flex:1;margin:0"><small>${esc(x.c)}</small>${esc(x.t)}</div></div>`).join("")
-      : c.map((x) => `<div class="ptile"><small>${esc(x.c)}</small>${esc(x.t)}</div>`).join("");
-    return `<p class="pv-h">Built around your priorities <span class="empty-note">· ${m.variant === 1 ? "left / right" : "cards"}</span></p>${body}`;
-  }
+  // proven / quotes / features / priorities / resources all render via bodyLayoutHTML (routed at top).
   if (m.id === "search") return `<div class="pv-std">Search that delivers · integrations &nbsp;<b>(standard)</b></div>`;
-  if (m.id === "resources") {
-    const c = chosen(m) as string[]; if (!c.length) return `<p class="pv-h">Recommended resources</p><p class="empty-note">Optional — pick or skip.</p>`;
-    return `<p class="pv-h">Recommended resources</p><div class="rgrid${m.variant === 1 ? " list" : ""}">${c.map((x) => `<div class="rcard">${esc(x)}</div>`).join("")}</div>`;
-  }
   if (m.id === "awards") return `<div class="pv-std">Award-winning search & product discovery &nbsp;<b>(standard)</b></div>`;
   if (m.id === "parting") {
     const plain = m.variant === 0; // 0 = Plain CTA footer, 1 = Alt (gradient) footer

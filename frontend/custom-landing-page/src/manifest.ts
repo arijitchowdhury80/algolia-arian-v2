@@ -106,7 +106,7 @@ export function buildModules(cust: string): Module[] {
   const p = PREFILL[cust];
   return [
     { id: "hero", order: 1, name: "Hero", kind: "change", variants: [...HERO_VARIANTS], variant: 0, thumbs: [...HERO_THUMBS],
-      fields: [{ k: "headline", label: "Headline", v: p.hero.headline, req: true }, { k: "subhead", label: "Subhead", v: p.hero.subhead, req: true }, { k: "media", label: "Hero image / video", v: p.hero.video, asset: "video" }, { k: "lockup", label: "Logo lockup", v: p.hero.lockup, asset: "logo" }] },
+      fields: [{ k: "headline", label: "Headline", v: p.hero.headline, req: true }, { k: "subhead", label: "Subhead", v: p.hero.subhead, req: true }, { k: "media", label: "Hero video", v: p.hero.video, asset: "video" }, { k: "background", label: "Background image", v: "", asset: "image" }] },
     { id: "proven", order: 2, name: "Proven Impact", kind: "change", variants: [...BODY_VARIANTS], variant: 2, thumbs: [...BODY_THUMBS],
       fields: [{ k: "logos", label: "Proof / customer logos", v: "", asset: "logo" }],
       pick: { label: "Proof points", min: 1, max: 6, items: [...PROOF], chosen: [...p.proof] } },
