@@ -109,6 +109,20 @@ async function components() {
   return list;
 }
 
+// Render a real Jahia page (its OWN engine output) to HTML via GraphQL renderedContent.
+// Inject <base> so the page's relative asset/CSS/JS URLs resolve back to Jahia, not our origin.
+async function renderPage(pagePath, workspace = "LIVE") {
+  const ws = /^(LIVE|EDIT)$/.test(workspace) ? workspace : "LIVE";
+  const q = `{ jcr(workspace: ${ws}) { nodeByPath(path: ${JSON.stringify(pagePath)}) { renderedContent(view:"default", contextConfiguration:"page") { output } } } }`;
+  const j = await jahia(q);
+  if (j.errors) throw new Error(JSON.stringify(j.errors).slice(0, 300));
+  let html = j?.data?.jcr?.nodeByPath?.renderedContent?.output || "";
+  if (!html) throw new Error("empty render for " + pagePath);
+  const base = `<base href="${JURL}/">`;
+  html = /<head[^>]*>/i.test(html) ? html.replace(/<head([^>]*)>/i, `<head$1>${base}`) : base + html;
+  return html;
+}
+
 const json = (res, code, body) => {
   res.writeHead(code, { "Content-Type": "application/json" });
   res.end(JSON.stringify(body));
@@ -145,6 +159,13 @@ http
     if (u.pathname === "/api/jahia/file") {
       try { return await fileProxy(req, res, u.searchParams.get("path") || ""); }
       catch (e) { return json(res, 502, { ok: false, error: e.message }); }
+    }
+    if (u.pathname === "/api/jahia/render") {
+      try {
+        const html = await renderPage(u.searchParams.get("path") || "", u.searchParams.get("ws") || "LIVE");
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        return res.end(html);
+      } catch (e) { return json(res, 502, { ok: false, error: e.message }); }
     }
     if (u.pathname === "/api/jahia/components") {
       try {
