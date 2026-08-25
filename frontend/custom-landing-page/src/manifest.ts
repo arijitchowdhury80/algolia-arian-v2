@@ -18,7 +18,7 @@ import footer1 from "./assets/figma/footer/footer-1-plain-cta.png";
 import footer2 from "./assets/figma/footer/footer-2-alt.png";
 
 export type Kind = "change" | "standard";
-export interface FieldDef { k: string; label: string; v: string; req?: boolean; area?: boolean; asset?: "video" | "image" | "logo" }
+export interface FieldDef { k: string; label: string; v: string; req?: boolean; area?: boolean; asset?: "video" | "image" | "logo"; assetPath?: string }
 export interface PickItem { t: string; c: string }
 export interface PickDef {
   label: string; min?: number; max?: number; grouped?: boolean;

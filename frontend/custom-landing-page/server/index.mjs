@@ -2,6 +2,7 @@
 // Holds the Jahia API token SERVER-SIDE. The browser talks only to this backend over /api.
 // Read-only for now (component library + views). Publish (write) will be added behind a governance gate.
 import http from "node:http";
+import { Readable } from "node:stream";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,11 +34,13 @@ function loadEnv() {
   return out;
 }
 const ENV = loadEnv();
-const GQL = ENV.JHIA_URL ? ENV.JHIA_URL.replace(/\/$/, "") + "/modules/graphql" : null;
-const TOKEN = ENV.JHIA_API_TOKEN;
+// Jahia base URL + API token (JAHIA_BASE_URL accepted as an alias for JAHIA_URL).
+const JURL = ENV.JAHIA_URL || ENV.JAHIA_BASE_URL || null;
+const TOKEN = ENV.JAHIA_API_TOKEN;
+const GQL = JURL ? JURL.replace(/\/$/, "") + "/modules/graphql" : null;
 
 async function jahia(query) {
-  if (!GQL || !TOKEN) throw new Error("Missing JHIA_URL / JHIA_API_TOKEN");
+  if (!GQL || !TOKEN) throw new Error("Missing JAHIA_URL / JAHIA_API_TOKEN");
   const res = await fetch(GQL, {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: "APIToken " + TOKEN },
@@ -66,6 +69,28 @@ async function assets(kind, path) {
     folders: nodes.filter(isFolder).map((n) => ({ name: n.name, path: n.path })),
     files: nodes.filter((n) => (n.primaryNodeType?.name || "") === "jnt:file").map((n) => ({ name: n.name, path: n.path })),
   };
+}
+
+// Stream a real asset binary from Jahia's live file servlet to the browser, so the
+// preview can show actual images/videos. Path is locked to the same DAM roots as assets().
+// Honors Range (video seek). Token sent server-side; the browser never sees it.
+async function fileProxy(req, res, jcrPath) {
+  const roots = Object.values(ASSET_ROOTS);
+  if (!jcrPath || !roots.some((r) => jcrPath === r || jcrPath.startsWith(r + "/"))) {
+    return json(res, 400, { ok: false, error: "path outside locked asset folders" });
+  }
+  const base = JURL.replace(/\/$/, "");
+  const headers = { Authorization: "APIToken " + TOKEN };
+  if (req.headers.range) headers.Range = req.headers.range;
+  const up = await fetch(`${base}/files/live${jcrPath}`, { headers });
+  const pass = { "Content-Type": up.headers.get("content-type") || "application/octet-stream", "Cache-Control": "private, max-age=300" };
+  for (const h of ["content-length", "accept-ranges", "content-range"]) {
+    const v = up.headers.get(h);
+    if (v) pass[h.replace(/(^|-)([a-z])/g, (_, a, b) => a + b.toUpperCase())] = v;
+  }
+  res.writeHead(up.status, pass);
+  if (!up.body) return res.end();
+  Readable.fromWeb(up.body).pipe(res);
 }
 
 let cache = null;
@@ -100,6 +125,10 @@ http
       } catch (e) {
         return json(res, 502, { ok: false, error: e.message });
       }
+    }
+    if (u.pathname === "/api/jahia/file") {
+      try { return await fileProxy(req, res, u.searchParams.get("path") || ""); }
+      catch (e) { return json(res, 502, { ok: false, error: e.message }); }
     }
     if (u.pathname === "/api/jahia/components") {
       try {

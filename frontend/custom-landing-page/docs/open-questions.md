@@ -16,7 +16,7 @@ Context: the RL/Belk pages are real Jahia pages under `/sites/www/home/lp/<brand
    `scheduled-publication-workflow` (human approval) before going live? What's the required review gate?
 2. **Who is allowed to create/publish** partner LP pages — marketing/enablement only, or AEs too?
    (Drives the tool's permissions and guardrails.)
-3. **Credential.** We're currently using `JHIA_API_TOKEN` (a personal API token). For a production
+3. **Credential.** We're currently using `JAHIA_API_TOKEN` (a personal API token). For a production
    tool, do you want a dedicated **service account** scoped to partner-LP creation, with what
    path/role limits? (The current token can write; we should not rely on a personal token.)
 4. **Where should new partner pages live** — under `/sites/www/home/lp/` alongside RL/Belk, or a

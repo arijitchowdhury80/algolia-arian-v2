@@ -4,6 +4,12 @@ import { buildModules, CUST_LABEL, COMPMAP, PREFILL, type Module, type PickItem 
 const esc = (s: string) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
 const itemLabel = (it: string | PickItem) => (typeof it === "string" ? it : it.t);
 const field = (m: Module, k: string) => m.fields?.find((f) => f.k === k)?.v ?? "";
+const fieldAsset = (m: Module, k: string) => m.fields?.find((f) => f.k === k)?.assetPath ?? "";
+// Real Jahia asset binary, streamed through the backend proxy (token stays server-side).
+const FILEAPI = "/api/jahia/file?path=";
+const mediaHTML = (path: string) => /\.(mp4|webm|mov|m4v)$/i.test(path)
+  ? `<video class="pv-media" src="${FILEAPI}${encodeURIComponent(path)}" controls playsinline preload="metadata"></video>`
+  : `<img class="pv-media" src="${FILEAPI}${encodeURIComponent(path)}" alt="" loading="lazy" />`;
 
 function moduleValid(m: Module): boolean {
   if (m.kind === "standard") return true;
@@ -52,20 +58,25 @@ function bodyLayoutHTML(m: Module, heading: string): string {
 function previewInner(m: Module, brand: string): string {
   if (BODY_MODULE_IDS.includes(m.id)) return bodyLayoutHTML(m, HEADINGS[m.id]);
   if (m.id === "hero") {
-    // 5 Figma variants: 0 image+2CTAs · 1 single-col · 2 form single · 3 form two-col · 4 kelly-blue
-    const solid = m.variant === 4, single = m.variant === 1, form = m.variant === 2 || m.variant === 3, twoCol = m.variant === 3;
-    const media = field(m, "media"), lockup = field(m, "lockup");
+    // 0 image+2CTAs · 1 single-col · 2 form single · 3 form two-col · 4 kelly-blue (Figma "Landing Page options")
+    const v = m.variant ?? 0;
     const head = field(m, "headline") ? esc(field(m, "headline")) : '<span class="empty-note">Add a headline…</span>';
     const sub = esc(field(m, "subhead"));
-    const ctas = `<div class="pv-btns"><span class="pv-btn p">Get started</span><span class="pv-btn s">Talk to sales</span></div>`;
-    const formBlk = `<div class="pv-form"><div class="pv-fi"></div><div class="pv-fi"></div><span class="pv-btn p" style="margin-top:2px">Submit</span></div>`;
-    // asset chips show on EVERY variant so a browse-pick is always visible in the preview
-    const assets = (media || lockup) ? `<div class="pv-assets">${media ? `<span>🎬 ${esc(media)}</span>` : ""}${lockup ? `<span>🔖 ${esc(lockup)}</span>` : ""}</div>` : "";
-    let inner: string;
-    if (form) inner = `<div class="pv-herorow${twoCol ? " two" : ""}"><div style="flex:1"><h3>${head}</h3><p>${sub}</p></div>${formBlk}</div>${assets}`;
-    else inner = `<h3${single ? ' style="text-align:center"' : ""}>${head}</h3><p${single ? ' style="text-align:center"' : ""}>${sub}</p>`
-      + (single ? "" : ctas) + assets;
-    return `<div class="pv-hero${solid ? " solid" : ""}"><span class="eyebrow eyb">${esc(brand)} + Algolia</span>${inner}</div>`;
+    const mPath = fieldAsset(m, "media"), mName = field(m, "media");
+    const lPath = fieldAsset(m, "lockup"), lName = field(m, "lockup");
+    // real Jahia media when a browse-pick set a path; otherwise a labelled placeholder
+    const media = mPath ? mediaHTML(mPath)
+      : `<div class="pv-mediaph">${mName ? `🎬 ${esc(mName)}` : "▧ pick a hero image / video"}</div>`;
+    const logo = lPath ? `<img class="pv-logo" src="${FILEAPI}${encodeURIComponent(lPath)}" alt="" />`
+      : (lName ? `<span class="pv-logotxt">🔖 ${esc(lName)}</span>` : "");
+    const eyebrow = `<span class="eyebrow eyb">${esc(brand)} + Algolia</span>`;
+    const formSingle = `<div class="pv-form">${["First name", "Last name", "Email", "Company"].map((l) => `<label>${l}</label><div class="pv-fi"></div>`).join("")}<span class="pv-btn p" style="margin-top:6px">Get the report</span></div>`;
+    const formTwo = `<div class="pv-formcard"><p class="pv-fh">Download the report</p><div class="pv-fgrid">${["First name", "Last name", "Email", "Company"].map((l) => `<div><label>${l}</label><div class="pv-fi d"></div></div>`).join("")}</div><span class="pv-btn p" style="margin-top:10px">Get the report</span></div>`;
+    if (v === 4) return `<div class="pv-hero solid center">${logo}${eyebrow}<h3 class="big">${head}</h3><p>${sub}</p><div class="pv-btns center"><span class="pv-btn p">Request demo</span></div></div>`;
+    if (v === 1) return `<div class="pv-hero center">${logo}${eyebrow}<h3>${head}</h3><p>${sub}</p>${(mPath || mName) ? `<div class="pv-mediawrap">${media}</div>` : ""}</div>`;
+    if (v === 2) return `<div class="pv-hero split"><div class="pv-hcol">${logo}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formSingle}</div></div>`;
+    if (v === 3) return `<div class="pv-hero split"><div class="pv-hcol">${logo}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formTwo}</div></div>`;
+    return `<div class="pv-hero split"><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p><div class="pv-btns"><span class="pv-btn p">Request demo</span><span class="pv-btn s">Get started</span></div></div><div class="pv-hcol media">${media}</div></div>`;
   }
   if (m.id === "proven") {
     const c = chosen(m) as string[]; if (!c.length) return `<p class="pv-h">Proven impact</p><p class="empty-note">Pick proof points to show…</p>`;
@@ -194,7 +205,7 @@ export default function App() {
   }
   function openComponentBrowse() { setBq(""); setBrowse({ mode: "component", title: "Jahia component library", items: lib || [], folders: [] }); }
   function pickAsset(f: { name: string; path: string }) {
-    if (browse?.mid != null && browse.fidx != null) { const m = modules.find((x) => x.id === browse.mid); if (m) { m.fields![browse.fidx].v = f.name; force(); } }
+    if (browse?.mid != null && browse.fidx != null) { const m = modules.find((x) => x.id === browse.mid); if (m) { m.fields![browse.fidx].v = f.name; m.fields![browse.fidx].assetPath = f.path; force(); } }
     setBrowse(null); showToast(`Set “${f.name}”`);
   }
 
