@@ -114,6 +114,22 @@ const json = (res, code, body) => {
   res.end(JSON.stringify(body));
 };
 
+// Serve the built app (prod, single port). dist/ is produced by `npm run build`.
+const DIST = path.join(__dirname, "..", "dist");
+const MIME = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml", ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".woff2": "font/woff2", ".ico": "image/x-icon", ".webp": "image/webp" };
+function serveStatic(res, pathname) {
+  if (!fs.existsSync(DIST)) return json(res, 404, { ok: false, error: "no dist/ — run `npm run build` (or use `npm run dev:all`)" });
+  let rel = pathname === "/" ? "/index.html" : pathname;
+  let file = path.join(DIST, path.normalize(rel).replace(/^(\.\.[/\\])+/, ""));
+  if (!file.startsWith(DIST)) return json(res, 400, { ok: false, error: "bad path" });
+  if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) file = path.join(DIST, "index.html"); // SPA fallback
+  try {
+    const buf = fs.readFileSync(file);
+    res.writeHead(200, { "Content-Type": MIME[path.extname(file)] || "application/octet-stream" });
+    return res.end(buf);
+  } catch { return json(res, 404, { ok: false, error: "not found" }); }
+}
+
 http
   .createServer(async (req, res) => {
     const u = new URL(req.url, "http://localhost");
@@ -138,6 +154,7 @@ http
         return json(res, 502, { ok: false, error: e.message });
       }
     }
-    return json(res, 404, { ok: false, error: "not found" });
+    if (u.pathname.startsWith("/api/")) return json(res, 404, { ok: false, error: "not found" });
+    return serveStatic(res, u.pathname); // everything else → the built app
   })
   .listen(PORT, "127.0.0.1", () => console.log(`[whale-builder api] http://127.0.0.1:${PORT} (env: ${GQL ? "loaded" : "MISSING"})`));

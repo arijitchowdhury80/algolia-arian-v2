@@ -42,16 +42,21 @@ function bodyLayoutHTML(m: Module, heading: string): string {
   const label = (m.variants && m.variants[m.variant!]) || "";
   if (!items.length) return `<p class="pv-h">${heading}</p><p class="empty-note">Pick items to show…</p>`;
   const assetVal = m.fields && m.fields[0] && m.fields[0].v ? m.fields[0].v : "";
-  const assetBar = assetVal ? `<div class="pv-assets"><span>🖼 ${esc(assetVal)}</span></div>` : "";
-  const head = `<p class="pv-h">${heading} <span class="empty-note">· ${esc(label)}</span></p>` + assetBar;
+  // Real Jahia asset for this module (set when the operator browses one); else a labelled placeholder.
+  const aPath = (m.fields && m.fields[0] && m.fields[0].assetPath) || "";
+  const img = aPath ? mediaHTML(aPath) : `<div class="bl-img">▧</div>`;
+  // Universal: a picked asset renders as a real banner in the head, for EVERY variant.
+  const banner = aPath ? `<div class="pv-assetimg">${mediaHTML(aPath)}</div>` : "";
+  const assetBar = assetVal && !aPath ? `<div class="pv-assets"><span>🖼 ${esc(assetVal)}</span></div>` : "";
+  const head = `<p class="pv-h">${heading} <span class="empty-note">· ${esc(label)}</span></p>` + assetBar + banner;
   switch (m.variant) {
-    case 0: return head + `<div class="bl-beside"><div class="bl-img">▧</div><div style="flex:1">${items.map((i) => `<div class="bl-row">${esc(i.title)}</div>`).join("")}</div></div>`;
+    case 0: return head + `<div class="bl-beside">${img}<div style="flex:1">${items.map((i) => `<div class="bl-row">${esc(i.title)}</div>`).join("")}</div></div>`;
     case 1: return head + items.map((i, n) => `<div class="lr ${n % 2 ? "r" : "l"}"><div class="lrimg">▧</div><div class="ptile" style="flex:1;margin:0">${i.meta ? `<small>${esc(i.meta)}</small>` : ""}${esc(i.title)}</div></div>`).join("");
     case 3: return head + `<ul class="bl-bul">${items.map((i) => `<li>${esc(i.title)}</li>`).join("")}</ul>`;
     case 4: return head + `<div class="fgrid">${items.map((i) => `<div class="bl-person"><div class="bl-av"></div><div>${esc(i.title)}${i.meta ? `<small>${esc(i.meta)}</small>` : ""}</div></div>`).join("")}</div>`;
     case 5: return head + items.map((i) => `<div class="bl-acc"><span>${esc(i.title)}</span><span>▾</span></div>`).join("");
-    case 6: return head + `<div class="bl-beside"><div style="flex:1">${items.map((i) => `<div class="bl-acc"><span>${esc(i.title)}</span><span>▾</span></div>`).join("")}</div><div class="bl-img">▧</div></div>`;
-    case 7: return head + `<div class="bl-video">▶ interactive demo</div><div class="fgrid" style="margin-top:8px">${items.slice(0, 3).map((i) => `<div class="fc"><span class="i">◆</span>${esc(i.title)}</div>`).join("")}</div>`;
+    case 6: return head + `<div class="bl-beside"><div style="flex:1">${items.map((i) => `<div class="bl-acc"><span>${esc(i.title)}</span><span>▾</span></div>`).join("")}</div>${img}</div>`;
+    case 7: return head + `${aPath ? mediaHTML(aPath) : `<div class="bl-video">▶ interactive demo</div>`}<div class="fgrid" style="margin-top:8px">${items.slice(0, 3).map((i) => `<div class="fc"><span class="i">◆</span>${esc(i.title)}</div>`).join("")}</div>`;
     default: return head + `<div class="fgrid">${items.map((i) => `<div class="fc"><span class="i">◆</span>${esc(i.title)}</div>`).join("")}</div>`; // case 2: 2/3/4 columns
   }
 }
@@ -113,11 +118,13 @@ function previewInner(m: Module, brand: string): string {
   if (m.id === "parting") {
     const plain = m.variant === 0; // 0 = Plain CTA footer, 1 = Alt (gradient) footer
     const bg = field(m, "bg");
-    return `<div class="pv-cta${plain ? " plain" : ""}"><h3>${esc(brand)} + Algolia</h3>`
+    const bgPath = fieldAsset(m, "bg");
+    const bgStyle = bgPath ? ` style="background-image:linear-gradient(rgba(2,16,70,.72),rgba(2,16,70,.72)),url('${FILEAPI}${encodeURIComponent(bgPath)}');background-size:cover;background-position:center"` : "";
+    return `<div class="pv-cta${plain ? " plain" : ""}"${bgStyle}><h3>${esc(brand)} + Algolia</h3>`
       + `<p style="color:#c3cdf5;font-size:12.5px">${field(m, "message") ? esc(field(m, "message")) : '<span class="empty-note" style="color:#9fb4ff">Add a parting message…</span>'}</p>`
       + (field(m, "cta") ? `<span class="pv-btn p" style="display:inline-block;margin-top:12px">${esc(field(m, "cta"))}</span>` : "")
       + `<div class="ae">${field(m, "ae") ? "Your AE: " + esc(field(m, "ae")) : ""}</div>`
-      + (bg ? `<div class="pv-assets" style="justify-content:center">🖼 ${esc(bg)}</div>` : "")
+      + (bg && !bgPath ? `<div class="pv-assets" style="justify-content:center">🖼 ${esc(bg)}</div>` : "")
       + `</div>`;
   }
   return "";
