@@ -41,6 +41,16 @@ function bodyLayoutHTML(m: Module, heading: string): string {
   const items = bodyItems(m);
   const label = (m.variants && m.variants[m.variant!]) || "";
   if (!items.length) return `<p class="pv-h">${heading}</p><p class="empty-note">Pick items to show…</p>`;
+  // Proven Impact = real statistic cards (big gradient number + label), parsed from each proof point.
+  if (m.id === "proven") {
+    const cards = items.map((it) => {
+      const mm = it.title.match(/[+<]?\s*\$?\d[\d.,]*\s*[%x×kKmMbB]?|✓|↓/);
+      const num = mm ? mm[0].trim() : "✓";
+      const lbl = (mm ? it.title.replace(mm[0], "") : it.title).trim() || it.title;
+      return `<div class="sc"><div class="n">${esc(num)}</div><div class="l">${esc(lbl)}</div></div>`;
+    }).join("");
+    return `<p class="pv-h">${heading} <span class="empty-note">· ${esc(label)}</span></p><div class="stats3">${cards}</div>`;
+  }
   const assetVal = m.fields && m.fields[0] && m.fields[0].v ? m.fields[0].v : "";
   // Real Jahia asset for this module (set when the operator browses one); else a labelled placeholder.
   const aPath = (m.fields && m.fields[0] && m.fields[0].assetPath) || "";
