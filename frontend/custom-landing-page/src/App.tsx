@@ -101,19 +101,12 @@ function previewInner(m: Module, brand: string): string {
   return "";
 }
 
-// Real Jahia page paths per customer (LIVE workspace). "new" has no page yet.
-const PAGE_PATH: Record<string, string> = {
-  "ralph-lauren": "/sites/www/home/lp/ralph-lauren-algolia",
-  "belk": "/sites/www/home/lp/belk-algolia",
-};
-
 const MARK = "M250,0C113.38,0,2,110.16,.03,246.32c-2,138.29,110.19,252.87,248.49,253.67,42.71,.25,83.85-10.2,120.38-30.05,3.56-1.93,4.11-6.83,1.08-9.52l-23.39-20.74c-4.75-4.22-11.52-5.41-17.37-2.92-25.5,10.85-53.21,16.39-81.76,16.04-111.75-1.37-202.04-94.35-200.26-206.1,1.76-110.33,92.06-199.55,202.8-199.55h202.83V407.68l-115.08-102.25c-3.72-3.31-9.43-2.66-12.43,1.31-18.47,24.46-48.56,39.67-81.98,37.36-46.36-3.2-83.92-40.52-87.4-86.86-4.15-55.28,39.65-101.58,94.07-101.58,49.21,0,89.74,37.88,93.97,86.01,.38,4.28,2.31,8.28,5.53,11.13l29.97,26.57c3.4,3.01,8.8,1.17,9.63-3.3,2.16-11.55,2.92-23.6,2.07-35.95-4.83-70.39-61.84-127.01-132.26-131.35-80.73-4.98-148.23,58.18-150.37,137.35-2.09,77.15,61.12,143.66,138.28,145.36,32.21,.71,62.07-9.42,86.2-26.97l150.36,133.29c6.45,5.71,16.62,1.14,16.62-7.48V9.49C500,4.25,495.75,0,490.51,0H250Z";
 
 export default function App() {
   const [cust, setCust] = useState("ralph-lauren");
   const [modules, setModules] = useState<Module[]>(() => buildModules("ralph-lauren"));
   const [mode, setMode] = useState<"scroll" | "guide">("scroll");
-  const [pvMode, setPvMode] = useState<"build" | "jahia">("build");
   const [guideIdx, setGuideIdx] = useState(0);
   const [sel, setSel] = useState("hero");
   const [lib, setLib] = useState<string[] | null>(null);
@@ -194,54 +187,6 @@ export default function App() {
     setBrowse(null); showToast(`Set “${f.name}”`);
   }
 
-  // ---- A: reflect the operator's edits onto Jahia's REAL rendered page, IN THE BROWSER. Zero Jahia writes. ----
-  const jahiaRef = useRef<HTMLIFrameElement>(null);
-  function patchJahia() {
-    const doc = jahiaRef.current?.contentDocument; if (!doc) return;
-    const hero = modules.find((m) => m.id === "hero"); const get = (k: string) => hero?.fields?.find((f) => f.k === k);
-    // hero headline → the page's H1
-    const h1 = doc.querySelector("h1"); const hv = get("headline")?.v; if (h1 && hv) h1.textContent = hv;
-    // hero subhead → first paragraph near the H1
-    const sv = get("subhead")?.v;
-    if (sv && h1) { const p = (h1.closest("section, div, header") || doc).querySelector("p"); if (p) p.textContent = sv; }
-    // hero video → swap the real <video> source to the picked asset (streamed via proxy)
-    const vid = doc.querySelector("video") as HTMLVideoElement | null; const vp = get("media")?.assetPath;
-    if (vid && vp && !vid.src.includes(encodeURIComponent(vp))) { vid.src = FILEAPI + encodeURIComponent(vp); vid.load(); }
-    // features columns → re-grid the real feature cards locally
-    const feat = modules.find((m) => m.id === "features");
-    if (feat?.variant != null) {
-      const cols = feat.variant === 2 ? 3 : feat.variant === 3 ? 4 : feat.variant === 4 ? 2 : 3; // map layout → column count
-      const grid = [...doc.querySelectorAll('[class*="grid-cols"]')].find((el) => el.children.length >= 4 && /A\/B|relevance|NeuralSearch|Recommend/i.test(el.textContent || ""));
-      if (grid) grid.className = grid.className.replace(/(sm:|md:|lg:)?grid-cols-\d+/g, (mm) => mm.replace(/\d+/, String(cols)));
-    }
-    // proven impact → regenerate the real stat cards from the selected proof points (real card as template)
-    const proven = modules.find((m) => m.id === "proven");
-    if (proven?.pick) {
-      const pk = proven.pick;
-      const NUM = '[class*="text-[5rem]"]';
-      const chosen = pk.chosen.map((i) => pk.items[i]).filter(Boolean).map(String);
-      // carousel track = the element whose direct children each hold a big stat number
-      const track = [...doc.querySelectorAll("*")].find((el) => [...el.children].filter((c) => c.querySelector(NUM)).length >= 2);
-      if (track && chosen.length) {
-        const items = [...track.children].filter((c) => c.querySelector(NUM));
-        const tpl = items[0];
-        if (tpl) {
-          items.forEach((it) => it.remove()); // rebuild to match the current selection every time
-          chosen.forEach((txt) => {
-            const c = tpl.cloneNode(true) as HTMLElement;
-            const numEl = c.querySelector(NUM);
-            const mm = txt.match(/[+<]?\s*\$?\d[\d.,]*\s*[%x×kKmMbB]?/);
-            if (numEl) numEl.textContent = mm ? mm[0].trim() : "✓";
-            const label = (mm ? txt.replace(mm[0], "") : txt).trim() || txt;
-            const lbl = [...c.querySelectorAll("*")].find((e) => e.children.length === 0 && e !== numEl && (e.textContent || "").trim().length > 1);
-            if (lbl) lbl.textContent = label;
-            track.appendChild(c);
-          });
-        }
-      }
-    }
-  }
-  useEffect(() => { if (pvMode === "jahia") { const t = window.setTimeout(patchJahia, 80); return () => window.clearTimeout(t); } });
 
   return (
     <>
@@ -321,23 +266,13 @@ export default function App() {
         </section>
 
         <section className="canvas" aria-label="Live preview">
-          <div className="pvswitch" role="group" aria-label="Preview mode">
-            <button aria-pressed={pvMode === "build"} onClick={() => setPvMode("build")}>Live preview — reflects your edits</button>
-            <button aria-pressed={pvMode === "jahia"} onClick={() => setPvMode("jahia")}>Published page (reference · static)</button>
-          </div>
           <div className="device">
             <div className="chrome"><span className="d" /><span className="d" /><span className="d" /><span className="url">algolia.com/lp/{cust === "new" ? "new-account" : cust}-algolia</span></div>
-            {pvMode === "jahia" ? (
-              PAGE_PATH[cust]
-                ? <iframe ref={jahiaRef} onLoad={patchJahia} className="screen jahia" title="Jahia rendered preview" src={`/api/jahia/render?path=${encodeURIComponent(PAGE_PATH[cust])}`} />
-                : <div className="screen"><p className="empty-note" style={{ padding: 24 }}>No published Jahia page for this customer yet. Pick Ralph Lauren or Belk to see the real rendered page, or build one first.</p></div>
-            ) : (
-              <div className="screen">
-                {modules.map((m) => (
-                  <div key={m.id} className={"blk" + (m.id === sel ? " active" : "")} dangerouslySetInnerHTML={{ __html: '<span class="plabel">editing</span>' + previewInner(m, brand) }} />
-                ))}
-              </div>
-            )}
+            <div className="screen">
+              {modules.map((m) => (
+                <div key={m.id} className={"blk" + (m.id === sel ? " active" : "")} dangerouslySetInnerHTML={{ __html: '<span class="plabel">editing</span>' + previewInner(m, brand) }} />
+              ))}
+            </div>
           </div>
         </section>
       </div>
