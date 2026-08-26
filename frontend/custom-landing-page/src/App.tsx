@@ -194,6 +194,29 @@ export default function App() {
     setBrowse(null); showToast(`Set “${f.name}”`);
   }
 
+  // ---- A: reflect the operator's edits onto Jahia's REAL rendered page, IN THE BROWSER. Zero Jahia writes. ----
+  const jahiaRef = useRef<HTMLIFrameElement>(null);
+  function patchJahia() {
+    const doc = jahiaRef.current?.contentDocument; if (!doc) return;
+    const hero = modules.find((m) => m.id === "hero"); const get = (k: string) => hero?.fields?.find((f) => f.k === k);
+    // hero headline → the page's H1
+    const h1 = doc.querySelector("h1"); const hv = get("headline")?.v; if (h1 && hv) h1.textContent = hv;
+    // hero subhead → first paragraph near the H1
+    const sv = get("subhead")?.v;
+    if (sv && h1) { const p = (h1.closest("section, div, header") || doc).querySelector("p"); if (p) p.textContent = sv; }
+    // hero video → swap the real <video> source to the picked asset (streamed via proxy)
+    const vid = doc.querySelector("video") as HTMLVideoElement | null; const vp = get("media")?.assetPath;
+    if (vid && vp && !vid.src.includes(encodeURIComponent(vp))) { vid.src = FILEAPI + encodeURIComponent(vp); vid.load(); }
+    // features columns → re-grid the real feature cards locally
+    const feat = modules.find((m) => m.id === "features");
+    if (feat?.variant != null) {
+      const cols = feat.variant === 2 ? 3 : feat.variant === 3 ? 4 : feat.variant === 4 ? 2 : 3; // map layout → column count
+      const grid = [...doc.querySelectorAll('[class*="grid-cols"]')].find((el) => el.children.length >= 4 && /A\/B|relevance|NeuralSearch|Recommend/i.test(el.textContent || ""));
+      if (grid) grid.className = grid.className.replace(/(sm:|md:|lg:)?grid-cols-\d+/g, (mm) => mm.replace(/\d+/, String(cols)));
+    }
+  }
+  useEffect(() => { if (pvMode === "jahia") { const t = window.setTimeout(patchJahia, 80); return () => window.clearTimeout(t); } });
+
   return (
     <>
       <header className="hero">
@@ -280,7 +303,7 @@ export default function App() {
             <div className="chrome"><span className="d" /><span className="d" /><span className="d" /><span className="url">algolia.com/lp/{cust === "new" ? "new-account" : cust}-algolia</span></div>
             {pvMode === "jahia" ? (
               PAGE_PATH[cust]
-                ? <iframe className="screen jahia" title="Jahia rendered preview" src={`/api/jahia/render?path=${encodeURIComponent(PAGE_PATH[cust])}`} />
+                ? <iframe ref={jahiaRef} onLoad={patchJahia} className="screen jahia" title="Jahia rendered preview" src={`/api/jahia/render?path=${encodeURIComponent(PAGE_PATH[cust])}`} />
                 : <div className="screen"><p className="empty-note" style={{ padding: 24 }}>No published Jahia page for this customer yet. Pick Ralph Lauren or Belk to see the real rendered page, or build one first.</p></div>
             ) : (
               <div className="screen">
