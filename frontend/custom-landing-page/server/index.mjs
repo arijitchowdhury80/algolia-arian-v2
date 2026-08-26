@@ -123,6 +123,44 @@ async function renderPage(pagePath, workspace = "LIVE") {
   return html;
 }
 
+// ---- B: render the operator's CONFIG through Jahia via a transient, unpublished, auto-deleted draft. ----
+// Clone the base page → mutate real component properties per config → renderedContent(EDIT) → delete. Never published.
+const PAGE_PATH = { "ralph-lauren": "/sites/www/home/lp/ralph-lauren-algolia", "belk": "/sites/www/home/lp/belk-algolia" };
+async function gqlRaw(query, variables) {
+  const res = await fetch(GQL, { method: "POST", headers: { "Content-Type": "application/json", Authorization: "APIToken " + TOKEN }, body: JSON.stringify({ query, variables }) });
+  return res.json();
+}
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+async function renderConfig(cust, config) {
+  const base = PAGE_PATH[cust]; if (!base) throw new Error("no base page for " + cust);
+  const parent = base.replace(/\/[^/]+$/, "");
+  const name = "__prism_draft_" + Date.now();
+  const scratch = `${parent}/${name}`;
+  const fcc = `${scratch}/pagecontent/container-3/container-3-main/featurecard-container`;
+  try {
+    const c = await gqlRaw(`mutation($s:String!,$d:String!,$n:String!){ jcr{ copyNode(pathOrId:$s,destParentPathOrId:$d,destName:$n){ node{ path } } } }`, { s: base, d: parent, n: name });
+    if (c.errors) throw new Error("clone: " + JSON.stringify(c.errors).slice(0, 160));
+    // wait for the clone to be visible (eventual consistency)
+    let ready = false;
+    for (let i = 0; i < 15; i++) { await wait(1000); const p = await gqlRaw(`{ jcr(workspace:EDIT){ nodeByPath(path:"${fcc}"){ uuid } } }`); if (p.data?.jcr?.nodeByPath?.uuid) { ready = true; break; } }
+    if (!ready) throw new Error("clone not visible (consistency lag)");
+    // apply config → real property mutations
+    if (config?.features?.column) {
+      await gqlRaw(`mutation{ jcr{ mutateNode(pathOrId:"${fcc}"){ mutateProperty(name:"column"){ setValue(value:"${String(config.features.column)}",type:LONG) } } } }`);
+      await wait(1200);
+    }
+    const r = await gqlRaw(`{ jcr(workspace:EDIT){ nodeByPath(path:"${scratch}"){ renderedContent(view:"default",contextConfiguration:"page"){ output } } } }`);
+    let html = r.data?.jcr?.nodeByPath?.renderedContent?.output || "";
+    if (!html) throw new Error("empty render");
+    const baseTag = `<base href="${JURL}/">`;
+    html = /<head[^>]*>/i.test(html) ? html.replace(/<head([^>]*)>/i, `<head$1>${baseTag}`) : baseTag + html;
+    return html;
+  } finally {
+    // always clean up the transient draft
+    await gqlRaw(`mutation{ jcr{ deleteNode(pathOrId:"${scratch}") } }`).catch(() => {});
+  }
+}
+
 const json = (res, code, body) => {
   res.writeHead(code, { "Content-Type": "application/json" });
   res.end(JSON.stringify(body));
@@ -159,6 +197,15 @@ http
     if (u.pathname === "/api/jahia/file") {
       try { return await fileProxy(req, res, u.searchParams.get("path") || ""); }
       catch (e) { return json(res, 502, { ok: false, error: e.message }); }
+    }
+    if (u.pathname === "/api/jahia/render-config" && req.method === "POST") {
+      try {
+        let body = ""; for await (const chunk of req) body += chunk;
+        const { cust, config } = JSON.parse(body || "{}");
+        const html = await renderConfig(cust, config || {});
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        return res.end(html);
+      } catch (e) { return json(res, 502, { ok: false, error: e.message }); }
     }
     if (u.pathname === "/api/jahia/render") {
       try {
