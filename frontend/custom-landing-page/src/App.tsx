@@ -322,8 +322,8 @@ export default function App() {
 
         <section className="canvas" aria-label="Live preview">
           <div className="pvswitch" role="group" aria-label="Preview mode">
-            <button aria-pressed={pvMode === "build"} onClick={() => setPvMode("build")}>Build view</button>
-            <button aria-pressed={pvMode === "jahia"} onClick={() => setPvMode("jahia")}>True preview (Jahia)</button>
+            <button aria-pressed={pvMode === "build"} onClick={() => setPvMode("build")}>Live preview — reflects your edits</button>
+            <button aria-pressed={pvMode === "jahia"} onClick={() => setPvMode("jahia")}>Published page (reference · static)</button>
           </div>
           <div className="device">
             <div className="chrome"><span className="d" /><span className="d" /><span className="d" /><span className="url">algolia.com/lp/{cust === "new" ? "new-account" : cust}-algolia</span></div>
