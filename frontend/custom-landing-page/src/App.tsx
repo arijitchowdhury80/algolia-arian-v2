@@ -214,6 +214,32 @@ export default function App() {
       const grid = [...doc.querySelectorAll('[class*="grid-cols"]')].find((el) => el.children.length >= 4 && /A\/B|relevance|NeuralSearch|Recommend/i.test(el.textContent || ""));
       if (grid) grid.className = grid.className.replace(/(sm:|md:|lg:)?grid-cols-\d+/g, (mm) => mm.replace(/\d+/, String(cols)));
     }
+    // proven impact → regenerate the real stat cards from the selected proof points (real card as template)
+    const proven = modules.find((m) => m.id === "proven");
+    if (proven?.pick) {
+      const pk = proven.pick;
+      const NUM = '[class*="text-[5rem]"]';
+      const chosen = pk.chosen.map((i) => pk.items[i]).filter(Boolean).map(String);
+      // carousel track = the element whose direct children each hold a big stat number
+      const track = [...doc.querySelectorAll("*")].find((el) => [...el.children].filter((c) => c.querySelector(NUM)).length >= 2);
+      if (track && chosen.length) {
+        const items = [...track.children].filter((c) => c.querySelector(NUM));
+        const tpl = items[0];
+        if (tpl) {
+          items.forEach((it) => it.remove()); // rebuild to match the current selection every time
+          chosen.forEach((txt) => {
+            const c = tpl.cloneNode(true) as HTMLElement;
+            const numEl = c.querySelector(NUM);
+            const mm = txt.match(/[+<]?\s*\$?\d[\d.,]*\s*[%x×kKmMbB]?/);
+            if (numEl) numEl.textContent = mm ? mm[0].trim() : "✓";
+            const label = (mm ? txt.replace(mm[0], "") : txt).trim() || txt;
+            const lbl = [...c.querySelectorAll("*")].find((e) => e.children.length === 0 && e !== numEl && (e.textContent || "").trim().length > 1);
+            if (lbl) lbl.textContent = label;
+            track.appendChild(c);
+          });
+        }
+      }
+    }
   }
   useEffect(() => { if (pvMode === "jahia") { const t = window.setTimeout(patchJahia, 80); return () => window.clearTimeout(t); } });
 
