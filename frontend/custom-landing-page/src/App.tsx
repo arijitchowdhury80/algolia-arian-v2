@@ -24,7 +24,7 @@ function moduleValid(m: Module): boolean {
 function summary(m: Module): string {
   if (m.kind === "standard") return "Standard — same on every page";
   if (m.pick) { const n = m.pick.chosen.length, cap = m.pick.max != null ? ` / ${m.pick.max}` : ""; return `${m.pick.label}: ${n}${cap} · ${m.variants![m.variant!]}`; }
-  if (m.fields) { const h = (m.fields[0].v || "").trim(); return `${h ? `"${h.slice(0, 38)}${h.length > 38 ? "…" : ""}"` : "(empty)"} · ${m.variants![m.variant!]}`; }
+  if (m.fields) { const h = (m.fields[0].v || "").trim(); const lay = m.variants ? ` · ${m.variants[m.variant!]}` : ""; return `${h ? `"${h.slice(0, 38)}${h.length > 38 ? "…" : ""}"` : "(empty)"}${lay}`; }
   return "";
 }
 const chosen = (m: Module) => m.pick!.chosen.map((i) => m.pick!.items[i]).filter(Boolean);
@@ -63,25 +63,21 @@ function bodyLayoutHTML(m: Module, heading: string): string {
 function previewInner(m: Module, brand: string): string {
   if (BODY_MODULE_IDS.includes(m.id)) return bodyLayoutHTML(m, HEADINGS[m.id]);
   if (m.id === "hero") {
-    // 0 image+2CTAs · 1 single-col · 2 form single · 3 form two-col · 4 kelly-blue (Figma "Landing Page options")
-    const v = m.variant ?? 0;
+    // Driven by the REAL banner controls: enableForm (form vs media) + enableCta (buttons).
     const head = field(m, "headline") ? esc(field(m, "headline")) : '<span class="empty-note">Add a headline…</span>';
     const sub = esc(field(m, "subhead"));
     const mPath = fieldAsset(m, "media"), mName = field(m, "media");
     const bgPath = fieldAsset(m, "background");
-    // real Jahia video when browsed; otherwise a labelled placeholder
     const media = mPath ? mediaHTML(mPath)
       : `<div class="pv-mediaph">${mName ? `🎬 ${esc(mName)}` : "▧ pick a hero video"}</div>`;
-    // real background image → cover behind the hero (dark overlay for legible text)
     const heroStyle = bgPath ? ` style="background-image:linear-gradient(rgba(2,16,70,.58),rgba(2,16,70,.58)),url('${FILEAPI}${encodeURIComponent(bgPath)}');background-size:cover;background-position:center"` : "";
     const eyebrow = `<span class="eyebrow eyb">${esc(brand)} + Algolia</span>`;
-    const formSingle = `<div class="pv-form">${["First name", "Last name", "Email", "Company"].map((l) => `<label>${l}</label><div class="pv-fi"></div>`).join("")}<span class="pv-btn p" style="margin-top:6px">Get the report</span></div>`;
-    const formTwo = `<div class="pv-formcard"><p class="pv-fh">Download the report</p><div class="pv-fgrid">${["First name", "Last name", "Email", "Company"].map((l) => `<div><label>${l}</label><div class="pv-fi d"></div></div>`).join("")}</div><span class="pv-btn p" style="margin-top:10px">Get the report</span></div>`;
-    if (v === 4) return `<div class="pv-hero solid center"${heroStyle}>${eyebrow}<h3 class="big">${head}</h3><p>${sub}</p><div class="pv-btns center"><span class="pv-btn p">Request demo</span></div></div>`;
-    if (v === 1) return `<div class="pv-hero center"${heroStyle}>${eyebrow}<h3>${head}</h3><p>${sub}</p>${(mPath || mName) ? `<div class="pv-mediawrap">${media}</div>` : ""}</div>`;
-    if (v === 2) return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formSingle}</div></div>`;
-    if (v === 3) return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p></div><div class="pv-hcol">${formTwo}</div></div>`;
-    return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p><div class="pv-btns"><span class="pv-btn p">Request demo</span><span class="pv-btn s">Get started</span></div></div><div class="pv-hcol media">${media}</div></div>`;
+    const showForm = field(m, "enableForm") === "true";
+    const showCta = field(m, "enableCta") === "true";
+    const form = `<div class="pv-formcard"><p class="pv-fh">Download the report</p><div class="pv-fgrid">${["First name", "Last name", "Email", "Company"].map((l) => `<div><label>${l}</label><div class="pv-fi d"></div></div>`).join("")}</div><span class="pv-btn p" style="margin-top:10px">Get the report</span></div>`;
+    const ctas = showCta ? `<div class="pv-btns"><span class="pv-btn p">Request demo</span><span class="pv-btn s">Get started</span></div>` : "";
+    const right = showForm ? `<div class="pv-hcol">${form}</div>` : `<div class="pv-hcol media">${media}</div>`;
+    return `<div class="pv-hero split"${heroStyle}><div class="pv-hcol">${eyebrow}<h3>${head}</h3><p>${sub}</p>${ctas}</div>${right}</div>`;
   }
   // proven / quotes / features / priorities / resources all render via bodyLayoutHTML (routed at top).
   if (m.id === "search") return `<div class="pv-std">Search that delivers · integrations &nbsp;<b>(standard)</b></div>`;
@@ -407,15 +403,17 @@ function Editor({ m, lib, isDev, onVariant, onField, onPick, onAdd, onBrowse }: 
   );
   return (
     <div className="editor">
-      <p className="eyebrow first">Layout</p>
-      <div className="variants">
-        {m.variants!.map((v, i) => (
-          <button key={i} className="variant" aria-pressed={i === m.variant} onClick={() => onVariant(m, i)}>
-            <div className="th">{m.thumbs?.[i] ? <img className="vthumb" src={m.thumbs[i]} alt={v} /> : "▧"}</div>
-            <div className="vl">{v}</div>
-          </button>
-        ))}
-      </div>
+      {m.variants && <>
+        <p className="eyebrow first">Layout</p>
+        <div className="variants">
+          {m.variants.map((v, i) => (
+            <button key={i} className="variant" aria-pressed={i === m.variant} onClick={() => onVariant(m, i)}>
+              <div className="th">{m.thumbs?.[i] ? <img className="vthumb" src={m.thumbs[i]} alt={v} /> : "▧"}</div>
+              <div className="vl">{v}</div>
+            </button>
+          ))}
+        </div>
+      </>}
       {isDev && comp && <div style={{ fontSize: 11, color: lib?.includes(comp) ? "#0a8f6f" : "var(--amber)", marginBottom: 12 }}>Jahia component: <code>{comp}</code>{lib ? (lib.includes(comp) ? " · ✓ live" : " · ⚠ not in allowlist") : ""}</div>}
       {m.fields && <>
         <p className="eyebrow">Content</p>
@@ -427,7 +425,11 @@ function Editor({ m, lib, isDev, onVariant, onField, onPick, onAdd, onBrowse }: 
                 <input value={f.v} placeholder="none selected — Browse…" onChange={(e) => onField(m, i, e.target.value)} />
                 <button type="button" className="browsebtn" onClick={() => onBrowse(m, i, f.asset!)}>Browse…</button>
               </div>
-            ) : f.area
+            ) : f.control === "toggle"
+              ? <label className="tgl"><input type="checkbox" checked={f.v === "true"} onChange={(e) => onField(m, i, e.target.checked ? "true" : "false")} /><span>{f.v === "true" ? "On" : "Off"}</span></label>
+            : f.control === "select"
+              ? <select value={f.v} onChange={(e) => onField(m, i, e.target.value)}>{(f.options || []).map((o) => <option key={o} value={o}>{o}</option>)}</select>
+            : f.area
               ? <textarea className={f.req && !f.v.trim() ? "err" : ""} value={f.v} onChange={(e) => onField(m, i, e.target.value)} />
               : <input className={f.req && !f.v.trim() ? "err" : ""} value={f.v} onChange={(e) => onField(m, i, e.target.value)} />}
           </div>

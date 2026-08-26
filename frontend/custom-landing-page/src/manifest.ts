@@ -18,7 +18,13 @@ import footer1 from "./assets/figma/footer/footer-1-plain-cta.png";
 import footer2 from "./assets/figma/footer/footer-2-alt.png";
 
 export type Kind = "change" | "standard";
-export interface FieldDef { k: string; label: string; v: string; req?: boolean; area?: boolean; asset?: "video" | "image" | "logo"; assetPath?: string }
+// control = how the operator edits this field. text/textarea, an asset browse, a real boolean toggle,
+// or a select over the real enum a Jahia property accepts. `prop` = the real Jahia property name it maps to.
+export interface FieldDef {
+  k: string; label: string; v: string; req?: boolean; area?: boolean;
+  asset?: "video" | "image" | "logo"; assetPath?: string;
+  control?: "toggle" | "select"; options?: string[]; prop?: string;
+}
 export interface PickItem { t: string; c: string }
 export interface PickDef {
   label: string; min?: number; max?: number; grouped?: boolean;
@@ -105,8 +111,16 @@ export const PREFILL: Record<string, Prefill> = {
 export function buildModules(cust: string): Module[] {
   const p = PREFILL[cust];
   return [
-    { id: "hero", order: 1, name: "Hero", kind: "change", variants: [...HERO_VARIANTS], variant: 0, thumbs: [...HERO_THUMBS],
-      fields: [{ k: "headline", label: "Headline", v: p.hero.headline, req: true }, { k: "subhead", label: "Subhead", v: p.hero.subhead, req: true }, { k: "media", label: "Hero video", v: p.hero.video, asset: "video" }, { k: "background", label: "Background image", v: "", asset: "image" }] },
+    // Hero reconciled to the REAL aant:algoliaBanner properties (no Figma-fiction layouts).
+    { id: "hero", order: 1, name: "Hero", kind: "change",
+      fields: [
+        { k: "headline", label: "Headline", v: p.hero.headline, req: true, prop: "title" },
+        { k: "subhead", label: "Subhead", v: p.hero.subhead, req: true, area: true, prop: "description" },
+        { k: "enableForm", label: "Lead-capture form", v: "false", control: "toggle", prop: "enableForm" },
+        { k: "enableCta", label: "Call-to-action buttons", v: "true", control: "toggle", prop: "enableCta" },
+        { k: "media", label: "Hero video", v: p.hero.video, asset: "video", prop: "sourceVideo" },
+        { k: "background", label: "Background image", v: "", asset: "image", prop: "backgroundImage" },
+      ] },
     { id: "proven", order: 2, name: "Proven Impact", kind: "change", variants: [...BODY_VARIANTS], variant: 2, thumbs: [...BODY_THUMBS],
       fields: [{ k: "logos", label: "Proof / customer logos", v: "", asset: "logo" }],
       pick: { label: "Proof points", min: 1, max: 6, items: [...PROOF], chosen: [...p.proof] } },
