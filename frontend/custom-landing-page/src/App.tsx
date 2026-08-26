@@ -41,8 +41,9 @@ function bodyLayoutHTML(m: Module, heading: string): string {
   const items = bodyItems(m);
   const label = (m.variants && m.variants[m.variant!]) || "";
   if (!items.length) return `<p class="pv-h">${heading}</p><p class="empty-note">Pick items to show…</p>`;
-  // Proven Impact = real statistic cards (big gradient number + label), parsed from each proof point.
-  if (m.id === "proven") {
+  // Proven Impact renders as statistic cards ONLY in the columns layout (variant 2 / default);
+  // every other layout falls through to the shared switch so the template choice still changes the preview.
+  if (m.id === "proven" && (m.variant === 2 || m.variant == null)) {
     const cards = items.map((it) => {
       const mm = it.title.match(/[+<]?\s*\$?\d[\d.,]*\s*[%x×kKmMbB]?|✓|↓/);
       const num = mm ? mm[0].trim() : "✓";
